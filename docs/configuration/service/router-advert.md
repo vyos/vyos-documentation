@@ -45,10 +45,8 @@ Supported interface types:
 "Auto Ignore Prefix", "auto-ignore", "Exclude a prefix from being advertised when the wildcard ::/64 prefix is used"
 "Captive Portal", "captive-portal", "Advertise a URL pointing to an RFC 8908-compliant API to tell hosts that they are behind a captive portal"
 ```
-
 % start_vyoslinter
 ### Advertising a Prefix
-
 ```{cfgcmd} set service router-advert interface <interface> prefix <prefix/mask>
 
 :::{note}
@@ -72,10 +70,8 @@ You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 "preferred-lifetime","Time in seconds that the prefix will remain preferred (default 4 hours)"
 "valid-lifetime","Time in seconds that the prefix will remain valid (default: 30 days)"
 ```
-
 % start_vyoslinter
 ### Advertising a NAT64 Prefix
-
 ```{cfgcmd} set service router-advert interface <interface> nat64prefix <prefix/mask>
 
 Enable PREF64 option as outlined in :rfc:`8781`.
@@ -96,11 +92,9 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 
 "valid-lifetime","Time in seconds that the prefix will remain valid (default: 65528 seconds)"
 ```
-
 % start_vyoslinter
 ### Disabling Advertisements
 To disable advertisements without deleting the configuration:
-
 ```{cfgcmd} set service router-advert interface <interface> no-send-advert
 
 If set, the router will no longer send periodic router advertisements and
@@ -114,7 +108,6 @@ Router Advertisements unless this option is set.
 ## Example
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router
 beeing `2001:db8:beef:2::1`
-
 ```none
 set interfaces ethernet eth0 address 2001:db8:beef:2::1/64
 

@@ -14,7 +14,6 @@ networks while maintaining the performance benefits of VPP's optimized
 data plane.
 ## Basic Configuration
 ### Creating a GRE Interface
-
 ```{cfgcmd} set interfaces vpp gre <vppgreN>
 
 Create a GRE interface where ``<vppgreN>`` follows the naming convention
@@ -37,10 +36,8 @@ set interfaces vpp gre vppgre1
 set interfaces vpp gre vppgre1 remote 203.0.113.2
 set interfaces vpp gre vppgre1 source-address 192.168.1.1
 ```
-
 ## Interface Configuration
 ### Description and Administrative Control
-
 ```{cfgcmd} set interfaces vpp gre <vppgreN> description <description>
 
 Set a descriptive name for the GRE interface.
@@ -65,7 +62,6 @@ LCP kernel pair interface bound to the VPP GRE interface is created
 automatically. This allows standard Linux networking tools and
 services to interact with the VPP GRE.
 ## IP Address Configuration
-
 ```{cfgcmd} set interfaces vpp gre <vppgreN> address <ip-address/prefix>
 
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
@@ -80,9 +76,7 @@ set interfaces vpp gre vppgre0 address 192.168.1.10/24
 # IPv6 address
 set interfaces vpp gre vppgre0 address 2001:db8::10/64
 ```
-
 ## MTU Configuration
-
 ```{cfgcmd} set interfaces vpp gre <vppgreN> mtu <size>
 
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
@@ -93,14 +87,12 @@ The MTU must be compatible with the connected VPP interface.
 ```none
 set interfaces vpp gre vppgre0 mtu 9000
 ```
-
 :::{note}
 The MTU size must not exceed the MTU size
 supported by the associated VPP interface.
 :::
 ## Configuration Examples
 ### Layer 3 GRE Tunnel
-
 ```none
 # IPv4 GRE tunnel
 set interfaces vpp gre vppgre1
@@ -109,9 +101,7 @@ set interfaces vpp gre vppgre1 remote 203.0.113.10
 set interfaces vpp gre vppgre1 source-address 192.168.1.1
 set interfaces vpp gre vppgre1 tunnel-type l3
 ```
-
 ### Layer 2 GRE Tunnel (TEB)
-
 ```none
 # Transparent Ethernet Bridge
 set interfaces vpp gre vppgre2
@@ -120,18 +110,14 @@ set interfaces vpp gre vppgre2 remote 203.0.113.20
 set interfaces vpp gre vppgre2 source-address 192.168.1.1
 set interfaces vpp gre vppgre2 tunnel-type teb
 ```
-
 ### IPv6 GRE Tunnel
-
 ```none
 # IPv6 endpoints
 set interfaces vpp gre vppgre3
 set interfaces vpp gre vppgre3 remote 2001:db8::2
 set interfaces vpp gre vppgre3 source-address 2001:db8::1
 ```
-
 ### GRE with Kernel Interface
-
 ```none
 # GRE tunnel with management interface
 set interfaces vpp gre vppgre4
@@ -139,11 +125,9 @@ set interfaces vpp gre vppgre4 remote 203.0.113.30
 set interfaces vpp gre vppgre4 source-address 192.168.1.1
 set interfaces vpp gre vppgre4 address 10.0.1.1/30
 ```
-
 ## Bridge Integration
 GRE interfaces can be added as members to VPP bridges for Layer 2
 switching. See {doc}`bridge` for detailed bridge configuration.
-
 ```none
 # Add TEB GRE tunnel to bridge
 set interfaces vpp bridge vppbr1

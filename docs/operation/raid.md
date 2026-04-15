@@ -155,14 +155,12 @@ To replace a bad disk within a RAID 1 set:
    hot-swappable, then you must shut down the system before removing the disk.
 3. Replace the failed drive with a drive of the same size or larger.
 4. Format the new disk for RAID 1 by running the following command:
-
-   ```{opcmd} format disk <disk‐device1> like <disk‐device2>
+```{opcmd} format disk <disk‐device1> like <disk‐device2>
    ```
    where `disk-device1` is the replacement disk. For example, `sdb` and
    `disk-device2` is the existing healthy disk. For example, `sda`.
 5. Add the replacement disk to the RAID 1 set by running the following command:
-
-   ```{opcmd} add raid <RAID‐1‐device> member <disk‐partition>
+```{opcmd} add raid <RAID‐1‐device> member <disk‐partition>
    ```
    where `RAID-1-device` is the name of the RAID 1 device. For example,
    `md0` and `disk-partition` is the name of the replacement disk partition.
@@ -170,7 +168,6 @@ To replace a bad disk within a RAID 1 set:
 ## Operation
 Learn how to add a disk partition to a RAID 1 set, initiate
 mirror synchronization, and check and display information.
-
 ```{opcmd} add raid <RAID‐1‐device> member <disk‐partition>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a

@@ -68,7 +68,6 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
        F - PBR, f - OpenFabric,
        > - selected route, * - FIB route, q - queued route, r - rejected route
-
 S>* 0.0.0.0/0 [210/0] via 10.0.0.254, eth0, 00:57:34
 O   10.0.0.0/24 [110/20] via 192.168.0.2, eth1 onlink, 00:13:21
                             via 192.168.0.2, eth2 onlink, 00:13:21
@@ -103,7 +102,6 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
        F - PBR, f - OpenFabric,
        > - selected route, * - FIB route, q - queued route, r - rejected route
-
 S>* 0.0.0.0/0 [210/0] via 10.0.0.254, eth0, 00:57:34
 O   10.0.0.0/24 [110/20] via 192.168.0.1, eth1 onlink, 00:13:21
                             via 192.168.0.1, eth2 onlink, 00:13:21

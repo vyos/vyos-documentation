@@ -67,11 +67,7 @@ Specifies single `<gateway>` IP address to be used as local address of PPP
 
 interfaces.
 ```
-
-
 ## Configuring IPsec
-
-
 ```none
 
 set vpn ipsec interface eth0
@@ -108,7 +104,6 @@ As well as the below to allow NAT-traversal (when NAT is detected by the
 VPN client, ESP is encapsulated in UDP for NAT-traversal):
 - UDP port 4500 (NAT-T)
 Example:
-
 ```none
 set firewall ipv4 name OUTSIDE-LOCAL rule 40 action 'accept'
 set firewall ipv4 name OUTSIDE-LOCAL rule 40 protocol 'esp'
@@ -123,22 +118,18 @@ set firewall ipv4 name OUTSIDE-LOCAL rule 43 destination port '1701'
 set firewall ipv4 name OUTSIDE-LOCAL rule 43 ipsec 'match-ipsec'
 set firewall ipv4 name OUTSIDE-LOCAL rule 43 protocol 'udp'
 ```
-
 To allow VPN-clients access via your external address, a NAT rule is required:
-
 ```none
 set nat source rule 110 outbound-interface name 'eth0'
 set nat source rule 110 source address '192.168.255.0/24'
 set nat source rule 110 translation address masquerade
 ```
-
 ## Configuring RADIUS authentication
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
-
 ```none
 set vpn l2tp remote-access authentication mode radius
 ```
@@ -151,12 +142,10 @@ communicating with the RADIUS server.
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 For example:
-
 ```none
 set vpn l2tp remote-access authentication radius server 10.0.0.1 key 'foo'
 set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
 ```
-
 :::{note}
 Some [RADIUS] severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
@@ -165,7 +154,6 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as your IGP, use the interface connected closest to the
 RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
-
 ```{cfgcmd} set vpn l2tp remote-access authentication radius source-address <address>
 
 Source IPv4 address used in all RADIUS server queires.
@@ -175,7 +163,6 @@ The `source-address` must be configured to that of an interface.
 Best practice would be a loopback or dummy interface.
 :::
 ### RADIUS advanced options
-
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server <server> port <port>
 
 Configure RADIUS `<server>` and its required port for authentication requests.
@@ -236,7 +223,6 @@ The default attribute is `Filter-Id`.
 If you set a custom RADIUS attribute you must define it on both
 dictionaries on the RADIUS server and client.
 :::
-
 ```{cfgcmd} set vpn l2tp remote-access authentication radius rate-limit enable
 
 Enables bandwidth shaping via RADIUS.
@@ -248,49 +234,36 @@ Specifies the vendor dictionary. This dictionary needs to be present in
 ```
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
-
 ### Allocation clients ip addresses by RADIUS
-
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
 address will be allocated to the client and the option `default-pool` within
 the CLI config will be ignored.
-
 If the RADIUS server sends the attribute `Framed-Pool`, then the IP address
 will be allocated from a predefined IP pool whose name equals the attribute
 value.
-
 If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, the
 IPv6 address will be allocated from a predefined IPv6 pool `prefix` whose
 name equals the attribute value.
-
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, an
 IPv6 delegation prefix will be allocated from a predefined IPv6 pool
 `delegate` whose name equals the attribute value.
-
 :::{note}
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
-
 The client's interface can be put into a VRF context via a RADIUS Access-Accept
 packet, or changed via RADIUS CoA. `Accel-VRF-Name` is used for these
 purposes. This is a custom [ACCEL-PPP attribute]. Define it in your RADIUS
 server.
-
 ### Renaming clients interfaces by RADIUS
-
 If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
 renamed.
-
 :::{note}
 The value of the attribute `NAS-Port-Id` must be less than 16
 characters, otherwise the interface won't be renamed.
 :::
-
 ## Configuring LNS (L2TP Network Server)
-
 LNS are often used to connect to a LAC (L2TP Access Concentrator).
-
 ```{cfgcmd} set vpn l2tp remote-access lns host-name <hostname>
 
 Sent to the client (LAC) in the Host-Name attribute
@@ -301,7 +274,6 @@ Tunnel password used to authenticate the client (LAC)
 ```
 To explain the usage of LNS follow our blueprint {ref}`examples-lac-lns`.
 ## IPv6
-
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6 <require | prefer | allow | deny>
 
 Specifies IPv6 negotiation preference.
@@ -338,9 +310,7 @@ set vpn l2tp remote-access client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/
 set vpn l2tp remote-access client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
 set vpn l2tp remote-access default-ipv6-pool IPv6-POOL
 ```
-
 ### IPv6 Advanced Options
-
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-accept-peer-interface-id
 
 Accept peer interface identifier. By default this is not defined.
@@ -382,7 +352,6 @@ Script to run when the session interface is completely configured and started
 ```
 ## Advanced Options
 ### Authentication Advanced Options
-
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username <user> disable
 
 Disable `<user>` account.

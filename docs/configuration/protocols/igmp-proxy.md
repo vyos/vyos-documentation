@@ -58,15 +58,12 @@ Disable this service.
 ### Example
 Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23` subnet
 multicast which is in `eth0` WAN we need to configure igmp-proxy.
-
 ```none
 set protocols igmp-proxy interface eth0 role upstream
 set protocols igmp-proxy interface eth0 alt-subnet 10.0.0.0/23
 set protocols igmp-proxy interface eth1 role downstream
 ```
-
 ## Operation
-
 ```{opcmd} restart igmp-proxy
 
 Restart the IGMP proxy process.

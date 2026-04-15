@@ -32,13 +32,11 @@ to the hardware, bypassing the host CPU. This increases the interface’s
 
 traffic-handling capacity and reduces its forwarding delay.
 ```
-
 :::{note}
 `switchdev` mode is available only on certain physical network
 interfaces and requires a switchdev-compatible driver.
 :::
 ### Ethernet options
-
 ```{cfgcmd} set interfaces ethernet <interface> duplex <auto | full | half>
 
 **Configure duplex mode for the interface.**
@@ -122,7 +120,6 @@ To view supported values for a specific interface, use:
 ethtool -g <interface>
 
 ```
-
 #### Interrupt Coalescing
 Interrupt coalescing is a mechanism that reduces CPU interrupt load by bundling
 multiple packets into a single interrupt event instead of interrupting
@@ -133,7 +130,6 @@ coalescing parameters. Use `ethtool --show-coalesce <interface>`
 to verify which settings are supported by your hardware and driver.
 :::
 **Basic adaptive coalescing**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing adaptive-rx
 ```
 
@@ -145,9 +141,7 @@ interrupt pacing based on traffic patterns to reduce CPU utilization
 
 during high throughput while preserving latency at low packet rates.
 ```
-
 **Basic interrupt delay**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing rx-usecs <0-16384>
 ```
 
@@ -159,9 +153,7 @@ receiving or transmitting a packet. Lower values reduce latency; higher
 
 values reduce CPU load.
 ```
-
 **Interrupt frame thresholds**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing rx-frames <number>
 ```
 
@@ -171,9 +163,7 @@ Generate an RX/TX interrupt only after the specified number of packets
 
 have been received or transmitted.
 ```
-
 **IRQ-specific coalescing**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing rx-usecs-irq <number>
 ```
 
@@ -191,9 +181,7 @@ servicing an interrupt (IRQ context). These settings allow finer tuning
 
 of interrupt behavior under sustained load.
 ```
-
 **Adaptive rate thresholds**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing pkt-rate-low <number>
 ```
 
@@ -205,9 +193,7 @@ coalescing to switch between low-rate and high-rate interrupt coalescing
 
 profiles.
 ```
-
 **Low-rate adaptive parameters**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing rx-usecs-low <number>
 ```
 
@@ -223,9 +209,7 @@ Interrupt coalescing parameters applied when the packet rate is below
 
 ``pkt-rate-low``. Typically optimized for lower latency.
 ```
-
 **High-rate adaptive parameters**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing rx-usecs-high <number>
 ```
 
@@ -243,9 +227,7 @@ Interrupt coalescing parameters applied when the packet rate exceeds
 
 reduced CPU utilization.
 ```
-
 **Statistics and sampling**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing stats-block-usecs <number>
 ```
 
@@ -255,9 +237,7 @@ Control how frequently coalescing statistics are updated and how often
 
 the NIC samples traffic rates for adaptive coalescing decisions.
 ```
-
 **Completion queue (CQE) mode**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing cqe-mode-rx
 ```
 
@@ -269,9 +249,7 @@ driver. CQE mode can improve performance on high-speed NICs by
 
 optimizing completion handling.
 ```
-
 **Transmit aggregation**
-
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing tx-aggr-max-bytes <number>
 ```
 
@@ -380,13 +358,11 @@ multiple offloading features for a single interface.
 ```
 #### EVPN Multihoming
 Uplink/core tracking.
-
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: ethernet
 ```
 ### VLAN
 #### Regular VLANs (802.1q)
-
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: ethernet
 ```

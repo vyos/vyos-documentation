@@ -20,9 +20,7 @@ Configure a URL that contains information about images.
 set system update-check auto-check
 set system update-check url 'https://raw.githubusercontent.com/vyos/vyos-rolling-nightly-builds/main/version.json'
 ```
-
 Check:
-
 ```none
 vyos@r4:~$ show system updates
 Current version: 1.5-rolling-202312220023

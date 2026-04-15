@@ -130,20 +130,15 @@ We use the following syntax for Headlines.
 #####
 Title
 #####
-
 ********
 Chapters
 ********
-
 Sections
 ========
-
 Subsections
 -----------
-
 Subsubsections
 ^^^^^^^^^^^^^^
-
 Paragraphs
 """"""""""
 ```
@@ -238,7 +233,6 @@ descriptive way in the resulting HTML/PDF manual.
 ```none
 ```{cfgcmd} protocols static arp <ipaddress> hwaddr <macaddress>
 ```
-
    This will configure a static ARP entry, always resolving `192.0.2.100` to
    `00:53:27:de:23:aa`.
 ```
@@ -301,20 +295,16 @@ the content of interface-address.txt looks like this
 ```{cfgcmd} set interfaces {{ var0 }} <interface> address <address | dhcp |
 ```
    dhcpv6>
-
    Configure interface `<interface>` with one or more interface
    addresses.
-
    * **address** can be specified multiple times as IPv4 and/or IPv6
    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
    * **dhcp** interface address is received by DHCP from a DHCP server
    on this segment.
    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
    server on this segment.
-
    Example:
-
-   ```none
+```none
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
    set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
@@ -408,7 +398,7 @@ pull-request. This requires you already have a GitHub account.
   origin    https://github.com/<username>/vyos.documentation.git (push)
   upstream  https://github.com/vyos/vyos-documentation.git (fetch)
   upstream  https://github.com/vyos/vyos-documentation.git (push)
-  ```
+```
 
   Your remote repo on Github is called `origin`, while the original repo you
   have forked is called `upstream`. Now you can locally update your forked
@@ -418,7 +408,7 @@ pull-request. This requires you already have a GitHub account.
   $ git fetch upstream
   $ git checkout current
   $ git merge upstream/current
-  ```
+```
 
 - If you also want to update your fork on GitHub, use the following: `$ git
   push origin current`

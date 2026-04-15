@@ -21,26 +21,20 @@ pip3 install napalm-vyos
 
 ```none
 #!/usr/bin/env python3
-
 import json
 from napalm import get_network_driver
-
 driver = get_network_driver('vyos')
-
 vyos_router = driver(
     hostname="192.0.2.1",
     username="vyos",
     password="vyospass",
     optional_args={"port": 22},
 )
-
 vyos_router.open()
 output = vyos_router.get_facts()
 print(json.dumps(output, indent=4))
-
 output = vyos_router.get_arp_table()
 print(json.dumps(output, indent=4))
-
 vyos_router.close()
 ```
 
@@ -98,29 +92,23 @@ Script vyos-napalm.py
 
 ```none
 #!/usr/bin/env python3
-
 from napalm import get_network_driver
-
 driver = get_network_driver('vyos')
-
 vyos_router = driver(
     hostname="192.0.2.1",
     username="vyos",
     password="vyospass",
     optional_args={"port": 22},
 )
-
 vyos_router.open()
 vyos_router.load_merge_candidate(filename='commands.conf')
 diffs = vyos_router.compare_config()
-
 if bool(diffs) == True:
     print(diffs)
     vyos_router.commit_config()
 else:
     print('No configuration changes to commit')
     vyos_router.discard_config()
-
 vyos_router.close()
 ```
 

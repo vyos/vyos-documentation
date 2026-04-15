@@ -61,10 +61,8 @@ accounting.
 Will be recorded only packets/flows on **incoming** direction in
 configured interfaces by default.
 :::
-
 By default, recorded flows will be saved internally and can be listed with the
 CLI command. You may disable using the local in-memory table with the command:
-
 ```{cfgcmd} set system flow-accounting disable-imt
 
 If you need to sample also egress traffic, you may want to
@@ -93,7 +91,6 @@ facilities.
 In addition to displaying flow accounting information locally, one can also
 exported them to a collection server.
 #### NetFlow
-
 ```{cfgcmd} set system flow-accounting netflow version <version>
 
 There are multiple versions available for the NetFlow data. The `<version>`
@@ -145,17 +142,14 @@ simultaneously, you may do this with this command (default 8192).
 ```
 ### Example:
 NetFlow v5 example:
-
 ```none
 set system flow-accounting netflow engine-id 100
 set system flow-accounting netflow version 5
 set system flow-accounting netflow server 192.168.2.10 port 2055
 ```
-
 ## Operation
 Once flow accounting is configured on an interfaces it provides the ability to
 display captured network traffic information for all configured interfaces.
-
 ```{opcmd} show flow-accounting interface <interface>
 
 Show flow accounting information for given `<interface>`.

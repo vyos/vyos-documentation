@@ -24,11 +24,9 @@ cd vyos-build
 CA_DIR="data/certificates"
 SHIM_CERT_NAME="vyos-dev-2025-shim"
 VYOS_KERNEL_CERT_NAME="vyos-dev-2025-linux"
-
 openssl req -new -x509 -newkey rsa:4096 -keyout ${CA_DIR}/${SHIM_CERT_NAME}.key -out ${CA_DIR}/${SHIM_CERT_NAME}.der \
   -outform DER -days 36500 -subj "/CN=VyOS Networks Secure Boot CA/" -nodes
 openssl x509 -inform der -in ${CA_DIR}/${SHIM_CERT_NAME}.der -out ${CA_DIR}/${SHIM_CERT_NAME}.pem
-
 openssl req -newkey rsa:4096 -sha256 -nodes -keyout ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.key \
   -out ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.csr -outform PEM -days 3650 \
   -subj "/CN=VyOS Networks Secure Boot Signer 2025 - linux/"
@@ -112,22 +110,18 @@ vyos@vyos:~$    show version
 Version:          VyOS 1.5-secureboot
 Release train:    current
 Release flavor:   generic
-
 Built by:         autobuild@vyos.net
 Built on:         Tue 08 Oct 2024 18:00 UTC
 Build UUID:       5702ca38-e6f4-470f-b89e-ffc29baee474
 Build commit ID:  9eb61d3b6cf426
-
 Architecture:     x86_64
 Boot via:         installed image
 System type:      KVM guest
 Secure Boot:      enabled   <-- UEFI secure boot indicator
-
 Hardware vendor:  QEMU
 Hardware model:   Standard PC (i440FX + PIIX, 1996)
 Hardware S/N:
 Hardware UUID:    1f6e7f5c-fb52-4c33-96c9-782fbea36436
-
 Copyright:        VyOS maintainers and contributors
 ```
 

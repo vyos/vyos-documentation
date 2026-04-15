@@ -74,11 +74,7 @@ This command enables OpenFabric instance with <NAME> on this interface, and
 
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
-
-
 #### OpenFabric Global Configuration
-
-
 ```{cfgcmd} set protocols openfabric domain-password <plaintext-password|md5>
 
 <password>
@@ -188,11 +184,7 @@ This command sets Partial Sequence Number Packets (PSNP) interval in seconds.
 
 The interval range is 1 to 120.
 ```
-
-
 #### Timers
-
-
 ```{cfgcmd} set protocols openfabric domain <name> lsp-gen-interval <seconds>
 
 This command sets minimum interval at which link-state packets (LSPs) are
@@ -234,7 +226,6 @@ This command sets minimum interval between consecutive shortest path first
 ## Examples
 ### Enable OpenFabric
 **Node 1:**
-
 ```none
 set interfaces loopback lo address '192.168.255.255/32'
 set interfaces ethernet eth1 address '192.0.2.1/24'
@@ -243,9 +234,7 @@ set protocols openfabric domain VyOS interface eth1 address-family ipv4
 set protocols openfabric domain VyOS interface lo address-family ipv4
 set protocols openfabric net '49.0001.1921.6825.5255.00'
 ```
-
 **Node 2:**
-
 ```none
 set interfaces loopback lo address '192.168.255.254/32'
 set interfaces ethernet eth1 address '192.0.2.2/24'
@@ -254,9 +243,7 @@ set protocols openfabric domain VyOS interface eth1 address-family ipv4
 set protocols openfabric domain VyOS interface lo address-family ipv4
 set protocols openfabric net '49.0001.1921.6825.5254.00'
 ```
-
 This gives us the following neighborships:
-
 ```none
 Node-1@vyos:~$ show openfabric neighbor
 show openfabric neighbor
@@ -271,9 +258,7 @@ Area VyOS:
   System Id           Interface   L  State        Holdtime SNPA
  vyos                eth1        2  Up            30       2020.2020.2020
 ```
-
 Here's the IP routes that are populated:
-
 ```none
 Node-1@vyos:~$ show ip route openfabric
 show ip route openfabric

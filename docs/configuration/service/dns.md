@@ -244,14 +244,10 @@ This makes the server authoritatively not aware of: 10.in-addr.arpa,
 
 DNS server(s) to be used for reverse lookups of these zones.
 ```
-
-
 ### Authoritative zones
 
 
 The VyOS DNS forwarder can also be configured to host authoritative records for a domain.
-
-
 ```{cfgcmd} set service dns forwarding authoritative-domain <domain-name> disable
 
 Disable hosting authoritative zone for `<domain-name>` without deleting from
@@ -276,8 +272,6 @@ Disable specific record without deleting it from configuration.
 
 Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds.
 ```
-
-
 #### Record types
 
 
@@ -287,8 +281,6 @@ support special `<name>` keywords:
 
 - `@` Use @ as record name to set the record for the root domain.
 - `any` Use any as record name to configure the record as a wildcard.
-
-
 ```{cfgcmd} set service dns forwarding authoritative-domain <domain-name> records
 
 a <name> address <x.x.x.x>
@@ -397,8 +389,6 @@ txt <name> value <value>
 
 Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword.
 ```
-
-
 ## Example
 
 
@@ -419,8 +409,6 @@ In this scenario:
   LAN subnets - 192.168.1.0/24 and 2001:db8::/64
 - The VyOS DNS forwarder will pass reverse lookups for 10.in-addr.arpa,
   168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server.
-
-
 ```none
 
 set service dns forwarding domain example.com name-server 192.0.2.254
@@ -450,11 +438,7 @@ set service dns forwarding allow-from 2001:db8::/64
 set service dns forwarding no-serve-rfc1918
 
 ```
-
-
 ## Operation
-
-
 ```{opcmd} reset dns forwarding <all | domain>
 
 Resets the local DNS forwarding cache database. You can reset the cache
@@ -482,7 +466,6 @@ can configure both in VyOS.
 (dns-dynamic-config)=
 ## Configuration
 ### {rfc}`2136` Based
-
 ```{cfgcmd} set service dns dynamic name <service-name> address interface <interface>
 
    Create new dynamic DNS update configuration which will update the IP
@@ -542,8 +525,6 @@ Specify interval in seconds to wait between Dynamic DNS updates.
 
 The default is  300 seconds.
 ```
-
-
 (dns-dynamic-example)=
 
 
@@ -553,8 +534,6 @@ The default is  300 seconds.
 - Register DNS record `example.vyos.io` on DNS server `ns1.vyos.io`
 - Use auth key file at `/config/auth/my.key`
 - Set TTL to 300 seconds
-
-
 ```none
 
 # Configuration commands entered:
@@ -609,11 +588,7 @@ vyos@vyos# show service dns dynamic
  }
 
 ```
-
-
 This will render the following [ddclient] configuration entry:
-
-
 ```none
 
 # ddclient configuration for interface "eth0":
@@ -640,8 +615,6 @@ ttl=300 \
 example.vyos.io
 
 ```
-
-
 :::{note}
 You can also keep different DNS zone updated. Just create a new
 config node: `set service dns dynamic interface <interface> rfc2136
@@ -657,8 +630,6 @@ VyOS is also able to use any service relying on protocols supported by ddclient.
 
 To use such a service, one must define a login, password, one or multiple
 hostnames, protocol and server.
-
-
 ```{cfgcmd} set service dns dynamic name <service-name> address interface <interface>
 
 Create new dynamic DNS update configuration which will update the IP
@@ -723,7 +694,6 @@ Allow explicit IPv6 address for the interface.
 ```
 #### Example:
 Use deSEC (dedyn.io) as your preferred provider:
-
 ```none
 set service dns dynamic name dedyn description 'deSEC dynamic dns service'
 set service dns dynamic name dedyn username 'myusername'
@@ -733,13 +703,11 @@ set service dns dynamic name dedyn protocol 'dyndns2'
 set service dns dynamic name dedyn server 'update.dedyn.io'
 set service dns dynamic name dedyn address interface 'eth0'
 ```
-
 :::{note}
 Multiple services can be used per interface. Just specify as many
 services per interface as you like!
 :::
 #### Example IPv6 only:
-
 ```none
 set service dns dynamic name dedyn description 'deSEC ipv6 dynamic dns service'
 set service dns dynamic name dedyn username 'myusername'
@@ -750,14 +718,12 @@ set service dns dynamic name dedyn ip-version 'ipv6'
 set service dns dynamic name dedyn server 'update6.dedyn.io'
 set service dns dynamic name dedyn address interface 'eth0'
 ```
-
 ### Running Behind NAT
 By default, [ddclient] will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
 [ddclient] has another way to determine the WAN IP address. This is controlled
 by:
-
 ```{cfgcmd} set service dns dynamic name <service-name> address web <url>
 
 Use configured `<url>` to determine your IP address. ddclient_ will load

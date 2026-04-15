@@ -65,9 +65,7 @@ Enable redirection of incoming packets to the specified interface.
 :var0: vti
 :var1: vti0
 ```
-
 ## Operation
-
 ```{opcmd} show interfaces vti <vtiX>
 
 Show the operational status and traffic statistics for the specified VTI.
@@ -78,15 +76,12 @@ Show the operational status and traffic statistics for the specified VTI.
 ## Example
 **Configure a VTI**
 Assign IPv4 and IPv6 addresses to the VTI, along with a brief description:
-
 ```none
 set interfaces vti vti0 address 192.168.2.249/30
 set interfaces vti vti0 address 2001:db8:2::249/64
 set interfaces vti vti0 description "Description"
 ```
-
 Resulting configuration:
-
 ```none
 vyos@vyos# show interfaces vti
 vti vti0 {
@@ -95,12 +90,10 @@ vti vti0 {
     description "Description"
 }
 ```
-
 :::{warning}
 When configuring site-to-site IPsec with VTIs, ensure that route
 autoinstall is disabled.
 :::
-
 ```none
 set vpn ipsec options disable-route-autoinstall
 ```

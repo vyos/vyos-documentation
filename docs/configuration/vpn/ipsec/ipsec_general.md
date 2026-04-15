@@ -106,32 +106,23 @@ available. The use of PPKs in IKEv2 is described in {rfc}`8784`.
 
 ```{cfgcmd} edit vpn authentication ppk <name>
 ```
-
 PPKs can be configued within VyOS under the `vpn ipsec authentication ppk`
 config.
-
 ```{cfgcmd} set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
 ```
-
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPsec connection. The secret can be plain text, a
 hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
-
 ```{cfgcmd} set vpn ipsec site-to-site <name> ppk id <id>
 ```
-
 To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
-
 ```{cfgcmd} set vpn ipsec site-to-site <name> ppk required
 ```
-
 Optionally, you can require the use of PPK to have a successful connection.
-
 ```{opcmd} show vpn ipsec connections
 ```
-
 You can view the PPK column for information on if PPK is configured, and
 if it is in use. The output is in the format of `<configured> / <in use>`.
 The options for configured are none if not conifugred, opt if configured
@@ -141,7 +132,6 @@ but optional, and `req` is configured and required. The in use will show yes
 ## Configuration IKE
 ### IKE (Internet Key Exchange) Attributes
 VyOS IKE group has the next options:
-
 ```{cfgcmd} set vpn ipsec ike-group <name> close-action <action>
 
  Defines the action to take if the remote peer unexpectedly
@@ -208,9 +198,7 @@ Hash algorithm. Default value is **sha1**.
 
 Pseudo-random function.
 ```
-
 ### DPD (Dead Peer Detection) Configuration
-
 ```{cfgcmd} set vpn ipsec ike-group <name> dead-peer-detection action <action>
 
   Action to perform for this CHILD_SA on DPD timeout.
@@ -243,8 +231,6 @@ Keep-alive interval in seconds <2-86400> (default 30).
 
 Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 ```
-
-
 ### ESP (Encapsulating Security Payload) Attributes
 
 
@@ -253,8 +239,6 @@ Multiple proposals can be specified in a single group.
 
 
 VyOS ESP group has the next options:
-
-
 ```{cfgcmd} set vpn ipsec esp-group <name> compression
 
 Enables the  IPComp(IP Payload Compression) protocol which allows
@@ -337,11 +321,7 @@ Encryption algorithm. Default value is **aes128**.
 
 Hash algorithm. Default value is **sha1**.
 ```
-
-
 ### Global IPsec Settings
-
-
 ```{cfgcmd} set vpn ipsec interface <name>
 
 Interface name to restrict outbound IPsec policies. There is a possibility
@@ -390,7 +370,6 @@ Allows the installation of virtual-ip addresses.
 ### IKEv2 Retransmission
 If the peer does not respond on DPD packet, the router starts retransmission procedure.
 The following formula is used to calculate the timeout:
-
 ```none
 relative timeout = timeout * base ^ (attempts-1)
 ```

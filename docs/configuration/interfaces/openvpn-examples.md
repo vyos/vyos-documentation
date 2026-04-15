@@ -61,14 +61,11 @@ vyos@vyos# compare
 
 vyos@vyos# commit
 ```
-
 You do **not** need to copy the certificate to the other router. Instead, retrieve its SHA-256 fingerprint. Since OpenVPN currently supports only SHA-256 fingerprints, use the following command:
-
 ``` none
 vyos@vyos# run show pki certificate openvpn-local fingerprint sha256
 5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
 ```
-
 :::: note
 ::: title
 Note
@@ -78,7 +75,6 @@ Certificate names are arbitrary. While `openvpn-local` and `openvpn-remote` are 
 Repeat the procedure on the other router.
 ## Set up site-to-site OpenVPN
 Local configuration:
-
 ``` none
 Configure the tunnel:
 
@@ -94,9 +90,7 @@ set interfaces openvpn vtun1 tls certificate 'openvpn-local'                    
 set interfaces openvpn vtun1 tls peer-fingerprint <remote cert fingerprint>     # The output of 'run show pki certificate <name> fingerprint sha256' on the remote router
 set interfaces openvpn vtun1 tls role active
 ```
-
 Remote configuration:
-
 ``` none
 set interfaces openvpn vtun1 mode site-to-site
 set interfaces openvpn vtun1 protocol udp
@@ -110,11 +104,9 @@ set interfaces openvpn vtun1 tls certificate 'openvpn-remote'                   
 set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>       # The output of 'run show pki certificate <name> fingerprint sha256 on the local router
 set interfaces openvpn vtun1 tls role passive
 ```
-
 ## Set up pre-shared keys
 Before VyOS 1.4, site-to-site OpenVPN without PKI required pre-shared keys. This option is still available but is deprecated and will be removed in future releases. If you need to set up a tunnel to an older VyOS version or a system with older OpenVPN, you still need to use pre-shared keys.
 First, generate a key by running `run generate pki openvpn shared-secret  install <name>` in configuration mode. You can use any name; in this example, we use `s2s`.
-
 ``` none
 vyos@local# run generate pki openvpn shared-secret install s2s
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
@@ -131,22 +123,16 @@ vyos@local# compare
 vyos@local# commit
 [edit]
 ```
-
 Next, install the key on the remote router:
-
 ``` none
 vyos@remote# set pki openvpn shared-secret s2s key <generated key string>
 ```
-
 Finally, configure the key in your OpenVPN interface settings:
-
 ``` none
 set interfaces openvpn vtun1 shared-secret-key s2s
 ```
-
 ## Set up firewall exceptions
 To allow OpenVPN traffic to pass through the WAN interface, create a firewall exception:
-
 ``` none
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 action 'accept'
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
@@ -158,33 +144,25 @@ set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port '1195'
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 log
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol 'udp'
 ```
-
 Apply the OUTSIDE_LOCAL firewall group to the WAN interface and to the input filter for traffic destined for the router itself:
-
 ``` none
 set firewall ipv4 input filter rule 10 action 'jump'
 set firewall ipv4 input filter rule 10 inbound-interface name eth0
 set firewall ipv4 input filter rule 10 jump-target OUTSIDE_LOCAL
 ```
-
 Static routing:
 Configure static routes by referencing the tunnel interface. For example, if the local router\'s network is `10.0.0.0/16` and the remote router\'s network is `10.1.0.0/16`, define the routes as follows:
 Local configuration:
-
 ``` none
 set protocols static route 10.1.0.0/16 interface vtun1
 ```
-
 Remote configuration:
-
 ``` none
 set protocols static route 10.0.0.0/16 interface vtun1
 ```
-
 As with standard Ethernet interfaces, you can apply firewall policies to the tunnel interface for input, output, and forward directions.
 If you use multiple tunnels, OpenVPN must distinguish between them beyond just the pre-shared key. To achieve this, assign either unique IP addresses or unique ports to each tunnel.
 Verify OpenVPN status using the show openvpn operational commands.
-
 ``` none
 vyos@vyos:~$ show openvpn site-to-site
 
@@ -194,14 +172,12 @@ Client CN    Remote Host        Tunnel IP    Local Host    TX bytes    RX bytes 
 -----------  -----------------  -----------  ------------  ----------  ----------  -----------------
 N/A          10.110.12.54:1195  N/A          N/A           504.0 B     656.0 B     N/A
 ```
-
 ### Server-client
 In OpenVPN's server-client mode, the server acts as a central hub, allowing multiple clients to connect and securely route their traffic or access a private network. Multi-client server is the most popular OpenVPN mode for routers.
 ## Set up server-client certificates
 Server-client mode always uses x.509 authentication and therefore requires a PKI setup. The PKI utility now simplifies the creation of Certificate Authorities (CAs), server and client certificates, and Diffie-Hellman keys directly in VyOS using configuration or operational mode commands.
 On the server, generate all certificates by running the following commands in configuration mode. The certificates will be added to the configuration session\'s PKI subtree.
 Certificate Authority (CA):
-
 ``` none
 vyos@vyos# run generate pki ca install ca-1
 Enter private key type: [rsa, dsa, ec] (Default: rsa)
@@ -228,9 +204,7 @@ vyos@vyos# compare
 [edit]
 vyos@vyos# commit
 ```
-
 Server certificate:
-
 ``` none
 vyos@vyos# run generate pki certificate sign ca-1 install srv-1
 Do you already have a certificate request? [y/N] N
@@ -260,9 +234,7 @@ vyos@vyos# compare
 [edit]
 vyos@vyos# commit
 ```
-
 Diffie-Hellman key:
-
 ``` none
 vyos@vyos# run generate pki dh install dh-1
 Enter DH parameters key size: (Default: 2048)
@@ -278,9 +250,7 @@ vyos@vyos# compare
 [edit]
 vyos@vyos# commit
 ```
-
 Client certificate:
-
 ``` none
 vyos@vyos:~$  generate pki certificate sign ca-1 install client1
 Do you already have a certificate request? [y/N] N
@@ -300,14 +270,12 @@ You are not in configure mode, commands to install manually from configure mode:
 set pki certificate client1 certificate 'MIIDrjCCApagAwIBAgIUPvtffeYTdoOiHxu++wdrjHwwVX4wDQYJKoZIhvcNAQELBQAwVDELMAkGA1UEBhMCR0IxEzARBgNVBAgMClNvbWUtU3RhdGUxEjAQBgNVBAcMCVNvbWUtQ2l0eTENMAsGA1UECgwEVnlPUzENMAsGA1UEAwwEY2EtMTAeFw0yNTA2MTExMTQxMDlaFw0yNjA2MTExMTQxMDlaMFcxCzAJBgNVBAYTAkdCMRMwEQYDVQQIDApTb21lLVN0YXRlMRIwEAYDVQQHDAlTb21lLUNpdHkxDTALBgNVBAoMBFZ5T1MxEDAOBgNVBAMMB2NsaWVudDEwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC9H6E6gm0PfXO1n/WoA9xlg89/bnScLmfztVDn1uyNn8epE6zAi2GWBhtj4ixLllIwLdkJ7L2mF3yUZtA1Q0oYbGIqTbnaZ37JydCygVGnlLT7UX9zfRfS3KebCIvIte7OyCmnUfVfFzdIsp+4LI3S2wX/9Vyn4UBAR8QQNbezRB3XPMk9gzULnuLhmEDP6GVcPq7RzGXoXUMqsCxfEOJBjej0y4ANKH07HGVVrfVRiY+zlGkM4TFjVuZKnEA0BO6dhOA0E+7gsIXsC06UzzatkjsyWHpb2/DOECIifBoYej9DITu8VxyyZmgaINHEn2gGb0LRHO7rvQapc+XZ2z9DAgMBAAGjdTBzMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQMMAoGCCsGAQUFBwMCMB0GA1UdDgQWBBQnUyqEzG+AqZzsdSud5MDqsOxiXTAfBgNVHSMEGDAWgBQAb2W+vsDMn/Li9j9eVbFeu77qbTANBgkqhkiG9w0BAQsFAAOCAQEAplItvZpoX/joG3QREu9tHVKwDTmXB2lwUM5G8iKPgd6D6oOILZMe2KuvWt12dcdEzUCGfJwJJ8M8R2WD0OmcLdFqvM/8UM1hYzUP2BCnFCLtElVD+b4wMlQNpdHqNbdckw8J4MLQlhUgu9rZAZ0XjWCprr+U50bX++vYRw7Un3Ds6ETEvjflm5WAPb2e0V1hhISPl8K+VXO7RAwxy0DHcDuR+YaD+hnNgMsJV3/QwA17Iy8x86RpOgqmesbt0U7e9Rmo81aVgiy/V4OCV7u6bPX03fmZNS8UwwJuRUlxkjO+epHNYB2cnOcjSkUxaIJ9Hv3tMWHQEtbVZsNYSOZozw=='
 set pki certificate client1 private key 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC9H6E6gm0PfXO1n/WoA9xlg89/bnScLmfztVDn1uyNn8epE6zAi2GWBhtj4ixLllIwLdkJ7L2mF3yUZtA1Q0oYbGIqTbnaZ37JydCygVGnlLT7UX9zfRfS3KebCIvIte7OyCmnUfVfFzdIsp+4LI3S2wX/9Vyn4UBAR8QQNbezRB3XPMk9gzULnuLhmEDP6GVcPq7RzGXoXUMqsCxfEOJBjej0y4ANKH07HGVVrfVRiY+zlGkM4TFjVuZKnEA0BO6dhOA0E+7gsIXsC06UzzatkjsyWHpb2/DOECIifBoYej9DITu8VxyyZmgaINHEn2gGb0LRHO7rvQapc+XZ2z9DAgMBAAECggEAPS/Fhtt5k2BgFivZW3FcVc+OS0keGwV8hkFsGoXTZIKEIzSFWIn/mX0CUY90C0Rn9MRwiqB4PwssOAsHY6QQjdRK8irRbVK8l2ZeydHC7DfVUdXtKR0YnxTaePML3nTV/TqPF14Rx6EINtHrkLeBbu2DhGsKfhoHIoTVbvUiKLHa2TkGJOkhvjsyMSPKzUXa1AzLmu+UBIhRYpEPHj0SQUUJJnKgIb7mTR2fhJScHcKwsrPq6S8OpChvsYZ6zatgrTFz9tuhD4IjL7NBiYP45BwGaLIaQjph8yAJwwHWoOP+TTj5WYflkW6Uu8F9gC0ve6dPGPNEi2TUdirvAe4LYQKBgQD0UfAPm6tQg8pdkvfMBvYc21fk8zqmgcA4OtvDi60aXuv5jI5+faISvOG2JLuFhKIDOb5ZerzGvkN+LvWgzr9H7YdGZNNtwKgpS/MGqcuuHncTxWBAwYgKhf26a/tqFZRNurJ6GowxDiAcQEc1mWnmdngRa+dvvCwNbXvGVqfVEQKBgQDGKi447TqD76QfvRPn/fRSjM+QE1duk+XorEJ0HHIha5HV9kCrZdV/olGRjDLwPJO6JW7iE2FUsS9SsIrccFE/9P2ZUqfYP2wL5vNO5kAmoLLUl0gwqg1WnBTPJfXeKReTj2uGmOdEuuMPXpL/49hDuPViiE2Q4MGe2Z+oEYN/EwKBgHfQMuTEl2e9qaDn8OM6SrluC5V4fjunh6dLnfgwaCx1fk1702lOnQuJWzsiml9o4raoO6PP4AGqzphz2PsKSJ2ya1NnIJRDFXRjDYQoAn2Z7RViBsja36chfINObxXgDUFtHBdrK3LnFXIlR4aOfHOLh2grvWx7IDNZjIiAeH+xAoGAJlmFZnjqiRv4bDgAQTZRcSRVCvHjSsAOj0++8I+MutEBgSHN9B2aCsBT/tHeDcX7ZNvXsKLFhElh+iO2S+DkqHb2GRT47I2hkFAaqBtBMPiKgz/ftaNDP46nLEuRYHQdXu4zhfHTV+a/CHtqAWGLuddyjaYJNM96SQ6eqjzxcMcCgYAzdxOF2e27hIgo2ttjsROMGqW0/0r/HsKGKPnao7xHQNCAswTnBT+QGugPCe0NXjuxbySP7V1GeWMWF+WV5khtteWerT1/ELAC48NSDpaMxVa4GP8Q/0w6+ZyJty3UGbCYQzZZue81dU+42LUIaVJ4NAc2tYj3jD780udasawS6w=='
 ```
-
 Manually copy the CA, client certificate, and Diffie-Hellman key to the client device, then commit them before configuring the OpenVPN interface.
 For more options, refer to {ref}`configuration/pki/index:pki`.
 ## Set up server-client OpenVPN
 The following example demonstrates the most complicated scenario: each client acts as a router with its own subnet (e.g., an HQ and multiple branch offices). Simpler setups are subsets of it.
 In this scenario, the 10.23.1.0/24 network is used for client tunnel endpoints, and all client subnets belong to 10.23.0.0/20. Each client needs access to the 192.168.0.0/16 network.
 Server configuration:
-
 ``` none
 set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
 set interfaces openvpn vtun10 hash 'sha512'
@@ -327,24 +295,18 @@ set interfaces openvpn vtun10 tls ca-certificate ca-1
 set interfaces openvpn vtun10 tls certificate srv-1
 set interfaces openvpn vtun10 tls dh-params dh-1
 ```
-
 The configuration above uses the default 1194/UDP port, 256-bit AES encryption, SHA-512 for HMAC authentication, and the persistent-tunnel option. Persistent-tunnel is recommended as it keeps the TUN/TAP device active during connection resets or daemon reloads. Clients are identified by the CN attribute in their SSL certificates.
 To grant clients access to a specific network behind the router, use the push-route option to automatically install the appropriate route on each client.
-
 ``` none
 set interfaces openvpn vtun10 server push-route 192.168.0.0/16
 ```
-
 OpenVPN does not automatically create kernel routes for client subnets when clients connect; it only uses client-subnet association internally. Therefore, you must manually create a route to the 10.23.0.0/20 network:
-
 ``` none
 set protocols static route 10.23.0.0/20 interface vtun10
 ```
-
 ## Set up OpenVPN client
 VyOS can operate not only as an OpenVPN site-to-site peer or a server for multiple clients, but also as an OpenVPN client. Any VyOS OpenVPN interface can be configured to connect to another VyOS or third-party OpenVPN server.
 Client configuration:
-
 ``` none
 set interfaces openvpn vtun10 encryption data-ciphers 'aes256'
 set interfaces openvpn vtun10 hash 'sha512'
@@ -356,10 +318,8 @@ set interfaces openvpn vtun10 remote-port '1194'
 set interfaces openvpn vtun10 tls ca-certificate ca-1
 set interfaces openvpn vtun10 tls certificate client1
 ```
-
 ## Verification
 Check the tunnel status:
-
 ``` none
 vyos@vyos:~$ show openvpn server
 
@@ -369,12 +329,10 @@ Client CN    Remote Host         Tunnel IP    Local Host        TX bytes    RX b
 -----------  ------------------  -----------  ----------------  ----------  ----------  -------------------
 client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
 ```
-
 ### Server bridge
 In Ethernet bridging configurations, an OpenVPN interface operating in server mode with the device type set to TAP can be added to a bridge. By encapsulating entire Ethernet frames (up to 1514 bytes) rather than just IP packets (up to 1500 bytes), this setup enables clients to transmit Layer 2 frames through the OpenVPN tunnel.
 The following is a basic configuration example:
 Server side:
-
 ``` none
 set interfaces bridge br10 member interface eth1.10
 set interfaces bridge br10 member interface vtun10
@@ -393,9 +351,7 @@ set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
 set interfaces openvpn vtun10 tls certificate 'srv-1'
 set interfaces openvpn vtun10 tls dh-params 'dh-1'
 ```
-
 Client side:
-
 ``` none
 set interfaces openvpn vtun10 device-type 'tap'
 set interfaces openvpn vtun10 encryption data-ciphers 'aes192'
@@ -407,19 +363,15 @@ set interfaces openvpn vtun10 remote-port '1194'
 set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
 set interfaces openvpn vtun10 tls certificate 'client-1'
 ```
-
 ### Server LDAP authentication
 ## LDAP
 Enterprise installations usually include a directory service to centralize employee password management. VyOS and OpenVPN support using LDAP and Active Directory as a single user backend.
 Authentication is performed by the `openvpn-auth-ldap.so` plugin, included with every VyOS installation. To use it, you must create a dedicated configuration file.
 **Best practice:** Store the configuration file in the `/config` directory to ensure it is preserved after image updates.
-
 ``` none
 set interfaces openvpn vtun0 openvpn-option "--plugin /usr/lib/openvpn/openvpn-auth-ldap.so /config/auth/ldap-auth.config"
 ```
-
 A sample configuration file is shown below:
-
 ``` none
 <LDAP>
 # LDAP server URL
@@ -441,10 +393,8 @@ SearchFilter    "(&(uid=%u)(objectClass=shadowAccount))"
 RequireGroup    false
 </Authorization>
 ```
-
 ### Active Directory
 A sample configuration file is shown below:
-
 ``` none
 <LDAP>
   # LDAP server URL
@@ -475,9 +425,7 @@ A sample configuration file is shown below:
   </Group>
 </Authorization>
 ```
-
 If you only want to check that the user account is enabled and can authenticate (against the primary group), the following snippet is sufficient:
-
 ``` none
 <LDAP>
   URL ldap://dc01.example.com
@@ -494,9 +442,7 @@ If you only want to check that the user account is enabled and can authenticate 
   RequireGroup    false
 </Authorization>
 ```
-
 A complete example of an LDAP authentication configuration for OpenVPN is shown below:
-
 ``` none
 vyos@vyos# show interfaces openvpn
  openvpn vtun0 {
@@ -523,12 +469,10 @@ vyos@vyos# show interfaces openvpn
      }
  }
 ```
-
 For a detailed example, refer to {doc}`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 ### Multi-factor authentication
 VyOS supports multi-factor authentication (MFA) or two-factor authentication using Time-based One-Time Passwords (TOTP). It is compatible with Google Authenticator and other software tokens.
 ## Server side
-
 ``` none
 set interfaces openvpn vtun20 encryption cipher 'aes256'
 set interfaces openvpn vtun20 hash 'sha512'
@@ -542,10 +486,8 @@ set interfaces openvpn vtun20 tls ca-certificate 'openvpn_vtun20'
 set interfaces openvpn vtun20 tls certificate 'openvpn_vtun20'
 set interfaces openvpn vtun20 tls dh-params 'dh-pem'
 ```
-
 A TOTP secret is created for each client in the OpenVPN server configuration. To display authentication information, use the following command: `show interfaces openvpn vtun20 user user1 mfa qrcode`.
 Example:
-
 ``` none
 vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
 █████████████████████████████████████
@@ -568,14 +510,12 @@ vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
 █████████████████████████████████████
 █████████████████████████████████████
 ```
-
 Scan the QR code to add the user account to Google Authenticator. On the client side, use the generated OTP as the password.
 ### Authentication with username/password
 An OpenVPN server can securely obtain a username and password from a connecting client and use this information for authentication.
 First, configure the server to use an authentication plugin or script. The server calls this plugin every time a client tries to connect, passing it the client\'s credentials.
 In the following example, the `--auth-user-pass-verify` directive is used with the via-env method and a specified script path to validate the client\'s username and password.
 ## Server configuration
-
 ``` none
 set interfaces openvpn vtun10 local-port '1194'
 set interfaces openvpn vtun10 mode 'server'
@@ -591,9 +531,7 @@ set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
 set interfaces openvpn vtun10 tls certificate 'srv-1'
 set interfaces openvpn vtun10 tls dh-params 'dh-1'
 ```
-
 The /config/auth/check_user.sh example includes two test users:
-
 ``` none
 #!/bin/bash
 USERNAME="$username"
@@ -608,16 +546,12 @@ else
     exit 1
 fi
 ```
-
 ## Client configuration
 Storing the client certificate locally lets you generate the OpenVPN client configuration file. Use the following command:
-
 ``` none
 vyos@vyos:~$ generate openvpn client-config interface vtun10 ca ca-1 certificate client1
 ```
-
 Copy the output and save it as a .ovpn file. Add the `auth-user-pass` directive to the file. This instructs the OpenVPN client to prompt the user for a username and password, which are then sent to the server over the TLS channel. You can now import this file into any OpenVPN client application.
-
 ``` none
 client
 dev tun

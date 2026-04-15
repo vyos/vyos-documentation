@@ -227,33 +227,24 @@ designated monitor interface.
 * ``server``: Operates as a server in server-client mode.
 ```
 ### OpenVPN Data Channel Offload (DCO)
-
 OpenVPN {abbr}`DCO (Data Channel Offload)` improves the performance of
 encrypted OpenVPN data processing by keeping most data handling in the kernel
 and avoiding frequent context switches between the kernel and user space.
-
 As a result, packet processing becomes more efficient and may utilize hardware
 encryption offload support available in the kernel.
-
 :::{note}
 - {abbr}`DCO (Data Channel Offload)` is an **experimental**, not fully supported
   OpenVPN feature. Some OpenVPN features and deployment scenarios are **not
   compatible** with {abbr}`DCO (Data Channel Offload)`.
-
   For a complete list of supported features, visit:
-
   <https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features>
-
 - {abbr}`DCO (Data Channel Offload)` is configured per tunnel and disabled
   by default. Existing tunnels operate without {abbr}`DCO (Data Channel
   Offload)` unless it is explicitly enabled.
-
 - Enabling {abbr}`DCO (Data Channel Offload)` resets the interface.
 :::
-
 **Best practice:** Create a new tunnel with {abbr}`DCO (Data Channel Offload)`
 enabled to avoid compatibility issues with existing clients.
-
 ```{cfgcmd} set interfaces openvpn <interface> offload dco
 
    **Enable** :abbr:`DCO (Data Channel Offload)` **for the specified OpenVPN
@@ -709,7 +700,6 @@ Generate an OpenVPN client configuration file in the .ovpn format for client mac
 ```
 ## Examples
 This section covers examples of OpenVPN configurations for various deployments.
-
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

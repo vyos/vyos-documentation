@@ -137,7 +137,6 @@ eth3             172.16.1.2/24                     u/u
 lo               127.0.0.1/8                       u/u
                  ::1/128
 tun1             172.16.122.2/32                   u/u
-
 vyos@vyos:~$ show vpn ipsec sa
 Connection          State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID              Proposal
 ------------------  -------  --------  --------------  ----------------  ----------------  ---------------------  -----------------------------
@@ -146,7 +145,6 @@ cisco_hub-tunnel-1  up       44m17s    35K/31K         382/367           10.1.1.
 
 Hub#sh crypto ikev2 sa detailed
  IPv4 Crypto IKEv2  SA
-
 Tunnel-id Local                 Remote                fvrf/ivrf            Status
 5         10.1.1.6/4500         198.51.100.1/4500         none/none               READY
       Encr: AES-CBC, keysize: 256, PRF: SHA256, Hash: SHA256, DH Grp:5, Auth sign: PSK, Auth verify: PSK

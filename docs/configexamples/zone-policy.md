@@ -44,11 +44,9 @@ adapted for however many NICs you have**:
 :alt: Network Topology Diagram
 :width: 80%
 ```
-
 The VyOS interface is assigned the .1/:1 address of their respective
 networks. WAN is on VLAN 10, LAN on VLAN 20, and DMZ on VLAN 30.
 It will look something like this:
-
 ```none
 interfaces {
     ethernet eth0 {
@@ -73,37 +71,27 @@ interfaces {
     }
 }
 ```
-
 ## Zones Basics
-
 Each interface is assigned to a zone. The interface can be physical or
 virtual such as tunnels (VPN, PPTP, GRE, etc) and are treated exactly
 the same.
-
 Traffic flows from zone A to zone B. That flow is what I refer to as a
 zone-pair-direction. eg. A->B and B->A are two zone-pair-destinations.
-
 Ruleset are created per zone-pair-direction.
-
 I name rule sets to indicate which zone-pair-direction they represent.
 eg. ZoneA-ZoneB or ZoneB-ZoneA. LAN-DMZ, DMZ-LAN.
-
 In VyOS, you have to have unique Ruleset names. In the event of overlap,
 I add a "-6" to the end of v6 rulesets. eg. LAN-DMZ, LAN-DMZ-6. This
 allows for each auto-completion and uniqueness.
-
 In this example we have 4 zones. LAN, WAN, DMZ, Local. The local zone is
 the firewall itself.
-
 If your computer is on the LAN and you need to SSH into your VyOS box,
 you would need a rule to allow it in the LAN-Local ruleset. If you want
 to access a webpage from your VyOS box, you need a rule to allow it in
 the Local-LAN ruleset.
-
 In rules, it is good to keep them named consistently. As the number of
 rules you have grows, the more consistency you have, the easier your
 life will be.
-
 ```none
 Rule 1 - State Established, Related
 Rule 2 - State Invalid
@@ -117,7 +105,6 @@ Rule 700 - DHCP
 Rule 800 - SSH
 Rule 900 - IMAPS
 ```
-
 The first two rules are to deal with the idiosyncrasies of VyOS and
 iptables.
 Zones and Rulesets both have a default action statement. When using
@@ -127,11 +114,9 @@ It is good practice to log both accepted and denied traffic. It can save
 you significant headaches when trying to troubleshoot a connectivity
 issue.
 To add logging to the default rule, do:
-
 ```none
 set firewall name <ruleSet> default-log
 ```
-
 By default, iptables does not allow traffic for established sessions to
 return, so you must explicitly allow this. I do this by adding two rules
 to every ruleset. 1 allows established and related state packets through
@@ -142,31 +127,25 @@ state packets from mistakenly being matched against other rules. Having
 the most matched rule listed first reduces CPU load in high volume
 environments. Note: I have filed a bug to have this added as a default
 action as well.
-
 ''It is important to note, that you do not want to add logging to the
 established state rule as you will be logging both the inbound and
 outbound packets for each session instead of just the initiation of the
 session. Your logs will be massive in a very short period of time.''
-
 In VyOS you must have the interfaces created before you can apply it to
 the zone and the rulesets must be created prior to applying it to a
 zone-policy.
-
 I create/configure the interfaces first. Build out the rulesets for each
 zone-pair-direction which includes at least the three state rules. Then
 I setup the zone-policies.
-
 Zones do not allow for a default action of accept; either drop or
 reject. It is important to remember this because if you apply an
 interface to a zone and commit, any active connections will be dropped.
 Specifically, if you are SSH’d into VyOS and add local or the interface
 you are connecting through to a zone and do not have rulesets in place
 to allow SSH and established sessions, you will not be able to connect.
-
 The following are the rules that were created for this example (may not
 be complete), both in IPv4 and IPv6. If there is no IP specified, then
 the source/destination address is not explicit.
-
 ```none
 WAN - DMZ:192.168.200.200 - tcp/80
 WAN - DMZ:192.168.200.200 - tcp/443
@@ -216,9 +195,7 @@ LAN - DMZ - tcp/993
 LAN:2001:0DB8:0:AAAA::10 - DMZ:2001:0DB8:0:BBBB::200 - tcp/22
 LAN:192.168.100.10 - DMZ:192.168.200.200 - tcp/22
 ```
-
 Since we have 4 zones, we need to setup the following rulesets.
-
 ```none
 Lan-wan
 Lan-local
@@ -233,13 +210,11 @@ Dmz-lan
 Dmz-wan
 Dmz-local
 ```
-
 Even if the two zones will never communicate, it is a good idea to
 create the zone-pair-direction rulesets and set default-log. This
 will allow you to log attempts to access the networks. Without it, you
 will never see the connection attempts.
 This is an example of the three base rules.
-
 ```none
 name wan-lan {
   default-action drop
@@ -260,9 +235,7 @@ name wan-lan {
   }
 }
 ```
-
 Here is an example of an IPv6 DMZ-WAN ruleset.
-
 ```none
 ipv6-name dmz-wan-6 {
   default-action drop
@@ -333,25 +306,20 @@ ipv6-name dmz-wan-6 {
   }
 }
 ```
-
 Once you have all of your rulesets built, then you need to create your
 zone-policy.
 Start by setting the interface and default action for each zone.
-
 ```none
 set firewall zone dmz default-action drop
 set firewall zone dmz interface eth0.30
 ```
-
 In this case, we are setting the v6 ruleset that represents traffic
 sourced from the LAN, destined for the DMZ. Because the zone-policy
 firewall syntax is a little awkward, I keep it straight by thinking of
 it backwards.
-
 ```none
 set firewall zone dmz from lan firewall ipv6-name lan-dmz-6
 ```
-
 DMZ-LAN policy is LAN-DMZ. You can get a rhythm to it when you build out
 a bunch at one time.
 In the end, you will end up with something like this config. I took out
@@ -365,7 +333,6 @@ ruleset between your tunnel interface and your LAN/DMZ zones instead of
 to the WAN.
 LAN, WAN, DMZ, local and TUN (tunnel)
 v6 pairs would be:
-
 ```none
 lan-tun
 lan-local
@@ -380,12 +347,10 @@ dmz-lan
 dmz-tun
 dmz-local
 ```
-
 Notice, none go to WAN since WAN wouldn't have a v6 address on it.
 You would have to add a couple of rules on your wan-local ruleset to
 allow protocol 41 in.
 Something like:
-
 ```none
 rule 400 {
   action accept

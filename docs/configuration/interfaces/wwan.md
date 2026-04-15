@@ -54,9 +54,7 @@ Configure these interfaces under the `interfaces wwan` node.
 :var0: wwan
 :var1: wwan0
 ```
-
 **DHCP(v6)**
-
 ```{cmdincludemd} /_include/interface-dhcp-options.txt
 :var0: wwan
 :var1: wwan0
@@ -71,9 +69,7 @@ Configure these interfaces under the `interfaces wwan` node.
 :var0: wwan
 :var1: wwan0
 ```
-
 ### WWAN options
-
 ```{cfgcmd} set interfaces wwan <interface> apn <apn>
 
 **Configure the** :abbr:`APN (Access Point Name)` **for the WWAN connection.**
@@ -395,17 +391,13 @@ Show WWAN module SIM card information.
 The following example shows how to configure a cellular connection using a
 Sierra Wireless MC7710 miniPCIe card that operates over USB despite its form
 factor. The card is installed in a {ref}`pc-engines-apu4`.
-
 ```none
 set interfaces wwan wwan0 apn 'internet.telekom'
 set interfaces wwan wwan0 address 'dhcp'
 ```
-
 ## Supported hardware
-
 The following WWAN modules have been successfully tested with a
 {ref}`pc-engines-apu4` board:
-
 - Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
 - Sierra Wireless AirPrime MC7430 miniPCIe card (LTE)
 - Sierra Wireless AirPrime MC7455 miniPCIe card (LTE)
@@ -413,19 +405,14 @@ The following WWAN modules have been successfully tested with a
 - Huawei ME909u-521 miniPCIe card (LTE)
 - Huawei ME909s-120 miniPCIe card (LTE)
 - HP LT4120 Snapdragon X5 LTE
-
 ## Firmware update
-
 WWAN modules include reprogrammable firmware, and most vendors regularly
 provide updates for it.
-
 Since VyOS communicates with these devices via the QMI interface, you can
 update firmware directly within the system using the `qmi-firmware-update`
 utility.
-
 The following example shows how to update the firmware for a Sierra Wireless
 MC7710 module using the provided .cwe file.
-
 ```bash
 $ sudo qmi-firmware-update --update -d 1199:68a2 \
    9999999_9999999_9200_03.05.14.00_00_generic_000.000_001_SPKG_MC.cwe

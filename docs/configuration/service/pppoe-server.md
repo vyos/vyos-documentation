@@ -100,13 +100,11 @@ Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
 ## Configuring RADIUS authentication
-
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
-
 ```none
 set service pppoe-server authentication mode radius
 ```
@@ -120,13 +118,9 @@ set service pppoe-server authentication mode radius
   communicating with the RADIUS server.
 
 ```
-
-
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 For example:
-
-
 ```none
 
 set service pppoe-server authentication radius server 10.0.0.1 key 'foo'
@@ -134,8 +128,6 @@ set service pppoe-server authentication radius server 10.0.0.1 key 'foo'
 set service pppoe-server authentication radius server 10.0.0.2 key 'foo'
 
 ```
-
-
 :::{note}
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
@@ -148,8 +140,6 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
-
-
 ```{cfgcmd} set service pppoe-server authentication radius
 
  source-address <address>
@@ -157,8 +147,6 @@ to a single source IP e.g. the loopback interface.
 
 Source IPv4 address used in all RADIUS server queires.
 ```
-
-
 :::{note}
 The `source-address` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
@@ -166,8 +154,6 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
-
-
 ```{cfgcmd} set service pppoe-server authentication radius
 
  server <server> port <port>
@@ -291,14 +277,10 @@ Specifies which RADIUS server attribute contains the rate limit information.
 
 The default attribute is ``Filter-Id``.
 ```
-
-
 :::{note}
 If you set a custom RADIUS attribute you must define it on both
 dictionaries at RADIUS server and client.
 :::
-
-
 ```{cfgcmd} set service pppoe-server authentication radius
 
  rate-limit enable
@@ -317,8 +299,6 @@ Specifies the vendor dictionary, dictionary needs to be in
 
 /usr/share/accel-ppp/radius.
 ```
-
-
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
 
@@ -371,8 +351,6 @@ characters, otherwise the interface won't be renamed.
 
 
 ## Automatic VLAN Creation
-
-
 ```{cfgcmd} set service pppoe-server interface <interface> vlan <id | range>
 
 VLAN's can be created by Accel-ppp on the fly via the use of a Kernel module
@@ -405,8 +383,6 @@ set service pppoe-server interface eth3 vlan 500-1000
 set service pppoe-server interface eth3 vlan 2000-3000
 
 ```
-
-
 ## Bandwidth Shaping
 
 
@@ -415,8 +391,6 @@ attributes.
 
 
 ### For Local Users
-
-
 ```{cfgcmd} set service pppoe-server authentication local-users username
 
  <user> rate-limit download <bandwidth>
@@ -446,17 +420,14 @@ set service pppoe-server name-server '10.100.200.1'
 set service pppoe-server interface 'eth1'
 set service pppoe-server gateway-address '10.1.1.2'
 ```
-
 Once the user is connected, the user session is using the set limits and
 can be displayed via `show pppoe-server sessions`.
-
 ```none
 show pppoe-server sessions
 ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  uptime  | rx-bytes | tx-bytes
 -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
 ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 ```
-
 ### For RADIUS users
 The current attribute `Filter-Id` is being used as default and can be
 setup within RADIUS:
@@ -464,21 +435,16 @@ Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit
 up-stream rate)
 The command below enables it, assuming the RADIUS connection has been
 setup and is working.
-
 ```{cfgcmd} set service pppoe-server authentication radius rate-limit enable
 
    Use this command to enable bandwidth shaping via RADIUS.
 
 ```
-
-
 Other attributes can be used, but they have to be in one of the
 dictionaries in */usr/share/accel-ppp/radius*.
 
 
 ## Load Balancing
-
-
 ```{cfgcmd} set service pppoe-server pado-delay <number-of-ms>
 
 sessions <number-of-sessions>
@@ -501,8 +467,6 @@ set service pppoe-server pado-delay 100 sessions '1000'
 set service pppoe-server pado-delay 300 sessions '3000'
 
 ```
-
-
 In the example above, the first 499 sessions connect without delay. PADO
 packets will be delayed 50 ms for connection from 500 to 999, this trick
 allows other PPPoE servers send PADO faster and clients will connect to
@@ -511,8 +475,6 @@ other servers. Last command says that this PPPoE server can serve only
 
 
 ## IPv6
-
-
 ```{cfgcmd} set service pppoe-server ppp-options
 
  ipv6 <require | prefer | allow | deny>
@@ -580,11 +542,7 @@ set service pppoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' 
 set service pppoe-server default-ipv6-pool IPv6-POOL
 
 ```
-
-
 ### IPv6 Advanced Options
-
-
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-accept-peer-interface-id
 
 Accept peer interface identifier. By default is not defined.
@@ -623,11 +581,7 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
-
-
 ## Scripting
-
-
 ```{cfgcmd} set service pppoe-server extended-scripts on-change <path_to_script>
 
 Script to run when session interface changed by RADIUS CoA handling
@@ -650,14 +604,10 @@ Script to run before session interface comes up
 
 Script to run when session interface is completely configured and started
 ```
-
-
 ## Advanced Options
 
 
 ### Authentication Advanced Options
-
-
 ```{cfgcmd} set service pppoe-server authentication local-users
 
  username <user> disable
@@ -685,11 +635,7 @@ Require the peer to authenticate itself using one of the following protocols:
 
 pap, chap, mschap, mschap-v2.
 ```
-
-
 ### Client IP Pool Advanced Options
-
-
 ```{cfgcmd} set service pppoe-server client-ip-pool <POOL-NAME>
 
 next-pool <NEXT-POOL-NAME>
@@ -697,11 +643,7 @@ next-pool <NEXT-POOL-NAME>
 
 Use this command to define the next address pool name.
 ```
-
-
 ### PPP Advanced Options
-
-
 ```{cfgcmd} set service pppoe-server ppp-options disable-ccp
 
 Disable Compression Control Protocol (CCP).
@@ -806,11 +748,7 @@ attribute.
 
 Defines preferred MRU. By default is not defined.
 ```
-
-
 ### Global Advanced options
-
-
 ```{cfgcmd} set service pppoe-server description <description>
 
 Set description.
@@ -865,16 +803,12 @@ acceptable and client’s Service-Name will be sent back. Also possible
 
 set multiple service-names: `sn1,sn2,sn3`
 ```
-
-
 Per default the user session is being replaced if a second
 authentication request succeeds. Such session requests can be either
 denied or allowed entirely, which would allow multiple sessions for a
 user in the latter case. If it is denied, the second session is being
 rejected even if the authentication succeeds, the user has to terminate
 its first session and can then authentication again.
-
-
 ```{cfgcmd} set service pppoe-server session-control
 
 * **disable**: Disables session control.
@@ -901,11 +835,7 @@ Enable SNMP
 
 Windows Internet Name Service (WINS) servers propagated to client
 ```
-
-
 ## Monitoring
-
-
 ```{opcmd} show pppoe-server sessions
 
 Use this command to locally check the active sessions in the PPPoE
@@ -918,13 +848,11 @@ ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  upt
 -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
 ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 ```
-
 ## Examples
 ### IPv4
 The example below uses ACN as access-concentrator name, assigns an
 address from the pool 10.1.1.100-111, terminates at the local endpoint
 10.1.1.1 and serves requests only on eth1.
-
 ```none
 set service pppoe-server access-concentrator 'ACN'
 set service pppoe-server authentication local-users username foo password 'bar'
@@ -936,10 +864,8 @@ set service pppoe-server gateway-address '10.1.1.2'
 set service pppoe-server name-server '10.100.100.1'
 set service pppoe-server name-server '10.100.200.1'
 ```
-
 ### Dual-Stack IPv4/IPv6 provisioning with Prefix Delegation
 The example below covers a dual-stack configuration.
-
 ```none
 set service pppoe-server authentication local-users username test password 'test'
 set service pppoe-server authentication mode 'local'
@@ -954,11 +880,9 @@ set service pppoe-server name-server '2001:db8:4860::8888'
 set service pppoe-server interface 'eth2'
 set service pppoe-server gateway-address '10.100.100.1'
 ```
-
 The client, once successfully authenticated, will receive an IPv4 and an
 IPv6 /64 address to terminate the PPPoE endpoint on the client side and
 a /56 subnet for the clients internal use.
-
 ```none
 vyos@pppoe-server:~$ sh pppoe-server sessions
  ifname | username |     ip      |            ip6           |       ip6-dp        |    calling-sid    | rate-limit | state  |  uptime  | rx-bytes | tx-bytes

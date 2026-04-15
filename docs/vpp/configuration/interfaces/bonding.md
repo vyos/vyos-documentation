@@ -14,7 +14,6 @@ processing compared to traditional Linux bonding.
 ## Basic Configuration
 ### Creating a Bonding Interface
 To create a VPP bonding interface:
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN>
 
 Create a bonding interface where ``<vppbondN>`` follows the naming
@@ -28,9 +27,7 @@ bond.
 ```none
 set interfaces vpp bonding vppbond0
 ```
-
 ### Interface Description
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> description <description>
 
 Set a descriptive name for the bonding interface.
@@ -40,9 +37,7 @@ Set a descriptive name for the bonding interface.
 ```none
 set interfaces vpp bonding vppbond0 description "Primary uplink bond"
 ```
-
 ### Administrative Control
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> disable
 
 Administratively disable the bonding interface. By default, interfaces
@@ -50,7 +45,6 @@ are enabled.
 ```
 ## Member Interface Configuration
 ### Adding Member Interfaces
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> member interface
 
    <interface-name>
@@ -63,13 +57,11 @@ interfaces to the same bond.
 set interfaces vpp bonding vppbond0 member interface eth0
 set interfaces vpp bonding vppbond0 member interface eth1
 ```
-
 :::{note}
 Member interfaces must have the same speed and duplex for optimal
 performance. They must already be attached to VPP.
 :::
 ## Bonding Modes
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mode <mode>
 
 Configure the bonding mode. Available modes:
@@ -89,11 +81,9 @@ set interfaces vpp bonding vppbond0 mode 802.3ad
 # Use active-backup for simple failover
 set interfaces vpp bonding vppbond0 mode active-backup
 ```
-
 ## Hash Policies
 For load balancing modes, configure how the system distributes traffic
 across member interfaces:
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> hash-policy <policy>
 
 Set the transmit hash policy:
@@ -111,9 +101,7 @@ set interfaces vpp bonding vppbond0 hash-policy layer2
 # Layer 3+4 for better distribution with multiple flows
 set interfaces vpp bonding vppbond0 hash-policy layer3+4
 ```
-
 ## MAC Address Configuration
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mac <mac-address>
 
 Set a specific MAC address for the bonding interface.
@@ -123,9 +111,7 @@ Set a specific MAC address for the bonding interface.
 ```none
 set interfaces vpp bonding vppbond0 mac 00:11:22:33:44:55
 ```
-
 ## IP Address Configuration
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> address <ip-address/prefix>
 
 Configure IPv4 or IPv6 addresses on the kernel interface. You can
@@ -144,9 +130,7 @@ set interfaces vpp bonding vppbond0 address 2001:db8::10/64
 set interfaces vpp bonding vppbond0 address 192.168.1.10/24
 set interfaces vpp bonding vppbond0 address 10.0.0.10/8
 ```
-
 ## MTU Configuration
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mtu <size>
 
 Set the Maximum Transmission Unit (MTU) for the kernel interface. The
@@ -157,7 +141,6 @@ MTU must be compatible with the connected VPP interface.
 ```none
 set interfaces vpp bonding vppbond0 mtu 9000
 ```
-
 :::{note}
 The MTU setting must match or be smaller than the MTU supported by the
 associated VPP interface.
@@ -166,7 +149,6 @@ associated VPP interface.
 VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for
 network segmentation.
 ### Creating VLAN Sub-interfaces
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id>
 
 Create a VLAN sub-interface with the specified VLAN ID (0-4094).
@@ -176,11 +158,9 @@ Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 ```none
 set interfaces vpp bonding vppbond0 vif 100
 ```
-
 ### VLAN Sub-interface Configuration
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
-
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id> address
 
    <ip-address/prefix>
@@ -205,10 +185,8 @@ set interfaces vpp bonding vppbond0 vif 100 mtu 1500
 set interfaces vpp bonding vppbond0 vif 200 address 192.168.200.1/24
 set interfaces vpp bonding vppbond0 vif 200 description "Guest VLAN"
 ```
-
 ## Complete Configuration Example
 Here's a complete example configuring a bonding interface with LACP:
-
 ```none
 # Create bonding interface
 set interfaces vpp bonding vppbond0

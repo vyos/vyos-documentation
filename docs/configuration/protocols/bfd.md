@@ -4,7 +4,6 @@ lastproofread: '2023-01-27'
 
 ```{include} /_include/need_improvement.txt
 ```
-
 (routing-bfd)=
 # BFD
 {abbr}`BFD (Bidirectional Forwarding Detection)` is described and extended by
@@ -14,7 +13,6 @@ The idea behind BFD is to detect very quickly when a peer is down and take actio
 BFD sends lots of small UDP packets very quickly to ensures that the peer is still alive.
 This allows avoiding the timers defined in BGP and OSPF protocol to expires.
 ## Configure BFD
-
 ```{cfgcmd} set protocols bfd peer <address>
 
 Set BFD peer IPv4 address or IPv6 address
@@ -64,9 +62,7 @@ incoming BFD control packet.
 This feature serves the purpose of thightening the packet validation
 requirements to avoid receiving BFD control packets from other sessions.
 ```
-
 ### Enable BFD in BGP
-
 ```{cfgcmd} set protocols bgp neighbor <neighbor> bfd
 
 Enable BFD on a single BGP neighbor
@@ -169,8 +165,6 @@ Enable BFD for ISIS on an interface
 
      Echo transmission interval: 0ms
 ```
-
-
 ## BFD Static Route Monitoring
 
 
@@ -180,8 +174,6 @@ but when the BFD session is down it is removed from the RIB.
 
 
 ### Configuration
-
-
 ```{cfgcmd} set protocols static route <subnet> next-hop <address>
 
 bfd profile <profile>
@@ -230,7 +222,6 @@ and the gateway address as BFD peer destination address.
 ```
 (bfd-operational-commands)=
 ## Operational Commands
-
 ```{opcmd} show bfd static routes
 
 Showing BFD monitored static routes

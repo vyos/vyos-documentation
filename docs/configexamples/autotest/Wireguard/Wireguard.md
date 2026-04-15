@@ -14,67 +14,51 @@ test, in each site.
 ```{image} _include/topology.png
 :alt: Ansible Example topology image
 ```
-
 ## Configuration
 Set the local subnet on eth2 and the public ip address eth1 on each site.
 Central
-
 ```{literalinclude} _include/central.conf
 :language: none
 :lines: 1-2
 ```
-
 Branch
-
 ```{literalinclude} _include/branch.conf
 :language: none
 :lines: 1-2
 ```
-
 Next thing to do, is to create a wireguard keypair on each side.
 After this, the public key can be displayed, to save for later.
-
 ```none
 vyos@central:~$ generate pki wireguard
 Private key: wHQS+ib3eMIp2DxRiAeXfFVaSCMMP1YHBaKfSR1xfV8=
 Public key: RCMy6BAER0uEcPvspUb3K38MHyHJpK5kiV5IOX943HI=
 ```
-
 After you have each public key. The wireguard interfaces can be setup.
 Central
-
 ```{literalinclude} _include/central.conf
 :language: none
 :lines: 4-12
 ```
-
 Branch
-
 ```{literalinclude} _include/branch.conf
 :language: none
 :lines: 4-12
 ```
-
 To reach the network, a route must be set on each VyOS host.
 In this structure, a static interface route will fit the requirements.
 Central
-
 ```{literalinclude} _include/central.conf
 :language: none
 :lines: 14
 ```
-
 Branch
-
 ```{literalinclude} _include/branch.conf
 :language: none
 :lines: 14
 ```
-
 ## Testing and debugging
 After all is done and commit, let's take a look if the Wireguard interface is
 up and running.
-
 ```none
 vyos@central:~$ show interfaces wireguard
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -82,9 +66,7 @@ Interface        IP Address                        S/L  Description
 ---------        ----------                        ---  -----------
 wg01             192.168.0.1/24                    u/u  VPN-to-Branch
 ```
-
 And ping the Branch PC from your central router to check the response.
-
 ```none
 vyos@central:~$ ping 10.0.2.100 count 4
 PING 10.0.2.100 (10.0.2.100) 56(84) bytes of data.

@@ -6,7 +6,6 @@ lastproofread: '2026-04-06'
 
 ```{include} /_include/need_improvement.txt
 ```
-
 HAProxy is a load balancer and proxy server that provides
 high-availability, load balancing, and proxying for TCP (level 4) and
 HTTP-based (level 7) applications.
@@ -15,7 +14,6 @@ Service configuration specifies the port to bind to. Backend
 configuration defines the load balancing method and specifies the backend
 servers.
 ### Service
-
 ```{cfgcmd} set load-balancing haproxy service <name> listen-address <address>
 
 Set the IP address for the service to bind to. By default, the service
@@ -72,12 +70,10 @@ Set the compression algorithm to be used when compressing HTTP responses.
 Set the list of HTTP response MIME types which haproxy will attempt to
 compress, if received uncompressed from backend server.
 ```
-
 #### Rules
 Rules control and route incoming traffic to specific backends based on
 predefined conditions. Rules define matching criteria and specify actions
 to perform.
-
 ```{cfgcmd} set load-balancing haproxy service <name> rule <rule> domain-name <name>
 
 Match domain name
@@ -280,7 +276,6 @@ Value range 1-3600 seconds.
 ```
 ### Global
 Global configuration parameters:
-
 ```{cfgcmd} set load-balancing haproxy global-parameters max-connections
 
    <num>
@@ -353,8 +348,6 @@ Set the maximum inactivity time on the server side.
 
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
-
-
 ## Health checks
 
 
@@ -363,8 +356,6 @@ Value range 1-3600 seconds. Default is 50 seconds.
 
 Use HTTP health checks to monitor web applications that provide health status
 information and determine their availability.
-
-
 ```{cfgcmd} set load-balancing haproxy backend <name> http-check
 
 Enables HTTP health checks using OPTION HTTP requests against '/' and
@@ -410,7 +401,6 @@ Some possible examples are:
 ### TCP checks
 Configure health checks for TCP mode backends. You can configure protocol-aware
 checks for a range of Layer 7 protocols:
-
 ```{cfgcmd} set load-balancing haproxy backend <name> health-check <protocol>
 
 Available health check protocols:
@@ -425,17 +415,13 @@ If you specify a server to check but do not configure a
 protocol, HAProxy performs a basic TCP health check. A server is online if
 it responds to a connection attempt with a valid `SYN/ACK` packet.
 :::
-
 ## Redirect HTTP to HTTPS
-
 Configure a HAProxy service for HTTP that listens on port 80 and redirects
 incoming requests to HTTPS:
-
 ```none
 set load-balancing haproxy service http port '80'
 set load-balancing haproxy service http redirect-http-to-https
 ```
-
 You can use a different service name; in this example, `http` is just for
 convenience.
 ## Examples
@@ -444,7 +430,6 @@ This configuration enables the TCP reverse proxy for the `my-tcp-api`
 service. Incoming TCP connections on port 8888 are load balanced across the
 backend servers (srv01 and srv02) using the round-robin load balancing
 algorithm.
-
 ```none
 set load-balancing haproxy service my-tcp-api backend 'bk-01'
 set load-balancing haproxy service my-tcp-api mode 'tcp'
@@ -458,7 +443,6 @@ set load-balancing haproxy backend bk-01 server srv01 port '8881'
 set load-balancing haproxy backend bk-01 server srv02 address '192.0.2.12'
 set load-balancing haproxy backend bk-01 server srv02 port '8882'
 ```
-
 ### Balancing based on domain name
 The following configuration demonstrates how to use VyOS
 to achieve load balancing based on the domain name:
@@ -467,7 +451,6 @@ Rule 10 matches requests with the domain name `node1.example.com` and
 forwards them to the backend `bk-api-01`.
 Rule 20 matches requests with the domain name `node2.example.com` and
 forwards them to the backend `bk-api-02`.
-
 ```none
 set load-balancing haproxy service http description 'bind app listen on 443 port'
 set load-balancing haproxy service http mode 'tcp'
@@ -487,7 +470,6 @@ set load-balancing haproxy backend bk-api-02 mode 'tcp'
 set load-balancing haproxy backend bk-api-02 server api01 address '127.0.0.2'
 set load-balancing haproxy backend bk-api-02 server api01 port '4432'
 ```
-
 ### Terminate SSL
 The following configuration terminates SSL on the router.
 The `http` service listens on port 80 and redirects HTTP requests to
@@ -502,7 +484,6 @@ Rule 20 matches requests with URL paths ending in `/mail` or the exact
 path `/email/bar` and redirects them to `/postfix/`.
 Global parameters include a maximum connection limit of 4000 and a minimum
 TLS version of 1.3.
-
 ```none
 set load-balancing haproxy service http description 'Force redirect to HTTPS'
 set load-balancing haproxy service http port '80'
@@ -529,7 +510,6 @@ set load-balancing haproxy backend bk-default server sr01 port '80'
 set load-balancing haproxy global-parameters max-connections '4000'
 set load-balancing haproxy global-parameters tls-version-min '1.3'
 ```
-
 ### SSL Bridging
 The following configuration terminates incoming HTTPS traffic on the router,
 then re-encrypts the traffic and sends it to the backend server via HTTPS.
@@ -541,7 +521,6 @@ The `https` service listens on port 443 with backend `bk-bridge-ssl` to
 handle HTTPS traffic. It uses certificate named `cert` for SSL termination.
 The `bk-bridge-ssl` backend connects to `sr01` server on port 443 via HTTPS
 and checks backend server has a valid certificate trusted by CA `cacert`
-
 ```none
 set load-balancing haproxy service https backend 'bk-bridge-ssl'
 set load-balancing haproxy service https description 'listen on 443 port'
@@ -555,10 +534,8 @@ set load-balancing haproxy backend bk-bridge-ssl ssl ca-certificate 'cacert'
 set load-balancing haproxy backend bk-bridge-ssl server sr01 address '192.0.2.23'
 set load-balancing haproxy backend bk-bridge-ssl server sr01 port '443'
 ```
-
 ### Balancing with HTTP health checks
 This configuration enables HTTP health checks for backend servers.
-
 ```none
 set load-balancing haproxy service my-tcp-api backend 'bk-01'
 set load-balancing haproxy service my-tcp-api mode 'tcp'

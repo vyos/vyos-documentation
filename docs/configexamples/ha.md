@@ -517,7 +517,6 @@ set policy prefix-list BGPOUT rule 100 description 'Our network'
 set policy prefix-list BGPOUT rule 100 prefix '203.0.113.0/24'
 set policy prefix-list BGPOUT rule 10000 action 'deny'
 set policy prefix-list BGPOUT rule 10000 prefix '0.0.0.0/0'
-
 set policy route-map BGPOUT description 'BGP Export Filter'
 set policy route-map BGPOUT rule 10 action 'permit'
 set policy route-map BGPOUT rule 10 match ip address prefix-list 'BGPOUT'
@@ -527,7 +526,6 @@ set policy route-map BGPPREPENDOUT rule 10 action 'permit'
 set policy route-map BGPPREPENDOUT rule 10 set as-path prepend '65551 65551 65551'
 set policy route-map BGPPREPENDOUT rule 10 match ip address prefix-list 'BGPOUT'
 set policy route-map BGPPREPENDOUT rule 10000 action 'deny'
-
 set protocols bgp system-as 65551
 set protocols bgp address-family ipv4-unicast network 192.0.2.0/24
 set protocols bgp address-family ipv4-unicast redistribute connected metric '50'

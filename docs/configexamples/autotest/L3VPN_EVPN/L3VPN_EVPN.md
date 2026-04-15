@@ -41,16 +41,12 @@ SSH access to the PE (Provider Edge) routers.
 :language: none
 :lines: 1-6
 ```
-
 ## Topology
 We use the following network topology in this example:
-
 ```{image} _include/topology.png
 :alt: L3VPN EVPN with VyOS topology image
 ```
-
 ## Core network
-
 I chose to run OSPF as the IGP (Interior Gateway Protocol).
 All required BGP sessions are established via a dummy interfaces
 (similar to the loopback, but in Linux you can have only one loopback,
@@ -59,37 +55,28 @@ failure, traffic is diverted in the other direction in this triangle setup and
 BGP sessions will not go down. One could even enable
 BFD (Bidirectional Forwarding Detection) on the links for a faster
 failover and resilience in the network.
-
 Regular VyOS users will notice that the BGP syntax has changed in VyOS 1.4 from
 even the prior post about this subject. This is due to T1711, where it was
 finally decided to get rid of the redundant BGP ASN (Autonomous System Number)
 specification on the CLI and move it to a single leaf node
 (set protocols bgp local-as).
-
 It's important to note that all your existing configurations will be migrated
 automatically on image upgrade. Nothing to do on your side.
-
 PE1
-
 ```{literalinclude} _include/PE1.conf
 :language: none
 :lines: 8-38
 ```
-
 PE2
-
 ```{literalinclude} _include/PE2.conf
 :language: none
 :lines: 8-38
 ```
-
 PE3
-
 ```{literalinclude} _include/PE3.conf
 :language: none
 :lines: 8-38
 ```
-
 ## Tenant networks (VRFs)
 Once all routers can be safely remotely managed and the core network is
 operational, we can now setup the tenant networks.
@@ -105,31 +92,24 @@ VNI (Virtual Network Identifier) per tenant on all our routers.
 - red uses local routing table id and VNI 3000
 - green uses local routing table id and VNI 4000
 PE1
-
 ```{literalinclude} _include/PE1.conf
 :language: none
 :lines: 40-96
 ```
-
 PE2
-
 ```{literalinclude} _include/PE2.conf
 :language: none
 :lines: 40-89
 ```
-
 PE3
-
 ```{literalinclude} _include/PE3.conf
 :language: none
 :lines: 40-89
 ```
-
 ## Testing and debugging
 You managed to come this far, now we want to see the network and routing
 tables in action.
 Show routes for all VRFs
-
 ```none
 vyos@PE1:~$ show ip route vrf all
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -167,9 +147,7 @@ VRF red:
 C>* 10.2.1.0/24 is directly connected, br3000, 00:01:13
 B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:49
 ```
-
 Information about Ethernet Virtual Private Networks
-
 ```none
 vyos@PE1:~$ show bgp l2vpn evpn
 BGP table version is 1, local router ID is 172.29.255.1
@@ -213,10 +191,8 @@ Route Distinguisher: 10.3.3.1:6
 
 Displayed 7 out of 7 total prefixes
 ```
-
 If we need to retrieve information about a specific host/network inside
 the EVPN network we need to run
-
 ```none
 vyos@PE2:~$ show bgp l2vpn evpn 10.3.1.10
 BGP routing table entry for 10.3.1.1:7:[5]:[0]:[24]:[10.3.1.0]

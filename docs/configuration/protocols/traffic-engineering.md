@@ -40,7 +40,6 @@ Set maximum reservable bandwidth for interface <ifname>. Value given in Mbits pe
 ## IS-IS TE Configuration
 Traffic Engineering (TE) can be enabled and exported for IS-IS
 using the following commands:
-
 ```{cfgcmd} set protocols isis traffic-engineering enable
 
 Enable Traffic Engineering for IS-IS.

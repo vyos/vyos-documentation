@@ -108,7 +108,7 @@ parameters. The key configuration fields are:
     mkdir -p ../vyos
     cp example.txt ../vyos
   """
-  ```
+```
 
   Combined commands and scripts:
 

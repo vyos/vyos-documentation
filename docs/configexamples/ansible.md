@@ -19,36 +19,28 @@ Using the general schema for example:
 :alt: Network Topology Diagram
 :width: 80%
 ```
-
 We have four pre-configured routers with this configuration:
-
 ```none
 set interfaces ethernet eth0 address dhcp
 set service ssh
 commit
 save
 ```
-
 - vyos7 - 192.0.2.105
 - vyos8 - 192.0.2.106
 - vyos9 - 192.0.2.107
 - vyos10 - 192.0.2.108
 ## Install Ansible:
-
 ```none
 # apt-get install ansible
 Do you want to continue? [Y/n] y
 ```
-
 ## Install Paramiko:
-
 ```none
 #apt-get install -y python3-paramiko
 ```
-
 ## Check the version:
 % stop_vyoslinter
-
 ```none
 # ansible --version
 ansible 2.10.8
@@ -58,18 +50,14 @@ ansible python module location = /usr/lib/python3/dist-packages/ansible
 executable location = /usr/bin/ansible
 python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 ```
-
 % start_vyoslinter
 ## Basic configuration of ansible.cfg:
-
 ```none
 # nano /root/ansible.cfg
 [defaults]
 host_key_checking = no
 ```
-
 ## Add all the VyOS hosts:
-
 ```none
 # nano /root/hosts
 [vyos_hosts]
@@ -78,9 +66,7 @@ vyos8 ansible_ssh_host=192.0.2.106
 vyos9 ansible_ssh_host=192.0.2.107
 vyos10 ansible_ssh_host=192.0.2.108
 ```
-
 ## Add general variables:
-
 ```none
 # mkdir /root/group_vars/
 # nano /root/group_vars/vyos_hosts
@@ -90,9 +76,7 @@ ansible_connection: network_cli
 ansible_user: vyos
 ansible_ssh_pass: vyos
 ```
-
 ## Add a simple playbook with the tasks for each router:
-
 ```none
 # nano /root/main.yml
 
@@ -111,10 +95,8 @@ ansible_ssh_pass: vyos
         - set system host-name {{ inventory_hostname }}
         save: true
 ```
-
 ## Start the playbook:
 % stop_vyoslinter
-
 ```none
 ansible-playbook -i hosts main.yml
 PLAY [vyos_hosts] **************************************************************
@@ -131,10 +113,8 @@ vyos7                      : ok=2    changed=0    unreachable=0    failed=0    s
 vyos8                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-
 % start_vyoslinter
 ## Check the result on the vyos10 router:
-
 ```none
 vyos@vyos10:~$ show interfaces
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -150,9 +130,7 @@ lo               127.0.0.1/8                       u/u
 vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
 set system name-server '192.0.2.1'
 ```
-
 ## The simple way without configuration of the hostname (one task for all routers):
-
 ```none
 # nano /root/hosts_v2
 [vyos_hosts_group]
@@ -183,9 +161,7 @@ ansible_connection=network_cli
         - set interfaces ethernet eth3 disable
         save: true
 ```
-
 % stop_vyoslinter
-
 ```none
 # ansible-playbook -i hosts_v2 main_v2.yml
 

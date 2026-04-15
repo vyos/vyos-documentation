@@ -142,13 +142,10 @@ This setting is mandatory when deploying VXLAN over a multicast network.
 VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
 ## Multicast VXLAN
-
 Topology: PC4 - Leaf2 - Spine1 - Leaf3 - PC5
-
 PC4 uses the IP address `10.0.0.4/24`, and PC5 uses the IP address
 `10.0.0.5/24`. Both devices assume they reside within the same broadcast
 domain.
-
 Assume PC4 on Leaf2 pings PC5 on Leaf3. Rather than manually specifying Leaf3
 as the remote endpoint, Leaf2 encapsulates the packet into a UDP datagram and
 sends it to the designated multicast address via Spine1. Spine1 forwards the
@@ -156,23 +153,18 @@ packet to all leaves in the same multicast group, including Leaf3. Upon
 receiving the datagram, Leaf3 forwards it to PC5 and learns that PC4 is
 reachable through Leaf2 by inspecting the source IP in the encapsulated
 datagram.
-
 PC5 receives the ping and responds with an echo reply. Leaf3, now aware of
 PC4's location, forwards the reply directly to Leaf2's unicast address. Upon
 receiving the echo reply, Leaf2 learns that PC5 is reachable through Leaf3.
-
 After this discovery, subsequent traffic between PC4 and PC5 will not use the
 multicast address between the leaves, as both leaves have learned the PCs'
 locations. This reduces multicast traffic and network load, improving
 scalability as more leaves are added.
-
 ## Single VXLAN device (SVD)
-
 In VyOS, you can configure multiple **VLAN-to-VNI mappings** for EVPN-VXLAN on
 a single container interface, known as a single VXLAN device (SVD). This
 enables significant VNI scaling because a separate VXLAN interface is not
 required for each VNI.
-
 ```{cfgcmd} set interfaces vxlan <interface> vlan-to-vni <vlan> vni <vni>
 
 **Map a VLAN ID to a VNI on the specified VXLAN interface.**
@@ -198,7 +190,6 @@ The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
 Leaf3, which are VyOS routers.
 **Topology:** Leaf2 - Spine1 - Leaf3.
 The topology is built using GNS3.
-
 ```none
 Spine1:
 fa0/2 towards Leaf2, IP-address: 10.1.2.1/24
@@ -212,9 +203,7 @@ Leaf3:
 Eth0 towards Spine1, IP-address 10.1.3.3/24
 Eth1 towards a VLAN-aware switch
 ```
-
 **Spine1 configuration:**
-
 ```none
 conf t
 ip multicast-routing
@@ -230,12 +219,10 @@ interface fastethernet0/3
 router ospf 1
  network 10.0.0.0 0.255.255.255 area 0
 ```
-
 Multicast routing is required for scalable traffic forwarding between leaves.
 {abbr}`PIM (Protocol Independent Multicast)` must be enabled towards the leaves
 so the spine can learn from which multicast groups each leaf expects traffic.
 **Leaf2 configuration:**
-
 ```none
 set interfaces ethernet eth0 address '10.1.2.2/24'
 set protocols ospf area 0 network '10.0.0.0/8'
@@ -258,9 +245,7 @@ set interfaces vxlan vxlan242 group '239.0.0.242'
 set interfaces vxlan vxlan242 source-interface 'eth0'
 set interfaces vxlan vxlan242 vni '242'
 ```
-
 **Leaf3 configuration:**
-
 ```none
 set interfaces ethernet eth0 address '10.1.3.3/24'
 set protocols ospf area 0 network '10.0.0.0/8'
@@ -283,14 +268,11 @@ set interfaces vxlan vxlan242 group '239.0.0.242'
 set interfaces vxlan vxlan242 source-interface 'eth0'
 set interfaces vxlan vxlan242 vni '242'
 ```
-
 The configurations for Leaf2 and Leaf3 are nearly identical. Detailed
 explanations for each command are provided below.
-
 ```none
 set interfaces bridge br241 address '172.16.241.1/24'
 ```
-
 This command creates a bridge to bind traffic on `eth1` VLAN 241 with the
 `vxlan241` interface. The IP address is optional. If configured, it can serve
 as the default gateway for each leaf, allowing devices on the VLAN to reach
@@ -298,46 +280,35 @@ other subnets. Subnets must be redistributed by {abbr}`OSPF (Open Shortest Path
 First)` so the spine can learn how to reach them. To advertise `172.16/12`
 networks, change the {abbr}`OSPF (Open Shortest Path First)` network from
 `10.0.0.0/8` to `0.0.0.0/0`.
-
 ```none
 set interfaces bridge br241 member interface 'eth1.241'
 set interfaces bridge br241 member interface 'vxlan241'
 ```
-
 These commands bind `eth1.241` and `vxlan241` as member interfaces of the
 same bridge.
-
 ```none
 set interfaces vxlan vxlan241 group '239.0.0.241'
 ```
-
 This command configures the multicast group used by all leaves for this VLAN
 extension. It must be the same on all leaves that have this interface.
-
 ```none
 set interfaces vxlan vxlan241 source-interface 'eth0'
 ```
-
 This command configures the interface that listens for multicast packets. It
 can also be a loopback interface.
-
 ```none
 set interfaces vxlan vxlan241 vni '241'
 ```
-
 This command configures the unique ID for the VXLAN interface.
-
 ```none
 set interfaces vxlan vxlan241 port 12345
 ```
-
 VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This
 command allows you to configure a different UDP port.
 ## Unicast VXLAN
 As an alternative to multicast, you can configure the VXLAN tunnel by
 specifying the remote IPv4 address directly. The following updates the previous
 multicast example:
-
 ```none
 # leaf2 and leaf3
 delete interfaces vxlan vxlan241 group '239.0.0.241'

@@ -141,16 +141,12 @@ reduce clashes when multiple handovers occur in a short period.
 
 The default is 60 seconds.
 ```
-
-
 :::{note}
 In VRRP stateful firewall deployments, align VRRP timing with this
 behavior: because synchronized conntrack state is purged after the purge
 timeout, set **VRRP preempt-delay** to ≥ **purge-timeout** so mastership
 can be restored before conntrack state is purged.
 :::
-
-
 ```{cfgcmd} set service conntrack-sync disable-syslog
 
 Disable connection logging via Syslog.
@@ -163,11 +159,7 @@ Order conntrackd to request a complete conntrack table resync against
 
 the other node at startup.
 ```
-
-
 ## Operation
-
-
 ```{opcmd} show conntrack table ipv4
 
 Make sure conntrack is enabled by running and show connection tracking table.
@@ -298,7 +290,6 @@ The next example is a simple configuration of conntrack-sync.
 :scale: 60 %
 :::
 Now configure conntrack-sync service on `router1` **and** `router2`
-
 ```none
 set high-availability vrrp group internal virtual-address ... etc ...
 set high-availability vrrp sync-group syncgrp member 'internal'
@@ -309,12 +300,10 @@ set service conntrack-sync failover-mechanism vrrp sync-group 'syncgrp'
 set service conntrack-sync interface 'eth0'
 set service conntrack-sync mcast-group '225.0.0.50'
 ```
-
 On the active router, you should have information in the internal-cache of
 conntrack-sync. The same current active connections number should be shown in
 the external-cache of the standby router
 On active router run:
-
 ```none
 $ show conntrack-sync statistics
 
@@ -343,9 +332,7 @@ multicast traffic (active device=eth0):
 message tracking:
                    0 Malformed msgs                    0 Lost msgs
 ```
-
 On standby router run:
-
 ```none
 $ show conntrack-sync statistics
 

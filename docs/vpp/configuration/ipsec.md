@@ -7,50 +7,32 @@ lastproofread: '2025-09-04'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP IPsec Configuration
-
 VPP Dataplane in VyOS can offload IPSec processing from kernel. This allows to speed-up IPSec traffic handling significantly, when necessary conditions are met.
-
 :::{note}
 VPP IPsec implementation is not as feature rich as Linux kernel IPsec. It supports only a subset of algorithms and modes.
 :::
-
 ## Requirements
-
 To make IPSec offloading work, following requirements must be met:
-
 - VPP dataplane must be configured.
 - VPP {doc}`IPsec settings </vpp/configuration/dataplane/ipsec>` should be configured as needed.
 - IPSec should be configured in the VPN configuration section, see {doc}`/configuration/vpn/ipsec/index`.
 - Both source and destination of the IPSec traffic must be reachable via VPP interfaces, so it can perform both encryption and decryption of the traffic.
-
 ## Integration Details
-
 VPP Dataplane offloads IPSec processing from kernel, but does not handle IPSec configuration itself. IPSec configuration management and control-plane operation, like IKE negotiation, is still done by the kernel and other daemons.
-
 After an IPSec tunnel is configured in the kernel, VPP receives the necessary information via netlink messages and creates a corresponding SAs and policies to be able to offload the traffic.
-
 When VPP is used for offloading IPsec, it creates a virtual interface of a specific type to connect to a peer. The type of the interface can be configured using the `interface-type` parameter in the dataplane settings.
-
 ## Supported IPsec Modes
-
 VPP supports offloading IPsec connections in the following IPsec modes:
-
 - Tunnel mode
 - Transport mode
-
 ## Supported Encryption and Integrity Algorithms
-
 :::{warning}
 Since VPP dataplane is used only to offload IPsec traffic processing, algorithms mentioned below are applicable to ESP profiles in the IPsec configuration. IKE profiles are not affected by these limitations and can use any algorithms supported by the kernel.
 :::
-
 VPP **supports** only the following **encryption algorithms**:
-
 - AES-CBC
 - AES-GCM with ICV
-
 VPP **does not** support the following **encryption algorithms**:
-
 - Null encryption
 - AES-CTR
 - AES-CCM with ICV
@@ -64,32 +46,23 @@ VPP **does not** support the following **encryption algorithms**:
 - Twofish-CBC
 - CAST-CBC
 - ChaCha20/Poly1305 with ICV
-
 VPP **supports** the following **integrity algorithms**:
-
 - MD5 HMAC
 - SHA1 HMAC
 - SHA2_256_128 HMAC
 - SHA2_384_192 HMAC
 - SHA2_512_256 HMAC
-
 VPP **does not** support the following **integrity algorithms**:
-
 - MD5_128 HMAC
 - SHA1_160 HMAC
 - SHA2_256_96 HMAC
 - AES XCBC
 - AES CMAC
 - AES-GMAC
-
 If you have configured ESP profiles with algorithms not supported by VPP and the traffic for such peers flows trough VPP interfaces, such traffic will be dropped.
-
 ## Configuration Examples
-
 **ACL for VPP IPsec Traffic**
-
 When using VPP for offloading IPsec traffic, you may need to adjust your firewall rules to allow the necessary protocols and ports. Below is an example of how to configure ACLs for VPP IPsec traffic:
-
 ```none
 set vpp acl ip interface <interface-name> input acl-tag 10 tag-name 'IPSEC'
 set vpp acl ip tag-name IPSEC description 'Allow IPsec traffic'
@@ -108,11 +81,9 @@ set vpp acl ip tag-name IPSEC rule 40 protocol 'udp'
 set vpp acl ip tag-name IPSEC rule 50 action 'permit'
 set vpp acl ip tag-name IPSEC rule 50 protocol 'esp'
 ```
-
 Pay attention to the order of the rules, as they are processed sequentially. Make sure to place IPsec-related rules before any other rules that might deny traffic to ensure that IPsec traffic is allowed.
 **Simple VTI-based IPsec Tunnel**
 On the VPP host:
-
 ```none
 set interfaces ethernet eth1 address '192.168.1.1/24'
 set interfaces ethernet eth2 address '192.168.100.1/24'
@@ -151,7 +122,6 @@ set vpp settings interface eth2
 set vpp settings ipsec netlink rx-buffer-size '32000'
 set vpp settings lcp ignore-kernel-routes
 ```
-
 Where:
 - `eth1` is the interface connected to the IPsec peer.
 - `eth2` is the interface connected to the local subnet, where unencrypted traffic is expected.
@@ -174,6 +144,5 @@ Improper IPsec configuration can lead to various issues, including:
   If you have configured ESP profiles with algorithms not supported by VPP and the traffic for such peers flows through VPP interfaces, such traffic will be dropped. You can check system logs for messages from VPP with `linux-cp/ipsec: Invalid/Unsupported crypto algo` or `linux-cp/ipsec: Invalid/Unsupported integ algo` line to identify such cases.
 - **Connection is established but no traffic flows**
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
-
-  ```{cfgcmd} set vpn ipsec site-to-site peer <peer-name> force-udp-encapsulation
+```{cfgcmd} set vpn ipsec site-to-site peer <peer-name> force-udp-encapsulation
   ```

@@ -329,19 +329,15 @@ Routing Protocol is "rip"
     10.0.12.2                0         0       120   00:00:11
   Distance: (default is 120)
 ```
-
 ## Configuration Example
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
 **Node 1:**
-
 ```none
 set interfaces loopback address 10.1.1.1/32
 set protocols rip network 192.168.0.0/24
 set protocols rip redistribute connected
 ```
-
 **Node 2:**
-
 ```none
 set interfaces loopback address 10.2.2.2/32
 set protocols rip network 192.168.0.0/24

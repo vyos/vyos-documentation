@@ -86,7 +86,6 @@ Four policies for reforwarding DHCP packets exist:
 DHCP relay example
 :::
 The generated configuration will look like:
-
 ```none
 show service dhcp-relay
     listen-interface eth1
@@ -96,10 +95,8 @@ show service dhcp-relay
        relay-agents-packets discard
     }
 ```
-
 Also, for backwards compatibility this configuration, which uses generic
 interface definition, is still valid:
-
 ```none
 show service dhcp-relay
     interface eth1
@@ -109,9 +106,7 @@ show service dhcp-relay
        relay-agents-packets discard
     }
 ```
-
 ### Operation
-
 ```{opcmd} restart dhcp relay-agent
 
 Restart DHCP relay service
@@ -119,7 +114,6 @@ Restart DHCP relay service
 ## IPv6 relay
 (dhcp-relay-ipv6-configuration)=
 ### Configuration
-
 ```{cfgcmd} set service dhcpv6-relay listen-interface <interface>
 
 Set eth1 to be the listening interface for the DHCPv6 relay.
@@ -140,7 +134,6 @@ Disable dhcpv6-relay service.
 ```
 (dhcp-relay-v6-options)=
 #### Options
-
 ```{cfgcmd} set service dhcpv6-relay max-hop-count <count>
 
 Set maximum hop count before packets are discarded, default: 10
@@ -161,7 +154,6 @@ set automatically if more than one listening interfaces are in use.
 DHCPv6 relay example
 :::
 The generated configuration will look like:
-
 ```none
 commit
 show service dhcpv6-relay
@@ -171,10 +163,8 @@ show service dhcpv6-relay
        address 2001:db8::4
     }
 ```
-
 (dhcp-relay-ipv6-op-cmd)=
 ### Operation
-
 ```{opcmd} restart dhcpv6 relay-agent
 
 Restart DHCPv6 relay agent immediately.

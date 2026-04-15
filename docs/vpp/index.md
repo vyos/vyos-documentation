@@ -10,7 +10,6 @@ lastproofread: '2025-09-04'
 VPP (Vector Packet Processing) is a high performance packet processing stack
 that runs in user space. VyOS can use VPP as an alternative dataplane to
 the Linux kernel networking stack.
-
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

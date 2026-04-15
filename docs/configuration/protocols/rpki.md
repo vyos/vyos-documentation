@@ -131,7 +131,6 @@ which their result sets are used.
 This is a mandatory setting.
 ```
 ### SSH
-
 Connections to the RPKI caching server can not only be established by TCP using
 the RTR protocol but you can also rely on a secure SSH session to the server.
 This provides transport integrity and confidentiality and it is a good idea if
@@ -139,7 +138,6 @@ your validation software supports it. To enable SSH, first you need to create
 an SSH client keypair using `generate ssh client-key
 /config/auth/id_rsa_rpki`. Once your key is created you can setup the
 connection.
-
 ```{cfgcmd} set protocols rpki cache <address> ssh username <user>
 
 SSH username to establish an SSH connection to the cache server.
@@ -156,23 +154,18 @@ Local path that includes the public key file of the router.
 When using SSH, private-key-file and public-key-file
 are mandatory options.
 :::
-
 ## Example
-
 We can build route-maps for import based on these states. Here is a simple
 RPKI configuration, where `routinator` is the RPKI-validating "cache"
 server with ip `192.0.2.1`:
-
 ```none
 set protocols rpki cache 192.0.2.1 port '3323'
 set protocols rpki cache 192.0.2.1 preference '1'
 ```
-
 Here is an example route-map to apply to routes learned at import. In this
 filter we reject prefixes with the state `invalid`, and set a higher
 `local-preference` if the prefix is RPKI `valid` rather than merely
 `notfound`.
-
 ```none
 set policy route-map ROUTES-IN rule 10 action 'permit'
 set policy route-map ROUTES-IN rule 10 match rpki 'valid'

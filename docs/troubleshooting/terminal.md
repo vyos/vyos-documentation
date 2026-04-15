@@ -33,7 +33,6 @@ to clear counters on firewall rulesets or single rules
 ```none
 vyos@vyos:~$ clear firewall name <ipv4 ruleset name> counters
 vyos@vyos:~$ clear firewall name <ipv4 ruleset name> rule <rule#> counters
-
 vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> counters
 vyos@vyos:~$ clear firewall ipv6-name <ipv6 ruleset name> rule <rule#> counters
 ```

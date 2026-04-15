@@ -23,9 +23,7 @@ monitoring.
 :var0: bonding
 :var1: bond0
 ```
-
 ### Member interfaces
-
 ```{cfgcmd} set interfaces bonding <interface> member interface <member>
 
 **Add an interface to the bonding group.**
@@ -44,9 +42,7 @@ set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
 
 ```
-
 ### Bond modes
-
 ```{cfgcmd} set interfaces bonding <interface> mode <802.3ad | active-backup |
 
 broadcast | round-robin | transmit-load-balance | adaptive-load-balance |
@@ -521,27 +517,17 @@ bonding interface).
 
 By default, no IP addresses are configured.
 ```
-
-
 ### {abbr}`VLAN (Virtual Local Area Network)`
-
-
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: bonding
 :var1: bond0
 ```
-
-
 ### SPAN port mirroring
-
-
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: bonding
 :var1: bond1
 :var2: eth3
 ```
-
-
 #### EVPN multihoming
 
 
@@ -574,8 +560,6 @@ discriminator, or an Ethernet Segment Identifier Name (ESINAME).
 
 The following two commands generate a 10-byte Type-3 ESI by combining the
 system MAC and local discriminator:
-
-
 ```{cfgcmd} set interfaces bonding <interface> evpn es-id <1-16777215|10-byte ID>
 ```
 
@@ -641,8 +625,6 @@ filtering with local bias.
 :var0: bonding
 :var1: bond0
 ```
-
-
 ## Example
 
 
@@ -650,8 +632,6 @@ The following configuration example applies to all listed third-party vendors.
 It creates a bonding interface with two member interfaces, defines VLANs 10
 and 100 on the bonding interface, and assigns an IPv4 address to each VLAN
 subinterface.
-
-
 ```none
 
 # Create the bonding interface bond0 with 802.3ad LACP
@@ -675,8 +655,6 @@ set interfaces bonding bond0 member interface eth1
 set interfaces bonding bond0 member interface eth2
 
 ```
-
-
 :::{note}
 If you are running this configuration in a virtual environment like
 EVE-NG, ensure the e1000 driver is chosen for your VyOS NIC. The default
@@ -697,8 +675,6 @@ interface.
 
 
 Assign member interfaces to PortChannel:
-
-
 ```none
 
 interface GigabitEthernet1/0/23
@@ -718,12 +694,8 @@ interface GigabitEthernet1/0/24
 !
 
 ```
-
-
 A new interface, `Port-channel1`, becomes available; all configuration,
 such as allowed VLAN interfaces and STP, is applied here.
-
-
 ```none
 
 interface Port-channel1
@@ -741,15 +713,11 @@ interface Port-channel1
 !
 
 ```
-
-
 ### Juniper EX Switch configuration
 
 
 Configure a Juniper EX Series switch to integrate with a two-member VyOS bonding
 interface.
-
-
 ```none
 
 # Create aggregated ethernet device with 802.3ad LACP and port speeds of 10gbit/s
@@ -789,15 +757,11 @@ set interfaces xe-0/1/0 ether-options 802.3ad ae0
 set interfaces xe-1/1/0 ether-options 802.3ad ae0
 
 ```
-
-
 ### Aruba/HP configuration
 
 
 Configure an Aruba/HP 2510G switch to integrate with a two-member VyOS bonding
 interface.
-
-
 ```none
 
 # Create trunk with 2 member interfaces (interface 1 and 2) and LACP
@@ -812,8 +776,6 @@ vlan 10 tagged Trk1
 vlan 100 tagged Trk1
 
 ```
-
-
 ### Arista EOS configuration
 
 
@@ -833,7 +795,8 @@ Let's assume the following topology:
 **R1**
 
 
-> ```none
+> 
+```none
 
 > interfaces {
 
@@ -862,12 +825,11 @@ Let's assume the following topology:
 >     }
 
 > ```
-
-
 **R2**
 
 
-> ```none
+> 
+```none
 
 > interfaces {
 
@@ -896,12 +858,11 @@ Let's assume the following topology:
 >     }
 
 > ```
-
-
 **SW1**
 
 
-> ```none
+> 
+```none
 
 > !
 
@@ -956,12 +917,11 @@ Let's assume the following topology:
 > !
 
 > ```
-
-
 **SW2**
 
 
-> ```none
+> 
+```none
 
 > !
 
@@ -1016,8 +976,6 @@ Let's assume the following topology:
 > !
 
 > ```
-
-
 :::{note}
 When testing this environment in EVE-NG, ensure the e1000 driver
 is chosen for your VyOS network interfaces. If the default virtio driver
@@ -1027,8 +985,6 @@ from ever becoming active.
 
 
 ## Operation
-
-
 ```{opcmd} show interfaces bonding
 
 Show brief interface information.

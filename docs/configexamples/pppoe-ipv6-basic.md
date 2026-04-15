@@ -21,17 +21,14 @@ please contact your ISP for more information.
 :alt: Network Topology Diagram
 :width: 60%
 ```
-
 ## Configurations
 ### PPPoE Setup
-
 ```none
 set interfaces pppoe pppoe0 authentication password <YOUR PASSWORD>
 set interfaces pppoe pppoe0 authentication user <YOUR USERNAME>
 set interfaces pppoe pppoe0 service-name <YOUR SERVICENAME>
 set interfaces pppoe pppoe0 source-interface 'eth0'
 ```
-
 - Fill `password` and `user` with the credential provided by your ISP.
 - `service-name` can be an arbitrary string.
 ### DHCPv6-PD Setup
@@ -39,12 +36,10 @@ During address configuration, in addition to assigning an address to the WAN
 interface, ISP also provides a prefix to allow the router to configure addresses
 of LAN interface and other nodes connecting to LAN, which is called prefix
 delegation (PD).
-
 ```none
 set interfaces pppoe pppoe0 ipv6 address autoconf
 set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth1 address '100'
 ```
-
 - Here we use the prefix to configure the address of eth1 (LAN) to form
   `<prefix>::64`, where `64` is hexadecimal of address 100.
 - For home network users, most of time ISP only provides /64 prefix, hence
@@ -53,13 +48,11 @@ set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth1 address '100'
 ### Router Advertisement
 We need to enable router advertisement for LAN network so that PC can receive
 the prefix and use SLAAC to configure the address automatically.
-
 ```none
 set service router-advert interface eth1 link-mtu '1492'
 set service router-advert interface eth1 name-server <NAME SERVER>
 set service router-advert interface eth1 prefix ::/64 valid-lifetime '172800'
 ```
-
 - Set MTU in advertisement to 1492 because of PPPoE header overhead.
 - Set DNS server address in the advertisement so that clients can obtain it by
   using RDNSS option. Most operating systems (Windows, Linux, Mac) should
@@ -68,15 +61,11 @@ set service router-advert interface eth1 prefix ::/64 valid-lifetime '172800'
   the LAN interface is assigned.
 - Since some ISPs disconnects continuous connection for every 2~3 days, we set
   `valid-lifetime` to 2 days to allow PC for phasing out old address.
-
 ### Basic Firewall
-
 To have basic protection while keeping IPv6 network functional, we need to:
-
 - Allow all established and related traffic for router and LAN
 - Allow all icmpv6 packets for router and LAN
 - Allow DHCPv6 packets for router
-
 ```none
 set firewall ipv6 name WAN_IN default-action 'drop'
 set firewall ipv6 name WAN_IN rule 10 action 'accept'

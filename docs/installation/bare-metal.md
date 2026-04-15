@@ -147,11 +147,8 @@ coreboot build 20171130
 BIOS version v4.6.4
 4080 MB ECC DRAM
 SeaBIOS (version rel-1.11.0.1-0-g90da88d)
-
 Press F10 key now for boot menu:
-
 Select boot device:
-
 1. ata0-0: KINGSTON SUV500MS120G ATA-11 Hard-Disk (111 GiBytes)
 2. USB MSC Drive Generic Flash Disk 8.07
 3. Payload [memtest]
@@ -182,7 +179,6 @@ Loading /live/vmlinuz... ok
 Loading /live/initrd.img...
 ...
 Welcome to VyOS - vyos ttyS0
-
 vyos login:
 ```
 
@@ -472,45 +468,33 @@ uses two 128GB NVMe disks setup as RAID1.
 
 ```none
 Welcome to VyOS!
-
    ┌── ┐
    . VyOS 1.4.0
    └ ──┘  sagitta
-
 * Support portal: https://support.vyos.io
 * Documentation:  https://docs.vyos.io/en/sagitta
 * Project news:   https://blog.vyos.io
 * Bug reports:    https://vyos.dev
-
 You can change this banner using "set system login banner post-login" command.
-
 VyOS is a free software distribution that includes multiple components,
 you can check individual component licenses under /usr/share/doc/*/copyright
 Use of this pre-built image is governed by the EULA you can find in
 /usr/share/vyos/EULA
-
 vyos@vyos:~$ install image
-
 Welcome to VyOS installation!
 This command will install VyOS to your permanent storage.
 Would you like to continue? [y/N] y
-
 What would you like to name this image? (Default: 1.4.0)
-
 Please enter a password for the "vyos" user:
 Please confirm password for the "vyos" user:
-
 What console should be used by default? (K: KVM, S: Serial)? (Default: S)
-
 Probing disks
 4 disk(s) found
 Would you like to configure RAID-1 mirroring? [Y/n] y
-
 The following disks were found:
       /dev/sda (14.4 GB)
       /dev/mmcblk0 (116.5 GB)
 Would you like to configure RAID-1 mirroring on them? [Y/n] n
-
 Would you like to choose two disks for RAID-1 mirroring? [Y/n] y
 Disks available:
       1: /dev/sda     (14.4 GB)
@@ -518,15 +502,12 @@ Disks available:
       3: /dev/nvme1n1 (119.2 GB)
       4: /dev/nvme0n1 (119.2 GB)
 Select first disk: 3
-
 Remaining disks:
       1: /dev/sda     (14.4 GB)
       2: /dev/mmcblk0 (116.5 GB)
       3: /dev/nvme0n1 (119.2 GB)
 Select second disk: 3
-
 Installation will delete all data on both drives. Continue? [y/N] y
-
 Searching for data from previous installations
 No previous installation found
 Creating partitions on /dev/nvme1n1
@@ -539,7 +520,6 @@ Creating filesystem on RAID array
 The following config files are available for boot:
       1: /opt/vyatta/etc/config/config.boot
       2: /opt/vyatta/etc/config.boot.default
-
 Which file would you like as boot config? (Default: 1)
 Creating temporary directories
 Mounting new partitions

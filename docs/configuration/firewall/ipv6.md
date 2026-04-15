@@ -16,41 +16,23 @@ This section describes the following configuration commands:
 ```{cfgcmd} set firewall ipv6 ...
 ```
 
-To learn about the general traffic flow in VyOS firewalls,
-see {doc}`Firewall </configuration/firewall/index>`.
-
+To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </configuration/firewall/index>`.
 
 ```none
-
 - set firewall
-
     * ipv6
-
          - forward
-
             + filter
-
          - input
-
             + filter
-
          - output
-
             + filter
-
             + raw
-
          - prerouting
-
             + raw
-
          - name
-
             + custom_name
-
 ```
-
-
 The router first receives all traffic and processes it in the **prerouting**
 section.
 
@@ -149,8 +131,6 @@ The action can be :
 >   of the last chain.
 > - `queue`: Enqueue packet to userspace.
 > - `synproxy`: synproxy the packet.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999> action
 
 [accept | continue | drop | jump | queue | reject | return | synproxy]
@@ -296,13 +276,9 @@ Use this command only when action is set to ``queue``. This command
 
 distributes packets among multiple queues.
 ```
-
-
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter default-action
 
 [accept | drop]
@@ -344,8 +320,6 @@ To be used only when ``default-action`` is set to ``jump``. Use this
 
 command to specify the jump target for the default rule.
 ```
-
-
 :::{note}
 **Important note about default-actions:**
 If you do not define the default action for a base chain, the system sets
@@ -360,8 +334,6 @@ do not define a default action, the system sets the default-action to
 
 You can enable logging for each firewall rule. When enabled, you can also
 define other log options.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999> log
 ```
 
@@ -524,14 +496,10 @@ to userspace. Only applicable when rule logging is enabled and log group is
 
 defined.
 ```
-
-
 ### Firewall Description
 
 
 For reference, you can define descriptions on every rule and custom chain.
-
-
 ```{cfgcmd} set firewall ipv6 name <name> description <text>
 
 Provide a rule-set description to a custom firewall chain.
@@ -560,15 +528,11 @@ description <text>
 
 Provide a description for each rule.
 ```
-
-
 ### Rule Status
 
 
 New rules are enabled by default. In some cases, you may want to disable a
 rule rather than remove it.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999> disable
 ```
 
@@ -585,14 +549,10 @@ rule rather than remove it.
 
 Command for disabling a rule but keep it in the configuration.
 ```
-
-
 ### Matching criteria
 
 
 There are a lot of matching criteria against which the packet can be tested.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999>
 
 connection-status nat [destination | source]
@@ -948,15 +908,11 @@ matching>`_. Use inverse-match to match anything except the specified
 
 country codes.
 ```
-
-
 DB-IP.com provides data under CC-BY-4.0 license. Attribution is required and
 redistribution is permitted, allowing VyOS to include a database in images
 (approximately 3 MB compressed). The package includes a cron script that you
 can manually call through op-mode update geoip to keep the database and rules
 updated.
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999>
 
 source mac-address <mac-address>
@@ -1537,15 +1493,11 @@ example: ``eth2*``. You can prepend the character ``!`` to invert the
 
 matching criteria. For example ``!eth2``
 ```
-
-
 :::{note}
 If an interface is attached to a non-default VRF, when using
 **inbound-interface**, use the VRF name. For example:
 `set firewall ipv6 forward filter rule 10 inbound-interface name MGMT`
 :::
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999>
 
 inbound-interface group <iface_group>
@@ -1592,15 +1544,11 @@ example: ``eth2*``. You can prepend the character ``!`` to invert the
 
 matching criteria. For example ``!eth2``
 ```
-
-
 :::{note}
 If an interface is attached to a non-default VRF, when using
 **outbound-interface**, use the physical interface name. For example:
 `set firewall ipv6 forward filter rule 10 outbound-interface name eth0`
 :::
-
-
 ```{cfgcmd} set firewall ipv6 forward filter rule <1-999999>
 
 outbound-interface group <iface_group>
@@ -2148,15 +2096,11 @@ Match when the specified number of connections occur within the specified
 
 time period. Use these criteria to block brute-force attempts.
 ```
-
-
 ### Packet Modifications
 
 
 The firewall can modify packets before sending them.
 This feature provides more flexibility for packet handling.
-
-
 ```{cfgcmd} set firewall ipv6 prerouting raw rule <1-999999>
 
 set dscp <0-63>
@@ -2254,14 +2198,10 @@ set connection-mark <0-2147483647>
 
 Set connection mark value.
 ```
-
-
 ## Synproxy
 
 
 Synproxy connections
-
-
 ```{cfgcmd} set firewall ipv6 [input | forward] filter rule <1-999999>
 
 action synproxy
@@ -2290,8 +2230,6 @@ synproxy tcp window-scale <1-14>
 
  Set the window scale factor for TCP window scaling.
 ```
-
-
 ### Example synproxy
 
 
@@ -2301,8 +2239,6 @@ Requirements to enable synproxy:
 > - Traffic must be symmetric
 > - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled
 > - Disable conntrack loose track option
-
-
 ```none
 
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'
@@ -2336,14 +2272,10 @@ set firewall ipv6 input filter rule 1000 action 'drop'
 set firewall ipv6 input filter rule 1000 state invalid
 
 ```
-
-
 ## Operation-mode Firewall
 
 
 ### Rule-set overview
-
-
 ```{opcmd} show firewall
 
 Show a basic firewall overview for all rule-sets, not only for IPv6:
@@ -2687,9 +2619,7 @@ firewall {
     }
 }
 ```
-
 ### Update geoip database
-
 ```{opcmd} update geoip
 
 Command used to update GeoIP database and firewall sets.

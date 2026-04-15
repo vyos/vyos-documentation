@@ -6,24 +6,19 @@
 Convert raw command blocks in this file to cfgcmd/opcmd
 directives for command coverage tracking.
 ```
-
 Internet Key Exchange version 2 (IKEv2) is a tunneling protocol, based on IPsec,
 that establishes a secure VPN communication between VPN devices, and defines
 negotiation and authentication processes for IPsec security associations (SAs).
 It is often known as IKEv2/IPSec or IPSec IKEv2 remote-access — or road-warriors
 as others call it.
-
 Key exchange and payload encryption is done using IKE and ESP proposals as known
 from IKEv1 but the connections are faster to establish, more reliable, and also
 support roaming from IP to IP (called MOBIKE which makes sure your connection
 does not drop when changing networks from e.g. WIFI to LTE and back).
 Authentication can be achieved with X.509 certificates.
-
 ## Setting up certificates:
-
 First of all, we need to create a CA root certificate and server certificate
 on the server side.
-
 ```none
 vyos@vpn.vyos.net# run generate pki ca install ca_root
 Enter private key type: [rsa, dsa, ec] (Default: rsa)
@@ -72,7 +67,6 @@ vyos@vpn.vyos.net# comp
 +     }
 + }
 ```
-
 Once the command is completed, it will add the certificate to the configuration
 session, to the pki subtree. You can then review the proposed changes and
 commit them.
@@ -81,7 +75,6 @@ After the PKI certs are all set up we can start configuring our IPSec/IKE
 proposals used for key-exchange end data encryption. The used encryption ciphers
 and integrity algorithms vary from operating system to operating system. The
 ones used in this example are validated to work on Windows 10.
-
 ```none
 set vpn ipsec esp-group ESP-RW lifetime '3600'
 set vpn ipsec esp-group ESP-RW pfs 'disable'
@@ -94,13 +87,11 @@ set vpn ipsec ike-group IKE-RW proposal 10 dh-group '14'
 set vpn ipsec ike-group IKE-RW proposal 10 encryption 'aes128gcm128'
 set vpn ipsec ike-group IKE-RW proposal 10 hash 'sha256'
 ```
-
 Every connection/remote-access pool we configure also needs a pool where we
 can draw our client IP addresses from. We provide one IPv4 and IPv6 pool.
 Authorized clients will receive an IPv4 address from the configured IPv4 prefix
 and an IPv6 address from the IPv6 prefix. We can also send some DNS nameservers
 down to our clients used on their connection.
-
 ```none
 set vpn ipsec remote-access pool ra-rw-ipv4 name-server '192.0.2.1'
 set vpn ipsec remote-access pool ra-rw-ipv4 prefix '192.0.2.128/25'
@@ -108,9 +99,7 @@ set vpn ipsec remote-access pool ra-rw-ipv4 prefix '192.0.2.128/25'
 set vpn ipsec remote-access pool ra-rw-ipv6 name-server '2001:db8:1000::1'
 set vpn ipsec remote-access pool ra-rw-ipv6 prefix '2001:db8:2000::/64'
 ```
-
 ## Setting up tunnel:
-
 ```none
 set vpn ipsec remote-access connection rw authentication local-id '192.0.2.1'
 set vpn ipsec remote-access connection rw authentication server-mode 'x509'
@@ -122,40 +111,31 @@ set vpn ipsec remote-access connection rw local-address '192.0.2.1'
 set vpn ipsec remote-access connection rw pool 'ra-rw-ipv4'
 set vpn ipsec remote-access connection rw pool 'ra-rw-ipv6'
 ```
-
 VyOS also supports two different modes of authentication, local and RADIUS.
 To create a new local user named "vyos" with a password of "vyos" use the
 following commands.
-
 ```none
 set vpn ipsec remote-access connection rw authentication client-mode 'eap-mschapv2'
 set vpn ipsec remote-access connection rw authentication local-users username vyos password 'vyos'
 ```
-
 Some client operating systems like to see the servers certificate. The following
 option causes the server to voluntarily send its certificate, even if it wasn't
 requested.
-
 ```none
 set vpn ipsec remote-access connection rw authentication always-send-cert
 ```
-
 ## Client Configuration
-
 Most operating systems include native client support for IPsec IKEv2 VPN
 connections, and others typically have an app or add-on package which adds the
 capability.
 This section covers IPsec IKEv2 client configuration for Windows 10.
-
 VyOS provides a command to generate a connection profile used by Windows clients
 that will connect to the "rw" connection on our VyOS server.
-
 :::{note}
 Windows expects the server name to be also used in the server's
 certificate common name, so it's best to use this DNS name for your VPN
 connection.
 :::
-
 ```none
 vyos@vpn.vyos.net:~$ generate ipsec profile windows-remote-access rw remote vpn.vyos.net
 
@@ -167,12 +147,10 @@ Set-VpnConnectionIPsecConfiguration -ConnectionName "VyOS IKEv2 VPN" -Authentica
 GCMAES128 -EncryptionMethod GCMAES128 -IntegrityCheckMethod SHA256128 -PfsGroup None -DHGroup "Group14" -PassThru -Force
 ==== </snip> ====
 ```
-
 Add the commands from Snippet in the Windows side via PowerShell.
 Also import the root CA cert to the Windows “Trusted Root Certification
 Authorities” and establish the connection.
 ## Verification:
-
 ```none
 vyos@vpn.vyos.net:~$ show vpn ipsec remote-access summary
   Connection ID  Username    Protocol    State    Uptime    Tunnel IP    Remote Host    Remote ID    IKE Proposal                                IPSec Proposal

@@ -44,16 +44,12 @@ import (
   "github.com/ganawaj/go-vyos/vyos"
   "os"
 )
-
 hostname := os.Getenv('VYDEVICE_HOSTNAME')
 port := os.Getenv('VYDEVICE_PORT')
 url := fmt.Sprintf("https://%s:%s", hostname, port)
-
 apikey := os.Getenv('VYDEVICE_APIKEY')
 verify_ssl := os.Getenv('VYDEVICE_VERIFY_SSL')
-
 client := vyos.NewClient(nil).WithToken(apikey).WithURL(url)
-
 if verify_ssl == "false" {
   client = client.Insecure()
 }
@@ -70,7 +66,6 @@ out, resp, err := c.Conf.Set(ctx, "interfaces ethernet eth0 address 192.168.1.1/
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 ```
 
@@ -83,7 +78,6 @@ out, resp, err := c.Show.Do(ctx, "interfaces dummy dum1 address")
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
@@ -95,7 +89,6 @@ out, resp, err := c.Conf.Get(ctx, "interfaces dummy dum1", nil)
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
@@ -106,12 +99,10 @@ fmt.Printf("Data: %v\n", out.Data)
 options := RetrieveOptions{
     Multivalue: true,
 }
-
 out, resp, err := c.Conf.Get(ctx, "interfaces dummy dum1", options)
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 ```
 
@@ -122,7 +113,6 @@ out, resp, err := c.Conf.Delete(ctx, "interfaces dummy dum1")
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 ```
 
@@ -153,7 +143,6 @@ out, resp, err := c.Show.Do(ctx, "system image")
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
@@ -165,7 +154,6 @@ out, resp, err := c.Generate.Do(ctx, "pki wireguard key-pair")
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
@@ -177,7 +165,6 @@ out, resp, err := c.Reset.Do(ctx, "ip bgp 192.0.2.11")
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```

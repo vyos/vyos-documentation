@@ -47,7 +47,6 @@ set interfaces bridge br0 member interface eth1
 set interfaces bridge br0 member interface eth2
 set interfaces ethernet eth1 description 'br0'
 set interfaces ethernet eth2 description 'br0'
-
 # Bridge br1:
 set interfaces bridge br1 address '10.1.1.1/24'
 set interfaces bridge br1 description 'L3 bridge br1'
@@ -55,7 +54,6 @@ set interfaces bridge br1 member interface eth3
 set interfaces bridge br1 member interface eth4
 set interfaces ethernet eth3 description 'br1'
 set interfaces ethernet eth4 description 'br1'
-
 # Bridge br2:
 set interfaces bridge br2 address '10.2.2.1/24'
 set interfaces bridge br2 description 'L3 bridge br2'
@@ -86,12 +84,10 @@ So first, let's create the required firewall interface groups:
 set firewall group interface-group br0-ifaces interface 'br0'
 set firewall group interface-group br0-ifaces interface 'eth1'
 set firewall group interface-group br0-ifaces interface 'eth2'
-
 # Bridge br1 interface-group:
 set firewall group interface-group br1-ifaces interface 'br1'
 set firewall group interface-group br1-ifaces interface 'eth3'
 set firewall group interface-group br1-ifaces interface 'eth4'
-
 # Bridge br2 interface-group:
 set firewall group interface-group br2-ifaces interface 'br2'
 set firewall group interface-group br2-ifaces interface 'eth5'
@@ -110,13 +106,11 @@ set firewall bridge prerouting filter rule 10 action 'jump'
 set firewall bridge prerouting filter rule 10 description 'br0 traffic'
 set firewall bridge prerouting filter rule 10 inbound-interface group 'br0-ifaces'
 set firewall bridge prerouting filter rule 10 jump-target 'br0-pre'
-
 # Prerouting - Catch all traffic for br1
 set firewall bridge prerouting filter rule 20 action 'jump'
 set firewall bridge prerouting filter rule 20 description 'br1 traffic'
 set firewall bridge prerouting filter rule 20 inbound-interface group 'br1-ifaces'
 set firewall bridge prerouting filter rule 20 jump-target 'br1-pre'
-
 # Prerouting - Catch all traffic for br2
 set firewall bridge prerouting filter rule 30 action 'jump'
 set firewall bridge prerouting filter rule 30 description 'br2 traffic'
@@ -134,7 +128,6 @@ set firewall bridge name br0-pre rule 10 action 'accept'
 set firewall bridge name br0-pre rule 10 ethernet-type 'ipv6'
   # And drop everything else
 set firewall bridge name br0-pre default-action 'drop'
-
 ### br1 - br1-pre
   # Requirements: drop all DHCP discover packets
 set firewall bridge name br1-pre rule 10 description 'Drop DHCP discover'
@@ -150,7 +143,6 @@ set firewall bridge name br1-pre rule 20 action 'drop'
 set firewall bridge name br1-pre rule 20 ethernet-type 'ipv6'
   # Accept everything else so it can be parsed later
 set firewall bridge name br1-pre default-action 'accept'
-
 ### br2 - br2-pre
   # Requirements: drop all IPv6 connections
 set firewall bridge name br2-pre rule 10 description 'Drop IPv6 traffic'
@@ -171,25 +163,21 @@ set firewall bridge forward filter rule 5 state 'established'
 set firewall bridge forward filter rule 5 state 'related'
 set firewall bridge forward filter rule 10 action 'drop'
 set firewall bridge forward filter rule 10 state 'invalid'
-
 # Forward - Catch all traffic for br0
 set firewall bridge forward filter rule 110 description 'br0 traffic'
 set firewall bridge forward filter rule 110 action 'jump'
 set firewall bridge forward filter rule 110 inbound-interface group 'br0-ifaces'
 set firewall bridge forward filter rule 110 jump-target 'br0-fwd'
-
 # Forward - Catch all traffic for br1
 set firewall bridge forward filter rule 120 description 'br1 traffic'
 set firewall bridge forward filter rule 120 action 'jump'
 set firewall bridge forward filter rule 120 inbound-interface group 'br1-ifaces'
 set firewall bridge forward filter rule 120 jump-target 'br1-fwd'
-
 # Forward - Catch all traffic for br2
 set firewall bridge forward filter rule 130 description 'br2 traffic'
 set firewall bridge forward filter rule 130 action 'jump'
 set firewall bridge forward filter rule 130 inbound-interface group 'br2-ifaces'
 set firewall bridge forward filter rule 130 jump-target 'br2-fwd'
-
 # Forward - Default action drop:
 set firewall bridge forward filter default-action 'drop'
 ```
@@ -200,7 +188,6 @@ And the content of the custom rulesets:
 ### br0 - br0-fwd
   # Accept everything that wasn't dropped in prerouting
 set firewall bridge name br0-fwd default-action 'accept'
-
 ### br1 - br1-fwd
   # Requirement: Accept all ARP packets
 set firewall bridge name br1-fwd rule 10 description 'Accept ARP'
@@ -213,7 +200,6 @@ set firewall bridge name br1-fwd rule 20 source address '10.1.1.102'
 set firewall bridge name br1-fwd rule 20 state 'new'
   # Drop everythin else within the bridge:
 set firewall bridge name br1-fwd default-action 'drop'
-
 ### br2 - br2-fwd
   # Requirement: Accept all DHCP discover packets
 set firewall bridge name br2-fwd rule 10 description 'Accept DHCP discover'
@@ -235,7 +221,6 @@ set firewall bridge name br2-fwd rule 22 protocol 'udp'
 set firewall bridge name br2-fwd rule 22 source port '67'
 set firewall bridge name br2-fwd rule 22 destination port '68'
 set firewall bridge name br2-fwd rule 22 log
-
   # Accept all ARP packets
 set firewall bridge name br2-fwd rule 30 description 'Accept ARP'
 set firewall bridge name br2-fwd rule 30 action 'accept'
@@ -270,12 +255,10 @@ set firewall ipv4 input filter rule 10 state 'related'
 set firewall ipv4 input filter rule 10 action 'accept'
 set firewall ipv4 input filter rule 20 state 'invalid'
 set firewall ipv4 input filter rule 20 action 'drop'
-
 # Input - br1 - Accept access to router itself
 set firewall ipv4 input filter rule 110 description "Accept access from br1"
 set firewall ipv4 input filter rule 110 action 'accept'
 set firewall ipv4 input filter rule 110 inbound-interface group 'br1-ifaces'
-
 # Input - br2 - Deny access to the router
 set firewall ipv4 input filter rule 120 description "Deny access from br2"
 set firewall ipv4 input filter rule 120 action 'drop'
@@ -294,19 +277,16 @@ set firewall ipv4 forward filter rule 5 state 'established'
 set firewall ipv4 forward filter rule 5 state 'related'
 set firewall ipv4 forward filter rule 10 action 'drop'
 set firewall ipv4 forward filter rule 10 state 'invalid'
-
 # Forward - Catch all traffic for br1
 set firewall ipv4 forward filter rule 110 description 'br1 traffic'
 set firewall ipv4 forward filter rule 110 action 'jump'
 set firewall ipv4 forward filter rule 110 inbound-interface group 'br1-ifaces'
 set firewall ipv4 forward filter rule 110 jump-target 'ip-br1-fwd'
-
 # Forward - Catch all traffic for br2
 set firewall ipv4 forward filter rule 120 description 'br2 traffic'
 set firewall ipv4 forward filter rule 120 action 'jump'
 set firewall ipv4 forward filter rule 120 inbound-interface group 'br2-ifaces'
 set firewall ipv4 forward filter rule 120 jump-target 'ip-br2-fwd'
-
 # Forward - Default action drop:
 set firewall ipv4 forward filter default-action 'drop'
 ```
@@ -321,7 +301,6 @@ set firewall ipv4 name ip-br1-fwd rule 10 action 'accept'
 set firewall ipv4 name ip-br1-fwd rule 10 outbound-interface name 'eth0'
   # Requirement: Drop all other connections
 set firewall ipv4 name ip-br1-fwd default-action 'drop'
-
 ### br2 - ip-br2-fwd
   # Requirement: Allow connections to internet
 set firewall ipv4 name ip-br2-fwd rule 10 description 'br2 - allow internet access'
@@ -363,10 +342,8 @@ Bridge firewall rulset:
 ```none
 vyos@bri:~$ show firewall bridge
 Rulesets bridge Information
-
 ---------------------------------
 bridge Firewall "forward filter"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -----------------------------------------
 5        accept    all                19     1916  ct state { established, related }  accept
@@ -375,43 +352,33 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 120      jump      all                10      670  iifname @I_br1-ifaces  jump NAME_br1-fwd
 130      jump      all                12     3086  iifname @I_br2-ifaces  jump NAME_br2-fwd
 default  drop      all                 0        0
-
 ---------------------------------
 bridge Firewall "name br0-fwd"
-
 Rule     Action    Protocol      Packets    Bytes
 -------  --------  ----------  ---------  -------
 default  accept    all                 2      208
-
 ---------------------------------
 bridge Firewall "name br0-pre"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------
 10       accept    all                18     1872  ether type ip6  accept
 default  drop      all                 9     1476
-
 ---------------------------------
 bridge Firewall "name br1-fwd"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------------------------
 10       accept    all                 5      250  ether type arp  accept
 20       accept    all                 3      252  ct state new ip saddr 10.1.1.102  accept
 default  drop      all                 2      168
-
 ---------------------------------
 bridge Firewall "name br1-pre"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------------------------------------------------------------------------
 10       drop      udp                 3     1176  ether daddr ff:ff:ff:ff:ff:ff udp sport 68 udp dport 67  prefix "[bri-NAM-br1-pre-10-D]"
 20       drop      all                 0        0  ether type ip6
 default  accept    all                58     4430
-
 ---------------------------------
 bridge Firewall "name br2-fwd"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ---------------------------------------------------------------
 10       accept    udp                 4     1312  ether daddr ff:ff:ff:ff:ff:ff udp sport 68 udp dport 67  accept
@@ -420,25 +387,20 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 30       accept    all                 2       92  ether type arp  accept
 40       accept    all                 3      704  ether type ip  accept
 default  drop      all                 0        0
-
 ---------------------------------
 bridge Firewall "name br2-pre"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  --------------
 10       drop      all                 7      728  ether type ip6
 default  accept    all                77     7548
-
 ---------------------------------
 bridge Firewall "prerouting filter"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------------------------
 10       jump      all                27     3348  iifname @I_br0-ifaces  jump NAME_br0-pre
 20       jump      all                61     5606  iifname @I_br1-ifaces  jump NAME_br1-pre
 30       jump      all                84     8276  iifname @I_br2-ifaces  jump NAME_br2-pre
 default  drop      all                 0        0
-
 vyos@bridge:~$
 ```
 
@@ -447,10 +409,8 @@ IPv4 firewall rulset:
 ```none
 vyos@bridge:~$ show firewall ipv4
 Rulesets ipv4 Information
-
 ---------------------------------
 ipv4 Firewall "forward filter"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -------------------------------------------
 5        accept    all                76     6384  ct state { established, related }  accept
@@ -458,10 +418,8 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 110      jump      all                13     1092  iifname @I_br1-ifaces  jump NAME_ip-br1-fwd
 120      jump      all                 3      252  iifname @I_br2-ifaces  jump NAME_ip-br2-fwd
 default  drop      all                 0        0
-
 ---------------------------------
 ipv4 Firewall "input filter"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -----------------------------------------
 10       accept    all                 0        0  ct state { established, related }  accept
@@ -469,23 +427,18 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 110      accept    all                10      720  iifname @I_br1-ifaces  accept
 120      drop      all                26     2672  iifname @I_br2-ifaces
 default  accept    all              3037   991621
-
 ---------------------------------
 ipv4 Firewall "name ip-br1-fwd"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------
 10       accept    all                 5      420  oifname "eth0"  accept
 default  drop      all                 8      672
-
 ---------------------------------
 ipv4 Firewall "name ip-br2-fwd"
-
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -----------------------------
 10       accept    all                 1       84  oifname "eth0"  accept
 20       accept    all                 2      168  oifname @I_br1-ifaces  accept
 default  drop      all                 0        0
-
 vyos@bridge:~$
 ```

@@ -19,13 +19,10 @@ transmitted (tx), and dropped (drop).
 ### Starting Packet Capture
 **Command syntax:**
 % stop_vyoslinter
-
 ```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max <n>] [intfc <interface-name|any>] [file <name>] [max-bytes-per-pkt <n>]
 ```
 % start_vyoslinter
-
 **Parameters:**
-
 - `rx` - Capture received packets
 - `tx` - Capture transmitted packets
 - `drop` - Capture dropped packets
@@ -38,9 +35,7 @@ transmitted (tx), and dropped (drop).
   directory.
 - `max-bytes-per-pkt <n>` - Maximum bytes to capture per packet
   (must be >= 32, \<= 9000)
-
 **Examples:**
-
 ```none
 # Start capturing tx packets with specific parameters
 sudo vppctl pcap trace tx max 35 intfc eth1 file vpp_eth1.pcap
@@ -48,29 +43,22 @@ sudo vppctl pcap trace tx max 35 intfc eth1 file vpp_eth1.pcap
 # Capture all packet types from any interface
 sudo vppctl pcap trace rx tx drop max 1000 intfc any file vpp_capture.pcap max-bytes-per-pkt 128
 ```
-
 ### Monitoring Capture Status
 To check the capture status:
-
 ```{opcmd} sudo vppctl pcap trace status
 ```
 This command displays:
-
 - Whether capture is active
 - Capture parameters
 - Number of packets captured
 - Output file location
-
 ### Stopping Packet Capture
-
 :::{warning}
 VPP does not automatically stop packet captures. If left running, captures
 consume resources indefinitely. Always stop captures when you're done
 with them.
 :::
-
 To stop the active packet capture:
-
 ```{opcmd} sudo vppctl pcap trace off
 ```
 Example output when stopping:
@@ -78,7 +66,6 @@ Example output when stopping:
 ```none
 Write 35 packets to /tmp/vpp_eth1.pcap, and stop capture...
 ```
-
 **Notes:**
 - PCAP files are stored in the `/tmp/` directory.
 - Existing files are overwritten.
@@ -96,7 +83,6 @@ systems. Limit the number of traced packets to avoid overwhelming the system.
 ### Basic Packet Tracing Commands
 #### Start tracing
 To start tracing packets at a specific graph node:
-
 ```{opcmd} sudo vppctl trace add <input-graph-node> <pkts> [verbose]
 ```
 - `<input-graph-node>` - Graph node name where tracing starts
@@ -104,27 +90,21 @@ To start tracing packets at a specific graph node:
 - `<pkts>` - Number of packets to trace (for example, 100).
 - `[verbose]` - Optional flag to include detailed buffer information in the
   trace output.
-
 **Common node names for tracing:**
-
 - `dpdk-input`: Packets received from DPDK interfaces
 - `ethernet-input`: Ethernet frame processing
 - `ip4-input`: IPv4 packet processing
 - `ip6-input`: IPv6 packet processing
 - `ip4-lookup`: IPv4 routing table lookup
 - `ip6-lookup`: IPv6 routing table lookup
-
 #### View traces
-
 After packets are traced, view the results:
-
 ```{opcmd} sudo vppctl show trace [max COUNT]
 ```
 - `[max COUNT]` - Optional limit on number of packets to display
   (default: all)
 #### Clear traces
 After reviewing traces, clear them to free up resources:
-
 ```{opcmd} sudo vppctl clear trace
 ```
 #### Example Workflow
@@ -139,10 +119,8 @@ sudo vppctl show trace
 # Clear traces for next test
 sudo vppctl clear trace
 ```
-
 ### Understanding Trace Output
 Trace output shows how packets flow through VPP processing nodes:
-
 ```none
 Packet 1
 
@@ -208,7 +186,6 @@ Packet 1
     fragment id 0x37c5, flags DONT_FRAGMENT
   ICMP echo_request checksum 0x64e id 3024
 ```
-
 In this example, the trace shows:
 - The packet is received on `eth2` interface at the `dpdk-input` node.
 - It flows through `ethernet-input` and `ip4-input` nodes.
@@ -221,16 +198,13 @@ When reporting issues to support teams or performing advanced troubleshooting,
 collect additional diagnostic information.
 ### Before/After Traffic Analysis
 Before you send traffic:
-
 ```none
 sudo vppctl clear hardware-interfaces
 sudo vppctl clear interfaces
 sudo vppctl clear error
 sudo vppctl clear runtime
 ```
-
 After you send traffic:
-
 ```none
 sudo vppctl show version verbose
 sudo vppctl show hardware-interfaces
@@ -239,61 +213,47 @@ sudo vppctl show interface
 sudo vppctl show runtime
 sudo vppctl show error
 ```
-
 ### Core System Information
 **Memory and buffer information:**
-
 ```none
 sudo vppctl show memory api-segment stats-segment numa-heaps main-heap map verbose
 sudo vppctl show buffers
 sudo vppctl show physmem detail
 sudo vppctl show physmem map
 ```
-
 **Runtime and performance data:**
-
 ```none
 sudo vppctl show cpu
 sudo vppctl show threads
 sudo vppctl show runtime
 sudo vppctl show node counters
 ```
-
 ### Protocol-Specific Information
 **Layer 2 data (if configured):**
-
 ```none
 sudo vppctl show l2fib
 sudo vppctl show bridge-domain
 ```
-
 **IPv4 data (if configured):**
-
 ```none
 sudo vppctl show ip fib
 sudo vppctl show ip neighbors
 ```
-
 **IPv6 data (if configured):**
-
 ```none
 sudo vppctl show ip6 fib
 sudo vppctl show ip6 neighbors
 ```
-
 **MPLS data (if configured):**
-
 ```none
 sudo vppctl show mpls fib
 sudo vppctl show mpls tunnel
 ```
-
 ## Creating Support Packages
 Use the automated diagnostic collection script to gather comprehensive VPP
 troubleshooting information when contacting support or reporting issues.
 ### VPP Diagnostic Collection Script
 Create the diagnostic collection script:
-
 ```python
 #!/usr/bin/env python3
 """VyOS VPP Diagnostic Collection Script"""
@@ -402,22 +362,18 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
 Save this script as `/config/scripts/vpp-collect-diagnostics`
 ### Installation and Usage
 **1. Make the script executable**
-
 ```{opcmd} sudo chmod +x /config/scripts/vpp-collect-diagnostics
 ```
 **2. Run VPP diagnostic collection**
 The script automatically collects all diagnostics and stores them in your home
 directory.
-
 ```{opcmd} /config/scripts/vpp-collect-diagnostics
 ```
 **3. Generate VyOS tech-support archive separately**
 You can also generate a tech-support archive with system-wide diagnostics:
-
 ```{opcmd} generate tech-support archive
 ```
 ### What the Script Collects

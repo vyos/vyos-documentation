@@ -153,8 +153,6 @@ to configure Anycast-SIDs.
 
 Show detailed information about prefix-sid and label learned
 ```
-
-
 :::{note}
 more information related IGP - {ref}`routing-isis`
 :::
@@ -165,8 +163,6 @@ more information related IGP - {ref}`routing-isis`
 
 Segment routing (SR) is used by the IGP protocols to interconnect network
 devices, below configuration shows how to enable SR on OSPF:
-
-
 ```{cfgcmd} set protocols ospf parameters opaque-lsa
 
 Enable the Opaque-LSA capability (rfc2370), necessary to transport label
@@ -234,7 +230,6 @@ we described the configuration SR ISIS / SR OSPF using 2 connected with them to
 share label information.
 ### Enable IS-IS with Segment Routing (Experimental)
 **Node 1:**
-
 ```none
 set interfaces loopback lo address '192.168.255.255/32'
 set interfaces ethernet eth1 address '192.0.2.1/24'
@@ -248,9 +243,7 @@ set protocols isis segment-routing prefix 192.168.255.255/32 index value '1'
 set protocols isis segment-routing prefix 192.168.255.255/32 index explicit-null
 set protocols mpls interface 'eth1'
 ```
-
 **Node 2:**
-
 ```none
 set interfaces loopback lo address '192.168.255.254/32'
 set interfaces ethernet eth1 address '192.0.2.2/24'
@@ -264,9 +257,7 @@ set protocols isis segment-routing prefix 192.168.255.254/32 index value '2'
 set protocols isis segment-routing prefix 192.168.255.254/32 index explicit-null
 set protocols mpls interface 'eth1'
 ```
-
 This gives us MPLS segment routing enabled and labels for far end loopbacks:
-
 ```none
 Node-1@vyos:~$ show mpls table
  Inbound Label  Type        Nexthop                Outbound Label
@@ -286,9 +277,7 @@ Node-2@vyos:~$ show mpls table
  15002          SR (IS-IS)  192.0.2.1             implicit-null
  15003          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null
 ```
-
 Here is the routing tables showing the MPLS segment routing label operations:
-
 ```none
 Node-1@vyos:~$ show ip route isis
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -312,10 +301,8 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
 I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:07:46
 I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, weight 1, 00:03:43
 ```
-
 ### Enable OSPF with Segment Routing (Experimental):
 **Node 1**
-
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces ethernet eth0 address 192.168.0.1/24
@@ -328,9 +315,7 @@ set protocols ospf segment-routing global-block low-label-value '1000'
 set protocols ospf segment-routing prefix 10.1.1.1/32 index explicit-null
 set protocols ospf segment-routing prefix 10.1.1.1/32 index value '1'
 ```
-
 **Node 2**
-
 ```none
 set interfaces loopback lo address 10.1.1.2/32
 set interfaces ethernet eth0 address 192.168.0.2/24
@@ -343,9 +328,7 @@ set protocols ospf segment-routing global-block low-label-value '1000'
 set protocols ospf segment-routing prefix 10.1.1.2/32 index explicit-null
 set protocols ospf segment-routing prefix 10.1.1.2/32 index value '2'
 ```
-
 This gives us MPLS segment routing enabled and labels for far end loopbacks:
-
 ```none
 Node-1@vyos:~$ show mpls table
  Inbound Label  Type       Nexthop      Outbound Label
@@ -361,9 +344,7 @@ Node-2@vyos:~$ show mpls table
  15000          SR (OSPF)  192.168.0.1  implicit-null
  15001          SR (OSPF)  192.168.0.1  implicit-null
 ```
-
 Here is the routing tables showing the MPLS segment routing label operations:
-
 ```none
 Node-1@vyos:~$ show ip route ospf
 Codes: K - kernel route, C - connected, S - static, R - RIP,

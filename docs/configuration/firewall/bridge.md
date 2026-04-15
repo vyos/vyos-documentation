@@ -15,13 +15,10 @@ The following commands are covered in this section:
 
 ```{cfgcmd} set firewall bridge <options>
 ```
-
 From the main structure defined in
 {doc}`Firewall Overview</configuration/firewall/index>`
 in this section you can find detailed information only for the next part
 of the general structure:
-
-
 ```none
 
 - set firewall
@@ -49,8 +46,6 @@ of the general structure:
             + custom_name
 
 ```
-
-
 Traffic that is received by the router on an interface that is a member of a
 bridge is processed on the **Bridge Layer**. Before the bridge decision is
 made, all packets are analyzed at **Prerouting**. First filters can be applied
@@ -129,8 +124,6 @@ In firewall bridge rules, the action can be:
 > - `queue`: Enqueue packet to userspace.
 > - `notrack`: ignore connection tracking system. This action is only
 >   available in prerouting chain.
-
-
 ```{cfgcmd} set firewall bridge forward filter rule <1-999999> action
 
 [accept | continue | drop | jump | queue | return]
@@ -294,13 +287,9 @@ queue-options fanout
 
 queue-options fanout
 ```
-
-
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
-
-
 ```{cfgcmd} set firewall bridge forward filter default-action
 
 [accept | drop]
@@ -348,8 +337,6 @@ To be used only when ``default-action`` is set to ``jump``. Use this
 
 command to specify jump target for default rule.
 ```
-
-
 :::{note}
 **Important note about default-actions:**
 If the default action for any base chain is not defined, then the default
@@ -363,8 +350,6 @@ default action is not defined, then the default-action is set to **drop**.
 
 You can enable logging for every firewall rule. If enabled, other log options
 can be configured.
-
-
 ```{cfgcmd} set firewall bridge forward filter rule <1-999999> log
 ```
 
@@ -561,14 +546,10 @@ to userspace. Only applicable if rule log is enabled and the log group is
 
 defined.
 ```
-
-
 ### Firewall Description
 
 
 You can define a description for reference for every custom chain.
-
-
 ```{cfgcmd} set firewall bridge name <name> description <text>
 
 Provide a rule-set description to a custom firewall chain.
@@ -606,15 +587,11 @@ description <text>
 
 Provide a description for each rule.
 ```
-
-
 ### Rule Status
 
 
 By default, when you define a rule, it is enabled. In some cases, it is
 useful to disable the rule instead of removing it.
-
-
 ```{cfgcmd} set firewall bridge forward filter rule <1-999999> disable
 ```
 
@@ -635,8 +612,6 @@ useful to disable the rule instead of removing it.
 
 Command for disabling a rule but keep it in the configuration.
 ```
-
-
 ### Matching criteria
 
 
@@ -651,8 +626,6 @@ supported in bridge firewall configuration. Same applies to firewall groups.
 
 Same specific matching criteria that can be used in bridge firewall are
 described in this section:
-
-
 ```{cfgcmd} set firewall bridge forward filter rule <1-999999> ethernet-type
 
 [802.1q | 802.1ad | arp | ipv4 | ipv6]
@@ -785,16 +758,12 @@ Match based on VLAN priority (Priority Code Point - PCP). Range is also
 
 supported.
 ```
-
-
 ### Packet Modifications
 
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
 packets before they are sent out. This feaure provides more flexibility in
 packet handling.
-
-
 ```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
 
 rule <1-999999> set dscp <0-63>
@@ -852,7 +821,6 @@ By default, for switched traffic, only the rules defined under `set firewall
 bridge` are applied. There are two global-options that can be configured in
 order to force deeper analysis of the packet on the IP layer. These options
 are:
-
 ```{cfgcmd} set firewall global-options apply-to-bridged-traffic ipv4
 
 This command enables the IPv4 firewall for bridged traffic. If this option
@@ -869,7 +837,6 @@ is used, packets are also parsed by rules defined in ``set firewall ipv6
 ### Rule-set overview
 In this section you can find all useful firewall op-mode commands.
 General commands for firewall configuration, counter and statistics:
-
 ```{opcmd} show firewall
 ```
 ```{opcmd} show firewall summary
@@ -910,7 +877,6 @@ all logs for particular custom chain; show logs for specific Rule-Set.
 ```
 ### Example
 Configuration example:
-
 ```none
 set firewall bridge forward filter default-action 'drop'
 set firewall bridge forward filter default-log
@@ -934,9 +900,7 @@ set firewall bridge name TEST rule 10 action 'continue'
 set firewall bridge name TEST rule 10 log
 set firewall bridge name TEST rule 10 vlan priority '0'
 ```
-
 And op-mode commands:
-
 ```none
 vyos@BRI:~$ show firewall bridge
 Rulesets bridge Information
@@ -975,9 +939,7 @@ default  accept    all              2130   170688
 
 vyos@BRI:~$
 ```
-
 Inspect logs:
-
 ```none
 vyos@BRI:~$ show log firewall bridge
 Dec 05 14:37:47 kernel: [bri-NAM-TEST-10-C]IN=eth1 OUT=eth2 ARP HTYPE=1 PTYPE=0x0800 OPCODE=1 MACSRC=50:00:00:04:00:00 IPSRC=10.11.11.101 MACDST=00:00:00:00:00:00 IPDST=10.11.11.102

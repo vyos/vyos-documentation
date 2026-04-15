@@ -36,7 +36,6 @@ L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 ```
 ### L2TPv3 options
 Use the following commands to configure the L2TPv3 tunnel's specific parameters.
-
 ```{cfgcmd} set interfaces l2tpv3 <interface> encapsulation <udp | ip>
 
 **Configure the encapsulation type for the L2TPv3 tunnel.**
@@ -49,7 +48,6 @@ The default encapsulation type is ``udp``.
 The encapsulation type must match on both the local and remote peers
 for the tunnel to establish.
 :::
-
 ```{cfgcmd} set interfaces l2tpv3 <interface> source-address <address>
 
 **Configure the L2TPv3 tunnel source IP address.**
@@ -109,7 +107,6 @@ on the remote peer.
 ### L2TPv3 tunnel with IP encapsulation
 The following example shows the configuration of an L2TPv3 tunnel using direct
 IP encapsulation:
-
 ```none
 # show interfaces l2tpv3
 l2tpv3 l2tpeth10 {
@@ -123,7 +120,6 @@ l2tpv3 l2tpeth10 {
     tunnel-id 200
 }
 ```
-
 The inverse configuration must be applied to the remote peer.
 ### L2TPv3 tunnel with UDP encapsulation
 The following example shows the configuration of an L2TPv3 tunnel using UDP
@@ -134,7 +130,6 @@ Configuration notes:
 - Configure a forwarding rule to allow tunnel traffic on the specified UDP port
   on the upstream NAT device.
 - Use a distinct UDP port for each individual tunnel.
-
 ```none
 # show interfaces l2tpv3
 l2tpv3 l2tpeth10 {

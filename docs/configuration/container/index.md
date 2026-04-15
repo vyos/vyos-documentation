@@ -180,14 +180,10 @@ Publish a port for the container.
 
   set container name zabbix-web-nginx-mysql port http protocol tcp
 ```
-
-
 :::{note}
 Port publishing cannot be used with **network**. For this purpose, a workaround
 using destination NAT and static IP assignment for the container is available.
 :::
-
-
 ```{cfgcmd} set container name <name> volume <volumename> source <path>
 ```
 
@@ -341,14 +337,10 @@ Add metadata label for this container.
 
 Disable a container.
 ```
-
-
 ### Container Health checks
 
 
 By default, no health checks are run, even when defined by the image.
-
-
 ```{cfgcmd} set container name <name> health-check
 
 Default health check is run for the container if defined by the image.
@@ -377,11 +369,7 @@ Override the default health-check timeout. For example: `10`
 
 Number of health check retries before container is considered unhealthy. For example: `1`
 ```
-
-
 ### Container Networks
-
-
 ```{cfgcmd} set container network <name>
 
 Creates a named container network
@@ -420,11 +408,7 @@ Disable Domain Name System (DNS) plugin for this network.
 
 Bind container network to a given VRF instance.
 ```
-
-
 ### Container Registry
-
-
 ```{cfgcmd} set container registry <name>
 
 Adds registry to list of unqualified-search-registries. By default, for any
@@ -557,11 +541,11 @@ assigned, this is why there is a `force` option to pass down to
 the container image to also remove those images.
 ```
 ## Example Configuration
-
 > For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
 > to the declarative VyOS CLI syntax.
 >
-> ```none
+> 
+```none
 > set container network zabbix prefix 172.20.0.0/16
 > set container network zabbix description 'Network for Zabbix component containers'
 >

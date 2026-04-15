@@ -300,7 +300,6 @@ Protects host from brute-force attacks against
 SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
 attack, such as several login failures within a few seconds, is detected, the
 offending IP is blocked. Offenders are unblocked after a set interval.
-
 ```{cfgcmd} set service ssh dynamic-protection
 
 Allow ``ssh`` dynamic-protection.
@@ -326,7 +325,6 @@ default is 30.
 ```
 (ssh-operation)=
 ## Operation
-
 ```{opcmd} restart ssh
 
 Restart the SSH daemon process, the current session is not affected, only the

@@ -31,7 +31,6 @@ as the peer of the other.
 ```
 ### VLAN
 #### Regular VLANs (802.1q)
-
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: virtual-ethernet
 ```
@@ -84,7 +83,6 @@ Show detailed interface information.
 ## Example
 The following example shows how to connect the global VRF to VRF ‘red ‘ using
 the `veth10` and `veth11` veth pair.
-
 ```none
 set interfaces virtual-ethernet veth10 address '100.64.0.0/31'
 set interfaces virtual-ethernet veth10 peer-name 'veth11'

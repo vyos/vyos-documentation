@@ -90,7 +90,6 @@ set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 lease '864
 set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 start '192.168.0.9'
 set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 range 0 stop '192.168.0.254'
 set service dhcp-server shared-network-name LAN subnet 192.168.0.0/24 subnet-id '1'
-
 set service dns forwarding cache-size '0'
 set service dns forwarding listen-address '192.168.0.1'
 set service dns forwarding allow-from '192.168.0.0/24'
@@ -177,11 +176,9 @@ The chain we will create is called `CONN_FILTER` and has three rules:
 
 ```none
 set firewall ipv4 name CONN_FILTER default-action 'return'
-
 set firewall ipv4 name CONN_FILTER rule 10 action 'accept'
 set firewall ipv4 name CONN_FILTER rule 10 state established
 set firewall ipv4 name CONN_FILTER rule 10 state related
-
 set firewall ipv4 name CONN_FILTER rule 20 action 'drop'
 set firewall ipv4 name CONN_FILTER rule 20 state invalid
 ```
@@ -192,7 +189,6 @@ hooks as the first filtering rule in the respective chains:
 ```none
 set firewall ipv4 forward filter rule 10 action 'jump'
 set firewall ipv4 forward filter rule 10 jump-target CONN_FILTER
-
 set firewall ipv4 input filter rule 10 action 'jump'
 set firewall ipv4 input filter rule 10 jump-target CONN_FILTER
 ```
@@ -208,7 +204,6 @@ set firewall ipv4 forward filter rule 5 state established
 set firewall ipv4 forward filter rule 5 state related
 set firewall ipv4 forward filter rule 10 action 'drop'
 set firewall ipv4 forward filter rule 10 state invalid
-
 set firewall ipv4 input filter rule 5 action 'accept'
 set firewall ipv4 input filter rule 5 state established
 set firewall ipv4 input filter rule 5 state related
@@ -229,7 +224,6 @@ group and is addressed to our local network.
 
 ```none
 set firewall ipv4 name OUTSIDE-IN default-action 'drop'
-
 set firewall ipv4 forward filter rule 100 action jump
 set firewall ipv4 forward filter rule 100 jump-target OUTSIDE-IN
 set firewall ipv4 forward filter rule 100 inbound-interface group WAN
@@ -276,13 +270,11 @@ interface group to 4 per minute:
 ```none
 set firewall ipv4 name VyOS_MANAGEMENT rule 15 action 'accept'
 set firewall ipv4 name VyOS_MANAGEMENT rule 15 inbound-interface group 'LAN'
-
 set firewall ipv4 name VyOS_MANAGEMENT rule 20 action 'drop'
 set firewall ipv4 name VyOS_MANAGEMENT rule 20 recent count 4
 set firewall ipv4 name VyOS_MANAGEMENT rule 20 recent time minute
 set firewall ipv4 name VyOS_MANAGEMENT rule 20 state new
 set firewall ipv4 name VyOS_MANAGEMENT rule 20 inbound-interface group 'WAN'
-
 set firewall ipv4 name VyOS_MANAGEMENT rule 21 action 'accept'
 set firewall ipv4 name VyOS_MANAGEMENT rule 21 state new
 set firewall ipv4 name VyOS_MANAGEMENT rule 21 inbound-interface group 'WAN'
@@ -299,7 +291,6 @@ set firewall ipv4 input filter rule 30 action 'accept'
 set firewall ipv4 input filter rule 30 icmp type-name 'echo-request'
 set firewall ipv4 input filter rule 30 protocol 'icmp'
 set firewall ipv4 input filter rule 30 state new
-
 set firewall ipv4 input filter rule 40 action 'accept'
 set firewall ipv4 input filter rule 40 destination port '53'
 set firewall ipv4 input filter rule 40 protocol 'tcp_udp'

@@ -7,33 +7,24 @@ lastproofread: '2026-03-10'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Bridge Configuration
-
 VPP bridge interfaces provide Layer 2 switching functionality, allowing
 multiple interfaces to be connected at the data link layer.
-
 VPP bridges operate as learning bridges, automatically discovering MAC
 addresses and building forwarding tables to efficiently switch traffic
 between member interfaces. This provides transparent connectivity between
 different network segments while maintaining the performance benefits of
 VPP's optimized data plane.
-
 **Supported Member Interface Types:**
-
 VPP bridges support various interface types as members:
-
 - Physical Ethernet interfaces (managed through linux-cp)
 - {doc}`bonding` - VPP bonding interfaces
 - {doc}`gre` - GRE tunnel interfaces
 - {doc}`loopback` - Loopback interfaces (required for BVI)
 - {doc}`vxlan` - VXLAN tunnel interfaces
-
 This flexibility allows you to create complex Layer 2 topologies
 combining different networking technologies.
-
 ## Basic Configuration
-
 ### Creating a Bridge Interface
-
 ```{cfgcmd} set interfaces vpp bridge <vppbrN>
 
 Create a bridge interface where ``<vppbrN>`` follows the naming
@@ -44,15 +35,11 @@ Bridge domain `vppbr0` is reserved by VPP and cannot be
 configured through VyOS. Start with `vppbr1` for your bridge
 configurations.
 :::
-
 **Example:**
-
 ```none
 set interfaces vpp bridge vppbr1
 ```
-
 ### Interface Description
-
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> description <description>
 
 Set a descriptive name for the bridge interface.
@@ -62,10 +49,8 @@ Set a descriptive name for the bridge interface.
 ```none
 set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ```
-
 ## Member Interface Configuration
 ### Adding Member Interfaces
-
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
 
             <interface-name>
@@ -82,7 +67,6 @@ set interfaces vpp bridge vppbr1 member interface eth1
 set interfaces vpp bridge vppbr1 member interface vppbond0
 set interfaces vpp bridge vppbr1 member interface vppgre1
 ```
-
 :::{important}
 Bridge members can include various interface types such as:
 - Physical Ethernet interfaces (eth0, eth1, etc.)
@@ -96,7 +80,6 @@ A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a
 bridge domain, allowing the bridge to have an IP address and participate
 in routing.
 ### Configuring BVI
-
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
 
             <loopback-interface> bvi
@@ -112,7 +95,6 @@ set interfaces vpp loopback vpplo1
 # Add it to the bridge as BVI
 set interfaces vpp bridge vppbr1 member interface vpplo1 bvi
 ```
-
 :::{important}
 **BVI Restrictions:**
 - Only loopback interfaces can be configured as BVI
@@ -120,7 +102,6 @@ set interfaces vpp bridge vppbr1 member interface vpplo1 bvi
 :::
 ## Configuration Examples
 ### Basic Bridge Setup
-
 ```none
 # Create bridge interface
 set interfaces vpp bridge vppbr1
@@ -131,9 +112,7 @@ set interfaces vpp bridge vppbr1 member interface eth0
 set interfaces vpp bridge vppbr1 member interface eth1
 set interfaces vpp bridge vppbr1 member interface eth2
 ```
-
 ### Bridge with BVI
-
 ```none
 # Create bridge and loopback for BVI
 set interfaces vpp bridge vppbr2
@@ -145,9 +124,7 @@ set interfaces vpp bridge vppbr2 member interface eth3
 set interfaces vpp bridge vppbr2 member interface eth4
 set interfaces vpp bridge vppbr2 member interface vpplo1 bvi
 ```
-
 ### Multi-Technology Bridge
-
 ```none
 # Create bridge combining different interface types
 set interfaces vpp bridge vppbr3
@@ -159,14 +136,12 @@ set interfaces vpp bridge vppbr3 member interface vppgre1
 set interfaces vpp bridge vppbr3 member interface vppvxlan1
 set interfaces vpp bridge vppbr3 member interface vpplo2 bvi
 ```
-
 ## Integration with Kernel Interfaces
 Bridge interfaces can be integrated with kernel interfaces for
 management and compatibility with standard Linux networking services.
 This is accomplished by binding a kernel interface to the Bridge
 Virtual Interface (BVI).
 **Example Integration:**
-
 ```none
 # Create VPP bridge with member interfaces
 set interfaces vpp bridge vppbr1

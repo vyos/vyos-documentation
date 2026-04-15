@@ -121,7 +121,6 @@ returned to the VyOS command prompt.
 ## IPv6 Topology Discovery
 IPv6 uses different techniques to discover its Neighbors/topology.
 ### Router Discovery
-
 ```{opcmd} force ipv6-rd interface <interface> [address <ipv6-address>]
 
 Discover routers via eth0.

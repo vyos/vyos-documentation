@@ -165,7 +165,6 @@ unicast bootstrap messages.
 
 ```{cfgcmd} set protocols pim interface <interface> source-address <ip-address>
 ```
-
   If you have multiple addresses configured on a particular interface and would
   like PIM to use a specific source address associated with that interface.
 ```
@@ -178,7 +177,6 @@ warning once the configured group limit is reached while adding new groups.
 ```
 (pim-igmp-interface-commands)=
 ### Interface specific commands
-
 ```{cfgcmd} set protocols pim interface <interface> igmp
 
    join <multicast-address> source-address <IP-address>
@@ -209,15 +207,12 @@ The default value is 3.
 ```
 #### Example
 In the following example we can see a basic multicast setup:
-
 ```{image} /_static/images/multicast-basic.png
 :align: center
 :alt: Network Topology Diagram
 :width: 90%
 ```
-
 **Router 1**
-
 ```none
 set interfaces ethernet eth2 address '172.16.0.2/24'
 set interfaces ethernet eth1 address '100.64.0.1/24'
@@ -228,9 +223,7 @@ set protocols pim interface eth1
 set protocols pim interface eth2
 set protocols pim rp address 172.16.255.1 group '224.0.0.0/4'
 ```
-
 **Router 3**
-
 ```none
 set interfaces dummy dum0 address '172.16.255.1/24'
 set interfaces ethernet eth0 address '172.16.0.1/24'
@@ -243,9 +236,7 @@ set protocols pim interface eth0
 set protocols pim interface eth1
 set protocols pim rp address 172.16.255.1 group '224.0.0.0/4'
 ```
-
 **Router 2**
-
 ```none
 set interfaces ethernet eth1 address '10.0.0.1/24'
 set interfaces ethernet eth2 address '172.16.1.2/24'

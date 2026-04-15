@@ -139,10 +139,8 @@ migration subsystem handler includes a test kit:
 ```none
 vyos@vyos:~$ /usr/libexec/vyos/run-config-migration.py --help
 usage: run-config-migration.py [-h] [--test-script TEST_SCRIPT] [--output-file OUTPUT_FILE] [--force] config_file
-
 positional arguments:
   config_file           configuration file to migrate
-
 options:
   -h, --help            show this help message and exit
   --test-script TEST_SCRIPT

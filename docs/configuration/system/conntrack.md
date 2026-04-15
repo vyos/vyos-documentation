@@ -60,7 +60,6 @@ Set the number of TCP maximum retransmit attempts.
 You can define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
-
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
 
    description <test>
@@ -157,16 +156,13 @@ The whole list can also be "negated" using '!'. For example:
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
 ### Conntrack ignore rules
-
 :::{note}
 **Important note about conntrack ignore rules:**
 Starting from vyos-1.5-rolling-202406120020, ignore rules can be defined in
 `set firewall [ipv4 | ipv6] prerouting raw ...`. It's expected that in
 the future the conntrack ignore rules will be removed.
-
 > Customized ignore rules, based on a packet and flow selector.
 :::
-
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule <1-999999>
 
    description <text>

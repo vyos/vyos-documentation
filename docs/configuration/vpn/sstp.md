@@ -83,13 +83,11 @@ Name of installed certificate authority certificate.
 Name of installed server certificate.
 ```
 ## Configuring RADIUS authentication
-
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users still
 exist within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
-
 ```none
 set vpn sstp authentication mode radius
 ```
@@ -102,12 +100,10 @@ communicating with the RADIUS server.
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 For example:
-
 ```none
 set vpn sstp authentication radius server 10.0.0.1 key 'foo'
 set vpn sstp authentication radius server 10.0.0.2 key 'foo'
 ```
-
 :::{note}
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
@@ -116,7 +112,6 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as your IGP, use the interface connected closest to the
 RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
-
 ```{cfgcmd} set vpn sstp authentication radius source-address <address>
 
 Source IPv4 address used in all RADIUS server queires.
@@ -126,7 +121,6 @@ The `source-address` must be configured to that of an interface.
 Best practice would be a loopback or dummy interface.
 :::
 ### RADIUS advanced options
-
 ```{cfgcmd} set vpn sstp authentication radius server <server> port <port>
 
 Configure RADIUS `<server>` and its required port for authentication requests.
@@ -187,7 +181,6 @@ The default attribute is `Filter-Id`.
 If you set a custom RADIUS attribute you must define it on both
 dictionaries on the RADIUS server and client.
 :::
-
 ```{cfgcmd} set vpn sstp authentication radius rate-limit enable
 
 Enables bandwidth shaping via RADIUS.
@@ -199,47 +192,35 @@ Specifies the vendor dictionary, This dictionary needs to be present in
 ```
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
-
 ### Allocation clients ip addresses by RADIUS
-
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
 address will be allocated to the client and the option `default-pool` within
 the CLI config will being ignored.
-
 If the RADIUS server sends the attribute `Framed-Pool`, then the IP address
 will be allocated from a predefined IP pool whose name equals the attribute
 value.
-
 If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, the
 IPv6 address will be allocated from a predefined IPv6 pool `prefix` whose
 name equals the attribute value.
-
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, an
 IPv6 delegation prefix will be allocated from a predefined IPv6 pool `delegate`
 whose name equals the attribute value.
-
 :::{note}
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
-
 The client's interface can be put into a VRF context via a RADIUS Access-Accept
 packet, or changed via RADIUS CoA. `Accel-VRF-Name` is used for these
 purposes. This is a custom [ACCEL-PPP attribute]. Define it in your RADIUS
 server.
-
 ### Renaming clients interfaces by RADIUS
-
 If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
 renamed.
-
 :::{note}
 The value of the attribute `NAS-Port-Id` must be less than 16
 characters, otherwise the interface won't be renamed.
 :::
-
 ## IPv6
-
 ```{cfgcmd} set vpn sstp ppp-options ipv6 <require | prefer | allow | deny>
 
 Specifies IPv6 negotiation preference.
@@ -276,9 +257,7 @@ set vpn sstp client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48' delegation
 set vpn sstp client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
 set vpn sstp default-ipv6-pool IPv6-POOL
 ```
-
 ### IPv6 Advanced Options
-
 ```{cfgcmd} set vpn sstp ppp-options ipv6-accept-peer-interface-id
 
 Accept peer interface identifier. By default this is not defined.
@@ -320,7 +299,6 @@ Script to run when the session interface is completely configured and started
 ```
 ## Advanced Options
 ### Authentication Advanced Options
-
 ```{cfgcmd} set vpn sstp authentication local-users username <user> disable
 
 Disable `<user>` account.
@@ -473,7 +451,6 @@ testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.
 If you use a self-signed certificate, do not forget to install CA on the client side.
 The following PPP configuration tests MSCHAP-v2:
-
 ```none
 $ cat /etc/ppp/peers/vyos
 usepeerdns
@@ -491,11 +468,9 @@ nobsdcomp
 nodeflate
 debug
 ```
-
 You can now "dial" the peer with the follwoing command: `sstpc --log-level 4
 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos`.
 A connection attempt will be shown as:
-
 ```none
 $ sstpc --log-level 4 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos
 
@@ -521,9 +496,7 @@ $ ip addr show ppp0
      inet 100.64.2.2 peer 100.64.1.1/32 scope global ppp0
         valid_lft forever preferred_lft forever
 ```
-
 ## Monitoring
-
 ```{opcmd} show sstp-server sessions
 
 Use this command to locally check the active sessions in the SSTP
@@ -561,9 +534,7 @@ sstp:
   starting: 0
   active: 1
 ```
-
 ## Troubleshooting
-
 ```none
 vyos@vyos:~$sudo journalctl -u accel-ppp@sstp -b 0
 

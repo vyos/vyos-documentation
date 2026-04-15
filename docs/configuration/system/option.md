@@ -115,7 +115,6 @@ source interface used for all CURL operations.
 time.
 :::
 ## SSH client
-
 ```{cfgcmd} set system option ssh-client source-address <address>
 
 Use the specified address on the local machine as the source address of the
@@ -130,7 +129,6 @@ source address of the connection.
 When starting a VyOS live system (the installation CD) the configured keyboard
 layout defaults to US. As this might not suite everyone's use case you can adjust
 the used keyboard layout on the system console.
-
 ```{cfgcmd} set system option keyboard-layout <us | fr | de | fi | no | dk>
 
 Change system keyboard layout to given language.
@@ -157,7 +155,6 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
 <https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf>
 :::
 % start_vyoslinter
-
 ```{cfgcmd} set system option performance < throughput | latency >
 
 Configure one of the predefined system performance profiles.

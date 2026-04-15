@@ -13,7 +13,6 @@ domains across Layer 3 networks using UDP encapsulation, enabling scalable
 multi-tenant networking while leveraging VPP's optimized data plane.
 ## Basic Configuration
 ### Creating a VXLAN Interface
-
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN>
 
 Create a VXLAN interface where ``<vppvxlanN>`` follows the naming
@@ -42,10 +41,8 @@ set interfaces vpp vxlan vppvxlan1 vni 100
 set interfaces vpp vxlan vppvxlan1 remote 203.0.113.2
 set interfaces vpp vxlan vppvxlan1 source-address 192.168.1.1
 ```
-
 ## Interface Configuration
 ### Description and Administrative Control
-
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> description <description>
 
 Set a descriptive name for the VXLAN interface.
@@ -58,7 +55,6 @@ Administratively disable the VXLAN interface.
 The kernel interface is bound to the VXLAN tunnel for management and
 application compatibility.
 ## IP Address Configuration
-
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> address <ip-address/prefix>
 
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
@@ -70,9 +66,7 @@ addresses can be assigned.
 set interfaces vpp vxlan vppvxlan1 address 192.168.1.10/24
 set interfaces vpp vxlan vppvxlan1 address 2001:db8::10/64
 ```
-
 ## MTU Configuration
-
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> mtu <size>
 
 Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU
@@ -80,7 +74,6 @@ must be compatible with the connected VPP interface.
 ```
 ## Configuration Examples
 ### Basic VXLAN Tunnel
-
 ```none
 # IPv4 VXLAN tunnel
 set interfaces vpp vxlan vppvxlan1
@@ -89,9 +82,7 @@ set interfaces vpp vxlan vppvxlan1 vni 1000
 set interfaces vpp vxlan vppvxlan1 remote 203.0.113.10
 set interfaces vpp vxlan vppvxlan1 source-address 192.168.1.1
 ```
-
 ### IPv6 VXLAN Tunnel
-
 ```none
 # IPv6 endpoints
 set interfaces vpp vxlan vppvxlan2
@@ -99,9 +90,7 @@ set interfaces vpp vxlan vppvxlan2 vni 2000
 set interfaces vpp vxlan vppvxlan2 remote 2001:db8::2
 set interfaces vpp vxlan vppvxlan2 source-address 2001:db8::1
 ```
-
 ### VXLAN with Kernel Interface
-
 ```none
 # VXLAN tunnel with management interface
 set interfaces vpp vxlan vppvxlan3
@@ -110,11 +99,9 @@ set interfaces vpp vxlan vppvxlan3 remote 203.0.113.30
 set interfaces vpp vxlan vppvxlan3 source-address 192.168.1.1
 set interfaces vpp vxlan vppvxlan3 address 10.0.3.1/24
 ```
-
 ## Bridge Integration
 VXLAN interfaces are commonly used as members in VPP bridges for Layer 2
 extension. See {doc}`bridge` for more information.
-
 ```none
 # Add VXLAN tunnel to bridge
 set interfaces vpp bridge vppbr1
@@ -122,9 +109,7 @@ set interfaces vpp bridge vppbr1 member interface vppvxlan1
 set interfaces vpp bridge vppbr1 member interface eth1
 set interfaces vpp bridge vppbr1 member interface vpplo1 bvi
 ```
-
 ### Multi-Tenant Configuration
-
 ```none
 # Multiple VNIs for tenant separation
 set interfaces vpp vxlan vppvxlan10

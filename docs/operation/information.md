@@ -71,9 +71,7 @@ If a device is unplugged and plugged in again, it is assigned a new
 %               |__ Port 4: Dev 7, If 1, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 %               |__ Port 4: Dev 7, If 2, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 %               |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
-
 % start_vyoslinter
-
 ```{opcmd} show hardware usb serial
 
 Retrieve a list and description of all connected USB serial devices. The
@@ -103,13 +101,9 @@ directly when accessing the serial console as console-server device.
 %   usb0b2.4p1.1     Quad_RS232-HS       Future Technology Devices International, Ltd
 %   usb0b2.4p1.2     Quad_RS232-HS       Future Technology Devices International, Ltd
 %   usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
-
 % start_vyoslinter
-
 (information-version)=
-
 # Version
-
 ```{opcmd} show version
 
 Return the currently running VyOS version and build information. This

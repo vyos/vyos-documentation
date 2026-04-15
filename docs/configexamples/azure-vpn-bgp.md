@@ -49,7 +49,6 @@ set vpn ipsec esp-group AZURE mode 'tunnel'
 set vpn ipsec esp-group AZURE pfs 'dh-group2'
 set vpn ipsec esp-group AZURE proposal 1 encryption 'aes256'
 set vpn ipsec esp-group AZURE proposal 1 hash 'sha1'
-
 set vpn ipsec ike-group AZURE dead-peer-detection action 'restart'
 set vpn ipsec ike-group AZURE dead-peer-detection interval '15'
 set vpn ipsec ike-group AZURE dead-peer-detection timeout '30'

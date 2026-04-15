@@ -369,7 +369,6 @@ drwxrwsr-x 9 root vyattacfg 4.0K Oct 18 00:05 ..
 -rw-r--r-- 1 root vyattacfg  46K Oct 13 23:24 pxelinux.0
 drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 pxelinux.cfg
 -r--r--r-- 1 root vyattacfg 3.7M Oct 13 23:24 vmlinuz
-
 vyos@vyos# ls -hal /config/tftpboot/pxelinux.cfg
 total 12K
 drwxr-xr-x 2 root vyattacfg 4.0K Oct 14 01:10 .
@@ -382,7 +381,6 @@ Example of simple (no menu) configuration file:
 ```none
 vyos@vyos# cat /config/tftpboot/pxelinux.cfg/default
 DEFAULT VyOS123
-
 LABEL VyOS123
  KERNEL vmlinuz
  APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://address:8000/filesystem.squashfs

@@ -77,16 +77,12 @@ USB to serial converters will handle most of their work in software
 
    can't cope with the expected speed.
 ```
-
-
 ### Remote Access
 
 
 Each individual configured console-server device can be directly exposed to
 the outside world. A user can directly connect via SSH to the configured
 port.
-
-
 ```{cfgcmd} set service console-server device <device> ssh port <port>
 
 Accept SSH connections for the given `<device>` on TCP port `<port>`.
@@ -106,11 +102,7 @@ Multiple users can connect to the same serial device but only
 
    one is allowed to write to the console port.
 ```
-
-
 ## Operation
-
-
 ```{opcmd} show console-server ports
 
 Show configured serial ports and their respective interface configuration.

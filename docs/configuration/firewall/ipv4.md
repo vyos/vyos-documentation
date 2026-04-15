@@ -15,41 +15,24 @@ configuration commands:
 ```{cfgcmd} set firewall ipv4 ...
 ```
 
-To learn about the general traffic flow in VyOS firewalls,
-see {doc}`Firewall </configuration/firewall/index>`.
-
+To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </configuration/firewall/index>`.
 
 ```none
-
 - set firewall
-
     * ipv4
-
          - forward
-
             + filter
-
          - input
-
             + filter
-
          - output
-
             + filter
-
             + raw
-
          - prerouting
-
             + raw
-
          - name
-
             + custom_name
 
 ```
-
-
 First, the router receives all traffic and processes it in the **prerouting**
 stage.
 
@@ -149,8 +132,6 @@ The action can be:
 >   of the last chain.
 > - `queue`: Enqueue packet to userspace.
 > - `synproxy`: Synproxy the packet.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999> action
 
 [accept | continue | drop | jump | queue | reject | return | synproxy]
@@ -296,13 +277,9 @@ Use this command only when the action is set to ``queue``. Distribute
 
 packets between several queues.
 ```
-
-
 Also, **default-action** is an action that applies when a packet does not
 match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter default-action
 
 [accept | drop]
@@ -344,8 +321,6 @@ Use this command only when you set ``default-action`` to ``jump``. Specify
 
 the jump target for the default rule.
 ```
-
-
 :::{note}
 **Important note about default-actions:**
 If you do not define a default action for a base chain, the system sets
@@ -360,8 +335,6 @@ do not define a default action, the system sets the default-action to
 
 You can enable logging for every single firewall rule. If you enable logging,
 you can define other log options.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999> log
 ```
 
@@ -524,15 +497,11 @@ to userspace. Only applicable if you enable rule logging and define the log
 
 group.
 ```
-
-
 ### Firewall Description
 
 
 You can add a description for reference for every single rule and for every
 defined custom chain.
-
-
 ```{cfgcmd} set firewall ipv4 name <name> description <text>
 
 Provide a rule-set description for a custom firewall chain.
@@ -561,15 +530,11 @@ description <text>
 
 Provide a description for each rule.
 ```
-
-
 ### Rule Status
 
 
 When you define a rule, it is enabled by default. In some cases, it is useful
 to disable the rule rather than removing it.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999> disable
 ```
 
@@ -586,14 +551,10 @@ to disable the rule rather than removing it.
 
 Command for disabling a rule but keeping it in the configuration.
 ```
-
-
 ### Matching criteria
 
 
 There are a lot of matching criteria against which the packet can be tested.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
 
 connection-status nat [destination | source]
@@ -982,14 +943,10 @@ Match IP addresses based on its geolocation. More info: `geoip matching
 
 Use inverse-match to match anything except the given country-codes.
 ```
-
-
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
 permits redistribution so we can include a database in images(~3MB
 compressed). Includes cron script (manually callable by op-mode update
 geoip) to keep database and rules updated.
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
 
 source mac-address <mac-address>
@@ -1564,15 +1521,11 @@ Match based on inbound interface. Wildcard ``*`` is supported. For example:
 
 ``!eth2``
 ```
-
-
 :::{note}
 If an interface is attached to a non-default vrf, when using
 **inbound-interface**, the vrf name must be used. For example `set firewall
 ipv4 forward filter rule 10 inbound-interface name MGMT`
 :::
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
 
 inbound-interface group <iface_group>
@@ -1619,15 +1572,11 @@ Match based on outbound interface. Wildcard ``*`` is supported. For example:
 
 ``!eth2``
 ```
-
-
 :::{note}
 If an interface is attached to a non-default vrf, when using
 **outbound-interface**, the real interface name must be used. For example
 `set firewall ipv4 forward filter rule 10 outbound-interface name eth0`
 :::
-
-
 ```{cfgcmd} set firewall ipv4 forward filter rule <1-999999>
 
 outbound-interface group <iface_group>
@@ -2175,16 +2124,12 @@ Match when 'count' amount of connections appear within 'time'. Use these
 
 matching criteria to block brute-force attempts.
 ```
-
-
 ### Packet Modifications
 
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
 packets before sending them out. This feature provides more flexibility in
 packet handling.
-
-
 ```{cfgcmd} set firewall ipv4 prerouting raw rule <1-999999>
 
 set dscp <0-63>
@@ -2282,14 +2227,10 @@ set connection-mark <0-2147483647>
 
 Set connection mark value.
 ```
-
-
 ## Synproxy
 
 
 Synproxy connections
-
-
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule <1-999999>
 
 action synproxy
@@ -2318,8 +2259,6 @@ synproxy tcp window-scale <1-14>
 
  Set the window scale factor for TCP window scaling
 ```
-
-
 ### Example synproxy
 
 
@@ -2329,8 +2268,6 @@ Requirements to enable synproxy:
 > - Traffic must be symmetric.
 > - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled.
 > - Disable conntrack loose track option.
-
-
 ```none
 
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'
@@ -2364,14 +2301,10 @@ set firewall ipv4 input filter rule 1000 action 'drop'
 set firewall ipv4 input filter rule 1000 state invalid
 
 ```
-
-
 ## Operation-mode Firewall
 
 
 ### Rule-set overview
-
-
 ```{opcmd} show firewall
 
 This will show you a basic firewall overview, for all rule-sets, not
@@ -2671,9 +2604,7 @@ firewall {
     }
 }
 ```
-
 ### Update geoip database
-
 ```{opcmd} update geoip
 
 Command to update GeoIP database and firewall sets.

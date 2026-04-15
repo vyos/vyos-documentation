@@ -7,10 +7,8 @@ lastproofread: '2026-02-27'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Unix Dataplane Configuration
-
 The UNIX configuration section is used to control VPP's interaction
 with the underlying operating system, including operations scheduling.
-
 VPP relies on the polling mechanism to efficiently manage I/O operations
 and system events. By default VPP continuously polls for events, which
 leads to permanent 100% CPU usage by all cores assigned to VPP dataplane.
@@ -18,15 +16,12 @@ This is optimal for performance, but may not be desirable in all
 environments, especially where power consumption is a concern or where VPP
 is running inside a hypervisor, especially if the VM has burstable
 thresholds and CPU usage limits.
-
 To mitigate this, VPP provides a configurable polling delay that allows
 reducing CPU usage by introducing a delay between polling cycles. This
 introduces a trade-off between CPU usage and latency, as longer delays
 can lead to increased latency in processing events.
-
 You can configure the polling delay using the following command in the
 VyOS CLI:
-
 ```{cfgcmd} set vpp settings poll-sleep-usec <delay>
 ```
 Sets the polling delay in microseconds. A value of 0 means no delay

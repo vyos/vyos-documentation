@@ -41,7 +41,6 @@ VPP Dataplane integration minimizes configuration changes. Features in the
 kernel dataplane continue to operate there. VPP Dataplane only handles packet
 forwarding for interfaces explicitly assigned to it.
 Traffic flow examples between VPP and kernel dataplane interfaces:
-
 ```{image} /_static/images/vpp/vyos_vpp_integration.svg
 :align: center
 ```

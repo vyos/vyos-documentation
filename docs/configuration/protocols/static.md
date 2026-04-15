@@ -76,7 +76,6 @@ gateway address as BFD peer destination address.
 %
 % Configure a static route for `<subnet>` using gateway `<address>` and use the
 % gateway address as BFD peer destination address with BFD profile `<profile>`.
-
 ```{cfgcmd} set protocols static route <subnet> next-hop <address> bfd multi-hop
 
    source-address <source-address>
@@ -165,7 +164,6 @@ Routes with a distance of 255 are effectively disabled and not
 % multiple segment instructions.
 %
 % Example:
-
 % stop_vyoslinter
 %
 % .. code-block:: none
@@ -183,11 +181,8 @@ Routes with a distance of 255 are effectively disabled and not
 %         t - trapped, o - offload failure
 %   C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
 %   S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
-
 % start_vyoslinter
-
 ### IPv6 Interface Routes
-
 ```{cfgcmd} set protocols static route6 <subnet> interface
 
    <interface>
@@ -224,7 +219,6 @@ Example:
 %   set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
 % start_vyoslinter
 ### IPv6 BFD
-
 ```{cfgcmd} set protocols static route6 <subnet> next-hop <address> bfd
 
 Configure a static route for `<subnet>` using gateway `<address>` and use the
@@ -239,7 +233,6 @@ gateway address as BFD peer destination address.
 % Configure a static route for `<subnet>` using gateway `<address>` and use the
 % gateway address as BFD peer destination address with BFD profile `<profile>`.
 % stop_vyoslinter
-
 ```{cfgcmd} set protocols static route6 <subnet> next-hop <address> bfd multi-hop
 
    source-address <source>
@@ -249,9 +242,7 @@ gateway address as BFD peer destination address.
 % Configure a static route for `<subnet>` using gateway `<address>` and use the
 % gateway address as BFD peer destination address with source address
 % `<source>` but initiate a multi-hop session.
-
 ### IPv6 Reject Routes
-
 ```{cfgcmd} set protocol static route6 <subnet> reject
 
 Defines route which emits an ICMP unreachable when matched.

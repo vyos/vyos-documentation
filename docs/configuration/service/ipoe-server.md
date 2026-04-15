@@ -141,8 +141,6 @@ vyos@vyos:~$ show ipoe-server sessions
  ipoe1  | eth1.101 | 00:50:79:66:68:01 | 192.168.0.3 |            | ipoe |      | active | 00:04:44
 
 ```
-
-
 ## Configuring RADIUS authentication
 
 
@@ -151,8 +149,6 @@ changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
-
-
 ```none
 
 set service ipoe-server authentication mode radius
@@ -166,13 +162,9 @@ Configure RADIUS `<server>` and its required shared `<secret>` for
 
 communicating with the RADIUS server.
 ```
-
-
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 For example:
-
-
 ```none
 
 set service ipoe-server authentication radius server 10.0.0.1 key 'foo'
@@ -180,8 +172,6 @@ set service ipoe-server authentication radius server 10.0.0.1 key 'foo'
 set service ipoe-server authentication radius server 10.0.0.2 key 'foo'
 
 ```
-
-
 :::{note}
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
@@ -194,14 +184,10 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
-
-
 ```{cfgcmd} set service ipoe-server authentication radius source-address <address>
 
 Source IPv4 address used in all RADIUS server queires.
 ```
-
-
 :::{note}
 The `source-address` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
@@ -209,8 +195,6 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
-
-
 ```{cfgcmd} set service ipoe-server authentication radius server <server> port <port>
 
 Configure RADIUS `<server>` and its required port for authentication requests.
@@ -295,14 +279,10 @@ Specifies which RADIUS server attribute contains the rate limit information.
 
 The default attribute is `Filter-Id`.
 ```
-
-
 :::{note}
 If you set a custom RADIUS attribute you must define it on both
 dictionaries at RADIUS server and client.
 :::
-
-
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit enable
 
 Enables bandwidth shaping via RADIUS.
@@ -315,8 +295,6 @@ Specifies the vendor dictionary, dictionary needs to be in
 
 /usr/share/accel-ppp/radius.
 ```
-
-
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
 
@@ -354,8 +332,6 @@ Define it in your RADIUS server.
 
 
 ## IPv6
-
-
 ```{cfgcmd} set service ipoe-server client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
 
  mask <number-of-bits>
@@ -403,11 +379,7 @@ set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' m
 set service ipoe-server default-ipv6-pool IPv6-POOL
 
 ```
-
-
 ## Scripting
-
-
 ```{cfgcmd} set service ipoe-server extended-scripts on-change <path_to_script>
 
 Script to run when session interface changed by RADIUS CoA handling
@@ -430,14 +402,10 @@ Script to run before session interface comes up
 
 Script to run when session interface is completely configured and started
 ```
-
-
 ## Advanced Options
 
 
 ### Authentication Advanced Options
-
-
 ```{cfgcmd} set service ipoe-server authentication interface <interface> mac <MAC> vlan
 
  <vlan-id>
@@ -463,20 +431,12 @@ Download bandwidth limit in kbit/s for user on interface `<interface>`.
 
 Upload bandwidth limit in kbit/s for for user on interface `<interface>`.
 ```
-
-
 ### Client IP Pool Advanced Options
-
-
 ```{cfgcmd} set service ipoe-server client-ip-pool <POOL-NAME> next-pool <NEXT-POOL-NAME>
 
 Use this command to define the next address pool name.
 ```
-
-
 ### Advanced Interface Options
-
-
 ```{cfgcmd} set service ipoe-server interface <interface> client-subnet <x.x.x.x/x>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
@@ -571,9 +531,7 @@ ipoe:
   active: 1
   delayed: 0
 ```
-
 ## Toubleshooting
-
 ```none
 vyos@vyos:~$ show log ipoe-server
 

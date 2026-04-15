@@ -15,49 +15,37 @@ Network.
 ```{image} _include/topology.png
 :alt: Ansible Example topology image
 ```
-
 ## Configuration
 First, we configure the transport network and the Tunnel interface.
 Transport:
-
 ```{literalinclude} _include/transport.conf
 :language: none
 ```
-
 DHCP-Server
-
 ```{literalinclude} _include/dhcp-server.conf
 :language: none
 :lines: 1-8
 ```
-
 DHCP-Relay
-
 ```{literalinclude} _include/dhcp-relay.conf
 :language: none
 :lines: 1-8
 ```
-
 After this, we need the DHCP-Server and Relay configuration.
 To get a testable result, we just have one IP in the DHCP range.
 Expand it as you need it.
 DHCP-Server
-
 ```{literalinclude} _include/dhcp-server.conf
 :language: none
 :lines: 9-13
 ```
-
 DHCP-Relay
-
 ```{literalinclude} _include/dhcp-relay.conf
 :language: none
 :lines: 9-10
 ```
-
 ## Test the result
 Ping the Client from the DHCP Server.
-
 ```none
 vyos@dhcp-server:~$ ping 192.168.0.30 count 4
 PING 192.168.0.30 (192.168.0.30) 56(84) bytes of data.
@@ -70,9 +58,7 @@ PING 192.168.0.30 (192.168.0.30) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 1.016/1.112/1.214/0.077 ms
 ```
-
 And show all DHCP Leases
-
 ```none
 vyos@dhcp-server:~$ show dhcp server leases
 IP Address    MAC address        State    Lease start          Lease expiration     Remaining    Pool        Hostname

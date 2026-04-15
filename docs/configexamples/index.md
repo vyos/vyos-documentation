@@ -29,7 +29,6 @@ ipsec-pa-route-based
 policy-based-ipsec-and-firewall
 site-2-site-cisco
 ```
-
 ## Configuration Blueprints (autotest)
 The next pages contains automatic full tested configuration examples.
 Each lab will build an test from an external script.
@@ -43,7 +42,6 @@ The process will do the following steps:
 4. optional do an upgrade to a higher version and do step 3 again.
 5. generate the documentation and include files
 6. shutdown and destroy the lab, if there is no error
-
 ```{toctree}
 :maxdepth: 1
 

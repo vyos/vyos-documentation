@@ -26,11 +26,7 @@ The Babel process starts when the first Babel enabled interface is configured.
   specified in this command.
 
 ```
-
-
 ## Optional Configuration
-
-
 ```{cfgcmd} set protocols babel parameters diversity
 
 This command enables routing using radio frequency diversity.
@@ -86,11 +82,7 @@ convergence time. The value 0 disables hysteresis, and is suitable for wired
 
 networks. The default is 4 s.
 ```
-
-
 ## Interfaces Configuration
-
-
 ```{cfgcmd} set protocols babel interface <interface> type <auto|wired|wireless>
 
 This command sets the interface type:
@@ -256,7 +248,6 @@ filter the Babel routes.
 ## Configuration Example
 Simple Babel configuration using 2 nodes and redistributing connected interfaces.
 **Node 1:**
-
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces loopback lo address fd12:3456:dead:beef::1/128
@@ -264,9 +255,7 @@ set protocols babel interface eth0 type wired
 set protocols babel redistribute ipv4 connected
 set protocols babel redistribute ipv6 connected
 ```
-
 **Node 2:**
-
 ```none
 set interfaces loopback lo address 10.2.2.2/32
 set interfaces loopback lo address fd12:3456:beef:dead::2/128

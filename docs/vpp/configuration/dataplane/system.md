@@ -18,31 +18,24 @@ Changes to hugepage settings require a system reboot to take effect.
 Hugepages must be enabled before VPP configuration is applied.
 :::
 To enable hugepages:
-
 ```{cfgcmd} set system option kernel memory hugepage-size <size> hugepage-count
 
    '<count>'
 ```
 Enables hugepages with the specified size and count. The size can be either
 2MB or 1GB, and the count specifies the number of hugepages to allocate.
-
 If your system has multiple NUMA nodes, the total amount of hugepages will be
 divided equally among them.
-
 ## Resources Limits
-
 :::{note}
 By default, system will calculate and set the recommended values for
 resource limits. Avoid tuning these values if you are not sure what you
 are doing.
 :::
-
 During operations VPP utilizes a significant amount of system resources,
 especially memory. There are two main settings that may need to be
 adjusted to ensure VPP runs smoothly:
-
 Maximum number of memory map areas a process may have:
-
 ```{cfgcmd} set system option resource-limits max-map-count <value>
 ```
 Maximum shared memory segment size:
@@ -50,35 +43,26 @@ Maximum shared memory segment size:
 ```{cfgcmd} set system option resource-limits shmmax <value>
 ```
 Both settings are automatically calculated based on configured hugepages.
-
 ## Kernel Tuning
-
 VPP performance greatly benefits from proper kernel tuning, especially
 CPU isolation and disabling unnecessary kernel features. These
 optimizations ensure dedicated CPU cores are available exclusively for
 VPP dataplane processing without interference from the kernel scheduler
 or other system processes.
-
 :::{warning}
 Kernel tuning changes require a system reboot to take effect.
-
 Improper CPU isolation can lead to system instability if essential system
 processes are starved of CPU resources.
 :::
-
 ### CPU Isolation and Optimization
-
 CPU isolation is crucial for VPP performance as it dedicates specific
 CPU cores exclusively to VPP dataplane processing. The isolated cores are
 removed from the kernel scheduler and will not run regular system
 processes.
-
 **Disable NMI Watchdog**
-
 The NMI (Non-Maskable Interrupt) watchdog can interfere with VPP
 performance by generating interrupts on isolated cores and is not
 compatible with nohz-full mode:
-
 ```{cfgcmd} set system option kernel cpu disable-nmi-watchdog
 
 Disables the NMI watchdog for detecting hard CPU lockups. This
@@ -136,7 +120,6 @@ Use the same CPU range as configured for ``isolate-cpus``.
 Additional kernel optimizations can further improve VPP performance by
 disabling unnecessary features and reducing system overhead.
 **Disable High Precision Event Timer**
-
 ```{cfgcmd} set system option kernel disable-hpet
 
 Disables the High Precision Event Timer (HPET). HPET can cause
@@ -175,7 +158,6 @@ platforms.
 ```
 ### Optimal Configuration Example
 For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:
-
 ```none
 # Kernel CPU optimizations
 set system option kernel cpu disable-nmi-watchdog

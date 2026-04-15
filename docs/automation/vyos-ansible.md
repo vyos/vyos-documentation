@@ -42,7 +42,6 @@ hosts
 ```none
 [vyos_hosts]
 r11 ansible_ssh_host=192.0.2.11
-
 [vyos_hosts:vars]
 ansible_python_interpreter=/usr/bin/python3
 ansible_user=vyos
@@ -55,12 +54,9 @@ main.yml
 
 ```none
 ---
-
 - hosts: r11
-
   connection: network_cli
   gather_facts: 'no'
-
   tasks:
     - name: Configure remote r11
       vyos_config:

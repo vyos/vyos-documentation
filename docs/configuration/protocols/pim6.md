@@ -41,7 +41,6 @@ Disable MLD reports and query on the interface.
 ```
 ## Tuning commands
 You can also tune multicast with the following commands.
-
 ```{cfgcmd} set protocols pim6 interface <interface-name> mld interval <seconds>
 
 Use this command to configure in the selected interface the MLD
@@ -75,16 +74,13 @@ Set the MLD version used on this interface. The default value is 2.
 ```
 ### Configuration Example
 To enable MLD reports and query on interfaces `eth0` and `eth1`:
-
 ```none
 set protocols pim6 interface eth0
 set protocols pim6 interface eth1
 ```
-
 The following configuration explicitly joins multicast group `ff15::1234` on interface `eth1`
 and source-specific multicast group `ff15::5678` with source address `2001:db8::1` on interface
 `eth1`:
-
 ```none
 set protocols pim6 interface eth0 mld join ff15::1234
 set protocols pim6 interface eth1 mld join ff15::5678 source 2001:db8::1

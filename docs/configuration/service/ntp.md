@@ -170,8 +170,6 @@ Define how to handle leap-seconds.
 
   default
 ```
-
-
 ## Hardware Timestamping of NTP Packets
 
 
@@ -194,8 +192,6 @@ not supported, chrony will attempt to set it to timestamp all packets. If
 neither option is supported (e.g. the NIC can only timestamp received PTP
 packets), chrony will leverage timestamping on transmitted packets only, which
 still provides some benefit.
-
-
 ```{cfgcmd} set service ntp timestamp interface <interface>
 
 Configures hardware timestamping on the interface <interface>. The special
@@ -217,7 +213,6 @@ Configure the timestamping behavior with the following option:
   disabled for the interface.
 ```
 The following `receive-filter` modes can be selected:
-
 - `all`: All received packets will be timestamped.
 - `ntp`: Only received NTP protocol packets will be timestamped.
 - `ptp`: Only received PTP protocol packets will be timestamped. Combined with
@@ -225,23 +220,18 @@ The following `receive-filter` modes can be selected:
   hardware timestamping on NICs that only support the ptp filter mode.
 - `none`: No received packets will be timestamped. Hardware timestamping of
   transmitted packets will still be leveraged, if supported by the NIC.
-
 (ptp-transport)=
-
 ## PTP Transport of NTP Packets
-
 The Precision Time Protocol (IEEE 1588) is a local network time synchronization
 protocol that provides high precision time synchronization by leveraging
 hardware clocks in NICs and other network elements. VyOS does not currently
 support standards-based PTP, which can be deployed independently of
 NTP.
-
 For networks consisting of VyOS and other Linux systems running relatively
 recent versions of the chrony daemon, NTP packets can be "tunneled" over
 PTP. NTP over PTP provides the best of both worlds, leveraging hardware support
 for timestamping PTP packets while retaining the configuration flexibility and
 fault tolerance of NTP.
-
 ```{cfgcmd} set service ntp ptp
 
 Enables the NTP daemon PTP transport. The NTP daemon will listen on the

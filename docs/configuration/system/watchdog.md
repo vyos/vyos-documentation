@@ -158,11 +158,9 @@ Example:
 ## Examples
 ### Basic Configuration with Software Watchdog
 This example configures a basic software watchdog with default timeouts:
-
 ```none
 set system watchdog module softdog
 ```
-
 This will:
 - Enable the watchdog feature
 - Load the `softdog` kernel module
@@ -171,7 +169,6 @@ This will:
 ### Advanced Configuration
 This example shows a more customized configuration suitable for a production
 system:
-
 ```none
 set system watchdog module iTCO_wdt
 set system watchdog timeout 30

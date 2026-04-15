@@ -143,16 +143,13 @@ Enable shortcut (spoke-to-spoke) tunnels to allow NHC to talk to each others dir
 after establishing a connection without going through the hub.
 ```
 ### IPSEC configuration
-
 - Please refer to the {ref}`ipsec_general` documentation for the individual IPSec
   related options.
-
 :::{note}
 NHRP daemon based on FRR nhrpd. It controls IPSEC. That's why 'close-action'
 parameter in IKE configuration always is set to 'close' and 'dead-peer-detection action'
 always is set to 'clear'.
 :::
-
 ```{cfgcmd} set vpn ipsec profile <profile-name> authentication mode pre-shared-secret
 
 Set preshared secret mode authentication
@@ -204,7 +201,6 @@ each and every individual spoke.
 ### Configuration
 #### Hub
 ##### VyOS-HUB-1
-
 ```none
 set interfaces ethernet eth0 address '192.168.0.2/30'
 
@@ -240,7 +236,6 @@ set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
 set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
 set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
-
 :::{note}
 Setting this up on AWS will require a "Custom Protocol Rule" for
 protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC
@@ -252,7 +247,6 @@ through the details pane below your EC2 instance in the AWS console).
 #### Spokes
 > The individual spoke configurations only differ in interface IP addresses.
 ##### VyOS-Spoke-1 and VyOS-Spoke-2
-
 ```none
 set interfaces ethernet eth0 address '192.168.1.2/30'
 
@@ -290,9 +284,7 @@ set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
 set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
 set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
-
 ##### Cisco-Spoke-3
-
 ```none
 crypto isakmp policy 10
  encr aes 256
@@ -339,10 +331,8 @@ interface GigabitEthernet0/0
 !
 ip route 0.0.0.0 0.0.0.0 192.168.3.1
 ```
-
 ##### Monitoring DMVPN Network
 Let send ICMP packets from VyOS-SPOKE-1 to Cisco-SPOKE-3
-
 ```none
 vyos@vyos:~$ ping 10.0.0.3
 PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
@@ -353,9 +343,7 @@ PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 2 packets transmitted, 2 received, 0% packet loss, time 1002ms
 rtt min/avg/max/mdev = 3.072/3.257/3.442/0.185 ms
 ```
-
 ##### Monitoring on HUB
-
 ```none
 vyos@vyos:~$ show ip nhrp cache
 Iface    Type     Protocol                 NBMA                     Claimed NBMA             Flags  Identity
@@ -371,9 +359,7 @@ dmvpn-NHRPVPN-tun100-child  up       3m46s     230B/270B       2/2              
 dmvpn-NHRPVPN-tun100-child  up       5m48s     460B/540B       4/4               192.168.2.2       192.168.2.2  AES_CBC_256/HMAC_SHA1_96/MODP_1024
 dmvpn-NHRPVPN-tun100-child  up       16m26s    1K/1K           13/12             192.168.3.2       192.168.3.2  AES_CBC_256/HMAC_SHA1_96/MODP_1024
 ```
-
 ##### Monitoring on Spokes
-
 ```none
 vyos@vyos:~$ show ip nhrp cache
 Iface    Type     Protocol                 NBMA                     Claimed NBMA             Flags  Identity

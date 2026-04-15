@@ -67,50 +67,37 @@ it creates a new user linked to the specified principal.
 VyOS locks the account, preventing the user from logging in.
 ```
 (ssh-key-based-authentication)=
-
 ## Key-based authentication
-
 Key-based authentication is the recommended method for securing SSH access in
 VyOS. It uses a **public/private key pair** to verify user identity without
 requiring a password. To authorize access, you assign **SSH public keys** to
 user accounts on the router, while SSH private keys remain on local devices.
 VyOS allows assigning multiple SSH public keys to a single user account, which
 is useful for accessing a router from different devices.
-
 ### Generate the key pair
-
 Generate an SSH key pair on your **local machine** using the `ssh-keygen`
 command. This creates two files:
-
 - **Private key** (e.g., `id_rsa`): Remains on your local machine and must
   never be shared.
 - **Public key** (e.g., `id_rsa.pub`): Is used to configure the VyOS user
   account. By default, it is saved to `~/.ssh/id_rsa.pub`.
-
 Each SSH public key consists of three parts, separated by spaces:
-
 - **Encryption algorithm type:** `ssh-rsa`, `ssh-ed25519`, etc.
 - **Key:** The actual data (a long string beginning with `AAAA...`).
 - **Comment:** An identifier for your reference (e.g., `user@host`).
-
 Only the encryption algorithm type and key parts are required to
 configure the authorization entry in VyOS. The comment part is optional.
-
 :::{seealso}
 {ref}`SSH operation <ssh_operation>`
 :::
-
 :::{warning}
 SSH key strings are long. When copying and pasting, ensure your
 terminal does not insert line breaks. The key must be entered as a **single
 line** to function correctly.
 :::
-
 ### Configure the router
-
 To configure SSH public key authentication for a user account, run the
 following two commands using the same `<identifier>`:
-
 ```{cfgcmd} set system login user <username> authentication public-keys
 
    <identifier> key <key>
@@ -158,7 +145,6 @@ For example, to restrict allowed source IP addresses for an SSH public key,
 use: ``from=&quot;10.0.0.0/24&quot;``.
 ```
 ## OTP-based MFA
-
 VyOS lets you enhance user access security by enabling {abbr}`OTP (One-time
 password)`-based {abbr}`MFA (Multi-factor Authentication)` for individual
 users. Users with {abbr}`OTP (One-time password)`-based {abbr}`MFA
@@ -166,7 +152,6 @@ users. Users with {abbr}`OTP (One-time password)`-based {abbr}`MFA
 password)` along with their password at login. Users without {abbr}`OTP
 (One-time password)`-based {abbr}`MFA (Multi-factor Authentication)` use
 standard authentication.
-
 ```{cfgcmd} set system login user <username> authentication otp key <key>
 
 **Configure** :abbr:`OTP (One-time password)`**-based** :abbr:`MFA
@@ -217,7 +202,6 @@ The valid range is 1 to 21.
 ```
 ### Generate an OTP-key
 Use the following command to generate an OTP key:
-
 ```{cfgcmd} generate system login username <username> otp-key hotp-time
 
    rate-limit <1-10> rate-time <15-600> window-size <1-21>
@@ -259,11 +243,9 @@ set system login user otptester authentication otp rate-limit '2'
 set system login user otptester authentication otp rate-time '20'
 set system login user otptester authentication otp window-size '5'
 ```
-
 ### Display the OTP key for a user
 Use the following command to display the {abbr}`OTP (One-time password)`
 key for a user:
-
 ```{cfgcmd} sh system login authentication user <username> otp
 
    <full | key-b32 | qrcode | uri>
@@ -305,7 +287,6 @@ set system login user otptester authentication otp rate-limit '2'
 set system login user otptester authentication otp rate-time '20'
 set system login user otptester authentication otp window-size '5'
 ```
-
 Once {abbr}`OTP (One-time password)`-based {abbr}`MFA (Multi-factor
 Authentication)` is configured for a user account, this user must enter their
 standard password followed by the current 6-digit OTP code at login. For
@@ -317,7 +298,6 @@ VyOS instances is inefficient. VyOS supports centralized authentication via
 {abbr}`RADIUS (Remote Authentication Dial-In User Service)`, consolidating user
 account management on a single backend server.
 ### Configuration
-
 ```{cfgcmd} set system login radius server <address> key <secret>
 
 **Configure the** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
@@ -382,38 +362,29 @@ set system login radius server 192.168.0.2 port '1812'
 set system login radius server 192.168.0.2 timeout '5'
 set system login radius source-address '192.168.0.1'
 ```
-
 If communication with the {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` server fails, the router falls back to local user authentication.
 During this process, users may experience a login delay while the system waits
 for the {abbr}`RADIUS (Remote Authentication Dial-In User Service)` request to
 time out. This delay depends on the configured `timeout` value.
-
 :::{hint}
 To grant administrative privileges to {abbr}`RADIUS (Remote
 Authentication Dial-In User Service)`-authenticated users, the server must
 return the Cisco-AV-Pair attribute set to `shell:priv-lvl=15`. Otherwise, users
 receive standard privileges and cannot perform configuration tasks.
 :::
-
 ## TACACS+ authentication
-
 In addition to {abbr}`RADIUS (Remote Authentication Dial-In User Service)`,
 VyOS supports {abbr}`TACACS+ (Terminal Access Controller Access Control
 System)`, which is commonly used in large enterprise environments.
-
 Unlike {abbr}`RADIUS (Remote Authentication Dial-In User Service)`,
 {abbr}`TACACS+ (Terminal Access Controller Access Control System)` separates
 Authentication, Authorization, and Accounting (AAA) into independent processes
 and encrypts the entire packet body for enhanced security.
-
 {abbr}`TACACS+ (Terminal Access Controller Access Control System)` is defined
 in {rfc}`8907`.
-
 (tacacs-configuration)=
-
 ### Configuration
-
 ```{cfgcmd} set system login tacacs server <address> key <secret>
 
 **Configure the** :abbr:`TACACS+ (Terminal Access Controller Access Control
@@ -474,13 +445,11 @@ authentication requests are sent via the global routing table.
 ```
 (login-tacacs-example)=
 ### Configuration example
-
 ```none
 set system login tacacs server 192.168.0.2 key 'test-vyos'
 set system login tacacs server 192.168.0.2 port '49'
 set system login tacacs source-address '192.168.0.1'
 ```
-
 If communication with the {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` server fails, the router falls back to local user
 authentication.
@@ -489,7 +458,6 @@ VyOS allows you to configure **pre-login** and **post-login** banners.
 Pre-login banners are typically used for system identification, legal disclaimers, or security warnings
 displayed before authentication, while post-login banners provide system
 information or operational notices to users after login.
-
 ```{cfgcmd} set system login banner pre-login <message>
 
 Configure a message to be shown to users before the ``username`` and ``password``
@@ -503,7 +471,6 @@ Configure a message to be shown to users after successful authentication.
 Use `\\n` to insert line breaks in multi-line banner messages.
 :::
 ## Login session limits
-
 ```{cfgcmd} set system login max-login-session <number>
 
 **Configure the maximum number of concurrent login sessions.**
@@ -513,7 +480,6 @@ If you limit concurrent login sessions, you must also configure a
 session `<timeout>`. This clears inactive sessions and prevents blocking new
 login attempts.
 :::
-
 ```{cfgcmd} set system login timeout <timeout>
 
 **Configure the login session timeout, in seconds.**
@@ -527,7 +493,6 @@ each with a unique SSH key. `User1` is restricted to authentication from a
 single IP address.
 For both users, password-based logins require {abbr}`OTP (One-time password)`
 -based {abbr}`MFA (Multi-factor Authentication)`.
-
 ```none
 set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
 set system login user vyos authentication public-keys 'User1' type ssh-rsa
@@ -539,7 +504,6 @@ set system login user vyos authentication public-keys 'User2' type ssh-rsa
 set system login user vyos authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
 set system login user vyos authentication plaintext-password vyos
 ```
-
 Example 2: Containerized {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 deployment with redundancy.
 In this configuration, the VyOS router hosts its own authentication
@@ -549,13 +513,10 @@ private network for redundancy.
 System logins are authenticated against credentials stored within these internal
 containers rather than the router's local user database.
 First, download the image in operational mode:
-
 ```none
 add container image lfkeitel/tacacs_plus:latest
 ```
-
 Next, configure the containers in configuration mode:
-
 ```none
 set container network tac-test prefix '100.64.0.0/24'
 

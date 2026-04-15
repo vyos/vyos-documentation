@@ -42,7 +42,6 @@ from alternate table using route-map.
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
-
 ```{cfgcmd} set system ip protocol <protocol> route-map <route-map>
 
 Apply a route-map filter to routes for the specified protocol. The following
@@ -59,7 +58,6 @@ If you choose any as the option that will cause all protocols that
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
 by default for a traditional profile of FRR which we use. It and can be disabled if
 you do not want to e.g. allow BGP to peer across the default route.
-
 ```{cfgcmd} set system ip nht no-resolve-via-default
 
 Do not allow IPv4 nexthop tracking to resolve via the default route. This
@@ -69,7 +67,6 @@ subnode.
 ## Operational commands
 ### show commands
 See below the different parameters available for the IPv4 **show** command:
-
 ```none
 vyos@vyos:~$ show ip
 Possible completions:
@@ -95,10 +92,8 @@ Possible completions:
   rip           Show Routing Information Protocol (RIP) information
   route         Show IP routes
 ```
-
 ### reset commands
 And the different IPv4 **reset** commands available:
-
 ```none
 vyos@vyos:~$ reset ip
 Possible completions:

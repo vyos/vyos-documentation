@@ -211,37 +211,29 @@ Structure your scripts with these functions:
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 import sys
-
 from vyos.config import Config
 from vyos import ConfigError
-
 def get_config(config=None):
     if config:
         conf = config
     else:
         conf = Config()
-
     # Base path to CLI nodes
     base = ['...', '...']
     # Convert the VyOS config to an abstract internal representation
     config_data = conf.get_config_dict(base, key_mangling=('-', '_'), get_first_key=True)
     return config_data
-
 def verify(config):
     # Verify that configuration is valid
     if invalid:
         raise ConfigError("Descriptive message")
-
 def generate(config):
     # Generate daemon configs
     pass
-
 def apply(config):
     # Apply the generated configs to the live system
     pass
-
 try:
     c = get_config()
     verify(c)

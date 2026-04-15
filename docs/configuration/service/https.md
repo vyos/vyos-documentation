@@ -86,7 +86,6 @@ Enable GraphQL Schema introspection.
 :::{note}
 Do not leave introspection enabled in production, it is a security risk.
 :::
-
 ```{cfgcmd} set service https api graphql authentication type <key | token>
 
 Set the authentication type for GraphQL, default option is key. Available options are:
@@ -109,7 +108,6 @@ Allow cross-origin requests from `<origin>`.
 ```
 ## Example Configuration
 Setting REST API and an API-KEY is the minimal configuration to get a working API Endpoint.
-
 ```none
 set service https api keys id MY-HTTPS-API-ID key MY-HTTPS-API-PLAINTEXT-KEY
 set service https api rest

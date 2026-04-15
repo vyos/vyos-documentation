@@ -85,7 +85,6 @@ This shows the following:
  66.00 |||||||.....................................................
  33.00 |||||||.....................................................
        1   5   10   15   20   25   30   35   40   45   50   55   60
-
    KiB                      (TX Bytes/second)
   3.67 ......|.....................................................
   3.06 ......|.....................................................
@@ -135,7 +134,6 @@ Will clear the screen and show you the output of `show interfaces` every
 
 ```none
 Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper    Sun Mar 26 02:49:46 2019
-
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
 ---------        ----------                        ---  -----------

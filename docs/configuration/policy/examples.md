@@ -6,7 +6,6 @@
 # Create policy
 set policy route-map setmet rule 2 action 'permit'
 set policy route-map setmet rule 2 set as-path prepend '2 2 2'
-
 # Apply policy to BGP
 set protocols bgp system-as 1
 set protocols bgp neighbor 203.0.113.2 address-family ipv4-unicast route-map import 'setmet'
@@ -24,10 +23,8 @@ BGP table version is 0, local router ID is 192.168.56.101
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
               r RIB-failure, S Stale, R Removed
 Origin codes: i - IGP, e - EGP, ? - incomplete
-
    Network          Next Hop            Metric LocPrf Weight Path
 *> 198.51.100.3/32   203.0.113.2           1             0 2 i  < Path
-
 Total number of prefixes 1
 ```
 
@@ -39,10 +36,8 @@ BGP table version is 0, local router ID is 192.168.56.101
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
               r RIB-failure, S Stale, R Removed
 Origin codes: i - IGP, e - EGP, ? - incomplete
-
    Network          Next Hop            Metric LocPrf Weight Path
 *> 198.51.100.3/32   203.0.113.2           1             0 2 2 2 2 i
-
 Total number of prefixes 1
 vyos@vos1:~$
 ```
@@ -114,7 +109,6 @@ Add policy route matching VLAN source addresses
 set policy route PBR rule 20 set table '10'
 set policy route PBR rule 20 description 'Route VLAN10 traffic to table 10'
 set policy route PBR rule 20 source address '192.168.188.0/24'
-
 set policy route PBR rule 30 set table '11'
 set policy route PBR rule 30 description 'Route VLAN11 traffic to table 11'
 set policy route PBR rule 30 source address '192.168.189.0/24'
@@ -134,7 +128,6 @@ from PBR
 set firewall group network-group VLANS-GR description 'VLANs networks'
 set firewall group network-group VLANS-GR network '192.168.188.0/24'
 set firewall group network-group VLANS-GR network '192.168.189.0/24'
-
 set policy route PBR rule 10 description 'VLAN10 <-> VLAN11 shortcut'
 set policy route PBR rule 10 destination group network-group 'VLANS-GR'
 set policy route PBR rule 10 set table 'main'

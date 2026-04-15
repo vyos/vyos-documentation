@@ -62,7 +62,6 @@ through the following hooks:
 To control or allow mDNS packet forwarding via the relay, you must define
 appropriate rules in the INPUT and OUTPUT directions. Rules in the FORWARD
 direction will have no effect on mDNS relay traffic.
-
 ```none
 set firewall ipv4 input filter rule 10 action 'accept'
 set firewall ipv4 input filter rule 10 destination address '224.0.0.251'
@@ -73,34 +72,26 @@ set firewall ipv4 output filter rule 10 destination address '224.0.0.251'
 set firewall ipv4 output filter rule 10 destination port '5353'
 set firewall ipv4 output filter rule 10 protocol 'udp'
 ```
-
 ## Example
 To listen on both `eth0` and `eth1` mDNS packets and also repeat packets
 received on `eth0` to `eth1` (and vice-versa) use the following commands:
-
 ```none
 set service mdns repeater interface 'eth0'
 set service mdns repeater interface 'eth1'
 ```
-
 To allow only specific services, for example `_airplay._tcp` or `_ipp._tcp`,
 (instead of all services) to be re-broadcasted, use the following command:
-
 ```none
 set service mdns repeater allow-service '_airplay._tcp'
 set service mdns repeater allow-service '_ipp._tcp'
 ```
-
 To allow listing additional custom domain, for example
 `openthread.thread.home.arpa`, so that it can reflected in addition to the
 default `local`, use the following command:
-
 ```none
 set service mdns repeater browse-domain 'openthread.thread.home.arpa'
 ```
-
 ## Operation
-
 ```{opcmd} restart mdns repeater
 
 Restart mDNS repeater service.

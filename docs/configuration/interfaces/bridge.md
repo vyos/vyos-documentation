@@ -30,9 +30,7 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 :var0: bridge
 :var1: br0
 ```
-
 ### Member interfaces
-
 ```{cfgcmd} set interfaces bridge <interface> member interface <member>
 
 **Configure an interface as a bridge member.**
@@ -88,7 +86,6 @@ path selection.
 ### Bridge options
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
-
 ```{cfgcmd} set interfaces bridge <interface> aging <time>
 
 **Configure the MAC address aging time for the bridge.**
@@ -141,7 +138,6 @@ can crash the network.
 By default, {abbr}`STP (Spanning Tree Protocol)` is disabled on bridge interfaces.
 To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
-
 ```{cfgcmd} set interfaces bridge <interface> stp
 
 Enable :abbr:`STP (Spanning Tree Protocol)` on the bridge interface.
@@ -174,7 +170,6 @@ The default value is 2 seconds.
 ```
 ### VLAN
 #### VLAN-aware bridges
-
 ```{cfgcmd} set interfaces bridge <interface> enable-vlan
 
 **Enable VLAN filtering (also known as VLAN awareness) on the bridge interface.**
@@ -261,7 +256,6 @@ Configuration requirements:
 - **Member interfaces:** Physical interface `eth1` and VLAN interface `eth2.10`.
 - **STP:** Enabled.
 - **Bridge IP addresses:** `192.0.2.1/24` (IPv4) and `2001:db8::ffff/64` (IPv6).
-
 ```none
 set interfaces bridge br100 address 192.0.2.1/24
 set interfaces bridge br100 address 2001:db8::ffff/64
@@ -269,9 +263,7 @@ set interfaces bridge br100 member interface eth1
 set interfaces bridge br100 member interface eth2.10
 set interfaces bridge br100 stp
 ```
-
 Verify the configuration:
-
 ```none
 vyos@vyos# show interfaces bridge br100
  address 192.0.2.1/24
@@ -284,15 +276,11 @@ vyos@vyos# show interfaces bridge br100
  }
  stp
 ```
-
 ### Configure a VLAN-aware bridge
-
 The following example creates a VLAN-aware bridge named br100. In this setup,
 one member interface is configured as a trunk port, and the other as an access
 port. The VLAN interface is configured with IP addresses.
-
 **Configuration requirements:**
-
 - **Bridge name:** `br100`.
 - **Trunk port** (`eth1`): Handles **tagged** traffic for VLAN 10.
 - **Access port** (`eth2`): Handles **untagged** traffic (assigned to native
@@ -300,7 +288,6 @@ port. The VLAN interface is configured with IP addresses.
 - **STP:** Enabled.
 - **VLAN IP addresses** (`vif 10`): `192.0.2.1/24` (IPv4) and
   `2001:db8::ffff/64` (IPv6).
-
 ```none
 set interfaces bridge br100 enable-vlan
 set interfaces bridge br100 member interface eth1 allowed-vlan 10
@@ -309,9 +296,7 @@ set interfaces bridge br100 vif 10 address 192.0.2.1/24
 set interfaces bridge br100 vif 10 address 2001:db8::ffff/64
 set interfaces bridge br100 stp
 ```
-
 Verify the configuration:
-
 ```none
 vyos@vyos# show interfaces bridge br100
  enable-vlan
@@ -329,9 +314,7 @@ vyos@vyos# show interfaces bridge br100
      address 2001:db8::ffff/64
  }
 ```
-
 ### Operation
-
 ```{opcmd} show bridge
 
 Show the status of member interfaces for all configured bridges.

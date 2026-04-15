@@ -86,11 +86,7 @@ The interface that will be monitored by the Suricata service.
    * ``type``  Log types.
 
 ```
-
-
 ## Operation Mode
-
-
 ```{cfgcmd} update suricata
 
 Checks for the existence of the Suricata configuration file, updates the service,

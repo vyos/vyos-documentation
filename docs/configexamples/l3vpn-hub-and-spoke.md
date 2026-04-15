@@ -52,9 +52,7 @@ General information can be found in the
 :alt: Network Topology Diagram
 :width: 80%
 ```
-
 ## How does it work?
-
 As we know the main assumption of L3VPN “Hub and Spoke” is, that the
 traffic between spokes have to pass via hub, in our scenario VyOS-PE2
 is the Hub PE
@@ -71,26 +69,19 @@ Customer edge nodes can only learn the network prefixes of the HUB site
 [10.0.0.80/32] / VyOS-CE2 has network prefixes [10.0.0.90/32].
 Route-Reflector devices VyOS-RR1 and VyOS-RR2 are used to simplify network
 routes exchange and minimize iBGP peerings between devices.
-
 L3VPN configuration parameters table:
-
 | Node     | Role  | VRF        | RD              | RT import             | RT export  |
 | -------- | ----- | ---------- | --------------- | --------------------- | ---------- | ---------- | --------------- | --------------------- | ---------- |
 | VyOS-PE2 | Hub   | BLUE_HUB   | 10.80.80.1:1011 | 65035:1011 65035:1030 | 65035:1030 |
 | VyOS-PE1 | Spoke | BLUE_SPOKE | 10.50.50.1:1011 | 65035:1030            | 65035:1011 |
 | VyOS-PE3 | Spoke | BLUE_SPOKE | 10.60.60.1:1011 | 65035:1030            | 65035:1011 |
-
 ## Configuration
-
 ### Step-1: Configuring IGP and enabling MPLS LDP
-
 At the first step we need to configure the IP/MPLS backbone network using OSPF
 as IGP protocol and LDP as label-switching protocol for the base connectivity
 between **P** (rovider), **P** (rovider) **E** (dge) and **R** (oute) **R**
 (eflector) nodes:
-
 - VyOS-P1:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.3/32'
@@ -117,9 +108,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.3
 ```
-
 - VyOS-P2:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.4/32'
@@ -143,9 +132,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.4'
 ```
-
 - VyOS-P3:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.5/32'
@@ -169,9 +156,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.5'
 ```
-
 - VyOS-P4:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.6/32'
@@ -199,9 +184,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.6'
 ```
-
 - VyOS-PE1:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.7/32'
@@ -216,9 +199,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.7'
 ```
-
 - VyOS-PE2:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.8/32'
@@ -237,9 +218,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.8'
 ```
-
 - VyOS-PE3:
-
 ```none
 # interfaces
 set interfaces dummy dum10 address '10.0.0.10/32'
@@ -254,9 +233,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.10'
 ```
-
 - VyOS-RR1:
-
 ```none
 # interfaces
 set interfaces ethernet eth1 address '172.16.20.2/24'
@@ -274,9 +251,7 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.1'
 ```
-
 - VyOS-RR2:
-
 ```none
 # interfaces
 set interfaces ethernet eth0 address '172.16.80.1/24'
@@ -294,14 +269,12 @@ set protocols ospf area 0 network '0.0.0.0/0'
 set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.2'
 ```
-
 ### Step-2: Configuring iBGP for L3VPN control-plane
 At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4
 VPN (L3VPN) routes between them:
 % stop_vyoslinter
 - VyOS-RR1:
-
 ```none
 set protocols bgp system-as '65001'
 set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
@@ -316,9 +289,7 @@ set protocols bgp parameters router-id '10.0.0.1'
 set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
-
 - VyOS-RR2:
-
 ```none
 set protocols bgp system-as '65001'
 set protocols bgp neighbor 10.0.0.7 address-family ipv4-vpn route-reflector-client
@@ -333,9 +304,7 @@ set protocols bgp parameters router-id '10.0.0.2'
 set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
-
 - VyOS-PE1:
-
 ```none
 set protocols bgp system-as '65001'
 set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
@@ -347,9 +316,7 @@ set protocols bgp parameters router-id '10.0.0.7'
 set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
-
 - VyOS-PE2:
-
 ```none
 set protocols bgp system-as '65001'
 set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
@@ -361,9 +328,7 @@ set protocols bgp parameters router-id '10.0.0.8'
 set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
-
 - VyOS-PE3:
-
 ```none
 set protocols bgp system-as '65001'
 set protocols bgp neighbor 10.0.0.1 address-family ipv4-vpn nexthop-self
@@ -375,13 +340,11 @@ set protocols bgp parameters router-id '10.0.0.10'
 set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
-
 ### Step-3: Configuring L3VPN VRFs on PE nodes
 This section provides configuration steps for setting up VRFs on our
 PE nodes including CE facing interfaces, BGP, rd and route-target
 import/export based on the pre-defined parameters.
 - VyOS-PE1:
-
 ```none
 # VRF settings
 set vrf name BLUE_SPOKE table '200'
@@ -400,9 +363,7 @@ set vrf name BLUE_SPOKE protocols bgp neighbor 10.50.50.2 remote-as '65035'
 set interfaces ethernet eth3 address '10.50.50.1/24'
 set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 ```
-
 - VyOS-PE2:
-
 ```none
 # VRF settings
 set vrf name BLUE_HUB table '400'
@@ -421,9 +382,7 @@ set vrf name BLUE_HUB protocols bgp neighbor 10.80.80.2 remote-as '65035'
 set interfaces ethernet eth3 address '10.80.80.1/24'
 set interfaces ethernet eth3 vrf 'BLUE_HUB'
 ```
-
 - VyOS-PE3:
-
 ```none
 # VRF settings
 set vrf name BLUE_SPOKE table '200'
@@ -442,7 +401,6 @@ set vrf name BLUE_SPOKE protocols bgp neighbor 10.60.60.2 remote-as '65035'
 set interfaces ethernet eth3 address '10.60.60.1/24'
 set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 ```
-
 ### Step-4: Configuring CE nodes
 Dynamic routing used between CE and PE nodes and eBGP peering
 established for the route exchanging between them. All routes
@@ -450,7 +408,6 @@ received by PEs are then exported to L3VPN and delivered from
 Spoke sites to Hub and vise-versa based on previously
 configured L3VPN parameters.
 - VyOS-CE1-SPOKE:
-
 ```none
 # interfaces
 set interfaces dummy dum20 address '10.0.0.80/32'
@@ -465,9 +422,7 @@ set protocols bgp neighbor 10.50.50.1 update-source 'eth0'
 set protocols bgp parameters log-neighbor-changes
 set protocols bgp parameters router-id '10.50.50.2'
 ```
-
 - VyOS-CE1-HUB:
-
 ```none
 # interfaces
 set interfaces dummy dum20 address '10.0.0.100/32'
@@ -483,9 +438,7 @@ set protocols bgp neighbor 10.80.80.1 update-source 'eth0'
 set protocols bgp parameters log-neighbor-changes
 set protocols bgp parameters router-id '10.80.80.2'
 ```
-
 - VyOS-CE2-SPOKE:
-
 ```none
 # interfaces
 set interfaces dummy dum20 address '10.0.0.90/32'
@@ -500,7 +453,6 @@ set protocols bgp neighbor 10.60.60.1 update-source 'eth0'
 set protocols bgp parameters log-neighbor-changes
 set protocols bgp parameters router-id '10.60.60.2'
 ```
-
 ### Step-5: Verification
 This section describes verification commands for MPLS/BGP/LDP
 protocols and L3VPN related routes as well as diagnosis and
@@ -508,7 +460,6 @@ reachability checks between CE nodes.
 Let’s check IPv4 routing and MPLS information on provider nodes
 (same procedure for all P nodes):
 - “show ip ospf neighbor” for checking ospf relationship
-
 ```none
 vyos@VyOS-P1:~$  show ip ospf neighbor
 
@@ -519,9 +470,7 @@ Neighbor ID  Pri State           Dead Time Address       Interface            RX
 10.0.0.1         1 Full/Backup       35.642s   172.16.10.2   eth3:172.16.10.1       0      0       0
 10.0.0.8         1 Full/Backup       35.484s   172.16.100.2  eth5:172.16.100.1      0      0     0
 ```
-
 - “show mpls ldp neighbor “ for checking ldp neighbors
-
 ```none
 vyos@VyOS-P1:~$ show mpls ldp neighbor
 AF   ID              State          Remote Address   Uptime
@@ -531,9 +480,7 @@ ipv4 10.0.0.5        OPERATIONAL 10.0.0.5        09w2d23h
 ipv4 10.0.0.7        OPERATIONAL 10.0.0.7        03w0d01h
 ipv4 10.0.0.8        OPERATIONAL 10.0.0.8        01w3d02h
 ```
-
 - “show mpls ldp binding” for checking mpls label assignment
-
 ```none
 vyos@VyOS-P1:~$ show mpls ldp discovery
 AF   Destination         Nexthop         Local    Label Remote Label  In Use
@@ -588,11 +535,9 @@ ipv4 10.0.0.10/32    10.0.0.5        19                23            yes
 ipv4 10.0.0.10/32    10.0.0.7        19                24                no
 ipv4 10.0.0.10/32    10.0.0.8        19                24                no
 ```
-
 Now we’re checking iBGP status and routes from route-reflector
 nodes to other devices:
 - “show bgp ipv4 vpn summary” for checking BGP VPNv4 neighbors:
-
 ```none
 vyos@VyOS-RR1:~$ show bgp ipv4 vpn summary
 BGP router identifier 10.0.0.1, local AS number 65001 vrf-id 0
@@ -609,9 +554,7 @@ Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/Pf
 
 Total number of neighbors 4
 ```
-
 - “show bgp ipv4 vpn” for checking all VPNv4 prefixes information:
-
 ```none
 vyos@VyOS-RR1:~$ show bgp ipv4 vpn
 BGP table version is 2, local router ID is 10.0.0.1, vrf id 0
@@ -649,10 +592,8 @@ Route Distinguisher: 172.16.100.1:2011
 *>i172.16.100.0/24  10.0.0.9                 0   100     0 i
  UN=10.0.0.9 EC{65050:2011} label=80 type=bgp, subtype=0
 ```
-
 - “show bgp ipv4 vpn x.x.x.x/x” for checking best path selected
   for specific VPNv4 destination
-
 ```none
 vyos@VyOS-RR1:~$ show bgp  ipv4 vpn 10.0.0.100/32
 BGP routing table entry for 10.80.80.1:1011:10.0.0.100/32
@@ -667,12 +608,10 @@ Paths: (1 available, best #1)
      Remote label: 80
      Last update: Tue Oct 19 13:45:32 202
 ```
-
 Also we can verify how PE devices receives VPNv4 networks from the RRs
 and installing them to the specific customer VRFs:
 - “show bgp ipv4 vpn summary” for checking iBGP neighbors against
   route-reflector devices:
-
 ```none
 vyos@VyOS-PE1:~$ show bgp ipv4 vpn summary
 BGP router identifier 10.0.0.7, local AS number 65001 vrf-id 0
@@ -685,10 +624,8 @@ Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/Pf
 10.0.0.1         4   65001   8812    8794           0       0       0   01:18:42         8       2
 10.0.0.2         4   65001   8800    8792           0       0       0   6d02h27m         8       2
 ```
-
 - “show bgp vrf all” for checking all the prefix learning on BGP
   : within VRFs:
-
 ```none
 vyos@VyOS-PE1:~$ show  bgp vrf all
 
@@ -713,10 +650,8 @@ Origin codes:  i - IGP, e - EGP, ? - incomplete
                  10.0.0.8@0<             0   100     0 65035 ?
 *                10.0.0.8@0<             0   100     0 65035 ?
 ```
-
 - “show bgp vrf BLUE_SPOKE summary” for checking EBGP neighbor
   : information between PE and CE:
-
 ```none
 vyos@VyOS-PE1:~$ show bgp vrf BLUE_SPOKE summary
 
@@ -732,11 +667,9 @@ Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/Pf
 
 Total number of neighbors 1
 ```
-
 - “show ip route vrf BLUE_SPOKE” for viewing the RIB in our Spoke PE.
   : Using this command we are also able to check the transport and
     customer label (inner/outer) for Hub network prefix (10.0.0.100/32):
-
 ```none
 vyos@VyOS-PE1:~$ show ip route vrf BLUE_SPOKE
 
@@ -755,11 +688,9 @@ B>* 10.0.0.80/32 [20/0] via 10.50.50.2, eth3, weight 1, 6d05h30m
 B>  10.0.0.100/32 [200/0] via 10.0.0.8 (vrf default) (recursive), label 80, weight 1, 04:22:00
   *                              via 172.16.90.1, eth0 (vrf default), label 24/80, weight 1, 04:22:00
 ```
-
 - “show bgp ipv4 vpn x.x.x.x/32” for checking the best-path to the
   : specific VPNv4 destination including extended community and
     remotelabel information. This procedure is the same on all Spoke nodes:
-
 ```none
 vyos@VyOS-PE1:~$ show bgp ipv4 vpn 10.0.0.100/32
 BGP routing table entry for 10.80.80.1:1011:10.0.0.100/32
@@ -781,11 +712,9 @@ Paths: (2 available, best #1)
      Remote label: 80
      Last update: Wed Oct 13 12:39:34 202
 ```
-
 Now, let’s check routing information on out Hub PE:
 - “show bgp ipv4 vpn summary” for checking iBGP neighbors again
   : VyOS-RR1/RR2
-
 ```none
 vyos@VyOS-PE2:~$ show bgp ipv4 vpn summary
 BGP router identifier 10.0.0.8, local AS number 65001 vrf-id 0
@@ -800,9 +729,7 @@ Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/Pf
 
 Total number of neighbors
 ```
-
 - “show bgp vrf all” for checking all the prefixes learning on BGP
-
 ```none
 vyos@VyOS-PE2:~$ show bgp vrf all
 
@@ -839,10 +766,8 @@ Origin codes:  i - IGP, e - EGP, ? - incomplete
 *> 172.16.100.0/24  10.0.0.9@0<              0   100     0 i
 *                10.0.0.9@0<             0   100     0 i
 ```
-
 - “show bgp vrf BLUE_HUB summary” for checking EBGP neighbor
   : CE Hub device
-
 ```none
 vyos@VyOS-PE2:~$ show bgp vrf BLUE_HUB summary
 
@@ -855,12 +780,10 @@ Peers 1, using 21 KiB of memory
 Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
 10.80.80.2   4   65035   15954   15972          0    0      0   01w4d01h         2       10
 ```
-
 - “show ip route vrf BLUE_HUB” to view the RIB in our Hub PE.
   : With this command we are able to check the transport and
     customer label (inner/outer) for network spokes prefixes
     10.0.0.80/32 - 10.0.0.90/32
-
 ```none
 vyos@VyOS-PE2:~$ show ip route vrf BLUE_HUB
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -889,10 +812,8 @@ B>  172.16.100.0/24 [200/0] via 10.0.0.9 (vrf default) (recursive), label 144, w
   *                          via 172.16.100.1, eth1 (vrf default), label 18/144, weight 1, 05:53:15
   *                          via 172.16.110.1, eth0 (vrf default), label 22/144, weight 1, 05:53:15
 ```
-
 - “show bgp ipv4 vpn x.x.x.x/32” for checking best-path,
   : extended community and remote label of specific destination
-
 ```none
 vyos@VyOS-PE2:~$ show bgp ipv4 vpn 10.0.0.80/32
 BGP routing table entry for 10.50.50.1:1011:10.0.0.80/32
@@ -934,10 +855,8 @@ Paths: (2 available, best #1)
      Remote label: 144
      Last update: Wed Oct 13 12:45:44 2021
 ```
-
 Finally, let’s check the reachability between CEs:
 - VyOS-CE1-SPOKE -----> VyOS-CE-HUB
-
 ```none
 # check rib
 vyos@VyOS-CE1-SPOKE:~$ show ip route
@@ -972,10 +891,8 @@ traceroute to 10.0.0.100 (10.0.0.100), 30 hops max, 60 byte packets
  2  * * *
  3  10.0.0.100 (10.0.0.100)  9.225 ms  9.159 ms  9.121 m
 ```
-
 - VyOS-CE-HUB -------> VyOS-CE1-SPOKE
 - VyOS-CE-HUB -------> VyOS-CE2-SPOKE
-
 ```none
 # check rib
 vyos@VyOS-CE-HUB:~$ show ip route
@@ -1032,9 +949,7 @@ traceroute to 10.0.0.90 (10.0.0.90), 30 hops max, 60 byte packets
  3  * * *
  4  10.0.0.90 (10.0.0.90)  9.358 ms  9.325 ms  9.292 ms
 ```
-
 - VyOS-CE2-SPOKE -------> VyOS-CE-HUB
-
 ```none
 # check rib
 vyos@rt-ce2-SPOKE:~$ show ip route

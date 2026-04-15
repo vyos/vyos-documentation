@@ -47,7 +47,6 @@ This endpoint responds **only** to HTTP GET requests.
 
 ```none
 curl --location --request GET 'https://vyos/info'
-
 response
 {
     "success": true,
@@ -70,7 +69,6 @@ if they are set to `true` by default:
 
 ```none
 curl --location --request GET 'https://vyos/info?version=1&hostname=1'
-
 response {
     "success": true,
     "data": {
@@ -87,7 +85,6 @@ response object will have an empty string instead of the respective value:
 
 ```none
 curl --location --request GET 'https://vyos/info?version=0&hostname=1'
-
 response {
     "success": true,
     "data": {
@@ -104,7 +101,6 @@ hide just one of the fields - a missing query parameter is treated as `true`:
 
 ```none
 curl --location --request GET 'https://vyos/info?hostname=no'
-
 response {
     "success": true,
     "data": {
@@ -126,7 +122,6 @@ with HTTP 400 Bad Request:
 ```none
 curl --location --request GET \
     'https://192.168.56.119/info?hostname=1&url=https://evilsite.com'
-
 response {
     "success": false,
     "error": "{'type': 'extra_forbidden', 'loc': ('query', 'url'), 'msg': 'Extra inputs are not permitted', 'input': 'https://evilsite.com'}",
@@ -139,7 +134,6 @@ are strictly Boolean and won't accept any other data type:
 
 ```none
 curl --location --request GET 'https://vyos/info?hostname=1; eval"sudo rm -rf /"
-
 response
 {
     "success": false,
@@ -218,7 +212,6 @@ For example, get the addresses of a `dum0` interface.
 curl -k --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "returnValues", "path": ["interfaces","dummy","dum0","address"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 respone:
 {
    "success": true,
@@ -239,7 +232,6 @@ For example, check an existing path:
 curl -k --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "exists", "path": ["service","https","api"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -254,7 +246,6 @@ versus a non-existent path:
 curl -k --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "exists", "path": ["service","non","existent","path"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -271,7 +262,6 @@ The `reset` endpoint run a `reset` command.
 curl --location --request POST 'https://vyos/reset' \
 --form data='{"op": "reset", "path": ["ip", "bgp", "192.0.2.11"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 respone:
 {
   "success": true,
@@ -288,7 +278,6 @@ To initiate a reboot use the `reboot` endpoint.
 curl --location --request POST 'https://vyos/reboot' \
 --form data='{"op": "reboot", "path": ["now"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 respone:
 {
   "success": true,
@@ -305,7 +294,6 @@ To power off the system use the `poweroff` endpoint.
 curl --location --request POST 'https://vyos/poweroff' \
 --form data='{"op": "poweroff", "path": ["now"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 respone:
 {
   "success": true,
@@ -324,7 +312,6 @@ add an image
 curl -k --location --request POST 'https://vyos/image' \
 --form data='{"op": "add", "url": "https://downloads.vyos.io/rolling/current/amd64/vyos-rolling-latest.iso"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 respone (shorted):
 {
    "success": true,
@@ -341,7 +328,6 @@ delete an image, for example `1.3-rolling-202006070117`
 curl -k --location --request POST 'https://vyos/image' \
 --form data='{"op": "delete", "name": "1.3-rolling-202006070117"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -360,7 +346,6 @@ For example, show which images are installed.
 curl -k --location --request POST 'https://vyos/show' \
 --form data='{"op": "show", "path": ["system", "image"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -380,7 +365,6 @@ The `generate` endpoint run a `generate` command.
 curl -k --location --request POST 'https://vyos/generate' \
 --form data='{"op": "generate", "path": ["pki", "wireguard", "key-pair"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -401,7 +385,6 @@ You can pass a `set`, `delete` or `comment` command to the
 curl -k --location --request POST 'https://vyos/configure' \
 --form data='{"op": "set", "path": ["interfaces", "dummy", "dum1", "address", "10.11.0.1/32"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -416,7 +399,6 @@ response:
 curl -k --location --request POST 'https://vyos/configure' \
 --form data='{"op": "delete", "path": ["interfaces", "dummy", "dum1", "address", "10.11.0.1/32"]}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -435,7 +417,6 @@ the `data` field.
 curl -k --location --request POST 'https://vyos/configure' \
 --form data='[{"op": "set","path":["interfaces","vxlan","vxlan1","remote","203.0.113.99"]}, {"op": "set","path":["interfaces","vxlan","vxlan1","vni","1"]}]' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -456,7 +437,6 @@ When you don't specify the file when saving, it saves to
 curl -k --location --request POST 'https://vyos/config-file' \
 --form data='{"op": "save"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -471,7 +451,6 @@ Save a running configuration to a file.
 curl -k --location --request POST 'https://vyos/config-file' \
 --form data='{"op": "save", "file": "/config/test.config"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -486,7 +465,6 @@ To Load a configuration file.
 curl -k --location --request POST 'https://vyos/config-file' \
 --form data='{"op": "load", "file": "/config/test.config"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -501,7 +479,6 @@ To Merge a configuration file.
 curl -k --location --request POST 'https://vyos/config-file' \
 --form data='{"op": "merge", "file": "/config/test.config"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -517,7 +494,6 @@ request, for example:
 curl -k --location --request POST 'https://vyos/config-file' \
 --form data='{"op": "merge", "string": "interfaces {\nethernet eth1 {\naddress "192.168.2.137/24"\ndescription "test"\n}\n}\n"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
 response:
 {
    "success": true,
@@ -537,7 +513,6 @@ although the standard form-data format is fine:
 
 ```none
 curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "merge", "string": "interfaces {\nethernet eth1 {\naddress '192.168.137.1/24'\ndescription 'internal'\n}\n}\n", "confirm_time": 1}' https://vyos/config-file
-
 response:
 {
    "success": true,
@@ -551,7 +526,6 @@ To confirm and keep the changes:
 
 ```none
 curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "confirm"}' https://vyos/config-file
-
 response:
 {
    "success": true,

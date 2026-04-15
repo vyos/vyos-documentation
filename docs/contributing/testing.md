@@ -71,10 +71,8 @@ test_bgp_10_vrf_simple (__main__.TestProtocolsBGP) ... ok
 test_bgp_11_confederation (__main__.TestProtocolsBGP) ... ok
 test_bgp_12_v6_link_local (__main__.TestProtocolsBGP) ... ok
 test_bgp_13_solo (__main__.TestProtocolsBGP) ... ok
-
 ----------------------------------------------------------------------
 Ran 13 tests in 348.191s
-
 OK
 ```
 
@@ -136,10 +134,8 @@ test_vif_8021q_mtu_limits (__main__.BondingInterfaceTest) ... ok
 test_vif_8021q_qos_change (__main__.BondingInterfaceTest) ... ok
 test_vif_s_8021ad_vlan_interfaces (__main__.BondingInterfaceTest) ... ok
 test_vif_s_protocol_change (__main__.BondingInterfaceTest) ... ok
-
 ----------------------------------------------------------------------
 Ran 23 tests in 244.694s
-
 OK
 ```
 
@@ -171,7 +167,6 @@ individual test configurations manually.
 ```none
 vyos@vyos:~$ configure
 load[edit]
-
 vyos@vyos# load /usr/libexec/vyos/tests/config/ospf-small
 Loading configuration from '/usr/libexec/vyos/tests/config/ospf-small'
 Load complete. Use 'commit' to make changes effective.
@@ -191,7 +186,6 @@ vyos@vyos# compare
 -    address 192.0.2.1/30
 -}
 ...
-
 vyos@vyos# commit
 vyos@vyos#
 ```

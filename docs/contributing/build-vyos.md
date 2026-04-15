@@ -65,13 +65,11 @@ sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
-
 # Add the repository to Apt sources:
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
@@ -208,10 +206,8 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
   [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY]
   [--custom-package CUSTOM_PACKAGE]
       [build_flavor]
-
   positional arguments:
   build_flavor          Build flavor
-
   optional arguments:
   -h, --help            show this help message and exit
   --architecture ARCHITECTURE
@@ -312,7 +308,6 @@ requested an impossible situation or if you are using the unstable
 distribution that some required packages have not yet been created
 or been moved out of Incoming.
 The following information may help to resolve the situation:
-
 The following packages have unmet dependencies:
  vyos-1x : Depends: accel-ppp but it is not installable
 E: Unable to correct problems, you have held broken packages.
@@ -387,16 +382,12 @@ $ cd vyos-build/packages/linux-kernel/linux
 $ git checkout v4.19.146
 Checking out files: 100% (61536/61536), done.
 Note: checking out 'v4.19.146'.
-
 You are in 'detached HEAD' state. You can look around, make experimental
 changes and commit them, and you can discard any commits you make in this
 state without impacting any branches by performing another checkout.
-
 If you want to create a new branch to retain commits you create, you may
 do so (now or later) by using -b with the checkout command again. Example:
-
   git checkout -b <new-branch-name>
-
 HEAD is now at 015e94d0e37b Linux 4.19.146
 ```
 
@@ -460,9 +451,7 @@ dpkg-buildpackage: warning: debian/rules is not executable; fixing that
  debian/rules build
 make KERNELRELEASE=4.19.146-amd64-vyos ARCH=x86         KBUILD_BUILD_VERSION=1 KBUILD_SRC=
   SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
-
 ...
-
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
@@ -537,16 +526,12 @@ I: Build Accel-PPP Debian package
 CMake Deprecation Warning at CMakeLists.txt:3 (cmake_policy):
   The OLD behavior for policy CMP0003 will be removed from a future version
   of CMake.
-
   The cmake-policies(7) manual explains that the OLD behaviors of all
   policies are deprecated and that a policy should be set to OLD only under
   specific short-term circumstances.  Projects should be ported to the NEW
   behavior and not rely on setting a policy to OLD.
-
 -- The C compiler identification is GNU 8.3.0
-
 ...
-
 CPack: Create package using DEB
 CPack: Install projects
 CPack: - Run preinstall target for: accel-ppp
@@ -571,9 +556,7 @@ to build all driver modules:
                                  Dload  Upload   Total   Spent    Left  Speed
 100  490k  100  490k    0     0   648k      0 --:--:-- --:--:-- --:--:--  648k
 I: Compile Kernel module for Intel ixgbe driver
-
 ...
-
 I: Building Debian package vyos-intel-iavf
 Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
 Require just the needed backports instead, or 'backports/latest'.
@@ -604,9 +587,7 @@ checking whether build environment is sane... yes
 checking for a thread-safe mkdir -p... /bin/mkdir -p
 checking for gawk... gawk
 checking whether make sets $(MAKE)... yes
-
 ...
-
 I: Building Debian package vyos-intel-qat
 Doing `require 'backports'` is deprecated and will not load any backport in the next major release.
 Require just the needed backports instead, or 'backports/latest'.
@@ -686,10 +667,8 @@ Launch the Docker container and build the package:
 ```none
 # For VyOS 1.3 (equuleus, current)
 $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
-
 # Change to source directory
 $ cd vyos-1x
-
 # Build DEB
 $ dpkg-buildpackage -uc -us -tc -b
 ```

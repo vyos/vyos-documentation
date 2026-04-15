@@ -5,36 +5,27 @@ lastproofread: '2024-01-05'
 ```{include} /_include/need_improvement.txt
 ```
 (pki)=
-
 # PKI
-
 VyOS 1.4 changed the way in how encryption keys or certificates are stored on the
 system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
 A to system B a bit harder, as you had to copy the files and their permissions
 by hand.
-
 {vytask}`T3642` describes a new CLI subsystem that serves as a "certstore" to
 all services requiring any kind of encryption key(s). In short, public and
 private certificates are now stored in PKCS#8 format in the regular VyOS CLI.
 Keys can now be added, edited, and deleted using the regular set/edit/delete
 CLI commands.
-
 VyOS not only can now manage certificates issued by 3rd party Certificate
 Authorities, it can also act as a CA on its own. You can create your own root
 CA and sign keys with it by making use of some simple op-mode commands.
-
 Don't be afraid that you need to re-do your configuration. Key transformation is
 handled, as always, by our migration scripts, so this will be a smooth transition
 for you!
-
 ## Key Generation
-
 ### Certificate Authority (CA)
-
 VyOS now also has the ability to create CAs, keys, Diffie-Hellman and other
 keypairs from an easy to access operational level command.
-
 ```{opcmd} generate pki ca
 
 Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
@@ -176,7 +167,6 @@ In addition to the command above, the output is in a format which can
 ```
 ## Key usage (CLI)
 ### CA (Certificate Authority)
-
 ```{cfgcmd} set pki ca <name> certificate
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
@@ -225,7 +215,6 @@ when the key is referenced.
 ### Server Certificate
 After we have imported the CA certificate(s) we can now import and add
 certificates used by services on this router.
-
 ```{cfgcmd} set pki certificate <name> certificate
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
@@ -274,7 +263,6 @@ If CA is present, this certificate will be included in generated CRLs
 VyOS provides this utility to import existing certificates/key files directly
 into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the
 /config folder permanently and will be retained post upgrade.
-
 ```{opcmd} import pki ca <name> file <Path to CA certificate file>
 
 Import the public CA certificate from the defined file to VyOS CLI.
@@ -301,7 +289,6 @@ Import the OpenVPN shared secret stored in file to the VyOS CLI.
 #### ACME
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
 using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
-
 ```{cfgcmd} set pki certificate <name> acme domain-name <name>
 
 Domain names to apply, multiple domain-names can be specified.
@@ -341,7 +328,6 @@ During initial deployment we recommend using the staging API
 ## Operation
 VyOS operational mode commands are not only available for generating keys but
 also to display them.
-
 ```{opcmd} show pki ca
 
 Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
@@ -386,14 +372,11 @@ Show a list of installed :abbr:`CRLs (Certificate Revocation List)`.
 Manually trigger certificate renewal. This will be done twice a day.
 ```
 ## Examples
-
 ### Create a CA chain and leaf certificates
-
 This configuration generates & installs into the VyOS PKI system a root
 certificate authority, alongside two intermediary certificate authorities for
 client & server certificates. These CAs are then used to generate a server
 certificate for the router, and a client certificate for a user.
-
 - `vyos_root_ca` is the root certificate authority.
 - `vyos_client_ca` and `vyos_server_ca` are intermediary certificate authorities,
   which are signed by the root CA.
@@ -401,9 +384,7 @@ certificate for the router, and a client certificate for a user.
   signed by the server intermediary CA.
 - `vyos_example_user` is a leaf client certificate used to identify a user,
   signed by client intermediary CA.
-
 First, we create the root certificate authority.
-
 ```none
 [edit]
 vyos@vyos# run generate pki ca install vyos_root_ca
@@ -419,10 +400,8 @@ Note: If you plan to use the generated key on this router, do not encrypt the pr
 Do you want to encrypt the private key with a passphrase? [y/N] n
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
 ```
-
 Secondly, we create the intermediary certificate authorities, which are used to
 sign the leaf certificates.
-
 ```none
 [edit]
 vyos@vyos# run generate pki ca sign vyos_root_ca install vyos_server_ca
@@ -455,9 +434,7 @@ Note: If you plan to use the generated key on this router, do not encrypt the pr
 Do you want to encrypt the private key with a passphrase? [y/N] n
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
 ```
-
 Lastly, we can create the leaf certificates that devices and users will utilise.
-
 ```none
 [edit]
 vyos@vyos# run generate pki certificate sign vyos_server_ca install vyos_cert
