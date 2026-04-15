@@ -17,16 +17,19 @@ which incorporated IEEE 802.1aq (Shortest Path Bridging) and much of the IEEE
 In VyOS, 802.1q VLAN interfaces are represented as virtual subinterfaces, 
 referred to as  ``vif``.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> vif <vlan-id>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> vif <vlan-id>
 
-  **Configure a VLAN interface with a unique VLAN ID.** 
+**Configure a VLAN interface with a unique VLAN ID.** 
 
-  VLAN ID identifies a specific VLAN and ranges from 0 to 4094. 
+VLAN ID identifies a specific VLAN and ranges from 0 to 4094. 
 
-  You can configure multiple VLAN interfaces on a single physical interface.
+You can configure multiple VLAN interfaces on a single physical interface.
 
-  .. note:: Only 802.1Q-tagged packets are accepted on Ethernet vifs.
+:::{note}
+Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 
+:::
+::::
 .. cmdinclude:: /_include/interface-address-with-dhcp.txt
    :var0: {{ var0 }}
    :var1: {{ var1 }}

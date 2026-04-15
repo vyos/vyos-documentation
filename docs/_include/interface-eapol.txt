@@ -25,58 +25,63 @@ Authentication Protocol over LAN)`) authentication, upload the required
 :abbr:`CA (Certificate Authority)` certificate, client certificate, and 
 private key to the router and import them into the PKI system.
 
-.. note:: The client certificate and private key must share the **same** PKI 
-   name.
+:::{note}
+The client certificate and private key must share the **same** PKI
+ name.
+:::
 
 .. seealso:: For more information about managing certificates and keys, see 
    the :ref:`PKI <pki>` section.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} eapol ca-certificate <name>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} eapol ca-certificate <name>
 
-  **Configure the trusted** :abbr:`CA (Certificate Authority)` **certificate for 
-  the interface.**
-  
-  The router uses this certificate to validate the authentication server’s 
-  identity.
+**Configure the trusted** :abbr:`CA (Certificate Authority)` **certificate for 
+the interface.**
 
-  ``<name>`` is the :abbr:`CA (Certificate Authority)` certificate name as 
-  defined in the PKI system.
+The router uses this certificate to validate the authentication server’s 
+identity.
 
-  .. note:: If you specify an intermediate :abbr:`CA (Certificate Authority)` 
-     certificate, ensure the full certificate chain, including the root and all 
-     higher-level intermediate :abbr:`CA (Certificate Authority)` certificates, is 
-     available to the system.
+``<name>`` is the :abbr:`CA (Certificate Authority)` certificate name as 
+defined in the PKI system.
 
-  Example:
+:::{note}
+If you specify an intermediate :abbr:`CA (Certificate Authority)`
+certificate, ensure the full certificate chain, including the root and all
+higher-level intermediate :abbr:`CA (Certificate Authority)` certificates, is
+available to the system.
+:::
 
-  .. code-block:: none
+Example:
 
-    set pki ca eapol-server-intermediate-ca <server intermediate CA contents>
-    set pki ca eapol-server-root-ca <server root CA contents>
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol ca-certificate eapol-server-intermediate-ca
+```none
+set pki ca eapol-server-intermediate-ca <server intermediate CA contents>
+set pki ca eapol-server-root-ca <server root CA contents>
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol ca-certificate eapol-server-intermediate-ca
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} eapol certificate <name>
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} eapol certificate <name>
 
-  **Configure the client certificate for the interface.** 
+**Configure the client certificate for the interface.** 
 
-  The router uses this certificate to prove its identity to the authentication 
-  server.
+The router uses this certificate to prove its identity to the authentication 
+server.
 
-  ``<name>`` is the client certificate name as defined in the PKI system.
+``<name>`` is the client certificate name as defined in the PKI system.
 
-  During authentication, all parent :abbr:`CA (Certificate Authority)` 
-  certificates of the client certificate, such as intermediate and root :abbr:`CA 
-  (Certificate Authority)` certificates, are automatically sent as part of the 
-  EAP-TLS handshake.
+During authentication, all parent :abbr:`CA (Certificate Authority)` 
+certificates of the client certificate, such as intermediate and root :abbr:`CA 
+(Certificate Authority)` certificates, are automatically sent as part of the 
+EAP-TLS handshake.
 
-  Example:
+Example:
 
-  .. code-block:: none
+```none
+set pki ca eapol-client-intermediate-ca <client intermediate CA contents>
+set pki ca eapol-client-root-ca <client root CA contents>
+set pki certificate eapol-client certificate <client certificate contents>
+set pki certificate eapol-client private key <client private key contents>
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol certificate eapol-client
 
-    set pki ca eapol-client-intermediate-ca <client intermediate CA contents>
-    set pki ca eapol-client-root-ca <client root CA contents>
-    set pki certificate eapol-client certificate <client certificate contents>
-    set pki certificate eapol-client private key <client private key contents>
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} eapol certificate eapol-client
+```
+::::

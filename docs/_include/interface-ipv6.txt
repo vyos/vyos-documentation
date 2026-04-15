@@ -1,118 +1,121 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 address autoconf
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 address autoconf
 
-  **Configure the interface to automatically obtain an IPv6 address using**
-  :abbr:`SLAAC (Stateless Address Autoconfiguration)`, **as specified in** 
-  :rfc:`4862`. 
-
-
-  IPv6 hosts can configure themselves automatically when connected to an 
-  IPv6 network using the Neighbor Discovery Protocol via ICMPv6 router 
-  discovery messages. When first connected to a network, a host sends a 
-  link-local router solicitation multicast request for its configuration 
-  parameters. The router responds with a router advertisement packet 
-  containing Internet Layer configuration parameters.
-
-  .. note:: This method automatically disables IPv6 traffic forwarding 
-     on the interface.
-
-  Example:
-
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
+**Configure the interface to automatically obtain an IPv6 address using**
+:abbr:`SLAAC (Stateless Address Autoconfiguration)`, **as specified in** 
+:rfc:`4862`. 
 
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 address eui64 <prefix>
+IPv6 hosts can configure themselves automatically when connected to an 
+IPv6 network using the Neighbor Discovery Protocol via ICMPv6 router 
+discovery messages. When first connected to a network, a host sends a 
+link-local router solicitation multicast request for its configuration 
+parameters. The router responds with a router advertisement packet 
+containing Internet Layer configuration parameters.
 
-  **Configure the interface to assign itself an IPv6 address using the** 
-  :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` **method, as 
-  specified** in :rfc:`4291`.
+:::{note}
+This method automatically disables IPv6 traffic forwarding
+on the interface.
+:::
 
-  Example:
+Example:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 address no-default-link-local
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 address eui64 <prefix>
 
-  **Disable the automatic assignment of a link-local IPv6 address to 
-  this interface.**
+**Configure the interface to assign itself an IPv6 address using the** 
+:abbr:`EUI-64 (64-Bit Extended Unique Identifier)` **method, as 
+specified** in :rfc:`4291`.
 
-  Example:
+Example:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 address no-default-link-local
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 disable-forwarding
+**Disable the automatic assignment of a link-local IPv6 address to 
+this interface.**
 
-  **Configure the interface for host or router behavior.**
+Example:
 
-  If configured, the interface switches to host mode, and IPv6 forwarding is 
-  disabled on it.
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
 
-  Example:
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 disable-forwarding
 
-  .. code-block:: none
+**Configure the interface for host or router behavior.**
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding
+If configured, the interface switches to host mode, and IPv6 forwarding is 
+disabled on it.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 adjust-mss <mss | clamp-mss-to-pmtu>
+Example:
 
-  **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
-  TCP SYN packets on the specified interface.** 
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding
 
-  By clamping the MSS value in TCP SYN packets, you explicitly inform 
-  the remote side not to send packets larger than that size. This prevents 
-  connection issues when Path MTU Discovery (PMTUD) fails.
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 adjust-mss <mss | clamp-mss-to-pmtu>
 
-  The following options are available:
+**Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
+TCP SYN packets on the specified interface.** 
 
-  * **mss:** Set the MSS to a specific value, in bytes. Use this option to 
-    enforce a specific MSS, for example, to troubleshoot connectivity issues 
-    or accommodate specific network requirements.
-  * **clamp-mss-to-pmtu:** The router calculates the MSS to be the interface's 
-    MTU minus 60 bytes for IPv6 traffic (40 bytes for the IPv6 header and 20 
-    bytes for the TCP header). This option is recommended to automatically 
-    set the proper value.
+By clamping the MSS value in TCP SYN packets, you explicitly inform 
+the remote side not to send packets larger than that size. This prevents 
+connection issues when Path MTU Discovery (PMTUD) fails.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 accept-dad <0 | 1 | 2>
+The following options are available:
 
-  **Configure IPv6** :abbr:`DAD (Duplicate Address Detection)` **on the 
-  interface.**
+* **mss:** Set the MSS to a specific value, in bytes. Use this option to 
+  enforce a specific MSS, for example, to troubleshoot connectivity issues 
+  or accommodate specific network requirements.
+* **clamp-mss-to-pmtu:** The router calculates the MSS to be the interface's 
+  MTU minus 60 bytes for IPv6 traffic (40 bytes for the IPv6 header and 20 
+  bytes for the TCP header). This option is recommended to automatically 
+  set the proper value.
 
-  The following options are available:
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 accept-dad <0 | 1 | 2>
 
-  - **0:** Disables DAD. No duplicate address detection is performed.
-  - **1:** Enables DAD (default). Duplicate addresses are detected. The 
-    interface's IPv6 operation continues for valid IPv6 addresses.
-  - **2:** Enables DAD and, if a MAC-based duplicate link-local address 
-    is found, disables IPv6 operation on this interface.
+**Configure IPv6** :abbr:`DAD (Duplicate Address Detection)` **on the 
+interface.**
 
-  Example:
+The following options are available:
 
-  .. code-block:: none
+- **0:** Disables DAD. No duplicate address detection is performed.
+- **1:** Enables DAD (default). Duplicate addresses are detected. The 
+  interface's IPv6 operation continues for valid IPv6 addresses.
+- **2:** Enables DAD and, if a MAC-based duplicate link-local address 
+  is found, disables IPv6 operation on this interface.
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 accept-dad 2
+Example:
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} ipv6 dup-addr-detect-transmits <n>
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 accept-dad 2
 
-  **Configure the number of** :abbr:`DAD (Duplicate Address Detection)`
-  **messages that the router (kernel) sends during IPv6 address assignment 
-  on this interface.**
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ipv6 dup-addr-detect-transmits <n>
 
-  The default value is 1. 
+**Configure the number of** :abbr:`DAD (Duplicate Address Detection)`
+**messages that the router (kernel) sends during IPv6 address assignment 
+on this interface.**
 
-  Example:
+The default value is 1. 
 
-  .. code-block:: none
+Example:
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 dup-addr-detect-transmits 5
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 dup-addr-detect-transmits 5
+
+```
+::::

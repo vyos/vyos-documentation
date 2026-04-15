@@ -1,13 +1,13 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} mtu <mtu>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} mtu <mtu>
 
-  **Configure the MTU on the interface.** 
+**Configure the MTU on the interface.** 
 
-  This value defines the largest packet size, in bytes, that the interface 
-  transmits without fragmentation.
+This value defines the largest packet size, in bytes, that the interface 
+transmits without fragmentation.
 
-  Example:
+Example:
 
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} mtu 1600
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} mtu 1600
+```
+::::

@@ -1,31 +1,33 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} address <address | dhcp |
-   dhcpv6>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} address <address | dhcp | dhcpv6>
 
-  **Configure the interface with one or more IP addresses.**
+**Configure the interface with one or more IP addresses.**
 
-  The following options are available:
+The following options are available:
 
-  * **address:** Assign one or more IPv4 or IPv6 addresses to the interface. 
-    For example, use 192.0.2.1/24 for IPv4 or 2001:db8::1/64 for IPv6.
-  * **dhcp:** The interface obtains an IPv4 address from a DHCP server on the 
-    same network segment.
-  * **dhcpv6:** The interface obtains an IPv6 address from a DHCPv6 server on 
-    the same network segment.
+* **address:** Assign one or more IPv4 or IPv6 addresses to the interface. 
+  For example, use 192.0.2.1/24 for IPv4 or 2001:db8::1/64 for IPv6.
+* **dhcp:** The interface obtains an IPv4 address from a DHCP server on the 
+  same network segment.
+* **dhcpv6:** The interface obtains an IPv6 address from a DHCPv6 server on 
+  the same network segment.
 
-  .. note:: If the interface obtains an IPv4 address via DHCP, and specific 
-     adjustments are needed before/after the IP address is obtained, use the 
-     provided hook scripts:
+:::{note}
+If the interface obtains an IPv4 address via DHCP, and specific
+adjustments are needed before/after the IP address is obtained, use the
+provided hook scripts:
 
-     * ``/config/scripts/dhcp-client/pre-hooks.d/``
-     * ``/config/scripts/dhcp-client/post-hooks.d/``
+* ``/config/scripts/dhcp-client/pre-hooks.d/``
+* ``/config/scripts/dhcp-client/post-hooks.d/``
 
+:::
 
-  Example:
+Example:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address 192.0.2.1/24
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address 2001:db8::1/64
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address dhcp
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address dhcpv6
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address 192.0.2.1/24
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address 2001:db8::1/64
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address dhcp
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} address dhcpv6
+```
+::::

@@ -5,70 +5,70 @@ DHCPv6-PD is supported by most ISPs that provide native IPv6 for consumers on
 fixed networks.
 
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> length <length>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options pd <id> length <length>
 
-  **Configure a specific prefix length for DHCPv6-PD requests on this 
-  interface.** 
+**Configure a specific prefix length for DHCPv6-PD requests on this 
+interface.** 
 
-  Some ISPs provide only a /64 prefix by default. Use this command to 
-  request a different prefix length for a specific DHCPv6-PD request, 
-  ranging from /32 (if allowed by your ISP) down to /64. <id> is a 
-  unique identifier for the DHCPv6-PD request.
+Some ISPs provide only a /64 prefix by default. Use this command to 
+request a different prefix length for a specific DHCPv6-PD request, 
+ranging from /32 (if allowed by your ISP) down to /64. <id> is a 
+unique identifier for the DHCPv6-PD request.
 
-  The default value is 64.
+The default value is 64.
 
-  To request a /56 prefix from your ISP, use:
+To request a /56 prefix from your ISP, use:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 length 56
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 length 56
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> address <address>
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee>
-  address <address>
+**Configure the IPv6 interface identifier (host portion) for the delegatee 
+interface.**
 
-  **Configure the IPv6 interface identifier (host portion) for the delegatee 
-  interface.**
+The value must be a decimal integer. It is appended to the delegated prefix 
+and the configured :abbr:`SLA ID (Site-Level Aggregation ID)` to form the 
+final IPv6 address.
 
-  The value must be a decimal integer. It is appended to the delegated prefix 
-  and the configured :abbr:`SLA ID (Site-Level Aggregation ID)` to form the 
-  final IPv6 address.
+By default, the host portion is generated based on the parent interface's 
+MAC address (EUI-64 format).
 
-  By default, the host portion is generated based on the parent interface's 
-  MAC address (EUI-64 format).
+ .. stop_vyoslinter
 
-   .. stop_vyoslinter
+**Example:**
 
-  **Example:**
+If a /64 prefix is delegated to interface eth8 and you configure the host 
+portion as 65535, the resulting IPv6 address will end with ::ffff, as 
+65535 corresponds to ffff in hexadecimal notation.
 
-  If a /64 prefix is delegated to interface eth8 and you configure the host 
-  portion as 65535, the resulting IPv6 address will end with ::ffff, as 
-  65535 corresponds to ffff in hexadecimal notation.
-
-  .. start_vyoslinter
+.. start_vyoslinter
 
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 address 65534
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 address 65534
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> sla-id <id>
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options pd <id> interface <delegatee> sla-id <id>
+**Configure the** :abbr:`SLA ID (Site-Level Aggregation ID)` **for the 
+delegatee interface.**
 
-  **Configure the** :abbr:`SLA ID (Site-Level Aggregation ID)` **for the 
-  delegatee interface.**
+The value must be a decimal integer greater than 0 and fit in the length of 
+SLA IDs. It is converted to hexadecimal and appended to the delegated prefix 
+to form the specific subnet prefix for the delegatee interface.
 
-  The value must be a decimal integer greater than 0 and fit in the length of 
-  SLA IDs. It is converted to hexadecimal and appended to the delegated prefix 
-  to form the specific subnet prefix for the delegatee interface.
+**Example:** 
 
-  **Example:** 
+If SLA ID is 1 and the delegated prefix is ``2001:db8:ffff::/48``, the 
+resulting subnet prefix for the delegatee interface will be 
+``2001:db8:ffff:1::/64``.
 
-  If SLA ID is 1 and the delegated prefix is ``2001:db8:ffff::/48``, the 
-  resulting subnet prefix for the delegatee interface will be 
-  ``2001:db8:ffff:1::/64``.
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
 
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
+```
+::::

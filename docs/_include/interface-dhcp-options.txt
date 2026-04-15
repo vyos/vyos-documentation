@@ -1,104 +1,105 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options client-id <description>
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options client-id <description>
 
-  **Configure a DHCP client identifier for the interface, as specified in** 
-  :rfc:`2131`.
+**Configure a DHCP client identifier for the interface, as specified in** 
+:rfc:`2131`.
 
-  The ``client-id`` is an identifier that the DHCP client sends to the DHCP 
-  server to uniquely identify itself for IP address assignment. By default, 
-  the client uses its MAC address. The ``<description>`` is a user-defined 
-  string that will be sent to the DHCP server as the DHCP client identifier.
-  
-  Example:
+The ``client-id`` is an identifier that the DHCP client sends to the DHCP 
+server to uniquely identify itself for IP address assignment. By default, 
+the client uses its MAC address. The ``<description>`` is a user-defined 
+string that will be sent to the DHCP server as the DHCP client identifier.
 
-  .. code-block:: none
+Example:
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options client-id 'foo-bar'
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options client-id 'foo-bar'
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options host-name <hostname>
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options host-name <hostname>
 
-  **Configure a specific hostname for the interface.**
+**Configure a specific hostname for the interface.**
 
-  Instead of the real hostname, the DHCP client will send the specific hostname 
-  to the DHCP server when requesting an IP address.
+Instead of the real hostname, the DHCP client will send the specific hostname 
+to the DHCP server when requesting an IP address.
 
-  Example:
+Example:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options host-name 'VyOS'
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options host-name 'VyOS'
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options vendor-class-id <vendor-id>
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options vendor-class-id <vendor-id>
+**Configure the DHCP client to include a vendor-class identifier in its DHCP 
+requests on this interface.**
 
-  **Configure the DHCP client to include a vendor-class identifier in its DHCP 
-  requests on this interface.**
+The vendor-class identifier is a vendor-specific byte string that enables 
+the DHCP server to identify the device and, in some cases, provide 
+configuration options. 
 
-  The vendor-class identifier is a vendor-specific byte string that enables 
-  the DHCP server to identify the device and, in some cases, provide 
-  configuration options. 
+Example:
 
-  Example:
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options vendor-class-id 'VyOS'
 
-  .. code-block:: none
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options no-default-route
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options vendor-class-id 'VyOS'
+**Configure the DHCP client to obtain an IP address, but ignore any default 
+gateway provided by the DHCP server on this interface.**
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options no-default-route
+Example:
 
-  **Configure the DHCP client to obtain an IP address, but ignore any default 
-  gateway provided by the DHCP server on this interface.**
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
 
-  Example:
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options default-route-distance <distance>
 
-  .. code-block:: none
+**Configure the distance for the default route obtained from the DHCP server 
+on this interface.** 
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
+Example:
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options default-route-distance <distance>
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
 
-  **Configure the distance for the default route obtained from the DHCP server 
-  on this interface.** 
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options reject <address>
 
-  Example:
+**Configure the DHCP client to reject the specific IP address or IP address 
+range from the DHCP server on this interface.** 
 
-  .. code-block:: none
+This is useful when a modem assigns a local IP address upon start. To reject 
+multiple addresses, run this command multiple times with different values. 
+You can reject individual addresses (192.168.100.1) or entire subnets 
+(192.168.100.0/24).
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
+Example:
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options reject <address>
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
 
-  **Configure the DHCP client to reject the specific IP address or IP address 
-  range from the DHCP server on this interface.** 
+```
+::::
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options user-class <string>
 
-  This is useful when a modem assigns a local IP address upon start. To reject 
-  multiple addresses, run this command multiple times with different values. 
-  You can reject individual addresses (192.168.100.1) or entire subnets 
-  (192.168.100.0/24).
+**Configure the DHCP client to send a specific user-class identifier in its 
+DHCP requests on this interface.** 
 
-  Example:
+The DHCP server can interpret this identifier and provide specific 
+configuration options based on it (for example, default routes). 
+The user-class value typically groups DHCP clients with similar configuration 
+needs (for example, employees, guests, or printers).
 
-  .. code-block:: none
+Example:
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options user-class VyOS
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcp-options user-class <string>
-
-  **Configure the DHCP client to send a specific user-class identifier in its 
-  DHCP requests on this interface.** 
-
-  The DHCP server can interpret this identifier and provide specific 
-  configuration options based on it (for example, default routes). 
-  The user-class value typically groups DHCP clients with similar configuration 
-  needs (for example, employees, guests, or printers).
-
-  Example:
-
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options user-class VyOS
+```
+::::

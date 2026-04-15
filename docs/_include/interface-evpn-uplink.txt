@@ -1,13 +1,15 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> evpn uplink
+::::{cfgcmd} set interfaces {{ var0 }} <interface> evpn uplink
 
-  **Configure this interface as an EVPN-MH uplink interface.**
+**Configure this interface as an EVPN-MH uplink interface.**
 
-  If all uplink interfaces on a PE device go down, this PE device loses access 
-  to the VXLAN overlay. To prevent traffic blackholing, the PE device forces a 
-  protocol shutdown (protodown) of its downstream EVPN-MH interfaces.
+If all uplink interfaces on a PE device go down, this PE device loses access 
+to the VXLAN overlay. To prevent traffic blackholing, the PE device forces a 
+protocol shutdown (protodown) of its downstream EVPN-MH interfaces.
 
-  The following example configures {{ var1 }} as an EVPN-MH uplink interface:
+The following example configures {{ var1 }} as an EVPN-MH uplink interface:
 
-  .. code-block:: none
+```none
+set interfaces {{ var0 }} {{ var1 }} evpn uplink
 
-    set interfaces {{ var0 }} {{ var1 }} evpn uplink
+```
+::::

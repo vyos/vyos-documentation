@@ -59,12 +59,20 @@ templates_path = ['_templates']
 # autosectionlabel
 autosectionlabel_prefix_document = True
 
+# MyST Markdown extensions
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "fieldlist",
+    "substitution",
+]
+
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ['.rst', '.md']
+source_suffix = ['.md', '.rst']
 
 # The master toctree document.
 master_doc = 'index'
@@ -114,6 +122,14 @@ html_static_path = ['_static']
 html_extra_path = ['_html_extra']
 
 html_baseurl = 'https://docs.vyos.io/en/latest/'
+
+html_context = {
+    "display_github": True,
+    "github_user": "vyos",
+    "github_repo": "vyos-documentation",
+    "github_version": "current",
+    "conf_py_path": "/docs/",
+}
 
 # sphinx-sitemap: baseurl already includes /en/latest/, so skip lang+version
 sitemap_url_scheme = '{link}'

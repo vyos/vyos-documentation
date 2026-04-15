@@ -1,17 +1,17 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-   disable-flow-control
+::::{cfgcmd} set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }} disable-flow-control
 
-  **Disable Ethernet flow control (IEEE 802.3x pause frames) on the interface.** 
+**Disable Ethernet flow control (IEEE 802.3x pause frames) on the interface.** 
 
-   Ethernet flow control, defined by the IEEE 802.3x standard, temporarily stops 
-   data transmission to prevent packet loss during network congestion. For 
-   example, when a sender transmits data faster than the receiver can process it.
+ Ethernet flow control, defined by the IEEE 802.3x standard, temporarily stops 
+ data transmission to prevent packet loss during network congestion. For 
+ example, when a sender transmits data faster than the receiver can process it.
 
-   Disabling Ethernet flow control means the interface will not signal the 
-   connected device to pause transmission and will drop packets if overwhelmed. 
+ Disabling Ethernet flow control means the interface will not signal the 
+ connected device to pause transmission and will drop packets if overwhelmed. 
 
-   Example:
+ Example:
 
-   .. code-block:: none
-
-     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
+```
+::::
