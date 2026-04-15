@@ -24,7 +24,11 @@ Enable watchdog support.
 The watchdog is enabled only when a watchdog device is available as
 ``/dev/watchdog0``.
 
-.. note:: If multiple watchdog devices are present, only the first watchdog
+:::\{note}
+
+If multiple watchdog devices are present, only the first watchdog
+
+:::
    device is supported (VyOS uses ``/dev/watchdog0`` only).
 
 If ``/dev/watchdog0`` does not exist and no module is configured, commit will
@@ -51,7 +55,11 @@ Common modules include:
 * ``i6300esb`` - Intel 6300ESB watchdog timer
 * ``ipmi_watchdog`` - IPMI watchdog timer
 
-.. warning:: ``softdog`` is not a hardware watchdog. It is implemented using
+:::\{warning}
+
+``softdog`` is not a hardware watchdog. It is implemented using
+
+:::
    kernel timers and therefore depends on the Linux kernel continuing to run.
    In some fault conditions (for example, a kernel hang), ``softdog`` may not
    be able to trigger a reset.
@@ -62,14 +70,18 @@ Common modules include:
 If no module is specified, VyOS will use an existing ``/dev/watchdog0``
 device if available.
 
-.. note:: If a module is specified but a different driver is actually bound
+:::\{note}
+
+If a module is specified but a different driver is actually bound
+
+:::
    to ``watchdog0``, VyOS will emit a warning during commit.
 
 Example:
 
-.. code-block:: none
-
-   set system watchdog module softdog
+```none
+set system watchdog module softdog
+```
 ```
 ```{cfgcmd} set system watchdog timeout <seconds>
    :defaultvalue:
@@ -77,7 +89,11 @@ Set the watchdog timeout for normal runtime operation in seconds.
 
 Valid range: 1-65535 seconds
 
-.. note:: Some watchdog drivers expose minimum and maximum supported runtime
+:::\{note}
+
+Some watchdog drivers expose minimum and maximum supported runtime
+
+:::
    timeouts via sysfs. When available, VyOS validates ``timeout`` against
    those driver limits during commit.
 
@@ -87,9 +103,9 @@ a reboot.
 
 Example:
 
-.. code-block:: none
-
-   set system watchdog timeout 30
+```none
+set system watchdog timeout 30
+```
 ```
 ```{cfgcmd} set system watchdog shutdown-timeout <seconds>
    :defaultvalue:
@@ -100,16 +116,20 @@ Valid range: 60-65535 seconds
 This extended timeout allows the system to complete a graceful shutdown
 without triggering the watchdog.
 
-.. warning:: Setting this value too low (below 120 seconds) may cause
+:::\{warning}
+
+Setting this value too low (below 120 seconds) may cause
+
+:::
    unclean shutdowns, as the system may not have enough time to properly
    stop all services and flush disk buffers. The recommended minimum value
    is 120 seconds.
 
 Example:
 
-.. code-block:: none
-
-   set system watchdog shutdown-timeout 180
+```none
+set system watchdog shutdown-timeout 180
+```
 ```
 ```{cfgcmd} set system watchdog reboot-timeout <seconds>
    :defaultvalue:
@@ -120,16 +140,20 @@ Valid range: 60-65535 seconds
 This extended timeout allows the system to complete the reboot process
 without triggering the watchdog during the transition.
 
-.. warning:: Setting this value too low (below 120 seconds) may cause
+:::\{warning}
+
+Setting this value too low (below 120 seconds) may cause
+
+:::
    unclean reboots, as the system may not have enough time to properly
    stop all services before restarting. The recommended minimum value
    is 120 seconds.
 
 Example:
 
-.. code-block:: none
-
-   set system watchdog reboot-timeout 180
+```none
+set system watchdog reboot-timeout 180
+```
 ```
 ## Examples
 

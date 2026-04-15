@@ -65,7 +65,13 @@ left unconfigured.
  [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
 
 
-.. note:: USB to serial converters will handle most of their work in software
+:::\{note}
+
+
+USB to serial converters will handle most of their work in software
+
+
+:::
 
    so you should be carefull with the selected baudrate as some times they
 
@@ -92,7 +98,13 @@ After successfull authentication the user will be directly dropped to
 the connected serial device.
 
 
-.. hint:: Multiple users can connect to the same serial device but only
+:::\{hint}
+
+
+Multiple users can connect to the same serial device but only
+
+
+:::
 
    one is allowed to write to the console port.
 ```
@@ -106,12 +118,12 @@ the connected serial device.
 Show configured serial ports and their respective interface configuration.
 
 
-.. code-block:: none
+```none
 
+vyos@vyos:~$ show console-server ports
 
-  vyos@vyos:~$ show console-server ports
-
-   usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
+ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
+```
 ```
 
 
@@ -120,32 +132,41 @@ Show configured serial ports and their respective interface configuration.
 Show currently connected users.
 
 
-.. code-block:: none
+```none
 
+vyos@vyos:~$ show console-server user
 
-  vyos@vyos:~$ show console-server user
-
-   usb0b2.4p1.0               up   vyos@localhost
+ usb0b2.4p1.0               up   vyos@localhost
+```
 ```
 ```{opcmd} connect console <device>
 
 Locally connect to serial port identified by `<device>`.
 
-.. code-block:: none
+```none
+vyos@vyos-r1:~$ connect console usb0b2.4p1.0
+[Enter `^Ec?' for help]
+[-- MOTD -- VyOS Console Server]
 
-  vyos@vyos-r1:~$ connect console usb0b2.4p1.0
-  [Enter `^Ec?' for help]
-  [-- MOTD -- VyOS Console Server]
-
-  vyos-r2 login:
-
-.. hint:: Multiple users can connect to the same serial device but only
+vyos-r2 login:
+```
+:::\{hint}
+Multiple users can connect to the same serial device but only
+:::
    one is allowed to write to the console port.
 
-.. hint:: The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
+:::\{hint}
+
+The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
+
+:::
    the session use: ``Ctrl+E c .``
 
-.. hint:: If ``alias`` is set, it can be used instead of the device when
+:::\{hint}
+
+If ``alias`` is set, it can be used instead of the device when
+
+:::
    connecting.
 ```
 ```{opcmd} show log console-server

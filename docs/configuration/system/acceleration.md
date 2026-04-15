@@ -12,11 +12,10 @@ At the moment only [Intel® QAT] is supported
 use this command to check if there is an Intel® QAT supported Processor in
 your system.
 
-.. code-block::
-
-    vyos@vyos:~$ show system acceleration qat
-    01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
-
+```none
+vyos@vyos:~$ show system acceleration qat
+01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
+```
 if there is no device the command will show ``No QAT device found``
 ```
 
@@ -32,16 +31,16 @@ if there is no device the command will show ``No QAT device found``
 Check if the Intel® QAT device is up and ready to do the job.
 
 
-.. code-block::
+```none
 
+vyos@vyos:~$ show system acceleration qat status
 
-    vyos@vyos:~$ show system acceleration qat status
+Checking status of all devices.
 
-    Checking status of all devices.
+There is 1 QAT acceleration device(s) in the system:
 
-    There is 1 QAT acceleration device(s) in the system:
-
-    qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
+qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
+```
 ```
 
 

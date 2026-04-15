@@ -30,11 +30,10 @@ URL Filtering is provided by [SquidGuard].
   ``www.vyos.net/foo.html``.
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy append-domain vyos.net
-
+  set service webproxy append-domain vyos.net
+  ```
 ```
 
 
@@ -48,10 +47,10 @@ cache-size is configured to 100 MB.
 Unit of this command is MB.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy cache-size 1024
+set service webproxy cache-size 1024
+```
 ```
 
 
@@ -65,10 +64,10 @@ This port is the default port used for the specified listen-address.
 Default port is 3128.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy default-port 8080
+set service webproxy default-port 8080
+```
 ```
 
 
@@ -81,10 +80,10 @@ all access to vyos.net, and specifying ".xxx" will block all access to URLs
 having an URL ending on .xxx.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy domain-block vyos.net
+set service webproxy domain-block vyos.net
+```
 ```
 
 
@@ -99,10 +98,10 @@ accessed will not be cached. It useful for working around problems with
 "If-Modified-Since" checking at certain sites.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy domain-noncache vyos.net
+set service webproxy domain-noncache vyos.net
+```
 ```
 
 
@@ -118,10 +117,10 @@ For security, the listen address should only be used on internal/trusted
 networks!
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy listen-address 192.0.2.1
+set service webproxy listen-address 192.0.2.1
+```
 ```
 
 
@@ -148,10 +147,10 @@ accordingly. In addition, web-transmitted malware can sometimes be blocked by
 a non-transparent web proxy, since they are not aware of the proxy settings.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy listen-address 192.0.2.1 disable-transparent
+set service webproxy listen-address 192.0.2.1 disable-transparent
+```
 ```
 
 
@@ -162,23 +161,22 @@ Sets the listening port for a listening address. This overrides the default
 port of 3128 on the specific listen address.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy listen-address 192.0.2.1 port 8080
+set service webproxy listen-address 192.0.2.1 port 8080
+```
 ```
 ```{cfgcmd} set service webproxy reply-block-mime <mime>
 
 Used to block a specific mime-type.
 
 
-.. code-block:: none
+```none
 
+# block all PDFs
 
-  # block all PDFs
-
-  set service webproxy reply-block-mime application/pdf
-
+set service webproxy reply-block-mime application/pdf
+```
 ```
 ```{cfgcmd} set service webproxy reply-body-max-size <size>
 
@@ -190,11 +188,10 @@ Used to block a specific mime-type.
   All reply sizes are accepted by default.
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy reply-body-max-size 2048
-
+  set service webproxy reply-body-max-size 2048
+  ```
 ```
 
 
@@ -232,11 +229,10 @@ Directory as authentication backend. Queries are done via LDAP.
   This defaults to 5.
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy authentication children 10
-
+  set service webproxy authentication children 10
+  ```
 ```
 
 
@@ -252,21 +248,20 @@ that user. Set this low to force revalidation with short lived passwords.
 Time is in minutes and defaults to 60.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication credentials-ttl 120
+set service webproxy authentication credentials-ttl 120
+```
 ```
 ```{cfgcmd} set service webproxy authentication method <ldap>
 
   Proxy authentication method, currently only LDAP is supported.
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy authentication method ldap
-
+  set service webproxy authentication method ldap
+  ```
 ```
 
 
@@ -279,10 +274,10 @@ the client for the authentication scheme. It is commonly part of the text
 the user will see when prompted for their username and password.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication realm "VyOS proxy auth"
+set service webproxy authentication realm "VyOS proxy auth"
+```
 ```
 
 
@@ -294,21 +289,20 @@ the user will see when prompted for their username and password.
 Specifies the base DN under which the users are located.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap base-dn DC=vyos,DC=net
+set service webproxy authentication ldap base-dn DC=vyos,DC=net
+```
 ```
 ```{cfgcmd} set service webproxy authentication ldap bind-dn <bind-dn>
 
   The DN and password to bind as while performing searches.
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy authentication ldap bind-dn CN=proxyuser,CN=Users,DC=vyos,DC=net
-
+  set service webproxy authentication ldap bind-dn CN=proxyuser,CN=Users,DC=vyos,DC=net
+  ```
 ```
 
 
@@ -328,10 +322,10 @@ replaced by the username, as in "uid=%s" for :rfc:`2037` directories. For a
 detailed description of LDAP search filter syntax see :rfc:`2254`.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap filter-expression (cn=%s)
+set service webproxy authentication ldap filter-expression (cn=%s)
+```
 ```
 
 
@@ -348,10 +342,10 @@ the damage in case someone could get hold of a copy of your Squid
 configuration file.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap password vyos
+set service webproxy authentication ldap password vyos
+```
 ```
 
 
@@ -369,10 +363,10 @@ for further user validations.
 Recommended for larger installations.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap persistent-connection
+set service webproxy authentication ldap persistent-connection
+```
 ```
 
 
@@ -383,10 +377,10 @@ Specify an alternate TCP port where the ldap server is listening if other than
 the default LDAP port 389.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap port 389
+set service webproxy authentication ldap port 389
+```
 ```
 
 
@@ -395,21 +389,20 @@ the default LDAP port 389.
 Specify the LDAP server to connect to.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap server ldap.vyos.net
+set service webproxy authentication ldap server ldap.vyos.net
+```
 ```
 ```{cfgcmd} set service webproxy authentication ldap use-ssl
 
 Use TLS encryption.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap use-ssl
-
+set service webproxy authentication ldap use-ssl
+```
 ```
 ```{cfgcmd} set service webproxy authentication ldap username-attribute <attr>
 
@@ -423,7 +416,13 @@ Use TLS encryption.
   Defaults to 'uid'
 
 
-  .. note:: This can only be done if all your users are located directly under
+  :::\{note}
+
+
+  This can only be done if all your users are located directly under
+
+
+  :::
 
     the same position in the LDAP tree and the login name is used for naming
 
@@ -434,11 +433,10 @@ Use TLS encryption.
     search for your users DN (`filter-expression`).
 
 
-  .. code-block:: none
+  ```none
 
-
-    set service webproxy authentication ldap username-attribute uid
-
+  set service webproxy authentication ldap username-attribute uid
+  ```
 ```
 
 
@@ -447,10 +445,10 @@ Use TLS encryption.
 LDAP protocol version. Defaults to 3 if not specified.
 
 
-.. code-block:: none
+```none
 
-
-  set service webproxy authentication ldap version 2
+set service webproxy authentication ldap version 2
+```
 ```
 
 
@@ -463,9 +461,9 @@ LDAP protocol version. Defaults to 3 if not specified.
 
 Disables web filtering without discarding configuration.
 
-.. code-block:: none
-
-  set service webproxy url-filtering disable
+```none
+set service webproxy url-filtering disable
+```
 ```
 ## Operation
 
@@ -482,32 +480,32 @@ first. Otherwise you will not be able to commit the config changes.
 
 Download/Update complete blacklist
 
-.. code-block:: none
+```none
+vyos@vyos:~$ update webproxy blacklists
+Warning: No url-filtering blacklist installed
+Would you like to download a default blacklist? [confirm][y]
+Connecting to ftp.univ-tlse1.fr (193.49.48.249:21)
+blacklists.gz        100% |*************************************************************************************************************| 17.0M  0:00:00 ETA
+Uncompressing blacklist...
+Checking permissions...
+Skip link for   [ads] -> [publicite]
+Building DB for [adult/domains] - 2467177 entries
+Building DB for [adult/urls] - 67798 entries
+Skip link for   [aggressive] -> [agressif]
+Building DB for [agressif/domains] - 348 entries
+Building DB for [agressif/urls] - 36 entries
+Building DB for [arjel/domains] - 69 entries
+...
 
-  vyos@vyos:~$ update webproxy blacklists
-  Warning: No url-filtering blacklist installed
-  Would you like to download a default blacklist? [confirm][y]
-  Connecting to ftp.univ-tlse1.fr (193.49.48.249:21)
-  blacklists.gz        100% |*************************************************************************************************************| 17.0M  0:00:00 ETA
-  Uncompressing blacklist...
-  Checking permissions...
-  Skip link for   [ads] -> [publicite]
-  Building DB for [adult/domains] - 2467177 entries
-  Building DB for [adult/urls] - 67798 entries
-  Skip link for   [aggressive] -> [agressif]
-  Building DB for [agressif/domains] - 348 entries
-  Building DB for [agressif/urls] - 36 entries
-  Building DB for [arjel/domains] - 69 entries
-  ...
+Building DB for [webmail/domains] - 374 entries
+Building DB for [webmail/urls] - 9 entries
 
-  Building DB for [webmail/domains] - 374 entries
-  Building DB for [webmail/urls] - 9 entries
+The webproxy daemon must be restarted
+Would you like to restart it now? [confirm][y]
 
-  The webproxy daemon must be restarted
-  Would you like to restart it now? [confirm][y]
-
-  [ ok ] Restarting squid (via systemctl): squid.service.
-  vyos@vyos:~$
+[ ok ] Restarting squid (via systemctl): squid.service.
+vyos@vyos:~$
+```
 ```
 ```{opcmd} update webproxy blacklists category <category>
 

@@ -45,7 +45,8 @@ private key on the console.
 Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ```{opcmd} generate pki ca sign <ca-name>
 
@@ -57,7 +58,8 @@ the private key referenced by `ca-name`.
 Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
 the private key referenced by `name`.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ### Certificates
 
@@ -69,7 +71,8 @@ Create a new public/private keypair and output the certificate on the console.
 
 Create a new public/private keypair and output the certificate on the console.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ```{opcmd} generate pki certificate self-signed
 
@@ -81,7 +84,8 @@ console.
 Create a new self-signed certificate. The public/private is then shown on the
 console.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ```{opcmd} generate pki certificate sign <ca-name>
 
@@ -93,7 +97,8 @@ Create a new public/private keypair which is signed by the CA referenced by
 Create a new public/private keypair which is signed by the CA referenced by
 `ca-name`. The signed certificate is then output to the console.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ### Diffie-Hellman parameters
 
@@ -109,7 +114,8 @@ The generated parameters are then output to the console.
 Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ### OpenVPN
 
@@ -123,7 +129,8 @@ the console.
 Generate a new OpenVPN shared secret. The generated secret is the output to
 the console.
 
-.. include:: pki_cli_import_help.txt
+```{include} pki_cli_import_help.txt
+```
 ```
 ### WireGuard
 
@@ -137,7 +144,11 @@ the console.
 Generate a new WireGuard public/private key portion and output the result to
 the console.
 
-.. note:: In addition to the command above, the output is in a format which can
+:::\{note}
+
+In addition to the command above, the output is in a format which can
+
+:::
   be used to directly import the key into the VyOS CLI by simply copy-pasting
   the output from op-mode into configuration mode.
 
@@ -152,7 +163,11 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 
 Generate a WireGuard pre-shared secret used for peers to communicate.
 
-.. note:: In addition to the command above, the output is in a format which can
+:::\{note}
+
+In addition to the command above, the output is in a format which can
+
+:::
   be used to directly import the key into the VyOS CLI by simply copy-pasting
   the output from op-mode into configuration mode.
 
@@ -167,7 +182,11 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
 
-.. note:: When loading the certificate you need to manually strip the
+:::\{note}
+
+When loading the certificate you need to manually strip the
+
+:::
   ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
   Also, the certificate/key needs to be presented in a single line without
   line breaks (``\n``), this can be done using the following shell command:
@@ -188,7 +207,11 @@ Add the CAs private key to the VyOS CLI. This should never leave the system,
 and is only required if you use VyOS as your certificate generator as
 mentioned above.
 
-.. note:: When loading the certificate you need to manually strip the
+:::\{note}
+
+When loading the certificate you need to manually strip the
+
+:::
   ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
   certificate/key needs to be presented in a single line without line
   breaks (``\n``), this can be done using the following shell command:
@@ -209,7 +232,11 @@ certificates used by services on this router.
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
 
-.. note:: When loading the certificate you need to manually strip the
+:::\{note}
+
+When loading the certificate you need to manually strip the
+
+:::
   ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
   Also, the certificate/key needs to be presented in a single line without
   line breaks (``\n``), this can be done using the following shell command:
@@ -225,7 +252,11 @@ A human readable description what this certificate is about.
 Add the private key portion of this certificate to the CLI. This should never
 leave the system as it is used to decrypt the data.
 
-.. note:: When loading the certificate you need to manually strip the
+:::\{note}
+
+When loading the certificate you need to manually strip the
+
+:::
   ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
   certificate/key needs to be presented in a single line without line
   breaks (``\n``), this can be done using the following shell command:
@@ -303,7 +334,11 @@ ACME Directory Resource URI.
 
 This defaults to https://acme-v02.api.letsencrypt.org/directory
 
-.. note:: During initial deployment we recommend using the staging API
+:::\{note}
+
+During initial deployment we recommend using the staging API
+
+:::
   of LetsEncrypt to prevent and blacklisting of your system. The API
   endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 ```
@@ -316,15 +351,15 @@ also to display them.
 
 Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show pki ca
-  Certificate Authorities:
-  Name            Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
-  --------------  -------------------------------------------------------  -----------------  -------------------  -------------------  -------------  --------------
-  DST_Root_CA_X3  CN=ISRG Root X1,O=Internet Security Research Group,C=US  CN=DST Root CA X3  2021-01-20 19:14:03  2024-09-30 18:14:03  No             N/A
-  R3              CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             DST_Root_CA_X3
-  vyos_rw         CN=VyOS RW CA,O=VyOS,L=Some-City,ST=Some-State,C=GB      CN=VyOS RW CA      2021-07-05 13:46:03  2026-07-04 13:46:03  Yes            N/A
+```none
+vyos@vyos:~$ show pki ca
+Certificate Authorities:
+Name            Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
+--------------  -------------------------------------------------------  -----------------  -------------------  -------------------  -------------  --------------
+DST_Root_CA_X3  CN=ISRG Root X1,O=Internet Security Research Group,C=US  CN=DST Root CA X3  2021-01-20 19:14:03  2024-09-30 18:14:03  No             N/A
+R3              CN=R3,O=Let's Encrypt,C=US                               CN=ISRG Root X1    2020-09-04 00:00:00  2025-09-15 16:00:00  No             DST_Root_CA_X3
+vyos_rw         CN=VyOS RW CA,O=VyOS,L=Some-City,ST=Some-State,C=GB      CN=VyOS RW CA      2021-07-05 13:46:03  2026-07-04 13:46:03  Yes            N/A
+```
 ```
 ```{opcmd} show pki ca <name>
 
@@ -334,14 +369,14 @@ Show only information for specified Certificate Authority.
 
 Show a list of installed certificates
 
-.. code-block:: none
-
-  vyos@vyos:~$ show pki certificate
-  Certificates:
-  Name       Type    Subject CN             Issuer CN      Issued               Expiry               Revoked    Private Key    CA Present
-  ---------  ------  ---------------------  -------------  -------------------  -------------------  ---------  -------------  -------------
-  ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
-  rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
+```none
+vyos@vyos:~$ show pki certificate
+Certificates:
+Name       Type    Subject CN             Issuer CN      Issued               Expiry               Revoked    Private Key    CA Present
+---------  ------  ---------------------  -------------  -------------------  -------------------  ---------  -------------  -------------
+ac2        Server  CN=ac2.vyos.net        CN=R3          2021-07-05 07:29:59  2021-10-03 07:29:58  No         Yes            Yes (R3)
+rw_server  Server  CN=VyOS RW             CN=VyOS RW CA  2021-07-05 13:48:02  2022-07-05 13:48:02  No         Yes            Yes (vyos_rw)
+```
 ```
 ```{opcmd} show pki certificate <name>
 

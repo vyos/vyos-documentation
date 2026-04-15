@@ -76,27 +76,27 @@ Set a rule description.
    source address <ip-address>
 Set a destination and/or source address. Accepted input for ipv4:
 
-.. code-block:: none
+```none
+set system conntrack timeout custom ipv4 rule <1-999999> [source | destination] address
+Possible completions:
+   <x.x.x.x>            IPv4 address to match
+   <x.x.x.x/x>          IPv4 prefix to match
+   <x.x.x.x>-<x.x.x.x>  IPv4 address range to match
+   !<x.x.x.x>           Match everything except the specified address
+   !<x.x.x.x/x>         Match everything except the specified prefix
+   !<x.x.x.x>-<x.x.x.x> Match everything except the specified range
 
-    set system conntrack timeout custom ipv4 rule <1-999999> [source | destination] address
-    Possible completions:
-       <x.x.x.x>            IPv4 address to match
-       <x.x.x.x/x>          IPv4 prefix to match
-       <x.x.x.x>-<x.x.x.x>  IPv4 address range to match
-       !<x.x.x.x>           Match everything except the specified address
-       !<x.x.x.x/x>         Match everything except the specified prefix
-       !<x.x.x.x>-<x.x.x.x> Match everything except the specified range
-
-    set system conntrack timeout custom ipv6 rule <1-999999> [source | destination] address
-    Possible completions:
-       <h:h:h:h:h:h:h:h>    IP address to match
-       <h:h:h:h:h:h:h:h/x>  Subnet to match
-       <h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
-                            IP range to match
-       !<h:h:h:h:h:h:h:h>   Match everything except the specified address
-       !<h:h:h:h:h:h:h:h/x> Match everything except the specified prefix
-       !<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
-                            Match everything except the specified range
+set system conntrack timeout custom ipv6 rule <1-999999> [source | destination] address
+Possible completions:
+   <h:h:h:h:h:h:h:h>    IP address to match
+   <h:h:h:h:h:h:h:h/x>  Subnet to match
+   <h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
+                        IP range to match
+   !<h:h:h:h:h:h:h:h>   Match everything except the specified address
+   !<h:h:h:h:h:h:h:h/x> Match everything except the specified prefix
+   !<h:h:h:h:h:h:h:h>-<h:h:h:h:h:h:h:h>
+                        Match everything except the specified range
+```
 ```
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule <1-999999>
 
@@ -107,12 +107,11 @@ Set a destination and/or source address. Accepted input for ipv4:
    source port <value>
 Set a destination and/or source port. Accepted input:
 
-.. code-block:: none
-
-    <port name>    Named port (any name in /etc/services, e.g., http)
-    <1-65535>      Numbered port
-    <start>-<end>  Numbered port range (e.g., 1001-1005)
-
+```none
+<port name>    Named port (any name in /etc/services, e.g., http)
+<1-65535>      Numbered port
+<start>-<end>  Numbered port range (e.g., 1001-1005)
+```
 Multiple destination ports can be specified as a comma-separated list.
 The whole list can also be "negated" using '!'. For example:
 `!22,telnet,http,123,1001-1005``

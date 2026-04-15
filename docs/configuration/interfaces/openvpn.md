@@ -105,7 +105,13 @@ enables cipher negotiation, where both peers automatically agree on a mutually
 supported cipher during session startup.
 
 
-.. note:: This option is not compatible with ``site-to-site`` mode.
+:::\{note}
+
+
+This option is not compatible with ``site-to-site`` mode.
+
+
+:::
 ```
 
 
@@ -121,7 +127,13 @@ fallback`` directive. It defines the cipher to use if negotiation is **not
 supported**.
 
 
-.. note:: This option ensures consistent encryption between two static peers
+:::\{note}
+
+
+This option ensures consistent encryption between two static peers
+
+
+:::
 
           without cipher negotiation capability.
 ```
@@ -252,12 +264,10 @@ enabled to avoid compatibility issues with existing clients.
    Example:
 
 
-   .. code-block:: none
+   ```none
 
-
-     set interfaces openvpn vtun0 offload dco
-
-
+   set interfaces openvpn vtun0 offload dco
+   ```
    This command enables :abbr:`DCO (Data Channel Offload)` and loads the required
 
    kernel module.
@@ -285,7 +295,13 @@ Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
 to the openvpn.conf file.
 
 
-.. warning:: Use this option only as a last resort. Invalid options or syntax
+:::\{warning}
+
+
+Use this option only as a last resort. Invalid options or syntax
+
+
+:::
 
    may prevent OpenVPN from starting. Check system logs for errors after applying
 
@@ -295,23 +311,19 @@ to the openvpn.conf file.
 Example:
 
 
-.. code-block:: none
+```none
 
-
-  set interfaces openvpn vtun0 openvpn-option 'persist-key'
-
-
+set interfaces openvpn vtun0 openvpn-option 'persist-key'
+```
 This command adds ``persist-key`` to the configuration file. This solves the
 
 problem by persisting keys across resets, so they do not need to be re-read.
 
 
-.. code-block:: none
+```none
 
-
-  set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
-
-
+set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
+```
 This command adds ``route-up "/config/auth/tun_up.sh arg1"`` to the
 
 configuration file. This option is executed after connection authentication,
@@ -322,7 +334,13 @@ either immediately or after a short delay, as defined.
 Ensure the path and arguments are enclosed in single or double quotes.
 
 
-.. note:: Some raw configuration options require quotes. To include them, use
+:::\{note}
+
+
+Some raw configuration options require quotes. To include them, use
+
+
+:::
 
    the &quot; statement.
 ```

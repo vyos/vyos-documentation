@@ -83,7 +83,11 @@ For on-demand connections, you must also configure an ``idle-timeout`` period
 
 to disconnect the session after inactivity.
 
-.. note:: Setting the idle timeout to zero, or leaving it unconfigured, keeps
+:::\{note}
+
+Setting the idle timeout to zero, or leaving it unconfigured, keeps
+
+:::
 
 the connection active continuously once established.
 
@@ -98,11 +102,15 @@ Request an IP address from the PPPoE server without installing a default route.
 
 Example:
 
-.. code-block:: none
-
+```none
+```
 set interfaces pppoe pppoe0 no-default-route
 
-.. note:: Introduced in VyOS 1.4, this command inverts the logic of the former
+:::\{note}
+
+Introduced in VyOS 1.4, this command inverts the logic of the former
+
+:::
 
 ``default-route`` CLI option.
 ```
@@ -113,8 +121,8 @@ Configure the distance for the default gateway provided by the PPPoE server.
 
 Example:
 
-.. code-block:: none
-
+```none
+```
 set interfaces pppoe pppoe0 default-route-distance 220
 ```
 
@@ -136,7 +144,11 @@ and 256 bytes for data).
 
 The default MRU is 1492 bytes.
 
-.. note:: When using the IPv6 protocol, the MRU must be at least 1280 bytes.
+:::\{note}
+
+When using the IPv6 protocol, the MRU must be at least 1280 bytes.
+
+:::
 ```
 
 ```{cfgcmd} set interfaces pppoe <interface> idle-timeout <time>
@@ -147,7 +159,11 @@ This setting defines how long the connection remains active without any traffic
 
 before being disconnected.
 
-.. note:: Setting the idle timeout to zero, or leaving it unconfigured, keeps
+:::\{note}
+
+Setting the idle timeout to zero, or leaving it unconfigured, keeps
+
+:::
 
 the connection active continuously once established.
 ```
@@ -224,7 +240,11 @@ IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-.. note:: Introduced in VyOS 1.4, this command replaces the older ``set firewall
+:::\{note}
+
+Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
+:::
 
 options interface <name> adjust-mss <value>`` syntax.
 ```
@@ -302,7 +322,11 @@ IPv6 traffic (40 bytes for the IPv6 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-.. note:: Introduced in VyOS 1.4, this command replaces the older ``set firewall
+:::\{note}
+
+Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
+:::
 ```
 ```{cfgcmd} set interfaces pppoe <interface> ipv6 disable-forwarding
 
@@ -320,29 +344,29 @@ disabled on it.
 
 Show detailed information about a specific PPPoE interface.
 
-.. code-block:: none
+```none
+vyos@vyos:~$ show interfaces pppoe pppoe0
+pppoe0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1492 qdisc pfifo_fast state UNKNOWN group default qlen 3
+    link/ppp
+    inet 192.0.2.1 peer 192.0.2.255/32 scope global pppoe0
+       valid_lft forever preferred_lft forever
 
-  vyos@vyos:~$ show interfaces pppoe pppoe0
-  pppoe0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1492 qdisc pfifo_fast state UNKNOWN group default qlen 3
-      link/ppp
-      inet 192.0.2.1 peer 192.0.2.255/32 scope global pppoe0
-         valid_lft forever preferred_lft forever
-
-      RX:  bytes    packets     errors    dropped    overrun      mcast
-      7002658233    5064967          0          0          0          0
-      TX:  bytes    packets     errors    dropped    carrier collisions
-       533822843    1620173          0          0          0          0
+    RX:  bytes    packets     errors    dropped    overrun      mcast
+    7002658233    5064967          0          0          0          0
+    TX:  bytes    packets     errors    dropped    carrier collisions
+     533822843    1620173          0          0          0          0
+```
 ```
 ```{opcmd} show interfaces pppoe <interface> queue
 
 Show queue information for a specific PPPoE interface.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show interfaces pppoe pppoe0 queue
-  qdisc pfifo_fast 0: root refcnt 2 bands 3 priomap  1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
-   Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
-   backlog 0b 0p requeues 0
+```none
+vyos@vyos:~$ show interfaces pppoe pppoe0 queue
+qdisc pfifo_fast 0: root refcnt 2 bands 3 priomap  1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+ Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
+ backlog 0b 0p requeues 0
+```
 ```
 ### Connect/disconnect
 

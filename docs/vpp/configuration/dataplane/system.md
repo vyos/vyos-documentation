@@ -105,9 +105,11 @@ The ``<cpu-range>`` can be:
 * Range: ``2-5``
 * Mixed: ``1,3-5,7``
 
-.. important::
+:::\{important}
 
-   Always reserve at least 2 cores for the operating system to ensure
+Always reserve at least 2 cores for the operating system to ensure
+
+:::
    system stability. For example, on a 4-core system, isolate cores
    2-3 for VPP and leave cores 0-1 for the OS.
 

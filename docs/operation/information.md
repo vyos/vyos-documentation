@@ -35,7 +35,11 @@ recent Linux distributions.
 
 Retrieve a tree-like representation of all connected USB devices.
 
-.. note:: If a device is unplugged and plugged in again, it is assigned a new
+:::\{note}
+
+If a device is unplugged and plugged in again, it is assigned a new
+
+:::
   ``Port``, ``Dev``, and ``If``.
 ```
 % stop_vyoslinter
@@ -112,37 +116,37 @@ Return the currently running VyOS version and build information. This
 includes the name of the release train, e.g., ``sagitta`` on VyOS 1.4,
 and ``circinus`` on VyOS 1.5.
 
-.. code-block:: none
+```none
+vyos@vyos:~$ show version
 
-  vyos@vyos:~$ show version
+Version:          VyOS 1.4-rolling-202106270801
+Release Train:    sagitta
 
-  Version:          VyOS 1.4-rolling-202106270801
-  Release Train:    sagitta
+Built by:         autobuild@vyos.net
+Built on:         Sun 27 Jun 2021 09:50 UTC
+Build UUID:       ab43e735-edcb-405a-9f51-f16a1b104e52
+Build Commit ID:  f544d75eab758f
 
-  Built by:         autobuild@vyos.net
-  Built on:         Sun 27 Jun 2021 09:50 UTC
-  Build UUID:       ab43e735-edcb-405a-9f51-f16a1b104e52
-  Build Commit ID:  f544d75eab758f
+Architecture:     x86_64
+Boot via:         installed image
+System type:      KVM guest
 
-  Architecture:     x86_64
-  Boot via:         installed image
-  System type:      KVM guest
+Hardware vendor:  QEMU
+Hardware model:   Standard PC (i440FX + PIIX, 1996)
+Hardware S/N:
+Hardware UUID:    Unknown
 
-  Hardware vendor:  QEMU
-  Hardware model:   Standard PC (i440FX + PIIX, 1996)
-  Hardware S/N:
-  Hardware UUID:    Unknown
-
-  Copyright:        VyOS maintainers and contributors
+Copyright:        VyOS maintainers and contributors
+```
 ```
 ```{opcmd} show version kernel
 
 Return the version number of the currently running Linux kernel.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show version kernel
-  5.10.46-amd64-vyos
+```none
+vyos@vyos:~$ show version kernel
+5.10.46-amd64-vyos
+```
 ```
 ```{opcmd} show version frr
 
@@ -150,9 +154,9 @@ Return the version number of FRR (Free Range Routing - https://frrouting.org/)
 used in this release. This is the routing control plane and a successor to GNU
 Zebra and Quagga.
 
-  .. code-block:: none
-
-    vyos@vyos:~$ show version frr
-    FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
-    Copyright 1996-2005 Kunihiro Ishiguro, et al.
+  ```none
+  vyos@vyos:~$ show version frr
+  FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
+  Copyright 1996-2005 Kunihiro Ishiguro, et al.
+  ```
 ```

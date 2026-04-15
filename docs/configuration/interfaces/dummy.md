@@ -56,8 +56,8 @@ Dummy interfaces are also used for testing and simulation purposes.
 
 Show brief interface information.
 
-.. code-block:: none
-
+```none
+```
 vyos@vyos:~$ show interfaces dummy
 
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -73,8 +73,8 @@ dum0             172.18.254.201/32                 u/u
 
 Show detailed interface information.
 
-.. code-block:: none
-
+```none
+```
 vyos@vyos:~$ show interfaces dummy dum0
 
 dum0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000

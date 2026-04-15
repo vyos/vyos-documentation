@@ -97,12 +97,10 @@ Two FIDO2 key types are supported by OpenSSH: ``ed25519-sk``, ``ecdsa-sk``
 Generic FIDO2-backed SSH key generation example:
 
 
-.. code-block:: none
+```none
 
-
-  ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
-
-
+ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
+```
 During key generation, OpenSSH will:
 
   * Request user presence (for example, a physical touch or confirmation)
@@ -118,20 +116,18 @@ The private key material never leaves the authenticator device.
 VyOS configuration example:
 
 
-.. code-block:: none
+```none
 
+# Generate a FIDO2 SSH key on the client system
 
-  # Generate a FIDO2 SSH key on the client system
+# Copy the public key to the VyOS instance
 
-  # Copy the public key to the VyOS instance
+set system login user vyos authentication public-keys fido key '<public-key>'
 
-  set system login user vyos authentication public-keys fido key '<public-key>'
+set system login user vyos authentication public-keys fido type 'sk-ecdsa-sha2-nistp256@openssh.com'
 
-  set system login user vyos authentication public-keys fido type 'sk-ecdsa-sha2-nistp256@openssh.com'
-
-  set service ssh fido touch-required
-
-
+set service ssh fido touch-required
+```
 You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.1``
 ```
 
@@ -270,35 +266,33 @@ You can use it by adding the OpenSSH key-pair under the PKI subsystem.
 Example:
 
 
-.. code-block:: none
+```none
+
+# Generate key-pair acting as CA
+
+$ ssh-keygen -f vyos-ssh-ca.key
 
 
-  # Generate key-pair acting as CA
+# Generate key for user: vyos_testca
 
-  $ ssh-keygen -f vyos-ssh-ca.key
-
-
-  # Generate key for user: vyos_testca
-
-  $ ssh-keygen -f vyos_testca  -C "vyos_tesca@vyos.net"
+$ ssh-keygen -f vyos_testca  -C "vyos_tesca@vyos.net"
 
 
-  # Sign public key from user vyos_testca and insert principal names: vyos, vyos_testca
+# Sign public key from user vyos_testca and insert principal names: vyos, vyos_testca
 
-  # with a key lifetime of two weeks - after which the key is unusable
+# with a key lifetime of two weeks - after which the key is unusable
 
-  $ ssh-keygen -s vyos-ssh-ca.key -I vyos_testca@vyos.net -n vyos,vyos_testca -V +2w vyos_testca.pub
-
-
-  $ set system login user vyos_testca
-
-  $ set pki openssh test_ca public key AAAAB3N.....
-
-  $ set pki openssh test_ca public type ssh-rsa
-
-  $ set service ssh trusted-user-ca test_ca
+$ ssh-keygen -s vyos-ssh-ca.key -I vyos_testca@vyos.net -n vyos,vyos_testca -V +2w vyos_testca.pub
 
 
+$ set system login user vyos_testca
+
+$ set pki openssh test_ca public key AAAAB3N.....
+
+$ set pki openssh test_ca public type ssh-rsa
+
+$ set service ssh trusted-user-ca test_ca
+```
 You can now log into the system using: ``ssh -i vyos_testca vyos_testca@vyos.test.com``
 ```
 ## Dynamic-protection
@@ -345,7 +339,11 @@ background daemon is restarted.
 Re-generated the public/private keyportion which SSH uses to secure
 connections.
 
-.. note:: Already learned known_hosts files of clients need an update as the
+:::\{note}
+
+Already learned known_hosts files of clients need an update as the
+
+:::
    public key will change.
 ```
 ```{opcmd} generate ssh client-key /path/to/private_key
@@ -355,27 +353,26 @@ other services (e.g. RPKI cache).
 
 Example:
 
-.. code-block:: none
-
-  vyos@vyos:~$ generate ssh client-key /config/auth/id_rsa_rpki
-  Generating public/private rsa key pair.
-  Your identification has been saved in /config/auth/id_rsa_rpki.
-  Your public key has been saved in /config/auth/id_rsa_rpki.pub.
-  The key fingerprint is:
-  SHA256:XGv2PpdOzVCzpmEzJZga8hTRq7B/ZYL3fXaioLFLS5Q vyos@vyos
-  The key's randomart image is:
-  +---[RSA 2048]----+
-  |         oo      |
-  |          ..o    |
-  |       . o.o.. o.|
-  |       o+ooo  o.o|
-  |        Eo*  =.o |
-  |       o = +.o*+ |
-  |        = o *.o.o|
-  |       o * +.o+.+|
-  |        =.. o=.oo|
-  +----[SHA256]-----+
-
+```none
+vyos@vyos:~$ generate ssh client-key /config/auth/id_rsa_rpki
+Generating public/private rsa key pair.
+Your identification has been saved in /config/auth/id_rsa_rpki.
+Your public key has been saved in /config/auth/id_rsa_rpki.pub.
+The key fingerprint is:
+SHA256:XGv2PpdOzVCzpmEzJZga8hTRq7B/ZYL3fXaioLFLS5Q vyos@vyos
+The key's randomart image is:
++---[RSA 2048]----+
+|         oo      |
+|          ..o    |
+|       . o.o.. o.|
+|       o+ooo  o.o|
+|        Eo*  =.o |
+|       o = +.o*+ |
+|        = o *.o.o|
+|       o * +.o+.+|
+|        =.. o=.oo|
++----[SHA256]-----+
+```
 Two new files ``/config/auth/id_rsa_rpki`` and
 ``/config/auth/id_rsa_rpki.pub``
 will be created.
@@ -390,25 +387,25 @@ will be created.
 
 Example:
 
-.. code-block:: none
+```none
+alyssa@vyos:~$ generate public-key-command user alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
+# To add this key as an embedded key, run the following commands:
+configure
+set system login user alyssa authentication public-keys alyssa@example.net key AAA...
+set system login user alyssa authentication public-keys alyssa@example.net type ssh-rsa
+commit
+save
+exit
 
-  alyssa@vyos:~$ generate public-key-command user alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
-  # To add this key as an embedded key, run the following commands:
-  configure
-  set system login user alyssa authentication public-keys alyssa@example.net key AAA...
-  set system login user alyssa authentication public-keys alyssa@example.net type ssh-rsa
-  commit
-  save
-  exit
-
-  ben@vyos:~$ generate public-key-command user ben path ~/.ssh/id_rsa.pub
-  # To add this key as an embedded key, run the following commands:
-  configure
-  set system login user ben authentication public-keys ben@vyos key AAA...
-  set system login user ben authentication public-keys ben@vyos type ssh-dss
-  commit
-  save
-  exit
+ben@vyos:~$ generate public-key-command user ben path ~/.ssh/id_rsa.pub
+# To add this key as an embedded key, run the following commands:
+configure
+set system login user ben authentication public-keys ben@vyos key AAA...
+set system login user ben authentication public-keys ben@vyos type ssh-dss
+commit
+save
+exit
+```
 ```
 ```{opcmd} show log ssh
 

@@ -35,7 +35,11 @@ At the time of this writing the following displays are supported:
 
 * Crystalfontz CFA-635
 
-.. note:: We can't support all displays from the beginning. If your display
+:::\{note}
+
+We can't support all displays from the beginning. If your display
+
+:::
    type is missing, please create a feature request via Phabricator_.
 ```
 ```{include} /_include/common-references.txt

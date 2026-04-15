@@ -302,7 +302,11 @@ Operational mode defines how to handle this connection process.
   when there is no direct connectivity to the peer due to firewall
   or NAT in the middle of the local and remote side.
 
-  .. warning:: The ``trap`` mode is not needed in most environments
+  :::\{warning}
+
+  The ``trap`` mode is not needed in most environments
+
+  :::
      and can lead to connection confusion or unintended tunnel uptime
      behavior if used incorrectly. Using this mode requires careful
      coordination with parameters such as ``close-action`` and DPD.
@@ -311,7 +315,11 @@ Operational mode defines how to handle this connection process.
 * **none** - loads the connection only, which then can be manually
   initiated or used as a responder configuration.
 
-.. note:: For most site-to-site VPNs, configure one peer
+:::\{note}
+
+For most site-to-site VPNs, configure one peer
+
+:::
    with ``connection-type initiate`` (active side) and the other peer
    with ``connection-type none`` (passive side) to
    ensure stable and predictable tunnel behavior.

@@ -642,7 +642,13 @@ reconfiguration is enabled, the stored updates are processed by the new
 policy configuration to create new inbound updates.
 
 
-.. note:: Storage of route updates uses memory. If you enable soft
+:::\{note}
+
+
+Storage of route updates uses memory. If you enable soft
+
+
+:::
 
    reconfiguration inbound for multiple neighbors, the amount of memory used
 
@@ -741,7 +747,13 @@ local-as is prepended to the AS_PATH when transmitting local-route
 updates to this peer.
 
 
-.. note:: This command is only allowed for eBGP peers.
+:::\{note}
+
+
+This command is only allowed for eBGP peers.
+
+
+:::
 ```
 
 
@@ -795,7 +807,13 @@ are treated as belonging to a default peer group, and will share updates.
    parameters that you can specify for specific neighbors.
 
 
-   .. note:: If you apply a parameter to an individual neighbor IP address, you
+   :::\{note}
+
+
+   If you apply a parameter to an individual neighbor IP address, you
+
+
+   :::
 
       override the action defined for a peer group that includes that IP
 
@@ -820,7 +838,13 @@ This command bind specific peer to peer group with a given name.
    This command is used for advertising IPv4 or IPv6 networks.
 
 
-   .. note:: By default, the BGP prefix is advertised even if it's not present
+   :::\{note}
+
+
+   By default, the BGP prefix is advertised even if it's not present
+
+
+   :::
 
       in the routing table. This behaviour differs from the implementation of
 
@@ -1116,7 +1140,13 @@ This command sets the administrative distance for a particular route. The
 distance range is 1 to 255.
 
 
-.. note:: Routes with a distance of 255 are effectively disabled and not
+:::\{note}
+
+
+Routes with a distance of 255 are effectively disabled and not
+
+
+:::
 
    installed into the kernel.
 ```

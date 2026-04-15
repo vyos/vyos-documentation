@@ -178,37 +178,34 @@ the other node at startup.
 Make sure conntrack is enabled by running and show connection tracking table.
 
 
-.. code-block:: none
+```none
+
+vyos@vyos:~$ show conntrack table ipv4
+
+TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
+
+                 FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
+
+                 TW - TIME WAIT, CL - CLOSE, LI - LISTEN
 
 
-  vyos@vyos:~$ show conntrack table ipv4
+CONN ID    Source                 Destination            Protocol         TIMEOUT
 
-  TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
+1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
 
-                   FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
+1006235648 10.35.101.221:57483    172.31.120.21:22       tcp [6] ES       413310
 
-                   TW - TIME WAIT, CL - CLOSE, LI - LISTEN
+1006237088 10.100.68.100          172.31.120.21          icmp [1]         29
 
+1015734848 10.35.100.87:56282     172.31.20.12:22        tcp [6] ES       300
 
-  CONN ID    Source                 Destination            Protocol         TIMEOUT
+1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
 
-  1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
-
-  1006235648 10.35.101.221:57483    172.31.120.21:22       tcp [6] ES       413310
-
-  1006237088 10.100.68.100          172.31.120.21          icmp [1]         29
-
-  1015734848 10.35.100.87:56282     172.31.20.12:22        tcp [6] ES       300
-
-  1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
-
-  1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
-
-
-.. note::
-
-
-  If the table is empty and you have a warning message, it means
+1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
+```
+:::\{note}
+If the table is empty and you have a warning message, it means
+:::
 
   conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
 
@@ -233,72 +230,71 @@ Show connection syncing internal cache entries
 Retrieve current statistics of connection tracking subsystem.
 
 
-.. code-block:: none
+```none
+
+vyos@vyos:~$ show conntrack-sync statistics
+
+Main Table Statistics:
 
 
-  vyos@vyos:~$ show conntrack-sync statistics
+cache internal:
 
-  Main Table Statistics:
+current active connections:            19606
 
+connections created:                 6298470    failed:            0
 
-  cache internal:
+connections updated:                 3786793    failed:            0
 
-  current active connections:            19606
-
-  connections created:                 6298470    failed:            0
-
-  connections updated:                 3786793    failed:            0
-
-  connections destroyed:               6278864    failed:            0
+connections destroyed:               6278864    failed:            0
 
 
-  cache external:
+cache external:
 
-  current active connections:            15771
+current active connections:            15771
 
-  connections created:                 1660193    failed:            0
+connections created:                 1660193    failed:            0
 
-  connections updated:                   77204    failed:            0
+connections updated:                   77204    failed:            0
 
-  connections destroyed:               1644422    failed:            0
-
-
-  traffic processed:
-
-                     0 Bytes                         0 Pckts
+connections destroyed:               1644422    failed:            0
 
 
-  multicast traffic (active device=eth0.5):
+traffic processed:
 
-             976826240 Bytes sent            212898000 Bytes recv
-
-               8302333 Pckts sent              2009929 Pckts recv
-
-                     0 Error send                    0 Error recv
+                   0 Bytes                         0 Pckts
 
 
-  message tracking:
+multicast traffic (active device=eth0.5):
 
-                     0 Malformed msgs                  263 Lost msgs
+           976826240 Bytes sent            212898000 Bytes recv
+
+             8302333 Pckts sent              2009929 Pckts recv
+
+                   0 Error send                    0 Error recv
+
+
+message tracking:
+
+                   0 Malformed msgs                  263 Lost msgs
+```
 ```
 ```{opcmd} show conntrack-sync status
 
 Retrieve current status of connection tracking subsystem.
 
 
-.. code-block:: none
+```none
 
+vyos@vyos:~$ show conntrack-sync status
 
-  vyos@vyos:~$ show conntrack-sync status
+sync-interface        : eth0.5
 
-  sync-interface        : eth0.5
+failover-mechanism    : vrrp [sync-group GEFOEKOM]
 
-  failover-mechanism    : vrrp [sync-group GEFOEKOM]
+last state transition : no transition yet!
 
-  last state transition : no transition yet!
-
-  ExpectationSync       : disabled
-
+ExpectationSync       : disabled
+```
 ```
 ## Example
 

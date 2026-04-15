@@ -165,19 +165,18 @@ display captured network traffic information for all configured interfaces.
 Show flow accounting information for given `<interface>`.
 
 % stop_vyoslinter
-.. code-block:: none
-
-  vyos@vyos:~$ show flow-accounting interface eth0
-  IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
-  ----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
-  eth0        00:53:01:a8:28:ac  ff:ff:ff:ff:ff:ff  192.0.2.2                 255.255.255.255        5678        5678  udp             0          1        1      178
-  eth0        00:53:01:b2:2f:34  33:33:ff:00:00:00  fe80::253:01ff:feb2:2f34  ff02::1:ff00:0            0           0  ipv6-icmp       0          2        1      144
-  eth0        00:53:01:1a:b4:53  33:33:ff:00:00:00  fe80::253:01ff:fe1a:b453  ff02::1:ff00:0            0           0  ipv6-icmp       0          1        1       72
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40152          22  tcp            16         39        1     2064
-  eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
-
+```none
+vyos@vyos:~$ show flow-accounting interface eth0
+IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
+----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
+eth0        00:53:01:a8:28:ac  ff:ff:ff:ff:ff:ff  192.0.2.2                 255.255.255.255        5678        5678  udp             0          1        1      178
+eth0        00:53:01:b2:2f:34  33:33:ff:00:00:00  fe80::253:01ff:feb2:2f34  ff02::1:ff00:0            0           0  ipv6-icmp       0          2        1      144
+eth0        00:53:01:1a:b4:53  33:33:ff:00:00:00  fe80::253:01ff:fe1a:b453  ff02::1:ff00:0            0           0  ipv6-icmp       0          1        1       72
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40152          22  tcp            16         39        1     2064
+eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
+```
 % start_vyoslinter
 ```
 ```{opcmd} show flow-accounting interface <interface> host <address>
@@ -186,14 +185,13 @@ Show flow accounting information for given `<interface>` for a specific host
 only.
 
 % stop_vyoslinter
-.. code-block:: none
-
-  vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
-  IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
-  ----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
-  eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
-
+```none
+vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
+IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
+----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
+eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
+```
 % start_vyoslinter
 ```

@@ -14,12 +14,10 @@ a deamonless container engine.
     Sets the image name in the hub registry
 
 
-    .. code-block:: none
+    ```none
 
-
-      set container name mysql-server image mysql:8.0
-
-
+    set container name mysql-server image mysql:8.0
+    ```
     If a registry is not specified, Docker.io will be used as the container
 
     registry unless an alternative registry is specified using
@@ -29,11 +27,10 @@ a deamonless container engine.
     in the image name
 
 
-    .. code-block:: none
+    ```none
 
-
-      set container name mysql-server image quay.io/mysql:8.0
-
+    set container name mysql-server image quay.io/mysql:8.0
+    ```
 ```
 
 
@@ -84,7 +81,13 @@ not isolated from the host and will use the host IP.
 The command translates to "--net host" when the container is created.
 
 
-.. note:: **allow-host-networks** cannot be used with **network**
+:::\{note}
+
+
+**allow-host-networks** cannot be used with **network**
+
+
+:::
 ```
 
 
@@ -103,7 +106,13 @@ Optionally set a specific static IPv4 or IPv6 address for the container.
 This address must be within the named network prefix.
 
 
-.. note:: The first IP in the container network is reserved by the
+:::\{note}
+
+
+The first IP in the container network is reserved by the
+
+
+:::
 
    engine and cannot be used
 ```
@@ -136,16 +145,16 @@ The following commands translate to "-e key=value" when the container
 is created.
 
 
-.. code-block:: none
+```none
 
+set container name mysql-server environment MYSQL_DATABASE value 'zabbix'
 
-    set container name mysql-server environment MYSQL_DATABASE value 'zabbix'
+set container name mysql-server environment MYSQL_USER value 'zabbix'
 
-    set container name mysql-server environment MYSQL_USER value 'zabbix'
+set container name mysql-server environment MYSQL_PASSWORD value 'zabbix_pwd'
 
-    set container name mysql-server environment MYSQL_PASSWORD value 'zabbix_pwd'
-
-    set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
+set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
+```
 ```
 
 
@@ -162,14 +171,14 @@ is created.
 Publish a port for the container.
 
 
-.. code-block:: none
+```none
 
+set container name zabbix-web-nginx-mysql port http source 80
 
-    set container name zabbix-web-nginx-mysql port http source 80
+set container name zabbix-web-nginx-mysql port http destination 8080
 
-    set container name zabbix-web-nginx-mysql port http destination 8080
-
-    set container name zabbix-web-nginx-mysql port http protocol tcp
+set container name zabbix-web-nginx-mysql port http protocol tcp
+```
 ```
 
 
@@ -191,12 +200,12 @@ using destination NAT and static IP assignment for the container is available.
 Mount a volume into the container
 
 
-.. code-block:: none
+```none
 
+set container name coredns volume 'corefile' source /config/coredns/Corefile
 
-    set container name coredns volume 'corefile' source /config/coredns/Corefile
-
-    set container name coredns volume 'corefile' destination /etc/Corefile
+set container name coredns volume 'corefile' destination /etc/Corefile
+```
 ```
 
 
@@ -478,23 +487,21 @@ Registry mirror, use ``(host-name|address)[:port][/path]``.
 If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
 
 
-.. code-block:: none
+```none
 
+set container registry docker.io mirror address 192.168.1.1
 
-    set container registry docker.io mirror address 192.168.1.1
+set container registry docker.io mirror port 8080
 
-    set container registry docker.io mirror port 8080
-
-    set container registry docker.io insecure
-
-
+set container registry docker.io insecure
+```
 If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/some/repo`` or run ``podman pull 192.168.1.1:8080/some/repo``
 
 
-.. code-block:: none
+```none
 
-
-    set container registry 192.168.1.1:8080 insecure
+set container registry 192.168.1.1:8080 insecure
+```
 ```
 ### Log Configuration
 

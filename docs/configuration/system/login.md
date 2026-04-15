@@ -134,7 +134,11 @@ The following encryption algorithm types are available:
 * ``ssh-ed25519``
 * ``ssh-rsa``
 
-.. note:: To assign multiple SSH public keys to a user account, repeat the
+:::\{note}
+
+To assign multiple SSH public keys to a user account, repeat the
+
+:::
    commands above with a unique identifier for each key.
 ```
 ```{cfgcmd} set system login user <username> authentication public-keys

@@ -732,24 +732,24 @@ Match based on connection tracking protocol helper module to secure use of
 that helper module. See below for possible completions `<module>`.
 
 
-.. code-block:: none
+```none
 
+Possible completions:
 
-   Possible completions:
+ftp                  Related traffic from FTP helper
 
-   ftp                  Related traffic from FTP helper
+h323                 Related traffic from H.323 helper
 
-   h323                 Related traffic from H.323 helper
+pptp                 Related traffic from PPTP helper
 
-   pptp                 Related traffic from PPTP helper
+nfs                  Related traffic from NFS helper
 
-   nfs                  Related traffic from NFS helper
+sip                  Related traffic from SIP helper
 
-   sip                  Related traffic from SIP helper
+tftp                 Related traffic from TFTP helper
 
-   tftp                 Related traffic from TFTP helper
-
-   sqlnet               Related traffic from SQLNet helper
+sqlnet               Related traffic from SQLNet helper
+```
 ```
 
 
@@ -807,14 +807,14 @@ to the network groups part, but here you are able to negate the matching
 addresses.
 
 
-.. code-block:: none
+```none
 
+set firewall ipv4 name FOO rule 50 source address 192.0.2.10-192.0.2.11
 
-   set firewall ipv4 name FOO rule 50 source address 192.0.2.10-192.0.2.11
+# with a '!' the rule match everything except the specified subnet
 
-   # with a '!' the rule match everything except the specified subnet
-
-   set firewall ipv4 input filter FOO rule 51 source address !203.0.113.0/24
+set firewall ipv4 input filter FOO rule 51 source address !203.0.113.0/24
+```
 ```
 
 
@@ -873,14 +873,14 @@ a specific portion.
 This functions for both individual addresses and address groups.
 
 
-.. code-block:: none
+```none
 
+# Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
 
-   # Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
+set firewall ipv4 name FOO rule 100 destination address 0.11.0.13
 
-   set firewall ipv4 name FOO rule 100 destination address 0.11.0.13
-
-   set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
+set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
+```
 ```
 
 
@@ -1075,12 +1075,12 @@ source mac-address <mac-address>
 You can only specify a source mac-address to match.
 
 
-.. code-block:: none
+```none
 
+set firewall ipv4 input filter rule 100 source mac-address 00:53:00:11:22:33
 
-   set firewall ipv4 input filter rule 100 source mac-address 00:53:00:11:22:33
-
-   set firewall ipv4 input filter rule 101 source mac-address !00:53:00:aa:12:34
+set firewall ipv4 input filter rule 101 source mac-address !00:53:00:aa:12:34
+```
 ```
 
 
@@ -1134,16 +1134,14 @@ destination port [1-65535 | portname | start-end]
 A port can be set by number or name as defined in ``/etc/services``.
 
 
-.. code-block:: none
+```none
 
+set firewall ipv4 forward filter rule 10 source port '22'
 
-   set firewall ipv4 forward filter rule 10 source port '22'
+set firewall ipv4 forward filter rule 11 source port '!http'
 
-   set firewall ipv4 forward filter rule 11 source port '!http'
-
-   set firewall ipv4 forward filter rule 12 source port 'https'
-
-
+set firewall ipv4 forward filter rule 12 source port 'https'
+```
 Multiple source ports can be specified as a comma-separated list.
 
 The whole list can also be "negated" using ``!``. For example:
@@ -1913,12 +1911,12 @@ Special names are ``all`` for all protocols and ``tcp_udp`` for TCP and UDP
 based packets. The ``!`` character negates the selected protocol.
 
 
-.. code-block:: none
+```none
 
+set firewall ipv4 forward filter rule 10 protocol tcp_udp
 
-   set firewall ipv4 forward filter rule 10 protocol tcp_udp
-
-   set firewall ipv4 forward filter rule 11 protocol !tcp_udp
+set firewall ipv4 forward filter rule 11 protocol !tcp_udp
+```
 ```
 
 
@@ -2003,14 +2001,14 @@ Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
 ``not`` for inverted selection, as shown in the example.
 
 
-.. code-block:: none
+```none
 
+set firewall ipv4 input filter rule 10 tcp flags 'ack'
 
-   set firewall ipv4 input filter rule 10 tcp flags 'ack'
+set firewall ipv4 input filter rule 12 tcp flags 'syn'
 
-   set firewall ipv4 input filter rule 12 tcp flags 'syn'
-
-   set firewall ipv4 input filter rule 13 tcp flags not 'fin'
+set firewall ipv4 input filter rule 13 tcp flags not 'fin'
+```
 ```
 
 
@@ -2452,91 +2450,91 @@ This will show you a basic firewall overview, for all rule-sets, not
 only for IPv4.
 
 
-.. code-block:: none
+```none
+
+vyos@vyos:~$ show firewall
+
+Rulesets Information
 
 
-   vyos@vyos:~$ show firewall
+---------------------------------
 
-   Rulesets Information
-
-
-   ---------------------------------
-
-   ipv4 Firewall "forward filter"
+ipv4 Firewall "forward filter"
 
 
-   Rule     Action    Protocol      Packets    Bytes  Conditions
+Rule     Action    Protocol      Packets    Bytes  Conditions
 
-   -------  --------  ----------  ---------  -------  -----------------------------
+-------  --------  ----------  ---------  -------  -----------------------------
 
-   20       accept    all                 0        0  ip saddr @N_TRUSTEDv4  accept
+20       accept    all                 0        0  ip saddr @N_TRUSTEDv4  accept
 
-   21       jump      all                 0        0  jump NAME_AUX
+21       jump      all                 0        0  jump NAME_AUX
 
-   default  accept    all                 0        0
-
-
-   ---------------------------------
-
-   ipv4 Firewall "input filter"
+default  accept    all                 0        0
 
 
-   Rule     Action    Protocol      Packets    Bytes  Conditions
+---------------------------------
 
-   -------  --------  ----------  ---------  -------  -------------------------
-
-   10       accept    all               156    14377  iifname != @I_LAN  accept
-
-   default  accept    all                 0        0
+ipv4 Firewall "input filter"
 
 
-   ---------------------------------
+Rule     Action    Protocol      Packets    Bytes  Conditions
 
-   ipv4 Firewall "name AUX"
+-------  --------  ----------  ---------  -------  -------------------------
 
+10       accept    all               156    14377  iifname != @I_LAN  accept
 
-     Rule  Action    Protocol      Packets    Bytes  Conditions
-
-   ------  --------  ----------  ---------  -------  --------------------------------------------
-
-       10  accept    icmp                0        0  meta l4proto icmp  accept
-
-       20  accept    udp                 0        0  meta l4proto udp ip saddr @A_SERVERS  accept
-
-       30  drop      all                 0        0  ip saddr != @A_SERVERS iifname "eth2"
+default  accept    all                 0        0
 
 
-   ---------------------------------
+---------------------------------
 
-   ipv4 Firewall "output filter"
-
-
-   Rule     Action    Protocol      Packets    Bytes  Conditions
-
-   -------  --------  ----------  ---------  -------  ----------------------------------------
-
-   10       reject    all                 0        0  oifname @I_LAN
-
-   20       accept    icmp                2      168  meta l4proto icmp oifname "eth0"  accept
-
-   default  accept    all                72     9258
+ipv4 Firewall "name AUX"
 
 
-   ---------------------------------
+  Rule  Action    Protocol      Packets    Bytes  Conditions
 
-   ipv6 Firewall "input filter"
+------  --------  ----------  ---------  -------  --------------------------------------------
 
+    10  accept    icmp                0        0  meta l4proto icmp  accept
 
-   Rule     Action    Protocol      Packets    Bytes  Conditions
+    20  accept    udp                 0        0  meta l4proto udp ip saddr @A_SERVERS  accept
 
-   -------  --------  ----------  ---------  -------  -------------------------------
-
-   10       accept    all                 0        0  ip6 saddr @N6_TRUSTEDv6  accept
-
-   default  accept    all                 2      112
+    30  drop      all                 0        0  ip saddr != @A_SERVERS iifname "eth2"
 
 
-   vyos@vyos:~$
+---------------------------------
+
+ipv4 Firewall "output filter"
+
+
+Rule     Action    Protocol      Packets    Bytes  Conditions
+
+-------  --------  ----------  ---------  -------  ----------------------------------------
+
+10       reject    all                 0        0  oifname @I_LAN
+
+20       accept    icmp                2      168  meta l4proto icmp oifname "eth0"  accept
+
+default  accept    all                72     9258
+
+
+---------------------------------
+
+ipv6 Firewall "input filter"
+
+
+Rule     Action    Protocol      Packets    Bytes  Conditions
+
+-------  --------  ----------  ---------  -------  -------------------------------
+
+10       accept    all                 0        0  ip6 saddr @N6_TRUSTEDv6  accept
+
+default  accept    all                 2      112
+
+
+vyos@vyos:~$
+```
 ```
 
 
@@ -2545,94 +2543,94 @@ only for IPv4.
 This shows you a summary of rule-sets and groups.
 
 
-.. code-block:: none
+```none
+
+vyos@vyos:~$ show firewall summary
+
+Ruleset Summary
 
 
-   vyos@vyos:~$ show firewall summary
-
-   Ruleset Summary
+IPv6 Ruleset:
 
 
-   IPv6 Ruleset:
+Ruleset Hook    Ruleset Priority      Description
+
+--------------  --------------------  -------------------------
+
+forward         filter
+
+input           filter
+
+ipv6_name       IPV6-VyOS_MANAGEMENT
+
+ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
 
 
-   Ruleset Hook    Ruleset Priority      Description
-
-   --------------  --------------------  -------------------------
-
-   forward         filter
-
-   input           filter
-
-   ipv6_name       IPV6-VyOS_MANAGEMENT
-
-   ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
+IPv4 Ruleset:
 
 
-   IPv4 Ruleset:
+Ruleset Hook    Ruleset Priority    Description
+
+--------------  ------------------  -------------------------
+
+forward         filter
+
+input           filter
+
+name            VyOS_MANAGEMENT
+
+name            WAN_IN              PUBLIC_INTERNET
 
 
-   Ruleset Hook    Ruleset Priority    Description
-
-   --------------  ------------------  -------------------------
-
-   forward         filter
-
-   input           filter
-
-   name            VyOS_MANAGEMENT
-
-   name            WAN_IN              PUBLIC_INTERNET
+Firewall Groups
 
 
-   Firewall Groups
+Name                     Type                References               Members
 
+-----------------------  ------------------  -----------------------  ----------------
 
-   Name                     Type                References               Members
+PBX                      address_group       WAN_IN-100               198.51.100.77
 
-   -----------------------  ------------------  -----------------------  ----------------
+SERVERS                  address_group       WAN_IN-110               192.0.2.10
 
-   PBX                      address_group       WAN_IN-100               198.51.100.77
+                                             WAN_IN-111               192.0.2.11
 
-   SERVERS                  address_group       WAN_IN-110               192.0.2.10
+                                             WAN_IN-112               192.0.2.12
 
-                                                WAN_IN-111               192.0.2.11
+                                             WAN_IN-120
 
-                                                WAN_IN-112               192.0.2.12
+                                             WAN_IN-121
 
-                                                WAN_IN-120
+                                             WAN_IN-122
 
-                                                WAN_IN-121
+SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
 
-                                                WAN_IN-122
+                                             WAN_IN-20
 
-   SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
+PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
 
-                                                WAN_IN-20
+PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
 
-   PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
+                                             WAN_IN-171
 
-   PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
+PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
 
-                                                WAN_IN-171
+SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
 
-   PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
+                                             IPV6-WAN_IN-111          2001:db8::3
 
-   SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
+                                             IPV6-WAN_IN-112          2001:db8::4
 
-                                                IPV6-WAN_IN-111          2001:db8::3
+                                             IPV6-WAN_IN-120
 
-                                                IPV6-WAN_IN-112          2001:db8::4
+                                             IPV6-WAN_IN-121
 
-                                                IPV6-WAN_IN-120
+                                             IPV6-WAN_IN-122
 
-                                                IPV6-WAN_IN-121
+SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
 
-                                                IPV6-WAN_IN-122
-
-   SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
-
-                                                IPV6-WAN_IN-20
+                                             IPV6-WAN_IN-20
+```
 ```
 ```{opcmd} show firewall ipv4 [forward | input | output] filter
 ```
@@ -2640,18 +2638,18 @@ This shows you a summary of rule-sets and groups.
 
 This command will give an overview of a single rule-set.
 
-.. code-block:: none
+```none
+vyos@vyos:~$ show firewall ipv4 input filter
+Ruleset Information
 
-   vyos@vyos:~$ show firewall ipv4 input filter
-   Ruleset Information
+---------------------------------
+IPv4 Firewall "input filter"
 
-   ---------------------------------
-   IPv4 Firewall "input filter"
-
-   Rule     Action    Protocol      Packets    Bytes  Conditions
-   -------  --------  ----------  ---------  -------  -----------------------------------------
-   5        jump      all                 0        0  iifname "eth2"  jump NAME_VyOS_MANAGEMENT
-   default  accept    all
+Rule     Action    Protocol      Packets    Bytes  Conditions
+-------  --------  ----------  ---------  -------  -----------------------------------------
+5        jump      all                 0        0  iifname "eth2"  jump NAME_VyOS_MANAGEMENT
+default  accept    all
+```
 ```
 ```{opcmd} show firewall ipv4 [forward | input | output]
 

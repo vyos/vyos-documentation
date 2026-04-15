@@ -38,7 +38,13 @@ This command enables routing using radio frequency diversity.
 This is highly recommended in networks with many wireless nodes.
 
 
- .. note:: If you enable this, you will probably want to
+ :::\{note}
+
+
+ If you enable this, you will probably want to
+
+
+ :::
 
     set diversity-factor and channel below.
 ```

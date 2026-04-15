@@ -163,7 +163,8 @@ unicast bootstrap messages.
 
   Disable sending and receiving PIM control packets on the interface.
 
-.. cfgcmd:: set protocols pim interface <interface> source-address <ip-address>
+```{cfgcmd} set protocols pim interface <interface> source-address <ip-address>
+```
 
   If you have multiple addresses configured on a particular interface and would
   like PIM to use a specific source address associated with that interface.

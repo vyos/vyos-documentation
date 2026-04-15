@@ -28,11 +28,10 @@ This will configure a static ARP entry always resolving `<address>` to
 Example:
 
 
-.. code-block:: none
+```none
 
-
-  set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
-
+set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
+```
 ```
 ## Operation
 

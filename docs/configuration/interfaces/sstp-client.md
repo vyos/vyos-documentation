@@ -49,11 +49,15 @@ Request an IP address from the SSTP server without installing a default route.
 
 Example:
 
-.. code-block:: none
-
+```none
+```
 set interfaces sstpc sstpc0 no-default-route
 
-.. note:: Introduced in VyOS 1.4, this command inverts the logic of the former
+:::\{note}
+
+Introduced in VyOS 1.4, this command inverts the logic of the former
+
+:::
 
 ``default-route`` CLI option.
 ```
@@ -64,8 +68,8 @@ Configure the distance for the default gateway provided by the SSTP server.
 
 Example:
 
-.. code-block:: none
-
+```none
+```
 set interfaces sstpc sstpc0 default-route-distance 220
 ```
 
@@ -105,7 +109,11 @@ IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-.. note:: Introduced in VyOS 1.4, this command replaces the older ``set firewall
+:::\{note}
+
+Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
+:::
 
 options interface <name> adjust-mss <value>`` syntax.
 ```
@@ -158,8 +166,8 @@ mode.
 
 Show detailed information about the specified interface.
 
-.. code-block:: none
-
+```none
+```
 vyos@vyos:~$ show interfaces sstpc sstpc10
 
 sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 3
