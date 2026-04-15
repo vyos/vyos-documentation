@@ -216,7 +216,6 @@ allows for a time skew of up to 4 minutes.
 The valid range is 1 to 21.
 ```
 ### Generate an OTP-key
-
 Use the following command to generate an OTP key:
 
 ```{cfgcmd} generate system login username <username> otp-key hotp-time
@@ -262,7 +261,6 @@ set system login user otptester authentication otp window-size '5'
 ```
 
 ### Display the OTP key for a user
-
 Use the following command to display the {abbr}`OTP (One-time password)`
 key for a user:
 
@@ -313,14 +311,11 @@ Authentication)` is configured for a user account, this user must enter their
 standard password followed by the current 6-digit OTP code at login. For
 example, if the user's password is `vyosrocks` and the OTP is `817454`, they
 should enter `vyosrocks817454`.
-
 ## RADIUS authentication
-
 For large-scale deployments, managing individual user accounts across multiple
 VyOS instances is inefficient. VyOS supports centralized authentication via
 {abbr}`RADIUS (Remote Authentication Dial-In User Service)`, consolidating user
 account management on a single backend server.
-
 ### Configuration
 
 ```{cfgcmd} set system login radius server <address> key <secret>
@@ -478,7 +473,6 @@ By default, :abbr:`TACACS+ (Terminal Access Controller Access Control System)`
 authentication requests are sent via the global routing table.
 ```
 (login-tacacs-example)=
-
 ### Configuration example
 
 ```none
@@ -490,9 +484,7 @@ set system login tacacs source-address '192.168.0.1'
 If communication with the {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` server fails, the router falls back to local user
 authentication.
-
 ## Login banners
-
 VyOS allows you to configure **pre-login** and **post-login** banners.
 Pre-login banners are typically used for system identification, legal disclaimers, or security warnings
 displayed before authentication, while post-login banners provide system
@@ -510,7 +502,6 @@ Configure a message to be shown to users after successful authentication.
 :::{note}
 Use `\\n` to insert line breaks in multi-line banner messages.
 :::
-
 ## Login session limits
 
 ```{cfgcmd} set system login max-login-session <number>
@@ -530,13 +521,10 @@ login attempts.
 Idle login sessions are terminated after this period.
 ```
 ## Configuration examples
-
 Example 1: Multi-key SSH with MFA and source restrictions
-
 In this configuration, `User1` and `User2` both use the vyos user account,
 each with a unique SSH key. `User1` is restricted to authentication from a
 single IP address.
-
 For both users, password-based logins require {abbr}`OTP (One-time password)`
 -based {abbr}`MFA (Multi-factor Authentication)`.
 
@@ -554,15 +542,12 @@ set system login user vyos authentication plaintext-password vyos
 
 Example 2: Containerized {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 deployment with redundancy.
-
 In this configuration, the VyOS router hosts its own authentication
 infrastructure using two containerized {abbr}`TACACS+ (Terminal Access
 Controller Access Control System)` servers (`tacacs1` and `tacacs2`) on a
 private network for redundancy.
-
 System logins are authenticated against credentials stored within these internal
 containers rather than the router's local user database.
-
 First, download the image in operational mode:
 
 ```none

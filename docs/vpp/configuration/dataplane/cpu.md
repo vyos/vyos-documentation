@@ -7,27 +7,20 @@ lastproofread: '2026-02-23'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Dataplane CPU Configuration
-
 VPP can utilize multiple CPU cores for better packet processing
 performance. Proper CPU configuration is essential for optimal
 throughput and low latency.
-
 VPP CPU assignment is handled automatically. You specify how many CPU
 cores VPP may use, and the system distributes them between the main
 thread and worker threads.
-
 :::{important}
 Review the system configuration settings page before changing CPU
 settings: {doc}`system`.
 :::
-
 If you don't configure CPU settings, VPP uses a single core for the
 main thread and doesn't create worker threads.
-
 ## CPU Configuration Parameters
-
 ### `cpu-cores`
-
 This parameter defines the total number of CPU cores allocated to VPP.
 
 ```{cfgcmd} set vpp settings resource-allocation cpu-cores <core-number>

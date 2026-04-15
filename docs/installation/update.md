@@ -38,34 +38,24 @@ Only LTS releases are PGP-signed.
 
 
 If there isn't enough free disk space, the installation will be canceled.
-
 To delete images, use the {opcmd}`delete system image` command.
 
 
 VyOS associates configuration with each image, and each image has its own
-
 unique configuration copy. This differs from traditional network routers where
-
 the configuration is shared across all images.
 
 
 :::{note}
-
 If you have personal files such as scripts that you want to preserve
-
 during the upgrade, store them in `/config` since this directory is always
-
 copied to newly installed images.
-
 :::
 
 
 You can access files from a previous installation and copy them to your
-
 current image if they were stored in the `/config` directory. Use the
-
 {opcmd}`copy` command to do this. For example, to copy `/config/config.boot`
-
 from the VyOS `1.2.1` image, run:
 
 ```

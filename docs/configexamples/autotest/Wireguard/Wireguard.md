@@ -16,9 +16,7 @@ test, in each site.
 ```
 
 ## Configuration
-
 Set the local subnet on eth2 and the public ip address eth1 on each site.
-
 Central
 
 ```{literalinclude} _include/central.conf
@@ -43,7 +41,6 @@ Public key: RCMy6BAER0uEcPvspUb3K38MHyHJpK5kiV5IOX943HI=
 ```
 
 After you have each public key. The wireguard interfaces can be setup.
-
 Central
 
 ```{literalinclude} _include/central.conf
@@ -60,7 +57,6 @@ Branch
 
 To reach the network, a route must be set on each VyOS host.
 In this structure, a static interface route will fit the requirements.
-
 Central
 
 ```{literalinclude} _include/central.conf
@@ -76,7 +72,6 @@ Branch
 ```
 
 ## Testing and debugging
-
 After all is done and commit, let's take a look if the Wireguard interface is
 up and running.
 

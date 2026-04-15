@@ -7,15 +7,12 @@ lastproofread: '2026-03-13'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Loopback Interface Configuration
-
 VPP loopback interfaces provide virtual interfaces that remain
 administratively up and are commonly used for stable addressing,
 routing protocols, and as Bridge Virtual Interfaces (BVI). Loopback
 interfaces in VPP offer high-performance virtual connectivity with optimized
 packet processing.
-
 ## Basic Configuration
-
 ### Creating a Loopback Interface
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN>
@@ -30,7 +27,6 @@ set interfaces vpp loopback vpplo1
 ```
 
 ## Interface Configuration
-
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> description <description>
@@ -42,10 +38,8 @@ Set a descriptive name for the loopback interface.
 Administratively disable the loopback interface.
 ```
 ### Kernel Interface Integration
-
 Kernel interface is bounded to the VPP loopback interface for management
 and application compatibility.
-
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> address <ip-address/prefix>
@@ -71,10 +65,8 @@ Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```
 ## VLAN Configuration
-
 VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network
 segmentation.
-
 ### Creating VLAN Sub-interfaces
 
 ```{cfgcmd} set interfaces vpp loopback <vpploN> vif <vlan-id>
@@ -82,7 +74,6 @@ segmentation.
 Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 ```
 ### VLAN Sub-interface Configuration
-
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
@@ -112,7 +103,6 @@ set interfaces vpp loopback vpplo1 vif 200 description "Guest VLAN"
 ```
 
 ## Configuration Examples
-
 ### Basic Loopback Interface
 
 ```none

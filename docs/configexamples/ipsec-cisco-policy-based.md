@@ -162,9 +162,7 @@ ip access-list extended cryptoacl
 ```
 
 ## Monitoring
-
 ### Monitoring on VyOS side
-
 IKE SAs:
 
 ```none
@@ -189,7 +187,6 @@ CISCO-tunnel-2  up       6m6s      0B/0B           0/0               10.0.2.2   
 ```
 
 ### Monitoring on Cisco side
-
 IKE SAs:
 
 ```none
@@ -304,7 +301,6 @@ interface: GigabitEthernet0/0
 ```
 
 ### Checking Connectivity
-
 ICMP packets from PC1 to PC3.
 
 ```none

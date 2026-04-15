@@ -35,7 +35,6 @@ This configuration example and the requirements consists of:
 ```
 
 ## Configuration
-
 Interface and routing configuration:
 
 ```none
@@ -190,7 +189,6 @@ set nat source rule 20 translation address 'masquerade'
 ```
 
 ## Checking through op-mode commands
-
 After some testing, we can check IPSec status, and counter on every tunnel:
 
 ```none

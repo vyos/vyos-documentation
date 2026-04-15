@@ -313,13 +313,10 @@ percentage of the connections that will receive such backend.
 <x.x.x.x> weight <1-100>
 ```
 ## Configuration Examples
-
 To setup SNAT, we need to know:
-
 - The internal IP addresses we want to translate
 - The outgoing interface to perform the translation on
 - The external IP address to translate to
-
 In the example used for the Quick Start configuration above, we
 demonstrate the following configuration:
 
@@ -495,25 +492,19 @@ vyos@vyos# show nat
 ```
 
 ### Destination NAT
-
 DNAT is typically referred to as a **Port Forward**. When using VyOS as
 a NAT router and firewall, a common configuration task is to redirect
 incoming traffic to a system behind the firewall.
-
 In this example, we will be using the example Quick Start configuration
 above as a starting point.
-
 To setup a destination NAT rule we need to gather:
-
 - The interface traffic will be coming in on;
 - The protocol and port we wish to forward;
 - The IP address of the internal system we wish to forward traffic to.
-
 In our example, we will be forwarding web server traffic to an internal
 web server on 192.168.0.100. HTTP traffic makes use of the TCP protocol
 on port 80. For other common port numbers, see:
 <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>
-
 Our configuration commands would be:
 
 ```none
@@ -592,19 +583,15 @@ ipv4 {
 ```
 
 ### 1-to-1 NAT
-
 Another term often used for DNAT is **1-to-1 NAT**. For a 1-to-1 NAT
 configuration, both DNAT and SNAT are used to NAT all traffic from an
 external IP address to an internal IP address and vice-versa.
-
 Typically, a 1-to-1 NAT rule omits the destination port (all ports) and
 replaces the protocol with either **all** or **ip**.
-
 Then a corresponding SNAT rule is created to NAT outgoing traffic for
 the internal IP to a reserved external IP. This dedicates an external IP
 address to an internal IP address and is useful for protocols which
 don't have the notion of ports, such as GRE.
-
 Here's an extract of a simple 1-to-1 NAT configuration with one internal
 and one external interface:
 
@@ -625,18 +612,13 @@ set nat source rule 2000 translation address '192.0.2.30'
 
 Firewall rules are written as normal, using the internal IP address as
 the source of outbound rules and the destination of inbound rules.
-
 ### NAT before VPN
-
 Some application service providers (ASPs) operate a VPN gateway to
 provide access to their internal resources, and require that a
 connecting organisation translate all traffic to the service provider
 network to a source address provided by the ASP.
-
 ### Load Balance
-
 Here we provide two examples on how to apply NAT Load Balance.
-
 First scenario: apply destination NAT for all HTTP traffic comming through
 interface eth0, and user 4 backends. First backend should received 30% of
 the request, second backend should get 20%, third 15% and the fourth 35%
@@ -668,35 +650,26 @@ set nat source rule 10 load-balance backend 192.0.2.253 weight 34
 ```
 
 #### Example Network
-
 Here's one example of a network environment for an ASP.
 The ASP requests that all connections from this company should come from
 172.29.41.89 - an address that is assigned by the ASP and not in use at
 the customer site.
-
 :::{figure} /_static/images/nat_before_vpn_topology.png
 :alt: NAT before VPN Topology
 :scale: 100 %
-
 NAT before VPN Topology
 :::
-
 #### Configuration
-
 The required configuration can be broken down into 4 major pieces:
-
 - A dummy interface for the provider-assigned IP;
 - NAT (specifically, Source NAT);
 - IPSec IKE and ESP Groups;
 - IPSec VPN tunnels.
-
 ##### Dummy interface
-
 The dummy interface allows us to have an equivalent of the Cisco IOS
 Loopback interface - a router-internal interface we can use for IP
 addresses the router must know about, but which are not actually
 assigned to a real network.
-
 We only need a single step for this interface:
 
 ```none
@@ -717,20 +690,14 @@ set nat source rule 120 translation address '172.29.41.89'
 ```
 
 ##### IPSec IKE and ESP
-
 The ASP has documented their IPSec requirements:
-
 - IKE Phase:
-
   - aes256 Encryption
   - sha256 Hashes
-
 - ESP Phase:
-
   - aes256 Encryption
   - sha256 Hashes
   - DH Group 14
-
 Additionally, we want to use VPNs only on our eth1 interface (the
 external interface in the image above)
 
@@ -751,7 +718,6 @@ set vpn ipsec interface 'eth1'
 ```
 
 ##### IPSec VPN Tunnels
-
 We'll use the IKE and ESP groups created above for this VPN. Because we
 need access to 2 different subnets on the far side, we will need two
 different tunnels. If you changed the names of the ESP group and IKE
@@ -778,10 +744,8 @@ set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
 ```
 
 ##### Testing and Validation
-
 If you've completed all the above steps you no doubt want to see if it's
 all working.
-
 Start by checking for IPSec SAs (Security Associations) with:
 
 ```none

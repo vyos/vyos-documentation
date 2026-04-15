@@ -380,9 +380,7 @@ pools by the responder. The wildcard addresses 0.0.0.0 and ::
 request an arbitrary address, specific addresses may be defined.
 ```
 ##### CHILD SAs Configuration Commands
-
 ###### Policy-Based CHILD SAs Configuration Commands
-
 Every configured tunnel under peer configuration is a new CHILD SA.
 
 ```{cfgcmd} set vpn ipsec site-to-site peer <name> tunnel <number> disable
@@ -522,18 +520,13 @@ reinitiate it if VyOS is configured as initiator.
 Restart Strongswan daemon.
 ```
 ## Examples:
-
 ### Policy-Based VPN Example
-
 **PEER1:**
-
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.1.2/30`
 - `dum0` interface IP: `192.168.0.1/24` (for testing purposes)
 - Initiator
-
 **PEER2:**
-
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.2.2/30`
 - `dum0` interface IP: `192.168.1.0/24` (for testing purposes)
@@ -646,17 +639,13 @@ set nat source rule 10 source address '192.168.1.0/24'
 ```
 
 ### Route-Based VPN Example
-
 **PEER1:**
-
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.1.2/30`
 - 'vti0' interface IP: `10.100.100.1/30`
 - `dum0` interface IP: `192.168.0.1/24` (for testing purposes)
 - Role: Initiator
-
 **PEER2:**
-
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.2.2/30`
 - 'vti0' interface IP: `10.100.100.2/30`

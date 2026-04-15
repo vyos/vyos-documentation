@@ -54,11 +54,8 @@ buffers-per-numa = (num-rx-queues * num-rx-desc) + (num-tx-queues * num-tx-desc)
 Calculate this formula for each NIC and sum the results. Multiply the
 total by 2.5 to get the minimum recommended value for
 `buffers-per-numa`.
-
 Avoid setting this value too low to prevent packet drops.
-
 ### data-size
-
 This value sets how much payload data can be stored in a single buffer
 allocated by VPP. Larger values reduce buffer chains for large packets,
 while smaller values conserve memory for environments handling mostly
@@ -69,11 +66,8 @@ small packets.
 Optimal size depends on the typical packet size in your network. If
 unsure, use the largest MTU in your network plus overhead (for example,
 128 bytes).
-
 ### page-size
-
 A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
-
 Use page sizes configured in your system settings.
 
 ```{cfgcmd} set vpp settings resource-allocation buffers page-size <value>

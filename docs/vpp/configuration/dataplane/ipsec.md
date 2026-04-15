@@ -30,9 +30,7 @@ IPsec tunnels.
 ```
 Enabling this option allows VPP to handle IPsec traffic more efficiently by
 offloading processing from the kernel.
-
 ### netlink
-
 VPP uses netlink to receive IPsec event messages from the kernel. Proper
 settings of the following parameters are crucial for ensuring that VPP can
 process all such messages:

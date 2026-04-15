@@ -43,7 +43,6 @@ SSH access to the PE (Provider Edge) routers.
 ```
 
 ## Topology
-
 We use the following network topology in this example:
 
 ```{image} _include/topology.png
@@ -92,25 +91,19 @@ PE3
 ```
 
 ## Tenant networks (VRFs)
-
 Once all routers can be safely remotely managed and the core network is
 operational, we can now setup the tenant networks.
-
 Every tenant is assigned an individual VRF that would support overlapping
 address ranges for customers blue, red and green. In our example,
 we do not use overlapping ranges to make it easier when showing debug commands.
-
 Thus you can easily match it to one of the devices/networks below.
-
 Every router that provides access to a customer network needs to have the
 customer network (VRF + VNI) configured. To make our own lives easier,
 we utilize the same VRF table id (local routing table number) and
 VNI (Virtual Network Identifier) per tenant on all our routers.
-
 - blue uses local routing table id and VNI 2000
 - red uses local routing table id and VNI 3000
 - green uses local routing table id and VNI 4000
-
 PE1
 
 ```{literalinclude} _include/PE1.conf
@@ -133,10 +126,8 @@ PE3
 ```
 
 ## Testing and debugging
-
 You managed to come this far, now we want to see the network and routing
 tables in action.
-
 Show routes for all VRFs
 
 ```none

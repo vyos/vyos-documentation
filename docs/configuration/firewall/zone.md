@@ -153,7 +153,6 @@ set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
 ```
 
 ### Applying a Default Rule-Set to a Zone
-
 When a destination zone shares a common rule-set for multiple source zones,
 or when you require a complex set of default policies, you can apply an
 optional default rule-set. The default rule-set applies to all zones that do

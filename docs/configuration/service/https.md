@@ -108,7 +108,6 @@ Set the byte length of the JWT secret. Default is 32.
 Allow cross-origin requests from `<origin>`.
 ```
 ## Example Configuration
-
 Setting REST API and an API-KEY is the minimal configuration to get a working API Endpoint.
 
 ```none

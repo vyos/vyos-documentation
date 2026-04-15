@@ -177,7 +177,6 @@ Configure watermark warning generation for an IGMP group limit. Generates
 warning once the configured group limit is reached while adding new groups.
 ```
 (pim-igmp-interface-commands)=
-
 ### Interface specific commands
 
 ```{cfgcmd} set protocols pim interface <interface> igmp
@@ -209,7 +208,6 @@ choose IGMP version 2 or 3.
 The default value is 3.
 ```
 #### Example
-
 In the following example we can see a basic multicast setup:
 
 ```{image} /_static/images/multicast-basic.png

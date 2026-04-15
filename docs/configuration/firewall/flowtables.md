@@ -9,7 +9,6 @@ lastproofread: '2026-03-30'
 ```{include} /_include/need_improvement.txt
 ```
 ## Overview
-
 This section provides information on firewall configuration for flowtables.
 
 ```{cfgcmd} set firewall flowtable ...
@@ -76,10 +75,8 @@ Specify the offload type the flowtable uses: ``hardware`` or
 :::{note}
 **Hardware offload**: Make sure your network interface controller
 (NIC) supports hardware offloading and that you have the necessary drivers
-
 > installed before enabling this option.
 :::
-
 Creating rules for using flow tables:
 
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule <1-999999>

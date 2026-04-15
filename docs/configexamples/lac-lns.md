@@ -26,7 +26,6 @@ All users with domain **vyos.io** will be tunneled to LNS via L2TP.
 ```
 
 ## Configurations
-
 ### LAC
 
 ```none
@@ -97,9 +96,7 @@ This setup requires the Compression Control Protocol (CCP)
 being disabled, the command `set vpn l2tp remote-access ppp-options disable-ccp`
 accomplishes that.
 :::
-
 ### Client
-
 In this lab we use Windows PPPoE client.
 
 ```{image} /_static/images/lac-lns-winclient.jpg
@@ -109,7 +106,6 @@ In this lab we use Windows PPPoE client.
 ```
 
 ### Monitoring
-
 Monitoring on LNS side
 
 ```none

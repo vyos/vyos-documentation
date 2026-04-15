@@ -210,7 +210,6 @@ Add new port to SSL-ports acl. Ports included by default in SSL-ports acl:
 443
 ```
 ### Authentication
-
 The embedded Squid proxy can use LDAP to authenticate users against a company
 wide directory. The following configuration is an example of how to use Active
 Directory as authentication backend. Queries are done via LDAP.
@@ -470,9 +469,7 @@ Disables web filtering without discarding configuration.
 ```{include} /_include/need_improvement.txt
 ```
 ### Filtering
-
 #### Update
-
 If you want to use existing blacklists you have to create/download a database
 first. Otherwise you will not be able to commit the config changes.
 
@@ -514,39 +511,26 @@ Download/Update partial blacklist.
 Use tab completion to get a list of categories.
 ```
 - To auto update the blacklist files
-
   {code}`set service webproxy url-filtering squidguard auto-update
   update-hour 23`
-
 - To configure blocking add the following to the configuration
-
   {code}`set service webproxy url-filtering squidguard block-category ads`
-
   {code}`set service webproxy url-filtering squidguard block-category malware`
-
 #### Bypassing the webproxy
 
 ```{include} /_include/need_improvement.txt
 ```
 Some services don't work correctly when being handled via a web proxy.
 So sometimes it is useful to bypass a transparent proxy:
-
 - To bypass the proxy for every request that is directed to a specific
   destination:
-
   {code}`set service webproxy whitelist destination-address 198.51.100.33`
-
   {code}`set service webproxy whitelist destination-address 192.0.2.0/24`
-
 - To bypass the proxy for every request that is coming from a specific source:
-
   {code}`set service webproxy whitelist source-address 192.168.1.2`
-
   {code}`set service webproxy whitelist source-address 192.168.2.0/24`
-
   (This can be useful when a called service has many and/or often changing
   destination addresses - e.g. Netflix.)
-
 ## Examples
 
 ```none

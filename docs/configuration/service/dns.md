@@ -282,12 +282,10 @@ Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 sec
 
 
 Below are a list of record types available to be configured within VyOS. Some records
-
 support special `<name>` keywords:
 
 
 - `@` Use @ as record name to set the record for the root domain.
-
 - `any` Use any as record name to configure the record as a wildcard.
 
 
@@ -405,7 +403,6 @@ Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword.
 
 
 A VyOS router with two interfaces - eth0 (WAN) and eth1 (LAN) - is required to
-
 implement a split-horizon DNS configuration for example.com.
 
 
@@ -413,23 +410,14 @@ In this scenario:
 
 
 - All DNS requests for example.com must be forwarded to a DNS server
-
   at 192.0.2.254 and 2001:db8:cafe::1
-
 - All other DNS requests will be forwarded to a different set of DNS servers at
-
   192.0.2.1, 192.0.2.2, 2001:db8::1:ffff and 2001:db8::2:ffff
-
 - The VyOS DNS forwarder will only listen for requests on the eth1 (LAN)
-
   interface addresses - 192.168.1.254 for IPv4 and 2001:db8::ffff for IPv6
-
 - The VyOS DNS forwarder will only accept lookup requests from the
-
   LAN subnets - 192.168.1.0/24 and 2001:db8::/64
-
 - The VyOS DNS forwarder will pass reverse lookups for 10.in-addr.arpa,
-
   168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server.
 
 
@@ -482,23 +470,17 @@ Restarts the DNS recursor process. This also invalidates the local DNS
 forwarding cache.
 ```
 (dynamic-dns)=
-
 # Dynamic DNS
-
 VyOS is able to update a remote DNS record when an interface gets a new IP
 address. In order to do so, VyOS includes [ddclient], a Perl script written for
 this only one purpose.
-
 [ddclient] uses two methods to update a DNS record. The first one will send
 updates directly to the DNS daemon, in compliance with {rfc}`2136`. The second
 one involves a third party service, like DynDNS.com or any other such
 service provider. This method uses HTTP requests to transmit the new IP address. You
 can configure both in VyOS.
-
 (dns-dynamic-config)=
-
 ## Configuration
-
 ### {rfc}`2136` Based
 
 ```{cfgcmd} set service dns dynamic name <service-name> address interface <interface>
@@ -569,9 +551,7 @@ The default is  300 seconds.
 
 
 - Register DNS record `example.vyos.io` on DNS server `ns1.vyos.io`
-
 - Use auth key file at `/config/auth/my.key`
-
 - Set TTL to 300 seconds
 
 
@@ -663,13 +643,9 @@ example.vyos.io
 
 
 :::{note}
-
 You can also keep different DNS zone updated. Just create a new
-
 config node: `set service dns dynamic interface <interface> rfc2136
-
 <other-service-name>`
-
 :::
 
 
@@ -680,7 +656,6 @@ VyOS is also able to use any service relying on protocols supported by ddclient.
 
 
 To use such a service, one must define a login, password, one or multiple
-
 hostnames, protocol and server.
 
 
@@ -747,7 +722,6 @@ requests are being sent to must be specified.
 Allow explicit IPv6 address for the interface.
 ```
 #### Example:
-
 Use deSEC (dedyn.io) as your preferred provider:
 
 ```none
@@ -764,7 +738,6 @@ set service dns dynamic name dedyn address interface 'eth0'
 Multiple services can be used per interface. Just specify as many
 services per interface as you like!
 :::
-
 #### Example IPv6 only:
 
 ```none
@@ -779,11 +752,9 @@ set service dns dynamic name dedyn address interface 'eth0'
 ```
 
 ### Running Behind NAT
-
 By default, [ddclient] will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
-
 [ddclient] has another way to determine the WAN IP address. This is controlled
 by:
 

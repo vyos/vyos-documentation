@@ -7,25 +7,17 @@ lastproofread: '2026-02-18'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Dataplane Troubleshooting
-
 This page shows you how to collect diagnostic information to troubleshoot VPP
 dataplane issues. These techniques help you resolve problems yourself and
 provide support teams with the information they need.
-
 Collecting the right diagnostic data is crucial for effective troubleshooting.
-
 ## Packet Capture (PCAP)
-
 Packet capture is a valuable debugging tool for analyzing network traffic and
 identifying issues with packet processing, routing, and filtering.
-
 `pcap trace` in VPP captures packets at different states: received (rx),
 transmitted (tx), and dropped (drop).
-
 ### Starting Packet Capture
-
 **Command syntax:**
-
 % stop_vyoslinter
 
 ```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max <n>] [intfc <interface-name|any>] [file <name>] [max-bytes-per-pkt <n>]
@@ -58,7 +50,6 @@ sudo vppctl pcap trace rx tx drop max 1000 intfc any file vpp_capture.pcap max-b
 ```
 
 ### Monitoring Capture Status
-
 To check the capture status:
 
 ```{opcmd} sudo vppctl pcap trace status
@@ -89,28 +80,21 @@ Write 35 packets to /tmp/vpp_eth1.pcap, and stop capture...
 ```
 
 **Notes:**
-
 - PCAP files are stored in the `/tmp/` directory.
 - Existing files are overwritten.
 - If you don't specify a filename, default names are used: `/tmp/rx.pcap`,
   `/tmp/tx.pcap`, and `/tmp/rxandtx.pcap`.
 - Large captures consume significant disk space—monitor available space.
 - Stop captures promptly to avoid filling storage.
-
 ## Packet Tracing
-
 VPP packet tracing shows how packets flow through the VPP processing graph,
 including which nodes process each packet and what transformations occur.
-
 :::{warning}
 Tracing generates large amounts of data, especially on high-traffic
 systems. Limit the number of traced packets to avoid overwhelming the system.
 :::
-
 ### Basic Packet Tracing Commands
-
 #### Start tracing
-
 To start tracing packets at a specific graph node:
 
 ```{opcmd} sudo vppctl trace add <input-graph-node> <pkts> [verbose]
@@ -138,9 +122,7 @@ After packets are traced, view the results:
 ```
 - `[max COUNT]` - Optional limit on number of packets to display
   (default: all)
-
 #### Clear traces
-
 After reviewing traces, clear them to free up resources:
 
 ```{opcmd} sudo vppctl clear trace
@@ -159,7 +141,6 @@ sudo vppctl clear trace
 ```
 
 ### Understanding Trace Output
-
 Trace output shows how packets flow through VPP processing nodes:
 
 ```none
@@ -229,21 +210,16 @@ Packet 1
 ```
 
 In this example, the trace shows:
-
 - The packet is received on `eth2` interface at the `dpdk-input` node.
 - It flows through `ethernet-input` and `ip4-input` nodes.
 - NAT translation occurs at the `nat44-ed-in2out` node, changing the source
   IP.
 - The packet is routed through `ip4-lookup` and `ip4-rewrite` nodes.
 - It transmits out of `eth1` interface at the `eth1-tx` node.
-
 ## Additional Diagnostic Information
-
 When reporting issues to support teams or performing advanced troubleshooting,
 collect additional diagnostic information.
-
 ### Before/After Traffic Analysis
-
 Before you send traffic:
 
 ```none
@@ -265,7 +241,6 @@ sudo vppctl show error
 ```
 
 ### Core System Information
-
 **Memory and buffer information:**
 
 ```none
@@ -285,7 +260,6 @@ sudo vppctl show node counters
 ```
 
 ### Protocol-Specific Information
-
 **Layer 2 data (if configured):**
 
 ```none
@@ -315,12 +289,9 @@ sudo vppctl show mpls tunnel
 ```
 
 ## Creating Support Packages
-
 Use the automated diagnostic collection script to gather comprehensive VPP
 troubleshooting information when contacting support or reporting issues.
-
 ### VPP Diagnostic Collection Script
-
 Create the diagnostic collection script:
 
 ```python
@@ -433,22 +404,18 @@ if __name__ == "__main__":
 ```
 
 Save this script as `/config/scripts/vpp-collect-diagnostics`
-
 ### Installation and Usage
-
 **1. Make the script executable**
 
 ```{opcmd} sudo chmod +x /config/scripts/vpp-collect-diagnostics
 ```
 **2. Run VPP diagnostic collection**
-
 The script automatically collects all diagnostics and stores them in your home
 directory.
 
 ```{opcmd} /config/scripts/vpp-collect-diagnostics
 ```
 **3. Generate VyOS tech-support archive separately**
-
 You can also generate a tech-support archive with system-wide diagnostics:
 
 ```{opcmd} generate tech-support archive

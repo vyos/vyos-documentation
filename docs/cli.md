@@ -45,92 +45,55 @@ Possible completions:
 ```
 
 You can scroll up with the keys `[Shift]+[PageUp]` and scroll down with `[Shift]+[PageDown]`.
-
 When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a `:` prompt.
-
 When viewing in page mode the following commands are available:
-
 :   - `q` key can be used to cancel output
     - `space` will scroll down one page
     - `b` will scroll back one page
     - `return` will scroll down one line
     - `up-arrow` and `down-arrow` will scroll up or down one line at a time respectively
     - `left-arrow` and `right-arrow` can be used to scroll left or right in the event that the output has lines which exceed the terminal size.
-
 ### Operational mode command families
-
 Many operational mode commands in VyOS are placed in families such as `show`, `clear`, or `reset`. Every such family has a specific meaning to allow the user to guess how the command is going to behave --- in particular, whether it will be disruptive to the system or not.
-
 Note that this convention was not always followed with perfect consistency and some commands may still be in wrong families, so you should always check the command help and documentation if you are not sure what exactly it does.
-
 #### clear
-
 \"Clear\" commands are completely non-disruptive to any system operations. Generally, they can be used freely without hesitation.
-
 Most often their purpose is to remove or reset various debug and diagnostic information such as system logs and packet counters.
-
 Examples:
-
 - `clear console` --- clears the screen.
 - `clear interfaces ethernet eth0 counters` --- zeroes packet counters on `eth0`.
 - `clear log` --- deletes all system log entries.
-
 #### reset
-
 \"Reset\" commands can be locally-disruptive. They may, for example, terminate a single user session or a session with a dynamic routing protocol peer.
-
 They should be used with caution since they may have a significant impact on a particular users in the network.
-
 - `reset pppoe-server username jsmith` --- terminate all PPPoE sessions from user `jsmith`.
 - `reset bgp 192.0.2.54` --- terminates the BGP session with neighbor 192.0.2.54.
 - `reset vpn ipsec site-to-site peer vpn.example.com` --- terminates IPsec tunnels to `vpn.example.com`.
 - `reset session tty1` --- terminates the TTY user session `tty1`
-
 #### restart
-
 \"Restart\" operations may disrupt an entire subsystem. Most often they initiate a restart of a server process, which causes it to be unavailable for a brief period and resets all the process state.
-
 They should be used with extreme caution.
-
 - `restart dhcp server` --- restarts the IPv4 DHCP server process (DHCP requests are not served while it is restarting).
 - `restart ipsec` --- restarts the IPsec process (which forces all sessions and all IPsec process state to reset).
-
 #### force
-
 \"Force\" commands force the system to perform an action that it might perform by itself at a later point.
-
 Examples:
-
 - `force arp request interface eth1 address 10.3.0.2` --- send a gratuitious ARP request.
 - `force root-partition-auto-resize` --- grow the root filesystem to the size of the system partition (this is also done on startup, but this command can do it without a reboot).
-
 #### execute
-
 \"Execute\" commands are for executing various diagnostic and auxilliary actions that the system would never perform by itself.
-
 Examples:
-
 - `execute wake-on-lan interface <intf> host <MAC>` --- send a Wake-On-LAN packet to a host.
-
 #### show
-
 \"Show\" commands display various system information. They may occasionally use a pager for long outputs, that you can quit by pressing the Q button. Their output is always finite, however.
-
 Examples:
-
 - `show system login` --- displays current system users.
 - `show ip route` --- displays the IPv4 routing table.
-
 #### monitor
-
 \"Monitor\" commands initiate various monitoring operations that may output information continuously, until terminated with `Ctrl-C` or disabled.
-
 Examples:
-
 - `monitor log` --- continuously outputs latest system logs.
-
 ## Configuration Mode
-
 To enter configuration mode use the `configure` command:
 
 ``` none
@@ -143,7 +106,6 @@ vyos@vyos:~#
 ::: title
 Note
 :::
-
 Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
 ::::
 
@@ -154,19 +116,13 @@ vyos@vyos:~$
 ```
 
 See the configuration section of this document for more information on configuration mode.
-
 ## Configuration Overview
-
 VyOS makes use of a unified configuration file for the entire system\'s configuration: `/config/config.boot`. This allows easy template creation, backup, and replication of system configuration. A system can thus also be easily cloned by simply copying the required configuration files.
-
 ## Terminology
-
 A VyOS system has three major types of configurations:
-
 - **Active** or **running configuration** is the system configuration that is loaded and currently active (used by VyOS). Any change in the configuration will have to be committed to belong to the active/running configuration.
 - **Working configuration** is the one that is currently being modified in configuration mode. Changes made to the working configuration do not go into effect until the changes are committed with the {cfgcmd}`commit` command. At which time the working configuration will become the active or running configuration.
 - **Saved configuration** is the one saved to a file using the {cfgcmd}`save` command. It allows you to keep safe a configuration for future uses. There can be multiple configuration files. The default or \"boot\" configuration is saved and loaded from the file `/config/config.boot`.
-
 ### Seeing and navigating the configuration
 
 ```{opcmd} show configuration
@@ -382,12 +338,9 @@ vyos@vyos#
 ::: title
 Note
 :::
-
 When going into configuration mode, prompt changes from `$` to `#`.
 ::::
-
 All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them.
-
 The current hierarchy level can be changed by the {cfgcmd}`edit` command.
 
 ``` none
@@ -404,7 +357,6 @@ You are now in a sublevel relative to `interfaces ethernet eth0`, all commands e
 ```
 
 The {cfgcmd}`show` command within configuration mode will show the working configuration indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
-
 **Example:**
 
 ``` none
@@ -464,7 +416,6 @@ Warning: configuration changes have not been saved.
 ```
 
 ### Editing the configuration
-
 The configuration can be edited by the use of {cfgcmd}`set` and {cfgcmd}`delete` commands from within configuration mode.
 
 ```{cfgcmd} set
@@ -575,7 +526,6 @@ reboot               Reboot to saved configuration if not confirmed (default)
 ```
 
 Note that \'reload\' loads the most recent completed configuration and does not require a reboot.
-
 What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the `commit-confirm` command, your changes will be committed, and if you don\'t issue the `confirm` command in 10 minutes, your system will reboot into previous config revision.
 
 ``` none
@@ -732,7 +682,6 @@ You can specify the number of revisions stored on disk. N can be in the range of
 ```
 
 #### Compare configurations
-
 VyOS lets you compare different configurations.
 
 ```{cfgcmd} compare \<saved \| N\> \<M\>
@@ -794,9 +743,7 @@ vyos@router# run show system commit diff 4
 ```
 
 This means four commits ago we did `set system ipv6 disable-forwarding`.
-
 #### Rollback Changes
-
 You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot.
 
 ```{cfgcmd} rollback \<N\>
@@ -869,9 +816,7 @@ Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used t
 ```
 
 #### Saving and loading manually
-
 You can use the `save` and `load` commands if you want to manually manage specific configuration files.
-
 When using the [save](#save) command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the `load` command:
 
 ```{cfgcmd} load \<URI\>

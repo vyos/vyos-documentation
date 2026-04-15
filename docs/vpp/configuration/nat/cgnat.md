@@ -46,9 +46,7 @@ network.
 
 This is a mandatory step, as the CGNAT needs to know on which interfaces it
 needs to apply rules and operate.
-
 ## NAT Rules Configuration
-
 Next, you need to create the NAT rules.
 
 ```{cfgcmd} set vpp nat cgnat rule <rule-number> description <description>
@@ -65,9 +63,7 @@ Specify the inside prefix (private IP range) to translate.
 ```
 
 Specify the outside prefix (public IP range) to use for translation.
-
 ## Exclude Rules Configuration
-
 CGNAT exclude rules are implemented as DET44 identity mappings. Matching
 traffic is excluded from CGNAT translation and keeps its original
 address/port tuple.
@@ -148,9 +144,7 @@ set vpp nat cgnat timeout udp <timeout-value>
 ```
 
 ## Example Configuration
-
 Here is an example CGNAT configuration with these assumptions:
-
 - Inside interface: `eth2`
 - Outside interface: `eth1`
 - Inside prefix: `100.64.0.0/16`
@@ -171,7 +165,6 @@ set vpp nat cgnat exclude rule 20 local-port 53
 ```
 
 ### Operational Commands
-
 Once the CGNAT is configured, you can use the following commands to monitor
 its status and operation:
 
@@ -191,7 +184,6 @@ CGNAT interfaces:
 ```
 
 Display active NAT sessions. This command may produce extensive output if
-
 many sessions are active.
 
 
@@ -200,7 +192,6 @@ many sessions are active.
 
 
 Display current NAT mappings, including inside and outside address
-
 prefixes.
 
 ```
@@ -224,7 +215,6 @@ Address      Protocol    Port    VRF  Description
 ```
 
 ### Potential Issues and Troubleshooting
-
 Configuration fails to apply with an error similar to:
 
 ```
@@ -235,13 +225,10 @@ CGNAT utilizes main heap memory and if you are trying to configure big
 prefixes or a large number of NAT sessions, you may run into memory allocation
 issues. Try to {ref}`increase the main heap size in VPP configuration
 <vpp_config_dataplane_memory>`.
-
 ## SSH/DNS Reachability After Enabling CGNAT
-
 If SSH access to the router (or local-originated DNS queries) stops working
 after enabling CGNAT, traffic may be dropped by DET44 when it does not match a
 translation mapping.
-
 In this case, add an exclude rule for the router local address that must
 bypass CGNAT translation.
 

@@ -42,12 +42,10 @@ Defines protocols for checking ARP, ICMP, TCP.
 
 
 - ICMP probe sends 2 ICMP request packets with a response timeout of 1 second.
-
   If one ICMP response is received, the health check is successful.
 
 
 - ARP probe sends 2 ARP requests with a response timeout of 1 second.
-
   If one response is received, the health check is successful.
 
 
@@ -67,12 +65,10 @@ Policy for checking targets
 
 
 - `all-available` all checking target addresses must be available to pass
-
   this check
 
 
 - `any-available` any of the checking target addresses must be available
-
   to pass this check
 
 
@@ -99,7 +95,6 @@ Route metric
 Default 1.
 ```
 ## Example
-
 **One gateway:**
 
 ```none

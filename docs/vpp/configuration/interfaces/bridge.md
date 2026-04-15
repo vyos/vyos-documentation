@@ -64,7 +64,6 @@ set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ```
 
 ## Member Interface Configuration
-
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
@@ -86,20 +85,16 @@ set interfaces vpp bridge vppbr1 member interface vppgre1
 
 :::{important}
 Bridge members can include various interface types such as:
-
 - Physical Ethernet interfaces (eth0, eth1, etc.)
 - {doc}`bonding` - VPP bonding interfaces (vppbond0, vppbond1, etc.)
 - {doc}`gre` - GRE tunnel interfaces
 - {doc}`loopback` - Loopback interfaces
 - {doc}`vxlan` - VXLAN tunnel interfaces
 :::
-
 ## Bridge Virtual Interface (BVI)
-
 A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a
 bridge domain, allowing the bridge to have an IP address and participate
 in routing.
-
 ### Configuring BVI
 
 ```{cfgcmd} set interfaces vpp bridge <vppbrN> member interface
@@ -120,13 +115,10 @@ set interfaces vpp bridge vppbr1 member interface vpplo1 bvi
 
 :::{important}
 **BVI Restrictions:**
-
 - Only loopback interfaces can be configured as BVI
 - Each bridge domain can have only one BVI interface
 :::
-
 ## Configuration Examples
-
 ### Basic Bridge Setup
 
 ```none
@@ -169,12 +161,10 @@ set interfaces vpp bridge vppbr3 member interface vpplo2 bvi
 ```
 
 ## Integration with Kernel Interfaces
-
 Bridge interfaces can be integrated with kernel interfaces for
 management and compatibility with standard Linux networking services.
 This is accomplished by binding a kernel interface to the Bridge
 Virtual Interface (BVI).
-
 **Example Integration:**
 
 ```none

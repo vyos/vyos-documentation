@@ -147,13 +147,9 @@ vyos@vyos:~$ show ipoe-server sessions
 
 
 To enable RADIUS based authentication, the authentication mode needs to be
-
 changed within the configuration. Previous settings like the local users, still
-
 exists within the configuration, however they are not used if the mode has been
-
 changed from local to radius. Once changed back to local, it will use all local
-
 accounts again.
 
 
@@ -173,9 +169,7 @@ communicating with the RADIUS server.
 
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
-
 servers can be setup and will be used subsequentially.
-
 For example:
 
 
@@ -189,11 +183,8 @@ set service ipoe-server authentication radius server 10.0.0.2 key 'foo'
 
 
 :::{note}
-
 Some RADIUS severs use an access control list which allows or denies
-
 queries, make sure to add your VyOS router to the allowed client list.
-
 :::
 
 
@@ -201,9 +192,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 
 
 If you are using OSPF as IGP, always the closest interface connected to the
-
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
-
 to a single source IP e.g. the loopback interface.
 
 
@@ -214,11 +203,8 @@ Source IPv4 address used in all RADIUS server queires.
 
 
 :::{note}
-
 The `source-address` must be configured on one of VyOS interface.
-
 Best practice would be a loopback or dummy interface.
-
 :::
 
 
@@ -312,11 +298,8 @@ The default attribute is `Filter-Id`.
 
 
 :::{note}
-
 If you set a custom RADIUS attribute you must define it on both
-
 dictionaries at RADIUS server and client.
-
 :::
 
 
@@ -335,7 +318,6 @@ Specifies the vendor dictionary, dictionary needs to be in
 
 
 Received RADIUS attributes have a higher priority than parameters defined within
-
 the CLI configuration, refer to the explanation below.
 
 
@@ -343,42 +325,31 @@ the CLI configuration, refer to the explanation below.
 
 
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-
 address will be allocated to the client and the option `default-pool` within the CLI
-
 config is being ignored.
 
 
 If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
-
 from a predefined IP pool whose name equals the attribute value.
 
 
 If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-
 will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
 
 
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
-
 delegation pefix will be allocated from a predefined IPv6 pool `delegate`
-
 whose name equals the attribute value.
 
 
 :::{note}
-
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
-
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
-
 :::
 
 
 User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-
 it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
-
 Define it in your RADIUS server.
 
 

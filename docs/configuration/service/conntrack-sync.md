@@ -144,15 +144,10 @@ The default is 60 seconds.
 
 
 :::{note}
-
 In VRRP stateful firewall deployments, align VRRP timing with this
-
 behavior: because synchronized conntrack state is purged after the purge
-
 timeout, set **VRRP preempt-delay** to ≥ **purge-timeout** so mastership
-
 can be restored before conntrack state is purged.
-
 :::
 
 
@@ -297,14 +292,11 @@ Retrieve current status of connection tracking subsystem.
   ExpectationSync       : disabled
 ```
 ## Example
-
 The next example is a simple configuration of conntrack-sync.
-
 :::{figure} /_static/images/service_conntrack_sync-schema.png
 :alt: Conntrack Sync Example
 :scale: 60 %
 :::
-
 Now configure conntrack-sync service on `router1` **and** `router2`
 
 ```none
@@ -321,7 +313,6 @@ set service conntrack-sync mcast-group '225.0.0.50'
 On the active router, you should have information in the internal-cache of
 conntrack-sync. The same current active connections number should be shown in
 the external-cache of the standby router
-
 On active router run:
 
 ```none

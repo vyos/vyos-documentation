@@ -27,7 +27,6 @@ Client, to test a single LAN setup
 ```
 
 ### Configuration
-
 First, we configure the `vyos-wan` interface to get a DHCP address.
 
 ```{literalinclude} _include/vyos-wan.conf
@@ -44,13 +43,11 @@ Now we are able to setup the tunnel interface.
 :::{note}
 The `source-address` is the Tunnelbroker client IPv4
 address or if there is NAT the current WAN interface address.
-
 If `source-address` is dynamic, the tunnel will cease working once
 the address changes. To avoid having to manually update
 `source-address` each time the dynamic IP changes, an address of
 '0.0.0.0' can be specified.
 :::
-
 Setup the IPv6 default route to the tunnel interface
 
 ```{literalinclude} _include/vyos-wan_tun0.conf
@@ -97,23 +94,17 @@ rtt min/avg/max/mdev = 176.707/206.638/285.128/45.457 ms
 ```
 
 ### LAN Configuration
-
 At this point, your VyOS install should have full IPv6, but now your LAN devices
 need access.
-
 With Tunnelbroker.net, you have two options:
-
 - Routed /64. This is the default assignment. In IPv6-land, it's good for a
   single "LAN", and is somewhat equivalent to a /24.
 - Routed /48. This is something you can request by clicking the "Assign /48"
   link in the Tunnelbroker.net tunnel config. It allows you to have up to 65k
-
 Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64. So
 if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore
 the assigned /64, and request the /48 and use that.
-
 ## Single LAN Setup
-
 Single LAN setup where eth2 is your LAN interface. Use the Tunnelbroker
 Routed /64 prefix:
 
@@ -125,7 +116,6 @@ Routed /64 prefix:
 Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
 'valid-lifetime' and 'preferred-lifetime' are set to default values of
 30 days and 4 hours respectively.
-
 And the `client` to receive an IPv6 address with stateless autoconfig.
 
 ```{literalinclude} _include/client.conf
@@ -133,12 +123,10 @@ And the `client` to receive an IPv6 address with stateless autoconfig.
 ```
 
 This accomplishes a few things:
-
 - Sets your LAN interface's IP address
 - Enables router advertisements. This is an IPv6 alternative for DHCP (though
   DHCPv6 can still be used). With RAs, Your devices will automatically find the
   information they need for routing and DNS.
-
 Now the Client is able to ping a public IPv6 address
 
 ```none
@@ -155,22 +143,17 @@ rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 ```
 
 ## Multiple LAN/DMZ Setup
-
 That's how you can expand the example above.
 Use the `Routed /48` information. This allows you to assign a
 different /64 to every interface, LAN, or even device. Or you could break your
 network into smaller chunks like /56 or /60.
-
 The format of these addresses:
-
 - `2001:470:xxxx::/48`: The whole subnet. xxxx should come from Tunnelbroker.
 - `2001:470:xxxx:1::/64`: A subnet suitable for a LAN
 - `2001:470:xxxx:2::/64`: Another subnet
 - `2001:470:xxxx:ffff:/64`: The last usable /64 subnet.
-
 In the above examples, 1,2,ffff are all chosen by you. You can use 1-ffff
 (1-65535).
-
 So, when your LAN is eth1, your DMZ is eth2, your cameras are on eth3, etc:
 
 ```none

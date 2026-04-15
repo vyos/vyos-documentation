@@ -86,7 +86,6 @@ By assigning a lower cost, you give the interface higher precedence during
 path selection.
 ```
 ### Bridge options
-
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
 
@@ -134,14 +133,11 @@ Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
 listeners. This prevents network flooding.
 ```
 (stp)=
-
 #### STP configuration
-
 {abbr}`STP (Spanning Tree Protocol)` is a Layer 2 protocol that prevents loops
 in Ethernet networks by ensuring only one logical path exists between any two
 bridges. This creates a loop-free topology and prevents broadcast storms that
 can crash the network.
-
 By default, {abbr}`STP (Spanning Tree Protocol)` is disabled on bridge interfaces.
 To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
@@ -177,7 +173,6 @@ trigger a topology recalculation.
 The default value is 2 seconds.
 ```
 ### VLAN
-
 #### VLAN-aware bridges
 
 ```{cfgcmd} set interfaces bridge <interface> enable-vlan
@@ -258,14 +253,10 @@ To allow VLAN IDs 6 through 8 on member interface ``eth0``:
 :var1: br1
 ```
 ## Examples
-
 ### Configure a standard bridge
-
 The following example creates a bridge named br100 with {abbr}`STP (Spanning
 Tree Protocol)` enabled.
-
 Configuration requirements:
-
 - **Bridge name:** `br100`
 - **Member interfaces:** Physical interface `eth1` and VLAN interface `eth2.10`.
 - **STP:** Enabled.

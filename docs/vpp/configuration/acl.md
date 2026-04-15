@@ -7,52 +7,33 @@ lastproofread: '2025-09-04'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP ACL Configuration
-
 VPP ACLs (Access Control Lists) provide a way to filter traffic passing through VPP interfaces. They offer a high-performance packet filtering solution that can be used as a fast firewall alternative.
-
 VyOS VPP ACL implementation supports two main types of access control lists:
-
 - **IP ACLs** - Layer 3 filtering based on IPv4/IPv6 addresses, ports, and protocols (can be applied to both input and output directions)
 - **MAC ACLs** - Layer 2 filtering based on MAC addresses and IP prefixes (can only be applied to input direction)
-
 ## Structure and Components
-
 ### Tags
-
 ACL tags are named rule sets that contain one or more access control entries (ACEs). Tags provide a way to group related rules and apply them consistently across different interfaces.
-
 - Tag names are user-defined text strings
 - Each tag can contain multiple numbered rules
 - Tags can be applied to interfaces in input or output direction
 - Multiple tags can be applied to a single interface
-
 ### Interface Application
-
 ACL tags are applied to interfaces to control traffic flow:
-
 - **Input direction**: Filters traffic entering the interface
 - **Output direction**: Filters traffic leaving the interface
-
 :::{note}
 **Important Limitation**: MAC ACLs can only be applied to the input direction of interfaces. They cannot filter outbound traffic. Use IP ACLs if you need to filter traffic in both directions.
 :::
-
 ### Rule Processing
-
 Rules within an ACL are processed in numerical order (lowest to highest). The first matching rule determines the action taken on the packet.
-
 Available actions:
-
 - `permit` - Allow the packet to continue
 - `deny` - Drop the packet
 - `permit-reflect` - Allow traffic and automatically permit return traffic
-
 ## L3/IP ACLs
-
 IP ACLs provide Layer 3 filtering capabilities based on IPv4 and IPv6 addresses, port numbers, and protocols. They support both stateless and stateful (reflexive) filtering.
-
 ### Creating IP ACL Tags
-
 IP ACL tags are created under the `vpp acl ip` configuration node:
 
 ```none
@@ -68,7 +49,6 @@ set vpp acl ip tag-name 'WEB-FILTER' description 'Web server access control'
 ```
 
 ### Adding Rules to IP ACL Tags
-
 Rules are added to IP ACL tags with specific rule numbers:
 
 ```none
@@ -76,7 +56,6 @@ set vpp acl ip tag-name <tag-name> rule <rule-number>
 ```
 
 #### Basic IP ACL Rule Configuration
-
 Each rule requires an action and matching criteria:
 
 ```none
@@ -86,18 +65,13 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> protocol <protocol>
 ```
 
 **Actions:**
-
 - `permit` - Allow matching traffic
 - `deny` - Block matching traffic
 - `permit-reflect` - Allow outbound traffic and automatically permit return traffic
-
 **Protocols:**
-
 - `all` - Match all IP protocols (default)
 - Or specific protocol by name, e.g. `tcp`, `udp`, `icmp`
-
 #### Source and Destination Matching
-
 Configure source and destination parameters:
 
 ```none
@@ -111,17 +85,12 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> destination port <port-spe
 ```
 
 **Prefix Specification:**
-
 - `<x.x.x.x/x>` - IPv4 prefix in CIDR notation
 - `<h:h:h:h:h:h:h:h/x>` - IPv6 prefix in CIDR notation
-
 **Port Specification:**
-
 - `<1-65535>` - Single port number
 - `<start>-<end>` - Port range (e.g., 1001-1005)
-
 #### TCP Flags Matching
-
 For TCP protocol rules, you can match specific TCP flags:
 
 ```none
@@ -133,7 +102,6 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags is-not-set <ack|
 ```
 
 ### IP ACL Configuration Examples
-
 #### Example 1: Basic Web Server ACL
 
 ```none
@@ -198,7 +166,6 @@ set vpp acl ip tag-name 'OUTBOUND-REFLECT' rule 20 destination port 443
 ```
 
 ### Applying IP ACL Tags to Interfaces
-
 IP ACL tags are applied to interfaces using the interface configuration:
 
 ```none
@@ -210,13 +177,10 @@ set vpp acl ip interface <interface> output acl-tag <number> tag-name <tag-name>
 ```
 
 Where:
-
 - `<interface>` - Interface name (e.g., eth0, eth1)
 - `<number>` - ACL rule number (0-4294967295) for ordering multiple ACL tags
 - `<tag-name>` - Name of the ACL tag to apply
-
 Multiple tags can be applied to the same interface and direction by using different ACL rule numbers.
-
 Example:
 
 ```none
@@ -231,15 +195,11 @@ set vpp acl ip interface eth0 input acl-tag 20 tag-name 'FIREWALL'
 ```
 
 ## L2/MAC ACLs
-
 MAC ACLs provide Layer 2 filtering capabilities based on MAC addresses and IP prefixes. They are particularly useful for controlling access at the data link layer.
-
 :::{important}
 **Direction Limitation**: MAC ACLs can **only** be applied to the **input direction** of interfaces. They cannot filter outbound/output traffic. If you need bidirectional filtering, use IP ACLs instead.
 :::
-
 ### Creating MAC ACL Tags
-
 MAC ACL tags are created under the `vpp acl mac` configuration node:
 
 ```none
@@ -255,7 +215,6 @@ set vpp acl mac tag-name 'MAC-FILTER' description 'Layer 2 MAC address filtering
 ```
 
 ### Adding Rules to MAC ACL Tags
-
 Rules are added to MAC ACL tags with specific rule numbers:
 
 ```none
@@ -263,7 +222,6 @@ set vpp acl mac tag-name <tag-name> rule <rule-number>
 ```
 
 #### Basic MAC ACL Rule Configuration
-
 Each rule requires an action and matching criteria:
 
 ```none
@@ -272,14 +230,10 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> description '<description
 ```
 
 **Actions:**
-
 - `permit` - Allow matching traffic
 - `deny` - Block matching traffic
-
 Note: MAC ACLs do not support the `permit-reflect` action available in IP ACLs.
-
 #### MAC Address Matching
-
 Configure MAC address matching criteria:
 
 ```none
@@ -288,16 +242,12 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> mac-mask <mac-mask>
 ```
 
 **MAC Address Specification:**
-
 - `mac-address` - Source MAC address to match (format: xx:xx:xx:xx:xx:xx)
 - `mac-mask` - MAC address mask (default: ff:ff:ff:ff:ff:ff for exact match)
-
 The MAC mask allows for partial MAC address matching. For example:
 \- `ff:ff:ff:00:00:00` matches the first 3 octets (OUI)
 \- `ff:ff:ff:ff:ff:ff` matches the complete MAC address (default)
-
 #### IP Prefix Matching
-
 Configure IP prefix matching for the source:
 
 ```none
@@ -305,12 +255,9 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> prefix <ip-prefix>
 ```
 
 **Prefix Specification:**
-
 - Supports both IPv4 and IPv6 prefixes in CIDR notation
 - Examples: `192.168.1.0/24`, `10.0.0.0/8`, `2001:db8::/32`
-
 ### MAC ACL Configuration Examples
-
 #### Example 1: Device Whitelist
 
 ```none
@@ -379,7 +326,6 @@ set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 description 'User VLAN'
 ```
 
 ### Applying MAC ACL Tags to Interfaces
-
 MAC ACL tags can only be applied to the input direction of interfaces:
 
 ```none
@@ -389,11 +335,9 @@ set vpp acl mac interface <interface> tag-name <tag-name>
 :::{note}
 **Syntax Difference**: Unlike IP ACLs, MAC ACL interface application does not use the `acl-tag <number>` structure since only single MAC ACLs can be applied.
 :::
-
 :::{warning}
 Unlike IP ACLs, MAC ACLs do **not** support output direction filtering. There is no `output` option available for MAC ACL interface application.
 :::
-
 Example:
 
 ```none
@@ -403,46 +347,32 @@ set vpp acl mac interface eth1 tag-name 'DEVICE-WHITELIST'
 ```
 
 ## Configuration Best Practices
-
 ### Rule Ordering
-
 - **Number rules strategically**: Use gaps between rule numbers (10, 20, 30) to allow for future insertions
 - **Place specific rules first**: More specific matches should have lower rule numbers
 - **End with catch-all**: Always include a final rule that matches all traffic with explicit action
 - **Document rules**: Use descriptions for complex rules to aid troubleshooting
-
 ### Performance Considerations
-
 - **Minimize rule count**: Fewer rules generally mean better performance
 - **Use appropriate ACL type**: Use MAC ACLs for Layer 2/3 filtering, IP ACLs for Layer 3/4 filtering
 - **Consider direction limitations**: Remember that MAC ACLs only work on input traffic; use IP ACLs for filtering in both directions
 - **Combine related rules**: Group similar filtering requirements into single ACL tags
 - **Apply strategically**: Apply ACLs at ingress points where possible to minimize processing
-
 ## Troubleshooting
-
 ### Common Issues
-
 - **ACL not taking effect:**
-
   - Verify ACL is applied to correct interface and direction
   - Check rule numbering and order
   - Ensure interface is properly configured in VPP
-
 - **Performance degradation:**
-
   - Review ACL complexity and rule count
   - Consider consolidating rules
   - Check for unnecessary broad matches
-
 - **Traffic blocked unexpectedly:**
-
   - Review rule order (first match wins)
   - Check for overly restrictive rules
   - Verify protocol and port specifications
-
 ### Verification Commands
-
 Use these commands to verify ACL configuration and operation:
 
 ```none
@@ -457,17 +387,13 @@ show configuration commit-revisions | grep -A5 -B5 "vpp acl"
 ```
 
 ## Operational Commands
-
 VyOS provides several operational commands to monitor and troubleshoot VPP ACL configurations and their status.
-
 ### Viewing All ACLs
-
 Display all configured ACLs (both IP and MAC):
 
 ```{opcmd} show vpp acl
 ```
 This command shows a summary of all configured ACL tags with their rules, displaying both IP ACLs and MAC ACLs in a tabular format.
-
 Example output:
 
 ```none
@@ -490,7 +416,6 @@ Rule  Action    IP prefix    MAC address        MAC mask
 ```
 
 ### IP ACL Commands
-
 View all IP ACLs:
 
 ```{opcmd} show vpp acl ip
@@ -529,7 +454,6 @@ IP ACL "tag-name WEB-SERVER" acl_index 0
 ```
 
 ### MAC ACL Commands
-
 View all MAC ACLs:
 
 ```{opcmd} show vpp acl mac

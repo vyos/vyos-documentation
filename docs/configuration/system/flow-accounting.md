@@ -90,10 +90,8 @@ include ``daemon``, ``local0`` through ``local7``, and other standard syslog
 facilities.
 ```
 ### Flow Export
-
 In addition to displaying flow accounting information locally, one can also
 exported them to a collection server.
-
 #### NetFlow
 
 ```{cfgcmd} set system flow-accounting netflow version <version>
@@ -146,7 +144,6 @@ If you want to change the maximum number of flows, which are tracking
 simultaneously, you may do this with this command (default 8192).
 ```
 ### Example:
-
 NetFlow v5 example:
 
 ```none
@@ -156,7 +153,6 @@ set system flow-accounting netflow server 192.168.2.10 port 2055
 ```
 
 ## Operation
-
 Once flow accounting is configured on an interfaces it provides the ability to
 display captured network traffic information for all configured interfaces.
 

@@ -47,7 +47,6 @@ adapted for however many NICs you have**:
 
 The VyOS interface is assigned the .1/:1 address of their respective
 networks. WAN is on VLAN 10, LAN on VLAN 20, and DMZ on VLAN 30.
-
 It will look something like this:
 
 ```none
@@ -121,15 +120,12 @@ Rule 900 - IMAPS
 
 The first two rules are to deal with the idiosyncrasies of VyOS and
 iptables.
-
 Zones and Rulesets both have a default action statement. When using
 Zone-Policies, the default action is set by the zone-policy statement
 and is represented by rule 10000.
-
 It is good practice to log both accepted and denied traffic. It can save
 you significant headaches when trying to troubleshoot a connectivity
 issue.
-
 To add logging to the default rule, do:
 
 ```none
@@ -242,7 +238,6 @@ Even if the two zones will never communicate, it is a good idea to
 create the zone-pair-direction rulesets and set default-log. This
 will allow you to log attempts to access the networks. Without it, you
 will never see the connection attempts.
-
 This is an example of the three base rules.
 
 ```none
@@ -341,7 +336,6 @@ ipv6-name dmz-wan-6 {
 
 Once you have all of your rulesets built, then you need to create your
 zone-policy.
-
 Start by setting the interface and default action for each zone.
 
 ```none
@@ -360,22 +354,16 @@ set firewall zone dmz from lan firewall ipv6-name lan-dmz-6
 
 DMZ-LAN policy is LAN-DMZ. You can get a rhythm to it when you build out
 a bunch at one time.
-
 In the end, you will end up with something like this config. I took out
 everything but the Firewall, Interfaces, and zone-policy sections. It is
 long enough as is.
-
 ## IPv6 Tunnel
-
 If you are using a IPv6 tunnel from HE.net or someone else, the basis is
 the same except you have two WAN interfaces. One for v4 and one for v6.
-
 You would have 5 zones instead of just 4 and you would configure your v6
 ruleset between your tunnel interface and your LAN/DMZ zones instead of
 to the WAN.
-
 LAN, WAN, DMZ, local and TUN (tunnel)
-
 v6 pairs would be:
 
 ```none
@@ -394,10 +382,8 @@ dmz-local
 ```
 
 Notice, none go to WAN since WAN wouldn't have a v6 address on it.
-
 You would have to add a couple of rules on your wan-local ruleset to
 allow protocol 41 in.
-
 Something like:
 
 ```none

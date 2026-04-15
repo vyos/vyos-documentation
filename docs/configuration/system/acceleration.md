@@ -64,9 +64,7 @@ Get an overview over the encryption counters.
 Show binded qat device interrupts to certain core.
 ```
 ### Example
-
 Let's build a simple VPN between 2 Intel® QAT ready devices.
-
 Side A:
 
 ```

@@ -67,13 +67,10 @@ set qos interface eth0 egress 'vyos3'
 ```
 
 % start_vyoslinter
-
 Main rules:
-
 - ADDRESS10 change CS0 -> CS4 source 172.17.1.2/32
 - ADDRESS20 change CS0 -> CS5 source 172.17.1.3/32
 - ADDRESS30 change CS0 -> CS6 source 172.17.1.4/32
-
 Check the result
 
 ```{image} /_static/images/qos2.png
@@ -178,7 +175,6 @@ In the end, on the router “VyOS2” we will set outgoing bandwidth
 limits between the “VyOS3” and “VyOS1” routers. Let's set a limit for
 IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work
 with the help of the “iPerf” utility.
-
 Set up bandwidth limits on the eth2 interface of the router “VyOS2”.
 
 ```none

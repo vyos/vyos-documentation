@@ -125,7 +125,6 @@ Show current system image version.
   Copyright:        VyOS maintainers and contributors
 ```
 ## System rollback
-
 To roll back to a previous image, first view the available images by using the
 {opcmd}`show system image` command, then select your image with the following
 command:

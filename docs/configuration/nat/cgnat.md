@@ -112,12 +112,9 @@ Set the rule for the translation pool.
 Enable logging of IP address and ports allocations.
 ```
 ## Configuration Examples
-
 ### Single external address
-
 Example of setting up a basic CGNAT configuration:
 In the following example, we define an external pool named `ext-1` with one external IP address
-
 Each subscriber will be allocated a maximum of 2000 ports from the external pool.
 
 ```none

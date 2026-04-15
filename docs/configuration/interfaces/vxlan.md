@@ -193,14 +193,10 @@ mappings.
  set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
 ```
 ### Example
-
 The following example demonstrates a multicast VXLAN deployment.
-
 The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
 Leaf3, which are VyOS routers.
-
 **Topology:** Leaf2 - Spine1 - Leaf3.
-
 The topology is built using GNS3.
 
 ```none
@@ -238,7 +234,6 @@ router ospf 1
 Multicast routing is required for scalable traffic forwarding between leaves.
 {abbr}`PIM (Protocol Independent Multicast)` must be enabled towards the leaves
 so the spine can learn from which multicast groups each leaf expects traffic.
-
 **Leaf2 configuration:**
 
 ```none
@@ -338,9 +333,7 @@ set interfaces vxlan vxlan241 port 12345
 
 VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This
 command allows you to configure a different UDP port.
-
 ## Unicast VXLAN
-
 As an alternative to multicast, you can configure the VXLAN tunnel by
 specifying the remote IPv4 address directly. The following updates the previous
 multicast example:

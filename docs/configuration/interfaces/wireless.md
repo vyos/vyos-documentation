@@ -161,7 +161,6 @@ Wireless device type for this interface
 ```{cfgcmd} set interfaces wireless <interface> capabilities require-he
 ```
 ##### HT (High Throughput) capabilities (802.11n)
-
 > Configuring HT mode options is required when using 802.11n or
 > 802.11ax at 2.4GHz.
 
@@ -249,7 +248,6 @@ Enable receiving PPDU using STBC (Space Time Block Coding)
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
 ##### VHT (Very High Throughput) capabilities (802.11ac)
-
 % stop_vyoslinter
 
 ```{cfgcmd} set interfaces wireless <interface> capabilities vht antenna-count <count>
@@ -409,7 +407,6 @@ explicitly, but it might help with some WiFi adapters.
 * ``3`` - HE-MCS is not supported
 ```
 ### Wireless options (Station/Client)
-
 The example creates a wireless station (commonly referred to as Wi-Fi client)
 that accesses the network through the WAP defined in the above example. The
 default physical device (`phy0`) is used.
@@ -481,7 +478,6 @@ set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
 ```
 
 % start_vyoslinter
-
 Resulting configuration:
 
 ```none
@@ -515,7 +511,6 @@ interfaces {
 ```
 
 ### VLAN
-
 #### Regular VLANs (802.1q)
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
@@ -543,7 +538,6 @@ wlan0      access-point  VyOS-TEST-0                        1
 ```
 Show the operational status and detailed wireless-specific
 information about all wireless interfaces.
-
 % stop_vyoslinter
 
 ```none
@@ -579,7 +573,6 @@ wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
 ```
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
-
 % stop_vyoslinter
 
 ```none
@@ -656,13 +649,10 @@ Address            SSID                          Channel  Signal (dbm)
 ```
 
 ## Examples
-
 The following example creates a WAP. When configuring multiple WAP interfaces,
 you must specify unique IP addresses, channels, Network IDs commonly referred
 to as {abbr}`SSID (Service Set Identifier)`, and MAC addresses.
-
 The WAP in this example has the following characteristics:
-
 - IP address `192.168.2.1/24`
 - Network ID (SSID) `TEST`
 - WPA passphrase `12345678`
@@ -711,22 +701,16 @@ interfaces {
 To enable access point functionality, configure a DHCP server for this
 interface's network, or add the interface to an existing local bridge
 (see {ref}`bridge-interface` for details).
-
 ### Wi-Fi 6/6E (802.11ax)
-
 The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 {abbr}`APs (Access Points)` with the following parameters:
-
 - Network ID (SSID): `test.ax`
 - WPA passphrase: `super-dooper-secure-passphrase`
 - Protocol: 802.11ax
 - Wireless channel for 2.4 GHz: `11`
 - Wireless channel for 6 GHz: `5`
-
 #### Example configuration: Wi-Fi 6 at 2.4 GHz
-
 You may expect real throughput around 10 MB/s or higher in crowded areas.
-
 % stop_vyoslinter
 
 ```none
@@ -760,7 +744,6 @@ commit
 ```
 
 % start_vyoslinter
-
 Resulting configuration:
 
 ```none
@@ -818,12 +801,10 @@ interfaces {
 ```
 
 #### Example configuration: Wi-Fi 6E at 6 GHz
-
 You may expect real throughput between 50 MB/s and 150 MB/s, depending on
 obstructions from walls, water, metal, or other materials
 with high electromagnetic damping at 6 GHz. Best results are achieved
 with the AP being in the same room and in line-of-sight.
-
 % stop_vyoslinter
 
 ```none
@@ -853,7 +834,6 @@ commit
 ```
 
 % start_vyoslinter
-
 Resulting configuration:
 
 ```none
@@ -905,12 +885,9 @@ interfaces {
 ```
 
 (wireless-interface-intel-ax200)=
-
 ### Intel AX200
-
 The Intel AX200 card does not work out of the box in AP mode. You can
 still put this card into AP mode using the following configuration:
-
 % stop_vyoslinter
 
 ```none

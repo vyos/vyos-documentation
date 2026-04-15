@@ -110,9 +110,7 @@ set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 ```
 
 ### Palo Alto
-
 GUI Configuration:
-
 : Network -> Network Profiles -> IKE Crypto
 
   ```{image} /_static/images/PA-IKE-group.png
@@ -212,9 +210,7 @@ set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1
 ```
 
 ## Monitoring
-
 ### Monitoring on VyOS side
-
 IKE SAs:
 
 ```none
@@ -274,7 +270,6 @@ O>* 192.168.11.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 ```
 
 ### Monitoring on Cisco side
-
 IKE SAs:
 
 ```none
@@ -367,7 +362,6 @@ total routes shown: 14
 ```
 
 ### Checking Connectivity
-
 ICMP packets from PC1 to PC3.
 
 ```none

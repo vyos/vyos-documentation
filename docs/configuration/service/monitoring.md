@@ -62,7 +62,6 @@ Name of the single table Only if set group-metrics single-table.
 Remote URL.
 ```
 ### Prometheus client
-
 Telegraf output plugin [prometheus-client]
 This plugin allows export of Telegraf metrics to Prometheus,
 for Prometheus native metrics through exporters see section below.
@@ -216,7 +215,6 @@ set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ```
 
 ### Loki
-
 Telegraf can be used to send logs to [loki] using tags as labels.
 
 ```{cfgcmd} set service monitoring telegraf loki port <port>
@@ -265,9 +263,7 @@ between multiple metrics.
 
 
 The following Prometheus exporters are configurable to export metrics:
-
 : - Node Exporter
-
   - FRR Exporter
 
 
@@ -302,7 +298,6 @@ Configure textfile collector to export custom metrics read from
 `/run/node_exporter/collector`
 ```
 ### FRR Exporter
-
 Prometheus [frr_exporter] which provides free range routing metrics.
 
 ```{cfgcmd} set service monitoring prometheus frr-exporter listen-address <address>
@@ -323,7 +318,6 @@ Configure the port number frr_exporter is listening on.
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 ### Blackbox Exporter
-
 Prometheus [blackbox_exporter] which allows probing of endpoints over
 HTTP, HTTPS, DNS, TCP, ICMP and gRPC .
 
@@ -340,9 +334,7 @@ Configure the port number blackbox_exporter is listening on.
 Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 #### Configuring modules
-
 Blackbox exporter can be configured with different modules for probing DNS or ICMP.
-
 DNS module example:
 
 ```none

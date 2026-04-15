@@ -55,9 +55,7 @@ Enabling this function increases the risk of bandwidth saturation.
 Disable this service.
 ```
 (igmp-proxy-example)=
-
 ### Example
-
 Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23` subnet
 multicast which is in `eth0` WAN we need to configure igmp-proxy.
 

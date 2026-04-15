@@ -173,24 +173,16 @@ top of the headline.
 ```none
 Section A
 ==========
-
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-
 Example
 -------
-
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-
 Section B
 ==========
-
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
-
 .. _section B example:
-
 Example
 -------
-
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
 ```
 
@@ -266,7 +258,6 @@ Please be aware to not update the submodule in your PR.
 ```{cfgcmd} set system conntrack table-size <1-50000000>
 ```
     :defaultvalue:
-
     The connection tracking table contains one entry for each connection being
     tracked by the system.
 ```

@@ -10,13 +10,10 @@ lastproofread: '2026-04-06'
 HAProxy is a load balancer and proxy server that provides
 high-availability, load balancing, and proxying for TCP (level 4) and
 HTTP-based (level 7) applications.
-
 ## Configuration
-
 Service configuration specifies the port to bind to. Backend
 configuration defines the load balancing method and specifies the backend
 servers.
-
 ### Service
 
 ```{cfgcmd} set load-balancing haproxy service <name> listen-address <address>
@@ -77,7 +74,6 @@ compress, if received uncompressed from backend server.
 ```
 
 #### Rules
-
 Rules control and route incoming traffic to specific backends based on
 predefined conditions. Rules define matching criteria and specify actions
 to perform.
@@ -283,7 +279,6 @@ Set the maximum inactivity time on the server side.
 Value range 1-3600 seconds.
 ```
 ### Global
-
 Global configuration parameters:
 
 ```{cfgcmd} set load-balancing haproxy global-parameters max-connections
@@ -367,7 +362,6 @@ Value range 1-3600 seconds. Default is 50 seconds.
 
 
 Use HTTP health checks to monitor web applications that provide health status
-
 information and determine their availability.
 
 
@@ -414,7 +408,6 @@ Some possible examples are:
  * ``string success`` Expecting the string `success` in the response body
 ```
 ### TCP checks
-
 Configure health checks for TCP mode backends. You can configure protocol-aware
 checks for a range of Layer 7 protocols:
 
@@ -445,11 +438,8 @@ set load-balancing haproxy service http redirect-http-to-https
 
 You can use a different service name; in this example, `http` is just for
 convenience.
-
 ## Examples
-
 ### Level 4 balancing
-
 This configuration enables the TCP reverse proxy for the `my-tcp-api`
 service. Incoming TCP connections on port 8888 are load balanced across the
 backend servers (srv01 and srv02) using the round-robin load balancing
@@ -470,15 +460,11 @@ set load-balancing haproxy backend bk-01 server srv02 port '8882'
 ```
 
 ### Balancing based on domain name
-
 The following configuration demonstrates how to use VyOS
 to achieve load balancing based on the domain name:
-
 The HTTP service listens on TCP port 80.
-
 Rule 10 matches requests with the domain name `node1.example.com` and
 forwards them to the backend `bk-api-01`.
-
 Rule 20 matches requests with the domain name `node2.example.com` and
 forwards them to the backend `bk-api-02`.
 
@@ -503,23 +489,17 @@ set load-balancing haproxy backend bk-api-02 server api01 port '4432'
 ```
 
 ### Terminate SSL
-
 The following configuration terminates SSL on the router.
-
 The `http` service listens on port 80 and redirects HTTP requests to
 HTTPS.
-
 The `https` service listens on port 443 with the `bk-default` backend
 and handles HTTPS traffic using the `cert` certificate for SSL termination.
 The HSTS header is set with a 1-year expiry to tell browsers to always use
 SSL for the site.
-
 Rule 10 matches requests with the exact URL path `/.well-known/xxx` and
 redirects them to `/certs/`.
-
 Rule 20 matches requests with URL paths ending in `/mail` or the exact
 path `/email/bar` and redirects them to `/postfix/`.
-
 Global parameters include a maximum connection limit of 4000 and a minimum
 TLS version of 1.3.
 
@@ -551,18 +531,14 @@ set load-balancing haproxy global-parameters tls-version-min '1.3'
 ```
 
 ### SSL Bridging
-
 The following configuration terminates incoming HTTPS traffic on the router,
 then re-encrypts the traffic and sends it to the backend server via HTTPS.
 Use this when encryption is required for both paths but you do not want to
 install publicly trusted certificates on each backend server.
-
 Backend service certificates are checked against the certificate authority
 specified in the configuration, which could be an internal CA.
-
 The `https` service listens on port 443 with backend `bk-bridge-ssl` to
 handle HTTPS traffic. It uses certificate named `cert` for SSL termination.
-
 The `bk-bridge-ssl` backend connects to `sr01` server on port 443 via HTTPS
 and checks backend server has a valid certificate trusted by CA `cacert`
 
@@ -581,7 +557,6 @@ set load-balancing haproxy backend bk-bridge-ssl server sr01 port '443'
 ```
 
 ### Balancing with HTTP health checks
-
 This configuration enables HTTP health checks for backend servers.
 
 ```none

@@ -70,7 +70,6 @@ acceptable formats that VyOS parses correctly:
 ```
 
 ### Network Groups
-
 **Network groups** accept IP networks in CIDR notation. You can add specific
 IP addresses as a 32-bit prefix. If you need to add a mix of addresses and
 networks, use a network group.
@@ -94,7 +93,6 @@ Define an IPv4 or IPv6 network group.
 Provide an IPv4 or IPv6 network group description.
 ```
 ### Interface Groups
-
 An **interface group** represents a collection of interfaces.
 
 ```{cfgcmd} set firewall group interface-group <name> interface <text>
@@ -113,7 +111,6 @@ set firewall group interface-group LAN interface eth3*
 Provide an interface group description.
 ```
 ### Port Groups
-
 A **port group** represents only port numbers, not the protocol. You can
 reference port groups for either TCP or UDP. Create TCP and UDP groups
 separately to avoid accidentally filtering unnecessary ports. Specify port
@@ -136,7 +133,6 @@ Define a port group. A port name can be any name defined in
 Provide a port group description.
 ```
 ### MAC Groups
-
 A **mac group** represents a collection of mac addresses.
 
 ```{cfgcmd} set firewall group mac-group <name> mac-address <mac-address>
@@ -153,7 +149,6 @@ set firewall group mac-group MAC-G01 mac-address 4c:d5:77:c0:19:81
 Provide a MAC group description.
 ```
 ### Domain Groups
-
 A **domain group** represents a collection of domains.
 
 ```{cfgcmd} set firewall group domain-group <name> address <domain>
@@ -169,14 +164,11 @@ set firewall group domain-group DOM address example.com
 Provide a domain group description.
 ```
 ### Dynamic Groups
-
 Firewall dynamic groups differ from other groups because you can use them as
 source/destination in firewall rules, and members are not defined statically
 in VyOS configuration. Instead, firewall rules dynamically add members to
 these groups.
-
 #### Defining Dynamic Address Groups
-
 Dynamic address groups support both IPv4 and IPv6 families. Use these
 commands to define dynamic IPv4 and IPv6 address groups:
 
@@ -195,12 +187,9 @@ Add description to firewall groups:
    description <text>
 ```
 #### Adding elements to Dynamic Firewall Groups
-
 After you define dynamic firewall groups, use them in firewall rules to
 dynamically add elements to them.
-
 Commands used for this task are:
-
 - Add destination IP address of the connection to a dynamic address group:
 
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule
@@ -273,7 +262,6 @@ Possible completions:
 ```
 
 #### Using Dynamic Firewall Groups
-
 Like other firewall groups, you can use dynamic firewall groups in firewall
 rules as matching options. For example:
 
@@ -283,13 +271,10 @@ set firewall ipv4 input filter rule 10 destination group dynamic-address-group B
 ```
 
 ## Examples
-
 ### General example
-
 After you create firewall groups, you can reference them in firewall, NAT,
 NAT66, and/or policy-route rules. The following example creates multiple
 groups:
-
 > ```none
 > set firewall group address-group SERVERS address 198.51.100.101
 > set firewall group address-group SERVERS address 198.51.100.102
@@ -304,7 +289,6 @@ groups:
 > ```
 
 And next, some configuration example where groups are used:
-
 > ```none
 > set firewall ipv4 output filter rule 10 action accept
 > set firewall ipv4 output filter rule 10 outbound-interface group !LAN
@@ -323,11 +307,9 @@ And next, some configuration example where groups are used:
 > ```
 
 ### Port knocking example
-
 You can use dynamic firewall groups with port knocking to secure access to
 the router or any other device. The following example shows a 4-step port
 knocking configuration:
-
 > ```none
 > set firewall global-options state-policy established action 'accept'
 > set firewall global-options state-policy invalid action 'drop'
@@ -366,7 +348,6 @@ knocking configuration:
 > ```
 
 Before testing, we can check the members of firewall groups:
-
 > ```none
 > vyos@vyos# run show firewall group
 > Firewall Groups
@@ -381,7 +362,6 @@ Before testing, we can check the members of firewall groups:
 > ```
 
 With this configuration, to gain SSH access to the router, the user must:
-
 1. Create a new TCP connection to destination port 9990. A new entry is added
    to dynamic firewall group `PN_01`.
 
@@ -432,7 +412,6 @@ With this configuration, to gain SSH access to the router, the user must:
 
 4. Now you can connect via SSH to the router (assuming SSH is
    configured).
-
 ## Operation-mode
 
 ```{opcmd} show firewall group

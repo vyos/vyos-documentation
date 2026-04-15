@@ -7,13 +7,10 @@ lastproofread: '2026-03-13'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP IPIP Configuration
-
 VPP IPIP interfaces provide IP-in-IP tunneling with high-performance
 packet processing. IPIP tunnels encapsulate IP packets within IP
 packets, creating point-to-point connections across Layer 3 networks.
-
 ## Basic Configuration
-
 ### Creating an IPIP Interface
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN>
@@ -40,7 +37,6 @@ set interfaces vpp ipip vppipip1 source-address 192.168.1.1
 ```
 
 ## Interface Configuration
-
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> description <description>
@@ -52,10 +48,8 @@ Set a descriptive name for the IPIP interface.
 Administratively disable the IPIP interface.
 ```
 ### Kernel Interface Integration
-
 Kernel interface is bound to the VPP IPIP interface for management and
 application compatibility.
-
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp ipip <vppipipN> address <ip-address/prefix>
@@ -81,7 +75,6 @@ Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```
 ## Configuration Examples
-
 ### IPv4 IPIP Tunnel
 
 ```none

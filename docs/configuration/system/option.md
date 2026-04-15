@@ -114,7 +114,6 @@ source interface used for all CURL operations.
 `source-address` and `source-interface` can not be used at the same
 time.
 :::
-
 ## SSH client
 
 ```{cfgcmd} set system option ssh-client source-address <address>
@@ -128,7 +127,6 @@ Use the address of the specified interface on the local machine as the
 source address of the connection.
 ```
 ## Keyboard Layout
-
 When starting a VyOS live system (the installation CD) the configured keyboard
 layout defaults to US. As this might not suite everyone's use case you can adjust
 the used keyboard layout on the system console.
@@ -148,22 +146,16 @@ Changing the keymap only has an effect on the system console, using
   layout here corresponds to your access system.
 ```
 (system-options-performance)=
-
 ## Performance
-
 As more and more routers run on Hypervisors, expecially with a {abbr}`NOS
 (Network Operating System)` as VyOS, it makes fewer and fewer sense to use
 static resource bindings like `smp-affinity` as present in VyOS 1.2 and
 earlier to pin certain interrupt handlers to specific CPUs.
-
 We now utilize `tuned` for dynamic resource balancing based on profiles.
-
 % stop_vyoslinter
-
 :::{seealso}
 <https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf>
 :::
-
 % start_vyoslinter
 
 ```{cfgcmd} set system option performance < throughput | latency >

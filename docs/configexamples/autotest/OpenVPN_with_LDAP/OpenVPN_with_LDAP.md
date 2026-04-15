@@ -17,7 +17,6 @@ Topology consists of:
 ```
 
 ## Active Directory on Windows server
-
 The lab assumes a full running Active Directory on the Windows Server.
 Here are some PowerShell commands to quickly add a Test Active Directory.
 
@@ -34,18 +33,12 @@ New-ADUser user01 -AccountPassword(Read-Host -AsSecureString "Input Password") -
 ```
 
 ## Configure VyOS as OpenVPN Server
-
 In this example OpenVPN will be setup with a client certificate and username / password authentication.
-
 First a CA, a signed server and client ceftificate and a Diffie-Hellman parameter musst be generated and installed.
 Please look {ref}`here <configuration/pki/index:pki>` for more information.
-
 Add the LDAP plugin configuration file 
-
 `/config/auth/ldap-auth.config`
-
 Check all possible settings 
-
 [here](https://github.com/threerings/openvpn-auth-ldap/blob/master/auth-ldap.conf)
 
 ```{literalinclude} _include/ldap-auth.config
@@ -53,7 +46,6 @@ Check all possible settings
 ```
 
 Now generate all required certificates on the ovpn-server:
-
 First the CA
 
 ```none
@@ -93,7 +85,6 @@ OpenVPN Server configuration can be carried out.
 ```
 
 ## Client configuration
-
 One advantage of having the client certificate stored is the ability to create the client configuration.
 
 ```none
@@ -267,7 +258,6 @@ set interfaces openvpn vtun10 tls certificate 'CLIENT'
 ```
 
 ## Monitoring
-
 If the client is connected successfully you can check the status
 
 ```none

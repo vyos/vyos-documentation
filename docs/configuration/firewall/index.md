@@ -238,7 +238,6 @@ For more information on Netfilter hooks and Linux networking packet flows,
 see the [Netfilter-Hooks](https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks)
 documentation.
 :::
-
 ## Zone-Based firewall
 
 ```{toctree}

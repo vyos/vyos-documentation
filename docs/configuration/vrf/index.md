@@ -58,9 +58,7 @@ VRF device) can work across all VRF domains by enabling this option.
 
 
 Zebra supports prefix-lists and Route Maps to match routes received from
-
 other FRR components. The permit/deny facilities provided by these commands
-
 can be used to filter which routes zebra will install in the kernel.
 
 
@@ -112,9 +110,7 @@ If you choose any as the option that will cause all protocols that
 
 
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
-
 by default for a traditional profile of FRR which we use. It and can be disabled if
-
 you do not want to e.g. allow BGP to peer across the default route.
 
 
@@ -142,7 +138,6 @@ subnode.
 
 
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
-
 itself needs to be assigned to an interface.
 
 
@@ -159,9 +154,7 @@ Assign interface identified by `<interface>` to VRF named `<name>`.
 
 
 :::{note}
-
 VyOS 1.4 (sagitta) introduced dynamic routing support for VRFs.
-
 :::
 
 
@@ -169,20 +162,14 @@ Currently dynamic routing is supported for the following protocols:
 
 
 - {ref}`routing-bgp`
-
 - {ref}`routing-isis`
-
 - {ref}`routing-ospf`
-
 - {ref}`routing-ospfv3`
-
 - {ref}`routing-static`
 
 
 The CLI configuration is same as mentioned in above articles. The only
-
 difference is, that each routing protocol used, must be prefixed with the `vrf
-
 name <name>` command.
 
 
@@ -190,18 +177,13 @@ name <name>` command.
 
 
 The following commands would be required to set options for a given dynamic
-
 routing protocol inside a given vrf:
 
 
 - {ref}`routing-bgp`: `set vrf name <name> protocols bgp ...`
-
 - {ref}`routing-isis`: `set vrf name <name> protocols isis ...`
-
 - {ref}`routing-ospf`: `set vrf name <name> protocols ospf ...`
-
 - {ref}`routing-ospfv3`: `set vrf name <name> protocols ospfv3 ...`
-
 - {ref}`routing-static`: `set vrf name <name> protocols static ...`
 
 
@@ -215,9 +197,7 @@ Currently the following services can be created isolated in VRFs
 
 
 The CLI configuration is same as mentioned in above articles. The only
-
 difference is, that each service used, must be prefixed with the `vrf
-
 name <name>` command.
 
 
@@ -225,12 +205,10 @@ name <name>` command.
 
 
 The following commands would be required to set options for a given service
-
 inside a given vrf:
 
 
 - {ref}`dhcp-server`: `set vrf name <name> service dhcp-server ...`
-
 - {ref}`dhcp-server`: `set vrf name <name> service dhcpv6-server ...`
 
 
@@ -238,7 +216,6 @@ inside a given vrf:
 
 
 It is not sufficient to only configure a VRF but VRFs must be maintained, too.
-
 For VRF maintenance the following operational commands are in place.
 
 
@@ -446,23 +423,17 @@ The following example topology was built using EVE-NG.
 
 
 :::{figure} /_static/images/vrf-example-topology-01.png
-
 :alt: VRF topology example
 
 
 VRF route leaking
-
 :::
 
 
 - PC1 is in the `default` VRF and acting as e.g. a "fileserver"
-
 - PC2 is in VRF `blue` which is the development department
-
 - PC3 and PC4 are connected to a bridge device on router `R1` which is in VRF
-
   `red`. Say this is the HR department.
-
 - R1 is managed through an out-of-band network that resides in VRF `mgmt`
 
 
@@ -600,7 +571,6 @@ VRF route leaking
 
 
 After committing the configuration we can verify all leaked routes are
-
 installed, and try to ICMP ping PC1 from PC3.
 
 
@@ -619,7 +589,6 @@ installed, and try to ICMP ping PC1 from PC3.
 > ```
 
 >
-
 > ```none
 
 > VPCS> show ip
@@ -731,15 +700,10 @@ installed, and try to ICMP ping PC1 from PC3.
 
 
 {abbr}`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for
-
 IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes, and their associated VRF
-
 MPLS labels, can be distributed to VPN SAFI neighbors in the default, i.e.,
-
 non VRF, BGP instance. VRF MPLS labels are reached using core MPLS labels
-
 which are distributed using LDP or BGP labeled unicast.
-
 bgpd also supports inter-VRF route leaking.
 
 
@@ -750,30 +714,19 @@ bgpd also supports inter-VRF route leaking.
 
 
 BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
-
 SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may
-
 also be leaked between any VRFs (including the unicast RIB of the default BGP
-
 instance). A shortcut syntax is also available for specifying leaking from
-
 one VRF to another VRF using the default instance’s VPN RIB as the intemediary
-
 . A common application of the VRF-VRF feature is to connect a customer’s
-
 private routing domain to a provider’s VPN service. Leaking is configured from
-
 the point of view of an individual VRF: import refers to routes leaked from VPN
-
 to a unicast VRF, whereas export refers to routes leaked from a unicast VRF to
-
 VPN.
 
 
 :::{note}
-
 Routes exported from a unicast VRF to the VPN RIB must be augmented
-
 by two parameters:
 
 
@@ -781,9 +734,7 @@ by two parameters:
 
 
 Configuration for these exported routes must, at a minimum, specify
-
 these two parameters.
-
 :::
 
 
@@ -794,9 +745,7 @@ these two parameters.
 
 
 Configuration of route leaking between a unicast VRF RIB and the VPN SAFI RIB
-
 of the default VRF is accomplished via commands in the context of a VRF
-
 address-family.
 
 
@@ -926,9 +875,7 @@ and with the next-hop directly connected.
 
 
 It is not sufficient to only configure a L3VPN VRFs but L3VPN VRFs must be
-
 maintained, too.For L3VPN VRF maintenance the following operational commands
-
 are in place.
 
 

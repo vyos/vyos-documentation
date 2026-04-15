@@ -123,9 +123,7 @@ set service pppoe-server authentication mode radius
 
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
-
 servers can be setup and will be used subsequentially.
-
 For example:
 
 
@@ -139,11 +137,8 @@ set service pppoe-server authentication radius server 10.0.0.2 key 'foo'
 
 
 :::{note}
-
 Some RADIUS severs use an access control list which allows or denies
-
 queries, make sure to add your VyOS router to the allowed client list.
-
 :::
 
 
@@ -151,9 +146,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 
 
 If you are using OSPF as IGP, always the closest interface connected to the
-
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
-
 to a single source IP e.g. the loopback interface.
 
 
@@ -167,11 +160,8 @@ Source IPv4 address used in all RADIUS server queires.
 
 
 :::{note}
-
 The `source-address` must be configured on one of VyOS interface.
-
 Best practice would be a loopback or dummy interface.
-
 :::
 
 
@@ -304,11 +294,8 @@ The default attribute is ``Filter-Id``.
 
 
 :::{note}
-
 If you set a custom RADIUS attribute you must define it on both
-
 dictionaries at RADIUS server and client.
-
 :::
 
 
@@ -333,7 +320,6 @@ Specifies the vendor dictionary, dictionary needs to be in
 
 
 Received RADIUS attributes have a higher priority than parameters defined within
-
 the CLI configuration, refer to the explanation below.
 
 
@@ -341,46 +327,33 @@ the CLI configuration, refer to the explanation below.
 
 
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-
 address will be allocated to the client and the option `default-pool`
-
 within the CLI config is being ignored.
 
 
 If the RADIUS server sends the attribute `Framed-Pool`, IP address will
-
 be allocated from a predefined IP pool whose name equals the attribute value.
 
 
 If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`,
-
 IPv6 address will be allocated from a predefined IPv6 pool `prefix`
-
 whose name equals the attribute value.
 
 
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`,
-
 IPv6 delegation pefix will be allocated from a predefined IPv6 pool `delegate`
-
 whose name equals the attribute value.
 
 
 :::{note}
-
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool`
-
 are defined in RFC6911. If they are not defined in your RADIUS server,
-
 add new [dictionary].
-
 :::
 
 
 User interface can be put to VRF context via RADIUS Access-Accept packet,
-
 or change it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes.
-
 It is custom [ACCEL-PPP attribute]. Define it in your RADIUS server.
 
 
@@ -388,16 +361,12 @@ It is custom [ACCEL-PPP attribute]. Define it in your RADIUS server.
 
 
 If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
-
 renamed.
 
 
 :::{note}
-
 The value of the attribute `NAS-Port-Id` must be less than 16
-
 characters, otherwise the interface won't be renamed.
-
 :::
 
 
@@ -442,7 +411,6 @@ set service pppoe-server interface eth3 vlan 2000-3000
 
 
 Bandwidth rate limits can be set for local users or RADIUS based
-
 attributes.
 
 
@@ -490,13 +458,10 @@ ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:0
 ```
 
 ### For RADIUS users
-
 The current attribute `Filter-Id` is being used as default and can be
 setup within RADIUS:
-
 Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit
 up-stream rate)
-
 The command below enables it, assuming the RADIUS connection has been
 setup and is working.
 
@@ -508,7 +473,6 @@ setup and is working.
 
 
 Other attributes can be used, but they have to be in one of the
-
 dictionaries in */usr/share/accel-ppp/radius*.
 
 
@@ -540,13 +504,9 @@ set service pppoe-server pado-delay 300 sessions '3000'
 
 
 In the example above, the first 499 sessions connect without delay. PADO
-
 packets will be delayed 50 ms for connection from 500 to 999, this trick
-
 allows other PPPoE servers send PADO faster and clients will connect to
-
 other servers. Last command says that this PPPoE server can serve only
-
 3000 clients.
 
 
@@ -908,15 +868,10 @@ set multiple service-names: `sn1,sn2,sn3`
 
 
 Per default the user session is being replaced if a second
-
 authentication request succeeds. Such session requests can be either
-
 denied or allowed entirely, which would allow multiple sessions for a
-
 user in the latter case. If it is denied, the second session is being
-
 rejected even if the authentication succeeds, the user has to terminate
-
 its first session and can then authentication again.
 
 
@@ -965,9 +920,7 @@ ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:0
 ```
 
 ## Examples
-
 ### IPv4
-
 The example below uses ACN as access-concentrator name, assigns an
 address from the pool 10.1.1.100-111, terminates at the local endpoint
 10.1.1.1 and serves requests only on eth1.
@@ -985,7 +938,6 @@ set service pppoe-server name-server '10.100.200.1'
 ```
 
 ### Dual-Stack IPv4/IPv6 provisioning with Prefix Delegation
-
 The example below covers a dual-stack configuration.
 
 ```none

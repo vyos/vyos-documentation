@@ -156,9 +156,7 @@ Show detailed information about prefix-sid and label learned
 
 
 :::{note}
-
 more information related IGP - {ref}`routing-isis`
-
 :::
 
 
@@ -166,7 +164,6 @@ more information related IGP - {ref}`routing-isis`
 
 
 Segment routing (SR) is used by the IGP protocols to interconnect network
-
 devices, below configuration shows how to enable SR on OSPF:
 
 
@@ -232,14 +229,10 @@ to configure Anycast-SIDs.
 :::{note}
 more information related IGP - {ref}`routing-ospf`
 :::
-
 ## Configuration Example
-
 we described the configuration SR ISIS / SR OSPF using 2 connected with them to
 share label information.
-
 ### Enable IS-IS with Segment Routing (Experimental)
-
 **Node 1:**
 
 ```none
@@ -321,7 +314,6 @@ I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, w
 ```
 
 ### Enable OSPF with Segment Routing (Experimental):
-
 **Node 1**
 
 ```none

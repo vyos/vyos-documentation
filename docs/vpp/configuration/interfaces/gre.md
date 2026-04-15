@@ -7,15 +7,12 @@ lastproofread: '2026-03-13'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP GRE Configuration
-
 VPP GRE interfaces provide Generic Routing Encapsulation tunneling with
 high-performance packet processing. GRE tunnels encapsulate various
 protocols within IP packets, enabling connectivity across Layer 3
 networks while maintaining the performance benefits of VPP's optimized
 data plane.
-
 ## Basic Configuration
-
 ### Creating a GRE Interface
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN>
@@ -42,7 +39,6 @@ set interfaces vpp gre vppgre1 source-address 192.168.1.1
 ```
 
 ## Interface Configuration
-
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> description <description>
@@ -65,11 +61,9 @@ Set the GRE tunnel encapsulation type:
   mirroring.
 ```
 ### Kernel Interface Integration
-
 LCP kernel pair interface bound to the VPP GRE interface is created
 automatically. This allows standard Linux networking tools and
 services to interact with the VPP GRE.
-
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp gre <vppgreN> address <ip-address/prefix>
@@ -104,9 +98,7 @@ set interfaces vpp gre vppgre0 mtu 9000
 The MTU size must not exceed the MTU size
 supported by the associated VPP interface.
 :::
-
 ## Configuration Examples
-
 ### Layer 3 GRE Tunnel
 
 ```none
@@ -149,7 +141,6 @@ set interfaces vpp gre vppgre4 address 10.0.1.1/30
 ```
 
 ## Bridge Integration
-
 GRE interfaces can be added as members to VPP bridges for Layer 2
 switching. See {doc}`bridge` for detailed bridge configuration.
 

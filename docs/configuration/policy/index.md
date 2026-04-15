@@ -41,7 +41,6 @@ large-community-list
 ```
 
 ## Examples
-
 Examples of policies usage:
 
 ```{toctree}

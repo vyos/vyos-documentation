@@ -229,7 +229,6 @@ This option specifies a delay in seconds before vrrp instances start up
 after keepalived starts.
 ```
 ## Gratuitous ARP
-
 These configuration is not mandatory and in most cases there's no
 need to configure it. But if necessary, Gratuitous ARP can be configured in
 `global-parameters` and/or in `group` section.
@@ -341,11 +340,9 @@ set high-availability vrrp group Foo health-check failure-count 3
 ```
 
 % start_vyoslinter
-
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
 This example shows how to configure it for the sync group:
-
 % stop_vyoslinter
 
 ```none
@@ -355,15 +352,12 @@ set high-availability vrrp sync-group Bar health-check failure-count 3
 ```
 
 % start_vyoslinter
-
 ### Transition scripts
-
 Transition scripts can help you implement various fixups, such as starting and
 stopping services, or even modifying the VyOS config on VRRP transition.
 This setup will make the VRRP process execute the
 `/config/scripts/vrrp-fail.sh` with argument `Foo` when VRRP fails,
 and the `/config/scripts/vrrp-master.sh` when the router becomes the master:
-
 % stop_vyoslinter
 
 ```none
@@ -373,9 +367,7 @@ set high-availability vrrp group Foo transition-script master "/config/scripts/v
 ```
 
 % start_vyoslinter
-
 To know more about scripting, check the {ref}`command-scripting` section.
-
 ## Virtual-server
 
 ```{include} /_include/need_improvement.txt
@@ -400,7 +392,6 @@ set high-availability virtual-server 203.0.113.1 algorithm 'least-connection'
 ```
 
 ### Forward method
-
 - NAT
 - direct
 - tunnel
@@ -410,9 +401,7 @@ set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 ```
 
 ### Health-check
-
 Custom health-check script allows checking real-server availability
-
 % stop_vyoslinter
 
 ```none
@@ -420,9 +409,7 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-c
 ```
 
 % start_vyoslinter
-
 ### Fwmark
-
 Firewall mark. It possible to loadbalancing traffic based on `fwmark` value
 
 ```none
@@ -430,9 +417,7 @@ set high-availability virtual-server 203.0.113.1 fwmark '111'
 ```
 
 ### Real server
-
 Real server IP address and port
-
 % stop_vyoslinter
 
 ```none
@@ -440,17 +425,12 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80
 ```
 
 % start_vyoslinter
-
 ### Example
-
 Virtual-server can be configured with VRRP virtual address or without VRRP.
-
 In the next example all traffic destined to `203.0.113.1` and port `8280`
 protocol TCP is balanced between 2 real servers `192.0.2.11` and
 `192.0.2.12` to port `80`
-
 Real server is auto-excluded if port check with this server fail.
-
 % stop_vyoslinter
 
 ```none
@@ -473,15 +453,12 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80
 ```
 
 % start_vyoslinter
-
 A firewall mark `fwmark` allows using multiple ports for high-availability
 virtual-server.
 It uses fwmark value.
-
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
 Port "0" is required if multiple ports are used.
-
 % stop_vyoslinter
 
 ```none
@@ -508,7 +485,6 @@ set nat source rule 100 translation address 'masquerade'
 ```
 
 % start_vyoslinter
-
 Op-mode check virtual-server status
 
 ```none

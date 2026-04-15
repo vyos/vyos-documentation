@@ -7,14 +7,11 @@ lastproofread: '2026-03-13'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP VXLAN Configuration
-
 VPP VXLAN interfaces provide virtual extensible local area network (VXLAN)
 tunneling with high-performance packet processing. VXLAN extends Layer 2
 domains across Layer 3 networks using UDP encapsulation, enabling scalable
 multi-tenant networking while leveraging VPP's optimized data plane.
-
 ## Basic Configuration
-
 ### Creating a VXLAN Interface
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN>
@@ -47,7 +44,6 @@ set interfaces vpp vxlan vppvxlan1 source-address 192.168.1.1
 ```
 
 ## Interface Configuration
-
 ### Description and Administrative Control
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> description <description>
@@ -59,10 +55,8 @@ Set a descriptive name for the VXLAN interface.
 Administratively disable the VXLAN interface.
 ```
 ### Kernel Interface Integration
-
 The kernel interface is bound to the VXLAN tunnel for management and
 application compatibility.
-
 ## IP Address Configuration
 
 ```{cfgcmd} set interfaces vpp vxlan <vppvxlanN> address <ip-address/prefix>
@@ -85,7 +79,6 @@ Set the Maximum Transmission Unit (MTU) for the kernel interface. The MTU
 must be compatible with the connected VPP interface.
 ```
 ## Configuration Examples
-
 ### Basic VXLAN Tunnel
 
 ```none
@@ -119,7 +112,6 @@ set interfaces vpp vxlan vppvxlan3 address 10.0.3.1/24
 ```
 
 ## Bridge Integration
-
 VXLAN interfaces are commonly used as members in VPP bridges for Layer 2
 extension. See {doc}`bridge` for more information.
 

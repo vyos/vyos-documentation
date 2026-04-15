@@ -331,9 +331,7 @@ Routing Protocol is "rip"
 ```
 
 ## Configuration Example
-
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
-
 **Node 1:**
 
 ```none

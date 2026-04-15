@@ -30,11 +30,8 @@ on each IP address.
 ```{cfgcmd} set service tftp-server listen-address <address> vrf <name>
 ```
 % stop_vyoslinter
-
 Additional option to run TFTP server in the {abbr}`VRF (Virtual Routing and Forwarding)` context
-
 % start_vyoslinter
-
 :::{note}
 Configuring a listen-address is essential for the service to work.
 :::
@@ -45,11 +42,9 @@ Optional, if you want to enable uploads, else TFTP server will act as a
 read-only server.
 ```
 ### Example
-
 Provide TFTP server listening on both IPv4 and IPv6 addresses `192.0.2.1` and
 `2001:db8::1` serving the content from `/config/tftpboot`. Uploading via
 TFTP to this server is disabled.
-
 The resulting configuration will look like:
 
 ```none
@@ -62,7 +57,6 @@ vyos@vyos# show service
 ```
 
 ### Verification
-
 Client:
 
 ```none

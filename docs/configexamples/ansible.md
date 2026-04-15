@@ -33,7 +33,6 @@ save
 - vyos8 - 192.0.2.106
 - vyos9 - 192.0.2.107
 - vyos10 - 192.0.2.108
-
 ## Install Ansible:
 
 ```none
@@ -48,7 +47,6 @@ Do you want to continue? [Y/n] y
 ```
 
 ## Check the version:
-
 % stop_vyoslinter
 
 ```none
@@ -62,7 +60,6 @@ python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 ```
 
 % start_vyoslinter
-
 ## Basic configuration of ansible.cfg:
 
 ```none
@@ -116,7 +113,6 @@ ansible_ssh_pass: vyos
 ```
 
 ## Start the playbook:
-
 % stop_vyoslinter
 
 ```none
@@ -137,7 +133,6 @@ vyos9                      : ok=2    changed=0    unreachable=0    failed=0    s
 ```
 
 % start_vyoslinter
-
 ## Check the result on the vyos10 router:
 
 ```none

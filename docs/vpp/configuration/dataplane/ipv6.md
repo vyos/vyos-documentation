@@ -7,13 +7,11 @@ lastproofread: '2026-02-26'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP IPv6 Configuration
-
 VPP lets you configure resources allocated for IPv6 traffic processing
 independently from IPv4. This helps ensure that in networks without IPv6
 traffic, resources are not wasted. If IPv6 traffic is present, especially
 with large routing tables, you must allocate additional resources for IPv6
 processing to keep the dataplane stable.
-
 You can configure two main resources for IPv6 traffic processing:
 
 ```{cfgcmd} set vpp settings resource-allocation ipv6 hash-buckets <value>

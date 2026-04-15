@@ -79,9 +79,7 @@ set vpn pptp remote-access authentication radius server 10.0.0.2 key 'foo'
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
 :::
-
 ### RADIUS source address
-
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. You can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
@@ -94,7 +92,6 @@ Source IPv4 address used in all RADIUS server queires.
 The `source-address` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
 :::
-
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius server <server> port <port>
@@ -286,7 +283,6 @@ Script to run before session interface comes up
 Script to run when session interface is completely configured and started
 ```
 ## Advanced Options
-
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username <user> disable

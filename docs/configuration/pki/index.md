@@ -175,7 +175,6 @@ In addition to the command above, the output is in a format which can
   this secret is to be used.
 ```
 ## Key usage (CLI)
-
 ### CA (Certificate Authority)
 
 ```{cfgcmd} set pki ca <name> certificate
@@ -224,7 +223,6 @@ Mark the CAs private key as password protected. User is asked for the password
 when the key is referenced.
 ```
 ### Server Certificate
-
 After we have imported the CA certificate(s) we can now import and add
 certificates used by services on this router.
 
@@ -273,7 +271,6 @@ when the key is referenced.
 If CA is present, this certificate will be included in generated CRLs
 ```
 ### Import files to PKI format
-
 VyOS provides this utility to import existing certificates/key files directly
 into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the
 /config folder permanently and will be retained post upgrade.
@@ -302,7 +299,6 @@ leave the system as it is used to decrypt the data.
 Import the OpenVPN shared secret stored in file to the VyOS CLI.
 ```
 #### ACME
-
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
 using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
 
@@ -343,7 +339,6 @@ During initial deployment we recommend using the staging API
   endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 ```
 ## Operation
-
 VyOS operational mode commands are not only available for generating keys but
 also to display them.
 

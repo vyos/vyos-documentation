@@ -47,7 +47,6 @@ Supported interface types:
 ```
 
 % start_vyoslinter
-
 ### Advertising a Prefix
 
 ```{cfgcmd} set service router-advert interface <interface> prefix <prefix/mask>
@@ -75,7 +74,6 @@ You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 ```
 
 % start_vyoslinter
-
 ### Advertising a NAT64 Prefix
 
 ```{cfgcmd} set service router-advert interface <interface> nat64prefix <prefix/mask>
@@ -100,9 +98,7 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 ```
 
 % start_vyoslinter
-
 ### Disabling Advertisements
-
 To disable advertisements without deleting the configuration:
 
 ```{cfgcmd} set service router-advert interface <interface> no-send-advert
@@ -116,7 +112,6 @@ Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```
 ## Example
-
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router
 beeing `2001:db8:beef:2::1`
 

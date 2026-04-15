@@ -76,19 +76,15 @@ Four policies for reforwarding DHCP packets exist:
   replaced with the router's own relay information set.
 ```
 ### Example
-
 - Listen for DHCP requests on interface `eth1`.
 - DHCP server is located at IPv4 address 10.0.1.4 on `eth2`.
 - Router receives DHCP client requests on `eth1` and relays them to the
   server at 10.0.1.4 on `eth2`.
-
 :::{figure} /_static/images/service_dhcp-relay01.png
 :alt: DHCP relay example
 :scale: 80 %
-
 DHCP relay example
 :::
-
 The generated configuration will look like:
 
 ```none
@@ -121,9 +117,7 @@ show service dhcp-relay
 Restart DHCP relay service
 ```
 ## IPv6 relay
-
 (dhcp-relay-ipv6-configuration)=
-
 ### Configuration
 
 ```{cfgcmd} set service dhcpv6-relay listen-interface <interface>
@@ -145,7 +139,6 @@ Specifies an upstream network `<interface>` from which replies from
 Disable dhcpv6-relay service.
 ```
 (dhcp-relay-v6-options)=
-
 #### Options
 
 ```{cfgcmd} set service dhcpv6-relay max-hop-count <count>
@@ -158,20 +151,15 @@ If this is set the relay agent will insert the interface ID. This option is
 set automatically if more than one listening interfaces are in use.
 ```
 (dhcp-relay-ipv6-example)=
-
 ### Example
-
 - DHCPv6 requests are received by the router on `listening interface` `eth1`
 - Requests are forwarded through `eth2` as the `upstream interface`
 - External DHCPv6 server is at 2001:db8::4
-
 :::{figure} /_static/images/service_dhcpv6-relay01.png
 :alt: DHCPv6 relay example
 :scale: 80 %
-
 DHCPv6 relay example
 :::
-
 The generated configuration will look like:
 
 ```none
@@ -185,7 +173,6 @@ show service dhcpv6-relay
 ```
 
 (dhcp-relay-ipv6-op-cmd)=
-
 ### Operation
 
 ```{opcmd} restart dhcpv6 relay-agent

@@ -34,13 +34,9 @@ traffic-handling capacity and reduces its forwarding delay.
 ```
 
 :::{note}
-
 `switchdev` mode is available only on certain physical network
-
 interfaces and requires a switchdev-compatible driver.
-
 :::
-
 ### Ethernet options
 
 ```{cfgcmd} set interfaces ethernet <interface> duplex <auto | full | half>
@@ -128,23 +124,14 @@ ethtool -g <interface>
 ```
 
 #### Interrupt Coalescing
-
 Interrupt coalescing is a mechanism that reduces CPU interrupt load by bundling
-
 multiple packets into a single interrupt event instead of interrupting
-
 the CPU for every packet arrival or transmission.
-
 :::{note}
-
 Not all network drivers or virtual interfaces support all
-
 coalescing parameters. Use `ethtool --show-coalesce <interface>`
-
 to verify which settings are supported by your hardware and driver.
-
 :::
-
 **Basic adaptive coalescing**
 
 ```{cfgcmd} set interfaces ethernet <interface> interrupt-coalescing adaptive-rx
@@ -392,14 +379,12 @@ multiple offloading features for a single interface.
 :var0: ethernet
 ```
 #### EVPN Multihoming
-
 Uplink/core tracking.
 
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: ethernet
 ```
 ### VLAN
-
 #### Regular VLANs (802.1q)
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt

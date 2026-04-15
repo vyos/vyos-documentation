@@ -17,9 +17,7 @@ Network.
 ```
 
 ## Configuration
-
 First, we configure the transport network and the Tunnel interface.
-
 Transport:
 
 ```{literalinclude} _include/transport.conf
@@ -43,7 +41,6 @@ DHCP-Relay
 After this, we need the DHCP-Server and Relay configuration.
 To get a testable result, we just have one IP in the DHCP range.
 Expand it as you need it.
-
 DHCP-Server
 
 ```{literalinclude} _include/dhcp-server.conf
@@ -59,7 +56,6 @@ DHCP-Relay
 ```
 
 ## Test the result
-
 Ping the Client from the DHCP Server.
 
 ```none

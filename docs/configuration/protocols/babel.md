@@ -254,9 +254,7 @@ This command allows you apply prefix lists to a chosen interface to
 filter the Babel routes.
 ```
 ## Configuration Example
-
 Simple Babel configuration using 2 nodes and redistributing connected interfaces.
-
 **Node 1:**
 
 ```none

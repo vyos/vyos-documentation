@@ -296,13 +296,10 @@ set protocols ospf parameters router-id '10.0.0.2'
 ```
 
 ### Step-2: Configuring iBGP for L3VPN control-plane
-
 At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4
 VPN (L3VPN) routes between them:
-
 % stop_vyoslinter
-
 - VyOS-RR1:
 
 ```none
@@ -380,11 +377,9 @@ set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
 
 ### Step-3: Configuring L3VPN VRFs on PE nodes
-
 This section provides configuration steps for setting up VRFs on our
 PE nodes including CE facing interfaces, BGP, rd and route-target
 import/export based on the pre-defined parameters.
-
 - VyOS-PE1:
 
 ```none
@@ -449,13 +444,11 @@ set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 ```
 
 ### Step-4: Configuring CE nodes
-
 Dynamic routing used between CE and PE nodes and eBGP peering
 established for the route exchanging between them. All routes
 received by PEs are then exported to L3VPN and delivered from
 Spoke sites to Hub and vise-versa based on previously
 configured L3VPN parameters.
-
 - VyOS-CE1-SPOKE:
 
 ```none
@@ -509,14 +502,11 @@ set protocols bgp parameters router-id '10.60.60.2'
 ```
 
 ### Step-5: Verification
-
 This section describes verification commands for MPLS/BGP/LDP
 protocols and L3VPN related routes as well as diagnosis and
 reachability checks between CE nodes.
-
 Let’s check IPv4 routing and MPLS information on provider nodes
 (same procedure for all P nodes):
-
 - “show ip ospf neighbor” for checking ospf relationship
 
 ```none
@@ -601,7 +591,6 @@ ipv4 10.0.0.10/32    10.0.0.8        19                24                no
 
 Now we’re checking iBGP status and routes from route-reflector
 nodes to other devices:
-
 - “show bgp ipv4 vpn summary” for checking BGP VPNv4 neighbors:
 
 ```none
@@ -681,7 +670,6 @@ Paths: (1 available, best #1)
 
 Also we can verify how PE devices receives VPNv4 networks from the RRs
 and installing them to the specific customer VRFs:
-
 - “show bgp ipv4 vpn summary” for checking iBGP neighbors against
   route-reflector devices:
 
@@ -795,7 +783,6 @@ Paths: (2 available, best #1)
 ```
 
 Now, let’s check routing information on out Hub PE:
-
 - “show bgp ipv4 vpn summary” for checking iBGP neighbors again
   : VyOS-RR1/RR2
 
@@ -949,7 +936,6 @@ Paths: (2 available, best #1)
 ```
 
 Finally, let’s check the reachability between CEs:
-
 - VyOS-CE1-SPOKE -----> VyOS-CE-HUB
 
 ```none

@@ -112,9 +112,7 @@ set vpn sstp authentication radius server 10.0.0.2 key 'foo'
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
 :::
-
 ### RADIUS source address
-
 If you are using OSPF as your IGP, use the interface connected closest to the
 RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
@@ -127,7 +125,6 @@ Source IPv4 address used in all RADIUS server queires.
 The `source-address` must be configured to that of an interface.
 Best practice would be a loopback or dummy interface.
 :::
-
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn sstp authentication radius server <server> port <port>
@@ -322,7 +319,6 @@ Script to run before the session interface comes up
 Script to run when the session interface is completely configured and started
 ```
 ## Advanced Options
-
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn sstp authentication local-users username <user> disable
@@ -472,13 +468,10 @@ If this option is given, only SSTP connections to the specified host
 and with the same TLS SNI will be allowed.
 ```
 ## Configuring SSTP client
-
 Once you have setup your SSTP server there comes the time to do some basic
 testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.
-
 If you use a self-signed certificate, do not forget to install CA on the client side.
-
 The following PPP configuration tests MSCHAP-v2:
 
 ```none
@@ -501,7 +494,6 @@ debug
 
 You can now "dial" the peer with the follwoing command: `sstpc --log-level 4
 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos`.
-
 A connection attempt will be shown as:
 
 ```none

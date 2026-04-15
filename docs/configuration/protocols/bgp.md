@@ -48,9 +48,7 @@ provides distance vector metric and loop detection to BGP.
 
 
 Multiprotocol extensions enable BGP to carry routing information for multiple
-
 network layer protocols. BGP supports an Address Family Identifier (AFI) for
-
 IPv4 and IPv6.
 
 
@@ -61,9 +59,7 @@ IPv4 and IPv6.
 
 
 The route selection process used by FRR's BGP implementation uses the following
-
 decision criterion, starting at the top of the list and going towards the
-
 bottom until one of the factors can be used.
 
 
@@ -95,7 +91,6 @@ bottom until one of the factors can be used.
 
 
     Prefer the lowest origin type route. That is, prefer IGP origin routes to
-
     EGP, to Incomplete routes.
 
 
@@ -103,7 +98,6 @@ bottom until one of the factors can be used.
 
 
     Where routes with a MED were received from the same AS, prefer the route
-
     with the lowest MED.
 
 
@@ -111,7 +105,6 @@ bottom until one of the factors can be used.
 
 
     Prefer the route received from an external, eBGP peer over routes received
-
     from other types of peers.
 
 
@@ -125,13 +118,9 @@ bottom until one of the factors can be used.
 
 
     If multi-pathing is enabled, then check whether the routes not yet
-
     distinguished in preference may be considered equal. If
-
     {cfgcmd}`bgp bestpath as-path multipath-relax` is set, all such routes are
-
     considered equal, otherwise routes received via iBGP with identical AS_PATHs
-
     or routes received from eBGP neighbours in the same AS are considered equal.
 
 
@@ -139,11 +128,8 @@ bottom until one of the factors can be used.
 
 
     Where both routes were received from eBGP peers, then prefer the route
-
     which is already selected. Note that this check is not applied if
-
     {cfgcmd}`bgp bestpath compare-routerid` is configured. This check can
-
     prevent some cases of oscillation.
 
 
@@ -151,11 +137,8 @@ bottom until one of the factors can be used.
 
 
     Prefer the route with the lowest `router-ID`. If the route has an
-
     `ORIGINATOR_ID` attribute, through iBGP reflection, then that router ID is
-
     used, otherwise the `router-ID` of the peer the route was received from is
-
     used.
 
 
@@ -163,7 +146,6 @@ bottom until one of the factors can be used.
 
 
     The route with the shortest cluster-list length is used. The cluster-list
-
     reflects the iBGP reflection path the route has taken.
 
 
@@ -171,7 +153,6 @@ bottom until one of the factors can be used.
 
 
     Prefer the route received from the peer with the higher transport layer
-
     address, as a last-resort tie-breaker.
 
 
@@ -182,52 +163,33 @@ bottom until one of the factors can be used.
 
 
 When adding IPv6 routing information exchange feature to BGP. There were some
-
 proposals. {abbr}`IETF (Internet Engineering Task Force)`
-
 {abbr}`IDR (Inter Domain Routing)` adopted a proposal called Multiprotocol
-
 Extension for BGP. The specification is described in {rfc}`2283`. The protocol
-
 does not define new protocols. It defines new attributes to existing BGP. When
-
 it is used exchanging IPv6 routing information it is called BGP-4+. When it is
-
 used for exchanging multicast routing information it is called MBGP.
 
 
 *bgpd* supports Multiprotocol Extension for BGP. So if a remote peer supports
-
 the protocol, *bgpd* can exchange IPv6 and/or multicast routing information.
 
 
 Traditional BGP did not have the feature to detect a remote peer's
-
 capabilities, e.g. whether it can handle prefix types other than IPv4 unicast
-
 routes. This was a big problem using Multiprotocol Extension for BGP in an
-
 operational network. {rfc}`2842` adopted a feature called Capability
-
 Negotiation. *bgpd* use this Capability Negotiation to detect the remote peer's
-
 capabilities. If a peer is only configured as an IPv4 unicast neighbor, *bgpd*
-
 does not send these Capability Negotiation packets (at least not unless other
-
 optional BGP features require capability negotiation).
 
 
 By default, FRR will bring up peering with minimal common capability for the
-
 both sides. For example, if the local router has unicast and multicast
-
 capabilities and the remote router only has unicast capability the local router
-
 will establish the connection with unicast only capability. When there are no
-
 common capabilities, FRR sends Unsupported Capability error and then resets the
-
 connection.
 
 
@@ -241,13 +203,9 @@ connection.
 
 
 First of all you must configure BGP router with the {abbr}`ASN (Autonomous
-
 System Number)`. The AS number is an identifier for the autonomous system.
-
 The BGP protocol uses the AS number for detecting whether the BGP connection
-
 is internal or external. VyOS does not have a special command to start the BGP
-
 process. The BGP process starts when the first neighbor is configured.
 
 
@@ -964,7 +922,6 @@ There are six modes available for route source: connected, kernel,
 ospf, rip, static, table.
 ```
 #### General Configuration
-
 ##### Common parameters
 
 ```{cfgcmd} set protocols bgp parameters allow-martian-nexthop
@@ -1490,23 +1447,17 @@ This command prevents from sending back prefixes learned from the neighbor.
 
 
 BGP routers connected inside the same AS through BGP belong to an internal BGP
-
 session, or IBGP. In order to prevent routing table loops, IBGP speaker does
-
 not advertise IBGP-learned routes to other IBGP speaker (Split Horizon
-
 mechanism). As such, IBGP requires a full mesh of all peers. For large
-
 networks, this quickly becomes unscalable.
 
 
 There are two ways that help us to mitigate the BGPs full-mesh requirement in
-
 a network:
 
 
 > - Using BGP route-reflectors
-
 > - Using BGP confederation
 
 
@@ -1514,15 +1465,10 @@ a network:
 
 
 Introducing route reflectors removes the need for the full-mesh. When you
-
 configure a route reflector you have to tell the router whether the other IBGP
-
 router is a client or non-client. A client is an IBGP router that the route
-
 reflector will “reflect” routes to, the non-client is just a regular IBGP
-
 neighbor. Route reflectors mechanism is described in {rfc}`4456` and updated
-
 by {rfc}`7606`.
 
 
@@ -1573,7 +1519,6 @@ This command sets other confederations <nsubasn> as members of autonomous
 system specified by :cfgcmd:`confederation identifier <asn>`.
 ```
 ## Operational Mode Commands
-
 ### Show
 
 ```{opcmd} show bgp <ipv4|ipv6>
@@ -1796,11 +1741,8 @@ you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both
 inbound and outbound soft reconfiguration are triggered.
 ```
 ## Examples
-
 ### IPv4 peering
-
 A simple eBGP configuration:
-
 **Node 1:**
 
 ```none
@@ -1828,7 +1770,6 @@ set protocols bgp parameters router-id '192.168.0.2'
 Don't forget, the CIDR declared in the network statement MUST **exist in your
 routing table (dynamic or static), the best way to make sure that is true is
 creating a static route:**
-
 **Node 1:**
 
 ```none
@@ -1842,9 +1783,7 @@ set protocols static route 172.17.0.0/16 blackhole distance '254'
 ```
 
 ### IPv6 peering
-
 A simple BGP configuration via IPv6.
-
 **Node 1:**
 
 ```none
@@ -1872,7 +1811,6 @@ set protocols bgp parameters router-id '10.1.1.2'
 Don't forget, the CIDR declared in the network statement **MUST exist in your
 routing table (dynamic or static), the best way to make sure that is true is
 creating a static route:**
-
 **Node 1:**
 
 ```none
@@ -1886,9 +1824,7 @@ set protocols static route6 2001:db8:2::/48 blackhole distance '254'
 ```
 
 ### Route Filtering
-
 Route filter can be applied using a route-map:
-
 **Node1:**
 
 ```none

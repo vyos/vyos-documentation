@@ -119,7 +119,6 @@ The container can also be built directly from source:
 
 ```none
 $ git clone -b current --single-branch https://github.com/vyos/vyos-build
-
 $ cd vyos-build
 $ docker build -t vyos/vyos-build:current docker
 ```

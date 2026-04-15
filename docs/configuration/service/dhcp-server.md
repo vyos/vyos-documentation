@@ -254,7 +254,6 @@ Ubiquiti is shown below:
 
 
 Create `172.18.201.0/24` as a subnet within `NET1` and pass address of
-
 Unifi controller at `172.16.100.1` to clients of that subnet.
 
 
@@ -271,16 +270,12 @@ set service dhcp-server shared-network-name 'NET1' subnet
 
 
 VyOS DHCP service supports RFC-2136 DDNS protocol. Based on DHCP lease change
-
 events, DHCP server generates DDNS update requests (defines as NameChangeRequests
-
 or NCRs) and posts them to a compliant DNS server, that will update its name
-
 database accordingly.
 
 
 VyOS built-in DNS Forwarder does not support DDNS, you will need an external DNS
-
 server with RFC-2136 DDNS support.
 
 
@@ -294,7 +289,6 @@ Enables DDNS globally.
 
 
 These settings can be configured on the global level and overridden on the scope
-
 level, i.e. for individual shared networks or subnets. See examples below.
 
 
@@ -437,7 +431,6 @@ Replacement string for the invalid characters defined by ``hostname-char-set``.
 
 
 This is the global list of TSIG keys for DDNS updates. They need to be specified by
-
 the name in the DNS domain definitions.
 
 
@@ -465,7 +458,6 @@ base64-encoded TSIG key secret value
 
 
 This is global configuration of DNS servers for the updatable forward and reverse
-
 DNS domains. For every domain multiple DNS servers can be specified.
 
 
@@ -583,21 +575,16 @@ set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arp
 
 
 VyOS provides High Availability support for DHCP server. DHCP High
-
 Availability can act in two different modes:
 
 
 - **Active-active**: both DHCP servers will respond to DHCP requests. If
-
   `mode` is not defined, this is the default behavior.
-
 - **Active-passive**: only `primary` server will respond to DHCP requests.
-
   If this server goes offline, then `secondary` server will take place.
 
 
 DHCP High Availability must be configured explicitly by the following
-
 statements on both servers:
 
 
@@ -690,9 +677,7 @@ The dialogue between HA partners is neither encrypted nor
 
 
 You can specify a static DHCP assignment on a per host basis. You will need the
-
 MAC address of the station and your desired IP address. The address must be
-
 inside the subnet definition but can be outside of the range statement.
 
 
@@ -794,33 +779,22 @@ show service dhcp-server shared-network-name NET1
 
 
 Some DHCP relays support the injection of information into a DHCP request, depending on
-
 where the request originated from. This is commonly used to determine the
-
 behaviour of the DHCP server, based on the port/switch combination where the
-
 request was first detected. I.e. the device plugged into a particular port (or
-
 set of ports) always gets the same IP address (or range of IP addresses). This
-
 information is usually included in the request using Option 82, hence this
-
 is what we call this part of the configuration.
 
 
 This behaviour is controlled in two parts. First, "client classes" are defined
-
 which determine which inputs match. Once a positive match has been found the
-
 request is "tagged" with this client class. Second, when the DHCP server
-
 processes the request it checks to see if the configuration has a client class
-
 defined. If it does then that part of the configuration will override the others
 
 
 Client classes can be applied at either the subnet or range level, depending on
-
 how you want the server to behave.
 
 
@@ -895,15 +869,10 @@ first.
 
 
 NB: Kea (the DHCP server used by VyOS) is programmed to offer as many
-
 alternatives as it can to repeated DHCP Discover requests. Some operating
-
 systems (Notably Microsoft Windows) make multiple DHCP Discover requests before
-
 settling on an address. This particularly seems to happen when the DHCP server
-
 isn't set to authorative. This may explain why the address you espect isn't
-
 being chosen. Wireshark is helpful in these situations.
 
 
@@ -911,22 +880,15 @@ being chosen. Wireshark is helpful in these situations.
 
 
 The following configuration example will classify requests coming in on port
-
 `e1-5` from DHCP Relay `192.0.2.1` and make sure that they are allocated the
-
 address `192.0.2.4`. Any requests which do not match the circuit and remote ID
-
 will, instead, be allocated from the range otherRange in the usual manner.
 
 
 NB: Both the Circuit ID and Remote ID fields are arbitrary free text. *Most*
-
 switches set the Remote ID to the IP address of the management interface but
-
 that should not be relied upon. Check the documentation of your DHCP Relay for
-
 more detail or, as a measure of last resort, inspect the DHCP requests in
-
 Wireshark.
 
 
@@ -987,266 +949,137 @@ service {
 
 
 :::{list-table}
-
 :header-rows: 1
-
 :stub-columns: 0
-
 :widths: 12 7 23 40 20
 
 
 * - Setting name
-
 - Option number
-
 - ISC-DHCP Option name
-
 - Option description
-
 - Multi
-
 * - client-prefix-length
-
 - 1
-
 - subnet-mask
-
 - Specifies the clients subnet mask as per RFC 950. If unset,
-
 subnet declaration is used.
-
 - N
-
 * - time-offset
-
 - 2
-
 - time-offset
-
 - Offset of the client's subnet in seconds from Coordinated
-
 Universal Time (UTC)
-
 - N
-
 * - default-router
-
 - 3
-
 - routers
-
 - IPv4 address of router on the client's subnet
-
 - N
-
 * - time-server
-
 - 4
-
 - time-servers
-
 - RFC 868 time server IPv4 address
-
 - Y
-
 * - name-server
-
 - 6
-
 - domain-name-servers
-
 - DNS server IPv4 address
-
 - Y
-
 * - domain-name
-
 - 15
-
 - domain-name
-
 - Client domain name
-
 - Y
-
 * - ip-forwarding
-
 - 19
-
 - ip-forwarding
-
 - Enable IP forwarding on client
-
 - N
-
 * - ntp-server
-
 - 42
-
 - ntp-servers
-
 - IP address of NTP server
-
 - Y
-
 * - wins-server
-
 - 44
-
 - netbios-name-servers
-
 - NetBIOS over TCP/IP name server
-
 - Y
-
 * - server-identifier
-
 - 54
-
 - dhcp-server-identifier
-
 - IP address for DHCP server identifier
-
 - N
-
 * - bootfile-server
-
 - siaddr
-
 - next-server
-
 - IPv4 address of next bootstrap server
-
 - N
-
 * - tftp-server-name
-
 - 66
-
 - tftp-server-name
-
 - Name or IPv4 address of TFTP server
-
 - N
-
 * - bootfile-name
-
 - 67
-
 - bootfile-name, filename
-
 - Bootstrap file name
-
 - N
-
 * - bootfile-size
-
 - 13
-
 - boot-size
-
 - Boot image length in 512-octet blocks
-
 - N
-
 * - smtp-server
-
 - 69
-
 - smtp-server
-
 - IP address of SMTP server
-
 - Y
-
 * - pop-server
-
 - 70
-
 - pop-server
-
 - IP address of POP3 server
-
 - Y
-
 * - domain-search
-
 - 119
-
 - domain-search
-
 - Client domain search
-
 - Y
-
 * - static-route
-
 - 121, 249
-
 - rfc3442-static-route, windows-static-route
-
 - Classless static route
-
 - N
-
 * - wpad-url
-
 - 252
-
 - wpad-url, wpad-url code 252 = text
-
 - Web Proxy Autodiscovery (WPAD) URL
-
 - N
-
 * - lease
-
 -
-
 - default-lease-time, max-lease-time
-
 - Lease timeout in seconds (default: 86400)
-
 - N
-
 * - range
-
 -
-
 - range
-
 - DHCP lease range
-
 - Y
-
 * - exclude
-
 -
-
 -
-
 - IP address to exclude from DHCP lease range
-
 - Y
-
 * - failover
-
 -
-
 -
-
 - DHCP failover parameters
-
 -
-
 * - static-mapping
-
 -
-
 -
-
 - Name of static mapping
-
 - Y
 :::
 
@@ -1270,15 +1103,10 @@ Configuration of a DHCP HA pair:
 
 
 - Setup DHCP HA for network 192.0.2.0/24
-
 - Use active-active HA mode.
-
 - Default gateway and DNS server is at `192.0.2.254`
-
 - The primary DHCP server named dhcp-primary uses address `192.168.189.252`
-
 - The secondary DHCP server with named dhcp-secondary uses address `192.168.189.253`
-
 - DHCP range spans from `192.168.189.10` - `192.168.189.250`
 
 
@@ -1421,11 +1249,8 @@ vyos@vyos:~$
 
 
 :::{hint}
-
 Static mappings aren't shown. To show all states, use
-
 `show dhcp server leases state all`.
-
 :::
 
 
@@ -1490,12 +1315,9 @@ Show only leases with the specified state. Possible states: all, active,
 free, expired, released, abandoned, reset, backup (default = active)
 ```
 ## IPv6 server
-
 VyOS also provides DHCPv6 server functionality which is described in this
 section.
-
 (dhcp-server-v6-config)=
-
 ### Configuration
 
 ```{cfgcmd} set service dhcpv6-server preference <preference value>
@@ -1595,7 +1417,6 @@ A SNTP server address can be specified for DHCPv6 clients.
 
 
 To hand out individual prefixes to your clients the following configuration is
-
 used:
 
 
@@ -1634,7 +1455,6 @@ Exclude `<exclude-prefix>` from `<pd-prefix>`.
 Define lenght of exclude prefix in `<pd-prefix>`.
 ```
 **Example:**
-
 - A shared network named `PD-NET` serves subnet `2001:db8::/64`.
 - It is connected to `eth1`.
 - Address pool shall be `2001:db8::100` through `2001:db8::199`.
@@ -1650,12 +1470,9 @@ set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 subn
 ```
 
 #### Address pools
-
 DHCPv6 address pools must be configured for the system to act as a DHCPv6
 server. The following example describes a common scenario.
-
 **Example:**
-
 - A shared network named `NET1` serves subnet `2001:db8::/64`
 - It is connected to `eth1`
 - DNS server is located at `2001:db8::ffff`
@@ -1716,7 +1533,6 @@ set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static
 ```
 
 The configuration will look as follows:
-
 % stop_vyoslinter (00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff false positive)
 
 ```none
@@ -1731,9 +1547,7 @@ show service dhcpv6-server shared-network-name NET1
 ```
 
 % start_vyoslinter
-
 (dhcp-server-v6-op-cmd)=
-
 ### Operation Mode
 
 ```{opcmd} show log dhcpv6 server

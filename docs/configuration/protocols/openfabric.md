@@ -232,9 +232,7 @@ This command sets minimum interval between consecutive shortest path first
 (SPF) calculations in seconds.The interval range is 1 to 120.
 ```
 ## Examples
-
 ### Enable OpenFabric
-
 **Node 1:**
 
 ```none

@@ -76,9 +76,7 @@ Show the operational status and traffic statistics for the specified VTI.
 ```{opcmd} show interfaces vti <vtiX> brief
 ```
 ## Example
-
 **Configure a VTI**
-
 Assign IPv4 and IPv6 addresses to the VTI, along with a brief description:
 
 ```none

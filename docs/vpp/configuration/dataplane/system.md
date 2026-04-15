@@ -7,23 +7,16 @@ lastproofread: '2026-02-27'
 ```{include} /_include/need_improvement.txt
 ```
 # VyOS Configuration for VPP
-
 (vpp-config-hugepages)=
-
 ## Hugepages
-
 VPP uses hugepages for efficient memory management. Hugepages are larger
 memory pages that reduce the overhead of page management and improve
 performance for applications that require large amounts of memory.
-
 Hugepages can be configured in VyOS using the following commands:
-
 :::{warning}
 Changes to hugepage settings require a system reboot to take effect.
-
 Hugepages must be enabled before VPP configuration is applied.
 :::
-
 To enable hugepages:
 
 ```{cfgcmd} set system option kernel memory hugepage-size <size> hugepage-count
@@ -140,10 +133,8 @@ for nohz-full functionality.
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
 ### System Optimization
-
 Additional kernel optimizations can further improve VPP performance by
 disabling unnecessary features and reducing system overhead.
-
 **Disable High Precision Event Timer**
 
 ```{cfgcmd} set system option kernel disable-hpet
@@ -183,7 +174,6 @@ Disables all optional CPU mitigations for security vulnerabilities
 platforms.
 ```
 ### Optimal Configuration Example
-
 For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:
 
 ```none

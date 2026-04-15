@@ -176,9 +176,7 @@ ip route 0.0.0.0 0.0.0.0 10.0.2.1
 ```
 
 ## Monitoring
-
 ### Monitoring on VyOS side
-
 IKE SAs:
 
 ```none
@@ -239,7 +237,6 @@ O>* 192.168.11.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 ```
 
 ### Monitoring on Cisco side
-
 IKE SAs:
 
 ```none
@@ -349,7 +346,6 @@ L        192.168.11.1/32 is directly connected, GigabitEthernet0/2
 ```
 
 ### Checking Connectivity
-
 ICMP packets from PC1 to PC3.
 
 ```none

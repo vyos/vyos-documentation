@@ -31,17 +31,12 @@ site-2-site-cisco
 ```
 
 ## Configuration Blueprints (autotest)
-
 The next pages contains automatic full tested configuration examples.
-
 Each lab will build an test from an external script.
 The page content will generate, so changes will not take an effect.
-
 A host `vyos-oobm` will use as a ssh proxy. This host is just
 necessary for the Lab test.
-
 The process will do the following steps:
-
 1. create the lab on a eve-ng server
 2. configure each host in the lab
 3. do some defined tests

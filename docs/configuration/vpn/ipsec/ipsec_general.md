@@ -138,11 +138,8 @@ The options for configured are none if not conifugred, opt if configured
 but optional, and req is configured and required. The in use will show yes
 Possible values of the `configured` field are `none` if not conifgured, `opt` if configured
 but optional, and `req` is configured and required. The in use will show yes
-
 ## Configuration IKE
-
 ### IKE (Internet Key Exchange) Attributes
-
 VyOS IKE group has the next options:
 
 ```{cfgcmd} set vpn ipsec ike-group <name> close-action <action>
@@ -252,7 +249,6 @@ Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 
 
 In VyOS, ESP attributes are specified through ESP groups.
-
 Multiple proposals can be specified in a single group.
 
 
@@ -392,9 +388,7 @@ will be installed on the outbound interface.
 Allows the installation of virtual-ip addresses.
 ```
 ### IKEv2 Retransmission
-
 If the peer does not respond on DPD packet, the router starts retransmission procedure.
-
 The following formula is used to calculate the timeout:
 
 ```none

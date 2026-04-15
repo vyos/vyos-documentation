@@ -58,7 +58,6 @@ If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain
 Name)` in log messages, even if the syslog server is in the same domain.
 ```
 ### Local logging
-
 Configure which log messages to save to a local log file.
 
 ```{cfgcmd} set system syslog local <filename> facility <keyword> level <keyword>
@@ -69,9 +68,7 @@ severity level to ``/var/log/messages``.**
 Refer to the tables below for valid facility and severity options.
 ```
 (syslog-console)=
-
 ### Console logging
-
 Configure which log messages to send to `/dev/console`.
 
 ```{cfgcmd} set system syslog console facility <keyword> level <keyword>
@@ -82,11 +79,8 @@ level to the device's console.**
 Refer to the tables below for valid facility and severity options.
 ```
 (syslog-remote)=
-
 ### Remote logging
-
 Configure **remote logging** to send log messages to a remote syslog server.
-
 Remote logging does not affect either **local** or **console logging** and
 runs in parallel with them. Remote logging supports sending log messages
 to multiple hosts.
@@ -148,18 +142,13 @@ for log transmission.
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
-
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 over TCP to ensure secure transmission of syslog data to remote syslog servers.
-
 **Prerequisites**: Before configuring {abbr}`TLS (Transport Layer
 Security)`-encrypted remote logging, ensure you have:
-
 - A valid remote syslog server address.
-
 - Valid {abbr}`CA (Certificate Authority)` and client certificates uploaded
   to the local {abbr}`PKI (Public Key Infrastructure)` storage.
-
 - The **remote syslog transport protocol** is set to **TCP**:
 
   ```none

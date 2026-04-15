@@ -404,15 +404,10 @@ number of packets it can contain (maximum 4294967295).
 
 ```
 #### Fair Queue
-
 **Queueing discipline:**
-
  SFQ (Stochastic Fairness Queuing).
-
 **Applies to:**
-
  Outbound traffic.
-
 Fair Queue is a work-conserving scheduler which schedules the
 transmission of packets based on flows, that is, it balances traffic
 distributing it through different sub-queues in order to ensure
@@ -431,24 +426,16 @@ single one from drowning out the rest.
 
 
 In order to separate traffic, Fair Queue uses a classifier based on
-
 source address, destination address and source port. The algorithm
-
 enqueues packets to hash buckets based on those tree parameters.
-
 Each of these buckets should represent a unique flow. Because multiple
-
 flows may get hashed to the same bucket, the hashing algorithm is
-
 perturbed at configurable intervals so that the unfairness lasts only
-
 for a short while. Perturbation may however cause some inadvertent
-
 packet reordering to occur. An advisable value could be 10 seconds.
 
 
 One of the uses of Fair Queue might be the mitigation of Denial of
-
 Service attacks.
 
 
@@ -463,7 +450,6 @@ a new queue algorithm perturbation will occur (maximum 4294967295).
 
 
 When dequeuing, each hash-bucket with data is queried in a round robin
-
 fashion. You can configure the length of the queue.
 
 
@@ -478,19 +464,12 @@ allowed to wait in the queue. Any other packet will be dropped.
 
 
 :::{note}
-
 Fair Queue is a non-shaping (work-conserving) policy, so it
-
 will only be useful if your outgoing interface is really full. If it
-
 is not, VyOS will not own the queue and Fair Queue will have no
-
 effect. If there is bandwidth available on the physical link, you can
-
 [embed] Fair-Queue into a classful shaping policy to make sure it owns
-
 the queue.
-
 :::
 
 
@@ -513,88 +492,60 @@ the queue.
 
 
 The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and
-
 tries to provide good service between all of them. It also tries to keep
-
 the length of all the queues short.
 
 
 FQ-CoDel fights bufferbloat and reduces latency without the need of
-
 complex configurations. It has become the new default Queueing
-
 Discipline for the interfaces of some GNU/Linux distributions.
 
 
 It uses a stochastic model to classify incoming packets into
-
 different flows and is used to provide a fair share of the bandwidth to
-
 all the flows using the queue. Each flow is managed by the CoDel
-
 queuing discipline. Reordering within a flow is avoided since Codel
-
 internally uses a FIFO queue.
 
 
 FQ-CoDel is based on a modified Deficit Round Robin ([DRR]) queue
-
 scheduler with the CoDel Active Queue Management (AQM) algorithm
-
 operating on each queue.
 
 
 :::{note}
-
 FQ-Codel is a non-shaping (work-conserving) policy, so it
-
 will only be useful if your outgoing interface is really full. If it
-
 is not, VyOS will not own the queue and FQ-Codel will have no
-
 effect. If there is bandwidth available on the physical link, you can
-
 [embed] FQ-Codel into a classful shaping policy to make sure it owns
-
 the queue. If you are not sure if you need to embed your FQ-CoDel
-
 policy into a Shaper, do it.
-
 :::
 
 
 FQ-CoDel is tuned to run ok with its default parameters at 10Gbit
-
 speeds. It might work ok too at other speeds without configuring
-
 anything, but here we will explain some cases when you might want to
-
 tune its parameters.
 
 
 When running it at 1Gbit and lower, you may want to reduce the
-
 `queue-limit` to 1000 packets or less. In rates like 10Mbit, you may
-
 want to set it to 600 packets.
 
 
 If you are using FQ-CoDel embedded into [Shaper] and you have large rates
-
 (100Mbit and above), you may consider increasing `quantum` to 8000 or
-
 higher so that the scheduler saves CPU.
 
 
 On low rates (below 40Mbit) you may want to tune `quantum` down to
-
 something like 300 bytes.
 
 
 At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps
-
 being ok) you may also want to increase `target` to something like 15ms
-
 and increase `interval` to something around 150 ms.
 
 
@@ -654,7 +605,6 @@ minimum delay is identified by tracking the local minimum queue delay
 that packets experience (default: 5ms).
 ```
 ##### Example
-
 A simple example of an FQ-CoDel policy working inside a Shaper one.
 
 ```none
@@ -664,29 +614,21 @@ set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 ```
 
 #### Limiter
-
 **Queueing discipline:**
-
  Ingress policer.
-
 **Applies to:**
-
  Inbound traffic.
-
 Limiter is one of those policies that uses [classes] (Ingress qdisc is
 actually a classless policy but filters do work in it).
-
 The limiter performs basic ingress policing of traffic flows. Multiple
 classes of traffic can be defined and traffic limits can be applied to
 each class. Although the policer uses a token bucket mechanism
 internally, it does not have the capability to delay a packet as a
 shaping mechanism does. Traffic exceeding the defined bandwidth limits
 is directly dropped. A maximum allowed burst can be configured too.
-
 You can configure classes (up to 4090) with different settings and a
 default policy which will be applied to any traffic not matching any of
 the configured classes.
-
 :::{note}
 In the case you want to apply some kind of **shaping** to your
 **inbound** traffic, check the [ingress-shaping] section.
@@ -756,19 +698,13 @@ priority).
 
 ```
 #### Network Emulator
-
 **Queueing discipline:**
-
  netem (Network Emulator) + TBF (Token Bucket Filter).
-
 **Applies to:**
-
  Outbound traffic.
-
 VyOS Network Emulator policy emulates the conditions you can suffer in a
 real network. You will be able to configure things like rate, burst,
 delay, packet loss, packet corruption or packet reordering.
-
 This could be helpful if you want to test how an application behaves
 under certain network conditions.
 
@@ -1022,11 +958,8 @@ configuring and what the size of its average-packet should be
 
 
 :::{note}
-
 When configuring a Random-Detect policy: **the higher the
-
 precedence number, the higher the priority**.
-
 :::
 
 
@@ -1159,7 +1092,6 @@ burst.
 ```
 As a reference: for 10mbit/s on Intel, you might need at least 10kbyte
 buffer if you want to reach your configured rate.
-
 A very small buffer will soon start dropping packets.
 
 ```{cfgcmd} set qos policy rate-control <policy-name> latency
@@ -1231,7 +1163,6 @@ a class ID, and the queue size in packets.
 
 
 As with other policies, Round-Robin can [embed] another policy into a
-
 class through the `queue-type` setting.
 
 
@@ -1275,31 +1206,21 @@ Possible completions:
 
 
 The Shaper policy does not guarantee a low delay, but it does guarantee
-
 bandwidth to different traffic classes and also lets you decide how to
-
 allocate more traffic once the guarantees are met.
 
 
 Each class can have a guaranteed part of the total bandwidth defined for
-
 the whole policy, so all those shares together should not be higher
-
 than the policy's whole bandwidth.
 
 
 If guaranteed traffic for a class is met and there is room for more
-
 traffic, the ceiling parameter can be used to set how much more
-
 bandwidth could be used. If guaranteed traffic is met and there are
-
 several classes willing to use their ceilings, the priority parameter
-
 will establish the order in which that additional traffic will be
-
 allocated. Priority can be any number from 0 to 7. The lower the number,
-
 the higher the priority.
 
 
@@ -1398,20 +1319,15 @@ Possible completions:
 ```
 
 % start_vyoslinter
-
 :::{note}
 If you configure a class for **VoIP traffic**, don't give it any
 *ceiling*, otherwise new VoIP calls could start when the link is
 available and get suddenly dropped when other classes start using
 their assigned *bandwidth* share.
 :::
-
 (traffic-policy-shaper-example)=
-
 ##### Example
-
 A simple example of Shaper using priorities.
-
 % stop_vyoslinter
 
 ```none
@@ -1436,19 +1352,12 @@ set qos policy shaper MY-HTB default queue-type 'fair-queue'
 ```
 
 % start_vyoslinter
-
 (cake)=
-
 #### CAKE
-
 **Queueing discipline:**
-
  Deficit mode.
-
 **Applies to:**
-
  Outbound traffic.
-
 [Common Applications Kept Enhanced] (CAKE) is a comprehensive queue management
 system, implemented as a queue discipline (qdisc) for the Linux kernel. It is
 designed to replace and improve upon the complex hierarchy of simple qdiscs
@@ -1539,7 +1448,6 @@ Defines the round-trip time used for active queue management (AQM) in
 milliseconds. The default value is 100.
 ```
 ### Applying a traffic policy
-
 Once a traffic-policy is created, you can apply it to an interface:
 
 ```none
@@ -1563,24 +1471,18 @@ set qos interface eth4 egress TWO-WAY-POLICY
 ```
 
 (ingress-shaping)=
-
 ### The case of ingress shaping
-
 **Applies to:**
-
  Inbound traffic.
-
 For the ingress traffic of an interface, there is only one policy you
 can directly apply, a **Limiter** policy. You cannot apply a shaping
 policy directly to the ingress traffic of any interface because shaping
 only works for outbound traffic.
-
 This workaround lets you apply a shaping policy to the ingress traffic
 by first redirecting it to an in-between virtual interface
 ([Intermediate Functional Block]). There, in that virtual interface,
 you will be able to apply any of the policies that work for outbound
 traffic, for instance, a shaping one.
-
 That is how it is possible to do the so-called "ingress shaping".
 
 ```none

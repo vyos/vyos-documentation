@@ -111,11 +111,8 @@ set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 ```
 
 ### Core Router
-
 #### Step 1: VRF and Configurations to remote networks
-
 - Configuration
-
 Set the VRF name and Table ID, set interface address and bind it to the VRF.
 Last add the static route to the remote network.
 
@@ -134,7 +131,6 @@ set vrf name <VRF> protocols static route <NETWORK/CIDR> next-hop <REMOTE IP ADD
 ```
 
 - Verification
-
 Checking the routing table of the VRF should reveal both static and connected
 entries active. A PING test between the Core and remote router is a way to
 validate connectivity within the VRF.
@@ -199,9 +195,7 @@ rtt min/avg/max/mdev = 0.925/1.665/3.035/0.969 ms
 ```
 
 #### Step 2: BGP Configuration for VRF-Lite
-
 - Configuration
-
 Setting BGP global local-as as well inside the VRF. Redistribute static routes
 to inject configured networks into the BGP process but still inside the VRF.
 
@@ -214,7 +208,6 @@ set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> redistribute stat
 ```
 
 - Verification
-
 Check the BGP VRF table and verify if the static routes are injected showing
 the correct next-hop information.
 
@@ -249,9 +242,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 ```
 
 #### Step 3: VPN Configuration
-
 - Configuration
-
 Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT), then
 we enable the export/import VPN.
 
@@ -274,12 +265,9 @@ A key point to understand is that if we need two VRFs to communicate between
 each other EXPORT rt from VRF1 has to be in the IMPORT rt list from VRF2. But
 this is only in ONE direction, to complete the communication the EXPORT rt from
 VRF2 has to be in the IMPORT rt list from VRF1.
-
 There are some cases where this is not needed -for example, in some
 DDoS appliance- but most inter-vrf routing designs use the above configurations.
-
 - Verification
-
 After configured all the VRFs involved in this topology we take a deeper look
 at both BGP and Routing table for the VRF LAN1
 
@@ -375,11 +363,8 @@ C>* fe80::/64 is directly connected, eth0, 05:33:43
 As we can see in the BGP table any imported route has been injected with a "@"
 followed by the VPN id; In the routing table of the VRF, if the route was
 installed, we can see -between round brackets- the exported VRF table.
-
 #### Step 4: End to End verification
-
 Now we perform some end-to-end testing
-
 - From Management to LAN1/LAN2
 
 ```none
@@ -522,7 +507,6 @@ we are using "source-address" option cause we are not redistributing
 connected interfaces into BGP on the Core router hence there is no comeback
 route and ping will fail.
 :::
-
 - LAN1 to LAN2
 
 ```none
@@ -546,17 +530,13 @@ rtt min/avg/max/mdev = 1.949/2.915/4.815/1.343 ms
 ```
 
 ## Conclusions
-
 Inter-VRF routing is a well-known solution to address complex routing scenarios
 that enable -in a dynamic way- to leak routes between VRFs. Is recommended to
 take special consideration while designing route-targets and its application as
 it can minimize future interventions while creating a new VRF will automatically
 take the desired effect in its propagation.
-
 ## Appendix-A
-
 ### Full configuration from all devices
-
 - Core
 
 ```none
@@ -693,15 +673,11 @@ set protocols static route6 ::/0 next-hop 2001:db8::6
 ```
 
 ## Appendix-B
-
 ### Route-Filtering
-
 When importing routes using MP-BGP it is possible to filter a subset of them
 before are injected in the BGP table. One of the most common case is to use a
 route-map with an prefix-list.
-
 - Configuration
-
 We create a prefix-list first and add all the routes we need to.
 
 ```none
@@ -743,7 +719,6 @@ We are using a "white list" approach by allowing only what is necessary. In case
 that need to implement a "black list" approach then you will need to change the
 action in the route-map for a deny BUT you need to add a rule that permits the
 rest due to the implicit deny in the route-map.
-
 Then we need to attach the policy to the BGP process. This needs to be under
 the import statement in the vrf we need to filter.
 

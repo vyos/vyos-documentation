@@ -392,7 +392,6 @@ Show WWAN module SIM card information.
   PUK2 retries: '10'
 ```
 ## Example
-
 The following example shows how to configure a cellular connection using a
 Sierra Wireless MC7710 miniPCIe card that operates over USB despite its form
 factor. The card is installed in a {ref}`pc-engines-apu4`.

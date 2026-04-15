@@ -76,9 +76,7 @@ vyos@vpn.vyos.net# comp
 Once the command is completed, it will add the certificate to the configuration
 session, to the pki subtree. You can then review the proposed changes and
 commit them.
-
 ## Setting up IPSec:
-
 After the PKI certs are all set up we can start configuring our IPSec/IKE
 proposals used for key-exchange end data encryption. The used encryption ciphers
 and integrity algorithms vary from operating system to operating system. The
@@ -173,7 +171,6 @@ GCMAES128 -EncryptionMethod GCMAES128 -IntegrityCheckMethod SHA256128 -PfsGroup 
 Add the commands from Snippet in the Windows side via PowerShell.
 Also import the root CA cert to the Windows “Trusted Root Certification
 Authorities” and establish the connection.
-
 ## Verification:
 
 ```none

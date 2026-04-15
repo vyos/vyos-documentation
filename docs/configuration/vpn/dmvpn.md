@@ -188,30 +188,21 @@ Next hop server information.
 Shortcut information.
 ```
 ## Example
-
 This blueprint uses VyOS as the DMVPN Hub and Cisco IOSv 15.5(3)M and VyOS as
 multiple spoke sites.
-
 :::{figure} /_static/images/blueprint-dmvpn.png
 :align: center
 :alt: DMVPN Network Topology Diagram
 :width: 70%
-
 DMVPN Network Topology Diagram
 :::
-
 Each node (Hub and Spoke) uses an IP address from the network 10.0.0.0/24.
-
 The below referenced IP address `192.168.0.2` is used as example address
 representing a global unicast address under which the HUB can be contacted by
 each and every individual spoke.
-
 (dmvpn-example-configuration)=
-
 ### Configuration
-
 #### Hub
-
 ##### VyOS-HUB-1
 
 ```none
@@ -258,11 +249,8 @@ EC2 instance. This has been tested as working for the official AMI image on
 the AWS Marketplace. (Locate the correct VPC and security group by navigating
 through the details pane below your EC2 instance in the AWS console).
 :::
-
 #### Spokes
-
 > The individual spoke configurations only differ in interface IP addresses.
-
 ##### VyOS-Spoke-1 and VyOS-Spoke-2
 
 ```none
@@ -353,7 +341,6 @@ ip route 0.0.0.0 0.0.0.0 192.168.3.1
 ```
 
 ##### Monitoring DMVPN Network
-
 Let send ICMP packets from VyOS-SPOKE-1 to Cisco-SPOKE-3
 
 ```none

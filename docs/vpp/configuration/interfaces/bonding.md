@@ -7,16 +7,12 @@ lastproofread: '2026-03-09'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Bonding Configuration
-
 VPP bonding interfaces provide link aggregation capabilities by combining
 multiple physical interfaces into a single logical interface for increased
 bandwidth and redundancy. VPP bonding offers high-performance packet
 processing compared to traditional Linux bonding.
-
 ## Basic Configuration
-
 ### Creating a Bonding Interface
-
 To create a VPP bonding interface:
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN>
@@ -53,7 +49,6 @@ Administratively disable the bonding interface. By default, interfaces
 are enabled.
 ```
 ## Member Interface Configuration
-
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> member interface
@@ -73,7 +68,6 @@ set interfaces vpp bonding vppbond0 member interface eth1
 Member interfaces must have the same speed and duplex for optimal
 performance. They must already be attached to VPP.
 :::
-
 ## Bonding Modes
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> mode <mode>
@@ -97,7 +91,6 @@ set interfaces vpp bonding vppbond0 mode active-backup
 ```
 
 ## Hash Policies
-
 For load balancing modes, configure how the system distributes traffic
 across member interfaces:
 
@@ -169,12 +162,9 @@ set interfaces vpp bonding vppbond0 mtu 9000
 The MTU setting must match or be smaller than the MTU supported by the
 associated VPP interface.
 :::
-
 ## VLAN Configuration
-
 VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for
 network segmentation.
-
 ### Creating VLAN Sub-interfaces
 
 ```{cfgcmd} set interfaces vpp bonding <vppbondN> vif <vlan-id>
@@ -188,7 +178,6 @@ set interfaces vpp bonding vppbond0 vif 100
 ```
 
 ### VLAN Sub-interface Configuration
-
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
@@ -218,7 +207,6 @@ set interfaces vpp bonding vppbond0 vif 200 description "Guest VLAN"
 ```
 
 ## Complete Configuration Example
-
 Here's a complete example configuring a bonding interface with LACP:
 
 ```none

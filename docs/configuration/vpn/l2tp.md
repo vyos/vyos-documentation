@@ -101,16 +101,12 @@ Set predefined shared secret phrase.
 ```
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:
-
 - UDP port 500 (IKE)
 - IP protocol number 50 (ESP)
 - UDP port 1701 for IPsec
-
 As well as the below to allow NAT-traversal (when NAT is detected by the
 VPN client, ESP is encapsulated in UDP for NAT-traversal):
-
 - UDP port 4500 (NAT-T)
-
 Example:
 
 ```none
@@ -137,7 +133,6 @@ set nat source rule 110 translation address masquerade
 ```
 
 ## Configuring RADIUS authentication
-
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
@@ -166,9 +161,7 @@ set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
 Some [RADIUS] severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
 :::
-
 ### RADIUS source address
-
 If you are using OSPF as your IGP, use the interface connected closest to the
 RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
@@ -181,7 +174,6 @@ Source IPv4 address used in all RADIUS server queires.
 The `source-address` must be configured to that of an interface.
 Best practice would be a loopback or dummy interface.
 :::
-
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server <server> port <port>
@@ -308,7 +300,6 @@ Sent to the client (LAC) in the Host-Name attribute
 Tunnel password used to authenticate the client (LAC)
 ```
 To explain the usage of LNS follow our blueprint {ref}`examples-lac-lns`.
-
 ## IPv6
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6 <require | prefer | allow | deny>
@@ -390,7 +381,6 @@ Script to run before the session interface comes up
 Script to run when the session interface is completely configured and started
 ```
 ## Advanced Options
-
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username <user> disable

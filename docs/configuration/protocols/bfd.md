@@ -6,19 +6,13 @@ lastproofread: '2023-01-27'
 ```
 
 (routing-bfd)=
-
 # BFD
-
 {abbr}`BFD (Bidirectional Forwarding Detection)` is described and extended by
 the following RFCs: {rfc}`5880`, {rfc}`5881` and {rfc}`5883`.
-
 In the age of very fast networks, a second of unreachability may equal millions of lost packets.
 The idea behind BFD is to detect very quickly when a peer is down and take action extremely fast.
-
 BFD sends lots of small UDP packets very quickly to ensures that the peer is still alive.
-
 This allows avoiding the timers defined in BGP and OSPF protocol to expires.
-
 ## Configure BFD
 
 ```{cfgcmd} set protocols bfd peer <address>
@@ -181,9 +175,7 @@ Enable BFD for ISIS on an interface
 
 
 A monitored static route conditions the installation to the RIB on the BFD
-
 session running state: when BFD session is up the route is installed to RIB,
-
 but when the BFD session is down it is removed from the RIB.
 
 
@@ -237,7 +229,6 @@ Configure a static route for <subnet> using gateway <address>
 and the gateway address as BFD peer destination address.
 ```
 (bfd-operational-commands)=
-
 ## Operational Commands
 
 ```{opcmd} show bfd static routes

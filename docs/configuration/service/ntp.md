@@ -176,35 +176,23 @@ Define how to handle leap-seconds.
 
 
 The chrony daemon on VyOS can leverage NIC hardware capabilities to record the
-
 exact time packets are received on the interface, as well as when packets were
-
 actually transmitted. This provides improved accuracy and stability when the
-
 system is under load, as queuing and OS context switching can introduce a
-
 variable delay between when the packet is received on the network and when it
-
 is actually processed by the NTP daemon.
 
 
 Hardware timestamping depends on NIC support. Some NICs can be configured to
-
 apply timestamps to any incoming packet, while others only support applying
-
 timestamps to specific protocols (e.g. PTP).
 
 
 When timestamping is enabled on an interface, chrony's default behavior is to
-
 try to configure the interface to only timestamp NTP packets. If this mode is
-
 not supported, chrony will attempt to set it to timestamp all packets. If
-
 neither option is supported (e.g. the NIC can only timestamp received PTP
-
 packets), chrony will leverage timestamping on transmitted packets only, which
-
 still provides some benefit.
 
 

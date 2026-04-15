@@ -35,9 +35,7 @@ Use this command to user Layer 4 information for ECMP hashing.
 
 
 Zebra supports prefix-lists and Route Maps to match routes received from
-
 other FRR components. The permit/deny facilities provided by these commands
-
 can be used to filter which routes zebra will install in the kernel.
 
 
@@ -64,9 +62,7 @@ If you choose any as the option that will cause all protocols that
 
 
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
-
 by default for a traditional profile of FRR which we use. It and can be disabled if
-
 you do not want to e.g. allow BGP to peer across the default route.
 
 

@@ -23,7 +23,6 @@ please contact your ISP for more information.
 ```
 
 ## Configurations
-
 ### PPPoE Setup
 
 ```none
@@ -35,9 +34,7 @@ set interfaces pppoe pppoe0 source-interface 'eth0'
 
 - Fill `password` and `user` with the credential provided by your ISP.
 - `service-name` can be an arbitrary string.
-
 ### DHCPv6-PD Setup
-
 During address configuration, in addition to assigning an address to the WAN
 interface, ISP also provides a prefix to allow the router to configure addresses
 of LAN interface and other nodes connecting to LAN, which is called prefix
@@ -53,9 +50,7 @@ set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth1 address '100'
 - For home network users, most of time ISP only provides /64 prefix, hence
   there is no need to set SLA ID and prefix length. See {ref}`pppoe-interface`
   for more information.
-
 ### Router Advertisement
-
 We need to enable router advertisement for LAN network so that PC can receive
 the prefix and use SLAAC to configure the address automatically.
 

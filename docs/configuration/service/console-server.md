@@ -83,9 +83,7 @@ USB to serial converters will handle most of their work in software
 
 
 Each individual configured console-server device can be directly exposed to
-
 the outside world. A user can directly connect via SSH to the configured
-
 port.
 
 

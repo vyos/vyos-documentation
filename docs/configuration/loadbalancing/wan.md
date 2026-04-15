@@ -14,12 +14,9 @@ interfaces. If a path fails, the load balancer balances traffic across the
 remaining healthy paths. When a path recovers, it is automatically added back
 to the routing table. The load balancer adds routes for each path and
 distributes traffic based on interface health and weight.
-
 In a minimal configuration, the following must be provided:
-
 > - An interface with a `nexthop`.
 > - One rule with a LAN (inbound-interface) and the WAN (interface).
-
 The following examples uses two DHCP WAN interfaces and one LAN (`eth2`):
 
 ```none
@@ -62,7 +59,6 @@ protocol                Protocol to match
 ```
 
 ### Interface weight
-
 By default, the load balancer distributes outbound
 traffic randomly across available interfaces. You can assign weights to
 interfaces to influence the distribution. If `eth0` has more bandwidth
@@ -76,9 +72,7 @@ set load-balancing wan rule 1 interface eth1 weight 1
 
 In this example,\`\`eth0\`\` receives 66% of traffic, and `eth1` receives
 33% of traffic.
-
 ### Rate limit
-
 Set a packet rate limit for a rule to apply it to traffic above or below a
 specified threshold. To configure rate limiting, use:
 
@@ -110,7 +104,6 @@ set load-balancing wan rule <rule> per-packet-balancing
 ```
 
 ### Exclude traffic
-
 To exclude traffic from load balancing, traffic matching an exclude rule
 bypasses load balancing and uses the system routing table instead:
 
@@ -119,7 +112,6 @@ set load-balancing wan rule <rule> exclude
 ```
 
 ## Health checks
-
 The load balancer periodically checks the health of interfaces and paths by
 sending ICMP packets (ping) to remote destinations, performing TTL tests, or
 executing a user-defined script. If an interface fails the health check, the
@@ -192,7 +184,6 @@ set load-balancing wan disable-source-nat
 ```
 
 ## Sticky connections
-
 Inbound connections to a WAN interface can be improperly handled when
 replies are sent back to the client.
 
@@ -235,9 +226,7 @@ set load-balancing wan flush-connections
 Flushing the session table causes other connections to revert from
 flow-based to packet-based balancing until each flow is reestablished.
 :::
-
 ## Script execution
-
 Run a script when an interface state changes. Scripts run from the
 `/config/scripts` directory. To use a script in another location,
 specify the full path:
@@ -247,21 +236,16 @@ set load-balancing wan hook script-name
 ```
 
 Two environment variables are available:
-
 - `WLB_INTERFACE_NAME=[interfacename]`: Interface to be monitored
 - `WLB_INTERFACE_STATE=[ACTIVE|FAILED]`: Interface state
-
 :::{warning}
 Blocking call with no timeout: VyOS becomes unresponsive if the
 script does not return.
 :::
-
 ## Handling and monitoring
-
 The following command shows WAN load balancer information including test
 types and targets. The character at the start of each line indicates the test
 state:
-
 - `+` successful.
 - `-` failed.
 - A blank indicates that no test has been carried out.

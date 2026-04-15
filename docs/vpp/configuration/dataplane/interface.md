@@ -7,23 +7,18 @@ lastproofread: '2026-02-23'
 ```{include} /_include/need_improvement.txt
 ```
 # VPP Dataplane Interfaces Configuration
-
 Only Ethernet interfaces (physical or virtual) can be connected to the
 VPP dataplane. Interfaces configured here act as a bridge between VPP
 and the outside world, allowing VPP to send and receive network
 packets.
-
 ## Interface Configuration Parameters
-
 Interfaces connected to the VPP dataplane use the DPDK driver by default,
 providing high performance and low latency.
 
 ```{cfgcmd} set vpp settings interface <interface-name>
 ```
 Some network interface cards (NICs) may not be compatible with the DPDK driver.
-
 ### DPDK interface options
-
 This section shows how to configures DPDK-specific settings for an interface.
 
 ```{cfgcmd} set vpp settings interface <interface-name> num-rx-queues <value>

@@ -801,7 +801,6 @@ during convergence/interface flap events, but for this interface only.
 
 
 This feature summarises originated external LSAs (Type-5 and Type-7). Summary
-
 Route will be originated on-behalf of all matched external LSAs.
 
 
@@ -898,13 +897,9 @@ By default, it supports both planned and unplanned outages.
 
 
 OSPF routing devices normally discover their neighbors dynamically by
-
 listening to the broadcast or multicast hello packets on the network.
-
 Because an NBMA network does not support broadcast (or multicast), the
-
 device cannot discover its neighbors dynamically, so you must configure all
-
 the neighbors statically.
 
 
@@ -1231,29 +1226,17 @@ The table consists of following data:
 
 
 **OSPF network routing table** – includes a list of acquired routes for all
-
 accessible networks (or aggregated area ranges) of OSPF system. "IA" flag
-
 means that route destination is in the area to which the router is not
-
 connected, i.e. it’s an inter-area path. In square brackets a summary metric
-
 for all links through which a path lies to this network is specified. "via"
-
 prefix defines a router-gateway, i.e. the first router on the way to the
-
 destination (next hop).
-
 **OSPF router routing table** – includes a list of acquired routes to all
-
 accessible ABRs and ASBRs.
-
 **OSPF external routing table** – includes a list of acquired routes that are
-
 external to the OSPF process. "E" flag points to the external link metric type
-
 (E1 – metric type 1, E2 – metric type 2). External link metric is printed in
-
 the "\<metric of the router which advertised the link>/\<link metric>" format.
 
 
@@ -1405,9 +1388,7 @@ Length: 36
 This command displays LSAs in MaxAge list.
 ```
 #### Examples
-
 ##### Enable OSPF
-
 **Node 1**
 
 ```none
@@ -1472,7 +1453,6 @@ O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:18
 ```
 
 ##### Enable OSPF with route redistribution of the loopback and default originate:
-
 **Node 1**
 
 ```none
@@ -1505,7 +1485,6 @@ set policy route-map CONNECT rule 10 match interface lo
 ```
 
 ##### Enable OSPF and IGP-LDP synchronization:
-
 **Node 1:**
 
 ```none
@@ -1537,7 +1516,6 @@ Node-1@vyos:~$ show ip ospf mpls ldp-sync
 ```
 
 ##### Enable OSPF with Segment Routing (Experimental):
-
 **Node 1**
 
 ```none
@@ -1617,17 +1595,11 @@ O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:51
 ```
 
 (routing-ospfv3)=
-
 ## OSPFv3 (IPv6)
-
 (ospf-v3-configuration)=
-
 ### Configuration
-
 (ospf-v3-general)=
-
 #### General
-
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
 
@@ -1657,7 +1629,6 @@ the OSPFv3 speaker – bad things will happen if multiple OSPFv3 speakers are
 configured with the same router-ID!
 ```
 (ospf-v3-optional)=
-
 #### Optional
 
 ```{cfgcmd} set protocols ospfv3 distance global <distance>
@@ -1673,7 +1644,6 @@ distance values for external routes, inter-area routes and intra-area
 routes respectively. The distance range is 1 to 255.
 ```
 (ospf-v3-area-configuration)=
-
 #### Area Configuration
 
 ```{cfgcmd} set protocols ospfv3 area <number> range <prefix>
@@ -1689,7 +1659,6 @@ intra area paths from this range are not advertised into other areas. This
 command makes sense in ABR only.
 ```
 (ospf-v3-interface-config)=
-
 #### Interface Configuration
 
 ```{cfgcmd} set protocols ospfv3 interface <interface> ipv6 cost <number>
@@ -1759,7 +1728,6 @@ synchronizing process of the router's database with all neighbors. The
 default value is 1 seconds. The interval range is 3 to 65535.
 ```
 (ospf-v3-graceful-restart)=
-
 #### Graceful Restart
 
 ```{cfgcmd} set protocols ospfv3 graceful-restart [grace-period (1-1800)]
@@ -1799,7 +1767,6 @@ It helps to support as HELPER only for planned restarts.
 By default, it supports both planned and unplanned outages.
 ```
 (ospf-v3-redistribution-config)=
-
 #### Redistribution Configuration
 
 ```{cfgcmd} set protocols ospfv3 redistribute <route source>
@@ -1815,7 +1782,6 @@ given route source. There are five modes available for route source: bgp,
 connected, kernel, ripng, static.
 ```
 (ospf-v3-op-cmd)=
-
 #### Operational Mode Commands
 
 ```{opcmd} show ipv6 ospfv3 neighbor
@@ -1862,11 +1828,8 @@ advertisement type.
 This command displays external information redistributed into OSPFv3
 ```
 (ospf-v3-config-example)=
-
 #### Configuration Example
-
 A typical configuration using 2 nodes.
-
 **Node 1:**
 
 ```none
@@ -1893,9 +1856,7 @@ show ipv6 ospfv3 redistribute
 
 Cost calculation wireguard interfaces is unreliable as ospfv3 uses the link speed to calculate the link cost.
 You might therefore want to set the link cost to a fixed value on WireGuard tunnels.
-
 Example configuration for WireGuard interfaces:
-
 **Node 1**
 
 ```none

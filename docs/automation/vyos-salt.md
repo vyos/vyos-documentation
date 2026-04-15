@@ -7,9 +7,7 @@ lastproofread: '2023-01-16'
 ```{include} /_include/need_improvement.txt
 ```
 # Salt
-
 VyOS supports op-mode and configuration via [salt].
-
 Without proxy it requires VyOS minion configuration
 and supports op-mode data:
 
@@ -89,14 +87,11 @@ r14:
 ```
 
 ## Netmiko-proxy
-
 It is possible to configure VyOS via [netmiko] proxy module.
 It requires a minion with installed packet `python3-netmiko` module
 who has a connection to VyOS nodes. Salt-minion have to communicate
 with salt master
-
 ### Configuration
-
 Salt master configuration:
 
 ```none
@@ -161,9 +156,7 @@ r11-proxy:
 ```
 
 ### Examples
-
 Example of op-mode:
-
 % stop_vyoslinter
 
 ```none
@@ -177,9 +170,7 @@ r11-proxy:
 ```
 
 % start_vyoslinter
-
 Example of configuration:
-
 % stop_vyoslinter
 
 ```none
@@ -195,10 +186,8 @@ r11-proxy:
 ```
 
 % start_vyoslinter
-
 Example of configuration commands from the file
 "/srv/salt/states/commands.txt"
-
 % stop_vyoslinter
 
 ```none

@@ -708,7 +708,6 @@ Reset the OpenVPN process on the specified interface.
 Generate an OpenVPN client configuration file in the .ovpn format for client machines.
 ```
 ## Examples
-
 This section covers examples of OpenVPN configurations for various deployments.
 
 ```{toctree}

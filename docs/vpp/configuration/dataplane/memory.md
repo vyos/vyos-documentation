@@ -47,11 +47,8 @@ Sets the main heap page size for VPP.
 ```{cfgcmd} set vpp settings resource-allocation memory main-heap-size <size>
 ```
 Sets the main heap size for VPP.
-
 (vpp-config-dataplane-physmem)=
-
 ## Physical Memory Configuration
-
 VPP uses physical memory for packet buffers and interface operations.
 The `physmem` setting controls how much memory VPP can allocate for
 these operations.
@@ -87,14 +84,11 @@ set vpp settings physmem max-size 32G
 ```
 
 ## Stats Memory Configuration
-
 VPP uses a dedicated statistics memory segment to store runtime
 counters and telemetry data. This segment is used by the VPP CLI and
 monitoring tools to access performance and status information.
-
 The statistics segment is allocated from hugepage memory and can be
 configured independently from the main heap and physmem settings.
-
 You can configure statistics memory using the following commands:
 
 ```{cfgcmd} set vpp settings resource-allocation memory stats page-size <size>

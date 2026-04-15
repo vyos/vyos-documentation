@@ -156,9 +156,7 @@ Example:
   set system watchdog reboot-timeout 180
 ```
 ## Examples
-
 ### Basic Configuration with Software Watchdog
-
 This example configures a basic software watchdog with default timeouts:
 
 ```none
@@ -166,14 +164,11 @@ set system watchdog module softdog
 ```
 
 This will:
-
 - Enable the watchdog feature
 - Load the `softdog` kernel module
 - Use a 10-second runtime timeout (default)
 - Use 120-second shutdown and reboot timeouts (default)
-
 ### Advanced Configuration
-
 This example shows a more customized configuration suitable for a production
 system:
 

@@ -16,7 +16,6 @@ configuration commands:
 ```
 
 To learn about the general traffic flow in VyOS firewalls,
-
 see {doc}`Firewall </configuration/firewall/index>`.
 
 
@@ -52,7 +51,6 @@ see {doc}`Firewall </configuration/firewall/index>`.
 
 
 First, the router receives all traffic and processes it in the **prerouting**
-
 stage.
 
 
@@ -60,97 +58,66 @@ This stage includes:
 
 
 > - **Firewall Prerouting**: commands found under `set firewall ipv4
-
 >   prerouting raw ...`
-
 > - {doc}`Conntrack Ignore</configuration/system/conntrack>`: `set system
-
 >   conntrack ignore ipv4...`
-
 > - {doc}`Policy Route</configuration/policy/route>`: commands found under
-
 >   `set policy route ...`
-
 > - {doc}`Destination NAT</configuration/nat/nat44>`: commands found under
-
 >   `set nat destination ...`
 
 
 For transit traffic, which is received by the router and forwarded, the base
-
 chain is **forward**. The following is a simplified packet flow diagram for
-
 transit traffic:
 
 
 :::{figure} /_static/images/firewall-fwd-packet-flow.png
-
 :::
 
 
 The base firewall chain for configuring filtering rules for transit traffic is
-
 `set firewall ipv4 forward filter ...`, which occurs in stage 5, highlighted
-
 in red.
 
 
 For traffic to the router itself, the base chain is **input**. For traffic
-
 the router originates, the base chain is **output**. A simplified packet flow
-
 diagram is shown next, which shows the path for traffic destined to the router
-
 itself and traffic the router generates (starting from circle number 6):
 
 
 :::{figure} /_static/images/firewall-input-packet-flow.png
-
 :::
 
 
 The base chain for traffic towards the router is
-
 `set firewall ipv4 input filter ...`
 
 
 The base chain for traffic the router generates is `set firewall ipv4
-
 output ...`, where two sub-chains are available: **filter** and **raw**:
 
 
 - **Output Prerouting**: `set firewall ipv4 output raw ...`. As described
-
   in **Prerouting**, the system processes rules in this section before the
-
   connection tracking subsystem.
-
 - **Output Filter**: `set firewall ipv4 output filter ...`. The system
-
   processes rules in this section after the connection tracking subsystem.
 
 
 :::{note}
-
 **Important note about default-actions:**
-
 If you do not define a default action for a base chain, the system sets
-
 the default action to **accept** for that chain. For custom chains, if you
-
 do not define a default action, the system sets the default-action to
-
 **drop**.
-
 :::
 
 
 You can create custom firewall chains using the following commands:
-
 `set firewall ipv4 name <name> ...`. To use a custom chain, you must define
-
 a rule with the **action jump** and the appropriate **target** in a base
-
 chain.
 
 
@@ -158,11 +125,8 @@ chain.
 
 
 Each firewall rule has a
-
 number, an action to apply if the rule matches, and the ability to specify
-
 multiple matching criteria. Packets traverse rules numbered 1-999999, so order
-
 is crucial. The system executes the rule action at the first match.
 
 
@@ -170,7 +134,6 @@ is crucial. The system executes the rule action at the first match.
 
 
 If you define a rule, you must define an action for it. The action tells the
-
 firewall what to do if all the criteria you define for that rule are met.
 
 
@@ -178,21 +141,13 @@ The action can be:
 
 
 > - `accept`: Accept the packet.
-
 > - `continue`: Continue parsing the next rule.
-
 > - `drop`: Drop the packet.
-
 > - `reject`: Reject the packet.
-
 > - `jump`: Jump to another custom chain.
-
 > - `return`: Return from the current chain and continue at the next rule
-
 >   of the last chain.
-
 > - `queue`: Enqueue packet to userspace.
-
 > - `synproxy`: Synproxy the packet.
 
 
@@ -344,9 +299,7 @@ packets between several queues.
 
 
 Also, **default-action** is an action that applies when a packet does not
-
 match any rule in its chain. For base chains, possible options for
-
 **default-action** are **accept** or **drop**.
 
 
@@ -394,17 +347,11 @@ the jump target for the default rule.
 
 
 :::{note}
-
 **Important note about default-actions:**
-
 If you do not define a default action for a base chain, the system sets
-
 the default action to **accept** for that chain. For custom chains, if you
-
 do not define a default action, the system sets the default-action to
-
 **drop**.
-
 :::
 
 
@@ -412,7 +359,6 @@ do not define a default action, the system sets the default-action to
 
 
 You can enable logging for every single firewall rule. If you enable logging,
-
 you can define other log options.
 
 
@@ -584,7 +530,6 @@ group.
 
 
 You can add a description for reference for every single rule and for every
-
 defined custom chain.
 
 
@@ -622,7 +567,6 @@ Provide a description for each rule.
 
 
 When you define a rule, it is enabled by default. In some cases, it is useful
-
 to disable the rule rather than removing it.
 
 
@@ -1041,11 +985,8 @@ Use inverse-match to match anything except the given country-codes.
 
 
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
-
 permits redistribution so we can include a database in images(~3MB
-
 compressed). Includes cron script (manually callable by op-mode update
-
 geoip) to keep database and rules updated.
 
 
@@ -1626,13 +1567,9 @@ Match based on inbound interface. Wildcard ``*`` is supported. For example:
 
 
 :::{note}
-
 If an interface is attached to a non-default vrf, when using
-
 **inbound-interface**, the vrf name must be used. For example `set firewall
-
 ipv4 forward filter rule 10 inbound-interface name MGMT`
-
 :::
 
 
@@ -1685,13 +1622,9 @@ Match based on outbound interface. Wildcard ``*`` is supported. For example:
 
 
 :::{note}
-
 If an interface is attached to a non-default vrf, when using
-
 **outbound-interface**, the real interface name must be used. For example
-
 `set firewall ipv4 forward filter rule 10 outbound-interface name eth0`
-
 :::
 
 
@@ -2248,9 +2181,7 @@ matching criteria to block brute-force attempts.
 
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-
 packets before sending them out. This feature provides more flexibility in
-
 packet handling.
 
 
@@ -2396,9 +2327,7 @@ Requirements to enable synproxy:
 
 
 > - Traffic must be symmetric.
-
 > - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled.
-
 > - Disable conntrack loose track option.
 
 

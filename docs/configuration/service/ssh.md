@@ -296,7 +296,6 @@ Example:
 You can now log into the system using: ``ssh -i vyos_testca vyos_testca@vyos.test.com``
 ```
 ## Dynamic-protection
-
 Protects host from brute-force attacks against
 SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
 attack, such as several login failures within a few seconds, is detected, the
@@ -326,7 +325,6 @@ Block source IP when their cumulative attack score exceeds threshold. The
 default is 30.
 ```
 (ssh-operation)=
-
 ## Operation
 
 ```{opcmd} restart ssh

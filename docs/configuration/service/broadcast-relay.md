@@ -49,9 +49,7 @@ it from the current configuration.
 You can run the UDP broadcast relay service on multiple routers
 connected to a subnet. There is **NO** UDP broadcast relay packet storm!
 :::
-
 ## Example
-
 To forward all broadcast packets received on `UDP port 1900` on `eth3`, `eth4`
 or `eth5` to all other interfaces in this configuration.
 

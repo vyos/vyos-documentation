@@ -85,9 +85,7 @@ to access external networks.
 Traffic flowing **from** inside interfaces gets source NAT applied,
 translating private source addresses to public addresses from the
 translation pool.
-
 ### Outside Interfaces
-
 Outside interfaces connect to public networks where external hosts may
 need to access internal services.
 
@@ -137,13 +135,10 @@ set vpp nat nat44 interface outside eth3
 ```
 
 ## Address Pool Configuration
-
 Address pools define ranges of IP addresses that can be used for NAT
 translations. VyOS NAT44 supports two types of address pools, each serving
 different purposes.
-
 ### Translation Pools
-
 Translation pools are used for dynamic source NAT (SNAT). They provide a
 range of public IP addresses that can be dynamically assigned to private
 hosts when they access external networks.
@@ -168,11 +163,9 @@ set vpp nat nat44 address-pool translation interface eth1
 ```
 
 ### Twice-NAT Pools
-
 Twice-NAT pools are used when performing both source and destination NAT on
 the same traffic flow. This is particularly useful in scenarios where you
 need to:
-
 - Translate both source and destination addresses
 - Provide access between networks with overlapping IP ranges
 - Implement advanced NAT scenarios like self-twice-nat
@@ -246,17 +239,13 @@ external (public) address mappings:
 ```{cfgcmd} set vpp nat nat44 static rule <rule-number> external address <external-ip>
 ```
 Where:
-
 - `<rule-number>` is a unique identifier for the rule
 - `<internal-ip>` is the private IP address in your local network
 - `<external-ip>` is the public IP address that external hosts will use
-
 This basic configuration creates a static one-to-one mapping. Traffic from
 outside to the external IP will be translated to the internal IP, and vice
 versa.
-
 ### Port-based Static Rules
-
 For more granular control, you can create port-specific static rules. This
 is useful when you want to publish specific services:
 
@@ -271,37 +260,27 @@ is useful when you want to publish specific services:
 ```{cfgcmd} set vpp nat nat44 static rule <rule-number> protocol <protocol>
 ```
 Where:
-
 - `<internal-port>` and `<external-port>` are the port numbers used by
   the connection.
 - `<protocol>` specifies the protocol (tcp, udp, icmp).
-
 :::{important}
 If you do not specify ports and protocol, the rule will apply to *all*
 traffic between the specified internal and external addresses.
-
 Rules must contain either both ports and protocol, or neither.
 :::
-
 ### Advanced Static Rule Options
-
 VyOS NAT44 supports several advanced options for static rules:
-
 #### Twice-NAT
-
 Twice-NAT performs both source and destination NAT. When an external host
 accesses an internal service, the source IP of such a connection is
 translated to an address from the twice-NAT address pool.
-
 This is practical in scenarios where internal services cannot connect to
 public networks, so they see such traffic as internal.
-
 The twice-NAT option can be enabled with the following command:
 
 ```{cfgcmd} set vpp nat nat44 static rule <rule-number> options twice-nat
 ```
 #### Self Twice-NAT
-
 Self Twice-NAT is used when a local host needs to access itself via the
 external address:
 
@@ -327,9 +306,7 @@ interfaces:
 ```
 This prevents the creation of sessions from the inside interface, making it
 a purely DNAT rule.
-
 #### Force Twice-NAT Address
-
 When using twice-nat, you can force the use of a specific IP address from
 the twice-nat address pool:
 
@@ -338,13 +315,11 @@ the twice-nat address pool:
    <ip-address>
 ```
 #### Rule Description
-
 To document your rules, you can add a description:
 
 ```{cfgcmd} set vpp nat nat44 static rule <rule-number> description <description>
 ```
 ### Static Rules Configuration Examples
-
 **Full one-to-one NAT mapping:**
 
 ```none
@@ -453,18 +428,14 @@ You can combine port and protocol specifications with either `local-address` or
 ```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> protocol <protocol>
 ```
 Where:
-
 - `<port-number>` is the specific port to exclude (1-65535)
 - `<protocol>` can be `tcp`, `udp`, `icmp`, or `all` (default)
-
 ### Rule Documentation
-
 Add descriptions to your exclude rules for better management:
 
 ```{cfgcmd} set vpp nat nat44 exclude rule <rule-number> description <description>
 ```
 ### Exclude Rules Configuration Examples
-
 **Exclude SSH access to router:**
 
 ```none
@@ -512,30 +483,21 @@ set vpp nat nat44 exclude rule 40 description "Direct access to internal service
 ```
 
 ### Common Use Cases
-
 **Router Administration:**
-
 Exclude rules are essential when you need to manage the router from external
 networks. Without exclude rules, NAT would attempt to translate the router's
 own traffic, potentially breaking management connections.
-
 **Service Monitoring:**
-
 Network monitoring systems often need direct access to router services.
 Exclude rules ensure that monitoring traffic bypasses NAT translation.
-
 **Routing Protocols:**
-
 Some routing protocols or network services may require direct communication
 without NAT interference.
-
 **Traffic Forwarding:**
-
 Exclude rules also work for forwarded traffic between networks. Without
 exclude rules, traffic from external to local networks must either match a
 static rule or be dropped. With exclude rules, traffic can bypass NAT
 processing with invisible 1-to-1 mappings.
-
 :::{important}
 Exclude rules affect both traffic destined for the router itself and
 forwarded traffic flowing through the router. For forwarded traffic, exclude
@@ -543,14 +505,10 @@ rules create transparent 1-to-1 mappings that allow packets to pass without
 NAT modifications, while from the outside perspective, the traffic appears to
 bypass NAT entirely.
 :::
-
 ## Advanced NAT44 Settings
-
 VyOS provides additional NAT44 settings for fine-tuning performance and
 behavior.
-
 ### Session Timeouts
-
 NAT44 maintains translation sessions with configurable timeout values for
 different protocols:
 
@@ -582,7 +540,6 @@ set vpp nat nat44 timeout icmp 30
 ```
 
 ### Session Limits
-
 Control the maximum number of concurrent NAT sessions:
 
 ```{cfgcmd} set vpp nat nat44 session-limit <number>
@@ -592,7 +549,6 @@ Set the maximum number of NAT sessions per worker thread (Default:
 ```
 This setting helps prevent memory exhaustion and ensures predictable
 performance under high load.
-
 **Example:**
 
 ```none
@@ -601,10 +557,8 @@ set vpp nat nat44 session-limit 100000
 ```
 
 ## Complete Configuration Example
-
 Here's a complete example showing how to configure VyOS NAT44 for a typical
 network setup:
-
 **Network Topology:**
 
 ```none

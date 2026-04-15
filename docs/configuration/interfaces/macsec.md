@@ -53,13 +53,9 @@ encrypted.
 ```
 
 #### MACsec key management
-
 **Static** {abbr}`SAK (Secure Authentication Key)` **mode**
-
 In static SAK mode, administrators must manually configure and update SAKs on
-
 each MACsec peer. {abbr}`MKA (MACsec Key Agreement protocol)` cannot be used in
-
 this mode.
 
 ```{cfgcmd} set interfaces macsec <interface> security static key <key>
@@ -88,7 +84,6 @@ string.
 ```{cfgcmd} set interfaces macsec <interface> security static peer <peer> disable
 ```
 **Dynamic** {abbr}`MKA (MACsec Key Agreement protocol)` **mode**
-
 In this mode, the {abbr}`MKA (MACsec Key Agreement protocol)` protocol is used
 to generate, distribute, and update {abbr}`CAKs (MACsec Connectivity
 Association Keys)`, and to authenticate MACsec peers.
@@ -173,18 +168,13 @@ Show information for a specific MACsec interface.
   TXSC: 005056bfefaa0001 on SA 0
 ```
 ## Examples
-
 **Site-to-site MACsec with dynamic MKA over an untrusted network**
-
 In the following example, two routers (R1 and R2) are connected via an
 untrusted switch, using their `eth1` interfaces as the underlay. The MACsec
 interface (`macsec1`) with dynamic MKA encrypts traffic between them.
-
 Topology details:
-
 - R1 IP addresses: `192.0.2.1/24` and `2001:db8::1/64`.
 - R2 IP addresses: `192.0.2.2/24` and `2001:db8::2/64`.
-
 **R1**
 
 ```none
@@ -242,10 +232,8 @@ encrypt` option shows the unencrypted but authenticated content.
 ```
 
 **Site-to-site MACsec with static SAK over an untrusted network**
-
 This example uses the same topology as above, but applies static SAK mode to
 the MACsec interface configuration.
-
 **R1**
 
 ```none
@@ -273,15 +261,12 @@ set interfaces macsec macsec1 source-interface 'eth1'
 ```
 
 ## MACsec over WAN
-
 MACsec offers an alternative to traditional tunneling solutions by securing
 Layer 2 with integrity, origin authentication, and optional encryption.
-
 While typically deployed between hosts and access switches, MACsec can also
 secure traffic over a WAN. In the following example, we combine VXLAN (for
 transport) and MACsec (for security) to create a secure tunnel between two
 sites.
-
 **R1 MACsec01**
 
 ```none

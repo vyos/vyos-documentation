@@ -30,11 +30,8 @@ To enable upgrade recovery, run the following command:
 - `timeout <min>:` The time in minutes (5 - 30) to cancel upgrade
   recovery before VyOS reboots.
   See {ref}`Cancelling Recovery <cancelling_recovery>`.
-
 (how-it-works)=
-
 ## How it works
-
 After a VyOS upgrade, the system monitors the boot process. Upon detecting a
 boot failure, VyOS initiates a revert to the last working version and displays
 the following warning:
@@ -56,13 +53,10 @@ Message is cleared on next reboot!
 ```
 
 (cancelling-recovery)=
-
 ## Cancelling recovery
-
 Upon detecting a boot failure, you have the predefined timeout to cancel
 upgrade recovery. This is useful if you want to troubleshoot the faulty VyOS
 version on your own.
-
 To cancel upgrade recovery, run the following command:
 
 ```none

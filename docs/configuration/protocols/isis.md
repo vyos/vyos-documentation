@@ -562,9 +562,7 @@ If no value is advertised, the supported value is 0.
 Reference: :rfc:`9352`
 ```
 ## Examples
-
 ### Enable IS-IS
-
 **Node 1:**
 
 ```none
@@ -632,7 +630,6 @@ I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, weight 1, 00:02:21
 ```
 
 ### Enable IS-IS and redistribute routes not natively in IS-IS
-
 **Node 1:**
 
 ```none
@@ -672,7 +669,6 @@ I   203.0.113.0/24 [115/10] via 192.0.2.1, eth1, 00:03:42
 ```
 
 ### Enable IS-IS and IGP-LDP synchronization
-
 **Node 1:**
 
 ```none
@@ -704,7 +700,6 @@ eth0
 ```
 
 ### Enable IS-IS with Segment Routing (Experimental)
-
 **Node 1:**
 
 ```none
@@ -786,7 +781,6 @@ I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, w
 ```
 
 ### Enable IS-IS with Segment Routing over IPv6 (Experimental)
-
 **Node 1:**
 
 ```none
@@ -822,7 +816,6 @@ set protocols isis segment-routing srv6 interface dum6
 ```
 
 ### Enable IS-IS with Segment Routing over IPv6 (uSID) (Experimental)
-
 **Node 1:**
 
 ```none

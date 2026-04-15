@@ -130,11 +130,9 @@ fmt.Println(out.Success)
 
 ```none
 out, resp, err := c.Conf.Save(ctx, "")
-
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 ```
 
@@ -142,11 +140,9 @@ fmt.Println(out.Success)
 
 ```none
 out, resp, err := c.Conf.Save(ctx, "/config/test300.config")
-
 if err != nil {
     panic("Error: %v", err)
 }
-
 fmt.Println(out.Success)
 ```
 

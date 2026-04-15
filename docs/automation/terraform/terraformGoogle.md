@@ -55,7 +55,6 @@ like the following:
 ```
 
 ### Terraform
-
 1. Create an UNIX or Windows instance.
 2. Download and install
    [Terraform](https://developer.hashicorp.com/terraform/install).
@@ -66,14 +65,11 @@ mkdir /root/google
 ```
 
 % stop_vyoslinter
-
 4. Copy all files into your Terraform project `/root/google`
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
    For more details,
    see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
-
 % start_vyoslinter
-
 5. Run the following commands:
 
 ```none
@@ -82,19 +78,15 @@ terraform init
 ```
 
 ### Ansible
-
 1. Create an UNIX instance either locally or in the cloud.
 2. Download and install Ansible
 3. Create the folder for example /root/google/
 4. Copy all files into your Ansible project `/root/google/`
    (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
    details, see [Structure of files in Ansible for Google Cloud]
-
 You obtain `mykey.json` when you create a service account in GCP
 and download the key (a JSON file).
-
 ### Deploy with Terraform
-
 Run the following commands on your Terraform instance:
 
 ```none
@@ -343,7 +335,6 @@ terraform destroy
 ```
 
 ## Troubleshooting
-
 1. Increase the timeout value in `instance.yml` from 300 seconds to
    500 seconds or more (depends on your location). Ensure that the
    security group allows access to the instance.
@@ -360,7 +351,6 @@ connection {
 ```
 
 Verify that Ansible can ping from Terraform.
-
 ## Structure of files in Terraform for Google Cloud
 
 ```none
@@ -372,7 +362,6 @@ Verify that Ansible can ping from Terraform.
 ```
 
 ## File contents of Terraform for Google Cloud
-
 `vyos.tf`
 
 ```none
@@ -641,7 +630,6 @@ host          = ""                     # IP of my Ansible
 ```
 
 ## File contents of Ansible for Google Cloud
-
 `ansible.cfg`
 
 ```none

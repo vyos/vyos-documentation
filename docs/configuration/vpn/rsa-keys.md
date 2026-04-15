@@ -8,10 +8,8 @@ directives for command coverage tracking.
 RSA can be used for services such as key exchanges and for encryption purposes.
 To make IPSec work with dynamic address on one/both sides, we will have to use
 RSA keys for authentication. They are very fast and easy to setup.
-
 First, on both routers run the operational command "generate pki key-pair
 install \<key-pair nam>>". You may choose different length than 2048 of course.
-
 % stop_vyoslinter
 
 ```none
@@ -29,7 +27,6 @@ set pki key-pair ipsec-LEFT private key 'MIIEvgIBADAN...'
 ```
 
 % start_vyoslinter
-
 Configuration commands will display.
 Note the command with the public key
 (set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...').
@@ -41,9 +38,7 @@ vyos@left# run generate pki key-pair install ipsec-RIGHT
 
 Note the command with the public key
 (set pki key-pair ipsec-RIGHT public key 'FAAOCAQ8AMII...').
-
 The noted public keys should be entered on the opposite routers.
-
 On the LEFT:
 
 ```none
@@ -57,7 +52,6 @@ set pki key-pair ipsec-LEFT public key 'MIIBIjANBgkqh...'
 ```
 
 Now you are ready to setup IPsec. The key points:
-
 1. Since both routers do not know their effective public addresses,
    we set the local-address of the peer to "any".
 2. On the initiator, we set the peer address to its public address,
@@ -66,9 +60,7 @@ Now you are ready to setup IPsec. The key points:
    can identify IKE traffic from the responder correctly.
 4. On the responder, we need to set the local id so that initiator
    can know who's talking to it for the point #3 to work.
-
 On the LEFT (static address):
-
 % stop_vyoslinter
 
 ```none

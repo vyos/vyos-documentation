@@ -84,13 +84,10 @@ set nat66 source rule 1 translation address 'fc00::/64'
 ```
 
 #### Destination Prefix
-
 For the {ref}`destination-nat66` rule, the destination address of
 the packet isreplaced by the address calculated from the specified
 address or prefix in the `translation address` command
-
 Example:
-
 - Convert the address prefix of a single `fc00::/64` network
   to `fc01::/64`
 - Input from `eth0` network interface
@@ -102,7 +99,6 @@ set nat66 destination rule 1 translation address 'fc01::/64'
 ```
 
 For the destination, groups can also be used instead of an address.
-
 Example:
 
 ```none
@@ -114,15 +110,12 @@ set nat66 destination rule 1 translation address 'fc01::/64'
 ```
 
 ## Configuration Examples
-
 Use the following topology to build a nat66 based isolated
 network between internal and external networks (dynamic prefix is
 not supported):
-
 :::{figure} /_static/images/vyos_1_4_nat66_simple.png
 :alt: VyOS NAT66 Simple Configure
 :::
-
 R1:
 
 ```none
@@ -149,13 +142,10 @@ set service router-advert interface br1 prefix ::/0
 Use the following topology to translate internal user local addresses
 (`fc::/7`) to DHCPv6-PD provided prefixes from an ISP connected to
 a VyOS HA pair.
-
 :::{figure} /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
 :alt: VyOS NAT66 DHCPv6 using a dummy interface
 :::
-
 Configure both routers (a and b) for DHCPv6-PD via dummy interface:
-
 % stop_vyoslinter
 
 ```none
@@ -169,7 +159,6 @@ commit
 ```
 
 % start_vyoslinter
-
 Get the DHCPv6-PD prefixes from both routers:
 
 ```none

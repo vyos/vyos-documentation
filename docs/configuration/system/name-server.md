@@ -24,10 +24,8 @@ one at a time. Both IPv4 and IPv6 addresses are supported.
 
 ```
 ### Example
-
 In this example, some *OpenNIC* servers are used, two IPv4 addresses
 and two IPv6 addresses:
-
 % stop_vyoslinter
 
 ```none
@@ -38,9 +36,7 @@ set system name-server 2a00:f826:8:2::195
 ```
 
 % start_vyoslinter
-
 ## Domain search order
-
 In order for the system to use and complete unqualified host names, a
 list can be defined which will be used for domain searches.
 
@@ -55,11 +51,8 @@ uses them to complete unqualified host names. Maximum: 6 entries.
 Domain names can include letters, numbers, hyphens and periods
 with a maximum length of 253 characters.
 :::
-
 (name-server-domain-search-order-example)=
-
 ### Example
-
 The system is configured to attempt domain completion in the following
 order: vyos.io (first), vyos.net (second) and vyos.network (last):
 

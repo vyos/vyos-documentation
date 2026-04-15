@@ -546,16 +546,12 @@ By default, no IP addresses are configured.
 
 
 EVPN multihoming (EVPN-MH) is a standards-based solution (RFC 7432, RFC 8365)
-
 that enables Customer Edge (CE) devices, such as servers, to connect to two
-
 or more Provider Edge (PE) devices for redundancy and load balancing.
 
 
 EVPN-MH is often used as a modern, standards-based alternative to
-
 {abbr}`MLAG (Multi-Chassis Link Aggregation)` and {abbr}`VTEPs (Virtual
-
 Tunnel Endpoints)`.
 
 
@@ -563,26 +559,20 @@ Tunnel Endpoints)`.
 
 
 Physical links that connect a CE device to PE devices are bundled using link
-
 aggregation. This logical bundle is called an Ethernet Segment (ES) and is
-
 uniquely identified by an Ethernet Segment Identifier (ESI) within the
-
 EVPN domain.
 
 
 To enable EVPN-MH, configure the same ESI on the bonding interfaces of all
-
 PE devices connected to a single CE device.
 
 
 An ESI is configured by specifying either a system MAC address and a local
-
 discriminator, or an Ethernet Segment Identifier Name (ESINAME).
 
 
 The following two commands generate a 10-byte Type-3 ESI by combining the
-
 system MAC and local discriminator:
 
 
@@ -657,11 +647,8 @@ filtering with local bias.
 
 
 The following configuration example applies to all listed third-party vendors.
-
 It creates a bonding interface with two member interfaces, defines VLANs 10
-
 and 100 on the bonding interface, and assigns an IPv4 address to each VLAN
-
 subinterface.
 
 
@@ -691,20 +678,14 @@ set interfaces bonding bond0 member interface eth2
 
 
 :::{note}
-
 If you are running this configuration in a virtual environment like
-
 EVE-NG, ensure the e1000 driver is chosen for your VyOS NIC. The default
-
 drivers, such as `virtio-net-pci` or `vmxnet3`, are incompatible with
-
 this configuration. Specifically, ICMP messages will not be processed correctly.
 
 
 To check your NIC driver, use the following command: {opcmd}`show interfaces ethernet
-
 eth0 physical | grep -i driver`
-
 :::
 
 
@@ -712,7 +693,6 @@ eth0 physical | grep -i driver`
 
 
 Configure a Cisco Catalyst switch to integrate with a two-member VyOS bonding
-
 interface.
 
 
@@ -741,7 +721,6 @@ interface GigabitEthernet1/0/24
 
 
 A new interface, `Port-channel1`, becomes available; all configuration,
-
 such as allowed VLAN interfaces and STP, is applied here.
 
 
@@ -768,7 +747,6 @@ interface Port-channel1
 
 
 Configure a Juniper EX Series switch to integrate with a two-member VyOS bonding
-
 interface.
 
 
@@ -817,7 +795,6 @@ set interfaces xe-1/1/0 ether-options 802.3ad ae0
 
 
 Configure an Aruba/HP 2510G switch to integrate with a two-member VyOS bonding
-
 interface.
 
 
@@ -841,9 +818,7 @@ vlan 100 tagged Trk1
 
 
 When deploying VyOS in environments with Arista switches, use the following
-
 blueprint as an initial setup to configure an operational LACP port-channel
-
 between the two devices.
 
 
@@ -851,9 +826,7 @@ Let's assume the following topology:
 
 
 :::{figure} /_static/images/vyos_arista_bond_lacp.png
-
 :alt: VyOS Arista EOS setup
-
 :::
 
 
@@ -1046,15 +1019,10 @@ Let's assume the following topology:
 
 
 :::{note}
-
 When testing this environment in EVE-NG, ensure the e1000 driver
-
 is chosen for your VyOS network interfaces. If the default virtio driver
-
 is used, VyOS will not transmit LACP PDUs, preventing the port-channel
-
 from ever becoming active.
-
 :::
 
 

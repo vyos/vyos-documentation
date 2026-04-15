@@ -17,18 +17,13 @@ Additionally, you can use Ansible for provisioning.
 ```
 
 On this page you'll learn how to:
-
 - Create the necessary files for Terraform and Ansible.
 - Use Terraform to create a single instance on AWS and use Ansible for
   provisioning.
-
 ## Prepare to deploy VyOS with Terraform on AWS
-
 To create a single instance and install your configuration using
 Terraform, Ansible, and AWS, follow these steps:
-
 ### AWS
-
 1. Create an account with AWS and get your `access_key` and `secret_key`.
 2. Create a key [pair] and download your `.pem` key.
 
@@ -64,13 +59,10 @@ Terraform, Ansible, and AWS, follow these steps:
 > ```
 
 % stop_vyoslinter
-
 4. Copy all files into your Terraform project
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
    See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
-
 % start_vyoslinter
-
 5. Run the following commands:
 
 ```none
@@ -79,24 +71,18 @@ terraform init
 ```
 
 ### Ansible
-
 1. Create a UNIX instance whenever you need.
 2. Download and install Ansible
 3. Create a folder, for example `/root/aws/`.
-
 % stop_vyoslinter
-
 4. Copy all files into your Ansible project
    (`ansible.cfg`, `instance.yml`,
    `mykey.pem`, and `all`).
    See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
    You can obtain `mykey.pem` by creating a key [pair] in AWS and
    downloading your `.pem` key.
-
 % start_vyoslinter
-
 ### Deploy with Terraform
-
 Run the following commands on your Terraform instance:
 
 ```none
@@ -285,7 +271,6 @@ terraform destroy
 > ```
 
 Make sure Ansible can ping from Terraform.
-
 ## Structure of files in Terraform for AWS
 
 ```none
@@ -297,7 +282,6 @@ Make sure Ansible can ping from Terraform.
 ```
 
 ## File contents of Terraform for AWS
-
 `vyos.tf`
 
 ```none
@@ -469,7 +453,6 @@ secret    = ""   # secret_key for AWS
 ```
 
 ## File contents of Ansible for AWS
-
 `ansible.cfg`
 
 ```none

@@ -17,11 +17,8 @@ The following commands are covered in this section:
 ```
 
 From the main structure defined in
-
 {doc}`Firewall Overview</configuration/firewall/index>`
-
 in this section you can find detailed information only for the next part
-
 of the general structure:
 
 
@@ -55,13 +52,9 @@ of the general structure:
 
 
 Traffic that is received by the router on an interface that is a member of a
-
 bridge is processed on the **Bridge Layer**. Before the bridge decision is
-
 made, all packets are analyzed at **Prerouting**. First filters can be applied
-
 here, and also rules for ignoring connection tracking system can be configured.
-
 The relevant configuration that acts in **prerouting** is:
 
 
@@ -69,56 +62,41 @@ The relevant configuration that acts in **prerouting** is:
 
 
 For traffic that needs to be switched internally by the bridge, the base
-
 chain is **forward**, and its base command for filtering is `set firewall
-
 bridge forward filter ...`, which happens in stage 4, highlighted with red
-
 color.
 
 
 :::{figure} /_static/images/firewall-bridge-forward.png
-
 :::
 
 
 For traffic destined to the router itself or that needs to be routed
-
 (assuming a layer3 bridge is configured), the base chain is **input**, and the
-
 base command is `set firewall bridge input filter ...` and the path is:
 
 
 :::{figure} /_static/images/firewall-bridge-input.png
-
 :::
 
 
 If it's not dropped, then the packet is sent to **IP Layer**, and will be
-
 processed by the **IP Layer** firewall: IPv4 or IPv6 ruleset. Check once again
-
 the {doc}`general packet flow diagram</configuration/firewall/index>` if
-
 needed.
 
 
 For traffic that originates from the bridge itself, the base chain is
-
 **output**, and the base command is `set firewall bridge output filter
-
 ...`, and the path is:
 
 
 :::{figure} /_static/images/firewall-bridge-output.png
-
 :::
 
 
 Custom bridge firewall chains can be created with the command `set firewall
-
 bridge name <name> ...`. To use such a custom chain, a rule with action jump
-
 and the appropriate target must be defined in a base chain.
 
 
@@ -126,13 +104,9 @@ and the appropriate target must be defined in a base chain.
 
 
 For firewall filtering, firewall rules need to be created. Each rule is
-
 numbered, has an action to apply if the rule is matched, and the ability
-
 to specify multiple matching criteria. Data packets go through the rules
-
 from 1 - 999999, so order is crucial. At the first match the action of the
-
 rule will be executed.
 
 
@@ -140,7 +114,6 @@ rule will be executed.
 
 
 If a rule is defined, an action must also be defined for it. This tells the
-
 firewall what to do if all matching criteria in the rule are met.
 
 
@@ -148,21 +121,13 @@ In firewall bridge rules, the action can be:
 
 
 > - `accept`: accept the packet.
-
 > - `continue`: continue parsing next rule.
-
 > - `drop`: drop the packet.
-
 > - `jump`: jump to another custom chain.
-
 > - `return`: Return from the current chain and continue at the next rule
-
 >   of the last chain.
-
 > - `queue`: Enqueue packet to userspace.
-
 > - `notrack`: ignore connection tracking system. This action is only
-
 >   available in prerouting chain.
 
 
@@ -332,9 +297,7 @@ queue-options fanout
 
 
 Also, **default-action** is an action that takes place whenever a packet does
-
 not match any rule in its chain. For base chains, possible options for
-
 **default-action** are **accept** or **drop**.
 
 
@@ -388,15 +351,10 @@ command to specify jump target for default rule.
 
 
 :::{note}
-
 **Important note about default-actions:**
-
 If the default action for any base chain is not defined, then the default
-
 action is set to **accept** for that chain. For custom chains, if the
-
 default action is not defined, then the default-action is set to **drop**.
-
 :::
 
 
@@ -404,7 +362,6 @@ default action is not defined, then the default-action is set to **drop**.
 
 
 You can enable logging for every firewall rule. If enabled, other log options
-
 can be configured.
 
 
@@ -655,7 +612,6 @@ Provide a description for each rule.
 
 
 By default, when you define a rule, it is enabled. In some cases, it is
-
 useful to disable the rule instead of removing it.
 
 
@@ -685,19 +641,15 @@ Command for disabling a rule but keep it in the configuration.
 
 
 There are many matching criteria against which a packet can be tested. Refer
-
 to {doc}`IPv4</configuration/firewall/ipv4>` and
-
 {doc}`IPv6</configuration/firewall/ipv6>` matching criteria for more details.
 
 
 Since bridges operate at layer 2, both matchers for IPv4 and IPv6 are
-
 supported in bridge firewall configuration. Same applies to firewall groups.
 
 
 Same specific matching criteria that can be used in bridge firewall are
-
 described in this section:
 
 
@@ -839,9 +791,7 @@ supported.
 
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-
 packets before they are sent out. This feaure provides more flexibility in
-
 packet handling.
 
 
@@ -898,7 +848,6 @@ rule <1-999999> set connection-mark <0-2147483647>
 Set connection mark value.
 ```
 ### Use IP firewall
-
 By default, for switched traffic, only the rules defined under `set firewall
 bridge` are applied. There are two global-options that can be configured in
 order to force deeper analysis of the packet on the IP layer. These options
@@ -917,11 +866,8 @@ is used, packets are also parsed by rules defined in ``set firewall ipv6
 ...``
 ```
 ## Operation-mode Firewall
-
 ### Rule-set overview
-
 In this section you can find all useful firewall op-mode commands.
-
 General commands for firewall configuration, counter and statistics:
 
 ```{opcmd} show firewall
@@ -963,7 +909,6 @@ for forward hook; show all logs for forward hook and priority filter; show
 all logs for particular custom chain; show logs for specific Rule-Set.
 ```
 ### Example
-
 Configuration example:
 
 ```none

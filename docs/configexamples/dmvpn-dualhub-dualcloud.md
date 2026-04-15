@@ -21,11 +21,8 @@ as a Spoke.
 ```
 
 ## Configurations
-
 ### Underlay configuration
-
 Networks 192.168.X.0/24 are used as LANs for every spoke.
-
 HUB-1
 
 ```none
@@ -76,12 +73,10 @@ set protocols static route 0.0.0.0/0 next-hop 10.0.13.1
 ```
 
 ### NHRP configuration
-
 The next step is to configure the NHRP protocol. In a Dual cloud network, every HUB has to be configured with one GRE
 multipoint tunnel interface and every spoke has to be configured with two tunnel interfaces, one tunnel to each hub.
 In this example tunnel networks are 10.100.100.0/24 for the first cloud and 10.100.101.0/24 for the second cloud.
 But VyOS uses FRR for NHRP, that is why the tunnel address mask must be /32.
-
 HUB-1
 
 ```none
@@ -205,10 +200,8 @@ set protocols nhrp tunnel tun101 shortcut
 ```
 
 ### Overlay configuration
-
 The last step is to configure the routing protocol. In this scenario, OSPF was chosen as the dynamic routing protocol.
 But you can use iBGP or eBGP. To form fast convergence it is possible to use BFD protocol.
-
 HUB-1
 
 ```none
@@ -275,11 +268,8 @@ set protocols ospf passive-interface 'default'
 ```
 
 ### Security configuration
-
 Tunnels can be encrypted by IPSEC for security.
-
 HUB-1
-
 > ```none
 > set vpn ipsec esp-group ESP-HUB lifetime '1800'
 > set vpn ipsec esp-group ESP-HUB mode 'transport'
@@ -300,7 +290,6 @@ HUB-1
 > ```
 
 HUB-2
-
 > ```none
 > set vpn ipsec esp-group ESP-HUB lifetime '1800'
 > set vpn ipsec esp-group ESP-HUB mode 'transport'
@@ -321,7 +310,6 @@ HUB-2
 > ```
 
 VyOS Spokes have the same configuration
-
 > ```none
 > set vpn ipsec esp-group ESP-HUB lifetime '1800'
 > set vpn ipsec esp-group ESP-HUB mode 'transport'
@@ -343,7 +331,6 @@ VyOS Spokes have the same configuration
 > ```
 
 SPOKE-1
-
 > ```none
 > crypto isakmp policy 1
 >  encr aes 256
@@ -369,7 +356,6 @@ SPOKE-1
 > ```
 
 ## Monitoring
-
 All spokes created IPSec tunnels to Hubs, are registered on Hubs using NHRP protocol and formed adjacency in OSPF.
 
 ```none

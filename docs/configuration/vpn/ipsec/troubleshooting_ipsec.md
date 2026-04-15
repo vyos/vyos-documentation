@@ -8,10 +8,8 @@ directives for command coverage tracking.
 ```
 
 ## Introduction
-
 This document describes the methodology to monitor and troubleshoot
 Site-to-Site VPN IPsec.
-
 Steps for troubleshooting problems with Site-to-Site VPN IPsec:
 : 1. Ping the remote site through the tunnel using the source and
      destination IPs included in the policy.
@@ -20,11 +18,8 @@ Steps for troubleshooting problems with Site-to-Site VPN IPsec:
   3. Check the IKE SAs' statuses.
   4. Check the IPsec SAs' statuses.
   5. Check logs to view debug messages.
-
 ## Checking IKE SA Status
-
 The next command shows IKE SAs' statuses.
-
 % stop_vyoslinter
 
 ```none
@@ -46,9 +41,7 @@ This command shows the next information:
   - NAT-T.
   - ID and IP of both peers.
   - A-Time: established time, L-Time: time for next rekeying.
-
 ## IPsec SA (CHILD SA) Status
-
 The next commands show IPsec SAs' statuses.
 
 ```none
@@ -93,10 +86,8 @@ PEER-tunnel-1  up       IPsec   192.168.1.2       10.0.0.0/24  10.0.1.0/24  192.
 ```
 
 ## Viewing Logs for Debugging
-
 If IKE SAs or IPsec SAs are down, need to debug IPsec connectivity
 using logs `show log ipsec`
-
 The next example of the successful IPsec connection initialization.
 
 ```none
@@ -136,9 +127,7 @@ Jun 20 14:29:47 charon-systemd[2428]: CHILD_SA PEER-tunnel-1{1} established with
 ```
 
 ## Troubleshooting Examples
-
 ### IKE PROPOSAL are Different
-
 In this situation, IKE SAs can be down or not active.
 
 ```none
@@ -146,7 +135,6 @@ vyos@vyos:~$ show vpn ike sa
 ```
 
 The problem is in IKE phase (Phase 1). The next step is checking debug logs.
-
 Responder Side:
 
 ```none
@@ -171,9 +159,7 @@ The notification **NO_PROPOSAL_CHOSEN** means that the proposal mismatch.
 On the Responder side there is concrete information where is mismatch.
 Encryption **AES_CBC_128** is configured in IKE policy on the responder
 but **AES_CBC_256** is configured on the initiator side.
-
 ### PSK Secret Mismatch
-
 In this situation, IKE SAs can be down or not active.
 
 ```none
@@ -181,7 +167,6 @@ vyos@vyos:~$ show vpn ike sa
 ```
 
 The problem is in IKE phase (Phase 1). The next step is checking debug logs.
-
 Responder:
 
 ```none
@@ -200,9 +185,7 @@ Jun 23 08:07:24 charon-systemd[2436]: received AUTHENTICATION_FAILED notify erro
 
 The notification **AUTHENTICATION_FAILED** means that the authentication
 is failed. There is a reason to check PSK on both side.
-
 ### ESP Proposal Mismatch
-
 The output of **show** commands shows us that IKE SA is established but
 IPSec SA is not.
 
@@ -224,7 +207,6 @@ Connection    State    Uptime    Bytes In/Out    Packets In/Out    Remote addres
 ```
 
 The next step is checking debug logs.
-
 Initiator side:
 
 ```none
@@ -265,7 +247,6 @@ Jun 23 08:16:10 charon-systemd[3789]: failed to establish CHILD_SA, keeping IKE_
 There are messages: **NO_PROPOSAL_CHOSEN** and
 **failed to establish CHILD_SA** which refers that the problem is in
 the IPsec(ESP) proposal mismatch.
-
 The reason of this problem is showed on the responder side.
 
 ```none
@@ -280,13 +261,10 @@ Jun 23 08:16:12 charon[2440]: 01[IKE] <PEER|5> failed to establish CHILD_SA, kee
 
 Encryption **AES_CBC_128** is configured in IKE policy on the responder but **AES_CBC_256**
 is configured on the initiator side.
-
 ### Prefixes in Policies Mismatch
-
 As in previous situation, IKE SA is in up state but IPsec SA is not up.
 According to logs we can see **TS_UNACCEPTABLE** notification. It means
 that prefixes (traffic selectors) mismatch on both sides
-
 Initiator:
 
 ```none

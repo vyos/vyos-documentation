@@ -35,11 +35,8 @@ the command line prompt.
 
 
 A domain name is the label (name) assigned to a computer network and is thus
-
 unique. VyOS appends the domain name as a suffix to any unqualified name. For
-
 example, if you set the domain name `example.com`, and you would ping the
-
 unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
 
 
@@ -55,22 +52,15 @@ or digit, and have as interior characters only letters, digits, or a hyphen.
 
 
 How an IP address is assigned to an interface in {ref}`ethernet-interface`.
-
 This section shows how to statically map an IP address to a hostname for local
-
 (meaning on this VyOS instance) name resolution. This is the VyOS equivalent to
-
 `/etc/hosts` file entries.
 
 
 :::{note}
-
 Do *not* manually edit `/etc/hosts`. This file will automatically be
-
 regenerated on boot based on the settings in this section, which means you'll
-
 lose all your manual edits. Instead, configure static host mappings as follows.
-
 :::
 
 

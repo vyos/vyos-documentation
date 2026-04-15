@@ -282,7 +282,6 @@ set protocols static route 192.168.1.0/24 interface wg01
 
 
 To allow WireGuard traffic through the WAN interface, create a firewall
-
 exception:
 
 
@@ -310,7 +309,6 @@ set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
 
 
 Ensure that the OUTSIDE_LOCAL firewall group is applied to the WAN interface
-
 and in an input (local) direction.
 
 
@@ -326,7 +324,6 @@ set firewall ipv4 input filter rule 10 inbound-interface name 'eth0'
 
 
 Verify that your firewall rules permit traffic. If so, your WireGuard VPN
-
 should be operational.
 
 
@@ -353,7 +350,6 @@ PING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
 
 
 An additional layer of symmetric-key cryptography can be used on top of the
-
 asymmetric cryptography. This is optional.
 
 
@@ -367,7 +363,6 @@ Pre-shared key: rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 
 
 Copy the key, as it is not stored locally. Since it is a symmetric key, only
-
 you and your peer should know its contents. Distribute the key securely.
 
 
@@ -384,23 +379,17 @@ wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5
 
 
 With WireGuard, a road warrior VPN configuration is similar to a site-to-site
-
 VPN. It just omits the `address` and `port` statements.
 
 
 In the following example, the IP addresses for remote clients are defined
-
 within each peer configuration. This allows peers to communicate with each
-
 other.
 
 
 Additionally, this setup uses a `persistent-keepalive` flag set to 15 seconds
-
 to keep the connection alive. This setting is mainly relevant if a peer is
-
 behind NAT and cannot be reached if the connection is lost. For effectiveness,
-
 the value should be lower than the UDP timeout.
 
 
@@ -448,7 +437,6 @@ wireguard wg01 {
 
 
 Below is the configuration for the iPhone peer. The `AllowedIPs` wildcard
-
 setting directs all IPv4 and IPv6 traffic through the VPN connection.
 
 
@@ -477,9 +465,7 @@ PersistentKeepalive = 15
 
 
 To enable split tunneling, specify the remote subnets. This ensures that only
-
 traffic destined for the remote site is sent through the tunnel, while all
-
 other traffic remains unaffected.
 
 
