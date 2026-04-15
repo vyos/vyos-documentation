@@ -83,7 +83,7 @@ For on-demand connections, you must also configure an ``idle-timeout`` period
 
 to disconnect the session after inactivity.
 
-:::\{note}
+:::{note}
 
 Setting the idle timeout to zero, or leaving it unconfigured, keeps
 
@@ -106,7 +106,7 @@ Example:
 
 set interfaces pppoe pppoe0 no-default-route
 
-:::\{note}
+:::{note}
 
 Introduced in VyOS 1.4, this command inverts the logic of the former
 
@@ -144,7 +144,7 @@ and 256 bytes for data).
 
 The default MRU is 1492 bytes.
 
-:::\{note}
+:::{note}
 
 When using the IPv6 protocol, the MRU must be at least 1280 bytes.
 
@@ -159,7 +159,7 @@ This setting defines how long the connection remains active without any traffic
 
 before being disconnected.
 
-:::\{note}
+:::{note}
 
 Setting the idle timeout to zero, or leaving it unconfigured, keeps
 
@@ -240,7 +240,7 @@ IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-:::\{note}
+:::{note}
 
 Introduced in VyOS 1.4, this command replaces the older ``set firewall
 
@@ -322,7 +322,7 @@ IPv6 traffic (40 bytes for the IPv6 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-:::\{note}
+:::{note}
 
 Introduced in VyOS 1.4, this command replaces the older ``set firewall
 

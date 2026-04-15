@@ -187,7 +187,7 @@ The default value is 2 seconds.
 When enabled, the bridge strictly segregates traffic among VLANs configured
 on its member interfaces.
 
-:::\{note}
+:::{note}
 
 Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
 

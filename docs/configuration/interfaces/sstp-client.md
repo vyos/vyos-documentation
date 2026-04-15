@@ -53,7 +53,7 @@ Example:
 
 set interfaces sstpc sstpc0 no-default-route
 
-:::\{note}
+:::{note}
 
 Introduced in VyOS 1.4, this command inverts the logic of the former
 
@@ -109,7 +109,7 @@ IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 
 This option is recommended to automatically set the proper value.
 
-:::\{note}
+:::{note}
 
 Introduced in VyOS 1.4, this command replaces the older ``set firewall
 

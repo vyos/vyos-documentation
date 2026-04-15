@@ -105,7 +105,7 @@ enables cipher negotiation, where both peers automatically agree on a mutually
 supported cipher during session startup.
 
 
-:::\{note}
+:::{note}
 
 
 This option is not compatible with ``site-to-site`` mode.
@@ -127,7 +127,7 @@ fallback`` directive. It defines the cipher to use if negotiation is **not
 supported**.
 
 
-:::\{note}
+:::{note}
 
 
 This option ensures consistent encryption between two static peers
@@ -295,7 +295,7 @@ Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
 to the openvpn.conf file.
 
 
-:::\{warning}
+:::{warning}
 
 
 Use this option only as a last resort. Invalid options or syntax
@@ -334,7 +334,7 @@ either immediately or after a short delay, as defined.
 Ensure the path and arguments are enclosed in single or double quotes.
 
 
-:::\{note}
+:::{note}
 
 
 Some raw configuration options require quotes. To include them, use

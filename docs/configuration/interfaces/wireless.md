@@ -35,7 +35,7 @@ Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
 to indicate country in which device is operating. This can limit available
 channels and transmit power.
 
-:::\{note}
+:::{note}
 
 This option is mandatory in ``access-point`` mode.
 
@@ -85,7 +85,7 @@ This defaults to 2007.
 
 Management Frame Protection (MFP) according to IEEE 802.11w
 
-:::\{note}
+:::{note}
 
 :abbr:`MFP (Management Frame Protection)` is required for WPA3.
 
@@ -95,7 +95,7 @@ Management Frame Protection (MFP) according to IEEE 802.11w
 
 Beacon Protection: management frame protection for Beacon frames.
 
-:::\{note}
+:::{note}
 
 This option requires :abbr:`MFP (Management Frame Protection)`
 
@@ -113,7 +113,7 @@ Operation mode of wireless radio.
 * ``ac`` - 802.11ac - 1300 Mbits/sec
 * ``ax`` - 802.11ax - exceeds 1GBit/sec
 
-:::\{note}
+:::{note}
 
 In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 
@@ -184,7 +184,7 @@ Supported channel width set.
 * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
   channel
 
-:::\{note}
+:::{note}
 
 Channel availability for HT40- and HT40+ is limited. The following
 
@@ -197,7 +197,7 @@ Channel availability for HT40- and HT40+ is limited. The following
     freq              HT40-           HT40+
     2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
     5 GHz             40,48,56,64     36,44,52,60
-:::\{note}
+:::{note}
 40 MHz channels may switch their primary and secondary channels if
 :::
   needed or creation of 40 MHz channel may be rejected based on overlapping

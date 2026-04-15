@@ -56,7 +56,7 @@ segments to coexist within the same administrative domain.
 
 Configure the UDP port of the remote VXLAN endpoint.
 
-:::\{note}
+:::{note}
 
 Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
 
@@ -67,7 +67,7 @@ Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
 
 Configure the source IP address for the VXLAN underlay.
 
-:::\{warning}
+:::{warning}
 
 This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 
@@ -109,7 +109,7 @@ interface.**
 When enabled, the interface only receives packets with VNIs configured in its
 VNI filtering table.
 
-:::\{note}
+:::{note}
 
 VNI filtering works only if the interface is configured with the
 

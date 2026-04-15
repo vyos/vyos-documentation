@@ -24,7 +24,7 @@ Enable watchdog support.
 The watchdog is enabled only when a watchdog device is available as
 ``/dev/watchdog0``.
 
-:::\{note}
+:::{note}
 
 If multiple watchdog devices are present, only the first watchdog
 
@@ -55,7 +55,7 @@ Common modules include:
 * ``i6300esb`` - Intel 6300ESB watchdog timer
 * ``ipmi_watchdog`` - IPMI watchdog timer
 
-:::\{warning}
+:::{warning}
 
 ``softdog`` is not a hardware watchdog. It is implemented using
 
@@ -70,7 +70,7 @@ Common modules include:
 If no module is specified, VyOS will use an existing ``/dev/watchdog0``
 device if available.
 
-:::\{note}
+:::{note}
 
 If a module is specified but a different driver is actually bound
 
@@ -89,7 +89,7 @@ Set the watchdog timeout for normal runtime operation in seconds.
 
 Valid range: 1-65535 seconds
 
-:::\{note}
+:::{note}
 
 Some watchdog drivers expose minimum and maximum supported runtime
 
@@ -116,7 +116,7 @@ Valid range: 60-65535 seconds
 This extended timeout allows the system to complete a graceful shutdown
 without triggering the watchdog.
 
-:::\{warning}
+:::{warning}
 
 Setting this value too low (below 120 seconds) may cause
 
@@ -140,7 +140,7 @@ Valid range: 60-65535 seconds
 This extended timeout allows the system to complete the reboot process
 without triggering the watchdog during the transition.
 
-:::\{warning}
+:::{warning}
 
 Setting this value too low (below 120 seconds) may cause
 

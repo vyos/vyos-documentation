@@ -35,7 +35,7 @@ recent Linux distributions.
 
 Retrieve a tree-like representation of all connected USB devices.
 
-:::\{note}
+:::{note}
 
 If a device is unplugged and plugged in again, it is assigned a new
 

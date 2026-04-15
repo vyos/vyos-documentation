@@ -29,7 +29,7 @@ local traffic. You can also use the **firewall global-options all-ping**
 command. This command affects only LOCAL traffic (packets destined for your
 VyOS system), not IN or OUT traffic.
 
-:::\{note}
+:::{note}
 
 **firewall global-options all-ping** affects only LOCAL traffic
 

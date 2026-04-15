@@ -144,7 +144,7 @@ the console.
 Generate a new WireGuard public/private key portion and output the result to
 the console.
 
-:::\{note}
+:::{note}
 
 In addition to the command above, the output is in a format which can
 
@@ -163,7 +163,7 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 
 Generate a WireGuard pre-shared secret used for peers to communicate.
 
-:::\{note}
+:::{note}
 
 In addition to the command above, the output is in a format which can
 
@@ -182,7 +182,7 @@ In addition to the command above, the output is in a format which can
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
 
-:::\{note}
+:::{note}
 
 When loading the certificate you need to manually strip the
 
@@ -207,7 +207,7 @@ Add the CAs private key to the VyOS CLI. This should never leave the system,
 and is only required if you use VyOS as your certificate generator as
 mentioned above.
 
-:::\{note}
+:::{note}
 
 When loading the certificate you need to manually strip the
 
@@ -232,7 +232,7 @@ certificates used by services on this router.
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
 
-:::\{note}
+:::{note}
 
 When loading the certificate you need to manually strip the
 
@@ -252,7 +252,7 @@ A human readable description what this certificate is about.
 Add the private key portion of this certificate to the CLI. This should never
 leave the system as it is used to decrypt the data.
 
-:::\{note}
+:::{note}
 
 When loading the certificate you need to manually strip the
 
@@ -334,7 +334,7 @@ ACME Directory Resource URI.
 
 This defaults to https://acme-v02.api.letsencrypt.org/directory
 
-:::\{note}
+:::{note}
 
 During initial deployment we recommend using the staging API
 

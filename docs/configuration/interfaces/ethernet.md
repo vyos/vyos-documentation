@@ -312,7 +312,7 @@ multiple offloading features for a single interface.
  * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple
    incoming packets into one larger packet before sending it to the CPU.
 
-   :::\{note}
+   :::{note}
 
    :abbr:`LRO (Large Receive Offload)` hardware support is often limited
 
@@ -320,7 +320,7 @@ multiple offloading features for a single interface.
      to TCP/IPv4 packets. For details on LRO limitations, see
      https://lwn.net/Articles/358910/
 
-   :::\{warning}
+   :::{warning}
 
    :abbr:`LRO (Large Receive Offload)` irreversibly alters packet
 
@@ -358,7 +358,7 @@ multiple offloading features for a single interface.
    can be correctly split back into the original packets. This makes GRO safe for
    use on routers and bridges.
 
- :::\{note}
+ :::{note}
 
  The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
 
@@ -373,7 +373,7 @@ multiple offloading features for a single interface.
    The kernel calculates a hash from packet headers (IP addresses and ports) to
    ensure packets from the same flow are processed by the same CPU core.
 
- :::\{note}
+ :::{note}
 
  :abbr:`RPS (Receive Packet Steering)` is a software version of
 

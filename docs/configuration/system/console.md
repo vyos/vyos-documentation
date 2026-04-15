@@ -35,7 +35,7 @@ The speed (baudrate) of the console device. Supported values are:
 * ``57600`` - 57,600 bps
 * ``115200`` - 115,200 bps (default for serial console)
 
-:::\{note}
+:::{note}
 
 If you use USB to serial converters for connecting to your VyOS
 

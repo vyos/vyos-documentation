@@ -49,7 +49,7 @@ can be specified. You can use this feature for a DNS split-horizon
 configuration.
 
 
-:::\{note}
+:::{note}
 
 
 This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
@@ -148,7 +148,7 @@ are:
   bogus data, regardless of the client's request.
 
 
-:::\{note}
+:::{note}
 
 
 The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
@@ -161,7 +161,7 @@ The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
    on the ``dig`` command line when this is the case.
 
 
-:::\{note}
+:::{note}
 
 
 The ``CD``-bit is honored correctly for process and validate. For

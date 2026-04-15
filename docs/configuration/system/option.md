@@ -44,7 +44,7 @@ This will add the following option to the Kernel commandline:
 
 * ``mitigations=off``
 
-:::\{note}
+:::{note}
 
 Setting will only become active with the next reboot!
 
@@ -57,7 +57,7 @@ This will add the following two options to the Kernel commandline:
 * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
 * ``processor.max_cstate=1`` Limit processor to maximum C-state 1
 
-:::\{note}
+:::{note}
 
 Setting will only become active with the next reboot!
 
@@ -81,13 +81,13 @@ This will add the following two options to the Kernel commandline:
 * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
 * ``amd_pstate={mode}`` Sets the p-state mode
 
-:::\{note}
+:::{note}
 
 Setting will only become active with the next reboot!
 
 :::
 
-:::\{seealso}
+:::{seealso}
 
 https://docs.kernel.org/admin-guide/pm/amd-pstate.html
 
@@ -139,7 +139,7 @@ Change system keyboard layout to given language.
 
 Defaults to ``us``.
 
-:::\{note}
+:::{note}
 
 Changing the keymap only has an effect on the system console, using
 

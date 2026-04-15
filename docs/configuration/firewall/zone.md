@@ -78,7 +78,7 @@ To define a zone, set up either one with interfaces or as the local zone.
 
 Assign interfaces as a member of a zone.
 
-:::\{note}
+:::{note}
 
 * An interface can only be a member of one zone.
 
@@ -92,7 +92,7 @@ Assign interfaces as a member of a zone.
 Define the zone as the local zone for traffic that originates from or is
 destined to the router itself.
 
-:::\{note}
+:::{note}
 
 * A local zone cannot have any member interfaces
 

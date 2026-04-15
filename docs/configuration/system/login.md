@@ -134,7 +134,7 @@ The following encryption algorithm types are available:
 * ``ssh-ed25519``
 * ``ssh-rsa``
 
-:::\{note}
+:::{note}
 
 To assign multiple SSH public keys to a user account, repeat the
 

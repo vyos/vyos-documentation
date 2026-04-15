@@ -35,7 +35,7 @@ At the time of this writing the following displays are supported:
 
 * Crystalfontz CFA-635
 
-:::\{note}
+:::{note}
 
 We can't support all displays from the beginning. If your display
 

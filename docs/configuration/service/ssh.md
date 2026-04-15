@@ -339,7 +339,7 @@ background daemon is restarted.
 Re-generated the public/private keyportion which SSH uses to secure
 connections.
 
-:::\{note}
+:::{note}
 
 Already learned known_hosts files of clients need an update as the
 

@@ -302,7 +302,7 @@ Operational mode defines how to handle this connection process.
   when there is no direct connectivity to the peer due to firewall
   or NAT in the middle of the local and remote side.
 
-  :::\{warning}
+  :::{warning}
 
   The ``trap`` mode is not needed in most environments
 
@@ -315,7 +315,7 @@ Operational mode defines how to handle this connection process.
 * **none** - loads the connection only, which then can be manually
   initiated or used as a responder configuration.
 
-:::\{note}
+:::{note}
 
 For most site-to-site VPNs, configure one peer
 

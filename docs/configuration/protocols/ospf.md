@@ -124,7 +124,7 @@ values for external routes, inter-area routes and intra-area routes
 respectively. The distance range is 1 to 255.
 
 
-:::\{note}
+:::{note}
 
 
 Routes with a distance of 255 are effectively disabled and not
@@ -344,7 +344,7 @@ configuration.
 An alternate command could be "mpls-te on" (Traffic Engineering)
 
 
-:::\{note}
+:::{note}
 
 
 FRR offers only partial support for some of the routing

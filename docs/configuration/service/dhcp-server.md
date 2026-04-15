@@ -631,7 +631,7 @@ cluster.
 Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
 
-:::\{note}
+:::{note}
 
 
 Make sure the specified value does not conflict with the system host-name.
@@ -651,7 +651,7 @@ The primary and secondary statements determines whether the server is primary
 or secondary.
 
 
-:::\{note}
+:::{note}
 
 
 In order for the primary and the secondary DHCP server to keep
@@ -664,7 +664,7 @@ In order for the primary and the secondary DHCP server to keep
    port 647. If you have firewall rules in effect, adjust them accordingly.
 
 
-:::\{hint}
+:::{hint}
 
 
 The dialogue between HA partners is neither encrypted nor
@@ -737,7 +737,7 @@ specified, an IP from the dynamic pool is used.
 This is useful, for example, in combination with hostfile update.
 
 
-:::\{hint}
+:::{hint}
 
 
 This is the equivalent of the host block in dhcpd.conf of

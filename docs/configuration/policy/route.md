@@ -63,7 +63,7 @@ Match based on the firewall mark (fwmark), where <match_criteria> can be:
  * <start-end> a range of marks
  * !<start-end> everything except the range of marks
 
- :::\{note}
+ :::{note}
 
  When using the ``set table`` or ``set vrf`` commands the mark
 
@@ -349,7 +349,7 @@ Set a specific packet mark.
 
 Set the routing table to forward packet with.
 
-:::\{note}
+:::{note}
 
 When using the ``set table`` or ``set vrf`` commands matching
 
@@ -369,7 +369,7 @@ Set packet modifications: Explicitly set TCP Maximum segment size value.
 
 Set the VRF to forward packet with.
 
-:::\{note}
+:::{note}
 
 When using the ``set table`` or ``set vrf`` commands matching
 

@@ -30,7 +30,7 @@ outgoing traffic.
    Generate a keypair: a public and a private key.
 
 
-   :::\{note}
+   :::{note}
 
 
    This command only outputs the keys to your console. It neither stores
@@ -74,7 +74,7 @@ specified interface.
 
 
   Corresponding public-key to use on peer system is: 'UxDsYT6EnpTIOKUzvMlw2p0sNOKQvFxEdSVrnNrX1Ro='
-:::\{note}
+:::{note}
 If you invoke this command from configuration mode with the ``run``
 :::
 
@@ -162,7 +162,7 @@ specified peer.
 
 
   Pre-shared key: +LuaZ8W6DjsDFJFX3jJzoNqrsXHhvq08JztM9z8LHCs=
-:::\{note}
+:::{note}
 If you invoke this command from configuration mode with the run
 :::
 

@@ -99,7 +99,7 @@ The transmit hash policy is configured via the ``hash-policy`` option.
 
 traffic among the remaining active member interfaces.
 
-:::\{note}
+:::{note}
 
 Not all transmit hash policies comply with 802.3ad, particularly
 
@@ -264,7 +264,7 @@ whenever an active LACP aggregator exists, regardless of the number of member
 
 interfaces in that aggregator.
 
-:::\{note}
+:::{note}
 
 In 802.3ad mode, a bond cannot be active without at least one active
 
@@ -403,7 +403,7 @@ You can assign a fixed MAC address or generate a random one for these
             routed through only one member interface.
 
 
-            :::\{note}
+            :::{note}
 
 
             This policy is not fully 802.3ad-compliant. When a single TCP

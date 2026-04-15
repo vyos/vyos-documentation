@@ -32,7 +32,7 @@ distance are elected prior to those with a higher distance.
 
 Range is 1 to 255, default is 1.
 
-:::\{note}
+:::{note}
 
 Routes with a distance of 255 are effectively disabled and not
 
@@ -147,7 +147,7 @@ distance are elected prior to those with a higher distance.
 
 Range is 1 to 255, default is 1.
 
-:::\{note}
+:::{note}
 
 Routes with a distance of 255 are effectively disabled and not
 

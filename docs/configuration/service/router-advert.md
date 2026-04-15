@@ -52,7 +52,7 @@ Supported interface types:
 
 ```{cfgcmd} set service router-advert interface <interface> prefix <prefix/mask>
 
-:::\{note}
+:::{note}
 
 You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 
@@ -84,7 +84,7 @@ Enable PREF64 option as outlined in :rfc:`8781`.
 
 NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 
-:::\{note}
+:::{note}
 
 The well known NAT64 prefix is ``64:ff9b::/96``
 

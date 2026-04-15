@@ -65,7 +65,7 @@ left unconfigured.
  [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
 
 
-:::\{note}
+:::{note}
 
 
 USB to serial converters will handle most of their work in software
@@ -98,7 +98,7 @@ After successfull authentication the user will be directly dropped to
 the connected serial device.
 
 
-:::\{hint}
+:::{hint}
 
 
 Multiple users can connect to the same serial device but only
@@ -150,19 +150,19 @@ Locally connect to serial port identified by `<device>`.
   [-- MOTD -- VyOS Console Server]
 
   vyos-r2 login:
-:::\{hint}
+:::{hint}
 Multiple users can connect to the same serial device but only
 :::
    one is allowed to write to the console port.
 
-:::\{hint}
+:::{hint}
 
 The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
 
 :::
    the session use: ``Ctrl+E c .``
 
-:::\{hint}
+:::{hint}
 
 If ``alias`` is set, it can be used instead of the device when
 

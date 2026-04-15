@@ -416,7 +416,7 @@ Use TLS encryption.
   Defaults to 'uid'
 
 
-  :::\{note}
+  :::{note}
 
 
   This can only be done if all your users are located directly under

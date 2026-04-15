@@ -24,7 +24,7 @@ then enslaved to a VRF device.
    individual interfaces into the VRF.
 
 
-   :::\{note}
+   :::{note}
 
 
    A routing table ID can not be modified once it is assigned. It can
@@ -74,7 +74,7 @@ The following protocols can be used: any, babel, bgp, eigrp,
 isis, ospf, rip, static
 
 
-:::\{note}
+:::{note}
 
 
 If you choose any as the option that will cause all protocols that
@@ -96,7 +96,7 @@ The following protocols can be used: any, babel, bgp, isis,
 ospfv3, ripng, static
 
 
-:::\{note}
+:::{note}
 
 
 If you choose any as the option that will cause all protocols that
@@ -259,7 +259,7 @@ Lists VRFs that have been created
   blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 
   red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
-:::\{note}
+:::{note}
 Command should probably be extended to list also the real
 :::
 
@@ -372,7 +372,7 @@ Display IPv6 routing table for VRF identified by `<name>`.
    average/maximum round-trip time numbers.
 
 
-   :::\{note}
+   :::{note}
 
 
    Ping command can be interrupted at any given time using ``<Ctrl>+c``.

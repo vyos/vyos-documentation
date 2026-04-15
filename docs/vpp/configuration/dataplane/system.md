@@ -105,7 +105,7 @@ The ``<cpu-range>`` can be:
 * Range: ``2-5``
 * Mixed: ``1,3-5,7``
 
-:::\{important}
+:::{important}
 
 Always reserve at least 2 cores for the operating system to ensure
 
