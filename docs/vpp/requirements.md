@@ -42,11 +42,11 @@ prerequisites before enabling VPP:
   VyOS supports only specific NICs for the VPP dataplane. Using unsupported
   hardware may cause activation failures, initialization errors, crashes,
   or degraded performance.
+   When enabling VPP, VyOS checks detected network interfaces against a list
+   of validated NICs. Validation is based on the **PCI ID** of the device or
+   the **kernel driver** used by the interface.
+   Supported NICs:
   :::
-  When enabling VPP, VyOS checks detected network interfaces against a list
-  of validated NICs. Validation is based on the **PCI ID** of the device or
-  the **kernel driver** used by the interface.
-  Supported NICs:
   :::{list-table}
   :widths: 15 18 40 35
   :header-rows: 1

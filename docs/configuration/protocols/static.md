@@ -34,8 +34,8 @@ distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 :::{note}
 Routes with a distance of 255 are effectively disabled and not
+ installed into the kernel.
 :::
-   installed into the kernel.
 ```
 
 ### IPv4 Interface Routes
@@ -161,8 +161,8 @@ distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 :::{note}
 Routes with a distance of 255 are effectively disabled and not
+ installed into the kernel.
 :::
-   installed into the kernel.
 ```
 
 % stop_vyoslinter

@@ -130,9 +130,9 @@ Change system keyboard layout to given language.
 Defaults to ``us``.
 :::{note}
 Changing the keymap only has an effect on the system console, using
+ SSH or Serial remote access to the device is not affected as the keyboard
+ layout here corresponds to your access system.
 :::
-  SSH or Serial remote access to the device is not affected as the keyboard
-  layout here corresponds to your access system.
 ```
 
 (system-options-performance)=

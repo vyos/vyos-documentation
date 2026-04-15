@@ -209,12 +209,11 @@ rule.
   :::{note}
   If no destination is specified the rule will match on any
   destination address and port.
+   Example:
+
+   - Configure SNAT rule (40) to only NAT packets with a destination
+   address of 192.0.2.1.
   :::
-
-  Example:
-
-  - Configure SNAT rule (40) to only NAT packets with a destination
-    address of 192.0.2.1.
 
   ```none
   set nat source rule 40 destination address 192.0.2.1

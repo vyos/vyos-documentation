@@ -76,9 +76,9 @@ Match based on the firewall mark (fwmark), where <match_criteria> can be:
  * !<start-end> everything except the range of marks
  :::{note}
  When using the ``set table`` or ``set vrf`` commands the mark
+  settings are ignored and overwritten with a table-specific mark that
+  is set to 0x7FFFFFFF - the id of the table/VRF.
  :::
-    settings are ignored and overwritten with a table-specific mark that
-    is set to 0x7FFFFFFF - the id of the table/VRF.
 ```
 
 ```{cfgcmd} set policy route \<name\> rule \<n\> source address
@@ -423,9 +423,9 @@ Set a specific packet mark.
 Set the routing table to forward packet with.
 :::{note}
 When using the ``set table`` or ``set vrf`` commands matching
+ against the mark is not possible, because it gets overwritten with a
+ table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.
 :::
-   against the mark is not possible, because it gets overwritten with a
-   table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.
 ```
 
 ```{cfgcmd} set policy route \<name\> rule \<n\> set tcp-mss \<500-1460\>
@@ -444,7 +444,7 @@ Set packet modifications: Explicitly set TCP Maximum segment size value.
 Set the VRF to forward packet with.
 :::{note}
 When using the ``set table`` or ``set vrf`` commands matching
+ against the mark is not possible, because it gets overwritten with a
+ table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.
 :::
-   against the mark is not possible, because it gets overwritten with a
-   table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.
 ```

@@ -43,8 +43,8 @@ This is highly recommended in networks with many wireless nodes.
  If you enable this, you will probably want to
 
 
+  set diversity-factor and channel below.
  :::
-    set diversity-factor and channel below.
 ```
 
 

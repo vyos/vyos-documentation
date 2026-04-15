@@ -257,16 +257,17 @@ multiple offloading features for a single interface.
    incoming packets into one larger packet before sending it to the CPU.
    :::{note}
    :abbr:`LRO (Large Receive Offload)` hardware support is often limited
+   to TCP/IPv4 packets. For details on LRO limitations, see
+   https://lwn.net/Articles/358910/
    :::
-     to TCP/IPv4 packets. For details on LRO limitations, see
-     https://lwn.net/Articles/358910/
+
    :::{warning}
    :abbr:`LRO (Large Receive Offload)` irreversibly alters packet
+   headers during merging. This prevents the merged packet from being correctly
+   split back into the original packets, causing packet drops and forwarding
+   failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only
+   for end-hosts that do not forward traffic.
    :::
-     headers during merging. This prevents the merged packet from being correctly
-     split back into the original packets, causing packet drops and forwarding
-     failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only
-     for end-hosts that do not forward traffic.
  * ``tso`` **(TCP Segmentation Offload):** Instructs the NIC to split large TCP
    packets into smaller ones before transmitting them to the network.
    **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
@@ -290,19 +291,19 @@ multiple offloading features for a single interface.
    use on routers and bridges.
  :::{note}
  The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
+ set and IDs are not sequential, :abbr:`GSO (Generic Segmentation Offload)`
+ alters them to maintain a consistent sequence for :abbr:`GSO (Generic
+ Segmentation Offload)` compatibility.
  :::
-    set and IDs are not sequential, :abbr:`GSO (Generic Segmentation Offload)`
-    alters them to maintain a consistent sequence for :abbr:`GSO (Generic
-    Segmentation Offload)` compatibility.
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
    the processing of incoming packets across multiple CPU cores.
    The kernel calculates a hash from packet headers (IP addresses and ports) to
    ensure packets from the same flow are processed by the same CPU core.
  :::{note}
  :abbr:`RPS (Receive Packet Steering)` is a software version of
+ :abbr:`RSS (Receive Side Scaling)` and is useful for NICs without hardware
+ multi-queue support.
  :::
-    :abbr:`RSS (Receive Side Scaling)` and is useful for NICs without hardware
-    multi-queue support.
  * ``sg`` **(Scatter-Gather/Scatter-Gather DMA):** Instructs the NIC to fetch
    data fragments from various RAM locations and transmit them as a single packet
    to the network, eliminating the need for the kernel to copy them into a

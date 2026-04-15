@@ -36,16 +36,16 @@ outgoing traffic.
    This command only outputs the keys to your console. It neither stores
 
 
+    them in the system nor applies them to the system configuration.
+
+
+    .. code-block:: none
+
+
+    vyos@vyos:~$ generate pki wireguard key-pair
+    Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
+    Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
    :::
-      them in the system nor applies them to the system configuration.
-
-
-   .. code-block:: none
-
-
-     vyos@vyos:~$ generate pki wireguard key-pair
-     Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
-     Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 ```
 
 
@@ -69,9 +69,9 @@ specified interface.
   Corresponding public-key to use on peer system is: 'UxDsYT6EnpTIOKUzvMlw2p0sNOKQvFxEdSVrnNrX1Ro='
 :::{note}
 If you invoke this command from configuration mode with the ``run``
+ prefix, the generated private key is automatically assigned to the specified
+ interface.
 :::
-   prefix, the generated private key is automatically assigned to the specified
-   interface.
 
 
 .. code-block:: none
@@ -142,8 +142,8 @@ specified peer.
   Pre-shared key: +LuaZ8W6DjsDFJFX3jJzoNqrsXHhvq08JztM9z8LHCs=
 :::{note}
 If you invoke this command from configuration mode with the run
+ prefix, the generated key is automatically assigned to the specified peer.
 :::
-   prefix, the generated key is automatically assigned to the specified peer.
 
 ```
 ## Interface configuration
@@ -441,8 +441,8 @@ You must also specify the IP address or FQDN of the server the client connects
 to. The address parameter can be used twice to assign both an IPv4 (/32) and
 an IPv6 (/128) address to the client.
 :::{figure} /_static/images/wireguard_qrcode.jpg
+ :alt: WireGuard Client QR code
 :::
-   :alt: WireGuard Client QR code
 ```
 % stop_vyoslinter
 

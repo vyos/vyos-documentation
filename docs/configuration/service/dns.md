@@ -124,9 +124,9 @@ are:
 The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
 
 
+ This might lead to unexpected query results when testing. Set ``+noad``
+ on the ``dig`` command line when this is the case.
 :::
-   This might lead to unexpected query results when testing. Set ``+noad``
-   on the ``dig`` command line when this is the case.
 
 
 :::{note}
@@ -135,8 +135,8 @@ The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
 The ``CD``-bit is honored correctly for process and validate. For
 
 
+ log-fail, failures will be logged too.
 :::
-   log-fail, failures will be logged too.
 ```
 
 

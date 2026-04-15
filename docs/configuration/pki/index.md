@@ -158,11 +158,11 @@ Generate a new WireGuard public/private key portion and output the result to
 the console.
 :::{note}
 In addition to the command above, the output is in a format which can
+ be used to directly import the key into the VyOS CLI by simply copy-pasting
+ the output from op-mode into configuration mode.
+ ``interface`` is used for the VyOS CLI command to identify the WireGuard
+ interface where this private key is to be used.
 :::
-  be used to directly import the key into the VyOS CLI by simply copy-pasting
-  the output from op-mode into configuration mode.
-  ``interface`` is used for the VyOS CLI command to identify the WireGuard
-  interface where this private key is to be used.
 ```
 
 ```{opcmd} generate pki wireguard preshared-key
@@ -175,11 +175,11 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 Generate a WireGuard pre-shared secret used for peers to communicate.
 :::{note}
 In addition to the command above, the output is in a format which can
+ be used to directly import the key into the VyOS CLI by simply copy-pasting
+ the output from op-mode into configuration mode.
+ ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
+ this secret is to be used.
 :::
-  be used to directly import the key into the VyOS CLI by simply copy-pasting
-  the output from op-mode into configuration mode.
-  ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
-  this secret is to be used.
 ```
 
 ## Key usage (CLI)
@@ -191,11 +191,11 @@ In addition to the command above, the output is in a format which can
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
 :::{note}
 When loading the certificate you need to manually strip the
+ ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+ Also, the certificate/key needs to be presented in a single line without
+ line breaks (``\n``), this can be done using the following shell command:
+ ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 :::
-  ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
-  Also, the certificate/key needs to be presented in a single line without
-  line breaks (``\n``), this can be done using the following shell command:
-  ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 ```
 
 ```{cfgcmd} set pki ca \<name\> crl
@@ -215,11 +215,11 @@ and is only required if you use VyOS as your certificate generator as
 mentioned above.
 :::{note}
 When loading the certificate you need to manually strip the
+ ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+ certificate/key needs to be presented in a single line without line
+ breaks (``\n``), this can be done using the following shell command:
+ ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 :::
-  ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
-  certificate/key needs to be presented in a single line without line
-  breaks (``\n``), this can be done using the following shell command:
-  ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 ```
 
 ```{cfgcmd} set pki ca \<name\> private password-protected
@@ -237,11 +237,11 @@ certificates used by services on this router.
 Add public key portion for the certificate named `name` to the VyOS CLI.
 :::{note}
 When loading the certificate you need to manually strip the
+ ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+ Also, the certificate/key needs to be presented in a single line without
+ line breaks (``\n``), this can be done using the following shell command:
+ ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 :::
-  ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
-  Also, the certificate/key needs to be presented in a single line without
-  line breaks (``\n``), this can be done using the following shell command:
-  ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 ```
 
 ```{cfgcmd} set pki certificate \<name\> description
@@ -255,11 +255,11 @@ Add the private key portion of this certificate to the CLI. This should never
 leave the system as it is used to decrypt the data.
 :::{note}
 When loading the certificate you need to manually strip the
+ ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+ certificate/key needs to be presented in a single line without line
+ breaks (``\n``), this can be done using the following shell command:
+ ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 :::
-  ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
-  certificate/key needs to be presented in a single line without line
-  breaks (``\n``), this can be done using the following shell command:
-  ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 ```
 
 ```{cfgcmd} set pki certificate \<name\> private password-protected
@@ -339,9 +339,9 @@ ACME Directory Resource URI.
 This defaults to https://acme-v02.api.letsencrypt.org/directory
 :::{note}
 During initial deployment we recommend using the staging API
+ of LetsEncrypt to prevent and blacklisting of your system. The API
+ endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 :::
-  of LetsEncrypt to prevent and blacklisting of your system. The API
-  endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 ```
 
 ## Operation

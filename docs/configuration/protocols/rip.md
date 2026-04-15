@@ -74,8 +74,8 @@ This command specifies all interfaces to passive mode.
    Routes with a distance of 255 are effectively disabled and not
 
 
+    installed into the kernel.
    :::
-      installed into the kernel.
 
 ```
 

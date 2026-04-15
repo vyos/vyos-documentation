@@ -55,8 +55,8 @@ Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, eigrp, isis, ospf, rip, static
 :::{note}
 If you choose any as the option that will cause all protocols that
+ are sending routes to zebra.
 :::
-   are sending routes to zebra.
 ```
 
 ### Nexthop Tracking

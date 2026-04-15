@@ -84,6 +84,7 @@ This defaults to 2007.
 ```{cfgcmd} set interfaces wireless \<interface\> mgmt-frame-protection
 
 Management Frame Protection (MFP) according to IEEE 802.11w
+
 :::{note}
 :abbr:`MFP (Management Frame Protection)` is required for WPA3.
 :::
@@ -94,8 +95,8 @@ Management Frame Protection (MFP) according to IEEE 802.11w
 Beacon Protection: management frame protection for Beacon frames.
 :::{note}
 This option requires :abbr:`MFP (Management Frame Protection)`
+ to be enabled.
 :::
-  to be enabled.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> mode \<a | b | g | n | ac | ax\>
@@ -182,19 +183,19 @@ Supported channel width set.
   channel
 :::{note}
 Channel availability for HT40- and HT40+ is limited. The following
+ table lists channels permitted for HT40- and HT40+ according to IEEE
+ 802.11n Annex J. Channel availability may vary by location.
+ .. code-block:: none
+ freq              HT40-           HT40+
+ 2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
+ 5 GHz             40,48,56,64     36,44,52,60
 :::
-   table lists channels permitted for HT40- and HT40+ according to IEEE
-   802.11n Annex J. Channel availability may vary by location.
-  .. code-block:: none
-    freq              HT40-           HT40+
-    2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
-    5 GHz             40,48,56,64     36,44,52,60
 :::{note}
 40 MHz channels may switch their primary and secondary channels if
+ needed or creation of 40 MHz channel may be rejected based on overlapping
+ BSSes. These changes are done automatically when hostapd is setting up the
+ 40 MHz channel.
 :::
-  needed or creation of 40 MHz channel may be rejected based on overlapping
-  BSSes. These changes are done automatically when hostapd is setting up the
-  40 MHz channel.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht

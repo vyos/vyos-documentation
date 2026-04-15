@@ -250,30 +250,30 @@ You can assign a fixed MAC address or generate a random one for these
 
 :::{note}
 Not all transmit hash policies comply with 802.3ad, particularly
+ or UDP flow contains both fragmented and unfragmented packets, the
+ algorithm may distribute them across different member interfaces. This
+ may result in out-of-order packet delivery, violating the 802.3ad standard.
+ * - **Hash inputs:**
+ - * Source port, destination port (if available).
+ * Source IP address, destination IP address. IPv6 addresses are first hashed
+ using ``IPv6_addr_hash``.
+ * - **Formula:**
+ - .. code-block:: none
+
+
+ hash = source port, destination port (as in the header)
+ hash = hash XOR source IP address XOR destination IP address
+ hash = hash XOR (hash RSHIFT 16)
+ hash = hash XOR (hash RSHIFT 8)
+ member interface number = hash modulo member interface count
+
+
+ For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
+ source and destination port information is omitted.
+
+
+ For non-IP traffic, the formula is the same as for ``layer2``.
 :::
-               or UDP flow contains both fragmented and unfragmented packets, the
-               algorithm may distribute them across different member interfaces. This
-               may result in out-of-order packet delivery, violating the 802.3ad standard.
-        * - **Hash inputs:**
-          - * Source port, destination port (if available).
-            * Source IP address, destination IP address. IPv6 addresses are first hashed
-              using ``IPv6_addr_hash``.
-        * - **Formula:**
-          - .. code-block:: none
-
-
-               hash = source port, destination port (as in the header)
-               hash = hash XOR source IP address XOR destination IP address
-               hash = hash XOR (hash RSHIFT 16)
-               hash = hash XOR (hash RSHIFT 8)
-               member interface number = hash modulo member interface count
-
-
-            For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
-            source and destination port information is omitted.
-
-
-            For non-IP traffic, the formula is the same as for ``layer2``.
 
 ```
 

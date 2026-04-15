@@ -174,9 +174,9 @@ Make sure conntrack is enabled by running and show connection tracking table.
   1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
 :::{note}
 If the table is empty and you have a warning message, it means
+ conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
+ rule. :cfgcmd:`set firewall state-policy established action accept`
 :::
-  conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
-  rule. :cfgcmd:`set firewall state-policy established action accept`
 ```
 
 
