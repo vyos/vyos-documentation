@@ -67,6 +67,14 @@ myst_enable_extensions = [
     "substitution",
 ]
 
+# Treat these fenced blocks as directives with raw (unparsed) arguments.
+# Prevents MyST from stripping <param> angle brackets as HTML tags.
+myst_fence_as_directive = [
+    "cfgcmd",
+    "opcmd",
+    "cmdincludemd",
+]
+
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
