@@ -70,7 +70,7 @@ Configure source and destination parameters:
 set vpp acl ip tag-name <tag-name> rule <rule-number> source prefix <ip-prefix>
 set vpp acl ip tag-name <tag-name> rule <rule-number> source port <port-spec>
 
-# Destination configuration
+# Destination configuration  
 set vpp acl ip tag-name <tag-name> rule <rule-number> destination prefix <ip-prefix>
 set vpp acl ip tag-name <tag-name> rule <rule-number> destination port <port-spec>
 ```
@@ -153,7 +153,7 @@ IP ACL tags are applied to interfaces using the interface configuration:
 # Apply to input direction
 set vpp acl ip interface <interface> input acl-tag <number> tag-name <tag-name>
 
-# Apply to output direction
+# Apply to output direction  
 set vpp acl ip interface <interface> output acl-tag <number> tag-name <tag-name>
 ```
 Where:
@@ -389,7 +389,7 @@ View specific IP ACL by tag name:
 Example:
 
 ```none
-vyos@vyos:~$ show vpp acl ip tag-name WEB-SERVER
+vyos@vyos:~$ show vpp acl ip tag-name WEB-SERVER 
 
 ---------------------------------
 IP ACL "tag-name WEB-SERVER" acl_index 0

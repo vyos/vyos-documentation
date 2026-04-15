@@ -102,7 +102,7 @@ When VyOS detects a previously configured RAID 1 set,
 the installation utility displays the following prompt:
 
 ```none
-Would you like to use this one?
+Would you like to use this one? 
 ```
 
 1\. To break up the current RAID 1 set, enter **No** at the prompt. The
@@ -119,7 +119,7 @@ at the prompt. VyOS prompts you to indicate which partition you would
 like the system installed on.
 
 ```none
-Which partition should I install the root on? [sda1]:
+Which partition should I install the root on? [sda1]: 
 ```
 
 3\. Enter the partition where you would like the system installed. The system

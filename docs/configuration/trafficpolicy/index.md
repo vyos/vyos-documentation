@@ -162,7 +162,7 @@ When configuring your filter, you can use the `Tab` key to see the many
 different parameters you can configure.
 
 ```none
-vyos@vyos# set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER
+vyos@vyos# set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER 
 Possible completions:
    description  Description
  > ether        Ethernet header match
@@ -816,7 +816,7 @@ number, the higher the priority.
 As with other policies, you can define different type of matching rules
 for your classes:
 ```none
-vyos@vyos# set qos policy priority-queue MY-PRIO class 3 match MY-MATCH-RULE
+vyos@vyos# set qos policy priority-queue MY-PRIO class 3 match MY-MATCH-RULE 
 Possible completions:
    description  Description
  > ether        Ethernet header match
@@ -830,7 +830,7 @@ As with other policies, you can [embed] other policies into the classes
 (and default) of your Priority Queue policy through the `queue-type`
 setting:
 ```none
-vyos@vyos# set qos policy priority-queue MY-PRIO class 3 queue-type
+vyos@vyos# set qos policy priority-queue MY-PRIO class 3 queue-type 
 Possible completions:
    drop-tail    First-In-First-Out (FIFO) (default)
    fq-codel     Fair Queue Codel
@@ -1092,23 +1092,14 @@ a class ID, and the queue size in packets.
 As with other policies, Round-Robin can [embed] another policy into a
 class through the `queue-type` setting.
 ```none
-
-vyos@vyos# set qos policy round-robin DRR class 10 queue-type
-
+vyos@vyos# set qos policy round-robin DRR class 10 queue-type 
 Possible completions:
-
    drop-tail    First-In-First-Out (FIFO) (default)
-
    fq-codel     Fair Queue Codel
-
    fair-queue   Stochastic Fair Queue (SFQ)
-
    priority     Priority queueing based
-
    random-detect
-
                 Random Early Detection (RED)
-
 ```
 (shaper)=
 
@@ -1207,7 +1198,7 @@ As with other policies, Shaper can [embed] other policies into its
 classes through the `queue-type` setting and then configure their
 parameters.
 ```none
-vyos@vyos# set qos policy shaper HTB class 10 queue-type
+vyos@vyos# set qos policy shaper HTB class 10 queue-type 
 Possible completions:
    fq-codel     Fair Queue Codel (default)
    fair-queue   Stochastic Fair Queue (SFQ)

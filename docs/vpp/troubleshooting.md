@@ -127,10 +127,10 @@ Packet 1
 01:00:09:508438: dpdk-input
   eth2 rx queue 0
   buffer 0x8533: current data 0, length 98, buffer-pool 0, ref-count 1, trace handle 0x1000000
-                 ext-hdr-valid
+                 ext-hdr-valid 
   PKT MBUF: port 1, nb_segs 1, pkt_len 98
     buf_len 1828, data_len 98, ol_flags 0x0, data_off 128, phys_addr 0x78814d40
-    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0
+    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0 
     rss 0x0 fdir.hi 0x0 fdir.lo 0x0
   IP4: 0c:87:6c:4e:00:01 -> 0c:de:0d:e2:00:02
   ICMP: 192.168.102.2 -> 192.168.99.3
@@ -151,8 +151,8 @@ Packet 1
   in2out next_index 2 arc_next_index 10
 01:00:09:508462: nat44-ed-in2out
   NAT44_IN2OUT_ED_FAST_PATH: sw_if_index 2, next index 10, session 0, translation result 'success' via i2of
-  i2of match: saddr 192.168.102.2 sport 3024 daddr 192.168.99.3 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.1 daddr 192.168.99.3 icmp-id 3024 txfib 0
-  o2if match: saddr 192.168.99.3 sport 3024 daddr 192.168.99.1 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.3 daddr 192.168.102.2 icmp-id 3024 txfib 0
+  i2of match: saddr 192.168.102.2 sport 3024 daddr 192.168.99.3 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.1 daddr 192.168.99.3 icmp-id 3024 txfib 0 
+  o2if match: saddr 192.168.99.3 sport 3024 daddr 192.168.99.1 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.3 daddr 192.168.102.2 icmp-id 3024 txfib 0 
   search key local 192.168.102.2:3024 remote 192.168.99.3:3024 proto ICMP fib 0 thread-index 0 session-index 0
 01:00:09:508469: ip4-lookup
   fib 0 dpo-idx 10 flow hash: 0x00000000
@@ -174,11 +174,11 @@ Packet 1
 01:00:09:508477: eth1-tx
   eth1 tx queue 0
   buffer 0x8533: current data 0, length 98, buffer-pool 0, ref-count 1, trace handle 0x1000000
-                 ext-hdr-valid
-                 natted l2-hdr-offset 0 l3-hdr-offset 14
+                 ext-hdr-valid 
+                 natted l2-hdr-offset 0 l3-hdr-offset 14 
   PKT MBUF: port 1, nb_segs 1, pkt_len 98
     buf_len 1828, data_len 98, ol_flags 0x0, data_off 128, phys_addr 0x78814d40
-    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0
+    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0 
     rss 0x0 fdir.hi 0x0 fdir.lo 0x0
   IP4: 0c:de:0d:e2:00:01 -> 0c:ce:a7:04:00:01
   ICMP: 192.168.99.1 -> 192.168.99.3

@@ -20,31 +20,18 @@ From the main structure defined in
 in this section you can find detailed information only for the next part
 of the general structure:
 ```none
-
 - set firewall
-
     * bridge
-
          - forward
-
             + filter
-
          - input
-
             + filter
-
          - output
-
             + filter
-
          - prerouting
-
             + filter
-
          - name
-
             + custom_name
-
 ```
 Traffic that is received by the router on an interface that is a member of a
 bridge is processed on the **Bridge Layer**. Before the bridge decision is

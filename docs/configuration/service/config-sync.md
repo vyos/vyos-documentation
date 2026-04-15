@@ -49,7 +49,7 @@ Supported options for <section> include:
     protocols <protocol>
     qos <interface|policy>
     service <service>
-    system <conntrack|
+    system <conntrack| 
     flow-accounting|option|sflow|static-host-mapping|sysctl|time-zone>
     vpn
     vrf
@@ -77,13 +77,13 @@ Make config-sync relevant changes to Router A's configuration
 ```none
 vyos@vyos-A# set system time-zone 'America/Los_Angeles'
 vyos@vyos-A# commit
-INFO:vyos_config_sync:Config synchronization: Mode=load,
+INFO:vyos_config_sync:Config synchronization: Mode=load, 
 Secondary=10.0.20.112
 vyos@vyos-A# save
 
 vyos@vyos-A# set protocols ospf area 0 network '10.0.48.0/30'
 vyos@vyos-A# commit
-INFO:vyos_config_sync:Config synchronization: Mode=load,
+INFO:vyos_config_sync:Config synchronization: Mode=load, 
 Secondary=10.0.20.112
 yos@vyos-A# save
 ```

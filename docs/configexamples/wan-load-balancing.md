@@ -31,7 +31,7 @@ Create static routes through the two ISPs towards the ping targets and
 commit the changes:
 ```none
 set protocols static route 33.44.55.66/32 next-hop 11.22.33.1
-set protocols static route 44.55.66.77/32 next-hop 11.22.33.1
+set protocols static route 44.55.66.77/32 next-hop 11.22.33.1 
 set protocols static route 55.66.77.88/32 next-hop 22.33.44.1
 set protocols static route 66.77.88.99/32 next-hop 22.33.44.1
 ```

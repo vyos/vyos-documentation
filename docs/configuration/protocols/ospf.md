@@ -996,13 +996,9 @@ bgp, connected, kernel, rip, static.
 
 
 ```none
-
 Neighbor ID     Pri State           Dead Time Address         Interface                        RXmtL RqstL DBsmL
-
 10.0.13.1         1 Full/DR           38.365s 10.0.13.1       eth0:10.0.13.3                       0     0     0
-
 10.0.23.2         1 Full/Backup       39.175s 10.0.23.2       eth1:10.0.23.3                       0     0     0
-
 ```
 
 
@@ -1105,53 +1101,29 @@ interface, or all interfaces if no interface is given.
 
 
 ```none
-
 eth0 is up
-
   ifindex 2, MTU 1500 bytes, BW 4294967295 Mbit <UP,BROADCAST,RUNNING,MULTICAST>
-
   Internet Address 10.0.13.3/24, Broadcast 10.0.13.255, Area 0.0.0.0
-
   MTU mismatch detection: enabled
-
   Router ID 10.0.23.3, Network Type BROADCAST, Cost: 1
-
   Transmit Delay is 1 sec, State Backup, Priority 1
-
   Backup Designated Router (ID) 10.0.23.3, Interface Address 10.0.13.3
-
   Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
-
   Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-
     Hello due in 4.470s
-
   Neighbor Count is 1, Adjacent neighbor count is 1
-
 eth1 is up
-
   ifindex 3, MTU 1500 bytes, BW 4294967295 Mbit <UP,BROADCAST,RUNNING,MULTICAST>
-
   Internet Address 10.0.23.3/24, Broadcast 10.0.23.255, Area 0.0.0.1
-
   MTU mismatch detection: enabled
-
   Router ID 10.0.23.3, Network Type BROADCAST, Cost: 1
-
   Transmit Delay is 1 sec, State DR, Priority 1
-
   Backup Designated Router (ID) 10.0.23.2, Interface Address 10.0.23.2
-
   Saved Network-LSA sequence number 0x80000002
-
   Multicast group memberships: OSPFAllRouters OSPFDesignatedRouters
-
   Timer intervals configured, Hello 10s, Dead 40s, Wait 40s, Retransmit 5
-
     Hello due in 4.563s
-
   Neighbor Count is 1, Adjacent neighbor count is 1
-
 ```
 
 
@@ -1166,43 +1138,25 @@ each route item's advertiser router and network attribute will be shown.
 
 
 ```none
-
 ============ OSPF network routing table ============
-
 N IA 10.0.12.0/24          [3] area: 0.0.0.0
-
                            via 10.0.13.3, eth0
-
 N    10.0.13.0/24          [1] area: 0.0.0.0
-
                            directly attached to eth0
-
 N IA 10.0.23.0/24          [2] area: 0.0.0.0
-
                            via 10.0.13.3, eth0
-
 N    10.0.34.0/24          [2] area: 0.0.0.0
-
                            via 10.0.13.3, eth0
-
 
 ============ OSPF router routing table =============
-
 R    10.0.23.3             [1] area: 0.0.0.0, ABR
-
                            via 10.0.13.3, eth0
-
 R    10.0.34.4             [2] area: 0.0.0.0, ASBR
-
                            via 10.0.13.3, eth0
-
 
 ============ OSPF external routing table ===========
-
 N E2 172.16.0.0/24         [2/20] tag: 0
-
                            via 10.0.13.3, eth0
-
 ```
 The table consists of following data:
 
@@ -1235,49 +1189,31 @@ This command displays a summary table with a database contents (LSA).
 
 
 ```none
-
        OSPF Router with ID (10.0.13.1)
-
 
                 Router Link States (Area 0.0.0.0)
 
-
 Link ID         ADV Router      Age  Seq#       CkSum  Link count
-
 10.0.13.1       10.0.13.1        984 0x80000005 0xd915 1
-
 10.0.23.3       10.0.23.3       1186 0x80000008 0xfe62 2
-
 10.0.34.4       10.0.34.4       1063 0x80000004 0x4e3f 1
-
 
                 Net Link States (Area 0.0.0.0)
 
-
 Link ID         ADV Router      Age  Seq#       CkSum
-
 10.0.13.1       10.0.13.1        994 0x80000003 0x30bb
-
 10.0.34.4       10.0.34.4       1188 0x80000001 0x9411
-
 
                 Summary Link States (Area 0.0.0.0)
 
-
 Link ID         ADV Router      Age  Seq#       CkSum  Route
-
 10.0.12.0       10.0.23.3       1608 0x80000001 0x6ab6 10.0.12.0/24
-
 10.0.23.0       10.0.23.3        981 0x80000003 0xe232 10.0.23.0/24
-
 
                 AS External Link States
 
-
 Link ID         ADV Router      Age  Seq#       CkSum  Route
-
 172.16.0.0      10.0.34.4       1063 0x80000001 0xc40d E2 172.16.0.0/24 [0x0]
-
 ```
 
 
@@ -1319,47 +1255,28 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
 
 
 ```none
-
         OSPF Router with ID (10.0.13.1)
-
 
               Router Link States (Area 0.0.0.0)
 
-
 LS age: 1213
-
 Options: 0x2  : *|-|-|-|-|-|E|-
-
 LS Flags: 0x3
-
 Flags: 0x0
-
 LS Type: router-LSA
-
 Link State ID: 10.0.13.1
-
 Advertising Router: 10.0.13.1
-
 LS Seq Number: 80000009
-
 Checksum: 0xd119
-
 Length: 36
-
 
  Number of Links: 1
 
-
   Link connected to: a Transit Network
-
    (Link ID) Designated Router address: 10.0.13.1
-
    (Link Data) Router Interface address: 10.0.13.1
-
    Number of TOS metrics: 0
-
      TOS 0 Metric: 1
-
 ```
 
 

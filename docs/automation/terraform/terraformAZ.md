@@ -73,8 +73,8 @@ Run the following commands on your Terraform instance:
 
 ```none
 cd /<your folder>
-terraform plan
-terraform apply
+terraform plan  
+terraform apply  
 yes
 ```
 

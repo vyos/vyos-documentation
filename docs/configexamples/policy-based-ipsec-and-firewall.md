@@ -189,7 +189,7 @@ RIGHT-tunnel-0  up       36m24s    840B/840B       10/10             192.0.2.130
 RIGHT-tunnel-1  up       36m33s    588B/588B       7/7               192.0.2.130       192.0.2.130  AES_CBC_256/HMAC_SHA2_256_128/MODP_2048
 RIGHT-tunnel-2  up       35m50s    1K/1K           15/15             192.0.2.130       192.0.2.130  AES_CBC_256/HMAC_SHA2_256_128/MODP_2048
 RIGHT-tunnel-3  up       36m54s    2K/2K           32/32             192.0.2.130       192.0.2.130  AES_CBC_256/HMAC_SHA2_256_128/MODP_2048
-vyos@LEFT:~$
+vyos@LEFT:~$ 
 ```
 Also, we can check firewall counters:
 ```none
@@ -221,8 +221,8 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 30       accept    icmp                0        0  meta l4proto icmp  accept
 default  drop      all
 
-vyos@LEFT:~$
-vyos@LEFT:~$ show firewall statistics
+vyos@LEFT:~$ 
+vyos@LEFT:~$ show firewall statistics 
 Rulesets Statistics
 
 ---------------------------------
@@ -250,5 +250,5 @@ Rule     Packets    Bytes    Action    Source      Destination    Inbound-Interf
 30       0          0        accept    any         any            any                  any
 default  N/A        N/A      drop      any         any            any                  any
 
-vyos@LEFT:~$
+vyos@LEFT:~$ 
 ```

@@ -128,18 +128,12 @@ Specify where interface is shared by multiple users or it is vlan-per-user.
 
 
 ```none
-
 vyos@vyos:~$ show ipoe-server sessions
 
-
  ifname | username |    calling-sid    |     ip      | rate-limit | type | comp | state  |  uptime
-
 --------+----------+-------------------+-------------+------------+------+------+--------+----------
-
  ipoe0  | eth1.100 | 00:50:79:66:68:00 | 192.168.0.2 |            | ipoe |      | active | 00:04:55
-
  ipoe1  | eth1.101 | 00:50:79:66:68:01 | 192.168.0.3 |            | ipoe |      | active | 00:04:44
-
 ```
 ## Configuring RADIUS authentication
 

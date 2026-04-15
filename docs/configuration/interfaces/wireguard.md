@@ -267,36 +267,22 @@ set protocols static route 192.168.1.0/24 interface wg01
 To allow WireGuard traffic through the WAN interface, create a firewall
 exception:
 ```none
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 action accept
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 state established enable
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 state related enable
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 action accept
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 description WireGuard_IN
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port 51820
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 log enable
-
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
-
 ```
 Ensure that the OUTSIDE_LOCAL firewall group is applied to the WAN interface
 and in an input (local) direction.
 ```none
-
 set firewall ipv4 input filter rule 10 action jump
-
 set firewall ipv4 input filter rule 10 jump-target 'OUTSIDE_LOCAL'
-
 set firewall ipv4 input filter rule 10 inbound-interface name 'eth0'
-
 ```
 Verify that your firewall rules permit traffic. If so, your WireGuard VPN
 should be operational.
@@ -355,92 +341,53 @@ to keep the connection alive. This setting is mainly relevant if a peer is
 behind NAT and cannot be reached if the connection is lost. For effectiveness,
 the value should be lower than the UDP timeout.
 ```none
-
 wireguard wg01 {
-
     address 10.172.24.1/24
-
     address 2001:db8:470:22::1/64
-
     description RoadWarrior
-
     peer MacBook {
-
         allowed-ips 10.172.24.30/32
-
         allowed-ips 2001:db8:470:22::30/128
-
         persistent-keepalive 15
-
         pubkey F5MbW7ye7DsoxdOaixjdrudshjjxN5UdNV+pGFHqehc=
-
     }
-
     peer iPhone {
-
         allowed-ips 10.172.24.20/32
-
         allowed-ips 2001:db8:470:22::20/128
-
         persistent-keepalive 15
-
         pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
-
     }
-
     port 2224
-
     private-key OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU=
-
 }
-
 ```
 Below is the configuration for the iPhone peer. The `AllowedIPs` wildcard
 setting directs all IPv4 and IPv6 traffic through the VPN connection.
 ```none
-
 [Interface]
-
 PrivateKey = ARAKLSDJsadlkfjasdfiowqeruriowqeuasdf=
-
 Address = 10.172.24.20/24, 2001:db8:470:22::20/64
-
 DNS = 10.0.0.53, 10.0.0.54
 
-
 [Peer]
-
 PublicKey = RIbtUTCfgzNjnLNPQ/ulkGnnB2vMWHm7l2H/xUfbyjc=
-
 AllowedIPs = 0.0.0.0/0, ::/0
-
 Endpoint = 192.0.2.1:2224
-
 PersistentKeepalive = 15
-
 ```
 To enable split tunneling, specify the remote subnets. This ensures that only
 traffic destined for the remote site is sent through the tunnel, while all
 other traffic remains unaffected.
 ```none
-
 [Interface]
-
 PrivateKey = 8Iasdfweirousd1EVGUk5XsT+wYFZ9mhPnQhmjzaJE6Go=
-
 Address = 10.172.24.30/24, 2001:db8:470:22::30/64
 
-
 [Peer]
-
 PublicKey = RIbtUTCfgzNjnLNPQ/ulkGnnB2vMWHm7l2H/xUfbyjc=
-
 AllowedIPs = 10.172.24.30/24, 2001:db8:470:22::/64
-
 Endpoint = 192.0.2.1:2224
-
 PersistentKeepalive = 15
-
 ```
 ## Operational commands
 

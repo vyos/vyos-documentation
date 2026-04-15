@@ -36,11 +36,8 @@ the following commands:
 ```
 
 ```none
-
 set interfaces bonding bond0 member interface eth0
-
 set interfaces bonding bond0 member interface eth1
-
 ```
 ### Bond modes
 ```{cfgcmd} set interfaces bonding \<interface\> mode <802.3ad | active-backup |

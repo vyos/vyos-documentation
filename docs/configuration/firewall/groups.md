@@ -350,45 +350,45 @@ With this configuration, to gain SSH access to the router, the user must:
 1. Create a new TCP connection to destination port 9990. A new entry is added
    to dynamic firewall group `PN_01`.
 ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+vyos@vyos# run show firewall group
+Firewall Groups
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        119
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D            N/D        N/D
-   [edit]
-   vyos@vyos#
-   ```
+Name     Type                    References            Members        Timeout    Expires
+-------  ----------------------  --------------------  -------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
+PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        119
+PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D            N/D        N/D
+[edit]
+vyos@vyos#
+```
 2. Create a new TCP connection to destination port 9991. A new entry is added
    to dynamic firewall group `PN_02`.
 ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+vyos@vyos# run show firewall group
+Firewall Groups
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        106
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31  180        179
-   [edit]
-   vyos@vyos#
-   ```
+Name     Type                    References            Members        Timeout    Expires
+-------  ----------------------  --------------------  -------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
+PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        106
+PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31  180        179
+[edit]
+vyos@vyos#
+```
 3. Create a new TCP connection to destination port 9992. A new entry is added
    to dynamic firewall group `ALLOWED`.
 ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+vyos@vyos# run show firewall group
+Firewall Groups
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  192.168.89.31       7200       7199
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31        120         89
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31        180        170
-   [edit]
-   vyos@vyos#
-   ```
+Name     Type                    References            Members        Timeout    Expires
+-------  ----------------------  --------------------  -------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  192.168.89.31       7200       7199
+PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31        120         89
+PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31        180        170
+[edit]
+vyos@vyos#
+```
 4. Now you can connect via SSH to the router (assuming SSH is
    configured).
 ## Operation-mode

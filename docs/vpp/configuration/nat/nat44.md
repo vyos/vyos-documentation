@@ -95,7 +95,7 @@ complex network topologies:
 set vpp nat nat44 interface inside eth0
 set vpp nat nat44 interface inside eth2
 
-# Multiple outside interfaces (redundancy or load balancing)
+# Multiple outside interfaces (redundancy or load balancing)  
 set vpp nat nat44 interface outside eth1
 set vpp nat nat44 interface outside eth3
 ```
@@ -119,7 +119,7 @@ hosts when they access external networks.
 # Single address pool
 set vpp nat nat44 address-pool translation address 203.0.113.10
 
-# Address range pool
+# Address range pool  
 set vpp nat nat44 address-pool translation address 203.0.113.10-203.0.113.20
 
 # Interface-based pool (use a first IP assigned to the interface)
@@ -469,12 +469,12 @@ Internet (203.0.113.0/24)
 ┌───────────────────┐
 │   eth1 (outside)  │ 203.0.113.1/24
 │     VyOS Router   │
-│   eth0 (inside)   │ 192.168.1.1/24
+│   eth0 (inside)   │ 192.168.1.1/24  
 └───────────────────┘
         |
 Internal Network (192.168.1.0/24)
 ├── 192.168.1.10 (Web Server)
-├── 192.168.1.20 (SSH Server)
+├── 192.168.1.20 (SSH Server)  
 └── 192.168.1.30 (API Service)
 ```
 **Configuration:**

@@ -817,55 +817,30 @@ that should not be relied upon. Check the documentation of your DHCP Relay for
 more detail or, as a measure of last resort, inspect the DHCP requests in
 Wireshark.
 ```none
-
 service {
-
     dhcp-server {
-
         client-class className {
-
             relay-agent-information {
-
                 circuit-id e1-5
-
                 remote-id 192.0.2.1
-
             }
-
         }
-
         shared-network-name test {
-
             subnet 192.0.2.0/24 {
-
                 range classNameRange {
-
                     client-class className
-
                     start 192.0.2.4
-
                     stop 192.0.2.4
-
                 }
-
                 range otherRange {
-
                     start 192.0.2.5
-
                     stop 192.0.2.100
-
                 }
-
                 subnet-id 1
-
             }
-
         }
-
     }
-
 }
-
 ```
 ### Options
 

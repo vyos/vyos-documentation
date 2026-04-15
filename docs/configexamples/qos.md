@@ -151,6 +151,7 @@ IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work
 with the help of the “iPerf” utility.
 Set up bandwidth limits on the eth2 interface of the router “VyOS2”.
 ```none
+
 vyos@vyos2# show qos policy shaper vyos2 class 20
 bandwidth 5mbit
 description "for VyOS3 eth0"

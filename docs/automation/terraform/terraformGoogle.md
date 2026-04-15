@@ -65,7 +65,7 @@ mkdir /root/google
 % start_vyoslinter
 5. Run the following commands:
 ```none
-cd /<your folder>
+cd /<your folder> 
 terraform init
 ```
 ### Ansible
@@ -81,8 +81,8 @@ and download the key (a JSON file).
 Run the following commands on your Terraform instance:
 ```none
 cd /<your folder>
-terraform plan
-terraform apply
+terraform plan  
+terraform apply  
 yes
 ```
 ## Create a GCP instance and check its configuration

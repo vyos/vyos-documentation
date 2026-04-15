@@ -1495,31 +1495,19 @@ system specified by :cfgcmd:`confederation identifier <asn>`.
 
 
 ```none
-
 BGP table version is 10, local router ID is 10.0.35.3, vrf id 0
-
 Default local pref 100, local AS 65000
-
 Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-
                i internal, r RIB-failure, S Stale, R Removed
-
 Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
-
 Origin codes:  i - IGP, e - EGP, ? - incomplete
-
 RPKI validation codes: V valid, I invalid, N Not found
 
-
    Network          Next Hop            Metric LocPrf Weight Path
-
 *> 198.51.100.0/24  10.0.34.4                0             0 65004 i
-
 *> 203.0.113.0/24   10.0.35.5                0             0 65005 i
 
-
 Displayed  2 routes and 2 total paths
-
 ```
 
 
@@ -1532,23 +1520,14 @@ routing table.
 
 
 ```none
-
 BGP routing table entry for 198.51.100.0/24
-
 Paths: (1 available, best #1, table default)
-
   Advertised to non peer-group peers:
-
   10.0.13.1 10.0.23.2 10.0.34.4 10.0.35.5
-
   65004
-
     10.0.34.4 from 10.0.34.4 (10.0.34.4)
-
       Origin IGP, metric 0, valid, external, best (First path received)
-
       Last update: Wed Jan  6 12:18:53 2021
-
 ```
 
 
@@ -1641,31 +1620,19 @@ This command displays the status of all BGP connections.
 
 
 ```none
-
 IPv4 Unicast Summary:
-
 BGP router identifier 10.0.35.3, local AS number 65000 vrf-id 0
-
 BGP table version 11
-
 RIB entries 5, using 920 bytes of memory
-
 Peers 4, using 82 KiB of memory
 
-
 Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd
-
 10.0.13.1       4      65000     148     159        0    0    0 02:16:01            0
-
 10.0.23.2       4      65000     136     143        0    0    0 02:13:21            0
-
 10.0.34.4       4      65004     161     163        0    0    0 02:16:01            1
-
 10.0.35.5       4      65005     162     166        0    0    0 02:16:01            1
 
-
 Total number of neighbors 4
-
 ```
 ### Reset
 ```{opcmd} reset bgp \<ipv4|ipv6\> \<address\> [soft [in|out]]
