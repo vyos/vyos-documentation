@@ -46,9 +46,11 @@ set interfaces ethernet eth0 address '192.0.2.10/24'
 set interfaces ethernet eth0 description 'WAN'
 set interfaces ethernet eth1 address '2001:db8::1/64'
 set interfaces ethernet eth1 description 'LAN'
+
 set service dns forwarding allow-from '2001:db8::/64'
 set service dns forwarding dns64-prefix '64:ff9b::/96'
 set service dns forwarding listen-address '2001:db8::1'
+
 set nat64 source rule 100 source prefix '64:ff9b::/96'
 set nat64 source rule 100 translation pool 10 address '192.0.2.10'
 set nat64 source rule 100 translation pool 10 port '1-65535'
@@ -71,6 +73,7 @@ vyos@r1:~$ ping 64:ff9b::192.0.2.1 count 2
 PING 64:ff9b::192.0.2.1(64:ff9b::c000:201) 56 data bytes
 64 bytes from 64:ff9b::c000:201: icmp_seq=1 ttl=63 time=0.351 ms
 64 bytes from 64:ff9b::c000:201: icmp_seq=2 ttl=63 time=0.373 ms
+
 --- 64:ff9b::192.0.2.1 ping statistics ---
 2 packets transmitted, 2 received, 0% packet loss, time 1023ms
 rtt min/avg/max/mdev = 0.351/0.362/0.373/0.011 ms

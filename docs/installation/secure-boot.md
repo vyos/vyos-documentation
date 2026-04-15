@@ -24,9 +24,11 @@ cd vyos-build
 CA_DIR="data/certificates"
 SHIM_CERT_NAME="vyos-dev-2025-shim"
 VYOS_KERNEL_CERT_NAME="vyos-dev-2025-linux"
+
 openssl req -new -x509 -newkey rsa:4096 -keyout ${CA_DIR}/${SHIM_CERT_NAME}.key -out ${CA_DIR}/${SHIM_CERT_NAME}.der \
   -outform DER -days 36500 -subj "/CN=VyOS Networks Secure Boot CA/" -nodes
 openssl x509 -inform der -in ${CA_DIR}/${SHIM_CERT_NAME}.der -out ${CA_DIR}/${SHIM_CERT_NAME}.pem
+
 openssl req -newkey rsa:4096 -sha256 -nodes -keyout ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.key \
   -out ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.csr -outform PEM -days 3650 \
   -subj "/CN=VyOS Networks Secure Boot Signer 2025 - linux/"

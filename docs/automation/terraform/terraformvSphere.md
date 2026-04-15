@@ -107,29 +107,36 @@ provider "vsphere" {
   vsphere_server = var.vsphere_server
   allow_unverified_ssl = true
 }
+
 data "vsphere_datacenter" "datacenter" {
   name = var.datacenter
 }
+
 data "vsphere_datastore" "datastore" {
   name          = var.datastore
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
 data "vsphere_compute_cluster" "cluster" {
   name          = var.cluster
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
 data "vsphere_resource_pool" "default" {
   name          = format("%s%s", data.vsphere_compute_cluster.cluster.name, "/Resources/terraform")  # set as you need
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
 data "vsphere_host" "host" {
   name          = var.host
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
 data "vsphere_network" "network" {
   name          = var.network_name
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
+
 # Deployment of VM from Remote OVF
 resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
   name                 = var.remotename
@@ -142,6 +149,7 @@ resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
   }
   wait_for_guest_net_timeout = 2
   wait_for_guest_ip_timeout  = 2
+
   ovf_deploy {
     allow_unverified_ssl_cert = true
     remote_ovf_url            = var.url_ova
@@ -160,16 +168,21 @@ resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
     }
   }
 }
+
 output "ip" {
   description = "default ip address of the deployed VM"
   value       = vsphere_virtual_machine.vmFromRemoteOvf.default_ip_address
 }
+
 # IP of vSphere instance copied to a file ip.txt in local system
+
 resource "local_file" "ip" {
     content  = vsphere_virtual_machine.vmFromRemoteOvf.default_ip_address
     filename = "ip.txt"
 }
+
 #Connecting to the Ansible control node using SSH connection
+
 resource "null_resource" "nullremote1" {
 depends_on = ["vsphere_virtual_machine.vmFromRemoteOvf"]
 connection {
@@ -177,13 +190,17 @@ connection {
  user     = "root"
  password = var.ansiblepassword
  host = var.ansiblehost
+
 }
+
 # Copying the ip.txt file to the Ansible control node from local system
+
  provisioner "file" {
     source      = "ip.txt"
     destination = "/root/vsphere/ip.txt"
        }
 }
+
 resource "null_resource" "nullremote2" {
 depends_on = ["vsphere_virtual_machine.vmFromRemoteOvf"]
 connection {
@@ -192,8 +209,11 @@ connection {
         password = var.ansiblepassword
         host = var.ansiblehost
 }
+
 # Command to run ansible playbook on remote Linux OS
+
 provisioner "remote-exec" {
+
     inline = [
         "cd /root/vsphere/",
         "ansible-playbook instance.yml"
@@ -207,6 +227,7 @@ provisioner "remote-exec" {
 ```none
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
+
 terraform {
   required_providers {
     vsphere = {
@@ -222,51 +243,63 @@ terraform {
 ```none
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
+
 variable "vsphere_server" {
   description = "vSphere server"
   type        = string
 }
+
 variable "vsphere_user" {
   description = "vSphere username"
   type        = string
 }
+
 variable "vsphere_password" {
   description = "vSphere password"
   type        = string
   sensitive   = true
 }
+
 variable "datacenter" {
   description = "vSphere data center"
   type        = string
 }
+
 variable "cluster" {
   description = "vSphere cluster"
   type        = string
 }
+
 variable "datastore" {
   description = "vSphere datastore"
   type        = string
 }
+
 variable "network_name" {
   description = "vSphere network name"
   type        = string
 }
+
 variable "host" {
   description = "Name of your host"
   type        = string
 }
+
 variable "remotename" {
   description = "The name of your VM"
   type        = string
 }
+
 variable "url_ova" {
   description = "The URL to the .OVA file or cloud storage"
   type        = string
 }
+
 variable "ansiblepassword" {
   description = "Ansible password"
   type        = string
 }
+
 variable "ansiblehost" {
   description = "Ansible host name or IP"
   type        = string
@@ -344,6 +377,7 @@ remote_user=vyos
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos
+
 # user and password gets from terraform variables "admin_username" and "admin_password"
 ansible_user: vyos
 # get from vyos.tf "vapp"

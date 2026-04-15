@@ -497,6 +497,8 @@ Use this command to preserve configuration changes upon reboot. By default it is
 vyos@vyos# save
 Saving configuration to '/config/config.boot'...
 Done
+
+
 ```
 
 ``` none

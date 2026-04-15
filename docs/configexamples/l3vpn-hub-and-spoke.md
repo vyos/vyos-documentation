@@ -782,6 +782,7 @@ Paths: (2 available, best #1)
      Originator: 10.0.0.8, Cluster list: 10.0.0.1
      Remote label: 80
      Last update: Wed Oct 13 12:39:34 202
+
 ```
 
 Now, let’s check routing information on out Hub PE:
@@ -865,11 +866,13 @@ Neighbor     V       AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/Pf
 
 ```none
 vyos@VyOS-PE2:~$ show ip route vrf BLUE_HUB
+
 Codes: K - kernel route, C - connected, S - static, R - RIP,
      O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
      T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
      F - PBR, f - OpenFabric,
      > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+
 VRF BLUE_HUB:
 K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 01w4d01h
 B>  10.50.50.0/24 [200/0] via 10.0.0.7 (vrf default) (recursive), label 144, weight 1, 05:53:15

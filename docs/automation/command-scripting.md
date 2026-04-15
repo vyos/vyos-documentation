@@ -146,6 +146,7 @@ Place your custom scripts in the following default directories:
 ```none
 /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before
                                        each commit.
+
 /config/scripts/commit/post-hooks.d  - Directory with scripts that run after
                                        each commit.
 ```

@@ -80,6 +80,7 @@ vyos7 ansible_ssh_host=192.0.2.105
 vyos8 ansible_ssh_host=192.0.2.106
 vyos9 ansible_ssh_host=192.0.2.107
 vyos10 ansible_ssh_host=192.0.2.108
+
 ```
 
 ## Add general variables:

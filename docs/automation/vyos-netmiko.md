@@ -14,7 +14,9 @@ It requires to install `python3-netmiko` module.
 
 ```none
 #!/usr/bin/env python3
+
 from netmiko import ConnectHandler
+
 vyos_router = {
   "device_type": "vyos",
   "host": "192.0.2.1",
@@ -22,17 +24,22 @@ vyos_router = {
   "password": "vyospass",
   "port": 22,
   }
+
 net_connect = ConnectHandler(**vyos_router)
+
 config_commands = [
                    'set interfaces ethernet eth0 description WAN',
                    'set interfaces ethernet eth1 description LAN',
                   ]
+
 # set configuration
 output = net_connect.send_config_set(config_commands, exit_config_mode=False)
 print(output)
+
 # commit configuration
 output = net_connect.commit()
 print(output)
+
 # op-mode commands
 output = net_connect.send_command("run show interfaces")
 print(output)

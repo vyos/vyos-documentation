@@ -37,10 +37,13 @@ Connect to the VM with the command `virsh console vyos_r1`
 
 ```none
 $ virsh console vyos_r1
+
 Connected to domain vyos_r1
 Escape character is ^]
+
 vyos login: vyos
 Password:
+
 vyos@vyos:~$ install image
 ```
 
@@ -78,10 +81,13 @@ Connect to the VM with the command `virsh console vyos_r2`
 
 ```none
 $ virsh console vyos_r2
+
 Connected to domain vyos_r2
 Escape character is ^]
+
 vyos login: vyos
 Password:
+
 vyos@vyos:~$
 ```
 

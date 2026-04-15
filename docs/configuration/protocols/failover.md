@@ -91,6 +91,7 @@ set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check timeout '5'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check type 'icmp'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 interface 'eth0'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 metric '10'
+
 ```
 Show the route
 ```none
@@ -99,6 +100,7 @@ vyos@vyos:~$ show ip route 203.0.113.1
   Known via "kernel", distance 0, metric 10, best
   Last update 00:00:39 ago
   * 192.0.2.1, via eth0
+
 ```
 **Two gateways and different metrics:**
 ```none

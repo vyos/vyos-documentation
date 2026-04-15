@@ -184,6 +184,7 @@ Loading /live/vmlinuz... ok
 Loading /live/initrd.img...
 ...
 Welcome to VyOS - vyos ttyS0
+
 vyos login:
 ```
 
@@ -469,6 +470,7 @@ too.
 
 ```none
 Welcome to VyOS - vyos ttyS0
+
 vyos login:
 ```
 
