@@ -422,32 +422,32 @@ Uplink/core tracking.
 
 Show brief interface information.
 
-```none
-vyos@vyos:~$ show interfaces ethernet
-Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-Interface        IP Address                        S/L  Description
----------        ----------                        ---  -----------
-eth0             172.18.201.10/24                  u/u  LAN
-eth1             172.18.202.11/24                  u/u  WAN
-eth2             -                                 u/D
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces ethernet
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  Interface        IP Address                        S/L  Description
+  ---------        ----------                        ---  -----------
+  eth0             172.18.201.10/24                  u/u  LAN
+  eth1             172.18.202.11/24                  u/u  WAN
+  eth2             -                                 u/D
 ```
 ```{opcmd} show interfaces ethernet <interface>
 
 Show detailed interface information.
 
-```none
-vyos@vyos:~$ show interfaces ethernet eth0
-eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
-    inet6 fe80::250:44ff:fe00:f5c9/64 scope link
-       valid_lft forever preferred_lft forever
+.. code-block:: none
 
-    RX:  bytes    packets     errors    dropped    overrun      mcast
-      56735451     179841          0          0          0     142380
-    TX:  bytes    packets     errors    dropped    carrier collisions
-       5601460      62595          0          0          0          0
-```
+  vyos@vyos:~$ show interfaces ethernet eth0
+  eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+  link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
+  inet6 fe80::250:44ff:fe00:f5c9/64 scope link
+  valid_lft forever preferred_lft forever
+
+  RX:  bytes    packets     errors    dropped    overrun      mcast
+  56735451     179841          0          0          0     142380
+  TX:  bytes    packets     errors    dropped    carrier collisions
+  5601460      62595          0          0          0          0
 ```
 % stop_vyoslinter
 
@@ -455,40 +455,40 @@ eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group
 
 Show interface hardware-level and driver details.
 
-```none
-vyos@vyos:~$ show interfaces ethernet eth0 physical
-Settings for eth0:
-        Supported ports: [ TP ]
-        Supported link modes:   1000baseT/Full
-                                10000baseT/Full
-        Supported pause frame use: No
-        Supports auto-negotiation: No
-        Supported FEC modes: Not reported
-        Advertised link modes:  Not reported
-        Advertised pause frame use: No
-        Advertised auto-negotiation: No
-        Advertised FEC modes: Not reported
-        Speed: 10000Mb/s
-        Duplex: Full
-        Port: Twisted Pair
-        PHYAD: 0
-        Transceiver: internal
-        Auto-negotiation: off
-        MDI-X: Unknown
-        Supports Wake-on: uag
-        Wake-on: d
-        Link detected: yes
-driver: vmxnet3
-version: 1.4.16.0-k-NAPI
-firmware-version:
-expansion-rom-version:
-bus-info: 0000:0b:00.0
-supports-statistics: yes
-supports-test: no
-supports-eeprom-access: no
-supports-register-dump: yes
-supports-priv-flags: no
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces ethernet eth0 physical
+  Settings for eth0:
+  Supported ports: [ TP ]
+  Supported link modes:   1000baseT/Full
+  10000baseT/Full
+  Supported pause frame use: No
+  Supports auto-negotiation: No
+  Supported FEC modes: Not reported
+  Advertised link modes:  Not reported
+  Advertised pause frame use: No
+  Advertised auto-negotiation: No
+  Advertised FEC modes: Not reported
+  Speed: 10000Mb/s
+  Duplex: Full
+  Port: Twisted Pair
+  PHYAD: 0
+  Transceiver: internal
+  Auto-negotiation: off
+  MDI-X: Unknown
+  Supports Wake-on: uag
+  Wake-on: d
+  Link detected: yes
+  driver: vmxnet3
+  version: 1.4.16.0-k-NAPI
+  firmware-version:
+  expansion-rom-version:
+  bus-info: 0000:0b:00.0
+  supports-statistics: yes
+  supports-test: no
+  supports-eeprom-access: no
+  supports-register-dump: yes
+  supports-priv-flags: no
 ```
 % start_vyoslinter
 
@@ -496,67 +496,67 @@ supports-priv-flags: no
 
 Show the status of the interface offloading features.
 
-```none
-vyos@vyos:~$ show interfaces ethernet eth0 physical offload
-rx-checksumming               on
-tx-checksumming               on
-tx-checksum-ip-generic        on
-scatter-gather                off
-tx-scatter-gather             off
-tcp-segmentation-offload      off
-tx-tcp-segmentation           off
-tx-tcp-mangleid-segmentation  off
-tx-tcp6-segmentation          off
-udp-fragmentation-offload     off
-generic-segmentation-offload  off
-generic-receive-offload       off
-large-receive-offload         off
-rx-vlan-offload               on
-tx-vlan-offload               on
-ntuple-filters                off
-receive-hashing               on
-tx-gre-segmentation           on
-tx-gre-csum-segmentation      on
-tx-udp_tnl-segmentation       on
-tx-udp_tnl-csum-segmentation  on
-tx-gso-partial                on
-tx-nocache-copy               off
-rx-all                        off
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces ethernet eth0 physical offload
+  rx-checksumming               on
+  tx-checksumming               on
+  tx-checksum-ip-generic        on
+  scatter-gather                off
+  tx-scatter-gather             off
+  tcp-segmentation-offload      off
+  tx-tcp-segmentation           off
+  tx-tcp-mangleid-segmentation  off
+  tx-tcp6-segmentation          off
+  udp-fragmentation-offload     off
+  generic-segmentation-offload  off
+  generic-receive-offload       off
+  large-receive-offload         off
+  rx-vlan-offload               on
+  tx-vlan-offload               on
+  ntuple-filters                off
+  receive-hashing               on
+  tx-gre-segmentation           on
+  tx-gre-csum-segmentation      on
+  tx-udp_tnl-segmentation       on
+  tx-udp_tnl-csum-segmentation  on
+  tx-gso-partial                on
+  tx-nocache-copy               off
+  rx-all                        off
 ```
 ```{opcmd} show interfaces ethernet <interface> transceiver
 
 Show information about the transceiver module plugged into the interface
 (e.g., SFP+, QSFP).
 
-```none
-vyos@vyos:~$ show interfaces ethernet eth5 transceiver
-   Identifier              : 0x03 (SFP)
-   Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)
-   Connector               : 0x07 (LC)
-   Transceiver codes       : 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00
-   Transceiver type        : Ethernet: 1000BASE-SX
-   Encoding                : 0x01 (8B/10B)
-   BR, Nominal             : 1300MBd
-   Rate identifier         : 0x00 (unspecified)
-   Length (SMF,km)         : 0km
-   Length (SMF)            : 0m
-   Length (50um)           : 550m
-   Length (62.5um)         : 270m
-   Length (Copper)         : 0m
-   Length (OM3)            : 0m
-   Laser wavelength        : 850nm
-   Vendor name             : CISCO-FINISAR
-   Vendor OUI              : 00:90:65
-   Vendor PN               : FTRJ-8519-7D-CS4
-   Vendor rev              : A
-   Option values           : 0x00 0x1a
-   Option                  : RX_LOS implemented
-   Option                  : TX_FAULT implemented
-   Option                  : TX_DISABLE implemented
-   BR margin, max          : 0%
-   BR margin, min          : 0%
-   Vendor SN               : FNS092xxxxx
-   Date code               : 0506xx
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces ethernet eth5 transceiver
+  Identifier              : 0x03 (SFP)
+  Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+  Connector               : 0x07 (LC)
+  Transceiver codes       : 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00
+  Transceiver type        : Ethernet: 1000BASE-SX
+  Encoding                : 0x01 (8B/10B)
+  BR, Nominal             : 1300MBd
+  Rate identifier         : 0x00 (unspecified)
+  Length (SMF,km)         : 0km
+  Length (SMF)            : 0m
+  Length (50um)           : 550m
+  Length (62.5um)         : 270m
+  Length (Copper)         : 0m
+  Length (OM3)            : 0m
+  Laser wavelength        : 850nm
+  Vendor name             : CISCO-FINISAR
+  Vendor OUI              : 00:90:65
+  Vendor PN               : FTRJ-8519-7D-CS4
+  Vendor rev              : A
+  Option values           : 0x00 0x1a
+  Option                  : RX_LOS implemented
+  Option                  : TX_FAULT implemented
+  Option                  : TX_DISABLE implemented
+  BR margin, max          : 0%
+  BR margin, min          : 0%
+  Vendor SN               : FNS092xxxxx
+  Date code               : 0506xx
 ```

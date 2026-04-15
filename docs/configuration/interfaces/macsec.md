@@ -132,45 +132,45 @@ The following values are valid:
 Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) :abbr:`MKA (MACsec
 Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
 
-```none
-vyos@vyos:~$ generate macsec mka cak gcm-aes-128
-20693b6e08bfa482703a563898c9e3ad
-```
+.. code-block:: none
+
+  vyos@vyos:~$ generate macsec mka cak gcm-aes-128
+  20693b6e08bfa482703a563898c9e3ad
 ```
 ```{opcmd} run generate macsec mka ckn
 
 Generate an :abbr:`MKA (MACsec Key Agreement protocol)` :abbr:`CAK (MACsec
 Connectivity Association Key)`.
 
-```none
-vyos@vyos:~$ generate macsec mka ckn
-88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
-```
+.. code-block:: none
+
+  vyos@vyos:~$ generate macsec mka ckn
+  88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
 ```
 ```{opcmd} show interfaces macsec
 
 Show all MACsec interfaces.
 
-```none
-vyos@vyos:~$ show interfaces macsec
-17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
-    cipher suite: GCM-AES-128, using ICV length 16
-    TXSC: 005056bfefaa0001 on SA 0
-20: macsec0: protect on validate strict sc off sa off encrypt off send_sci on end_station off scb off replay off
-    cipher suite: GCM-AES-128, using ICV length 16
-    TXSC: 005056bfefaa0001 on SA 0
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces macsec
+  17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
+  cipher suite: GCM-AES-128, using ICV length 16
+  TXSC: 005056bfefaa0001 on SA 0
+  20: macsec0: protect on validate strict sc off sa off encrypt off send_sci on end_station off scb off replay off
+  cipher suite: GCM-AES-128, using ICV length 16
+  TXSC: 005056bfefaa0001 on SA 0
 ```
 ```{opcmd} show interfaces macsec <interface>
 
 Show information for a specific MACsec interface.
 
-```none
-vyos@vyos:~$ show interfaces macsec macsec1
-17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
-    cipher suite: GCM-AES-128, using ICV length 16
-    TXSC: 005056bfefaa0001 on SA 0
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show interfaces macsec macsec1
+  17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
+  cipher suite: GCM-AES-128, using ICV length 16
+  TXSC: 005056bfefaa0001 on SA 0
 ```
 ## Examples
 

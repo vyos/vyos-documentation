@@ -28,10 +28,10 @@ the network
   Here is an example :abbr:`NET (Network Entity Title)` value:
 
 
-  ```none
+  .. code-block:: none
 
-  49.0001.1921.6800.1002.00
-  ```
+
+    49.0001.1921.6800.1002.00
   The CLNS address consists of the following parts:
 
 

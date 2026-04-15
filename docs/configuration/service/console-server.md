@@ -118,12 +118,12 @@ Multiple users can connect to the same serial device but only
 Show configured serial ports and their respective interface configuration.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show console-server ports
 
- usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
-```
+  vyos@vyos:~$ show console-server ports
+
+  usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 ```
 
 
@@ -132,24 +132,24 @@ vyos@vyos:~$ show console-server ports
 Show currently connected users.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show console-server user
 
- usb0b2.4p1.0               up   vyos@localhost
-```
+  vyos@vyos:~$ show console-server user
+
+  usb0b2.4p1.0               up   vyos@localhost
 ```
 ```{opcmd} connect console <device>
 
 Locally connect to serial port identified by `<device>`.
 
-```none
-vyos@vyos-r1:~$ connect console usb0b2.4p1.0
-[Enter `^Ec?' for help]
-[-- MOTD -- VyOS Console Server]
+.. code-block:: none
 
-vyos-r2 login:
-```
+  vyos@vyos-r1:~$ connect console usb0b2.4p1.0
+  [Enter `^Ec?' for help]
+  [-- MOTD -- VyOS Console Server]
+
+  vyos-r2 login:
 :::\{hint}
 Multiple users can connect to the same serial device but only
 :::

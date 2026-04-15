@@ -49,8 +49,8 @@ Request an IP address from the SSTP server without installing a default route.
 
 Example:
 
-```none
-```
+.. code-block:: none
+
 set interfaces sstpc sstpc0 no-default-route
 
 :::\{note}
@@ -68,8 +68,8 @@ Configure the distance for the default gateway provided by the SSTP server.
 
 Example:
 
-```none
-```
+.. code-block:: none
+
 set interfaces sstpc sstpc0 default-route-distance 220
 ```
 
@@ -166,8 +166,8 @@ mode.
 
 Show detailed information about the specified interface.
 
-```none
-```
+.. code-block:: none
+
 vyos@vyos:~$ show interfaces sstpc sstpc10
 
 sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 3

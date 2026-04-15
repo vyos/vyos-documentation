@@ -1066,85 +1066,85 @@ from ever becoming active.
 Show brief interface information.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show interfaces bonding
 
-Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+  vyos@vyos:~$ show interfaces bonding
 
-Interface        IP Address                        S/L  Description
+  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 
----------        ----------                        ---  -----------
+  Interface        IP Address                        S/L  Description
 
-bond0            -                                 u/u  my-sw1 int 23 and 24
+  ---------        ----------                        ---  -----------
 
-bond0.10         192.168.0.1/24                    u/u  office-net
+  bond0            -                                 u/u  my-sw1 int 23 and 24
 
-bond0.100        10.10.10.1/24                     u/u  management-net
-```
+  bond0.10         192.168.0.1/24                    u/u  office-net
+
+  bond0.100        10.10.10.1/24                     u/u  management-net
 ```
 ```{opcmd} show interfaces bonding <interface>
 
 Show detailed interface information.
 
-```none
-vyos@vyos:~$ show interfaces bonding bond5
-bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-    link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
-    inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
-       valid_lft forever preferred_lft forever
+.. code-block:: none
 
-    RX:  bytes  packets  errors  dropped  overrun       mcast
-             0        0       0        0        0           0
-    TX:  bytes  packets  errors  dropped  carrier  collisions
-             0        0       0        0        0           0
-```
+  vyos@vyos:~$ show interfaces bonding bond5
+  bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+  link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
+  inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
+  valid_lft forever preferred_lft forever
+
+  RX:  bytes  packets  errors  dropped  overrun       mcast
+  0        0       0        0        0           0
+  TX:  bytes  packets  errors  dropped  carrier  collisions
+  0        0       0        0        0           0
 ```
 ```{opcmd} show interfaces bonding <interface> detail
 
 Show detailed information about the underlying physical links on the given
 bonding interface.
 
-```none
-vyos@vyos:~$ show interfaces bonding bond5 detail
-Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
+.. code-block:: none
 
-Bonding Mode: IEEE 802.3ad Dynamic link aggregation
-Transmit Hash Policy: layer2 (0)
-MII Status: down
-MII Polling Interval (ms): 100
-Up Delay (ms): 0
-Down Delay (ms): 0
+  vyos@vyos:~$ show interfaces bonding bond5 detail
+  Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
 
-802.3ad info
-LACP rate: slow
-Min links: 0
-Aggregator selection policy (ad_select): stable
+  Bonding Mode: IEEE 802.3ad Dynamic link aggregation
+  Transmit Hash Policy: layer2 (0)
+  MII Status: down
+  MII Polling Interval (ms): 100
+  Up Delay (ms): 0
+  Down Delay (ms): 0
 
-Slave Interface: eth1
-MII Status: down
-Speed: Unknown
-Duplex: Unknown
-Link Failure Count: 0
-Permanent HW addr: 00:50:56:bf:ef:aa
-Slave queue ID: 0
-Aggregator ID: 1
-Actor Churn State: churned
-Partner Churn State: churned
-Actor Churned Count: 1
-Partner Churned Count: 1
+  802.3ad info
+  LACP rate: slow
+  Min links: 0
+  Aggregator selection policy (ad_select): stable
 
-Slave Interface: eth2
-MII Status: down
-Speed: Unknown
-Duplex: Unknown
-Link Failure Count: 0
-Permanent HW addr: 00:50:56:bf:19:26
-Slave queue ID: 0
-Aggregator ID: 2
-Actor Churn State: churned
-Partner Churn State: churned
-Actor Churned Count: 1
-Partner Churned Count: 1
-```
+  Slave Interface: eth1
+  MII Status: down
+  Speed: Unknown
+  Duplex: Unknown
+  Link Failure Count: 0
+  Permanent HW addr: 00:50:56:bf:ef:aa
+  Slave queue ID: 0
+  Aggregator ID: 1
+  Actor Churn State: churned
+  Partner Churn State: churned
+  Actor Churned Count: 1
+  Partner Churned Count: 1
+
+  Slave Interface: eth2
+  MII Status: down
+  Speed: Unknown
+  Duplex: Unknown
+  Link Failure Count: 0
+  Permanent HW addr: 00:50:56:bf:19:26
+  Slave queue ID: 0
+  Aggregator ID: 2
+  Actor Churn State: churned
+  Partner Churn State: churned
+  Actor Churned Count: 1
+  Partner Churned Count: 1
 ```

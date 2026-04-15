@@ -247,18 +247,18 @@ For VRF maintenance the following operational commands are in place.
 Lists VRFs that have been created
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show vrf
 
-VRF name          state     mac address        flags                     interfaces
+  vyos@vyos:~$ show vrf
 
---------          -----     -----------        -----                     ----------
+  VRF name          state     mac address        flags                     interfaces
 
-blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
+  --------          -----     -----------        -----                     ----------
 
-red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
-```
+  blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
+
+  red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
 :::\{note}
 Command should probably be extended to list also the real
 :::
@@ -269,16 +269,16 @@ Command should probably be extended to list also the real
 
 ```{opcmd} show vrf <name>
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show vrf name blue
 
-VRF name          state     mac address        flags                     interfaces
+  vyos@vyos:~$ show vrf name blue
 
---------          -----     -----------        -----                     ----------
+  VRF name          state     mac address        flags                     interfaces
 
-blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
-```
+  --------          -----     -----------        -----                     ----------
+
+  blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 ```
 
 
@@ -287,60 +287,60 @@ blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,
 Display IPv4 routing table for VRF identified by `<name>`.
 
 
-```none
-
-vyos@vyos:~$ show ip route vrf blue
-
-Codes: K - kernel route, C - connected, S - static, R - RIP,
-
-       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-
-       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-
-       F - PBR, f - OpenFabric,
-
-       > - selected route, * - FIB route, q - queued route, r - rejected route
+.. code-block:: none
 
 
-VRF blue:
+  vyos@vyos:~$ show ip route vrf blue
 
-K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
+  Codes: K - kernel route, C - connected, S - static, R - RIP,
 
-S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
+  O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
 
-C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
-```
+  T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+
+  F - PBR, f - OpenFabric,
+
+  > - selected route, * - FIB route, q - queued route, r - rejected route
+
+
+  VRF blue:
+
+  K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
+
+  S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
+
+  C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
 ```
 ```{opcmd} show ipv6 route vrf <name>
 
 Display IPv6 routing table for VRF identified by `<name>`.
 
 
-```none
-
-vyos@vyos:~$ show ipv6 route vrf red
-
-Codes: K - kernel route, C - connected, S - static, R - RIPng,
-
-       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
-
-       v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
-
-       f - OpenFabric,
-
-       > - selected route, * - FIB route, q - queued route, r - rejected route
+.. code-block:: none
 
 
-VRF red:
+  vyos@vyos:~$ show ipv6 route vrf red
 
-K   ::/0 [255/8192] unreachable (ICMP unreachable), 00:43:20
+  Codes: K - kernel route, C - connected, S - static, R - RIPng,
 
-C>* 2001:db8::/64 is directly connected, dum1, 00:02:19
+  O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
 
-C>* fe80::/64 is directly connected, dum1, 00:43:19
+  v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
 
-K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
-```
+  f - OpenFabric,
+
+  > - selected route, * - FIB route, q - queued route, r - rejected route
+
+
+  VRF red:
+
+  K   ::/0 [255/8192] unreachable (ICMP unreachable), 00:43:20
+
+  C>* 2001:db8::/64 is directly connected, dum1, 00:02:19
+
+  C>* fe80::/64 is directly connected, dum1, 00:43:19
+
+  K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 ```
 ```{opcmd} ping <host> vrf <name>
 
@@ -383,24 +383,24 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
      A brief statistic is shown afterwards.
 
 
-   ```none
+   .. code-block:: none
 
-   vyos@vyos:~$ ping 192.0.2.1 vrf red
 
-   PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
+     vyos@vyos:~$ ping 192.0.2.1 vrf red
 
-   64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
+     PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
 
-   64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
+     64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
 
-   ^C
+     64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
 
-   --- 192.0.2.1 ping statistics ---
+     ^C
 
-   2 packets transmitted, 2 received, 0% packet loss, time 4ms
+     --- 192.0.2.1 ping statistics ---
 
-   rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
-   ```
+     2 packets transmitted, 2 received, 0% packet loss, time 4ms
+
+     rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
 ```
 
 
@@ -424,12 +424,12 @@ Join a given VRF. This will open a new subshell within the specified VRF.
 The prompt is adjusted to reflect this change in both config and op-mode.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ force vrf blue
 
-vyos@vyos(vrf:blue):~$
-```
+  vyos@vyos:~$ force vrf blue
+
+  vyos@vyos(vrf:blue):~$
 ```
 
 
@@ -937,35 +937,35 @@ are in place.
  Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
 
 
-```none
-
-BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
-
-Default local pref 100, local AS 65001
-
-Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-
-               i internal, r RIB-failure, S Stale, R Removed
-
-Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
-
-Origin codes:  i - IGP, e - EGP, ? - incomplete
+.. code-block:: none
 
 
-   Network          Next Hop            Metric LocPrf Weight Path
+  BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
 
-Route Distinguisher: 10.50.50.1:1011
+  Default local pref 100, local AS 65001
 
-*>i10.50.50.0/24    10.0.0.7                  0    100      0 i
+  Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
 
-    UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
+  i internal, r RIB-failure, S Stale, R Removed
 
-Route Distinguisher: 10.60.60.1:1011
+  Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
 
-*>i10.60.60.0/24    10.0.0.10              0    100      0 i
+  Origin codes:  i - IGP, e - EGP, ? - incomplete
 
-    UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
-```
+
+  Network          Next Hop            Metric LocPrf Weight Path
+
+  Route Distinguisher: 10.50.50.1:1011
+
+  *>i10.50.50.0/24    10.0.0.7                  0    100      0 i
+
+  UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
+
+  Route Distinguisher: 10.60.60.1:1011
+
+  *>i10.60.60.0/24    10.0.0.10              0    100      0 i
+
+  UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 ```
 
 
@@ -976,23 +976,23 @@ Route Distinguisher: 10.60.60.1:1011
       combination.
 
 
-```none
-
-BGP router identifier 10.0.1.1, local AS number 65001 vrf-id 0
-
-BGP table version 0
-
-RIB entries 9, using 1728 bytes of memory
-
-Peers 4, using 85 KiB of memory
-
-Peer groups 1, using 64 bytes of memory
+.. code-block:: none
 
 
-Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+  BGP router identifier 10.0.1.1, local AS number 65001 vrf-id 0
 
-10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
-```
+  BGP table version 0
+
+  RIB entries 9, using 1728 bytes of memory
+
+  Peers 4, using 85 KiB of memory
+
+  Peer groups 1, using 64 bytes of memory
+
+
+  Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
+
+  10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
 ```
 ```{include} /_include/common-references.txt
 ```

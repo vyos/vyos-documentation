@@ -79,9 +79,9 @@ If a module is specified but a different driver is actually bound
 
 Example:
 
-```none
-set system watchdog module softdog
-```
+.. code-block:: none
+
+  set system watchdog module softdog
 ```
 ```{cfgcmd} set system watchdog timeout <seconds>
    :defaultvalue:
@@ -103,9 +103,9 @@ a reboot.
 
 Example:
 
-```none
-set system watchdog timeout 30
-```
+.. code-block:: none
+
+  set system watchdog timeout 30
 ```
 ```{cfgcmd} set system watchdog shutdown-timeout <seconds>
    :defaultvalue:
@@ -127,9 +127,9 @@ Setting this value too low (below 120 seconds) may cause
 
 Example:
 
-```none
-set system watchdog shutdown-timeout 180
-```
+.. code-block:: none
+
+  set system watchdog shutdown-timeout 180
 ```
 ```{cfgcmd} set system watchdog reboot-timeout <seconds>
    :defaultvalue:
@@ -151,9 +151,9 @@ Setting this value too low (below 120 seconds) may cause
 
 Example:
 
-```none
-set system watchdog reboot-timeout 180
-```
+.. code-block:: none
+
+  set system watchdog reboot-timeout 180
 ```
 ## Examples
 

@@ -174,33 +174,33 @@ not have a rule-set configured as defined in
 
 Display a basic summary of the zone configuration.
 
-```none
-vyos@vyos:~$ show firewall zone-policy
-Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-------  ------------  -----------  ---------------  ---------------
-LAN     eth1          WAN          WAN-LAN-v4
-        eth2
-LOCAL   LOCAL         LAN          LAN-LOCAL-v4
-                      WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
-WAN     eth3          LAN          LAN-WAN-v4
-        eth0          LOCAL        LOCAL-WAN-v4
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show firewall zone-policy
+  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+  ------  ------------  -----------  ---------------  ---------------
+  LAN     eth1          WAN          WAN-LAN-v4
+  eth2
+  LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+  WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
+  WAN     eth3          LAN          LAN-WAN-v4
+  eth0          LOCAL        LOCAL-WAN-v4
 ```
 ```{opcmd} show firewall zone-policy zone <zone>
 
 Display a basic summary of a particular zone.
 
-```none
-vyos@vyos:~$ show firewall zone-policy zone WAN
-Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-------  ------------  -----------  ---------------  ---------------
-WAN     eth3          LAN          LAN-WAN-v4
-        eth0          LOCAL        LOCAL-WAN-v4
+.. code-block:: none
 
-vyos@vyos:~$ show firewall zone-policy zone LOCAL
-Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-------  ------------  -----------  ---------------  ---------------
-LOCAL   LOCAL         LAN          LAN-LOCAL-v4
-                      WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
-```
+  vyos@vyos:~$ show firewall zone-policy zone WAN
+  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+  ------  ------------  -----------  ---------------  ---------------
+  WAN     eth3          LAN          LAN-WAN-v4
+  eth0          LOCAL        LOCAL-WAN-v4
+
+  vyos@vyos:~$ show firewall zone-policy zone LOCAL
+  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+  ------  ------------  -----------  ---------------  ---------------
+  LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+  WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
 ```

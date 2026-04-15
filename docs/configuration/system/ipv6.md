@@ -112,11 +112,12 @@ Use this command to show IPv6 routes.
 Check the many parameters available for the `show ipv6 route` command:
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show ipv6 route
 
-Possible completions:
+  vyos@vyos:~$ show ipv6 route
+
+  Possible completions:
 
   <Enter>       Execute the current command
 
@@ -150,7 +151,6 @@ Possible completions:
 
   vrf           Show IPv6 routes in VRF
 ```
-```
 ```{opcmd} show ipv6 prefix-list
 
    Use this command to show all IPv6 prefix lists
@@ -159,11 +159,12 @@ Possible completions:
    There are different parameters for getting prefix-list information:
 
 
-   ```none
+   .. code-block:: none
 
-   vyos@vyos:~$ show ipv6 prefix-list
 
-   Possible completions:
+     vyos@vyos:~$ show ipv6 prefix-list
+
+     Possible completions:
 
      <Enter>       Execute the current command
 
@@ -172,7 +173,6 @@ Possible completions:
      detail        Show detail of IPv6 prefix-lists
 
      summary       Show summary of IPv6 prefix-lists
-   ```
 ```
 
 
@@ -184,16 +184,16 @@ Use this command to show all IPv6 access lists
 You can also specify which IPv6 access-list should be shown:
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show ipv6 access-list
 
-Possible completions:
+  vyos@vyos:~$ show ipv6 access-list
+
+  Possible completions:
 
   <Enter>       Execute the current command
 
   <text>        Show specified IPv6 access-list
-```
 ```
 ```{opcmd} show ipv6 ospfv3
 
@@ -205,11 +205,12 @@ Possible completions:
    shown below:
 
 
-   ```none
+   .. code-block:: none
 
-   vyos@vyos:~$ show ipv6 ospfv3
 
-   Possible completions:
+     vyos@vyos:~$ show ipv6 ospfv3
+
+     Possible completions:
 
      <Enter>       Execute the current command
 
@@ -217,7 +218,7 @@ Possible completions:
 
      border-routers
 
-                   Show OSPFv3 border-router (ABR and ASBR) information
+     Show OSPFv3 border-router (ABR and ASBR) information
 
      database      Show OSPFv3 Link state database information
 
@@ -230,7 +231,6 @@ Possible completions:
      redistribute  Show OSPFv3 redistribute External information
 
      route         Show OSPFv3 routing table information
-   ```
 ```
 
 

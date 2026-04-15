@@ -109,71 +109,71 @@ Enable BFD for ISIS on an interface
    Show all BFD peers
 
 
-   ```none
-
-   BFD Peers:
-
-        peer 198.51.100.33 vrf default interface eth4.100
-
-                ID: 4182341893
-
-                Remote ID: 12678929647
-
-                Status: up
-
-                Uptime: 1 month(s), 16 hour(s), 29 minute(s), 38 second(s)
-
-                Diagnostics: ok
-
-                Remote diagnostics: ok
-
-                Local timers:
-
-                        Receive interval: 300ms
-
-                        Transmission interval: 300ms
-
-                        Echo transmission interval: 50ms
-
-                Remote timers:
-
-                        Receive interval: 300ms
-
-                        Transmission interval: 300ms
-
-                        Echo transmission interval: 0ms
+   .. code-block:: none
 
 
-        peer 198.51.100.55 vrf default interface eth4.101
+     BFD Peers:
 
-                ID: 4618932327
+     peer 198.51.100.33 vrf default interface eth4.100
 
-                Remote ID: 3312345688
+     ID: 4182341893
 
-                Status: up
+     Remote ID: 12678929647
 
-                Uptime: 20 hour(s), 16 minute(s), 19 second(s)
+     Status: up
 
-                Diagnostics: ok
+     Uptime: 1 month(s), 16 hour(s), 29 minute(s), 38 second(s)
 
-                Remote diagnostics: ok
+     Diagnostics: ok
 
-                Local timers:
+     Remote diagnostics: ok
 
-                        Receive interval: 300ms
+     Local timers:
 
-                        Transmission interval: 300ms
+     Receive interval: 300ms
 
-                        Echo transmission interval: 50ms
+     Transmission interval: 300ms
 
-                Remote timers:
+     Echo transmission interval: 50ms
 
-                        Receive interval: 300ms
+     Remote timers:
 
-                        Transmission interval: 300ms
+     Receive interval: 300ms
 
-                        Echo transmission interval: 0ms
-   ```
+     Transmission interval: 300ms
+
+     Echo transmission interval: 0ms
+
+
+     peer 198.51.100.55 vrf default interface eth4.101
+
+     ID: 4618932327
+
+     Remote ID: 3312345688
+
+     Status: up
+
+     Uptime: 20 hour(s), 16 minute(s), 19 second(s)
+
+     Diagnostics: ok
+
+     Remote diagnostics: ok
+
+     Local timers:
+
+     Receive interval: 300ms
+
+     Transmission interval: 300ms
+
+     Echo transmission interval: 50ms
+
+     Remote timers:
+
+     Receive interval: 300ms
+
+     Transmission interval: 300ms
+
+     Echo transmission interval: 0ms
 ```
 
 
@@ -244,16 +244,16 @@ and the gateway address as BFD peer destination address.
 
 Showing BFD monitored static routes
 
-```none
-Showing BFD monitored static routes:
+.. code-block:: none
+
+  Showing BFD monitored static routes:
 
   Next hops:
-    VRF default IPv4 Unicast:
-        10.10.13.3/32 peer 192.168.2.3 (status: installed)
-        172.16.10.3/32 peer 192.168.10.1 (status: uninstalled)
+  VRF default IPv4 Unicast:
+  10.10.13.3/32 peer 192.168.2.3 (status: installed)
+  172.16.10.3/32 peer 192.168.10.1 (status: uninstalled)
 
-    VRF default IPv4 Multicast:
+  VRF default IPv4 Multicast:
 
-    VRF default IPv6 Unicast:
-```
+  VRF default IPv6 Unicast:
 ```

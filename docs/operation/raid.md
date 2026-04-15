@@ -203,54 +203,54 @@ shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
 set and is in the process of being resynchronized.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show raid md0
 
-/dev/md0:
+  vyos@vyos:~$ show raid md0
 
-      Version : 00.90
+  /dev/md0:
 
-Creation Time : Wed Oct 29 09:19:09 2008
+  Version : 00.90
 
-   Raid Level : raid1
+  Creation Time : Wed Oct 29 09:19:09 2008
 
-   Array Size : 1044800 (1020.48 MiB 1069.88 MB)
+  Raid Level : raid1
 
-Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
+  Array Size : 1044800 (1020.48 MiB 1069.88 MB)
 
- Raid Devices : 2
+  Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
 
-Total Devices : 2
+  Raid Devices : 2
 
-Preferred Minor : 0
+  Total Devices : 2
 
-  Persistence : Superblock is persistent
+  Preferred Minor : 0
 
-  Update Time : Wed Oct 29 19:34:23 2008
+  Persistence : Superblock is persistent
 
-        State : active, degraded, recovering
+  Update Time : Wed Oct 29 19:34:23 2008
 
-Active Devices : 1
+  State : active, degraded, recovering
 
-Working Devices : 2
+  Active Devices : 1
 
-Failed Devices : 0
+  Working Devices : 2
 
-Spare Devices : 1
+  Failed Devices : 0
 
-Rebuild Status : 17% complete
+  Spare Devices : 1
 
-         UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
+  Rebuild Status : 17% complete
 
-       Events : 0.103
+  UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
 
-  Number   Major   Minor   RaidDevice State
+  Events : 0.103
 
-     0       8        1        0      active sync   /dev/sda1
+  Number   Major   Minor   RaidDevice State
 
-     2       8       17        1      spare rebuilding   /dev/sdb1
-```
+  0       8        1        0      active sync   /dev/sda1
+
+  2       8       17        1      spare rebuilding   /dev/sdb1
 ```
 
 
@@ -259,20 +259,20 @@ Rebuild Status : 17% complete
 Use this command to display the formatting of a hard disk.
 
 
-```none
+.. code-block:: none
 
-vyos@vyos:~$ show disk sda format
 
-Disk /dev/sda: 1073 MB, 1073741824 bytes
+  vyos@vyos:~$ show disk sda format
 
-85 heads, 9 sectors/track, 2741 cylinders
+  Disk /dev/sda: 1073 MB, 1073741824 bytes
 
-Units = cylinders of 765 * 512 = 391680 bytes
+  85 heads, 9 sectors/track, 2741 cylinders
 
-Disk identifier: 0x000b7179
+  Units = cylinders of 765 * 512 = 391680 bytes
 
- Device Boot      Start         End      Blocks   Id  System
+  Disk identifier: 0x000b7179
 
-/dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
-```
+  Device Boot      Start         End      Blocks   Id  System
+
+  /dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
 ```

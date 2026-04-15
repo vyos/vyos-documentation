@@ -264,10 +264,10 @@ enabled to avoid compatibility issues with existing clients.
    Example:
 
 
-   ```none
+   .. code-block:: none
 
-   set interfaces openvpn vtun0 offload dco
-   ```
+
+     set interfaces openvpn vtun0 offload dco
    This command enables :abbr:`DCO (Data Channel Offload)` and loads the required
 
    kernel module.
@@ -311,19 +311,19 @@ Use this option only as a last resort. Invalid options or syntax
 Example:
 
 
-```none
+.. code-block:: none
 
-set interfaces openvpn vtun0 openvpn-option 'persist-key'
-```
+
+  set interfaces openvpn vtun0 openvpn-option 'persist-key'
 This command adds ``persist-key`` to the configuration file. This solves the
 
 problem by persisting keys across resets, so they do not need to be re-read.
 
 
-```none
+.. code-block:: none
 
-set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
-```
+
+  set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
 This command adds ``route-up "/config/auth/tun_up.sh arg1"`` to the
 
 configuration file. This option is executed after connection authentication,

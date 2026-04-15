@@ -224,9 +224,9 @@ ID.
 
 Set the native VLAN ID to 2 for the member interface ``eth0``:
 
-```none
-set interfaces bridge br1 member interface eth0 native-vlan 2
-```
+.. code-block:: none
+
+  set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
 ```{cfgcmd} set interfaces bridge <interface> member interface <member>
 
@@ -240,16 +240,16 @@ Enter a single VLAN ID or a range of VLAN IDs separated by a hyphen.
 
 To allow VLAN ID 4 on member interface ``eth0``:
 
-```none
-set interfaces bridge br1 member interface eth0 allowed-vlan 4
-```
+.. code-block:: none
+
+  set interfaces bridge br1 member interface eth0 allowed-vlan 4
 **Example:**
 
 To allow VLAN IDs 6 through 8 on member interface ``eth0``:
 
-```none
-set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
-```
+.. code-block:: none
+
+  set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 ```
 ### SPAN port mirroring
 
@@ -345,40 +345,40 @@ vyos@vyos# show interfaces bridge br100
 
 Show the status of member interfaces for all configured bridges.
 
-```none
-vyos@vyos:~$ show bridge
-3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
-priority 32 cost 100
-4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
-priority 32 cost 100
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show bridge
+  3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
+  priority 32 cost 100
+  4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
+  priority 32 cost 100
 ```
 ```{opcmd} show bridge <name> fdb
 
 Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
 
-```none
-vyos@vyos:~$ show bridge br0 fdb
-50:00:00:08:00:01 dev eth1 vlan 20 master br0 permanent
-50:00:00:08:00:01 dev eth1 vlan 10 master br0 permanent
-50:00:00:08:00:01 dev eth1 master br0 permanent
-33:33:00:00:00:01 dev eth1 self permanent
-33:33:00:00:00:02 dev eth1 self permanent
-01:00:5e:00:00:01 dev eth1 self permanent
-50:00:00:08:00:02 dev eth2 vlan 20 master br0 permanent
-50:00:00:08:00:02 dev eth2 vlan 10 master br0 permanent
-50:00:00:08:00:02 dev eth2 master br0 permanent
-33:33:00:00:00:01 dev eth2 self permanent
-33:33:00:00:00:02 dev eth2 self permanent
-01:00:5e:00:00:01 dev eth2 self permanent
-33:33:00:00:00:01 dev br0 self permanent
-33:33:00:00:00:02 dev br0 self permanent
-33:33:ff:08:00:01 dev br0 self permanent
-01:00:5e:00:00:6a dev br0 self permanent
-33:33:00:00:00:6a dev br0 self permanent
-01:00:5e:00:00:01 dev br0 self permanent
-33:33:ff:00:00:00 dev br0 self permanent
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show bridge br0 fdb
+  50:00:00:08:00:01 dev eth1 vlan 20 master br0 permanent
+  50:00:00:08:00:01 dev eth1 vlan 10 master br0 permanent
+  50:00:00:08:00:01 dev eth1 master br0 permanent
+  33:33:00:00:00:01 dev eth1 self permanent
+  33:33:00:00:00:02 dev eth1 self permanent
+  01:00:5e:00:00:01 dev eth1 self permanent
+  50:00:00:08:00:02 dev eth2 vlan 20 master br0 permanent
+  50:00:00:08:00:02 dev eth2 vlan 10 master br0 permanent
+  50:00:00:08:00:02 dev eth2 master br0 permanent
+  33:33:00:00:00:01 dev eth2 self permanent
+  33:33:00:00:00:02 dev eth2 self permanent
+  01:00:5e:00:00:01 dev eth2 self permanent
+  33:33:00:00:00:01 dev br0 self permanent
+  33:33:00:00:00:02 dev br0 self permanent
+  33:33:ff:08:00:01 dev br0 self permanent
+  01:00:5e:00:00:6a dev br0 self permanent
+  33:33:00:00:00:6a dev br0 self permanent
+  01:00:5e:00:00:01 dev br0 self permanent
+  33:33:ff:00:00:00 dev br0 self permanent
 ```
 ```{opcmd} show bridge <name> mdb
 
@@ -389,22 +389,22 @@ The :abbr:`MDB (Multicast group Database)` is populated by :abbr:`IGMP
 Discovery)` snooping and lists the multicast groups currently active on the
 bridge.
 
-```none
-vyos@vyos:~$ show bridge br0 mdb
-dev br0 port br0 grp ff02::1:ff00:0 temp vid 1
-dev br0 port br0 grp ff02::2 temp vid 1
-dev br0 port br0 grp ff02::1:ff08:1 temp vid 1
-dev br0 port br0 grp ff02::6a temp vid 1
-```
+.. code-block:: none
+
+  vyos@vyos:~$ show bridge br0 mdb
+  dev br0 port br0 grp ff02::1:ff00:0 temp vid 1
+  dev br0 port br0 grp ff02::2 temp vid 1
+  dev br0 port br0 grp ff02::1:ff08:1 temp vid 1
+  dev br0 port br0 grp ff02::6a temp vid 1
 ```
 ```{opcmd} show bridge <name> macs
 
 Show the learned :abbr:`MAC (Media Access Control)` address table for the
 specified bridge.
 
-```none
-vyos@vyos:~$ show bridge br100 macs
-port no mac addr                is local?       ageing timer
+.. code-block:: none
+
+  vyos@vyos:~$ show bridge br100 macs
+  port no mac addr                is local?       ageing timer
   1     00:53:29:44:3b:19       yes                0.00
-```
 ```

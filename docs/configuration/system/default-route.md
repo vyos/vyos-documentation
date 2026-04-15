@@ -25,13 +25,13 @@ Delete default route from the system.
 
 Show routing table entry for the default route.
 
-```none
-vyos@vyos:~$ show ip route 0.0.0.0
-Routing entry for 0.0.0.0/0
+.. code-block:: none
+
+  vyos@vyos:~$ show ip route 0.0.0.0
+  Routing entry for 0.0.0.0/0
   Known via "static", distance 10, metric 0, best
   Last update 09:46:30 ago
   * 172.18.201.254, via eth0.201
-```
 ```
 :::{seealso}
 Configuration of {ref}`routing-static`
