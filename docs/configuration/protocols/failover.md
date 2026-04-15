@@ -10,11 +10,8 @@ until the target becomes available.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check
 
    target <target-address>
-
    Configure next-hop `<address>` and `<target-address>` for an IPv4 static
-
    route. Specify the target
-
    IPv4 address for health checking.
 
 ```

@@ -37,7 +37,6 @@ outgoing traffic.
 
 
    :::
-
       them in the system nor applies them to the system configuration.
 
 
@@ -45,9 +44,7 @@ outgoing traffic.
 
 
      vyos@vyos:~$ generate pki wireguard key-pair
-
      Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
-
      Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 ```
 
@@ -55,7 +52,6 @@ outgoing traffic.
 ```{opcmd} generate pki wireguard key-pair install interface \<interface\>
 
 Generate a keypair and output the private key assignment command for the
-
 specified interface.
 
 
@@ -63,9 +59,7 @@ specified interface.
 
 
   vyos@vyos:~$ generate pki wireguard key-pair install interface wg10
-
   "generate" CLI command executed from operational level.
-
   Generated private key is not automatically added to the VyOS configuration, use the following configuration mode commands to install key:
 
 
@@ -76,9 +70,7 @@ specified interface.
 :::{note}
 If you invoke this command from configuration mode with the ``run``
 :::
-
    prefix, the generated private key is automatically assigned to the specified
-
    interface.
 
 
@@ -86,25 +78,18 @@ If you invoke this command from configuration mode with the ``run``
 
 
   vyos@vyos# run generate pki wireguard key-pair install interface wg10
-
   "generate" CLI command executed from config session.
-
   Generated private-key was imported to CLI!
 
 
   Use the following command to verify: show interfaces wireguard wg10
-
   Corresponding public-key to use on peer system is: '7d9KwabjLhHpJiEJeIGd0CBlao/eTwFOh6xyCovTfG8='
 
 
   vyos@vyos# compare
-
   [edit interfaces]
-
   +wireguard wg10 {
-
   +    private-key CJweb8FC6BU3Loj4PC2pn5V82cDjIPs7G1saW0ZfLWc=
-
   +}
 ```
 
@@ -118,7 +103,6 @@ Show the public key assigned to the interface.
 
 
   vyos@vyos:~$ show interfaces wireguard wg01 public-key
-
   EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 ```
 #### Optional
@@ -129,7 +113,6 @@ Generate a pre-shared key.
 
 
 The pre-shared key is optional. It adds an additional layer of symmetric-key
-
 cryptography on top of the asymmetric cryptography.
 
 
@@ -137,13 +120,11 @@ cryptography on top of the asymmetric cryptography.
 
 
   vyos@vyos:~$ generate pki wireguard preshared-key
-
   Pre-shared key: OHH2EwZfMNK+1L6BXbYw3bKCtMrfjpR4mCAEeBlFnRs=
 ```
 ```{opcmd} generate pki wireguard preshared-key install interface \<interface\> peer \<peer\>
 
 Generate a pre-shared key and output the key assignment command for the
-
 specified peer.
 
 
@@ -151,9 +132,7 @@ specified peer.
 
 
   vyos@vyos:~$ generate pki wireguard preshared-key install interface wg10 peer foo
-
   "generate" CLI command executed from operational level.
-
   Generated preshared-key is not stored to CLI, use configure mode commands to install key:
 
 
@@ -164,7 +143,6 @@ specified peer.
 :::{note}
 If you invoke this command from configuration mode with the run
 :::
-
    prefix, the generated key is automatically assigned to the specified peer.
 
 ```
@@ -221,14 +199,11 @@ peers. This is a strict design restriction. For more information, check the
 
     set interfaces wireguard wg01 private-key 'iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY='
   To generate a private key, use the following command:
-
   :opcmd:`generate pki wireguard key-pair`.
 
 
   To view the public key assigned to the interface so you can share it with a
-
   peer, use the following command:
-
   :opcmd:`show interfaces wireguard wg01 public-key`.
 
 ```
@@ -402,24 +377,16 @@ Show information about the WireGuard service, including the latest handshake.
 
 
   vyos@vyos:~$ show interfaces wireguard wg01 summary
-
   interface: wg01
-
   public key:
-
   private key: (hidden)
-
   listening port: 51820
 
 
   peer: <peer pubkey>
-
   endpoint: <peer public IP>
-
   allowed ips: 10.69.69.2/32
-
   latest handshake: 23 hours, 45 minutes, 26 seconds ago
-
   transfer: 1.26 MiB received, 6.47 MiB sent
 ```
 
@@ -433,26 +400,20 @@ Show a list of all WireGuard interfaces.
 
 
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-
   Interface        IP Address                        S/L  Description
-
   ---------        ----------                        ---  -----------
-
   wg01             10.0.0.1/24                       u/u
 ```
 ```{opcmd} show interfaces wireguard \<interface\>
 
 Show general information about a specific WireGuard interface.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces wireguard wg01
   interface: wg01
   address: 10.0.0.1/24
   public key: h1HkYlSuHdJN6Qv4Hz4bBzjGg5WUty+U1L7DJsZy1iE=
   private key: (hidden)
   listening port: 41751
-
   RX:  bytes  packets  errors  dropped  overrun       mcast
   0        0       0        0        0           0
   TX:  bytes  packets  errors  dropped  carrier  collisions
@@ -471,18 +432,14 @@ create the private portion yourself and hand out only the public key.
    <ip|fqdn> address <client-ip>
 **Generate a client configuration file that establishes a connection to the
 specified interface.**
-
 The public key from the specified interface is automatically included in the
 configuration file.
-
 The command also generates a configuration snippet that can be copied into the
 VyOS CLI. The ``<name>`` you provide will be used as the peer name in the
 snippet.
-
 You must also specify the IP address or FQDN of the server the client connects
 to. The address parameter can be used twice to assign both an IPv4 (/32) and
 an IPv6 (/128) address to the client.
-
 :::{figure} /_static/images/wireguard_qrcode.jpg
 :::
    :alt: WireGuard Client QR code

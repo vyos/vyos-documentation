@@ -19,11 +19,8 @@ a deamonless container engine.
 
       set container name mysql-server image mysql:8.0
     If a registry is not specified, Docker.io will be used as the container
-
     registry unless an alternative registry is specified using
-
     **set container registry <name>** or the registry is included
-
     in the image name
 
 
@@ -61,9 +58,7 @@ Set the host name for a container.
 ```{cfgcmd} set container name \<name\> allow-host-pid
 
 The container and the host share the same process namespace.
-
 This means that processes running on the host are visible inside the
-
 container, and processes inside the container are visible on the host.
 
 
@@ -74,7 +69,6 @@ The command translates to "--pid host" when the container is created.
 ```{cfgcmd} set container name \<name\> allow-host-networks
 
 Allow host networking in a container. The network stack of the container is
-
 not isolated from the host and will use the host IP.
 
 
@@ -94,7 +88,6 @@ The command translates to "--net host" when the container is created.
 ```{cfgcmd} set container name \<name\> network \<networkname\>
 
 Attaches user-defined network to a container.
-
 Only one network must be specified and must already exist.
 ```
 
@@ -102,7 +95,6 @@ Only one network must be specified and must already exist.
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
-
 This address must be within the named network prefix.
 
 
@@ -113,7 +105,6 @@ The first IP in the container network is reserved by the
 
 
 :::
-
    engine and cannot be used
 ```
 
@@ -121,9 +112,7 @@ The first IP in the container network is reserved by the
 ```{cfgcmd} set container name \<name\> name-server \<address\>
 
 Optionally set a custom name server.
-
 If a container network is used with DNS enabled,
-
 this setting will not have any effect.
 ```
 
@@ -137,11 +126,8 @@ Set a container description
 ```{cfgcmd} set container name \<name\> environment \<key\> value \<value\>
 
 Add custom environment variables.
-
 Multiple environment variables are allowed.
-
 The following commands translate to "-e key=value" when the container
-
 is created.
 
 
@@ -149,11 +135,8 @@ is created.
 
 
   set container name mysql-server environment MYSQL_DATABASE value 'zabbix'
-
   set container name mysql-server environment MYSQL_USER value 'zabbix'
-
   set container name mysql-server environment MYSQL_PASSWORD value 'zabbix_pwd'
-
   set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
 ```
 
@@ -175,9 +158,7 @@ Publish a port for the container.
 
 
   set container name zabbix-web-nginx-mysql port http source 80
-
   set container name zabbix-web-nginx-mysql port http destination 8080
-
   set container name zabbix-web-nginx-mysql port http protocol tcp
 ```
 :::{note}
@@ -197,7 +178,6 @@ Mount a volume into the container
 
 
   set container name coredns volume 'corefile' source /config/coredns/Corefile
-
   set container name coredns volume 'corefile' destination /etc/Corefile
 ```
 
@@ -217,7 +197,6 @@ Mount a tmpfs *(ramdisk)* filesystem to the given path within the container.
 ```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> size \<MB\>
 
 Size in MB for tmpfs filesystem, maximum size is 64GB or 50% of the
-
 systems total available memory.
 ```
 
@@ -238,13 +217,9 @@ Set the restart behavior of the container.
 
 
 - **no**: Do not restart containers on exit
-
 - **on-failure**: Restart containers when they exit with a non-zero
-
   exit code, retrying indefinitely (default)
-
 - **always**: Restart containers when they exit, regardless of status,
-
   retrying indefinitely
 ```
 
@@ -255,11 +230,8 @@ This specifies the number of CPU resources the container can use.
 
 
 Default is 0 for unlimited.
-
 For example, 1.25 limits the container to use up to 1.25 cores
-
 worth of CPU time.
-
 This can be a decimal number with up to three decimal places.
 
 
@@ -292,19 +264,12 @@ Set container capabilities or permissions.
 
 
 - **net-admin**: Network operations (interface, firewall, routing tables)
-
 - **net-bind-service**: Bind a socket to privileged ports
-
   (port numbers less than 1024)
-
 - **net-raw**: Permission to create raw network sockets
-
 - **setpcap**: Capability sets (from bounded or inherited set)
-
 - **sys-admin**: Administration operations (quotactl, mount, sethostname,
-
   setdomainame)
-
 - **sys-time**: Permission to set system clock
 ```
 
@@ -318,11 +283,8 @@ The subset of possible parameters are:
 
 
 - Kernel Parameters: kernel.msgmax, kernel.msgmnb, kernel.msgmni, kernel.sem,
-
   kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
-
 - Parameters beginning with fs.mqueue.*
-
 - Parameters beginning with net.* (only if user-defined network is used)
 ```
 
@@ -385,7 +347,6 @@ A brief description what this network is all about.
 ```{cfgcmd} set container network \<name\> prefix \<ipv4|ipv6\>
 
 Define IPv4 and/or IPv6 prefix for a given network name.
-
 Both IPv4 and IPv6 can be used in parallel.
 ```
 
@@ -393,7 +354,6 @@ Both IPv4 and IPv6 can be used in parallel.
 ```{cfgcmd} set container network \<name\> mtu \<number\>
 
 Configure :abbr:`MTU (Maximum Transmission Unit)` for a given network. It
-
 is the size (in bytes) of the largest ethernet frame sent on this link.
 ```
 
@@ -412,9 +372,7 @@ Bind container network to a given VRF instance.
 ```{cfgcmd} set container registry \<name\>
 
 Adds registry to list of unqualified-search-registries. By default, for any
-
 image that does not include the registry in the image name, VyOS will use
-
 docker.io and quay.io as the container registry.
 ```
 
@@ -435,7 +393,6 @@ Some container registries require credentials to be used.
 
 
 Credentials can be defined here and will only be used when adding a
-
 container image to the system.
 ```
 
@@ -443,7 +400,6 @@ container image to the system.
 ```{cfgcmd} set container registry \<name\> insecure
 
 Allow registry access over unencrypted HTTP or TLS connections with
-
 untrusted certificates.
 ```
 
@@ -472,9 +428,7 @@ If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.i
 
 
   set container registry docker.io mirror address 192.168.1.1
-
   set container registry docker.io mirror port 8080
-
   set container registry docker.io insecure
 If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/some/repo`` or run ``podman pull 192.168.1.1:8080/some/repo``
 
@@ -492,9 +446,7 @@ Set the default log driver for containers.
 
 
 - **k8s-file**: Log to a plain text file in Kubernetes-style format.
-
 - **journald**: Log to the system journal
-
 - **none**: Disable logging for the container
 
 
@@ -535,7 +487,6 @@ Update container image
 
 Delete a particular container image based on it's image ID.
 You can also delete all container images at once.
-
 You can not delete a container image if it has more then one tag
 assigned, this is why there is a `force` option to pass down to
 the container image to also remove those images.

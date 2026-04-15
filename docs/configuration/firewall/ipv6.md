@@ -155,7 +155,6 @@ The action can be :
 
 
 This required setting defines the action of the current rule. If you set
-
 the action to jump, you must also define a jump-target.
 ```
 
@@ -184,7 +183,6 @@ jump-target <text>
 
 
 Use this command only when action is set to ``jump``. Specify the jump
-
 target.
 ```
 
@@ -213,7 +211,6 @@ queue <0-65535>
 
 
 Use this command only when action is set to ``queue``. Specify the queue
-
 target. Queue ranges are also supported.
 ```
 
@@ -242,9 +239,7 @@ queue-options bypass
 
 
 Use this command only when action is set to ``queue``. This command allows
-
 the packet to go through the firewall when no userspace software is connected
-
 to the queue.
 ```
 
@@ -273,7 +268,6 @@ queue-options fanout
 
 
 Use this command only when action is set to ``queue``. This command
-
 distributes packets among multiple queues.
 ```
 Also, **default-action** is an action that takes place whenever a packet does
@@ -303,13 +297,9 @@ not match any rule in its chain. For base chains, possible options for
 
 
 Set the default action of the rule-set if a packet does not match any rule
-
 criteria. If you set default-action to ``jump``, you must also define
-
 ``default-jump-target``. For base chains, you can only set the default
-
 action to ``accept`` or ``drop``. For custom chains, more actions are
-
 available.
 ```
 
@@ -317,7 +307,6 @@ available.
 ```{cfgcmd} set firewall ipv6 name \<name\> default-jump-target \<text\>
 
 To be used only when ``default-action`` is set to ``jump``. Use this
-
 command to specify the jump target for the default rule.
 ```
 :::{note}
@@ -349,7 +338,6 @@ define other log options.
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log
 
 Enable logging for matched packets. If this configuration command is not
-
 present, logging is disabled.
 ```
 
@@ -369,7 +357,6 @@ present, logging is disabled.
 ```{cfgcmd} set firewall ipv6 name \<name\> default-log
 
 Use this command to enable the logging of the default action on
-
 the specified chain.
 ```
 
@@ -377,7 +364,6 @@ the specified chain.
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -385,7 +371,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -393,7 +378,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -401,7 +385,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 
 
@@ -433,7 +416,6 @@ log-options group <0-65535>
 
 
 Define the log group to send messages to. Only applicable if rule log is
-
 enabled.
 ```
 
@@ -462,7 +444,6 @@ log-options snapshot-length <0-9000>
 
 
 Define the length of packet payload to include in a netlink message. Only
-
 applicable when rule logging is enabled and log group is defined.
 ```
 
@@ -491,9 +472,7 @@ log-options queue-threshold <0-65535>
 
 
 Define the number of packets to queue inside the kernel before sending them
-
 to userspace. Only applicable when rule logging is enabled and log group is
-
 defined.
 ```
 ### Firewall Description
@@ -655,7 +634,6 @@ destination address [address | addressrange | CIDR]
 
 
 Match based on source or destination address. This is similar to network
-
 groups, but you can negate the matching addresses here.
 
 
@@ -714,15 +692,10 @@ destination address-mask [address]
 
 
 Apply an arbitrary netmask to mask addresses and match only a specific
-
 portion. This is useful for IPv6 because rules remain valid when the IPv6
-
 prefix changes if the host portion of the system's IPv6 address is static.
-
 Examples include SLAAC and `tokenised IPv6 addresses
-
 <https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-
-
 identifiers-02.txt>`_
 
 
@@ -734,19 +707,12 @@ This function works for both individual addresses and address groups.
 
 
   # Match any IPv6 address with the suffix ::0000:0000:0000:beef
-
   set firewall ipv6 forward filter rule 100 destination address ::beef
-
   set firewall ipv6 forward filter rule 100 destination address-mask ::ffff:ffff:ffff:ffff
-
   # Address groups
-
   set firewall group ipv6-address-group WEBSERVERS address ::1000
-
   set firewall group ipv6-address-group WEBSERVERS address ::2000
-
   set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
-
   set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
 % start_vyoslinter
 ```
@@ -800,7 +766,6 @@ destination fqdn <fqdn>
 
 
 Specify a Fully Qualified Domain Name as source or destination to match.
-
 Ensure that the router can resolve the DNS query.
 ```
 
@@ -901,11 +866,8 @@ destination geoip inverse-match
 
 
 Match IP addresses based on their geolocation. For more information, see
-
 `GeoIP matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_
-
 matching>`_. Use inverse-match to match anything except the specified
-
 country codes.
 ```
 DB-IP.com provides data under CC-BY-4.0 license. Attribution is required and
@@ -943,7 +905,6 @@ You can specify only a source MAC address to match.
 
 
   set firewall ipv6 input filter rule 100 source mac-address 00:53:00:11:22:33
-
   set firewall ipv6 input filter rule 101 source mac-address !00:53:00:aa:12:34
 ```
 
@@ -1002,12 +963,9 @@ Specify a port by number or by name as defined in ``/etc/services``.
 
 
   set firewall ipv6 forward filter rule 10 source port '22'
-
   set firewall ipv6 forward filter rule 11 source port '!http'
-
   set firewall ipv6 forward filter rule 12 source port 'https'
 Multiple source ports can be specified as a comma-separated list.
-
 The whole list can also be "negated" using ``!``. For example:
 
 
@@ -1066,7 +1024,6 @@ destination group address-group <name | !name>
 
 
 Specify an address group. You can prepend the character ``!`` to invert the
-
 matching criteria.
 ```
 
@@ -1119,7 +1076,6 @@ destination group dynamic-address-group <name | !name>
 
 
 Specify a dynamic address group. You can prepend the character ``!`` to
-
 invert the matching criteria.
 ```
 
@@ -1172,7 +1128,6 @@ destination group network-group <name | !name>
 
 
 Specify a network group. You can prepend the character ``!`` to invert the
-
 matching criteria.
 ```
 
@@ -1225,7 +1180,6 @@ destination group port-group <name | !name>
 
 
 Specify a port group. You can prepend the character ``!`` to invert the
-
 matching criteria.
 ```
 
@@ -1278,7 +1232,6 @@ destination group domain-group <name | !name>
 
 
 Specify a domain group. You can prepend the character ``!`` to invert the
-
 matching criteria.
 ```
 
@@ -1331,7 +1284,6 @@ destination group mac-group <name | !name>
 
 
 Specify a MAC group. You can prepend the character ``!`` to invert the
-
 matching criteria.
 ```
 
@@ -1465,7 +1417,6 @@ icmpv6 type-name <text>
 
 
 Match based on ICMPv6 type-name. Press **Tab** for information about
-
 supported **type-name** criteria.
 ```
 
@@ -1488,9 +1439,7 @@ inbound-interface name <iface>
 
 
 Match based on inbound interface. You can use the wildcard ``*``. For
-
 example: ``eth2*``. You can prepend the character ``!`` to invert the
-
 matching criteria. For example ``!eth2``
 ```
 :::{note}
@@ -1516,7 +1465,6 @@ inbound-interface group <iface_group>
 
 
 Match based on the inbound interface group. You can prepend the character
-
 ``!`` to invert the matching criteria. For example ``!IFACE_GROUP``
 ```
 
@@ -1539,9 +1487,7 @@ outbound-interface name <iface>
 
 
 Match based on outbound interface. You can use the wildcard ``*``. For
-
 example: ``eth2*``. You can prepend the character ``!`` to invert the
-
 matching criteria. For example ``!eth2``
 ```
 :::{note}
@@ -1567,7 +1513,6 @@ outbound-interface group <iface_group>
 
 
 Match based on outbound interface group. You can prepend the character ``!``
-
 to invert the matching criteria. For example ``!IFACE_GROUP``
 ```
 
@@ -1623,7 +1568,6 @@ limit burst <0-4294967295>
 
 
 Match based on the maximum number of packets allowed to exceed the rate
-
 limit.
 ```
 
@@ -1652,7 +1596,6 @@ limit rate <text>
 
 
 Match based on the maximum average rate, specified as ``integer/unit``.
-
 For example, specify ``5/minutes``.
 ```
 
@@ -1705,7 +1648,6 @@ packet-length-exclude <text>
 
 
 Match based on packet length. You can specify multiple values from 1 to
-
 65535 and ranges.
 ```
 
@@ -1761,9 +1703,7 @@ protocol [<text> | <0-255> | all | tcp_udp]
 
 
 Match based on protocol number or name as defined in ``/etc/protocols``.
-
 Specify ``all`` for all protocols and ``tcp_udp`` for TCP and UDP packets.
-
 Prepend ``!`` to negate the protocol selection.
 
 
@@ -1849,9 +1789,7 @@ tcp flags [not] <text>
 
 
 Allowed values for TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
-
 ``rst``, ``syn``, and ``urg``. You can specify multiple values. To invert
-
 the selection, use ``not``, as shown in the following example.
 
 
@@ -1859,9 +1797,7 @@ the selection, use ``not``, as shown in the following example.
 
 
   set firewall ipv6 input filter rule 10 tcp flags 'ack'
-
   set firewall ipv6 input filter rule 12 tcp flags 'syn'
-
   set firewall ipv6 input filter rule 13 tcp flags not 'fin'
 ```
 
@@ -2040,7 +1976,6 @@ hop-limit <eq | gt | lt> <0-255>
 
 
 Match the hop-limit parameter. Use ``eq`` for equal, ``gt`` for greater than,
-
 and ``lt`` for less than.
 ```
 
@@ -2093,7 +2028,6 @@ recent time <second | minute | hour>
 
 
 Match when the specified number of connections occur within the specified
-
 time period. Use these criteria to block brute-force attempts.
 ```
 ### Packet Modifications
@@ -2285,105 +2219,70 @@ Show a basic firewall overview for all rule-sets, not only for IPv6:
 
 
   vyos@vyos:~$ show firewall
-
   Rulesets Information
 
 
   ---------------------------------
-
   IPv4 Firewall "forward filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  -----------------------------------------
-
   5        jump      all                 0        0  iifname "eth1"  jump NAME_VyOS_MANAGEMENT
-
   10       jump      all                 0        0  oifname "eth1"  jump NAME_WAN_IN
-
   15       jump      all                 0        0  iifname "eth3"  jump NAME_WAN_IN
-
   default  accept    all
 
 
   ---------------------------------
-
   IPv4 Firewall "name VyOS_MANAGEMENT"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  --------------------------------
-
   5        accept    all                 0        0  ct state established  accept
-
   10       drop      all                 0        0  ct state invalid
-
   20       accept    all                 0        0  ip saddr @A_GOOD_GUYS  accept
-
   30       accept    all                 0        0  ip saddr @N_ENTIRE_RANGE  accept
-
   40       accept    all                 0        0  ip saddr @A_VyOS_SERVERS  accept
-
   50       accept    icmp                0        0  meta l4proto icmp  accept
-
   default  drop      all                 0        0
 
 
   ---------------------------------
-
   IPv6 Firewall "forward filter"
 
 
   Rule     Action    Protocol
-
   -------  --------  ----------
-
   5        jump      all
-
   10       jump      all
-
   15       jump      all
-
   default  accept    all
 
 
   ---------------------------------
-
   IPv6 Firewall "input filter"
 
 
   Rule     Action    Protocol
-
   -------  --------  ----------
-
   5        jump      all
-
   default  accept    all
 
 
   ---------------------------------
-
   IPv6 Firewall "ipv6_name IPV6-VyOS_MANAGEMENT"
 
 
   Rule     Action    Protocol
-
   -------  --------  ----------
-
   5        accept    all
-
   10       drop      all
-
   20       accept    all
-
   30       accept    all
-
   40       accept    all
-
   50       accept    ipv6-icmp
-
   default  drop      all
 ```
 
@@ -2397,7 +2296,6 @@ This will show you a summary of rule-sets and groups
 
 
   vyos@vyos:~$ show firewall summary
-
   Ruleset Summary
 
 
@@ -2405,15 +2303,10 @@ This will show you a summary of rule-sets and groups
 
 
   Ruleset Hook    Ruleset Priority      Description
-
   --------------  --------------------  -------------------------
-
   forward         filter
-
   input           filter
-
   ipv6_name       IPV6-VyOS_MANAGEMENT
-
   ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
 
 
@@ -2421,15 +2314,10 @@ This will show you a summary of rule-sets and groups
 
 
   Ruleset Hook    Ruleset Priority    Description
-
   --------------  ------------------  -------------------------
-
   forward         filter
-
   input           filter
-
   name            VyOS_MANAGEMENT
-
   name            WAN_IN              PUBLIC_INTERNET
 
 
@@ -2437,49 +2325,27 @@ This will show you a summary of rule-sets and groups
 
 
   Name                     Type                References               Members
-
   -----------------------  ------------------  -----------------------  ----------------
-
   PBX                      address_group       WAN_IN-100               198.51.100.77
-
   SERVERS                  address_group       WAN_IN-110               192.0.2.10
-
   WAN_IN-111               192.0.2.11
-
   WAN_IN-112               192.0.2.12
-
   WAN_IN-120
-
   WAN_IN-121
-
   WAN_IN-122
-
   SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
-
   WAN_IN-20
-
   PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
-
   PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
-
   WAN_IN-171
-
   PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
-
   SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
-
   IPV6-WAN_IN-111          2001:db8::3
-
   IPV6-WAN_IN-112          2001:db8::4
-
   IPV6-WAN_IN-120
-
   IPV6-WAN_IN-121
-
   IPV6-WAN_IN-122
-
   SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
-
   IPV6-WAN_IN-20
 ```
 ```{opcmd} show firewall ipv6 [forward | input | output] filter
@@ -2494,23 +2360,17 @@ This command will give an overview of a single rule-set.
 
 
   vyos@vyos:~$ show firewall ipv6 input filter
-
   Ruleset Information
 
 
   ---------------------------------
-
   ipv6 Firewall "input filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  ------------------------------------------------------------------------------
-
   10       jump      all                13     1456  iifname "eth1"  jump NAME6_INP-ETH1
-
   20       accept    ipv6-icmp          10     1112  meta l4proto ipv6-icmp iifname "eth0"  prefix "[ipv6-INP-filter-20-A]"  accept
-
   default  accept    all                14     1584
 
 
@@ -2537,7 +2397,6 @@ This command will give an overview of a rule in a single rule-set
 ```{opcmd} show firewall group \<name\>
 
 Show an overview of defined groups, including the type, members, and where
-
 the group is used.
 
 
@@ -2545,20 +2404,14 @@ the group is used.
 
 
   vyos@vyos:~$ show firewall group LAN
-
   Firewall Groups
 
 
   Name          Type                References               Members
-
   ------------  ------------------  -----------------------  ----------------
-
   LAN           ipv6_network_group  IPV6-VyOS_MANAGEMENT-30  2001:db8::0/64
-
   IPV6-WAN_IN-30
-
   LAN           network_group       VyOS_MANAGEMENT-30       192.168.200.0/24
-
   WAN_IN-30
 ```
 ```{opcmd} show firewall statistics

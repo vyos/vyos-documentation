@@ -239,7 +239,6 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 ```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
 
 Set delay between gratuitous ARP messages sent on an interface.
-
 0 if not defined.
 ```
 % stop_vyoslinter
@@ -251,7 +250,6 @@ Set delay between gratuitous ARP messages sent on an interface.
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
 
 Set delay for second set of gratuitous ARPs after transition to MASTER.
-
 5 if not defined.
 ```
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh
@@ -262,7 +260,6 @@ Set delay for second set of gratuitous ARPs after transition to MASTER.
 
    <1-600>
 Set minimum time interval for refreshing gratuitous ARPs while MASTER.
-
 0 if not defined, which means no refreshing.
 ```
 ```{cfgcmd} set high-availability vrrp global-parameters garp
@@ -273,7 +270,6 @@ Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 
    master-refresh-repeat <1-600>
 Set number of gratuitous ARP messages to send at a time while MASTER.
-
 1 if not defined.
 ```
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-repeat
@@ -285,7 +281,6 @@ Set number of gratuitous ARP messages to send at a time while MASTER.
    <1-600>
 Set number of gratuitous ARP messages to send at a time after transition to
 MASTER.
-
 5 if not defined.
 ```
 ## Version

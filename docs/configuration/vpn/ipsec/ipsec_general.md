@@ -136,7 +136,6 @@ VyOS IKE group has the next options:
 
  Defines the action to take if the remote peer unexpectedly
  closes a CHILD_SA:
-
 * **none** - Set action to none (default),
 * **trap** - Installs a trap policy (IPsec policy without Security
   Association) for the CHILD_SA and traffic matching these policies
@@ -159,7 +158,6 @@ during an IKE rekey.
  If not set both protocols are handled and connections will
  use IKEv2 when initiating, but accept any protocol version
  when responding:
-
 * **ikev1** - Use IKEv1 for Key Exchange.
 * **ikev2** - Use IKEv2 for Key Exchange.
 ```
@@ -172,7 +170,6 @@ IKE lifetime in seconds <0-86400> (default 28800).
 ```{cfgcmd} set vpn ipsec ike-group \<name\> mode
 
  IKEv1 Phase 1 Mode Selection:
-
 * **main** - Use Main mode for Key Exchanges in the IKEv1 Protocol
   (Recommended Default).
 * **aggressive** - Use Aggressive mode for Key Exchanges in the IKEv1
@@ -205,17 +202,11 @@ Pseudo-random function.
 
 
   * **trap** - Installs a trap policy (IPsec policy without Security
-
     Association), which will catch matching traffic and tries to
-
     re-negotiate the tunnel on-demand.
-
   * **clear** - Closes the CHILD_SA and does not take further action
-
     (default).
-
   * **restart** - Immediately tries to re-negotiate the CHILD_SA
-
     under a fresh IKE_SA.
 
 ```
@@ -242,7 +233,6 @@ VyOS ESP group has the next options:
 ```{cfgcmd} set vpn ipsec esp-group \<name\> compression
 
 Enables the  IPComp(IP Payload Compression) protocol which allows
-
 compressing the content of IP packets.
 ```
 
@@ -250,7 +240,6 @@ compressing the content of IP packets.
 ```{cfgcmd} set vpn ipsec esp-group \<name\> disable-rekey
 
 Do not locally initiate a re-key of the SA, remote peer must
-
 re-key before expiration.
 ```
 
@@ -258,7 +247,6 @@ re-key before expiration.
 ```{cfgcmd} set vpn ipsec esp-group \<name\> life-bytes \<bytes\>
 
 ESP life in bytes <1024-26843545600000>. Number of bytes
-
 transmitted over an IPsec SA before it expires.
 ```
 
@@ -266,7 +254,6 @@ transmitted over an IPsec SA before it expires.
 ```{cfgcmd} set vpn ipsec esp-group \<name\> life-packets \<packets\>
 
 ESP life in packets <1000-26843545600000>.
-
 Number of packets transmitted over an IPsec SA before it expires.
 ```
 
@@ -274,11 +261,8 @@ Number of packets transmitted over an IPsec SA before it expires.
 ```{cfgcmd} set vpn ipsec esp-group \<name\> lifetime \<timeout\>
 
 ESP lifetime in seconds <30-86400> (default 3600).
-
 How long a particular instance of a connection (a set of
-
 encryption/authentication keys for user packets) should last,
-
 from successful negotiation to expiry.
 ```
 
@@ -289,7 +273,6 @@ The type of the connection:
 
 
 * **tunnel** - Tunnel mode (default).
-
 * **transport** - Transport mode.
 ```
 
@@ -297,16 +280,12 @@ The type of the connection:
 ```{cfgcmd} set vpn ipsec esp-group \<name\> pfs \< dh-group\>
 
  Whether Perfect Forward Secrecy of keys is desired on the
-
  connection's keying channel and defines a Diffie-Hellman group for
-
  PFS:
 
 
 * **enable** - Inherit Diffie-Hellman group from IKE group (default).
-
 * **disable** - Disable PFS.
-
 * **<dh-group>** - Defines a Diffie-Hellman group for PFS.
 ```
 
@@ -325,9 +304,7 @@ Hash algorithm. Default value is **sha1**.
 ```{cfgcmd} set vpn ipsec interface \<name\>
 
 Interface name to restrict outbound IPsec policies. There is a possibility
-
 to specify multiple interfaces. If an interfaces are not specified, IPsec
-
 policies apply to all interfaces.
 ```
 ```{cfgcmd} set vpn ipsec log level \<number\>

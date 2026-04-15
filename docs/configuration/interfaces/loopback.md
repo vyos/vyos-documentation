@@ -30,9 +30,7 @@ interface type.
 ```{opcmd} show interfaces loopback
 
 Show brief interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces loopback
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
@@ -43,9 +41,7 @@ Show brief interface information.
 ```{opcmd} show interfaces loopback lo
 
 Show detailed interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces loopback lo
   lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
   link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -53,7 +49,6 @@ Show detailed interface information.
   valid_lft forever preferred_lft forever
   inet6 ::1/128 scope host
   valid_lft forever preferred_lft forever
-
   RX:  bytes    packets     errors    dropped    overrun      mcast
   300          6          0          0          0          0
   TX:  bytes    packets     errors    dropped    carrier collisions

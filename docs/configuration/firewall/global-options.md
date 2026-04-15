@@ -23,29 +23,21 @@ Configuration commands covered in this section:
 By default, when VyOS receives an ICMP echo request packet destined for
 itself, it answers with an ICMP echo reply, unless your firewall prevents
 it.
-
 You can set firewall rules to accept, drop, or reject ICMP in, out, or
 local traffic. You can also use the **firewall global-options all-ping**
 command. This command affects only LOCAL traffic (packets destined for your
 VyOS system), not IN or OUT traffic.
-
 :::{note}
-
 **firewall global-options all-ping** affects only LOCAL traffic
-
 :::
    and always behaves in the most restrictive way
-
 .. code-block:: none
-
   set firewall global-options all-ping enable
 When you set this command, VyOS answers every ICMP echo request addressed
 to itself, but that response occurs only if no other rule drops or rejects
 local echo requests. In case of conflict, VyOS does not answer ICMP echo
 requests.
-
 .. code-block:: none
-
   set firewall global-options all-ping disable
 When you set this command, VyOS answers no ICMP echo requests addressed to
 itself, regardless of where they come from or what specific rules accept
@@ -59,7 +51,6 @@ Apply IPv4 or IPv6 firewall rules to bridged traffic.
 
 Enable or disable the response to ICMP broadcast messages. The system
 alters the following parameter:
-
 * ``net.ipv4.icmp_echo_ignore_broadcasts``
 ```
 ```{cfgcmd} set firewall global-options ip-src-route [enable | disable]
@@ -68,7 +59,6 @@ alters the following parameter:
 
 Set whether VyOS accepts packets with a source route option.
 The following sysctl parameters will be changed:
-
 * ``net.ipv4.conf.all.accept_source_route``
 * ``net.ipv6.conf.all.accept_source_route``
 ```
@@ -79,7 +69,6 @@ The following sysctl parameters will be changed:
    [enable | disable]
 Allow VyOS to accept ICMPv4 and ICMPv6 redirect messages.
 The following sysctl parameters will be changed:
-
 * ``net.ipv4.conf.all.accept_redirects``
 * ``net.ipv6.conf.all.accept_redirects``
 ```
@@ -87,14 +76,12 @@ The following sysctl parameters will be changed:
 
 Allow VyOS to send ICMPv4 redirect messages.
 The following sysctl parameter will be changed:
-
 * ``net.ipv4.conf.all.send_redirects``
 ```
 ```{cfgcmd} set firewall global-options log-martians [enable | disable]
 
 Allow VyOS to log martian IPv4 packets.
 The following sysctl parameter will be changed:
-
 * ``net.ipv4.conf.all.log_martians``
 ```
 ```{cfgcmd} set firewall global-options source-validation
@@ -102,14 +89,12 @@ The following sysctl parameter will be changed:
    [strict | loose | disable]
 Set the IPv4 source validation mode.
 The following sysctl parameter will be changed:
-
 * ``net.ipv4.conf.all.rp_filter``
 ```
 ```{cfgcmd} set firewall global-options syn-cookies [enable | disable]
 
 Allow VyOS to use IPv4 TCP SYN Cookies.
 The following sysctl parameter will be changed:
-
 * ``net.ipv4.tcp_syncookies``
 ```
 ```{cfgcmd} set firewall global-options twa-hazards-protection
@@ -117,7 +102,6 @@ The following sysctl parameter will be changed:
    [enable | disable]
 Enable or disable VyOS :rfc:`1337` conformance.
 The following sysctl parameter will be changed:
-
 * ``net.ipv4.tcp_rfc1337``
 ```
 ```{cfgcmd} set firewall global-options state-policy established action

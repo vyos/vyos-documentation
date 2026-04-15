@@ -20,9 +20,7 @@ the command line prompt.
 ```{cfgcmd} set system host-name \<hostname\>
 
    The hostname can be up to 63 characters. A hostname
-
    must start and end with a letter or digit, and have as interior characters
-
    only letters, digits, or a hyphen.
 
 
@@ -39,7 +37,6 @@ unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
 ```{cfgcmd} set system domain-name \<domain\>
 
 Configure system domain name. A domain name must start and end with a letter
-
 or digit, and have as interior characters only letters, digits, or a hyphen.
 ```
 ## Static Hostname Mapping
@@ -59,7 +56,6 @@ lose all your manual edits. Instead, configure static host mappings as follows.
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> inet \<address\>
 
 Create a static hostname mapping which will always resolve the name
-
 `<hostname>` to IP address `<address>`.
 ```
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> alias \<alias\>
@@ -67,6 +63,5 @@ Create a static hostname mapping which will always resolve the name
 Create named `<alias>` for the configured static mapping for `<hostname>`.
 Thus the address configured as :cfgcmd:`set system static-host-mapping
 host-name <hostname> inet <address>` can be reached via multiple names.
-
 Multiple aliases can be specified per host-name.
 ```

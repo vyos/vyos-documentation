@@ -49,12 +49,10 @@ Disable sending syslog mark messages.
 ```{cfgcmd} set system syslog preserve-fqdn
 
 **Configure how the logging device's hostname appears in log messages sent
-
 to a remote syslog server.**
 
 
 If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain
-
 Name)` in log messages, even if the syslog server is in the same domain.
 ```
 ### Local logging
@@ -63,7 +61,6 @@ Configure which log messages to save to a local log file.
 
 **Configure syslog to save log messages for a specific facility and
 severity level to ``/var/log/messages``.**
-
 Refer to the tables below for valid facility and severity options.
 ```
 (syslog-console)=
@@ -73,7 +70,6 @@ Configure which log messages to send to `/dev/console`.
 
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
-
 Refer to the tables below for valid facility and severity options.
 ```
 (syslog-remote)=
@@ -86,47 +82,36 @@ to multiple hosts.
 
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
-
 The server’s address can be specified using either a :abbr:`FQDN (Fully
 Qualified Domain Name)` or an IP address.
-
 Refer to the tables below for valid facility and severity options.
 ```
 ```{cfgcmd} set system syslog remote \<address\> protocol \<udp | tcp\>
 
 **Configure the protocol for log transmission.**
-
 The protocol can be either UDP or TCP. By default, log messages are sent
 over UDP.
 ```
 ```{cfgcmd} set system syslog remote \<address\> port \<port\>
 
 **Configure the port for log transmission.**
-
 By default, the standard port 514 is used.
 ```
 ```{cfgcmd} set system syslog remote \<address\> format include-timezone
 
 **Configure log transmission in the RFC 5424 format.**
-
 The RFC 5424 format includes the timezone in the timestamp. For example:
-
 .. code-block:: none
-
   <34>1 2003-10-11T22:14:15.003-07:00 mymachine.example.com su - ID47 - BOM’su root’ failed for lonvick on /dev/pts/8.
 By default, log messages are sent in the RFC 3164 format. For example:
-
 .. code-block:: none
-
   <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 ```
 ```{cfgcmd} set system syslog remote \<address\> format octet-counted
 
 **Enable octet-counted framing for log transmission.**
-
 When enabled, multi-line log messages are sent without splitting. Ensure
 the remote server supports octet-counted framing to avoid parsing errors.
-
 Octet-counted framing is not available for the UDP protocol.
 ```
 ```{cfgcmd} set system syslog remote \<address\> vrf \<name\>
@@ -161,20 +146,16 @@ Enable TLS-encrypted remote logging.
 ```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
 **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
-
 The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to
 verify the identity of the remote syslog server.
-
 The :abbr:`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls certificate \<cert_name\>
 
 **Configure the client certificate.**
-
 The remote syslog server uses the client certificate to verify the identity
 of the syslog client.
-
 The client certificate is required if the remote syslog server enforces
 client certificate verification.
 ```
@@ -182,45 +163,34 @@ client certificate verification.
 
    | certvalid | name>
 **Configure the authentication mode.**
-
 The authentication mode defines how the syslog client verifies the syslog
 server's identity.
-
 The following authentication modes are available:
-
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
   server's identity. This mode is **not recommended**, as it is vulnerable to
   :abbr:`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
   value preconfigured with:
-
   .. code-block:: none
-
     set system syslog remote <address> tls permitted-peer <peer>
 * ``certvalid``: Verifies the server certificate is signed by a trusted
   :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
 * ``name``: Verifies that:
-
   * The server’s certificate is signed by a trusted :abbr:`CA (Certificate
     Authority)`.
   * The :abbr:`CN (Common Name)` in the certificate matches the value
     preconfigured with:
-
   .. code-block:: none
-
     set system syslog remote <address> tls permitted-peer <peer>
   This is a **recommended** secure mode for production environments.
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
 **Configure the peer certificate identifiers.**
-
 The certificate identifier format depends on the authentication mode:
-
 * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
   SHA-256).
 * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
-
 For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
 are not required.
 ```
@@ -317,22 +287,17 @@ tools, rather than strict directives.
 ```{opcmd} show log [all | authorization | cluster | conntrack-sync | ...]
 
 **Display logs for a specific category on the console.**
-
 Use tab completion to view a list of available categories.
-
 If no category is specified, all logs are shown.
 ```
 ```{opcmd} show log image \<name\>
 
    [all | authorization | directory | file <file name> | tail <lines>]
 **Display logs for a specific image on the console.**
-
 Available log categories:
-
 .. list-table::
    :widths: 25 75
    :header-rows: 0
-
    * - all
      - Displays the contents of system log files of the specified image.
    * - authorization

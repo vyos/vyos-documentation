@@ -46,9 +46,7 @@ down.
 
 Modify the join/prune interval that PIM uses to the new value. Time is
 specified in seconds.
-
 The default time is 60 seconds.
-
 If you enter a value smaller than 60 seconds be aware that this can and
 will affect convergence at scale.
 ```
@@ -62,9 +60,7 @@ data flowing in better than 30 second chunks.
 
 When processing packets from a neighbor process the number of packets
 incoming at one time before moving on to the next task.
-
 The default value is 3 packets.
-
 This command is only useful at scale when you can possibly have a large
 number of PIM control packets flowing.
 ```
@@ -85,9 +81,7 @@ notifications to the kernel.
 In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)`
 for join messages to be sent to. Currently the only methodology to do this is
 via static rendezvous point commands.
-
 All routers in the PIM network must agree on these values.
-
 The first ip address is the RP's address and the second value is the matching
 prefix of group ranges covered.
 ```
@@ -100,10 +94,8 @@ keepalive period must be at least the Register_Suppression_Time, or the RP
 may time out the (S,G) state before the next Null-Register arrives.
 Thus, the KAT(S,G) is set to max(Keepalive_Period, RP_Keepalive_Period)
 when a Register-Stop is sent.
-
 If choosing a value below 31 seconds be aware that some hardware platforms
 cannot see data flowing in better than 30 second chunks.
-
 See :rfc:`7761#section-4.1` for details.
 ```
 ```{cfgcmd} set protocols pim no-v6-secondary
@@ -117,7 +109,6 @@ if this option is not set (default).
 
 On the last hop router if it is desired to not switch over to the SPT tree
 configure this command.
-
 Optional parameter prefix-list can be use to control which groups to switch or
 not switch. If a group is PERMIT as per the prefix-list, then the SPT switchover
 does not happen for it and if it is DENY, then the SPT switchover happens.
@@ -135,7 +126,6 @@ Automatically create BFD session for each RIP peer discovered in this
 interface. When the BFD session monitor signalize that the link is down
 the RIP peer is removed and all the learned routes associated with that
 peer are removed.
-
 If optional profile parameter is used, select a BFD profile for the BFD
 sessions created via this interface.
 ```
@@ -162,7 +152,6 @@ unicast bootstrap messages.
 ```{cfgcmd} set protocols pim interface \<interface\> passive
 
   Disable sending and receiving PIM control packets on the interface.
-
 ```{cfgcmd} set protocols pim interface \<interface\> source-address \<ip-address\>
 ```
   If you have multiple addresses configured on a particular interface and would
@@ -202,7 +191,6 @@ not returned in the specified time, it will be assumed the (S,G) or
 
 Use this command to define in the selected interface whether you
 choose IGMP version 2 or 3.
-
 The default value is 3.
 ```
 #### Example

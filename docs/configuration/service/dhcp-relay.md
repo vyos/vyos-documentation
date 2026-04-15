@@ -61,17 +61,13 @@ relay agent information. Range 64...1400, default 576.
 
    <append | discard | forward | replace>
 Four policies for reforwarding DHCP packets exist:
-
 * **append:** The relay agent is allowed to append its own relay information
   to a received DHCP packet, disregarding relay information already present
   in the packet.
-
 * **discard:** Received packets which already contain relay information will
   be discarded.
-
 * **forward:** All packets are forwarded, relay information already present
   will be ignored.
-
 * **replace:** Relay information already present in a packet is stripped and
   replaced with the router's own relay information set.
 ```
@@ -117,7 +113,6 @@ Restart DHCP relay service
 ```{cfgcmd} set service dhcpv6-relay listen-interface \<interface\>
 
 Set eth1 to be the listening interface for the DHCPv6 relay.
-
 Multiple interfaces may be specified.
 ```
 ```{cfgcmd} set service dhcpv6-relay upstream-interface \<interface\>

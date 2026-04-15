@@ -46,7 +46,6 @@ Remote database name.
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer group-metrics \<single-table | table-per-metric\>
 
 Type of metrics grouping when push to Azure Data Explorer. The default is
-
 ``table-per-metric``.
 ```
 
@@ -233,9 +232,7 @@ Label to use for the metric name when sending metrics.
 
 
 If set to an empty string, the label will not be added.
-
 This is NOT recommended, as it makes it impossible to differentiate
-
 between multiple metrics.
 ```
 ## Prometheus
@@ -271,7 +268,6 @@ Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```{cfgcmd} set service monitoring prometheus node-exporter collectors textfile
 
 Configure textfile collector to export custom metrics read from
-
 `/run/node_exporter/collector`
 ```
 ### FRR Exporter

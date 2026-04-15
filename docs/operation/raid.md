@@ -171,9 +171,7 @@ mirror synchronization, and check and display information.
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a
-
    disk partition to a RAID 1 set initiates mirror synchronization, where all
-
    data on the existing member partition is copied to the new partition.
 
 ```
@@ -182,7 +180,6 @@ mirror synchronization, and check and display information.
 ```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
 
 This command is typically used to prepare a disk to be added to a preexisting
-
 RAID 1 set (of which ``disk-device2`` is already a member).
 ```
 
@@ -190,7 +187,6 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 ```{opcmd} show raid \<RAID‐1‐device\>
 
 shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
-
 set and is in the process of being resynchronized.
 
 
@@ -198,49 +194,27 @@ set and is in the process of being resynchronized.
 
 
   vyos@vyos:~$ show raid md0
-
   /dev/md0:
-
   Version : 00.90
-
   Creation Time : Wed Oct 29 09:19:09 2008
-
   Raid Level : raid1
-
   Array Size : 1044800 (1020.48 MiB 1069.88 MB)
-
   Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
-
   Raid Devices : 2
-
   Total Devices : 2
-
   Preferred Minor : 0
-
   Persistence : Superblock is persistent
-
   Update Time : Wed Oct 29 19:34:23 2008
-
   State : active, degraded, recovering
-
   Active Devices : 1
-
   Working Devices : 2
-
   Failed Devices : 0
-
   Spare Devices : 1
-
   Rebuild Status : 17% complete
-
   UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
-
   Events : 0.103
-
   Number   Major   Minor   RaidDevice State
-
   0       8        1        0      active sync   /dev/sda1
-
   2       8       17        1      spare rebuilding   /dev/sdb1
 ```
 
@@ -254,16 +228,10 @@ Use this command to display the formatting of a hard disk.
 
 
   vyos@vyos:~$ show disk sda format
-
   Disk /dev/sda: 1073 MB, 1073741824 bytes
-
   85 heads, 9 sectors/track, 2741 cylinders
-
   Units = cylinders of 765 * 512 = 391680 bytes
-
   Disk identifier: 0x000b7179
-
   Device Boot      Start         End      Blocks   Id  System
-
   /dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
 ```

@@ -19,7 +19,6 @@ address.
 ```{cfgcmd} set service dhcp-server hostfile-update
 
    Create DNS record per client lease, by adding clients to /etc/hosts file.
-
    Entry will have format: `<shared-network-name>_<hostname>.<domain-name>`
 
 ```
@@ -28,14 +27,11 @@ address.
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> option domain-name \<domain-name\>
 
 The domain-name parameter should be the domain name that will be appended to
-
 the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
-
 Option 015).
 
 
 This is the configuration parameter for the entire shared network definition.
-
 All subnets will inherit this configuration item if not specified locally.
 ```
 
@@ -43,14 +39,11 @@ All subnets will inherit this configuration item if not specified locally.
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> option domain-search \<domain-name\>
 
 The domain-name parameter should be the domain name used when completing DNS
-
 request where no full FQDN is passed. This option can be given multiple times
-
 if you need multiple search domains (DHCP Option 119).
 
 
 This is the configuration parameter for the entire shared network definition.
-
 All subnets will inherit this configuration item if not specified locally.
 ```
 
@@ -61,9 +54,7 @@ Inform client that the DNS server can be found at `<address>`.
 
 
 This is the configuration parameter for the entire shared network definition.
-
 All subnets will inherit this configuration item if not specified locally.
-
 Multiple DNS servers can be defined.
 ```
 
@@ -74,11 +65,8 @@ vendor-option <option-name>
 
 
 This configuration parameter lets you specify a vendor-option for the
-
 entire shared network definition. All subnets will inherit this
-
 configuration item if not specified locally. An example for Ubiquiti is
-
 shown below:
 ```
 **Example:**
@@ -97,22 +85,16 @@ ubiquiti '172.16.100.1'
 ```{cfgcmd} set service dhcp-server listen-address \<address\>
 
 This configuration parameter lets the DHCP server to listen for DHCP
-
 requests sent to the specified address, it is only realistically useful for
-
 a server whose only clients are reached via unicasts, such as via DHCP relay
-
 agents.
 ```
 #### Individual Client Subnet
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> authoritative
 
 This says that this device is the only DHCP server for this network. If other
-
 devices are trying to offer DHCP leases, this machine will send 'DHCPNAK' to
-
 any device trying to request an IP address that is not valid for this
-
 network.
 ```
 
@@ -123,7 +105,6 @@ subnet-id <id>
 
 
 This configuration parameter is required and must be unique to each subnet.
-
 It is required to map subnets to lease file entries.
 ```
 
@@ -134,9 +115,7 @@ option default-router <address>
 
 
 This is a configuration parameter for the `<subnet>`, saying that as part of
-
 the response, tell the client that the default gateway can be reached at
-
 `<address>`.
 ```
 
@@ -147,7 +126,6 @@ option name-server <address>
 
 
 This is a configuration parameter for the subnet, saying that as part of the
-
 response, tell the client that the DNS server can be found at `<address>`.
 
 
@@ -173,7 +151,6 @@ range <n> start <address>
 
 
 Create DHCP address range with a range id of `<n>`. DHCP leases are taken
-
 from this pool. The pool starts at address `<address>`.
 ```
 
@@ -184,7 +161,6 @@ range <n> stop <address>
 
 
 Create DHCP address range with a range id of `<n>`. DHCP leases are taken
-
 from this pool. The pool stops with address `<address>`.
 ```
 
@@ -195,7 +171,6 @@ exclude <address>
 
 
 Always exclude this address from any defined range. This address will never
-
 be assigned by the DHCP server.
 
 
@@ -209,9 +184,7 @@ option domain-name <domain-name>
 
 
 The domain-name parameter should be the domain name that will be appended to
-
 the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
-
 Option 015).
 ```
 
@@ -222,9 +195,7 @@ option domain-search <domain-name>
 
 
 The domain-name parameter should be the domain name used when completing DNS
-
 request where no full FQDN is passed. This option can be given multiple times
-
 if you need multiple search domains (DHCP Option 119).
 ```
 
@@ -235,9 +206,7 @@ option vendor-option <option-name>
 
 
 This configuration parameter lets you specify a vendor-option for the
-
 subnet specified within the shared network definition. An example for
-
 Ubiquiti is shown below:
 ```
 **Example:**
@@ -278,18 +247,13 @@ level, i.e. for individual shared networks or subnets. See examples below.
 
 
 If set to ``enable`` on global level, updates for all scopes will be enabled,
-
 except if explicitly set to ``disable`` on the scope level. If set to ``disable``,
-
 updates will only be sent for scopes, where ``send-updates`` is explicity
-
 set to ``enable``.
 
 
 This model is followed for a few behavioral settings below: if the option is
-
 not set, the setting is inherited from the parent scope. You can override the
-
 parent scope setting by setting the option explicitly.
 ```
 
@@ -300,7 +264,6 @@ parent scope setting by setting the option explicitly.
 
 
 VyOS will ignore client request not to update DNS records and send DDNS
-
 update requests regardless.
 ```
 
@@ -311,7 +274,6 @@ update requests regardless.
 
 
 VyOS will override client DDNS request settings and always update both
-
 forward and reverse DNS records.
 ```
 
@@ -322,7 +284,6 @@ forward and reverse DNS records.
 
 
 Issue DDNS update requests on DHCP lease renew. In busy networks this may
-
 generate a lot of traffic.
 ```
 
@@ -333,9 +294,7 @@ generate a lot of traffic.
 
 
 Use RFC-4703 conflict resolution. This algorithm helps in situation when
-
 multiple clients reserve same IP addresses or advertise identical hostnames.
-
 Should be used in most situations.
 ```
 
@@ -346,7 +305,6 @@ Should be used in most situations.
 
 
 * **never**: use the name sent by the client. If the client didn't provide any,
-
   do not generate one. This is the default behavior
 
 
@@ -354,17 +312,14 @@ Should be used in most situations.
 
 
 * **when-present**: replace the name the client sent with a generated one, if
-
   the client didn't send any, do not generate one
 
 
 * **when-not-present**: use the name sent by the client. If the client didn't
-
   send any, generate one for the client
 
 
 The names are generated using ``generated-prefix``, ``qualifying-suffix`` and the
-
 client's IP address string.
 ```
 
@@ -393,7 +348,6 @@ TTL of the DNS record as a percentage of the DHCP lease time.
 
 
 Characters, that are considered invalid in the client name. They will be replaced
-
 with ``hostname-char-replacement`` string.
 ```
 
@@ -416,7 +370,6 @@ algorithm <algorithm>
 
 
 Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
-
 ``hmac-sha1``, ``hmac-sha224``, ``hmac-sha256``, ``hmac-sha384``, ``hmac-sha512``
 ```
 
@@ -542,7 +495,6 @@ statements on both servers:
 
 
 Define operation mode of High Availability feature. Default value if command
-
 is not specified is `active-active`
 ```
 
@@ -556,7 +508,6 @@ Local IP `<address>` used when communicating to the HA peer.
 ```{cfgcmd} set service dhcp-server high-availability remote \<address\>
 
 Remote peer IP `<address>` of the second DHCP server in this HA
-
 cluster.
 ```
 
@@ -582,7 +533,6 @@ Make sure the specified value does not conflict with the system host-name.
 
 
 The primary and secondary statements determines whether the server is primary
-
 or secondary.
 
 
@@ -593,9 +543,7 @@ In order for the primary and the secondary DHCP server to keep
 
 
 :::
-
    their lease tables in sync, they must be able to reach each other on TCP
-
    port 647. If you have firewall rules in effect, adjust them accordingly.
 
 
@@ -606,17 +554,11 @@ The dialogue between HA partners is neither encrypted nor
 
 
 :::
-
    authenticated. Since most DHCP servers exist within an organisation's own
-
    secure Intranet, this would be an unnecessary overhead. However, if you
-
    have DHCP HA peers whose communications traverse insecure networks,
-
    then we recommend that you consider the use of VPN tunneling between them
-
    to ensure that the HA partnership is immune to disruption
-
    (accidental or otherwise) via third parties.
 ```
 #### Static mappings
@@ -631,7 +573,6 @@ inside the subnet definition but can be outside of the range statement.
 
 
 Create a new DHCP static mapping named `<description>` which is valid for
-
 the host identified by its MAC `<address>`.
 ```
 
@@ -642,7 +583,6 @@ the host identified by its MAC `<address>`.
 
 
 Create a new DHCP static mapping named `<description>` which is valid for
-
 the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 ```
 
@@ -653,13 +593,9 @@ the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 
 
 Static DHCP IP address assign to host identified by `<description>`. IP
-
 address must be inside the `<subnet>` which is defined but can be outside
-
 the dynamic range created with :cfgcmd:`set service dhcp-server
-
 shared-network-name <name> subnet <subnet> range <n>`. If no ip-address is
-
 specified, an IP from the dynamic pool is used.
 
 
@@ -673,7 +609,6 @@ This is the equivalent of the host block in dhcpd.conf of
 
 
 :::
-
    isc-dhcpd.
 ```
 **Example:**
@@ -739,13 +674,9 @@ how you want the server to behave.
 
 
 Create a new client class (if not already defined) and set it to match on
-
 the "Circuit ID" part of the Option 82 field in the DHCP request. This is
-
 sub option "1" as specified by RFC 3046. The value specified here is either
-
 interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
-
 otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
 ```
 
@@ -756,15 +687,10 @@ otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
 
 
 Create a new client class (if not already defined) and set it to match on
-
 the "Remote ID" part of the Option 82 field in the DHCP request. This is
-
 sub option "2" as specified by RFC 3046. The value specified here is either
-
 interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
-
 otherwise. e.g. ``10.100.0.41`` and ``0x31302e3130302e302e3431`` are the
-
 same
 ```
 **Client Class application**
@@ -774,9 +700,7 @@ same
 
 
 Applies the Client Class with the name `<class-name>` to the subnet `<subnet-name>`.
-
 This means that whenever the client class matches a request it is always
-
 routed to this subnet definition first.
 ```
 
@@ -787,11 +711,8 @@ routed to this subnet definition first.
 
 
 Applies the Client Class with the name `<class-name>` to the range
-
 `<range-name>` which belongs to subnet `<subnet-name>`. This means that whenever the
-
 client class matches a request it is always routed to this range definition
-
 first.
 ```
 NB: Kea (the DHCP server used by VyOS) is programmed to offer as many
@@ -1136,7 +1057,6 @@ Static mappings aren't shown. To show all states, use
 ```{opcmd} show dhcp server leases origin [local | remote]
 
 Show statuses of all active leases granted by local (this server) or
-
 remote (failover server):
 ```
 
@@ -1182,7 +1102,6 @@ vyos@vyos:~$
 ```{opcmd} show dhcp server leases sort \<key\>
 
 Sort the output by the specified key. Possible keys: ip, hardware_address,
-
 state, start, end, remaining, pool, hostname (default = ip)
 ```
 
@@ -1190,7 +1109,6 @@ state, start, end, remaining, pool, hostname (default = ip)
 ```{opcmd} show dhcp server leases state \<state\>
 
 Show only leases with the specified state. Possible states: all, active,
-
 free, expired, released, abandoned, reset, backup (default = active)
 ```
 ## IPv6 server
@@ -1201,7 +1119,6 @@ section.
 ```{cfgcmd} set service dhcpv6-server preference \<preference value\>
 
    Clients receiving advertise messages from multiple servers choose the server
-
    with the highest preference value. The range for this value is ``0...255``.
 
 ```
@@ -1213,7 +1130,6 @@ subnet-id <id>
 
 
 This configuration parameter is required and must be unique to each subnet.
-
 It is required to map subnets to lease file entries.
 ```
 
@@ -1224,9 +1140,7 @@ It is required to map subnets to lease file entries.
 
 
 The default lease time for DHCPv6 leases is 24 hours. This can be changed by
-
 supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
-
 values need to be supplied in seconds.
 ```
 
@@ -1237,7 +1151,6 @@ values need to be supplied in seconds.
 
 
 A :abbr:`NIS (Network Information Service)` domain can be set to be used for
-
 DHCPv6 clients.
 ```
 
@@ -1248,7 +1161,6 @@ DHCPv6 clients.
 
 
 The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
-
 domain is similar to the NIS domain one:
 ```
 
@@ -1277,7 +1189,6 @@ Specify a NIS+ server address for DHCPv6 clients.
 
 
 Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
-
 address of Fully Qualified Domain Name for all DHCPv6 clients.
 ```
 
@@ -1300,7 +1211,6 @@ used:
 
 
 Delegate prefixes from `<pd-prefix>` to clients in subnet `<prefix>`. Range
-
 is defined by `<lenght>` in bits, 32 to 64.
 ```
 
@@ -1311,7 +1221,6 @@ is defined by `<lenght>` in bits, 32 to 64.
 
 
 Hand out prefixes of size `<length>` in bits from `<pd-prefix>` to clients
-
 in subnet `<prefix>` when the request for prefix delegation.
 ```
 

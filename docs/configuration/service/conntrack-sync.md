@@ -36,7 +36,6 @@ Most examples below show Multicast, but unicast can be specified by using the
 ```{cfgcmd} set service conntrack-sync accept-protocol
 
     Accept only certain protocols: You may want to replicate the state of flows
-
     depending on their layer 4 protocol.
 
 
@@ -48,9 +47,7 @@ Most examples below show Multicast, but unicast can be specified by using the
 ```{cfgcmd} set service conntrack-sync event-listen-queue-size \<size\>
 
 The daemon doubles the size of the netlink event socket buffer size if it
-
 detects netlink event message dropping. This clause sets the maximum buffer
-
 size growth that can be reached.
 
 
@@ -109,7 +106,6 @@ Defaults to 225.0.0.50.
 ```{cfgcmd} set service conntrack-sync interface \<name\> peer \<address\>
 
 Peer to send unicast UDP conntrack sync entires to, if not using Multicast
-
 configuration from above above.
 ```
 
@@ -123,7 +119,6 @@ Queue size for syncing conntrack entries in MB.
 ```{cfgcmd} set service conntrack-sync disable-external-cache
 
 This diable the external cache and directly injects the flow-states into the
-
 in-kernel Connection Tracking System of the backup firewall.
 ```
 
@@ -134,11 +129,8 @@ Timeout (in seconds) for purging synchronized entries on handover events.
 
 
 On handover, ``conntrackd -t`` is invoked, which schedules a conntrack table
-
 flush after ``<timeout>`` seconds to purge stale (“zombie”) entries and
-
 reduce clashes when multiple handovers occur in a short period.
-
 The default is 60 seconds.
 ```
 :::{note}
@@ -156,7 +148,6 @@ Disable connection logging via Syslog.
 ```{cfgcmd} set service conntrack-sync startup-resync
 
 Order conntrackd to request a complete conntrack table resync against
-
 the other node at startup.
 ```
 ## Operation
@@ -169,33 +160,22 @@ Make sure conntrack is enabled by running and show connection tracking table.
 
 
   vyos@vyos:~$ show conntrack table ipv4
-
   TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
-
   FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
-
   TW - TIME WAIT, CL - CLOSE, LI - LISTEN
 
 
   CONN ID    Source                 Destination            Protocol         TIMEOUT
-
   1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
-
   1006235648 10.35.101.221:57483    172.31.120.21:22       tcp [6] ES       413310
-
   1006237088 10.100.68.100          172.31.120.21          icmp [1]         29
-
   1015734848 10.35.100.87:56282     172.31.20.12:22        tcp [6] ES       300
-
   1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
-
   1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
 :::{note}
 If the table is empty and you have a warning message, it means
 :::
-
   conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
-
   rule. :cfgcmd:`set firewall state-policy established action accept`
 ```
 
@@ -221,48 +201,34 @@ Retrieve current statistics of connection tracking subsystem.
 
 
   vyos@vyos:~$ show conntrack-sync statistics
-
   Main Table Statistics:
 
 
   cache internal:
-
   current active connections:            19606
-
   connections created:                 6298470    failed:            0
-
   connections updated:                 3786793    failed:            0
-
   connections destroyed:               6278864    failed:            0
 
 
   cache external:
-
   current active connections:            15771
-
   connections created:                 1660193    failed:            0
-
   connections updated:                   77204    failed:            0
-
   connections destroyed:               1644422    failed:            0
 
 
   traffic processed:
-
   0 Bytes                         0 Pckts
 
 
   multicast traffic (active device=eth0.5):
-
   976826240 Bytes sent            212898000 Bytes recv
-
   8302333 Pckts sent              2009929 Pckts recv
-
   0 Error send                    0 Error recv
 
 
   message tracking:
-
   0 Malformed msgs                  263 Lost msgs
 ```
 ```{opcmd} show conntrack-sync status
@@ -274,13 +240,9 @@ Retrieve current status of connection tracking subsystem.
 
 
   vyos@vyos:~$ show conntrack-sync status
-
   sync-interface        : eth0.5
-
   failover-mechanism    : vrrp [sync-group GEFOEKOM]
-
   last state transition : no transition yet!
-
   ExpectationSync       : disabled
 ```
 ## Example

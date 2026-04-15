@@ -107,11 +107,8 @@ prefix-len <0-32>
 
 
 IP address of route to match, based on specified prefix-length.
-
 Note that this can be used for kernel routes only.
-
 Do not apply to the routes of dynamic routing protocols (e.g. BGP,
-
 RIP, OSFP), as this can lead to unexpected results..
 ```
 
@@ -203,11 +200,8 @@ prefix-len <0-128>
 
 
 IPv6 address of route to match, based on specified prefix-length.
-
 Note that this can be used for kernel routes only.
-
 Do not apply to the routes of dynamic routing protocols (e.g. BGP,
-
 RIP, OSFP), as this can lead to unexpected results..
 ```
 
@@ -263,29 +257,17 @@ Peer IP address to match.
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match protocol \<protocol\>
 
 Source protocol to match.
-
   * ``babel`` - Babel routing protocol (Babel)
-
   * ``bgp`` - Border Gateway Protocol (BGP)
-
   * ``connected`` - Connected routes (directly attached subnet or host)
-
   * ``isis`` - Intermediate System to Intermediate System (IS-IS)
-
   * ``kernel`` - Kernel routes
-
   * ``ospf`` - Open Shortest Path First (OSPFv2)
-
   * ``ospfv3`` - Open Shortest Path First (IPv6) (OSPFv3)
-
   * ``rip`` - Routing Information Protocol (RIP)
-
   * ``ripng`` - Routing Information Protocol next-generation (IPv6) (RIPng)
-
   * ``static`` - Statically configured routes
-
   * ``table`` - Non-main Kernel Routing Table
-
   * ``vnc`` - Virtual Network Control (VNC)
 ```
 
@@ -341,7 +323,6 @@ Drop AS-NUMBER from the BGP AS path.
 
 
 If ``all`` is specified, remove all AS numbers from the AS_PATH of the BGP
-
 path's NLRI.
 ```
 
@@ -376,7 +357,6 @@ BGP atomic aggregate attribute.
 
 
 Add or replace BGP community attribute in format ``<0-65535:0-65535>``
-
 or from well-known community list
 ```
 
@@ -402,7 +382,6 @@ Delete BGP communities matching the community-list.
 
 
 Add or replace BGP large-community attribute in format
-
 ``<0-4294967295:0-4294967295:0-4294967295>``
 ```
 

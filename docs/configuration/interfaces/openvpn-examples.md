@@ -66,10 +66,7 @@ You do **not** need to copy the certificate to the other router. Instead, retrie
 vyos@vyos# run show pki certificate openvpn-local fingerprint sha256
 5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
 ```
-:::: note
-::: title
-Note
-:::
+::::{note}
 Certificate names are arbitrary. While `openvpn-local` and `openvpn-remote` are used here, you may choose any names.
 ::::
 Repeat the procedure on the other router.

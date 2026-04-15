@@ -10,7 +10,6 @@ Use this command to disable IPv4 forwarding on all interfaces.
 
 Use this command to disable IPv4 directed broadcast forwarding on all
 interfaces.
-
 If set, IPv4 directed broadcast forwarding will be completely disabled
 regardless of whether per-interface directed broadcast forwarding is
 enabled or not.
@@ -46,11 +45,8 @@ can be used to filter which routes zebra will install in the kernel.
 
 Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, eigrp, isis, ospf, rip, static
-
 :::{note}
-
 If you choose any as the option that will cause all protocols that
-
 :::
    are sending routes to zebra.
 ```

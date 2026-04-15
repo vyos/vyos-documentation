@@ -98,9 +98,6 @@ vyos@vyos:~$ configure
 vyos@vyos:~#
 ```
 ::::{note}
-::: title
-Note
-:::
 Prompt changes from `$` to `#`. To exit configuration mode, type `exit`.
 ::::
 ``` none
@@ -120,7 +117,6 @@ A VyOS system has three major types of configurations:
 ```{opcmd} show configuration
 
 View the current active configuration, also known as the running configuration, from the operational mode.
-
 ``` none
 vyos@vyos:~$ show configuration
 interfaces {
@@ -180,7 +176,6 @@ By default, the configuration is displayed in a hierarchy like the above example
 ```{opcmd} show configuration commands
 
 Get a collection of all the set commands required which led to the running configuration.
-
 ``` none
 vyos@vyos:~$ show configuration commands
 set interfaces ethernet eth0 address 'dhcp'
@@ -202,9 +197,6 @@ set system syslog global facility protocols level 'debug'
 Both these `show` commands should be executed when in operational mode, they do not work directly in configuration mode. There is a special way on how to :ref:run_opmode_from_config_mode.
 
 ::::{hint}
-::: title
-Hint
-:::
 
 Use the `show configuration commands | strip-private` command when you want to hide private data. You may want to do so if you want to share your configuration on the [forum](https://forum.vyos.io).
 ::::
@@ -212,7 +204,6 @@ Use the `show configuration commands | strip-private` command when you want to h
 ```{opcmd} show configuration json
 
 View the current active configuration in JSON format.
-
 ``` none
 {"interfaces": {"ethernet": {"eth0": {"address": ["192.0.2.11/24", "192.0.2.35/24"], "hw-id": "52:54:00:48:a0:c6"}, "eth1": {"address": ["203.0.113.1/24"], "hw-id": "52:54:00:fc:50:0b"}}, "loopback": {"lo": {}}}, "protocols": {"static": {"route": {"0.0.0.0/0": {"next-hop": {"192.0.2.254": {}}}}}}, "service": {"ssh": {"disable-host-validation": {}}}, "system": {"config-management": {"commit-revisions": "100"}, "console": {"device": {"ttyS0": {"speed": "115200"}}}, "host-name": "r11-vyos", "login": {"user": {"vyos": {"authentication": {"encrypted-password": "$6$Vt68...F0", "plaintext-password": "", "public-keys": {"vyos@vyos": {"key": "AAAAxxx=", "type": "ssh-rsa"}}}}}}, "name-server": ["203.0.113.254"], "ntp": {"server": {"time1.vyos.net": {}, "time2.vyos.net": {}, "time3.vyos.net": {}}}, "syslog": {"global": {"facility": {"all": {"level": "info"}, "protocols": {"level": "debug"}}}}, "time-zone": "America/New_York"}}
 ```
@@ -221,7 +212,6 @@ View the current active configuration in JSON format.
 ```{opcmd} show configuration json pretty
 
 View the current active configuration in readable JSON format.
-
 ``` none
 {
     "interfaces": {
@@ -326,9 +316,6 @@ vyos@vyos$ configure
 vyos@vyos#
 ```
 ::::{note}
-::: title
-Note
-:::
 When going into configuration mode, prompt changes from `$` to `#`.
 ::::
 All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them.
@@ -414,7 +401,6 @@ These two commands above are essentially the same, just executed from different 
 ```{cfgcmd} delete
 
 To delete a configuration entry use the {cfgcmd}`delete` command, this also deletes all sub-levels under the current level you\'ve specified in the {cfgcmd}`delete` command. Deleting an entry will also result in the element reverting back to its default value if one exists.
-
 ``` none
 [edit interfaces ethernet eth0]
 vyos@vyos# delete address 192.0.2.100/24
@@ -424,7 +410,6 @@ vyos@vyos# delete address 192.0.2.100/24
 ```{cfgcmd} commit
 
 Any change you do on the configuration, will not take effect until committed using the {cfgcmd}`commit` command in configuration mode.
-
 ``` none
 vyos@vyos# commit
 [edit]
@@ -435,9 +420,6 @@ vyos@vyos:~$
 ```
 
 ::::{hint}
-::: title
-Hint
-:::
 
 You can specify a commit message with {cfgcmd}`commit comment <message>`.
 ::::
@@ -473,9 +455,7 @@ Done
 ```{cfgcmd} exit \[discard\]
 
 Configuration mode can not be exited while uncommitted changes exist. To exit configuration mode without applying changes, the {cfgcmd}`exit discard` command must be used.
-
 All changes in the working config will thus be lost.
-
 ``` none
 vyos@vyos# exit
 Cannot exit: configuration modified.
@@ -488,9 +468,7 @@ vyos@vyos# exit discard
 ```{cfgcmd} commit-confirm \\<minutes\\>
 
 Use this command to temporarily commit your changes and set the number of minutes available for confirmation. `confirm` must be entered within those minutes, otherwise the system will revert into a previous configuration. The default value is 10 minutes.
-
 The definition of \'revert\' and \'a previous configuration\' depends on the setting:
-
 ``` none
 vyos@vyos# set system config-management commit-confirm action
 Possible completions:
@@ -513,9 +491,7 @@ vyos@router# confirm
 ```{cfgcmd} copy
 
 Copy a configuration element.
-
 You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset `FromWorld` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to `firewall name FromWorld` and use `copy rule 10 to rule 20`, then modify rule 20.
-
 ``` none
 vyos@router# show firewall name FromWorld
  default-action drop
@@ -540,9 +516,7 @@ vyos@router# commit
 ```{cfgcmd} rename
 
 Rename a configuration element.
-
 You can also rename config subtrees:
-
 ``` none
 vyos@router# rename rule 10 to rule 5
 [edit firewall name FromWorld]
@@ -571,13 +545,9 @@ vyos@router# show
 ```{cfgcmd} comment \\<config node\\> \"comment text\"
 
 Add comment as an annotation to a configuration node.
-
 The `comment` command allows you to insert a comment above the `<config node>` configuration section. When shown, comments are enclosed with `/*` and `*/` as open/close delimiters. Comments need to be committed, just like other config changes.
-
 To remove an existing comment from your current configuration, specify an empty string enclosed in double quote marks (`""`) as the comment text.
-
 Example:
-
 ``` none
 vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
 vyos@vyos# commit
@@ -590,9 +560,6 @@ vyos@vyos# show
  }
 ```
 ::::{note}
-::: title
-Note
-:::
 An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the [show firewall]{.title-ref} command would return starting after the `firewall {` line, hiding the comment.
 ::::
 ```
@@ -605,9 +572,7 @@ When inside configuration mode you are not directly able to execute operational 
 ```{cfgcmd} run
 
 Access to these commands are possible through the use of the `run [command]` command. From this command you will have access to everything accessible from operational mode.
-
 Command completion and syntax help with `?` and `[tab]` will also work.
-
 ``` none
 [edit]
 vyos@vyos# run show interfaces
@@ -629,7 +594,6 @@ Revisions are stored on disk. You can view, compare and rollback them to any pre
 ```{opcmd} show system commit
 
 View all existing revisions on the local system.
-
 ``` none
 vyos@vyos:~$ show system commit
 0   2015-03-30 08:53:03 by vyos via cli
@@ -652,7 +616,6 @@ VyOS lets you compare different configurations.
 ```{cfgcmd} compare \\<saved \| N\\> \\<M\\>
 
 Use this command to spot what the differences are between different configurations.
-
 ``` none
 vyos@vyos# compare [tab]
 Possible completions:
@@ -708,13 +671,11 @@ You can rollback configuration changes using the rollback command. This will app
 ```{cfgcmd} rollback \\<N\\>
 
 Rollback to revision N (currently requires reboot)
-
 ``` none
 vyos@vyos# compare 1
 [edit system]
 >host-name vyos-1
 [edit]
-
 vyos@vyos# rollback 1
 Proceed with reboot? [confirm][y]
 Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
@@ -729,7 +690,6 @@ VyOS can upload the configuration to a remote location after each call to {cfgcm
 ```{cfgcmd} set system config-management commit-archive location \\<URI\\>
 
 Specify remote location of commit archive as any of the below {abbr}`URI (Uniform Resource Identifier)`
-
 - `http://<user>:<passwd>@<host>:/<dir>`
 - `https://<user>:<passwd>@<host>:/<dir>`
 - `ftp://<user>:<passwd>@<host>/<dir>`
@@ -737,33 +697,16 @@ Specify remote location of commit archive as any of the below {abbr}`URI (Unifor
 - `scp://<user>:<passwd>@<host>:/<dir>`
 - `tftp://<host>/<dir>`
 - `git+https://<user>:<passwd>@<host>/<path>`
-
 Since username and password are part of the URI, they need to be properly url encoded if containing special characters.
-
 ::::{note}
-::: title
-Note
-:::
-
 The number of revisions don\'t affect the commit-archive.
 ::::
-
 ::::{note}
-::: title
-Note
-:::
-
 When using Git as destination for the commit archive the `source-address` CLI option has no effect.
 ::::
-
 ::::{note}
-::: title
-Note
-:::
-
 You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
 ::::
-
 ``` none
 vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 ```
@@ -779,7 +722,6 @@ When using the [save](#save) command, you can add a specific location where to s
 ```{cfgcmd} load \\<URI\\>
 
 Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address.
-
 ``` none
 vyos@vyos# load
 Possible completions:
@@ -807,9 +749,6 @@ You will be asked if you want to continue. If you accept, you will have to use {
 Then you may want to {cfgcmd}`save` in order to delete the saved configuration too.
 
 ::::{note}
-::: title
-Note
-:::
 
 If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
 ::::

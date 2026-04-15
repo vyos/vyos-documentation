@@ -29,13 +29,9 @@ Disable this IPv4 static route entry.
    distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
-
 Range is 1 to 255, default is 1.
-
 :::{note}
-
 Routes with a distance of 255 are effectively disabled and not
-
 :::
    installed into the kernel.
 ```
@@ -58,7 +54,6 @@ Disables interface-based IPv4 static route.
    <interface> distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
-
 Range is 1 to 255, default is 1.
 ```
 ### IPv4 BFD
@@ -143,13 +138,9 @@ Disable this IPv6 static route entry.
    distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
-
 Range is 1 to 255, default is 1.
-
 :::{note}
-
 Routes with a distance of 255 are effectively disabled and not
-
 :::
    installed into the kernel.
 ```
@@ -200,7 +191,6 @@ Disables interface-based IPv6 static route.
    <interface> distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
-
 Range is 1 to 255, default is 1.
 ```
 ```{cfgcmd} set protocols static route6 \<subnet\> interface
@@ -209,7 +199,6 @@ Range is 1 to 255, default is 1.
 It is possible to specify a static route for ipv6 prefixes using an
 SRv6 segments instruction. The ``/`` separator can be used to specify
 multiple segment instructions.
-
 Example:
 ```
 % stop_vyoslinter

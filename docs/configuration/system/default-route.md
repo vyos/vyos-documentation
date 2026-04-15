@@ -11,7 +11,6 @@ and existing configurations are migrated to the new CLI command.
 ```{cfgcmd} set protocols static route 0.0.0.0/0 next-hop \<address\>
 
 Specify static route into the routing table sending all non local traffic
-
 to the nexthop address `<address>`.
 
 ```
@@ -24,9 +23,7 @@ Delete default route from the system.
 ```{opcmd} show ip route 0.0.0.0
 
 Show routing table entry for the default route.
-
 .. code-block:: none
-
   vyos@vyos:~$ show ip route 0.0.0.0
   Routing entry for 0.0.0.0/0
   Known via "static", distance 10, metric 0, best

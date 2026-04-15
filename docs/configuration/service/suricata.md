@@ -34,11 +34,8 @@ from operational mode, waiting for Suricata to update all its rules, which are u
 ```{cfgcmd} set service suricata address-group \<text\> \<address | group\>
 
    Address groups are useful when you need to create rules that apply to specific IP addresses.
-
    For example, if you want to create a rule that monitors traffic going to or from a specific IP address,
-
    you can use the group name instead of the actual IP address. This simplifies rule management and makes the
-
    configuration more flexible.
 
 
@@ -53,11 +50,8 @@ from operational mode, waiting for Suricata to update all its rules, which are u
 ```{cfgcmd} set service suricata port-group \<text\> \<address | group\>
 
 Port groups are useful when you need to create rules that apply to specific ports.
-
 For example, if you want to create a rule that monitors traffic directed to a specific port or group of ports,
-
 you can use the group name instead of the actual port. This also simplifies rule management and makes
-
 the configuration more flexible.
 
 
@@ -90,7 +84,6 @@ The interface that will be monitored by the Suricata service.
 ```{cfgcmd} update suricata
 
 Checks for the existence of the Suricata configuration file, updates the service,
-
 and then restarts it. If the configuration file is not found, a message indicates that Suricata is not configured.
 ```
 ```{cfgcmd} restart suricata

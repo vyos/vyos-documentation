@@ -15,16 +15,12 @@ automating (re-)configuration.
 
 Specify the time interval when `<task>` should be executed. The interval
 is specified as number with one of the following suffixes:
-
 * ``none`` - Execution interval in minutes
 * ``m`` - Execution interval in minutes
 * ``h`` - Execution interval in hours
 * ``d`` - Execution interval in days
-
 :::{note}
-
 If suffix is omitted, minutes are implied.
-
 :::
 ```
 ```{cfgcmd} set system task-scheduler task \<task\> crontab-spec \<spec\>

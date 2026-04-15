@@ -12,7 +12,6 @@
 ```{cfgcmd} set system ipv6 neighbor table-size \<number\>
 
 Use this command to define the maximum number of entries to keep in
-
 the Neighbor cache (1024, 2048, 4096, 8192, 16384, 32768).
 ```
 
@@ -20,7 +19,6 @@ the Neighbor cache (1024, 2048, 4096, 8192, 16384, 32768).
 ```{cfgcmd} set system ipv6 strict-dad
 
 Use this command to disable IPv6 operation on interface when
-
 Duplicate Address Detection fails on Link-Local address.
 ```
 
@@ -38,7 +36,6 @@ can be used to filter which routes zebra will install in the kernel.
 ```{cfgcmd} set system ipv6 protocol \<protocol\> route-map \<route-map\>
 
 Apply a route-map filter to routes for the specified protocol. The following
-
 protocols can be used: any, babel, bgp, isis, ospfv3, ripng, static
 
 
@@ -49,7 +46,6 @@ If you choose any as the option that will cause all protocols that
 
 
 :::
-
    are sending routes to zebra.
 ```
 ### Nexthop Tracking
@@ -61,9 +57,7 @@ you do not want to e.g. allow BGP to peer across the default route.
 ```{cfgcmd} set system ipv6 nht no-resolve-via-default
 
 Do not allow IPv6 nexthop tracking to resolve via the default route. This
-
 parameter is configured per-VRF, so the command is also available in the VRF
-
 subnode.
 ```
 ## Operational commands
@@ -100,39 +94,22 @@ Check the many parameters available for the `show ipv6 route` command:
 
 
   vyos@vyos:~$ show ipv6 route
-
   Possible completions:
-
   <Enter>       Execute the current command
-
   <X:X::X:X>    Show IPv6 routes of given address or prefix
-
   <X:X::X:X/M>
-
   bgp           Show IPv6 BGP routes
-
   cache         Show kernel IPv6 route cache
-
   connected     Show IPv6 connected routes
-
   forward       Show kernel IPv6 route table
-
   isis          Show IPv6 ISIS routes
-
   kernel        Show IPv6 kernel routes
-
   ospfv3        Show IPv6 OSPF6 routes
-
   ripng         Show IPv6 RIPNG routes
-
   static        Show IPv6 static routes
-
   summary       Show IPv6 routes summary
-
   table         Show IP routes in policy table
-
   tag           Show only routes with tag
-
   vrf           Show IPv6 routes in VRF
 ```
 ```{opcmd} show ipv6 prefix-list
@@ -147,15 +124,10 @@ Check the many parameters available for the `show ipv6 route` command:
 
 
      vyos@vyos:~$ show ipv6 prefix-list
-
      Possible completions:
-
      <Enter>       Execute the current command
-
      <WORD>        Show specified IPv6 prefix-list
-
      detail        Show detail of IPv6 prefix-lists
-
      summary       Show summary of IPv6 prefix-lists
 ```
 
@@ -172,11 +144,8 @@ You can also specify which IPv6 access-list should be shown:
 
 
   vyos@vyos:~$ show ipv6 access-list
-
   Possible completions:
-
   <Enter>       Execute the current command
-
   <text>        Show specified IPv6 access-list
 ```
 ```{opcmd} show ipv6 ospfv3
@@ -185,7 +154,6 @@ You can also specify which IPv6 access-list should be shown:
 
 
    You can get more specific OSPFv3 information by using the parameters
-
    shown below:
 
 
@@ -193,27 +161,16 @@ You can also specify which IPv6 access-list should be shown:
 
 
      vyos@vyos:~$ show ipv6 ospfv3
-
      Possible completions:
-
      <Enter>       Execute the current command
-
      area          Show OSPFv3 spf-tree information
-
      border-routers
-
      Show OSPFv3 border-router (ABR and ASBR) information
-
      database      Show OSPFv3 Link state database information
-
      interface     Show OSPFv3 interface information
-
      linkstate     Show OSPFv3 linkstate routing information
-
      neighbor      Show OSPFv3 neighbor information
-
      redistribute  Show OSPFv3 redistribute External information
-
      route         Show OSPFv3 routing table information
 ```
 
@@ -233,7 +190,6 @@ Use this command to show the status of the RIPNG protocol
 ```{opcmd} reset bgp ipv6 \<address\>
 
 Use this command to clear Border Gateway Protocol statistics or
-
 status.
 
 ```

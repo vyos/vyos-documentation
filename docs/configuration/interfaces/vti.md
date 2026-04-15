@@ -45,14 +45,12 @@ interfaces.
 ```{cfgcmd} set interfaces vti \<interface\> mirror egress \<monitor-interface\>
 
 Configure mirroring of outgoing traffic from the specified VTI to the
-
 designated monitor interface.
 ```
 
 ```{cfgcmd} set interfaces vti \<interface\> mirror ingress \<monitor-interface\>
 
 Configure mirroring of incoming traffic from the specified VTI to the
-
 designated monitor interface.
 ```
 

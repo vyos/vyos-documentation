@@ -141,7 +141,6 @@ In firewall bridge rules, the action can be:
 
 
 This required setting defines the action of the current rule. If action is
-
 set to jump, then jump-target is also needed.
 ```
 
@@ -176,7 +175,6 @@ jump-target <text>
 
 
 If action is set to ``queue``, use next command to specify the queue
-
 target. Range is also supported:
 ```
 
@@ -211,7 +209,6 @@ queue <0-65535>
 
 
 Also, if action is set to ``queue``, use next command to specify the queue
-
 options. Possible options are ``bypass`` and ``fanout``:
 ```
 
@@ -307,13 +304,9 @@ not match any rule in its chain. For base chains, possible options for
 
 
 This sets the default action of the rule-set if a packet does not match
-
 any of the rules in that chain. If default-action is set to ``jump``, then
-
 ``default-jump-target`` is also needed. Note that for base chains, default
-
 action can only be set to ``accept`` or ``drop``, while on custom chains
-
 more actions are available.
 ```
 
@@ -321,7 +314,6 @@ more actions are available.
 ```{cfgcmd} set firewall bridge name \<name\> default-jump-target \<text\>
 
 To be used only when ``default-action`` is set to ``jump``. Use this
-
 command to specify jump target for default rule.
 ```
 :::{note}
@@ -356,7 +348,6 @@ can be configured.
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log
 
 Enable logging for the matched packet. If this configuration command is not
-
 present, then the log is not enabled.
 ```
 
@@ -380,7 +371,6 @@ present, then the log is not enabled.
 ```{cfgcmd} set firewall bridge name \<name\> default-log
 
 Use this command to enable the logging of the default action on
-
 the specified chain.
 ```
 
@@ -388,7 +378,6 @@ the specified chain.
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -396,7 +385,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -404,7 +392,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -412,7 +399,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -420,7 +406,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 
 
@@ -458,7 +443,6 @@ log-options group <0-65535>
 
 
 Define the log group to send messages to. Only applicable if rule log is
-
 enabled.
 ```
 
@@ -493,7 +477,6 @@ log-options snapshot-length <0-9000>
 
 
 Define length of packet payload to include in netlink message. Only
-
 applicable if rule log is enabled and the log group is defined.
 ```
 
@@ -528,9 +511,7 @@ log-options queue-threshold <0-65535>
 
 
 Define the number of packets to queue inside the kernel before sending them
-
 to userspace. Only applicable if rule log is enabled and the log group is
-
 defined.
 ```
 ### Firewall Description
@@ -742,7 +723,6 @@ Match based on VLAN identifier. Range is also supported.
 
 
 Match based on VLAN priority (Priority Code Point - PCP). Range is also
-
 supported.
 ```
 ### Packet Modifications

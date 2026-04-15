@@ -190,7 +190,6 @@ Similar combinations are applicable for the dead-peer-detection.
 ```{cfgcmd} set vpn ipsec authentication psk \<name\> dhcp-interface
 
   ID for authentication generated from DHCP address
-
   dynamically.
 
 ```
@@ -199,7 +198,6 @@ Similar combinations are applicable for the dead-peer-detection.
 ```{cfgcmd} set vpn ipsec authentication psk id \<id\>
 
 static ID's for authentication. In general local and remote
-
 address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
 ```
 
@@ -207,9 +205,7 @@ address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
 ```{cfgcmd} set vpn ipsec authentication psk secret \<secret\>
 
 A predefined shared secret used in configured mode
-
 ``pre-shared-secret``. Base64-encoded secrets are allowed if
-
 `secret-type base64` is configured.
 ```
 
@@ -220,7 +216,6 @@ Specifies the secret type:
 
 
 * **plaintext** - Plain text type (default value).
-
 * **base64** - Base64 type.
 ```
 #### Peer Configuration
@@ -233,9 +228,7 @@ Mode for authentication between VyOS and remote peer:
 
 
 * **pre-shared-secret** - Use predefined shared secret phrase.
-
 * **rsa** - Use simple shared RSA key.
-
 * **x509** - Use certificates infrastructure for authentication.
 ```
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication local-id \<id\>
@@ -285,36 +278,27 @@ Private key passphrase, if needed.
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
-
 * **initiate** - does initial connection to remote peer immediately
   after configuring and after boot. In this mode the connection will
   not be restarted in case of disconnection, therefore should be used
   only together with DPD or another session tracking methods.
-
 * **trap** - does not try to initiate a connection to a remote
   peer immediately. Instead, it installs a trap policy that will
   trigger IKE negotiation and establish the IPsec session when
   matching traffic is sent from the local side. This can be useful
   when there is no direct connectivity to the peer due to firewall
   or NAT in the middle of the local and remote side.
-
   :::{warning}
-
   The ``trap`` mode is not needed in most environments
-
   :::
      and can lead to connection confusion or unintended tunnel uptime
      behavior if used incorrectly. Using this mode requires careful
      coordination with parameters such as ``close-action`` and DPD.
      For most deployments, use ``initiate`` and ``none`` as described below.
-
 * **none** - loads the connection only, which then can be manually
   initiated or used as a responder configuration.
-
 :::{note}
-
 For most site-to-site VPNs, configure one peer
-
 :::
    with ``connection-type initiate`` (active side) and the other peer
    with ``connection-type none`` (passive side) to

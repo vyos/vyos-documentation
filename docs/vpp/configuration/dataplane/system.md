@@ -75,21 +75,15 @@ prevents unnecessary interrupts on VPP worker cores.
 Isolates specified CPUs from the kernel scheduler. Isolated cores will
 not run regular system processes and are dedicated to applications like
 VPP.
-
 The ``<cpu-range>`` can be:
-
 * Single core: ``2``
 * Range: ``2-5``
 * Mixed: ``1,3-5,7``
-
 :::{important}
-
 Always reserve at least 2 cores for the operating system to ensure
-
 :::
    system stability. For example, on a 4-core system, isolate cores
    2-3 for VPP and leave cores 0-1 for the OS.
-
    Assign the first isolated core as the VPP main core and the
    remaining isolated cores as VPP worker cores. Ensure that VPP CPU
    assignments match the isolated CPU range.
@@ -102,7 +96,6 @@ Enables adaptive-tick mode (NO_HZ_FULL) for specified CPUs. This
 causes the kernel to avoid sending scheduling-clock interrupts to CPUs
 that have only one runnable task, significantly reducing interrupt
 overhead for dedicated workloads like VPP.
-
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
 **RCU Callback Offloading**
@@ -113,7 +106,6 @@ Offloads Read-Copy-Update (RCU) callback processing from specified
 CPUs. This ensures that RCU callbacks do not prevent the specified CPUs
 from entering dyntick-idle or adaptive-tick mode, which is essential
 for nohz-full functionality.
-
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
 ### System Optimization

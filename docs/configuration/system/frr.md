@@ -29,9 +29,7 @@ traditional profile is applied.
 ```{cfgcmd} set system frr snmp \<daemon\>
 
 Enable SNMP support for an individual routing daemon.
-
 Supported daemons:
-
 - bgpd
 - isisd
 - ldpd

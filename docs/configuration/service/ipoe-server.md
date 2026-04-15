@@ -50,7 +50,6 @@ set service ipoe-server interface eth1 vlan '100-200'
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\>
 
     Creates local IPoE user with username=**<interface>** and
-
     password=**<MAC>** (mac-address)
 
 ```
@@ -59,16 +58,12 @@ set service ipoe-server interface eth1 vlan '100-200'
 ```{cfgcmd} set service ipoe-server authentication mode \<local | radius\>
 
 Set authentication backend. The configured authentication backend is used
-
 for all queries.
 
 
 * **radius**: All authentication queries are handled by a configured RADIUS
-
   server.
-
 * **local**: All authentication queries are handled locally.
-
 * **noauth**: Authentication disabled
 ```
 
@@ -76,11 +71,8 @@ for all queries.
 ```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
 
 Use this command to define the first IP address of a pool of
-
 addresses to be given to IPoE clients. If notation ``x.x.x.x-x.x.x.x``,
-
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
-
 used there is possibility to set host/netmask.
 ```
 
@@ -94,11 +86,8 @@ Use this command to define default address pool name.
 ```{cfgcmd} set service ipoe-server gateway-address \<x.x.x.x/x\>
 
 Specifies address to be used as server ip address if radius can assign
-
 only client address. In such case if client address is matched network
-
 and mask then specified address and mask will be used. You can specify
-
 multiple such options.
 ```
 
@@ -109,9 +98,7 @@ multiple such options.
 
 
 * **l2**: It means that clients are on same network where interface
-
   is.**(default)**
-
 * **l3**: It means that client are behind some router.
 ```
 
@@ -122,7 +109,6 @@ Specify where interface is shared by multiple users or it is vlan-per-user.
 
 
 * **shared**: Multiple clients share the same network. **(default)**
-
 * **vlan**: One VLAN per client.
 ```
 
@@ -153,7 +139,6 @@ set service ipoe-server authentication mode radius
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
 
 Configure RADIUS `<server>` and its required shared `<secret>` for
-
 communicating with the RADIUS server.
 ```
 Since the RADIUS server would be a single point of failure, multiple RADIUS
@@ -216,7 +201,6 @@ Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```{cfgcmd} set service ipoe-server authentication radius dynamic-author server \<address\>
 
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
-
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
@@ -248,7 +232,6 @@ Timeout to wait response from server (seconds)
 ```{cfgcmd} set service ipoe-server authentication radius nas-identifier \<identifier\>
 
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
-
 in DM/CoA requests.
 ```
 
@@ -256,7 +239,6 @@ in DM/CoA requests.
 ```{cfgcmd} set service ipoe-server authentication radius nas-ip-address \<address\>
 
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
-
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
@@ -270,7 +252,6 @@ Source IPv4 address used in all RADIUS server queires.
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute \<attribute\>
 
 Specifies which RADIUS server attribute contains the rate limit information.
-
 The default attribute is `Filter-Id`.
 ```
 :::{note}
@@ -286,7 +267,6 @@ Enables bandwidth shaping via RADIUS.
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit vendor
 
 Specifies the vendor dictionary, dictionary needs to be in
-
 /usr/share/accel-ppp/radius.
 ```
 Received RADIUS attributes have a higher priority than parameters defined within
@@ -332,11 +312,8 @@ Define it in your RADIUS server.
 
 
 Use this comand to set the IPv6 address pool from which an IPoE client
-
 will get an IPv6 prefix of your defined length (mask) to terminate the
-
 IPoE endpoint at their side. The mask length can be set from 48 to 128
-
 bit long, the default value is 64.
 ```
 
@@ -347,13 +324,9 @@ bit long, the default value is 64.
 
 
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
-
 IPoE. You will have to set your IPv6 pool and the length of the
-
 delegation prefix. From the defined IPv6 pool you will be handing out
-
 networks of the defined length (delegation-prefix). The length of the
-
 delegation prefix can be set from 32 to 64 bit long.
 ```
 
@@ -434,7 +407,6 @@ Use this command to define the next address pool name.
 ```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
-
 If you need more customization use `client-ip-pool`
 ```
 

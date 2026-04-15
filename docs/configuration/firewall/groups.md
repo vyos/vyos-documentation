@@ -24,9 +24,7 @@ An **address group** contains a single IP address or IP address range.
 ```{cfgcmd} set firewall group ipv6-address-group \<name\> address \<address\>
 
 Define an IPv4 or IPv6 address group.
-
 .. code-block:: none
-
   set firewall group address-group ADR-INSIDE-v4 address 192.168.0.1
   set firewall group address-group ADR-INSIDE-v4 address 10.0.0.1-10.0.0.8
   set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
@@ -74,9 +72,7 @@ networks, use a network group.
 ```{cfgcmd} set firewall group ipv6-network-group \<name\> network \<CIDR\>
 
 Define an IPv4 or IPv6 network group.
-
 .. code-block:: none
-
   set firewall group network-group NET-INSIDE-v4 network 192.168.0.0/24
   set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
   set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
@@ -114,9 +110,7 @@ ranges by using `-`.
    [portname | portnumber | startport-endport]
 Define a port group. A port name can be any name defined in
 /etc/services. For example, ``http``.
-
 .. code-block:: none
-
   set firewall group port-group PORT-TCP-SERVER1 port http
   set firewall group port-group PORT-TCP-SERVER1 port 443
   set firewall group port-group PORT-TCP-SERVER1 port 5000-5010

@@ -50,7 +50,6 @@ default ``local``) so that they can be reflected.
 
 Specify how many resource records are cached per interface. Bigger values
 allow mDNS work correctly in large LANs but also increase memory consumption.
-
 Defaults to: 4096
 ```
 ## Firewall recommendations

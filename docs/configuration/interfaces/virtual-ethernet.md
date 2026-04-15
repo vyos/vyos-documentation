@@ -50,9 +50,7 @@ as the peer of the other.
 ```{opcmd} show interfaces virtual-ethernet
 
 Show brief interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces virtual-ethernet
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
@@ -63,9 +61,7 @@ Show brief interface information.
 ```{opcmd} show interfaces virtual-ethernet \<interface\>
 
 Show detailed interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces virtual-ethernet veth11
   10: veth11@veth10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master red state UP group default qlen 1000
   link/ether b2:7b:df:47:e9:11 brd ff:ff:ff:ff:ff:ff

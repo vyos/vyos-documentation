@@ -20,9 +20,7 @@ The Babel process starts when the first Babel enabled interface is configured.
 ```{cfgcmd} set protocols babel interface \<interface\>
 
   This command specifies a Babel enabled interface by interface name. Both
-
   the sending and receiving of Babel packets will be enabled on the interface
-
   specified in this command.
 
 ```
@@ -30,7 +28,6 @@ The Babel process starts when the first Babel enabled interface is configured.
 ```{cfgcmd} set protocols babel parameters diversity
 
 This command enables routing using radio frequency diversity.
-
 This is highly recommended in networks with many wireless nodes.
 
 
@@ -41,7 +38,6 @@ This is highly recommended in networks with many wireless nodes.
 
 
  :::
-
     set diversity-factor and channel below.
 ```
 
@@ -49,15 +45,10 @@ This is highly recommended in networks with many wireless nodes.
 ```{cfgcmd} set protocols babel parameters diversity-factor \<1-256\>
 
 This command sets the multiplicative factor used for diversity routing,
-
 in units of 1/256; lower values cause diversity to play a more important role
-
 in route selection.
-
 The default it 256, which means that diversity plays no role in route
-
 selection; you will probably want to set that to 128 or less on nodes
-
 with multiple independent radios.
 ```
 
@@ -65,7 +56,6 @@ with multiple independent radios.
 ```{cfgcmd} set protocols babel parameters resend-delay \<milliseconds\>
 
 This command specifies the time in milliseconds after which an 'important'
-
 request or update will be resent. The default is 2000 ms.
 ```
 
@@ -73,13 +63,9 @@ request or update will be resent. The default is 2000 ms.
 ```{cfgcmd} set protocols babel parameters smoothing-half-life \<seconds\>
 
 This command specifies the time constant, in seconds, of the smoothing
-
 algorithm used for implementing hysteresis.
-
 Larger values reduce route oscillation at the cost of very slightly increasing
-
 convergence time. The value 0 disables hysteresis, and is suitable for wired
-
 networks. The default is 4 s.
 ```
 ## Interfaces Configuration
@@ -89,13 +75,9 @@ This command sets the interface type:
 
 
 **auto** – automatically determines the interface type.
-
 **wired** – enables optimisations for wired interfaces.
-
 **wireless** – disables a number of optimisations that are only correct
-
 on wired interfaces. Specifying wireless is always correct,
-
 but may cause slower convergence and extra routing traffic.
 ```
 
@@ -103,20 +85,14 @@ but may cause slower convergence and extra routing traffic.
 ```{cfgcmd} set protocols babel interface \<interface\> split-horizon \<default|disable|enable\>
 
 This command specifies whether to perform split-horizon on the interface.
-
 Specifying no babel split-horizon is always correct, while babel split-horizon
-
 is an optimisation that should only be used on symmetric
-
 and transitive (wired) networks.
 
 
 **default** – enable split-horizon on wired interfaces, and disable
-
 split-horizon on wireless interfaces.
-
 **enable** – enable split-horizon on this interfaces.
-
 **disable** – disable split-horizon on this interfaces.
 ```
 
@@ -124,13 +100,9 @@ split-horizon on wireless interfaces.
 ```{cfgcmd} set protocols babel interface \<interface\> hello-interval \<milliseconds\>
 
 This command specifies the time in milliseconds between two scheduled hellos.
-
 On wired links, Babel notices a link failure within two hello intervals;
-
 on wireless links, the link quality value is reestimated at every hello
-
 interval.
-
 The default is 4000 ms.
 ```
 
@@ -138,11 +110,8 @@ The default is 4000 ms.
 ```{cfgcmd} set protocols babel interface \<interface\> update-interval \<milliseconds\>
 
 This command specifies the time in milliseconds between two scheduled updates.
-
 Since Babel makes extensive use of triggered updates,
-
 this can be set to fairly high values on links with little packet loss.
-
 The default is 20000 ms.
 ```
 
@@ -150,13 +119,9 @@ The default is 20000 ms.
 ```{cfgcmd} set protocols babel interface \<interface\> rxcost \<1-65534\>
 
 This command specifies the base receive cost for this interface.
-
 For wireless interfaces, it specifies the multiplier used for computing
-
 the ETX reception cost (default 256);
-
 for wired interfaces, it specifies the cost that will be advertised to
-
 neighbours.
 ```
 
@@ -164,9 +129,7 @@ neighbours.
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-decay \<1-256\>
 
 This command specifies the decay factor for the exponential moving average
-
 of RTT samples, in units of 1/256.
-
 Higher values discard old samples faster. The default is 42.
 ```
 
@@ -174,9 +137,7 @@ Higher values discard old samples faster. The default is 42.
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-min \<milliseconds\>
 
 This command specifies the minimum RTT, in milliseconds,
-
 starting from which we increase the cost to a neighbour.
-
 The additional cost is linear in (rtt - rtt-min). The default is 10 ms.
 ```
 
@@ -184,7 +145,6 @@ The additional cost is linear in (rtt - rtt-min). The default is 10 ms.
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-max \<milliseconds\>
 
 This command specifies the maximum RTT, in milliseconds, above which
-
 we don't increase the cost to a neighbour. The default is 120 ms.
 ```
 ```{cfgcmd} set protocols babel interface \<interface\> max-rtt-penalty \<milliseconds\>
@@ -204,7 +164,6 @@ It is recommended to enable timestamps on tunnel interfaces.
 
 This command set the channel number that diversity routing uses for this
 interface (see diversity option above).
-
 **1-254** – interfaces with a channel number interfere with
 interfering interfaces and interfaces with the same channel number.
 **interfering** – interfering interfaces are assumed to interfere with all other channels except
@@ -218,9 +177,7 @@ with themselves.
 
 This command redistributes routing information from the given route source
 to the Babel process.
-
 IPv4 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospf, rip, static.
-
 IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, static.
 ```
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> access-list \<in|out\> \<number\>

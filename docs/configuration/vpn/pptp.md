@@ -21,7 +21,6 @@ set vpn pptp remote-access gateway-address 192.168.255.1
 
 Set authentication backend. The configured authentication backend is used
 for all queries.
-
 * **radius**: All authentication queries are handled by a configured RADIUS
   server.
 * **local**: All authentication queries are handled locally.
@@ -188,7 +187,6 @@ characters, otherwise the interface won't be renamed.
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6 \<require | prefer | allow | deny\>
 
 Specifies IPv6 negotiation preference.
-
 * **require** - Require IPv6 negotiation
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
 * **allow** - Negotiate IPv6 only if client requests
@@ -230,14 +228,12 @@ Accept peer interface identifier. By default is not defined.
 
 Specifies fixed or random interface identifier for IPv6.
 By default is fixed.
-
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
 Specifies peer interface identifier for IPv6. By default is fixed.
-
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
@@ -312,7 +308,6 @@ Default value is **0**.
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv4 \<require | prefer | allow | deny\>
 
 Specifies IPv4 negotiation preference.
-
 * **require** - Require IPv4 negotiation
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
 * **allow** - Negotiate IPv4 only if client requests (Default value)
@@ -345,11 +340,9 @@ Default value is **100**.
 
 Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
-
 * **require** - ask client for mppe, if it rejects drop connection
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
 * **deny** - deny mppe
-
 Default behavior - don't ask client for mppe, but allow it if client wants.
 Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
 attribute.

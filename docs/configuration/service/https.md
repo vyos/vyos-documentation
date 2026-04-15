@@ -34,7 +34,6 @@ Webserver should only listen on specified IP address
 ```{cfgcmd} set service https port \<number\>
 
 Webserver should listen on specified port.
-
 Default: 443
 ```
 ```{cfgcmd} set service https enable-http-redirect
@@ -44,7 +43,6 @@ Enable automatic redirect from http to https.
 ```{cfgcmd} set service https tls-version \<1.2 | 1.3\>
 
 Select TLS version used.
-
 This defaults to both 1.2 and 1.3.
 ```
 ```{cfgcmd} set service https vrf \<name\>
@@ -89,9 +87,7 @@ Do not leave introspection enabled in production, it is a security risk.
 ```{cfgcmd} set service https api graphql authentication type \<key | token\>
 
 Set the authentication type for GraphQL, default option is key. Available options are:
-
 * ``key`` use API keys configured in ``service https api keys``
-
 * ``token`` use JWT tokens.
 ```
 ```{cfgcmd} set service https api graphql authentication expiration

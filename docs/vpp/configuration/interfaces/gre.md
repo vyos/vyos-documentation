@@ -51,7 +51,6 @@ Administratively disable the GRE interface.
 ```{cfgcmd} set interfaces vpp gre \<vppgreN\> tunnel-type \<type\>
 
 Set the GRE tunnel encapsulation type:
-
 * ``l3`` - Generic Routing Encapsulation for network layer traffic (default).
 * ``teb`` - Transparent Ethernet Bridge for Layer 2 frame transport.
 * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic

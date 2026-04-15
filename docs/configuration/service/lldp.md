@@ -49,10 +49,8 @@ say ``all`` here so LLDP is turned on on every interface.
 ```{cfgcmd} set service lldp interface \<interface\> mode [disable|rx-tx|rx|tx]
 
 Configure the administrative status of the given port.
-
 By default, all ports are configured to be in rx-tx mode. This means they
 can receive and transmit LLDP frames.
-
 In rx mode, they won't emit any frames. In tx mode, they won't receive
 any frames. In disabled mode, no frame will be sent and any incoming frame
 will be discarded.
@@ -64,7 +62,6 @@ Enable SNMP queries of the LLDP database
 ```{cfgcmd} set service lldp legacy-protocols \<cdp|edp|fdp|sonmp\>
 
 Enable given legacy protocol on this LLDP instance. Legacy protocols include:
-
 * ``cdp`` - Listen for CDP for Cisco routers/switches
 * ``edp`` - Listen for EDP for Extreme routers/switches
 * ``fdp`` - Listen for FDP for Foundry routers/switches
@@ -75,13 +72,10 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 ```{opcmd} show lldp neighbors
 
 Displays information about all neighbors discovered via LLDP.
-
 .. code-block:: none
-
   vyos@vyos:~$ show lldp neighbors
   Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
   D - Docsis, T - Telephone, O - Other
-
   Device ID                 Local     Proto  Cap   Platform             Port ID
   ---------                 -----     -----  ---   --------             -------
   BR2.vyos.net              eth0      LLDP   R     VyOS 1.2.4           eth1
@@ -91,9 +85,7 @@ Displays information about all neighbors discovered via LLDP.
 ```{opcmd} show lldp neighbors detail
 
 Get detailed information about LLDP neighbors.
-
 .. code-block:: none
-
   vyos@vyos:~$ show lldp neighbors detail
   -------------------------------------------------------------------------------
   LLDP neighbors:

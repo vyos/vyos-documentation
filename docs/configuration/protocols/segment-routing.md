@@ -49,11 +49,8 @@ Only one SRGB and default SPF Algorithm is supported
 ```{cfgcmd} set protocols isis segment-routing global-block high-label-value
 
   <label-value>
-
   Set the Segment Routing Global Block i.e. the label range used by MPLS to
-
   store label in the MPLS FIB for Prefix SID. Note that the block size may
-
   not exceed 65535.
 
 ```
@@ -65,9 +62,7 @@ Only one SRGB and default SPF Algorithm is supported
 
 
 Set the Segment Routing Global Block i.e. the low label range used by MPLS to
-
 store label in the MPLS FIB for Prefix SID. Note that the block size may
-
 not exceed 65535.
 ```
 
@@ -78,11 +73,8 @@ not exceed 65535.
 
 
 Set the Segment Routing Local Block i.e. the label range used by MPLS to
-
 store label in the MPLS FIB for Prefix SID. Note that the block size may
-
 not exceed 65535.Segment Routing Local Block, The negative command always
-
 unsets both.
 ```
 
@@ -93,11 +85,8 @@ unsets both.
 
 
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
-
 store label in the MPLS FIB for Prefix SID. Note that the block size may
-
 not exceed 65535.Segment Routing Local Block, The negative command always
-
 unsets both.
 ```
 
@@ -105,7 +94,6 @@ unsets both.
 ```{cfgcmd} set protocols isis segment-routing maximum-label-depth \<1-16\>
 
 Set the Maximum Stack Depth supported by the router. The value depend of
-
 the MPLS dataplane.
 ```
 
@@ -116,9 +104,7 @@ the MPLS dataplane.
 
 
 A segment ID that contains an IP address prefix calculated by an IGP in the
-
 service provider core network. Prefix SIDs are globally unique, this value
-
 indentify it
 ```
 
@@ -129,17 +115,11 @@ indentify it
 
 
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
-
 Penultimate Hop Popping that allows SR node to request to its neighbor to
-
 not pop the label. The ‘explicit-null’ flag allows SR node to request to its
-
 neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
-
 option can be used to explicitly clear the Node flag that is set by default
-
 for Prefix-SIDs associated to loopback addresses. This option is necessary
-
 to configure Anycast-SIDs.
 ```
 ```{opcmd} show isis segment-routing node
@@ -166,7 +146,6 @@ devices, below configuration shows how to enable SR on OSPF:
 ```{cfgcmd} set protocols ospf parameters opaque-lsa
 
 Enable the Opaque-LSA capability (rfc2370), necessary to transport label
-
 on IGP
 ```
 ```{cfgcmd} set protocols ospf segment-routing global-block high-label-value

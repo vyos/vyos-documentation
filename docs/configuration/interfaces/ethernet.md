@@ -25,11 +25,8 @@ LANs and WANs.
 ```{cfgcmd} set interfaces ethernet \<interface\> switchdev
 
 **Enable** ``switchdev`` **mode for the interface.**
-
 In ``switchdev`` mode, the interface offloads traffic switching between ports
-
 to the hardware, bypassing the host CPU. This increases the interface’s
-
 traffic-handling capacity and reduces its forwarding delay.
 ```
 :::{note}
@@ -40,55 +37,35 @@ interfaces and requires a switchdev-compatible driver.
 ```{cfgcmd} set interfaces ethernet \<interface\> duplex \<auto | full | half\>
 
 **Configure duplex mode for the interface.**
-
 The following duplex modes are available:
-
 * ``auto``: The interface negotiates the duplex mode with the connected device.
-
 * ``full``: The interface sends and receives data simultaneously. The
-
 connected device must also be set to full-duplex to avoid a duplex mismatch.
-
 * ``half``: The interface either sends or receives data, but not both at the
-
 same time.
-
 The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed <auto | 10 | 100 | 1000 |
 
 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000>
-
 **Configure the interface's speed, in Mbit/s.**
-
 The following options are available:
-
 * ``auto``:  The interface negotiates the speed with the connected device.
-
 * ``10, 100, 1000 ...``: The interface operates at the selected speed. The
-
 connected device must be set to the same speed to establish a connection.
-
 The default option is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer rx \<value\>
 
 **Configure the receive (RX) ring buffer size for the interface.**
-
 The RX ring buffer size defines the number of incoming packets the interface
-
 can queue in hardware before the CPU processes them.
-
 Higher values reduce the risk of drops when the NIC receives network traffic
-
 faster than the CPU can process it, though latency may increase. Lower values
-
 reduce latency but increase the risk of packet drops during incoming traffic
-
 bursts.
-
 To view supported values for a specific interface, use:
 ```
 
@@ -101,17 +78,11 @@ ethtool -g <interface>
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer tx \<value\>
 
 **Configure the transmit (TX) ring buffer size.**
-
 The TX ring buffer size defines the number of outgoing packets the interface
-
 can queue in hardware before they are transmitted onto the network.
-
 Higher values reduce the risk of drops when the CPU generates traffic faster
-
 than the NIC can handle, though latency may increase. Lower values reduce
-
 latency but increase the risk of packet drops during outgoing traffic bursts.
-
 To view supported values for a specific interface, use:
 ```
 
@@ -136,9 +107,7 @@ to verify which settings are supported by your hardware and driver.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-tx
 
 Enable adaptive interrupt coalescing. The NIC automatically tunes RX/TX
-
 interrupt pacing based on traffic patterns to reduce CPU utilization
-
 during high throughput while preserving latency at low packet rates.
 ```
 **Basic interrupt delay**
@@ -148,9 +117,7 @@ during high throughput while preserving latency at low packet rates.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-usecs \<0-16384\>
 
 Set the delay in microseconds before generating an RX/TX interrupt after
-
 receiving or transmitting a packet. Lower values reduce latency; higher
-
 values reduce CPU load.
 ```
 **Interrupt frame thresholds**
@@ -160,7 +127,6 @@ values reduce CPU load.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-frames \<number\>
 
 Generate an RX/TX interrupt only after the specified number of packets
-
 have been received or transmitted.
 ```
 **IRQ-specific coalescing**
@@ -176,9 +142,7 @@ have been received or transmitted.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-frames-irq \<number\>
 
 Control interrupt coalescing parameters while the driver is already
-
 servicing an interrupt (IRQ context). These settings allow finer tuning
-
 of interrupt behavior under sustained load.
 ```
 **Adaptive rate thresholds**
@@ -188,9 +152,7 @@ of interrupt behavior under sustained load.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing pkt-rate-high \<number\>
 
 Define packet-rate thresholds (packets per second) used by adaptive
-
 coalescing to switch between low-rate and high-rate interrupt coalescing
-
 profiles.
 ```
 **Low-rate adaptive parameters**
@@ -206,7 +168,6 @@ profiles.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-frame-low \<number\>
 
 Interrupt coalescing parameters applied when the packet rate is below
-
 ``pkt-rate-low``. Typically optimized for lower latency.
 ```
 **High-rate adaptive parameters**
@@ -222,9 +183,7 @@ Interrupt coalescing parameters applied when the packet rate is below
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-frame-high \<number\>
 
 Interrupt coalescing parameters applied when the packet rate exceeds
-
 ``pkt-rate-high``. Typically optimized for maximum throughput and
-
 reduced CPU utilization.
 ```
 **Statistics and sampling**
@@ -234,7 +193,6 @@ reduced CPU utilization.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing sample-interval \<number\>
 
 Control how frequently coalescing statistics are updated and how often
-
 the NIC samples traffic rates for adaptive coalescing decisions.
 ```
 **Completion queue (CQE) mode**
@@ -244,9 +202,7 @@ the NIC samples traffic rates for adaptive coalescing decisions.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing cqe-mode-tx
 
 Enable RX/TX Completion Queue Entry (CQE) mode, if supported by the
-
 driver. CQE mode can improve performance on high-speed NICs by
-
 optimizing completion handling.
 ```
 **Transmit aggregation**
@@ -259,7 +215,6 @@ optimizing completion handling.
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-aggr-time-usecs \<number\>
 
 Control transmit packet aggregation. Packets may be buffered and sent
-
 together until one of the configured limits (bytes, frames, or time)
 ```
 #### Offloading
@@ -268,7 +223,6 @@ together until one of the configured limits (bytes, frames, or time)
 
    gro |  rps | sg >
 **Configure the offloading features for the interface.**
-
 The interface offloading features define whether specific packet-processing tasks
 are performed by hardware (the NIC) or by software (the kernel). You can enable
 multiple offloading features for a single interface.
@@ -276,76 +230,54 @@ multiple offloading features for a single interface.
 
  * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple
    incoming packets into one larger packet before sending it to the CPU.
-
    :::{note}
-
    :abbr:`LRO (Large Receive Offload)` hardware support is often limited
-
    :::
      to TCP/IPv4 packets. For details on LRO limitations, see
      https://lwn.net/Articles/358910/
-
    :::{warning}
-
    :abbr:`LRO (Large Receive Offload)` irreversibly alters packet
-
    :::
      headers during merging. This prevents the merged packet from being correctly
      split back into the original packets, causing packet drops and forwarding
      failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only
      for end-hosts that do not forward traffic.
-
  * ``tso`` **(TCP Segmentation Offload):** Instructs the NIC to split large TCP
    packets into smaller ones before transmitting them to the network.
-
    **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
    for :abbr:`TSO (TCP Segmentation Offload)` to work. Additionally, :abbr:`GSO
    (Generic Segmentation Offload)` should be enabled as a safety fallback; it
    ensures that if traffic is rerouted to hardware without :abbr:`TSO (TCP
    Segmentation Offload)` support, the kernel can still segment the packets,
    preventing transmission failures.
-
  * ``gso`` **(Generic Segmentation Offload):** Instructs the kernel to split
    large packets into smaller ones before sending them to the NIC.
-
    :abbr:`GSO (Generic Segmentation Offload)` serves as a software fallback for
    hardware that does not support :abbr:`TSO (TCP Segmentation Offload)` or for
    protocols (like UDP) that hardware cannot offload.
-
    **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
    for :abbr:`GSO (Generic Segmentation Offload)` to work.
-
  * ``gro`` **(Generic Receive Offload):** Instructs the kernel to merge multiple
    incoming packets into one larger packet before passing it to upper protocol
    layers.
-
    Unlike LRO, GRO preserves the necessary packet metadata so the merged packet
    can be correctly split back into the original packets. This makes GRO safe for
    use on routers and bridges.
-
  :::{note}
-
  The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
-
  :::
     set and IDs are not sequential, :abbr:`GSO (Generic Segmentation Offload)`
     alters them to maintain a consistent sequence for :abbr:`GSO (Generic
     Segmentation Offload)` compatibility.
-
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
    the processing of incoming packets across multiple CPU cores.
-
    The kernel calculates a hash from packet headers (IP addresses and ports) to
    ensure packets from the same flow are processed by the same CPU core.
-
  :::{note}
-
  :abbr:`RPS (Receive Packet Steering)` is a software version of
-
  :::
     :abbr:`RSS (Receive Side Scaling)` and is useful for NICs without hardware
     multi-queue support.
-
  * ``sg`` **(Scatter-Gather/Scatter-Gather DMA):** Instructs the NIC to fetch
    data fragments from various RAM locations and transmit them as a single packet
    to the network, eliminating the need for the kernel to copy them into a
@@ -382,9 +314,7 @@ Uplink/core tracking.
 ```{opcmd} show interfaces ethernet
 
 Show brief interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces ethernet
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
@@ -396,15 +326,12 @@ Show brief interface information.
 ```{opcmd} show interfaces ethernet \<interface\>
 
 Show detailed interface information.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces ethernet eth0
   eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
   link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
   inet6 fe80::250:44ff:fe00:f5c9/64 scope link
   valid_lft forever preferred_lft forever
-
   RX:  bytes    packets     errors    dropped    overrun      mcast
   56735451     179841          0          0          0     142380
   TX:  bytes    packets     errors    dropped    carrier collisions
@@ -415,9 +342,7 @@ Show detailed interface information.
 ```{opcmd} show interfaces ethernet \<interface\> physical
 
 Show interface hardware-level and driver details.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces ethernet eth0 physical
   Settings for eth0:
   Supported ports: [ TP ]
@@ -456,9 +381,7 @@ Show interface hardware-level and driver details.
 ```{opcmd} show interfaces ethernet \<interface\> physical offload
 
 Show the status of the interface offloading features.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces ethernet eth0 physical offload
   rx-checksumming               on
   tx-checksumming               on
@@ -489,9 +412,7 @@ Show the status of the interface offloading features.
 
 Show information about the transceiver module plugged into the interface
 (e.g., SFP+, QSFP).
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces ethernet eth5 transceiver
   Identifier              : 0x03 (SFP)
   Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)

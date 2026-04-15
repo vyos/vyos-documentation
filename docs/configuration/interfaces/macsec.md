@@ -26,27 +26,21 @@ addresses distinct use cases.
 ```{cfgcmd} set interfaces macsec \<interface\> security cipher \<gcm-aes-128|gcm-aes-256\>
 
 **Configure the cipher suite for the MACsec interface.**
-
 This configuration parameter is mandatory.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> security encrypt
 
 **Enable encryption on the MACsec interface.**
-
 By default, MACsec interfaces only provide authentication; encryption is
-
 optional.
-
 When enabled, outgoing packets are encrypted using the configured cipher suite.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> source-interface \<physical-source\>
 
 **Configure a physical source interface for the MACsec interface.**
-
 Traffic transmitted through this interface is authenticated and, if configured,
-
 encrypted.
 ```
 #### MACsec key management
@@ -57,9 +51,7 @@ this mode.
 ```{cfgcmd} set interfaces macsec \<interface\> security static key \<key\>
 
 **Configure the Transmit (TX) SAK for the MACsec interface.**
-
 The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
-
 string.
 ```
 
@@ -71,9 +63,7 @@ string.
 ```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> key \<key\>
 
 **Configure the RX SAK for traffic from the MACsec peer.**
-
 The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
-
 string.
 ```
 
@@ -87,7 +77,6 @@ Association Keys)`, and to authenticate MACsec peers.
 
 **Configure the** :abbr:`CAK (MACsec Connectivity Association Key)` **for the
 MACsec interface.**
-
 The :abbr:`CAK (MACsec Connectivity Association Key)` and its :abbr:`CKN
 (MACsec Connectivity Association Key Name)` form the pre-shared master key pair
 used to authenticate MACsec peers.
@@ -100,7 +89,6 @@ MACsec interface.
 ```{cfgcmd} set interfaces macsec \<interface\> security mka priority \<priority\>
 
 Configure the MKA key server priority for the MACsec interface.
-
 The peer with the lowest priority is elected as the key server.
 ```
 #### Replay protection
@@ -109,9 +97,7 @@ The peer with the lowest priority is elected as the key server.
 
 The replay protection window defines how many out-of-order frames can be
 received before they are dropped as a potential replay attack.
-
 The following values are valid:
-
 - ``0``: Any out-of-order frame is immediately dropped.
 - ``1-4294967295``: Allows the specified number of out-of-order frames.
 ```
@@ -121,9 +107,7 @@ The following values are valid:
 
 Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) :abbr:`MKA (MACsec
 Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
-
 .. code-block:: none
-
   vyos@vyos:~$ generate macsec mka cak gcm-aes-128
   20693b6e08bfa482703a563898c9e3ad
 ```
@@ -131,18 +115,14 @@ Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
 
 Generate an :abbr:`MKA (MACsec Key Agreement protocol)` :abbr:`CAK (MACsec
 Connectivity Association Key)`.
-
 .. code-block:: none
-
   vyos@vyos:~$ generate macsec mka ckn
   88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
 ```
 ```{opcmd} show interfaces macsec
 
 Show all MACsec interfaces.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces macsec
   17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
   cipher suite: GCM-AES-128, using ICV length 16
@@ -154,9 +134,7 @@ Show all MACsec interfaces.
 ```{opcmd} show interfaces macsec \<interface\>
 
 Show information for a specific MACsec interface.
-
 .. code-block:: none
-
   vyos@vyos:~$ show interfaces macsec macsec1
   17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
   cipher suite: GCM-AES-128, using ICV length 16

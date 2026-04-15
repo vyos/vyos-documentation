@@ -40,7 +40,6 @@ searching the connection tracking table faster. The hash table uses
 
 Configure the connection tracking protocol helper modules.
 All modules are enable by default.
-
 | Use `delete system conntrack modules` to deactive all modules.
 | Or, for example ftp, `delete system conntrack modules ftp`.
 ```
@@ -73,9 +72,7 @@ Set a rule description.
 
    source address <ip-address>
 Set a destination and/or source address. Accepted input for ipv4:
-
 .. code-block:: none
-
   set system conntrack timeout custom ipv4 rule <1-999999> [source | destination] address
   Possible completions:
   <x.x.x.x>            IPv4 address to match
@@ -84,7 +81,6 @@ Set a destination and/or source address. Accepted input for ipv4:
   !<x.x.x.x>           Match everything except the specified address
   !<x.x.x.x/x>         Match everything except the specified prefix
   !<x.x.x.x>-<x.x.x.x> Match everything except the specified range
-
   set system conntrack timeout custom ipv6 rule <1-999999> [source | destination] address
   Possible completions:
   <h:h:h:h:h:h:h:h>    IP address to match
@@ -104,9 +100,7 @@ Set a destination and/or source address. Accepted input for ipv4:
 
    source port <value>
 Set a destination and/or source port. Accepted input:
-
 .. code-block:: none
-
   <port name>    Named port (any name in /etc/services, e.g., http)
   <1-65535>      Numbered port
   <start>-<end>  Numbered port range (e.g., 1001-1005)

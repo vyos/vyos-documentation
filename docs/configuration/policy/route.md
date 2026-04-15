@@ -55,16 +55,12 @@ Set match criteria based on connection mark.
 ```{cfgcmd} set policy route6 \<name\> rule \<n\> mark \<match_criteria\>
 
 Match based on the firewall mark (fwmark), where <match_criteria> can be:
-
  * <0-2147483647> a single fwmark
  * !<0-2147483647> everything except a single fwmark
  * <start-end> a range of marks
  * !<start-end> everything except the range of marks
-
  :::{note}
-
  When using the ``set table`` or ``set vrf`` commands the mark
-
  :::
     settings are ignored and overwritten with a table-specific mark that
     is set to 0x7FFFFFFF - the id of the table/VRF.
@@ -127,11 +123,9 @@ matching criteria.
 
 Set match criteria based on destination port, where <match_criteria> could
 be:
-
 * <port name>: Named port (any name in /etc/services, e.g., http).
 * <1-65535>: Numbered port.
 * <start>-<end>: Numbered port range (e.g., 1001-1005).
-
 Multiple destination ports can be specified as a comma-separated list. The
 whole list can also be "negated" using '!'. For example:
 '!22,telnet,http,123,1001-1005'
@@ -161,7 +155,6 @@ and ranges are supported.
 
    <match-grag|match-non-frag>
 Set IP fragment match, where:
-
 * match-frag: Second and further fragments of fragmented packets.
 * match-non-frag: Head fragments or unfragmented packets.
 ```
@@ -186,7 +179,6 @@ about what type-name criteria are supported.
 
    <match-ipsec|match-none>
 Set IPSec inbound match criterias, where:
-
 * match-ipsec: match inbound IPsec packets.
 * match-none: match inbound non-IPsec packets.
 ```
@@ -342,11 +334,8 @@ Set a specific packet mark.
 ```{cfgcmd} set policy route6 \<name\> rule \<n\> set table \<main | 1-200\>
 
 Set the routing table to forward packet with.
-
 :::{note}
-
 When using the ``set table`` or ``set vrf`` commands matching
-
 :::
    against the mark is not possible, because it gets overwritten with a
    table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.
@@ -362,11 +351,8 @@ Set packet modifications: Explicitly set TCP Maximum segment size value.
 ```{cfgcmd} set policy route6 \<name\> rule \<n\> set vrf \<default | text \>
 
 Set the VRF to forward packet with.
-
 :::{note}
-
 When using the ``set table`` or ``set vrf`` commands matching
-
 :::
    against the mark is not possible, because it gets overwritten with a
    table-specific mark that is 0x7FFFFFFF - the id of the table/VRF.

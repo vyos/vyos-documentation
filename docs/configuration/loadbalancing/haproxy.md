@@ -85,7 +85,6 @@ SSL match Server Name Indication (SNI) option:
  * ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
  * ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
  * ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name
-
     Indication
 ```
 
@@ -93,7 +92,6 @@ SSL match Server Name Indication (SNI) option:
 
 Define URL path matching rules for a specific service. Use this command
 to specify how to match the URL path against incoming requests.
-
 The available options for <match> are:
  * ``begin`` Matches the beginning of the URL path
  * ``end`` Matches the end of the URL path.
@@ -114,24 +112,16 @@ Redirect URL to a new location.
 ```{cfgcmd} set load-balancing haproxy backend \<name\> balance
 
    <balance>
-
   Specify the load balancing algorithm for distributing requests among
-
   available servers.
 
 
   Balance algorithms:
-
    * ``source-address`` Distributes requests based on the source IP address
-
      of the client.
-
    * ``round-robin`` Distributes requests in a circular manner,
-
      sequentially sending each request to the next server in line.
-
    * ``least-connection`` Distributes requests to the server with the fewest
-
      active connections.
 
 ```
@@ -179,7 +169,6 @@ Active health check backend server.
 
 
 Set an alternative port number for health checks.
-
 Overrides the default server port used for TCP/HTTP checks.
 ```
 
@@ -208,7 +197,6 @@ Send a Proxy Protocol version 2 header (binary format).
 
 
 Use SSL encryption for backend requests and authenticate the backend
-
 against ``<ca-certificate>``.
 ```
 
@@ -216,7 +204,6 @@ against ``<ca-certificate>``.
 ```{cfgcmd} set load-balancing haproxy backend \<name\> ssl no-verify
 
 Use SSL encryption for backend requests without validating the server
-
 certificate.
 ```
 
@@ -236,11 +223,8 @@ Set custom HTTP headers to include in all responses from the backend.
 
 
 Specify facility and level for logging.
-
 For an explanation on :ref:`syslog_facilities` and
-
 :ref:`syslog_severity_level`,
-
 see tables in the :ref:`syslog` configuration section.
 ```
 
@@ -251,15 +235,12 @@ see tables in the :ref:`syslog` configuration section.
 
 
 Set the timeout in seconds for established connections.
-
 Value range 1-3600 seconds.
 ```
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout connect
 
   <seconds>
-
   Set the maximum time to wait for a connection attempt to a server to succeed.
-
   Value range 1-3600 seconds.
 
 ```
@@ -271,7 +252,6 @@ Value range 1-3600 seconds.
 
 
 Set the maximum inactivity time on the server side.
-
 Value range 1-3600 seconds.
 ```
 ### Global
@@ -279,7 +259,6 @@ Global configuration parameters:
 ```{cfgcmd} set load-balancing haproxy global-parameters max-connections
 
    <num>
-
   Limit maximum number of connections
 
 ```
@@ -309,11 +288,8 @@ facility <facility> level <level>
 
 
 Specify facility and level for logging.
-
 For an explanation on :ref:`syslog_facilities` and
-
 :ref:`syslog_severity_level`
-
 see tables in syslog configuration section.
 ```
 
@@ -321,7 +297,6 @@ see tables in syslog configuration section.
 ```{cfgcmd} set load-balancing haproxy timeout check \<seconds\>
 
 Set the timeout in seconds for established connections.
-
 Value range 1-3600 seconds. Default is 5 seconds.
 ```
 
@@ -329,7 +304,6 @@ Value range 1-3600 seconds. Default is 5 seconds.
 ```{cfgcmd} set load-balancing haproxy timeout client \<seconds\>
 
 Set the maximum inactivity time on the client side.
-
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
 
@@ -337,7 +311,6 @@ Value range 1-3600 seconds. Default is 50 seconds.
 ```{cfgcmd} set load-balancing haproxy timeout connect \<seconds\>
 
 Set the maximum time to wait for a connection attempt to a server to succeed.
-
 Value range 1-3600 seconds. Default is 10 seconds.
 ```
 
@@ -345,7 +318,6 @@ Value range 1-3600 seconds. Default is 10 seconds.
 ```{cfgcmd} set load-balancing haproxy timeout server \<seconds\>
 
 Set the maximum inactivity time on the server side.
-
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
 ## Health checks
@@ -359,7 +331,6 @@ information and determine their availability.
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
 
 Enables HTTP health checks using OPTION HTTP requests against '/' and
-
 expecting a successful response code in the 200-399 range.
 ```
 
@@ -391,11 +362,8 @@ Set the expected result condition for a server to be considered healthy.
 
 
 Some possible examples are:
-
  * ``status 200`` Expecting a 200 response code
-
  * ``status 200-399`` Expecting a non-failure response code
-
  * ``string success`` Expecting the string `success` in the response body
 ```
 ### TCP checks

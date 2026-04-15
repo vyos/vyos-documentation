@@ -35,7 +35,6 @@ private key on the console.
 
 Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -48,7 +47,6 @@ the private key referenced by `ca-name`.
 
 Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
 the private key referenced by `name`.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -61,7 +59,6 @@ Create a new public/private keypair and output the certificate on the console.
 ```{opcmd} generate pki certificate install \<name\>
 
 Create a new public/private keypair and output the certificate on the console.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -74,7 +71,6 @@ console.
 
 Create a new self-signed certificate. The public/private is then shown on the
 console.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -87,7 +83,6 @@ Create a new public/private keypair which is signed by the CA referenced by
 
 Create a new public/private keypair which is signed by the CA referenced by
 `ca-name`. The signed certificate is then output to the console.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -97,14 +92,12 @@ Create a new public/private keypair which is signed by the CA referenced by
 
 Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
-
 The generated parameters are then output to the console.
 ```
 ```{opcmd} generate pki dh install \<name\>
 
 Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -119,7 +112,6 @@ the console.
 
 Generate a new OpenVPN shared secret. The generated secret is the output to
 the console.
-
 ```{include} pki_cli_import_help.txt
 ```
 ```
@@ -134,15 +126,11 @@ the console.
 
 Generate a new WireGuard public/private key portion and output the result to
 the console.
-
 :::{note}
-
 In addition to the command above, the output is in a format which can
-
 :::
   be used to directly import the key into the VyOS CLI by simply copy-pasting
   the output from op-mode into configuration mode.
-
   ``interface`` is used for the VyOS CLI command to identify the WireGuard
   interface where this private key is to be used.
 ```
@@ -153,15 +141,11 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 ```{opcmd} generate pki wireguard preshared-key install \<peer\>
 
 Generate a WireGuard pre-shared secret used for peers to communicate.
-
 :::{note}
-
 In addition to the command above, the output is in a format which can
-
 :::
   be used to directly import the key into the VyOS CLI by simply copy-pasting
   the output from op-mode into configuration mode.
-
   ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
   this secret is to be used.
 ```
@@ -170,16 +154,12 @@ In addition to the command above, the output is in a format which can
 ```{cfgcmd} set pki ca \<name\> certificate
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
-
 :::{note}
-
 When loading the certificate you need to manually strip the
-
 :::
   ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
   Also, the certificate/key needs to be presented in a single line without
   line breaks (``\n``), this can be done using the following shell command:
-
   ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 ```
 ```{cfgcmd} set pki ca \<name\> crl
@@ -195,16 +175,12 @@ A human readable description what this CA is about.
 Add the CAs private key to the VyOS CLI. This should never leave the system,
 and is only required if you use VyOS as your certificate generator as
 mentioned above.
-
 :::{note}
-
 When loading the certificate you need to manually strip the
-
 :::
   ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
   certificate/key needs to be presented in a single line without line
   breaks (``\n``), this can be done using the following shell command:
-
   ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 ```
 ```{cfgcmd} set pki ca \<name\> private password-protected
@@ -218,16 +194,12 @@ certificates used by services on this router.
 ```{cfgcmd} set pki certificate \<name\> certificate
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
-
 :::{note}
-
 When loading the certificate you need to manually strip the
-
 :::
   ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
   Also, the certificate/key needs to be presented in a single line without
   line breaks (``\n``), this can be done using the following shell command:
-
   ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 ```
 ```{cfgcmd} set pki certificate \<name\> description
@@ -238,16 +210,12 @@ A human readable description what this certificate is about.
 
 Add the private key portion of this certificate to the CLI. This should never
 leave the system as it is used to decrypt the data.
-
 :::{note}
-
 When loading the certificate you need to manually strip the
-
 :::
   ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
   certificate/key needs to be presented in a single line without line
   breaks (``\n``), this can be done using the following shell command:
-
   ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 ```
 ```{cfgcmd} set pki certificate \<name\> private password-protected
@@ -292,13 +260,11 @@ using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
 ```{cfgcmd} set pki certificate \<name\> acme domain-name \<name\>
 
 Domain names to apply, multiple domain-names can be specified.
-
 This is a mandatory option
 ```
 ```{cfgcmd} set pki certificate \<name\> acme email \<address\>
 
 Email used for registration and recovery contact.
-
 This is a mandatory option
 ```
 ```{cfgcmd} set pki certificate \<name\> acme listen-address \<address\>
@@ -308,19 +274,14 @@ The address the server listens to during http-01 challenge
 ```{cfgcmd} set pki certificate \<name\> acme rsa-key-size \<2048 | 3072 | 4096\>
 
 Size of the RSA key.
-
 This options defaults to 2048
 ```
 ```{cfgcmd} set pki certificate \<name\> acme url \<url\>
 
 ACME Directory Resource URI.
-
 This defaults to https://acme-v02.api.letsencrypt.org/directory
-
 :::{note}
-
 During initial deployment we recommend using the staging API
-
 :::
   of LetsEncrypt to prevent and blacklisting of your system. The API
   endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
@@ -331,9 +292,7 @@ also to display them.
 ```{opcmd} show pki ca
 
 Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
-
 .. code-block:: none
-
   vyos@vyos:~$ show pki ca
   Certificate Authorities:
   Name            Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
@@ -349,9 +308,7 @@ Show only information for specified Certificate Authority.
 ```{opcmd} show pki certificate
 
 Show a list of installed certificates
-
 .. code-block:: none
-
   vyos@vyos:~$ show pki certificate
   Certificates:
   Name       Type    Subject CN             Issuer CN      Issued               Expiry               Revoked    Private Key    CA Present

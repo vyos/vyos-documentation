@@ -19,14 +19,11 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
 ```{cfgcmd} set vpn l2tp remote-access authentication mode \<local | radius\>
 
   Set authentication backend. The configured authentication backend is used
-
   for all queries.
 
 
   * **radius**: All authentication queries are handled by a configured RADIUS
-
     server.
-
   * **local**: All authentication queries are handled locally.
 
 ```
@@ -38,7 +35,6 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
 
 
 Create `<user>` for local authentication on this system. The users password
-
 will be set to `<pass>`.
 ```
 
@@ -46,11 +42,8 @@ will be set to `<pass>`.
 ```{cfgcmd} set vpn l2tp remote-access client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
 
 Use this command to define the first IP address of a pool of
-
 addresses to be given to l2tp clients. If notation ``x.x.x.x-x.x.x.x``,
-
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
-
 used there is possibility to set host/netmask.
 ```
 
@@ -64,7 +57,6 @@ Use this command to define default address pool name.
 ```{cfgcmd} set vpn l2tp remote-access gateway-address \<gateway\>
 
 Specifies single `<gateway>` IP address to be used as local address of PPP
-
 interfaces.
 ```
 ## Configuring IPsec
@@ -277,7 +269,6 @@ To explain the usage of LNS follow our blueprint {ref}`examples-lac-lns`.
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6 \<require | prefer | allow | deny\>
 
 Specifies IPv6 negotiation preference.
-
 * **require** - Require IPv6 negotiation
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
 * **allow** - Negotiate IPv6 only if client requests
@@ -319,14 +310,12 @@ Accept peer interface identifier. By default this is not defined.
 
 Specifies if a fixed or random interface identifier is used for IPv6. The
 default is fixed.
-
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
 Specifies the peer interface identifier for IPv6. The default is fixed.
-
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
@@ -401,7 +390,6 @@ Default value is **0**.
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv4 \<require | prefer | allow | deny\>
 
 Specifies IPv4 negotiation preference.
-
 * **require** - Require IPv4 negotiation
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
 * **allow** - Negotiate IPv4 only if client requests (Default value)
@@ -435,11 +423,9 @@ Default value is **100**.
 
 Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
-
 * **require** - ask client for mppe, if it rejects drop connection
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
 * **deny** - deny mppe
-
 Default behavior - don't ask the client for mppe, but allow it if the client
 wants.
 Please note that RADIUS may override this option with the

@@ -20,7 +20,6 @@ then enslaved to a VRF device.
 ```{cfgcmd} set vrf name \<name\> table \<id\>
 
    Create a new VRF instance with `<name>` and `<id>`. The name is used when placing
-
    individual interfaces into the VRF.
 
 
@@ -31,7 +30,6 @@ then enslaved to a VRF device.
 
 
    :::
-
       only be changed by deleting and re-adding the VRF instance.
 
 ```
@@ -40,16 +38,12 @@ then enslaved to a VRF device.
 ```{cfgcmd} set vrf bind-to-all
 
 By default the scope of the port bindings for unbound sockets is limited to
-
 the default VRF. That is, it will not be matched by packets arriving on
-
 interfaces enslaved to a VRF and processes may bind to the same port if
-
 they bind to a VRF.
 
 
 TCP & UDP services running in the default VRF context (ie., not bound to any
-
 VRF device) can work across all VRF domains by enabling this option.
 ```
 ### Zebra/Kernel route filtering
@@ -64,7 +58,6 @@ Apply a route-map filter to routes for the specified protocol.
 
 
 The following protocols can be used: any, babel, bgp, eigrp,
-
 isis, ospf, rip, static
 
 
@@ -75,7 +68,6 @@ If you choose any as the option that will cause all protocols that
 
 
 :::
-
    are sending routes to zebra.
 ```
 
@@ -86,7 +78,6 @@ Apply a route-map filter to routes for the specified protocol.
 
 
 The following protocols can be used: any, babel, bgp, isis,
-
 ospfv3, ripng, static
 
 
@@ -97,7 +88,6 @@ If you choose any as the option that will cause all protocols that
 
 
 :::
-
    are sending routes to zebra.
 ```
 ### Nexthop Tracking
@@ -109,9 +99,7 @@ you do not want to e.g. allow BGP to peer across the default route.
 ```{cfgcmd} set vrf name \<name\> ip nht no-resolve-via-default
 
 Do not allow IPv4 nexthop tracking to resolve via the default route. This
-
 parameter is configured per-VRF, so the command is also available in the VRF
-
 subnode.
 ```
 
@@ -119,9 +107,7 @@ subnode.
 ```{cfgcmd} set vrf name \<name\> ipv6 nht no-resolve-via-default
 
 Do not allow IPv6 nexthop tracking to resolve via the default route. This
-
 parameter is configured per-VRF, so the command is also available in the VRF
-
 subnode.
 ```
 ### Interfaces
@@ -212,18 +198,13 @@ Lists VRFs that have been created
 
 
   vyos@vyos:~$ show vrf
-
   VRF name          state     mac address        flags                     interfaces
-
   --------          -----     -----------        -----                     ----------
-
   blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
-
   red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
 :::{note}
 Command should probably be extended to list also the real
 :::
-
    interfaces assigned to this one VRF to get a better overview.
 ```
 
@@ -234,11 +215,8 @@ Command should probably be extended to list also the real
 
 
   vyos@vyos:~$ show vrf name blue
-
   VRF name          state     mac address        flags                     interfaces
-
   --------          -----     -----------        -----                     ----------
-
   blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 ```
 
@@ -252,24 +230,16 @@ Display IPv4 routing table for VRF identified by `<name>`.
 
 
   vyos@vyos:~$ show ip route vrf blue
-
   Codes: K - kernel route, C - connected, S - static, R - RIP,
-
   O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-
   T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-
   F - PBR, f - OpenFabric,
-
   > - selected route, * - FIB route, q - queued route, r - rejected route
 
 
   VRF blue:
-
   K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
-
   S>* 172.16.0.0/16 [1/0] via 192.0.2.1, dum1, 00:00:02
-
   C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
 ```
 ```{opcmd} show ipv6 route vrf \<name\>
@@ -281,26 +251,17 @@ Display IPv6 routing table for VRF identified by `<name>`.
 
 
   vyos@vyos:~$ show ipv6 route vrf red
-
   Codes: K - kernel route, C - connected, S - static, R - RIPng,
-
   O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
-
   v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
-
   f - OpenFabric,
-
   > - selected route, * - FIB route, q - queued route, r - rejected route
 
 
   VRF red:
-
   K   ::/0 [255/8192] unreachable (ICMP unreachable), 00:43:20
-
   C>* 2001:db8::/64 is directly connected, dum1, 00:02:19
-
   C>* fe80::/64 is directly connected, dum1, 00:43:19
-
   K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 ```
 ```{opcmd} ping \<host\> vrf \<name\>
@@ -309,27 +270,19 @@ Display IPv6 routing table for VRF identified by `<name>`.
 
 
    Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
-
    ICMP ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams (pings)
-
    will have an IP and ICMP header, followed by "struct timeval" and an
-
    arbitrary number of pad bytes used to fill out the packet.
 
 
    When doing fault isolation with ping, you should first run it on the local
-
    host, to verify that the local network interface is up and running. Then,
-
    continue with hosts and gateways further down the road towards your
-
    destination. Round-trip time and packet loss statistics are computed.
 
 
    Duplicate packets are not included in the packet loss calculation, although
-
    the round-trip time of these packets is used in calculating the minimum/
-
    average/maximum round-trip time numbers.
 
 
@@ -340,7 +293,6 @@ Display IPv6 routing table for VRF identified by `<name>`.
 
 
    :::
-
      A brief statistic is shown afterwards.
 
 
@@ -348,19 +300,12 @@ Display IPv6 routing table for VRF identified by `<name>`.
 
 
      vyos@vyos:~$ ping 192.0.2.1 vrf red
-
      PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
-
      64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
-
      64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
-
      ^C
-
      --- 192.0.2.1 ping statistics ---
-
      2 packets transmitted, 2 received, 0% packet loss, time 4ms
-
      rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
 ```
 
@@ -368,11 +313,8 @@ Display IPv6 routing table for VRF identified by `<name>`.
 ```{opcmd} traceroute vrf \<name\> [ipv4 | ipv6] \<host\>
 
 Displays the route packets taken to a network host utilizing VRF instance
-
 identified by `<name>`. When using the IPv4 or IPv6 option, displays the
-
 route packets taken to the given hosts IP address family. This option is
-
 useful when the host is specified as a hostname rather than an IP address.
 ```
 
@@ -389,7 +331,6 @@ The prompt is adjusted to reflect this change in both config and op-mode.
 
 
   vyos@vyos:~$ force vrf blue
-
   vyos@vyos(vrf:blue):~$
 ```
 (vrf-example)=
@@ -729,7 +670,6 @@ address-family.
 
 
 Specifies the route distinguisher to be added to a route exported from the
-
 current unicast VRF to VPN.
 ```
 
@@ -737,18 +677,13 @@ current unicast VRF to VPN.
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family
 
          <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
-
          [RTLIST]
 
 
 Specifies the route-target list to be attached to a route (export) or the
-
 route-target list to match against (import) when exporting/importing
-
 between the current unicast VRF and VPN.The RTLIST is a space-separated
-
 list of route-targets, which are BGP extended community values as
-
 described in Extended Communities Attribute.
 ```
 
@@ -759,9 +694,7 @@ described in Extended Communities Attribute.
 
 
 Enables an MPLS label to be attached to a route exported from the current
-
 unicast VRF to VPN. If the value specified is auto, the label value is
-
 automatically assigned from a pool maintained.
 ```
 
@@ -772,11 +705,8 @@ automatically assigned from a pool maintained.
 
 
 Select how labels are allocated in the given VRF. By default, the per-vrf
-
 mode is selected, and one label is used for all prefixes from the VRF. The
-
 per-nexthop will use a unique label for all prefixes that are reachable via
-
 the same nexthop.
 ```
 
@@ -784,12 +714,10 @@ the same nexthop.
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family
 
          <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
-
          [route-map <name>]
 
 
 Specifies an optional route-map to be applied to routes imported or
-
 exported between the current unicast VRF and VPN.
 ```
 
@@ -809,11 +737,8 @@ Enables import or export of routes between the current unicast VRF and VPN.
 
 
 Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the
-
 current VRF using the VPN RIB as intermediary. The RD and RT are auto
-
 derived and should not be specified explicitly for either the source or
-
 destination VRF’s.
 ```
 
@@ -821,7 +746,6 @@ destination VRF’s.
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family
 
          <ipv4-unicast|ipv6-unicast> route-map vrf import
-
          [route-map <name>]
 
 
@@ -835,9 +759,7 @@ Specifies an optional route-map to be applied to routes imported from VRFs.
 
 
 It is possible to permit BGP install VPN prefixes without transport labels.
-
 This configuration will install VPN prefixes originated from an e-bgp session,
-
 and with the next-hop directly connected.
 ```
 (l3vpn-vrf-example-operation)=
@@ -858,30 +780,19 @@ are in place.
 
 
   BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
-
   Default local pref 100, local AS 65001
-
   Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
-
   i internal, r RIB-failure, S Stale, R Removed
-
   Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
-
   Origin codes:  i - IGP, e - EGP, ? - incomplete
 
 
   Network          Next Hop            Metric LocPrf Weight Path
-
   Route Distinguisher: 10.50.50.1:1011
-
   *>i10.50.50.0/24    10.0.0.7                  0    100      0 i
-
   UN=10.0.0.7 EC{65035:1011} label=80 type=bgp, subtype=0
-
   Route Distinguisher: 10.60.60.1:1011
-
   *>i10.60.60.0/24    10.0.0.10              0    100      0 i
-
   UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 ```
 
@@ -889,7 +800,6 @@ are in place.
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn summary
 
       Print a summary of neighbor connections for the specified AFI/SAFI
-
       combination.
 
 
@@ -897,18 +807,13 @@ are in place.
 
 
   BGP router identifier 10.0.1.1, local AS number 65001 vrf-id 0
-
   BGP table version 0
-
   RIB entries 9, using 1728 bytes of memory
-
   Peers 4, using 85 KiB of memory
-
   Peer groups 1, using 64 bytes of memory
 
 
   Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
-
   10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
 ```
 ```{include} /_include/common-references.txt

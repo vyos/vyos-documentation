@@ -30,7 +30,6 @@ set service pppoe-server interface eth0
 ```{cfgcmd} set service pppoe-server access-concentrator \<name\>
 
    Use this command to set a name for this PPPoE-server access
-
    concentrator.
 
 ```
@@ -39,16 +38,12 @@ set service pppoe-server interface eth0
 ```{cfgcmd} set service pppoe-server authentication mode \<local | radius\>
 
 Set authentication backend. The configured authentication backend is used
-
 for all queries.
 
 
 * **radius**: All authentication queries are handled by a configured RADIUS
-
   server.
-
 * **local**: All authentication queries are handled locally.
-
 * **noauth**: Authentication disabled.
 ```
 
@@ -59,7 +54,6 @@ for all queries.
 
 
 Create `<user>` for local authentication on this system. The users password
-
 will be set to `<pass>`.
 ```
 
@@ -70,11 +64,8 @@ range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
 
 Use this command to define the first IP address of a pool of
-
 addresses to be given to pppoe clients. If notation ``x.x.x.x-x.x.x.x``,
-
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
-
 used there is possibility to set host/netmask.
 ```
 
@@ -88,7 +79,6 @@ Use this command to define default address pool name.
 ```{cfgcmd} set service pppoe-server interface \<interface\>
 
 Use this command to define the interface the PPPoE server will use to
-
 listen for PPPoE clients.
 ```
 
@@ -96,7 +86,6 @@ listen for PPPoE clients.
 ```{cfgcmd} set service pppoe-server gateway-address \<address\>
 
 Specifies single `<gateway>` IP address to be used as local address of PPP
-
 interfaces.
 ```
 ## Configuring RADIUS authentication
@@ -112,9 +101,7 @@ set service pppoe-server authentication mode radius
 ```{cfgcmd} set service pppoe-server authentication radius
 
    server <server> key <secret>
-
   Configure RADIUS `<server>` and its required shared `<secret>` for
-
   communicating with the RADIUS server.
 
 ```
@@ -196,7 +183,6 @@ Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 
 
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
-
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
@@ -243,7 +229,6 @@ Timeout to wait response from server (seconds)
 
 
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
-
 in DM/CoA requests.
 ```
 
@@ -254,7 +239,6 @@ in DM/CoA requests.
 
 
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
-
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
@@ -274,7 +258,6 @@ Source IPv4 address used in all RADIUS server queires.
 
 
 Specifies which RADIUS server attribute contains the rate limit information.
-
 The default attribute is ``Filter-Id``.
 ```
 :::{note}
@@ -296,7 +279,6 @@ Enables bandwidth shaping via RADIUS.
 
 
 Specifies the vendor dictionary, dictionary needs to be in
-
 /usr/share/accel-ppp/radius.
 ```
 Received RADIUS attributes have a higher priority than parameters defined within
@@ -354,20 +336,14 @@ characters, otherwise the interface won't be renamed.
 ```{cfgcmd} set service pppoe-server interface \<interface\> vlan \<id | range\>
 
 VLAN's can be created by Accel-ppp on the fly via the use of a Kernel module
-
 named ``vlan_mon``, which is monitoring incoming vlans and creates the
-
 necessary VLAN if required and allowed. VyOS supports the use of either
-
 VLAN ID's or entire ranges, both values can be defined at the same time for
-
 an interface.
 
 
 When configured, PPPoE will create the necessary VLANs when required. Once
-
 the user session has been cancelled and the VLAN is not needed anymore, VyOS
-
 will remove it again.
 ```
 
@@ -451,9 +427,7 @@ sessions <number-of-sessions>
 
 
 Use this command to enable the delay of PADO (PPPoE Active Discovery
-
 Offer) packets, which can be used as a session balancing mechanism
-
 with other PPPoE servers.
 ```
 
@@ -484,11 +458,8 @@ Specifies IPv6 negotiation preference.
 
 
 * **require** - Require IPv6 negotiation
-
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
-
 * **allow** - Negotiate IPv6 only if client requests
-
 * **deny** - Do not negotiate IPv6 (default value)
 ```
 
@@ -499,11 +470,8 @@ Specifies IPv6 negotiation preference.
 
 
 Use this comand to set the IPv6 address pool from which an PPPoE client
-
 will get an IPv6 prefix of your defined length (mask) to terminate the
-
 PPPoE endpoint at their side. The mask length can be set from 48 to 128
-
 bit long, the default value is 64.
 ```
 
@@ -514,13 +482,9 @@ bit long, the default value is 64.
 
 
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
-
 PPPoE. You will have to set your IPv6 pool and the length of the
-
 delegation prefix. From the defined IPv6 pool you will be handing out
-
 networks of the defined length (delegation-prefix). The length of the
-
 delegation prefix can be set from 32 to 64 bit long.
 ```
 
@@ -555,12 +519,10 @@ Accept peer interface identifier. By default is not defined.
 
 
 Specifies fixed or random interface identifier for IPv6.
-
 By default is fixed.
 
 
 * **random** - Random interface identifier for IPv6
-
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
@@ -574,11 +536,8 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 
 
 * **random** - Random interface identifier for IPv6
-
 * **x:x:x:x** - Specify interface identifier for IPv6
-
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
-
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 ## Scripting
@@ -632,7 +591,6 @@ Assign static IP address to `<user>` account.
 
 
 Require the peer to authenticate itself using one of the following protocols:
-
 pap, chap, mschap, mschap-v2.
 ```
 ### Client IP Pool Advanced Options
@@ -647,7 +605,6 @@ Use this command to define the next address pool name.
 ```{cfgcmd} set service pppoe-server ppp-options disable-ccp
 
 Disable Compression Control Protocol (CCP).
-
 CCP is enabled by default.
 ```
 
@@ -655,13 +612,9 @@ CCP is enabled by default.
 ```{cfgcmd} set service pppoe-server ppp-options interface-cache \<number\>
 
 Specifies number of interfaces to keep in cache. It means that don’t
-
 destroy interface after corresponding session is destroyed, instead
-
 place it to cache and use it later for new sessions repeatedly.
-
 This should reduce kernel-level interface creation/deletion rate lack.
-
 Default value is **0**.
 ```
 
@@ -675,11 +628,8 @@ Specifies IPv4 negotiation preference.
 
 
 * **require** - Require IPv4 negotiation
-
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
-
 * **allow** - Negotiate IPv4 only if client requests (Default value)
-
 * **deny** - Do not negotiate IPv4
 ```
 
@@ -687,7 +637,6 @@ Specifies IPv4 negotiation preference.
 ```{cfgcmd} set service pppoe-server ppp-options lcp-echo-failure \<number\>
 
 Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
-
 value `<number>`, the session will be reset. Default value is **3**.
 ```
 
@@ -695,9 +644,7 @@ value `<number>`, the session will be reset. Default value is **3**.
 ```{cfgcmd} set service pppoe-server ppp-options lcp-echo-interval \<interval\>
 
 If this option is specified and is greater than 0, then the PPP module will
-
 send LCP pings of the echo request every `<interval>` seconds.
-
 Default value is **30**.
 ```
 
@@ -705,9 +652,7 @@ Default value is **30**.
 ```{cfgcmd} set service pppoe-server ppp-options lcp-echo-timeout
 
 Specifies timeout in seconds to wait for any peer activity. If this option
-
 specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
-
 is not used. Default value is **0**.
 ```
 
@@ -715,9 +660,7 @@ is not used. Default value is **0**.
 ```{cfgcmd} set service pppoe-server ppp-options min-mtu \<number\>
 
 Defines minimum acceptable MTU. If client will try to negotiate less then
-
 specified MTU then it will be NAKed or disconnected if rejects greater MTU.
-
 Default value is **100**.
 ```
 
@@ -725,21 +668,16 @@ Default value is **100**.
 ```{cfgcmd} set service pppoe-server ppp-options mppe \<require | prefer | deny\>
 
 Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
-
 preference.
 
 
 * **require** - ask client for mppe, if it rejects drop connection
-
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
-
 * **deny** - deny mppe
 
 
 Default behavior - don't ask client for mppe, but allow it if client wants.
-
 Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
-
 attribute.
 ```
 
@@ -788,9 +726,7 @@ Maximum number of concurrent session start attempts
 ```{cfgcmd} set service pppoe-server name-server \<address\>
 
 Connected client should use `<address>` as their DNS server. This
-
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
-
 can be configured for IPv4, up to three for IPv6.
 ```
 
@@ -798,9 +734,7 @@ can be configured for IPv4, up to three for IPv6.
 ```{cfgcmd} set service pppoe-server service-name \<names\>
 
 Specifies Service-Name to respond. If absent any Service-Name is
-
 acceptable and client’s Service-Name will be sent back. Also possible
-
 set multiple service-names: `sn1,sn2,sn3`
 ```
 Per default the user session is being replaced if a second
@@ -812,9 +746,7 @@ its first session and can then authentication again.
 ```{cfgcmd} set service pppoe-server session-control
 
 * **disable**: Disables session control.
-
 * **deny**: Deny second session authorization.
-
 * **replace**: Terminate first session when second is authorized **(default)**
 ```
 
@@ -839,7 +771,6 @@ Windows Internet Name Service (WINS) servers propagated to client
 ```{opcmd} show pppoe-server sessions
 
 Use this command to locally check the active sessions in the PPPoE
-
 server.
 ```
 ```none

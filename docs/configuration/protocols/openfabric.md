@@ -36,7 +36,6 @@ the network
 
 
   * :abbr:`AFI (Address family authority identifier)` - ``49`` The AFI value
-
     49 is what OpenFabric uses for private addressing.
 
 
@@ -44,22 +43,15 @@ the network
 
 
   * System identifier: ``1921.6800.1002`` - for system identifiers we recommend
-
     to use IP address or MAC address of the router itself. The way to construct
-
     this is to keep all of the zeroes of the router IP address, and then change
-
     the periods from being every three numbers to every four numbers. The
-
     address that is listed here is ``192.168.1.2``, which if expanded will turn
-
     into ``192.168.001.002``. Then all one has to do is move the dots to have
-
     four numbers instead of three. This gives us ``1921.6800.1002``.
 
 
   * :abbr:`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
-
     setting indicates "this system" or "local system."
 
 ```
@@ -71,7 +63,6 @@ the network
 
 
 This command enables OpenFabric instance with <NAME> on this interface, and
-
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
 #### OpenFabric Global Configuration
@@ -81,7 +72,6 @@ allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 
 
 This command configures the authentication password for a routing domain,
-
 as clear text or md5 one.
 ```
 
@@ -95,7 +85,6 @@ This command enables :rfc:`6232` purge originator identification.
 ```{cfgcmd} set protocols openfabric domain \<name\> set-overload-bit
 
 This command sets overload bit to avoid any transit traffic through this
-
 router.
 ```
 
@@ -109,7 +98,6 @@ Log changes in adjacency state.
 ```{cfgcmd} set protocols openfabric domain \<name\> fabric-tier \<number\>
 
 This command sets a static tier number to advertise as location
-
 in the fabric.
 ```
 #### Interface Configuration
@@ -117,11 +105,8 @@ in the fabric.
 ```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval
 
   <seconds>
-
   This command sets hello interval in seconds on a given interface.
-
   The range is 1 to 600. Hello packets are used to establish and maintain
-
   adjacency between OpenFabric neighbors.
 
 ```
@@ -133,7 +118,6 @@ in the fabric.
 
 
 This command sets multiplier for hello holding time on a given
-
 interface. The range is 2 to 100.
 ```
 
@@ -144,7 +128,6 @@ interface. The range is 2 to 100.
 
 
 This command sets default metric for circuit.
-
 The metric range is 1 to 16777215.
 ```
 
@@ -170,7 +153,6 @@ This command sets the authentication password for the interface.
 
 
 This command sets Complete Sequence Number Packets (CSNP) interval in seconds.
-
 The interval range is 1 to 600.
 ```
 
@@ -181,14 +163,12 @@ The interval range is 1 to 600.
 
 
 This command sets Partial Sequence Number Packets (PSNP) interval in seconds.
-
 The interval range is 1 to 120.
 ```
 #### Timers
 ```{cfgcmd} set protocols openfabric domain \<name\> lsp-gen-interval \<seconds\>
 
 This command sets minimum interval at which link-state packets (LSPs) are
-
 generated. The interval range is 1 to 120.
 ```
 
@@ -196,7 +176,6 @@ generated. The interval range is 1 to 120.
 ```{cfgcmd} set protocols openfabric domain \<name\> lsp-refresh-interval \<seconds\>
 
 This command sets LSP refresh interval in seconds. The interval range
-
 is 1 to 65235.
 ```
 
@@ -204,15 +183,10 @@ is 1 to 65235.
 ```{cfgcmd} set protocols openfabric domain \<name\> max-lsp-lifetime \<seconds\>
 
 This command sets LSP maximum LSP lifetime in seconds. The interval range
-
 is 360 to 65535. LSPs remain in a database for 1200 seconds by default.
-
 If they are not refreshed by that time, they are deleted. You can change
-
 the LSP refresh interval or the LSP lifetime. The LSP refresh interval
-
 should be less than the LSP lifetime or else LSPs will time out before
-
 they are refreshed.
 ```
 
@@ -220,7 +194,6 @@ they are refreshed.
 ```{cfgcmd} set protocols openfabric domain \<name\> spf-interval \<seconds\>
 
 This command sets minimum interval between consecutive shortest path first
-
 (SPF) calculations in seconds.The interval range is 1 to 120.
 ```
 ## Examples

@@ -53,7 +53,6 @@ interface, the interface must be configured for flow accounting.
 
 Configure and enable collection of flow information for the interface
 identified by `<interface>`.
-
 You can configure multiple interfaces which would participate in flow
 accounting.
 ```
@@ -96,7 +95,6 @@ exported them to a collection server.
 There are multiple versions available for the NetFlow data. The `<version>`
 used in the exported flow data can be configured here. The following
 versions are supported:
-
 * **5** - Most common version, but restricted to IPv4 flows only
 * **9** - NetFlow version 9 (default)
 * **10** - :abbr:`IPFIX (IP Flow Information Export)` as per :rfc:`3917`
@@ -123,7 +121,6 @@ packets, where n > 1, allows you to decrease the amount of processing
 resources required for flow accounting. The disadvantage of not sampling
 every packet is that the statistics produced are estimates of actual data
 flows.
-
 Per default every packet is sampled (that is, the sampling rate is 1).
 ```
 ```{cfgcmd} set system flow-accounting netflow timeout expiry-interval
@@ -131,7 +128,6 @@ Per default every packet is sampled (that is, the sampling rate is 1).
    <interval>
 Specifies the interval at which Netflow data will be sent to a collector. As
 per default, Netflow data will be sent every 60 seconds.
-
 You may also additionally configure timeouts for different types of
 connections.
 ```
@@ -153,10 +149,8 @@ display captured network traffic information for all configured interfaces.
 ```{opcmd} show flow-accounting interface \<interface\>
 
 Show flow accounting information for given `<interface>`.
-
 % stop_vyoslinter
 .. code-block:: none
-
   vyos@vyos:~$ show flow-accounting interface eth0
   IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
   ----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
@@ -173,10 +167,8 @@ Show flow accounting information for given `<interface>`.
 
 Show flow accounting information for given `<interface>` for a specific host
 only.
-
 % stop_vyoslinter
 .. code-block:: none
-
   vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
   IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
   ----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------

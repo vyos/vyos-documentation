@@ -156,7 +156,6 @@ The action can be:
 
 
 This required setting defines the action of the current rule. If you set
-
 the action to jump, you must also specify a jump-target.
 ```
 
@@ -185,7 +184,6 @@ jump-target <text>
 
 
 Use this command only when the action is set to ``jump``. Specify the
-
 jump target.
 ```
 
@@ -214,7 +212,6 @@ queue <0-65535>
 
 
 Use this command only when the action is set to ``queue``. Specify the
-
 queue target to use. Queue range is also supported.
 ```
 
@@ -243,9 +240,7 @@ queue-options bypass
 
 
 Use this command only when the action is set to ``queue``. Allow the packet
-
 to pass through the firewall when no userspace software is connected to the
-
 queue.
 ```
 
@@ -274,7 +269,6 @@ queue-options fanout
 
 
 Use this command only when the action is set to ``queue``. Distribute
-
 packets between several queues.
 ```
 Also, **default-action** is an action that applies when a packet does not
@@ -304,13 +298,9 @@ match any rule in its chain. For base chains, possible options for
 
 
 This command sets the default action of the rule-set if a packet does not
-
 match the criteria of any rule. If you set the default-action to ``jump``,
-
 you must also specify ``default-jump-target``. Note that for base chains,
-
 you can set the default action only to ``accept`` or ``drop``, while on
-
 custom chains, more actions are available.
 ```
 
@@ -318,7 +308,6 @@ custom chains, more actions are available.
 ```{cfgcmd} set firewall ipv4 name \<name\> default-jump-target \<text\>
 
 Use this command only when you set ``default-action`` to ``jump``. Specify
-
 the jump target for the default rule.
 ```
 :::{note}
@@ -350,7 +339,6 @@ you can define other log options.
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> log
 
 Enable logging for the matched packet. If this command is not present, then
-
 logging is not enabled.
 ```
 
@@ -370,7 +358,6 @@ logging is not enabled.
 ```{cfgcmd} set firewall ipv4 name \<name\> default-log
 
 Use this command to enable logging of the default action on the specified
-
 chain.
 ```
 
@@ -378,7 +365,6 @@ chain.
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -386,7 +372,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -394,7 +379,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 ```
 
@@ -402,7 +386,6 @@ log-options level [emerg | alert | crit | err | warn | notice
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\>
 
 log-options level [emerg | alert | crit | err | warn | notice
-
 | info | debug]
 
 
@@ -434,7 +417,6 @@ log-options group <0-65535>
 
 
 Define the log group to send messages to. Only applicable if you enable rule
-
 logging.
 ```
 
@@ -463,7 +445,6 @@ log-options snapshot-length <0-9000>
 
 
 Define the length of packet payload to include in a netlink message. Only
-
 applicable if you enable rule logging and define the log group.
 ```
 
@@ -492,9 +473,7 @@ log-options queue-threshold <0-65535>
 
 
 Define the number of packets to queue inside the kernel before sending them
-
 to userspace. Only applicable if you enable rule logging and define the log
-
 group.
 ```
 ### Firewall Description
@@ -633,7 +612,6 @@ conntrack-helper <module>
 
 
 Match based on connection tracking protocol helper module to secure use of
-
 that helper module. See below for possible completions `<module>`.
 
 
@@ -641,19 +619,12 @@ that helper module. See below for possible completions `<module>`.
 
 
   Possible completions:
-
   ftp                  Related traffic from FTP helper
-
   h323                 Related traffic from H.323 helper
-
   pptp                 Related traffic from PPTP helper
-
   nfs                  Related traffic from NFS helper
-
   sip                  Related traffic from SIP helper
-
   tftp                 Related traffic from TFTP helper
-
   sqlnet               Related traffic from SQLNet helper
 ```
 
@@ -706,9 +677,7 @@ destination address [address | addressrange | CIDR]
 
 
 Match criteria based on source and/or destination address. This is similar
-
 to the network groups part, but here you are able to negate the matching
-
 addresses.
 
 
@@ -716,9 +685,7 @@ addresses.
 
 
   set firewall ipv4 name FOO rule 50 source address 192.0.2.10-192.0.2.11
-
   # with a '!' the rule match everything except the specified subnet
-
   set firewall ipv4 input filter FOO rule 51 source address !203.0.113.0/24
 ```
 
@@ -771,7 +738,6 @@ destination address-mask [address]
 
 
 An arbitrary netmask can be applied to mask addresses to only match against
-
 a specific portion.
 
 
@@ -782,9 +748,7 @@ This functions for both individual addresses and address groups.
 
 
   # Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
-
   set firewall ipv4 name FOO rule 100 destination address 0.11.0.13
-
   set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
 ```
 
@@ -837,7 +801,6 @@ destination fqdn <fqdn>
 
 
 Specify a Fully Qualified Domain Name as source/destination to match. Ensure
-
 that the router is able to resolve this dns query.
 ```
 
@@ -938,9 +901,7 @@ destination geoip inverse-match
 
 
 Match IP addresses based on its geolocation. More info: `geoip matching
-
 <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_.
-
 Use inverse-match to match anything except the given country-codes.
 ```
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
@@ -977,7 +938,6 @@ You can only specify a source mac-address to match.
 
 
   set firewall ipv4 input filter rule 100 source mac-address 00:53:00:11:22:33
-
   set firewall ipv4 input filter rule 101 source mac-address !00:53:00:aa:12:34
 ```
 
@@ -1036,12 +996,9 @@ A port can be set by number or name as defined in ``/etc/services``.
 
 
   set firewall ipv4 forward filter rule 10 source port '22'
-
   set firewall ipv4 forward filter rule 11 source port '!http'
-
   set firewall ipv4 forward filter rule 12 source port 'https'
 Multiple source ports can be specified as a comma-separated list.
-
 The whole list can also be "negated" using ``!``. For example:
 ```
 
@@ -1094,7 +1051,6 @@ destination group address-group <name | !name>
 
 
 Use a specific address-group. Prepending the character ``!`` to invert the
-
 criteria to match is also supported.
 ```
 
@@ -1147,7 +1103,6 @@ destination group dynamic-address-group <name | !name>
 
 
 Use a specific dynamic-address-group. Prepending the character ``!`` to
-
 invert the criteria to match is also supported.
 ```
 
@@ -1200,7 +1155,6 @@ destination group network-group <name | !name>
 
 
 Use a specific network-group. Prepending the character ``!`` to invert the
-
 criteria to match is also supported.
 ```
 
@@ -1253,7 +1207,6 @@ destination group port-group <name | !name>
 
 
 Use a specific port-group. Prepending the character ``!`` to invert the
-
 criteria to match is also supported.
 ```
 
@@ -1306,7 +1259,6 @@ destination group domain-group <name | !name>
 
 
 Use a specific domain-group. Prepending the character ``!`` to invert the
-
 criteria to match is also supported.
 ```
 
@@ -1359,7 +1311,6 @@ destination group mac-group <name | !name>
 
 
 Use a specific mac-group. Prepending the character ``!`` to invert the
-
 criteria to match is also supported.
 ```
 
@@ -1493,7 +1444,6 @@ icmp type-name <text>
 
 
 Match based on icmp type-name. Use tab for information
-
 about what **type-name** criteria are supported.
 ```
 
@@ -1516,9 +1466,7 @@ inbound-interface name <iface>
 
 
 Match based on inbound interface. Wildcard ``*`` is supported. For example:
-
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
-
 ``!eth2``
 ```
 :::{note}
@@ -1544,7 +1492,6 @@ inbound-interface group <iface_group>
 
 
 Match based on the inbound interface group. Prepend the character ``!`` to
-
 invert the criteria. For example, ``!IFACE_GROUP``
 ```
 
@@ -1567,9 +1514,7 @@ outbound-interface name <iface>
 
 
 Match based on outbound interface. Wildcard ``*`` is supported. For example:
-
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
-
 ``!eth2``
 ```
 :::{note}
@@ -1595,7 +1540,6 @@ outbound-interface group <iface_group>
 
 
 Match based on outbound interface group. Prepend the character ``!`` to
-
 invert the criteria. For example: ``!IFACE_GROUP``
 ```
 
@@ -1678,7 +1622,6 @@ limit rate <text>
 
 
 Specify the maximum average rate as **integer/unit**. For example:
-
 **5/minutes**
 ```
 
@@ -1731,7 +1674,6 @@ packet-length-exclude <text>
 
 
 Match based on packet length. Specify multiple values from 1 to 65535 and
-
 ranges.
 ```
 
@@ -1787,9 +1729,7 @@ protocol [<text> | <0-255> | all | tcp_udp]
 
 
 Match based on protocol number or name as defined in ``/etc/protocols``.
-
 Special names are ``all`` for all protocols and ``tcp_udp`` for TCP and UDP
-
 based packets. The ``!`` character negates the selected protocol.
 
 
@@ -1797,7 +1737,6 @@ based packets. The ``!`` character negates the selected protocol.
 
 
   set firewall ipv4 forward filter rule 10 protocol tcp_udp
-
   set firewall ipv4 forward filter rule 11 protocol !tcp_udp
 ```
 
@@ -1877,9 +1816,7 @@ tcp flags [not] <text>
 
 
 Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
-
 ``psh``, ``rst``, ``syn``, and ``urg``. Specify multiple values, and use
-
 ``not`` for inverted selection, as shown in the example.
 
 
@@ -1887,9 +1824,7 @@ Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
 
 
   set firewall ipv4 input filter rule 10 tcp flags 'ack'
-
   set firewall ipv4 input filter rule 12 tcp flags 'syn'
-
   set firewall ipv4 input filter rule 13 tcp flags not 'fin'
 ```
 
@@ -2068,7 +2003,6 @@ ttl <eq | gt | lt> <0-255>
 
 
 Match the time to live parameter, where 'eq' means 'equal', 'gt' means
-
 'greater than', and 'lt' means 'less than'.
 ```
 
@@ -2121,7 +2055,6 @@ recent time <second | minute | hour>
 
 
 Match when 'count' amount of connections appear within 'time'. Use these
-
 matching criteria to block brute-force attempts.
 ```
 ### Packet Modifications
@@ -2308,7 +2241,6 @@ set firewall ipv4 input filter rule 1000 state invalid
 ```{opcmd} show firewall
 
 This will show you a basic firewall overview, for all rule-sets, not
-
 only for IPv4.
 
 
@@ -2316,83 +2248,59 @@ only for IPv4.
 
 
   vyos@vyos:~$ show firewall
-
   Rulesets Information
 
 
   ---------------------------------
-
   ipv4 Firewall "forward filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  -----------------------------
-
   20       accept    all                 0        0  ip saddr @N_TRUSTEDv4  accept
-
   21       jump      all                 0        0  jump NAME_AUX
-
   default  accept    all                 0        0
 
 
   ---------------------------------
-
   ipv4 Firewall "input filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  -------------------------
-
   10       accept    all               156    14377  iifname != @I_LAN  accept
-
   default  accept    all                 0        0
 
 
   ---------------------------------
-
   ipv4 Firewall "name AUX"
 
 
   Rule  Action    Protocol      Packets    Bytes  Conditions
-
   ------  --------  ----------  ---------  -------  --------------------------------------------
-
   10  accept    icmp                0        0  meta l4proto icmp  accept
-
   20  accept    udp                 0        0  meta l4proto udp ip saddr @A_SERVERS  accept
-
   30  drop      all                 0        0  ip saddr != @A_SERVERS iifname "eth2"
 
 
   ---------------------------------
-
   ipv4 Firewall "output filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  ----------------------------------------
-
   10       reject    all                 0        0  oifname @I_LAN
-
   20       accept    icmp                2      168  meta l4proto icmp oifname "eth0"  accept
-
   default  accept    all                72     9258
 
 
   ---------------------------------
-
   ipv6 Firewall "input filter"
 
 
   Rule     Action    Protocol      Packets    Bytes  Conditions
-
   -------  --------  ----------  ---------  -------  -------------------------------
-
   10       accept    all                 0        0  ip6 saddr @N6_TRUSTEDv6  accept
-
   default  accept    all                 2      112
 
 
@@ -2409,7 +2317,6 @@ This shows you a summary of rule-sets and groups.
 
 
   vyos@vyos:~$ show firewall summary
-
   Ruleset Summary
 
 
@@ -2417,15 +2324,10 @@ This shows you a summary of rule-sets and groups.
 
 
   Ruleset Hook    Ruleset Priority      Description
-
   --------------  --------------------  -------------------------
-
   forward         filter
-
   input           filter
-
   ipv6_name       IPV6-VyOS_MANAGEMENT
-
   ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
 
 
@@ -2433,15 +2335,10 @@ This shows you a summary of rule-sets and groups.
 
 
   Ruleset Hook    Ruleset Priority    Description
-
   --------------  ------------------  -------------------------
-
   forward         filter
-
   input           filter
-
   name            VyOS_MANAGEMENT
-
   name            WAN_IN              PUBLIC_INTERNET
 
 
@@ -2449,49 +2346,27 @@ This shows you a summary of rule-sets and groups.
 
 
   Name                     Type                References               Members
-
   -----------------------  ------------------  -----------------------  ----------------
-
   PBX                      address_group       WAN_IN-100               198.51.100.77
-
   SERVERS                  address_group       WAN_IN-110               192.0.2.10
-
   WAN_IN-111               192.0.2.11
-
   WAN_IN-112               192.0.2.12
-
   WAN_IN-120
-
   WAN_IN-121
-
   WAN_IN-122
-
   SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
-
   WAN_IN-20
-
   PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
-
   PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
-
   WAN_IN-171
-
   PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
-
   SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
-
   IPV6-WAN_IN-111          2001:db8::3
-
   IPV6-WAN_IN-112          2001:db8::4
-
   IPV6-WAN_IN-120
-
   IPV6-WAN_IN-121
-
   IPV6-WAN_IN-122
-
   SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
-
   IPV6-WAN_IN-20
 ```
 ```{opcmd} show firewall ipv4 [forward | input | output] filter
@@ -2499,15 +2374,11 @@ This shows you a summary of rule-sets and groups.
 ```{opcmd} show firewall ipv4 name \<name\>
 
 This command will give an overview of a single rule-set.
-
 .. code-block:: none
-
   vyos@vyos:~$ show firewall ipv4 input filter
   Ruleset Information
-
   ---------------------------------
   IPv4 Firewall "input filter"
-
   Rule     Action    Protocol      Packets    Bytes  Conditions
   -------  --------  ----------  ---------  -------  -----------------------------------------
   5        jump      all                 0        0  iifname "eth2"  jump NAME_VyOS_MANAGEMENT

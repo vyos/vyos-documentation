@@ -65,7 +65,6 @@ performance. They must already be attached to VPP.
 ```{cfgcmd} set interfaces vpp bonding \<vppbondN\> mode \<mode\>
 
 Configure the bonding mode. Available modes:
-
 * **802.3ad**: IEEE 802.3ad Dynamic Link Aggregation (LACP) - Default
 * **active-backup**: Fault tolerant, only one slave interface active
 * **broadcast**: Transmits everything on all slave interfaces
@@ -87,7 +86,6 @@ across member interfaces:
 ```{cfgcmd} set interfaces vpp bonding \<vppbondN\> hash-policy \<policy\>
 
 Set the transmit hash policy:
-
 * **layer2**: Use MAC addresses to generate hash (default)
 * **layer2+3**: Combine MAC addresses and IP addresses
 * **layer3+4**: Combine IP addresses and port numbers
