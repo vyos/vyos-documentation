@@ -248,13 +248,9 @@ You can assign a fixed MAC address or generate a random one for these
             routed through only one member interface.
 
 
-            :::{note}
-
-
-            This policy is not fully 802.3ad-compliant. When a single TCP
-
-
-            :::
+:::{note}
+Not all transmit hash policies comply with 802.3ad, particularly
+:::
                or UDP flow contains both fragmented and unfragmented packets, the
                algorithm may distribute them across different member interfaces. This
                may result in out-of-order packet delivery, violating the 802.3ad standard.
@@ -464,14 +460,7 @@ set interfaces bonding bond0 member interface eth2
 
 ```
 :::{note}
-If you are running this configuration in a virtual environment like
-EVE-NG, ensure the e1000 driver is chosen for your VyOS NIC. The default
-drivers, such as `virtio-net-pci` or `vmxnet3`, are incompatible with
-this configuration. Specifically, ICMP messages will not be processed correctly.
-
-
-To check your NIC driver, use the following command: {opcmd}`show interfaces ethernet
-eth0 physical | grep -i driver`
+Not all transmit hash policies comply with 802.3ad, particularly
 :::
 
 

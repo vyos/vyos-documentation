@@ -8,6 +8,7 @@ lastproofread: '2026-03-03'
 
 {abbr}`PPPoE (Point-to-Point Protocol over Ethernet)` is a network protocol
 that encapsulates PPP frames within Ethernet frames.
+
 It's often used for connecting ISP clients to a broadband access server.
 
 ## Configuration
@@ -33,7 +34,9 @@ It's often used for connecting ISP clients to a broadband access server.
 :var0: pppoe
 :var1: pppoe0
 ```
+
 ### PPPoE options
+
 ```{cfgcmd} set interfaces pppoe \<interface\> access-concentrator \<name\>
 
 **Configure the name of the target access concentrator for the PPPoE session.**
@@ -203,7 +206,9 @@ packets are accepted.
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```
+
 #### IPv6
+
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 address autoconf
 
 Enable IPv6 address assignment via :abbr:`SLAAC (Stateless Address
@@ -226,15 +231,18 @@ This option is recommended to automatically set the proper value.
 Introduced in VyOS 1.4, this command replaces the older ``set firewall
 :::
 ```
+
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 disable-forwarding
 
 **Configure the interface for host or router behavior.**
 If configured, the interface switches to host mode, and IPv6 forwarding is
 disabled on it.
 ```
+
 ```{cmdincludemd} /_include/interface-dhcpv6-prefix-delegation.txt
 :var0: pppoe
 ```
+
 ## Operation
 
 ```{opcmd} show interfaces pppoe \<interface\>
@@ -251,6 +259,7 @@ Show detailed information about a specific PPPoE interface.
   TX:  bytes    packets     errors    dropped    carrier collisions
   533822843    1620173          0          0          0          0
 ```
+
 ```{opcmd} show interfaces pppoe \<interface\> queue
 
 Show queue information for a specific PPPoE interface.
@@ -260,17 +269,21 @@ Show queue information for a specific PPPoE interface.
   Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
   backlog 0b 0p requeues 0
 ```
+
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
 
 Disconnect the specified interface.
 ```
+
 ```{opcmd} connect interface \<interface\>
 
 Initiate a session on the specified interface.
 ```
+
 ## Example
+
 ### PPPoE over DSL
 **Configuration scenario:**
 - Your ISP's DSL modem is connected to the `eth0` interface on your VyOS
@@ -286,32 +299,40 @@ Initiate a session on the specified interface.
   ones, set the `name-server` option to `none`.
 - A default route is automatically installed once the interface is up. To
   change this behavior, use the `no-default-route` CLI option.
+
 :::{note}
 The PPPoE configuration syntax changed after VyOS 1.2 (Crux) and is
 automatically migrated during an upgrade.
 :::
+
 ```none
 set interfaces pppoe pppoe0 authentication username 'userid'
 set interfaces pppoe pppoe0 authentication password 'secret'
 set interfaces pppoe pppoe0 source-interface 'eth0'
 ```
+
 Secure your setup by creating rules matching the `pppoe0` interface in the
 firewall chains:
+
 ```none
 set firewall ipv4 input filter rule 10 inbound-interface name 'pppoe0'
 set firewall ipv4 forward filter rule 10 inbound-interface name 'pppoe0'
 ```
+
 ### PPPoE over VLAN
 Some ISPs require PPPoE connections to be
 established over a VLAN interface. This specific topology is fully supported by
 VyOS.
+
 The following configuration establishes the PPPoE connection through VLAN 7,
 which is the default VLAN for Deutsche Telekom:
+
 ```none
 set interfaces pppoe pppoe0 authentication username 'userid'
 set interfaces pppoe pppoe0 authentication password 'secret'
 set interfaces pppoe pppoe0 source-interface 'eth0.7'
 ```
+
 #### IPv6 DHCPv6 prefix delegation
 % stop_vyoslinter
 **Configuration scenario:**
@@ -324,6 +345,7 @@ a `/64` subnet from that delegation to the `eth0` interface.
 - To advertise the prefix on the `eth0` link, configure IPv6 Router
   Advertisement.
 % start_vyoslinter
+
 ```none
 set interfaces pppoe pppoe0 authentication username vyos
 set interfaces pppoe pppoe0 authentication password vyos

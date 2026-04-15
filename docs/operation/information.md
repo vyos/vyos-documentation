@@ -20,14 +20,17 @@ In the past, serial interfaces were defined as `ttySx` and `ttyUSBx` where
 `x` was the instance number. However, the mapping of USB-based
 serial interfaces can change from one system boot to another, depending on
 which driver the operating system loads first.
+
 This inconsistency can be problematic when you
 use multiple serial interfaces.
+
 For example, both console-server connections and a serial-backed
 {ref}`wwan-interface`.
 
 To address this issue, and because many low-cost USB-to-serial converters
 do not have a programmed serial number, VyOS now identifies USB-to-serial
 interfaces by the USB root bridge and the bus they connect to.
+
 This approach is similar to the network interface naming conventions used in
 recent Linux distributions.
 
@@ -39,6 +42,7 @@ If a device is unplugged and plugged in again, it is assigned a new
 :::
   ``Port``, ``Dev``, and ``If``.
 ```
+
 % stop_vyoslinter
 %
 % .. code-block:: none
@@ -69,12 +73,14 @@ If a device is unplugged and plugged in again, it is assigned a new
 %               |__ Port 4: Dev 7, If 2, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 %               |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 % start_vyoslinter
+
 ```{opcmd} show hardware usb serial
 
 Retrieve a list and description of all connected USB serial devices. The
 device name displayed, (for example ``usb0b2.4p1.0``), can be used
 directly when accessing the serial console as console-server device.
 ```
+
 % stop_vyoslinter
 %
 % .. code-block:: none
@@ -100,7 +106,9 @@ directly when accessing the serial console as console-server device.
 %   usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
 % start_vyoslinter
 (information-version)=
+
 # Version
+
 ```{opcmd} show version
 
 Return the currently running VyOS version and build information. This
@@ -123,6 +131,7 @@ and ``circinus`` on VyOS 1.5.
   Hardware UUID:    Unknown
   Copyright:        VyOS maintainers and contributors
 ```
+
 ```{opcmd} show version kernel
 
 Return the version number of the currently running Linux kernel.
@@ -130,6 +139,7 @@ Return the version number of the currently running Linux kernel.
   vyos@vyos:~$ show version kernel
   5.10.46-amd64-vyos
 ```
+
 ```{opcmd} show version frr
 
 Return the version number of FRR (Free Range Routing - https://frrouting.org/)

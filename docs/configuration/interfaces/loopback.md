@@ -22,9 +22,11 @@ interface type.
 ```{cmdincludemd} /_include/interface-address.txt
 :var0: loopback
 ```
+
 ```{cmdincludemd} /_include/interface-description.txt
 :var0: loopback
 ```
+
 ## Operation
 
 ```{opcmd} show interfaces loopback
@@ -38,6 +40,7 @@ Show brief interface information.
   lo               127.0.0.1/8                       u/u
   ::1/128
 ```
+
 ```{opcmd} show interfaces loopback lo
 
 Show detailed interface information.

@@ -7,7 +7,9 @@ lastproofread: '2024-02-21'
 # PPPoE over L2TP
 
 This document is to describe a basic setup using PPPoE over L2TP.
+
 LAC and LNS are components of the broadband topology.
+
 LAC - L2TP access concentrator
 LNS - L2TP Network Server
 LAC and LNS forms L2TP tunnel. LAC receives packets from PPPoE clients and
@@ -15,6 +17,7 @@ forward them to LNS. LNS is the termination point that comes from PPP packets
 from the remote client.
 
 In this example we use VyOS 1.5 as LNS and Cisco IOS as LAC.
+
 All users with domain **vyos.io** will be tunneled to LNS via L2TP.
 
 ## Network Topology
@@ -24,8 +27,11 @@ All users with domain **vyos.io** will be tunneled to LNS via L2TP.
 :alt: Network Topology Diagram
 :width: 60%
 ```
+
 ## Configurations
+
 ### LAC
+
 ```none
 aaa new-model
 !
@@ -69,7 +75,9 @@ interface Virtual-Template1
  ppp authentication chap
 !
 ```
+
 ### LNS
+
 ```none
 set interfaces ethernet eth0 address '192.168.139.100/24'
 set nat source rule 100 outbound-interface name 'eth0'
@@ -86,27 +94,34 @@ set vpn l2tp remote-access lns shared-secret 'test123'
 set vpn l2tp remote-access name-server '8.8.8.8'
 set vpn l2tp remote-access ppp-options disable-ccp
 ```
+
 :::{note}
 This setup requires the Compression Control Protocol (CCP)
 being disabled, the command `set vpn l2tp remote-access ppp-options disable-ccp`
 accomplishes that.
 :::
+
 ### Client
 In this lab we use Windows PPPoE client.
+
 ```{image} /_static/images/lac-lns-winclient.jpg
 :align: center
 :alt: Window PPPoE Client Configuration
 :width: 100%
 ```
+
 ### Monitoring
 Monitoring on LNS side
+
 ```none
 vyos@vyos:~$ show l2tp-server sessions
  ifname |   username   |    ip    | ip6 | ip6-dp |   calling-sid   | rate-limit | state  |  uptime  | rx-bytes  | tx-bytes
 --------+--------------+----------+-----+--------+-----------------+------------+--------+----------+-----------+----------
  l2tp0  | test@vyos.io | 10.0.0.2 |     |        | 192.168.139.101 |            | active | 00:00:35 | 188.4 KiB | 9.3 MiB
 ```
+
 Monitoring on LAC side
+
 ```none
 Router#show pppoe session
      1 session  in FORWARDED (FWDED) State
@@ -127,7 +142,9 @@ LocID      RemID      TunID      Username, Intf/      State  Last Chg Uniq ID
                                  Vcid, Circuit
 25641      25822      23238      test@vyos.io, Gi0/1  est    00:05:36 1
 ```
+
 Monitoring on RADIUS Server side
+
 ```none
 root@Radius:~# cat /var/log/freeradius/radacct/192.168.139.100/detail-20240221
 Wed Feb 21 13:37:17 2024

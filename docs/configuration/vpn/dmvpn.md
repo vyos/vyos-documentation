@@ -4,6 +4,7 @@
 
 {abbr}`DMVPN (Dynamic Multipoint Virtual Private Network)` is a dynamic
 {abbr}`VPN (Virtual Private Network)` technology originally developed by Cisco.
+
 While their implementation was somewhat proprietary, the underlying
 technologies are actually standards based. The three technologies are:
 
@@ -44,6 +45,7 @@ establishes ‘shortcut routes’ that optimizes the routing protocol to avoid g
 through extra nodes in NBMA GRE mesh.
 
 NHRP does route NHRP domain addresses individually using per-host prefixes.
+
 This is similar to Cisco FlexVPN, but in contrast to opennhrp which uses
 a generic subnet route.
 
@@ -81,6 +83,7 @@ Enables Cisco style authentication on NHRP packets. This embeds the
 plaintext password to the outgoing NHRP packets. Maximum length of
 the password is 8 characters.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> holdtime \<timeout\>
 
 Holdtime is the number of seconds that have to pass before stopping to
@@ -88,6 +91,7 @@ advertise an NHRP NBMA address as valid. It also controls how often NHRP
 registration requests are sent. By default registrations are sent every
 one third of the holdtime
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\>
 
   nbma <nbma-ip>
@@ -95,16 +99,19 @@ one third of the holdtime
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **local**
 Map an IP address of a station to the station’s NBMA address.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> mtu \<mtu\>
 
 Configure NHRP advertised MTU.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> multicast \<nbma-ip\>
 
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **dynamic**
 Sends multicast packets to the specified NBMA address. If dynamic is specified
 then destination NBMA address (or addresses) are learnt dynamically.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> network-id \<network-id\>
 
 * **network-id** - NHRP network id <1-4294967295>
@@ -115,6 +122,7 @@ same logical NBMA network. The ID is a local only parameter and is not sent to o
 NHRP nodes and so IDs on different nodes do not need to match. When NHRP packets are
 received on an interface they are assigned to the local NHRP domain for that interface.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> nhs tunnel-ip \<tunnel-ip\> nbma \<nbma-ip\>
 
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x** or **dynamic**
@@ -122,67 +130,82 @@ received on an interface they are assigned to the local NHRP domain for that int
 Configure the Next Hop Server address and its NBMA address. If dynamic is specified
 then Next Hop Server can have dynamic address which maps to its NBMA address.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> redirect
 
 This enable redirect replies on the NHS similar to ICMP redirects except this is
 managed by the nhrp protocol. This setting allows spokes to communicate with each
 others directly.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> registration-no-unique
 
 Allow the client to not set the unique flag in the NHRP packets. This is useful when
 a station has a dynamic IP address that could change over time.
 ```
+
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> shortcut
 
 Enable shortcut (spoke-to-spoke) tunnels to allow NHC to talk to each others directly
 after establishing a connection without going through the hub.
 ```
+
 ### IPSEC configuration
 - Please refer to the {ref}`ipsec_general` documentation for the individual IPSec
   related options.
+
 :::{note}
 NHRP daemon based on FRR nhrpd. It controls IPSEC. That's why 'close-action'
 parameter in IKE configuration always is set to 'close' and 'dead-peer-detection action'
 always is set to 'clear'.
 :::
+
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication mode pre-shared-secret
 
 Set preshared secret mode authentication
 ```
+
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication pre-shared-secret \<secret\>
 
 Set preshared secret
 ```
+
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> bind tunnel \<tunnel name\>
 
 Bind IPSEC profile to the specific tunnel interface.
 ```
+
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> esp-group 'ESP-HUB'
 
 Map ESP group to IPSEC profile
 ```
+
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> ike-group 'IKE-HUB'
 
 Map IKE group to IPSEC profile
 ```
+
 ## Monitoring
 
 ```{opcmd} show ip nhrp cache
 
 Forwarding cache information.
 ```
+
 ```{opcmd} show ip nhrp nhs
 
 Next hop server information.
 ```
+
 ```{opcmd} show ip nhrp shortcut
 
 Shortcut information.
 ```
+
 ## Example
 This blueprint uses VyOS as the DMVPN Hub and Cisco IOSv 15.5(3)M and VyOS as
 multiple spoke sites.
+
 :::{figure} /_static/images/blueprint-dmvpn.png
 :align: center
 :alt: DMVPN Network Topology Diagram
@@ -190,13 +213,18 @@ multiple spoke sites.
 DMVPN Network Topology Diagram
 :::
 Each node (Hub and Spoke) uses an IP address from the network 10.0.0.0/24.
+
 The below referenced IP address `192.168.0.2` is used as example address
 representing a global unicast address under which the HUB can be contacted by
 each and every individual spoke.
 (dmvpn-example-configuration)=
+
 ### Configuration
+
 #### Hub
+
 ##### VyOS-HUB-1
+
 ```none
 set interfaces ethernet eth0 address '192.168.0.2/30'
 
@@ -232,6 +260,7 @@ set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
 set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
 set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
+
 :::{note}
 Setting this up on AWS will require a "Custom Protocol Rule" for
 protocol number "47" (GRE) Allow Rule in TWO places. Firstly on the VPC
@@ -240,9 +269,12 @@ EC2 instance. This has been tested as working for the official AMI image on
 the AWS Marketplace. (Locate the correct VPC and security group by navigating
 through the details pane below your EC2 instance in the AWS console).
 :::
+
 #### Spokes
 > The individual spoke configurations only differ in interface IP addresses.
+
 ##### VyOS-Spoke-1 and VyOS-Spoke-2
+
 ```none
 set interfaces ethernet eth0 address '192.168.1.2/30'
 
@@ -280,7 +312,9 @@ set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
 set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
 set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
+
 ##### Cisco-Spoke-3
+
 ```none
 crypto isakmp policy 10
  encr aes 256
@@ -327,8 +361,10 @@ interface GigabitEthernet0/0
 !
 ip route 0.0.0.0 0.0.0.0 192.168.3.1
 ```
+
 ##### Monitoring DMVPN Network
 Let send ICMP packets from VyOS-SPOKE-1 to Cisco-SPOKE-3
+
 ```none
 vyos@vyos:~$ ping 10.0.0.3
 PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
@@ -339,7 +375,9 @@ PING 10.0.0.3 (10.0.0.3) 56(84) bytes of data.
 2 packets transmitted, 2 received, 0% packet loss, time 1002ms
 rtt min/avg/max/mdev = 3.072/3.257/3.442/0.185 ms
 ```
+
 ##### Monitoring on HUB
+
 ```none
 vyos@vyos:~$ show ip nhrp cache
 Iface    Type     Protocol                 NBMA                     Claimed NBMA             Flags  Identity
@@ -355,7 +393,9 @@ dmvpn-NHRPVPN-tun100-child  up       3m46s     230B/270B       2/2              
 dmvpn-NHRPVPN-tun100-child  up       5m48s     460B/540B       4/4               192.168.2.2       192.168.2.2  AES_CBC_256/HMAC_SHA1_96/MODP_1024
 dmvpn-NHRPVPN-tun100-child  up       16m26s    1K/1K           13/12             192.168.3.2       192.168.3.2  AES_CBC_256/HMAC_SHA1_96/MODP_1024
 ```
+
 ##### Monitoring on Spokes
+
 ```none
 vyos@vyos:~$ show ip nhrp cache
 Iface    Type     Protocol                 NBMA                     Claimed NBMA             Flags  Identity

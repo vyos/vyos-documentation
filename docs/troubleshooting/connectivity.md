@@ -42,6 +42,7 @@ ping, including VRF support.
   verbose
   vrf
 ```
+
 ```{opcmd} traceroute \<destination\>
 
 Trace path to target.
@@ -58,6 +59,7 @@ Trace path to target.
   ipv4          Track network path to <hostname|IPv4 address>
   ipv6          Track network path to <hostname|IPv6 address>
 ```
+
 ## Advanced Connectivity Tests
 
 ```{opcmd} monitor traceroute \<destination\>
@@ -83,9 +85,12 @@ Several options are available for changing the display output. Press `h` to
 invoke the built in help system. To quit, just press `q` and you'll be
 returned to the VyOS command prompt.
 ```
+
 ## IPv6 Topology Discovery
 IPv6 uses different techniques to discover its Neighbors/topology.
+
 ### Router Discovery
+
 ```{opcmd} force ipv6-rd interface \<interface\> [address \<ipv6-address\>]
 
 Discover routers via eth0.
@@ -117,6 +122,7 @@ Example:
   Source link-layer address: 00:98:2B:F8:3F:11
   from fe80::298:2bff:fef8:3f11
 ```
+
 ### Neighbor Discovery
 
 ```{opcmd} force ipv6-nd interface \<interface\> address \<ipv6-address\>

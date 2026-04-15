@@ -26,25 +26,33 @@ as the peer of the other.
 ```{cmdincludemd} /_include/interface-address-with-dhcp.txt
 :var0: virtual-ethernet
 ```
+
 ```{cmdincludemd} /_include/interface-description.txt
 :var0: virtual-ethernet
 ```
+
 ### VLAN
+
 #### Regular VLANs (802.1q)
+
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: virtual-ethernet
 ```
+
 #### 802.1ad (QinQ)
 
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: virtual-ethernet
 ```
+
 ```{cmdincludemd} /_include/interface-disable.txt
 :var0: virtual-ethernet
 ```
+
 ```{cmdincludemd} /_include/interface-vrf.txt
 :var0: virtual-ethernet
 ```
+
 ## Operation
 
 ```{opcmd} show interfaces virtual-ethernet
@@ -58,6 +66,7 @@ Show brief interface information.
   veth10           100.64.0.0/31                     u/u
   veth11           100.64.0.1/31                     u/u
 ```
+
 ```{opcmd} show interfaces virtual-ethernet \<interface\>
 
 Show detailed interface information.
@@ -76,9 +85,11 @@ Show detailed interface information.
   TX:  bytes    packets     errors    dropped    carrier collisions
   1369707       4267          0          0          0          0
 ```
+
 ## Example
 The following example shows how to connect the global VRF to VRF ‘red ‘ using
 the `veth10` and `veth11` veth pair.
+
 ```none
 set interfaces virtual-ethernet veth10 address '100.64.0.0/31'
 set interfaces virtual-ethernet veth10 peer-name 'veth11'

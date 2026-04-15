@@ -23,6 +23,7 @@ upstream interface, and one or more downstream interfaces.
   groups and receive multicast data. One or more downstream interfaces must
   be configured.
 ```
+
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> alt-subnet \<network\>
 
 Defines alternate sources for multicasting and IGMP data. The network address
@@ -34,6 +35,7 @@ This is especially useful for the upstream interface, since the source for
 multicast traffic is often from a remote location.
 This option can be supplied multiple times.
 ```
+
 ```{cfgcmd} set protocols igmp-proxy disable-quickleave
 
 Disables quickleave mode. In this mode the daemon will not send a Leave IGMP
@@ -45,20 +47,26 @@ If it's vital that the daemon should act exactly like a real multicast client
 on the upstream interface, this function should be enabled.
 Enabling this function increases the risk of bandwidth saturation.
 ```
+
 ```{cfgcmd} set protocols igmp-proxy disable
 
 Disable this service.
 ```
+
 (igmp-proxy-example)=
+
 ### Example
 Interface `eth1` LAN is behind NAT. In order to subscribe `10.0.0.0/23` subnet
 multicast which is in `eth0` WAN we need to configure igmp-proxy.
+
 ```none
 set protocols igmp-proxy interface eth0 role upstream
 set protocols igmp-proxy interface eth0 alt-subnet 10.0.0.0/23
 set protocols igmp-proxy interface eth1 role downstream
 ```
+
 ## Operation
+
 ```{opcmd} restart igmp-proxy
 
 Restart the IGMP proxy process.

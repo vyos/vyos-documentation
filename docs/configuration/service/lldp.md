@@ -36,16 +36,19 @@ database. Information that may be retrieved include:
 
 Enable LLDP service
 ```
+
 ```{cfgcmd} set service lldp management-address \<address\>
 
 Define IPv4/IPv6 management address transmitted via LLDP. Multiple addresses
 can be defined. Only addresses connected to the system will be transmitted.
 ```
+
 ```{cfgcmd} set service lldp interface \<interface\>
 
 Enable transmission of LLDP information on given `<interface>`. You can also
 say ``all`` here so LLDP is turned on on every interface.
 ```
+
 ```{cfgcmd} set service lldp interface \<interface\> mode [disable|rx-tx|rx|tx]
 
 Configure the administrative status of the given port.
@@ -55,10 +58,12 @@ In rx mode, they won't emit any frames. In tx mode, they won't receive
 any frames. In disabled mode, no frame will be sent and any incoming frame
 will be discarded.
 ```
+
 ```{cfgcmd} set service lldp snmp
 
 Enable SNMP queries of the LLDP database
 ```
+
 ```{cfgcmd} set service lldp legacy-protocols \<cdp|edp|fdp|sonmp\>
 
 Enable given legacy protocol on this LLDP instance. Legacy protocols include:
@@ -67,6 +72,7 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 * ``fdp`` - Listen for FDP for Foundry routers/switches
 * ``sonmp`` - Listen for SONMP for Nortel routers/switches
 ```
+
 ## Operation
 
 ```{opcmd} show lldp neighbors
@@ -82,6 +88,7 @@ Displays information about all neighbors discovered via LLDP.
   BR3.vyos.net              eth0      LLDP   RB    VyOS 1.2.4           eth2
   SW1.vyos.net              eth0      LLDP   B     Cisco IOS Software   GigabitEthernet0/6
 ```
+
 ```{opcmd} show lldp neighbors detail
 
 Get detailed information about LLDP neighbors.
@@ -127,10 +134,12 @@ Get detailed information about LLDP neighbors.
   Asset ID:     No Asset Tag
   -------------------------------------------------------------------------------
 ```
+
 ```{opcmd} show lldp neighbors interface \<interface\>
 
 Show LLDP neighbors connected via interface `<interface>`.
 ```
+
 ```{opcmd} show log lldp
 
 Used for troubleshooting.

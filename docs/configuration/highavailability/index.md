@@ -10,6 +10,7 @@ VRRP (Virtual Router Redundancy Protocol) provides active/backup redundancy for
 routers. Every VRRP router has a physical IP/IPv6 address, and a virtual
 address. On startup, routers elect the master, and the router with the highest
 priority becomes the master and assigns the virtual address to its interface.
+
 All routers with lower priorities become backup routers. The master then starts
 sending keepalive packets to notify other routers that it's available. If the
 master fails and stops sending keepalive packets, the router with the next
@@ -52,6 +53,7 @@ Foo         eth1             10  MASTER   2s
 The `address` parameter can be either an IPv4 or IPv6 address, but you can
 not mix IPv4 and IPv6 in the same group, and will need to create groups with
 different VRIDs specially for IPv4 and IPv6.
+
 If you want to use IPv4 + IPv6 address you can use option `excluded-address`
 
 ## Address
@@ -191,6 +193,7 @@ set high-availability vrrp group Foo hello-source-address 192.0.2.15
 ## rfc3768-compatibility
 
 RFC 3768 defines a virtual MAC address to each VRRP virtual router.
+
 This virtual router MAC address will be used as the source in all periodic VRRP
 messages sent by the active node. When the rfc3768-compatibility option is set,
 a new VRRP interface is created, to which the MAC address and the virtual IP
@@ -228,23 +231,28 @@ is needed.
 This option specifies a delay in seconds before vrrp instances start up
 after keepalived starts.
 ```
+
 ## Gratuitous ARP
 These configuration is not mandatory and in most cases there's no
 need to configure it. But if necessary, Gratuitous ARP can be configured in
 `global-parameters` and/or in `group` section.
+
 ```{cfgcmd} set high-availability vrrp global-parameters garp interval
 
    <0.000-1000>
 ```
+
 ```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
 
 Set delay between gratuitous ARP messages sent on an interface.
 0 if not defined.
 ```
+
 % stop_vyoslinter
 
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-delay \<1-255\>
 ```
+
 % start_vyoslinter
 
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
@@ -252,30 +260,36 @@ Set delay between gratuitous ARP messages sent on an interface.
 Set delay for second set of gratuitous ARPs after transition to MASTER.
 5 if not defined.
 ```
+
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh
 
    <1-600>
 ```
+
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh
 
    <1-600>
 Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 0 if not defined, which means no refreshing.
 ```
+
 ```{cfgcmd} set high-availability vrrp global-parameters garp
 
    master-refresh-repeat <1-600>
 ```
+
 ```{cfgcmd} set high-availability vrrp group \<name\> garp
 
    master-refresh-repeat <1-600>
 Set number of gratuitous ARP messages to send at a time while MASTER.
 1 if not defined.
 ```
+
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-repeat
 
    <1-600>
 ```
+
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-repeat
 
    <1-600>
@@ -283,6 +297,7 @@ Set number of gratuitous ARP messages to send at a time after transition to
 MASTER.
 5 if not defined.
 ```
+
 ## Version
 
 ```{cfgcmd} set high-availability vrrp global-parameters version 2|3
@@ -290,12 +305,14 @@ MASTER.
 Set the default VRRP version to use. This defaults to 2, but IPv6 instances
 will always use version 3.
 ```
+
 ## Scripting
 VRRP functionality can be extended with scripts. VyOS supports two kinds of
 scripts: health check scripts and transition scripts. Health check scripts
 execute custom checks in addition to the master router reachability. Transition
 scripts are executed when VRRP state changes from master to backup or fault and
 vice versa and can be used to enable or disable certain services, for example.
+
 :::{note}
 Simply placing script files in `/config/scripts/` does not mean the
 system can execute them. To make custom scripts executable, grant them
@@ -304,55 +321,71 @@ system can execute them. To make custom scripts executable, grant them
 chmod +x /config/scripts/script-name.sh
 ```
 :::
+
 :::{warning}
 It is not recommended to change VRRP configuration
 inside health-check and transition scripts.
 :::
+
 ### Health check scripts
 There is the ability to run an arbitrary script at regular intervals
 according to health-check parameters. If a script returns 0, it
 indicates success. If a script returns anything else, it will indicate
 that the VRRP instance should enter the FAULT state.
+
 This setup will make the VRRP process execute the
 `/config/scripts/vrrp-check.sh script` every 60 seconds, and transition the
 group to the fault state if it fails (i.e. exits with non-zero status) three
 times:
 % stop_vyoslinter
+
 ```none
 set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
 set high-availability vrrp group Foo health-check interval 60
 set high-availability vrrp group Foo health-check failure-count 3
 ```
+
 % start_vyoslinter
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
+
 This example shows how to configure it for the sync group:
 % stop_vyoslinter
+
 ```none
 set high-availability vrrp sync-group Bar health-check script /config/scripts/vrrp-check.sh
 set high-availability vrrp sync-group Bar health-check interval 60
 set high-availability vrrp sync-group Bar health-check failure-count 3
 ```
+
 % start_vyoslinter
+
 ### Transition scripts
 Transition scripts can help you implement various fixups, such as starting and
 stopping services, or even modifying the VyOS config on VRRP transition.
+
 This setup will make the VRRP process execute the
 `/config/scripts/vrrp-fail.sh` with argument `Foo` when VRRP fails,
 and the `/config/scripts/vrrp-master.sh` when the router becomes the master:
 % stop_vyoslinter
+
 ```none
 set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
 set high-availability vrrp group Foo transition-script fault "/config/scripts/vrrp-fail.sh Foo"
 set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
 ```
+
 % start_vyoslinter
 To know more about scripting, check the {ref}`command-scripting` section.
+
 ## Virtual-server
+
 ```{include} /_include/need_improvement.txt
 ```
+
 Virtual Server allows to Load-balance traffic destination virtual-address:port
 between several real servers.
+
 ### Algorithm
 Load-balancing schedule algorithm:
 - round-robin
@@ -362,42 +395,56 @@ Load-balancing schedule algorithm:
 - source-hashing
 - destination-hashing
 - locality-based-least-connection
+
 ```none
 set high-availability virtual-server 203.0.113.1 algorithm 'least-connection'
 ```
+
 ### Forward method
 - NAT
 - direct
 - tunnel
+
 ```none
 set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 ```
+
 ### Health-check
 Custom health-check script allows checking real-server availability
 % stop_vyoslinter
+
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
 ```
+
 % start_vyoslinter
+
 ### Fwmark
 Firewall mark. It possible to loadbalancing traffic based on `fwmark` value
+
 ```none
 set high-availability virtual-server 203.0.113.1 fwmark '111'
 ```
+
 ### Real server
 Real server IP address and port
 % stop_vyoslinter
+
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
 ```
+
 % start_vyoslinter
+
 ### Example
 Virtual-server can be configured with VRRP virtual address or without VRRP.
+
 In the next example all traffic destined to `203.0.113.1` and port `8280`
 protocol TCP is balanced between 2 real servers `192.0.2.11` and
 `192.0.2.12` to port `80`
 Real server is auto-excluded if port check with this server fail.
 % stop_vyoslinter
+
 ```none
 set interfaces ethernet eth0 address '203.0.113.11/24'
 set interfaces ethernet eth1 address '192.0.2.1/24'
@@ -416,14 +463,19 @@ set high-availability virtual-server 203.0.113.1 protocol 'tcp'
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
 ```
+
 % start_vyoslinter
 A firewall mark `fwmark` allows using multiple ports for high-availability
 virtual-server.
+
 It uses fwmark value.
+
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
+
 Port "0" is required if multiple ports are used.
 % stop_vyoslinter
+
 ```none
 set interfaces ethernet eth0 address 'dhcp'
 set interfaces ethernet eth0 description 'WAN'
@@ -446,8 +498,10 @@ set nat source rule 100 outbound-interface name 'eth0'
 set nat source rule 100 source address '192.0.2.0/24'
 set nat source rule 100 translation address 'masquerade'
 ```
+
 % start_vyoslinter
 Op-mode check virtual-server status
+
 ```none
 vyos@r14:~$ run show virtual-server
 IP Virtual Server version 1.2.1 (size=4096)

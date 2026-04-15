@@ -3,6 +3,7 @@
 # Acceleration
 
 In this command tree, all hardware acceleration options will be handled.
+
 At the moment only [Intel® QAT] is supported
 
 ## Intel® QAT
@@ -37,7 +38,9 @@ Check if the Intel® QAT device is up and ready to do the job.
   There is 1 QAT acceleration device(s) in the system:
   qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
 ```
+
 ### Operation Mode
+
 ```{opcmd} show system acceleration qat device \<device\> config
 
 Show the full config uploaded to the QAT device.
@@ -54,9 +57,12 @@ Get an overview over the encryption counters.
 
 Show binded qat device interrupts to certain core.
 ```
+
 ### Example
 Let's build a simple VPN between 2 Intel® QAT ready devices.
+
 Side A:
+
 ```
 set interfaces vti vti1 address '192.168.1.2/24'
 set vpn ipsec authentication psk right id '10.10.10.2'
@@ -78,7 +84,9 @@ set vpn ipsec site-to-site peer right local-address '10.10.10.2'
 set vpn ipsec site-to-site peer right remote-address '10.10.10.1'
 set vpn ipsec site-to-site peer right vti bind 'vti1'
 ```
+
 Side B:
+
 ```
 set interfaces vti vti1 address '192.168.1.1/24'
 set vpn ipsec authentication psk left id '10.10.10.2'
@@ -100,7 +108,9 @@ set vpn ipsec site-to-site peer left local-address '10.10.10.1'
 set vpn ipsec site-to-site peer left remote-address '10.10.10.2'
 set vpn ipsec site-to-site peer left vti bind 'vti1'
 ```
+
 a bandwidth test over the VPN got these results:
+
 ```
 Connecting to host 192.168.1.2, port 5201
 [  9] local 192.168.1.1 port 51344 connected to 192.168.1.2 port 5201
@@ -120,8 +130,10 @@ Connecting to host 192.168.1.2, port 5201
 [  9]   0.00-10.00  sec   322 MBytes   270 Mbits/sec    0           sender
 [  9]   0.00-10.00  sec   322 MBytes   270 Mbits/sec                receiver
 ```
+
 with {cfgcmd}`set system acceleration qat` on both systems the bandwidth
 increases.
+
 ```
 Connecting to host 192.168.1.2, port 5201
 [  9] local 192.168.1.1 port 51340 connected to 192.168.1.2 port 5201

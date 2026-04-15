@@ -74,6 +74,7 @@ academic institutions
 ## Hardware requirements
 
 The minimum system requirements for VyOS are 4 GB RAM and 10 GB storage.
+
 Depending on your use case, you might need additional RAM and CPU resources.
 
 ## Download
@@ -110,9 +111,9 @@ Everyone can download bleeding-edge VyOS rolling images from:
 <https://downloads.vyos.io/>
 
 :::{note}
-Rolling releases contain the latest enhancements and fixes.
-This means there may be new bugs. If you encounter a bug, follow the
-guide at {ref}`bug_report`. We depend on your feedback to improve VyOS.
+The `.qcow2` image provided for Proxmox deployment can also be
+used to deploy VyOS on KVM environments. This image includes cloud-init
+support. See {ref}`cloud-init` for more information.
 :::
 
 The following link contains the most recent VyOS builds for AMD64
@@ -121,6 +122,7 @@ systems from the `current` branch: <https://vyos.net/get/nightly-builds/>
 ### Download Verification
 
 LTS images are signed with the VyOS lead package maintainer's private key.
+
 You can verify the authenticity of the package using the official public key
 and Minisign.
 
@@ -155,10 +157,9 @@ Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
 ```
 
 :::{note}
-Starting with version `1.4.3`, VyOS uses Minisign exclusively.
-If you see an unexpected verification error, update your system to version
-`1.4.2` first. Support for GnuPG signatures has been
-removed ({vytask}`T7301`).
+The `.qcow2` image provided for Proxmox deployment can also be
+used to deploy VyOS on KVM environments. This image includes cloud-init
+support. See {ref}`cloud-init` for more information.
 :::
 
 (live-installation)=

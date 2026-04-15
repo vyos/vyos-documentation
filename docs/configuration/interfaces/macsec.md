@@ -22,7 +22,9 @@ addresses distinct use cases.
 :var0: macsec
 :var1: macsec0
 ```
+
 ### MACsec options
+
 ```{cfgcmd} set interfaces macsec \<interface\> security cipher \<gcm-aes-128|gcm-aes-256\>
 
 **Configure the cipher suite for the MACsec interface.**
@@ -43,11 +45,13 @@ When enabled, outgoing packets are encrypted using the configured cipher suite.
 Traffic transmitted through this interface is authenticated and, if configured,
 encrypted.
 ```
+
 #### MACsec key management
 **Static** {abbr}`SAK (Secure Authentication Key)` **mode**
 In static SAK mode, administrators must manually configure and update SAKs on
 each MACsec peer. {abbr}`MKA (MACsec Key Agreement protocol)` cannot be used in
 this mode.
+
 ```{cfgcmd} set interfaces macsec \<interface\> security static key \<key\>
 
 **Configure the Transmit (TX) SAK for the MACsec interface.**
@@ -69,10 +73,12 @@ string.
 
 ```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> disable
 ```
+
 **Dynamic** {abbr}`MKA (MACsec Key Agreement protocol)` **mode**
 In this mode, the {abbr}`MKA (MACsec Key Agreement protocol)` protocol is used
 to generate, distribute, and update {abbr}`CAKs (MACsec Connectivity
 Association Keys)`, and to authenticate MACsec peers.
+
 ```{cfgcmd} set interfaces macsec \<interface\> security mka cak \<key\>
 
 **Configure the** :abbr:`CAK (MACsec Connectivity Association Key)` **for the
@@ -81,16 +87,19 @@ The :abbr:`CAK (MACsec Connectivity Association Key)` and its :abbr:`CKN
 (MACsec Connectivity Association Key Name)` form the pre-shared master key pair
 used to authenticate MACsec peers.
 ```
+
 ```{cfgcmd} set interfaces macsec \<interface\> security mka ckn \<key\>
 
 Configure the :abbr:`CKN (MACsec Connectivity Association Key Name)` for the
 MACsec interface.
 ```
+
 ```{cfgcmd} set interfaces macsec \<interface\> security mka priority \<priority\>
 
 Configure the MKA key server priority for the MACsec interface.
 The peer with the lowest priority is elected as the key server.
 ```
+
 #### Replay protection
 
 ```{cfgcmd} set interfaces macsec \<interface\> security replay-window \<window\>
@@ -101,6 +110,7 @@ The following values are valid:
 - ``0``: Any out-of-order frame is immediately dropped.
 - ``1-4294967295``: Allows the specified number of out-of-order frames.
 ```
+
 ## Operation
 
 ```{opcmd} run generate macsec mka cak \<gcm-aes-128|gcm-aes-256\>
@@ -111,6 +121,7 @@ Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
   vyos@vyos:~$ generate macsec mka cak gcm-aes-128
   20693b6e08bfa482703a563898c9e3ad
 ```
+
 ```{opcmd} run generate macsec mka ckn
 
 Generate an :abbr:`MKA (MACsec Key Agreement protocol)` :abbr:`CAK (MACsec
@@ -119,6 +130,7 @@ Connectivity Association Key)`.
   vyos@vyos:~$ generate macsec mka ckn
   88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
 ```
+
 ```{opcmd} show interfaces macsec
 
 Show all MACsec interfaces.
@@ -131,6 +143,7 @@ Show all MACsec interfaces.
   cipher suite: GCM-AES-128, using ICV length 16
   TXSC: 005056bfefaa0001 on SA 0
 ```
+
 ```{opcmd} show interfaces macsec \<interface\>
 
 Show information for a specific MACsec interface.
@@ -140,15 +153,18 @@ Show information for a specific MACsec interface.
   cipher suite: GCM-AES-128, using ICV length 16
   TXSC: 005056bfefaa0001 on SA 0
 ```
+
 ## Examples
 **Site-to-site MACsec with dynamic MKA over an untrusted network**
 In the following example, two routers (R1 and R2) are connected via an
 untrusted switch, using their `eth1` interfaces as the underlay. The MACsec
 interface (`macsec1`) with dynamic MKA encrypts traffic between them.
+
 Topology details:
 - R1 IP addresses: `192.0.2.1/24` and `2001:db8::1/64`.
 - R2 IP addresses: `192.0.2.2/24` and `2001:db8::2/64`.
 **R1**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.1/24'
 set interfaces macsec macsec1 address '2001:db8::1/64'
@@ -158,7 +174,9 @@ set interfaces macsec macsec1 security mka cak '232e44b7fda6f8e2d88a07bf78a7aff4
 set interfaces macsec macsec1 security mka ckn '40916f4b23e3d548ad27eedd2d10c6f98c2d21684699647d63d41b500dfe8836'
 set interfaces macsec macsec1 source-interface 'eth1'
 ```
+
 **R2**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.2/24'
 set interfaces macsec macsec1 address '2001:db8::2/64'
@@ -168,8 +186,10 @@ set interfaces macsec macsec1 security mka cak '232e44b7fda6f8e2d88a07bf78a7aff4
 set interfaces macsec macsec1 security mka ckn '40916f4b23e3d548ad27eedd2d10c6f98c2d21684699647d63d41b500dfe8836'
 set interfaces macsec macsec1 source-interface 'eth1'
 ```
+
 Pinging (IPv6) the other host and intercepting traffic on `eth1` confirm that
 the content is encrypted.
+
 ```none
 17:35:44.586668 00:50:56:bf:ef:aa > 00:50:56:b3:ad:d6, ethertype Unknown (0x88e5), length 150:
         0x0000:  2c00 0000 000a 0050 56bf efaa 0001 d9fb  ,......PV.......
@@ -182,8 +202,10 @@ the content is encrypted.
         0x0070:  e93a 9f38 8a62 17c6 2857 6ac5 ec11 8b0e  .:.8.b..(Wj.....
         0x0080:  6b30 92a5 7ccc 720b                      k0..|.r.
 ```
+
 Disabling encryption on the MACsec interface by removing the `security
 encrypt` option shows the unencrypted but authenticated content.
+
 ```none
 17:37:00.746155 00:50:56:bf:ef:aa > 00:50:56:b3:ad:d6, ethertype Unknown (0x88e5), length 150:
         0x0000:  2000 0000 0009 0050 56bf efaa 0001 86dd  .......PV.......
@@ -196,10 +218,12 @@ encrypt` option shows the unencrypted but authenticated content.
         0x0070:  3031 3233 3435 3637 87d5 eed3 3a39 d52b  01234567....:9.+
         0x0080:  a282 c842 5254 ef28                      ...BRT.(
 ```
+
 **Site-to-site MACsec with static SAK over an untrusted network**
 This example uses the same topology as above, but applies static SAK mode to
 the MACsec interface configuration.
 **R1**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.1/24'
 set interfaces macsec macsec1 address '2001:db8::1/64'
@@ -210,7 +234,9 @@ set interfaces macsec macsec1 security static peer R2 mac 00:11:22:33:44:02
 set interfaces macsec macsec1 security static peer R2 key 'eadcc0aa9cf203f3ce651b332bd6e6c7'
 set interfaces macsec macsec1 source-interface 'eth1'
 ```
+
 **R2**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.2/24'
 set interfaces macsec macsec1 address '2001:db8::2/64'
@@ -221,14 +247,17 @@ set interfaces macsec macsec1 security static peer R1 mac 00:11:22:33:44:01
 set interfaces macsec macsec1 security static peer R1 key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
 set interfaces macsec macsec1 source-interface 'eth1'
 ```
+
 ## MACsec over WAN
 MACsec offers an alternative to traditional tunneling solutions by securing
 Layer 2 with integrity, origin authentication, and optional encryption.
+
 While typically deployed between hosts and access switches, MACsec can also
 secure traffic over a WAN. In the following example, we combine VXLAN (for
 transport) and MACsec (for security) to create a secure tunnel between two
 sites.
 **R1 MACsec01**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.1/24'
 set interfaces macsec macsec1 address '2001:db8::1/64'
@@ -244,7 +273,9 @@ set interfaces vxlan vxlan1 source-address '172.16.100.1'
 set interfaces vxlan vxlan1 vni '10'
 set protocols static route 10.1.3.3/32 next-hop 172.16.100.2
 ```
+
 **R2 MACsec02**
+
 ```none
 set interfaces macsec macsec1 address '192.0.2.2/24'
 set interfaces macsec macsec1 address '2001:db8::2/64'

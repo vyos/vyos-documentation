@@ -21,12 +21,14 @@ is ensuring you have redundant data INTO your network. We do this with a pair
 of Cisco Nexus switches and using Virtual PortChannels that are spanned across
 them. As a bonus, this also allows for complete switch failure without
 an outage. How you achieve this yourself is left as an exercise to the reader.
+
 But our setup is documented here.
 
 ### Walkthrough suggestion
 
 The `commit` command is implied after every section. If you make an error,
 `commit` will warn you and you can fix it before getting too far into things.
+
 Please ensure you commit early and commit often.
 
 If you are following through this document, it is strongly suggested you
@@ -182,6 +184,7 @@ service, and it prioritizes router1 over router2.
 ### Internal Network
 
 This has a floating IP address of 10.200.201.1/24, using virtual router ID 201.
+
 The difference between them is the interface name, hello-source-address, and
 peer-address.
 
@@ -214,6 +217,7 @@ set high-availability vrrp group int vrid '201'
 ### Public Network
 
 This has a floating IP address of 203.0.113.1/24, using virtual router ID 113.
+
 The virtual router ID is just a random number between 1 and 254, and can be set
 to whatever you want. Best practices suggest you try to keep them unique
 enterprise-wide.
@@ -316,6 +320,7 @@ set service conntrack-sync sync-queue-size '8'
 
 The simplest way to test is to look at the connection tracking stats on the
 standby hardware router with the command `show conntrack-sync statistics`.
+
 The numbers should be very close to the numbers on the primary router.
 
 When you have both routers up, you should be able to establish a connection
@@ -325,6 +330,7 @@ connection should be preserved, and will not drop out.
 ## OSPF Over WireGuard
 
 Wireguard doesn't have the concept of an up or down link, due to its design.
+
 This complicates AND simplifies using it for network transport, as for reliable
 state detection you need to use SOMETHING to detect when the link is down.
 
@@ -395,6 +401,7 @@ filters, both importing and exporting. A good rule of thumb is
 it'**. This means we explicitly do not want to advertise the 192.0.2.0/24
 network (but do want to advertise 10.200.201.0 and 203.0.113.0, which we ARE
 the default route for). This filter is applied to `redistribute connected`.
+
 If we WERE to advertise it, the remote machines would see 192.0.2.21 available
 via their default route, establish the connection, and then OSPF would say
 '192.0.2.0/24 is available via this tunnel', at which point the tunnel would
@@ -439,6 +446,7 @@ set policy route-map PUBOSPF rule 500 action 'permit'
 ### Enable OSPF
 
 Every router **must** have a unique router-id.
+
 The 'reference-bandwidth' is used because when OSPF was originally designed,
 the idea of a link faster than 1gbit was unheard of, and it does not scale
 correctly.
@@ -478,6 +486,7 @@ You should now be able to see the advertised network on the other host.
 ### Duplicate configuration
 
 At this point, you now need to create the X link between all four routers.
+
 Use amdifferent /30 for each link.
 
 ### Priorities

@@ -9,6 +9,7 @@ lastproofread: '2026-03-23'
 Using Terraform, you can quickly deploy VyOS-based infrastructure on
 Google Cloud Platform (GCP) and remove the
 infrastructure when it's no longer needed.
+
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -30,7 +31,9 @@ Terraform, Ansible, and GCP, follow these steps:
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 2. Create a service account and download your key (a JSON file).
+
 ```{image} /_static/images/service.png
 :align: center
 :alt: Network Topology Diagram
@@ -42,21 +45,26 @@ Terraform, Ansible, and GCP, follow these steps:
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 The .JSON file downloads automatically after you create it and looks
 like the following:
+
 ```{image} /_static/images/json.png
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 ### Terraform
 1. Create an UNIX or Windows instance.
 2. Download and install
    [Terraform](https://developer.hashicorp.com/terraform/install).
 3. Create the folder. For example, `/root/google`.
+
 ```none
 mkdir /root/google
 ```
+
 % stop_vyoslinter
 4. Copy all files into your Terraform project `/root/google`
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
@@ -64,10 +72,12 @@ mkdir /root/google
    see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
 % start_vyoslinter
 5. Run the following commands:
+
 ```none
 cd /<your folder> 
 terraform init
 ```
+
 ### Ansible
 1. Create an UNIX instance either locally or in the cloud.
 2. Download and install Ansible
@@ -77,15 +87,19 @@ terraform init
    details, see [Structure of files in Ansible for Google Cloud]
 You obtain `mykey.json` when you create a service account in GCP
 and download the key (a JSON file).
+
 ### Deploy with Terraform
 Run the following commands on your Terraform instance:
+
 ```none
 cd /<your folder>
 terraform plan  
 terraform apply  
 yes
 ```
+
 ## Create a GCP instance and check its configuration
+
 ```none
 # terraform apply
 
@@ -313,18 +327,23 @@ Outputs:
 
 public_ip_address = "104.***.***.158"
 ```
+
 After running all the commands, your VyOS instance is deployed on
 GCP with your specified configuration.
+
 To delete the instance, type the following command:
+
 ```none
 terraform destroy
 ```
+
 ## Troubleshooting
 1. Increase the timeout value in `instance.yml` from 300 seconds to
    500 seconds or more (depends on your location). Ensure that the
    security group allows access to the instance.
 2. If Terraform doesn't connect via SSH to your Ansible instance:
    Check the correct login and password in the `VyOS.tf` file.
+
 ```none
 connection {
  type     = "ssh"
@@ -333,8 +352,11 @@ connection {
      host = var.host            # check the correct IP address of your Ansible host
 }
 ```
+
 Verify that Ansible can ping from Terraform.
+
 ## Structure of files in Terraform for Google Cloud
+
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -342,8 +364,10 @@ Verify that Ansible can ping from Terraform.
 ├── var.tf                                     # The file of all variables in "vyos.tf"
 └── terraform.tfvars           # The value of all variables (passwords, login, IP addresses and so on)
 ```
+
 ## File contents of Terraform for Google Cloud
 `vyos.tf`
+
 ```none
 ##############################################################################
 # Build a VyOS VM from the Marketplace
@@ -500,7 +524,9 @@ provisioner "remote-exec" {
 }
 }
 ```
+
 `var.tf`
+
 ```none
 variable "image" {
   type    = string
@@ -582,7 +608,9 @@ variable "host"{
   type = string
 }
 ```
+
 `terraform.tfvars`
+
 ```none
 ##############################################################################
 # Must be filled in
@@ -594,7 +622,9 @@ project_id    = ""                     # the google project
 password      = ""                     # password for Ansible SSH
 host          = ""                     # IP of my Ansible
 ```
+
 ## Structure of files in Ansible for Google Cloud
+
 ```none
 .
 ├── group_vars
@@ -602,15 +632,19 @@ host          = ""                     # IP of my Ansible
 ├── ansible.cfg
 └── instance.yml
 ```
+
 ## File contents of Ansible for Google Cloud
 `ansible.cfg`
+
 ```none
 [defaults]
 inventory = /root/google/ip.txt
 host_key_checking= False
 remote_user=vyos
 ```
+
 `instance.yml`
+
 ```none
 ##############################################################################
 # About tasks:
@@ -638,7 +672,9 @@ remote_user=vyos
         save:
           true
 ```
+
 `group_vars/all`
+
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

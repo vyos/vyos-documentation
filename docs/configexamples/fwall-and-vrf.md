@@ -11,6 +11,7 @@ Diagram used in this example:
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
 `WAN`, `LAN` and `PROD`, and their requirements are:
 - VRF MGMT:
@@ -24,8 +25,10 @@ As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
   : - Only accepts connections.
 - VRF WAN:
   : - Allow connection to PROD.
+
 ## Configuration
 First, we need to configure the interfaces and VRFs:
+
 ```none
 set interfaces ethernet eth1 address '10.100.100.1/24'
 set interfaces ethernet eth1 vrf 'MGMT'
@@ -59,6 +62,7 @@ set vrf name WAN protocols static route 10.160.160.0/24 interface eth2.160 vrf '
 set vrf name WAN protocols static route 172.16.20.0/24 interface eth2.3500 vrf 'PROD'
 set vrf name WAN table '101'
 ```
+
 And before firewall rules are shown, we need to pay attention how to configure
 and match interfaces and VRFs. In case where an interface is assigned to a
 non-default VRF, if we want to use inbound-interface or outbound-interface in
@@ -69,6 +73,7 @@ firewall rules, we need to:
   `eth2*` or similar.
 Next, we need to configure the firewall rules. First we will define all rules
 for transit traffic between VRFs.
+
 ```none
 set firewall ipv4 forward filter default-action 'drop'
 set firewall ipv4 forward filter default-log
@@ -88,15 +93,19 @@ set firewall ipv4 forward filter rule 130 description 'LAN - Allow internet'
 set firewall ipv4 forward filter rule 130 inbound-interface name 'LAN'
 set firewall ipv4 forward filter rule 130 outbound-interface name 'pppoe0'
 ```
+
 Also, we are adding global state policies, in order to allow established and
 related traffic, in order not to drop valid responses:
+
 ```none
 set firewall global-options state-policy established action 'accept'
 set firewall global-options state-policy invalid action 'drop'
 set firewall global-options state-policy related action 'accept'
 ```
+
 And finally, we need to allow input connections to the router itself only from
 vrf MGMT:
+
 ```none
 set firewall ipv4 input filter default-action 'drop'
 set firewall ipv4 input filter default-log

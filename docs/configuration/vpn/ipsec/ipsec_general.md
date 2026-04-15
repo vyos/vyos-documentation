@@ -5,8 +5,10 @@
 ## Information about IPsec
 
 IPsec is the framework used to secure data.
+
 IPsec accomplishes these goals by providing authentication,
 encryption of IP network packets, key exchange, and key management.
+
 VyOS uses Strongswan package to implement IPsec.
 
 **Authentication Header (AH)** is defined in {rfc}`4302`. It creates
@@ -15,6 +17,7 @@ packet. This hash is used to validate that the data has not been
 changed during transfer over the network.
 
 **Encapsulating Security Payload (ESP)** is defined in {rfc}`4303`.
+
 It provides encryption and authentication of the data.
 
 There are two IPsec modes:
@@ -89,11 +92,14 @@ VyOS supports 3 authentication methods.
 ## DPD (Dead Peer Detection)
 
 This is a mechanism used to detect when a VPN peer is no longer active.
+
 This mechanism has different algorithms in IKEv1 and IKEv2 in VyOS.
+
 DPD Requests are sent as ISAKMP R-U-THERE messages and DPD Responses
 are sent as ISAKMP R-U-THERE-ACK messages. In IKEv1, DPD sends messages
 every configured interval. The remote peer is considered unreachable
 if no response to these packets is received within the DPD timeout.
+
 In IKEv2, DPD sends messages every configured interval. If one request
 is not responded, Strongswan execute its retransmission algorithm with
 its timers. [IKEv2 Retransmission]
@@ -106,32 +112,45 @@ available. The use of PPKs in IKEv2 is described in {rfc}`8784`.
 
 ```{cfgcmd} edit vpn authentication ppk \<name\>
 ```
+
 PPKs can be configued within VyOS under the `vpn ipsec authentication ppk`
 config.
+
 ```{cfgcmd} set vpn authentication ppk \<name\> secret-type \<plaintext|hex|base64\>
 ```
+
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPsec connection. The secret can be plain text, a
 hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
+
 ```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk id \<id\>
 ```
+
 To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
+
 ```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk required
 ```
+
 Optionally, you can require the use of PPK to have a successful connection.
+
 ```{opcmd} show vpn ipsec connections
 ```
+
 You can view the PPK column for information on if PPK is configured, and
 if it is in use. The output is in the format of `<configured> / <in use>`.
+
 The options for configured are none if not conifugred, opt if configured
 but optional, and req is configured and required. The in use will show yes
 Possible values of the `configured` field are `none` if not conifgured, `opt` if configured
 but optional, and `req` is configured and required. The in use will show yes
+
 ## Configuration IKE
+
 ### IKE (Internet Key Exchange) Attributes
 VyOS IKE group has the next options:
+
 ```{cfgcmd} set vpn ipsec ike-group \<name\> close-action \<action\>
 
  Defines the action to take if the remote peer unexpectedly
@@ -195,7 +214,9 @@ Hash algorithm. Default value is **sha1**.
 
 Pseudo-random function.
 ```
+
 ### DPD (Dead Peer Detection) Configuration
+
 ```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection action \<action\>
 
   Action to perform for this CHILD_SA on DPD timeout.
@@ -222,14 +243,17 @@ Keep-alive interval in seconds <2-86400> (default 30).
 
 Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 ```
+
 ### ESP (Encapsulating Security Payload) Attributes
 
 
 In VyOS, ESP attributes are specified through ESP groups.
+
 Multiple proposals can be specified in a single group.
 
 
 VyOS ESP group has the next options:
+
 ```{cfgcmd} set vpn ipsec esp-group \<name\> compression
 
 Enables the  IPComp(IP Payload Compression) protocol which allows
@@ -300,21 +324,26 @@ Encryption algorithm. Default value is **aes128**.
 
 Hash algorithm. Default value is **sha1**.
 ```
+
 ### Global IPsec Settings
+
 ```{cfgcmd} set vpn ipsec interface \<name\>
 
 Interface name to restrict outbound IPsec policies. There is a possibility
 to specify multiple interfaces. If an interfaces are not specified, IPsec
 policies apply to all interfaces.
 ```
+
 ```{cfgcmd} set vpn ipsec log level \<number\>
 
 Level of logging. Default value is **0**.
 ```
+
 ```{cfgcmd} set vpn ipsec log subsystem \<name\>
 
 Subsystem of the daemon.
 ```
+
 ### Options
 
 ```{cfgcmd} set vpn ipsec options disable-route-autoinstall
@@ -322,6 +351,7 @@ Subsystem of the daemon.
 Do not automatically install routes to remote
 networks.
 ```
+
 ```{cfgcmd} set vpn ipsec options flexvpn
 
 Allows FlexVPN vendor ID payload (IKEv2 only). Send the Cisco
@@ -334,19 +364,24 @@ selector and allows it to e.g. negotiate a TS of 0.0.0.0/0 == 0.0.0.0/0
 instead. This has been tested with a "tunnel mode ipsec ipv4" Cisco
 template but should also work for GRE encapsulation.
 ```
+
 ```{cfgcmd} set vpn ipsec options interface \<name\>
 
 Interface Name to use. The name of the interface on which
 virtual IP addresses should be installed. If not specified the addresses
 will be installed on the outbound interface.
 ```
+
 ```{cfgcmd} set vpn ipsec options virtual-ip
 
 Allows the installation of virtual-ip addresses.
 ```
+
 ### IKEv2 Retransmission
 If the peer does not respond on DPD packet, the router starts retransmission procedure.
+
 The following formula is used to calculate the timeout:
+
 ```none
 relative timeout = timeout * base ^ (attempts-1)
 ```
@@ -356,14 +391,17 @@ relative timeout = timeout * base ^ (attempts-1)
 Number of attempts before the peer is considered to be in the down state.
 Default value is **5**.
 ```
+
 ```{cfgcmd} set vpn ipsec options retransmission base
 
 Base number of exponential backoff. Default value is **1.8**.
 ```
+
 ```{cfgcmd} set vpn ipsec options retransmission timeout
 
 Timeout in seconds before the first retransmission. Default value is **4**.
 ```
+
 Using the default values, packets are retransmitted as follows:
 
 | Attempts  | Formula     | Relative timeout | Absolute timeout |

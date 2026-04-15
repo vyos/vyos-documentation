@@ -9,6 +9,7 @@ lastproofread: '2026-03-23'
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on VMware vSphere (hereafter referred to as *vSphere*) and remove
 infrastructure when it's no longer needed.
+
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -76,9 +77,12 @@ yes
 
 After executing these commands, your VyOS instance is deployed to
 vSphere with your configuration.
+
 If you need to delete the instance, run the following command:
+
 ```none
 ```
+
 > terraform destroy
 
 ## Structure of files in Terraform for vSphere

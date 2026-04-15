@@ -40,7 +40,9 @@ VyOS includes a built-in SSTP server. For more information, see
 :var0: sstpc
 :var1: sstpc0
 ```
+
 ### SSTP client options
+
 ```{cfgcmd} set interfaces sstpc \<interface\> no-default-route
 
 Request an IP address from the SSTP server without installing a default route.
@@ -116,7 +118,9 @@ packets are accepted.
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```
+
 ## Operation
+
 ```{opcmd} show interfaces sstpc \<interface\>
 
 Show detailed information about the specified interface.
@@ -132,12 +136,14 @@ RX:  bytes  packets  errors  dropped  overrun       mcast
 215        9       0        0        0           0
 TX:  bytes  packets  errors  dropped  carrier  collisions
 ```
+
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
 
 Disconnect the specified interface.
 ```
+
 ```{opcmd} connect interface \<interface\>
 
 Initiate a session on the specified interface.

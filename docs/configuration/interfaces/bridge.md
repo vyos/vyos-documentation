@@ -30,7 +30,9 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 :var0: bridge
 :var1: br0
 ```
+
 ### Member interfaces
+
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
 **Configure an interface as a bridge member.**
@@ -55,6 +57,7 @@ paths remain in standby.
 A **lower** priority value means **higher** precedence in path selection.
 :abbr:`STP (Spanning Tree Protocol)` considers the port priority only if
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    cost <cost>
@@ -66,9 +69,11 @@ bandwidth; faster interfaces receive lower costs.
 By assigning a lower cost, you give the interface higher precedence during
 path selection.
 ```
+
 ### Bridge options
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
+
 ```{cfgcmd} set interfaces bridge \<interface\> aging \<time\>
 
 **Configure the MAC address aging time for the bridge.**
@@ -77,6 +82,7 @@ The duration in seconds that a MAC address remains in the bridge’s :abbr:`FDB
 address.
 The default value is 300 seconds.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> max-age \<time\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **max age timer for
@@ -87,6 +93,7 @@ If the bridge does not receive a :abbr:`BPDU (Bridge Protocol Data Unit)`
 within this period, it recalculates the path to the root bridge or initiates
 a new root bridge election.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> igmp querier
 
 **Configure the bridge interface to act as the** :abbr:`IGMP (Internet Group
@@ -96,6 +103,7 @@ Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
 (IPv6) general queries to all connected hosts to identify active multicast
 listeners.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> igmp snooping
 
 **Configure the bridge interface to perform** :abbr:`IGMP (Internet Group
@@ -106,19 +114,25 @@ Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
 (IPv6) join requests and restricts multicast traffic forwarding to only active
 listeners. This prevents network flooding.
 ```
+
 (stp)=
+
 #### STP configuration
 {abbr}`STP (Spanning Tree Protocol)` is a Layer 2 protocol that prevents loops
 in Ethernet networks by ensuring only one logical path exists between any two
 bridges. This creates a loop-free topology and prevents broadcast storms that
 can crash the network.
+
 By default, {abbr}`STP (Spanning Tree Protocol)` is disabled on bridge interfaces.
+
 To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
+
 ```{cfgcmd} set interfaces bridge \<interface\> stp
 
 Enable :abbr:`STP (Spanning Tree Protocol)` on the bridge interface.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> forwarding-delay \<delay\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **delay, in seconds,
@@ -130,6 +144,7 @@ the MAC addresses of connected devices (in the learning state).
 The default value is 15 seconds. The total time before forwarding begins is
 twice this value.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> hello-time \<interval\>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **Hello advertisement
@@ -141,8 +156,11 @@ neighbors stop receiving Hello packets, they assume a connection failure and
 trigger a topology recalculation.
 The default value is 2 seconds.
 ```
+
 ### VLAN
+
 #### VLAN-aware bridges
+
 ```{cfgcmd} set interfaces bridge \<interface\> enable-vlan
 
 **Enable VLAN filtering (also known as VLAN awareness) on the bridge interface.**
@@ -154,6 +172,7 @@ Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
    interface acts as VLAN 1 (the default native VLAN) and automatically
    handles all untagged traffic.
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> protocol \<802.1ad | 802.1q\>
 
 **Configure the VLAN protocol (EtherType) for the bridge interface.**
@@ -162,11 +181,13 @@ The following options are available:
   enterprise VLANs.
 * ``802.1ad``: Sets the EtherType to ``0x88a8``. Used for QinQ (provider bridging).
 ```
+
 #### VLAN configuration
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: bridge
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    native-vlan <vlan-id>
@@ -180,6 +201,7 @@ Set the native VLAN ID to 2 for the member interface ``eth0``:
 .. code-block:: none
   set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
+
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
    allowed-vlan <vlan-id>
@@ -195,21 +217,26 @@ To allow VLAN IDs 6 through 8 on member interface ``eth0``:
 .. code-block:: none
   set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 ```
+
 ### SPAN port mirroring
 
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: bridge
 :var1: br1
 ```
+
 ## Examples
+
 ### Configure a standard bridge
 The following example creates a bridge named br100 with {abbr}`STP (Spanning
 Tree Protocol)` enabled.
+
 Configuration requirements:
 - **Bridge name:** `br100`
 - **Member interfaces:** Physical interface `eth1` and VLAN interface `eth2.10`.
 - **STP:** Enabled.
 - **Bridge IP addresses:** `192.0.2.1/24` (IPv4) and `2001:db8::ffff/64` (IPv6).
+
 ```none
 set interfaces bridge br100 address 192.0.2.1/24
 set interfaces bridge br100 address 2001:db8::ffff/64
@@ -217,7 +244,9 @@ set interfaces bridge br100 member interface eth1
 set interfaces bridge br100 member interface eth2.10
 set interfaces bridge br100 stp
 ```
+
 Verify the configuration:
+
 ```none
 vyos@vyos# show interfaces bridge br100
  address 192.0.2.1/24
@@ -230,6 +259,7 @@ vyos@vyos# show interfaces bridge br100
  }
  stp
 ```
+
 ### Configure a VLAN-aware bridge
 The following example creates a VLAN-aware bridge named br100. In this setup,
 one member interface is configured as a trunk port, and the other as an access
@@ -242,6 +272,7 @@ port. The VLAN interface is configured with IP addresses.
 - **STP:** Enabled.
 - **VLAN IP addresses** (`vif 10`): `192.0.2.1/24` (IPv4) and
   `2001:db8::ffff/64` (IPv6).
+
 ```none
 set interfaces bridge br100 enable-vlan
 set interfaces bridge br100 member interface eth1 allowed-vlan 10
@@ -250,7 +281,9 @@ set interfaces bridge br100 vif 10 address 192.0.2.1/24
 set interfaces bridge br100 vif 10 address 2001:db8::ffff/64
 set interfaces bridge br100 stp
 ```
+
 Verify the configuration:
+
 ```none
 vyos@vyos# show interfaces bridge br100
  enable-vlan
@@ -268,7 +301,9 @@ vyos@vyos# show interfaces bridge br100
      address 2001:db8::ffff/64
  }
 ```
+
 ### Operation
+
 ```{opcmd} show bridge
 
 Show the status of member interfaces for all configured bridges.
@@ -279,6 +314,7 @@ Show the status of member interfaces for all configured bridges.
   4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
   priority 32 cost 100
 ```
+
 ```{opcmd} show bridge \<name\> fdb
 
 Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
@@ -304,6 +340,7 @@ Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
   01:00:5e:00:00:01 dev br0 self permanent
   33:33:ff:00:00:00 dev br0 self permanent
 ```
+
 ```{opcmd} show bridge \<name\> mdb
 
 Show the :abbr:`MDB (Multicast group Database)` for the specified bridge.
@@ -318,6 +355,7 @@ bridge.
   dev br0 port br0 grp ff02::1:ff08:1 temp vid 1
   dev br0 port br0 grp ff02::6a temp vid 1
 ```
+
 ```{opcmd} show bridge \<name\> macs
 
 Show the learned :abbr:`MAC (Media Access Control)` address table for the

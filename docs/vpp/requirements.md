@@ -6,6 +6,7 @@ lastproofread: '2026-02-16'
 
 ```{include} /_include/need_improvement.txt
 ```
+
 # VPP Dataplane Requirements
 VPP Dataplane requires specific hardware. Ensure your system meets these
 prerequisites before enabling VPP:
@@ -97,6 +98,7 @@ prerequisites before enabling VPP:
   If no supported NIC is detected, VPP activation will be rejected.
   In testing or advanced deployments, unsupported hardware can be explicitly
   allowed in the configuration:
+
 ```{cfgcmd} set vpp settings allow-unsupported-nics
   ```
   :::{note}

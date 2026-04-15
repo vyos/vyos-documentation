@@ -7,6 +7,7 @@ lastproofread: '2023-01-16'
 # Napalm
 
 VyOS supports some [napalm] functions for configuration and op-mode.
+
 It requires more tests.
 
 Install `napalm-vyos` module

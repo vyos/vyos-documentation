@@ -8,16 +8,20 @@ lastproofread: '2025-11-20'
 
 A Redundant Array of Independent Disks (RAID) uses two or more hard disk drives
 to improve disk speed, store more data, and/or provide fault tolerance.
+
 There are several storage schemes possible in a RAID array, each offering a
 different combination of storage, reliability, and performance.
+
 VyOS supports **RAID 1** deployments. RAID 1 uses two or more
 disks that mirror one another to provide system fault tolerance. In a RAID 1
 configuration, every sector on one disk is duplicated on every sector of all
 disks in the array. Provided even one disk in the RAID 1 set is operational,
 the system continues to run, even through disk replacement (provided that the
 hardware supports in-service replacement of drives).
+
 RAID 1 can be implemented using special hardware or it can be implemented in
 software. VyOS supports software RAID 1 on two disks.
+
 The VyOS implementation of RAID 1 features the following:
 
 - Detection and reporting of disk failure.
@@ -78,6 +82,7 @@ Continue creating array?
 2. To overwrite the old filesystem, enter **Yes**.
 
 3\. The system informs you that all data on both drives will be erased.
+
 Confirm you want to continue.
 
 ```none
@@ -85,6 +90,7 @@ Are you sure you want to do this?
 ```
 
 4\. Enter **Yes** at the prompt to retain the current VyOS configuration.
+
 Enter **No** to delete the current VyOS configuration.
 
 ```none
@@ -92,6 +98,7 @@ Would you like me to save the data on it before I delete it?
 ```
 
 5\. Enter **Yes** at the prompt to retain the current VyOS configuration.
+
 Enter **No** to delete the current VyOS configuration.
 
 6. Continue installing VyOS.
@@ -155,19 +162,23 @@ To replace a bad disk within a RAID 1 set:
    hot-swappable, then you must shut down the system before removing the disk.
 3. Replace the failed drive with a drive of the same size or larger.
 4. Format the new disk for RAID 1 by running the following command:
+
 ```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
    ```
    where `disk-device1` is the replacement disk. For example, `sdb` and
    `disk-device2` is the existing healthy disk. For example, `sda`.
 5. Add the replacement disk to the RAID 1 set by running the following command:
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
+
    ```
    where `RAID-1-device` is the name of the RAID 1 device. For example,
    `md0` and `disk-partition` is the name of the replacement disk partition.
    For example, `sdb2`.
+
 ## Operation
 Learn how to add a disk partition to a RAID 1 set, initiate
 mirror synchronization, and check and display information.
+
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a

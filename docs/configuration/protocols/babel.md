@@ -4,17 +4,21 @@
 
 Babel is a modern routing protocol designed to be robust and efficient
 both in ordinary wired networks and in wireless mesh networks.
+
 By default, it uses hop-count on wired networks and a variant of ETX
 on wireless links, It can be configured to take radio diversity into account
 and to automatically compute a link's latency and include it in the metric.
+
 It is defined in {rfc}`8966`.
 
 Babel a dual stack protocol.
+
 A single Babel instance is able to perform routing for both IPv4 and IPv6.
 
 ## General Configuration
 
 VyOS does not have a special command to start the Babel process.
+
 The Babel process starts when the first Babel enabled interface is configured.
 
 ```{cfgcmd} set protocols babel interface \<interface\>
@@ -24,7 +28,9 @@ The Babel process starts when the first Babel enabled interface is configured.
   specified in this command.
 
 ```
+
 ## Optional Configuration
+
 ```{cfgcmd} set protocols babel parameters diversity
 
 This command enables routing using radio frequency diversity.
@@ -68,7 +74,9 @@ Larger values reduce route oscillation at the cost of very slightly increasing
 convergence time. The value 0 disables hysteresis, and is suitable for wired
 networks. The default is 4 s.
 ```
+
 ## Interfaces Configuration
+
 ```{cfgcmd} set protocols babel interface \<interface\> type \<auto|wired|wireless\>
 
 This command sets the interface type:
@@ -147,6 +155,7 @@ The additional cost is linear in (rtt - rtt-min). The default is 10 ms.
 This command specifies the maximum RTT, in milliseconds, above which
 we don't increase the cost to a neighbour. The default is 120 ms.
 ```
+
 ```{cfgcmd} set protocols babel interface \<interface\> max-rtt-penalty \<milliseconds\>
 
 This command specifies the maximum cost added to a neighbour because of RTT,
@@ -154,12 +163,14 @@ i.e. when the RTT is higher or equal than rtt-max.
 The default is 150.
 Setting it to 0 effectively disables the use of a RTT-based cost.
 ```
+
 ```{cfgcmd} set protocols babel interface \<interface\> enable-timestamps
 
 This command enables sending timestamps with each Hello and IHU message
 in order to compute RTT values.
 It is recommended to enable timestamps on tunnel interfaces.
 ```
+
 ```{cfgcmd} set protocols babel interface \<interface\> channel \<1-254|interfering|noninterfering\>
 
 This command set the channel number that diversity routing uses for this
@@ -171,6 +182,7 @@ noninterfering channels.
 **noninterfering** – noninterfering interfaces are assumed to only interfere
 with themselves.
 ```
+
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols babel redistribute \<ipv4|ipv6\> \<route source\>
@@ -180,31 +192,37 @@ to the Babel process.
 IPv4 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospf, rip, static.
 IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, static.
 ```
+
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> access-list \<in|out\> \<number\>
 
 This command can be used to filter the Babel routes using access lists.
 :cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the access
 lists are applied.
 ```
+
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> interface \<interface\> access-list \<in|out\> \<number\>
 
 This command allows you apply access lists to a chosen interface to
 filter the Babel routes.
 ```
+
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> prefix-list \<in|out\> \<name\>
 
 This command can be used to filter the Babel routes using prefix lists.
 :cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the prefix
 lists are applied.
 ```
+
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> interface \<interface\> prefix-list \<in|out\> \<name\>
 
 This command allows you apply prefix lists to a chosen interface to
 filter the Babel routes.
 ```
+
 ## Configuration Example
 Simple Babel configuration using 2 nodes and redistributing connected interfaces.
 **Node 1:**
+
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces loopback lo address fd12:3456:dead:beef::1/128
@@ -212,7 +230,9 @@ set protocols babel interface eth0 type wired
 set protocols babel redistribute ipv4 connected
 set protocols babel redistribute ipv6 connected
 ```
+
 **Node 2:**
+
 ```none
 set interfaces loopback lo address 10.2.2.2/32
 set interfaces loopback lo address fd12:3456:beef:dead::2/128

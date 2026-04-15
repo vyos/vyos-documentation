@@ -75,7 +75,9 @@ Geneve header:
 :var0: geneve
 :var1: gnv0
 ```
+
 ### Geneve options
+
 ```{cfgcmd} set interfaces geneve gnv0 remote \<address\>
 
 Configure the remote endpoint IP address for the Geneve tunnel.

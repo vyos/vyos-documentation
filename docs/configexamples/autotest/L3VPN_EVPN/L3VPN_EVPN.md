@@ -23,6 +23,7 @@ VRF (Virtual Routing and Forwarding) documentation scenarios.
 A brief excursion into VRFs: This has been one of the longest-standing feature
 requests of VyOS (dating back to 2016) which can be described as
 "a VLAN for layer 2 is what a VRF is for layer 3".
+
 With VRFs, a router/system can hold multiple, isolated routing tables on the
 same system. If you wonder what's the difference between multiple tables that
 people used for policy-based routing since forever, it's that a VRF also
@@ -41,13 +42,17 @@ SSH access to the PE (Provider Edge) routers.
 :language: none
 :lines: 1-6
 ```
+
 ## Topology
 We use the following network topology in this example:
+
 ```{image} _include/topology.png
 :alt: L3VPN EVPN with VyOS topology image
 ```
+
 ## Core network
 I chose to run OSPF as the IGP (Interior Gateway Protocol).
+
 All required BGP sessions are established via a dummy interfaces
 (similar to the loopback, but in Linux you can have only one loopback,
 while there can be many dummy interfaces) on the PE routers. In case of a link
@@ -55,35 +60,47 @@ failure, traffic is diverted in the other direction in this triangle setup and
 BGP sessions will not go down. One could even enable
 BFD (Bidirectional Forwarding Detection) on the links for a faster
 failover and resilience in the network.
+
 Regular VyOS users will notice that the BGP syntax has changed in VyOS 1.4 from
 even the prior post about this subject. This is due to T1711, where it was
 finally decided to get rid of the redundant BGP ASN (Autonomous System Number)
 specification on the CLI and move it to a single leaf node
 (set protocols bgp local-as).
+
 It's important to note that all your existing configurations will be migrated
 automatically on image upgrade. Nothing to do on your side.
+
 PE1
+
 ```{literalinclude} _include/PE1.conf
 :language: none
 :lines: 8-38
 ```
+
 PE2
+
 ```{literalinclude} _include/PE2.conf
 :language: none
 :lines: 8-38
 ```
+
 PE3
+
 ```{literalinclude} _include/PE3.conf
 :language: none
 :lines: 8-38
 ```
+
 ## Tenant networks (VRFs)
 Once all routers can be safely remotely managed and the core network is
 operational, we can now setup the tenant networks.
+
 Every tenant is assigned an individual VRF that would support overlapping
 address ranges for customers blue, red and green. In our example,
 we do not use overlapping ranges to make it easier when showing debug commands.
+
 Thus you can easily match it to one of the devices/networks below.
+
 Every router that provides access to a customer network needs to have the
 customer network (VRF + VNI) configured. To make our own lives easier,
 we utilize the same VRF table id (local routing table number) and
@@ -92,24 +109,32 @@ VNI (Virtual Network Identifier) per tenant on all our routers.
 - red uses local routing table id and VNI 3000
 - green uses local routing table id and VNI 4000
 PE1
+
 ```{literalinclude} _include/PE1.conf
 :language: none
 :lines: 40-96
 ```
+
 PE2
+
 ```{literalinclude} _include/PE2.conf
 :language: none
 :lines: 40-89
 ```
+
 PE3
+
 ```{literalinclude} _include/PE3.conf
 :language: none
 :lines: 40-89
 ```
+
 ## Testing and debugging
 You managed to come this far, now we want to see the network and routing
 tables in action.
+
 Show routes for all VRFs
+
 ```none
 vyos@PE1:~$ show ip route vrf all
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -147,7 +172,9 @@ VRF red:
 C>* 10.2.1.0/24 is directly connected, br3000, 00:01:13
 B>* 10.2.2.0/24 [200/0] via 172.29.255.2, br3000 onlink, weight 1, 00:00:49
 ```
+
 Information about Ethernet Virtual Private Networks
+
 ```none
 vyos@PE1:~$ show bgp l2vpn evpn
 BGP table version is 1, local router ID is 172.29.255.1
@@ -191,8 +218,10 @@ Route Distinguisher: 10.3.3.1:6
 
 Displayed 7 out of 7 total prefixes
 ```
+
 If we need to retrieve information about a specific host/network inside
 the EVPN network we need to run
+
 ```none
 vyos@PE2:~$ show bgp l2vpn evpn 10.3.1.10
 BGP routing table entry for 10.3.1.1:7:[5]:[0]:[24]:[10.3.1.0]

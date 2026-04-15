@@ -152,6 +152,7 @@ rule.
   set nat source rule 20 outbound-interface name !vtun2
   set nat source rule 20 outbound-interface group GROUP1
   set nat source rule 20 outbound-interface group !GROUP2
+
 ```
 
 - **inbound-interface** - applicable only to {ref}`destination-nat`. It
@@ -198,6 +199,7 @@ rule.
   set nat source rule 20 source address 192.0.2.0/24
   set nat source rule 30 source address 203.0.113.0/24
   set nat source rule 30 source port 80,443
+
 ```
 
 - **destination** - specify which packets the translation will be
@@ -255,9 +257,11 @@ Example:
   100.64.0.20 on SNAT rule 40 when doing the translation
 
 ```none
+
 set nat source rule 20 translation address 100.64.0.1
 set nat source rule 30 translation address 'masquerade'
 set nat source rule 40 translation address 100.64.0.10-100.64.0.20
+
 ```
 
 #### Destination Address
@@ -271,7 +275,9 @@ Example:
   with 192.0.2.10
 
 ```none
+
 set nat destination rule 10 translation address 192.0.2.10
+
 ```
 
 Also, in {ref}`destination-nat`, redirection to localhost is supported.
@@ -281,7 +287,9 @@ the destination address to the local host’s one.
 Example of redirection:
 
 ```none
+
 set nat destination rule 10 translation redirect port 22
+
 ```
 
 ### NAT Load Balance
@@ -306,11 +314,13 @@ percentage of the connections that will receive such backend.
 
    [source-address | destination-address | source-port | destination-port
    | random]
+
 ```
 
 ```{cfgcmd} set nat [source | destination] rule \<rule\> load-balance backend
 
 <x.x.x.x> weight <1-100>
+
 ```
 ## Configuration Examples
 To setup SNAT, we need to know:
@@ -320,12 +330,15 @@ To setup SNAT, we need to know:
 In the example used for the Quick Start configuration above, we
 demonstrate the following configuration:
 ```none
+
 set nat source rule 100 outbound-interface name 'eth0'
 set nat source rule 100 source address '192.168.0.0/24'
 set nat source rule 100 translation address 'masquerade'
+
 ```
 Which generates the following configuration:
 ```none
+
 rule 100 {
     outbound-interface {
         name eth0
@@ -337,6 +350,7 @@ rule 100 {
         address masquerade
     }
 }
+
 ```
 In this example, we use **masquerade** as the translation address
 instead of an IP address. The **masquerade** target is effectively an
@@ -354,7 +368,9 @@ is recommended.
 A pool of addresses can be defined by using a hyphen between two IP
 addresses:
 ```none
+
 set nat source rule 100 translation address '203.0.113.32-203.0.113.63'
+
 ```
 (avoidng-leaky-nat)=
 ### Avoiding "leaky" NAT
@@ -398,6 +414,7 @@ Example:
   the reverse path of the traffic. The internal network 192.0.2.0/24 is
   reachable via interface `eth0.10`.
 ```none
+
 set nat destination rule 100 description 'Regular destination NAT from external'
 set nat destination rule 100 destination port '3389'
 set nat destination rule 100 inbound-interface name 'pppoe0'
@@ -416,9 +433,11 @@ set nat source rule 110 outbound-interface name 'eth0.10'
 set nat source rule 110 protocol 'tcp'
 set nat source rule 110 source address '192.0.2.0/24'
 set nat source rule 110 translation address 'masquerade'
+
 ```
 Which results in a configuration of:
 ```none
+
 vyos@vyos# show nat
  destination {
      rule 100 {
@@ -466,6 +485,7 @@ vyos@vyos# show nat
          }
      }
  }
+
 ```
 ### Destination NAT
 DNAT is typically referred to as a **Port Forward**. When using VyOS as
@@ -483,14 +503,17 @@ on port 80. For other common port numbers, see:
 <https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers>
 Our configuration commands would be:
 ```none
+
 set nat destination rule 10 description 'Port Forward: HTTP to 192.168.0.100'
 set nat destination rule 10 destination port '80'
 set nat destination rule 10 inbound-interface name 'eth0'
 set nat destination rule 10 protocol 'tcp'
 set nat destination rule 10 translation address '192.168.0.100'
+
 ```
 Which would generate the following NAT destination configuration:
 ```none
+
 nat {
     destination {
         rule 10 {
@@ -508,6 +531,7 @@ nat {
         }
     }
 }
+
 ```
 :::{note}
 If forwarding traffic to a different port than it is arriving
@@ -526,12 +550,15 @@ a destination nat rule. In order to avoid creating many rules, one for each
 destination nat rule, we can accept all **'dnat'** connections with one simple
 rule, using `connection-status` matcher:
 ```none
+
 set firewall ipv4 forward filter rule 10 action accept
 set firewall ipv4 forward filter rule 10 connection-status nat destination
 set firewall ipv4 forward filter rule 10 state new
+
 ```
 This would generate the following configuration:
 ```none
+
 ipv4 {
     forward {
         filter {
@@ -545,6 +572,7 @@ ipv4 {
         }
     }
 }
+
 ```
 ### 1-to-1 NAT
 Another term often used for DNAT is **1-to-1 NAT**. For a 1-to-1 NAT
@@ -559,6 +587,7 @@ don't have the notion of ports, such as GRE.
 Here's an extract of a simple 1-to-1 NAT configuration with one internal
 and one external interface:
 ```none
+
 set interfaces ethernet eth0 address '192.168.1.1/24'
 set interfaces ethernet eth0 description 'Inside interface'
 set interfaces ethernet eth1 address '192.0.2.30/24'
@@ -571,6 +600,7 @@ set nat source rule 2000 description '1-to-1 NAT example'
 set nat source rule 2000 outbound-interface name 'eth1'
 set nat source rule 2000 source address '192.168.1.10'
 set nat source rule 2000 translation address '192.0.2.30'
+
 ```
 Firewall rules are written as normal, using the internal IP address as
 the source of outbound rules and the destination of inbound rules.
@@ -586,6 +616,7 @@ interface eth0, and user 4 backends. First backend should received 30% of
 the request, second backend should get 20%, third 15% and the fourth 35%
 We will use source and destination address for hash generation.
 ```none
+
 set nat destination rule 10 inbound-interface name eth0
 set nat destination rule 10 protocol tcp
 set nat destination rule 10 destination port 80
@@ -595,17 +626,20 @@ set nat destination rule 10 load-balance backend 198.51.100.101 weight 30
 set nat destination rule 10 load-balance backend 198.51.100.102 weight 20
 set nat destination rule 10 load-balance backend 198.51.100.103 weight 15
 set nat destination rule 10 load-balance backend 198.51.100.104 weight 35
+
 ```
 Second scenario: apply source NAT for all outgoing connections from
 LAN 10.0.0.0/8, using 3 public addresses and equal distribution.
 We will generate the hash randomly.
 ```none
+
 set nat source rule 10 outbound-interface name eth0
 set nat source rule 10 source address 10.0.0.0/8
 set nat source rule 10 load-balance hash random
 set nat source rule 10 load-balance backend 192.0.2.251 weight 33
 set nat source rule 10 load-balance backend 192.0.2.252 weight 33
 set nat source rule 10 load-balance backend 192.0.2.253 weight 34
+
 ```
 #### Example Network
 Here's one example of a network environment for an ASP.
@@ -630,10 +664,13 @@ addresses the router must know about, but which are not actually
 assigned to a real network.
 We only need a single step for this interface:
 ```none
+
 set interfaces dummy dum0 address '172.29.41.89/32'
+
 ```
 ##### NAT Configuration
 ```none
+
 set nat source rule 110 description 'Internal to ASP'
 set nat source rule 110 destination address '172.27.1.0/24'
 set nat source rule 110 source address '192.168.43.0/24'
@@ -642,6 +679,7 @@ set nat source rule 120 description 'Internal to ASP'
 set nat source rule 120 destination address '10.125.0.0/16'
 set nat source rule 120 source address '192.168.43.0/24'
 set nat source rule 120 translation address '172.29.41.89'
+
 ```
 ##### IPSec IKE and ESP
 The ASP has documented their IPSec requirements:
@@ -655,6 +693,7 @@ The ASP has documented their IPSec requirements:
 Additionally, we want to use VPNs only on our eth1 interface (the
 external interface in the image above)
 ```none
+
 set vpn ipsec ike-group my-ike key-exchange 'ikev1'
 set vpn ipsec ike-group my-ike lifetime '7800'
 set vpn ipsec ike-group my-ike proposal 1 dh-group '14'
@@ -668,6 +707,7 @@ set vpn ipsec esp-group my-esp proposal 1 encryption 'aes256'
 set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
 
 set vpn ipsec interface 'eth1'
+
 ```
 ##### IPSec VPN Tunnels
 We'll use the IKE and ESP groups created above for this VPN. Because we
@@ -676,6 +716,7 @@ different tunnels. If you changed the names of the ESP group and IKE
 group in the previous step, make sure you use the correct names here
 too.
 ```none
+
 set vpn ipsec authentication psk vyos id '203.0.113.46'
 set vpn ipsec authentication psk vyos id '198.51.100.243'
 set vpn ipsec authentication psk vyos secret 'MYSECRETPASSWORD'
@@ -692,12 +733,14 @@ set vpn ipsec site-to-site peer branch tunnel 0 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 0 remote prefix '172.27.1.0/24'
 set vpn ipsec site-to-site peer branch tunnel 1 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
+
 ```
 ##### Testing and Validation
 If you've completed all the above steps you no doubt want to see if it's
 all working.
 Start by checking for IPSec SAs (Security Associations) with:
 ```none
+
 $ show vpn ipsec sa
 
 Peer ID / IP                            Local ID / IP
@@ -708,6 +751,7 @@ Peer ID / IP                            Local ID / IP
     ------  -----  -------------  -------  ----    -----  ------  ------  -----
     0       up     0.0/0.0        aes256   sha256  no     1647    3600    all
     1       up     0.0/0.0        aes256   sha256  no     865     3600    all
+
 ```
 
 That looks good - we defined 2 tunnels and they're both up and running.

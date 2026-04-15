@@ -18,18 +18,22 @@ initiator role on VyOS side.
 :align: center
 :alt: Network Topology Diagram
 ```
+
 ## Prerequirements
 **VyOS:**
+
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
 **Cisco:**
+
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
 **IKE parameters:**
+
 | Encryption        | AES-256 |
 | ----------------- | ------- |
 | HASH              | SHA-1   |
@@ -37,6 +41,7 @@ initiator role on VyOS side.
 | Life-Time         | 28800   |
 | IKE Version       | 2       |
 **IPsec parameters:**
+
 | Encryption | AES-256 |
 | ---------- | ------- |
 | HASH       | SHA-256 |
@@ -46,16 +51,21 @@ initiator role on VyOS side.
 : 192.168.0.0/24 \<==> 192.168.10.0/24
   192.168.1.0/24 \<==> 192.168.11.0/24
 **Hosts configuration**
+
 | PC1 IP | 192.168.0.2  |
 | ------ | ------------ |
 | PC2 IP | 192.168.1.2  |
 | PC3 IP | 192.168.10.2 |
 | PC4 IP | 192.168.11.2 |
+
 ## Configuration
+
 :::{note}
 Pfs is disabled in Cisco by default.
 :::
+
 ### VyOS
+
 ```none
 set interfaces ethernet eth0 address '10.0.1.2/30'
 set interfaces ethernet eth1 address '192.168.0.1/24'
@@ -90,7 +100,9 @@ set vpn ipsec site-to-site peer CISCO tunnel 1 remote prefix '192.168.10.0/24'
 set vpn ipsec site-to-site peer CISCO tunnel 2 local prefix '192.168.1.0/24'
 set vpn ipsec site-to-site peer CISCO tunnel 2 remote prefix '192.168.11.0/24'
 ```
+
 ### Cisco
+
 ```none
 crypto ikev2 proposal aes-cbc-256-proposal
  encryption aes-cbc-256
@@ -140,9 +152,12 @@ ip access-list extended cryptoacl
  permit ip 192.168.10.0 0.0.0.255 192.168.0.0 0.0.0.255
  permit ip 192.168.11.0 0.0.0.255 192.168.1.0 0.0.0.255
 ```
+
 ## Monitoring
+
 ### Monitoring on VyOS side
 IKE SAs:
+
 ```none
 vyos@vyos:~$ show vpn ike sa
 Peer ID / IP                            Local ID / IP
@@ -153,7 +168,9 @@ Peer ID / IP                            Local ID / IP
     -----  ------  -------      ----          ---------      -----  ------  ------
     up     IKEv2   AES_CBC_256  HMAC_SHA1_96  MODP_2048      no     304     26528
 ```
+
 IPsec SAs:
+
 ```none
 vyos@vyos:~$ show vpn ipsec sa
 Connection      State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
@@ -161,8 +178,10 @@ Connection      State    Uptime    Bytes In/Out    Packets In/Out    Remote addr
 CISCO-tunnel-1  up       6m6s      0B/0B           0/0               10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 CISCO-tunnel-2  up       6m6s      0B/0B           0/0               10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 ```
+
 ### Monitoring on Cisco side
 IKE SAs:
+
 ```none
 Cisco#show crypto ikev2 sa
  IPv4 Crypto IKEv2  SA
@@ -174,7 +193,9 @@ Tunnel-id Local                 Remote                fvrf/ivrf            Statu
 
  IPv6 Crypto IKEv2  SA
 ```
+
 IPsec SAs:
+
 ```none
  Cisco#show crypto ipsec sa
 
@@ -271,8 +292,10 @@ interface: GigabitEthernet0/0
 
      outbound pcp sas:
 ```
+
 ### Checking Connectivity
 ICMP packets from PC1 to PC3.
+
 ```none
 PC1> ping 192.168.10.2
 
@@ -282,7 +305,9 @@ PC1> ping 192.168.10.2
 84 bytes from 192.168.10.2 icmp_seq=4 ttl=62 time=3.176 ms
 84 bytes from 192.168.10.2 icmp_seq=5 ttl=62 time=3.978 ms
 ```
+
 ICMP packets from PC2 to PC4.
+
 ```none
 PC2> ping 192.168.11.2
 

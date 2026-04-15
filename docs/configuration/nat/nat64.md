@@ -4,9 +4,11 @@
 
 {abbr}`NAT64 (IPv6-to-IPv4 Prefix Translation)` is a critical component in
 modern networking, facilitating communication between IPv6 and IPv4 networks.
+
 This documentation outlines the setup, configuration, and usage of the NAT64
 feature in your project. Whether you are transitioning to IPv6 or need to
 seamlessly connect IPv4 and IPv6 devices.
+
 NAT64 is a stateful translation mechanism that translates IPv6 addresses to
 IPv4 addresses and IPv4 addresses to IPv6 addresses. NAT64 is used to enable
 IPv6-only clients to contact IPv4 servers using unicast UDP, TCP, or ICMP.
@@ -23,13 +25,17 @@ IPv6-only clients to contact IPv4 servers using unicast UDP, TCP, or ICMP.
 translation mechanism that translates IPv6 addresses to IPv4 addresses.
 
 `64:ff9b::/96` is the well-known prefix for IPv4-embedded IPv6 addresses.
+
 The prefix is used to represent IPv4 addresses in an IPv6 address format.
+
 The IPv4 address is encoded in the low-order 32 bits of the IPv6 address.
+
 The high-order 32 bits are set to the well-known prefix 64:ff9b::/96.
 
 ## Configuration Examples
 
 The following examples show how to configure NAT64 on a VyOS router.
+
 The 192.0.2.10 address is used as the IPv4 address for the translation pool.
 
 NAT64 server configuration:

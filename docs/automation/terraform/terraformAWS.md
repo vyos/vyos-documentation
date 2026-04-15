@@ -8,6 +8,7 @@ lastproofread: '2026-03-16'
 
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on AWS and remove infrastructure when it's no longer needed.
+
 Additionally, you can use Ansible for provisioning.
 
 ```{image} /_static/images/aws.png
@@ -15,22 +16,28 @@ Additionally, you can use Ansible for provisioning.
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 On this page you'll learn how to:
 - Create the necessary files for Terraform and Ansible.
 - Use Terraform to create a single instance on AWS and use Ansible for
   provisioning.
+
 ## Prepare to deploy VyOS with Terraform on AWS
 To create a single instance and install your configuration using
 Terraform, Ansible, and AWS, follow these steps:
+
 ### AWS
 1. Create an account with AWS and get your `access_key` and `secret_key`.
 2. Create a key [pair] and download your `.pem` key.
+
 ```{image} /_static/images/keypairs.png
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 3. Create a security [group] for the new VyOS instance and open all traffic.
+
 ```{image} /_static/images/sg.png
 :align: center
 :alt: Network Topology Diagram
@@ -42,12 +49,14 @@ Terraform, Ansible, and AWS, follow these steps:
 :alt: Network Topology Diagram
 :width: 50%
 ```
+
 ### Terraform
 1. Create an UNIX or Windows instance.
 2. Download and install
    [Terraform](https://developer.hashicorp.com/terraform/install).
 3. Create a folder, for example `/root/awsterraform`:
 > 
+
 ```none
 > mkdir /root/awsterraform
 > ```
@@ -58,8 +67,10 @@ Terraform, Ansible, and AWS, follow these steps:
 % start_vyoslinter
 5. Run the following commands:
 ```none
+
 cd /<your folder>
 terraform init
+
 ```
 ### Ansible
 1. Create a UNIX instance whenever you need.
@@ -76,16 +87,20 @@ terraform init
 ### Deploy with Terraform
 Run the following commands on your Terraform instance:
 ```none
+
 cd /<your folder>
 terraform plan
 terraform apply
 yes
+
 ```
 ## Create an AWS instance and check its configuration
 ```none
+
 root@localhost:~/awsterraform# terraform apply
 
 Terraform used the selected providers to generate the following execution plan.
+
 Resource actions are indicated with the following symbols:
   + create
 
@@ -229,12 +244,15 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 Outputs:
 
 my_IP = "54.xxx.xxx.xxx"
+
 ```
 After running all the commands, your VyOS instance is deployed on
 AWS with your specified configuration.
 To delete the instance, type the following command:
 ```none
+
 terraform destroy
+
 ```
 ## Troubleshooting
 1. If Ansible doesn't connect via SSH to your AWS instance, verify that
@@ -246,6 +264,7 @@ terraform destroy
    verify the correct login and password in the `VyOS.tf` file.
 > 
 ```none
+
 > connection {
 > type     = "ssh"
 > user     = "root"              # open root access using login and password on your Ansible
@@ -254,7 +273,9 @@ terraform destroy
 > }
 > ```
 Make sure Ansible can ping from Terraform.
+
 ## Structure of files in Terraform for AWS
+
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -262,8 +283,10 @@ Make sure Ansible can ping from Terraform.
 ├── versions.tf                        # File for the changing version of Terraform.
 └── terraform.tfvars           # The value of all variables (passwords, login, ip adresses and so on)
 ```
+
 ## File contents of Terraform for AWS
 `vyos.tf`
+
 ```none
 ##############################################################################
 # Build a VyOS VM from the Marketplace.
@@ -374,7 +397,9 @@ provisioner "remote-exec" {
 }
 }
 ```
+
 `var.tf`
+
 ```none
 variable "password" {
    description = "pass for Ansible"
@@ -396,7 +421,9 @@ variable "secret" {
    sensitive = true
 }
 ```
+
 `versions.tf`
+
 ```none
  terraform {
   required_providers {
@@ -407,14 +434,18 @@ variable "secret" {
   }
 }
 ```
+
 `terraform.tfvars`
+
 ```none
 password  = ""   # password for Ansible SSH
 host      = ""   # IP of my Ansible
 access    = ""   # access_key for AWS
 secret    = ""   # secret_key for AWS
 ```
+
 ## Structure of files in Ansible for AWS
+
 ```none
 .
 ├── group_vars
@@ -423,8 +454,10 @@ secret    = ""   # secret_key for AWS
 ├── mykey.pem
 └── instance.yml
 ```
+
 ## File contents of Ansible for AWS
 `ansible.cfg`
+
 ```none
 [defaults]
 inventory = /root/aws/ip.txt
@@ -432,11 +465,15 @@ host_key_checking= False
 private_key_file = /root/aws/awsterraform.pem         # check the name
 remote_user=vyos
 ```
+
 `mykey.pem`
+
 ```none
 Copy your key.pem from AWS
 ```
+
 `instance.yml`
+
 ```none
 ##############################################################################
 # About tasks:
@@ -446,7 +483,6 @@ Copy your key.pem from AWS
 # provisions the AWS VyOS node
 # Add all necessary VyOS commands under the "lines:" block
 ##############################################################################
-
 
 - name: integration of terraform and ansible
   hosts: all
@@ -466,7 +502,9 @@ Copy your key.pem from AWS
         save:
           true
 ```
+
 `group_vars/all`
+
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

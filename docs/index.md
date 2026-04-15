@@ -51,10 +51,13 @@ to build your infrastructure.
 :::::{grid-item-card} Contribute and Community
 
 There are many ways to contribute to the project.
+
 Add missing parts or improve the
 {ref}`Documentation<documentation:Write Documentation>`.
+
 Discuss in [Slack](https://slack.vyos.io/)
 or the [Forum](https://forum.vyos.io).
+
 Or you can pick up a [Task](https://vyos.dev/)
 and fix the
 {ref}`code<contributing/development:development>`.

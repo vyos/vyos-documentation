@@ -7,6 +7,7 @@ lastproofread: '2023-01-16'
 # Ansible
 
 VyOS supports configuration via ansible.
+
 Need to install `ansible` and `python3-paramiko` module
 
 Structure of files

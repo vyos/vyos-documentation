@@ -15,6 +15,7 @@ as `key` in the formdata. The only public endpoint listens to HTTP GET request
 and takes optional query parameters.
 
 Below see one example for curl and one for python.
+
 The rest of the documentation is reduced to curl.
 
 ```none
@@ -404,8 +405,10 @@ response:
 ```
 
 The API pushes every request to a session and commit it.
+
 But some of VyOS components like DHCP and PPPoE Servers, IPSec, VXLAN, and
 other tunnels require full configuration for commit.
+
 The endpoint will process multiple commands when you pass them as a list to
 the `data` field.
 
@@ -427,6 +430,7 @@ response:
 The endpoint `/config-file` is to save or load a configuration.
 
 Save a running configuration to the startup configuration.
+
 When you don't specify the file when saving, it saves to
 `/config/config.boot`.
 
@@ -525,6 +529,7 @@ response:
 ```
 
 The committed changes will be reverted at the timeout unless confirmed.
+
 To confirm and keep the changes:
 
 ```none

@@ -10,6 +10,7 @@ lastproofread: '2023-02-18'
 
 In this case, we'll try to make a simple lab using QoS and the
 general ability of the VyOS system.
+
 We recommend you to go through the main article about
 [QoS](https://docs.vyos.io/en/latest/configuration/trafficpolicy/index.html)
 first.
@@ -21,9 +22,11 @@ Using the general schema for example:
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 We have four hosts on the local network 172.17.1.0/24. All hosts are
 labeled CS0 by default. We need to replace labels on all hosts except
 vpc8.
+
 We will replace the labels on the nearest router “VyOS3” using the IP
 addresses of the sources.
 - 172.17.1.2 CS0 -> CS4
@@ -34,12 +37,15 @@ Next, we will replace only all CS4 labels on the “VyOS2” router.
 - CS4 -> CS5
 In the end, we will configure the traffic shaper using QoS mechanisms
 on the “VYOS2” router.
+
 ## Configuration:
 Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll
 use in this case only static routes.
+
 On the VyOS3 router, we need to change the 'dscp' labels for the
 VPCs. To do this, we use this configuration.
 % stop_vyoslinter
+
 ```none
 set interfaces ethernet eth0 address '10.1.1.100/24'
 set interfaces ethernet eth1 address '172.17.1.1/24'
@@ -56,31 +62,39 @@ set qos policy shaper vyos3 default priority '7'
 set qos policy shaper vyos3 default queue-type 'fair-queue'
 set qos interface eth0 egress 'vyos3'
 ```
+
 % start_vyoslinter
 Main rules:
 - ADDRESS10 change CS0 -> CS4 source 172.17.1.2/32
 - ADDRESS20 change CS0 -> CS5 source 172.17.1.3/32
 - ADDRESS30 change CS0 -> CS6 source 172.17.1.4/32
 Check the result
+
 ```{image} /_static/images/qos2.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 Before the interface eth0 on router VyOS3
+
 ```{image} /_static/images/qos3.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 After the interface eth0 on router VyOS3
+
 ```{image} /_static/images/qos4.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 On the router, VyOS4 set all traffic as CS4. We have to configure the
 default class and class for changing all labels from CS0 to CS4
+
 ```none
 set interfaces ethernet eth0 address '10.2.1.100/24'
 set protocols static route 0.0.0.0/0 next-hop 10.2.1.1
@@ -96,8 +110,10 @@ set qos policy shaper vyos4 default priority '7'
 set qos policy shaper vyos4 default queue-type 'fair-queue'
     set qos interface eth0 egress 'vyos4'
 ```
+
 Next on the router VyOS2 we will change labels on all incoming
 traffic only from CS4-> CS6
+
 ```{image} /_static/images/qos5.png
 :align: center
 :alt: Network Topology Diagram
@@ -127,29 +143,38 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 - 172.17.1.2/24 CS0
+
 ```{image} /_static/images/qos7.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 - 172.17.1.2/24 CS0 - > CS4
+
 ```{image} /_static/images/qos8.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 - 172.17.1.2/24 CS4 - > CS5
+
 ```{image} /_static/images/qos9.png
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 In the end, on the router “VyOS2” we will set outgoing bandwidth
 limits between the “VyOS3” and “VyOS1” routers. Let's set a limit for
 IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work
 with the help of the “iPerf” utility.
+
 Set up bandwidth limits on the eth2 interface of the router “VyOS2”.
+
 ```none
 
 vyos@vyos2# show qos policy shaper vyos2 class 20
@@ -163,7 +188,9 @@ match VyOS3 {
     }
 }
 ```
+
 Check the result.
+
 ```{image} /_static/images/qos10.png
 :align: center
 :alt: Network Topology Diagram

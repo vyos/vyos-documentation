@@ -5,6 +5,7 @@
 ## Supermicro A2SDi (Atom C3000)
 
 I opted to get one of the new Intel Atom C3000 CPUs to spawn VyOS on it.
+
 Running VyOS on an UEFI only device is supported as of VyOS release 1.2.
 
 ### Supermicro Shopping Cart
@@ -137,6 +138,7 @@ the serial port settings ({vytask}`T1327`).
 Create a bootable USB pendrive using e.g. [Rufus] on a Windows machine.
 
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
+
 Set terminal emulator to 115200 8N1.
 
 % stop_vyoslinter
@@ -296,6 +298,7 @@ most options available to configure (so it's not locked out like most firmwares
 are).
 
 An external RS232 serial port is available, internally a GPIO header as well.
+
 It does have Realtek based audio on board for some reason, but you can disable
 that. Booting works on both USB2 and USB3 ports. Switching between serial BIOS
 mode and HDMI BIOS mode depends on what is connected at startup; it goes into
@@ -376,6 +379,7 @@ Perform Image installation using `install image` CLI command.
 ## Gowin GW-FN-1UR1-10G
 
 A platform utilizing an Intel Alder Lake-N100 CPU with 6M cache, TDP 6W.
+
 Onboard LPDDR5 16GB RAM and 128GB eMMC (can be used for image installation).
 
 The appliance comes with 2 * 2.5GbE Intel I226-V and 3 * 1GbE Intel I210
@@ -414,6 +418,7 @@ i3-N305 CPU and 2x 25GbE!
 ### Cooling
 
 The device itself is passivly cooled, whereas the power supply has an active fan.
+
 Even if the main processor is powered off, the power supply fan is operating and
 the entire chassis draws 7.5W. During operation the chassis drew arround 38W.
 
@@ -429,6 +434,7 @@ is sufficient to install VyOS from a USB pendrive.
 ### First Boot
 
 Please note that there is a weirdness on the network interface mapping.
+
 The interface \<-> MAC mapping is going upwards but the NICs are placed
 somehow swapped on the mainboard/MACs programmed in a swapped order.
 

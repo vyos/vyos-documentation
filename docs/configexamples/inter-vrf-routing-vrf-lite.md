@@ -28,6 +28,7 @@ Let’s say we have a requirement to have multiple networks.
 Both LANs have to be able to route between each other, both will have managed
 devices through a dedicated management network and both will need Internet
 access yet the LAN2 will need access to some set of outside networks, not all.
+
 The management network will need access to both LANs but cannot have access
 to/from the outside.
 
@@ -36,6 +37,7 @@ filtering in multiple interfaces.
 
 A simple solution could be using different routing tables, or VRFs
 for all the networks so we can keep the routing restrictions.
+
 But for us to route between the different VRFs we would need a cable or a
 logical connection between each other:
 
@@ -70,29 +72,37 @@ community(ies) into that prefix.
 :alt: Network Topology Diagram
 :width: 70%
 ```
+
 ### IP Schema
+
 | Device-A | Device-B   | IPv4 Network   | IPv6 Network    |
 | -------- | ---------- | -------------- | --------------- | -------------- | --------------- |
 | Core     | LAN1       | 10.1.1.0/30    | 2001:db8::/127  |
 | Core     | LAN2       | 172.16.2.0/30  | 2001:db8::2/127 |
 | Core     | Management | 192.168.3.0/30 | 2001:db8::4/127 |
 | Core     | ISP        | 10.2.2.0/30    | 2001:db8::6/127 |
+
 ### RD & RT Schema
+
 | VRF        | RD        | RT        |
 | ---------- | --------- | --------- | --------- |
 | LAN1       | 64496:1   | 64496:1   |
 | LAN2       | 64496:2   | 64496:2   |
 | Management | 64496:50  | 64496:50  |
 | Internet   | 64496:100 | 64496:100 |
+
 ## Configurations
+
 :::{note}
 We use a static route configuration in between the Core and each
 LAN and Management router, and BGP between the Core router and the ISP router
 but any dynamic routing protocol can be used.
 :::
+
 ### Remote Networks
 The following template configuration can be used in each remote router based
 in our topology.
+
 ```none
 # Interface Configuration
 set interface eth eth<N> address <IP ADDRESS/CIDR>
@@ -100,11 +110,15 @@ set interface eth eth<N> address <IP ADDRESS/CIDR>
 # Static default route back to Core
 set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 ```
+
 ### Core Router
+
 #### Step 1: VRF and Configurations to remote networks
 - Configuration
 Set the VRF name and Table ID, set interface address and bind it to the VRF.
+
 Last add the static route to the remote network.
+
 ```none
 # VRF name and table ID (MANDATORY)
 set vrf name <VRF> table <ID>
@@ -118,10 +132,12 @@ set interface eth eth<N> vrf <VRF>
 # Static route to remote Network
 set vrf name <VRF> protocols static route <NETWORK/CIDR> next-hop <REMOTE IP ADDRESS>
 ```
+
 - Verification
 Checking the routing table of the VRF should reveal both static and connected
 entries active. A PING test between the Core and remote router is a way to
 validate connectivity within the VRF.
+
 ```none
 # show ip route vrf <VRF>
 # show ipv6 route vrf <VRF>
@@ -180,10 +196,12 @@ PING 2001:db8:0:1::1(2001:db8:0:1::1) 56 data bytes
 3 packets transmitted, 3 received, 0% packet loss, time 2004ms
 rtt min/avg/max/mdev = 0.925/1.665/3.035/0.969 ms
 ```
+
 #### Step 2: BGP Configuration for VRF-Lite
 - Configuration
 Setting BGP global local-as as well inside the VRF. Redistribute static routes
 to inject configured networks into the BGP process but still inside the VRF.
+
 ```none
 # set BGP global local-as
 set protocols bgp system-as <ASN>
@@ -191,9 +209,11 @@ set protocols bgp system-as <ASN>
 # set BGP VRF local-as and redistribution
 set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> redistribute static
 ```
+
 - Verification
 Check the BGP VRF table and verify if the static routes are injected showing
 the correct next-hop information.
+
 ```none
 # show ip bgp vrf <VRF>
 # show bgp vrf <VRF> ipv6
@@ -223,10 +243,12 @@ RPKI validation codes: V valid, I invalid, N Not found
 *> 2001:db8:0:1::/64
                     2001:db8::1              0         32768 ?
 ```
+
 #### Step 3: VPN Configuration
 - Configuration
 Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT), then
 we enable the export/import VPN.
+
 ```none
 # set Route-distinguisher
 set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> rd vpn export '<RD>'
@@ -241,15 +263,18 @@ set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> route-target vpn 
 set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> export vpn
 set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> import vpn
 ```
+
 A key point to understand is that if we need two VRFs to communicate between
 each other EXPORT rt from VRF1 has to be in the IMPORT rt list from VRF2. But
 this is only in ONE direction, to complete the communication the EXPORT rt from
 VRF2 has to be in the IMPORT rt list from VRF1.
+
 There are some cases where this is not needed -for example, in some
 DDoS appliance- but most inter-vrf routing designs use the above configurations.
 - Verification
 After configured all the VRFs involved in this topology we take a deeper look
 at both BGP and Routing table for the VRF LAN1
+
 ```none
 # show ip bgp vrf <VRF>
 # show bgp vrf <VRF> ipv6
@@ -297,7 +322,6 @@ Network          Next Hop            Metric LocPrf Weight Path
 *> 2001:db8:3::/48  fe80::5200:ff:fe02:3@7<
                                              0             0 64497 ?
 
-
 # show ip route vrf <VRF>
 # show ipv6 route vrf <VRF>
 
@@ -338,12 +362,15 @@ B>* 2001:db8:2::/48 [20/0] via fe80::5200:ff:fe02:3, eth3 (vrf Internet), weight
 B>* 2001:db8:3::/48 [20/0] via fe80::5200:ff:fe02:3, eth3 (vrf Internet), weight 1, 00:07:50
 C>* fe80::/64 is directly connected, eth0, 05:33:43
 ```
+
 As we can see in the BGP table any imported route has been injected with a "@"
 followed by the VPN id; In the routing table of the VRF, if the route was
 installed, we can see -between round brackets- the exported VRF table.
+
 #### Step 4: End to End verification
 Now we perform some end-to-end testing
 - From Management to LAN1/LAN2
+
 ```none
 vyos@Management:~$ ping 10.0.0.1 source-address 192.168.0.1
 PING 10.0.0.1 (10.0.0.1) from 192.168.0.1 : 56(84) bytes of data.
@@ -382,7 +409,9 @@ PING 2001:db8:0:2::1(2001:db8:0:2::1) from 2001:db8:0:3::1 : 56 data bytes
 4 packets transmitted, 4 received, 0% packet loss, time 3005ms
 rtt min/avg/max/mdev = 1.660/1.960/2.315/0.236 ms
 ```
+
 - From Management to Outside (fails as intended)
+
 ```none
 vyos@Management:~$ show ip route
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -428,7 +457,9 @@ From 2001:db8::4 icmp_seq=2 Destination unreachable: No route
 --- 2001:db8:2::1 ping statistics ---
 2 packets transmitted, 0 received, +2 errors, 100% packet loss, time 1002ms
 ```
+
 - LAN1 to Outside
+
 ```none
 vyos@LAN1:~$ ping 192.0.2.1 source-address 10.0.0.1
 PING 192.0.2.1 (192.0.2.1) from 10.0.0.1 : 56(84) bytes of data.
@@ -474,12 +505,14 @@ PING 2001:db8:2::1(2001:db8:2::1) from 2001:db8:0:1::1 : 56 data bytes
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms
 rtt min/avg/max/mdev = 1.367/2.015/2.679/0.535 ms
 ```
+
 :::{note}
 we are using "source-address" option cause we are not redistributing
 connected interfaces into BGP on the Core router hence there is no comeback
 route and ping will fail.
 :::
 - LAN1 to LAN2
+
 ```none
 vyos@LAN1:~$ ping 172.16.0.1 source-address 10.0.0.1
 PING 172.16.0.1 (172.16.0.1) from 10.0.0.1 : 56(84) bytes of data.
@@ -499,15 +532,19 @@ PING 2001:db8:0:2::1(2001:db8:0:2::1) from 2001:db8:0:1::1 : 56 data bytes
 3 packets transmitted, 3 received, 0% packet loss, time 2003ms
 rtt min/avg/max/mdev = 1.949/2.915/4.815/1.343 ms
 ```
+
 ## Conclusions
 Inter-VRF routing is a well-known solution to address complex routing scenarios
 that enable -in a dynamic way- to leak routes between VRFs. Is recommended to
 take special consideration while designing route-targets and its application as
 it can minimize future interventions while creating a new VRF will automatically
 take the desired effect in its propagation.
+
 ## Appendix-A
+
 ### Full configuration from all devices
 - Core
+
 ```none
 set interfaces ethernet eth0 address '10.1.1.1/30'
 set interfaces ethernet eth0 address '2001:db8::/127'
@@ -584,7 +621,9 @@ set vrf name Management protocols static route 192.168.0.0/24 next-hop 192.168.3
 set vrf name Management protocols static route6 2001:db8:0:3::/64 next-hop 2001:db8::5
 set vrf name Management table '103'
 ```
+
 - LAN1
+
 ```none
 set interfaces dummy dum0 address '10.0.0.1/24'
 set interfaces dummy dum0 address '2001:db8:0:1::1/64'
@@ -593,7 +632,9 @@ set interfaces ethernet eth0 address '2001:db8::1/127'
 set protocols static route 0.0.0.0/0 next-hop 10.1.1.1
 set protocols static route6 ::/0 next-hop 2001:db8::*
 ```
+
 - LAN2
+
 ```none
 set interfaces dummy dum0 address '172.16.0.1/24'
 set interfaces dummy dum0 address '2001:db8:0:2::1/64'
@@ -603,7 +644,9 @@ set interfaces ethernet eth1 address '2001:db8::3/127'
 set protocols static route 0.0.0.0/0 next-hop 172.16.2.1
 set protocols static route6 ::/0 next-hop 2001:db8::2
 ```
+
 - Management
+
 ```none
 set interfaces dummy dum0 address '192.168.0.1/24'
 set interfaces dummy dum0 address '2001:db8:0:3::1/64'
@@ -612,7 +655,9 @@ set interfaces ethernet eth2 address '2001:db8::5/127'
 set protocols static route 0.0.0.0/0 next-hop 192.168.3.1
 set protocols static route6 ::/0 next-hop 2001:db8::4
 ```
+
 - ISP
+
 ```none
 set interfaces dummy dum0 address '192.0.2.1/24'
 set interfaces dummy dum0 address '2001:db8:1::1/48'
@@ -632,13 +677,16 @@ set protocols bgp neighbor 2001:db8::6 remote-as '64496'
 set protocols static route 0.0.0.0/0 next-hop 10.2.2.1
 set protocols static route6 ::/0 next-hop 2001:db8::6
 ```
+
 ## Appendix-B
+
 ### Route-Filtering
 When importing routes using MP-BGP it is possible to filter a subset of them
 before are injected in the BGP table. One of the most common case is to use a
 route-map with an prefix-list.
 - Configuration
 We create a prefix-list first and add all the routes we need to.
+
 ```none
 # set both ipv4 and ipv6 policies
 
@@ -661,9 +709,11 @@ set policy prefix-list6 LAN2-Internet-v6 rule 3 prefix '2001:db8:0:3::/64'
 set policy prefix-list6 LAN2-Internet-v6 rule 4 action 'permit'
 set policy prefix-list6 LAN2-Internet-v6 rule 4 prefix '2001:db8:0:1::/64'
 ```
+
 Then add a route-map and reference to above prefix. Consider that the actions
 taken inside the prefix will MATCH the routes that will be affected by the
 actions inside the rules of the route-map.
+
 ```none
 set policy route-map LAN2-Internet rule 1 action 'permit'
 set policy route-map LAN2-Internet rule 1 match ip address prefix-list 'LAN2-Internet'
@@ -671,17 +721,22 @@ set policy route-map LAN2-Internet rule 1 match ip address prefix-list 'LAN2-Int
 set policy route-map LAN2-Internet-v6 rule 1 action 'permit'
 set policy route-map LAN2-Internet-v6 rule 1 match ipv6 address prefix-list 'LAN2-Internet-v6'
 ```
+
 We are using a "white list" approach by allowing only what is necessary. In case
 that need to implement a "black list" approach then you will need to change the
 action in the route-map for a deny BUT you need to add a rule that permits the
 rest due to the implicit deny in the route-map.
+
 Then we need to attach the policy to the BGP process. This needs to be under
 the import statement in the vrf we need to filter.
+
 ```none
 set vrf name LAN2 protocols bgp address-family ipv4-unicast route-map vpn import 'LAN2-Internet'
 set vrf name LAN2 protocols bgp address-family ipv6-unicast route-map vpn import 'LAN2-Internet-v6'
 ```
+
 - Verification
+
 ```none
 # show ip route vrf LAN2
 

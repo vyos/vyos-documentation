@@ -9,6 +9,7 @@ lastproofread: '2026-03-19'
 You can use Terraform to quickly deploy VyOS-based infrastructure
 on Microsoft Azure (hereafter referred to as *Azure*) and remove
 infrastructure when it's no longer needed.
+
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
@@ -80,6 +81,7 @@ yes
 
 After executing all the commands, your VyOS instance is deployed to
 Azure with your configuration.
+
 If you need to delete the instance, run the following command:
 
 ```none

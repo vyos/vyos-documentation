@@ -19,6 +19,7 @@ destination (for example, a web server or another device).
 
 The following is a simplified traffic flow diagram based on Netfilter
 packet flow.
+
 This diagram provides an overview of how packets are processed and the
 possible paths traffic can take.
 
@@ -182,6 +183,7 @@ Configure bridge firewall rules for traffic at the bridge layer. For detailed
 information, see
 :doc:`Bridge Firewall Configuration</configuration/firewall/bridge>`.
 ```
+
 ```{cfgcmd} set firewall flowtable ...
 
 Configure firewall flowtables for stateful connection tracking and rules.
@@ -189,6 +191,7 @@ For detailed information, see
 :doc:`Flowtables Firewall Configuration </configuration/firewall/flowtables>`
 .
 ```
+
 ```{cfgcmd} set firewall global-options ...
 
 Configure global firewall options such as ``all-ping``, ``broadcast-ping``,
@@ -196,6 +199,7 @@ Configure global firewall options such as ``all-ping``, ``broadcast-ping``,
 information, see
 :doc:`Global Firewall Options</configuration/firewall/global-options>`.
 ```
+
 ```{cfgcmd} set firewall group ...
 
 Organize firewall rules by creating reusable address, network, interface,
@@ -203,22 +207,26 @@ MAC, port, and domain groups. Use groups in multiple rules to simplify
 configuration and maintenance. For detailed information, see
 :doc:`Firewall Groups</configuration/firewall/groups>`.
 ```
+
 ```{cfgcmd} set firewall ipv4 ...
 
 Configure IPv4-specific firewall rules. For detailed information, see
 :doc:`IPv4 Firewall Configuration</configuration/firewall/ipv4>`.
 ```
+
 ```{cfgcmd} set firewall ipv6 ...
 
 Configure IPv6-specific firewall rules. For detailed information, see
 :doc:`IPv6 Firewall Configuration</configuration/firewall/ipv6>`.
 ```
+
 ```{cfgcmd} set firewall zone ...
 
 Configure zone-based firewall policies for controlling traffic between
 different network zones. For detailed information, see
 :doc:`Zone-Based Firewall Configuration</configuration/firewall/zone>`.
 ```
+
 For more information on firewall configuration, see the following pages:
 
 ```{toctree}
@@ -232,12 +240,15 @@ ipv4
 ipv6
 flowtables
 ```
+
 :::{note}
 For more information on Netfilter hooks and Linux networking packet flows,
 see the [Netfilter-Hooks](https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks)
 documentation.
 :::
+
 ## Zone-Based firewall
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

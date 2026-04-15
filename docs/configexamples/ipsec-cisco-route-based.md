@@ -19,18 +19,22 @@ inside the tunnel.
 :align: center
 :alt: Network Topology Diagram
 ```
+
 ## Prerequirements
 **VyOS:**
+
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
 **Cisco:**
+
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
 **IKE parameters:**
+
 | Encryption        | AES-128 |
 | ----------------- | ------- |
 | HASH              | SHA-1   |
@@ -38,22 +42,28 @@ inside the tunnel.
 | Life-Time         | 28800   |
 | IKE Version       | 1       |
 **IPsec parameters:**
+
 | Encryption | AES-256 |
 | ---------- | ------- |
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
 | PFS        | disable |
 **Hosts configuration**
+
 | PC1 IP | 192.168.0.2  |
 | ------ | ------------ |
 | PC2 IP | 192.168.1.2  |
 | PC3 IP | 192.168.10.2 |
 | PC4 IP | 192.168.11.2 |
+
 ## Configuration
+
 :::{note}
 Pfs is disabled in Cisco by default.
 :::
+
 ### VyOS
+
 ```none
 set interfaces ethernet eth0 address '10.0.1.2/30'
 set interfaces ethernet eth1 address '192.168.0.1/24'
@@ -96,7 +106,9 @@ set vpn ipsec site-to-site peer CISCO local-address '10.0.1.2'
 set vpn ipsec site-to-site peer CISCO remote-address '10.0.2.2'
 set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 ```
+
 ### Cisco
+
 ```none
 crypto isakmp policy 10
  encr aes
@@ -157,9 +169,12 @@ router ospf 1
 !
 ip route 0.0.0.0 0.0.0.0 10.0.2.1
 ```
+
 ## Monitoring
+
 ### Monitoring on VyOS side
 IKE SAs:
+
 ```none
 vyos@vyos:~$ show vpn ike sa
 Peer ID / IP                            Local ID / IP
@@ -170,21 +185,27 @@ Peer ID / IP                            Local ID / IP
     -----  ------  -------      ----          ---------      -----  ------  ------
     up     IKEv1   AES_CBC_128  HMAC_SHA1_96  MODP_2048      no     8175    18439
 ```
+
 IPsec SAs:
+
 ```none
 vyos@vyos:~$ show vpn ipsec sa
 Connection    State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
 ------------  -------  --------  --------------  ----------------  ----------------  -----------  -----------------------------
 CISCO-vti     up       34m59s    17K/14K         224/213           10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 ```
+
 OSPF Neighbor Status:
+
 ```none
 vyos@vyos:~$ show ip ospf neighbor
 
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
 1.1.1.1           1 Full/-          1h29m37s          39.317s 10.100.100.2    vti1:10.100.100.1                    0     0     0
 ```
+
 Routing Table:
+
 ```none
 vyos@vyos:~$ show ip route
 Codes: K - kernel route, C - connected, L - local, S - static,
@@ -193,7 +214,6 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        f - OpenFabric, t - Table-Direct,
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
        t - trapped, o - offload failure
-
 
 S>* 0.0.0.0/0 [1/0] via 10.0.1.1, eth0, weight 1, 00:07:54
 C>* 10.0.1.0/30 is directly connected, eth0, weight 1, 00:07:59
@@ -210,8 +230,10 @@ L>* 192.168.1.1/32 is directly connected, eth2, weight 1, 00:07:59
 O>* 192.168.10.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 O>* 192.168.11.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 ```
+
 ### Monitoring on Cisco side
 IKE SAs:
+
 ```none
 Cisco#show crypto isakmp sa
 IPv4 Crypto ISAKMP SA
@@ -220,7 +242,9 @@ dst             src             state          conn-id status
 
 IPv6 Crypto ISAKMP SA
 ```
+
 IPsec SAs:
+
 ```none
 Cisco#show crypto ipsec sa
 
@@ -272,14 +296,18 @@ interface: Tunnel10
 
      outbound pcp sas:
 ```
+
 OSPF Neighbor Status:
+
 ```none
 Cisco# show ip ospf neighbor
 
 Neighbor ID     Pri   State           Dead Time   Address         Interface
 2.2.2.2           0   FULL/  -        00:00:35    10.100.100.1    Tunnel10
 ```
+
 Routing Table:
+
 ```none
 Cisco#show ip route
 Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
@@ -311,8 +339,10 @@ L        192.168.10.1/32 is directly connected, GigabitEthernet0/1
 C        192.168.11.0/24 is directly connected, GigabitEthernet0/2
 L        192.168.11.1/32 is directly connected, GigabitEthernet0/2
 ```
+
 ### Checking Connectivity
 ICMP packets from PC1 to PC3.
+
 ```none
 PC1> ping 192.168.10.2
 
@@ -322,7 +352,9 @@ PC1> ping 192.168.10.2
 84 bytes from 192.168.10.2 icmp_seq=4 ttl=62 time=3.176 ms
 84 bytes from 192.168.10.2 icmp_seq=5 ttl=62 time=3.978 ms
 ```
+
 ICMP packets from PC2 to PC4.
+
 ```none
 PC2> ping 192.168.11.2
 

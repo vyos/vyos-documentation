@@ -51,6 +51,7 @@ After installation, exit the console using the key combination
 
 The benefit of using {abbr}`KVM (Kernel-based Virtual Machine)`
 images is that they don't require installation.
+
 Download the predefined VyOS `.qcow2` image.
 
 ```none
@@ -94,6 +95,7 @@ $ virsh reboot vyos_r2
 ```
 
 Then go to the first session where you opened the console.
+
 Select `VyOS 1.4.x for QEMU (Serial console)` and press `Enter`.
 
 The system is fully operational.

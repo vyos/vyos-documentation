@@ -8,37 +8,48 @@ lastproofread: '2026-03-30'
 
 ```{include} /_include/need_improvement.txt
 ```
+
 ## Overview
 This section provides information on firewall configuration for flowtables.
+
 ```{cfgcmd} set firewall flowtable ...
 ```
+
 To learn about the general traffic flow in VyOS firewalls,
 see {doc}`Firewall </configuration/firewall/index>`.
+
 ```none
 - set firewall
     * flowtable
          - custom_flow_table
             + ...
 ```
+
 Flowtables let you define a fastpath through the flowtable datapath.
+
 Flowtables support layer 3 (IPv4 and IPv6) and layer 4 (TCP and UDP)
 protocols.
+
 :::{figure} /_static/images/firewall-flowtable-packet-flow.png
 :::
 After the first packet successfully traverses the IP forwarding path (black
 circles path), you can offload subsequent packets to the flowtable through your
 ruleset. You specify when to add a flow to the flowtable during forward
 filtering (red circle number 6).
+
 When a packet finds a matching entry in the flowtable (flowtable hit), the
 system transmits it to the output netdevice. This means packets bypass the
 classic IP forwarding path and use the **Fast Path** (orange circles path).
+
 As a result, you do not see these packets from any Netfilter hooks after
 ingress. If no matching entry exists in the flowtable (flowtable miss), the
 packet traverses the classic IP forwarding path.
+
 :::{note}
 **Flowtable Reference:**
 <https://docs.kernel.org/networking/nf_flowtable.html>
 :::
+
 ## Flowtable Configuration
 To use flowtables, you need to configure the following:
 > - Create a flowtable that includes the interfaces
@@ -46,12 +57,15 @@ To use flowtables, you need to configure the following:
 > - Create a firewall rule. Set the action to
 >   `offload` and use your desired flowtable for `offload-target`.
 Creating a flow table:
+
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
 
 Specify interfaces to use in the flowtable.
 ```
+
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
 ```
+
 Provide a description for the flow table.
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> offload
@@ -60,24 +74,28 @@ Provide a description for the flow table.
 Specify the offload type the flowtable uses: ``hardware`` or
 ``software``. The default is ``software`` offload.
 ```
+
 :::{note}
 **Hardware offload**: Make sure your network interface controller
 (NIC) supports hardware offloading and that you have the necessary drivers
 > installed before enabling this option.
 :::
 Creating rules for using flow tables:
+
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
 
    action offload
 Create a firewall rule in the forward chain with the action set to
 ``offload``.
 ```
+
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
 
    offload-target <flowtable>
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```
+
 ## Configuration Example
 Consider the following in this setup:
 > - This example uses two interfaces in the flowtables: `eth0` and `eth1`.
@@ -85,13 +103,19 @@ Consider the following in this setup:
 >   and rules for using flowtable offload capabilities.
 The first packet is evaluated by the firewall path, so a
 desired connection should be explicitly accepted.
+
 The same should occur for traffic in reverse order.
+
 In most cases, state policies are
 used to accept a connection in the reverse path.
+
 In the following example only traffic coming from interface `eth0`,
 TCP protocol, and destination port 1122 is accepted.
+
 All other traffic to the router is dropped.
+
 ### Commands
+
 ```none
 set firewall flowtable FT01 interface 'eth0'
 set firewall flowtable FT01 interface 'eth1'
@@ -109,6 +133,7 @@ set firewall ipv4 forward filter rule 110 destination port '1122'
 set firewall ipv4 forward filter rule 110 inbound-interface name 'eth0'
 set firewall ipv4 forward filter rule 110 protocol 'tcp'
 ```
+
 ### Explanation
 Here's what happens for a desired connection:
 > 1. A packet arrives on `eth0` with destination address `192.0.2.100`, TCP
@@ -124,9 +149,11 @@ Here's what happens for a desired connection:
 >    entry in the flowtable FT01 for this connection.
 > 6. Subsequent packets skip the traditional path and use the **Fast Path**
 >    for offloading.
+
 ### Checks
 Check the conntrack table to verify that the system accepted and properly
 offloaded connections.
+
 ```none
 vyos@FlowTables:~$ show firewall ipv4 forward filter
 Ruleset Information

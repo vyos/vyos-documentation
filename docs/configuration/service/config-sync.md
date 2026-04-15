@@ -27,17 +27,20 @@ Specify the address, API key, timeout and port of the secondary router.
 You need to enable and configure the HTTP API service on the secondary
 router for config sync to operate.
 ```
+
 ```{cfgcmd} set service config-sync section \<section\>
 
 Specify the section of the configuration to synchronize. If more than one
 section is to be synchronized, repeat the command to add additional
 sections as required.
 ```
+
 ```{cfgcmd} set service config-sync mode \<load|set\>
 
 Two options are available for `mode`: either `load` and replace or `set`
 the configuration section.
 ```
+
 ```none
 Supported options for <section> include:
     firewall
@@ -54,17 +57,21 @@ Supported options for <section> include:
     vpn
     vrf
 ```
+
 ## Example
 - Synchronize the time-zone and OSPF configuration from Router A to Router B
 - The address of Router B is 10.0.20.112 and the port used is 8443
 Configure the HTTP API service on Router B
+
 ```none
 set service https listen-address '10.0.20.112'
 set service https port '8443'
 set service https api keys id KID key 'foo'
 set service https api rest
 ```
+
 Configure the config-sync service on Router A
+
 ```none
 set service config-sync mode 'load'
 set service config-sync secondary address '10.0.20.112'
@@ -73,7 +80,9 @@ set service config-sync secondary key 'foo'
 set service config-sync section protocols 'ospf'
 set service config-sync section system 'time-zone'
 ```
+
 Make config-sync relevant changes to Router A's configuration
+
 ```none
 vyos@vyos-A# set system time-zone 'America/Los_Angeles'
 vyos@vyos-A# commit
@@ -87,7 +96,9 @@ INFO:vyos_config_sync:Config synchronization: Mode=load,
 Secondary=10.0.20.112
 yos@vyos-A# save
 ```
+
 Verify configuration changes have been replicated to Router B
+
 ```none
 vyos@vyos-B:~$ show configuration commands | match time-zone
 set system time-zone 'America/Los_Angeles'

@@ -55,29 +55,38 @@ to a remote syslog server.**
 If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain
 Name)` in log messages, even if the syslog server is in the same domain.
 ```
+
 ### Local logging
 Configure which log messages to save to a local log file.
+
 ```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
 
 **Configure syslog to save log messages for a specific facility and
 severity level to ``/var/log/messages``.**
 Refer to the tables below for valid facility and severity options.
 ```
+
 (syslog-console)=
+
 ### Console logging
 Configure which log messages to send to `/dev/console`.
+
 ```{cfgcmd} set system syslog console facility \<keyword\> level \<keyword\>
 
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
 Refer to the tables below for valid facility and severity options.
 ```
+
 (syslog-remote)=
+
 ### Remote logging
 Configure **remote logging** to send log messages to a remote syslog server.
+
 Remote logging does not affect either **local** or **console logging** and
 runs in parallel with them. Remote logging supports sending log messages
 to multiple hosts.
+
 ```{cfgcmd} set system syslog remote \<address\> facility \<keyword\> level \<keyword\>
 
 **Configure log transmission to the remote syslog server for a specific
@@ -86,17 +95,20 @@ The server’s address can be specified using either a :abbr:`FQDN (Fully
 Qualified Domain Name)` or an IP address.
 Refer to the tables below for valid facility and severity options.
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> protocol \<udp | tcp\>
 
 **Configure the protocol for log transmission.**
 The protocol can be either UDP or TCP. By default, log messages are sent
 over UDP.
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> port \<port\>
 
 **Configure the port for log transmission.**
 By default, the standard port 514 is used.
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> format include-timezone
 
 **Configure log transmission in the RFC 5424 format.**
@@ -107,6 +119,7 @@ By default, log messages are sent in the RFC 3164 format. For example:
 .. code-block:: none
   <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> format octet-counted
 
 **Enable octet-counted framing for log transmission.**
@@ -114,15 +127,18 @@ When enabled, multi-line log messages are sent without splitting. Ensure
 the remote server supports octet-counted framing to avoid parsing errors.
 Octet-counted framing is not available for the UDP protocol.
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> vrf \<name\>
 
 Configure the :abbr:`VRF (Virtual Routing and Forwarding)` instance
 for log transmission.
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> source-address \<address\>
 
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
+
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 over TCP to ensure secure transmission of syslog data to remote syslog servers.
@@ -132,6 +148,7 @@ Security)`-encrypted remote logging, ensure you have:
 - Valid {abbr}`CA (Certificate Authority)` and client certificates uploaded
   to the local {abbr}`PKI (Public Key Infrastructure)` storage.
 - The **remote syslog transport protocol** is set to **TCP**:
+
 ```none
   set system syslog remote <address> protocol tcp
   ```
@@ -142,22 +159,27 @@ Security)`-encrypted remote logging, ensure you have:
 ```{cfgcmd} set system syslog remote \<address\> tls
 
 Enable TLS-encrypted remote logging.
+
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
 **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
 The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to
 verify the identity of the remote syslog server.
+
 The :abbr:`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
+
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls certificate \<cert_name\>
 
 **Configure the client certificate.**
 The remote syslog server uses the client certificate to verify the identity
 of the syslog client.
+
 The client certificate is required if the remote syslog server enforces
 client certificate verification.
+
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls auth-mode <anon | fingerprint
 
@@ -165,6 +187,7 @@ client certificate verification.
 **Configure the authentication mode.**
 The authentication mode defines how the syslog client verifies the syslog
 server's identity.
+
 The following authentication modes are available:
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
   server's identity. This mode is **not recommended**, as it is vulnerable to
@@ -183,6 +206,7 @@ The following authentication modes are available:
   .. code-block:: none
     set system syslog remote <address> tls permitted-peer <peer>
   This is a **recommended** secure mode for production environments.
+
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
@@ -191,17 +215,21 @@ The certificate identifier format depends on the authentication mode:
 * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
   SHA-256).
 * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
+
 For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
 are not required.
+
 ```
 #### Examples:
 
 ```none
+
 # Example of 'anon' authentication mode
 set system syslog remote 10.10.2.3 facility all level debug
 set system syslog remote 10.10.2.3 port 6514
 set system syslog remote 10.10.2.3 protocol tcp
 set system syslog remote 10.10.2.3 tls auth-mode anon
+
 # or just use 'set system syslog remote 10.10.2.3 tls'
 
 # Example of 'certvalid' authentication mode
@@ -227,6 +255,7 @@ set system syslog remote graylog.example.com tls ca-certificate my-ca
 set system syslog remote graylog.example.com tls certificate syslog-client
 set system syslog remote graylog.example.com tls auth-mode name
 set system syslog remote graylog.example.com tls permitted-peers 'graylog.example.com'
+
 ```
 #### Security recommendations
 - For secure deployments, always use the `name` authentication mode. It
@@ -288,7 +317,9 @@ tools, rather than strict directives.
 
 **Display logs for a specific category on the console.**
 Use tab completion to view a list of available categories.
+
 If no category is specified, all logs are shown.
+
 ```
 ```{opcmd} show log image \<name\>
 
@@ -311,6 +342,7 @@ Available log categories:
      - Displays last lines of the system log of the specified image.
    * - <lines>
      - Number of lines to be displayed, default 10.
+
 ```
 If no category is specified, the contents of the main syslog file are
 displayed.

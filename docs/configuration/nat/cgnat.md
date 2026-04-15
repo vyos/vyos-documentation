@@ -7,6 +7,7 @@ Large-Scale NAT (LSN), is a type of network address translation used by
 Internet Service Providers (ISPs) to enable multiple private IP addresses to
 share a single public IP address. This technique helps to conserve the limited
 IPv4 address space.
+
 The 100.64.0.0/10 address block is reserved for use in carrier-grade NAT
 
 ## Overview
@@ -108,11 +109,15 @@ Set the rule for the translation pool.
 
 Enable logging of IP address and ports allocations.
 ```
+
 ## Configuration Examples
+
 ### Single external address
 Example of setting up a basic CGNAT configuration:
+
 In the following example, we define an external pool named `ext-1` with one external IP address
 Each subscriber will be allocated a maximum of 2000 ports from the external pool.
+
 ```none
 set nat cgnat pool external ext1 external-port-range '1024-65535'
 set nat cgnat pool external ext1 per-user-limit port '2000'
@@ -121,7 +126,9 @@ set nat cgnat pool internal int1 range '100.64.0.0/28'
 set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
+
 ### Multiple external addresses
+
 ```none
 set nat cgnat pool external ext1 external-port-range '1024-65535'
 set nat cgnat pool external ext1 per-user-limit port '8000'
@@ -131,7 +138,9 @@ set nat cgnat pool internal int1 range '100.64.0.1-100.64.0.32'
 set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
+
 ### External address sequences
+
 ```none
 set nat cgnat pool external ext-01 per-user-limit port '16000'
 set nat cgnat pool external ext-01 range 203.0.113.1/32 seq '10'
@@ -140,19 +149,24 @@ set nat cgnat pool internal int-01 range '100.64.0.0/29'
 set nat cgnat rule 10 source pool 'int-01'
 set nat cgnat rule 10 translation pool 'ext-01'
 ```
+
 ## Operation commands
+
 ```{opcmd} show nat cgnat allocation
 
 Show address and port allocations
 ```
+
 ```{opcmd} show nat cgnat allocation external-address \<address\>
 
 Show all allocations for an external IP address
 ```
+
 ```{opcmd} show nat cgnat allocation internal-address \<address\>
 
 Show all allocations for an internal IP address
 ```
+
 ### Show CGNAT allocations
 
 ```none

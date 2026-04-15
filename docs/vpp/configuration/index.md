@@ -6,9 +6,12 @@ lastproofread: '2025-09-04'
 
 ```{include} /_include/need_improvement.txt
 ```
+
 # VPP Configuration
 VPP settings consist of several main sections.
+
 Main Dataplane settings and internal VPP interfaces:
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1
@@ -16,7 +19,9 @@ Main Dataplane settings and internal VPP interfaces:
 dataplane/index
 interfaces/index
 ```
+
 Features that can be enabled on VPP Dataplane:
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

@@ -3,6 +3,7 @@
 # Router Advertisements
 
 {abbr}`RAs (Router advertisements)` are described in {rfc}`4861#section-4.6.2`.
+
 They are part of what is known as {abbr}`SLAAC (Stateless Address
 Autoconfiguration)`.
 
@@ -25,6 +26,7 @@ Supported interface types:
 
 ```{cfgcmd} set service router-advert interface \<interface\> ...
 ```
+
 % stop_vyoslinter
 
 ```{csv-table}
@@ -45,16 +47,19 @@ Supported interface types:
 "Auto Ignore Prefix", "auto-ignore", "Exclude a prefix from being advertised when the wildcard ::/64 prefix is used"
 "Captive Portal", "captive-portal", "Advertise a URL pointing to an RFC 8908-compliant API to tell hosts that they are behind a captive portal"
 ```
-% start_vyoslinter
-### Advertising a Prefix
-```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 
+% start_vyoslinter
+
+### Advertising a Prefix
+
+```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 :::{note}
 You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 :::
  Advertisements)`. This is a special wildcard prefix that will emit :abbr:`RAs (Router Advertisements)` for every prefix assigned to the interface.
  This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 ```
+
 % stop_vyoslinter
 
 ```{csv-table}
@@ -68,8 +73,11 @@ You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 "preferred-lifetime","Time in seconds that the prefix will remain preferred (default 4 hours)"
 "valid-lifetime","Time in seconds that the prefix will remain valid (default: 30 days)"
 ```
+
 % start_vyoslinter
+
 ### Advertising a NAT64 Prefix
+
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in :rfc:`8781`.
@@ -78,6 +86,7 @@ NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 The well known NAT64 prefix is ``64:ff9b::/96``
 :::
 ```
+
 % stop_vyoslinter
 
 ```{csv-table}
@@ -86,22 +95,28 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 
 "valid-lifetime","Time in seconds that the prefix will remain valid (default: 65528 seconds)"
 ```
+
 % start_vyoslinter
+
 ### Disabling Advertisements
 To disable advertisements without deleting the configuration:
+
 ```{cfgcmd} set service router-advert interface \<interface\> no-send-advert
 
 If set, the router will no longer send periodic router advertisements and
 will not respond to router solicitations.
 ```
+
 ```{cfgcmd} set service router-advert interface \<interface\> no-send-interval
 
 Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```
+
 ## Example
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router
 beeing `2001:db8:beef:2::1`
+
 ```none
 set interfaces ethernet eth0 address 2001:db8:beef:2::1/64
 

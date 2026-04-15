@@ -20,6 +20,7 @@ display. Tab completion is supported and it will list you all available
 serial interface.
 For serial via USB port information please refor to: :ref:`hardware_usb`.
 ```
+
 ```{cfgcmd} set system lcd model \<model\>
 
 This is the LCD model used in your system.
@@ -33,5 +34,6 @@ We can't support all displays from the beginning. If your display
 :::
    type is missing, please create a feature request via Phabricator_.
 ```
+
 ```{include} /_include/common-references.txt
 ```
