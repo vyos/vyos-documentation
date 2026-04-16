@@ -46,7 +46,7 @@ Terraform, Ansible, and vSphere, follow these steps:
 4. Copy all files into your Terraform project `/root/vsphereterraform`
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
    For more details,
-   see [Structure of files in Terraform for vSphere]
+   see [Structure of files in Terraform for vSphere](#structure-of-files-in-terraform-for-vsphere)
 5. Run the following commands:
 
    ```none
@@ -61,7 +61,7 @@ Terraform, Ansible, and vSphere, follow these steps:
 3. Create the folder. For example, `/root/vsphereterraform/`.
 4. Copy all files into your Ansible project `/root/vsphereterraform/`
    (`ansible.cfg`, `instance.yml`, `all`). For more details, see
-   [Structure of files in Ansible for vSphere]
+   [Structure of files in Ansible for vSphere](#structure-of-files-in-ansible-for-vsphere)
 
 ### Deploy with Terraform
 
