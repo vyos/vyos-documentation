@@ -354,6 +354,7 @@ Available health check protocols:
  * ``pgsql`` PostgreSQL protocol check.
  * ``smtp`` SMTP protocol check.
 ```
+
 :::{note}
 If you specify a server to check but do not configure a
 protocol, HAProxy performs a basic TCP health check. A server is online if

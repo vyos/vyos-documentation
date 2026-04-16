@@ -316,6 +316,7 @@ more actions are available.
 To be used only when ``default-action`` is set to ``jump``. Use this
 command to specify jump target for default rule.
 ```
+
 :::{note}
 **Important note about default-actions:**
 If the default action for any base chain is not defined, then the default

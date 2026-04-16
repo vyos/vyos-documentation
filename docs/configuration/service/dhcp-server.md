@@ -1051,6 +1051,7 @@ IP Address      MAC address        State    Lease start          Lease expiratio
 vyos@vyos:~$
 
 ```
+
 :::{hint}
 Static mappings aren't shown. To show all states, use
 `show dhcp server leases state all`.
@@ -1344,6 +1345,7 @@ IPv6 address      State    Last communication    Lease expiration     Remaining 
 2001:db8::102     active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      IA_NA  NET1      87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
 2001:db8:10::/64  active   2019/12/05 23:20:10   2019/12/06 11:40:10  11:45:21     IA_PD  PD-NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
+
 :::{hint}
 Static mappings aren't shown. To show all states, use `show dhcp
 server leases state all`.

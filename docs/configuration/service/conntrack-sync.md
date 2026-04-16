@@ -133,6 +133,7 @@ flush after ``<timeout>`` seconds to purge stale (“zombie”) entries and
 reduce clashes when multiple handovers occur in a short period.
 The default is 60 seconds.
 ```
+
 :::{note}
 In VRRP stateful firewall deployments, align VRRP timing with this
 behavior: because synchronized conntrack state is purged after the purge

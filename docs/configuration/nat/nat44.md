@@ -530,6 +530,7 @@ nat {
 }
 
 ```
+
 :::{note}
 If forwarding traffic to a different port than it is arriving
 on, you may also configure the translation port using

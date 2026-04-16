@@ -310,6 +310,7 @@ custom chains, more actions are available.
 Use this command only when you set ``default-action`` to ``jump``. Specify
 the jump target for the default rule.
 ```
+
 :::{note}
 **Important note about default-actions:**
 If you do not define a default action for a base chain, the system sets
@@ -1469,6 +1470,7 @@ Match based on inbound interface. Wildcard ``*`` is supported. For example:
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
 ``!eth2``
 ```
+
 :::{note}
 If an interface is attached to a non-default vrf, when using
 **inbound-interface**, the vrf name must be used. For example `set firewall
@@ -1517,6 +1519,7 @@ Match based on outbound interface. Wildcard ``*`` is supported. For example:
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
 ``!eth2``
 ```
+
 :::{note}
 If an interface is attached to a non-default vrf, when using
 **outbound-interface**, the real interface name must be used. For example

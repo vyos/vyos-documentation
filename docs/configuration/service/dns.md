@@ -563,6 +563,7 @@ ttl=300 \
 example.vyos.io
 
 ```
+
 :::{note}
 You can also keep different DNS zone updated. Just create a new
 config node: `set service dns dynamic interface <interface> rfc2136
@@ -643,6 +644,7 @@ set service dns dynamic name dedyn protocol 'dyndns2'
 set service dns dynamic name dedyn server 'update.dedyn.io'
 set service dns dynamic name dedyn address interface 'eth0'
 ```
+
 :::{note}
 Multiple services can be used per interface. Just specify as many
 services per interface as you like!

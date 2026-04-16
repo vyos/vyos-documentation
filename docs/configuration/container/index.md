@@ -162,6 +162,7 @@ Publish a port for the container.
   set container name zabbix-web-nginx-mysql port http destination 8080
   set container name zabbix-web-nginx-mysql port http protocol tcp
 ```
+
 :::{note}
 Port publishing cannot be used with **network**. For this purpose, a workaround
 using destination NAT and static IP assignment for the container is available.

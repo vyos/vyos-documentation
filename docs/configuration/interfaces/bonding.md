@@ -461,6 +461,7 @@ set interfaces bonding bond0 member interface eth1
 set interfaces bonding bond0 member interface eth2
 
 ```
+
 :::{note}
 Not all transmit hash policies comply with 802.3ad, particularly
 :::

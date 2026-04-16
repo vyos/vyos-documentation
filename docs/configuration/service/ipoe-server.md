@@ -151,6 +151,7 @@ set service ipoe-server authentication radius server 10.0.0.1 key 'foo'
 set service ipoe-server authentication radius server 10.0.0.2 key 'foo'
 
 ```
+
 :::{note}
 Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
@@ -167,6 +168,7 @@ to a single source IP e.g. the loopback interface.
 
 Source IPv4 address used in all RADIUS server queires.
 ```
+
 :::{note}
 The `source-address` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
@@ -254,6 +256,7 @@ Source IPv4 address used in all RADIUS server queires.
 Specifies which RADIUS server attribute contains the rate limit information.
 The default attribute is `Filter-Id`.
 ```
+
 :::{note}
 If you set a custom RADIUS attribute you must define it on both
 dictionaries at RADIUS server and client.
