@@ -37,18 +37,15 @@ Default: 1200 seconds.
 
 ```
 
-
 ```{cfgcmd} set system syslog marker disable
 
 Disable sending syslog mark messages.
 ```
 
-
 ```{cfgcmd} set system syslog preserve-fqdn
 
 **Configure how the logging device's hostname appears in log messages sent
 to a remote syslog server.**
-
 
 If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain
 Name)` in log messages, even if the syslog server is in the same domain.
@@ -164,6 +161,7 @@ Security)`-encrypted remote logging, ensure you have:
 Enable TLS-encrypted remote logging.
 
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
 **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
@@ -174,6 +172,7 @@ The :abbr:`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
 
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> tls certificate \<cert_name\>
 
 **Configure the client certificate.**
@@ -184,6 +183,7 @@ The client certificate is required if the remote syslog server enforces
 client certificate verification.
 
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
 
 **Configure the authentication mode.**
@@ -214,6 +214,7 @@ The following authentication modes are available:
   This is a **recommended** secure mode for production environments.
 
 ```
+
 ```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
 **Configure the peer certificate identifiers.**
@@ -318,7 +319,9 @@ tools, rather than strict directives.
 | 5     | Notice        | notice  | Normal but significant conditions - conditions that are not error conditions, but that may require special handling.      |
 | 6     | Informational | info    | Informational messages.                                                                                                   |
 | 7     | Debug         | debug   | Debug-level messages - Messages that contain information normally of use only when debugging a program.                   |
+
 ## Display logs
+
 ```{opcmd} show log [all | authorization | cluster | conntrack-sync | ...]
 
 **Display logs for a specific category on the console.**
@@ -327,6 +330,7 @@ Use tab completion to view a list of available categories.
 If no category is specified, all logs are shown.
 
 ```
+
 ```{opcmd} show log image \<name\> [all | authorization | directory | file \<file name\> | tail \<lines\>]
 
 **Display logs for a specific image on the console.**
