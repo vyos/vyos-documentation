@@ -48,11 +48,11 @@ current image if they were stored in the `/config` directory. Use the
 {opcmd}`copy` command to do this. For example, to copy `/config/config.boot`
 from the VyOS `1.2.1` image, run:
 
-```
+```none
 copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 ```
 
-## Example
+###### Example
 
 ```none
 vyos@vyos:~$ add system image https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso
@@ -85,7 +85,13 @@ vyos@vyos:~$ add system image latest
 % stop_vyoslinter
 
 :::{note}
-Only LTS releases are PGP-signed.
+To use the `latest` option, "system update-check url" must be
+configured appropriately for your installed release.
+
+For updates to the Rolling Release for AMD64, the following URL may be
+used:
+
+https://raw.githubusercontent.com/vyos/vyos-nightly-build/refs/heads/current/version.json
 :::
 
 % start_vyoslinter

@@ -185,9 +185,7 @@ The valid range is 1 to 21.
 ### Generate an OTP-key
 Use the following command to generate an OTP key:
 
-```{cfgcmd} generate system login username \<username\> otp-key hotp-time
-
-   rate-limit <1-10> rate-time <15-600> window-size <1-21>
+```{cfgcmd} generate system login username \<username\> otp-key hotp-time rate-limit \<1-10\> rate-time \<15-600\> window-size \<1-21\>
 ```
 
 Key generation example:

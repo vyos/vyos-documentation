@@ -110,9 +110,9 @@ Everyone can download bleeding-edge VyOS rolling images from:
 <https://downloads.vyos.io/>
 
 :::{note}
-The `.qcow2` image provided for Proxmox deployment can also be
-used to deploy VyOS on KVM environments. This image includes cloud-init
-support. See {ref}`cloud-init` for more information.
+Rolling releases contain the latest enhancements and fixes.
+This means there may be new bugs. If you encounter a bug, follow the
+guide at {ref}`bug_report`. We depend on your feedback to improve VyOS.
 :::
 
 The following link contains the most recent VyOS builds for AMD64
@@ -156,9 +156,10 @@ Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
 ```
 
 :::{note}
-The `.qcow2` image provided for Proxmox deployment can also be
-used to deploy VyOS on KVM environments. This image includes cloud-init
-support. See {ref}`cloud-init` for more information.
+Starting with version `1.4.3`, VyOS uses Minisign exclusively.
+If you see an unexpected verification error, update your system to version
+`1.4.2` first. Support for GnuPG signatures has been
+removed ({vytask}`T7301`).
 :::
 
 (live-installation)=
