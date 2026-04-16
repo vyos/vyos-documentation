@@ -95,6 +95,7 @@ IPv6 uses different techniques to discover its Neighbors/topology.
 ```{opcmd} force ipv6-rd interface \<interface\> [address \<ipv6-address\>]
 
 Discover routers via eth0.
+
 Example:
 
 .. code-block:: none
