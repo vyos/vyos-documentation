@@ -135,17 +135,12 @@ This worktree IS the migration branch. All 254 RST files have been converted to 
 3. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 4. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 42ca5216, Apr 16 2026):
+### Current state (commit ea693f7f, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
 **Pending rebuild** (fixes committed, preview not yet updated):
-eventhandler 141.9%, information 110.1%, lldp 24.2%, wireguard 22.5%, connectivity 11.8%, install 10.7%, ssh 9.4%, coverage 8.3%, login 7.5%, static 7.5%, flow-accounting 5.8%
+eventhandler 141.9%, information 110.1%, lldp 24.2%, wireguard 22.5%, connectivity 11.8%, install 10.7%, ssh 9.4%, coverage 8.3%, login 7.5%, static 7.5%, flow-accounting 5.8%,
+oracle 6.7%, loopback 3.4%, conntrack 3.9%, watchdog 3.0%, bridge 4.1%, bonding 4.0%, lcd 3.7%, syslog 3.8%, dhcp-server 3.2%, geneve 3.0%, vti 3.1%
 
 **New genuine issues to fix next** (after rebuild + rescan):
 firewall/ipv4 7.1%, firewall/ipv6 6.7%, cli 4.6%, firewall/zone 4.4%, sstp-client 4.4%, policy/access-list 4.3%, system/default-route 4.2%, firewall/bridge 4.2%
-
-**Copilot threads to address before next push:**
-- `_include/interface-dhcpv6-options.txt:21` — missing dhcpv6-options in example command
-- `configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.md:108` — missing blank line after bullet list
-- `configexamples/autotest/tunnelbroker/tunnelbroker.md:112` — missing blank line after list
-- `configexamples/fwall-and-vrf.md:73` — missing blank line after list item
