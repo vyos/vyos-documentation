@@ -152,18 +152,21 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit c1d36181, Apr 16 2026):
+### Current state (commit b78887ca, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
-**Playwright scan complete** (RTD build confirmed, all diffs stable post marker removal).
-All 30 Copilot comments addressed. Lint CI passing.
-Removed all 206 `% stop/start_vyoslinter` markers from 49 `.md` files (8edab482) — zero regressions.
+**Playwright scan complete** (RTD build confirmed, all diffs stable).
+All 100 Copilot comments addressed. Lint CI passing.
 
 **Known remaining diffs (explained, not regressions):**
-- `operation/information` 111.7%: IMPROVED RENDERING. BackstopJS confirms RST reference has USB code blocks broken/outside panels (stop_vyoslinter context issue). MyST shows them correctly inside opcmd panels. Taller = more content visible. Same class as eventhandler.
-- `configuration/protocols/static` 19.5%: per-directive rendering size difference.
+- `operation/information` 111.7%: IMPROVED RENDERING. MyST shows USB code blocks correctly inside opcmd panels.
+- `configuration/protocols/static` 20.1%: multi-line cfgcmd header rendering difference. Hard to fix.
 - `configuration/service/eventhandler` 251.4%: IMPROVED (RST was broken, MyST renders correctly).
-- 8 pages at 2-6%: minor stable differences.
-- coverage 4.7%: improved from 8.8%.
+- `service/dhcp-server` 4.8%: structural minor after tsig-key fix.
+- `operation/boot-options` 3.0%: test has correct content; reference at docs.vyos.io has content divergence.
+- `vpp/cgnat` 2.6%, `automation/vyos-api` 2.1%: stable minor.
+- `coverage` 4.6%: generated page.
+
+New MATCHes this session: segment-routing, l2learn, firewall/global-options.
 
 **Next**: PR is ready for review. Mark as ready (remove draft status).
