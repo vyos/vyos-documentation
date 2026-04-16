@@ -122,10 +122,25 @@ Each configuration page should contain:
 This worktree IS the migration branch. All 254 RST files have been converted to MyST Markdown.
 
 ### Critical syntax rules (do NOT break these):
-- `cfgcmd`/`opcmd` directive **bodies** use RST `nested_parse()` — body content stays RST, NOT MyST
-  - `:abbr:`, `.. note::`, `.. code-block::`, ` ``text`` `, `.. stop_vyoslinter` inside cfgcmd/opcmd bodies are **CORRECT**
-  - Do NOT convert them to `{abbr}`, `:::{note}`, ` `text` `, `% stop_vyoslinter`
-- `_include/*.txt` templates use MyST syntax with `::::` colon fences
+
+**cfgcmd/opcmd bodies are parsed by the MyST renderer** (not RST nested_parse).
+In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
+`nested_render_text()` — the MyST renderer. RST directives do NOT render.
+
+- **In `.md` files** — use MyST colon-fence syntax inside cfgcmd/opcmd bodies:
+  - `:::{code-block} none` … `:::` (NOT `.. code-block:: none`)
+  - `:::{note}` … `:::` (NOT `.. note::`)
+  - `` ``text`` `` double-backtick inline code is fine (renders in both)
+  - `% stop_vyoslinter` (NOT `.. stop_vyoslinter`)
+  - Do NOT use `` ```none `` backtick fences inside `` ```{cfgcmd} `` bodies —
+    same backtick depth closes the outer directive prematurely
+
+- **In `_include/*.txt` templates** — templates use `::::` colon-fence cfgcmd/opcmd
+  directives, so backtick fences (different depth) work fine inside them:
+  - `` ```none `` … ` ``` ` inside colon-fence cfgcmd/opcmd bodies ✓
+  - `:::{note}` … `:::` inside colon-fence cfgcmd/opcmd bodies ✓
+  - Do NOT use `.. code-block:: none` or `.. note::` — they render as literal text
+
 - Angle brackets in directive arguments: `\<param\>` (escaped)
 - `cmdincludemd` (not `cmdinclude`) in .md files and aggregator templates
 
@@ -137,22 +152,24 @@ This worktree IS the migration branch. All 254 RST files have been converted to 
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit a52336de, Apr 16 2026):
+### Current state (commit 3b15e2b7, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
 **All 92 Copilot inline comments addressed** (replied or pushed back). Commits since last RTD scan:
-- 09518f34: _include template code-block conversions (18 files, 42 fences)
+- 09518f34: _include template code-block conversions (WRONG — reverted by 04499161)
 - 1f2d4f4c: automation docs fixes (Go syntax, headings, empty blocks)
 - 48a456a8: blank lines, spelling, grammar
-- 5c009f48: interface template note/include fixes (ipv6, address-with-dhcp, vlan-8021q, vlan-8021ad)
+- 5c009f48: interface template note/include fixes (ipv6, address-with-dhcp, vlan-8021q, vlan-8021ad) — partially wrong
 - a52336de: grammar (configexamples/index.md), heading hierarchy (tunnelbroker.md)
+- 7f5d515e: revert Copilot instructions from .github/copilot-instructions.md (moved to PR body)
+- 04499161: restore MyST code fences in _include templates (19 files, 44+3 conversions reverted)
+- 3b15e2b7: convert RST directives to MyST colon-fences in wireguard, ssh, lldp, static, connectivity
 
 **Pending rebuild** (fixes committed, preview not yet updated):
-eventhandler 141.9%, information 110.1%, lldp 24.2%, wireguard 22.5%, connectivity 11.8%, install 10.7%, ssh 9.4%, coverage 8.3%, login 7.5%, static 7.5%, flow-accounting 5.8%,
-oracle 6.7%, loopback 3.4%, conntrack 3.9%, watchdog 3.0%, bridge 4.1%, bonding 4.0%, lcd 3.7%, syslog 3.8%, dhcp-server 3.2%, geneve 3.0%, vti 3.1%,
-firewall/ipv4, firewall/ipv6, firewall/zone, policy/access-list, firewall/bridge (tunnelbroker),
-interface/sstp-client, bonding/ethernet/bridge-interface, all interface pages,
-configexamples/index, tunnelbroker
+wireguard, ssh, lldp, static, connectivity — just fixed now
+eventhandler 141.9%, information 110.1%, coverage 8.3%, login 7.5%, flow-accounting 5.8%,
+oracle 6.7%, loopback 3.4%, conntrack 3.9%, watchdog 3.0%, bridge 4.1%, bonding 4.0%, lcd 3.7%,
+syslog 3.8%, dhcp-server 3.2%, geneve 3.0%, vti 3.1%, all interface pages
 
-**Pages to rescan after next rebuild** (may still have genuine issues):
-system/default-route 4.2%, cli (fixed but may have residual diff)
+**Next**: scan remaining interface .md files for .. code-block:: / .. note:: inside cfgcmd bodies,
+then push and wait for RTD rebuild, then run Playwright scan (10 parallel agents, N=0,25,...,225)
