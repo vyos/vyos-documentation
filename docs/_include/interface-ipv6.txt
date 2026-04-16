@@ -14,10 +14,10 @@ link-local router solicitation multicast request for its configuration
 parameters. The router responds with a router advertisement packet 
 containing Internet Layer configuration parameters.
 
-:::{note}
-This method automatically disables IPv6 traffic forwarding
-on the interface.
-:::
+.. note::
+
+  This method automatically disables IPv6 traffic forwarding
+  on the interface.
 
 Example:
 

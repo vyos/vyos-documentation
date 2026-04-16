@@ -30,139 +30,140 @@ In VyOS, these tag types are associated with the following CLI options:
 * ``vif-c``: Corresponds to the C-TAG (Ethertype 0x8100).
 
 ```{cmdincludemd} /_include/interface-address-with-dhcp.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-description.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-disable.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-disable-link-detect.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-mac.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-mtu.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-ip.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-ipv6.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-vrf.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 **DHCP(v6)**
 
 ```{cmdincludemd} /_include/interface-dhcp-options.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-dhcpv6-options.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
 ```{cmdincludemd} /_include/interface-dhcpv6-prefix-delegation.txt
- :var0: {{ var0 }}
- :var1: {{ var1 }}
- :var2: vif-s
- :var3: <vlan-id>
- :var4: 1000
- :var5: vif-c
- :var6: <vlan-id>
- :var7: 20
+:var0: {{ var0 }}
+:var1: {{ var1 }}
+:var2: vif-s
+:var3: <vlan-id>
+:var4: 1000
+:var5: vif-c
+:var6: <vlan-id>
+:var7: 20
 ```
 
-.. include:: /_include/common-references.txt
+```{include} /_include/common-references.txt
+```
 
 .. start_vyoslinter

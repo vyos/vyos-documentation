@@ -13,15 +13,14 @@ The following options are available:
 * **dhcpv6:** The interface obtains an IPv6 address from a DHCPv6 server on 
   the same network segment.
 
-:::{note}
-If the interface obtains an IPv4 address via DHCP, and specific
-adjustments are needed before/after the IP address is obtained, use the
-provided hook scripts:
+.. note::
 
-* ``/config/scripts/dhcp-client/pre-hooks.d/``
-* ``/config/scripts/dhcp-client/post-hooks.d/``
+  If the interface obtains an IPv4 address via DHCP, and specific
+  adjustments are needed before/after the IP address is obtained, use
+  the provided hook scripts:
 
-:::
+  * ``/config/scripts/dhcp-client/pre-hooks.d/``
+  * ``/config/scripts/dhcp-client/post-hooks.d/``
 
 Example:
 
