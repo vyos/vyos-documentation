@@ -226,7 +226,7 @@ for the connection. The command is applicable for peer and peer group.
 
 
 Create a peer as you would when you specify an ASN, except that if the
-peers ASN is different than mine as specified under the :cfgcmd:`protocols
+peers ASN is different than mine as specified under the {cfgcmd}`protocols
 bgp <asn>` command the connection will be denied.
 ```
 
@@ -235,7 +235,7 @@ bgp <asn>` command the connection will be denied.
 
 
 Create a peer as you would when you specify an ASN, except that if the
-peers ASN is the same as mine as specified under the :cfgcmd:`protocols
+peers ASN is the same as mine as specified under the {cfgcmd}`protocols
 bgp <asn>` command the connection will be denied.
 ```
 
@@ -268,7 +268,7 @@ Peer - Peer
 RS-Server - RS-Client
 
 
-If :cfgcmd:`strict` is set the BGP session won’t become established
+If {cfgcmd}`strict` is set the BGP session won’t become established
 until the BGP neighbor sets local Role on its side. This
 configuration parameter is defined in RFC {rfc}`9234` and is used to
 enforce the corresponding configuration at your counter-parts side.
@@ -351,7 +351,7 @@ bgp configures the peer with configured capabilities.
 
 You may prefer locally configured capabilities more than the negotiated
 capabilities even though remote peer sends capabilities. If the peer is
-configured by :cfgcmd:`override-capability`, VyOS ignores received
+configured by {cfgcmd}`override-capability`, VyOS ignores received
 capabilities then override negotiated capabilities with configured values.
 
 
@@ -380,7 +380,7 @@ error then reset connection.
 
 You may want to disable sending Capability Negotiation OPEN message
 optional parameter to the peer when remote peer does not implement
-Capability Negotiation. Please use :cfgcmd:`disable-capability-negotiation`
+Capability Negotiation. Please use {cfgcmd}`disable-capability-negotiation`
 command to disable the feature.
 ```
 ##### Peer Parameters
@@ -529,7 +529,7 @@ This command allows sessions to be established with eBGP neighbors
 when they are multiple hops away. When the neighbor is not directly
 connected and this knob is not enabled, the session will not establish.
 The number of hops range is 1 to 255. This command is mutually
-exclusive with :cfgcmd:`ttl-security hops`.
+exclusive with {cfgcmd}`ttl-security hops`.
 ```
 
 
@@ -543,11 +543,11 @@ updates from the peer, and prepended to the outgoing AS_PATH (after
 the process local AS) when transmitting local routes to the peer.
 
 
-If the :cfgcmd:`no-prepend` attribute is specified, then the supplied
+If the {cfgcmd}`no-prepend` attribute is specified, then the supplied
 local-as is not prepended to the received AS_PATH.
 
 
-If the :cfgcmd:`replace-as` attribute is specified, then only the supplied
+If the {cfgcmd}`replace-as` attribute is specified, then only the supplied
 local-as is prepended to the AS_PATH when transmitting local-route
 updates to this peer.
 
@@ -580,7 +580,7 @@ This command enforces Generalized TTL Security Mechanism (GTSM),
 as specified in {rfc}`5082`. With this command, only neighbors
 that are specified number of hops away will be allowed to
 become neighbors. The number of hops range is 1 to 254. This
-command is mutually exclusive with :cfgcmd:`ebgp-multihop`.
+command is mutually exclusive with {cfgcmd}`ebgp-multihop`.
 ```
 ##### Peer Groups
 Peer groups are used to help improve scaling by generating the same update
@@ -639,7 +639,7 @@ have this configured the underlying network must exist in the routing table.
 
 By default, VyOS does not advertise a default route (0.0.0.0/0) even if it is
 in routing table. When you want to announce default routes to the peer, use
-this command. Using optional argument :cfgcmd:`route-map` you can inject the
+this command. Using optional argument {cfgcmd}`route-map` you can inject the
 default route to given neighbor only if the conditions in the route map are
 met.
 ```
@@ -753,7 +753,7 @@ This command disables route reflection between route reflector clients.
 By default, the clients of a route reflector are not required to be
 fully meshed and the routes from a client are reflected to other clients.
 However, if the clients are fully meshed, route reflection is not required.
-In this case, use the :cfgcmd:`no-client-to-client-reflection` command
+In this case, use the {cfgcmd}`no-client-to-client-reflection` command
 to disable client-to-client reflection.
 ```
 
@@ -1033,7 +1033,7 @@ For outbound updates the order of preference is:
 
 This command applies the access list filters named in <number> to the
 specified BGP neighbor to restrict the routing information that BGP learns
-and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the access list are applied.
 
 ```
@@ -1044,7 +1044,7 @@ specify the direction in which the access list are applied.
 
 This command applies the prfefix list filters named in <name> to the
 specified BGP neighbor to restrict the routing information that BGP learns
-and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the prefix list are applied.
 ```
 
@@ -1054,7 +1054,7 @@ specify the direction in which the prefix list are applied.
 
 This command applies the route map named in <name> to the specified BGP
 neighbor to control and modify routing information that is exchanged
-between peers. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+between peers. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the route map are applied.
 ```
 
@@ -1064,7 +1064,7 @@ specify the direction in which the route map are applied.
 
 This command applies the AS path access list filters named in <name> to the
 specified BGP neighbor to restrict the routing information that BGP learns
-and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
+and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the AS path access list are applied.
 ```
 
@@ -1074,8 +1074,8 @@ specify the direction in which the AS path access list are applied.
 
 This command enables the ORF capability (described in {rfc}`5291`) on the
 local router, and enables ORF capability advertisement to the specified BGP
-peer. The :cfgcmd:`receive` keyword configures a router to advertise ORF
-receive capabilities. The :cfgcmd:`send` keyword configures a router to
+peer. The {cfgcmd}`receive` keyword configures a router to advertise ORF
+receive capabilities. The {cfgcmd}`send` keyword configures a router to
 advertise ORF send capabilities. To advertise a filter from a sender, you
 must create an IP prefix list for the specified BGP peer applied in inbound
 derection.
@@ -1145,7 +1145,7 @@ systems (a confederation).
 ```{cfgcmd} set protocols bgp parameters confederation peers \<nsubasn\>
 
 This command sets other confederations <nsubasn> as members of autonomous
-system specified by :cfgcmd:`confederation identifier <asn>`.
+system specified by {cfgcmd}`confederation identifier <asn>`.
 ```
 ## Operational Mode Commands
 ### Show
@@ -1291,8 +1291,8 @@ Total number of neighbors 4
 ```{opcmd} reset bgp \<ipv4|ipv6\> \<address\> [soft [in|out]]
 
 This command resets BGP connections to the specified neighbor IP address.
-With argument :cfgcmd:`soft` this command initiates a soft reset. If
-you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both
+With argument {cfgcmd}`soft` this command initiates a soft reset. If
+you do not specify the {cfgcmd}`in` or {cfgcmd}`out` options, both
 inbound and outbound soft reconfiguration are triggered.
 ```
 
@@ -1312,8 +1312,8 @@ This command resets all external BGP peers of given router.
 ```{opcmd} reset bgp \<ipv4|ipv6\> peer-group \<name\> [soft [in|out]]
 
 This command resets BGP connections to the specified peer group.
-With argument :cfgcmd:`soft` this command initiates a soft reset. If
-you do not specify the :cfgcmd:`in` or :cfgcmd:`out` options, both
+With argument {cfgcmd}`soft` this command initiates a soft reset. If
+you do not specify the {cfgcmd}`in` or {cfgcmd}`out` options, both
 inbound and outbound soft reconfiguration are triggered.
 ```
 ## Examples

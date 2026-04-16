@@ -101,7 +101,7 @@ This command generate a default route into the RIP.
 ```{cfgcmd} set protocols rip distribute-list access-list \<in|out\> \<number\>
 
 This command can be used to filter the RIP path using access lists.
-:cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the access
+{cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the access
 lists are applied.
 ```
 
@@ -116,7 +116,7 @@ filter the RIP path.
 ```{cfgcmd} set protocols rip distribute-list prefix-list \<in|out\> \<name\>
 
 This command can be used to filter the RIP path using prefix lists.
-:cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the prefix
+{cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the prefix
 lists are applied.
 ```
 
@@ -134,7 +134,7 @@ This command is specific to FRR and VyOS. The route command makes a static
 route only inside RIP. This command should be used only by advanced users
 who are particularly knowledgeable about the RIP protocol. In most cases,
 we recommend creating a static route in VyOS and redistributing it in RIP
-using :cfgcmd:`redistribute static`.
+using {cfgcmd}`redistribute static`.
 ```
 
 
@@ -196,8 +196,8 @@ bgp, connected, kernel, ospf, static.
 This command modifies the default metric (hop count) value for redistributed
 routes. The metric range is 1 to 16. The default value is 1. This command
 does not affect connected route even if it is redistributed by
-:cfgcmd:`redistribute connected`. To modify connected routes metric
-value, please use :cfgcmd:`redistribute connected metric`.
+{cfgcmd}`redistribute connected`. To modify connected routes metric
+value, please use {cfgcmd}`redistribute connected metric`.
 ```
 ## Interfaces Configuration
 

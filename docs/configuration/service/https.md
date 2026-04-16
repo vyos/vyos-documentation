@@ -80,8 +80,8 @@ Enable REST API
 
 ```{cfgcmd} set service https api rest debug
 
-To enable debug messages. Available via :opcmd:`show log` or
-:opcmd:`monitor log`
+To enable debug messages. Available via {opcmd}`show log` or
+{opcmd}`monitor log`
 ```
 
 ```{cfgcmd} set service https api rest strict

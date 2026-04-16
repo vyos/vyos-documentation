@@ -478,7 +478,7 @@ the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 
 Static DHCP IP address assign to host identified by `<description>`. IP
 address must be inside the `<subnet>` which is defined but can be outside
-the dynamic range created with :cfgcmd:`set service dhcp-server
+the dynamic range created with {cfgcmd}`set service dhcp-server
 shared-network-name <name> subnet <subnet> range <n>`. If no ip-address is
 specified, an IP from the dynamic pool is used.
 

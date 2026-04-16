@@ -28,7 +28,7 @@ These are the commands for a basic setup.
 
    Use this command to enable PIMv6 in the selected interface so that it
    can communicate with PIMv6 neighbors. This command also enables MLD reports
-   and query on the interface unless :cfgcmd:`mld disable` is configured.
+   and query on the interface unless {cfgcmd}`mld disable` is configured.
 
 ```
 

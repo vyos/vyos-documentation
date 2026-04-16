@@ -62,7 +62,7 @@ Create a static hostname mapping which will always resolve the name
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> alias \<alias\>
 
 Create named `<alias>` for the configured static mapping for `<hostname>`.
-Thus the address configured as :cfgcmd:`set system static-host-mapping
+Thus the address configured as {cfgcmd}`set system static-host-mapping
 host-name <hostname> inet <address>` can be reached via multiple names.
 Multiple aliases can be specified per host-name.
 ```

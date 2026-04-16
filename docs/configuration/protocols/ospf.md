@@ -42,7 +42,7 @@ starts when the first ospf enabled interface is configured.
 
    In some cases it may be more convenient to enable OSPF on a per
    interface/subnet
-   basis :cfgcmd:`set protocols ospf interface <interface> area <x.x.x.x | x>`
+   basis {cfgcmd}`set protocols ospf interface <interface> area <x.x.x.x | x>`
 
 ```
 
@@ -71,9 +71,9 @@ with the same router-ID!
 
 Originate an AS-External (type-5) LSA describing a default route into all
 external-routing capable areas, of the specified metric and metric type.
-If the :cfgcmd:`always` keyword is given then the default is always
+If the {cfgcmd}`always` keyword is given then the default is always
 advertised, even when there is no default present in the routing table.
-The argument :cfgcmd:`route-map` specifies to advertise the default route
+The argument {cfgcmd}`route-map` specifies to advertise the default route
 if the route map is satisfied.
 
 ```
@@ -106,8 +106,8 @@ Routes with a distance of 255 are effectively disabled and not
 ```{cfgcmd} set protocols ospf log-adjacency-changes [detail]
 
 This command allows to log changes in adjacency. With the optional
-:cfgcmd:`detail` argument, all changes in adjacency status are shown.
-Without :cfgcmd:`detail`, only changes to full or regressions are shown.
+{cfgcmd}`detail` argument, all changes in adjacency status are shown.
+Without {cfgcmd}`detail`, only changes to full or regressions are shown.
 ```
 
 
@@ -121,11 +121,11 @@ still being able to reach networks through the router.
 
 
 This support may be enabled administratively (and indefinitely) with the
-:cfgcmd:`administrative` command. It may also be enabled conditionally.
+{cfgcmd}`administrative` command. It may also be enabled conditionally.
 Conditional enabling of max-metric router-lsas can be for a period of
-seconds after startup with the :cfgcmd:`on-startup <seconds>` command
+seconds after startup with the {cfgcmd}`on-startup <seconds>` command
 and/or for a period of seconds prior to shutdown with the
-:cfgcmd:`on-shutdown <seconds>` command. The time range is 5 to 86400.
+{cfgcmd}`on-shutdown <seconds>` command. The time range is 5 to 86400.
 ```
 
 
@@ -177,7 +177,7 @@ and hello packets are not generated).
 
 
 The optional `disable` option allows to exclude interface from passive state.
-This command is used if the command :cfgcmd:`passive-interface default` was
+This command is used if the command {cfgcmd}`passive-interface default` was
 configured.
 ```
 
@@ -187,7 +187,7 @@ configured.
 This command specifies all interfaces as passive by default. Because this
 command changes the configuration logic to a default passive; therefore,
 interfaces where router adjacencies are expected need to be configured
-with the :cfgcmd:`passive-interface-exclude` command.
+with the {cfgcmd}`passive-interface-exclude` command.
 ```
 
 
@@ -215,11 +215,11 @@ The timer range is 10 to 1800.
 This command sets the initial delay, the initial-holdtime and the
 maximum-holdtime between when SPF is calculated and the event which
 triggered the calculation. The times are specified in milliseconds and must
-be in the range of 0 to 600000 milliseconds. :cfgcmd:`delay` sets the
+be in the range of 0 to 600000 milliseconds. {cfgcmd}`delay` sets the
 initial SPF schedule delay in milliseconds. The default value is 200 ms.
-:cfgcmd:`initial-holdtime` sets the minimum hold time between two
+{cfgcmd}`initial-holdtime` sets the minimum hold time between two
 consecutive SPF calculations. The default value is 1000 ms.
-:cfgcmd:`max-holdtime` sets the maximum wait time between two
+{cfgcmd}`max-holdtime` sets the maximum wait time between two
 consecutive SPF calculations. The default value is 10000 ms.
 ```
 
@@ -351,7 +351,7 @@ summary-LSA (Type-3) announced to other areas. This command can be used
 only in ABR and ONLY router-LSAs (Type-1) and network-LSAs (Type-2)
 (i.e. LSAs with scope area) can be summarized. AS-external-LSAs (Type-5)
 can’t be summarized - their scope is AS. The optional argument
-:cfgcmd:`cost` specifies the aggregated link metric. The metric range is 0
+{cfgcmd}`cost` specifies the aggregated link metric. The metric range is 0
 to 16777215.
 ```
 
@@ -876,7 +876,7 @@ eth1 is up
 ```{opcmd} show ip ospf route [detail]
 
 This command displays the OSPF routing table, as determined by the most
-recent SPF calculation. With the optional :cfgcmd:`detail` argument,
+recent SPF calculation. With the optional {cfgcmd}`detail` argument,
 each route item's advertiser router and network attribute will be shown.
 ```
 
@@ -978,11 +978,11 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
  entered in the form of an IP address.
 
 
- :cfgcmd:`adv-router <A.B.C.D>` – router id, which link advertisements need
+ {cfgcmd}`adv-router <A.B.C.D>` – router id, which link advertisements need
  to be reviewed.
 
 
- :cfgcmd:`self-originate` displays only self-originated LSAs from the local
+ {cfgcmd}`self-originate` displays only self-originated LSAs from the local
  router.
 ```
 
@@ -1384,7 +1384,7 @@ This command displays the neighbor DR choice information.
 
 This command displays state and configuration of OSPF the specified
 interface, or all interfaces if no interface is given. Whith the argument
-:cfgcmd:`prefix` this command shows connected prefixes to advertise.
+{cfgcmd}`prefix` this command shows connected prefixes to advertise.
 ```
 ```{opcmd} show ipv6 ospfv3 route
 

@@ -191,7 +191,7 @@ IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, sta
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> access-list \<in|out\> \<number\>
 
 This command can be used to filter the Babel routes using access lists.
-:cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the access
+{cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the access
 lists are applied.
 ```
 
@@ -204,7 +204,7 @@ filter the Babel routes.
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> prefix-list \<in|out\> \<name\>
 
 This command can be used to filter the Babel routes using prefix lists.
-:cfgcmd:`in` and :cfgcmd:`out` this is the direction in which the prefix
+{cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the prefix
 lists are applied.
 ```
 

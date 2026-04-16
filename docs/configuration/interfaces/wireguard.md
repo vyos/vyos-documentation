@@ -178,11 +178,11 @@ set interfaces wireguard wg01 private-key 'iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//Bkn
 :::
 
 To generate a private key, use the following command:
-:opcmd:`generate pki wireguard key-pair`.
+{opcmd}`generate pki wireguard key-pair`.
 
 To view the public key assigned to the interface so you can share it with a
 peer, use the following command:
-:opcmd:`show interfaces wireguard wg01 public-key`.
+{opcmd}`show interfaces wireguard wg01 public-key`.
 
 ```
 

@@ -176,7 +176,7 @@ CONN ID    Source                 Destination            Protocol         TIMEOU
 :::{note}
 If the table is empty and you have a warning message, it means
  conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
- rule. :cfgcmd:`set firewall state-policy established action accept`
+ rule. {cfgcmd}`set firewall state-policy established action accept`
 :::
 ```
 
