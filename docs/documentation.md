@@ -362,10 +362,11 @@ project maintainer can push to the official repository. This allows the
 maintainer to accept commits from any developer without giving them write
 access to the official codebase.
 
-:::{note}
-Updates to our documentation should be delivered by a GitHub
-pull-request. This requires you already have a GitHub account.
-:::
+.. note::
+
+   Updates to our documentation should be delivered by a GitHub
+   pull-request. This requires you already have a GitHub account.
+
 
 - Fork this project on GitHub <https://github.com/vyos/vyos-documentation/fork>
 

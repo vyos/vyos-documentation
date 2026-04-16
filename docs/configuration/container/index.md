@@ -75,13 +75,13 @@ not isolated from the host and will use the host IP.
 The command translates to "--net host" when the container is created.
 
 
-:::{note}
+.. note::
 
 
-**allow-host-networks** cannot be used with **network**
+
+   **allow-host-networks** cannot be used with **network**
 
 
-:::
 ```
 
 
@@ -98,14 +98,15 @@ Optionally set a specific static IPv4 or IPv6 address for the container.
 This address must be within the named network prefix.
 
 
-:::{note}
+.. note::
 
 
-The first IP in the container network is reserved by the
+
+   The first IP in the container network is reserved by the
 
 
- engine and cannot be used
-:::
+    engine and cannot be used
+
 ```
 
 

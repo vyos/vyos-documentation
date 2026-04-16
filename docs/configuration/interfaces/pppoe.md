@@ -68,9 +68,11 @@ passes through the interface. If the connection fails, it is reestablished when
 traffic resumes.
 For on-demand connections, you must also configure an ``idle-timeout`` period
 to disconnect the session after inactivity.
-:::{note}
-Setting the idle timeout to zero, or leaving it unconfigured, keeps
-:::
+
+.. note::
+
+   Setting the idle timeout to zero, or leaving it unconfigured, keeps
+
 the connection active continuously once established.
 By default, the PPPoE connection is established at boot and remains active
 continuously; if the connection fails, it is reestablished immediately.
@@ -84,9 +86,11 @@ Example:
 .. code-block:: none
 
 set interfaces pppoe pppoe0 no-default-route
-:::{note}
-Introduced in VyOS 1.4, this command inverts the logic of the former
-:::
+
+.. note::
+
+   Introduced in VyOS 1.4, this command inverts the logic of the former
+
 ``default-route`` CLI option.
 ```
 
@@ -110,9 +114,11 @@ packets larger than the configured MRU. Allowed MRU values range from 128 to
 An MRU of 296 is suitable for very slow links (40 bytes for the TCP/IP header
 and 256 bytes for data).
 The default MRU is 1492 bytes.
-:::{note}
-When using the IPv6 protocol, the MRU must be at least 1280 bytes.
-:::
+
+.. note::
+
+   When using the IPv6 protocol, the MRU must be at least 1280 bytes.
+
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> idle-timeout \<time\>
@@ -120,9 +126,11 @@ When using the IPv6 protocol, the MRU must be at least 1280 bytes.
 **Configure the idle timeout for on-demand PPPoE sessions.**
 This setting defines how long the connection remains active without any traffic
 before being disconnected.
-:::{note}
-Setting the idle timeout to zero, or leaving it unconfigured, keeps
-:::
+
+.. note::
+
+   Setting the idle timeout to zero, or leaving it unconfigured, keeps
+
 the connection active continuously once established.
 ```
 
@@ -178,9 +186,11 @@ The following options are available:
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 40 bytes for
 IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 This option is recommended to automatically set the proper value.
-:::{note}
-Introduced in VyOS 1.4, this command replaces the older ``set firewall
-:::
+
+.. note::
+
+   Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
 options interface <name> adjust-mss <value>`` syntax.
 ```
 
@@ -230,9 +240,11 @@ The following options are available:
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 60 bytes for
 IPv6 traffic (40 bytes for the IPv6 header and 20 bytes for the TCP header).
 This option is recommended to automatically set the proper value.
-:::{note}
-Introduced in VyOS 1.4, this command replaces the older ``set firewall
-:::
+
+.. note::
+
+   Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 disable-forwarding

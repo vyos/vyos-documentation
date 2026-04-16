@@ -366,23 +366,24 @@ Use TLS encryption.
   Defaults to 'uid'
 
 
-  :::{note}
+  .. note::
 
 
-  This can only be done if all your users are located directly under
+
+       This can only be done if all your users are located directly under
 
 
-   the same position in the LDAP tree and the login name is used for naming
-   each user object. If your LDAP tree does not match these criterias or if you
-   want to filter who are valid users then you need to use a search filter to
-   search for your users DN (`filter-expression`).
+        the same position in the LDAP tree and the login name is used for naming
+        each user object. If your LDAP tree does not match these criterias or if you
+        want to filter who are valid users then you need to use a search filter to
+        search for your users DN (`filter-expression`).
 
 
-   .. code-block:: none
+        .. code-block:: none
 
 
-   set service webproxy authentication ldap username-attribute uid
-  :::
+        set service webproxy authentication ldap username-attribute uid
+
 ```
 
 

@@ -44,9 +44,11 @@ Disable all optional CPU mitigations. This improves system performance,
 but it may also expose users to several CPU vulnerabilities.
 This will add the following option to the Kernel commandline:
 * ``mitigations=off``
-:::{note}
-Setting will only become active with the next reboot!
-:::
+
+.. note::
+
+   Setting will only become active with the next reboot!
+
 ```
 
 ```{cfgcmd} set system option kernel disable-power-saving
@@ -54,9 +56,11 @@ Setting will only become active with the next reboot!
 This will add the following two options to the Kernel commandline:
 * ``intel_idle.max_cstate=0`` Disable intel_idle and fall back on acpi_idle
 * ``processor.max_cstate=1`` Limit processor to maximum C-state 1
-:::{note}
-Setting will only become active with the next reboot!
-:::
+
+.. note::
+
+   Setting will only become active with the next reboot!
+
 ```
 
 ```{cfgcmd} set system option kernel amd-pstate-driver \<mode\>
@@ -72,12 +76,15 @@ The available modes are:
 This will add the following two options to the Kernel commandline:
 * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
 * ``amd_pstate={mode}`` Sets the p-state mode
-:::{note}
-Setting will only become active with the next reboot!
-:::
-:::{seealso}
-https://docs.kernel.org/admin-guide/pm/amd-pstate.html
-:::
+
+.. note::
+
+   Setting will only become active with the next reboot!
+
+.. seealso::
+
+   https://docs.kernel.org/admin-guide/pm/amd-pstate.html
+
 ```
 
 ```{cfgcmd} set system option kernel quiet
@@ -128,11 +135,13 @@ the used keyboard layout on the system console.
 
 Change system keyboard layout to given language.
 Defaults to ``us``.
-:::{note}
-Changing the keymap only has an effect on the system console, using
- SSH or Serial remote access to the device is not affected as the keyboard
- layout here corresponds to your access system.
-:::
+
+.. note::
+
+   Changing the keymap only has an effect on the system console, using
+    SSH or Serial remote access to the device is not affected as the keyboard
+    layout here corresponds to your access system.
+
 ```
 
 (system-options-performance)=

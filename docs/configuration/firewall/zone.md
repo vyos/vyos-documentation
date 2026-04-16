@@ -73,22 +73,26 @@ To define a zone, set up either one with interfaces or as the local zone.
 ```{cfgcmd} set firewall zone \<name\> interface \<interface\>
 
 Assign interfaces as a member of a zone.
-:::{note}
-* An interface can only be a member of one zone.
- * You can have multiple interfaces in a zone. Traffic between
- interfaces in the same zone follows the intra-zone-filtering
- policy (allowed by default).
-:::
+
+.. note::
+
+   * An interface can only be a member of one zone.
+    * You can have multiple interfaces in a zone. Traffic between
+    interfaces in the same zone follows the intra-zone-filtering
+    policy (allowed by default).
+
 ```
 
 ```{cfgcmd} set firewall zone \<name\> local-zone
 
 Define the zone as the local zone for traffic that originates from or is
 destined to the router itself.
-:::{note}
-* A local zone cannot have any member interfaces
- * You cannot have multiple local zones
-:::
+
+.. note::
+
+   * A local zone cannot have any member interfaces
+    * You cannot have multiple local zones
+
 ```
 
 ```{cfgcmd} set firewall zone \<name\> default-action [drop | reject]

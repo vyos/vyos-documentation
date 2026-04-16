@@ -166,11 +166,13 @@ The default value is 2 seconds.
 **Enable VLAN filtering (also known as VLAN awareness) on the bridge interface.**
 When enabled, the bridge strictly segregates traffic among VLANs configured
 on its member interfaces.
-:::{note}
-Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
- interface acts as VLAN 1 (the default native VLAN) and automatically
- handles all untagged traffic.
-:::
+
+.. note::
+
+   Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
+    interface acts as VLAN 1 (the default native VLAN) and automatically
+    handles all untagged traffic.
+
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> protocol \<802.1ad | 802.1q\>

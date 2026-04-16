@@ -95,14 +95,15 @@ values for external routes, inter-area routes and intra-area routes
 respectively. The distance range is 1 to 255.
 
 
-:::{note}
+.. note::
 
 
-Routes with a distance of 255 are effectively disabled and not
+
+   Routes with a distance of 255 are effectively disabled and not
 
 
- installed into the kernel.
-:::
+    installed into the kernel.
+
 ```
 
 
@@ -259,15 +260,16 @@ configuration.
 An alternate command could be "mpls-te on" (Traffic Engineering)
 
 
-:::{note}
+.. note::
 
 
-FRR offers only partial support for some of the routing
+
+   FRR offers only partial support for some of the routing
 
 
- protocol extensions that are used with MPLS-TE; it does not
- support a complete RSVP-TE solution.
-:::
+    protocol extensions that are used with MPLS-TE; it does not
+    support a complete RSVP-TE solution.
+
 ```
 #### Area Configuration
 ```{cfgcmd} set protocols ospf area \<number\> area-type stub

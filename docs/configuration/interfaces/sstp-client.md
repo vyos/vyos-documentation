@@ -51,9 +51,11 @@ Example:
 .. code-block:: none
 
 set interfaces sstpc sstpc0 no-default-route
-:::{note}
-Introduced in VyOS 1.4, this command inverts the logic of the former
-:::
+
+.. note::
+
+   Introduced in VyOS 1.4, this command inverts the logic of the former
+
 ``default-route`` CLI option.
 ```
 
@@ -91,9 +93,11 @@ The following options are available:
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 40 bytes for
 IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
 This option is recommended to automatically set the proper value.
-:::{note}
-Introduced in VyOS 1.4, this command replaces the older ``set firewall
-:::
+
+.. note::
+
+   Introduced in VyOS 1.4, this command replaces the older ``set firewall
+
 options interface <name> adjust-mss <value>`` syntax.
 ```
 

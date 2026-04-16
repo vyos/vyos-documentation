@@ -28,10 +28,12 @@ You can set firewall rules to accept, drop, or reject ICMP in, out, or
 local traffic. You can also use the **firewall global-options all-ping**
 command. This command affects only LOCAL traffic (packets destined for your
 VyOS system), not IN or OUT traffic.
-:::{note}
-**firewall global-options all-ping** affects only LOCAL traffic
- and always behaves in the most restrictive way
-:::
+
+.. note::
+
+   **firewall global-options all-ping** affects only LOCAL traffic
+    and always behaves in the most restrictive way
+
 
 .. code-block:: none
 

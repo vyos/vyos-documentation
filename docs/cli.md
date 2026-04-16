@@ -640,9 +640,11 @@ vyos@vyos# show
  }
 
 ```
-::::{note}
-An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the [show firewall]{.title-ref} command would return starting after the `firewall {` line, hiding the comment.
-::::
+
+.. note::
+
+   An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the [show firewall]{.title-ref} command would return starting after the `firewall {` line, hiding the comment.
+
 ```
 
 (run_opmode_from_config_mode)=
@@ -797,15 +799,19 @@ Specify remote location of commit archive as any of the below {abbr}`URI (Unifor
 - `tftp://<host>/<dir>`
 - `git+https://<user>:<passwd>@<host>/<path>`
 Since username and password are part of the URI, they need to be properly url encoded if containing special characters.
-::::{note}
-The number of revisions don\'t affect the commit-archive.
-::::
-::::{note}
-When using Git as destination for the commit archive the `source-address` CLI option has no effect.
-::::
-::::{note}
-You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
-::::
+
+.. note::
+
+   The number of revisions don\'t affect the commit-archive.
+
+.. note::
+
+   When using Git as destination for the commit archive the `source-address` CLI option has no effect.
+
+.. note::
+
+   You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
+
 ``` none
 
 vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts

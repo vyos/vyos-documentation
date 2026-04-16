@@ -23,14 +23,15 @@ then enslaved to a VRF device.
    individual interfaces into the VRF.
 
 
-   :::{note}
+   .. note::
 
 
-   A routing table ID can not be modified once it is assigned. It can
+
+         A routing table ID can not be modified once it is assigned. It can
 
 
-    only be changed by deleting and re-adding the VRF instance.
-   :::
+          only be changed by deleting and re-adding the VRF instance.
+
 
 ```
 
@@ -61,14 +62,15 @@ The following protocols can be used: any, babel, bgp, eigrp,
 isis, ospf, rip, static
 
 
-:::{note}
+.. note::
 
 
-If you choose any as the option that will cause all protocols that
+
+   If you choose any as the option that will cause all protocols that
 
 
- are sending routes to zebra.
-:::
+    are sending routes to zebra.
+
 ```
 
 
@@ -81,14 +83,15 @@ The following protocols can be used: any, babel, bgp, isis,
 ospfv3, ripng, static
 
 
-:::{note}
+.. note::
 
 
-If you choose any as the option that will cause all protocols that
+
+   If you choose any as the option that will cause all protocols that
 
 
- are sending routes to zebra.
-:::
+    are sending routes to zebra.
+
 ```
 ### Nexthop Tracking
 
@@ -202,10 +205,12 @@ Lists VRFs that have been created
   --------          -----     -----------        -----                     ----------
   blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
   red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
-:::{note}
-Command should probably be extended to list also the real
- interfaces assigned to this one VRF to get a better overview.
-:::
+
+.. note::
+
+   Command should probably be extended to list also the real
+    interfaces assigned to this one VRF to get a better overview.
+
 ```
 
 
@@ -286,27 +291,28 @@ Display IPv6 routing table for VRF identified by `<name>`.
    average/maximum round-trip time numbers.
 
 
-   :::{note}
+   .. note::
 
 
-   Ping command can be interrupted at any given time using ``<Ctrl>+c``.
+
+         Ping command can be interrupted at any given time using ``<Ctrl>+c``.
 
 
-    A brief statistic is shown afterwards.
+          A brief statistic is shown afterwards.
 
 
-    .. code-block:: none
+          .. code-block:: none
 
 
-    vyos@vyos:~$ ping 192.0.2.1 vrf red
-    PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
-    64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
-    64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
-    ^C
-    --- 192.0.2.1 ping statistics ---
-    2 packets transmitted, 2 received, 0% packet loss, time 4ms
-    rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
-   :::
+          vyos@vyos:~$ ping 192.0.2.1 vrf red
+          PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
+          64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
+          64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
+          ^C
+          --- 192.0.2.1 ping statistics ---
+          2 packets transmitted, 2 received, 0% packet loss, time 4ms
+          rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
+
 ```
 
 

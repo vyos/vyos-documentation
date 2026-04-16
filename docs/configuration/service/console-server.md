@@ -60,15 +60,16 @@ left unconfigured.
 ```{cfgcmd} set service console-server device \<device\> speed [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
 
 
-:::{note}
+.. note::
 
 
-USB to serial converters will handle most of their work in software
+
+   USB to serial converters will handle most of their work in software
 
 
- so you should be carefull with the selected baudrate as some times they
- can't cope with the expected speed.
-:::
+    so you should be carefull with the selected baudrate as some times they
+    can't cope with the expected speed.
+
 ```
 ### Remote Access
 
@@ -83,14 +84,15 @@ After successfull authentication the user will be directly dropped to
 the connected serial device.
 
 
-:::{hint}
+.. hint::
 
 
-Multiple users can connect to the same serial device but only
+
+   Multiple users can connect to the same serial device but only
 
 
- one is allowed to write to the console port.
-:::
+    one is allowed to write to the console port.
+
 ```
 ## Operation
 ```{opcmd} show console-server ports
@@ -127,18 +129,22 @@ Locally connect to serial port identified by `<device>`.
   [Enter `^Ec?' for help]
   [-- MOTD -- VyOS Console Server]
   vyos-r2 login:
-:::{hint}
-Multiple users can connect to the same serial device but only
- one is allowed to write to the console port.
-:::
-:::{hint}
-The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
- the session use: ``Ctrl+E c .``
-:::
-:::{hint}
-If ``alias`` is set, it can be used instead of the device when
- connecting.
-:::
+
+.. hint::
+
+   Multiple users can connect to the same serial device but only
+    one is allowed to write to the console port.
+
+.. hint::
+
+   The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
+    the session use: ``Ctrl+E c .``
+
+.. hint::
+
+   If ``alias`` is set, it can be used instead of the device when
+    connecting.
+
 ```
 ```{opcmd} show log console-server
 

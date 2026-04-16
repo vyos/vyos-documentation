@@ -34,10 +34,12 @@ recent Linux distributions.
 ```{opcmd} show hardware usb
 
 Retrieve a tree-like representation of all connected USB devices.
-:::{note}
-If a device is unplugged and plugged in again, it is assigned a new
- ``Port``, ``Dev``, and ``If``.
-:::
+
+.. note::
+
+   If a device is unplugged and plugged in again, it is assigned a new
+    ``Port``, ``Dev``, and ``If``.
+
 ```
 
 % stop_vyoslinter

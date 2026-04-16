@@ -35,9 +35,11 @@ its MAC address) and configured to run in monitor mode.
 Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
 to indicate country in which device is operating. This can limit available
 channels and transmit power.
-:::{note}
-This option is mandatory in ``access-point`` mode.
-:::
+
+.. note::
+
+   This option is mandatory in ``access-point`` mode.
+
 ```
 
 ### Wireless options
@@ -85,18 +87,21 @@ This defaults to 2007.
 
 Management Frame Protection (MFP) according to IEEE 802.11w
 
-:::{note}
-:abbr:`MFP (Management Frame Protection)` is required for WPA3.
-:::
+.. note::
+
+   :abbr:`MFP (Management Frame Protection)` is required for WPA3.
+
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> enable-bf-protection
 
 Beacon Protection: management frame protection for Beacon frames.
-:::{note}
-This option requires :abbr:`MFP (Management Frame Protection)`
- to be enabled.
-:::
+
+.. note::
+
+   This option requires :abbr:`MFP (Management Frame Protection)`
+    to be enabled.
+
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> mode \<a | b | g | n | ac | ax\>
@@ -108,9 +113,11 @@ Operation mode of wireless radio.
 * ``n`` - 802.11n - 600 Mbits/sec
 * ``ac`` - 802.11ac - 1300 Mbits/sec
 * ``ax`` - 802.11ax - exceeds 1GBit/sec
-:::{note}
-In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
-:::
+
+.. note::
+
+   In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
+
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> physical-device \<device\>
@@ -179,23 +186,26 @@ Supported channel width set.
   channel
 * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
   channel
-:::{note}
-Channel availability for HT40- and HT40+ is limited. The following
- table lists channels permitted for HT40- and HT40+ according to IEEE
- 802.11n Annex J. Channel availability may vary by location.
 
- .. code-block:: none
+.. note::
 
- freq              HT40-           HT40+
- 2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
- 5 GHz             40,48,56,64     36,44,52,60
-:::
-:::{note}
-40 MHz channels may switch their primary and secondary channels if
- needed or creation of 40 MHz channel may be rejected based on overlapping
- BSSes. These changes are done automatically when hostapd is setting up the
- 40 MHz channel.
-:::
+   Channel availability for HT40- and HT40+ is limited. The following
+    table lists channels permitted for HT40- and HT40+ according to IEEE
+    802.11n Annex J. Channel availability may vary by location.
+
+    .. code-block:: none
+
+    freq              HT40-           HT40+
+    2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
+    5 GHz             40,48,56,64     36,44,52,60
+
+.. note::
+
+   40 MHz channels may switch their primary and secondary channels if
+    needed or creation of 40 MHz channel may be rejected based on overlapping
+    BSSes. These changes are done automatically when hostapd is setting up the
+    40 MHz channel.
+
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht

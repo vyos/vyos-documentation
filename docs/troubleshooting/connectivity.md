@@ -79,10 +79,12 @@ into a single tool. An example of its output is shown:
   2. 10.62.255.184                 0.0%    34    1.1   1.0   0.9   1.4   0.1
   3. 10.62.255.71                  0.0%    34    1.4   1.4   1.3   2.0   0.1
   4. 10.62.212.12                  0.0%    34    1.6   1.6   1.6   1.7   0.0
-:::{note}
-The output consumes the screen and will replace your command
- prompt.
-:::
+
+.. note::
+
+   The output consumes the screen and will replace your command
+    prompt.
+
 Several options are available for changing the display output. Press `h` to
 invoke the built in help system. To quit, just press `q` and you'll be
 returned to the VyOS command prompt.

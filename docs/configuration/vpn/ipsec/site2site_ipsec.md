@@ -299,25 +299,29 @@ Operational mode defines how to handle this connection process.
   matching traffic is sent from the local side. This can be useful
   when there is no direct connectivity to the peer due to firewall
   or NAT in the middle of the local and remote side.
-  :::{warning}
-  The ``trap`` mode is not needed in most environments
-   and can lead to connection confusion or unintended tunnel uptime
-   behavior if used incorrectly. Using this mode requires careful
-   coordination with parameters such as ``close-action`` and DPD.
-   For most deployments, use ``initiate`` and ``none`` as described below.
-  :::
+
+  .. warning::
+
+       The ``trap`` mode is not needed in most environments
+        and can lead to connection confusion or unintended tunnel uptime
+        behavior if used incorrectly. Using this mode requires careful
+        coordination with parameters such as ``close-action`` and DPD.
+        For most deployments, use ``initiate`` and ``none`` as described below.
+
 * **none** - loads the connection only, which then can be manually
   initiated or used as a responder configuration.
-:::{note}
-For most site-to-site VPNs, configure one peer
- with ``connection-type initiate`` (active side) and the other peer
- with ``connection-type none`` (passive side) to
- ensure stable and predictable tunnel behavior.
- When using ``connection-type initiate``, you must also configure
- DPD or another session tracking method (such as ``close-action``)
- to automatically re-establish the tunnel after a disconnection.
- Otherwise, the tunnel will not reconnect automatically if it goes down.
-:::
+
+.. note::
+
+   For most site-to-site VPNs, configure one peer
+    with ``connection-type initiate`` (active side) and the other peer
+    with ``connection-type none`` (passive side) to
+    ensure stable and predictable tunnel behavior.
+    When using ``connection-type initiate``, you must also configure
+    DPD or another session tracking method (such as ``close-action``)
+    to automatically re-establish the tunnel after a disconnection.
+    Otherwise, the tunnel will not reconnect automatically if it goes down.
+
 ```
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> default-esp-group \<name\>
