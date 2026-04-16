@@ -383,7 +383,7 @@ ansible_ssh_pass: 12345678
 
 ## Source files on GitHub
 
-All files related to deploying VyOS on vSpherewith Terraform and Ansible
+All files related to deploying VyOS on vSphere with Terraform and Ansible
 can be found in the [vyos-automation] repository.
 
 [vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main

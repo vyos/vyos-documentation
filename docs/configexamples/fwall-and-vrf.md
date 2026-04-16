@@ -14,6 +14,7 @@ Diagram used in this example:
 
 As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
 `WAN`, `LAN` and `PROD`, and their requirements are:
+
 - VRF MGMT:
   - Allow connections to LAN and PROD.
   - Deny connections to internet(WAN).

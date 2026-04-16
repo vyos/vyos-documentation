@@ -19,8 +19,8 @@ IPv6 Tunnel.
 
 ### Topology
 
-The example topology has 2 VyOS routers. One as the WAN Router and one as a
-Client, to test a single LAN setup
+The example topology has 2 VyOS routers. One as the WAN router and one as a
+client, to test a single LAN setup
 
 ```{image} _include/topology.png
 :alt: Tunnelbroker topology image
@@ -141,6 +141,7 @@ This accomplishes a few things:
 - Enables router advertisements. This is an IPv6 alternative for DHCP (though
   DHCPv6 can still be used). With RAs, Your devices will automatically find the
   information they need for routing and DNS.
+
 Now the Client is able to ping a public IPv6 address
 
 % stop_vyoslinter
