@@ -91,7 +91,6 @@ Generic FIDO2-backed SSH key generation example:
 
 .. code-block:: none
 
-
   ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
 During key generation, OpenSSH will:
   * Request user presence (for example, a physical touch or confirmation)
@@ -106,7 +105,6 @@ VyOS configuration example:
 
 
 .. code-block:: none
-
 
   # Generate a FIDO2 SSH key on the client system
   # Copy the public key to the VyOS instance
@@ -220,19 +218,15 @@ Example:
 
 .. code-block:: none
 
-
   # Generate key-pair acting as CA
   $ ssh-keygen -f vyos-ssh-ca.key
-
 
   # Generate key for user: vyos_testca
   $ ssh-keygen -f vyos_testca  -C "vyos_tesca@vyos.net"
 
-
   # Sign public key from user vyos_testca and insert principal names: vyos, vyos_testca
   # with a key lifetime of two weeks - after which the key is unusable
   $ ssh-keygen -s vyos-ssh-ca.key -I vyos_testca@vyos.net -n vyos,vyos_testca -V +2w vyos_testca.pub
-
 
   $ set system login user vyos_testca
   $ set pki openssh test_ca public key AAAAB3N.....

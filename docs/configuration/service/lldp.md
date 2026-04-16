@@ -83,7 +83,8 @@ Displays information about all neighbors discovered via LLDP.
 
   vyos@vyos:~$ show lldp neighbors
   Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
-  D - Docsis, T - Telephone, O - Other
+                    D - Docsis, T - Telephone, O - Other
+
   Device ID                 Local     Proto  Cap   Platform             Port ID
   ---------                 -----     -----  ---   --------             -------
   BR2.vyos.net              eth0      LLDP   R     VyOS 1.2.4           eth1
@@ -102,40 +103,40 @@ Get detailed information about LLDP neighbors.
   LLDP neighbors:
   -------------------------------------------------------------------------------
   Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
-  Chassis:
-  ChassisID:    mac 00:53:00:01:02:c9
-  SysName:      BR2.vyos.net
-  SysDescr:     VyOS 1.3-rolling-201912230217
-  MgmtIP:       192.0.2.1
-  MgmtIP:       2001:db8::ffff
-  Capability:   Bridge, on
-  Capability:   Router, on
-  Capability:   Wlan, off
-  Capability:   Station, off
-  Port:
-  PortID:       mac 00:53:00:01:02:c9
-  PortDescr:    eth0
-  TTL:          120
-  PMD autoneg:  supported: no, enabled: no
-  MAU oper type: 10GigBaseCX4 - X copper over 8 pair 100-Ohm balanced cable
-  VLAN:         201 eth0.201
-  VLAN:         205 eth0.205
-  LLDP-MED:
-  Device Type:  Network Connectivity Device
-  Capability:   Capabilities, yes
-  Capability:   Policy, yes
-  Capability:   Location, yes
-  Capability:   MDI/PSE, yes
-  Capability:   MDI/PD, yes
-  Capability:   Inventory, yes
-  Inventory:
-  Hardware Revision: None
-  Software Revision: 4.19.89-amd64-vyos
-  Firmware Revision: 6.00
-  Serial Number: VMware-42 1d 83 b9 fe c1 bd b2-7
-  Manufacturer: VMware, Inc.
-  Model:        VMware Virtual Platform
-  Asset ID:     No Asset Tag
+    Chassis:
+      ChassisID:    mac 00:53:00:01:02:c9
+      SysName:      BR2.vyos.net
+      SysDescr:     VyOS 1.3-rolling-201912230217
+      MgmtIP:       192.0.2.1
+      MgmtIP:       2001:db8::ffff
+      Capability:   Bridge, on
+      Capability:   Router, on
+      Capability:   Wlan, off
+      Capability:   Station, off
+    Port:
+      PortID:       mac 00:53:00:01:02:c9
+      PortDescr:    eth0
+      TTL:          120
+      PMD autoneg:  supported: no, enabled: no
+        MAU oper type: 10GigBaseCX4 - X copper over 8 pair 100-Ohm balanced cable
+    VLAN:         201 eth0.201
+    VLAN:         205 eth0.205
+    LLDP-MED:
+      Device Type:  Network Connectivity Device
+      Capability:   Capabilities, yes
+      Capability:   Policy, yes
+      Capability:   Location, yes
+      Capability:   MDI/PSE, yes
+      Capability:   MDI/PD, yes
+      Capability:   Inventory, yes
+      Inventory:
+        Hardware Revision: None
+        Software Revision: 4.19.89-amd64-vyos
+        Firmware Revision: 6.00
+        Serial Number: VMware-42 1d 83 b9 fe c1 bd b2-7
+        Manufacturer: VMware, Inc.
+        Model:        VMware Virtual Platform
+        Asset ID:     No Asset Tag
   -------------------------------------------------------------------------------
 ```
 
