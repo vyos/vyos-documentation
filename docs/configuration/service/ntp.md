@@ -41,7 +41,7 @@ the `allow-client` directive.
 ```{cfgcmd} set service ntp server \<address\>
 
    Configure one or more servers for synchronisation. Server name can be either
-   an IP address or :abbr:`FQDN (Fully Qualified Domain Name)`.
+   an IP address or {abbr}`FQDN (Fully Qualified Domain Name)`.
 
 
    There are 3 default NTP server set. You are able to change them.
@@ -64,7 +64,7 @@ Configure one or more attributes to the given NTP server.
 
 
 * ``nts`` enables Network Time Security (NTS) for the server as specified
-  in :rfc:`8915`
+  in {rfc}`8915`
 
 
 * ``pool`` mobilizes persistent client mode association with a number of
@@ -76,7 +76,7 @@ Configure one or more attributes to the given NTP server.
   operating hosts.
 
 
-* ``ptp`` enables the PTP transport for this server (see :ref:`ptp-transport`).
+* ``ptp`` enables the PTP transport for this server (see {ref}`ptp-transport`).
 
 
 * ``interleave`` enables NTP interleaved mode (see
@@ -105,7 +105,7 @@ Multiple networks/client IP addresses can be configured.
 
 ```{cfgcmd} set service ntp vrf \<name\>
 
-Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 

@@ -344,7 +344,7 @@ Both IPv4 and IPv6 can be used in parallel.
 
 ```{cfgcmd} set container network \<name\> mtu \<number\>
 
-Configure :abbr:`MTU (Maximum Transmission Unit)` for a given network. It
+Configure {abbr}`MTU (Maximum Transmission Unit)` for a given network. It
 is the size (in bytes) of the largest ethernet frame sent on this link.
 ```
 

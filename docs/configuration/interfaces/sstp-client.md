@@ -77,18 +77,18 @@ Disable the installation of advertised DNS nameservers on the local system.
 
 **Configure the remote SSTP server address for the client connection.**
 
-The address can be either an IP address or a :abbr:`FQDN (Fully Qualified
+The address can be either an IP address or a {abbr}`FQDN (Fully Qualified
 Domain Name)`.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> ip adjust-mss \<mss | clamp-mss-to-pmtu\>
 
-**Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing
+**Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
 to send packets larger than the specified size. This helps prevent connection
-issues if :abbr:`PMTUD (Path MTU Discovery)` fails.
+issues if {abbr}`PMTUD (Path MTU Discovery)` fails.
 
 The following options are available:
 
@@ -113,21 +113,21 @@ disabled on it.
 ```{cfgcmd} set interfaces sstpc \<interface\> ip source-validation \<strict | loose | disable\>
 
 **Configure source IP address validation using**
-:abbr:`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
-:rfc:`3704`.
+{abbr}`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
+{rfc}`3704`.
 
 The following options are available:
 
 * ``strict``: Each incoming packet’s source IP address is checked against the
-  :abbr:`FIB (Forwarding Information Base)`. If the interface is not the best
+  {abbr}`FIB (Forwarding Information Base)`. If the interface is not the best
   route back to that source, validation fails, and the packet is dropped.
 * ``loose``: Each incoming packet’s source IP address is checked against the
-  :abbr:`FIB (Forwarding Information Base)`. If the source IP address is
+  {abbr}`FIB (Forwarding Information Base)`. If the source IP address is
   unreachable through any interface, validation fails.
 * ``disable``: No source IP address validation is performed. All incoming
   packets are accepted.
 
-:rfc:`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
+{rfc}`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```

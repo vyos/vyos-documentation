@@ -47,7 +47,7 @@ with other vendors, set the port to the IANA standard **4789**.
 
 ```{cfgcmd} set interfaces vxlan \<interface\> vni \<number\>
 
-**Configure a** :abbr:`VNI (VXLAN Network Identifier)` **for the VXLAN
+**Configure a** {abbr}`VNI (VXLAN Network Identifier)` **for the VXLAN
 interface.**
 Each VXLAN segment is identified by this 24-bit VNI, allowing up to 16 million
 segments to coexist within the same administrative domain.
@@ -74,7 +74,7 @@ This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 
 ```{cfgcmd} set interfaces vxlan \<interface\> gpe
 
-**Enable the** :abbr:`GPE (Generic Protocol Extension)` **for the VXLAN
+**Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
 interface.**
 To use this feature, you must configure the interface with the ``external``
 parameter.
@@ -84,26 +84,26 @@ parameter.
 
 **Configure the VXLAN interface to use an external control plane, such as BGP
 L2VPN/EVPN, for remote endpoint discovery.**
-If not configured, the internal :abbr:`FDB (Forwarding Database)` is used.
+If not configured, the internal {abbr}`FDB (Forwarding Database)` is used.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters neighbor-suppress
 
 **Enable ARP and ND suppression on the VXLAN interface.**
 This reduces ARP and ND message flooding across the VXLAN network. As defined
-in :rfc:`7432#section-10`, participating VTEPs use known MAC-to-IP bindings
+in {rfc}`7432#section-10`, participating VTEPs use known MAC-to-IP bindings
 to reply to local requests on behalf of remote hosts.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters nolearning
 
-Disable :abbr:`SLLA (Source Link-Layer Address)` and IP address learning on
+Disable {abbr}`SLLA (Source Link-Layer Address)` and IP address learning on
 the VXLAN interface.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters vni-filter
 
-**Enable** :abbr:`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
+**Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
 interface.**
 When enabled, the interface only receives packets with VNIs configured in its
 VNI filtering table.

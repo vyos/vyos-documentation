@@ -81,16 +81,16 @@ Association Keys)`, and to authenticate MACsec peers.
 
 ```{cfgcmd} set interfaces macsec \<interface\> security mka cak \<key\>
 
-**Configure the** :abbr:`CAK (MACsec Connectivity Association Key)` **for the
+**Configure the** {abbr}`CAK (MACsec Connectivity Association Key)` **for the
 MACsec interface.**
-The :abbr:`CAK (MACsec Connectivity Association Key)` and its :abbr:`CKN
+The {abbr}`CAK (MACsec Connectivity Association Key)` and its {abbr}`CKN
 (MACsec Connectivity Association Key Name)` form the pre-shared master key pair
 used to authenticate MACsec peers.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> security mka ckn \<key\>
 
-Configure the :abbr:`CKN (MACsec Connectivity Association Key Name)` for the
+Configure the {abbr}`CKN (MACsec Connectivity Association Key Name)` for the
 MACsec interface.
 ```
 
@@ -115,8 +115,8 @@ The following values are valid:
 
 ```{opcmd} run generate macsec mka cak \<gcm-aes-128|gcm-aes-256\>
 
-Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) :abbr:`MKA (MACsec
-Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
+Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) {abbr}`MKA (MACsec
+Key Agreement protocol)` {abbr}`CAK (MACsec Connectivity Association Key)`.
 
 :::{code-block} none
 vyos@vyos:~$ generate macsec mka cak gcm-aes-128
@@ -126,7 +126,7 @@ vyos@vyos:~$ generate macsec mka cak gcm-aes-128
 
 ```{opcmd} run generate macsec mka ckn
 
-Generate an :abbr:`MKA (MACsec Key Agreement protocol)` :abbr:`CAK (MACsec
+Generate an {abbr}`MKA (MACsec Key Agreement protocol)` {abbr}`CAK (MACsec
 Connectivity Association Key)`.
 
 :::{code-block} none

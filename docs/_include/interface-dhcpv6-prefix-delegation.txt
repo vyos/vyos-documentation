@@ -2,7 +2,7 @@
 
 **DHCPv6 Prefix Delegation (PD)**
 
-VyOS supports DHCPv6 Prefix Delegation (DHCPv6-PD) as described in :rfc:`3633`. 
+VyOS supports DHCPv6 Prefix Delegation (DHCPv6-PD) as described in {rfc}`3633`. 
 DHCPv6-PD is supported by most ISPs that provide native IPv6 for consumers on 
 fixed networks.
 

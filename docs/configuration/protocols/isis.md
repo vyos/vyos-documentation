@@ -34,7 +34,7 @@ occur within IS-IS when it comes to said duplication.
   This command sets network entity title (NET) provided in ISO format.
 
 
-  Here is an example :abbr:`NET (Network Entity Title)` value:
+  Here is an example {abbr}`NET (Network Entity Title)` value:
 
 
   :::{code-block} none
@@ -43,7 +43,7 @@ occur within IS-IS when it comes to said duplication.
   The CLNS address consists of the following parts:
 
 
-  * :abbr:`AFI (Address family authority identifier)` - ``49`` The AFI value
+  * {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what IS-IS uses for private addressing.
 
 
@@ -59,7 +59,7 @@ occur within IS-IS when it comes to said duplication.
     four numbers instead of three. This gives us ``1921.6800.1002``.
 
 
-  * :abbr:`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
+  * {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
     setting indicates "this system" or "local system."
 
 ```
@@ -77,7 +77,7 @@ the same as the one used to configure the IS-IS process.
 ```{cfgcmd} set protocols isis dynamic-hostname
 
 This command enables support for dynamic hostname TLV. Dynamic hostname
-mapping determined as described in :rfc:`2763`, Dynamic Hostname
+mapping determined as described in {rfc}`2763`, Dynamic Hostname
 Exchange Mechanism for IS-IS.
 ```
 
@@ -96,7 +96,7 @@ This command defines the IS-IS router behavior:
 ```{cfgcmd} set protocols isis lsp-mtu \<size\>
 
 This command configures the maximum size of generated
-:abbr:`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
+{abbr}`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
 ```
 
 
@@ -113,7 +113,7 @@ This command sets old-style (ISO 10589) or new style packet formats:
 
 ```{cfgcmd} set protocols isis purge-originator
 
-This command enables :rfc:`6232` purge originator identification. Enable
+This command enables {rfc}`6232` purge originator identification. Enable
 purge originator identification (POI) by adding the type, length and value
 (TLV) with the Intermediate System (IS) identification to the LSPs that do
 not contain POI information. If an IS generates a purge, VyOS adds this TLV
@@ -123,14 +123,14 @@ with the system ID of the IS to the purge.
 
 ```{cfgcmd} set protocols isis set-attached-bit
 
-This command sets ATT bit to 1 in Level1 LSPs. It is described in :rfc:`3787`.
+This command sets ATT bit to 1 in Level1 LSPs. It is described in {rfc}`3787`.
 ```
 
 
 ```{cfgcmd} set protocols isis set-overload-bit
 
 This command sets overload bit to avoid any transit traffic through this
-router. It is described in :rfc:`3787`.
+router. It is described in {rfc}`3787`.
 ```
 
 
@@ -150,7 +150,7 @@ This command will generate a default-route in L2 database.
 ```{cfgcmd} set protocols isis ldp-sync
 
   This command will enable IGP-LDP synchronization globally for ISIS. This
-  requires for LDP to be functional. This is described in :rfc:`5443`. By
+  requires for LDP to be functional. This is described in {rfc}`5443`. By
   default all interfaces operational in IS-IS are enabled for synchronization.
   Loopbacks are exempt.
 
@@ -197,7 +197,7 @@ interface. The range is 2 to 100.
 
 This command configures padding on hello packets to accommodate asymmetrical
 maximum transfer units (MTUs) from different hosts as described in
-:rfc:`3719`. This helps to prevent a premature adjacency Up state when one
+{rfc}`3719`. This helps to prevent a premature adjacency Up state when one
 routing devices MTU does not meet the requirements to establish the adjacency.
 ```
 
@@ -236,7 +236,7 @@ This command configures the authentication password for the interface.
 ```{cfgcmd} set protocols isis interface \<interface\> priority \<number\>
 
 This command sets priority for the interface for
-:abbr:`DIS (Designated Intermediate System)` election. The priority
+{abbr}`DIS (Designated Intermediate System)` election. The priority
 range is 0 to 127.
 ```
 
@@ -253,7 +253,7 @@ to 127.
 
 
 This command disables Three-Way Handshake for P2P adjacencies which
-described in :rfc:`5303`. Three-Way Handshake is enabled by default.
+described in {rfc}`5303`. Three-Way Handshake is enabled by default.
 ```
 
 
@@ -390,14 +390,14 @@ seconds.The interval range is 1 to 120.
 
 This commands specifies the Finite State Machine (FSM) intended to
 control the timing of the execution of SPF calculations in response
-to IGP events. The process described in :rfc:`8405`.
+to IGP events. The process described in {rfc}`8405`.
 ```
 
 #### Loop Free Alternate (LFA)
 
 ```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list \<name\> \<level-1|level-2\>
 
-This command enables IP fast re-routing that is part of :rfc:`5286`.
+This command enables IP fast re-routing that is part of {rfc}`5286`.
 Specifically this is a prefix list which references a prefix in which
 will select eligible PQ nodes for remote LFA backups.
 ```
@@ -423,7 +423,7 @@ prefix priority.
 
 ```{cfgcmd} set protocols isis segment-routing srv6 interface \<interface\>
 
-The :ref:`dummy interface<configuration/interfaces/dummy:dummy>` used
+The {ref}`dummy interface<configuration/interfaces/dummy:dummy>` used
 to install SRv6 SIDs into the Linux data plane. The interface must exist and
 must be present when configuring IS-IS with
 SRv6.
@@ -439,13 +439,13 @@ into the IGP domain.
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-d \<0-255\>
 
 The Maximum End D MSD Type specifies the maximum number of SIDs present in an
-SRH when performing decapsulation. As specified in :rfc:`8986`, the permitted
+SRH when performing decapsulation. As specified in {rfc}`8986`, the permitted
 SID types include, but are not limited to, End.DX6, End.DT4, End.DT46, End
 with USD, and End.X with USD.
 If the advertised value is zero or no value is advertised, then the router
 cannot apply any behavior that results in decapsulation and forwarding of the
 inner packet if the outer IPv6 header contains an SRH.
-Reference: :rfc:`9352`
+Reference: {rfc}`9352`
 ```
 
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-end-pop \<0-255\>
@@ -453,31 +453,31 @@ Reference: :rfc:`9352`
 The Maximum End Pop MSD Type signals the maximum number of SIDs in the SRH to
 which the router can apply "Penultimate Segment Pop (PSP) of the SRH" or
 "Ultimate Segment Pop (USP) of the SRH" behavior, as defined in "Flavors"
-(Section 4.16 of :rfc:`8986`).
+(Section 4.16 of {rfc}`8986`).
 If the advertised value is zero or no value is advertised, then the router
 cannot apply PSP or USP flavors.
-Reference: :rfc:`9352`
+Reference: {rfc}`9352`
 ```
 
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-h-encaps \<0-255\>
 
 The Maximum H.Encaps MSD Type signals the maximum number of SIDs that can be
 added to the segment list of an SRH as part of the "H.Encaps" behavior, as
-defined in :rfc:`8986`.
+defined in {rfc}`8986`.
 If the advertised value is zero or no value is advertised, then the headend
 can apply an SR Policy that only contains one segment without inserting any
 SRH header. A non-zero SRH Max H.encaps MSD indicates that the headend can
 insert an SRH up to the advertised number of SIDs.
-Reference: :rfc:`9352`
+Reference: {rfc}`9352`
 ```
 
 ```{cfgcmd} set protocols isis segment-routing srv6 node-msd max-segs-left \<0-255\>
 
 The Maximum Segments Left MSD Type signals the maximum value of the
-"Segments Left" field (:rfc:`8754`) in the SRH of a received packet before
+"Segments Left" field ({rfc}`8754`) in the SRH of a received packet before
 applying the Endpoint behavior associated with a SID.
 If no value is advertised, the supported value is 0.
-Reference: :rfc:`9352`
+Reference: {rfc}`9352`
 ```
 
 ## Examples

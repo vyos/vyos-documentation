@@ -608,7 +608,7 @@ Default value is **100**.
 
 ```{cfgcmd} set service pppoe-server ppp-options mppe \<require | prefer | deny\>
 
-Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
+Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
 
 

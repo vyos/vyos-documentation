@@ -163,11 +163,11 @@ standard authentication.
 
 ```{cfgcmd} set system login user \<username\> authentication otp key \<key\>
 
-**Configure** :abbr:`OTP (One-time password)`**-based** :abbr:`MFA
+**Configure** {abbr}`OTP (One-time password)`**-based** {abbr}`MFA
 (Multi-factor Authentication)` **for a user.**
 
 ``<key>``: A Base32-encoded secret key. This key must be added to the user's
-authenticator app to generate valid :abbr:`OTPs (One-time passwords)`.
+authenticator app to generate valid {abbr}`OTPs (One-time passwords)`.
 
 **When configured**, the user is required to enter their password followed by
 a valid OTP for all subsequent logins.
@@ -177,7 +177,7 @@ a valid OTP for all subsequent logins.
 
 ```{cfgcmd} set system login user \<username\> authentication otp rate-limit \<limit\>
 
-**Configure the number of** :abbr:`OTP (One-time password)` **authentication
+**Configure the number of** {abbr}`OTP (One-time password)` **authentication
 attempts allowed within a specified time period.**
 
 If this limit is exceeded, the user is temporarily blocked.
@@ -187,7 +187,7 @@ The default value is 3 attempts. The valid range is 1 to 10 attempts.
 
 ```{cfgcmd} set system login user \<username\> authentication otp rate-time \<seconds\>
 
-**Configure the time period, in seconds, for tracking** :abbr:`OTP (One-time
+**Configure the time period, in seconds, for tracking** {abbr}`OTP (One-time
 password)` **authentication attempts.**
 
 The default value is 30 seconds. The valid range is 1 to 600 seconds.
@@ -195,10 +195,10 @@ The default value is 30 seconds. The valid range is 1 to 600 seconds.
 
 ```{cfgcmd} set system login user \<username\> authentication otp window-size \<size\>
 
-**Configure the** :abbr:`OTP (One-time password)` **window size for a user.**
+**Configure the** {abbr}`OTP (One-time password)` **window size for a user.**
 
-The :abbr:`OTP (One-time password)` window size defines the number of
-concurrently valid :abbr:`OTPs (One-time passwords)` that the authentication
+The {abbr}`OTP (One-time password)` window size defines the number of
+concurrently valid {abbr}`OTPs (One-time passwords)` that the authentication
 server accepts. This setting assumes a new token is generated every 30 seconds.
 
 The default value is 3. This permits 3 concurrent codes: the code for the
@@ -318,19 +318,19 @@ account management on a single backend server.
 
 ```{cfgcmd} set system login radius server \<address\> key \<secret\>
 
-**Configure the** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
+**Configure the** {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
 **server's IP address and shared secret.**
 
 The shared secret is used to verify the router's identity and to encrypt user
 passwords during authentication.
 
-You can configure multiple :abbr:`RADIUS (Remote Authentication Dial-In User
+You can configure multiple {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` servers.
 ```
 
 ```{cfgcmd} set system login radius server \<address\> port \<port\>
 
-**Configure the UDP port for communication with the** :abbr:`RADIUS (Remote
+**Configure the UDP port for communication with the** {abbr}`RADIUS (Remote
 Authentication Dial-In User Service)` **server.**
 
 The default port is 1812.
@@ -338,10 +338,10 @@ The default port is 1812.
 
 ```{cfgcmd} set system login radius server \<address\> disable
 
-**Disable a** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
+**Disable a** {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
 **server from the authentication process.**
 
-Disabling a specific :abbr:`RADIUS (Remote Authentication Dial-In User
+Disabling a specific {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` server doesn’t remove its configuration settings (the server’s IP
 address and shared secret).
 ```
@@ -349,7 +349,7 @@ address and shared secret).
 ```{cfgcmd} set system login radius server \<address\> timeout \<timeout\>
 
 Configure the duration, in seconds, that the VyOS router waits for a
-response from the :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
+response from the {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
 server after sending an authentication request.
 
 If the server does not respond within this timeframe, the VyOS router tries to
@@ -358,7 +358,7 @@ connect to another configured server or falls back to local authentication.
 
 ```{cfgcmd} set system login radius source-address \<address\>
 
-**Configure the source IP address the router uses for** :abbr:`RADIUS (Remote
+**Configure the source IP address the router uses for** {abbr}`RADIUS (Remote
 Authentication Dial-In User Service)` **authentication requests.**
 
 A consistent source IP address is recommended as RADIUS servers typically
@@ -371,10 +371,10 @@ failures.
 
 ```{cfgcmd} set system login radius vrf \<name\>
 
-**Configure the router to send all** :abbr:`RADIUS (Remote Authentication
+**Configure the router to send all** {abbr}`RADIUS (Remote Authentication
 Dial-In User Service)` **authentication requests via a specific VRF.**
 
-By default, :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
+By default, {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
 authentication requests are sent via the global routing table.
 ```
 
@@ -417,20 +417,20 @@ in {rfc}`8907`.
 
 ```{cfgcmd} set system login tacacs server \<address\> key \<secret\>
 
-**Configure the** :abbr:`TACACS+ (Terminal Access Controller Access Control
+**Configure the** {abbr}`TACACS+ (Terminal Access Controller Access Control
 System)` **server IP address and shared secret.**
 
-Unlike :abbr:`RADIUS (Remote Authentication Dial-In User Service)`, which
-encrypts only passwords, :abbr:`TACACS+ (Terminal Access Controller Access
+Unlike {abbr}`RADIUS (Remote Authentication Dial-In User Service)`, which
+encrypts only passwords, {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` encrypts the entire packet body for enhanced security.
 
-You can configure multiple :abbr:`TACACS+ (Terminal Access Controller Access
+You can configure multiple {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` servers.
 ```
 
 ```{cfgcmd} set system login tacacs server \<address\> port \<port\>
 
-**Configure the TCP port for communication with the** :abbr:`TACACS+ (Terminal
+**Configure the TCP port for communication with the** {abbr}`TACACS+ (Terminal
 Access Controller Access Control System)` **server.**
 
 The default port is 49.
@@ -438,10 +438,10 @@ The default port is 49.
 
 ```{cfgcmd} set system login tacacs server \<address\> disable
 
-**Disable a** :abbr:`TACACS+ (Terminal Access Controller Access Control
+**Disable a** {abbr}`TACACS+ (Terminal Access Controller Access Control
 System)` **server from the authentication process.**
 
-Disabling a specific :abbr:`TACACS+ (Terminal Access Controller Access Control
+Disabling a specific {abbr}`TACACS+ (Terminal Access Controller Access Control
 System)` server doesn’t remove its configuration settings (the server’s IP
 address and shared secret).
 ```
@@ -449,7 +449,7 @@ address and shared secret).
 ```{cfgcmd} set system login tacacs server \<address\> timeout \<timeout\>
 
 Configure the duration, in seconds, that the VyOS router waits for a
-response from the :abbr:`TACACS+ (Terminal Access Controller Access
+response from the {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` server after sending an authentication request.
 
 If the server does not respond within this timeframe, the VyOS router tries
@@ -459,10 +459,10 @@ to connect to another configured server or falls back to local authentication.
 ```{cfgcmd} set system login tacacs source-address \<address\>
 
 **Configure the source IP address the router uses for**
-:abbr:`TACACS+ (Terminal Access Controller Access Control System)`
+{abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 **authentication requests.**
 
-A consistent source IP address is recommended as :abbr:`TACACS+ (Terminal
+A consistent source IP address is recommended as {abbr}`TACACS+ (Terminal
 Access Controller Access Control System)` servers typically accept requests
 only from known, trusted IP addresses.
 
@@ -472,10 +472,10 @@ which may change (e.g., due to a link outage), causing authentication failures.
 
 ```{cfgcmd} set system login tacacs vrf \<name\>
 
-Configure the router to send all :abbr:`TACACS+ (Terminal Access Controller
+Configure the router to send all {abbr}`TACACS+ (Terminal Access Controller
 Access Control System)` authentication requests via a specific VRF.
 
-By default, :abbr:`TACACS+ (Terminal Access Controller Access Control System)`
+By default, {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 authentication requests are sent via the global routing table.
 ```
 

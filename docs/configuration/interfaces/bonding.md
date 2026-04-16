@@ -50,7 +50,7 @@ The available modes are:
      - IEEE 802.3ad Dynamic Link Aggregation. Groups only member interfaces with
        the same speed (e.g., 1 Gbps) and duplex settings. Member interfaces with
        different speed and duplex settings are not included in the active bond.
-       Provides load balancing and fault tolerance. Uses the :abbr:`LACP (Link
+       Provides load balancing and fault tolerance. Uses the {abbr}`LACP (Link
        Aggregation Control Protocol)` to negotiate the bond with the switch.
    * - **Traffic distribution:**
      - Traffic is distributed according to the **transmit hash policy**
@@ -138,7 +138,7 @@ packet delivery.
        the traffic is redistributed among all active member interfaces.
 * ``xor-hash``: Provides load balancing and fault tolerance based on a hash formula.
   Distributes traffic and handles failover identically to ``802.3ad``, but operates
-  without the :abbr:`LACP (Link Aggregation Control Protocol)`.
+  without the {abbr}`LACP (Link Aggregation Control Protocol)`.
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
@@ -165,7 +165,7 @@ the bonding interface is marked UP (carrier asserted).
 ```{cfgcmd} set interfaces bonding \<interface\> lacp-rate \<slow|fast\>
 
 **Configure the rate at which the bonding interface requests its link
-partner to send** :abbr:`LACPDUs (Link Aggregation Control Protocol Data
+partner to send** {abbr}`LACPDUs (Link Aggregation Control Protocol Data
 Units)` **in 802.3ad mode.**
 This command applies only when the bonding interface is configured in
 802.3ad mode.
@@ -177,10 +177,10 @@ The following options are available:
 **Configure a specific MAC address for the bonding interface.**
 
 
-This sets the 802.3ad system MAC address, which is used for :abbr:`LACPDU (Link
+This sets the 802.3ad system MAC address, which is used for {abbr}`LACPDU (Link
 Aggregation Control Protocol Data Unit)` exchanges with the link partner.
 You can assign a fixed MAC address or generate a random one for these
-:abbr:`LACPDU (Link Aggregation Control Protocol Data Unit)` exchanges.
+{abbr}`LACPDU (Link Aggregation Control Protocol Data Unit)` exchanges.
 
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> hash-policy \<policy\>
@@ -410,14 +410,14 @@ synchronization:
 
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-df-pref \<1-65535\>
 
-**Configure the** :abbr:`DF (Designated Forwarder)` **preference (1-65535) for
+**Configure the** {abbr}`DF (Designated Forwarder)` **preference (1-65535) for
 the interface. A higher value indicates a higher preference to become the**
-:abbr:`DF (Designated Forwarder)`. **The** :abbr:`DF (Designated Forwarder)`
+{abbr}`DF (Designated Forwarder)`. **The** {abbr}`DF (Designated Forwarder)`
 **preference is configured per-ES.**
 
 
 The DF election process determines which interface in a specific ES forwards
-:abbr:`BUM (Broadcast, Unknown Unicast, and Multicast)` traffic from the EVPN
+{abbr}`BUM (Broadcast, Unknown Unicast, and Multicast)` traffic from the EVPN
 overlay to the connected CE device. EVPN Type-4 (Ethernet Segment) routes are
 used to elect the DF, implementing the preference-based election method defined
 in RFC 9785.

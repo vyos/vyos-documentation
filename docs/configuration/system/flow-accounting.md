@@ -105,7 +105,7 @@ used in the exported flow data can be configured here. The following
 versions are supported:
 * **5** - Most common version, but restricted to IPv4 flows only
 * **9** - NetFlow version 9 (default)
-* **10** - :abbr:`IPFIX (IP Flow Information Export)` as per :rfc:`3917`
+* **10** - {abbr}`IPFIX (IP Flow Information Export)` as per {rfc}`3917`
 ```
 
 ```{cfgcmd} set system flow-accounting netflow server \<address\>

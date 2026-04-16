@@ -76,8 +76,8 @@ Configure these interfaces under the `interfaces wwan` node.
 
 ```{cfgcmd} set interfaces wwan \<interface\> apn \<apn\>
 
-**Configure the** :abbr:`APN (Access Point Name)` **for the WWAN connection.**
-Every WWAN connection requires an :abbr:`APN (Access Point Name)` to connect to
+**Configure the** {abbr}`APN (Access Point Name)` **for the WWAN connection.**
+Every WWAN connection requires an {abbr}`APN (Access Point Name)` to connect to
 the cellular network.
 This parameter is mandatory. Contact your service provider for the correct
 ```

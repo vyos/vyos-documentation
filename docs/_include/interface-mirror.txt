@@ -1,6 +1,6 @@
 .. stop_vyoslinter
 
-:abbr:`SPAN (Switched Port Analyser)` port mirroring copies inbound and
+{abbr}`SPAN (Switched Port Analyser)` port mirroring copies inbound and
 outbound traffic from one interface to another specified interface.
 
 The destination interface is usually connected to specialized equipment,
@@ -10,7 +10,7 @@ benefit of mirroring traffic is that the application is isolated from the
 source traffic, so application processing does not affect the traffic or
 system performance.
 
-To configure :abbr:`SPAN (Switched Port Analyser)` port mirroring, VyOS uses
+To configure {abbr}`SPAN (Switched Port Analyser)` port mirroring, VyOS uses
 the ``mirror`` parameter. You can mirror ingress traffic (traffic entering the
 router) and egress traffic (traffic leaving the router) separately. Both
 directions can be mirrored to the same destination interface or split to

@@ -261,7 +261,7 @@ Configure the port number node_exporter is listening on.
 
 ```{cfgcmd} set service monitoring prometheus node-exporter vrf \<name\>
 
-Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 
@@ -287,7 +287,7 @@ Configure the port number frr_exporter is listening on.
 
 ```{cfgcmd} set service monitoring prometheus frr-exporter vrf \<name\>
 
-Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 ### Blackbox Exporter
 Prometheus [blackbox_exporter] which allows probing of endpoints over
@@ -302,7 +302,7 @@ Configure the port number blackbox_exporter is listening on.
 ```
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter vrf \<name\>
 
-Configure name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 #### Configuring modules
 Blackbox exporter can be configured with different modules for probing DNS or ICMP.

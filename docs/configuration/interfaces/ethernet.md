@@ -255,32 +255,32 @@ multiple offloading features for a single interface.
    incoming packets into one larger packet before sending it to the CPU.
 
    :::{note}
-   :abbr:`LRO (Large Receive Offload)` hardware support is often limited
+   {abbr}`LRO (Large Receive Offload)` hardware support is often limited
    to TCP/IPv4 packets. For details on LRO limitations, see
    https://lwn.net/Articles/358910/
    :::
    :::{warning}
-   :abbr:`LRO (Large Receive Offload)` irreversibly alters packet
+   {abbr}`LRO (Large Receive Offload)` irreversibly alters packet
    headers during merging. This prevents the merged packet from being correctly
    split back into the original packets, causing packet drops and forwarding
-   failures on routers and bridges. Use :abbr:`LRO (Large Receive Offload)` only
+   failures on routers and bridges. Use {abbr}`LRO (Large Receive Offload)` only
    for end-hosts that do not forward traffic.
    :::
  * ``tso`` **(TCP Segmentation Offload):** Instructs the NIC to split large TCP
    packets into smaller ones before transmitting them to the network.
-   **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
-   for :abbr:`TSO (TCP Segmentation Offload)` to work. Additionally, :abbr:`GSO
+   **Important:** {abbr}`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
+   for {abbr}`TSO (TCP Segmentation Offload)` to work. Additionally, {abbr}`GSO
    (Generic Segmentation Offload)` should be enabled as a safety fallback; it
-   ensures that if traffic is rerouted to hardware without :abbr:`TSO (TCP
+   ensures that if traffic is rerouted to hardware without {abbr}`TSO (TCP
    Segmentation Offload)` support, the kernel can still segment the packets,
    preventing transmission failures.
  * ``gso`` **(Generic Segmentation Offload):** Instructs the kernel to split
    large packets into smaller ones before sending them to the NIC.
-   :abbr:`GSO (Generic Segmentation Offload)` serves as a software fallback for
-   hardware that does not support :abbr:`TSO (TCP Segmentation Offload)` or for
+   {abbr}`GSO (Generic Segmentation Offload)` serves as a software fallback for
+   hardware that does not support {abbr}`TSO (TCP Segmentation Offload)` or for
    protocols (like UDP) that hardware cannot offload.
-   **Important:** :abbr:`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
-   for :abbr:`GSO (Generic Segmentation Offload)` to work.
+   **Important:** {abbr}`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
+   for {abbr}`GSO (Generic Segmentation Offload)` to work.
  * ``gro`` **(Generic Receive Offload):** Instructs the kernel to merge multiple
    incoming packets into one larger packet before passing it to upper protocol
    layers.
@@ -290,8 +290,8 @@ multiple offloading features for a single interface.
 
  :::{note}
  The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
- set and IDs are not sequential, :abbr:`GSO (Generic Segmentation Offload)`
- alters them to maintain a consistent sequence for :abbr:`GSO (Generic
+ set and IDs are not sequential, {abbr}`GSO (Generic Segmentation Offload)`
+ alters them to maintain a consistent sequence for {abbr}`GSO (Generic
  Segmentation Offload)` compatibility.
  :::
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
@@ -300,8 +300,8 @@ multiple offloading features for a single interface.
    ensure packets from the same flow are processed by the same CPU core.
 
  :::{note}
- :abbr:`RPS (Receive Packet Steering)` is a software version of
- :abbr:`RSS (Receive Side Scaling)` and is useful for NICs without hardware
+ {abbr}`RPS (Receive Packet Steering)` is a software version of
+ {abbr}`RSS (Receive Side Scaling)` and is useful for NICs without hardware
  multi-queue support.
  :::
  * ``sg`` **(Scatter-Gather/Scatter-Gather DMA):** Instructs the NIC to fetch

@@ -52,8 +52,8 @@ Supported interface types:
 ```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 
 :::{note}
-You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
- Advertisements)`. This is a special wildcard prefix that will emit :abbr:`RAs (Router Advertisements)` for every prefix assigned to the interface.
+You can also opt for using `::/64` as prefix for your {abbr}`RAs (Router
+ Advertisements)`. This is a special wildcard prefix that will emit {abbr}`RAs (Router Advertisements)` for every prefix assigned to the interface.
  This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 :::
 ```
@@ -75,7 +75,7 @@ You can also opt for using `::/64` as prefix for your :abbr:`RAs (Router
 
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
-Enable PREF64 option as outlined in :rfc:`8781`.
+Enable PREF64 option as outlined in {rfc}`8781`.
 NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 
 :::{note}

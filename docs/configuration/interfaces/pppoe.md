@@ -104,7 +104,7 @@ set interfaces pppoe pppoe0 default-route-distance 220
 
 ```{cfgcmd} set interfaces pppoe \<interface\> mru \<mru\>
 
-**Configure the** :abbr:`MRU (Maximum Receive Unit)` **for the PPPoE
+**Configure the** {abbr}`MRU (Maximum Receive Unit)` **for the PPPoE
 interface.**
 This setting instructs the pppd daemon to restrict the remote peer from sending
 packets larger than the configured MRU. Allowed MRU values range from 128 to
@@ -172,11 +172,11 @@ an Ethernet interface, a VIF, or a bonding interface.
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ip adjust-mss \<mss | clamp-mss-to-pmtu\>
 
-**Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing
+**Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
 to send packets larger than the specified size. This helps prevent connection
-issues if :abbr:`PMTUD (Path MTU Discovery)` fails.
+issues if {abbr}`PMTUD (Path MTU Discovery)` fails.
 The following options are available:
 * ``mss``: Sets the MSS to a specific value in bytes.
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 40 bytes for
@@ -199,18 +199,18 @@ disabled on it.
 ```{cfgcmd} set interfaces pppoe \<interface\> ip source-validation \<strict | loose | disable\>
 
 **Configure source IP address validation using**
-:abbr:`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
-:rfc:`3704`.
+{abbr}`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
+{rfc}`3704`.
 The following options are available:
 * ``strict``: Each incoming packet’s source IP address is checked against the
-:abbr:`FIB (Forwarding Information Base)`. If the interface is not the best
+{abbr}`FIB (Forwarding Information Base)`. If the interface is not the best
 route back to that source, validation fails, and the packet is dropped.
 * ``loose``: Each incoming packet’s source IP address is checked against the
-:abbr:`FIB (Forwarding Information Base)`. If the source IP address is
+{abbr}`FIB (Forwarding Information Base)`. If the source IP address is
 unreachable through any interface, validation fails.
 * ``disable``: No source IP address validation is performed. All incoming
 packets are accepted.
-:rfc:`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
+{rfc}`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```
@@ -219,17 +219,17 @@ mode.
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 address autoconf
 
-Enable IPv6 address assignment via :abbr:`SLAAC (Stateless Address
+Enable IPv6 address assignment via {abbr}`SLAAC (Stateless Address
 Auto-Configuration)` on this interface.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 adjust-mss \<mss | clamp-mss-to-pmtu\>
 
-**Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing
+**Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
 to send packets larger than the specified size. This helps prevent connection
-issues if :abbr:`PMTUD (Path MTU Discovery)` fails.
+issues if {abbr}`PMTUD (Path MTU Discovery)` fails.
 The following options are available:
 * ``mss``: Sets the MSS to a specific value in bytes.
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 60 bytes for

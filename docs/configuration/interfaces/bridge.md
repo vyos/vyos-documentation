@@ -36,32 +36,32 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 
 **Configure an interface as a bridge member.**
-Valid interface types are: :ref:`ethernet-interface`, :ref:`bond-interface`,
-:ref:`l2tpv3-interface`, :ref:`openvpn`, :ref:`vxlan-interface`,
-:ref:`wireless-interface`, :ref:`tunnel-interface`, and
-:ref:`geneve-interface`.
+Valid interface types are: {ref}`ethernet-interface`, {ref}`bond-interface`,
+{ref}`l2tpv3-interface`, {ref}`openvpn`, {ref}`vxlan-interface`,
+{ref}`wireless-interface`, {ref}`tunnel-interface`, and
+{ref}`geneve-interface`.
 Use tab completion to list interfaces that can be bridged.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> priority <priority>
 
-**Configure the** :abbr:`STP (Spanning Tree Protocol)` **port priority
+**Configure the** {abbr}`STP (Spanning Tree Protocol)` **port priority
 for a specific member interface within a bridge.**
-Within the :abbr:`STP (Spanning Tree Protocol)` topology, each member interface
+Within the {abbr}`STP (Spanning Tree Protocol)` topology, each member interface
 in a bridge operates as a port with an assigned **priority** and **path cost**.
-:abbr:`STP (Spanning Tree Protocol)` uses these values to determine the
+{abbr}`STP (Spanning Tree Protocol)` uses these values to determine the
 **lowest-cost path** to the root bridge, maintaining a loop-free topology.
 Traffic flows through the path with the lowest path cost, while alternate
 paths remain in standby.
 A **lower** priority value means **higher** precedence in path selection.
-:abbr:`STP (Spanning Tree Protocol)` considers the port priority only if
+{abbr}`STP (Spanning Tree Protocol)` considers the port priority only if
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> cost <cost>
 
-**Configure the** :abbr:`STP (Spanning Tree Protocol)` **path cost for a
+**Configure the** {abbr}`STP (Spanning Tree Protocol)` **path cost for a
 specific member interface within the bridge.**
-Path cost is the primary metric :abbr:`STP (Spanning Tree Protocol)` uses to
+Path cost is the primary metric {abbr}`STP (Spanning Tree Protocol)` uses to
 determine the path to the root bridge. This value is based on interface
 bandwidth; faster interfaces receive lower costs.
 By assigning a lower cost, you give the interface higher precedence during
@@ -75,7 +75,7 @@ Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 ```{cfgcmd} set interfaces bridge \<interface\> aging \<time\>
 
 **Configure the MAC address aging time for the bridge.**
-The duration in seconds that a MAC address remains in the bridge’s :abbr:`FDB
+The duration in seconds that a MAC address remains in the bridge’s {abbr}`FDB
 (Forwarding Database)` before removal if no traffic is received from that
 address.
 The default value is 300 seconds.
@@ -83,32 +83,32 @@ The default value is 300 seconds.
 
 ```{cfgcmd} set interfaces bridge \<interface\> max-age \<time\>
 
-**Configure the** :abbr:`STP (Spanning Tree Protocol)` **max age timer for
+**Configure the** {abbr}`STP (Spanning Tree Protocol)` **max age timer for
 the bridge.**
-The duration in seconds that the bridge waits for a :abbr:`BPDU (Bridge
+The duration in seconds that the bridge waits for a {abbr}`BPDU (Bridge
 Protocol Data Unit)` from the root bridge.
-If the bridge does not receive a :abbr:`BPDU (Bridge Protocol Data Unit)`
+If the bridge does not receive a {abbr}`BPDU (Bridge Protocol Data Unit)`
 within this period, it recalculates the path to the root bridge or initiates
 a new root bridge election.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> igmp querier
 
-**Configure the bridge interface to act as the** :abbr:`IGMP (Internet Group
-Management Protocol)`/:abbr:`MLD (Multicast Listener Discovery)` **Querier.**
-**When configured:** The bridge interface sends :abbr:`IGMP (Internet Group
-Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
+**Configure the bridge interface to act as the** {abbr}`IGMP (Internet Group
+Management Protocol)`/{abbr}`MLD (Multicast Listener Discovery)` **Querier.**
+**When configured:** The bridge interface sends {abbr}`IGMP (Internet Group
+Management Protocol)` (IPv4) and {abbr}`MLD (Multicast Listener Discovery)`
 (IPv6) general queries to all connected hosts to identify active multicast
 listeners.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> igmp snooping
 
-**Configure the bridge interface to perform** :abbr:`IGMP (Internet Group
-Management Protocol)`/:abbr:`MLD (Multicast Listener Discovery)`
+**Configure the bridge interface to perform** {abbr}`IGMP (Internet Group
+Management Protocol)`/{abbr}`MLD (Multicast Listener Discovery)`
 **snooping.**
-**When configured:** The bridge interface monitors :abbr:`IGMP (Internet Group
-Management Protocol)` (IPv4) and :abbr:`MLD (Multicast Listener Discovery)`
+**When configured:** The bridge interface monitors {abbr}`IGMP (Internet Group
+Management Protocol)` (IPv4) and {abbr}`MLD (Multicast Listener Discovery)`
 (IPv6) join requests and restricts multicast traffic forwarding to only active
 listeners. This prevents network flooding.
 ```
@@ -128,12 +128,12 @@ configure its parameters.
 
 ```{cfgcmd} set interfaces bridge \<interface\> stp
 
-Enable :abbr:`STP (Spanning Tree Protocol)` on the bridge interface.
+Enable {abbr}`STP (Spanning Tree Protocol)` on the bridge interface.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> forwarding-delay \<delay\>
 
-**Configure the** :abbr:`STP (Spanning Tree Protocol)` **delay, in seconds,
+**Configure the** {abbr}`STP (Spanning Tree Protocol)` **delay, in seconds,
 for the bridge interface.**
 This parameter defines how long the bridge interface remains in the listening
 and learning states before forwarding traffic. The delay ensures that the
@@ -145,10 +145,10 @@ twice this value.
 
 ```{cfgcmd} set interfaces bridge \<interface\> hello-time \<interval\>
 
-**Configure the** :abbr:`STP (Spanning Tree Protocol)` **Hello advertisement
+**Configure the** {abbr}`STP (Spanning Tree Protocol)` **Hello advertisement
 interval, in seconds.**
 This parameter sets the frequency at which the bridge interface transmits
-Hello packets (:abbr:`BPDUs (Bridge Protocol Data Units)`). These packets
+Hello packets ({abbr}`BPDUs (Bridge Protocol Data Units)`). These packets
 originate from the root bridge and are propagated by designated bridges. If
 neighbors stop receiving Hello packets, they assume a connection failure and
 trigger a topology recalculation.
@@ -322,7 +322,7 @@ priority 32 cost 100
 
 ```{opcmd} show bridge \<name\> fdb
 
-Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
+Show the {abbr}`FDB (Forwarding Database)` for the specified bridge.
 
 :::{code-block} none
 vyos@vyos:~$ show bridge br0 fdb
@@ -350,9 +350,9 @@ vyos@vyos:~$ show bridge br0 fdb
 
 ```{opcmd} show bridge \<name\> mdb
 
-Show the :abbr:`MDB (Multicast group Database)` for the specified bridge.
-The :abbr:`MDB (Multicast group Database)` is populated by :abbr:`IGMP
-(Internet Group Management Protocol)`/:abbr:`MLD (Multicast Listener
+Show the {abbr}`MDB (Multicast group Database)` for the specified bridge.
+The {abbr}`MDB (Multicast group Database)` is populated by {abbr}`IGMP
+(Internet Group Management Protocol)`/{abbr}`MLD (Multicast Listener
 Discovery)` snooping and lists the multicast groups currently active on the
 bridge.
 
@@ -367,7 +367,7 @@ dev br0 port br0 grp ff02::6a temp vid 1
 
 ```{opcmd} show bridge \<name\> macs
 
-Show the learned :abbr:`MAC (Media Access Control)` address table for the
+Show the learned {abbr}`MAC (Media Access Control)` address table for the
 specified bridge.
 
 :::{code-block} none

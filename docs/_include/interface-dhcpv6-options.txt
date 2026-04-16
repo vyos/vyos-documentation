@@ -2,7 +2,7 @@
 
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options duid \<duid\>
 
-**Configure a specific** :abbr:`DUID (DHCP Unique Identifier)` **for the 
+**Configure a specific** {abbr}`DUID (DHCP Unique Identifier)` **for the 
 DHCPv6 client on this interface.**
 
 The DUID is an identifier used by a DHCPv6 client to get an IPv6 address from 

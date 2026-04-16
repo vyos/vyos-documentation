@@ -87,7 +87,7 @@ This defaults to 2007.
 Management Frame Protection (MFP) according to IEEE 802.11w
 
 :::{note}
-:abbr:`MFP (Management Frame Protection)` is required for WPA3.
+{abbr}`MFP (Management Frame Protection)` is required for WPA3.
 :::
 ```
 
@@ -96,7 +96,7 @@ Management Frame Protection (MFP) according to IEEE 802.11w
 Beacon Protection: management frame protection for Beacon frames.
 
 :::{note}
-This option requires :abbr:`MFP (Management Frame Protection)`
+This option requires {abbr}`MFP (Management Frame Protection)`
  to be enabled.
 :::
 ```
@@ -141,7 +141,7 @@ SSID to be used in IEEE 802.11 management frames
 
 Wireless device type for this interface
 * ``access-point``: Forwards packets between other nodes.
-* ``station``: Connects to another :abbr:`AP (Access Point)`.
+* ``station``: Connects to another {abbr}`AP (Access Point)`.
 * ``monitor``: Passively monitors all packets on the frequency/channel.
 ```
 

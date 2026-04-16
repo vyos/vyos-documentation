@@ -47,7 +47,7 @@ Disable sending syslog mark messages.
 **Configure how the logging device's hostname appears in log messages sent
 to a remote syslog server.**
 
-If configured, the device includes its :abbr:`FQDN (Fully Qualified Domain
+If configured, the device includes its {abbr}`FQDN (Fully Qualified Domain
 Name)` in log messages, even if the syslog server is in the same domain.
 ```
 
@@ -86,7 +86,7 @@ to multiple hosts.
 
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
-The server’s address can be specified using either a :abbr:`FQDN (Fully
+The server’s address can be specified using either a {abbr}`FQDN (Fully
 Qualified Domain Name)` or an IP address.
 Refer to the tables below for valid facility and severity options.
 ```
@@ -129,7 +129,7 @@ Octet-counted framing is not available for the UDP protocol.
 
 ```{cfgcmd} set system syslog remote \<address\> vrf \<name\>
 
-Configure the :abbr:`VRF (Virtual Routing and Forwarding)` instance
+Configure the {abbr}`VRF (Virtual Routing and Forwarding)` instance
 for log transmission.
 ```
 
@@ -164,11 +164,11 @@ Enable TLS-encrypted remote logging.
 
 ```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
-**Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
-The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to
+**Configure the** {abbr}`CA (Certificate Authority)` **certificate.**
+The syslog client uses the {abbr}`CA (Certificate Authority)` certificate to
 verify the identity of the remote syslog server.
 
-The :abbr:`CA (Certificate Authority)` certificate is required for **all**
+The {abbr}`CA (Certificate Authority)` certificate is required for **all**
 authentication modes except ``anon``.
 
 ```
@@ -193,7 +193,7 @@ server's identity.
 The following authentication modes are available:
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
   server's identity. This mode is **not recommended**, as it is vulnerable to
-  :abbr:`MITM (Man-in-the-Middle)` attacks.
+  {abbr}`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
   value preconfigured with:
 
@@ -201,11 +201,11 @@ The following authentication modes are available:
   set system syslog remote <address> tls permitted-peer <peer>
   :::
 * ``certvalid``: Verifies the server certificate is signed by a trusted
-  :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
+  {abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
 * ``name``: Verifies that:
-  * The server’s certificate is signed by a trusted :abbr:`CA (Certificate
+  * The server’s certificate is signed by a trusted {abbr}`CA (Certificate
     Authority)`.
-  * The :abbr:`CN (Common Name)` in the certificate matches the value
+  * The {abbr}`CN (Common Name)` in the certificate matches the value
     preconfigured with:
 
   :::{code-block} none
@@ -221,7 +221,7 @@ The following authentication modes are available:
 The certificate identifier format depends on the authentication mode:
 * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
   SHA-256).
-* ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
+* ``name``: Enter the expected certificate {abbr}`CNs (Common Names)`.
 
 For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
 are not required.

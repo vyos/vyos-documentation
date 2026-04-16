@@ -35,13 +35,13 @@ keypairs from an easy to access operational level command.
 
 ```{opcmd} generate pki ca
 
-Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
+Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
 ```
 
 ```{opcmd} generate pki ca install \<name\>
 
-Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
+Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
 ```{include} pki_cli_import_help.txt
 
@@ -50,13 +50,13 @@ private key on the console.
 
 ```{opcmd} generate pki ca sign \<ca-name\>
 
-Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
+Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
 the private key referenced by `ca-name`.
 ```
 
 ```{opcmd} generate pki ca sign \<ca-name\> install \<name\>
 
-Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
+Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
 the private key referenced by `name`.
 ```{include} pki_cli_import_help.txt
 
@@ -112,14 +112,14 @@ Create a new public/private keypair which is signed by the CA referenced by
 
 ```{opcmd} generate pki dh
 
-Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
+Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
 The generated parameters are then output to the console.
 ```
 
 ```{opcmd} generate pki dh install \<name\>
 
-Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
+Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
 ```{include} pki_cli_import_help.txt
 
@@ -356,7 +356,7 @@ also to display them.
 
 ```{opcmd} show pki ca
 
-Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
+Show a list of installed {abbr}`CA (Certificate Authority)` certificates.
 
 :::{code-block} none
 vyos@vyos:~$ show pki ca
@@ -395,7 +395,7 @@ Show only information for specified certificate.
 
 ```{opcmd} show pki crl
 
-Show a list of installed :abbr:`CRLs (Certificate Revocation List)`.
+Show a list of installed {abbr}`CRLs (Certificate Revocation List)`.
 ```
 
 ```{opcmd} renew certbot

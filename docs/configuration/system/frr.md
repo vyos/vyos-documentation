@@ -8,7 +8,7 @@ but requires either a restart of the routing daemon, or a reboot of the system.
 
 ```{cfgcmd} set system frr bmp
 
-Enable :abbr:`BMP (BGP Monitoring Protocol)` support.
+Enable {abbr}`BMP (BGP Monitoring Protocol)` support.
 ```
 
 ```{cfgcmd} set system frr descriptors \<numer\>

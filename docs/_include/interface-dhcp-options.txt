@@ -3,7 +3,7 @@
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcp-options client-id \<description\>
 
 **Configure a DHCP client identifier for the interface, as specified in** 
-:rfc:`2131`.
+{rfc}`2131`.
 
 The ``client-id`` is an identifier that the DHCP client sends to the DHCP 
 server to uniquely identify itself for IP address assignment. By default, 

@@ -226,7 +226,7 @@ encryption offload support available in the kernel.
 enabled to avoid compatibility issues with existing clients.
 ```{cfgcmd} set interfaces openvpn \<interface\> offload dco
 
-   **Enable** :abbr:`DCO (Data Channel Offload)` **for the specified OpenVPN
+   **Enable** {abbr}`DCO (Data Channel Offload)` **for the specified OpenVPN
    interface.**
 
 
@@ -236,7 +236,7 @@ enabled to avoid compatibility issues with existing clients.
    :::{code-block} none
    set interfaces openvpn vtun0 offload dco
    :::
-   This command enables :abbr:`DCO (Data Channel Offload)` and loads the required
+   This command enables {abbr}`DCO (Data Channel Offload)` and loads the required
    kernel module.
 
 ```
@@ -252,7 +252,7 @@ VyOS CLI.
 
 
 If a required option is missing, you may submit a feature request at
-Phabricator so all users can benefit from it (see :ref:`issues_features`).
+Phabricator so all users can benefit from it (see {ref}`issues_features`).
 
 
 Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
@@ -466,7 +466,7 @@ response protocol.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp digits \<1-65535\>
 
-**Configure the number of digits to use for the** :abbr:`TOTP (Time-based
+**Configure the number of digits to use for the** {abbr}`TOTP (Time-based
 One-Time Password)` **hash.**
 
 
@@ -494,7 +494,7 @@ Default: 180.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp step \<1-65535\>
 
-**Configure the step value for** :abbr:`TOTP (Time-based One-Time Password)`
+**Configure the step value for** {abbr}`TOTP (Time-based One-Time Password)`
 **in seconds.**
 
 

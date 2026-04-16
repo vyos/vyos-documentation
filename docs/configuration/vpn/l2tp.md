@@ -486,7 +486,7 @@ Default value is **100**.
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options mppe \<require | prefer | deny\>
 
-Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
+Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
 * **require** - ask client for mppe, if it rejects drop connection
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)

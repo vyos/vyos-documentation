@@ -3,7 +3,7 @@
 **Overview**
 
 IEEE 802.1X is a security standard that enforces access control at the data link layer. It blocks all traffic on a port until the connecting device proves 
-its identity. The :abbr:`EAPOL (Extensible Authentication Protocol over LAN)` 
+its identity. The {abbr}`EAPOL (Extensible Authentication Protocol over LAN)` 
 protocol transports credentials between the client (supplicant) and the network 
 switch (authenticator). The switch forwards these credentials to a backend 
 authentication server, typically RADIUS, which verifies them and authorizes 
@@ -14,7 +14,7 @@ equipment such as ISP gateways or enterprise switches. Authentication uses
 X.509 certificates to validate the identities of both the router and the 
 authentication server.
 
-The :abbr:`EAPOL (Extensible Authentication Protocol over LAN)` protocol 
+The {abbr}`EAPOL (Extensible Authentication Protocol over LAN)` protocol 
 requires the supplicant (the router) to provide an identity string to the 
 authentication server during the initial handshake. If no identity is 
 configured, VyOS uses the Ethernet interface's MAC address as the identity 
@@ -22,9 +22,9 @@ string.
 
 **Configuration**
 
-Prerequisites: Before configuring 802.1X (:abbr:`EAPOL (Extensible 
+Prerequisites: Before configuring 802.1X ({abbr}`EAPOL (Extensible 
 Authentication Protocol over LAN)`) authentication, upload the required 
-:abbr:`CA (Certificate Authority)` certificate, client certificate, and 
+{abbr}`CA (Certificate Authority)` certificate, client certificate, and 
 private key to the router and import them into the PKI system.
 
 :::{note}
@@ -33,23 +33,23 @@ The client certificate and private key must share the **same** PKI
 :::
 
 .. seealso:: For more information about managing certificates and keys, see 
-   the :ref:`PKI <pki>` section.
+   the {ref}`PKI <pki>` section.
 
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} eapol ca-certificate \<name\>
 
-**Configure the trusted** :abbr:`CA (Certificate Authority)` **certificate for 
+**Configure the trusted** {abbr}`CA (Certificate Authority)` **certificate for 
 the interface.**
 
 The router uses this certificate to validate the authentication server’s 
 identity.
 
-``<name>`` is the :abbr:`CA (Certificate Authority)` certificate name as 
+``<name>`` is the {abbr}`CA (Certificate Authority)` certificate name as 
 defined in the PKI system.
 
 :::{note}
-If you specify an intermediate :abbr:`CA (Certificate Authority)`
+If you specify an intermediate {abbr}`CA (Certificate Authority)`
 certificate, ensure the full certificate chain, including the root and all
-higher-level intermediate :abbr:`CA (Certificate Authority)` certificates, is
+higher-level intermediate {abbr}`CA (Certificate Authority)` certificates, is
 available to the system.
 :::
 
@@ -72,8 +72,8 @@ server.
 
 ``<name>`` is the client certificate name as defined in the PKI system.
 
-During authentication, all parent :abbr:`CA (Certificate Authority)` 
-certificates of the client certificate, such as intermediate and root :abbr:`CA 
+During authentication, all parent {abbr}`CA (Certificate Authority)` 
+certificates of the client certificate, such as intermediate and root {abbr}`CA 
 (Certificate Authority)` certificates, are automatically sent as part of the 
 EAP-TLS handshake.
 

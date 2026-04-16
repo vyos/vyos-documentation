@@ -124,7 +124,7 @@ time when reverse lookup is not possible.
 
 ```{cfgcmd} set service ssh mac \<mac\>
 
-Specifies the available :abbr:`MAC (Message Authentication Code)` algorithms.
+Specifies the available {abbr}`MAC (Message Authentication Code)` algorithms.
 The MAC algorithm is used in protocol version 2 for data integrity protection.
 Multiple algorithms can be provided by using multiple commands, defining
 one algorithm per command.
@@ -157,7 +157,7 @@ Specify timeout interval for keepalive message in seconds.
 
 ```{cfgcmd} set service ssh key-exchange \<kex\>
 
-Specify allowed :abbr:`KEX (Key Exchange)` algorithms.
+Specify allowed {abbr}`KEX (Key Exchange)` algorithms.
 
 
 List of supported algorithms: ``diffie-hellman-group1-sha1``,
@@ -178,7 +178,7 @@ Set the ``sshd`` log level. The default is ``info``.
 
 ```{cfgcmd} set service ssh vrf \<name\>
 
-Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
+Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 
@@ -312,7 +312,7 @@ will be created.
 ```{opcmd} generate public-key-command user \<username\> path \<location\>
 
  Generate the configuration mode commands to add a public key for
- :ref:`ssh_key_based_authentication`.
+ {ref}`ssh_key_based_authentication`.
  ``<location>`` can be a local path or a URL pointing at a remote file.
  Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
 Example:
