@@ -159,7 +159,6 @@ r11-proxy:
 
 ### Examples
 Example of op-mode:
-% stop_vyoslinter
 
 ```none
 / # salt r11-proxy netmiko.send_command 'show interfaces ethernet eth0 brief' host=192.0.2.14 device_type=vyos username=vyos password=vyos
@@ -171,9 +170,7 @@ r11-proxy:
 / #
 ```
 
-% start_vyoslinter
 Example of configuration:
-% stop_vyoslinter
 
 ```none
 / # salt r11-proxy netmiko.send_config config_commands=['set interfaces ethernet eth0 description Link_to_WAN'] commit=True host=192.0.2.14 device_type=vyos username=vyos password=vyos
@@ -187,10 +184,8 @@ r11-proxy:
 / #
 ```
 
-% start_vyoslinter
 Example of configuration commands from the file
 "/srv/salt/states/commands.txt"
-% stop_vyoslinter
 
 ```none
 / # salt r11-proxy netmiko.send_config config_file=salt://commands.txt commit=True host=192.0.2.11 device_type=vyos username=vyos password=vyos
@@ -205,8 +200,6 @@ r11-proxy:
     vyos@r1#
 / #
 ```
-
-% start_vyoslinter
 
 [netmiko]: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.netmiko_mod.html#module-salt.modules.netmiko_mod
 [salt]: https://docs.saltproject.io/en/latest/contents.html
