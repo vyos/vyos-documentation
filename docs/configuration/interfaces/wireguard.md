@@ -29,23 +29,14 @@ outgoing traffic.
 
    Generate a keypair: a public and a private key.
 
+   .. note:: This command only outputs the keys to your console. It neither stores
+      them in the system nor applies them to the system configuration.
 
-   .. note::
+   .. code-block:: none
 
-
-
-         This command only outputs the keys to your console. It neither stores
-
-
-          them in the system nor applies them to the system configuration.
-
-
-          .. code-block:: none
-
-
-          vyos@vyos:~$ generate pki wireguard key-pair
-          Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
-          Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
+     vyos@vyos:~$ generate pki wireguard key-pair
+     Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
+     Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 
 ```
 
@@ -55,39 +46,28 @@ outgoing traffic.
 Generate a keypair and output the private key assignment command for the
 specified interface.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ generate pki wireguard key-pair install interface wg10
   "generate" CLI command executed from operational level.
   Generated private key is not automatically added to the VyOS configuration, use the following configuration mode commands to install key:
 
-
   set interfaces wireguard wg10 private-key '4Krkv8h6NkAYMMaBWI957yYDJDMvj9URTHstdlOcDU0='
-
 
   Corresponding public-key to use on peer system is: 'UxDsYT6EnpTIOKUzvMlw2p0sNOKQvFxEdSVrnNrX1Ro='
 
-.. note::
-
-   If you invoke this command from configuration mode with the ``run``
-    prefix, the generated private key is automatically assigned to the specified
-    interface.
-
-
+.. note:: If you invoke this command from configuration mode with the ``run``
+   prefix, the generated private key is automatically assigned to the specified
+   interface.
 
 .. code-block:: none
-
 
   vyos@vyos# run generate pki wireguard key-pair install interface wg10
   "generate" CLI command executed from config session.
   Generated private-key was imported to CLI!
 
-
   Use the following command to verify: show interfaces wireguard wg10
   Corresponding public-key to use on peer system is: '7d9KwabjLhHpJiEJeIGd0CBlao/eTwFOh6xyCovTfG8='
-
 
   vyos@vyos# compare
   [edit interfaces]
@@ -101,9 +81,7 @@ specified interface.
 
 Show the public key assigned to the interface.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ show interfaces wireguard wg01 public-key
   EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
@@ -114,13 +92,10 @@ Show the public key assigned to the interface.
 
 Generate a pre-shared key.
 
-
 The pre-shared key is optional. It adds an additional layer of symmetric-key
 cryptography on top of the asymmetric cryptography.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ generate pki wireguard preshared-key
   Pre-shared key: OHH2EwZfMNK+1L6BXbYw3bKCtMrfjpR4mCAEeBlFnRs=
@@ -130,25 +105,18 @@ cryptography on top of the asymmetric cryptography.
 Generate a pre-shared key and output the key assignment command for the
 specified peer.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ generate pki wireguard preshared-key install interface wg10 peer foo
   "generate" CLI command executed from operational level.
   Generated preshared-key is not stored to CLI, use configure mode commands to install key:
 
-
   set interfaces wireguard wg10 peer foo preshared-key '32vQ1w1yFKTna8n7Gu7EimubSe2Y63m8bafz55EG3Ro='
-
 
   Pre-shared key: +LuaZ8W6DjsDFJFX3jJzoNqrsXHhvq08JztM9z8LHCs=
 
-.. note::
-
-   If you invoke this command from configuration mode with the run
-    prefix, the generated key is automatically assigned to the specified peer.
-
+.. note:: If you invoke this command from configuration mode with the run
+   prefix, the generated key is automatically assigned to the specified peer.
 
 ```
 ## Interface configuration
@@ -221,26 +189,16 @@ peers. This is a strict design restriction. For more information, check the
 ```
 **Remote side configuration**
 ```none
-
 set interfaces wireguard wg01 address '10.1.0.2/30'
-
 set interfaces wireguard wg01 description 'VPN-to-wg01'
-
 set interfaces wireguard wg01 peer to-wg01 allowed-ips '192.168.1.0/24'
-
 set interfaces wireguard wg01 peer to-wg01 address '192.0.2.2'
-
 set interfaces wireguard wg01 peer to-wg01 port '51820'
-
 set interfaces wireguard wg01 peer to-wg01 public-key 'EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw='
-
 set interfaces wireguard wg01 port '51820'
-
 set interfaces wireguard wg01 private-key 'OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU='
 
-
 set protocols static route 192.168.1.0/24 interface wg01
-
 ```
 ## Firewall exceptions
 
@@ -268,42 +226,27 @@ set firewall ipv4 input filter rule 10 inbound-interface name 'eth0'
 Verify that your firewall rules permit traffic. If so, your WireGuard VPN
 should be operational.
 ```none
-
 wg01# ping 192.168.1.1
-
 PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
-
 64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.16 ms
-
 64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=1.77 ms
 
-
 wg02# ping 192.168.2.1
-
 PING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
-
 64 bytes from 192.168.2.1: icmp_seq=1 ttl=64 time=4.40 ms
-
 64 bytes from 192.168.2.1: icmp_seq=2 ttl=64 time=1.02 ms
-
 ```
 An additional layer of symmetric-key cryptography can be used on top of the
 asymmetric cryptography. This is optional.
 ```none
-
 vyos@vyos:~$ generate pki wireguard preshared-key
-
 Pre-shared key: rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
-
 ```
 Copy the key, as it is not stored locally. Since it is a symmetric key, only
 you and your peer should know its contents. Distribute the key securely.
 ```none
-
 wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
-
 wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
-
 ```
 ## Remote access (road warrior)
 
