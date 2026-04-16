@@ -40,7 +40,7 @@ Show brief interface information.
   Interface        IP Address                        S/L  Description
   ---------        ----------                        ---  -----------
   lo               127.0.0.1/8                       u/u
-  ::1/128
+                   ::1/128
 ```
 
 ```{opcmd} show interfaces loopback lo
@@ -51,13 +51,14 @@ Show detailed interface information.
 
   vyos@vyos:~$ show interfaces loopback lo
   lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-  link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-  inet 127.0.0.1/8 scope host lo
-  valid_lft forever preferred_lft forever
-  inet6 ::1/128 scope host
-  valid_lft forever preferred_lft forever
-  RX:  bytes    packets     errors    dropped    overrun      mcast
-  300          6          0          0          0          0
-  TX:  bytes    packets     errors    dropped    carrier collisions
-  300          6          0          0          0          0
+      link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+      inet 127.0.0.1/8 scope host lo
+         valid_lft forever preferred_lft forever
+      inet6 ::1/128 scope host
+         valid_lft forever preferred_lft forever
+
+      RX:  bytes    packets     errors    dropped    overrun      mcast
+             300          6          0          0          0          0
+      TX:  bytes    packets     errors    dropped    carrier collisions
+             300          6          0          0          0          0
 ```
