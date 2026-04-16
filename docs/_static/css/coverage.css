@@ -1,0 +1,13 @@
+/*
+ * Coverage page table CSS fix for MyST build.
+ *
+ * Problem: After RST-to-MyST migration (PR #1838), the auto-generated
+ * coverage page renders table rows at ~2x height compared to the RST build.
+ * The testcoverage.py extension generates docutils table nodes which pick up
+ * different CSS in the MyST build context.
+ *
+ * TODO: Identify the specific selector causing excess row padding and add
+ * the override here. Compare computed styles on:
+ *   Reference: https://docs.vyos.io/en/latest/coverage.html
+ *   MyST:      https://vyos--1838.org.readthedocs.build/en/1838/coverage.html
+ */
