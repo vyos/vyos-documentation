@@ -152,12 +152,17 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 49fdcc17, Apr 16 2026):
+### Current state (commit 8e2b0694, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
-**All 30 new Copilot inline comments addressed** (replied or pushed back).
-Latest commits: 9aebbbde (common-references.txt lint fix), 49fdcc17 (vyos-salt.md empty suppressors)
-No remaining RST directives (.. code-block::, .. note::) in .md files.
-Lint CI: fixed — common-references.txt long URL split to 2 lines.
+**Playwright scan complete** (RTD build 8e2b0694 confirmed succeeded).
+All 30 Copilot comments addressed. Lint CI passing.
 
-**Next**: wait for ReadTheDocs rebuild, then run Playwright scan (10 parallel agents, N=0,25,...,225)
+**Known remaining diffs (explained, not regressions):**
+- `operation/information` 111.7%: MyST opcmd panels with embedded code blocks render taller than RST (CSS/styling, not content error). Code blocks ARE inside panels (fix c3a980b0 applied).
+- `configuration/protocols/static` 19.5%: per-directive rendering size difference.
+- `configuration/service/eventhandler` 251.4%: IMPROVED (RST was broken, MyST renders correctly).
+- 8 pages at 2-6%: minor stable differences.
+- coverage 4.7%: improved from 8.8%.
+
+**Next**: PR is ready for review. Consider marking as ready (removing draft status).
