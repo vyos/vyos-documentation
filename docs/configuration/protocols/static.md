@@ -32,10 +32,10 @@ Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 
-.. note::
-
-   Routes with a distance of 255 are effectively disabled and not
-    installed into the kernel.
+:::{note}
+Routes with a distance of 255 are effectively disabled and not
+installed into the kernel.
+:::
 
 ```
 
@@ -156,10 +156,10 @@ Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 
-.. note::
-
-   Routes with a distance of 255 are effectively disabled and not
-    installed into the kernel.
+:::{note}
+Routes with a distance of 255 are effectively disabled and not
+installed into the kernel.
+:::
 
 ```
 
@@ -173,21 +173,21 @@ multiple segment instructions.
 
 Example:
 
-.. code-block:: none
+:::{code-block} none
+set protocols static route6 2001:db8:1000::/36 next-hop 2001:db8:201::ffff segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
+:::
 
-  set protocols static route6 2001:db8:1000::/36 next-hop 2001:db8:201::ffff segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
-
-.. code-block:: none
-
-  vyos@vyos:~$ show ipv6 route
-  Codes: K - kernel route, C - connected, S - static, R - RIPng,
-        O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
-        v - VNC, V - VNC-Direct, A - Babel, F - PBR,
-        f - OpenFabric,
-        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
-        t - trapped, o - offload failure
-  C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
-  S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
+:::{code-block} none
+vyos@vyos:~$ show ipv6 route
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+      O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+      v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+      f - OpenFabric,
+      > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+      t - trapped, o - offload failure
+C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
+S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
+:::
 ```
 
 % start_vyoslinter
@@ -223,9 +223,9 @@ multiple segment instructions.
 
 Example:
 
-.. code-block:: none
-
-  set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
+:::{code-block} none
+set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
+:::
 ```
 
 % start_vyoslinter

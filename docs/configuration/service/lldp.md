@@ -79,65 +79,65 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 
 Displays information about all neighbors discovered via LLDP.
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show lldp neighbors
+Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
+                  D - Docsis, T - Telephone, O - Other
 
-  vyos@vyos:~$ show lldp neighbors
-  Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
-                    D - Docsis, T - Telephone, O - Other
-
-  Device ID                 Local     Proto  Cap   Platform             Port ID
-  ---------                 -----     -----  ---   --------             -------
-  BR2.vyos.net              eth0      LLDP   R     VyOS 1.2.4           eth1
-  BR3.vyos.net              eth0      LLDP   RB    VyOS 1.2.4           eth2
-  SW1.vyos.net              eth0      LLDP   B     Cisco IOS Software   GigabitEthernet0/6
+Device ID                 Local     Proto  Cap   Platform             Port ID
+---------                 -----     -----  ---   --------             -------
+BR2.vyos.net              eth0      LLDP   R     VyOS 1.2.4           eth1
+BR3.vyos.net              eth0      LLDP   RB    VyOS 1.2.4           eth2
+SW1.vyos.net              eth0      LLDP   B     Cisco IOS Software   GigabitEthernet0/6
+:::
 ```
 
 ```{opcmd} show lldp neighbors detail
 
 Get detailed information about LLDP neighbors.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show lldp neighbors detail
-  -------------------------------------------------------------------------------
-  LLDP neighbors:
-  -------------------------------------------------------------------------------
-  Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
-    Chassis:
-      ChassisID:    mac 00:53:00:01:02:c9
-      SysName:      BR2.vyos.net
-      SysDescr:     VyOS 1.3-rolling-201912230217
-      MgmtIP:       192.0.2.1
-      MgmtIP:       2001:db8::ffff
-      Capability:   Bridge, on
-      Capability:   Router, on
-      Capability:   Wlan, off
-      Capability:   Station, off
-    Port:
-      PortID:       mac 00:53:00:01:02:c9
-      PortDescr:    eth0
-      TTL:          120
-      PMD autoneg:  supported: no, enabled: no
-        MAU oper type: 10GigBaseCX4 - X copper over 8 pair 100-Ohm balanced cable
-    VLAN:         201 eth0.201
-    VLAN:         205 eth0.205
-    LLDP-MED:
-      Device Type:  Network Connectivity Device
-      Capability:   Capabilities, yes
-      Capability:   Policy, yes
-      Capability:   Location, yes
-      Capability:   MDI/PSE, yes
-      Capability:   MDI/PD, yes
-      Capability:   Inventory, yes
-      Inventory:
-        Hardware Revision: None
-        Software Revision: 4.19.89-amd64-vyos
-        Firmware Revision: 6.00
-        Serial Number: VMware-42 1d 83 b9 fe c1 bd b2-7
-        Manufacturer: VMware, Inc.
-        Model:        VMware Virtual Platform
-        Asset ID:     No Asset Tag
-  -------------------------------------------------------------------------------
+:::{code-block} none
+vyos@vyos:~$ show lldp neighbors detail
+-------------------------------------------------------------------------------
+LLDP neighbors:
+-------------------------------------------------------------------------------
+Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
+  Chassis:
+    ChassisID:    mac 00:53:00:01:02:c9
+    SysName:      BR2.vyos.net
+    SysDescr:     VyOS 1.3-rolling-201912230217
+    MgmtIP:       192.0.2.1
+    MgmtIP:       2001:db8::ffff
+    Capability:   Bridge, on
+    Capability:   Router, on
+    Capability:   Wlan, off
+    Capability:   Station, off
+  Port:
+    PortID:       mac 00:53:00:01:02:c9
+    PortDescr:    eth0
+    TTL:          120
+    PMD autoneg:  supported: no, enabled: no
+      MAU oper type: 10GigBaseCX4 - X copper over 8 pair 100-Ohm balanced cable
+  VLAN:         201 eth0.201
+  VLAN:         205 eth0.205
+  LLDP-MED:
+    Device Type:  Network Connectivity Device
+    Capability:   Capabilities, yes
+    Capability:   Policy, yes
+    Capability:   Location, yes
+    Capability:   MDI/PSE, yes
+    Capability:   MDI/PD, yes
+    Capability:   Inventory, yes
+    Inventory:
+      Hardware Revision: None
+      Software Revision: 4.19.89-amd64-vyos
+      Firmware Revision: 6.00
+      Serial Number: VMware-42 1d 83 b9 fe c1 bd b2-7
+      Manufacturer: VMware, Inc.
+      Model:        VMware Virtual Platform
+      Asset ID:     No Asset Tag
+-------------------------------------------------------------------------------
+:::
 ```
 
 ```{opcmd} show lldp neighbors interface \<interface\>
