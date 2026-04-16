@@ -71,12 +71,12 @@ gateway address as BFD peer destination address.
 % stop_vyoslinter
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
+
+Configure a static route for `<subnet>` using gateway `<address>` and use the
+gateway address as BFD peer destination address with BFD profile `<profile>`.
 ```
 
 % start_vyoslinter
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with BFD profile `<profile>`.
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
@@ -166,15 +166,16 @@ Range is 1 to 255, default is 1.
 % stop_vyoslinter
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> segments \<segments\>
+
+It is possible to specify a static route for ipv6 prefixes using an
+SRv6 segments instruction. The ``/`` separator can be used to specify
+multiple segment instructions.
+
+Example:
 ```
 
 % start_vyoslinter
-%
-% It is possible to specify a static route for ipv6 prefixes using an
-% SRv6 segments instruction. The ``/`` separator can be used to specify
-% multiple segment instructions.
-%
-% Example:
+
 % stop_vyoslinter
 
 ```none
@@ -243,22 +244,23 @@ gateway address as BFD peer destination address.
 % stop_vyoslinter
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
+
+Configure a static route for `<subnet>` using gateway `<address>` and use the
+gateway address as BFD peer destination address with BFD profile `<profile>`.
 ```
 
 % start_vyoslinter
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with BFD profile `<profile>`.
+
 % stop_vyoslinter
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source\>
+
+Configure a static route for `<subnet>` using gateway `<address>` and use the
+gateway address as BFD peer destination address with source address
+`<source>` but initiate a multi-hop session.
 ```
 
 % start_vyoslinter
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with source address
-% `<source>` but initiate a multi-hop session.
 
 ### IPv6 Reject Routes
 

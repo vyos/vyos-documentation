@@ -100,6 +100,7 @@ cryptography on top of the asymmetric cryptography.
   vyos@vyos:~$ generate pki wireguard preshared-key
   Pre-shared key: OHH2EwZfMNK+1L6BXbYw3bKCtMrfjpR4mCAEeBlFnRs=
 ```
+
 ```{opcmd} generate pki wireguard preshared-key install interface \<interface\> peer \<peer\>
 
 Generate a pre-shared key and output the key assignment command for the
@@ -172,6 +173,7 @@ peers. This is a strict design restriction. For more information, check the
 
 
     set interfaces wireguard wg01 private-key 'iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY='
+
   To generate a private key, use the following command:
   :opcmd:`generate pki wireguard key-pair`.
 
@@ -353,6 +355,7 @@ Show a list of all WireGuard interfaces.
   ---------        ----------                        ---  -----------
   wg01             10.0.0.1/24                       u/u
 ```
+
 ```{opcmd} show interfaces wireguard \<interface\>
 
 Show general information about a specific WireGuard interface.
