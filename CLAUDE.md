@@ -130,20 +130,29 @@ This worktree IS the migration branch. All 254 RST files have been converted to 
 - `cmdincludemd` (not `cmdinclude`) in .md files and aggregator templates
 
 ### Session routine (follow in order):
-1. Fix files → check Copilot PR review → push
-2. Wait for ReadTheDocs rebuild: https://vyos--1838.org.readthedocs.build/en/1838/
-3. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
-4. Analyze: separate pending-rebuild pages from genuine new issues
+1. Fix files → push
+2. Check Copilot PR review for new inline comments → address each (fix or reply with technical pushback) → resolve each comment thread → push fixes
+3. Repeat step 2 until no unresolved Copilot comments remain
+4. Wait for ReadTheDocs rebuild: https://vyos--1838.org.readthedocs.build/en/1838/
+5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
+6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 09518f34, Apr 16 2026):
+### Current state (commit a52336de, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
+
+**All 92 Copilot inline comments addressed** (replied or pushed back). Commits since last RTD scan:
+- 09518f34: _include template code-block conversions (18 files, 42 fences)
+- 1f2d4f4c: automation docs fixes (Go syntax, headings, empty blocks)
+- 48a456a8: blank lines, spelling, grammar
+- 5c009f48: interface template note/include fixes (ipv6, address-with-dhcp, vlan-8021q, vlan-8021ad)
+- a52336de: grammar (configexamples/index.md), heading hierarchy (tunnelbroker.md)
 
 **Pending rebuild** (fixes committed, preview not yet updated):
 eventhandler 141.9%, information 110.1%, lldp 24.2%, wireguard 22.5%, connectivity 11.8%, install 10.7%, ssh 9.4%, coverage 8.3%, login 7.5%, static 7.5%, flow-accounting 5.8%,
 oracle 6.7%, loopback 3.4%, conntrack 3.9%, watchdog 3.0%, bridge 4.1%, bonding 4.0%, lcd 3.7%, syslog 3.8%, dhcp-server 3.2%, geneve 3.0%, vti 3.1%,
 firewall/ipv4, firewall/ipv6, firewall/zone, policy/access-list, firewall/bridge (tunnelbroker),
-interface/sstp-client (interface-description.txt fix), bonding/ethernet/bridge-interface (_include/interface-mirror.txt fix),
-all interface pages (_include/interface-*.txt ```none → .. code-block:: none fixes, 18 files, 42 fences)
+interface/sstp-client, bonding/ethernet/bridge-interface, all interface pages,
+configexamples/index, tunnelbroker
 
 **Pages to rescan after next rebuild** (may still have genuine issues):
 system/default-route 4.2%, cli (fixed but may have residual diff)
