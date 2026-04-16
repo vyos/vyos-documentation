@@ -328,6 +328,7 @@ If no category is specified, all logs are shown.
 
 ```
 ```{opcmd} show log image \<name\> [all | authorization | directory | file \<file name\> | tail \<lines\>]
+
 **Display logs for a specific image on the console.**
 Available log categories:
 .. list-table::

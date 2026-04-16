@@ -163,6 +163,7 @@ To replace a bad disk within a RAID 1 set:
    ```
    where `disk-device1` is the replacement disk. For example, `sdb` and
    `disk-device2` is the existing healthy disk. For example, `sda`.
+
 5. Add the replacement disk to the RAID 1 set by running the following command:
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 

@@ -39,6 +39,7 @@ convention ``vppxcon1``, ``vppxcon2``, etc.
 ```
 
 ```{cfgcmd} set interfaces vpp xconnect \<vppxconN\> member interface \<interface-name\>
+
 Add an interface as a member of the XConnect. Exactly two member
 interfaces must be configured to create bidirectional forwarding.
 ```

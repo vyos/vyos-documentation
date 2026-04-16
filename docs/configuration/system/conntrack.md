@@ -81,6 +81,7 @@ create a rule defining the packet and flow selector.
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
    description <test>
+
 Set a rule description.
 ```
 
@@ -90,6 +91,7 @@ Set a rule description.
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
    source address <ip-address>
+
 Set a destination and/or source address. Accepted input for ipv4:
 
 .. code-block:: none
@@ -120,6 +122,7 @@ Set a destination and/or source address. Accepted input for ipv4:
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
    source port <value>
+
 Set a destination and/or source port. Accepted input:
 
 .. code-block:: none
@@ -170,6 +173,7 @@ The whole list can also be "negated" using '!'. For example:
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
    protocol udp unreplied <1-21474836>
+
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
 
@@ -213,6 +217,7 @@ the future the conntrack ignore rules will be removed.
 
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
    tcp flags [not] <text>
+
 Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for
 inverted selection use ``not``, as shown in the example.

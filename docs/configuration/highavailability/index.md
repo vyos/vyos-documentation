@@ -260,6 +260,7 @@ Set delay for second set of gratuitous ARPs after transition to MASTER.
 ```
 
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh \<1-600\>
+
 Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 0 if not defined, which means no refreshing.
 ```
@@ -270,6 +271,7 @@ Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 
 ```{cfgcmd} set high-availability vrrp group \<name\> garp
    master-refresh-repeat <1-600>
+
 Set number of gratuitous ARP messages to send at a time while MASTER.
 1 if not defined.
 ```
@@ -278,6 +280,7 @@ Set number of gratuitous ARP messages to send at a time while MASTER.
 ```
 
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-repeat \<1-600\>
+
 Set number of gratuitous ARP messages to send at a time after transition to
 MASTER.
 5 if not defined.

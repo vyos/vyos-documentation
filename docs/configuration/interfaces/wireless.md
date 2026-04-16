@@ -142,6 +142,7 @@ SSID to be used in IEEE 802.11 management frames
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> type \<access-point | station | monitor\>
+
 Wireless device type for this interface
 * ``access-point``: Forwards packets between other nodes.
 * ``station``: Connects to another :abbr:`AP (Access Point)`.
@@ -179,6 +180,7 @@ WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
    channel-set-width <ht20 | ht40+ | ht40->
+
 Supported channel width set.
 * ``ht20`` - 20 MHz channel width
 * ``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary
@@ -209,6 +211,7 @@ Supported channel width set.
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
    delayed-block-ack
+
 Enable HT-delayed Block Ack ``[DELAYED-BA]``
 ```
 
@@ -233,16 +236,19 @@ Enable L-SIG TXOP protection capability
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht max-amsdu \<3839 | 7935\>
+
 Maximum A-MSDU length 3839 (default) or 7935 octets
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
    short-gi <20 | 40>
+
 Short GI capabilities for 20 and 40 MHz
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht
    smps <static | dynamic>
+
 Spatial Multiplexing Power Save (SMPS) settings
 ```
 
@@ -268,11 +274,13 @@ Enable sending PPDU using STBC (Space Time Block Coding)
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    antenna-pattern-fixed
+
 Set if antenna pattern does not change during the lifetime of an association
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht beamform \<single-user-beamformer | single-user-beamformee | multi-user-beamformer |
   multi-user-beamformee>
+
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
   single user beamformer
@@ -286,6 +294,7 @@ Beamforming capabilities:
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    center-channel-freq <freq-1 | freq-2> <number>
+
 VHT operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
 VHT operating channel center frequency - center freq 2
@@ -295,6 +304,7 @@ VHT operating channel center frequency - center freq 2
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    channel-set-width <0 | 1 | 2 | 3>
+
 * ``0`` - 20 or 40 MHz channel width (default)
 * ``1`` - 80 MHz channel width
 * ``2`` - 160 MHz channel width
@@ -308,22 +318,26 @@ Enable LDPC (Low Density Parity Check) coding capability
 
 ```{cfgcmd} set interfaces wireless \<interface\>
   capabilities vht link-adaptation
+
 VHT link adaptation capabilities
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    max-mpdu <value>
+
 Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    max-mpdu-exp <value>
+
 Set the maximum length of A-MPDU pre-EOF padding that the station can
 receive
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht
    short-gi <80 | 160>
+
 Short GI capabilities
 ```
 
@@ -351,11 +365,13 @@ Station supports receiving VHT variant HT Control field
 
 ```{cfgcmd} set interfaces wireless \<interface\>
   capabilities he antenna-pattern-fixed
+
 Tell the AP that antenna positions are fixed and will not change
 during the lifetime of an association.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he beamform \<single-user-beamformer | single-user-beamformee | multi-user-beamformer\>
+
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
   single user beamformer
@@ -367,6 +383,7 @@ Beamforming capabilities:
 
 ```{cfgcmd} set interfaces wireless \<interface\>
   capabilities he bss-color <number>
+
 BSS coloring helps to prevent channel jamming when multiple APs use
 the same channels.
 Valid values are 1..63
@@ -374,6 +391,7 @@ Valid values are 1..63
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he
   center-channel-freq <freq-1 | freq-2> <number>
+
 HE operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
 HE operating channel center frequency - center freq 2
@@ -385,6 +403,7 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 ```{cfgcmd} set interfaces wireless \<interface\>
   capabilities he channel-set-width <number>
 <number> must be one of:
+
 * ``81`` - 20 MHz channel width (2.4GHz)
 * ``83`` - 40 MHz channel width, secondary 20MHz channel above primary
   channel (2.4GHz)
@@ -399,6 +418,7 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 
 ```{cfgcmd} set interfaces wireless \<interface\>
   capabilities he coding-scheme <number>
+
 This setting configures Spatial Stream and Modulation Coding Scheme
 settings for HE mode (HE-MCS). It is usually not needed to set this
 explicitly, but it might help with some WiFi adapters.

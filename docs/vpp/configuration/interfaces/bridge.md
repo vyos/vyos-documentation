@@ -65,6 +65,7 @@ set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface \<interface-name\>
+
 Add an interface as a member of the bridge.
 ```
 
@@ -97,6 +98,7 @@ in routing.
 ### Configuring BVI
 
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface \<loopback-interface\> bvi
+
 Designate a loopback interface as the Bridge Virtual Interface for
 the bridge domain.
 ```

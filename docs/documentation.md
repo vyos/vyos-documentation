@@ -324,6 +324,7 @@ the content of interface-address.txt looks like this
    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
    server on this segment.
    Example:
+
 ```none
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24

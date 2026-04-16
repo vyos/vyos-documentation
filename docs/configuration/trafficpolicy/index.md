@@ -395,6 +395,7 @@ amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
 ```{cfgcmd} set qos policy drop-tail \<policy-name\> queue-limit \<number-of-packets\>
+
 Use this command to configure a drop-tail policy (PFIFO). Choose a
 unique name for this policy and the size of the queue by setting the
 number of packets it can contain (maximum 4294967295).
@@ -613,6 +614,7 @@ In the case you want to apply some kind of **shaping** to your
 :::
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match \<match-name\> description \<description\>
+
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090), a class matching rule name and its
 description.
@@ -623,6 +625,7 @@ Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth \<rate\>
+
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090) and the maximum allowed bandwidth for
 this class.
@@ -630,6 +633,7 @@ this class.
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> burst \<burst-size\>
+
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090) and the burst size in bytes for this
 class (default: 15).
@@ -651,6 +655,7 @@ and the burst size in bytes (default: 15) for its default policy.
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> priority \<value\>
+
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090), and the priority (0-20, default 20) in
 which the rule is evaluated (the lower the number, the higher the
@@ -804,6 +809,7 @@ Possible completions:
 
 ```{cfgcmd} set qos policy priority-queue \<policy-name\> class \<class-ID\>
    queue-limit <limit>
+
 Use this command to configure a Priority Queue policy, set its name,
 set a class with a priority from 1 to 7 and define a hard limit on
 the real queue size. When this limit is reached, new packets are
@@ -919,6 +925,7 @@ The default values for the minimum-threshold depend on IP precedence:
 > | 0          | 9                     |
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> queue-limit \<packets\>
+
 Use this command to configure a Random-Detect policy and set its
 name, then name the IP Precedence for the virtual queue you are
 configuring and what the maximum size of its queue will be (from 1 to

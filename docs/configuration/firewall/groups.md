@@ -126,6 +126,7 @@ separately to avoid accidentally filtering unnecessary ports. Specify port
 ranges by using `-`.
 
 ```{cfgcmd} set firewall group port-group \<name\> port [portname | portnumber | startport-endport]
+
 Define a port group. A port name can be any name defined in
 /etc/services. For example, ``http``.
 

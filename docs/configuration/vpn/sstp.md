@@ -53,6 +53,7 @@ for all queries.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> password \<pass\>
+
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
@@ -270,6 +271,7 @@ Specifies IPv6 negotiation preference.
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>
    mask <number-of-bits>
+
 Use this comand to set the IPv6 address pool from which an SSTP client will
 get an IPv6 prefix of your defined length (mask) to terminate the SSTP
 endpoint at their side. The mask length can be set between 48 and 128 bits
@@ -278,6 +280,7 @@ long, the default value is 64.
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>
    delegation-prefix <number-of-bits>
+
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on SSTP. You
 will have to set your IPv6 pool and the length of the delegation prefix. From
 the defined IPv6 pool you will be handing out networks of the defined length
@@ -353,20 +356,24 @@ Disable `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> static-ip \<address\>
+
 Assign a static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit
    download <bandwidth>
+
 Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit
    upload <bandwidth>
+
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn sstp authentication protocols \<pap | chap | mschap | mschap-v2\>
+
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```

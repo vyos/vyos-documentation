@@ -248,6 +248,7 @@ synchronization during convergence/interface flap events.
 
 ```{cfgcmd} set protocols ospf capability opaque
 ospfd supports Opaque LSA :rfc:`2370` as partial support for MPLS Traffic
+
 Engineering LSAs. The opaque-lsa capability must be enabled in the
 configuration.
 
@@ -1251,6 +1252,7 @@ This command change distance value of OSPFv3 globally.
 The distance range is 1 to 255.
 ```
 ```{cfgcmd} set protocols ospfv3 distance ospfv3 \<external|inter-area|intra-area\> \<distance\>
+
 This command change distance value of OSPFv3. The arguments are the
 distance values for external routes, inter-area routes and intra-area
 routes respectively. The distance range is 1 to 255.
@@ -1285,6 +1287,7 @@ attached to a common network. The default value is 40 seconds. The
 interval range is 1 to 65535.
 ```
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> hello-interval \<number\>
+
 Set number of seconds for Hello Interval timer value. Setting this value,
 Hello packet will be sent every timer value seconds on the specified
 interface. This value must be the same for all routers attached to a
@@ -1319,12 +1322,14 @@ its address, but does not run the OSPF protocol (adjacencies are not formed
 and hello packets are not generated).
 ```
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> retransmit-interval \<number\>
+
 This command sets number of seconds for RxmtInterval timer value. This
 value is used when retransmitting Database Description and Link State
 Request packets if acknowledge was not received. The default value is 5
 seconds. The interval range is 3 to 65535.
 ```
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> transmit-delay \<number\>
+
 This command sets number of seconds for InfTransDelay value. It allows to
 set and adjust for each interface the delay interval before starting the
 synchronizing process of the router's database with all neighbors. The
@@ -1414,6 +1419,7 @@ system boundary routers.
 This command displays a summary table with a database contents (LSA).
 ```
 ```{opcmd} show ipv6 ospfv3 database \<type\> [A.B.C.D] [adv-router \<A.B.C.D\>|self-originate]
+
 This command displays a database contents for a specific link
 advertisement type.
 ```

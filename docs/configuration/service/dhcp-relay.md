@@ -66,6 +66,7 @@ relay agent information. Range 64...1400, default 576.
 ```
 
 ```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets \<append | discard | forward | replace\>
+
 Four policies for reforwarding DHCP packets exist:
 * **append:** The relay agent is allowed to append its own relay information
   to a received DHCP packet, disregarding relay information already present
@@ -134,6 +135,7 @@ Multiple interfaces may be specified.
 
 ```{cfgcmd} set service dhcpv6-relay upstream-interface \<interface\>
    address <server>
+
 Specifies an upstream network `<interface>` from which replies from
 `<server>` and other relay agents will be accepted.
 ```

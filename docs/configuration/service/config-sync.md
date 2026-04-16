@@ -21,6 +21,7 @@ routers should be online and run the same version of VyOS.
 ## Configuration
 
 ```{cfgcmd} set service config-sync secondary \<address|key|timeout|port\>
+
 Specify the address, API key, timeout and port of the secondary router.
 You need to enable and configure the HTTP API service on the secondary
 router for config sync to operate.

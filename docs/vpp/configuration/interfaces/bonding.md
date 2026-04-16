@@ -59,6 +59,7 @@ are enabled.
 ### Adding Member Interfaces
 
 ```{cfgcmd} set interfaces vpp bonding \<vppbondN\> member interface \<interface-name\>
+
 Add physical interfaces as members of the bond. You can add multiple
 interfaces to the same bond.
 ```

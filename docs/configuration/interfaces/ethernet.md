@@ -50,6 +50,7 @@ The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed \<auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000\>
+
 **Configure the interface's speed, in Mbit/s.**
 The following options are available:
 * ``auto``:  The interface negotiates the speed with the connected device.
@@ -243,6 +244,7 @@ together until one of the configured limits (bytes, frames, or time)
 #### Offloading
 
 ```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | sg\>
+
 **Configure the offloading features for the interface.**
 The interface offloading features define whether specific packet-processing tasks
 are performed by hardware (the NIC) or by software (the kernel). You can enable

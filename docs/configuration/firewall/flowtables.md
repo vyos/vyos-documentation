@@ -67,6 +67,7 @@ Specify interfaces to use in the flowtable.
 Provide a description for the flow table.
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> offload \<hardware | software\>
+
 Specify the offload type the flowtable uses: ``hardware`` or
 ``software``. The default is ``software`` offload.
 ```
@@ -80,12 +81,14 @@ Creating rules for using flow tables:
 
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
    action offload
+
 Create a firewall rule in the forward chain with the action set to
 ``offload``.
 ```
 
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\>
    offload-target <flowtable>
+
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```

@@ -92,6 +92,7 @@ one third of the holdtime
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\>
   nbma <nbma-ip>
+
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x**.
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **local**
 Map an IP address of a station to the station’s NBMA address.

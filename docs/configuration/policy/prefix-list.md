@@ -103,6 +103,7 @@ Set description for rule in IPv6 prefix-list.
 ```
 
 ```{cfgcmd} set policy prefix-list6 \<text\> rule \<1-65535\> prefix \<h:h:h:h:h:h:h:h/x\>
+
 IPv6 prefix.
 ```
 

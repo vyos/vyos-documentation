@@ -25,6 +25,7 @@ description. If not, it creates a new user with the specified description.
 ```
 
 ```{cfgcmd} set system login user \<name\> authentication plaintext-password \<password\>
+
 **Configure a password for a system user.**
 Enter the password in plaintext. Upon ``commit``, VyOS hashes the password for
 secure storage and removes the plaintext value.
@@ -33,6 +34,7 @@ If not, it creates a new user with the specified plaintext password.
 ```
 
 ```{cfgcmd} set system login user \<name\> authentication encrypted-password \<password\>
+
 **Configure a pre-encrypted password for a system user.**
 Enter the password in its hashed format. Upon ``commit``, VyOS stores this value
 directly without modification.
@@ -97,12 +99,14 @@ To configure SSH public key authentication for a user account, run the
 following two commands using the same `<identifier>`:
 
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> key \<key\>
+
 **Configure the SSH public key for the user account.**
 * ``<identifier>``: A unique label that identifies this specific key entry.
 * ``<key>``: The actual string of characters from your public key.
 ```
 
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> type \<type\>
+
 **Configure the SSH key's encryption type.**
 The following encryption algorithm types are available:
 * ``ecdsa-sha2-nistp256``
@@ -120,6 +124,7 @@ The following encryption algorithm types are available:
 ```
 
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> options \<options\>
+
 **Configure specific restrictions or behaviors for an SSH public key.**
 ``<options>``: A string of comma-separated values that define permissions
 or restrictions for this key.
