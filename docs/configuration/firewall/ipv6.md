@@ -703,7 +703,7 @@ identifiers-02.txt>`_
 This function works for both individual addresses and address groups.
 
 
-% stop_vyoslinter
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -716,7 +716,7 @@ This function works for both individual addresses and address groups.
   set firewall group ipv6-address-group WEBSERVERS address ::2000
   set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
   set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
-% start_vyoslinter
+.. start_vyoslinter
 ```
 
 

@@ -165,7 +165,7 @@ display captured network traffic information for all configured interfaces.
 ```{opcmd} show flow-accounting interface \<interface\>
 
 Show flow accounting information for given `<interface>`.
-% stop_vyoslinter
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -179,14 +179,14 @@ Show flow accounting information for given `<interface>`.
   eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
   eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
   eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
-% start_vyoslinter
+.. start_vyoslinter
 ```
 
 ```{opcmd} show flow-accounting interface \<interface\> host \<address\>
 
 Show flow accounting information for given `<interface>` for a specific host
 only.
-% stop_vyoslinter
+.. stop_vyoslinter
 
 .. code-block:: none
 
@@ -196,5 +196,5 @@ only.
   eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
   eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
   eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
-% start_vyoslinter
+.. start_vyoslinter
 ```
