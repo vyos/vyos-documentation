@@ -49,10 +49,13 @@ You can access files from a previous installation and copy them to your
 current image if they were stored in the `/config` directory. Use the
 {opcmd}`copy` command to do this. For example, to copy `/config/config.boot`
 from the VyOS `1.2.1` image, run:
+
 ```
 copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 ```
+
 ## Example
+
 ```none
 vyos@vyos:~$ add system image https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso
 Trying to fetch ISO file from https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso
@@ -75,6 +78,7 @@ What would you like to name this image? [vyos-1.3-rolling-201912201452]:
 
 OK.  This image will be named: vyos-1.3-rolling-201912201452
 ```
+
 You can use `latest` option. It loads the latest available Rolling release.
 ```none
 vyos@vyos:~$ add system image latest
