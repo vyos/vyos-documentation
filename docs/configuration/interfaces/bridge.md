@@ -191,8 +191,8 @@ The following options are available:
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
+   native-vlan \<vlan-id\>
 
-   native-vlan <vlan-id>
 **Configure the native VLAN ID for a specific member interface within a
 VLAN-aware bridge.**
 This assigns the specified ``<vlan-id>`` to untagged traffic entering the member
@@ -207,8 +207,8 @@ Set the native VLAN ID to 2 for the member interface ``eth0``:
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
+   allowed-vlan \<vlan-id\>
 
-   allowed-vlan <vlan-id>
 **Configure allowed VLAN IDs for a specific member interface within a
 VLAN-aware bridge.**
 Enter a single VLAN ID or a range of VLAN IDs separated by a hyphen.

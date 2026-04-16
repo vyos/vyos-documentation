@@ -38,101 +38,107 @@ set interfaces bonding bond0 member interface eth1
 ```
 ### Bond modes
 ```{cfgcmd} set interfaces bonding \<interface\> mode \<802.3ad | active-backup | broadcast | round-robin | transmit-load-balance | adaptive-load-balance | xor-hash\>
+
 **Configure the bonding mode on the interface. The default mode is**
 ``802.3ad``.
 The available modes are:
 * ``802.3ad``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- IEEE 802.3ad Dynamic Link Aggregation. Groups only member interfaces with
-the same speed (e.g., 1 Gbps) and duplex settings. Member interfaces with
-different speed and duplex settings are not included in the active bond.
-Provides load balancing and fault tolerance. Uses the :abbr:`LACP (Link
-Aggregation Control Protocol)` to negotiate the bond with the switch.
-* - **Traffic distribution:**
-- Traffic is distributed according to the **transmit hash policy**
-(default: XOR).
-The bonding driver applies an XOR operation to specific packet header fields,
-generating a hash value that maps to a particular member interface. This
-ensures the same network flow is consistently transmitted over the same member
-interface.
-The transmit hash policy is configured via the ``hash-policy`` option.
-* - **Failover:**
-- If a member interface fails, the hash is recalculated to distribute
-traffic among the remaining active member interfaces.
+   :widths: 20 80
+
+   * - **Description:**
+     - IEEE 802.3ad Dynamic Link Aggregation. Groups only member interfaces with
+       the same speed (e.g., 1 Gbps) and duplex settings. Member interfaces with
+       different speed and duplex settings are not included in the active bond.
+       Provides load balancing and fault tolerance. Uses the :abbr:`LACP (Link
+       Aggregation Control Protocol)` to negotiate the bond with the switch.
+   * - **Traffic distribution:**
+     - Traffic is distributed according to the **transmit hash policy**
+       (default: XOR).
+       The bonding driver applies an XOR operation to specific packet header fields,
+       generating a hash value that maps to a particular member interface. This
+       ensures the same network flow is consistently transmitted over the same member
+       interface.
+       The transmit hash policy is configured via the ``hash-policy`` option.
+   * - **Failover:**
+     - If a member interface fails, the hash is recalculated to distribute
+       traffic among the remaining active member interfaces.
 
 .. note::
 
    Not all transmit hash policies comply with 802.3ad, particularly
-
-section 43.2.4. Using a non-compliant policy may result in out-of-order
-packet delivery.
+   section 43.2.4. Using a non-compliant policy may result in out-of-order
+   packet delivery.
 * ``active-backup``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- Provides fault tolerance. Only one member interface is active at a time.
-Other member interfaces remain in a standby mode.
-* - **Traffic distribution:**
-- All traffic (incoming and outgoing) is routed via one active member interface.
-* - **Failover:**
-- If the designated member interface fails, all traffic is routed to
-another member interface. The bonding driver sends a Gratuitous ARP
-to update the peer's MAC address table, linking the bond's MAC address
-to another physical port.
+   :widths: 20 80
+
+   * - **Description:**
+     - Provides fault tolerance. Only one member interface is active at a time.
+       Other member interfaces remain in a standby mode.
+   * - **Traffic distribution:**
+     - All traffic (incoming and outgoing) is routed via one active member interface.
+   * - **Failover:**
+     - If the designated member interface fails, all traffic is routed to
+       another member interface. The bonding driver sends a Gratuitous ARP
+       to update the peer's MAC address table, linking the bond's MAC address
+       to another physical port.
 * ``broadcast``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- Provides maximum fault tolerance by duplicating traffic.
-* - **Traffic distribution:**
-- Every packet is duplicated and transmitted on **all** member interfaces.
-* - **Failover:**
-- Traffic flow is not interrupted as long as at least one member interface
-remains active.
+   :widths: 20 80
+
+   * - **Description:**
+     - Provides maximum fault tolerance by duplicating traffic.
+   * - **Traffic distribution:**
+     - Every packet is duplicated and transmitted on **all** member interfaces.
+   * - **Failover:**
+     - Traffic flow is not interrupted as long as at least one member interface
+       remains active.
 * ``round-robin``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- Provides load balancing and fault tolerance.
-* - **Traffic distribution:**
-- Packets are transmitted in sequential order across the member interfaces
-(e.g., packet 1 > interface A, packet 2 > interface B, etc.).
-* - **Failover:**
-- If a member interface fails, the sequence skips the failed interface and
-continues with the remaining active members.
+   :widths: 20 80
+
+   * - **Description:**
+     - Provides load balancing and fault tolerance.
+   * - **Traffic distribution:**
+     - Packets are transmitted in sequential order across the member interfaces
+       (e.g., packet 1 > interface A, packet 2 > interface B, etc.).
+   * - **Failover:**
+     - If a member interface fails, the sequence skips the failed interface and
+       continues with the remaining active members.
 * ``transmit-load-balance``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- Provides adaptive transmit load balancing and fault tolerance.
-* - **Traffic distribution:**
-- **Outgoing:** Distributed across all active member interfaces based on
-the current load.
-**Incoming:** Received by a designated member interface (active receiver).
-* - **Failover:**
-- If the active receiver fails, another member interface takes over as the new
-active receiver.
+   :widths: 20 80
+
+   * - **Description:**
+     - Provides adaptive transmit load balancing and fault tolerance.
+   * - **Traffic distribution:**
+     - **Outgoing:** Distributed across all active member interfaces based on
+       the current load.
+       **Incoming:** Received by a designated member interface (active receiver).
+   * - **Failover:**
+     - If the active receiver fails, another member interface takes over as the new
+       active receiver.
 * ``adaptive-load-balance``
 .. list-table::
-:widths: 20 80
-* - **Description:**
-- Provides adaptive transmit load balancing identical to
-``transmit-load-balance``, receive load balancing for IPv4 traffic, and fault
-tolerance for both incoming and outgoing traffic.
-* - **Traffic distribution:**
-- **Outgoing:** Identical to ``transmit-load-balance``.
-**Incoming:** Distributed based on ARP manipulation. For both local and remote
-connections, the bonding driver intercepts ARP traffic and changes the source
-MAC address to the MAC address of the least loaded member interface.
-All traffic from that peer is then routed to the chosen member interface.
-* - **Failover:**
-- If a member interface's state changes (fails, recovers, is added, or excluded),
-the traffic is redistributed among all active member interfaces.
+   :widths: 20 80
+
+   * - **Description:**
+     - Provides adaptive transmit load balancing identical to
+       ``transmit-load-balance``, receive load balancing for IPv4 traffic, and fault
+       tolerance for both incoming and outgoing traffic.
+   * - **Traffic distribution:**
+     - **Outgoing:** Identical to ``transmit-load-balance``.
+       **Incoming:** Distributed based on ARP manipulation. For both local and remote
+       connections, the bonding driver intercepts ARP traffic and changes the source
+       MAC address to the MAC address of the least loaded member interface.
+       All traffic from that peer is then routed to the chosen member interface.
+   * - **Failover:**
+     - If a member interface's state changes (fails, recovers, is added, or excluded),
+       the traffic is redistributed among all active member interfaces.
 * ``xor-hash``: Provides load balancing and fault tolerance based on a hash formula.
-Distributes traffic and handles failover identically to ``802.3ad``, but operates
-without the :abbr:`LACP (Link Aggregation Control Protocol)`.
+  Distributes traffic and handles failover identically to ``802.3ad``, but operates
+  without the :abbr:`LACP (Link Aggregation Control Protocol)`.
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
@@ -152,9 +158,8 @@ interfaces in that aggregator.
 .. note::
 
    In 802.3ad mode, a bond cannot be active without at least one active
-
-member interface. Therefore, setting min-links to 0 or 1 has the same result:
-the bonding interface is marked UP (carrier asserted).
+   member interface. Therefore, setting min-links to 0 or 1 has the same result:
+   the bonding interface is marked UP (carrier asserted).
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> lacp-rate \<slow|fast\>
