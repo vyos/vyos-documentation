@@ -16,6 +16,7 @@ solves two main problems:
   with each other.
 - Enables tracking and logging of public IP address usage by different
   customers, which is often a regulatory requirement.
+
 CGNAT configuration is straightforward. Define the inside and outside
 interfaces, then create rules to manage the translation of private IP
 addresses to public IP addresses.
