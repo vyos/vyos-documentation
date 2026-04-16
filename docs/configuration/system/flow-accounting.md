@@ -165,6 +165,7 @@ display captured network traffic information for all configured interfaces.
 ```{opcmd} show flow-accounting interface \<interface\>
 
 Show flow accounting information for given `<interface>`.
+
 .. stop_vyoslinter
 
 .. code-block:: none
@@ -186,6 +187,7 @@ Show flow accounting information for given `<interface>`.
 
 Show flow accounting information for given `<interface>` for a specific host
 only.
+
 .. stop_vyoslinter
 
 .. code-block:: none
