@@ -18,7 +18,7 @@ connectivity of the display to your system. This can be any serial port
 This is the name of the physical interface used to connect to your LCD
 display. Tab completion is supported and it will list you all available
 serial interface.
-For serial via USB port information please refor to: :ref:`hardware_usb`.
+For serial via USB port information please refor to: {ref}`hardware_usb`.
 ```
 
 ```{cfgcmd} set system lcd model \<model\>

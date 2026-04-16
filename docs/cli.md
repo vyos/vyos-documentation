@@ -229,7 +229,7 @@ set system syslog global facility protocols level 'debug'
 :::
 ```
 
-Both these `show` commands should be executed when in operational mode, they do not work directly in configuration mode. There is a special way on how to :ref:run_opmode_from_config_mode.
+Both these `show` commands should be executed when in operational mode, they do not work directly in configuration mode. There is a special way on how to {ref}`run_opmode_from_config_mode`.
 
 ::::{hint}
 

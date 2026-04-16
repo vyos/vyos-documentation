@@ -206,7 +206,7 @@ loopback label.
 
 Use this command to use a Cisco non-compliant format to send and interpret
 the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
-:rfc:`7552`.
+{rfc}`7552`.
 ```
 
 
@@ -214,7 +214,7 @@ the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
 
 Use this command to use ordered label distribution control mode. FRR
 by default uses independent label distribution control mode for label
-distribution.  This is related to :rfc:`5036`.
+distribution.  This is related to {rfc}`5036`.
 ```
 
 

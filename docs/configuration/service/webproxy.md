@@ -262,8 +262,8 @@ specific part of the users DN.
 
 
 The search filter can contain up to 15 occurrences of %s which will be
-replaced by the username, as in "uid=%s" for :rfc:`2037` directories. For a
-detailed description of LDAP search filter syntax see :rfc:`2254`.
+replaced by the username, as in "uid=%s" for {rfc}`2037` directories. For a
+detailed description of LDAP search filter syntax see {rfc}`2254`.
 
 
 :::{code-block} none
