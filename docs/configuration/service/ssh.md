@@ -38,9 +38,8 @@ SSH {ref}`ssh_key_based_authentication`
 
 ```{cfgcmd} set service ssh port \<port\>
 
-  Enabling SSH only requires you to specify the port ``<port>`` you want SSH to
-  listen on. By default, SSH runs on port 22.
-
+Enabling SSH only requires you to specify the port ``<port>`` you want SSH to
+listen on. By default, SSH runs on port 22.
 ```
 
 
@@ -92,10 +91,12 @@ Generic FIDO2-backed SSH key generation example:
 .. code-block:: none
 
   ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
+
 During key generation, OpenSSH will:
-  * Request user presence (for example, a physical touch or confirmation)
-  * Optionally request user verification (PIN), if supported by the authenticator
-  * Create a local key handle file and a corresponding public key (``.pub``)
+
+* Request user presence (for example, a physical touch or confirmation)
+* Optionally request user verification (PIN), if supported by the authenticator
+* Create a local key handle file and a corresponding public key (``.pub``)
 
 
 The private key material never leaves the authenticator device.
@@ -111,6 +112,7 @@ VyOS configuration example:
   set system login user vyos authentication public-keys fido key '<public-key>'
   set system login user vyos authentication public-keys fido type 'sk-ecdsa-sha2-nistp256@openssh.com'
   set service ssh fido touch-required
+
 You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.1``
 ```
 
