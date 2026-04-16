@@ -25,9 +25,9 @@ VLAN ID identifies a specific VLAN and ranges from 0 to 4094.
 
 You can configure multiple VLAN interfaces on a single physical interface.
 
-.. note::
-
-  Only 802.1Q-tagged packets are accepted on Ethernet vifs.
+:::{note}
+Only 802.1Q-tagged packets are accepted on Ethernet vifs.
+:::
 
 ::::
 

@@ -14,16 +14,16 @@ link-local router solicitation multicast request for its configuration
 parameters. The router responds with a router advertisement packet 
 containing Internet Layer configuration parameters.
 
-.. note::
-
-  This method automatically disables IPv6 traffic forwarding
-  on the interface.
+:::{note}
+This method automatically disables IPv6 traffic forwarding
+on the interface.
+:::
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
+```
 
 ::::
 
@@ -35,9 +35,9 @@ specified** in :rfc:`4291`.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
+```
 
 ::::
 
@@ -48,9 +48,9 @@ this interface.**
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
+```
 
 ::::
 
@@ -63,9 +63,9 @@ disabled on it.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding
+```
 
 ::::
 
@@ -105,9 +105,9 @@ The following options are available:
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 accept-dad 2
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 accept-dad 2
+```
 
 ::::
 
@@ -121,9 +121,9 @@ The default value is 1.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 dup-addr-detect-transmits 5
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 dup-addr-detect-transmits 5
+```
 
 ::::
 

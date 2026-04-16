@@ -12,9 +12,9 @@ string that will be sent to the DHCP server as the DHCP client identifier.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options client-id 'foo-bar'
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options client-id 'foo-bar'
+```
 
 ::::
 
@@ -27,9 +27,9 @@ to the DHCP server when requesting an IP address.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options host-name 'VyOS'
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options host-name 'VyOS'
+```
 
 ::::
 
@@ -44,9 +44,9 @@ configuration options.
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options vendor-class-id 'VyOS'
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options vendor-class-id 'VyOS'
+```
 
 ::::
 
@@ -57,9 +57,9 @@ gateway provided by the DHCP server on this interface.**
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
+```
 
 ::::
 
@@ -70,9 +70,9 @@ on this interface.**
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
+```
 
 ::::
 
@@ -88,9 +88,9 @@ You can reject individual addresses (192.168.100.1) or entire subnets
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
+```
 
 ::::
 
@@ -106,9 +106,9 @@ needs (for example, employees, guests, or printers).
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options user-class VyOS
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options user-class VyOS
+```
 
 ::::
 

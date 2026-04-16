@@ -7,9 +7,9 @@
 
 Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
-  set interfaces {{ var0 }} {{ var1 }} address 2001:db8::1/64
+```none
+set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
+set interfaces {{ var0 }} {{ var1 }} address 2001:db8::1/64
+```
 
 ::::

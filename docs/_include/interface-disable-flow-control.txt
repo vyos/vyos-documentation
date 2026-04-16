@@ -13,9 +13,9 @@
 
  Example:
 
-.. code-block:: none
-
-  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
+```
 
 ::::
 
