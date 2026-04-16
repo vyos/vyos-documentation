@@ -29,13 +29,11 @@ Configure the general behavior of the syslog service.
 
 ```{cfgcmd} set system syslog marker interval \<number\>
 
-   **Configure the interval, in seconds, for sending syslog mark messages.**
+**Configure the interval, in seconds, for sending syslog mark messages.**
 
+Syslog mark messages confirm the logging service is operational.
 
-   Syslog mark messages confirm the logging service is operational.
-
-
-   Default: 1200 seconds.
+Default: 1200 seconds.
 
 ```
 
@@ -187,6 +185,7 @@ client certificate verification.
 
 ```
 ```{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
+
 **Configure the authentication mode.**
 The authentication mode defines how the syslog client verifies the syslog
 server's identity.
