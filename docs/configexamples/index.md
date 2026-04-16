@@ -36,8 +36,8 @@ The next pages contain fully automated configuration examples.
 Each lab will build and test from an external script.
 The page content is generated, so changes will not take effect.
 
-A host `vyos-oobm` will use as a ssh proxy. This host is just
-necessary for the Lab test.
+A host `vyos-oobm` will be used as an SSH proxy. This host is just
+necessary for the lab tests.
 
 The process will do the following steps:
 1. create the lab on a eve-ng server
