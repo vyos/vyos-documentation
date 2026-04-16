@@ -71,6 +71,7 @@ firewall rules, we need to:
   `MGMT` or `LAN`.
 - For **outbound-interface**: use the interface name, like `eth0`, `vtun0`,
   `eth2*` or similar.
+
 Next, we need to configure the firewall rules. First we will define all rules
 for transit traffic between VRFs.
 

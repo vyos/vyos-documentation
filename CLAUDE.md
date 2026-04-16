@@ -116,3 +116,36 @@ Each configuration page should contain:
 - Base branch: `current`
 - Branch naming: `fix/docs-*`, `feat/docs-*`
 - PRs target `current` branch
+
+## RST-to-MyST Migration (active — branch `feat/rst-to-myst-migration`, PR #1838)
+
+This worktree IS the migration branch. All 254 RST files have been converted to MyST Markdown.
+
+### Critical syntax rules (do NOT break these):
+- `cfgcmd`/`opcmd` directive **bodies** use RST `nested_parse()` — body content stays RST, NOT MyST
+  - `:abbr:`, `.. note::`, `.. code-block::`, ` ``text`` `, `.. stop_vyoslinter` inside cfgcmd/opcmd bodies are **CORRECT**
+  - Do NOT convert them to `{abbr}`, `:::{note}`, ` `text` `, `% stop_vyoslinter`
+- `_include/*.txt` templates use MyST syntax with `::::` colon fences
+- Angle brackets in directive arguments: `\<param\>` (escaped)
+- `cmdincludemd` (not `cmdinclude`) in .md files and aggregator templates
+
+### Session routine (follow in order):
+1. Fix files → check Copilot PR review → push
+2. Wait for ReadTheDocs rebuild: https://vyos--1838.org.readthedocs.build/en/1838/
+3. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
+4. Analyze: separate pending-rebuild pages from genuine new issues
+
+### Current state (commit 42ca5216, Apr 16 2026):
+Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
+
+**Pending rebuild** (fixes committed, preview not yet updated):
+eventhandler 141.9%, information 110.1%, lldp 24.2%, wireguard 22.5%, connectivity 11.8%, install 10.7%, ssh 9.4%, coverage 8.3%, login 7.5%, static 7.5%, flow-accounting 5.8%
+
+**New genuine issues to fix next** (after rebuild + rescan):
+firewall/ipv4 7.1%, firewall/ipv6 6.7%, cli 4.6%, firewall/zone 4.4%, sstp-client 4.4%, policy/access-list 4.3%, system/default-route 4.2%, firewall/bridge 4.2%
+
+**Copilot threads to address before next push:**
+- `_include/interface-dhcpv6-options.txt:21` — missing dhcpv6-options in example command
+- `configexamples/autotest/L3VPN_EVPN/L3VPN_EVPN.md:108` — missing blank line after bullet list
+- `configexamples/autotest/tunnelbroker/tunnelbroker.md:112` — missing blank line after list
+- `configexamples/fwall-and-vrf.md:73` — missing blank line after list item

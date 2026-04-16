@@ -11,8 +11,8 @@ for the current migration PR. Process separately.
 - `docs/_include/interface-vlan-8021ad.txt:164`
 - `docs/_include/interface-vlan-8021q.txt:131`
 
-**Issue:** Both files end with `.. include:: /_include/common-references.txt` (RST
-syntax). These files are rendered via `cmdincludemd` (MyST context), so the RST
+**Issue:** Both files end with `.. include:: /_include/common-references.txt`
+(RST syntax). These files are rendered via `cmdincludemd` (MyST context), so the RST
 `.. include::` directive is silently ignored. `common-references.txt` contains
 markdown link definitions (e.g., `[802.1q]: url`) that are not injected.
 
@@ -63,11 +63,11 @@ block-level directives should be separated by blank lines. Depending on the
 Sphinx/MyST-parser version, this may cause the second directive to be parsed
 incorrectly or merged with the first.
 
-**Impact:** Uncertain — may cause visual rendering differences. Needs Playwright
-diff verification to confirm impact before fixing 186 cases.
+**Impact:** Uncertain — may cause visual rendering differences. Needs
+Playwright diff verification to confirm impact before fixing 186 cases.
 
-**Fix:** Insert a blank line between each consecutive ```` ``` ```` close and the
-next ```` ```{cfgcmd}```/```` ```{opcmd} ```` open. Can be automated with a
+**Fix:** Insert a blank line between each consecutive ```` ``` ```` close and
+the next ```` ```{cfgcmd}```/```` ```{opcmd} ```` open. Can be automated with
 simple script.
 
 **Script outline:**

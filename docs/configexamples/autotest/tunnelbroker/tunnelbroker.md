@@ -19,7 +19,7 @@ IPv6 Tunnel.
 
 ### Topology
 
-The example topology has 2 VyOS routers. One as The WAN Router and on as a
+The example topology has 2 VyOS routers. One as the WAN Router and one as a
 Client, to test a single LAN setup
 
 ```{image} _include/topology.png
@@ -110,6 +110,7 @@ With Tunnelbroker.net, you have two options:
   single "LAN", and is somewhat equivalent to a /24.
 - Routed /48. This is something you can request by clicking the "Assign /48"
   link in the Tunnelbroker.net tunnel config. It allows you to have up to 65k
+
 Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64. So
 if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore
 the assigned /64, and request the /48 and use that.

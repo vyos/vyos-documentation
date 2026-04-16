@@ -106,6 +106,7 @@ VNI (Virtual Network Identifier) per tenant on all our routers.
 - blue uses local routing table id and VNI 2000
 - red uses local routing table id and VNI 3000
 - green uses local routing table id and VNI 4000
+
 PE1
 
 ```{literalinclude} _include/PE1.conf
