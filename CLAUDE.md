@@ -152,13 +152,12 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 8edab482, Apr 16 2026):
+### Current state (commit c1d36181, Apr 16 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
-**Playwright scan complete** (RTD build 8e2b0694 confirmed succeeded).
+**Playwright scan complete** (RTD build confirmed, all diffs stable post marker removal).
 All 30 Copilot comments addressed. Lint CI passing.
-**doc-linter confirmed**: only runs on `.rst`/`.txt` files, NOT `.md` files.
-Removed all 206 `% stop/start_vyoslinter` markers from 49 `.md` files (8edab482).
+Removed all 206 `% stop/start_vyoslinter` markers from 49 `.md` files (8edab482) — zero regressions.
 
 **Known remaining diffs (explained, not regressions):**
 - `operation/information` 111.7%: MyST opcmd panels with embedded code blocks render taller than RST (CSS/styling, not content error). Code blocks ARE inside panels (fix c3a980b0 applied).
@@ -167,4 +166,4 @@ Removed all 206 `% stop/start_vyoslinter` markers from 49 `.md` files (8edab482)
 - 8 pages at 2-6%: minor stable differences.
 - coverage 4.7%: improved from 8.8%.
 
-**Next**: Wait for RTD rebuild after 8edab482, then run Playwright scan on pages that had markers (openconnect, static, wireless, trafficpolicy, highavailability) to confirm no regressions. Then PR is ready — consider marking as ready (removing draft status).
+**Next**: PR is ready for review. Mark as ready (remove draft status).
