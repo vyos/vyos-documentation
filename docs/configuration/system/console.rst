@@ -22,8 +22,19 @@ Major upgrades to the installed distribution may also require console access.
    can be (see completion helper):
 
    * ``ttySN`` - Serial device name
+   * ``ttyAMAN``- Serial device name for some arm64 systems
    * ``ttyUSBX`` - USB Serial device name
    * ``hvc0`` - Xen console
+
+.. cfgcmd:: set system console device <device> kernel
+
+   When set, the selected serial console is used as the kernel boot console.
+   When removed, the kernel boot console falls back to tty0.
+
+   .. note:: Only one serial console can carry the ``kernel`` option.
+     When VyOS is installed via serial console, this option is set automatically
+     for the serial interface used during installation; usually ``ttyS0`` or
+     ``ttyAMA0``.
 
 .. cfgcmd:: set system console device <device> speed <speed>
 
