@@ -34,8 +34,5 @@ adequate memory reservations.
 
 ### References
 
-% stop_vyoslinter
-
 <https://muralidba.blogspot.com/2018/03/how-does-linux-out-of-memory-oom-killer.html>
 
-% start_vyoslinter

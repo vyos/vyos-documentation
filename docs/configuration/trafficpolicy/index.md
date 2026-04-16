@@ -115,13 +115,9 @@ The number of a class in a Priority Queue it does not only
 identify it, it also defines its priority.
 :::
 
-% stop_vyoslinter
-
 ```none
 set qos policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
 ```
-
-% start_vyoslinter
 
 In the command above, we set the type of policy we are going to
 work with and the name we choose for it; a class (so that we can
@@ -180,13 +176,9 @@ is based on marks done by the firewall,
 
 You can also write a description for a filter:
 
-% stop_vyoslinter
-
 ```none
 set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My filter description"
 ```
-
-% start_vyoslinter
 
 :::{note}
 An IPv4 TCP filter will only match packets with an IPv4 header
@@ -264,8 +256,6 @@ you want to do with the traffic of that class, what specific
 Traffic-Control treatment you want to give it. You will have different
 possibilities depending on the Traffic Policy you are configuring.
 
-% stop_vyoslinter
-
 ```none
 vyos@vyos# set qos policy shaper MY-SHAPER class 30
 Possible completions:
@@ -284,8 +274,6 @@ Possible completions:
    set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
    target       Acceptable minimum standing/persistent queue delay (default: 5)
 ```
-
-% start_vyoslinter
 
 For instance, with {code}`set qos policy shaper MY-SHAPER
 class 30 set-dscp EF` you would be modifying the DSCP field value of packets in
@@ -1138,8 +1126,6 @@ Possible completions:
                 Random Early Detection (RED)
 ```
 
-% stop_vyoslinter
-
 ```none
 vyos@vyos# set qos policy shaper HTB class 10
 Possible completions:
@@ -1159,8 +1145,6 @@ Possible completions:
    target       Acceptable minimum standing/persistent queue delay (default: 5)
 ```
 
-% start_vyoslinter
-
 :::{note}
 If you configure a class for **VoIP traffic**, don't give it any
 *ceiling*, otherwise new VoIP calls could start when the link is
@@ -1171,7 +1155,6 @@ their assigned *bandwidth* share.
 
 ##### Example
 A simple example of Shaper using priorities.
-% stop_vyoslinter
 
 ```none
 set qos policy shaper MY-HTB bandwidth '50mbit'
@@ -1194,7 +1177,6 @@ set qos policy shaper MY-HTB default priority '7'
 set qos policy shaper MY-HTB default queue-type 'fair-queue'
 ```
 
-% start_vyoslinter
 (cake)=
 
 #### CAKE
@@ -1345,10 +1327,6 @@ of your traffic-policy, and then you can configure IFB.
 Otherwise you might get the `RTNETLINK answer: File exists` error,
 which can be solved with `sudo ip link delete ifb0`.
 :::
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [common applications kept enhanced]: https://www.bufferbloat.net/projects/codel/wiki/Cake/
 [hfsc]: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve

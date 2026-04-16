@@ -295,7 +295,6 @@ set protocols ospf parameters router-id '10.0.0.2'
 At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4
 VPN (L3VPN) routes between them:
-% stop_vyoslinter
 - VyOS-RR1:
 
 ```none
@@ -1069,8 +1068,6 @@ traceroute to 10.0.0.100 (10.0.0.100), 30 hops max, 60 byte packets
  3  * * *
  4  10.0.0.100 (10.0.0.100)  7.504 ms  7.480 ms  7.488 ms
 ```
-
-% start_vyoslinter
 
 **Note:** At the moment, trace mpls doesn’t show labels/paths. So we’ll
 see `* * *` for the transit routers of the mpls backbone.

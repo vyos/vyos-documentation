@@ -149,12 +149,10 @@ static resource bindings like `smp-affinity` as present in VyOS 1.2 and
 earlier to pin certain interrupt handlers to specific CPUs.
 
 We now utilize `tuned` for dynamic resource balancing based on profiles.
-% stop_vyoslinter
 
 :::{seealso}
 <https://access.redhat.com/sites/default/files/attachments/201501-perf-brief-low-latency-tuning-rhel7-v2.1.pdf>
 :::
-% start_vyoslinter
 
 ```{cfgcmd} set system option performance \< throughput | latency \>
 

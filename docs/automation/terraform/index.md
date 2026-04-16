@@ -24,7 +24,5 @@ terraformvSphere
 ```
 
 [ansible]: https://docs.ansible.com
-% stop_vyoslinter
 [install]: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
-% start_vyoslinter
 [terraform]: https://developer.hashicorp.com/terraform/intro

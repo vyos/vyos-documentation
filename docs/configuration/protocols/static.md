@@ -68,15 +68,11 @@ Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address.
 ```
 
-% stop_vyoslinter
-
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
 Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address with BFD profile `<profile>`.
 ```
-
-% start_vyoslinter
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
@@ -163,8 +159,6 @@ installed into the kernel.
 
 ```
 
-% stop_vyoslinter
-
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> segments \<segments\>
 
 It is possible to specify a static route for ipv6 prefixes using an
@@ -190,8 +184,6 @@ S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaa
 :::
 ```
 
-% start_vyoslinter
-
 ### IPv6 Interface Routes
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\>
@@ -213,8 +205,6 @@ distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 ```
 
-% stop_vyoslinter
-
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> segments \<segments\>
 
 It is possible to specify a static route for ipv6 prefixes using an
@@ -228,8 +218,6 @@ set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8
 :::
 ```
 
-% start_vyoslinter
-
 ### IPv6 BFD
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd
@@ -238,17 +226,11 @@ Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address.
 ```
 
-% stop_vyoslinter
-
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
 Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address with BFD profile `<profile>`.
 ```
-
-% start_vyoslinter
-
-% stop_vyoslinter
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source\>
 
@@ -256,8 +238,6 @@ Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address with source address
 `<source>` but initiate a multi-hop session.
 ```
-
-% start_vyoslinter
 
 ### IPv6 Reject Routes
 

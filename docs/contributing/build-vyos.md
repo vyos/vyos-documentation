@@ -673,8 +673,6 @@ Debian APT does not provide verbose error messages. If your ISO build fails and
 you suspect an APT dependencies or installation issue, you can apply this patch
 to increase APT verbosity during the ISO build.
 
-% stop_vyoslinter
-
 ```diff
 
 diff --git i/scripts/live-build-config w/scripts/live-build-config
@@ -693,8 +691,6 @@ index 1b3b454..3696e4e 100755
  """
 
 ```
-
-% start_vyoslinter
 
 (build-packages)=
 
@@ -774,10 +770,6 @@ ISO during the build, replacing upstream packages. Delete both the source
 directories and built DEB packages if you want to build an ISO from purely
 upstream packages.
 :::
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [docker]: https://docs.docker.com/engine/install/debian/
 [docker as non-root]: https://docs.docker.com/engine/install/linux-postinstall

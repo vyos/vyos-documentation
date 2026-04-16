@@ -378,8 +378,6 @@ TX:  bytes    packets     errors    dropped    carrier collisions
 :::
 ```
 
-% stop_vyoslinter
-
 ```{opcmd} show interfaces ethernet \<interface\> physical
 
 Show interface hardware-level and driver details.
@@ -419,8 +417,6 @@ supports-register-dump: yes
 supports-priv-flags: no
 :::
 ```
-
-% start_vyoslinter
 
 ```{opcmd} show interfaces ethernet \<interface\> physical offload
 

@@ -59,13 +59,9 @@ Terraform, Ansible, and AWS, follow these steps:
    mkdir /root/awsterraform
    ```
 
-% stop_vyoslinter
-
 4. Copy all files into your Terraform project
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
    See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
-
-% start_vyoslinter
 
 5. Run the following commands:
 
@@ -79,16 +75,12 @@ Terraform, Ansible, and AWS, follow these steps:
 2. Download and install Ansible
 3. Create a folder, for example `/root/aws/`.
 
-% stop_vyoslinter
-
 4. Copy all files into your Ansible project
    (`ansible.cfg`, `instance.yml`,
    `mykey.pem`, and `all`).
    See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
    You can obtain `mykey.pem` by creating a key [pair] in AWS and
    downloading your `.pem` key.
-
-% start_vyoslinter
 
 ### Deploy with Terraform
 
@@ -521,10 +513,6 @@ ansible_user: vyos
 
 All files related to deploying VyOS on AWS with Terraform and Ansible
 can be found in the [vyos-automation] repository.
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [group]: https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-sg.html
 [image]: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html

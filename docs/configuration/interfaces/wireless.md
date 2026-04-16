@@ -253,12 +253,10 @@ Enable sending PPDU using STBC (Space Time Block Coding)
 ```
 
 ##### VHT (Very High Throughput) capabilities (802.11ac)
-% stop_vyoslinter
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
 
-% start_vyoslinter
 %
 % Number of antennas on this card
 
@@ -458,7 +456,6 @@ The WAP in this example has the following characteristics:
 - Use 802.11n protocol
 - Wireless channel `1`
 - RADIUS server at `192.168.3.10` with shared-secret `VyOSPassword`
-% stop_vyoslinter
 
 ```none
 set system wireless country-code de
@@ -473,7 +470,6 @@ set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSP
 set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
 ```
 
-% start_vyoslinter
 Resulting configuration:
 
 ```none
@@ -539,7 +535,6 @@ wlan0      access-point  VyOS-TEST-0                        1
 
 Show the operational status and detailed wireless-specific
 information about all wireless interfaces.
-% stop_vyoslinter
 
 ```none
 vyos@vyos:~$ show interfaces wireless detail
@@ -568,14 +563,11 @@ wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
          183413      5430          0          0          0          0
 ```
 
-% start_vyoslinter
-
 ```{opcmd} show interfaces wireless \<wlanX\>
 ```
 
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
-% stop_vyoslinter
 
 ```none
 vyos@vyos:~$ show interfaces wireless wlan0
@@ -591,8 +583,6 @@ wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
     TX:  bytes    packets     errors    dropped    carrier collisions
          83413        430          0          0          0          0
 ```
-
-% start_vyoslinter
 
 ```{opcmd} show interfaces wireless \<wlanX\> brief
 ```
@@ -719,7 +709,6 @@ The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 
 #### Example configuration: Wi-Fi 6 at 2.4 GHz
 You may expect real throughput around 10 MB/s or higher in crowded areas.
-% stop_vyoslinter
 
 ```none
 set system wireless country-code de
@@ -751,7 +740,6 @@ set interfaces wireless wlan0 type access-point
 commit
 ```
 
-% start_vyoslinter
 Resulting configuration:
 
 ```none
@@ -813,7 +801,6 @@ You may expect real throughput between 50 MB/s and 150 MB/s, depending on
 obstructions from walls, water, metal, or other materials
 with high electromagnetic damping at 6 GHz. Best results are achieved
 with the AP being in the same room and in line-of-sight.
-% stop_vyoslinter
 
 ```none
 set system wireless country-code de
@@ -841,7 +828,6 @@ set interfaces wireless wlan0 stationary-ap
 commit
 ```
 
-% start_vyoslinter
 Resulting configuration:
 
 ```none
@@ -897,7 +883,6 @@ interfaces {
 ### Intel AX200
 The Intel AX200 card does not work out of the box in AP mode. You can
 still put this card into AP mode using the following configuration:
-% stop_vyoslinter
 
 ```none
 set system wireless country-code 'us'
@@ -908,4 +893,3 @@ set interfaces wireless wlan0 ssid 'VyOS'
 set interfaces wireless wlan0 type 'access-point'
 ```
 
-% start_vyoslinter

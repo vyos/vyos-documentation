@@ -22,12 +22,10 @@ transmitted (tx), and dropped (drop).
 
 ### Starting Packet Capture
 **Command syntax:**
-% stop_vyoslinter
 
 ```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max \<n\>] [intfc \<interface-name|any\>] [file \<name\>] [max-bytes-per-pkt \<n\>]
 ```
 
-% start_vyoslinter
 **Parameters:**
 - `rx` - Capture received packets
 - `tx` - Capture transmitted packets

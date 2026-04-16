@@ -24,13 +24,9 @@ Terraform, Ansible, and vSphere, follow these steps:
 
 ### vSphere
 
-% stop_vyoslinter
-
 1. Add all necessary data to the `terraform.tfvars`
    [file](https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars)
    and create resources.
-
-% start_vyoslinter
 
 ### Terraform
 

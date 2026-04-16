@@ -64,12 +64,10 @@ like the following:
 mkdir /root/google
 ```
 
-% stop_vyoslinter
 4. Copy all files into your Terraform project `/root/google`
    (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
    For more details,
    see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
-% start_vyoslinter
 5. Run the following commands:
 
 ```none
@@ -684,9 +682,5 @@ ansible_ssh_pass: vyos
 
 All files related to deploying VyOS on Google Cloud Platform with
 Terraform and Ansible can be found in the [vyos-automation] repository.
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main

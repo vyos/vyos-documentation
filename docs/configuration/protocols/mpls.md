@@ -319,8 +319,5 @@ Use this command to see detailed LDP neighbor information
 
 Use this command to reset an LDP neighbor/TCP session that is established
 ```
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [wikipedia (mpls)]: https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching

@@ -332,15 +332,12 @@ Schemas provide two benefits:
 - Complete grammar verification
 - Automatic validation against the schema
 
-% stop_vyoslinter
-
 The [build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
 script converts XML definitions to
 old-style templates and verifies them against the schema. A bad definition
 causes the package build to fail. While the XML format is verbose, no other
 format provides this level of verification. Specialized XML editors can help
 manage verbosity.
-% start_vyoslinter
 Example XML interface definition:
 
 ```xml
@@ -436,8 +433,6 @@ duplication in common areas:
 
 Instead of repeating XML nodes, use include files with predefined features:
 
-% stop_vyoslinter
-
 - [IPv4, IPv6, and DHCP(v6)](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i)
   address assignment.
 - [IPv4 and IPv6](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i)
@@ -450,8 +445,6 @@ Instead of repeating XML nodes, use include files with predefined features:
 The `.in` files are preprocessed and stored in the [interface-definitions](https://github.com/vyos/vyos-1x/tree/current/interface-definitions)
 folder. The [scripts/build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
 script then operates on this folder to generate all required CLI nodes.
-
-% start_vyoslinter
 
 Example preprocessor output:
 
@@ -544,8 +537,6 @@ references common CLI commands and their C/C++ entry points:
 
 `set`:
 
-% stop_vyoslinter
-
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352>
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549>
 
@@ -556,4 +547,3 @@ references common CLI commands and their C/C++ entry points:
 ```{include} /_include/common-references.txt
 ```
 
-% start_vyoslinter

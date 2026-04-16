@@ -141,13 +141,9 @@ a centralized appliance for traffic inspection in your AWS infrastructure,
 supporting both single-endpoint (1-arm) and multi-endpoint (2-arm) deployment
 modes.
 
-% stop_vyoslinter
-
 For more information about integrating with AWS Gateway Load Balancer, see
 the following article from AWS:
 [How to integrate Linux instances with AWS Gateway Load Balancer](https://aws.amazon.com/blogs/networking-and-content-delivery/how-to-integrate-linux-instances-with-aws-gateway-load-balancer/).
-
-% start_vyoslinter
 
 ### Configuration Example
 
@@ -164,8 +160,6 @@ set service aws glb threads udp '4'
 set service aws glb threads udp-affinity '0-3'
 ```
 
-% stop_vyoslinter
-
 ## References
 
 - <https://console.aws.amazon.com/>
@@ -173,4 +167,3 @@ set service aws glb threads udp-affinity '0-3'
 - <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance-fleet.html>
 - <https://aws.amazon.com/blogs/networking-and-content-delivery/how-to-integrate-linux-instances-with-aws-gateway-load-balancer/>
 
-% start_vyoslinter

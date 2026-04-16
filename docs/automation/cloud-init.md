@@ -370,10 +370,6 @@ From cli or GUI, power on VM, and after it boots, verify configuration
 - Cloud-init [network-config-docs].
 - Proxmox [Cloud-init-Support].
 
-% stop_vyoslinter
-
-% start_vyoslinter
-
 [cloud-init-docs]: https://docs.vyos.io/en/equuleus/automation/cloud-init.html?highlight=cloud-init#vyos-cloud-init
 [cloud-init-support]: https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init
 [cloud-init-write_files]: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files

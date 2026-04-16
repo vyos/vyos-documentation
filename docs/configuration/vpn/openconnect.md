@@ -35,13 +35,10 @@ We can also create the certificates using Certbot which is an easy-to-use
 client that fetches a certificate from Let's Encrypt an open certificate
 authority launched by the EFF, Mozilla, and others and deploys it to a web
 server.
-% stop_vyoslinter
 
 ```none
 sudo certbot certonly --standalone --preferred-challenges http -d <domain name>
 ```
-
-% start_vyoslinter
 
 ### Server Configuration
 
@@ -61,7 +58,6 @@ Instead of password only authentication, 2FA password
 authentication + OTP key can be used. Alternatively, OTP authentication only,
 without a password, can be used.
 To do this, an OTP configuration must be added to the configuration above:
-% stop_vyoslinter
 
 ```none
 set vpn openconnect authentication mode local <password-otp|otp>
@@ -71,7 +67,6 @@ set vpn openconnect authentication local-users username <user> otp-length <otp-l
 set vpn openconnect authentication local-users username <user> token-type <token-type (optional)>
 ```
 
-% start_vyoslinter
 For generating an OTP key in VyOS, you can use the CLI command
 (operational mode):
 
@@ -83,10 +78,8 @@ generate openconnect username <user> otp-key hotp-time
 You can configure users to be authenticated by certificate by setting
 the authentication mode to certificate, and defining what field (by OID)
 in the certificate will be used to identify the username. Two pre-defined
-% stop_vyoslinter
 shortcuts for Common Name (OID 2.5.4.3) and User ID
 (OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid.
-% start_vyoslinter
 Otherwise a specific OID value must be provided.
 
 The user's certificate must be signed by the certificate authority
@@ -99,7 +92,6 @@ set vpn openconnect ssl ca-certificate <cert>
 ```
 
 ## Verification
-% stop_vyoslinter
 
 ```none
 vyos@vyos:~$ sh openconnect-server sessions
@@ -107,8 +99,6 @@ interface    username    ip             remote IP    RX       TX         state  
 -----------  ----------  -------------  -----------  -------  ---------  ---------  --------
 sslvpn0      tst         172.20.20.198  192.168.6.1  0 bytes  152 bytes  connected  3s
 ```
-
-% start_vyoslinter
 
 :::{note}
 It is compatible with Cisco (R) AnyConnect (R) clients.
@@ -118,7 +108,6 @@ It is compatible with Cisco (R) AnyConnect (R) clients.
 
 ### SSL Certificates generation
 Follow the instructions to generate CA cert (in configuration mode):
-% stop_vyoslinter
 
 ```none
 vyos@vyos# run generate pki ca install ca-ocserv
@@ -157,7 +146,6 @@ Do you want to encrypt the private key with a passphrase? [y/N] N
 [edit]
 ```
 
-% start_vyoslinter
 Each of the install command should be applied to the configuration and commited
 before using under the openconnect configuration:
 
@@ -172,7 +160,6 @@ Done
 
 ### Openconnect Configuration
 Simple setup with one user added and password authentication:
-% stop_vyoslinter
 
 ```none
 set vpn openconnect authentication local-users username tst password 'OC_bad_Secret'
@@ -184,7 +171,6 @@ set vpn openconnect ssl ca-certificate 'ca-ocserv'
 set vpn openconnect ssl certificate 'srv-ocserv'
 ```
 
-% start_vyoslinter
 To enable the HTTP security headers in the configuration file, use the command:
 
 ```none
@@ -194,7 +180,6 @@ set vpn openconnect http-security-headers
 ### Adding a 2FA with an OTP-key
 First the OTP keys must be generated and sent to the user and to the
 configuration:
-% stop_vyoslinter
 
 ```none
 vyos@vyos:~$ generate openconnect username tst otp-key hotp-time
@@ -227,16 +212,13 @@ vyos@vyos:~$ generate openconnect username tst otp-key hotp-time
 set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
 ```
 
-% start_vyoslinter
 Next it is necessary to configure 2FA for OpenConnect:
-% stop_vyoslinter
 
 ```none
 set vpn openconnect authentication mode local password-otp
 set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
 ```
 
-% start_vyoslinter
 Now when connecting the user will first be asked for the password
 and then the OTP key.
 
@@ -258,7 +240,6 @@ as "Identity based config". The following [OpenConnect Server Manual](https://oc
 outlines the set of configuration options that are allowed. This can be
 leveraged to apply different sets of configs to different users or groups of
 users.
-% stop_vyoslinter
 
 ```none
 sudo mkdir -p /config/auth/ocserv/config-per-user
@@ -268,8 +249,6 @@ set vpn openconnect authentication identity-based-config mode user
 set vpn openconnect authentication identity-based-config directory /config/auth/ocserv/config-per-user
 set vpn openconnect authentication identity-based-config default-config /config/auth/ocserv/default-user.conf
 ```
-
-% start_vyoslinter
 
 :::{warning}
 The above directory and default-config must be a child directory
@@ -305,7 +284,6 @@ RADIUS server to capture user session data such as time of
 connect/disconnect, data transferred, and so on.
 
 Configure an accounting server and enable accounting with:
-% stop_vyoslinter
 
 ```none
 set vpn openconnect accounting mode radius
@@ -314,15 +292,12 @@ set vpn openconnect accounting radius server 172.20.20.10 port 1813
 set vpn openconnect accounting radius server 172.20.20.10 key your_radius_secret
 ```
 
-% start_vyoslinter
-
 :::{warning}
 When using Time-based one-time password (TOTP) (OTP HOTP-time),
 be sure that the time on the server and the
 OTP token generator are synchronized by NTP
 :::
 An example of the data captured by a FREERADIUS server with sql accounting:
-% stop_vyoslinter
 
 ```none
 mysql> SELECT username, nasipaddress, acctstarttime, acctstoptime, acctinputoctets, acctoutputoctets, callingstationid, framedipaddress, connectinfo_start FROM radacct;
@@ -333,4 +308,3 @@ mysql> SELECT username, nasipaddress, acctstarttime, acctstoptime, acctinputocte
 +----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
 ```
 
-% start_vyoslinter

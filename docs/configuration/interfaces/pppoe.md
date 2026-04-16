@@ -347,7 +347,6 @@ set interfaces pppoe pppoe0 source-interface 'eth0.7'
 ```
 
 #### IPv6 DHCPv6 prefix delegation
-% stop_vyoslinter
 **Configuration scenario:**
 The following configuration establishes a PPPoE session on the `eth1`
 interface, requests a `/56` IPv6 prefix delegation from the ISP, and assigns
@@ -357,7 +356,6 @@ a `/64` subnet from that delegation to the `eth0` interface.
 - If you do not know your delegated prefix size, begin with `sla-len 0`.
 - To advertise the prefix on the `eth0` link, configure IPv6 Router
   Advertisement.
-% start_vyoslinter
 
 ```none
 set interfaces pppoe pppoe0 authentication username vyos

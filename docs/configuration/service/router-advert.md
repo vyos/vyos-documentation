@@ -27,8 +27,6 @@ Supported interface types:
 ```{cfgcmd} set service router-advert interface \<interface\> ...
 ```
 
-% stop_vyoslinter
-
 | Field | VyOS Option | Description |
 |-------|-------------|-------------|
 | Cur Hop Limit | hop-limit | Hop count field of the outgoing RA packets |
@@ -45,8 +43,6 @@ Supported interface types:
 | Auto Ignore Prefix | auto-ignore | Exclude a prefix from being advertised when the wildcard ::/64 prefix is used |
 | Captive Portal | captive-portal | Advertise a URL pointing to an RFC 8908-compliant API to tell hosts that they are behind a captive portal |
 
-% start_vyoslinter
-
 ### Advertising a Prefix
 
 ```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
@@ -58,8 +54,6 @@ You can also opt for using `::/64` as prefix for your {abbr}`RAs (Router
 :::
 ```
 
-% stop_vyoslinter
-
 | VyOS Field | Description |
 |------------|-------------|
 | decrement-lifetime | Lifetime is decremented by the number of seconds since the last RA - use in conjunction with a DHCPv6-PD prefix |
@@ -68,8 +62,6 @@ You can also opt for using `::/64` as prefix for your {abbr}`RAs (Router
 | no-on-link-flag | Prefix can not be used for on-link determination |
 | preferred-lifetime | Time in seconds that the prefix will remain preferred (default 4 hours) |
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 30 days) |
-
-% start_vyoslinter
 
 ### Advertising a NAT64 Prefix
 
@@ -83,13 +75,9 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 :::
 ```
 
-% stop_vyoslinter
-
 | VyOS Field | Description |
 |------------|-------------|
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 65528 seconds) |
-
-% start_vyoslinter
 
 ### Disabling Advertisements
 To disable advertisements without deleting the configuration:

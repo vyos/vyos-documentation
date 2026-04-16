@@ -439,12 +439,9 @@ pull-request. This requires you already have a GitHub account.
 - If you also want to update your fork on GitHub, use the following: `$ git
   push origin current`
 
-% stop_vyoslinter
-
 ```{include} /_include/common-references.txt
 
 ```
-% start_vyoslinter
 
 [dockerfile]: https://github.com/vyos/vyos-documentation/blob/current/docker/Dockerfile
 [grammarly]: https://www.grammarly.com/

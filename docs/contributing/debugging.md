@@ -200,12 +200,8 @@ To debug priority issues or see script execution order, use the
 `/opt/vyatta/sbin/priority.pl` script, which lists the execution order of
 scripts.
 
-% stop_vyoslinter
-
 ```{include} /_include/common-references.txt
 ```
-
-% start_vyoslinter
 
 [bootchart.conf]: https://github.com/vyos/vyos-build/blob/current/data/live-build-config/includes.chroot/etc/systemd/bootchart.conf
 [vyatta-cfg]: https://github.com/vyos/vyatta-cfg

@@ -48,7 +48,6 @@ Do you want to continue? [Y/n] y
 ```
 
 ## Check the version:
-% stop_vyoslinter
 
 ```none
 # ansible --version
@@ -59,8 +58,6 @@ ansible python module location = /usr/lib/python3/dist-packages/ansible
 executable location = /usr/bin/ansible
 python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 ```
-
-% start_vyoslinter
 
 ## Basic configuration of ansible.cfg:
 
@@ -116,7 +113,6 @@ ansible_ssh_pass: vyos
 ```
 
 ## Start the playbook:
-% stop_vyoslinter
 
 ```none
 ansible-playbook -i hosts main.yml
@@ -134,8 +130,6 @@ vyos7                      : ok=2    changed=0    unreachable=0    failed=0    s
 vyos8                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-
-% start_vyoslinter
 
 ## Check the result on the vyos10 router:
 
@@ -188,8 +182,6 @@ ansible_connection=network_cli
         save: true
 ```
 
-% stop_vyoslinter
-
 ```none
 # ansible-playbook -i hosts_v2 main_v2.yml
 
@@ -207,8 +199,6 @@ vyos7                      : ok=1    changed=0    unreachable=0    failed=0    s
 vyos8                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-
-% start_vyoslinter
 
 In the next chapter of the example, we'll use Ansible with jinja2
 templates and variables.

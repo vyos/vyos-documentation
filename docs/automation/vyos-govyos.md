@@ -28,14 +28,10 @@ go install "github.com/ganawaj/go-vyos/vyos"
 
 ### Importing and Disabling TLS Verification
 
-% stop_vyoslinter
-
 ```none
 import "github.com/ganawaj/go-vyos/vyos"
 client := vyos.NewClient(nil).WithToken("AUTH_KEY").WithURL("https://192.168.0.1").Insecure()
 ```
-
-% start_vyoslinter
 
 ### Initializing a VyDevice Object
 
@@ -63,8 +59,6 @@ if verify_ssl == "false" {
 
 ### Configure, then Set
 
-% stop_vyoslinter
-
 ```none
 out, resp, err := c.Conf.Set(ctx, "interfaces ethernet eth0 address 192.168.1.1/24")
 if err != nil {
@@ -73,8 +67,6 @@ if err != nil {
 
 fmt.Println(out.Success)
 ```
-
-% start_vyoslinter
 
 ### Show a Single Object Value
 

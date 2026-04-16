@@ -1137,7 +1137,6 @@ set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 duid 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
 The configuration will look as follows:
-% stop_vyoslinter (00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff false positive)
 ```none
 show service dhcpv6-server shared-network-name NET1
  subnet 2001:db8::/64 {
@@ -1148,7 +1147,6 @@ show service dhcpv6-server shared-network-name NET1
      }
  }
 ```
-% start_vyoslinter
 (dhcp-server-v6-op-cmd)=
 ### Operation Mode
 ```{opcmd} show log dhcpv6 server

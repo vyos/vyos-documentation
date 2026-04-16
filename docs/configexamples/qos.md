@@ -42,7 +42,6 @@ Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll
 use in this case only static routes.
 On the VyOS3 router, we need to change the 'dscp' labels for the
 VPCs. To do this, we use this configuration.
-% stop_vyoslinter
 
 ```none
 set interfaces ethernet eth0 address '10.1.1.100/24'
@@ -61,7 +60,6 @@ set qos policy shaper vyos3 default queue-type 'fair-queue'
 set qos interface eth0 egress 'vyos3'
 ```
 
-% start_vyoslinter
 Main rules:
 - ADDRESS10 change CS0 -> CS4 source 172.17.1.2/32
 - ADDRESS20 change CS0 -> CS5 source 172.17.1.3/32

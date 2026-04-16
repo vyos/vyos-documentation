@@ -38,10 +38,6 @@ These are the boot steps for VyOS 1.2
 > 10. Finally it runs the post-config script
 >     `/config/scripts/vyos-postconfig-bootup.script`
 
-% stop_vyoslinter
-
-% start_vyoslinter
-
 [debian jessie]: https://www.debian.org/releases/jessie/
 [frr]: https://frrouting.org/
 [gnu zebra]: https://www.gnu.org/software/zebra/

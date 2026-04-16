@@ -215,12 +215,8 @@ set service snmp script-extensions extension-name my-extension script your_scrip
 commit
 ```
 
-% stop_vyoslinter
-
 The OID `.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116`, once called, will
 contain the output of the extension.
-
-% start_vyoslinter
 
 ```none
 root@vyos:/home/vyos# snmpwalk -v2c  -c public 127.0.0.1 nsExtendOutput1
@@ -234,8 +230,6 @@ NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
 
 If you happen to use SolarWinds Orion as NMS you can also use the Device
 Templates Management. A template for VyOS can be easily imported.
-
-% stop_vyoslinter
 
 Create a file named `VyOS-1.3.6.1.4.1.44641.ConfigMgmt-Commands` using the
 following content:
@@ -255,8 +249,6 @@ following content:
     </Commands>
 </Configuration-Management>
 ```
-
-% start_vyoslinter
 
 [mib]: https://en.wikipedia.org/wiki/Management_information_base
 [snmpv2]: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2

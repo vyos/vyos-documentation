@@ -139,8 +139,6 @@ Create a bootable USB pendrive using e.g. [Rufus] on a Windows machine.
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
 Set terminal emulator to 115200 8N1.
 
-% stop_vyoslinter
-
 ```none
 PC Engines apu4
 coreboot build 20171130
@@ -157,8 +155,6 @@ Select boot device:
 3. Payload [memtest]
 4. Payload [setup]
 ```
-
-% start_vyoslinter
 
 Now boot from the `USB MSC Drive Generic Flash Disk 8.07` media by pressing
 `2`, the VyOS boot menu will appear, just wait 10 seconds or press `Enter`

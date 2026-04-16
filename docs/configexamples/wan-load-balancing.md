@@ -4,7 +4,6 @@ lastproofread: '2021-06-29'
 
 (wan-load-balancing)=
 
-% stop_vyoslinter # pictures and text have to change
 
 # WAN Load Balancer examples
 
@@ -157,4 +156,3 @@ set load-balancing wan rule 5 inbound-interface eth+
 set load-balancing wan rule 5 destination address 10.0.0.0/8
 ```
 
-% start_vyoslinter

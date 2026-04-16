@@ -30,8 +30,6 @@ automatically created after any of the next commands.
 
 ### 2. Add regex to the script
 
-% stop_vyoslinter
-
 ```{cfgcmd} set service event-handler event \<event-handler name\> filter pattern \<regex\>
 
 This is a mandatory command. Sets regular expression to match
@@ -43,11 +41,7 @@ string matches the pattern.
 :::
 ```
 
-% start_vyoslinter
-
 ### 3. Add a full path to the script
-
-% stop_vyoslinter
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> script path \<path to script\>
 
@@ -55,11 +49,7 @@ This is a mandatory command. Sets the full path to the script.
 The script file must be executable.
 ```
 
-% start_vyoslinter
-
 ### 4. Add optional parameters
-
-% stop_vyoslinter
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> filter syslog-identifier \<syslogid name\>
 
@@ -88,13 +78,9 @@ is more preferable.
 :::
 ```
 
-% start_vyoslinter
-
 ## Example
 
 Event handler that monitors the state of interface eth0.
-
-% stop_vyoslinter
 
 ```none
 set service event-handler event INTERFACE_STATE_DOWN filter pattern '.*eth0.*,RUNNING,.*->.*'
@@ -138,4 +124,3 @@ if __name__ == '__main__':
         exit(1)
 ```
 
-% start_vyoslinter

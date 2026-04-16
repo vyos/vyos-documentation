@@ -37,13 +37,9 @@ Terraform, Ansible, and Azure, follow these steps:
 mkdir /root/azvyos
 ```
 
-% stop_vyoslinter
-
 4. Copy all files into your Terraform project "/root/azvyos"
    (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
    [Structure of files in Terraform for Azure](#structure-of-files-in-terraform-for-azure).
-
-% start_vyoslinter
 
 5. Log in to Azure using the command:
 
@@ -444,9 +440,5 @@ ansible_ssh_pass: Vyos0!
 
 All files related to deploying VyOS on Azure with Terraform and Ansible
 can be found in the [vyos-automation] repository.
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main

@@ -401,8 +401,5 @@ an IPv6 (/128) address to the client.
 :::
 
 ```
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [wireguard mailing list]: https://lists.zx2c4.com/pipermail/wireguard/2018-December/003704.html

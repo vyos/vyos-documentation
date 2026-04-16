@@ -158,11 +158,7 @@ In addition to Secure Boot support, VyOS uses ephemeral key signing of Linux
 Kernel modules for an extra security layer in both Secure and non-Secure boot
 images.
 
-% stop_vyoslinter
-
 <https://patchwork.kernel.org/project/linux-integrity/patch/20210218220011.67625-5-nayna@linux.ibm.com/>
-
-% start_vyoslinter
 
 When the CI system builds a Kernel package and required third-party modules,
 it generates a temporary (ephemeral) key pair for signing the modules. The

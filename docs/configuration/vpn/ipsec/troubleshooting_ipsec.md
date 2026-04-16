@@ -22,7 +22,6 @@ Steps for troubleshooting problems with Site-to-Site VPN IPsec:
 
 ## Checking IKE SA Status
 The next command shows IKE SAs' statuses.
-% stop_vyoslinter
 
 ```none
 vyos@vyos:~$ show vpn ike sa
@@ -295,8 +294,6 @@ Jun 23 14:13:19 charon-systemd[2440]: failed to establish CHILD_SA, keeping IKE_
 Jun 23 14:13:19 charon[2440]: 01[ENC] <PEER|7> generating IKE_AUTH response 1 [ IDr AUTH N(MOBIKE_SUP) N(NO_ADD_ADDR) N(TS_UNACCEPT) ]
 Jun 23 14:13:19 charon-systemd[2440]: generating IKE_AUTH response 1 [ IDr AUTH N(MOBIKE_SUP) N(NO_ADD_ADDR) N(TS_UNACCEPT) ]
 ```
-
-% start_vyoslinter
 
 Traffic selectors **10.0.2.0/24 === 10.0.0.0/24** are unacceptable on the
 responder side.

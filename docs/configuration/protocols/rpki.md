@@ -191,10 +191,6 @@ website. Keep in mind that in order for this to work, you need to have no
 default routes or anything else that would still send traffic to RPKI-invalid
 destinations.
 
-% stop_vyoslinter
-
-% start_vyoslinter
-
 [excellent guide to rpki]: https://rpki.readthedocs.io/
 [help and operational guidance]: https://rpki.readthedocs.io/en/latest/about/help.html
 [krill]: https://www.nlnetlabs.nl/projects/rpki/krill/

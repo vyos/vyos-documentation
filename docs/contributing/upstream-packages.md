@@ -11,12 +11,8 @@ Many base system packages are pulled straight from Debian's `main` and
 a fresh ISO image, you can skip
 this section. This information may be useful for a deeper dive into VyOS.
 
-% stop_vyoslinter
-
 System packages that are not directly pulled from Debian are built through a
 separate build system, `build.py` in the [vyos-build](https://github.com/vyos/vyos-build/tree/current/scripts/package-build) repository.
-
-% start_vyoslinter
 
 ## Overview
 
@@ -66,8 +62,6 @@ parameters. The key configuration fields are:
 : The Git URL of the upstream source repository
   (e.g., `https://github.com/FRRouting/frr.git`)
 
-% stop_vyoslinter
-
 **build_cmd**
 
 : The command to execute for building the package. This replaces what was
@@ -80,8 +74,6 @@ parameters. The key configuration fields are:
   ```toml
   build_cmd = "sudo dpkg -i ../*.deb; dpkg-buildpackage -us -uc -tc -b -Ppkg.frr.rtrlib,pkg.frr.lua"
   ```
-
-% start_vyoslinter
 
 **pre_build_hook** (Optional)
 

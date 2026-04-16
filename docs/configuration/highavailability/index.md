@@ -243,12 +243,8 @@ Set delay between gratuitous ARP messages sent on an interface.
 0 if not defined.
 ```
 
-% stop_vyoslinter
-
 ```{cfgcmd} set high-availability vrrp global-parameters garp master-delay \<1-255\>
 ```
-
-% start_vyoslinter
 
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
 
@@ -323,7 +319,6 @@ This setup will make the VRRP process execute the
 `/config/scripts/vrrp-check.sh script` every 60 seconds, and transition the
 group to the fault state if it fails (i.e. exits with non-zero status) three
 times:
-% stop_vyoslinter
 
 ```none
 set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
@@ -331,11 +326,9 @@ set high-availability vrrp group Foo health-check interval 60
 set high-availability vrrp group Foo health-check failure-count 3
 ```
 
-% start_vyoslinter
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
 This example shows how to configure it for the sync group:
-% stop_vyoslinter
 
 ```none
 set high-availability vrrp sync-group Bar health-check script /config/scripts/vrrp-check.sh
@@ -343,15 +336,12 @@ set high-availability vrrp sync-group Bar health-check interval 60
 set high-availability vrrp sync-group Bar health-check failure-count 3
 ```
 
-% start_vyoslinter
-
 ### Transition scripts
 Transition scripts can help you implement various fixups, such as starting and
 stopping services, or even modifying the VyOS config on VRRP transition.
 This setup will make the VRRP process execute the
 `/config/scripts/vrrp-fail.sh` with argument `Foo` when VRRP fails,
 and the `/config/scripts/vrrp-master.sh` when the router becomes the master:
-% stop_vyoslinter
 
 ```none
 set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
@@ -359,7 +349,6 @@ set high-availability vrrp group Foo transition-script fault "/config/scripts/vr
 set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
 ```
 
-% start_vyoslinter
 To know more about scripting, check the {ref}`command-scripting` section.
 
 ## Virtual-server
@@ -395,13 +384,10 @@ set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 
 ### Health-check
 Custom health-check script allows checking real-server availability
-% stop_vyoslinter
 
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
 ```
-
-% start_vyoslinter
 
 ### Fwmark
 Firewall mark. It possible to loadbalancing traffic based on `fwmark` value
@@ -412,13 +398,10 @@ set high-availability virtual-server 203.0.113.1 fwmark '111'
 
 ### Real server
 Real server IP address and port
-% stop_vyoslinter
 
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
 ```
-
-% start_vyoslinter
 
 ### Example
 Virtual-server can be configured with VRRP virtual address or without VRRP.
@@ -427,7 +410,6 @@ In the next example all traffic destined to `203.0.113.1` and port `8280`
 protocol TCP is balanced between 2 real servers `192.0.2.11` and
 `192.0.2.12` to port `80`
 Real server is auto-excluded if port check with this server fail.
-% stop_vyoslinter
 
 ```none
 set interfaces ethernet eth0 address '203.0.113.11/24'
@@ -448,7 +430,6 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
 ```
 
-% start_vyoslinter
 A firewall mark `fwmark` allows using multiple ports for high-availability
 virtual-server.
 It uses fwmark value.
@@ -456,7 +437,6 @@ It uses fwmark value.
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
 Port "0" is required if multiple ports are used.
-% stop_vyoslinter
 
 ```none
 set interfaces ethernet eth0 address 'dhcp'
@@ -481,7 +461,6 @@ set nat source rule 100 source address '192.0.2.0/24'
 set nat source rule 100 translation address 'masquerade'
 ```
 
-% start_vyoslinter
 Op-mode check virtual-server status
 
 ```none

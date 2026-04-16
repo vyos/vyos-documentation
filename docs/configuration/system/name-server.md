@@ -25,7 +25,6 @@ one at a time. Both IPv4 and IPv6 addresses are supported.
 ### Example
 In this example, some *OpenNIC* servers are used, two IPv4 addresses
 and two IPv6 addresses:
-% stop_vyoslinter
 
 ```none
 set system name-server 176.9.37.132
@@ -33,8 +32,6 @@ set system name-server 195.10.195.195
 set system name-server 2a01:4f8:161:3441::1
 set system name-server 2a00:f826:8:2::195
 ```
-
-% start_vyoslinter
 
 ## Domain search order
 In order for the system to use and complete unqualified host names, a
