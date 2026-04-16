@@ -536,7 +536,7 @@ vyos@vyos# exit discard
 ```
 ```
 
-```{cfgcmd} commit-confirm \\<minutes\\>
+```{cfgcmd} commit-confirm \<minutes\>
 
 Use this command to temporarily commit your changes and set the number of minutes available for confirmation. `confirm` must be entered within those minutes, otherwise the system will revert into a previous configuration. The default value is 10 minutes.
 The definition of \'revert\' and \'a previous configuration\' depends on the setting:
@@ -623,7 +623,7 @@ vyos@router# show
 ```
 ```
 
-```{cfgcmd} comment \\<config node\\> \"comment text\"
+```{cfgcmd} comment \<config node\> "comment text"
 
 Add comment as an annotation to a configuration node.
 The `comment` command allows you to insert a comment above the `<config node>` configuration section. When shown, comments are enclosed with `/*` and `*/` as open/close delimiters. Comments need to be committed, just like other config changes.
@@ -696,7 +696,7 @@ vyos@vyos:~$ show system commit
 ```
 ```
 
-```{cfgcmd} set system config-management commit-revisions \\<N\\>
+```{cfgcmd} set system config-management commit-revisions \<N\>
 
 You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally.
 ```
@@ -704,7 +704,7 @@ You can specify the number of revisions stored on disk. N can be in the range of
 #### Compare configurations
 VyOS lets you compare different configurations.
 
-```{cfgcmd} compare \\<saved \| N\\> \\<M\\>
+```{cfgcmd} compare \<saved \| N\> \<M\>
 
 Use this command to spot what the differences are between different configurations.
 ``` none
@@ -748,7 +748,7 @@ vyos@vyos# compare 0 6
 ```
 ```
 
-```{opcmd} show system commit diff \\<number\\>
+```{opcmd} show system commit diff \<number\>
 
 Show commit revision difference.
 ```
@@ -768,7 +768,7 @@ This means four commits ago we did `set system ipv6 disable-forwarding`.
 #### Rollback Changes
 You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot.
 
-```{cfgcmd} rollback \\<N\\>
+```{cfgcmd} rollback \<N\>
 
 Rollback to revision N (currently requires reboot)
 ``` none
@@ -790,7 +790,7 @@ The system is going down for reboot NOW!
 
 VyOS can upload the configuration to a remote location after each call to {cfgcmd}`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a {cfgcmd}`commit` is successful the `config.boot` file will be copied to the defined destination(s). The filename used on the remote host will be `config.boot-hostname.YYYYMMDD_HHMMSS`.
 
-```{cfgcmd} set system config-management commit-archive location \\<URI\\>
+```{cfgcmd} set system config-management commit-archive location \<URI\>
 
 Specify remote location of commit archive as any of the below {abbr}`URI (Uniform Resource Identifier)`
 - `http://<user>:<passwd>@<host>:/<dir>`
@@ -821,7 +821,7 @@ vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 ```
 ```
 
-```{cfgcmd} set system config-management commit-archive vrf \\<name\\>
+```{cfgcmd} set system config-management commit-archive vrf \<name\>
 
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used to upload the configuration to the remote system.
 ```
@@ -831,7 +831,7 @@ You can use the `save` and `load` commands if you want to manually manage specif
 
 When using the [save](#save) command, you can add a specific location where to store your configuration file. And, when needed it, you will be able to load it with the `load` command:
 
-```{cfgcmd} load \\<URI\\>
+```{cfgcmd} load \<URI\>
 
 Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address.
 ``` none
