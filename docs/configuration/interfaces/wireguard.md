@@ -396,8 +396,9 @@ You must also specify the IP address or FQDN of the server the client connects
 to. The address parameter can be used twice to assign both an IPv4 (/32) and
 an IPv6 (/128) address to the client.
 
-.. figure:: /_static/images/wireguard_qrcode.jpg
-   :alt: WireGuard Client QR code
+:::{figure} /_static/images/wireguard_qrcode.jpg
+:alt: WireGuard Client QR code
+:::
 
 ```
 % stop_vyoslinter

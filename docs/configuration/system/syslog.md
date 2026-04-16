@@ -335,22 +335,13 @@ If no category is specified, all logs are shown.
 
 **Display logs for a specific image on the console.**
 Available log categories:
-.. list-table::
-   :widths: 25 75
-   :header-rows: 0
-   * - all
-     - Displays the contents of system log files of the specified image.
-   * - authorization
-     - Displays authorization attempts of the specified image.
-   * - directory
-     - Displays user-defined log files of the specified image.
-   * - file <file name>
-     - Displays the contents of a specified user-defined log file of the specified
-       image.
-   * - tail
-     - Displays last lines of the system log of the specified image.
-   * - <lines>
-     - Number of lines to be displayed, default 10.
+- ``all`` — Displays the contents of system log files of the specified image.
+- ``authorization`` — Displays authorization attempts of the specified image.
+- ``directory`` — Displays user-defined log files of the specified image.
+- ``file <file name>`` — Displays the contents of a specified user-defined log
+  file of the specified image.
+- ``tail`` — Displays last lines of the system log of the specified image.
+- ``<lines>`` — Number of lines to be displayed, default 10.
 
 ```
 If no category is specified, the contents of the main syslog file are
