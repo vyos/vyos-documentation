@@ -35,13 +35,15 @@ Segment routing (SR) is used by the IGP protocols to interconnect network
 devices, below configuration shows how to enable SR on IS-IS:
 
 :::{note}
-Segment routing defines a control plane network architecture and
-can be applied to an existing MPLS based dataplane. In the MPLS networks,
-segments are encoded as MPLS labels and are imposed at the ingress router.
-MPLS labels are exchanged and populated by IGPs like IS-IS.Segment Routing
-as per RFC8667 for MPLS dataplane. It supports IPv4, IPv6 and ECMP and has
-been tested against Cisco & Juniper routers.however,this deployment is still
-EXPERIMENTAL for FRR.
+``Known limitations:``
+
+No support for level redistribution (L1 to L2 or L2 to L1)
+
+No support for binding SID
+
+No support for SRLB
+
+Only one SRGB and default SPF Algorithm is supported
 :::
 
 ```{cfgcmd} set protocols isis segment-routing global-block high-label-value \<label-value\>
@@ -53,8 +55,7 @@ EXPERIMENTAL for FRR.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing global-block low-label-value <label-value>
-
+```{cfgcmd} set protocols isis segment-routing global-block low-label-value \<label-value\>
 
 Set the Segment Routing Global Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
@@ -62,8 +63,7 @@ not exceed 65535.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing local-block high-label-value <label-value>
-
+```{cfgcmd} set protocols isis segment-routing local-block high-label-value \<label-value\>
 
 Set the Segment Routing Local Block i.e. the label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
@@ -73,7 +73,6 @@ unsets both.
 
 
 ```{cfgcmd} set protocols isis segment-routing local-block \<low-label-value \<label-value\>
-
 
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
@@ -89,8 +88,7 @@ the MPLS dataplane.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value <0-65535>
-
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value \<0-65535\>
 
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
@@ -98,8 +96,7 @@ indentify it
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix \<address\> index <no-php-flag | explicit-null| n-flag-clear>
-
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
 
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
 Penultimate Hop Popping that allows SR node to request to its neighbor to
@@ -182,8 +179,9 @@ service provider core network. Prefix SIDs are globally unique, this value
 indentify it
 ```
 
-```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\> this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
 
+this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
 Penultimate Hop Popping that allows SR node to request to its neighbor to
 not pop the label. The ‘explicit-null’ flag allows SR node to request to its
 neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
