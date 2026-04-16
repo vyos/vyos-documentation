@@ -58,9 +58,7 @@ are enabled.
 
 ### Adding Member Interfaces
 
-```{cfgcmd} set interfaces vpp bonding \<vppbondN\> member interface
-
-   <interface-name>
+```{cfgcmd} set interfaces vpp bonding \<vppbondN\> member interface \<interface-name\>
 Add physical interfaces as members of the bond. You can add multiple
 interfaces to the same bond.
 ```
@@ -196,14 +194,10 @@ set interfaces vpp bonding vppbond0 vif 100
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
-```{cfgcmd} set interfaces vpp bonding \<vppbondN\> vif \<vlan-id\> address
-
-   <ip-address/prefix>
+```{cfgcmd} set interfaces vpp bonding \<vppbondN\> vif \<vlan-id\> address \<ip-address/prefix\>
 ```
 
-```{cfgcmd} set interfaces vpp bonding \<vppbondN\> vif \<vlan-id\> description
-
-   <description>
+```{cfgcmd} set interfaces vpp bonding \<vppbondN\> vif \<vlan-id\> description \<description\>
 ```
 
 ```{cfgcmd} set interfaces vpp bonding \<vppbondN\> vif \<vlan-id\> disable

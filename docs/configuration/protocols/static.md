@@ -40,23 +40,17 @@ Routes with a distance of 255 are effectively disabled and not
 
 ### IPv4 Interface Routes
 
-```{cfgcmd} set protocols static route \<subnet\> interface
-
-   <interface>
+```{cfgcmd} set protocols static route \<subnet\> interface \<interface\>
 Allows you to configure the next-hop interface for an interface-based IPv4
 static route. `<interface>` will be the next-hop interface where traffic is
 routed for the given `<subnet>`.
 ```
 
-```{cfgcmd} set protocols static route \<subnet\> interface
-
-   <interface> disable
+```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> disable
 Disables interface-based IPv4 static route.
 ```
 
-```{cfgcmd} set protocols static route \<subnet\> interface
-
-   <interface> distance <distance>
+```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> distance \<distance\>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
@@ -198,31 +192,23 @@ Routes with a distance of 255 are effectively disabled and not
 
 ### IPv6 Interface Routes
 
-```{cfgcmd} set protocols static route6 \<subnet\> interface
-
-   <interface>
+```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\>
 Allows you to configure the next-hop interface for an interface-based IPv6
 static route. `<interface>` will be the next-hop interface where traffic is
 routed for the given `<subnet>`.
 ```
 
-```{cfgcmd} set protocols static route6 \<subnet\> interface
-
-   <interface> disable
+```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> disable
 Disables interface-based IPv6 static route.
 ```
 
-```{cfgcmd} set protocols static route6 \<subnet\> interface
-
-   <interface> distance <distance>
+```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> distance \<distance\>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 ```
 
-```{cfgcmd} set protocols static route6 \<subnet\> interface
-
-   <interface> segments <segments>
+```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> segments \<segments\>
 It is possible to specify a static route for ipv6 prefixes using an
 SRv6 segments instruction. The ``/`` separator can be used to specify
 multiple segment instructions.

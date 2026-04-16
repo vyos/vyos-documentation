@@ -429,9 +429,7 @@ From a security perspective, it is not recommended to let a third
 party create and share the private key for a secure connection. You should
 create the private portion yourself and hand out only the public key.
 :::
-```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server
-
-   <ip|fqdn> address <client-ip>
+```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server \<ip|fqdn\> address \<client-ip\>
 **Generate a client configuration file that establishes a connection to the
 specified interface.**
 The public key from the specified interface is automatically included in the

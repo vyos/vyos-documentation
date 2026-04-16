@@ -24,9 +24,7 @@ If the user ``<name>`` already exists, the command updates the current
 description. If not, it creates a new user with the specified description.
 ```
 
-```{cfgcmd} set system login user \<name\> authentication plaintext-password
-
-   <password>
+```{cfgcmd} set system login user \<name\> authentication plaintext-password \<password\>
 **Configure a password for a system user.**
 Enter the password in plaintext. Upon ``commit``, VyOS hashes the password for
 secure storage and removes the plaintext value.
@@ -34,9 +32,7 @@ If the user ``<name>`` already exists, the command updates the current password.
 If not, it creates a new user with the specified plaintext password.
 ```
 
-```{cfgcmd} set system login user \<name\> authentication encrypted-password
-
-   <password>
+```{cfgcmd} set system login user \<name\> authentication encrypted-password \<password\>
 **Configure a pre-encrypted password for a system user.**
 Enter the password in its hashed format. Upon ``commit``, VyOS stores this value
 directly without modification.
@@ -100,17 +96,13 @@ line** to function correctly.
 To configure SSH public key authentication for a user account, run the
 following two commands using the same `<identifier>`:
 
-```{cfgcmd} set system login user \<username\> authentication public-keys
-
-   <identifier> key <key>
+```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> key \<key\>
 **Configure the SSH public key for the user account.**
 * ``<identifier>``: A unique label that identifies this specific key entry.
 * ``<key>``: The actual string of characters from your public key.
 ```
 
-```{cfgcmd} set system login user \<username\> authentication public-keys
-
-   <identifier> type <type>
+```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> type \<type\>
 **Configure the SSH key's encryption type.**
 The following encryption algorithm types are available:
 * ``ecdsa-sha2-nistp256``
@@ -125,9 +117,7 @@ To assign multiple SSH public keys to a user account, repeat the
 :::
 ```
 
-```{cfgcmd} set system login user \<username\> authentication public-keys
-
-   <identifier> options <options>
+```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> options \<options\>
 **Configure specific restrictions or behaviors for an SSH public key.**
 ``<options>``: A string of comma-separated values that define permissions
 or restrictions for this key.
@@ -240,9 +230,7 @@ set system login user otptester authentication otp window-size '5'
 Use the following command to display the {abbr}`OTP (One-time password)`
 key for a user:
 
-```{cfgcmd} sh system login authentication user \<username\> otp
-
-   <full | key-b32 | qrcode | uri>
+```{cfgcmd} sh system login authentication user \<username\> otp \<full | key-b32 | qrcode | uri\>
 ```
 
 Example:

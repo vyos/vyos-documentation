@@ -134,9 +134,7 @@ Valid values are 0..255.
 SSID to be used in IEEE 802.11 management frames
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> type
-
-   <access-point | station | monitor>
+```{cfgcmd} set interfaces wireless \<interface\> type \<access-point | station | monitor\>
 Wireless device type for this interface
 * ``access-point``: Forwards packets between other nodes.
 * ``station``: Connects to another :abbr:`AP (Access Point)`.
@@ -226,9 +224,7 @@ Enable LDPC coding capability
 Enable L-SIG TXOP protection capability
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities ht max-amsdu
-
-   <3839 | 7935>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht max-amsdu \<3839 | 7935\>
 Maximum A-MSDU length 3839 (default) or 7935 octets
 ```
 
@@ -270,9 +266,7 @@ Enable sending PPDU using STBC (Space Time Block Coding)
 Set if antenna pattern does not change during the lifetime of an association
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht beamform
-
-  <single-user-beamformer | single-user-beamformee | multi-user-beamformer |
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht beamform \<single-user-beamformer | single-user-beamformee | multi-user-beamformer |
   multi-user-beamformee>
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
@@ -363,9 +357,7 @@ Tell the AP that antenna positions are fixed and will not change
 during the lifetime of an association.
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities he beamform
-
-  <single-user-beamformer | single-user-beamformee | multi-user-beamformer>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he beamform \<single-user-beamformer | single-user-beamformee | multi-user-beamformer\>
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
   single user beamformer

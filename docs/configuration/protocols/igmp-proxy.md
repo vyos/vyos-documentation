@@ -12,9 +12,7 @@ upstream interface, and one or more downstream interfaces.
 
 ## Configuration
 
-```{cfgcmd} set protocols igmp-proxy interface \<interface\> role
-
-   <upstream | downstream>
+```{cfgcmd} set protocols igmp-proxy interface \<interface\> role \<upstream | downstream\>
 * **upstream:** The upstream network interface is the outgoing interface
   which is responsible for communicating to available multicast data sources.
   There can only be one upstream interface.

@@ -664,9 +664,7 @@ these two parameters.
 Configuration of route leaking between a unicast VRF RIB and the VPN SAFI RIB
 of the default VRF is accomplished via commands in the context of a VRF
 address-family.
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> rd vpn export <asn:nn|address:nn>
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> rd vpn export \<asn:nn|address:nn\>
 
 
 Specifies the route distinguisher to be added to a route exported from the
@@ -674,9 +672,7 @@ current unicast VRF to VPN.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> route-target vpn <import|export|both>
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-target vpn \<import|export|both\>
          [RTLIST]
 
 
@@ -688,9 +684,7 @@ described in Extended Communities Attribute.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> label vpn export <0-1048575|auto>
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> label vpn export \<0-1048575|auto\>
 
 
 Enables an MPLS label to be attached to a route exported from the current
@@ -699,9 +693,7 @@ automatically assigned from a pool maintained.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> label vpn allocation-mode per-nexthop
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> label vpn allocation-mode per-nexthop
 
 
 Select how labels are allocated in the given VRF. By default, the per-vrf
@@ -711,9 +703,7 @@ the same nexthop.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> route-map vpn <import|export>
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\>
          [route-map <name>]
 
 
@@ -722,18 +712,14 @@ exported between the current unicast VRF and VPN.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> <import|export> vpn
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> \<import|export\> vpn
 
 
 Enables import or export of routes between the current unicast VRF and VPN.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> import vrf <name>
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> import vrf \<name\>
 
 
 Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the
@@ -743,9 +729,7 @@ destination VRF’s.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family
-
-         <ipv4-unicast|ipv6-unicast> route-map vrf import
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vrf import
          [route-map <name>]
 
 

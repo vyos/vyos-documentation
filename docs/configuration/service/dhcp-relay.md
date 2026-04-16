@@ -65,9 +65,7 @@ DHCP packet size surpasses this value it will be forwarded without appending
 relay agent information. Range 64...1400, default 576.
 ```
 
-```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets
-
-   <append | discard | forward | replace>
+```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets \<append | discard | forward | replace\>
 Four policies for reforwarding DHCP packets exist:
 * **append:** The relay agent is allowed to append its own relay information
   to a received DHCP packet, disregarding relay information already present

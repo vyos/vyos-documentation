@@ -75,9 +75,7 @@ The following sysctl parameters will be changed:
 ```{cfgcmd} set firewall global-options receive-redirects [enable | disable]
 ```
 
-```{cfgcmd} set firewall global-options ipv6-receive-redirects
-
-   [enable | disable]
+```{cfgcmd} set firewall global-options ipv6-receive-redirects [enable | disable]
 Allow VyOS to accept ICMPv4 and ICMPv6 redirect messages.
 The following sysctl parameters will be changed:
 * ``net.ipv4.conf.all.accept_redirects``
@@ -98,9 +96,7 @@ The following sysctl parameter will be changed:
 * ``net.ipv4.conf.all.log_martians``
 ```
 
-```{cfgcmd} set firewall global-options source-validation
-
-   [strict | loose | disable]
+```{cfgcmd} set firewall global-options source-validation [strict | loose | disable]
 Set the IPv4 source validation mode.
 The following sysctl parameter will be changed:
 * ``net.ipv4.conf.all.rp_filter``
@@ -113,53 +109,39 @@ The following sysctl parameter will be changed:
 * ``net.ipv4.tcp_syncookies``
 ```
 
-```{cfgcmd} set firewall global-options twa-hazards-protection
-
-   [enable | disable]
+```{cfgcmd} set firewall global-options twa-hazards-protection [enable | disable]
 Enable or disable VyOS :rfc:`1337` conformance.
 The following sysctl parameter will be changed:
 * ``net.ipv4.tcp_rfc1337``
 ```
 
-```{cfgcmd} set firewall global-options state-policy established action
-
-   [accept | drop | reject]
+```{cfgcmd} set firewall global-options state-policy established action [accept | drop | reject]
 ```
 
 ```{cfgcmd} set firewall global-options state-policy established log
 ```
 
-```{cfgcmd} set firewall global-options state-policy established log-level
-
-   [emerg | alert | crit | err | warn | notice | info | debug]
+```{cfgcmd} set firewall global-options state-policy established log-level [emerg | alert | crit | err | warn | notice | info | debug]
 Set the global setting for an established connection.
 ```
 
-```{cfgcmd} set firewall global-options state-policy invalid action
-
-   [accept | drop | reject]
+```{cfgcmd} set firewall global-options state-policy invalid action [accept | drop | reject]
 ```
 
 ```{cfgcmd} set firewall global-options state-policy invalid log
 ```
 
-```{cfgcmd} set firewall global-options state-policy invalid log-level
-
-   [emerg | alert | crit | err | warn | notice | info | debug]
+```{cfgcmd} set firewall global-options state-policy invalid log-level [emerg | alert | crit | err | warn | notice | info | debug]
 Set the global setting for invalid packets.
 ```
 
-```{cfgcmd} set firewall global-options state-policy related action
-
-   [accept | drop | reject]
+```{cfgcmd} set firewall global-options state-policy related action [accept | drop | reject]
 ```
 
 ```{cfgcmd} set firewall global-options state-policy related log
 ```
 
-```{cfgcmd} set firewall global-options state-policy related log-level
-
-   [emerg | alert | crit | err | warn | notice | info | debug]
+```{cfgcmd} set firewall global-options state-policy related log-level [emerg | alert | crit | err | warn | notice | info | debug]
 Set the global setting for related connections.
 ```
 

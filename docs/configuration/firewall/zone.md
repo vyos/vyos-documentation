@@ -152,14 +152,10 @@ optional default rule-set. The default rule-set applies to all zones that do
 not have a rule-set configured as defined in
 {ref}`IPv4<configuration/firewall/zone:Applying a Rule-Set to a Zone>`
 
-```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall name
-
-   <ipv4-rule-set-name>
+```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall name \<ipv4-rule-set-name\>
 ```
 
-```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall ipv6-name
-
-   <ipv6-rule-set-name>
+```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall ipv6-name \<ipv6-rule-set-name\>
 ```
 
 ## Operation-mode

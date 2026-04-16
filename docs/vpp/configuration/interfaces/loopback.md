@@ -89,14 +89,10 @@ Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
 
-```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> address
-
-   <ip-address/prefix>
+```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> address \<ip-address/prefix\>
 ```
 
-```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> description
-
-   <description>
+```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> description \<description\>
 ```
 
 ```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> disable

@@ -102,9 +102,7 @@ in the fabric.
 ```
 #### Interface Configuration
 
-```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval
-
-  <seconds>
+```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval \<seconds\>
   This command sets hello interval in seconds on a given interface.
   The range is 1 to 600. Hello packets are used to establish and maintain
   adjacency between OpenFabric neighbors.

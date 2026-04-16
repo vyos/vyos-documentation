@@ -80,24 +80,16 @@ Match based on the firewall mark (fwmark), where <match_criteria> can be:
  :::
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> source address
-
-   <match_criteria>
+```{cfgcmd} set policy route \<name\> rule \<n\> source address \<match_criteria\>
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> destination address
-
-   <match_criteria>
+```{cfgcmd} set policy route \<name\> rule \<n\> destination address \<match_criteria\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> source address
-
-   <match_criteria>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> source address \<match_criteria\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> destination address
-
-   <match_criteria>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> destination address \<match_criteria\>
 Set match criteria based on source or destination ipv4|ipv6 address, where
 <match_criteria> could be:
 ```
@@ -118,24 +110,16 @@ And for ipv6:
   - !\<h:h:h:h:h:h:h:h>-\<h:h:h:h:h:h:h:h>: Match everything except the
     specified range.
 
-```{cfgcmd} set policy route \<name\> rule \<n\> source group
-
-   <address-group|domain-group|mac-group|network-group|port-group> <text>
+```{cfgcmd} set policy route \<name\> rule \<n\> source group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> destination group
-
-   <address-group|domain-group|mac-group|network-group|port-group> <text>
+```{cfgcmd} set policy route \<name\> rule \<n\> destination group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> source group
-
-   <address-group|domain-group|mac-group|network-group|port-group> <text>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> source group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> destination group
-
-   <address-group|domain-group|mac-group|network-group|port-group> <text>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> destination group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 Set match criteria based on source or destination groups, where <text>
 would be the group name/identifier. Prepend character '!' for inverted
 matching criteria.
@@ -179,14 +163,10 @@ Match based on dscp value criteria. Multiple values from 0 to 63
 and ranges are supported.
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> fragment
-
-   <match-grag|match-non-frag>
+```{cfgcmd} set policy route \<name\> rule \<n\> fragment \<match-grag|match-non-frag\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> fragment
-
-   <match-grag|match-non-frag>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> fragment \<match-grag|match-non-frag\>
 Set IP fragment match, where:
 * match-frag: Second and further fragments of fragmented packets.
 * match-non-frag: Head fragments or unfragmented packets.
@@ -209,14 +189,10 @@ Match based on icmp|icmpv6 type-name criteria. Use tab for information
 about what type-name criteria are supported.
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> ipsec
-
-   <match-ipsec|match-none>
+```{cfgcmd} set policy route \<name\> rule \<n\> ipsec \<match-ipsec|match-none\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> ipsec
-
-   <match-ipsec|match-none>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> ipsec \<match-ipsec|match-none\>
 Set IPSec inbound match criterias, where:
 * match-ipsec: match inbound IPsec packets.
 * match-none: match inbound non-IPsec packets.
@@ -240,14 +216,10 @@ time_unit could be any one of second, minute, hour or day.For example
 1/second implies rule to be matched at an average of once per second.
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> protocol
-
-   <text | 0-255 | tcp_udp | all >
+```{cfgcmd} set policy route \<name\> rule \<n\> protocol \<text | 0-255 | tcp_udp | all \>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> protocol
-
-   <text | 0-255 | tcp_udp | all >
+```{cfgcmd} set policy route6 \<name\> rule \<n\> protocol \<text | 0-255 | tcp_udp | all \>
 Match a protocol criteria. A protocol number or a name which is defined in:
 ``/etc/protocols``. Special names are ``all`` for all protocols and
 ``tcp_udp`` for tcp and udp based packets. The ``!`` negates the selected
@@ -296,14 +268,10 @@ by seeting count (source address seen more than <1-255> times) and/or time
 (source address seen in the last <0-4294967295> seconds).
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> state
-
-   <established | invalid | new | related>
+```{cfgcmd} set policy route \<name\> rule \<n\> state \<established | invalid | new | related\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> state
-
-   <established | invalid | new | related>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> state \<established | invalid | new | related\>
 Set match criteria based on session state.
 ```
 
@@ -387,14 +355,10 @@ setting a different routing table.
 Set rule action to drop.
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> set connection-mark
-
-   <1-2147483647>
+```{cfgcmd} set policy route \<name\> rule \<n\> set connection-mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> set connection-mark
-
-   <1-2147483647>
+```{cfgcmd} set policy route6 \<name\> rule \<n\> set connection-mark \<1-2147483647\>
 Set a specific connection mark.
 ```
 

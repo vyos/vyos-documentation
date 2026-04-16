@@ -27,9 +27,7 @@ for all queries.
 * **noauth**: Authentication disabled.
 ```
 
-```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> password
-
-   <pass>
+```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> password \<pass\>
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
@@ -318,9 +316,7 @@ Script to run when session interface is completely configured and started
 Disable `<user>` account.
 ```
 
-```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> static-ip
-
-   <address>
+```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> static-ip \<address\>
 Assign static IP address to `<user>` account.
 ```
 
@@ -336,9 +332,7 @@ Download bandwidth limit in kbit/s for `<user>`.
 Upload bandwidth limit in kbit/s for `<user>`.
 ```
 
-```{cfgcmd} set vpn pptp remote-access authentication protocols
-
-   <pap | chap | mschap | mschap-v2>
+```{cfgcmd} set vpn pptp remote-access authentication protocols \<pap | chap | mschap | mschap-v2\>
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```

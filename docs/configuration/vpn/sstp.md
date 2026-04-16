@@ -52,9 +52,7 @@ for all queries.
 * **local**: All authentication queries are handled locally.
 ```
 
-```{cfgcmd} set vpn sstp authentication local-users username \<user\> password
-
-   <pass>
+```{cfgcmd} set vpn sstp authentication local-users username \<user\> password \<pass\>
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
@@ -356,9 +354,7 @@ Script to run when the session interface is completely configured and started
 Disable `<user>` account.
 ```
 
-```{cfgcmd} set vpn sstp authentication local-users username \<user\> static-ip
-
-   <address>
+```{cfgcmd} set vpn sstp authentication local-users username \<user\> static-ip \<address\>
 Assign a static IP address to `<user>` account.
 ```
 
@@ -374,9 +370,7 @@ Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
-```{cfgcmd} set vpn sstp authentication protocols
-
-   <pap | chap | mschap | mschap-v2>
+```{cfgcmd} set vpn sstp authentication protocols \<pap | chap | mschap | mschap-v2\>
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```

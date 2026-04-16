@@ -170,9 +170,7 @@ synchronization during convergence/interface flap events.
 
 #### Interface Configuration
 
-```{cfgcmd} set protocols isis interface \<interface\> circuit-type
-
-  <level-1|level-1-2|level-2-only>
+```{cfgcmd} set protocols isis interface \<interface\> circuit-type \<level-1|level-1-2|level-2-only\>
   This command specifies circuit type for interface:
 
 
@@ -281,9 +279,7 @@ This command disables IGP-LDP sync for this specific interface.
 ```
 
 
-```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown
-
- <seconds>
+```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown \<seconds\>
 
 
 This command will change the hold down value for IGP-LDP synchronization
@@ -401,24 +397,16 @@ seconds.The interval range is 1 to 120.
 ```{cfgcmd} set protocols isis spf-delay-ietf holddown \<milliseconds\>
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf init-delay
-
-  <milliseconds>
+```{cfgcmd} set protocols isis spf-delay-ietf init-delay \<milliseconds\>
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf long-delay
-
-  <milliseconds>
+```{cfgcmd} set protocols isis spf-delay-ietf long-delay \<milliseconds\>
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf short-delay
-
-  <milliseconds>
+```{cfgcmd} set protocols isis spf-delay-ietf short-delay \<milliseconds\>
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf time-to-learn
-
-  <milliseconds>
+```{cfgcmd} set protocols isis spf-delay-ietf time-to-learn \<milliseconds\>
 This commands specifies the Finite State Machine (FSM) intended to
 control the timing of the execution of SPF calculations in response
 to IGP events. The process described in :rfc:`8405`.
@@ -426,31 +414,23 @@ to IGP events. The process described in :rfc:`8405`.
 
 #### Loop Free Alternate (LFA)
 
-```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list \<name\>
-
-  <level-1|level-2>
+```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list \<name\> \<level-1|level-2\>
 This command enables IP fast re-routing that is part of :rfc:`5286`.
 Specifically this is a prefix list which references a prefix in which
 will select eligible PQ nodes for remote LFA backups.
 ```
 
-```{cfgcmd} set protocols isis fast-reroute lfa local load-sharing disable
-
-  <level-1|level-2>
+```{cfgcmd} set protocols isis fast-reroute lfa local load-sharing disable \<level-1|level-2\>
 This command disables the load sharing across multiple LFA backups.
 ```
 
-```{cfgcmd} set protocols isis fast-reroute lfa local tiebreaker
-
-  <downstream|lowest-backup-metric|node-protecting> index <number>
+```{cfgcmd} set protocols isis fast-reroute lfa local tiebreaker \<downstream|lowest-backup-metric|node-protecting\> index \<number\>
   <level-1|level-2>
 This command will configure a tie-breaker for multiple local LFA backups.
 The lower index numbers will be processed first.
 ```
 
-```{cfgcmd} set protocols isis fast-reroute lfa local priority-limit
-
-  <medium|high|critical> <level-1|level-2>
+```{cfgcmd} set protocols isis fast-reroute lfa local priority-limit \<medium|high|critical\> \<level-1|level-2\>
 This command will limit LFA backup computation up to the specified
 prefix priority.
 ```

@@ -373,9 +373,7 @@ Script to run when session interface is completely configured and started
 
 
 ### Authentication Advanced Options
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan
-
- <vlan-id>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan \<vlan-id\>
 
 
 VLAN monitor for automatic creation of VLAN interfaces for specific user on specific <interface>

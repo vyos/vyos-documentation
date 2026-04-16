@@ -1230,9 +1230,7 @@ in subnet `<prefix>` when the request for prefix delegation.
 
 Exclude `<exclude-prefix>` from `<pd-prefix>`.
 ```
-```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix-length <length>
+```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> prefix-delegation prefix \<pd-prefix\> excluded-prefix-length \<length\>
 Define lenght of exclude prefix in `<pd-prefix>`.
 ```
 **Example:**

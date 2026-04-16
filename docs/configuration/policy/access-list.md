@@ -21,15 +21,11 @@ a number from 1 to 2699.
 Set description for the access list.
 ```
 
-```{cfgcmd} set policy access-list \<acl_number\> rule \<1-65535\> action
-
-   <permit|deny>
+```{cfgcmd} set policy access-list \<acl_number\> rule \<1-65535\> action \<permit|deny\>
 This command creates a new rule in the access list and defines an action.
 ```
 
-```{cfgcmd} set policy access-list \<acl_number\> rule \<1-65535\>
-
-   <destination|source> <any|host|inverse-mask|network>
+```{cfgcmd} set policy access-list \<acl_number\> rule \<1-65535\> \<destination|source\> \<any|host|inverse-mask|network\>
 This command defines matching parameters for access list rule. Matching
 criteria could be applied to destination or source parameters:
 * any: any IP address to match.
@@ -57,9 +53,7 @@ This command creates a new rule in the IPv6 access list and defines an
 action.
 ```
 
-```{cfgcmd} set policy access-list6 \<text\> rule \<1-65535\> source
-
-   <any|exact-match|network>
+```{cfgcmd} set policy access-list6 \<text\> rule \<1-65535\> source \<any|exact-match|network\>
 This command defines matching parameters for IPv6 access list rule. Matching
 criteria could be applied to source parameters:
 * any: any IPv6 address to match.

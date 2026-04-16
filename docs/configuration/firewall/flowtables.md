@@ -66,9 +66,7 @@ Specify interfaces to use in the flowtable.
 
 Provide a description for the flow table.
 
-```{cfgcmd} set firewall flowtable \<flow_table_name\> offload
-
-   <hardware | software>
+```{cfgcmd} set firewall flowtable \<flow_table_name\> offload \<hardware | software\>
 Specify the offload type the flowtable uses: ``hardware`` or
 ``software``. The default is ``software`` offload.
 ```

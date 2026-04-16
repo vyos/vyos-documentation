@@ -128,9 +128,7 @@ Translation pools are used for dynamic source NAT (SNAT). They provide a
 range of public IP addresses that can be dynamically assigned to private
 hosts when they access external networks.
 
-```{cfgcmd} set vpp nat nat44 address-pool translation address
-
-   <ip-address | ip-address-range>
+```{cfgcmd} set vpp nat nat44 address-pool translation address \<ip-address | ip-address-range\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 address-pool translation interface \<interface-name\>
@@ -157,9 +155,7 @@ need to:
 - Provide access between networks with overlapping IP ranges
 - Implement advanced NAT scenarios like self-twice-nat
 
-```{cfgcmd} set vpp nat nat44 address-pool twice-nat address
-
-   <ip-address | ip-address-range>
+```{cfgcmd} set vpp nat nat44 address-pool twice-nat address \<ip-address | ip-address-range\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 address-pool twice-nat interface \<interface-name\>
@@ -310,9 +306,7 @@ a purely DNAT rule.
 When using twice-nat, you can force the use of a specific IP address from
 the twice-nat address pool:
 
-```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat-address
-
-   <ip-address>
+```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat-address \<ip-address\>
 ```
 
 #### Rule Description
@@ -382,9 +376,7 @@ that should bypass NAT. You can configure exclude rules in two ways:
 
 **Option 2: Using external interface**
 
-```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface
-
-   <interface-name>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface \<interface-name\>
 ```
 
 Where:
@@ -418,9 +410,7 @@ You can combine port and protocol specifications with either `local-address` or
 
 **With external interface:**
 
-```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface
-
-   <interface-name>
+```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface \<interface-name\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-port \<port-number\>

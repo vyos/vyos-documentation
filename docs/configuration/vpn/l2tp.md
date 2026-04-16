@@ -29,9 +29,7 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
 ```
 
 
-```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> password
-
- <pass>
+```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> password \<pass\>
 
 
 Create `<user>` for local authentication on this system. The users password
@@ -406,9 +404,7 @@ Script to run when the session interface is completely configured and started
 Disable `<user>` account.
 ```
 
-```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> static-ip
-
-   <address>
+```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> static-ip \<address\>
 Assign a static IP address to `<user>` account.
 ```
 
@@ -424,9 +420,7 @@ Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s
 ```
 
-```{cfgcmd} set vpn l2tp remote-access authentication protocols
-
-   <pap | chap | mschap | mschap-v2>
+```{cfgcmd} set vpn l2tp remote-access authentication protocols \<pap | chap | mschap | mschap-v2\>
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```

@@ -394,9 +394,7 @@ This is the policy that requires the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
 
-```{cfgcmd} set qos policy drop-tail \<policy-name\> queue-limit
-
-   <number-of-packets>
+```{cfgcmd} set qos policy drop-tail \<policy-name\> queue-limit \<number-of-packets\>
 Use this command to configure a drop-tail policy (PFIFO). Choose a
 unique name for this policy and the size of the queue by setting the
 number of packets it can contain (maximum 4294967295).
@@ -615,9 +613,7 @@ In the case you want to apply some kind of **shaping** to your
 **inbound** traffic, check the [ingress-shaping] section.
 :::
 
-```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match
-
-   <match-name> description <description>
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match \<match-name\> description \<description\>
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090), a class matching rule name and its
 description.
@@ -627,18 +623,14 @@ description.
 Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
 
-```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth
-
-   <rate>
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth \<rate\>
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090) and the maximum allowed bandwidth for
 this class.
 
 ```
 
-```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> burst
-
-   <burst-size>
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> burst \<burst-size\>
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090) and the burst size in bytes for this
 class (default: 15).
@@ -659,9 +651,7 @@ and the burst size in bytes (default: 15) for its default policy.
 
 ```
 
-```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> priority
-
-   <value>
+```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> priority \<value\>
 Use this command to configure an Ingress Policer, defining its name,
 a class identifier (1-4090), and the priority (0-20, default 20) in
 which the rule is evaluated (the lower the number, the higher the
@@ -904,9 +894,7 @@ configuring and what its mark (drop) probability will be. Set the
 probability by giving the N value of the fraction 1/N (default: 10).
 ```
 
-```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
-
-   <IP-precedence-value> maximum-threshold <packets>
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> maximum-threshold \<packets\>
    Use this command to configure a Random-Detect policy and set its
    name, then state the IP Precedence for the virtual queue you are
    configuring and what its maximum threshold for random detection will
@@ -940,9 +928,7 @@ The default values for the minimum-threshold depend on IP precedence:
 > | 1          | 10                    |
 > | 0          | 9                     |
 
-```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
-
-   <IP-precedence-value> queue-limit <packets>
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> queue-limit \<packets\>
 Use this command to configure a Random-Detect policy and set its
 name, then name the IP Precedence for the virtual queue you are
 configuring and what the maximum size of its queue will be (from 1 to
@@ -1042,9 +1028,7 @@ deficit counter is reset to 0.
 At every round, the deficit counter adds the quantum so that even large
 packets will have their opportunity to be dequeued.
 
-```{cfgcmd} set qos policy round-robin \<policy name\> class
-
-   <class-ID> quantum <packets>
+```{cfgcmd} set qos policy round-robin \<policy name\> class \<class-ID\> quantum \<packets\>
    Use this command to configure a Round-Robin policy, set its name, set
    a class ID, and the quantum for that class. The deficit counter will
    add that value each round.
@@ -1116,9 +1100,7 @@ Use this command to configure a Shaper policy, set its name
 and the maximum bandwidth for all combined traffic.
 ```
 
-```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> bandwidth
-
-   <rate>
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> bandwidth \<rate\>
    Use this command to configure a Shaper policy, set its name, define
    a class and set the guaranteed traffic you want to allocate to that
    class.

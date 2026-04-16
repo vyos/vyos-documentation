@@ -409,9 +409,7 @@ command to disable the feature.
 ```
 ##### Peer Parameters
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family
-
-   <ipv4-unicast|ipv6-unicast> allowas-in number <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> allowas-in number \<number\>
    This command accept incoming routes with AS path containing AS
    number with the same value as the current system AS. This is
    used when you want to use the same AS number in your sites,
@@ -902,9 +900,7 @@ BGP instances.
 ```
 ##### Administrative Distance
 
-```{cfgcmd} set protocols bgp parameters distance global
-
-   <external|internal|local> <distance>
+```{cfgcmd} set protocols bgp parameters distance global \<external|internal|local\> \<distance\>
    This command change distance value of BGP. The arguments are the distance
    values for external routes, internal routes and local routes respectively.
    The distance range is 1 to 255.
@@ -1129,9 +1125,7 @@ For outbound updates the order of preference is:
 > prefix-list) can be applied to each inbound or outbound direction for a
 > particular neighbor.
 > :::
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family
-
-   <ipv4-unicast|ipv6-unicast> distribute-list <export|import> <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> distribute-list \<export|import\> \<number\>
    This command applies the access list filters named in <number> to the
    specified BGP neighbor to restrict the routing information that BGP learns
    and/or advertises. The arguments :cfgcmd:`export` and :cfgcmd:`import`
@@ -1244,9 +1238,7 @@ required IBGP peerings. Within a sub-AS we still require full-mesh IBGP but
 between these sub-ASes we use something that looks like EBGP but behaves like
 IBGP (called confederation BGP). Confederation mechanism is described in
 {rfc}`5065`
-```{cfgcmd} set protocols bgp parameters confederation identifier
-
-   <asn>
+```{cfgcmd} set protocols bgp parameters confederation identifier \<asn\>
    This command specifies a BGP confederation identifier. <asn> is the number
    of the autonomous system that internally includes multiple sub-autonomous
    systems (a confederation).

@@ -15,14 +15,10 @@ Creat extcommunity-list policy identified by name <text>.
 
 Set description for extcommunity-list policy.
 ```
-```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> action
-
-   <permit|deny>
+```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> action \<permit|deny\>
 Set action to take on entries matching this rule.
 ```
-```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> description
-
-   <text>
+```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> description \<text\>
 Set description for rule.
 ```
 ```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> regex \<text\>

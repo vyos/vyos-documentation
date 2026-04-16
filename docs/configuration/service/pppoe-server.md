@@ -48,9 +48,7 @@ for all queries.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication local-users username
-
- <name> password <password>
+```{cfgcmd} set service pppoe-server authentication local-users username \<name\> password \<password\>
 
 
 Create `<user>` for local authentication on this system. The users password
@@ -367,18 +365,14 @@ attributes.
 
 
 ### For Local Users
-```{cfgcmd} set service pppoe-server authentication local-users username
-
- <user> rate-limit download <bandwidth>
+```{cfgcmd} set service pppoe-server authentication local-users username \<user\> rate-limit download \<bandwidth\>
 
 
 Download bandwidth limit in kbit/s for `<user>`.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication local-users username
-
- <user> rate-limit upload <bandwidth>
+```{cfgcmd} set service pppoe-server authentication local-users username \<user\> rate-limit upload \<bandwidth\>
 
 
 Upload bandwidth limit in kbit/s for `<user>`.
@@ -513,9 +507,7 @@ Accept peer interface identifier. By default is not defined.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id
-
- <random | x:x:x:x>
+```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
 
 Specifies fixed or random interface identifier for IPv6.
@@ -527,9 +519,7 @@ By default is fixed.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id
-
- <random | x:x:x:x>
+```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
 
 Specifies peer interface identifier for IPv6. By default is fixed.
@@ -585,9 +575,7 @@ Assign static IP address to `<user>` account.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication protocols
-
- <pap | chap | mschap | mschap-v2>
+```{cfgcmd} set service pppoe-server authentication protocols \<pap | chap | mschap | mschap-v2\>
 
 
 Require the peer to authenticate itself using one of the following protocols:
@@ -619,9 +607,7 @@ Default value is **0**.
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options ipv4
-
- <require | prefer | allow | deny>
+```{cfgcmd} set service pppoe-server ppp-options ipv4 \<require | prefer | allow | deny\>
 
 
 Specifies IPv4 negotiation preference.

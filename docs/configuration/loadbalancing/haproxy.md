@@ -109,9 +109,7 @@ Redirect URL to a new location.
 ```
 ### Backend
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> balance
-
-   <balance>
+```{cfgcmd} set load-balancing haproxy backend \<name\> balance \<balance\>
   Specify the load balancing algorithm for distributing requests among
   available servers.
 
@@ -127,45 +125,35 @@ Redirect URL to a new location.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> mode
-
- <mode>
+```{cfgcmd} set load-balancing haproxy backend \<name\> mode \<mode\>
 
 
 Configure backend `<name>` mode TCP or HTTP.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> address <x.x.x.x>
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> address \<x.x.x.x\>
 
 
 Set the address of the backend server that receives incoming traffic.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> port <port>
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> port \<port\>
 
 
 Set the address of the backend port.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> check
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> check
 
 
 Active health check backend server.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> check port <port>
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> check port \<port\>
 
 
 Set an alternative port number for health checks.
@@ -173,18 +161,14 @@ Overrides the default server port used for TCP/HTTP checks.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> send-proxy
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> send-proxy
 
 
 Send a Proxy Protocol version 1 header (text format).
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> server
-
- <name> send-proxy-v2
+```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> send-proxy-v2
 
 
 Send a Proxy Protocol version 2 header (binary format).
@@ -237,9 +221,7 @@ see tables in the :ref:`syslog` configuration section.
 Set the timeout in seconds for established connections.
 Value range 1-3600 seconds.
 ```
-```{cfgcmd} set load-balancing haproxy backend \<name\> timeout connect
-
-  <seconds>
+```{cfgcmd} set load-balancing haproxy backend \<name\> timeout connect \<seconds\>
   Set the maximum time to wait for a connection attempt to a server to succeed.
   Value range 1-3600 seconds.
 
@@ -256,26 +238,20 @@ Value range 1-3600 seconds.
 ```
 ### Global
 Global configuration parameters:
-```{cfgcmd} set load-balancing haproxy global-parameters max-connections
-
-   <num>
+```{cfgcmd} set load-balancing haproxy global-parameters max-connections \<num\>
   Limit maximum number of connections
 
 ```
 
 
-```{cfgcmd} set load-balancing haproxy global-parameters ssl-bind-ciphers
-
- <ciphers>
+```{cfgcmd} set load-balancing haproxy global-parameters ssl-bind-ciphers \<ciphers\>
 
 
 Limit the cipher algorithms allowed during SSL/TLS handshake.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy global-parameters tls-version-min
-
- <version>
+```{cfgcmd} set load-balancing haproxy global-parameters tls-version-min \<version\>
 
 
 Specify the minimum required TLS version 1.2 or 1.3
