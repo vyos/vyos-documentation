@@ -19,7 +19,9 @@ VyOS supports both local authentication and remote authentication via
 ```{cfgcmd} set system login user \<name\> full-name "\<string\>"
 
 **Configure the real name or description for a system user.**
+
 If the description includes spaces, enclose ``<string>`` in double quotes.
+
 If the user ``<name>`` already exists, the command updates the current
 description. If not, it creates a new user with the specified description.
 ```
@@ -27,8 +29,10 @@ description. If not, it creates a new user with the specified description.
 ```{cfgcmd} set system login user \<name\> authentication plaintext-password \<password\>
 
 **Configure a password for a system user.**
+
 Enter the password in plaintext. Upon ``commit``, VyOS hashes the password for
 secure storage and removes the plaintext value.
+
 If the user ``<name>`` already exists, the command updates the current password.
 If not, it creates a new user with the specified plaintext password.
 ```
@@ -36,8 +40,10 @@ If not, it creates a new user with the specified plaintext password.
 ```{cfgcmd} set system login user \<name\> authentication encrypted-password \<password\>
 
 **Configure a pre-encrypted password for a system user.**
+
 Enter the password in its hashed format. Upon ``commit``, VyOS stores this value
 directly without modification.
+
 If the user ``<name>`` already exists, the command updates the current password.
 If not, it creates a new user with the specified pre-encrypted password.
 ```
@@ -45,17 +51,21 @@ If not, it creates a new user with the specified pre-encrypted password.
 ```{cfgcmd} set system login user \<name\> authentication principal \<principal\>
 
 **Configure an SSH certificate principal for a system user.**
+
 Enter the principal (a string included in the user's signed SSH certificate).
 Upon ``commit``, VyOS stores this mapping, allowing the user to log in if the
 certificate they present contains this principal.
+
 If the user ``<name>`` already exists, the command updates the principal. If not,
 it creates a new user linked to the specified principal.
+
 **If not configured**, the principal defaults to ``<name>``.
 ```
 
 ```{cfgcmd} set system login user \<name\> disable
 
 **Disable a system user account.**
+
 VyOS locks the account, preventing the user from logging in.
 ```
 
@@ -101,14 +111,18 @@ following two commands using the same `<identifier>`:
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> key \<key\>
 
 **Configure the SSH public key for the user account.**
+
 * ``<identifier>``: A unique label that identifies this specific key entry.
+
 * ``<key>``: The actual string of characters from your public key.
 ```
 
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> type \<type\>
 
 **Configure the SSH key's encryption type.**
+
 The following encryption algorithm types are available:
+
 * ``ecdsa-sha2-nistp256``
 * ``ecdsa-sha2-nistp384``
 * ``ecdsa-sha2-nistp521``
@@ -126,11 +140,15 @@ The following encryption algorithm types are available:
 ```{cfgcmd} set system login user \<username\> authentication public-keys \<identifier\> options \<options\>
 
 **Configure specific restrictions or behaviors for an SSH public key.**
+
 ``<options>``: A string of comma-separated values that define permissions
 or restrictions for this key.
+
 The command accepts standard OpenSSH options listed in the router's
 ``~/.ssh/authorized_keys`` file.
+
 To include a ``"`` character in the options string, use ``&quot;``.
+
 For example, to restrict allowed source IP addresses for an SSH public key,
 use: ``from=&quot;10.0.0.0/24&quot;``.
 ```
@@ -148,8 +166,10 @@ standard authentication.
 
 **Configure** :abbr:`OTP (One-time password)`**-based** :abbr:`MFA
 (Multi-factor Authentication)` **for a user.**
+
 ``<key>``: A Base32-encoded secret key. This key must be added to the user's
 authenticator app to generate valid :abbr:`OTPs (One-time passwords)`.
+
 **When configured**, the user is required to enter their password followed by
 a valid OTP for all subsequent logins.
 ```
@@ -160,7 +180,9 @@ a valid OTP for all subsequent logins.
 
 **Configure the number of** :abbr:`OTP (One-time password)` **authentication
 attempts allowed within a specified time period.**
+
 If this limit is exceeded, the user is temporarily blocked.
+
 The default value is 3 attempts. The valid range is 1 to 10 attempts.
 ```
 
@@ -168,22 +190,27 @@ The default value is 3 attempts. The valid range is 1 to 10 attempts.
 
 **Configure the time period, in seconds, for tracking** :abbr:`OTP (One-time
 password)` **authentication attempts.**
+
 The default value is 30 seconds. The valid range is 1 to 600 seconds.
 ```
 
 ```{cfgcmd} set system login user \<username\> authentication otp window-size \<size\>
 
 **Configure the** :abbr:`OTP (One-time password)` **window size for a user.**
+
 The :abbr:`OTP (One-time password)` window size defines the number of
 concurrently valid :abbr:`OTPs (One-time passwords)` that the authentication
 server accepts. This setting assumes a new token is generated every 30 seconds.
+
 The default value is 3. This permits 3 concurrent codes: the code for the
 current 30-second interval, the preceding code, and the following code. This
 allows up to 30 seconds of time skew between the authentication server and
 client.
+
 If the window size is increased to 17, the system permits 17 concurrent codes
 (the current code, the 8 preceding codes, and the 8 following codes). This
 allows for a time skew of up to 4 minutes.
+
 The valid range is 1 to 21.
 ```
 
@@ -294,8 +321,10 @@ account management on a single backend server.
 
 **Configure the** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 **server's IP address and shared secret.**
+
 The shared secret is used to verify the router's identity and to encrypt user
 passwords during authentication.
+
 You can configure multiple :abbr:`RADIUS (Remote Authentication Dial-In User
 Service)` servers.
 ```
@@ -304,6 +333,7 @@ Service)` servers.
 
 **Configure the UDP port for communication with the** :abbr:`RADIUS (Remote
 Authentication Dial-In User Service)` **server.**
+
 The default port is 1812.
 ```
 
@@ -311,8 +341,9 @@ The default port is 1812.
 
 **Disable a** :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 **server from the authentication process.**
+
 Disabling a specific :abbr:`RADIUS (Remote Authentication Dial-In User
-Service)` server doesn’t remove its configuration settings (the server's IP
+Service)` server doesn’t remove its configuration settings (the server’s IP
 address and shared secret).
 ```
 
@@ -321,6 +352,7 @@ address and shared secret).
 Configure the duration, in seconds, that the VyOS router waits for a
 response from the :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 server after sending an authentication request.
+
 If the server does not respond within this timeframe, the VyOS router tries to
 connect to another configured server or falls back to local authentication.
 ```
@@ -329,8 +361,10 @@ connect to another configured server or falls back to local authentication.
 
 **Configure the source IP address the router uses for** :abbr:`RADIUS (Remote
 Authentication Dial-In User Service)` **authentication requests.**
+
 A consistent source IP address is recommended as RADIUS servers typically
 accept requests only from known, trusted IP addresses.
+
 If not explicitly defined, the router uses the current egress interface
 address, which may change (e.g., due to a link outage), causing authentication
 failures.
@@ -340,6 +374,7 @@ failures.
 
 **Configure the router to send all** :abbr:`RADIUS (Remote Authentication
 Dial-In User Service)` **authentication requests via a specific VRF.**
+
 By default, :abbr:`RADIUS (Remote Authentication Dial-In User Service)`
 authentication requests are sent via the global routing table.
 ```
@@ -385,9 +420,11 @@ in {rfc}`8907`.
 
 **Configure the** :abbr:`TACACS+ (Terminal Access Controller Access Control
 System)` **server IP address and shared secret.**
+
 Unlike :abbr:`RADIUS (Remote Authentication Dial-In User Service)`, which
 encrypts only passwords, :abbr:`TACACS+ (Terminal Access Controller Access
 Control System)` encrypts the entire packet body for enhanced security.
+
 You can configure multiple :abbr:`TACACS+ (Terminal Access Controller Access
 Control System)` servers.
 ```
@@ -396,6 +433,7 @@ Control System)` servers.
 
 **Configure the TCP port for communication with the** :abbr:`TACACS+ (Terminal
 Access Controller Access Control System)` **server.**
+
 The default port is 49.
 ```
 
@@ -403,8 +441,9 @@ The default port is 49.
 
 **Disable a** :abbr:`TACACS+ (Terminal Access Controller Access Control
 System)` **server from the authentication process.**
+
 Disabling a specific :abbr:`TACACS+ (Terminal Access Controller Access Control
-System)` server doesn’t remove its configuration settings (the server's IP
+System)` server doesn’t remove its configuration settings (the server’s IP
 address and shared secret).
 ```
 
@@ -413,6 +452,7 @@ address and shared secret).
 Configure the duration, in seconds, that the VyOS router waits for a
 response from the :abbr:`TACACS+ (Terminal Access Controller Access
 Control System)` server after sending an authentication request.
+
 If the server does not respond within this timeframe, the VyOS router tries
 to connect to another configured server or falls back to local authentication.
 ```
@@ -422,9 +462,11 @@ to connect to another configured server or falls back to local authentication.
 **Configure the source IP address the router uses for**
 :abbr:`TACACS+ (Terminal Access Controller Access Control System)`
 **authentication requests.**
+
 A consistent source IP address is recommended as :abbr:`TACACS+ (Terminal
 Access Controller Access Control System)` servers typically accept requests
 only from known, trusted IP addresses.
+
 If not explicitly defined, the router uses the current egress interface address,
 which may change (e.g., due to a link outage), causing authentication failures.
 ```
@@ -433,6 +475,7 @@ which may change (e.g., due to a link outage), causing authentication failures.
 
 Configure the router to send all :abbr:`TACACS+ (Terminal Access Controller
 Access Control System)` authentication requests via a specific VRF.
+
 By default, :abbr:`TACACS+ (Terminal Access Controller Access Control System)`
 authentication requests are sent via the global routing table.
 ```
