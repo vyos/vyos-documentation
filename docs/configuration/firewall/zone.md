@@ -77,13 +77,12 @@ To define a zone, set up either one with interfaces or as the local zone.
 
 Assign interfaces as a member of a zone.
 
-.. note::
-
-   * An interface can only be a member of one zone.
-    * You can have multiple interfaces in a zone. Traffic between
-    interfaces in the same zone follows the intra-zone-filtering
-    policy (allowed by default).
-
+:::{note}
+* An interface can only be a member of one zone.
+ * You can have multiple interfaces in a zone. Traffic between
+ interfaces in the same zone follows the intra-zone-filtering
+ policy (allowed by default).
+:::
 ```
 
 ```{cfgcmd} set firewall zone \<name\> local-zone
@@ -91,11 +90,10 @@ Assign interfaces as a member of a zone.
 Define the zone as the local zone for traffic that originates from or is
 destined to the router itself.
 
-.. note::
-
-   * A local zone cannot have any member interfaces
-    * You cannot have multiple local zones
-
+:::{note}
+* A local zone cannot have any member interfaces
+ * You cannot have multiple local zones
+:::
 ```
 
 ```{cfgcmd} set firewall zone \<name\> default-action [drop | reject]
@@ -170,33 +168,33 @@ not have a rule-set configured as defined in
 
 Display a basic summary of the zone configuration.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show firewall zone-policy
-  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-  ------  ------------  -----------  ---------------  ---------------
-  LAN     eth1          WAN          WAN-LAN-v4
-  eth2
-  LOCAL   LOCAL         LAN          LAN-LOCAL-v4
-  WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
-  WAN     eth3          LAN          LAN-WAN-v4
-  eth0          LOCAL        LOCAL-WAN-v4
+:::{code-block} none
+vyos@vyos:~$ show firewall zone-policy
+Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+------  ------------  -----------  ---------------  ---------------
+LAN     eth1          WAN          WAN-LAN-v4
+eth2
+LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
+WAN     eth3          LAN          LAN-WAN-v4
+eth0          LOCAL        LOCAL-WAN-v4
+:::
 ```
 
 ```{opcmd} show firewall zone-policy zone \<zone\>
 
 Display a basic summary of a particular zone.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show firewall zone-policy zone WAN
-  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-  ------  ------------  -----------  ---------------  ---------------
-  WAN     eth3          LAN          LAN-WAN-v4
-  eth0          LOCAL        LOCAL-WAN-v4
-  vyos@vyos:~$ show firewall zone-policy zone LOCAL
-  Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
-  ------  ------------  -----------  ---------------  ---------------
-  LOCAL   LOCAL         LAN          LAN-LOCAL-v4
-  WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
+:::{code-block} none
+vyos@vyos:~$ show firewall zone-policy zone WAN
+Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+------  ------------  -----------  ---------------  ---------------
+WAN     eth3          LAN          LAN-WAN-v4
+eth0          LOCAL        LOCAL-WAN-v4
+vyos@vyos:~$ show firewall zone-policy zone LOCAL
+Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
+------  ------------  -----------  ---------------  ---------------
+LOCAL   LOCAL         LAN          LAN-LOCAL-v4
+WAN          WAN-LOCAL-v4     WAN-LOCAL-v6
+:::
 ```

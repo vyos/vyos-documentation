@@ -516,10 +516,9 @@ Match based on source or destination address. This is similar to network
 groups, but you can negate the matching addresses here.
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 name FOO rule 100 source address 2001:db8::202
+:::{code-block} none
+set firewall ipv6 name FOO rule 100 source address 2001:db8::202
+:::
 ```
 
 
@@ -567,17 +566,16 @@ This function works for both individual addresses and address groups.
 
 .. stop_vyoslinter
 
-.. code-block:: none
-
-
-  # Match any IPv6 address with the suffix ::0000:0000:0000:beef
-  set firewall ipv6 forward filter rule 100 destination address ::beef
-  set firewall ipv6 forward filter rule 100 destination address-mask ::ffff:ffff:ffff:ffff
-  # Address groups
-  set firewall group ipv6-address-group WEBSERVERS address ::1000
-  set firewall group ipv6-address-group WEBSERVERS address ::2000
-  set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
-  set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
+:::{code-block} none
+# Match any IPv6 address with the suffix ::0000:0000:0000:beef
+set firewall ipv6 forward filter rule 100 destination address ::beef
+set firewall ipv6 forward filter rule 100 destination address-mask ::ffff:ffff:ffff:ffff
+# Address groups
+set firewall group ipv6-address-group WEBSERVERS address ::1000
+set firewall group ipv6-address-group WEBSERVERS address ::2000
+set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
+set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
+:::
 .. start_vyoslinter
 ```
 
@@ -709,11 +707,10 @@ updated.
 You can specify only a source MAC address to match.
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 input filter rule 100 source mac-address 00:53:00:11:22:33
-  set firewall ipv6 input filter rule 101 source mac-address !00:53:00:aa:12:34
+:::{code-block} none
+set firewall ipv6 input filter rule 100 source mac-address 00:53:00:11:22:33
+set firewall ipv6 input filter rule 101 source mac-address !00:53:00:aa:12:34
+:::
 ```
 
 
@@ -751,20 +748,18 @@ You can specify only a source MAC address to match.
 Specify a port by number or by name as defined in ``/etc/services``.
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 forward filter rule 10 source port '22'
-  set firewall ipv6 forward filter rule 11 source port '!http'
-  set firewall ipv6 forward filter rule 12 source port 'https'
+:::{code-block} none
+set firewall ipv6 forward filter rule 10 source port '22'
+set firewall ipv6 forward filter rule 11 source port '!http'
+set firewall ipv6 forward filter rule 12 source port 'https'
+:::
 Multiple source ports can be specified as a comma-separated list.
 The whole list can also be "negated" using ``!``. For example:
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 forward filter rule 10 source port '!22,https,3333-3338'
+:::{code-block} none
+set firewall ipv6 forward filter rule 10 source port '!22,https,3333-3338'
+:::
 ```
 
 
@@ -1287,10 +1282,9 @@ Specify ``all`` for all protocols and ``tcp_udp`` for TCP and UDP packets.
 Prepend ``!`` to negate the protocol selection.
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 input filter rule 10 protocol tcp
+:::{code-block} none
+set firewall ipv6 input filter rule 10 protocol tcp
+:::
 ```
 
 
@@ -1349,12 +1343,11 @@ Allowed values for TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 the selection, use ``not``, as shown in the following example.
 
 
-.. code-block:: none
-
-
-  set firewall ipv6 input filter rule 10 tcp flags 'ack'
-  set firewall ipv6 input filter rule 12 tcp flags 'syn'
-  set firewall ipv6 input filter rule 13 tcp flags not 'fin'
+:::{code-block} none
+set firewall ipv6 input filter rule 10 tcp flags 'ack'
+set firewall ipv6 input filter rule 12 tcp flags 'syn'
+set firewall ipv6 input filter rule 13 tcp flags not 'fin'
+:::
 ```
 
 
@@ -1664,75 +1657,74 @@ set firewall ipv6 input filter rule 1000 state invalid
 Show a basic firewall overview for all rule-sets, not only for IPv6:
 
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show firewall
+Rulesets Information
 
 
-  vyos@vyos:~$ show firewall
-  Rulesets Information
+---------------------------------
+IPv4 Firewall "forward filter"
 
 
-  ---------------------------------
-  IPv4 Firewall "forward filter"
+Rule     Action    Protocol      Packets    Bytes  Conditions
+-------  --------  ----------  ---------  -------  -----------------------------------------
+5        jump      all                 0        0  iifname "eth1"  jump NAME_VyOS_MANAGEMENT
+10       jump      all                 0        0  oifname "eth1"  jump NAME_WAN_IN
+15       jump      all                 0        0  iifname "eth3"  jump NAME_WAN_IN
+default  accept    all
 
 
-  Rule     Action    Protocol      Packets    Bytes  Conditions
-  -------  --------  ----------  ---------  -------  -----------------------------------------
-  5        jump      all                 0        0  iifname "eth1"  jump NAME_VyOS_MANAGEMENT
-  10       jump      all                 0        0  oifname "eth1"  jump NAME_WAN_IN
-  15       jump      all                 0        0  iifname "eth3"  jump NAME_WAN_IN
-  default  accept    all
+---------------------------------
+IPv4 Firewall "name VyOS_MANAGEMENT"
 
 
-  ---------------------------------
-  IPv4 Firewall "name VyOS_MANAGEMENT"
+Rule     Action    Protocol      Packets    Bytes  Conditions
+-------  --------  ----------  ---------  -------  --------------------------------
+5        accept    all                 0        0  ct state established  accept
+10       drop      all                 0        0  ct state invalid
+20       accept    all                 0        0  ip saddr @A_GOOD_GUYS  accept
+30       accept    all                 0        0  ip saddr @N_ENTIRE_RANGE  accept
+40       accept    all                 0        0  ip saddr @A_VyOS_SERVERS  accept
+50       accept    icmp                0        0  meta l4proto icmp  accept
+default  drop      all                 0        0
 
 
-  Rule     Action    Protocol      Packets    Bytes  Conditions
-  -------  --------  ----------  ---------  -------  --------------------------------
-  5        accept    all                 0        0  ct state established  accept
-  10       drop      all                 0        0  ct state invalid
-  20       accept    all                 0        0  ip saddr @A_GOOD_GUYS  accept
-  30       accept    all                 0        0  ip saddr @N_ENTIRE_RANGE  accept
-  40       accept    all                 0        0  ip saddr @A_VyOS_SERVERS  accept
-  50       accept    icmp                0        0  meta l4proto icmp  accept
-  default  drop      all                 0        0
+---------------------------------
+IPv6 Firewall "forward filter"
 
 
-  ---------------------------------
-  IPv6 Firewall "forward filter"
+Rule     Action    Protocol
+-------  --------  ----------
+5        jump      all
+10       jump      all
+15       jump      all
+default  accept    all
 
 
-  Rule     Action    Protocol
-  -------  --------  ----------
-  5        jump      all
-  10       jump      all
-  15       jump      all
-  default  accept    all
+---------------------------------
+IPv6 Firewall "input filter"
 
 
-  ---------------------------------
-  IPv6 Firewall "input filter"
+Rule     Action    Protocol
+-------  --------  ----------
+5        jump      all
+default  accept    all
 
 
-  Rule     Action    Protocol
-  -------  --------  ----------
-  5        jump      all
-  default  accept    all
+---------------------------------
+IPv6 Firewall "ipv6_name IPV6-VyOS_MANAGEMENT"
 
 
-  ---------------------------------
-  IPv6 Firewall "ipv6_name IPV6-VyOS_MANAGEMENT"
-
-
-  Rule     Action    Protocol
-  -------  --------  ----------
-  5        accept    all
-  10       drop      all
-  20       accept    all
-  30       accept    all
-  40       accept    all
-  50       accept    ipv6-icmp
-  default  drop      all
+Rule     Action    Protocol
+-------  --------  ----------
+5        accept    all
+10       drop      all
+20       accept    all
+30       accept    all
+40       accept    all
+50       accept    ipv6-icmp
+default  drop      all
+:::
 ```
 
 
@@ -1741,61 +1733,60 @@ Show a basic firewall overview for all rule-sets, not only for IPv6:
 This will show you a summary of rule-sets and groups
 
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show firewall summary
+Ruleset Summary
 
 
-  vyos@vyos:~$ show firewall summary
-  Ruleset Summary
+IPv6 Ruleset:
 
 
-  IPv6 Ruleset:
+Ruleset Hook    Ruleset Priority      Description
+--------------  --------------------  -------------------------
+forward         filter
+input           filter
+ipv6_name       IPV6-VyOS_MANAGEMENT
+ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
 
 
-  Ruleset Hook    Ruleset Priority      Description
-  --------------  --------------------  -------------------------
-  forward         filter
-  input           filter
-  ipv6_name       IPV6-VyOS_MANAGEMENT
-  ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
+IPv4 Ruleset:
 
 
-  IPv4 Ruleset:
+Ruleset Hook    Ruleset Priority    Description
+--------------  ------------------  -------------------------
+forward         filter
+input           filter
+name            VyOS_MANAGEMENT
+name            WAN_IN              PUBLIC_INTERNET
 
 
-  Ruleset Hook    Ruleset Priority    Description
-  --------------  ------------------  -------------------------
-  forward         filter
-  input           filter
-  name            VyOS_MANAGEMENT
-  name            WAN_IN              PUBLIC_INTERNET
+Firewall Groups
 
 
-  Firewall Groups
-
-
-  Name                     Type                References               Members
-  -----------------------  ------------------  -----------------------  ----------------
-  PBX                      address_group       WAN_IN-100               198.51.100.77
-  SERVERS                  address_group       WAN_IN-110               192.0.2.10
-  WAN_IN-111               192.0.2.11
-  WAN_IN-112               192.0.2.12
-  WAN_IN-120
-  WAN_IN-121
-  WAN_IN-122
-  SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
-  WAN_IN-20
-  PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
-  PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
-  WAN_IN-171
-  PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
-  SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
-  IPV6-WAN_IN-111          2001:db8::3
-  IPV6-WAN_IN-112          2001:db8::4
-  IPV6-WAN_IN-120
-  IPV6-WAN_IN-121
-  IPV6-WAN_IN-122
-  SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
-  IPV6-WAN_IN-20
+Name                     Type                References               Members
+-----------------------  ------------------  -----------------------  ----------------
+PBX                      address_group       WAN_IN-100               198.51.100.77
+SERVERS                  address_group       WAN_IN-110               192.0.2.10
+WAN_IN-111               192.0.2.11
+WAN_IN-112               192.0.2.12
+WAN_IN-120
+WAN_IN-121
+WAN_IN-122
+SUPPORT                  address_group       VyOS_MANAGEMENT-20       192.168.1.2
+WAN_IN-20
+PHONE_VPN_SERVERS        address_group       WAN_IN-160               10.6.32.2
+PINGABLE_ADRESSES        address_group       WAN_IN-170               192.168.5.2
+WAN_IN-171
+PBX                      ipv6_address_group  IPV6-WAN_IN-100          2001:db8::1
+SERVERS                  ipv6_address_group  IPV6-WAN_IN-110          2001:db8::2
+IPV6-WAN_IN-111          2001:db8::3
+IPV6-WAN_IN-112          2001:db8::4
+IPV6-WAN_IN-120
+IPV6-WAN_IN-121
+IPV6-WAN_IN-122
+SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
+IPV6-WAN_IN-20
+:::
 ```
 
 ```{opcmd} show firewall ipv6 [forward | input | output] filter
@@ -1806,25 +1797,24 @@ This will show you a summary of rule-sets and groups
 This command will give an overview of a single rule-set.
 
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show firewall ipv6 input filter
+Ruleset Information
 
 
-  vyos@vyos:~$ show firewall ipv6 input filter
-  Ruleset Information
+---------------------------------
+ipv6 Firewall "input filter"
 
 
-  ---------------------------------
-  ipv6 Firewall "input filter"
+Rule     Action    Protocol      Packets    Bytes  Conditions
+-------  --------  ----------  ---------  -------  ------------------------------------------------------------------------------
+10       jump      all                13     1456  iifname "eth1"  jump NAME6_INP-ETH1
+20       accept    ipv6-icmp          10     1112  meta l4proto ipv6-icmp iifname "eth0"  prefix "[ipv6-INP-filter-20-A]"  accept
+default  accept    all                14     1584
 
 
-  Rule     Action    Protocol      Packets    Bytes  Conditions
-  -------  --------  ----------  ---------  -------  ------------------------------------------------------------------------------
-  10       jump      all                13     1456  iifname "eth1"  jump NAME6_INP-ETH1
-  20       accept    ipv6-icmp          10     1112  meta l4proto ipv6-icmp iifname "eth0"  prefix "[ipv6-INP-filter-20-A]"  accept
-  default  accept    all                14     1584
-
-
-  vyos@vyos:~$
+vyos@vyos:~$
+:::
 ```
 
 
@@ -1848,19 +1838,18 @@ Show an overview of defined groups, including the type, members, and where
 the group is used.
 
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show firewall group LAN
+Firewall Groups
 
 
-  vyos@vyos:~$ show firewall group LAN
-  Firewall Groups
-
-
-  Name          Type                References               Members
-  ------------  ------------------  -----------------------  ----------------
-  LAN           ipv6_network_group  IPV6-VyOS_MANAGEMENT-30  2001:db8::0/64
-  IPV6-WAN_IN-30
-  LAN           network_group       VyOS_MANAGEMENT-30       192.168.200.0/24
-  WAN_IN-30
+Name          Type                References               Members
+------------  ------------------  -----------------------  ----------------
+LAN           ipv6_network_group  IPV6-VyOS_MANAGEMENT-30  2001:db8::0/64
+IPV6-WAN_IN-30
+LAN           network_group       VyOS_MANAGEMENT-30       192.168.200.0/24
+WAN_IN-30
+:::
 ```
 
 ```{opcmd} show firewall statistics

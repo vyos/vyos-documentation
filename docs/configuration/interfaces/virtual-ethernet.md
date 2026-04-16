@@ -59,35 +59,35 @@ as the peer of the other.
 
 Show brief interface information.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show interfaces virtual-ethernet
-  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-  Interface        IP Address                        S/L  Description
-  ---------        ----------                        ---  -----------
-  veth10           100.64.0.0/31                     u/u
-  veth11           100.64.0.1/31                     u/u
+:::{code-block} none
+vyos@vyos:~$ show interfaces virtual-ethernet
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+veth10           100.64.0.0/31                     u/u
+veth11           100.64.0.1/31                     u/u
+:::
 ```
 
 ```{opcmd} show interfaces virtual-ethernet \<interface\>
 
 Show detailed interface information.
 
-.. code-block:: none
+:::{code-block} none
+vyos@vyos:~$ show interfaces virtual-ethernet veth11
+10: veth11@veth10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master red state UP group default qlen 1000
+link/ether b2:7b:df:47:e9:11 brd ff:ff:ff:ff:ff:ff
+inet 100.64.0.1/31 scope global veth11
+valid_lft forever preferred_lft forever
+inet6 fe80::b07b:dfff:fe47:e911/64 scope link
+valid_lft forever preferred_lft forever
 
-  vyos@vyos:~$ show interfaces virtual-ethernet veth11
-  10: veth11@veth10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master red state UP group default qlen 1000
-  link/ether b2:7b:df:47:e9:11 brd ff:ff:ff:ff:ff:ff
-  inet 100.64.0.1/31 scope global veth11
-  valid_lft forever preferred_lft forever
-  inet6 fe80::b07b:dfff:fe47:e911/64 scope link
-  valid_lft forever preferred_lft forever
 
-
-  RX:  bytes    packets     errors    dropped    overrun      mcast
-  0          0          0          0          0          0
-  TX:  bytes    packets     errors    dropped    carrier collisions
-  1369707       4267          0          0          0          0
+RX:  bytes    packets     errors    dropped    overrun      mcast
+0          0          0          0          0          0
+TX:  bytes    packets     errors    dropped    carrier collisions
+1369707       4267          0          0          0          0
+:::
 ```
 
 ## Example

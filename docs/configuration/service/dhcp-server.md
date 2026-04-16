@@ -428,10 +428,9 @@ cluster.
 
 Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
-.. note::
-
-   Make sure the specified value does not conflict with the system host-name.
-
+:::{note}
+Make sure the specified value does not conflict with the system host-name.
+:::
 ```
 
 
@@ -440,22 +439,20 @@ Define the name of the peer server to establish and identify the HA (High Availa
 The primary and secondary statements determines whether the server is primary
 or secondary.
 
-.. note::
-
-   In order for the primary and the secondary DHCP server to keep
-    their lease tables in sync, they must be able to reach each other on TCP
-    port 647. If you have firewall rules in effect, adjust them accordingly.
-
-.. hint::
-
-   The dialogue between HA partners is neither encrypted nor
-    authenticated. Since most DHCP servers exist within an organisation's own
-    secure Intranet, this would be an unnecessary overhead. However, if you
-    have DHCP HA peers whose communications traverse insecure networks,
-    then we recommend that you consider the use of VPN tunneling between them
-    to ensure that the HA partnership is immune to disruption
-    (accidental or otherwise) via third parties.
-
+:::{note}
+In order for the primary and the secondary DHCP server to keep
+ their lease tables in sync, they must be able to reach each other on TCP
+ port 647. If you have firewall rules in effect, adjust them accordingly.
+:::
+:::{hint}
+The dialogue between HA partners is neither encrypted nor
+ authenticated. Since most DHCP servers exist within an organisation's own
+ secure Intranet, this would be an unnecessary overhead. However, if you
+ have DHCP HA peers whose communications traverse insecure networks,
+ then we recommend that you consider the use of VPN tunneling between them
+ to ensure that the HA partnership is immune to disruption
+ (accidental or otherwise) via third parties.
+:::
 ```
 #### Static mappings
 
@@ -487,11 +484,10 @@ specified, an IP from the dynamic pool is used.
 
 This is useful, for example, in combination with hostfile update.
 
-.. hint::
-
-   This is the equivalent of the host block in dhcpd.conf of
-    isc-dhcpd.
-
+:::{hint}
+This is the equivalent of the host block in dhcpd.conf of
+ isc-dhcpd.
+:::
 ```
 **Example:**
 

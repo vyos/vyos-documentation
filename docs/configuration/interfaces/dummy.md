@@ -56,21 +56,20 @@ Dummy interfaces are also used for testing and simulation purposes.
 
 Show brief interface information.
 
-.. code-block:: none
-
+:::{code-block} none
 vyos@vyos:~$ show interfaces dummy
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
 ---------        ----------                        ---  -----------
 dum0             172.18.254.201/32                 u/u
+:::
 ```
 
 ```{opcmd} show interfaces dummy \<interface\>
 
 Show detailed interface information.
 
-.. code-block:: none
-
+:::{code-block} none
 vyos@vyos:~$ show interfaces dummy dum0
 dum0: <BROADCAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
 link/ether 26:7c:8e:bc:fc:f5 brd ff:ff:ff:ff:ff:ff
@@ -81,4 +80,5 @@ valid_lft forever preferred_lft forever
 RX:  bytes    packets     errors    dropped    overrun      mcast
 0          0          0          0          0          0
 TX:  bytes    packets     errors    dropped    carrier collisions
+:::
 ```

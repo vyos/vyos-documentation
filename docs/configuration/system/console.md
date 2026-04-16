@@ -33,13 +33,12 @@ The speed (baudrate) of the console device. Supported values are:
 * ``57600`` - 57,600 bps
 * ``115200`` - 115,200 bps (default for serial console)
 
-.. note::
-
-   If you use USB to serial converters for connecting to your VyOS
-    appliance please note that most of them use software emulation without flow
-    control. This means you should start with a common baud rate (most likely
-    9600 baud) as otherwise you probably can not connect to the device using
-    high speed baud rates as your serial converter simply can not process this
-    data rate.
-
+:::{note}
+If you use USB to serial converters for connecting to your VyOS
+ appliance please note that most of them use software emulation without flow
+ control. This means you should start with a common baud rate (most likely
+ 9600 baud) as otherwise you probably can not connect to the device using
+ high speed baud rates as your serial converter simply can not process this
+ data rate.
+:::
 ```

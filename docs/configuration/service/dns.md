@@ -43,13 +43,9 @@ can be specified. You can use this feature for a DNS split-horizon
 configuration.
 
 
-.. note::
-
-
-
-   This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
-
-
+:::{note}
+This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
+:::
 ```
 
 
@@ -116,27 +112,19 @@ are:
   bogus data, regardless of the client's request.
 
 
-.. note::
+:::{note}
+The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
 
 
-
-   The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
-
-
-    This might lead to unexpected query results when testing. Set ``+noad``
-    on the ``dig`` command line when this is the case.
-
+ This might lead to unexpected query results when testing. Set ``+noad``
+ on the ``dig`` command line when this is the case.
+:::
+:::{note}
+The ``CD``-bit is honored correctly for process and validate. For
 
 
-.. note::
-
-
-
-   The ``CD``-bit is honored correctly for process and validate. For
-
-
-    log-fail, failures will be logged too.
-
+ log-fail, failures will be logged too.
+:::
 ```
 
 

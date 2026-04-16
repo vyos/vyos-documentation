@@ -24,11 +24,11 @@ An **address group** contains a single IP address or IP address range.
 
 Define an IPv4 or IPv6 address group.
 
-.. code-block:: none
-
-  set firewall group address-group ADR-INSIDE-v4 address 192.168.0.1
-  set firewall group address-group ADR-INSIDE-v4 address 10.0.0.1-10.0.0.8
-  set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
+:::{code-block} none
+set firewall group address-group ADR-INSIDE-v4 address 192.168.0.1
+set firewall group address-group ADR-INSIDE-v4 address 10.0.0.1-10.0.0.8
+set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
+:::
 ```
 
 ```{cfgcmd} set firewall group address-group \<name\> description \<text\>
@@ -84,11 +84,11 @@ networks, use a network group.
 
 Define an IPv4 or IPv6 network group.
 
-.. code-block:: none
-
-  set firewall group network-group NET-INSIDE-v4 network 192.168.0.0/24
-  set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
-  set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
+:::{code-block} none
+set firewall group network-group NET-INSIDE-v4 network 192.168.0.0/24
+set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
+set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
+:::
 ```
 
 ```{cfgcmd} set firewall group network-group \<name\> description \<text\>
@@ -130,11 +130,11 @@ ranges by using `-`.
 Define a port group. A port name can be any name defined in
 /etc/services. For example, ``http``.
 
-.. code-block:: none
-
-  set firewall group port-group PORT-TCP-SERVER1 port http
-  set firewall group port-group PORT-TCP-SERVER1 port 443
-  set firewall group port-group PORT-TCP-SERVER1 port 5000-5010
+:::{code-block} none
+set firewall group port-group PORT-TCP-SERVER1 port http
+set firewall group port-group PORT-TCP-SERVER1 port 443
+set firewall group port-group PORT-TCP-SERVER1 port 5000-5010
+:::
 ```
 
 ```{cfgcmd} set firewall group port-group \<name\> description \<text\>

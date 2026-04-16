@@ -192,32 +192,31 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 ```{opcmd} show raid \<RAID‐1‐device\> shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1 set and is in the process of being resynchronized.
 
 
-.. code-block:: none
-
-
-  vyos@vyos:~$ show raid md0
-  /dev/md0:
-  Version : 00.90
-  Creation Time : Wed Oct 29 09:19:09 2008
-  Raid Level : raid1
-  Array Size : 1044800 (1020.48 MiB 1069.88 MB)
-  Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
-  Raid Devices : 2
-  Total Devices : 2
-  Preferred Minor : 0
-  Persistence : Superblock is persistent
-  Update Time : Wed Oct 29 19:34:23 2008
-  State : active, degraded, recovering
-  Active Devices : 1
-  Working Devices : 2
-  Failed Devices : 0
-  Spare Devices : 1
-  Rebuild Status : 17% complete
-  UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
-  Events : 0.103
-  Number   Major   Minor   RaidDevice State
-  0       8        1        0      active sync   /dev/sda1
-  2       8       17        1      spare rebuilding   /dev/sdb1
+:::{code-block} none
+vyos@vyos:~$ show raid md0
+/dev/md0:
+Version : 00.90
+Creation Time : Wed Oct 29 09:19:09 2008
+Raid Level : raid1
+Array Size : 1044800 (1020.48 MiB 1069.88 MB)
+Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
+Raid Devices : 2
+Total Devices : 2
+Preferred Minor : 0
+Persistence : Superblock is persistent
+Update Time : Wed Oct 29 19:34:23 2008
+State : active, degraded, recovering
+Active Devices : 1
+Working Devices : 2
+Failed Devices : 0
+Spare Devices : 1
+Rebuild Status : 17% complete
+UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
+Events : 0.103
+Number   Major   Minor   RaidDevice State
+0       8        1        0      active sync   /dev/sda1
+2       8       17        1      spare rebuilding   /dev/sdb1
+:::
 ```
 
 
@@ -226,14 +225,13 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 Use this command to display the formatting of a hard disk.
 
 
-.. code-block:: none
-
-
-  vyos@vyos:~$ show disk sda format
-  Disk /dev/sda: 1073 MB, 1073741824 bytes
-  85 heads, 9 sectors/track, 2741 cylinders
-  Units = cylinders of 765 * 512 = 391680 bytes
-  Disk identifier: 0x000b7179
-  Device Boot      Start         End      Blocks   Id  System
-  /dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
+:::{code-block} none
+vyos@vyos:~$ show disk sda format
+Disk /dev/sda: 1073 MB, 1073741824 bytes
+85 heads, 9 sectors/track, 2741 cylinders
+Units = cylinders of 765 * 512 = 391680 bytes
+Disk identifier: 0x000b7179
+Device Boot      Start         End      Blocks   Id  System
+/dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
+:::
 ```

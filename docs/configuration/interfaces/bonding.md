@@ -64,11 +64,11 @@ The available modes are:
      - If a member interface fails, the hash is recalculated to distribute
        traffic among the remaining active member interfaces.
 
-.. note::
-
-   Not all transmit hash policies comply with 802.3ad, particularly
-   section 43.2.4. Using a non-compliant policy may result in out-of-order
-   packet delivery.
+:::{note}
+Not all transmit hash policies comply with 802.3ad, particularly
+section 43.2.4. Using a non-compliant policy may result in out-of-order
+packet delivery.
+:::
 * ``active-backup``
 .. list-table::
    :widths: 20 80
@@ -155,11 +155,11 @@ The default value is 0. This marks the bonding interface UP (carrier asserted)
 whenever an active LACP aggregator exists, regardless of the number of member
 interfaces in that aggregator.
 
-.. note::
-
-   In 802.3ad mode, a bond cannot be active without at least one active
-   member interface. Therefore, setting min-links to 0 or 1 has the same result:
-   the bonding interface is marked UP (carrier asserted).
+:::{note}
+In 802.3ad mode, a bond cannot be active without at least one active
+member interface. Therefore, setting min-links to 0 or 1 has the same result:
+the bonding interface is marked UP (carrier asserted).
+:::
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> lacp-rate \<slow|fast\>
@@ -254,34 +254,32 @@ You can assign a fixed MAC address or generate a random one for these
             routed through only one member interface.
 
 
-.. note::
-
-   Not all transmit hash policies comply with 802.3ad, particularly
-    or UDP flow contains both fragmented and unfragmented packets, the
-    algorithm may distribute them across different member interfaces. This
-    may result in out-of-order packet delivery, violating the 802.3ad standard.
-    * - **Hash inputs:**
-    - * Source port, destination port (if available).
-    * Source IP address, destination IP address. IPv6 addresses are first hashed
-    using ``IPv6_addr_hash``.
-    * - **Formula:**
-    - .. code-block:: none
-
-
-    hash = source port, destination port (as in the header)
-    hash = hash XOR source IP address XOR destination IP address
-    hash = hash XOR (hash RSHIFT 16)
-    hash = hash XOR (hash RSHIFT 8)
-    member interface number = hash modulo member interface count
+:::{note}
+Not all transmit hash policies comply with 802.3ad, particularly
+ or UDP flow contains both fragmented and unfragmented packets, the
+ algorithm may distribute them across different member interfaces. This
+ may result in out-of-order packet delivery, violating the 802.3ad standard.
+ * - **Hash inputs:**
+ - * Source port, destination port (if available).
+ * Source IP address, destination IP address. IPv6 addresses are first hashed
+ using ``IPv6_addr_hash``.
+ * - **Formula:**
+ - .. code-block:: none
 
 
-    For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
-    source and destination port information is omitted.
+ hash = source port, destination port (as in the header)
+ hash = hash XOR source IP address XOR destination IP address
+ hash = hash XOR (hash RSHIFT 16)
+ hash = hash XOR (hash RSHIFT 8)
+ member interface number = hash modulo member interface count
 
 
-    For non-IP traffic, the formula is the same as for ``layer2``.
+ For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
+ source and destination port information is omitted.
 
 
+ For non-IP traffic, the formula is the same as for ``layer2``.
+:::
 ```
 
 
@@ -795,74 +793,73 @@ from ever becoming active.
 Show brief interface information.
 
 
-.. code-block:: none
-
-
-  vyos@vyos:~$ show interfaces bonding
-  Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-  Interface        IP Address                        S/L  Description
-  ---------        ----------                        ---  -----------
-  bond0            -                                 u/u  my-sw1 int 23 and 24
-  bond0.10         192.168.0.1/24                    u/u  office-net
-  bond0.100        10.10.10.1/24                     u/u  management-net
+:::{code-block} none
+vyos@vyos:~$ show interfaces bonding
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+bond0            -                                 u/u  my-sw1 int 23 and 24
+bond0.10         192.168.0.1/24                    u/u  office-net
+bond0.100        10.10.10.1/24                     u/u  management-net
+:::
 ```
 ```{opcmd} show interfaces bonding \<interface\>
 
 Show detailed interface information.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show interfaces bonding bond5
-  bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-  link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
-  inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
-  valid_lft forever preferred_lft forever
-  RX:  bytes  packets  errors  dropped  overrun       mcast
-  0        0       0        0        0           0
-  TX:  bytes  packets  errors  dropped  carrier  collisions
-  0        0       0        0        0           0
+:::{code-block} none
+vyos@vyos:~$ show interfaces bonding bond5
+bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
+inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
+valid_lft forever preferred_lft forever
+RX:  bytes  packets  errors  dropped  overrun       mcast
+0        0       0        0        0           0
+TX:  bytes  packets  errors  dropped  carrier  collisions
+0        0       0        0        0           0
+:::
 ```
 ```{opcmd} show interfaces bonding \<interface\> detail
 
 Show detailed information about the underlying physical links on the given
 bonding interface.
 
-.. code-block:: none
-
-  vyos@vyos:~$ show interfaces bonding bond5 detail
-  Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
-  Bonding Mode: IEEE 802.3ad Dynamic link aggregation
-  Transmit Hash Policy: layer2 (0)
-  MII Status: down
-  MII Polling Interval (ms): 100
-  Up Delay (ms): 0
-  Down Delay (ms): 0
-  802.3ad info
-  LACP rate: slow
-  Min links: 0
-  Aggregator selection policy (ad_select): stable
-  Slave Interface: eth1
-  MII Status: down
-  Speed: Unknown
-  Duplex: Unknown
-  Link Failure Count: 0
-  Permanent HW addr: 00:50:56:bf:ef:aa
-  Slave queue ID: 0
-  Aggregator ID: 1
-  Actor Churn State: churned
-  Partner Churn State: churned
-  Actor Churned Count: 1
-  Partner Churned Count: 1
-  Slave Interface: eth2
-  MII Status: down
-  Speed: Unknown
-  Duplex: Unknown
-  Link Failure Count: 0
-  Permanent HW addr: 00:50:56:bf:19:26
-  Slave queue ID: 0
-  Aggregator ID: 2
-  Actor Churn State: churned
-  Partner Churn State: churned
-  Actor Churned Count: 1
-  Partner Churned Count: 1
+:::{code-block} none
+vyos@vyos:~$ show interfaces bonding bond5 detail
+Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
+Bonding Mode: IEEE 802.3ad Dynamic link aggregation
+Transmit Hash Policy: layer2 (0)
+MII Status: down
+MII Polling Interval (ms): 100
+Up Delay (ms): 0
+Down Delay (ms): 0
+802.3ad info
+LACP rate: slow
+Min links: 0
+Aggregator selection policy (ad_select): stable
+Slave Interface: eth1
+MII Status: down
+Speed: Unknown
+Duplex: Unknown
+Link Failure Count: 0
+Permanent HW addr: 00:50:56:bf:ef:aa
+Slave queue ID: 0
+Aggregator ID: 1
+Actor Churn State: churned
+Partner Churn State: churned
+Actor Churned Count: 1
+Partner Churned Count: 1
+Slave Interface: eth2
+MII Status: down
+Speed: Unknown
+Duplex: Unknown
+Link Failure Count: 0
+Permanent HW addr: 00:50:56:bf:19:26
+Slave queue ID: 0
+Aggregator ID: 2
+Actor Churn State: churned
+Partner Churn State: churned
+Actor Churned Count: 1
+Partner Churned Count: 1
+:::
 ```

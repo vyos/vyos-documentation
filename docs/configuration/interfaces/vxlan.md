@@ -57,21 +57,19 @@ segments to coexist within the same administrative domain.
 
 Configure the UDP port of the remote VXLAN endpoint.
 
-.. note::
-
-   Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
-    Linux default UDP port **8472** for VXLAN interfaces.
-
+:::{note}
+Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
+ Linux default UDP port **8472** for VXLAN interfaces.
+:::
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> source-address \<address\>
 
 Configure the source IP address for the VXLAN underlay.
 
-.. warning::
-
-   This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
-
+:::{warning}
+This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
+:::
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> gpe
@@ -110,11 +108,10 @@ interface.**
 When enabled, the interface only receives packets with VNIs configured in its
 VNI filtering table.
 
-.. note::
-
-   VNI filtering works only if the interface is configured with the
-    ``external`` parameter.
-
+:::{note}
+VNI filtering works only if the interface is configured with the
+ ``external`` parameter.
+:::
 ```
 
 #### Unicast
@@ -177,15 +174,15 @@ The VXLAN interface can be added to a bridge.
 The following example shows an SVD configuration with multiple VLAN-to-VNI
 mappings.
 
-.. code-block:: none
-
- set interfaces bridge br0 member interface vxlan0
- set interfaces vxlan vxlan0 parameters external
- set interfaces vxlan vxlan0 source-interface 'dum0'
- set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
- set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'
- set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
- set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
+:::{code-block} none
+set interfaces bridge br0 member interface vxlan0
+set interfaces vxlan vxlan0 parameters external
+set interfaces vxlan vxlan0 source-interface 'dum0'
+set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
+set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'
+set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
+set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
+:::
 ```
 
 ### Example

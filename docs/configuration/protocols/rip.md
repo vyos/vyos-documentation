@@ -68,16 +68,12 @@ This command specifies all interfaces to passive mode.
   This command change the distance value of RIP. The distance range is 1 to 255.
 
 
-   .. note::
+   :::{note}
+   Routes with a distance of 255 are effectively disabled and not
 
 
-
-         Routes with a distance of 255 are effectively disabled and not
-
-
-          installed into the kernel.
-
-
+    installed into the kernel.
+   :::
 ```
 
 
