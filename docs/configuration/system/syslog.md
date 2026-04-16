@@ -185,9 +185,7 @@ The client certificate is required if the remote syslog server enforces
 client certificate verification.
 
 ```
-```{cfgcmd} set system syslog remote \<address\> tls auth-mode <anon | fingerprint
-
-   | certvalid | name>
+```{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
 **Configure the authentication mode.**
 The authentication mode defines how the syslog client verifies the syslog
 server's identity.

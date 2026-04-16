@@ -314,10 +314,7 @@ file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
 the content of interface-address.txt looks like this
 
 ```none
-```{cfgcmd} set interfaces {{ var0 }} \<interface\> address <address | dhcp |
-
-```
-   dhcpv6>
+```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
    Configure interface `<interface>` with one or more interface
    addresses.
    * **address** can be specified multiple times as IPv4 and/or IPv6

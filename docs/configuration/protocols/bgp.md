@@ -890,9 +890,7 @@ enable :rfc:`8212` functionality to operate.
 ```
 
 
-```{cfgcmd} set protocols bgp parameters labeled-unicast <explicit-null |
-
-ipv4-explicit-null | ipv6-explicit-null>
+```{cfgcmd} set protocols bgp parameters labeled-unicast \<explicit-null | ipv4-explicit-null | ipv6-explicit-null\>
 
 
 By default, locally advertised prefixes use the implicit-null label to

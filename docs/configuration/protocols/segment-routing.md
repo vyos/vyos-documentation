@@ -77,9 +77,7 @@ unsets both.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing local-block <low-label-value
-
-<label-value>
+```{cfgcmd} set protocols isis segment-routing local-block \<low-label-value \<label-value\>
 
 
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
@@ -175,9 +173,7 @@ not exceed 65535.Segment Routing Local Block, The negative command always
 unsets both.
 ```
 
-```{cfgcmd} set protocols ospf segment-routing local-block <low-label-value
-
-  <label-value>
+```{cfgcmd} set protocols ospf segment-routing local-block \<low-label-value \<label-value\>
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always

@@ -527,9 +527,7 @@ Make sure the specified value does not conflict with the system host-name.
 ```
 
 
-```{cfgcmd} set service dhcp-server high-availability status <primary
-
-| secondary>
+```{cfgcmd} set service dhcp-server high-availability status \<primary | secondary\>
 
 
 The primary and secondary statements determines whether the server is primary

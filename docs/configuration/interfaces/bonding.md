@@ -37,10 +37,7 @@ set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
 ```
 ### Bond modes
-```{cfgcmd} set interfaces bonding \<interface\> mode <802.3ad | active-backup |
-
-broadcast | round-robin | transmit-load-balance | adaptive-load-balance |
-xor-hash>
+```{cfgcmd} set interfaces bonding \<interface\> mode \<802.3ad | active-backup | broadcast | round-robin | transmit-load-balance | adaptive-load-balance | xor-hash\>
 **Configure the bonding mode on the interface. The default mode is**
 ``802.3ad``.
 The available modes are:
