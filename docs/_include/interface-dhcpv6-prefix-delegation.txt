@@ -21,10 +21,10 @@ The default value is 64.
 
 To request a /56 prefix from your ISP, use:
 
-```none
-set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 length 56
+.. code-block:: none
 
-```
+  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 length 56
+
 ::::
 
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options pd \<id\> interface \<delegatee\> address \<address\>
@@ -48,10 +48,10 @@ portion as 65535, the resulting IPv6 address will end with ::ffff, as
 
 
 
-```none
-set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 address 65534
+.. code-block:: none
 
-```
+  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 address 65534
+
 ::::
 
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options pd \<id\> interface \<delegatee\> sla-id \<id\>
@@ -69,10 +69,10 @@ If SLA ID is 1 and the delegated prefix is ``2001:db8:ffff::/48``, the
 resulting subnet prefix for the delegatee interface will be 
 ``2001:db8:ffff:1::/64``.
 
-```none
-set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
+.. code-block:: none
 
-```
+  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options pd 0 interface eth8 sla-id 1
+
 ::::
 
 .. start_vyoslinter

@@ -13,9 +13,10 @@
 
  Example:
 
-```none
-set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
-```
+.. code-block:: none
+
+  set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
+
 ::::
 
 .. start_vyoslinter
