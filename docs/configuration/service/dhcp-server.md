@@ -68,11 +68,8 @@ shown below:
 
 Pass address of Unifi controller at `172.16.100.1` to all clients of `NET1`
 ```none
-
 set service dhcp-server shared-network-name 'NET1' option vendor-option
-
 ubiquiti '172.16.100.1'
-
 ```
 
 
@@ -176,11 +173,8 @@ Ubiquiti is shown below:
 Create `172.18.201.0/24` as a subnet within `NET1` and pass address of
 Unifi controller at `172.16.100.1` to clients of that subnet.
 ```none
-
 set service dhcp-server shared-network-name 'NET1' subnet
-
 '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
-
 ```
 #### Dynamic DNS Update (RFC 2136)
 
@@ -331,63 +325,38 @@ UDP port of the DNS server. ``53`` is the default.
 
 Global configuration you will most likely want:
 ```none
-
 set service dhcp-server dynamic-dns-update send-updates enable
-
 set service dhcp-server dynamic-dns-update conflict-resolution enable
-
 ```
 Override the above configuration for a shared network NET1:
 ```none
-
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update replace-client-name when-not-present
-
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update generated-prefix ip
-
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update qualifying-suffix mybigdomain.net
-
 ```
 And in a subnet within the same shared network:
 ```none
-
 set service dhcp-server shared-network-name 'NET1' subnet '172.18.201.0/24' dynamic-dns-update qualifying-suffix mydomain.net
-
 ```
 Configure TSIG keys:
 ```none
-
 set service dhcp-server dynamic-dns-update tsig-key mydomain-net algorithm hmac-sha256
-
 set service dhcp-server dynamic-dns-update tsig-key mydomain-net secret eWF5YW15bGl0dGxla2V5IQ==
-
 set service dhcp-server dynamic-dns-update tsig-key reverse-172-18-201 algorithm hmac-sha256
-
 set service dhcp-server dynamic-dns-update tsig-key reverse-172-18-201 secret eWF5YW15YW5vdGhlcmxpdHRsZWtleSE=
-
 ```
 Configure DDNS domains:
 ```none
-
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net key-name mydomain-net
-
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net dns-server 1 address '172.18.0.254'
-
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net dns-server 1 port 1053
-
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net dns-server 2 address '192.168.124.254'
-
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net dns-server 2 port 53
-
 set service dhcp-server dynamic-dns-update forward-domain 201.18.172.in-addr.arpa key-name reverse-172-18-201
-
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 1 address '172.18.0.254'
-
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 1 port 1053
-
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 2 address '192.168.124.254'
-
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 2 port 53
-
 ```
 #### High Availability
 
@@ -494,33 +463,20 @@ This is the equivalent of the host block in dhcpd.conf of
 
 - IP address `192.168.1.100` shall be statically mapped to client named `client1`
 ```none
-
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 subnet-id 1
-
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
-
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac aa:bb:11:22:33:00
-
 ```
 The configuration will look as follows:
 ```none
-
 show service dhcp-server shared-network-name NET1
-
  subnet 192.168.1.0/24 {
-
      static-mapping client1 {
-
          ip-address 192.168.1.100
-
          mac aa:bb:11:22:33:00
-
      }
-
      subnet-id 1
-
  }
-
 ```
 #### Relay agent information (Option 82)
 
@@ -796,47 +752,28 @@ Configuration of a DHCP HA pair:
 
 Common configuration, valid for both primary and secondary node.
 ```none
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option default-router '192.0.2.254'
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option name-server '192.0.2.254'
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option domain-name 'vyos.net'
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 start '192.0.2.10'
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
-
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 subnet-id '1'
-
 ```
 **Primary**
 ```none
-
 set service dhcp-server high-availability mode 'active-active'
-
 set service dhcp-server high-availability source-address '192.168.189.252'
-
 set service dhcp-server high-availability name 'dhcp-secondary'
-
 set service dhcp-server high-availability remote '192.168.189.253'
-
 set service dhcp-server high-availability status 'primary'
-
 ```
 **Secondary**
 ```none
-
 set service dhcp-server high-availability mode 'active-active'
-
 set service dhcp-server high-availability source-address '192.168.189.253'
-
 set service dhcp-server high-availability name 'dhcp-primary'
-
 set service dhcp-server high-availability remote '192.168.189.252'
-
 set service dhcp-server high-availability status 'secondary'
-
 ```
 (dhcp-server-v4-example-raw)=
 
@@ -873,15 +810,10 @@ Show the DHCP server statistics:
 
 
 ```none
-
 vyos@vyos:~$ show dhcp server statistics
-
 Pool           Size    Leases    Available  Usage
-
 -----------  ------  --------  -----------  -------
-
 dhcpexample      99         2           97  2%
-
 ```
 
 
@@ -898,23 +830,14 @@ Show statuses of all active leases:
 
 
 ```none
-
 vyos@vyos:~$ show dhcp server leases
-
 IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool      Hostname    Origin
-
 --------------  -----------------  -------  -------------------  -------------------  -----------  --------  ----------  --------
-
 192.168.11.134  00:50:79:66:68:09  active   2023/11/29 09:51:05  2023/11/29 10:21:05  0:24:10      LAN       VPCS1       local
-
 192.168.11.133  50:00:00:06:00:00  active   2023/11/29 09:51:38  2023/11/29 10:21:38  0:24:43      LAN       VYOS-6      local
-
 10.11.11.108    50:00:00:05:00:00  active   2023/11/29 09:51:43  2023/11/29 10:21:43  0:24:48      VIF-1001  VYOS5       local
-
 192.168.11.135  00:50:79:66:68:07  active   2023/11/29 09:55:16  2023/11/29 09:59:16  0:02:21                            remote
-
 vyos@vyos:~$
-
 ```
 
 :::{hint}
@@ -930,17 +853,11 @@ remote (failover server):
 
 
 ```none
-
 vyos@vyos:~$ show dhcp server leases origin remote
-
 IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool      Hostname    Origin
-
 --------------  -----------------  -------  -------------------  -------------------  -----------  --------  ----------  --------
-
 192.168.11.135  00:50:79:66:68:07  active   2023/11/29 09:55:16  2023/11/29 09:59:16  0:02:21                            remote
-
 vyos@vyos:~$
-
 ```
 
 
@@ -951,19 +868,12 @@ Show only leases in the specified pool.
 
 
 ```none
-
 vyos@vyos:~$ show dhcp server leases pool LAN
-
 IP Address      MAC address        State    Lease start          Lease expiration     Remaining    Pool    Hostname    Origin
-
 --------------  -----------------  -------  -------------------  -------------------  -----------  ------  ----------  --------
-
 192.168.11.134  00:50:79:66:68:09  active   2023/11/29 09:51:05  2023/11/29 10:21:05  0:23:55      LAN     VPCS1       local
-
 192.168.11.133  50:00:00:06:00:00  active   2023/11/29 09:51:38  2023/11/29 10:21:38  0:24:28      LAN     VYOS-6      local
-
 vyos@vyos:~$
-
 ```
 
 
