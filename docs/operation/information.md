@@ -40,8 +40,6 @@ If a device is unplugged and plugged in again, it is assigned a new
  ``Port``, ``Dev``, and ``If``.
 :::
 
-% stop_vyoslinter
-
 :::{code-block} none
 vyos@vyos:~$ show hardware usb
 /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/2p, 480M
@@ -69,8 +67,6 @@ vyos@vyos:~$ show hardware usb
             |__ Port 4: Dev 7, If 2, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
             |__ Port 4: Dev 7, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
 :::
-
-% start_vyoslinter
 ```
 
 ```{opcmd} show hardware usb serial
@@ -78,8 +74,6 @@ vyos@vyos:~$ show hardware usb
 Retrieve a list and description of all connected USB serial devices. The
 device name displayed, (for example ``usb0b2.4p1.0``), can be used
 directly when accessing the serial console as console-server device.
-
-% stop_vyoslinter
 
 :::{code-block} none
 vyos@vyos$ show hardware usb serial
@@ -102,8 +96,6 @@ usb0b2.4p1.1     Quad_RS232-HS       Future Technology Devices International, Lt
 usb0b2.4p1.2     Quad_RS232-HS       Future Technology Devices International, Ltd
 usb0b2.4p1.3     Quad_RS232-HS       Future Technology Devices International, Ltd
 :::
-
-% start_vyoslinter
 ```
 
 (information-version)=
