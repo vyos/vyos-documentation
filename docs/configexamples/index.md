@@ -31,10 +31,10 @@ site-2-site-cisco
 ```
 
 ## Configuration Blueprints (autotest)
-The next pages contains automatic full tested configuration examples.
+The next pages contain fully automated configuration examples.
 
-Each lab will build an test from an external script.
-The page content will generate, so changes will not take an effect.
+Each lab will build and test from an external script.
+The page content is generated, so changes will not take effect.
 
 A host `vyos-oobm` will use as a ssh proxy. This host is just
 necessary for the Lab test.

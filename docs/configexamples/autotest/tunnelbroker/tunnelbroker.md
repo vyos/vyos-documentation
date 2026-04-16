@@ -102,7 +102,7 @@ rtt min/avg/max/mdev = 176.707/206.638/285.128/45.457 ms
 
 % start_vyoslinter
 
-### LAN Configuration
+## LAN Configuration
 At this point, your VyOS install should have full IPv6, but now your LAN devices
 need access.
 
@@ -117,7 +117,7 @@ Unlike IPv4, IPv6 is really not designed to be broken up smaller than /64. So
 if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore
 the assigned /64, and request the /48 and use that.
 
-## Single LAN Setup
+### Single LAN Setup
 Single LAN setup where eth2 is your LAN interface. Use the Tunnelbroker
 Routed /64 prefix:
 
@@ -161,7 +161,7 @@ rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 
 % start_vyoslinter
 
-## Multiple LAN/DMZ Setup
+### Multiple LAN/DMZ Setup
 That's how you can expand the example above.
 Use the `Routed /48` information. This allows you to assign a
 different /64 to every interface, LAN, or even device. Or you could break your
