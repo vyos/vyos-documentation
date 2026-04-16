@@ -75,8 +75,7 @@ IPv6 networks to query this server. This is generally a bad idea.
 ```
 
 
-```{cfgcmd} set service dns forwarding dnssec
-<off | process-no-validate | process | log-fail | validate>
+```{cfgcmd} set service dns forwarding dnssec <off | process-no-validate | process | log-fail | validate>
 
 
 The PowerDNS recursor has 5 different levels of DNSSEC processing, which can
@@ -212,16 +211,14 @@ configuration.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\>
-<name> disable
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\> <name> disable
 
 
 Disable specific record without deleting it from configuration.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\>
-<name> ttl <seconds>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\> <name> ttl <seconds>
 
 
 Set the :abbr:`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds.
@@ -235,32 +232,28 @@ support special `<name>` keywords:
 
 - `@` Use @ as record name to set the record for the root domain.
 - `any` Use any as record name to configure the record as a wildcard.
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-a <name> address <x.x.x.x>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records a <name> address <x.x.x.x>
 
 
 Set an :abbr:`A (Address)` record. Supports ``@`` and ``any`` keywords.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-aaaa <name> address <h:h:h:h:h:h:h:h>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records aaaa <name> address <h:h:h:h:h:h:h:h>
 
 
 Set an :abbr:`AAAA (IPv6 Address)` record. Supports ``@`` and ``any`` keywords.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-cname <name> target <target-domain-name>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records cname <name> target <target-domain-name>
 
 
 Set an :abbr:`CNAME (Canonical name)` record. Supports ``@`` keyword.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-naptr <name> rule <rule-number> <option> <value>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records naptr <name> rule <rule-number> <option> <value>
 
 
 Set an :abbr:`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword.
@@ -295,40 +288,35 @@ NAPTR records support the following options:
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-ns <name> target <target-name>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records ns <name> target <target-name>
 
 
 Set an :abbr:`NS (Nameserver)` record.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-ptr <name> target <target-name>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records ptr <name> target <target-name>
 
 
 Set an :abbr:`PTR (Pointer record)` record. Supports ``@`` keyword.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-spf <name> value <value>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records spf <name> value <value>
 
 
 Set an :abbr:`SPF (Sender policy framework)` record. Supports ``@`` keyword.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-srv <name> entry <entry-number> [hostname | port | priority | weight] <value>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records srv <name> entry <entry-number> [hostname | port | priority | weight] <value>
 
 
 Set an :abbr:`SRV (Service)` record. Supports ``@`` keyword.
 ```
 
 
-```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records
-txt <name> value <value>
+```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records txt <name> value <value>
 
 
 Set an :abbr:`TXT (Text)` record. Supports ``@`` keyword.
@@ -659,7 +647,6 @@ by:
 Use configured `<url>` to determine your IP address. ddclient_ will load
 `<url>` and tries to extract your IP address from the response.
 ```
-```{cfgcmd} set service dns dynamic name \<service-name\> address web skip \<pattern\>
-ddclient_ will skip any address located before the string set in `<pattern>`.
+```{cfgcmd} set service dns dynamic name \<service-name\> address web skip \<pattern\> ddclient_ will skip any address located before the string set in `<pattern>`.
 ```
 [ddclient]: https://github.com/ddclient/ddclient

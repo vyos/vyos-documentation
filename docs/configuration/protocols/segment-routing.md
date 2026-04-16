@@ -45,6 +45,7 @@ EXPERIMENTAL for FRR.
 :::
 
 ```{cfgcmd} set protocols isis segment-routing global-block high-label-value \<label-value\>
+
   Set the Segment Routing Global Block i.e. the label range used by MPLS to
   store label in the MPLS FIB for Prefix SID. Note that the block size may
   not exceed 65535.
@@ -52,8 +53,7 @@ EXPERIMENTAL for FRR.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing global-block low-label-value
-<label-value>
+```{cfgcmd} set protocols isis segment-routing global-block low-label-value <label-value>
 
 
 Set the Segment Routing Global Block i.e. the low label range used by MPLS to
@@ -62,8 +62,7 @@ not exceed 65535.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing local-block high-label-value
-<label-value>
+```{cfgcmd} set protocols isis segment-routing local-block high-label-value <label-value>
 
 
 Set the Segment Routing Local Block i.e. the label range used by MPLS to
@@ -90,8 +89,7 @@ the MPLS dataplane.
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value
-<0-65535>
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value <0-65535>
 
 
 A segment ID that contains an IP address prefix calculated by an IGP in the
@@ -100,8 +98,7 @@ indentify it
 ```
 
 
-```{cfgcmd} set protocols isis segment-routing prefix \<address\> index
-<no-php-flag | explicit-null| n-flag-clear>
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index <no-php-flag | explicit-null| n-flag-clear>
 
 
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
@@ -185,8 +182,7 @@ service provider core network. Prefix SIDs are globally unique, this value
 indentify it
 ```
 
-```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
-this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\> this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
 
 Penultimate Hop Popping that allows SR node to request to its neighbor to
 not pop the label. The ‘explicit-null’ flag allows SR node to request to its

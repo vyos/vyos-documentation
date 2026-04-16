@@ -194,9 +194,7 @@ Similar combinations are applicable for the dead-peer-detection.
 ```
 
 
-```{cfgcmd} set vpn ipsec authentication psk id \<id\>
-static ID's for authentication. In general local and remote
-address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
+```{cfgcmd} set vpn ipsec authentication psk id \<id\> static ID's for authentication. In general local and remote address ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
 ```
 
 

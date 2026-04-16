@@ -159,5 +159,4 @@ Improper IPsec configuration can lead to various issues, including:
 - **Connection is established but no traffic flows**
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
 
-```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
-  ```
+```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation ```

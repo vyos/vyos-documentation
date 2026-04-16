@@ -8,9 +8,7 @@ At the moment only [Intel® QAT] is supported
 
 ## Intel® QAT
 
-```{opcmd} show system acceleration qat
-use this command to check if there is an Intel® QAT supported Processor in
-your system.
+```{opcmd} show system acceleration qat use this command to check if there is an Intel® QAT supported Processor in your system.
 
 .. code-block:: none
 
@@ -19,8 +17,7 @@ your system.
 if there is no device the command will show ``No QAT device found``
 ```
 
-```{cfgcmd} set system acceleration qat
-    if there is a supported device, enable Intel® QAT
+```{cfgcmd} set system acceleration qat if there is a supported device, enable Intel® QAT
 
 ```
 

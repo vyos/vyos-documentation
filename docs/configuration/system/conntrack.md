@@ -7,14 +7,16 @@ stateful firewall or NAT is configured.
 ## Configure
 
 ```{cfgcmd} set system conntrack table-size \<1-50000000\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 The connection tracking table contains one entry for each connection being
 tracked by the system.
 ```
 
 ```{cfgcmd} set system conntrack expect-table-size \<1-50000000\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 The connection tracking expect table contains one entry for each expected
 connection related to an existing connection. These are generally used by
@@ -23,7 +25,8 @@ The default size of the expect table is 2048 entries.
 ```
 
 ```{cfgcmd} set system conntrack hash-size \<1-50000000\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 Set the size of the hash table. The connection tracking hash table makes
 searching the connection tracking table faster. The hash table uses
@@ -57,19 +60,22 @@ All modules are enable by default.
 ```
 
 ```{cfgcmd} set system conntrack tcp half-open-connections \<1-21474836\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 Set the maximum number of TCP half-open connections.
 ```
 
 ```{cfgcmd} set system conntrack tcp loose \<enable | disable\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 Policy to track previously established connections.
 ```
 
 ```{cfgcmd} set system conntrack tcp max-retrans \<1-2147483647\>
-    :defaultvalue:
+
+ :defaultvalue:
 
 Set the number of TCP maximum retransmit attempts.
 ```
@@ -79,18 +85,15 @@ You can define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   description <test>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> description <test>
 
 Set a rule description.
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   destination address <ip-address>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> destination address <ip-address>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   source address <ip-address>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> source address <ip-address>
 
 Set a destination and/or source address. Accepted input for ipv4:
 
@@ -116,12 +119,10 @@ Set a destination and/or source address. Accepted input for ipv4:
   Match everything except the specified range
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   destination port <value>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> destination port <value>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   source port <value>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> source port <value>
 
 Set a destination and/or source port. Accepted input:
 
@@ -135,44 +136,34 @@ The whole list can also be "negated" using '!'. For example:
 `!22,telnet,http,123,1001-1005``
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp close <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp close <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp close-wait <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp close-wait <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp established <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp established <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp fin-wait <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp fin-wait <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp last-ack <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp last-ack <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp syn-recv <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp syn-recv <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp syn-sent <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp syn-sent <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol tcp time-wait <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp time-wait <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol udp replied <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol udp replied <1-21474836>
 ```
 
-```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\>
-   protocol udp unreplied <1-21474836>
+```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol udp unreplied <1-21474836>
 
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
@@ -187,36 +178,28 @@ the future the conntrack ignore rules will be removed.
 > Customized ignore rules, based on a packet and flow selector.
 :::
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   description <text>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> description <text>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   destination address <ip-address>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> destination address <ip-address>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   destination port <port>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> destination port <port>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   inbound-interface <interface>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> inbound-interface <interface>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   protocol <protocol>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> protocol <protocol>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   source address <ip-address>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> source address <ip-address>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   source port <port>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> source port <port>
 ```
 
-```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\>
-   tcp flags [not] <text>
+```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> tcp flags [not] <text>
 
 Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for

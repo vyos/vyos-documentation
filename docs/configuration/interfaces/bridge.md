@@ -43,8 +43,7 @@ Valid interface types are: :ref:`ethernet-interface`, :ref:`bond-interface`,
 Use tab completion to list interfaces that can be bridged.
 ```
 
-```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-priority <priority>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> priority <priority>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **port priority
 for a specific member interface within a bridge.**
@@ -58,8 +57,7 @@ A **lower** priority value means **higher** precedence in path selection.
 :abbr:`STP (Spanning Tree Protocol)` considers the port priority only if
 ```
 
-```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-   cost <cost>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> cost <cost>
 
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **path cost for a
 specific member interface within the bridge.**
@@ -190,8 +188,7 @@ The following options are available:
 :var0: bridge
 ```
 
-```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-   native-vlan \<vlan-id\>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> native-vlan \<vlan-id\>
 
 **Configure the native VLAN ID for a specific member interface within a
 VLAN-aware bridge.**
@@ -206,8 +203,7 @@ Set the native VLAN ID to 2 for the member interface ``eth0``:
   set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
 
-```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-   allowed-vlan \<vlan-id\>
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> allowed-vlan \<vlan-id\>
 
 **Configure allowed VLAN IDs for a specific member interface within a
 VLAN-aware bridge.**

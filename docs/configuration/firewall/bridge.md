@@ -111,28 +111,23 @@ In firewall bridge rules, the action can be:
 - `queue`: Enqueue packet to userspace.
 - `notrack`: ignore connection tracking system. This action is only
   available in prerouting chain.
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> action
-[accept | continue | drop | jump | queue | return]
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> action
-[accept | continue | drop | jump | queue | return]
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> action
-[accept | continue | drop | jump | queue | return]
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action
-[accept | continue | drop | jump | notrack | queue | return]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | return]
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> action
-[accept | continue | drop | jump | queue | return]
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 
 
 This required setting defines the action of the current rule. If action is
@@ -140,28 +135,23 @@ set to jump, then jump-target is also needed.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-jump-target <text>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> jump-target <text>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-jump-target <text>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> jump-target <text>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-jump-target <text>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> jump-target <text>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-jump-target <text>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> jump-target <text>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-jump-target <text>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> jump-target <text>
 
 
 If action is set to ``queue``, use next command to specify the queue
@@ -169,28 +159,23 @@ target. Range is also supported:
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-queue <0-65535>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> queue <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-queue <0-65535>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> queue <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-queue <0-65535>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> queue <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-queue <0-65535>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> queue <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-queue <0-65535>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> queue <0-65535>
 
 
 Also, if action is set to ``queue``, use next command to specify the queue
@@ -198,79 +183,64 @@ options. Possible options are ``bypass`` and ``fanout``:
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-queue-options bypass
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> queue-options bypass
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-queue-options bypass
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> queue-options bypass
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-queue-options bypass
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> queue-options bypass
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-queue-options bypass
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> queue-options bypass
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-queue-options bypass
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> queue-options bypass
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-queue-options fanout
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> queue-options fanout
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-queue-options fanout
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> queue-options fanout
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-queue-options fanout
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> queue-options fanout
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-queue-options fanout
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> queue-options fanout
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-queue-options fanout
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> queue-options fanout
 ```
 Also, **default-action** is an action that takes place whenever a packet does
 not match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
-```{cfgcmd} set firewall bridge forward filter default-action
-[accept | drop]
+```{cfgcmd} set firewall bridge forward filter default-action [accept | drop]
 ```
 
 
-```{cfgcmd} set firewall bridge input filter default-action
-[accept | drop]
+```{cfgcmd} set firewall bridge input filter default-action [accept | drop]
 ```
 
 
-```{cfgcmd} set firewall bridge output filter default-action
-[accept | drop]
+```{cfgcmd} set firewall bridge output filter default-action [accept | drop]
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter default-action
-[accept | drop]
+```{cfgcmd} set firewall bridge prerouting filter default-action [accept | drop]
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> default-action
-[accept | continue | drop | jump | reject | return]
+```{cfgcmd} set firewall bridge name \<name\> default-action [accept | continue | drop | jump | reject | return]
 
 
 This sets the default action of the rule-set if a packet does not match
@@ -346,61 +316,46 @@ the specified chain.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-log-options level [emerg | alert | crit | err | warn | notice
-| info | debug]
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-log-options level [emerg | alert | crit | err | warn | notice
-| info | debug]
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-log-options level [emerg | alert | crit | err | warn | notice
-| info | debug]
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-log-options level [emerg | alert | crit | err | warn | notice
-| info | debug]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-log-options level [emerg | alert | crit | err | warn | notice
-| info | debug]
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 
 
 Define log-level. Only applicable if rule log is enabled.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-log-options group <0-65535>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options group <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-log-options group <0-65535>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> log-options group <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-log-options group <0-65535>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> log-options group <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-log-options group <0-65535>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> log-options group <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-log-options group <0-65535>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options group <0-65535>
 
 
 Define the log group to send messages to. Only applicable if rule log is
@@ -408,28 +363,23 @@ enabled.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options snapshot-length <0-9000>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> log-options snapshot-length <0-9000>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> log-options snapshot-length <0-9000>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> log-options snapshot-length <0-9000>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options snapshot-length <0-9000>
 
 
 Define length of packet payload to include in netlink message. Only
@@ -437,28 +387,23 @@ applicable if rule log is enabled and the log group is defined.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options queue-threshold <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> log-options queue-threshold <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> log-options queue-threshold <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> log-options queue-threshold <0-65535>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options queue-threshold <0-65535>
 
 
 Define the number of packets to queue inside the kernel before sending them
@@ -475,28 +420,23 @@ Provide a rule-set description to a custom firewall chain.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\>
-description <text>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> description <text>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\>
-description <text>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> description <text>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\>
-description <text>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> description <text>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\>
-description <text>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> description <text>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\>
-description <text>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> description <text>
 
 
 Provide a description for each rule.
@@ -540,112 +480,92 @@ supported in bridge firewall configuration. Same applies to firewall groups.
 
 Same specific matching criteria that can be used in bridge firewall are
 described in this section:
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> ethernet-type
-[802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> ethernet-type
-[802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> ethernet-type
-[802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> ethernet-type
-[802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> ethernet-type
-[802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 
 
 Match based on the Ethernet type of the packet.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan
-ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan
-ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan
-ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan
-ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan
-ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 
 
 Match based on the Ethernet type of the packet when it is VLAN tagged.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan id
-<0-4096>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan id <0-4096>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan id
-<0-4096>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan id <0-4096>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan id
-<0-4096>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan id <0-4096>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan id
-<0-4096>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan id <0-4096>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan id
-<0-4096>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan id <0-4096>
 
 
 Match based on VLAN identifier. Range is also supported.
 ```
 
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan priority
-<0-7>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan priority <0-7>
 ```
 
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan priority
-<0-7>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan priority <0-7>
 ```
 
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan priority
-<0-7>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan priority <0-7>
 ```
 
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan priority
-<0-7>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan priority <0-7>
 ```
 
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan priority
-<0-7>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan priority <0-7>
 
 
 Match based on VLAN priority (Priority Code Point - PCP). Range is also
@@ -657,48 +577,42 @@ supported.
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
 packets before they are sent out. This feaure provides more flexibility in
 packet handling.
-```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
-rule <1-999999> set dscp <0-63>
+```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule <1-999999> set dscp <0-63>
 
 
 Set a specific value of Differentiated Services Codepoint (DSCP).
 ```
 
 
-```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
-rule <1-999999> set mark <1-2147483647>
+```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule <1-999999> set mark <1-2147483647>
 
 
 Set a specific packet mark value.
 ```
 
 
-```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
-rule <1-999999> set tcp-mss <500-1460>
+```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule <1-999999> set tcp-mss <500-1460>
 
 
 Set the TCP-MSS (TCP maximum segment size) for the connection.
 ```
 
 
-```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
-rule <1-999999> set ttl <0-255>
+```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule <1-999999> set ttl <0-255>
 
 
 Set the TTL (Time to Live) value.
 ```
 
 
-```{cfgcmd} set firewall bridge [prerouting | forward | output] filter
-rule <1-999999> set hop-limit <0-255>
+```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule <1-999999> set hop-limit <0-255>
 
 
 Set hop limit value.
 ```
 
 
-```{cfgcmd} set firewall bridge [forward | output] filter
-rule <1-999999> set connection-mark <0-2147483647>
+```{cfgcmd} set firewall bridge [forward | output] filter rule <1-999999> set connection-mark <0-2147483647>
 
 
 Set connection mark value.

@@ -74,7 +74,8 @@ Example:
 ```
 
 ```{cfgcmd} set system watchdog timeout \<seconds\>
-   :defaultvalue:
+
+:defaultvalue:
 
 Set the watchdog timeout for normal runtime operation in seconds.
 Valid range: 1-65535 seconds
@@ -96,7 +97,8 @@ Example:
 ```
 
 ```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
-   :defaultvalue:
+
+:defaultvalue:
 
 Set the watchdog timeout during system shutdown in seconds.
 Valid range: 60-65535 seconds
@@ -118,7 +120,8 @@ Example:
 ```
 
 ```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
-   :defaultvalue:
+
+:defaultvalue:
 
 Set the watchdog timeout during system reboot in seconds.
 Valid range: 60-65535 seconds

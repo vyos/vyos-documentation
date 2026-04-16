@@ -57,16 +57,14 @@ the network
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- address-family <ipv4|ipv6>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> address-family <ipv4|ipv6>
 
 
 This command enables OpenFabric instance with <NAME> on this interface, and
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
 #### OpenFabric Global Configuration
-```{cfgcmd} set protocols openfabric domain-password \<plaintext-password|md5\>
-<password>
+```{cfgcmd} set protocols openfabric domain-password \<plaintext-password|md5\> <password>
 
 
 This command configures the authentication password for a routing domain,
@@ -101,6 +99,7 @@ in the fabric.
 #### Interface Configuration
 
 ```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval \<seconds\>
+
   This command sets hello interval in seconds on a given interface.
   The range is 1 to 600. Hello packets are used to establish and maintain
   adjacency between OpenFabric neighbors.
@@ -108,8 +107,7 @@ in the fabric.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- hello-multiplier <number>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> hello-multiplier <number>
 
 
 This command sets multiplier for hello holding time on a given
@@ -117,8 +115,7 @@ interface. The range is 2 to 100.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- metric <metric>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> metric <metric>
 
 
 This command sets default metric for circuit.
@@ -132,16 +129,14 @@ This command enables the passive mode for this interface.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- password plaintext-password <text>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> password plaintext-password <text>
 
 
 This command sets the authentication password for the interface.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- csnp-interval <seconds>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> csnp-interval <seconds>
 
 
 This command sets Complete Sequence Number Packets (CSNP) interval in seconds.
@@ -149,8 +144,7 @@ The interval range is 1 to 600.
 ```
 
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
- psnp-interval <number>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> psnp-interval <number>
 
 
 This command sets Partial Sequence Number Packets (PSNP) interval in seconds.

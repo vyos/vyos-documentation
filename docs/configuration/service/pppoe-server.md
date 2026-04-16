@@ -56,8 +56,7 @@ will be set to `<pass>`.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\>
-range <x.x.x.x-x.x.x.x | x.x.x.x/x>
+```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\> range <x.x.x.x-x.x.x.x | x.x.x.x/x>
 
 
 Use this command to define the first IP address of a pool of
@@ -95,8 +94,8 @@ accounts again.
 set service pppoe-server authentication mode radius
 ```
 
-```{cfgcmd} set service pppoe-server authentication radius
-   server <server> key <secret>
+```{cfgcmd} set service pppoe-server authentication radius server <server> key <secret>
+
   Configure RADIUS `<server>` and its required shared `<secret>` for
   communicating with the RADIUS server.
 
@@ -124,8 +123,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
-```{cfgcmd} set service pppoe-server authentication radius
- source-address <address>
+```{cfgcmd} set service pppoe-server authentication radius source-address <address>
 
 
 Source IPv4 address used in all RADIUS server queires.
@@ -138,40 +136,35 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
-```{cfgcmd} set service pppoe-server authentication radius
- server <server> port <port>
+```{cfgcmd} set service pppoe-server authentication radius server <server> port <port>
 
 
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- server <server> fail-time <time>
+```{cfgcmd} set service pppoe-server authentication radius server <server> fail-time <time>
 
 
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- server <server> disable
+```{cfgcmd} set service pppoe-server authentication radius server <server> disable
 
 
 Temporary disable this RADIUS server.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- acct-timeout <timeout>
+```{cfgcmd} set service pppoe-server authentication radius acct-timeout <timeout>
 
 
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- dynamic-author server <address>
+```{cfgcmd} set service pppoe-server authentication radius dynamic-author server <address>
 
 
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
@@ -179,40 +172,35 @@ This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- dynamic-author port <port>
+```{cfgcmd} set service pppoe-server authentication radius dynamic-author port <port>
 
 
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius dynamic-author
- key <secret>
+```{cfgcmd} set service pppoe-server authentication radius dynamic-author key <secret>
 
 
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- max-try <number>
+```{cfgcmd} set service pppoe-server authentication radius max-try <number>
 
 
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- timeout <timeout>
+```{cfgcmd} set service pppoe-server authentication radius timeout <timeout>
 
 
 Timeout to wait response from server (seconds)
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- nas-identifier <identifier>
+```{cfgcmd} set service pppoe-server authentication radius nas-identifier <identifier>
 
 
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
@@ -220,8 +208,7 @@ in DM/CoA requests.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- nas-ip-address <address>
+```{cfgcmd} set service pppoe-server authentication radius nas-ip-address <address>
 
 
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
@@ -229,16 +216,14 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- source-address <address>
+```{cfgcmd} set service pppoe-server authentication radius source-address <address>
 
 
 Source IPv4 address used in all RADIUS server queires.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- rate-limit attribute <attribute>
+```{cfgcmd} set service pppoe-server authentication radius rate-limit attribute <attribute>
 
 
 Specifies which RADIUS server attribute contains the rate limit information.
@@ -250,16 +235,14 @@ If you set a custom RADIUS attribute you must define it on both
 dictionaries at RADIUS server and client.
 :::
 
-```{cfgcmd} set service pppoe-server authentication radius
- rate-limit enable
+```{cfgcmd} set service pppoe-server authentication radius rate-limit enable
 
 
 Enables bandwidth shaping via RADIUS.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication radius
- rate-limit vendor
+```{cfgcmd} set service pppoe-server authentication radius rate-limit vendor
 
 
 Specifies the vendor dictionary, dictionary needs to be in
@@ -401,8 +384,7 @@ dictionaries in */usr/share/accel-ppp/radius*.
 
 
 ## Load Balancing
-```{cfgcmd} set service pppoe-server pado-delay \<number-of-ms\>
-sessions <number-of-sessions>
+```{cfgcmd} set service pppoe-server pado-delay \<number-of-ms\> sessions <number-of-sessions>
 
 
 Use this command to enable the delay of PADO (PPPoE Active Discovery
@@ -428,8 +410,7 @@ other servers. Last command says that this PPPoE server can serve only
 
 
 ## IPv6
-```{cfgcmd} set service pppoe-server ppp-options
- ipv6 <require | prefer | allow | deny>
+```{cfgcmd} set service pppoe-server ppp-options ipv6 <require | prefer | allow | deny>
 
 
 Specifies IPv6 negotiation preference.
@@ -442,8 +423,7 @@ Specifies IPv6 negotiation preference.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\>
- prefix <address> mask <number-of-bits>
+```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix <address> mask <number-of-bits>
 
 
 Use this comand to set the IPv6 address pool from which an PPPoE client
@@ -453,8 +433,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\>
- delegate <address> delegation-prefix <number-of-bits>
+```{cfgcmd} set service pppoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate <address> delegation-prefix <number-of-bits>
 
 
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
@@ -539,16 +518,14 @@ Script to run when session interface is completely configured and started
 
 
 ### Authentication Advanced Options
-```{cfgcmd} set service pppoe-server authentication local-users
- username <user> disable
+```{cfgcmd} set service pppoe-server authentication local-users username <user> disable
 
 
 Disable `<user>` account.
 ```
 
 
-```{cfgcmd} set service pppoe-server authentication local-users
- username <user> static-ip <address>
+```{cfgcmd} set service pppoe-server authentication local-users username <user> static-ip <address>
 
 
 Assign static IP address to `<user>` account.
@@ -562,8 +539,7 @@ Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
 ### Client IP Pool Advanced Options
-```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\>
-next-pool <NEXT-POOL-NAME>
+```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\> next-pool <NEXT-POOL-NAME>
 
 
 Use this command to define the next address pool name.

@@ -118,8 +118,7 @@ subnode.
 
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
-```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\>
-<interface> vrf <name>
+```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\> <interface> vrf <name>
 
 
 Assign interface identified by `<interface>` to VRF named `<name>`.
@@ -677,8 +676,7 @@ current unicast VRF to VPN.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-target vpn \<import|export|both\>
-         [RTLIST]
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-target vpn \<import|export|both\> [RTLIST]
 
 
 Specifies the route-target list to be attached to a route (export) or the
@@ -708,8 +706,7 @@ the same nexthop.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\>
-         [route-map <name>]
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\> [route-map <name>]
 
 
 Specifies an optional route-map to be applied to routes imported or
@@ -734,16 +731,14 @@ destination VRF’s.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vrf import
-         [route-map <name>]
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vrf import [route-map <name>]
 
 
 Specifies an optional route-map to be applied to routes imported from VRFs.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp interface \<interface\> mpls
-         forwarding
+```{cfgcmd} set vrf name \<name\> protocols bgp interface \<interface\> mpls forwarding
 
 
 It is possible to permit BGP install VPN prefixes without transport labels.
