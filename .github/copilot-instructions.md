@@ -67,38 +67,6 @@ Ansible playbook examples in `.. code-block::` use RST indentation (typically 4 
 
 Configuration pages follow this order: Theory, Configuration (cfgcmd), Examples, Known Issues, Debugging.
 
-### Grammar, Spelling, and Style
-
-Do **not** flag grammar, spelling, punctuation, or prose style issues. VyOS
-documentation reviews focus on technical correctness and rendering. Grammar
-and prose are out of scope for automated review.
-
-### Markdown Files and the Linter
-
-`doc-linter.py` only processes `.rst` and `.txt` files. It does **not** process
-`.md` files at all. Do **not** flag the following in `.md` files:
-
-- Long lines (80-character limit does not apply to `.md` sources)
-- IPv6 or public IP addresses (linter does not run on `.md`)
-- Linter suppression markers (`% stop_vyoslinter`) — these are valid MyST
-  comment syntax and do not need to match the RST form
-
-### RST-to-MyST Migration
-
-This repository is actively migrating from RST to MyST Markdown. Many `.md`
-files were machine-converted from `.rst` originals. Key rules:
-
-- `cfgcmd` and `opcmd` directive **bodies** are parsed with RST
-  `nested_parse()`. Content inside these directive bodies must use RST syntax
-  (`.. code-block:: none`, `.. note::`, `` ``text`` ``), not MyST syntax.
-  Do **not** flag RST constructs inside `cfgcmd`/`opcmd` bodies.
-- `_include/*.txt` templates use colon-fence MyST syntax at the top level
-  (`::::{cfgcmd}`) but directive bodies inside those fences are still RST.
-- `.. stop_vyoslinter` / `.. start_vyoslinter` in `.txt` templates are correct
-  RST form — the `cmdincludemd` extension strips them before rendering.
-- YAML front matter (`---` blocks) is supported natively by MyST-parser.
-- `\<param\>` angle-bracket escaping in directive arguments is intentional.
-
 ### Known False Positives
 
 Do **not** flag the following — they have been verified as correct or intentional:
