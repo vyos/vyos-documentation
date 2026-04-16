@@ -30,63 +30,49 @@ automatically created after any of the next commands.
 
 ### 2. Add regex to the script
 
-% stop_vyoslinter
-%
-% .. cfgcmd:: set service event-handler event <event-handler name> filter pattern <regex>
+```{cfgcmd} set service event-handler event \<event-handler name\> filter pattern \<regex\>
 
-% start_vyoslinter
-%
-% This is a mandatory command. Sets regular expression to match
-% against log string message.
-%
-% .. note:: The regular expression matches if and only if the entire
-%    string matches the pattern.
+This is a mandatory command. Sets regular expression to match
+against log string message.
+
+.. note:: The regular expression matches if and only if the entire
+   string matches the pattern.
+```
 
 ### 3. Add a full path to the script
 
-% stop_vyoslinter
-%
-% .. cfgcmd:: set service event-handler event <event-handler name> script path <path to script>
+```{cfgcmd} set service event-handler event \<event-handler name\> script path \<path to script\>
 
-% start_vyoslinter
-%
-% This is a mandatory command. Sets the full path to the script.
-% The script file must be executable.
+This is a mandatory command. Sets the full path to the script.
+The script file must be executable.
+```
 
 ### 4. Add optional parameters
 
-% stop_vyoslinter
-%
-% .. cfgcmd:: set service event-handler event <event-handler name> filter syslog-identifier <syslogid name>
+```{cfgcmd} set service event-handler event \<event-handler name\> filter syslog-identifier \<syslogid name\>
 
-% start_vyoslinter
-%
-% This is an optional command. Filters log messages by syslog-identifier.
+This is an optional command. Filters log messages by
+syslog-identifier.
+```
 
-% stop_vyoslinter
-%
-% .. cfgcmd:: set service event-handler event <event-handler name> script environment <env name> value <env value>
+```{cfgcmd} set service event-handler event \<event-handler name\> script environment \<env name\> value \<env value\>
 
-% start_vyoslinter
-%
-% This is an optional command. Adds environment and its value to the
-% script. Use separate commands for each environment.
-%
-% One implicit environment exists.
-%
-% * ``message``: Full message that has triggered the script.
+This is an optional command. Adds environment and its value to
+the script. Use separate commands for each environment.
 
-% stop_vyoslinter
-%
-% .. cfgcmd:: set service event-handler event <event-handler name> script arguments <arguments>
+One implicit environment exists.
 
-% start_vyoslinter
-%
-% This is an optional command. Adds arguments to the script.
-% Arguments must be separated by spaces.
-%
-% .. note:: We don't recommend to use arguments. Using environments
-%    is more preferable.
+* ``message``: Full message that has triggered the script.
+```
+
+```{cfgcmd} set service event-handler event \<event-handler name\> script arguments \<arguments\>
+
+This is an optional command. Adds arguments to the script.
+Arguments must be separated by spaces.
+
+.. note:: We don't recommend to use arguments. Using environments
+   is more preferable.
+```
 
 ## Example
 
