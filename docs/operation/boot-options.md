@@ -13,7 +13,6 @@ Run it only when necessary, and verify all input values before proceeding.
 
 VyOS provides several kernel command-line options to modify the normal boot
 process.
-
 To add an option, select the desired image in the GRUB menu at load time.
 Type **e** to edit the first line, then type **Ctrl+X** to boot.
 
@@ -47,11 +46,9 @@ These options disable certain steps in the boot process. Understand the
 
 :::{glossary}
 no-vyos-migrate
-
 : Do not perform config migration.
 
 no-vyos-firewall
-
 : Do not initialize default firewall chains, renders any firewall
   configuration unusable.
 :::
