@@ -103,6 +103,7 @@ Every router that provides access to a customer network needs to have the
 customer network (VRF + VNI) configured. To make our own lives easier,
 we utilize the same VRF table id (local routing table number) and
 VNI (Virtual Network Identifier) per tenant on all our routers.
+
 - blue uses local routing table id and VNI 2000
 - red uses local routing table id and VNI 3000
 - green uses local routing table id and VNI 4000

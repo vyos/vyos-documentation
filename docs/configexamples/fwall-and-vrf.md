@@ -67,6 +67,7 @@ And before firewall rules are shown, we need to pay attention how to configure
 and match interfaces and VRFs. In case where an interface is assigned to a
 non-default VRF, if we want to use inbound-interface or outbound-interface in
 firewall rules, we need to:
+
 - For **inbound-interface**: use the interface name with the VRF name, like
   `MGMT` or `LAN`.
 - For **outbound-interface**: use the interface name, like `eth0`, `vtun0`,

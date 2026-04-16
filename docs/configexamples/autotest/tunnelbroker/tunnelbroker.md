@@ -106,6 +106,7 @@ At this point, your VyOS install should have full IPv6, but now your LAN devices
 need access.
 
 With Tunnelbroker.net, you have two options:
+
 - Routed /64. This is the default assignment. In IPv6-land, it's good for a
   single "LAN", and is somewhat equivalent to a /24.
 - Routed /48. This is something you can request by clicking the "Assign /48"
