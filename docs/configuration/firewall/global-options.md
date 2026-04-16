@@ -114,7 +114,7 @@ The following sysctl parameter will be changed:
 
 ```{cfgcmd} set firewall global-options twa-hazards-protection [enable | disable]
 
-Enable or disable VyOS :rfc:`1337` conformance.
+Enable or disable VyOS {rfc}`1337` conformance.
 The following sysctl parameter will be changed:
 * ``net.ipv4.tcp_rfc1337``
 ```

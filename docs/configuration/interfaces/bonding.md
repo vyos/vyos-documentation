@@ -43,26 +43,11 @@ set interfaces bonding bond0 member interface eth1
 ``802.3ad``.
 The available modes are:
 * ``802.3ad``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - IEEE 802.3ad Dynamic Link Aggregation. Groups only member interfaces with
-       the same speed (e.g., 1 Gbps) and duplex settings. Member interfaces with
-       different speed and duplex settings are not included in the active bond.
-       Provides load balancing and fault tolerance. Uses the {abbr}`LACP (Link
-       Aggregation Control Protocol)` to negotiate the bond with the switch.
-   * - **Traffic distribution:**
-     - Traffic is distributed according to the **transmit hash policy**
-       (default: XOR).
-       The bonding driver applies an XOR operation to specific packet header fields,
-       generating a hash value that maps to a particular member interface. This
-       ensures the same network flow is consistently transmitted over the same member
-       interface.
-       The transmit hash policy is configured via the ``hash-policy`` option.
-   * - **Failover:**
-     - If a member interface fails, the hash is recalculated to distribute
-       traffic among the remaining active member interfaces.
+| | |
+|---|---|
+| **Description:** | IEEE 802.3ad Dynamic Link Aggregation. Groups only member interfaces with the same speed (e.g., 1 Gbps) and duplex settings. Member interfaces with different speed and duplex settings are not included in the active bond. Provides load balancing and fault tolerance. Uses the {abbr}`LACP (Link Aggregation Control Protocol)` to negotiate the bond with the switch. |
+| **Traffic distribution:** | Traffic is distributed according to the **transmit hash policy** (default: XOR). The bonding driver applies an XOR operation to specific packet header fields, generating a hash value that maps to a particular member interface. This ensures the same network flow is consistently transmitted over the same member interface. The transmit hash policy is configured via the ``hash-policy`` option. |
+| **Failover:** | If a member interface fails, the hash is recalculated to distribute traffic among the remaining active member interfaces. |
 
 :::{note}
 Not all transmit hash policies comply with 802.3ad, particularly
@@ -70,72 +55,35 @@ section 43.2.4. Using a non-compliant policy may result in out-of-order
 packet delivery.
 :::
 * ``active-backup``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - Provides fault tolerance. Only one member interface is active at a time.
-       Other member interfaces remain in a standby mode.
-   * - **Traffic distribution:**
-     - All traffic (incoming and outgoing) is routed via one active member interface.
-   * - **Failover:**
-     - If the designated member interface fails, all traffic is routed to
-       another member interface. The bonding driver sends a Gratuitous ARP
-       to update the peer's MAC address table, linking the bond's MAC address
-       to another physical port.
+| | |
+|---|---|
+| **Description:** | Provides fault tolerance. Only one member interface is active at a time. Other member interfaces remain in a standby mode. |
+| **Traffic distribution:** | All traffic (incoming and outgoing) is routed via one active member interface. |
+| **Failover:** | If the designated member interface fails, all traffic is routed to another member interface. The bonding driver sends a Gratuitous ARP to update the peer's MAC address table, linking the bond's MAC address to another physical port. |
 * ``broadcast``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - Provides maximum fault tolerance by duplicating traffic.
-   * - **Traffic distribution:**
-     - Every packet is duplicated and transmitted on **all** member interfaces.
-   * - **Failover:**
-     - Traffic flow is not interrupted as long as at least one member interface
-       remains active.
+| | |
+|---|---|
+| **Description:** | Provides maximum fault tolerance by duplicating traffic. |
+| **Traffic distribution:** | Every packet is duplicated and transmitted on **all** member interfaces. |
+| **Failover:** | Traffic flow is not interrupted as long as at least one member interface remains active. |
 * ``round-robin``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - Provides load balancing and fault tolerance.
-   * - **Traffic distribution:**
-     - Packets are transmitted in sequential order across the member interfaces
-       (e.g., packet 1 > interface A, packet 2 > interface B, etc.).
-   * - **Failover:**
-     - If a member interface fails, the sequence skips the failed interface and
-       continues with the remaining active members.
+| | |
+|---|---|
+| **Description:** | Provides load balancing and fault tolerance. |
+| **Traffic distribution:** | Packets are transmitted in sequential order across the member interfaces (e.g., packet 1 > interface A, packet 2 > interface B, etc.). |
+| **Failover:** | If a member interface fails, the sequence skips the failed interface and continues with the remaining active members. |
 * ``transmit-load-balance``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - Provides adaptive transmit load balancing and fault tolerance.
-   * - **Traffic distribution:**
-     - **Outgoing:** Distributed across all active member interfaces based on
-       the current load.
-       **Incoming:** Received by a designated member interface (active receiver).
-   * - **Failover:**
-     - If the active receiver fails, another member interface takes over as the new
-       active receiver.
+| | |
+|---|---|
+| **Description:** | Provides adaptive transmit load balancing and fault tolerance. |
+| **Traffic distribution:** | **Outgoing:** Distributed across all active member interfaces based on the current load. **Incoming:** Received by a designated member interface (active receiver). |
+| **Failover:** | If the active receiver fails, another member interface takes over as the new active receiver. |
 * ``adaptive-load-balance``
-.. list-table::
-   :widths: 20 80
-
-   * - **Description:**
-     - Provides adaptive transmit load balancing identical to
-       ``transmit-load-balance``, receive load balancing for IPv4 traffic, and fault
-       tolerance for both incoming and outgoing traffic.
-   * - **Traffic distribution:**
-     - **Outgoing:** Identical to ``transmit-load-balance``.
-       **Incoming:** Distributed based on ARP manipulation. For both local and remote
-       connections, the bonding driver intercepts ARP traffic and changes the source
-       MAC address to the MAC address of the least loaded member interface.
-       All traffic from that peer is then routed to the chosen member interface.
-   * - **Failover:**
-     - If a member interface's state changes (fails, recovers, is added, or excluded),
-       the traffic is redistributed among all active member interfaces.
+| | |
+|---|---|
+| **Description:** | Provides adaptive transmit load balancing identical to ``transmit-load-balance``, receive load balancing for IPv4 traffic, and fault tolerance for both incoming and outgoing traffic. |
+| **Traffic distribution:** | **Outgoing:** Identical to ``transmit-load-balance``. **Incoming:** Distributed based on ARP manipulation. For both local and remote connections, the bonding driver intercepts ARP traffic and changes the source MAC address to the MAC address of the least loaded member interface. All traffic from that peer is then routed to the chosen member interface. |
+| **Failover:** | If a member interface's state changes (fails, recovers, is added, or excluded), the traffic is redistributed among all active member interfaces. |
 * ``xor-hash``: Provides load balancing and fault tolerance based on a hash formula.
   Distributes traffic and handles failover identically to ``802.3ad``, but operates
   without the {abbr}`LACP (Link Aggregation Control Protocol)`.
@@ -185,101 +133,81 @@ You can assign a fixed MAC address or generate a random one for these
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> hash-policy \<policy\>
 
-   **Configure which transmit hash policy to use for distributing traffic across
-   member interfaces.**
+**Configure which transmit hash policy to use for distributing traffic across
+member interfaces.**
 
+The following policies are available:
 
-   The following policies are available:
+* ``layer2``
 
+  **Description:** Routes all traffic destined for a specific network peer through
+  the same member interface. The policy is 802.3ad-compliant.
 
-   * ``layer2``
+  **Hash inputs:** Source MAC address, destination MAC address, and Ethernet packet
+  type ID.
 
+  **Formula:**
 
-     .. list-table::
-        :widths: 20 80
+  :::{code-block} none
+  hash = source MAC address XOR destination MAC address XOR packet type ID
+  member interface number = hash modulo member interface count
+  :::
 
+* ``layer2+3``
 
-        * - **Description:**
-          - Routes all traffic destined for a specific network peer through the same
-            member interface. The policy is 802.3ad-compliant.
-        * - **Hash inputs:**
-          - Source MAC address, destination MAC address, and Ethernet packet type ID.
-        * - **Formula:**
-          - .. code-block:: none
+  **Description:** Similar to ``layer2``, routes all traffic destined for a specific
+  network peer through the same member interface and is IEEE 802.3ad-compliant. Uses
+  both Layer 2 and Layer 3 information to provide a more balanced traffic distribution.
 
+  **Hash inputs:**
+  * Source MAC address, destination MAC address, and Ethernet packet type ID.
+  * Source IP address, destination IP address. IPv6 addresses are first hashed
+    using ``IPv6_addr_hash``.
 
-               hash = source MAC address XOR destination MAC address XOR packet type ID
-               member interface number = hash modulo member interface count
+  **Formula:**
 
+  :::{code-block} none
+  hash = source MAC address XOR destination MAC address XOR packet type ID
+  hash = hash XOR source IP address XOR destination IP address
+  hash = hash XOR (hash RSHIFT 16)
+  hash = hash XOR (hash RSHIFT 8)
+  member interface number = hash modulo member interface count
+  :::
 
-   * ``layer2+3``
+  For non-IP traffic, the formula is the same as for ``layer2``.
 
+* ``layer3+4``
 
-     .. list-table::
-        :widths: 20 80
+  **Description:** Routes different connections (flows) destined for a specific
+  network peer through multiple member interfaces, but ensures each individual
+  flow is routed through only one member interface.
 
+  :::{note}
+  This policy is not fully 802.3ad-compliant. When a single TCP or UDP flow
+  contains both fragmented and unfragmented packets, the algorithm may distribute
+  them across different member interfaces. This may result in out-of-order packet
+  delivery, violating the 802.3ad standard.
+  :::
 
-        * - **Description:**
-          - Similar to ``layer2``, routes all traffic destined for a specific network
-            peer through the same member interface and is IEEE 802.3ad-compliant. Uses
-            both Layer 2 and Layer 3 information to provide a more balanced traffic distribution.
-        * - **Hash inputs:**
-          - * Source MAC address, destination MAC address, and Ethernet packet type ID.
-            * Source IP address, destination IP address. IPv6 addresses are first hashed
-              using ``IPv6_addr_hash``.
-        * - **Formula:**
-          - .. code-block:: none
+  **Hash inputs:**
+  * Source port, destination port (if available).
+  * Source IP address, destination IP address. IPv6 addresses are first hashed
+    using ``IPv6_addr_hash``.
 
+  **Formula:**
 
-               hash = source MAC address XOR destination MAC address XOR packet type ID
-               hash = hash XOR source IP address XOR destination IP address
-               hash = hash XOR (hash RSHIFT 16)
-               hash = hash XOR (hash RSHIFT 8)
-               member interface number = hash modulo member interface count
+  :::{code-block} none
+  hash = source port, destination port (as in the header)
+  hash = hash XOR source IP address XOR destination IP address
+  hash = hash XOR (hash RSHIFT 16)
+  hash = hash XOR (hash RSHIFT 8)
+  member interface number = hash modulo member interface count
+  :::
 
+  For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
+  source and destination port information is omitted.
 
-            For non-IP traffic, the formula is the same as for ``layer2``.
-
-
-   * ``layer3+4``
-
-
-     .. list-table::
-        :widths: 20 80
-
-
-        * - **Description:**
-          - Routes different connections (flows) destined for a specific network peer
-            through multiple member interfaces, but ensures each individual flow is
-            routed through only one member interface.
-
-
-:::{note}
-Not all transmit hash policies comply with 802.3ad, particularly
- or UDP flow contains both fragmented and unfragmented packets, the
- algorithm may distribute them across different member interfaces. This
- may result in out-of-order packet delivery, violating the 802.3ad standard.
- * - **Hash inputs:**
- - * Source port, destination port (if available).
- * Source IP address, destination IP address. IPv6 addresses are first hashed
- using ``IPv6_addr_hash``.
- * - **Formula:**
- - .. code-block:: none
-
-
- hash = source port, destination port (as in the header)
- hash = hash XOR source IP address XOR destination IP address
- hash = hash XOR (hash RSHIFT 16)
- hash = hash XOR (hash RSHIFT 8)
- member interface number = hash modulo member interface count
-
-
- For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
- source and destination port information is omitted.
-
-
- For non-IP traffic, the formula is the same as for ``layer2``.
-:::
+  For non-IP traffic, the formula is the same as for ``layer2``.
 ```
 
 
