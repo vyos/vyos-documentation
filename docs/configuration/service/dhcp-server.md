@@ -297,7 +297,9 @@ Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\> secret \<key-secret\> base64-encoded TSIG key secret value
+```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\> secret \<key-secret\>
+
+base64-encoded TSIG key secret value
 ```
 **DNS domains definition**
 
