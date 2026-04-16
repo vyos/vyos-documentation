@@ -160,7 +160,7 @@ All 30 Copilot comments addressed. Lint CI passing.
 Removed all 206 `% stop/start_vyoslinter` markers from 49 `.md` files (8edab482) — zero regressions.
 
 **Known remaining diffs (explained, not regressions):**
-- `operation/information` 111.7%: MyST opcmd panels with embedded code blocks render taller than RST (CSS/styling, not content error). Code blocks ARE inside panels (fix c3a980b0 applied).
+- `operation/information` 111.7%: IMPROVED RENDERING. BackstopJS confirms RST reference has USB code blocks broken/outside panels (stop_vyoslinter context issue). MyST shows them correctly inside opcmd panels. Taller = more content visible. Same class as eventhandler.
 - `configuration/protocols/static` 19.5%: per-directive rendering size difference.
 - `configuration/service/eventhandler` 251.4%: IMPROVED (RST was broken, MyST renders correctly).
 - 8 pages at 2-6%: minor stable differences.

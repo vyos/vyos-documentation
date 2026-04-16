@@ -2,11 +2,11 @@
 
 **Overview**
 
-IEEE 802.1ad_, commonly known as QinQ, is an Ethernet standard first published 
-as an amendment to 802.1q_ in 2005, then officially merged into the base 
+IEEE [802.1ad], commonly known as QinQ, is an Ethernet standard first published 
+as an amendment to [802.1q] in 2005, then officially merged into the base 
 standard in 2011.
 
-Unlike the original 802.1q_, which allows a single VLAN header per Ethernet 
+Unlike the original [802.1q], which allows a single VLAN header per Ethernet 
 frame, QinQ allows two VLAN headers per Ethernet frame, for the inner and the outer VLAN tags.
 Most often the inner VLAN tag comes from a customer while the outer tag is used by the service
 provider to differentiate between traffic of different customers.
@@ -14,7 +14,7 @@ provider to differentiate between traffic of different customers.
 
 **Frame structure and ethertypes**
 
-The IEEE 802.1ad_ (QinQ) frame includes two VLAN tags:
+The IEEE [802.1ad] (QinQ) frame includes two VLAN tags:
 
 * **The outer service tag (S-TAG):** The S-TAG is typically added by the provider.
 It uses the Ethertype 0x88a8 by default. 
@@ -33,10 +33,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -44,10 +44,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -55,10 +55,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -66,10 +66,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -77,10 +77,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -88,10 +88,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -99,10 +99,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -110,10 +110,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -121,10 +121,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -134,10 +134,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -145,10 +145,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 
@@ -156,10 +156,10 @@ In VyOS, these tag types are associated with the following CLI options:
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif-s
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 1000
 :var5: vif-c
-:var6: <vlan-id>
+:var6: \<vlan-id\>
 :var7: 20
 ```
 

@@ -32,8 +32,10 @@ The client certificate and private key must share the **same** PKI
  name.
 :::
 
-.. seealso:: For more information about managing certificates and keys, see 
-   the {ref}`PKI <pki>` section.
+:::{seealso}
+For more information about managing certificates and keys, see
+the {ref}`PKI <pki>` section.
+:::
 
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} eapol ca-certificate \<name\>
 

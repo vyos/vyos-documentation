@@ -1,10 +1,10 @@
-IEEE 802.1q_, often referred to as Dot1q, is the industry standard for 
+IEEE [802.1q], often referred to as Dot1q, is the industry standard for 
 implementing VLANs on Ethernet networks. It defines VLAN tagging for 
 Ethernet frames and outlines procedures for bridges and switches. The 
 standard also includes quality-of-service prioritization (IEEE 802.1p) 
 and defines the Generic Attribute Registration Protocol.
 
-VLAN-aware network segments  (i.e., IEEE 802.1q_ conformant) use VLAN tags. 
+VLAN-aware network segments  (i.e., IEEE [802.1q] conformant) use VLAN tags. 
 When a frame enters such a segment, a tag is added to indicate VLAN membership. 
 Each frame can belong to only one VLAN. If a frame arrives without a tag, it 
 is assumed to be part of the native VLAN.
@@ -35,7 +35,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -43,7 +43,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -51,7 +51,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -59,7 +59,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -67,7 +67,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -75,7 +75,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -83,7 +83,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -91,7 +91,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -99,7 +99,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -109,7 +109,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -117,7 +117,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
@@ -125,7 +125,7 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var0: {{ var0 }}
 :var1: {{ var1 }}
 :var2: vif
-:var3: <vlan-id>
+:var3: \<vlan-id\>
 :var4: 10
 ```
 
