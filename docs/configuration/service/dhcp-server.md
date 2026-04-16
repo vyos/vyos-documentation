@@ -1056,6 +1056,7 @@ vyos@vyos:~$
 Static mappings aren't shown. To show all states, use
 `show dhcp server leases state all`.
 :::
+
 ```{opcmd} show dhcp server leases origin [local | remote]
 
 Show statuses of all active leases granted by local (this server) or
@@ -1350,6 +1351,7 @@ IPv6 address      State    Last communication    Lease expiration     Remaining 
 Static mappings aren't shown. To show all states, use `show dhcp
 server leases state all`.
 :::
+
 ```{opcmd} show dhcpv6 server leases pool \<pool\>
 
 Show only leases in the specified pool.

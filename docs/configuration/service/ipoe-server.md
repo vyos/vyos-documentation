@@ -261,6 +261,7 @@ The default attribute is `Filter-Id`.
 If you set a custom RADIUS attribute you must define it on both
 dictionaries at RADIUS server and client.
 :::
+
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit enable
 
 Enables bandwidth shaping via RADIUS.

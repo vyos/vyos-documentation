@@ -140,6 +140,7 @@ behavior: because synchronized conntrack state is purged after the purge
 timeout, set **VRRP preempt-delay** to ≥ **purge-timeout** so mastership
 can be restored before conntrack state is purged.
 :::
+
 ```{cfgcmd} set service conntrack-sync disable-syslog
 
 Disable connection logging via Syslog.

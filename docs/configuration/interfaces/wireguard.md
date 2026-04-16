@@ -191,6 +191,7 @@ You cannot assign the same `allowed-ips` to multiple WireGuard
 peers. This is a strict design restriction. For more information, check the
 [WireGuard mailing list].
 :::
+
 ```{cfgcmd} set interfaces wireguard \<interface\> private-key \<private-key\>
 
   Assign a private key to the specified WireGuard interface.
@@ -434,6 +435,7 @@ From a security perspective, it is not recommended to let a third
 party create and share the private key for a secure connection. You should
 create the private portion yourself and hand out only the public key.
 :::
+
 ```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server \<ip|fqdn\> address \<client-ip\>
 **Generate a client configuration file that establishes a connection to the
 specified interface.**

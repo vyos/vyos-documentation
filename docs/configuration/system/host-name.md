@@ -53,6 +53,7 @@ Do *not* manually edit `/etc/hosts`. This file will automatically be
 regenerated on boot based on the settings in this section, which means you'll
 lose all your manual edits. Instead, configure static host mappings as follows.
 :::
+
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> inet \<address\>
 
 Create a static hostname mapping which will always resolve the name

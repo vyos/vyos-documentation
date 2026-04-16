@@ -1450,6 +1450,7 @@ If an interface is attached to a non-default VRF, when using
 **inbound-interface**, use the VRF name. For example:
 `set firewall ipv6 forward filter rule 10 inbound-interface name MGMT`
 :::
+
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\>
 
 inbound-interface group <iface_group>
@@ -1499,6 +1500,7 @@ If an interface is attached to a non-default VRF, when using
 **outbound-interface**, use the physical interface name. For example:
 `set firewall ipv6 forward filter rule 10 outbound-interface name eth0`
 :::
+
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\>
 
 outbound-interface group <iface_group>

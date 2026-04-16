@@ -160,6 +160,7 @@ Security)`-encrypted remote logging, ensure you have:
 {abbr}`TLS (Transport Layer Security)`-encrypted remote logging is
 **not supported** over **UDP**.
 :::
+
 ```{cfgcmd} set system syslog remote \<address\> tls
 
 Enable TLS-encrypted remote logging.

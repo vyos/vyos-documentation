@@ -167,6 +167,7 @@ Publish a port for the container.
 Port publishing cannot be used with **network**. For this purpose, a workaround
 using destination NAT and static IP assignment for the container is available.
 :::
+
 ```{cfgcmd} set container name \<name\> volume \<volumename\> source \<path\>
 ```
 
