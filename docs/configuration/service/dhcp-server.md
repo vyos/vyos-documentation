@@ -30,7 +30,6 @@ The domain-name parameter should be the domain name that will be appended to
 the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
 Option 015).
 
-
 This is the configuration parameter for the entire shared network definition.
 All subnets will inherit this configuration item if not specified locally.
 ```
@@ -42,7 +41,6 @@ The domain-name parameter should be the domain name used when completing DNS
 request where no full FQDN is passed. This option can be given multiple times
 if you need multiple search domains (DHCP Option 119).
 
-
 This is the configuration parameter for the entire shared network definition.
 All subnets will inherit this configuration item if not specified locally.
 ```
@@ -52,7 +50,6 @@ All subnets will inherit this configuration item if not specified locally.
 
 Inform client that the DNS server can be found at `<address>`.
 
-
 This is the configuration parameter for the entire shared network definition.
 All subnets will inherit this configuration item if not specified locally.
 Multiple DNS servers can be defined.
@@ -60,9 +57,7 @@ Multiple DNS servers can be defined.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> option
-
-vendor-option <option-name>
-
+   vendor-option <option-name>
 
 This configuration parameter lets you specify a vendor-option for the
 entire shared network definition. All subnets will inherit this
@@ -100,9 +95,7 @@ network.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-subnet-id <id>
-
+   subnet-id <id>
 
 This configuration parameter is required and must be unique to each subnet.
 It is required to map subnets to lease file entries.
@@ -110,9 +103,7 @@ It is required to map subnets to lease file entries.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-option default-router <address>
-
+   option default-router <address>
 
 This is a configuration parameter for the `<subnet>`, saying that as part of
 the response, tell the client that the default gateway can be reached at
@@ -121,34 +112,26 @@ the response, tell the client that the default gateway can be reached at
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-option name-server <address>
-
+   option name-server <address>
 
 This is a configuration parameter for the subnet, saying that as part of the
 response, tell the client that the DNS server can be found at `<address>`.
-
 
 Multiple DNS servers can be defined.
 ```
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-lease <time>
-
+   lease <time>
 
 Assign the IP address to this machine for `<time>` seconds.
-
 
 The default value is 86400 seconds which corresponds to one day.
 ```
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-range <n> start <address>
-
+   range <n> start <address>
 
 Create DHCP address range with a range id of `<n>`. DHCP leases are taken
 from this pool. The pool starts at address `<address>`.
@@ -156,9 +139,7 @@ from this pool. The pool starts at address `<address>`.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-range <n> stop <address>
-
+   range <n> stop <address>
 
 Create DHCP address range with a range id of `<n>`. DHCP leases are taken
 from this pool. The pool stops with address `<address>`.
@@ -166,22 +147,17 @@ from this pool. The pool stops with address `<address>`.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-exclude <address>
-
+   exclude <address>
 
 Always exclude this address from any defined range. This address will never
 be assigned by the DHCP server.
-
 
 This option can be specified multiple times.
 ```
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-option domain-name <domain-name>
-
+   option domain-name <domain-name>
 
 The domain-name parameter should be the domain name that will be appended to
 the client's hostname to form a fully-qualified domain-name (FQDN) (DHCP
@@ -190,9 +166,7 @@ Option 015).
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-option domain-search <domain-name>
-
+   option domain-search <domain-name>
 
 The domain-name parameter should be the domain name used when completing DNS
 request where no full FQDN is passed. This option can be given multiple times
@@ -201,9 +175,7 @@ if you need multiple search domains (DHCP Option 119).
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\>
-
-option vendor-option <option-name>
-
+   option vendor-option <option-name>
 
 This configuration parameter lets you specify a vendor-option for the
 subnet specified within the shared network definition. An example for
@@ -242,15 +214,12 @@ Enables DDNS globally.
 These settings can be configured on the global level and overridden on the scope
 level, i.e. for individual shared networks or subnets. See examples below.
 ```{cfgcmd} set service dhcp-server dynamic-dns-update send-updates [ enable
-
-| disable ]
-
+   | disable ]
 
 If set to ``enable`` on global level, updates for all scopes will be enabled,
 except if explicitly set to ``disable`` on the scope level. If set to ``disable``,
 updates will only be sent for scopes, where ``send-updates`` is explicity
 set to ``enable``.
-
 
 This model is followed for a few behavioral settings below: if the option is
 not set, the setting is inherited from the parent scope. You can override the
@@ -259,9 +228,7 @@ parent scope setting by setting the option explicitly.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update override-no-update [ enable
-
-| disable ]
-
+   | disable ]
 
 VyOS will ignore client request not to update DNS records and send DDNS
 update requests regardless.
@@ -269,9 +236,7 @@ update requests regardless.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update override-client-update [ enable
-
-| disable ]
-
+   | disable ]
 
 VyOS will override client DDNS request settings and always update both
 forward and reverse DNS records.
@@ -279,9 +244,7 @@ forward and reverse DNS records.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update update-on-renew [ enable
-
-| disable ]
-
+   | disable ]
 
 Issue DDNS update requests on DHCP lease renew. In busy networks this may
 generate a lot of traffic.
@@ -289,9 +252,7 @@ generate a lot of traffic.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update conflict-resolution [ enable
-
-| disable ]
-
+   | disable ]
 
 Use RFC-4703 conflict resolution. This algorithm helps in situation when
 multiple clients reserve same IP addresses or advertise identical hostnames.
@@ -300,24 +261,18 @@ Should be used in most situations.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update replace-client-name [ never
-
-| always | when-present | when-not-present ]
-
+   | always | when-present | when-not-present ]
 
 * **never**: use the name sent by the client. If the client didn't provide any,
   do not generate one. This is the default behavior
 
-
 * **always**: always generate a name for the client
-
 
 * **when-present**: replace the name the client sent with a generated one, if
   the client didn't send any, do not generate one
 
-
 * **when-not-present**: use the name sent by the client. If the client didn't
   send any, generate one for the client
-
 
 The names are generated using ``generated-prefix``, ``qualifying-suffix`` and the
 client's IP address string.
@@ -343,9 +298,7 @@ TTL of the DNS record as a percentage of the DHCP lease time.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update hostname-char-set
-
-<character string>
-
+   <character string>
 
 Characters, that are considered invalid in the client name. They will be replaced
 with ``hostname-char-replacement`` string.
@@ -353,9 +306,7 @@ with ``hostname-char-replacement`` string.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update hostname-char-replacement
-
-<character string>
-
+   <character string>
 
 Replacement string for the invalid characters defined by ``hostname-char-set``.
 ```
@@ -365,9 +316,7 @@ Replacement string for the invalid characters defined by ``hostname-char-set``.
 This is the global list of TSIG keys for DDNS updates. They need to be specified by
 the name in the DNS domain definitions.
 ```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\>
-
-algorithm <algorithm>
-
+   algorithm <algorithm>
 
 Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 ``hmac-sha1``, ``hmac-sha224``, ``hmac-sha256``, ``hmac-sha384``, ``hmac-sha512``
@@ -375,9 +324,7 @@ Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\>
-
-secret <key-secret>
-
+   secret <key-secret>
 
 base64-encoded TSIG key secret value
 ```
@@ -387,27 +334,21 @@ base64-encoded TSIG key secret value
 This is global configuration of DNS servers for the updatable forward and reverse
 DNS domains. For every domain multiple DNS servers can be specified.
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain
-
-<domain-name> key-name <tsig-key-name>
-
+   <domain-name> key-name <tsig-key-name>
 
 TSIG key used for the domain.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain
-
-<domain-name> dns-server <number> address <ip-address>
-
+   <domain-name> dns-server <number> address <ip-address>
 
 IP address of the DNS server.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain
-
-<domain-name> dns-server <number> port <port>
-
+   <domain-name> dns-server <number> port <port>
 
 UDP port of the DNS server. ``53`` is the default.
 ```
@@ -490,9 +431,7 @@ Availability can act in two different modes:
 DHCP High Availability must be configured explicitly by the following
 statements on both servers:
 ```{cfgcmd} set service dhcp-server high-availability mode [active-active
-
-| active-passive]
-
+   | active-passive]
 
 Define operation mode of High Availability feature. Default value if command
 is not specified is `active-active`
@@ -516,43 +455,27 @@ cluster.
 
 Define the name of the peer server to establish and identify the HA (High Availability) connection.
 
-
 .. note::
 
-
-
    Make sure the specified value does not conflict with the system host-name.
-
 
 ```
 
 
 ```{cfgcmd} set service dhcp-server high-availability status \<primary | secondary\>
 
-
 The primary and secondary statements determines whether the server is primary
 or secondary.
 
-
 .. note::
 
-
-
    In order for the primary and the secondary DHCP server to keep
-
-
     their lease tables in sync, they must be able to reach each other on TCP
     port 647. If you have firewall rules in effect, adjust them accordingly.
 
-
-
 .. hint::
 
-
-
    The dialogue between HA partners is neither encrypted nor
-
-
     authenticated. Since most DHCP servers exist within an organisation's own
     secure Intranet, this would be an unnecessary overhead. However, if you
     have DHCP HA peers whose communications traverse insecure networks,
@@ -568,9 +491,7 @@ You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
 inside the subnet definition but can be outside of the range statement.
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
-
-<subnet> static-mapping <description> mac <address>
-
+   <subnet> static-mapping <description> mac <address>
 
 Create a new DHCP static mapping named `<description>` which is valid for
 the host identified by its MAC `<address>`.
@@ -578,9 +499,7 @@ the host identified by its MAC `<address>`.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
-
-<subnet> static-mapping <description> duid <identifier>
-
+   <subnet> static-mapping <description> duid <identifier>
 
 Create a new DHCP static mapping named `<description>` which is valid for
 the host identified by its DHCP unique identifier (DUID) `<identifier>`.
@@ -588,9 +507,7 @@ the host identified by its DHCP unique identifier (DUID) `<identifier>`.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet
-
-<subnet> static-mapping <description> ip-address <address>
-
+   <subnet> static-mapping <description> ip-address <address>
 
 Static DHCP IP address assign to host identified by `<description>`. IP
 address must be inside the `<subnet>` which is defined but can be outside
@@ -598,17 +515,11 @@ the dynamic range created with :cfgcmd:`set service dhcp-server
 shared-network-name <name> subnet <subnet> range <n>`. If no ip-address is
 specified, an IP from the dynamic pool is used.
 
-
 This is useful, for example, in combination with hostfile update.
-
 
 .. hint::
 
-
-
    This is the equivalent of the host block in dhcpd.conf of
-
-
     isc-dhcpd.
 
 ```
@@ -670,9 +581,7 @@ how you want the server to behave.
 
 **Client Class definition**
 ```{cfgcmd} set service dhcp-server client-class \<name\> relay-agent-information circuit-id
-
-<value>
-
+   <value>
 
 Create a new client class (if not already defined) and set it to match on
 the "Circuit ID" part of the Option 82 field in the DHCP request. This is
@@ -683,9 +592,7 @@ otherwise. e.g. ``e1-5`` and ``0x65312d35`` are the same
 
 
 ```{cfgcmd} set service dhcp-server client-class \<name\> relay-agent-information remote-id
-
-<value>
-
+   <value>
 
 Create a new client class (if not already defined) and set it to match on
 the "Remote ID" part of the Option 82 field in the DHCP request. This is
@@ -696,9 +603,7 @@ same
 ```
 **Client Class application**
 ```{cfgcmd} set service dhcp-server shared-network-name \<subnet-name\> subnet
-
-<CIDR> client-class <class-name>
-
+   <CIDR> client-class <class-name>
 
 Applies the Client Class with the name `<class-name>` to the subnet `<subnet-name>`.
 This means that whenever the client class matches a request it is always
@@ -707,9 +612,7 @@ routed to this subnet definition first.
 
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<subnet-name\> subnet
-
-<CIDR> range <range-name> client-class <class-name>
-
+   <CIDR> range <range-name> client-class <class-name>
 
 Applies the Client Class with the name `<class-name>` to the range
 `<range-name>` which belongs to subnet `<subnet-name>`. This means that whenever the
@@ -1128,9 +1031,7 @@ section.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<subnet\>
-
-subnet-id <id>
-
+   subnet-id <id>
 
 This configuration parameter is required and must be unique to each subnet.
 It is required to map subnets to lease file entries.
@@ -1138,9 +1039,7 @@ It is required to map subnets to lease file entries.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> lease-time {default | maximum | minimum}
-
+   <prefix> lease-time {default | maximum | minimum}
 
 The default lease time for DHCPv6 leases is 24 hours. This can be changed by
 supplying a ``default-time``, ``maximum-time`` and ``minimum-time``. All
@@ -1149,9 +1048,7 @@ values need to be supplied in seconds.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option nis-domain <domain-name>
-
+   <prefix> option nis-domain <domain-name>
 
 A :abbr:`NIS (Network Information Service)` domain can be set to be used for
 DHCPv6 clients.
@@ -1159,9 +1056,7 @@ DHCPv6 clients.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option nisplus-domain <domain-name>
-
+   <prefix> option nisplus-domain <domain-name>
 
 The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
 domain is similar to the NIS domain one:
@@ -1169,27 +1064,21 @@ domain is similar to the NIS domain one:
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option nis-server <address>
-
+   <prefix> option nis-server <address>
 
 Specify a NIS server address for DHCPv6 clients.
 ```
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option nisplus-server <address>
-
+   <prefix> option nisplus-server <address>
 
 Specify a NIS+ server address for DHCPv6 clients.
 ```
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option sip-server <address | fqdn>
-
+   <prefix> option sip-server <address | fqdn>
 
 Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
 address of Fully Qualified Domain Name for all DHCPv6 clients.
@@ -1197,9 +1086,7 @@ address of Fully Qualified Domain Name for all DHCPv6 clients.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> option sntp-server-address <address>
-
+   <prefix> option sntp-server-address <address>
 
 A SNTP server address can be specified for DHCPv6 clients.
 ```
@@ -1209,9 +1096,7 @@ A SNTP server address can be specified for DHCPv6 clients.
 To hand out individual prefixes to your clients the following configuration is
 used:
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> prefix-delegation prefix <pd-prefix> prefix-length <lenght>
-
+   <prefix> prefix-delegation prefix <pd-prefix> prefix-length <lenght>
 
 Delegate prefixes from `<pd-prefix>` to clients in subnet `<prefix>`. Range
 is defined by `<lenght>` in bits, 32 to 64.
@@ -1219,9 +1104,7 @@ is defined by `<lenght>` in bits, 32 to 64.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> prefix-delegation prefix <pd-prefix> delegated-length <lenght>
-
+   <prefix> prefix-delegation prefix <pd-prefix> delegated-length <lenght>
 
 Hand out prefixes of size `<length>` in bits from `<pd-prefix>` to clients
 in subnet `<prefix>` when the request for prefix delegation.
@@ -1229,9 +1112,7 @@ in subnet `<prefix>` when the request for prefix delegation.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet
-
-<prefix> prefix-delegation prefix <pd-prefix> excluded-prefix <exclude-prefix>
-
+   <prefix> prefix-delegation prefix <pd-prefix> excluded-prefix <exclude-prefix>
 
 Exclude `<exclude-prefix>` from `<pd-prefix>`.
 ```
