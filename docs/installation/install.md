@@ -15,60 +15,60 @@ with a permanent installation on a hard drive or other storage device.
 :widths: 15 35 15 25 15 15
 
 * - Release Type
-- Description
-- Release Cycle
-- Intended Use
-- Access to Images
-- Access to Source
+  - Description
+  - Release Cycle
+  - Intended Use
+  - Access to Images
+  - Access to Source
 
 * - Nightly (Current)
-- Automatically built from the current branch. Always up to date
-with cutting edge development but guaranteed to contain bugs.
-- Every night
-- Developing VyOS, testing new features, experimenting.
-- Everyone
-- Everyone
+  - Automatically built from the current branch. Always up to date
+    with cutting edge development but guaranteed to contain bugs.
+  - Every night
+  - Developing VyOS, testing new features, experimenting.
+  - Everyone
+  - Everyone
 
 * - Stream
-- VyOS Stream serves as a technology preview and a quality gate
-for the upcoming LTS release. Allows everyone to try new features
-and check if they work well or need improvements.
-- Every quarter
-- Non-critical production environments, preparing for the LTS
-release.
-- Everyone
-- Everyone
+  - VyOS Stream serves as a technology preview and a quality gate
+    for the upcoming LTS release. Allows everyone to try new features
+    and check if they work well or need improvements.
+  - Every quarter
+  - Non-critical production environments, preparing for the LTS
+    release.
+  - Everyone
+  - Everyone
 
 * - Release Candidate
-- Rather stable. All development focuses on testing and hunting
-down remaining bugs following the feature freeze.
-- Irregularly until EPA comes out
-- Labs, small offices and non-critical production systems backed
-by a high-availability setup.
-- Everyone
-- Everyone
+  - Rather stable. All development focuses on testing and hunting
+    down remaining bugs following the feature freeze.
+  - Irregularly until EPA comes out
+  - Labs, small offices and non-critical production systems backed
+    by a high-availability setup.
+  - Everyone
+  - Everyone
 
 * - Early Production Access
-- Highly stable with no known bugs. Needs to be tested repeatedly
-under different conditions before it can become the final
-release.
-- Irregularly until LTS comes out
-- Non-critical production environments, preparing for the LTS
-release.
-- Everyone
-- Everyone
+  - Highly stable with no known bugs. Needs to be tested repeatedly
+    under different conditions before it can become the final
+    release.
+  - Irregularly until LTS comes out
+  - Non-critical production environments, preparing for the LTS
+    release.
+  - Everyone
+  - Everyone
 
 * - Long-Term Support
-- Guaranteed to be stable and carefully maintained for several
-years after the release. No features are introduced but security
-updates are released in a timely manner.
-- Every major version
-- Large-scale enterprise networks, internet service providers,
-critical production environments that call for minimum downtime.
-- Subscribers, contributors, non-profits, emergency services,
-academic institutions
-- Subscribers, contributors, non-profits, emergency services,
-academic institutions
+  - Guaranteed to be stable and carefully maintained for several
+    years after the release. No features are introduced but security
+    updates are released in a timely manner.
+  - Every major version
+  - Large-scale enterprise networks, internet service providers,
+    critical production environments that call for minimum downtime.
+  - Subscribers, contributors, non-profits, emergency services,
+    academic institutions
+  - Subscribers, contributors, non-profits, emergency services,
+    academic institutions
 :::
 
 ## Hardware requirements

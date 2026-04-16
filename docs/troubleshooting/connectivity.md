@@ -12,9 +12,7 @@ section and are omitted from the output here):
 Send ICMP echo requests to destination host. There are multiple options to
 ping, including VRF support.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ ping 10.1.1.1
   Possible completions:
@@ -47,9 +45,7 @@ ping, including VRF support.
 
 Trace path to target.
 
-
 .. code-block:: none
-
 
   vyos@vyos:~$ traceroute
   Possible completions:
