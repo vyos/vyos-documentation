@@ -46,26 +46,26 @@ VyOS includes a built-in SSTP server. For more information, see
 ```{cfgcmd} set interfaces sstpc \<interface\> no-default-route
 
 Request an IP address from the SSTP server without installing a default route.
+
 Example:
 
 .. code-block:: none
 
-set interfaces sstpc sstpc0 no-default-route
+  set interfaces sstpc sstpc0 no-default-route
 
-.. note::
-
-   Introduced in VyOS 1.4, this command inverts the logic of the former
+.. note:: Introduced in VyOS 1.4, this command inverts the logic of the former
    ``default-route`` CLI option.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> default-route-distance \<distance\>
 
 Configure the distance for the default gateway provided by the SSTP server.
+
 Example:
 
 .. code-block:: none
 
-set interfaces sstpc sstpc0 default-route-distance 220
+  set interfaces sstpc sstpc0 default-route-distance 220
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> no-peer-dns
@@ -76,6 +76,7 @@ Disable the installation of advertised DNS nameservers on the local system.
 ```{cfgcmd} set interfaces sstpc \<interface\> server \<address\>
 
 **Configure the remote SSTP server address for the client connection.**
+
 The address can be either an IP address or a :abbr:`FQDN (Fully Qualified
 Domain Name)`.
 ```
@@ -84,25 +85,26 @@ Domain Name)`.
 
 **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
+
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
 to send packets larger than the specified size. This helps prevent connection
 issues if :abbr:`PMTUD (Path MTU Discovery)` fails.
+
 The following options are available:
+
 * ``mss``: Sets the MSS to a specific value in bytes.
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 40 bytes for
-IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
-This option is recommended to automatically set the proper value.
+  IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
+  This option is recommended to automatically set the proper value.
 
-.. note::
-
-   Introduced in VyOS 1.4, this command replaces the older ``set firewall
-
-options interface <name> adjust-mss <value>`` syntax.
+.. note:: Introduced in VyOS 1.4, this command replaces the older ``set firewall
+   options interface <name> adjust-mss <value>`` syntax.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> ip disable-forwarding
 
 **Configure the interface for host or router behavior.**
+
 If configured, the interface switches to host mode, and IPv4 forwarding is
 disabled on it.
 ```
@@ -112,15 +114,18 @@ disabled on it.
 **Configure source IP address validation using**
 :abbr:`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
 :rfc:`3704`.
+
 The following options are available:
+
 * ``strict``: Each incoming packet’s source IP address is checked against the
-:abbr:`FIB (Forwarding Information Base)`. If the interface is not the best
-route back to that source, validation fails, and the packet is dropped.
+  :abbr:`FIB (Forwarding Information Base)`. If the interface is not the best
+  route back to that source, validation fails, and the packet is dropped.
 * ``loose``: Each incoming packet’s source IP address is checked against the
-:abbr:`FIB (Forwarding Information Base)`. If the source IP address is
-unreachable through any interface, validation fails.
+  :abbr:`FIB (Forwarding Information Base)`. If the source IP address is
+  unreachable through any interface, validation fails.
 * ``disable``: No source IP address validation is performed. All incoming
-packets are accepted.
+  packets are accepted.
+
 :rfc:`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
