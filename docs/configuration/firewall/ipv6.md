@@ -703,6 +703,7 @@ This function works for both individual addresses and address groups.
 
 
 % stop_vyoslinter
+
 .. code-block:: none
 
 

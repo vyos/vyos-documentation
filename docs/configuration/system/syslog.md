@@ -113,10 +113,14 @@ By default, the standard port 514 is used.
 
 **Configure log transmission in the RFC 5424 format.**
 The RFC 5424 format includes the timezone in the timestamp. For example:
+
 .. code-block:: none
+
   <34>1 2003-10-11T22:14:15.003-07:00 mymachine.example.com su - ID47 - BOM’su root’ failed for lonvick on /dev/pts/8.
 By default, log messages are sent in the RFC 3164 format. For example:
+
 .. code-block:: none
+
   <34>Oct 11 22:14:15 mymachine su: ‘su root’ failed for lonvick on /dev/pts/8
 ```
 
@@ -194,7 +198,9 @@ The following authentication modes are available:
   :abbr:`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
   value preconfigured with:
+
   .. code-block:: none
+
     set system syslog remote <address> tls permitted-peer <peer>
 * ``certvalid``: Verifies the server certificate is signed by a trusted
   :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
@@ -203,7 +209,9 @@ The following authentication modes are available:
     Authority)`.
   * The :abbr:`CN (Common Name)` in the certificate matches the value
     preconfigured with:
+
   .. code-block:: none
+
     set system syslog remote <address> tls permitted-peer <peer>
   This is a **recommended** secure mode for production environments.
 

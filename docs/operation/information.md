@@ -111,7 +111,9 @@ directly when accessing the serial console as console-server device.
 Return the currently running VyOS version and build information. This
 includes the name of the release train, e.g., ``sagitta`` on VyOS 1.4,
 and ``circinus`` on VyOS 1.5.
+
 .. code-block:: none
+
   vyos@vyos:~$ show version
   Version:          VyOS 1.4-rolling-202106270801
   Release Train:    sagitta
@@ -132,7 +134,9 @@ and ``circinus`` on VyOS 1.5.
 ```{opcmd} show version kernel
 
 Return the version number of the currently running Linux kernel.
+
 .. code-block:: none
+
   vyos@vyos:~$ show version kernel
   5.10.46-amd64-vyos
 ```
@@ -142,7 +146,9 @@ Return the version number of the currently running Linux kernel.
 Return the version number of FRR (Free Range Routing - https://frrouting.org/)
 used in this release. This is the routing control plane and a successor to GNU
 Zebra and Quagga.
+
   .. code-block:: none
+
     vyos@vyos:~$ show version frr
     FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
     Copyright 1996-2005 Kunihiro Ishiguro, et al.

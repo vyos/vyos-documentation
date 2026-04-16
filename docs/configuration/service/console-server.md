@@ -122,7 +122,9 @@ Show currently connected users.
 ```{opcmd} connect console \<device\>
 
 Locally connect to serial port identified by `<device>`.
+
 .. code-block:: none
+
   vyos@vyos-r1:~$ connect console usb0b2.4p1.0
   [Enter `^Ec?' for help]
   [-- MOTD -- VyOS Console Server]

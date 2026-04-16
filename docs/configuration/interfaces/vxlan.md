@@ -170,7 +170,9 @@ required for each VNI.
 The VXLAN interface can be added to a bridge.
 The following example shows an SVD configuration with multiple VLAN-to-VNI
 mappings.
+
 .. code-block:: none
+
  set interfaces bridge br0 member interface vxlan0
  set interfaces vxlan vxlan0 parameters external
  set interfaces vxlan vxlan0 source-interface 'dum0'

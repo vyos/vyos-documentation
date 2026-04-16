@@ -66,7 +66,9 @@ Trace path to target.
 
 However, another helper is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
+
 .. code-block:: none
+
   vyos@vyos:~$ mtr 10.62.212.12
   My traceroute  [v0.85]
   vyos (0.0.0.0)
@@ -95,7 +97,9 @@ IPv6 uses different techniques to discover its Neighbors/topology.
 
 Discover routers via eth0.
 Example:
+
 .. code-block:: none
+
   vyos@vyos:~$ force ipv6-rd interface eth0
   Soliciting ff02::2 (ff02::2) on eth0...
   Hop limit                 :           60 (      0x3c)
@@ -128,7 +132,9 @@ Example:
 ```{opcmd} force ipv6-nd interface \<interface\> address \<ipv6-address\>
 
 Example:
+
 .. code-block:: none
+
   vyos@vyos:~$ force ipv6-nd interface eth0 address fc00:470:f1cd:101::1
   Soliciting fc00:470:f1cd:101::1 (fc00:470:f1cd:101::1) on eth0...
   Target link-layer address: 00:98:2B:F8:3F:11 from fc00:470:f1cd:101::1

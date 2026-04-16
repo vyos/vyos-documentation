@@ -78,7 +78,9 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 ```{opcmd} show lldp neighbors
 
 Displays information about all neighbors discovered via LLDP.
+
 .. code-block:: none
+
   vyos@vyos:~$ show lldp neighbors
   Capability Codes: R - Router, B - Bridge, W - Wlan r - Repeater, S - Station
   D - Docsis, T - Telephone, O - Other
@@ -92,7 +94,9 @@ Displays information about all neighbors discovered via LLDP.
 ```{opcmd} show lldp neighbors detail
 
 Get detailed information about LLDP neighbors.
+
 .. code-block:: none
+
   vyos@vyos:~$ show lldp neighbors detail
   -------------------------------------------------------------------------------
   LLDP neighbors:

@@ -168,7 +168,9 @@ display captured network traffic information for all configured interfaces.
 
 Show flow accounting information for given `<interface>`.
 % stop_vyoslinter
+
 .. code-block:: none
+
   vyos@vyos:~$ show flow-accounting interface eth0
   IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
   ----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
@@ -187,7 +189,9 @@ Show flow accounting information for given `<interface>`.
 Show flow accounting information for given `<interface>` for a specific host
 only.
 % stop_vyoslinter
+
 .. code-block:: none
+
   vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
   IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
   ----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------

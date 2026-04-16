@@ -25,7 +25,9 @@ Delete default route from the system.
 ```{opcmd} show ip route 0.0.0.0
 
 Show routing table entry for the default route.
+
 .. code-block:: none
+
   vyos@vyos:~$ show ip route 0.0.0.0
   Routing entry for 0.0.0.0/0
   Known via "static", distance 10, metric 0, best

@@ -350,7 +350,9 @@ also to display them.
 ```{opcmd} show pki ca
 
 Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
+
 .. code-block:: none
+
   vyos@vyos:~$ show pki ca
   Certificate Authorities:
   Name            Subject                                                  Issuer CN          Issued               Expiry               Private Key    Parent
@@ -368,7 +370,9 @@ Show only information for specified Certificate Authority.
 ```{opcmd} show pki certificate
 
 Show a list of installed certificates
+
 .. code-block:: none
+
   vyos@vyos:~$ show pki certificate
   Certificates:
   Name       Type    Subject CN             Issuer CN      Issued               Expiry               Revoked    Private Key    CA Present

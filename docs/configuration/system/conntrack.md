@@ -88,7 +88,9 @@ Set a rule description.
 
    source address <ip-address>
 Set a destination and/or source address. Accepted input for ipv4:
+
 .. code-block:: none
+
   set system conntrack timeout custom ipv4 rule <1-999999> [source | destination] address
   Possible completions:
   <x.x.x.x>            IPv4 address to match
@@ -118,7 +120,9 @@ Set a destination and/or source address. Accepted input for ipv4:
 
    source port <value>
 Set a destination and/or source port. Accepted input:
+
 .. code-block:: none
+
   <port name>    Named port (any name in /etc/services, e.g., http)
   <1-65535>      Numbered port
   <start>-<end>  Numbered port range (e.g., 1001-1005)

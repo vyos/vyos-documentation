@@ -2374,7 +2374,9 @@ This shows you a summary of rule-sets and groups.
 ```{opcmd} show firewall ipv4 name \<name\>
 
 This command will give an overview of a single rule-set.
+
 .. code-block:: none
+
   vyos@vyos:~$ show firewall ipv4 input filter
   Ruleset Information
   ---------------------------------

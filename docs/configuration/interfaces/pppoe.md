@@ -80,7 +80,9 @@ continuously; if the connection fails, it is reestablished immediately.
 
 Request an IP address from the PPPoE server without installing a default route.
 Example:
+
 .. code-block:: none
+
 set interfaces pppoe pppoe0 no-default-route
 :::{note}
 Introduced in VyOS 1.4, this command inverts the logic of the former
@@ -92,7 +94,9 @@ Introduced in VyOS 1.4, this command inverts the logic of the former
 
 Configure the distance for the default gateway provided by the PPPoE server.
 Example:
+
 .. code-block:: none
+
 set interfaces pppoe pppoe0 default-route-distance 220
 ```
 
@@ -247,7 +251,9 @@ disabled on it.
 ```{opcmd} show interfaces pppoe \<interface\>
 
 Show detailed information about a specific PPPoE interface.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces pppoe pppoe0
   pppoe0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1492 qdisc pfifo_fast state UNKNOWN group default qlen 3
   link/ppp
@@ -262,7 +268,9 @@ Show detailed information about a specific PPPoE interface.
 ```{opcmd} show interfaces pppoe \<interface\> queue
 
 Show queue information for a specific PPPoE interface.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces pppoe pppoe0 queue
   qdisc pfifo_fast 0: root refcnt 2 bands 3 priomap  1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
   Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)

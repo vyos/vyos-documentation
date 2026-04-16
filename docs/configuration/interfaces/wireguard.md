@@ -407,7 +407,9 @@ Show a list of all WireGuard interfaces.
 ```{opcmd} show interfaces wireguard \<interface\>
 
 Show general information about a specific WireGuard interface.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wireguard wg01
   interface: wg01
   address: 10.0.0.1/24

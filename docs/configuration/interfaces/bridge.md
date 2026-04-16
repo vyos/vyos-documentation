@@ -198,7 +198,9 @@ interface. The bridge strips the VLAN tag from outgoing traffic matching this
 ID.
 **Example:**
 Set the native VLAN ID to 2 for the member interface ``eth0``:
+
 .. code-block:: none
+
   set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
 
@@ -210,11 +212,15 @@ VLAN-aware bridge.**
 Enter a single VLAN ID or a range of VLAN IDs separated by a hyphen.
 **Example:**
 To allow VLAN ID 4 on member interface ``eth0``:
+
 .. code-block:: none
+
   set interfaces bridge br1 member interface eth0 allowed-vlan 4
 **Example:**
 To allow VLAN IDs 6 through 8 on member interface ``eth0``:
+
 .. code-block:: none
+
   set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 ```
 
@@ -307,7 +313,9 @@ vyos@vyos# show interfaces bridge br100
 ```{opcmd} show bridge
 
 Show the status of member interfaces for all configured bridges.
+
 .. code-block:: none
+
   vyos@vyos:~$ show bridge
   3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 master br0 state forwarding
   priority 32 cost 100
@@ -318,7 +326,9 @@ Show the status of member interfaces for all configured bridges.
 ```{opcmd} show bridge \<name\> fdb
 
 Show the :abbr:`FDB (Forwarding Database)` for the specified bridge.
+
 .. code-block:: none
+
   vyos@vyos:~$ show bridge br0 fdb
   50:00:00:08:00:01 dev eth1 vlan 20 master br0 permanent
   50:00:00:08:00:01 dev eth1 vlan 10 master br0 permanent
@@ -348,7 +358,9 @@ The :abbr:`MDB (Multicast group Database)` is populated by :abbr:`IGMP
 (Internet Group Management Protocol)`/:abbr:`MLD (Multicast Listener
 Discovery)` snooping and lists the multicast groups currently active on the
 bridge.
+
 .. code-block:: none
+
   vyos@vyos:~$ show bridge br0 mdb
   dev br0 port br0 grp ff02::1:ff00:0 temp vid 1
   dev br0 port br0 grp ff02::2 temp vid 1
@@ -360,7 +372,9 @@ bridge.
 
 Show the learned :abbr:`MAC (Media Access Control)` address table for the
 specified bridge.
+
 .. code-block:: none
+
   vyos@vyos:~$ show bridge br100 macs
   port no mac addr                is local?       ageing timer
   1     00:53:29:44:3b:19       yes                0.00

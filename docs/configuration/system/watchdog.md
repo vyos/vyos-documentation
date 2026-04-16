@@ -61,7 +61,9 @@ If a module is specified but a different driver is actually bound
  to ``watchdog0``, VyOS will emit a warning during commit.
 :::
 Example:
+
 .. code-block:: none
+
   set system watchdog module softdog
 ```
 
@@ -78,7 +80,9 @@ This is the interval during which the system must respond to the watchdog.
 If the system does not respond within this time, the watchdog will trigger
 a reboot.
 Example:
+
 .. code-block:: none
+
   set system watchdog timeout 30
 ```
 
@@ -95,7 +99,9 @@ Setting this value too low (below 120 seconds) may cause
  is 120 seconds.
 :::
 Example:
+
 .. code-block:: none
+
   set system watchdog shutdown-timeout 180
 ```
 
@@ -112,7 +118,9 @@ Setting this value too low (below 120 seconds) may cause
  is 120 seconds.
 :::
 Example:
+
 .. code-block:: none
+
   set system watchdog reboot-timeout 180
 ```
 

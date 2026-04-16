@@ -206,7 +206,9 @@ and the gateway address as BFD peer destination address.
 ```{opcmd} show bfd static routes
 
 Showing BFD monitored static routes
+
 .. code-block:: none
+
   Showing BFD monitored static routes:
   Next hops:
   VRF default IPv4 Unicast:

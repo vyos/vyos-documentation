@@ -218,7 +218,9 @@ Show WWAN module firmware information.
 ```{opcmd} show interfaces wwan \<interface\> imei
 
 Show WWAN module IMEI.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 imei
   ESN: '0'
   IMEI: '358xxxxxxxxxxxx'
@@ -228,7 +230,9 @@ Show WWAN module IMEI.
 ```{opcmd} show interfaces wwan \<interface\> imsi
 
 Show the IMSI of the associated SIM card.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 imsi
   IMSI: '262xxxxxxxxxxxx'
 ```
@@ -236,7 +240,9 @@ Show the IMSI of the associated SIM card.
 ```{opcmd} show interfaces wwan \<interface\> model
 
 Show WWAN module model.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 model
   Model: 'MC7710'
 ```
@@ -244,7 +250,9 @@ Show WWAN module model.
 ```{opcmd} show interfaces wwan \<interface\> msisdn
 
 Show the MSISDN of the associated SIM card.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 msisdn
   MSISDN: '4917xxxxxxxx'
 ```
@@ -252,7 +260,9 @@ Show the MSISDN of the associated SIM card.
 ```{opcmd} show interfaces wwan \<interface\> revision
 
 Show WWAN module hardware revision.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 revision
   Revision: 'SWI9200X_03.05.29.03ap r6485 CNSHZ-ED-XP0031 2014/12/02 17:53:15'
 ```
@@ -260,7 +270,9 @@ Show WWAN module hardware revision.
 ```{opcmd} show interfaces wwan \<interface\> signal
 
 Show signal information for the cellular connection.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 signal
   LTE:
   RSSI: '-74 dBm'
@@ -275,7 +287,9 @@ Show signal information for the cellular connection.
 ```{opcmd} show interfaces wwan \<interface\> sim
 
 Show WWAN module SIM card information.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces wwan wwan0 sim
   Provisioning applications:
   Primary GW:   slot '1', application '1'

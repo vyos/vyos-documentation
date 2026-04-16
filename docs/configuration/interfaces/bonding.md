@@ -801,7 +801,9 @@ Show brief interface information.
 ```{opcmd} show interfaces bonding \<interface\>
 
 Show detailed interface information.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces bonding bond5
   bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
   link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
@@ -816,7 +818,9 @@ Show detailed interface information.
 
 Show detailed information about the underlying physical links on the given
 bonding interface.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces bonding bond5 detail
   Ethernet Channel Bonding Driver: v3.7.1 (April 27, 2011)
   Bonding Mode: IEEE 802.3ad Dynamic link aggregation

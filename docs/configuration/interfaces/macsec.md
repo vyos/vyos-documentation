@@ -117,7 +117,9 @@ The following values are valid:
 
 Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) :abbr:`MKA (MACsec
 Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
+
 .. code-block:: none
+
   vyos@vyos:~$ generate macsec mka cak gcm-aes-128
   20693b6e08bfa482703a563898c9e3ad
 ```
@@ -126,7 +128,9 @@ Key Agreement protocol)` :abbr:`CAK (MACsec Connectivity Association Key)`.
 
 Generate an :abbr:`MKA (MACsec Key Agreement protocol)` :abbr:`CAK (MACsec
 Connectivity Association Key)`.
+
 .. code-block:: none
+
   vyos@vyos:~$ generate macsec mka ckn
   88737efef314ee319b2cbf30210a5f164957d884672c143aefdc0f5f6bc49eb2
 ```
@@ -134,7 +138,9 @@ Connectivity Association Key)`.
 ```{opcmd} show interfaces macsec
 
 Show all MACsec interfaces.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces macsec
   17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
   cipher suite: GCM-AES-128, using ICV length 16
@@ -147,7 +153,9 @@ Show all MACsec interfaces.
 ```{opcmd} show interfaces macsec \<interface\>
 
 Show information for a specific MACsec interface.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces macsec macsec1
   17: macsec1: protect on validate strict sc off sa off encrypt on send_sci on end_station off scb off replay off
   cipher suite: GCM-AES-128, using ICV length 16

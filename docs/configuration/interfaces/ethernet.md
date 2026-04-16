@@ -349,7 +349,9 @@ Uplink/core tracking.
 ```{opcmd} show interfaces ethernet
 
 Show brief interface information.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces ethernet
   Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
   Interface        IP Address                        S/L  Description
@@ -362,7 +364,9 @@ Show brief interface information.
 ```{opcmd} show interfaces ethernet \<interface\>
 
 Show detailed interface information.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces ethernet eth0
   eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
   link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
@@ -379,7 +383,9 @@ Show detailed interface information.
 ```{opcmd} show interfaces ethernet \<interface\> physical
 
 Show interface hardware-level and driver details.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces ethernet eth0 physical
   Settings for eth0:
   Supported ports: [ TP ]
@@ -419,7 +425,9 @@ Show interface hardware-level and driver details.
 ```{opcmd} show interfaces ethernet \<interface\> physical offload
 
 Show the status of the interface offloading features.
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces ethernet eth0 physical offload
   rx-checksumming               on
   tx-checksumming               on
@@ -451,7 +459,9 @@ Show the status of the interface offloading features.
 
 Show information about the transceiver module plugged into the interface
 (e.g., SFP+, QSFP).
+
 .. code-block:: none
+
   vyos@vyos:~$ show interfaces ethernet eth5 transceiver
   Identifier              : 0x03 (SFP)
   Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)

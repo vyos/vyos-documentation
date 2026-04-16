@@ -289,7 +289,9 @@ Already learned known_hosts files of clients need an update as the
 Re-generated a known pub/private keyfile which can be used to connect to
 other services (e.g. RPKI cache).
 Example:
+
 .. code-block:: none
+
   vyos@vyos:~$ generate ssh client-key /config/auth/id_rsa_rpki
   Generating public/private rsa key pair.
   Your identification has been saved in /config/auth/id_rsa_rpki.
@@ -319,7 +321,9 @@ will be created.
  ``<location>`` can be a local path or a URL pointing at a remote file.
  Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
 Example:
+
 .. code-block:: none
+
   alyssa@vyos:~$ generate public-key-command user alyssa path sftp://example.net/home/alyssa/.ssh/id_rsa.pub
   # To add this key as an embedded key, run the following commands:
   configure

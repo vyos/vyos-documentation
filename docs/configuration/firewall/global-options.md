@@ -32,13 +32,17 @@ VyOS system), not IN or OUT traffic.
 **firewall global-options all-ping** affects only LOCAL traffic
  and always behaves in the most restrictive way
 :::
+
 .. code-block:: none
+
   set firewall global-options all-ping enable
 When you set this command, VyOS answers every ICMP echo request addressed
 to itself, but that response occurs only if no other rule drops or rejects
 local echo requests. In case of conflict, VyOS does not answer ICMP echo
 requests.
+
 .. code-block:: none
+
   set firewall global-options all-ping disable
 When you set this command, VyOS answers no ICMP echo requests addressed to
 itself, regardless of where they come from or what specific rules accept

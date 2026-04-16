@@ -185,7 +185,9 @@ Supported channel width set.
 Channel availability for HT40- and HT40+ is limited. The following
  table lists channels permitted for HT40- and HT40+ according to IEEE
  802.11n Annex J. Channel availability may vary by location.
+
  .. code-block:: none
+
  freq              HT40-           HT40+
  2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
  5 GHz             40,48,56,64     36,44,52,60

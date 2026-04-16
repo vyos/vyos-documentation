@@ -167,7 +167,9 @@ not have a rule-set configured as defined in
 ```{opcmd} show firewall zone-policy
 
 Display a basic summary of the zone configuration.
+
 .. code-block:: none
+
   vyos@vyos:~$ show firewall zone-policy
   Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
   ------  ------------  -----------  ---------------  ---------------
@@ -182,7 +184,9 @@ Display a basic summary of the zone configuration.
 ```{opcmd} show firewall zone-policy zone \<zone\>
 
 Display a basic summary of a particular zone.
+
 .. code-block:: none
+
   vyos@vyos:~$ show firewall zone-policy zone WAN
   Zone    Interfaces    From Zone    Firewall IPv4    Firewall IPv6
   ------  ------------  -----------  ---------------  ---------------

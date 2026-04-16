@@ -402,7 +402,9 @@ LDAP protocol version. Defaults to 3 if not specified.
 ```{cfgcmd} set service webproxy url-filtering disable
 
 Disables web filtering without discarding configuration.
+
 .. code-block:: none
+
   set service webproxy url-filtering disable
 ```
 ## Operation
@@ -416,7 +418,9 @@ first. Otherwise you will not be able to commit the config changes.
 ```{opcmd} update webproxy blacklists
 
 Download/Update complete blacklist
+
 .. code-block:: none
+
   vyos@vyos:~$ update webproxy blacklists
   Warning: No url-filtering blacklist installed
   Would you like to download a default blacklist? [confirm][y]
