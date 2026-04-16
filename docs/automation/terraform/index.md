@@ -23,10 +23,6 @@ terraformGoogle
 terraformvSphere
 ```
 
-% stop_vyoslinter
-
-% start_vyoslinter
-
 [ansible]: https://docs.ansible.com
 [install]: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 [terraform]: https://developer.hashicorp.com/terraform/intro

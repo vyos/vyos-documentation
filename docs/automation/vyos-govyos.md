@@ -45,12 +45,12 @@ import (
   "os"
 )
 
-hostname := os.Getenv('VYDEVICE_HOSTNAME')
-port := os.Getenv('VYDEVICE_PORT')
+hostname := os.Getenv("VYDEVICE_HOSTNAME")
+port := os.Getenv("VYDEVICE_PORT")
 url := fmt.Sprintf("https://%s:%s", hostname, port)
 
-apikey := os.Getenv('VYDEVICE_APIKEY')
-verify_ssl := os.Getenv('VYDEVICE_VERIFY_SSL')
+apikey := os.Getenv("VYDEVICE_APIKEY")
+verify_ssl := os.Getenv("VYDEVICE_VERIFY_SSL")
 
 client := vyos.NewClient(nil).WithToken(apikey).WithURL(url)
 

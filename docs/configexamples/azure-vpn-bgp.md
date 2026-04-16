@@ -115,7 +115,7 @@ set protocols bgp neighbor 10.0.0.4 timers holdtime '30'
 set protocols bgp neighbor 10.0.0.4 timers keepalive '10'
 ```
 
-- **Important**: Disable connected check&#32;
+- **Important**: Disable connected check
 
 ```none
 set protocols bgp neighbor 10.0.0.4 disable-connected-check

@@ -14,7 +14,7 @@ Additionally, you can use Ansible for provisioning.
 On this page you'll learn how to:
 
 - Create the necessary files for Terraform and Ansible.
-- Use Terraform to create a single instance on Azure and use Ansible for
+- Use Terraform to create a single instance on vSphere and use Ansible for
   provisioning.
 
 ## Prepare to deploy VyOS with Terraform on vSphere
@@ -385,9 +385,5 @@ ansible_ssh_pass: 12345678
 
 All files related to deploying VyOS on vSpherewith Terraform and Ansible
 can be found in the [vyos-automation] repository.
-
-% stop_vyoslinter
-
-% start_vyoslinter
 
 [vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main

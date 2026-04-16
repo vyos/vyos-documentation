@@ -208,9 +208,5 @@ r11-proxy:
 
 % start_vyoslinter
 
-% stop_vyoslinter
-
-% start_vyoslinter
-
 [netmiko]: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.netmiko_mod.html#module-salt.modules.netmiko_mod
 [salt]: https://docs.saltproject.io/en/latest/contents.html
