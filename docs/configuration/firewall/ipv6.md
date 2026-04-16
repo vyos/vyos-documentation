@@ -1658,6 +1658,7 @@ set firewall ipv6 input filter rule 1000 state invalid
 
 
 ### Rule-set overview
+
 ```{opcmd} show firewall
 
 Show a basic firewall overview for all rule-sets, not only for IPv6:
@@ -1796,6 +1797,7 @@ This will show you a summary of rule-sets and groups
   SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
   IPV6-WAN_IN-20
 ```
+
 ```{opcmd} show firewall ipv6 [forward | input | output] filter
 ```
 
@@ -1860,6 +1862,7 @@ the group is used.
   LAN           network_group       VyOS_MANAGEMENT-30       192.168.200.0/24
   WAN_IN-30
 ```
+
 ```{opcmd} show firewall statistics
 
 Show statistics of all rule-sets since the last boot.
@@ -1868,16 +1871,22 @@ Show statistics of all rule-sets since the last boot.
 
 ```{opcmd} show log firewall
 ```
+
 ```{opcmd} show log firewall ipv6
 ```
+
 ```{opcmd} show log firewall ipv6 [forward | input | output | name]
 ```
+
 ```{opcmd} show log firewall ipv6 [forward | input | output] filter
 ```
+
 ```{opcmd} show log firewall ipv6 name \<name\>
 ```
+
 ```{opcmd} show log firewall ipv6 [forward | input | output] filter rule \<rule\>
 ```
+
 ```{opcmd} show log firewall ipv6 name \<name\> rule \<rule\>
 
 Show firewall logs for all firewalls, all IPv6 firewalls, specific hooks,
@@ -1919,6 +1928,7 @@ firewall {
 }
 ```
 ### Update geoip database
+
 ```{opcmd} update geoip
 
 Command used to update GeoIP database and firewall sets.

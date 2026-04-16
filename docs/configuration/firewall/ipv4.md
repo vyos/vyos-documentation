@@ -1677,6 +1677,7 @@ set firewall ipv4 input filter rule 1000 state invalid
 
 
 ### Rule-set overview
+
 ```{opcmd} show firewall
 
 This will show you a basic firewall overview, for all rule-sets, not
@@ -1808,8 +1809,10 @@ This shows you a summary of rule-sets and groups.
   SUPPORT                  ipv6_address_group  IPV6-VyOS_MANAGEMENT-20  2001:db8::5
   IPV6-WAN_IN-20
 ```
+
 ```{opcmd} show firewall ipv4 [forward | input | output] filter
 ```
+
 ```{opcmd} show firewall ipv4 name \<name\>
 
 This command will give an overview of a single rule-set.
@@ -1825,8 +1828,10 @@ This command will give an overview of a single rule-set.
   5        jump      all                 0        0  iifname "eth2"  jump NAME_VyOS_MANAGEMENT
   default  accept    all
 ```
+
 ```{opcmd} show firewall ipv4 [forward | input | output] filter rule <1-999999>
 ```
+
 ```{opcmd} show firewall ipv4 name \<name\> rule \<1-999999\>
 
 This command gives an overview of a rule in a single rule-set, plus
@@ -1855,16 +1860,22 @@ This will show you statistics of all rule-sets since the last boot.
 
 ```{opcmd} show log firewall
 ```
+
 ```{opcmd} show log firewall ipv4
 ```
+
 ```{opcmd} show log firewall ipv4 [forward | input | output | name]
 ```
+
 ```{opcmd} show log firewall ipv4 [forward | input | output] filter
 ```
+
 ```{opcmd} show log firewall ipv4 name \<name\>
 ```
+
 ```{opcmd} show log firewall ipv4 [forward | input | output] filter rule \<rule\>
 ```
+
 ```{opcmd} show log firewall ipv4 name \<name\> rule \<rule\>
 
 Show the logs of all firewall; show all IPv4 firewall logs; show all logs
@@ -1915,6 +1926,7 @@ firewall {
 }
 ```
 ### Update geoip database
+
 ```{opcmd} update geoip
 
 Command to update GeoIP database and firewall sets.

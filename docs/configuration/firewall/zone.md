@@ -54,6 +54,7 @@ The zone configuration moved from ``zone-policy zone <name>`` to
 :::
 
 ## Configuration
+
 As an alternative to applying policy to an interface directly, you can
 create a zone-based firewall to simplify configuration when multiple
 interfaces belong to the same security zone. Instead of applying rule-sets
@@ -69,6 +70,7 @@ The following steps are required to create a zone-based firewall:
 3. Apply the rule-set to the zones
 
 ### Define a Zone
+
 To define a zone, set up either one with interfaces or as the local zone.
 
 ```{cfgcmd} set firewall zone \<name\> interface \<interface\>
@@ -114,6 +116,7 @@ Add a meaningful description.
 ```
 
 ### Defining a Rule-Set
+
 Zone-based firewall rule-sets define traffic from a *Source Zone* to a
 *Destination Zone*.
 
@@ -128,6 +131,7 @@ It is helpful to name the rule-sets in the format
 identifiable.
 
 ### Applying a Rule-Set to a Zone
+
 After you define a rule-set, apply it to the source and destination zones.
 The configuration syntax anchors to the destination zone, with each of the
 source zone rule-sets listed against the destination.
@@ -147,6 +151,7 @@ set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
 ```
 
 ### Applying a Default Rule-Set to a Zone
+
 When a destination zone shares a common rule-set for multiple source zones,
 or when you require a complex set of default policies, you can apply an
 optional default rule-set. The default rule-set applies to all zones that do

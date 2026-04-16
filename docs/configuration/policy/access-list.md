@@ -38,6 +38,7 @@ criteria could be applied to destination or source parameters:
 ```
 
 ### IPv6 Access List
+
 Basic filtering could also be applied to IPv6 traffic.
 
 ```{cfgcmd} set policy access-list6 \<text\>
