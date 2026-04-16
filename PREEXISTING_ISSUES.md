@@ -12,8 +12,9 @@ for the current migration PR. Process separately.
 - `docs/_include/interface-vlan-8021q.txt:131`
 
 **Issue:** Both files end with `.. include:: /_include/common-references.txt`
-(RST syntax). These files are rendered via `cmdincludemd` (MyST context), so the RST
-`.. include::` directive is silently ignored. `common-references.txt` contains
+(RST syntax). These files are rendered via `cmdincludemd` (MyST context),
+so the RST `.. include::` directive is silently ignored.
+`common-references.txt` contains
 markdown link definitions (e.g., `[802.1q]: url`) that are not injected.
 
 The template bodies also use RST-style inline reference syntax (`802.1q_`) which

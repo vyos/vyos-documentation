@@ -175,6 +175,8 @@ In the above examples, 1,2,ffff are all chosen by you. You can use 1-ffff
 
 So, when your LAN is eth1, your DMZ is eth2, your cameras are on eth3, etc:
 
+% stop_vyoslinter
+
 ```none
 set interfaces ethernet eth1 address '2001:470:xxxx:1::1/64'
 set service router-advert interface eth1 name-server '2001:470:20::2'
@@ -188,6 +190,8 @@ set interfaces ethernet eth3 address '2001:470:xxxx:3::1/64'
 set service router-advert interface eth3 name-server '2001:470:20::2'
 set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64
 ```
+
+% start_vyoslinter
 
 Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
 'valid-lifetime' and 'preferred-lifetime' are set to default values of
