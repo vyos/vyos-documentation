@@ -48,6 +48,7 @@ the address changes. To avoid having to manually update
 `source-address` each time the dynamic IP changes, an address of
 '0.0.0.0' can be specified.
 :::
+
 Setup the IPv6 default route to the tunnel interface
 
 ```{literalinclude} _include/vyos-wan_tun0.conf
