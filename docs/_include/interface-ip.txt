@@ -1,3 +1,5 @@
+.. stop_vyoslinter
+
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} ip adjust-mss \<mss | clamp-mss-to-pmtu\>
 
 **Configure the** :abbr:`MSS (Maximum Segment Size)` **advertised in outgoing 
@@ -227,3 +229,5 @@ DDoS attacks. For asymmetric or other complex routing scenarios, use loose
 mode.
 
 ::::
+
+.. start_vyoslinter

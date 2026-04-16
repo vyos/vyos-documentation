@@ -1,4 +1,4 @@
-% stop_vyoslinter
+.. stop_vyoslinter
 
 [accel-ppp]: https://accel-ppp.org/
 [Secure Socket Tunneling Protocol]: https://en.wikipedia.org/wiki/Secure_Socket_Tunneling_Protocol
@@ -8,4 +8,4 @@
 [VyOS CI]: https://ci.vyos.net
 [vyos-build]: https://github.com/vyos/vyos-build
 
-% start_vyoslinter
+.. start_vyoslinter

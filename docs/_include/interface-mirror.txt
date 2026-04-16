@@ -1,3 +1,5 @@
+.. stop_vyoslinter
+
 :abbr:`SPAN (Switched Port Analyser)` port mirroring copies inbound and 
 outbound traffic from one interface to another specified interface.  
 
@@ -42,3 +44,5 @@ set interfaces {{ var0 }} {{ var1 }} mirror egress {{ var2 }}
 
 ```
 ::::
+
+.. start_vyoslinter

@@ -1,3 +1,5 @@
+.. stop_vyoslinter
+
 **Overview**
 
 IEEE 802.1X is a security standard that enforces access control at the data link layer. It blocks all traffic on a port until the connecting device proves 
@@ -86,3 +88,5 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
+
+.. start_vyoslinter

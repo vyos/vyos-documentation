@@ -1,3 +1,5 @@
+.. stop_vyoslinter
+
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} disable-flow-control
 
 **Disable Ethernet flow control (IEEE 802.3x pause frames) on the interface.** 
@@ -15,3 +17,5 @@
 set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} disable-flow-control
 ```
 ::::
+
+.. start_vyoslinter

@@ -1,3 +1,5 @@
+.. stop_vyoslinter
+
 ::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} per-client-thread
 
 **Enable threaded mode for all NAPI instances of the specified network device.**
@@ -13,3 +15,5 @@ set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }}
 
 ```
 ::::
+
+.. start_vyoslinter
