@@ -189,7 +189,6 @@ warning once the configured group limit is reached while adding new groups.
 ### Interface specific commands
 
 ```{cfgcmd} set protocols pim interface \<interface\> igmp
-
    join <multicast-address> source-address <IP-address>
 Use this command to allow the selected interface to join a multicast
 group defining the multicast address you want to join and the source
@@ -197,14 +196,12 @@ IP address too.
 ```
 
 ```{cfgcmd} set protocols pim interface \<interface\> igmp
-
    query-interval <seconds>
 Use this command to configure in the selected interface the IGMP
 host query interval (1-1800) in seconds that PIM will use.
 ```
 
 ```{cfgcmd} set protocols pim interface \<interface\> igmp
-
    query-max-response-time <n>
 Use this command to configure in the selected interface the IGMP
 query response timeout value (10-250) in deciseconds. If a report is

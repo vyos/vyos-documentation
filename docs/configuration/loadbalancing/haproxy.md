@@ -176,7 +176,6 @@ Send a Proxy Protocol version 2 header (binary format).
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> ssl
-
  ca-certificate <ca-certificate>
 
 
@@ -193,7 +192,6 @@ certificate.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\>
-
 http-response-headers <header-name> value <header-value>
 
 
@@ -202,7 +200,6 @@ Set custom HTTP headers to include in all responses from the backend.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> logging facility
-
 <facility> level <level>
 
 
@@ -214,7 +211,6 @@ see tables in the :ref:`syslog` configuration section.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout check
-
 <seconds>
 
 
@@ -229,7 +225,6 @@ Value range 1-3600 seconds.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout server
-
 <seconds>
 
 
@@ -259,7 +254,6 @@ Specify the minimum required TLS version 1.2 or 1.3
 
 
 ```{cfgcmd} set load-balancing haproxy global-parameters logging
-
 facility <facility> level <level>
 
 
@@ -312,7 +306,6 @@ expecting a successful response code in the 200-399 range.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
-
  method <method>
 
 
@@ -321,7 +314,6 @@ Set the HTTP method: ``OPTION``, ``GET``, ``POST``, or ``PUT``.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
-
  uri <path>
 
 
@@ -330,7 +322,6 @@ Set the endpoint to use for health checks.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
-
  expect <condition>
 
 

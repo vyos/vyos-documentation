@@ -44,7 +44,6 @@ Use tab completion to list interfaces that can be bridged.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-
 priority <priority>
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **port priority
 for a specific member interface within a bridge.**
@@ -59,7 +58,6 @@ A **lower** priority value means **higher** precedence in path selection.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-
    cost <cost>
 **Configure the** :abbr:`STP (Spanning Tree Protocol)` **path cost for a
 specific member interface within the bridge.**

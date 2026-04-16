@@ -33,3 +33,4 @@ docs/superpowers/
 
 # os specific
 .DS_Store
+.claude/

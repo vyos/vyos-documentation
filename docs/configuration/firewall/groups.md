@@ -195,12 +195,10 @@ commands to define dynamic IPv4 and IPv6 address groups:
 Add description to firewall groups:
 
 ```{cfgcmd} set firewall group dynamic-group address-group \<name\>
-
    description <text>
 ```
 
 ```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\>
-
    description <text>
 ```
 
@@ -215,7 +213,6 @@ Commands used for this task are:
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group
-
    destination-address address-group <name>
 ```
 
@@ -223,7 +220,6 @@ Commands used for this task are:
 ```
 
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group
-
    destination-address address-group <name>
 ```
 
@@ -233,7 +229,6 @@ Commands used for this task are:
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group
-
    source-address address-group <name>
 ```
 
@@ -241,7 +236,6 @@ Commands used for this task are:
 ```
 
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group
-
    source-address address-group <name>
 ```
 

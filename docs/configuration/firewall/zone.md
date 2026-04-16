@@ -133,12 +133,10 @@ The configuration syntax anchors to the destination zone, with each of the
 source zone rule-sets listed against the destination.
 
 ```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\>
-
    firewall name <ipv4-rule-set-name>
 ```
 
 ```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\>
-
    firewall ipv6-name <ipv6-rule-set-name>
 ```
 

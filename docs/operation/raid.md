@@ -192,7 +192,6 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 
 
 ```{opcmd} show raid \<RAID‐1‐device\>
-
 shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
 set and is in the process of being resynchronized.
 

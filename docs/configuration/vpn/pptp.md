@@ -231,7 +231,6 @@ Specifies IPv6 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>
-
    mask <number-of-bits>
 Use this comand to set the IPv6 address pool from which an PPTP client
 will get an IPv6 prefix of your defined length (mask) to terminate the
@@ -240,7 +239,6 @@ bit long, the default value is 64.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>
-
    delegation-prefix <number-of-bits>
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 PPTP. You will have to set your IPv6 pool and the length of the
@@ -321,13 +319,11 @@ Assign static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> rate-limit
-
    download <bandwidth>
 Download bandwidth limit in kbit/s for `<user>`.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> rate-limit
-
    upload <bandwidth>
 Upload bandwidth limit in kbit/s for `<user>`.
 ```

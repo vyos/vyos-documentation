@@ -311,7 +311,6 @@ Define it in your RADIUS server.
 
 ## IPv6
 ```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>
-
  mask <number-of-bits>
 
 
@@ -323,7 +322,6 @@ bit long, the default value is 64.
 
 
 ```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>
-
  delegation-prefix <number-of-bits>
 
 
@@ -385,7 +383,6 @@ VLAN monitor for automatic creation of VLAN interfaces for specific user on spec
 
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit
-
  download <bandwidth>
 
 
@@ -394,7 +391,6 @@ Download bandwidth limit in kbit/s for user on interface `<interface>`.
 
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit
-
  upload <bandwidth>
 
 

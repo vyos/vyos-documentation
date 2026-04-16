@@ -119,7 +119,6 @@ subnode.
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
 ```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\>
-
 <interface> vrf <name>
 
 
@@ -744,7 +743,6 @@ Specifies an optional route-map to be applied to routes imported from VRFs.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp interface \<interface\> mpls
-
          forwarding
 
 

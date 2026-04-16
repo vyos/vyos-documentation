@@ -58,7 +58,6 @@ the network
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  address-family <ipv4|ipv6>
 
 
@@ -67,7 +66,6 @@ allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
 #### OpenFabric Global Configuration
 ```{cfgcmd} set protocols openfabric domain-password \<plaintext-password|md5\>
-
 <password>
 
 
@@ -111,7 +109,6 @@ in the fabric.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  hello-multiplier <number>
 
 
@@ -121,7 +118,6 @@ interface. The range is 2 to 100.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  metric <metric>
 
 
@@ -137,7 +133,6 @@ This command enables the passive mode for this interface.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  password plaintext-password <text>
 
 
@@ -146,7 +141,6 @@ This command sets the authentication password for the interface.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  csnp-interval <seconds>
 
 
@@ -156,7 +150,6 @@ The interval range is 1 to 600.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\>
-
  psnp-interval <number>
 
 

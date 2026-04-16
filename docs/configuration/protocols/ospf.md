@@ -86,7 +86,6 @@ The distance range is 1 to 255.
 
 
 ```{cfgcmd} set protocols ospf distance ospf \<external|inter-area|intra-area\>
-
 <distance>
 
 
@@ -116,7 +115,6 @@ Without :cfgcmd:`detail`, only changes to full or regressions are shown.
 
 
 ```{cfgcmd} set protocols ospf max-metric router-lsa
-
 <administrative|on-shutdown <seconds>|on-startup <seconds>>
 
 
@@ -136,7 +134,6 @@ and/or for a period of seconds prior to shutdown with the
 
 
 ```{cfgcmd} set protocols ospf parameters abr-type
-
 <cisco|ibm|shortcut|standard>
 
 
@@ -218,7 +215,6 @@ The timer range is 10 to 1800.
 
 
 ```{cfgcmd} set protocols ospf timers throttle spf
-
 <delay|initial-holdtime|max-holdtime> <seconds>
 
 
@@ -251,7 +247,6 @@ synchronization during convergence/interface flap events.
 
 
 ```{cfgcmd} set protocols ospf capability opaque
-
 ospfd supports Opaque LSA :rfc:`2370` as partial support for MPLS Traffic
 Engineering LSAs. The opaque-lsa capability must be enabled in the
 configuration.
@@ -293,7 +288,6 @@ summary route is allowed.
 
 
 ```{cfgcmd} set protocols ospf area \<number\> area-type stub default-cost
-
 <number>
 
 
@@ -324,7 +318,6 @@ ABR are allowed.
 
 
 ```{cfgcmd} set protocols ospf area \<number\> area-type nssa default-cost
-
 <number>
 
 
@@ -334,7 +327,6 @@ The cost range is 0 to 16777215.
 
 
 ```{cfgcmd} set protocols ospf area \<number\> area-type nssa translate
-
 <always|candidate|never>
 
 
@@ -401,7 +393,6 @@ This command makes sense in ABR only.
 
 
 ```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> substitute
-
 <E.F.G.H/M>
 
 
@@ -462,7 +453,6 @@ This pseudo-network is considered to belong to a backbone area.
 
 
 ```{cfgcmd} set protocols ospf interface \<interface\> authentication
-
 plaintext-password <text>
 
 
@@ -476,7 +466,6 @@ MD5 HMAC authentication.
 
 
 ```{cfgcmd} set protocols ospf interface \<interface\> authentication md5
-
 key-id <id> md5-key <text>
 
 
@@ -573,7 +562,6 @@ Designated Router. The default value is 1. The interval range is 0 to 255.
 
 
 ```{cfgcmd} set protocols ospf interface \<interface\> retransmit-interval
-
 <number>
 
 
@@ -989,7 +977,6 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
 
 
 ```{opcmd} show ip ospf database \<type\> [A.B.C.D]
-
 [adv-router <A.B.C.D>|self-originate]
 
 

@@ -113,7 +113,6 @@ configured for it. You may have to reset the neighbor for this to work.
 
 
 ```{cfgcmd} set protocols mpls ldp neighbor \<address\> ttl-security
-
 <disable | hop count>
 
 
@@ -152,13 +151,11 @@ Use this command if you would like to set the TCP session hold time intervals.
 
 
 ```{cfgcmd} set protocols mpls ldp import ipv4 import-filter filter-access-list
-
 <access list number>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp import ipv6 import-filter filter-access-list6
-
 <access list number>
 
 
@@ -170,13 +167,11 @@ needed, such as accepting loopback interfaces and rejecting all others.
 
 
 ```{cfgcmd} set protocols mpls ldp export ipv4 export-filter filter-access-list
-
 <access list number>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp export ipv6 export-filter filter-access-list6
-
 <access list number>
 
 
@@ -199,13 +194,11 @@ label of 0 for explicit null operations.
 
 
 ```{cfgcmd} set protocols mpls ldp allocation ipv4 access-list
-
 <access list number>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp allocation ipv6 access-list6
-
 <access list number>
 
 
@@ -263,25 +256,21 @@ LDP session to another router.
 
 
 ```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime
-
 <seconds>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-interval
-
 <seconds>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime
-
 <seconds>
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-interval
-
 <seconds>
 
 

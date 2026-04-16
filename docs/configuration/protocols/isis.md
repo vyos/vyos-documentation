@@ -136,7 +136,6 @@ router. It is described in :rfc:`3787`.
 
 
 ```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\>
-
 level-1
 
 
@@ -145,7 +144,6 @@ This command will generate a default-route in L1 database.
 
 
 ```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\>
-
 level-2
 
 
@@ -182,7 +180,6 @@ synchronization during convergence/interface flap events.
 
 
 ```{cfgcmd} set protocols isis interface \<interface\> hello-interval
-
 <seconds>
 
 
@@ -192,7 +189,6 @@ The range is 1 to 600.
 
 
 ```{cfgcmd} set protocols isis interface \<interface\> hello-multiplier
-
 <seconds>
 
 
@@ -221,7 +217,6 @@ or wide value).
 
 
 ```{cfgcmd} set protocols isis interface \<interface\> network
-
 point-to-point
 
 
@@ -237,7 +232,6 @@ This command configures the passive mode for this interface.
 
 
 ```{cfgcmd} set protocols isis interface \<interface\> password
-
 plaintext-password <text>
 
 
@@ -254,7 +248,6 @@ range is 0 to 127.
 
 
 ```{cfgcmd} set protocols isis interface \<interface\> psnp-interval
-
 <number>
 
 
@@ -264,7 +257,6 @@ to 127.
 
 
 ```{cfgcmd} set protocols isis interface \<interface\>
-
 no-three-way-handshake
 
 
@@ -340,7 +332,6 @@ source: bgp, connected, kernel, ospf, rip, static.
 
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<route source\>
-
 <level-1|level-2> metric <number>
 
 
@@ -351,7 +342,6 @@ kernel, ospf, rip, static. The metric range is 1 to 16777215.
 
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<route source\>
-
 <level-1|level-2> route-map <name>
 
 

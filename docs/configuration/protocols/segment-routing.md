@@ -53,7 +53,6 @@ EXPERIMENTAL for FRR.
 
 
 ```{cfgcmd} set protocols isis segment-routing global-block low-label-value
-
 <label-value>
 
 
@@ -64,7 +63,6 @@ not exceed 65535.
 
 
 ```{cfgcmd} set protocols isis segment-routing local-block high-label-value
-
 <label-value>
 
 
@@ -93,7 +91,6 @@ the MPLS dataplane.
 
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value
-
 <0-65535>
 
 
@@ -104,7 +101,6 @@ indentify it
 
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index
-
 <no-php-flag | explicit-null| n-flag-clear>
 
 

@@ -133,7 +133,6 @@ Multiple interfaces may be specified.
 ```
 
 ```{cfgcmd} set service dhcpv6-relay upstream-interface \<interface\>
-
    address <server>
 Specifies an upstream network `<interface>` from which replies from
 `<server>` and other relay agents will be accepted.

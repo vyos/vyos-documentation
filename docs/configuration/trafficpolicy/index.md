@@ -561,7 +561,6 @@ delay does not become too stale (default: 100ms).
 
 
 ```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit
-
 <number-of-packets>
 
 
@@ -692,7 +691,6 @@ you have configured its bandwidth too.
 
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> delay
-
 <delay>
 
 
@@ -706,7 +704,6 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption
-
 <percent>
 
 
@@ -718,7 +715,6 @@ percent of packets.
 
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> loss
-
 <percent>
 
 
@@ -729,7 +725,6 @@ packets your traffic will suffer.
 
 
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering
-
 <percent>
 
 
@@ -740,7 +735,6 @@ packets your traffic will suffer.
 
 
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit
-
 <limit>
 
 
@@ -809,7 +803,6 @@ Possible completions:
 ```
 
 ```{cfgcmd} set qos policy priority-queue \<policy-name\> class \<class-ID\>
-
    queue-limit <limit>
 Use this command to configure a Priority Queue policy, set its name,
 set a class with a priority from 1 to 7 and define a hard limit on
@@ -868,7 +861,6 @@ algorithm might be to prevent a backbone overload. But only for TCP
 
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
-
 <IP-precedence-value> average-packet <bytes>
 
 
@@ -884,7 +876,6 @@ precedence number, the higher the priority**.
 :::
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
-
 <IP-precedence-value> mark-probability <value>
 
 
@@ -905,7 +896,6 @@ probability by giving the N value of the fraction 1/N (default: 10).
 
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence
-
 <IP-precedence-value> minimum-threshold <packets>
 
 
@@ -1037,7 +1027,6 @@ packets will have their opportunity to be dequeued.
 
 
 ```{cfgcmd} set qos policy round-robin \<policy name\> class
-
 <class ID> queue-limit <packets>
 
 
@@ -1109,7 +1098,6 @@ and the maximum bandwidth for all combined traffic.
 
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst
-
 <bytes>
 
 
@@ -1120,7 +1108,6 @@ be available to be sent at ceiling speed (default: 15Kb).
 
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling
-
 <bandwidth>
 
 
@@ -1131,7 +1118,6 @@ default ceiling value is the bandwidth value.
 
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority
-
 <0-7>
 
 

@@ -325,7 +325,6 @@ the content of interface-address.txt looks like this
    server on this segment.
    Example:
 ```none
-
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
    set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64

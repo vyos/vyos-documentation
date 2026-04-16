@@ -315,7 +315,6 @@ percentage of the connections that will receive such backend.
 ```
 
 ```{cfgcmd} set nat [source | destination] rule \<rule\> load-balance backend
-
 <x.x.x.x> weight <1-100>
 
 ```

@@ -159,7 +159,6 @@ but when the BFD session is down it is removed from the RIB.
 ### Configuration
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
-
 bfd profile <profile>
 
 
@@ -169,7 +168,6 @@ and use the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
-
 bfd multi-hop source <address> profile <profile>
 
 
@@ -180,7 +178,6 @@ and the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
-
 bfd profile <profile>
 
 
@@ -190,7 +187,6 @@ and use the gateway address as BFD peer destination address.
 
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
-
 bfd multi-hop source <address> profile <profile>
 
 
