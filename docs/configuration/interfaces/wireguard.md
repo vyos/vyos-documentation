@@ -380,20 +380,23 @@ create the private portion yourself and hand out only the public key.
 :::
 
 ```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server \<ip|fqdn\> address \<client-ip\>
+
 **Generate a client configuration file that establishes a connection to the
 specified interface.**
+
 The public key from the specified interface is automatically included in the
 configuration file.
+
 The command also generates a configuration snippet that can be copied into the
 VyOS CLI. The ``<name>`` you provide will be used as the peer name in the
 snippet.
+
 You must also specify the IP address or FQDN of the server the client connects
 to. The address parameter can be used twice to assign both an IPv4 (/32) and
 an IPv6 (/128) address to the client.
 
 .. figure:: /_static/images/wireguard_qrcode.jpg
-
-    :alt: WireGuard Client QR code
+   :alt: WireGuard Client QR code
 
 ```
 % stop_vyoslinter
