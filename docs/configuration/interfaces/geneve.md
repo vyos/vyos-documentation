@@ -87,8 +87,10 @@ Configure the remote endpoint IP address for the Geneve tunnel.
 
 **Configure** :abbr:`VNI (Virtual Network Identifier)` **for the Geneve
 interface.**
+
 The VNI is a virtual network identifier. It allows multiple virtual networks to
 share the same physical infrastructure and remain isolated.
+
 The VNI is also used to distribute traffic after it leaves the tunnel, for
 example, to map packets with overlapping IP addresses to specific routing
 tables.
@@ -97,4 +99,6 @@ tables.
 ```{cfgcmd} set interfaces gnv0 \<interface\> port \<port\>
 
 **Configure the destination UDP port for the remote Geneve tunnel endpoint.**
+
+Ensure the remote peer is configured to listen on this specific port.
 ```

@@ -106,7 +106,7 @@ set vpn ipsec options disable-route-autoinstall
 
 For more information about the IPsec and VTI issue, as well as the
 `disable-route-autoinstall` option, see:
-<https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july>.
+https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july.
 
 The root cause of the problem is that VTI tunnels require their traffic
 selectors to be set to `0.0.0.0/0` for traffic to match the tunnel, even
