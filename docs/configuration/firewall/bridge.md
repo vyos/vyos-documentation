@@ -40,7 +40,7 @@ here, and also rules for ignoring connection tracking system can be configured.
 The relevant configuration that acts in **prerouting** is:
 
 
-> - `set firewall bridge prerouting filter ...`.
+- `set firewall bridge prerouting filter ...`.
 
 
 For traffic that needs to be switched internally by the bridge, the base
@@ -102,15 +102,15 @@ firewall what to do if all matching criteria in the rule are met.
 In firewall bridge rules, the action can be:
 
 
-> - `accept`: accept the packet.
-> - `continue`: continue parsing next rule.
-> - `drop`: drop the packet.
-> - `jump`: jump to another custom chain.
-> - `return`: Return from the current chain and continue at the next rule
->   of the last chain.
-> - `queue`: Enqueue packet to userspace.
-> - `notrack`: ignore connection tracking system. This action is only
->   available in prerouting chain.
+- `accept`: accept the packet.
+- `continue`: continue parsing next rule.
+- `drop`: drop the packet.
+- `jump`: jump to another custom chain.
+- `return`: Return from the current chain and continue at the next rule
+  of the last chain.
+- `queue`: Enqueue packet to userspace.
+- `notrack`: ignore connection tracking system. This action is only
+  available in prerouting chain.
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> action
 
 [accept | continue | drop | jump | queue | return]

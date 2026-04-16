@@ -48,8 +48,9 @@ Key Points:
   direction.
 
 :::{note}
-All VyOS versions built after 2023-10-22 (VyOS 1.4 and 1.5) support
-this feature.
+In {vytask}`T2199` the syntax of the zone configuration was changed.
+The zone configuration moved from ``zone-policy zone <name>`` to
+``firewall zone <name>``.
 :::
 
 ## Configuration

@@ -26,9 +26,8 @@ routes can be created.
 Disable this IPv4 static route entry.
 ```
 
-```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
+```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> distance \<distance\>
 
-   distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
@@ -43,16 +42,19 @@ Range is 1 to 255, default is 1.
 ### IPv4 Interface Routes
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\>
+
 Allows you to configure the next-hop interface for an interface-based IPv4
 static route. `<interface>` will be the next-hop interface where traffic is
 routed for the given `<subnet>`.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> disable
+
 Disables interface-based IPv4 static route.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> distance \<distance\>
+
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
@@ -76,12 +78,11 @@ gateway address as BFD peer destination address.
 % Configure a static route for `<subnet>` using gateway `<address>` and use the
 % gateway address as BFD peer destination address with BFD profile `<profile>`.
 
-```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop
+```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
-   source-address <source-address>
 Configure a static route for `<subnet>` using gateway `<address>` and use the
 gateway address as BFD peer destination address with source address
-`<source>` but initiate a multi-hop session.
+`<source-address>` but initiate a multi-hop session.
 ```
 
 ### DHCP Interface Routes
@@ -149,9 +150,8 @@ routes can be created.
 Disable this IPv6 static route entry.
 ```
 
-```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
+```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> distance \<distance\>
 
-   distance <distance>
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
@@ -198,22 +198,26 @@ S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaa
 ### IPv6 Interface Routes
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\>
+
 Allows you to configure the next-hop interface for an interface-based IPv6
 static route. `<interface>` will be the next-hop interface where traffic is
 routed for the given `<subnet>`.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> disable
+
 Disables interface-based IPv6 static route.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> distance \<distance\>
+
 Defines next-hop distance for this route, routes with smaller administrative
 distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> segments \<segments\>
+
 It is possible to specify a static route for ipv6 prefixes using an
 SRv6 segments instruction. The ``/`` separator can be used to specify
 multiple segment instructions.
@@ -247,9 +251,7 @@ gateway address as BFD peer destination address.
 % gateway address as BFD peer destination address with BFD profile `<profile>`.
 % stop_vyoslinter
 
-```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop
-
-   source-address <source>
+```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source\>
 ```
 
 % start_vyoslinter

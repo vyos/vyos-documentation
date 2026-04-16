@@ -40,14 +40,14 @@ section.
 This stage includes:
 
 
-> - **Firewall Prerouting**: commands found under `set firewall ipv6
->   prerouting raw ...`
-> - {doc}`Conntrack Ignore</configuration/system/conntrack>`: `set system
->   conntrack ignore ipv6...`
-> - {doc}`Policy Route</configuration/policy/route>`: commands found under
->   `set policy route6 ...`
-> - {doc}`Destination NAT</configuration/nat/nat44>`: commands found under
->   `set nat66 destination ...`
+- **Firewall Prerouting**: commands found under `set firewall ipv6
+  prerouting raw ...`
+- {doc}`Conntrack Ignore</configuration/system/conntrack>`: `set system
+  conntrack ignore ipv6...`
+- {doc}`Policy Route</configuration/policy/route>`: commands found under
+  `set policy route6 ...`
+- {doc}`Destination NAT</configuration/nat/nat44>`: commands found under
+  `set nat66 destination ...`
 
 
 For transit traffic that the router receives and forwards, the base chain is
@@ -122,15 +122,15 @@ firewall what to do when all criteria for that rule are met.
 The action can be :
 
 
-> - `accept`: accept the packet.
-> - `continue`: continue parsing next rule.
-> - `drop`: drop the packet.
-> - `reject`: reject the packet.
-> - `jump`: jump to another custom chain.
-> - `return`: Return from the current chain and continue at the next rule
->   of the last chain.
-> - `queue`: Enqueue packet to userspace.
-> - `synproxy`: synproxy the packet.
+- `accept`: accept the packet.
+- `continue`: continue parsing next rule.
+- `drop`: drop the packet.
+- `reject`: reject the packet.
+- `jump`: jump to another custom chain.
+- `return`: Return from the current chain and continue at the next rule
+  of the last chain.
+- `queue`: Enqueue packet to userspace.
+- `synproxy`: synproxy the packet.
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> action
 
 [accept | continue | drop | jump | queue | reject | return | synproxy]
@@ -2176,9 +2176,9 @@ synproxy tcp window-scale <1-14>
 Requirements to enable synproxy:
 
 
-> - Traffic must be symmetric
-> - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled
-> - Disable conntrack loose track option
+- Traffic must be symmetric
+- Synproxy relies on syncookies and TCP timestamps, ensure these are enabled
+- Disable conntrack loose track option
 ```none
 
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'
