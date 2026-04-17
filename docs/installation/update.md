@@ -2,7 +2,7 @@
 lastproofread: '2026-01-26'
 ---
 
-(update-vyos)=
+(update_vyos)=
 
 # Update VyOS
 

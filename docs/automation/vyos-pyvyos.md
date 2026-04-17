@@ -28,14 +28,14 @@ pip install pyvyos
 
 ## Getting Started
 
-### Importing and Disabling Warnings for verify=False
+## Importing and Disabling Warnings for verify=False
 
 ```none
 import urllib3
 urllib3.disable_warnings()
 ```
 
-### Using API Response Class
+## Using API Response Class
 
 ```none
 @dataclass
@@ -46,7 +46,7 @@ class ApiResponse:
     error: str
 ```
 
-### Initializing a VyDevice Object
+## Initializing a VyDevice Object
 
 ```none
 from dotenv import load_dotenv

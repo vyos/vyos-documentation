@@ -272,7 +272,7 @@ set system syslog remote graylog.example.com tls permitted-peers 'graylog.exampl
   doesn't provide server authentication.
 - Ensure private keys are generated, stored, and maintained exclusively within
   the {doc}`PKI system </configuration/pki/index>`.
-(syslog-facilities)=
+(syslog_facilities)=
 ## Syslog facilities
 This section lists facilities used by syslog. Most facility names are self-
 explanatory. The local0–local7 facilities are used for custom purposes, such as
@@ -306,7 +306,7 @@ tools, rather than strict directives.
 | 21            | local5   | local use 5 (local5)                    |
 | 22            | local6   | local use 6 (local6)                    |
 | 23            | local7   | local use 7 (local7)                    |
-(syslog-severity-level)=
+(syslog_severity_level)=
 ## Severity levels
 | Value | Severity      | Keyword | Description                                                                                                               |
 | ----- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |

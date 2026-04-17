@@ -97,7 +97,7 @@ Parameter Store. For instructions on creating a configuration, see
 > ({doc}`/installation/update`)
 > :::
 
-(configuration-creation)=
+(configuration_creation)=
 
 ### CloudWatch SSM Configuration creation
 

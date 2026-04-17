@@ -1,4 +1,4 @@
-(ipsec-general)=
+(ipsec_general)=
 
 # IPsec General Information
 

@@ -69,7 +69,7 @@ it creates a new user linked to the specified principal.
 VyOS locks the account, preventing the user from logging in.
 ```
 
-(ssh-key-based-authentication)=
+(ssh_key_based_authentication)=
 
 ## Key-based authentication
 Key-based authentication is the recommended method for securing SSH access in

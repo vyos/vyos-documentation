@@ -29,7 +29,7 @@ The following includes the build process for VyOS rolling release.
 This will guide you through the process of building a VyOS ISO using [Docker].
 This process has been tested on clean installs of Debian Bookworm.
 
-(build-native)=
+(build_native)=
 
 ### Native Build
 
@@ -47,7 +47,7 @@ For required packages, refer to the `docker/Dockerfile` file in the
 [repository]. The `./build-vyos-image` script will also warn you if any
 dependencies are missing.
 
-(build-docker)=
+(build_docker)=
 
 ### Docker
 
@@ -253,7 +253,7 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
 
 ```
 
-(iso-build-issues)=
+(iso_build_issues)=
 
 #### ISO Build Issues
 
@@ -342,7 +342,7 @@ E: Unable to correct problems, you have held broken packages.
 Now it's time to fix the package mirror and rerun the last step until the
 package installation succeeds again!
 
-(build-custom-packages)=
+(build_custom_packages)=
 
 ### Linux Kernel
 

@@ -19,18 +19,14 @@ then enslaved to a VRF device.
 
 ```{cfgcmd} set vrf name \<name\> table \<id\>
 
-   Create a new VRF instance with `<name>` and `<id>`. The name is used when placing
-   individual interfaces into the VRF.
+Create a new VRF instance with `<name>` and `<id>`. The name is used when placing
+individual interfaces into the VRF.
 
-
-   :::{note}
-   A routing table ID can not be modified once it is assigned. It can
-
-
-    only be changed by deleting and re-adding the VRF instance.
-   :::
+:::{note}
+A routing table ID can not be modified once it is assigned. It can
+only be changed by deleting and re-adding the VRF instance.
+:::
 ```
-
 
 ```{cfgcmd} set vrf bind-to-all
 
@@ -38,7 +34,6 @@ By default the scope of the port bindings for unbound sockets is limited to
 the default VRF. That is, it will not be matched by packets arriving on
 interfaces enslaved to a VRF and processes may bind to the same port if
 they bind to a VRF.
-
 
 TCP & UDP services running in the default VRF context (ie., not bound to any
 VRF device) can work across all VRF domains by enabling this option.

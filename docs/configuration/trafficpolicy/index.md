@@ -335,7 +335,7 @@ The number of a class in a Priority Queue it does not only
 identify it, it also defines its priority.
 :::
 
-(creating-a-traffic-policy)=
+(creating_a_traffic_policy)=
 
 ### Creating a traffic policy
 

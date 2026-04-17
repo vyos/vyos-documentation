@@ -26,14 +26,14 @@ go install "github.com/ganawaj/go-vyos/vyos"
 
 ## Getting Started
 
-### Importing and Disabling TLS Verification
+## Importing and Disabling TLS Verification
 
 ```none
 import "github.com/ganawaj/go-vyos/vyos"
 client := vyos.NewClient(nil).WithToken("AUTH_KEY").WithURL("https://192.168.0.1").Insecure()
 ```
 
-### Initializing a VyDevice Object
+## Initializing a VyDevice Object
 
 ```none
 import (

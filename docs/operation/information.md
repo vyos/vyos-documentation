@@ -12,7 +12,7 @@ line interface (CLI), see {ref}`cli`.
 
 # Hardware
 
-(hardware-usb)=
+(hardware_usb)=
 
 ## USB
 

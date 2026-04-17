@@ -162,7 +162,7 @@ If you see an unexpected verification error, update your system to version
 removed ({vytask}`T7301`).
 :::
 
-(live-installation)=
+(live_installation)=
 
 ## Live installation
 
@@ -223,7 +223,7 @@ a bootable USB drive from an `.iso` file.
 The default username and password for the live system is *vyos*.
 :::
 
-(permanent-installation)=
+(permanent_installation)=
 
 ## Permanent installation
 
@@ -341,7 +341,7 @@ vyos@vyos# show service dhcp-server
  }
 ```
 
-(install-from-tftp)=
+(install_from_tftp)=
 
 #### Step 2: TFTP
 

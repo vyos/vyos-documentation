@@ -78,10 +78,10 @@ This will add the following two options to the Kernel commandline:
 :::{note}
 Setting will only become active with the next reboot!
 :::
-.. seealso::
 
-   https://docs.kernel.org/admin-guide/pm/amd-pstate.html
-
+:::{seealso}
+https://docs.kernel.org/admin-guide/pm/amd-pstate.html
+:::
 ```
 
 ```{cfgcmd} set system option kernel quiet

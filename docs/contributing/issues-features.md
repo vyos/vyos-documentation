@@ -2,11 +2,11 @@
 lastproofread: '2025-12-08'
 ---
 
-(issues-features)=
+(issues_features)=
 
 # Issues/Feature requests
 
-(bug-report)=
+(bug_report)=
 
 ## Bug Report/Issue
 
