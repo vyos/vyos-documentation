@@ -130,7 +130,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-### Configure, then Save File
+## Configure, then Save File
 
 ```none
 out, resp, err := c.Conf.Save(ctx, "/config/test300.config")
