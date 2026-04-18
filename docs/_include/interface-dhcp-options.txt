@@ -1,7 +1,4 @@
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options client-id <description>
 
   **Configure a DHCP client identifier for the interface, as specified in** 
@@ -18,10 +15,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options client-id 'foo-bar'
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options host-name <hostname>
 
   **Configure a specific hostname for the interface.**
@@ -35,10 +29,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options host-name 'VyOS'
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options vendor-class-id <vendor-id>
 
   **Configure the DHCP client to include a vendor-class identifier in its DHCP 
@@ -54,10 +45,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options vendor-class-id 'VyOS'
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options no-default-route
 
   **Configure the DHCP client to obtain an IP address, but ignore any default 
@@ -69,10 +57,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options no-default-route
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options default-route-distance <distance>
 
   **Configure the distance for the default route obtained from the DHCP server 
@@ -84,10 +69,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options default-route-distance 220
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options reject <address>
 
   **Configure the DHCP client to reject the specific IP address or IP address 
@@ -104,10 +86,7 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcp-options reject 192.168.100.0/24
 
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-::::
-
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
   {{ var5 }} {{ var6 }} dhcp-options user-class <string>
 
   **Configure the DHCP client to send a specific user-class identifier in its 

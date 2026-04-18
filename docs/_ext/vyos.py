@@ -370,7 +370,14 @@ class CmdInclude(SphinxDirective):
                     line = re.sub('{{\s?var' + str(i) + '\s?}}',value,line)
             new_include_lines.append(line)
         
-        self.state._renderer.nested_render_text(''.join(new_include_lines), self.lineno)
+        # MyST myst-parser 2.0 compat (scripts/infra_patch.py)
+        # Templates are RST and are included via {eval-rst} (RST state machine).
+        # insert_input injects lines into the current RST parser, identical to
+        # the behaviour of the plain RST CmdInclude class.
+        try:
+            self.state._renderer.nested_render_text(''.join(new_include_lines), self.lineno)
+        except AttributeError:
+            self.state_machine.insert_input(new_include_lines, include_file[1])
         return []
 
 

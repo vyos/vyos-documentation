@@ -1,7 +1,5 @@
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
-
-disable-flow-control
-::::
+.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+   disable-flow-control
 
   **Disable Ethernet flow control (IEEE 802.3x pause frames) on the interface.** 
 
