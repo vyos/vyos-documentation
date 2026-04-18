@@ -1,4 +1,6 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> evpn uplink
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> evpn uplink
+
+::::
 
   **Configure this interface as an EVPN-MH uplink interface.**
 

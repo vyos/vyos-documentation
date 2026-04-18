@@ -211,3 +211,10 @@ texinfo_documents = [
 
 def setup(app):
     pass
+
+# -- MyST Markdown support (added by scripts/infra_patch.py) -----------------
+myst_enable_extensions = [
+    'colon_fence', 'deflist', 'fieldlist', 'substitution', 'attrs_inline',
+]
+myst_fence_as_directive = ['cfgcmd', 'opcmd', 'cmdincludemd']
+myst_heading_anchors = 3

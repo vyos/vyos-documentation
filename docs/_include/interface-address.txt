@@ -1,4 +1,6 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> address <address>
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address\>
+
+::::
 
   **Configure one or more interface IP addresses.**
 

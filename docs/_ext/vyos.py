@@ -352,6 +352,12 @@ class CmdInclude(SphinxDirective):
 
         f = open(include_file[1], "r")
         file_content = f.readlines()
+        # MyST linter marker strip (scripts/infra_patch.py)
+        file_content = [
+            line for line in file_content
+            if 'stop_vyoslinter' not in line
+            and 'start_vyoslinter' not in line
+        ]
         f.close()
         
         new_include_lines = []
