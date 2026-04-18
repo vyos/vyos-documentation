@@ -47,7 +47,7 @@ current image if they were stored in the `/config` directory. Use the
 {opcmd}`copy` command to do this. For example, to copy `/config/config.boot`
 from the VyOS `1.2.1` image, run:
 
-```{code}
+```none
 copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 ```
 

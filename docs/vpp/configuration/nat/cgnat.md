@@ -167,7 +167,7 @@ address and port combinations.
 
 Adjust these settings for different protocols individually:
 
-```
+```none
 set vpp nat cgnat timeout icmp <timeout-value>
 set vpp nat cgnat timeout tcp-established <timeout-value>
 set vpp nat cgnat timeout tcp-transitory <timeout-value>
@@ -183,7 +183,7 @@ Here is an example CGNAT configuration with these assumptions:
 - Inside prefix: `100.64.0.0/16`
 - Outside prefix: `203.0.113.0/24`
 
-```
+```none
 set vpp nat cgnat interface inside eth2
 set vpp nat cgnat interface outside eth1
 set vpp nat cgnat rule 1 description "CGNAT Rule 1"
@@ -210,7 +210,7 @@ its status and operation:
 
 Displays the configured inside and outside interfaces.
 
-```
+```none
 vyos@vyos:~$ show vpp nat cgnat interfaces
 CGNAT interfaces:
   eth2 in
@@ -235,7 +235,7 @@ many sessions are active.
 Display current NAT mappings, including inside and outside address
 prefixes.
 
-```
+```none
 vyos@vyos:~$ show vpp nat cgnat mappings
 Inside         Outside           Sharing ratio    Ports per host    Sessions
 -------------  --------------  ---------------  ----------------  ----------
@@ -250,7 +250,7 @@ Inside         Outside           Sharing ratio    Ports per host    Sessions
 
 Displays configured CGNAT exclude rules (identity mappings).
 
-```
+```none
 vyos@vyos:~$ show vpp nat cgnat exclude-rules
 Address      Protocol    Port    VRF  Description
 -----------  ----------  ------  -----  ---------------------
@@ -262,7 +262,7 @@ Address      Protocol    Port    VRF  Description
 
 Configuration fails to apply with an error similar to:
 
-```
+```none
 vpp_papi.vpp_papi.VPPIOError: [Errno 2] VPP API client: read failed
 ```
 
@@ -280,12 +280,12 @@ translation mapping.
 In this case, add an exclude rule for the router local address that must
 bypass CGNAT translation.
 
-```
+```none
 set vpp nat cgnat exclude rule 100 local-address <router-ip>
 ```
 
 Then verify:
 
-```
+```none
 show vpp nat cgnat exclude-rules
 ```

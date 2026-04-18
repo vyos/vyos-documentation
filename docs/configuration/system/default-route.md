@@ -39,5 +39,5 @@ and existing configurations are migrated to the new CLI command.
 ```
 
 ```{eval-rst}
-.. seealso:: Configuration of {ref}`routing-static`
+.. seealso:: Configuration of :ref:`routing-static`
 ```

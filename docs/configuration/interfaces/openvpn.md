@@ -240,7 +240,7 @@ enabled to avoid compatibility issues with existing clients.
    VyOS CLI.
 
    If a required option is missing, you may submit a feature request at
-   Phabricator so all users can benefit from it (see {ref}`issues_features`).
+   Phabricator so all users can benefit from it (see :ref:`issues_features`).
 
    Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
    to the openvpn.conf file.
