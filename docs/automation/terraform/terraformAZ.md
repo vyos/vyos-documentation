@@ -45,16 +45,16 @@ mkdir /root/azvyos
 
 5. Log in to Azure using the command:
 
-> ```none
-> az login
-> ```
+```none
+az login
+```
 
 6. Run the following commands to initialize Terraform:
 
-> ```none
-> cd /<your folder>
-> terraform init
-> ```
+```none
+cd /<your folder>
+terraform init
+```
 
 ### Ansible
 

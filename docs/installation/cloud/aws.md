@@ -53,10 +53,10 @@ Deploy VyOS on Amazon {abbr}`AWS (Amazon Web Services)`.
 
 9. Connect to the instance using your SSH key.
 
-> ```none
-> ssh -i ~/.ssh/amazon.pem vyos@203.0.113.3
-> vyos@ip-192-0-2-10:~$
-> ```
+```none
+ssh -i ~/.ssh/amazon.pem vyos@203.0.113.3
+vyos@ip-192-0-2-10:~$
+```
 
 ## Amazon CloudWatch Agent Usage
 
@@ -73,9 +73,9 @@ Parameter Store. For instructions on creating a configuration, see
    instance.
 3. Ensure the amazon-cloudwatch-agent package is installed.
 
-> ```none
-> $ sudo apt list --installed | grep amazon-cloudwatch-agent
-> ```
+```none
+$ sudo apt list --installed | grep amazon-cloudwatch-agent
+```
 >
 > :::{note}
 > The amazon-cloudwatch-agent package is normally included in
@@ -85,9 +85,9 @@ Parameter Store. For instructions on creating a configuration, see
 4. Retrieve an existing CloudWatch Agent configuration from the
    {abbr}`SSM (Systems Manager)` Parameter Store.
 
-> ```none
-> $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:<your-configuration-name>
-> ```
+```none
+$ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:<your-configuration-name>
+```
 >
 > This step also enables systemd service and runs it.
 >
@@ -120,9 +120,9 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon
 
 2. Run the CloudWatch configuration wizard.
 
-> ```none
-> $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
-> ```
+```none
+$ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+```
 
 3. When prompted, enter "yes" to the question "Do you want to store the
    config in the SSM parameter store?".

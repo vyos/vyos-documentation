@@ -561,101 +561,101 @@ Let's assume the following topology:
 
 **R1**
 
-> ```none
-> interfaces {
->     bonding bond10 {
->         hash-policy layer3+4
->         member {
->             interface eth1
->             interface eth2
->         }
->         mode 802.3ad
->         vif 100 {
->             address 192.0.2.1/30
->             address 2001:db8::1/64
->         }
->     }
-> ```
+```none
+interfaces {
+    bonding bond10 {
+        hash-policy layer3+4
+        member {
+            interface eth1
+            interface eth2
+        }
+        mode 802.3ad
+        vif 100 {
+            address 192.0.2.1/30
+            address 2001:db8::1/64
+        }
+    }
+```
 
 **R2**
 
-> ```none
-> interfaces {
->     bonding bond10 {
->         hash-policy layer3+4
->         member {
->             interface eth1
->             interface eth2
->         }
->         mode 802.3ad
->         vif 100 {
->             address 192.0.2.2/30
->             address 2001:db8::2/64
->         }
->     }
-> ```
+```none
+interfaces {
+    bonding bond10 {
+        hash-policy layer3+4
+        member {
+            interface eth1
+            interface eth2
+        }
+        mode 802.3ad
+        vif 100 {
+            address 192.0.2.2/30
+            address 2001:db8::2/64
+        }
+    }
+```
 
 **SW1**
 
-> ```none
-> !
-> vlan 100
->    name FOO
-> !
-> interface Port-Channel10
->    switchport trunk allowed vlan 100
->    switchport mode trunk
->    spanning-tree portfast
-> !
-> interface Port-Channel20
->    switchport mode trunk
->    no spanning-tree portfast auto
->    spanning-tree portfast network
-> !
-> interface Ethernet1
->    channel-group 10 mode active
-> !
-> interface Ethernet2
->    channel-group 10 mode active
-> !
-> interface Ethernet3
->    channel-group 20 mode active
-> !
-> interface Ethernet4
->    channel-group 20 mode active
-> !
-> ```
+```none
+!
+vlan 100
+   name FOO
+!
+interface Port-Channel10
+   switchport trunk allowed vlan 100
+   switchport mode trunk
+   spanning-tree portfast
+!
+interface Port-Channel20
+   switchport mode trunk
+   no spanning-tree portfast auto
+   spanning-tree portfast network
+!
+interface Ethernet1
+   channel-group 10 mode active
+!
+interface Ethernet2
+   channel-group 10 mode active
+!
+interface Ethernet3
+   channel-group 20 mode active
+!
+interface Ethernet4
+   channel-group 20 mode active
+!
+```
 
 **SW2**
 
-> ```none
-> !
-> vlan 100
->    name FOO
-> !
-> interface Port-Channel10
->    switchport trunk allowed vlan 100
->    switchport mode trunk
->    spanning-tree portfast
-> !
-> interface Port-Channel20
->    switchport mode trunk
->    no spanning-tree portfast auto
->    spanning-tree portfast network
-> !
-> interface Ethernet1
->    channel-group 10 mode active
-> !
-> interface Ethernet2
->    channel-group 10 mode active
-> !
-> interface Ethernet3
->    channel-group 20 mode active
-> !
-> interface Ethernet4
->    channel-group 20 mode active
-> !
-> ```
+```none
+!
+vlan 100
+   name FOO
+!
+interface Port-Channel10
+   switchport trunk allowed vlan 100
+   switchport mode trunk
+   spanning-tree portfast
+!
+interface Port-Channel20
+   switchport mode trunk
+   no spanning-tree portfast auto
+   spanning-tree portfast network
+!
+interface Ethernet1
+   channel-group 10 mode active
+!
+interface Ethernet2
+   channel-group 10 mode active
+!
+interface Ethernet3
+   channel-group 20 mode active
+!
+interface Ethernet4
+   channel-group 20 mode active
+!
+```
 
 :::{note}
 When testing this environment in EVE-NG, ensure the e1000 driver

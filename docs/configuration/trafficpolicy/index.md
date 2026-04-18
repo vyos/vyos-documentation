@@ -39,50 +39,50 @@ show you the different units you can use.
 
 They can be **decimal** prefixes.
 
-> ```none
-> kbit  (10^3)    kilobit per second
-> mbit  (10^6)    megabit per second
-> gbit  (10^9)    gigabit per second
-> tbit  (10^12)   terabit per second
->
-> kbps  (8*10^3)  kilobyte per second
-> mbps  (8*10^6)  megabyte per second
-> gbps  (8*10^9)  gigabyte per second
-> tbps  (8*10^12) terabyte per second
-> ```
+```none
+kbit  (10^3)    kilobit per second
+mbit  (10^6)    megabit per second
+gbit  (10^9)    gigabit per second
+tbit  (10^12)   terabit per second
+
+kbps  (8*10^3)  kilobyte per second
+mbps  (8*10^6)  megabyte per second
+gbps  (8*10^9)  gigabyte per second
+tbps  (8*10^12) terabyte per second
+```
 
 Or **binary** prefixes.
 
-> ```none
-> kibit (2^10 = 1024)    kibibit per second
-> mibit (2^20 = 1024^2)  mebibit per second
-> gibit (2^30 = 1024^3)  gibibit per second
-> tbit  (2^40 = 1024^4)  tebibit per second
->
-> kibps (1024*8)         kibibyte (KiB) per second
-> mibps (1024^2*8)       mebibyte (MiB) per second
-> gibps (1024^3*8)       gibibyte (GiB) per second
-> tibps (1024^4*8)       tebibyte (TiB) per second
-> ```
+```none
+kibit (2^10 = 1024)    kibibit per second
+mibit (2^20 = 1024^2)  mebibit per second
+gibit (2^30 = 1024^3)  gibibit per second
+tbit  (2^40 = 1024^4)  tebibit per second
+
+kibps (1024*8)         kibibyte (KiB) per second
+mibps (1024^2*8)       mebibyte (MiB) per second
+gibps (1024^3*8)       gibibyte (GiB) per second
+tibps (1024^4*8)       tebibyte (TiB) per second
+```
 
 #### Suffixes
 
 A *bit* is written as **bit**,
 
-> ```none
-> kbit (kilobits per second)
-> mbit (megabits per second)
-> gbit (gigabits per second)
-> tbit (terabits per second)
-> ```
+```none
+kbit (kilobits per second)
+mbit (megabits per second)
+gbit (gigabits per second)
+tbit (terabits per second)
+```
 
 while a *byte* is written as a single **b**.
 
-> ```none
-> kbps (kilobytes per second)
-> mbps (megabytes per second)
-> gbps (gigabytes per second)
-> ```
+```none
+kbps (kilobytes per second)
+mbps (megabytes per second)
+gbps (gigabytes per second)
+```
 
 (classes)=
 

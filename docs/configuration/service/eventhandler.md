@@ -22,9 +22,9 @@ can pass variables, arguments, and a full matching string to the script.
 
 ### 1. Create an event handler
 
-> ```{eval-rst}
-> .. cfgcmd:: set service event-handler event <event-handler name>
-> ```
+```{eval-rst}
+.. cfgcmd:: set service event-handler event <event-handler name>
+```
 >
 > This is an optional command because the event handler will be
 > automatically created after any of the next commands.

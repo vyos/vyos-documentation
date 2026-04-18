@@ -50,10 +50,10 @@ Click **Add item**, paste your public SSH key, and click **Save**.
 
 7. Connect to the instance using the SSH key you generated in step 1.
 
-> ```none
-> ssh -i ~/.ssh/vyos_gcp vyos@203.0.113.3
-> vyos@vyos-r1-vm:~$
-> ```
+```none
+ssh -i ~/.ssh/vyos_gcp vyos@203.0.113.3
+vyos@vyos-r1-vm:~$
+```
 
 ## References
 
