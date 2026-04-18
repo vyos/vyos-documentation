@@ -20,6 +20,7 @@ tree. The presence of the `system watchdog` node enables the watchdog feature.
 ```{cfgcmd} set system watchdog
 
 Enable watchdog support.
+
 The watchdog is enabled only when a watchdog device is available as
 ``/dev/watchdog0``.
 
@@ -71,10 +72,10 @@ set system watchdog module softdog
 ```
 
 ```{cfgcmd} set system watchdog timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout for normal runtime operation in seconds.
+
 Valid range: 1-65535 seconds
 
 :::{note}
@@ -82,9 +83,11 @@ Some watchdog drivers expose minimum and maximum supported runtime
  timeouts via sysfs. When available, VyOS validates ``timeout`` against
  those driver limits during commit.
 :::
+
 This is the interval during which the system must respond to the watchdog.
 If the system does not respond within this time, the watchdog will trigger
 a reboot.
+
 Example:
 
 :::{code-block} none
@@ -93,11 +96,12 @@ set system watchdog timeout 30
 ```
 
 ```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout during system shutdown in seconds.
+
 Valid range: 60-65535 seconds
+
 This extended timeout allows the system to complete a graceful shutdown
 without triggering the watchdog.
 
@@ -115,11 +119,12 @@ set system watchdog shutdown-timeout 180
 ```
 
 ```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout during system reboot in seconds.
+
 Valid range: 60-65535 seconds
+
 This extended timeout allows the system to complete the reboot process
 without triggering the watchdog during the transition.
 

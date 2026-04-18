@@ -129,16 +129,21 @@ prefix, the generated key is automatically assigned to the specified peer.
 ## Interface configuration
 The next step is to configure your local WireGuard interface and define the
 networks you want to tunnel (`allowed-ips`).
+
 If your system only initiates connections, specifying the listen port is
 optional. If your system accepts incoming connections, you must define a port
 for peers to connect to. Otherwise, WireGuard selects a random port at each
 reboot, and that may break your peers' ability to connect if that port is not enabled in your firewall rules.
+
 To configure a WireGuard tunnel, you also need your peer's public key.
+
 :::{note}
 The public key specified in the peer configuration block is always
 the **remote** peer's public key, never your local one.
 :::
+
 **Local side configuration**
+
 The local side is configured with the following parameters:
 - Local WireGuard interface IP: `10.1.0.1/30`
 - Local listen port: `51820`

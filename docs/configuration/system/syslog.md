@@ -58,6 +58,7 @@ Configure which log messages to save to a local log file.
 
 **Configure syslog to save log messages for a specific facility and
 severity level to ``/var/log/messages``.**
+
 Refer to the tables below for valid facility and severity options.
 ```
 
@@ -70,6 +71,7 @@ Configure which log messages to send to `/dev/console`.
 
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
+
 Refer to the tables below for valid facility and severity options.
 ```
 
@@ -86,14 +88,17 @@ to multiple hosts.
 
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
+
 The server’s address can be specified using either a {abbr}`FQDN (Fully
 Qualified Domain Name)` or an IP address.
+
 Refer to the tables below for valid facility and severity options.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> protocol \<udp | tcp\>
 
 **Configure the protocol for log transmission.**
+
 The protocol can be either UDP or TCP. By default, log messages are sent
 over UDP.
 ```
@@ -101,17 +106,20 @@ over UDP.
 ```{cfgcmd} set system syslog remote \<address\> port \<port\>
 
 **Configure the port for log transmission.**
+
 By default, the standard port 514 is used.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> format include-timezone
 
 **Configure log transmission in the RFC 5424 format.**
+
 The RFC 5424 format includes the timezone in the timestamp. For example:
 
 :::{code-block} none
 <34>1 2003-10-11T22:14:15.003-07:00 mymachine.example.com su - ID47 - BOM’su root’ failed for lonvick on /dev/pts/8.
 :::
+
 By default, log messages are sent in the RFC 3164 format. For example:
 
 :::{code-block} none
@@ -122,8 +130,10 @@ By default, log messages are sent in the RFC 3164 format. For example:
 ```{cfgcmd} set system syslog remote \<address\> format octet-counted
 
 **Enable octet-counted framing for log transmission.**
+
 When enabled, multi-line log messages are sent without splitting. Ensure
 the remote server supports octet-counted framing to avoid parsing errors.
+
 Octet-counted framing is not available for the UDP protocol.
 ```
 
@@ -176,6 +186,7 @@ authentication modes except ``anon``.
 ```{cfgcmd} set system syslog remote \<address\> tls certificate \<cert_name\>
 
 **Configure the client certificate.**
+
 The remote syslog server uses the client certificate to verify the identity
 of the syslog client.
 
@@ -187,6 +198,7 @@ client certificate verification.
 ```{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
 
 **Configure the authentication mode.**
+
 The authentication mode defines how the syslog client verifies the syslog
 server's identity.
 
@@ -218,6 +230,7 @@ The following authentication modes are available:
 ```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
 **Configure the peer certificate identifiers.**
+
 The certificate identifier format depends on the authentication mode:
 * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
   SHA-256).
@@ -325,6 +338,7 @@ tools, rather than strict directives.
 ```{opcmd} show log [all | authorization | cluster | conntrack-sync | ...]
 
 **Display logs for a specific category on the console.**
+
 Use tab completion to view a list of available categories.
 
 If no category is specified, all logs are shown.
@@ -334,6 +348,7 @@ If no category is specified, all logs are shown.
 ```{opcmd} show log image \<name\> [all | authorization | directory | file \<file name\> | tail \<lines\>]
 
 **Display logs for a specific image on the console.**
+
 Available log categories:
 - ``all`` — Displays the contents of system log files of the specified image.
 - ``authorization`` — Displays authorization attempts of the specified image.

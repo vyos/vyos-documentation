@@ -4,7 +4,7 @@
 
 **Configure a clear, descriptive alias for the interface.** 
 
-This alias appears in the :opcmd:`show interfaces` command and SNMP-based 
+This alias appears in the {opcmd}`show interfaces` command and SNMP-based
 monitoring tools.
 
 Example:
