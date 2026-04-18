@@ -368,8 +368,8 @@ class CmdInclude(SphinxDirective):
                     line = re.sub('\s?{{\s?var' + str(i) + '\s?}}',value,line)
                 else:
                     line = re.sub('{{\s?var' + str(i) + '\s?}}',value,line)
-            new_include_lines.append(line)
-        
+            new_include_lines.append(line.rstrip('\n'))
+
         # MyST myst-parser 2.0 compat (scripts/infra_patch.py)
         # Templates are RST and are included via {eval-rst} (RST state machine).
         # insert_input injects lines into the current RST parser, identical to
