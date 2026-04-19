@@ -338,6 +338,7 @@ old-style templates and verifies them against the schema. A bad definition
 causes the package build to fail. While the XML format is verbose, no other
 format provides this level of verification. Specialized XML editors can help
 manage verbosity.
+
 Example XML interface definition:
 
 ```xml

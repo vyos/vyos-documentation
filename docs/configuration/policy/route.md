@@ -103,6 +103,7 @@ For ipv4:
   - !\<x.x.x.x>: Match everything except the specified address.
   - !\<x.x.x.x/x>: Match everything except the specified subnet.
   - !\<x.x.x.x>-\<x.x.x.x>: Match everything except the specified range.
+
 And for ipv6:
 : - \<h:h:h:h:h:h:h:h>: IPv6 address to match.
   - \<h:h:h:h:h:h:h:h/x>: IPv6 prefix to match.
@@ -138,6 +139,7 @@ be:
 * <port name>: Named port (any name in /etc/services, e.g., http).
 * <1-65535>: Numbered port.
 * <start>-<end>: Numbered port range (e.g., 1001-1005).
+
 Multiple destination ports can be specified as a comma-separated list. The
 whole list can also be "negated" using '!'. For example:
 '!22,telnet,http,123,1001-1005'

@@ -346,12 +346,10 @@ set service webproxy authentication ldap use-ssl
 
   :::{note}
   This can only be done if all your users are located directly under
-
-
-   the same position in the LDAP tree and the login name is used for naming
-   each user object. If your LDAP tree does not match these criterias or if you
-   want to filter who are valid users then you need to use a search filter to
-   search for your users DN (`filter-expression`).
+  the same position in the LDAP tree and the login name is used for naming
+  each user object. If your LDAP tree does not match these criterias or if you
+  want to filter who are valid users then you need to use a search filter to
+  search for your users DN (`filter-expression`).
 
 
    ::::{code-block} none
@@ -420,6 +418,7 @@ vyos@vyos:~$
 ```{opcmd} update webproxy blacklists category \<category\>
 
 Download/Update partial blacklist.
+
 Use tab completion to get a list of categories.
 ```
 - To auto update the blacklist files

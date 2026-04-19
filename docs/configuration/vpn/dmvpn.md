@@ -4,7 +4,6 @@
 
 {abbr}`DMVPN (Dynamic Multipoint Virtual Private Network)` is a dynamic
 {abbr}`VPN (Virtual Private Network)` technology originally developed by Cisco.
-
 While their implementation was somewhat proprietary, the underlying
 technologies are actually standards based. The three technologies are:
 
@@ -94,6 +93,7 @@ one third of the holdtime
 
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x**.
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **local**
+
 Map an IP address of a station to the station’s NBMA address.
 ```
 
@@ -105,6 +105,7 @@ Configure NHRP advertised MTU.
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> multicast \<nbma-ip\>
 
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **dynamic**
+
 Sends multicast packets to the specified NBMA address. If dynamic is specified
 then destination NBMA address (or addresses) are learnt dynamically.
 ```
@@ -112,6 +113,7 @@ then destination NBMA address (or addresses) are learnt dynamically.
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> network-id \<network-id\>
 
 * **network-id** - NHRP network id <1-4294967295>
+
 Enable NHRP on this interface and set the interface’s network ID. The network ID
 is used to allow creating multiple nhrp domains on a router when multiple interfaces
 are configured on the router. Interfaces configured with the same ID are part of the
@@ -124,6 +126,7 @@ received on an interface they are assigned to the local NHRP domain for that int
 
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x** or **dynamic**
 * **nbma-ip** - NBMA ip address in format **x.x.x.x**
+
 Configure the Next Hop Server address and its NBMA address. If dynamic is specified
 then Next Hop Server can have dynamic address which maps to its NBMA address.
 ```
