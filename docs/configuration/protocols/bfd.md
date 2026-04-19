@@ -65,7 +65,6 @@ Disable a BFD peer
 
 For multi hop sessions only. Configure the minimum expected TTL for an
 incoming BFD control packet.
-
 This feature serves the purpose of thightening the packet validation
 requirements to avoid receiving BFD control packets from other sessions.
 ```

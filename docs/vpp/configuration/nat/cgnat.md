@@ -25,7 +25,6 @@ addresses to public IP addresses.
 **Enabling CGNAT** on an interface (both inside and outside)
 **disables normal routing** on these interfaces and **blocks management
 access** to the VyOS router itself.
-
 Ensure you have an alternative management path to the router before applying
 your CGNAT configuration.
 :::

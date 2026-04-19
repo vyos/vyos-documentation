@@ -151,7 +151,6 @@ Configure the source IP address (IPv4 or IPv6) for log transmission.
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 over TCP to ensure secure transmission of syslog data to remote syslog servers.
-
 **Prerequisites**: Before configuring {abbr}`TLS (Transport Layer
 Security)`-encrypted remote logging, ensure you have:
 - A valid remote syslog server address.
@@ -176,7 +175,6 @@ Enable TLS-encrypted remote logging.
 ```{cfgcmd} set system syslog remote \<address\> tls ca-certificate \<ca_name\>
 
 **Configure the** {abbr}`CA (Certificate Authority)` **certificate.**
-
 The syslog client uses the {abbr}`CA (Certificate Authority)` certificate to
 verify the identity of the remote syslog server.
 
