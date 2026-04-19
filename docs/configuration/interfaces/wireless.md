@@ -294,7 +294,7 @@ VHT operating channel center frequency - center freq 1
 VHT operating channel center frequency - center freq 2
 (for use with the 80+80 mode)
 
-<number> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
+\<number\> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht channel-set-width <0 | 1 | 2 | 3>
@@ -386,11 +386,13 @@ HE operating channel center frequency - center freq 1
 HE operating channel center frequency - center freq 2
 (for use with the 80+80 mode)
 
-<number> must be within 1..233. For 80 MHz channels it should be
+\<number\> must be within 1..233. For 80 MHz channels it should be
 channel + 6 and for 160 MHz channels, it should be channel + 14.
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities he channel-set-width <number> <number> must be one of:
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he channel-set-width \<number\>
+
+\<number\> must be one of:
 
 * ``81`` - 20 MHz channel width (2.4GHz)
 * ``83`` - 40 MHz channel width, secondary 20MHz channel above primary
@@ -410,7 +412,7 @@ This setting configures Spatial Stream and Modulation Coding Scheme
 settings for HE mode (HE-MCS). It is usually not needed to set this
 explicitly, but it might help with some WiFi adapters.
 
-<number> must be one of:
+\<number\> must be one of:
 * ``0`` - HE-MCS 0-7
 * ``1`` - HE-MCS 0-9
 * ``2`` - HE-MCS 0-11

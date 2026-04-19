@@ -23,14 +23,25 @@ As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
 VRF MGMT:
 : Allow connections to LAN and PROD. Deny connections to internet(WAN). Allow connections to the router.
 
+- Allow connections to LAN and PROD.
+- Deny connections to internet(WAN).
+- Allow connections to the router.
+
 VRF LAN:
 : Allow connections to PROD. Allow connections to internet(WAN).
+
+- Allow connections to PROD.
+- Allow connections to internet(WAN).
 
 VRF PROD:
 : Only accepts connections.
 
+- Only accepts connections.
+
 VRF WAN:
 : Allow connection to PROD.
+
+- Allow connection to PROD.
 
 ## Configuration
 First, we need to configure the interfaces and VRFs:
