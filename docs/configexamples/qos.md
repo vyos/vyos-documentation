@@ -28,12 +28,16 @@ vpc8.
 
 We will replace the labels on the nearest router “VyOS3” using the IP
 addresses of the sources.
+
 - 172.17.1.2 CS0 -> CS4
 - 172.17.1.3 CS0 -> CS5
 - 172.17.1.4 CS0 -> CS6
 - 172.17.1.40 CS0 by default
+
 Next, we will replace only all CS4 labels on the “VyOS2” router.
+
 - CS4 -> CS5
+
 In the end, we will configure the traffic shaper using QoS mechanisms
 on the “VYOS2” router.
 
@@ -61,9 +65,11 @@ set qos interface eth0 egress 'vyos3'
 ```
 
 Main rules:
+
 - ADDRESS10 change CS0 -> CS4 source 172.17.1.2/32
 - ADDRESS20 change CS0 -> CS5 source 172.17.1.3/32
 - ADDRESS30 change CS0 -> CS6 source 172.17.1.4/32
+
 Check the result
 
 ```{image} /_static/images/qos2.png

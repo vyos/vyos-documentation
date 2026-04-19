@@ -338,7 +338,7 @@ set service webproxy authentication ldap use-ssl
 
   Specifies the name of the DN attribute that contains the username/login.
   Combined with the base DN to construct the users DN when no search filter is
-  specified (`filter-expression`).
+  specified (filter-expression).
 
 
   Defaults to 'uid'
@@ -349,7 +349,7 @@ set service webproxy authentication ldap use-ssl
   the same position in the LDAP tree and the login name is used for naming
   each user object. If your LDAP tree does not match these criterias or if you
   want to filter who are valid users then you need to use a search filter to
-  search for your users DN (`filter-expression`).
+  search for your users DN (filter-expression).
 
 
    ::::{code-block} none
@@ -421,26 +421,35 @@ Download/Update partial blacklist.
 
 Use tab completion to get a list of categories.
 ```
-- To auto update the blacklist files
-  {code}`set service webproxy url-filtering squidguard auto-update
-  update-hour 23`
-- To configure blocking add the following to the configuration
-  {code}`set service webproxy url-filtering squidguard block-category ads`
-  {code}`set service webproxy url-filtering squidguard block-category malware`
+To auto update the blacklist files
+
+set service webproxy url-filtering squidguard auto-update update-hour 23
+
+To configure blocking add the following to the configuration
+
+set service webproxy url-filtering squidguard block-category ads
+
+set service webproxy url-filtering squidguard block-category malware
 #### Bypassing the webproxy
 ```{include} /_include/need_improvement.txt
 ```
 Some services don't work correctly when being handled via a web proxy.
 So sometimes it is useful to bypass a transparent proxy:
-- To bypass the proxy for every request that is directed to a specific
-  destination:
-  {code}`set service webproxy whitelist destination-address 198.51.100.33`
-  {code}`set service webproxy whitelist destination-address 192.0.2.0/24`
-- To bypass the proxy for every request that is coming from a specific source:
-  {code}`set service webproxy whitelist source-address 192.168.1.2`
-  {code}`set service webproxy whitelist source-address 192.168.2.0/24`
-  (This can be useful when a called service has many and/or often changing
-  destination addresses - e.g. Netflix.)
+To bypass the proxy for every request that is directed to a specific
+destination:
+
+set service webproxy whitelist destination-address 198.51.100.33
+
+set service webproxy whitelist destination-address 192.0.2.0/24
+
+To bypass the proxy for every request that is coming from a specific source:
+
+set service webproxy whitelist source-address 192.168.1.2
+
+set service webproxy whitelist source-address 192.168.2.0/24
+
+(This can be useful when a called service has many and/or often changing
+destination addresses - e.g. Netflix.)
 ## Examples
 ```none
 vyos@vyos# show service webproxy

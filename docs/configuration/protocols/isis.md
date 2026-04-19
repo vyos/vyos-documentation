@@ -442,9 +442,11 @@ The Maximum End D MSD Type specifies the maximum number of SIDs present in an
 SRH when performing decapsulation. As specified in {rfc}`8986`, the permitted
 SID types include, but are not limited to, End.DX6, End.DT4, End.DT46, End
 with USD, and End.X with USD.
+
 If the advertised value is zero or no value is advertised, then the router
 cannot apply any behavior that results in decapsulation and forwarding of the
 inner packet if the outer IPv6 header contains an SRH.
+
 Reference: {rfc}`9352`
 ```
 
@@ -454,8 +456,10 @@ The Maximum End Pop MSD Type signals the maximum number of SIDs in the SRH to
 which the router can apply "Penultimate Segment Pop (PSP) of the SRH" or
 "Ultimate Segment Pop (USP) of the SRH" behavior, as defined in "Flavors"
 (Section 4.16 of {rfc}`8986`).
+
 If the advertised value is zero or no value is advertised, then the router
 cannot apply PSP or USP flavors.
+
 Reference: {rfc}`9352`
 ```
 
@@ -464,10 +468,12 @@ Reference: {rfc}`9352`
 The Maximum H.Encaps MSD Type signals the maximum number of SIDs that can be
 added to the segment list of an SRH as part of the "H.Encaps" behavior, as
 defined in {rfc}`8986`.
+
 If the advertised value is zero or no value is advertised, then the headend
 can apply an SR Policy that only contains one segment without inserting any
 SRH header. A non-zero SRH Max H.encaps MSD indicates that the headend can
 insert an SRH up to the advertised number of SIDs.
+
 Reference: {rfc}`9352`
 ```
 
@@ -476,7 +482,9 @@ Reference: {rfc}`9352`
 The Maximum Segments Left MSD Type signals the maximum value of the
 "Segments Left" field ({rfc}`8754`) in the SRH of a received packet before
 applying the Endpoint behavior associated with a SID.
+
 If no value is advertised, the supported value is 0.
+
 Reference: {rfc}`9352`
 ```
 
