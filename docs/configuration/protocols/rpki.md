@@ -7,7 +7,7 @@
 There are two types of Network Admins who deal with BGP, those who have
 created an international incident and/or outage, and those who are lying
 
--- `tweet by EvilMog`_, 2020-02-21
+-- tweet by EvilMog, 2020-02-21
 :::
 
 {abbr}`RPKI (Resource Public Key Infrastructure)` is a framework designed to
@@ -98,7 +98,8 @@ In a nutshell, the current implementation provides the following features:
 
 ```{cfgcmd} set protocols rpki polling-period \<1-86400\>
 
-Define the time interval to update the local cache
+Define the time interval to update the local cache.
+
 The default value is 300 seconds.
 ```
 
@@ -106,6 +107,7 @@ The default value is 300 seconds.
 
 Set the number of seconds the router waits until the router
 expires the cache.
+
 The default value is 7200 seconds.
 ```
 
@@ -113,6 +115,7 @@ The default value is 7200 seconds.
 
 Set the number of seconds the router waits until retrying to connect
 to the cache server.
+
 The default value is 600 seconds.
 ```
 
@@ -120,6 +123,7 @@ The default value is 600 seconds.
 
 Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
 instance which is used.
+
 This is a mandatory setting.
 ```
 
@@ -127,6 +131,7 @@ This is a mandatory setting.
 
 Multiple RPKI caching instances can be supplied and they need a preference in
 which their result sets are used.
+
 This is a mandatory setting.
 ```
 

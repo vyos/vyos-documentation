@@ -78,6 +78,7 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> protocol <protocol>
 - `permit` - Allow matching traffic
 - `deny` - Block matching traffic
 - `permit-reflect` - Allow outbound traffic and automatically permit return traffic
+
 **Protocols:**
 - `all` - Match all IP protocols (default)
 - Or specific protocol by name, e.g. `tcp`, `udp`, `icmp`
@@ -98,6 +99,7 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> destination port <port-spe
 **Prefix Specification:**
 - `<x.x.x.x/x>` - IPv4 prefix in CIDR notation
 - `<h:h:h:h:h:h:h:h/x>` - IPv6 prefix in CIDR notation
+
 **Port Specification:**
 - `<1-65535>` - Single port number
 - `<start>-<end>` - Port range (e.g., 1001-1005)
@@ -193,6 +195,7 @@ Where:
 - `<interface>` - Interface name (e.g., eth0, eth1)
 - `<number>` - ACL rule number (0-4294967295) for ordering multiple ACL tags
 - `<tag-name>` - Name of the ACL tag to apply
+
 Multiple tags can be applied to the same interface and direction by using different ACL rule numbers.
 
 Example:
@@ -248,6 +251,7 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> description '<description
 **Actions:**
 - `permit` - Allow matching traffic
 - `deny` - Block matching traffic
+
 Note: MAC ACLs do not support the `permit-reflect` action available in IP ACLs.
 
 #### MAC Address Matching
@@ -261,6 +265,7 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> mac-mask <mac-mask>
 **MAC Address Specification:**
 - `mac-address` - Source MAC address to match (format: xx:xx:xx:xx:xx:xx)
 - `mac-mask` - MAC address mask (default: ff:ff:ff:ff:ff:ff for exact match)
+
 The MAC mask allows for partial MAC address matching. For example:
 \- `ff:ff:ff:00:00:00` matches the first 3 octets (OUI)
 \- `ff:ff:ff:ff:ff:ff` matches the complete MAC address (default)
@@ -452,7 +457,7 @@ View all IP ACLs:
 
 View IP ACL interface assignments:
 
-```{opcmd} show vpp acl ip interface show vpp acl ip interface
+```{opcmd} show vpp acl ip interface
 ```
 
 Example output:
