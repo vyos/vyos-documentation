@@ -66,9 +66,7 @@ or other system processes.
 
 :::{warning}
 Kernel tuning changes require a system reboot to take effect.
-:::
 
-:::{warning}
 Improper CPU isolation can lead to system instability if essential
 system processes are starved of CPU resources.
 :::
