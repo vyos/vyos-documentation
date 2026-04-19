@@ -23,8 +23,7 @@ ensure that hugepages are enabled and properly configured on your
 system.
 
 :::{seealso}
-{ref}`Hugepages in VyOS Configuration for VPP
-<vpp_config_hugepages>`
+{ref}`Hugepages in VyOS Configuration for VPP <vpp-config-hugepages>`
 :::
 To configure memory settings for VPP, you can use the following
 commands in the VPP CLI:
@@ -63,8 +62,8 @@ memory-constrained systems where you need to limit VPP's memory usage.
 buffers, main heap is for routing tables.
 
 :::{seealso}
-- {ref}`Hugepages in VyOS Configuration for VPP <vpp_config_hugepages>`
-- {ref}`VPP Buffer Configuration <vpp_config_dataplane_buffers>` - for
+- {ref}`Hugepages in VyOS Configuration for VPP <vpp-config-hugepages>`
+- {ref}`VPP Buffer Configuration <vpp-config-dataplane-buffers>` - for
   controlling buffer allocation within physmem
 :::
 
