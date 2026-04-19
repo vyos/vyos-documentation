@@ -10,13 +10,13 @@ can pass variables, arguments, and a full matching string to the script.
 
 ## How to configure Event Handler
 
-> [1. Create an event handler]
->
-> [2. Add regex to the script]
->
-> [3. Add a full path to the script]
->
-> [4. Add optional parameters]
+[1. Create an event handler](#1-create-an-event-handler)
+
+[2. Add regex to the script](#2-add-regex-to-the-script)
+
+[3. Add a full path to the script](#3-add-a-full-path-to-the-script)
+
+[4. Add optional parameters](#4-add-optional-parameters)
 
 ## Event Handler Configuration Steps
 

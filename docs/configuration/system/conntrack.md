@@ -53,8 +53,8 @@ searching the connection tracking table faster. The hash table uses
 Configure the connection tracking protocol helper modules.
 All modules are enable by default.
 
-Use `delete system conntrack modules` to deactive all modules.
-Or, for example ftp, `delete system conntrack modules ftp`.
+| Use delete system conntrack modules to deactive all modules.
+| Or, for example ftp, delete system conntrack modules ftp.
 ```
 
 ```{cfgcmd} set system conntrack tcp half-open-connections \<1-21474836\>
@@ -128,7 +128,7 @@ Set a destination and/or source port. Accepted input:
 :::
 Multiple destination ports can be specified as a comma-separated list.
 The whole list can also be "negated" using '!'. For example:
-`!22,telnet,http,123,1001-1005``
+!22,telnet,http,123,1001-1005`
 ```
 
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> protocol tcp close <1-21474836>

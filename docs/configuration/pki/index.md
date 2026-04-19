@@ -59,7 +59,7 @@ instance.
 ```{opcmd} generate pki ca sign \<ca-name\>
 
 Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
-the private key referenced by `ca-name`.
+the private key referenced by ca-name.
 ```
 
 ```{opcmd} generate pki ca sign \<ca-name\> install \<name\>
@@ -125,13 +125,13 @@ instance.
 ```{opcmd} generate pki certificate sign \<ca-name\>
 
 Create a new public/private keypair which is signed by the CA referenced by
-`ca-name`. The signed certificate is then output to the console.
+ca-name. The signed certificate is then output to the console.
 ```
 
 ```{opcmd} generate pki certificate sign \<ca-name\> install \<name\>
 
 Create a new public/private keypair which is signed by the CA referenced by
-`ca-name`. The signed certificate is then output to the console.
+ca-name. The signed certificate is then output to the console.
 
 :::{note}
 In addition to the command above, the output is in a format which can be used
@@ -150,6 +150,7 @@ instance.
 
 Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
+
 The generated parameters are then output to the console.
 ```
 

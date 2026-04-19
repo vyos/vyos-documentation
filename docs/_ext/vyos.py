@@ -536,7 +536,11 @@ def strip_cmd(cmd, debug=False):
     # only if all [..] will be delete if appearance > 0 there is a syntax error
     if appearance == 0:
         cmd = cmd_new
-    
+
+    # Normalize MyST escaped angle brackets (\< and \>) to plain < and >
+    # so the <...> removal below works correctly for MyST fence directives
+    cmd = cmd.replace('\\<', '<').replace('\\>', '>')
+
     # same for <...>
     appearance = 0
     cmd_new = ""
