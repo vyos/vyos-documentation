@@ -198,27 +198,27 @@ set and is in the process of being resynchronized.
 :::{code-block} none
 vyos@vyos:~$ show raid md0
 /dev/md0:
-Version : 00.90
+      Version : 00.90
 Creation Time : Wed Oct 29 09:19:09 2008
-Raid Level : raid1
-Array Size : 1044800 (1020.48 MiB 1069.88 MB)
+   Raid Level : raid1
+   Array Size : 1044800 (1020.48 MiB 1069.88 MB)
 Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
-Raid Devices : 2
+ Raid Devices : 2
 Total Devices : 2
 Preferred Minor : 0
-Persistence : Superblock is persistent
-Update Time : Wed Oct 29 19:34:23 2008
-State : active, degraded, recovering
+  Persistence : Superblock is persistent
+  Update Time : Wed Oct 29 19:34:23 2008
+        State : active, degraded, recovering
 Active Devices : 1
 Working Devices : 2
 Failed Devices : 0
 Spare Devices : 1
 Rebuild Status : 17% complete
-UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
-Events : 0.103
-Number   Major   Minor   RaidDevice State
-0       8        1        0      active sync   /dev/sda1
-2       8       17        1      spare rebuilding   /dev/sdb1
+         UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
+       Events : 0.103
+  Number   Major   Minor   RaidDevice State
+     0       8        1        0      active sync   /dev/sda1
+     2       8       17        1      spare rebuilding   /dev/sdb1
 :::
 ```
 
