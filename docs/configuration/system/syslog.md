@@ -57,7 +57,7 @@ Configure which log messages to save to a local log file.
 ```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
 
 **Configure syslog to save log messages for a specific facility and
-severity level to ``/var/log/messages``.**
+severity level to** ``/var/log/messages``.
 
 Refer to the tables below for valid facility and severity options.
 ```
@@ -159,7 +159,7 @@ Security)`-encrypted remote logging, ensure you have:
   to the local {abbr}`PKI (Public Key Infrastructure)` storage.
 - The **remote syslog transport protocol** is set to **TCP**:
 
-```none
+  ```none
   set system syslog remote <address> protocol tcp
   ```
 :::{note}
