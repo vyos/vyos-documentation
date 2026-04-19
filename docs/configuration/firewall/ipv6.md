@@ -556,13 +556,15 @@ set firewall ipv6 name FOO rule 100 source address 2001:db8::202
 Apply an arbitrary netmask to mask addresses and match only a specific
 portion. This is useful for IPv6 because rules remain valid when the IPv6
 prefix changes if the host portion of the system's IPv6 address is static.
-Examples include SLAAC and [tokenised IPv6 addresses](https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt)
+Examples include SLAAC and `tokenised IPv6 addresses
+<https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-
+identifiers-02.txt>`_
 
 
 This function works for both individual addresses and address groups.
 
 
-% stop_vyoslinter
+.. stop_vyoslinter
 
 :::{code-block} none
 # Match any IPv6 address with the suffix ::0000:0000:0000:beef
@@ -574,7 +576,7 @@ set firewall group ipv6-address-group WEBSERVERS address ::2000
 set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
 set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
 :::
-% start_vyoslinter
+.. start_vyoslinter
 ```
 
 
@@ -678,8 +680,9 @@ Ensure that the router can resolve the DNS query.
 
 
 Match IP addresses based on their geolocation. For more information, see
-[GeoIP matching](https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching).
-Use inverse-match to match anything except the specified country codes.
+`GeoIP matching <https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_
+matching>`_. Use inverse-match to match anything except the specified
+country codes.
 ```
 DB-IP.com provides data under CC-BY-4.0 license. Attribution is required and
 redistribution is permitted, allowing VyOS to include a database in images

@@ -78,6 +78,7 @@ Continue creating array?
 2. To overwrite the old filesystem, enter **Yes**.
 
 3\. The system informs you that all data on both drives will be erased.
+
 Confirm you want to continue.
 
 ```none
@@ -85,6 +86,7 @@ Are you sure you want to do this?
 ```
 
 4\. Enter **Yes** at the prompt to retain the current VyOS configuration.
+
 Enter **No** to delete the current VyOS configuration.
 
 ```none
@@ -92,6 +94,7 @@ Would you like me to save the data on it before I delete it?
 ```
 
 5\. Enter **Yes** at the prompt to retain the current VyOS configuration.
+
 Enter **No** to delete the current VyOS configuration.
 
 6. Continue installing VyOS.
@@ -156,14 +159,11 @@ To replace a bad disk within a RAID 1 set:
 3. Replace the failed drive with a drive of the same size or larger.
 4. Format the new disk for RAID 1 by running the following command:
 
-   ```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
-   ```
-   where `disk-device1` is the replacement disk. For example, `sdb` and
-   `disk-device2` is the existing healthy disk. For example, `sda`.
+```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\> ``` where `disk-device1` is the replacement disk. For example, `sdb` and `disk-device2` is the existing healthy disk. For example, `sda`.
 
 5. Add the replacement disk to the RAID 1 set by running the following command:
+```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
-   ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
    ```
    where `RAID-1-device` is the name of the RAID 1 device. For example,
    `md0` and `disk-partition` is the name of the replacement disk partition.
@@ -189,10 +189,7 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 ```
 
 
-```{opcmd} show raid \<RAID‐1‐device\>
-
-shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
-set and is in the process of being resynchronized.
+```{opcmd} show raid \<RAID‐1‐device\> shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1 set and is in the process of being resynchronized.
 
 
 :::{code-block} none

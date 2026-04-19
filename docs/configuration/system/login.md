@@ -86,7 +86,6 @@ command. This creates two files:
   never be shared.
 - **Public key** (e.g., `id_rsa.pub`): Is used to configure the VyOS user
   account. By default, it is saved to `~/.ssh/id_rsa.pub`.
-
 Each SSH public key consists of three parts, separated by spaces:
 - **Encryption algorithm type:** `ssh-rsa`, `ssh-ed25519`, etc.
 - **Key:** The actual data (a long string beginning with `AAAA...`).
@@ -410,7 +409,6 @@ Unlike {abbr}`RADIUS (Remote Authentication Dial-In User Service)`,
 {abbr}`TACACS+ (Terminal Access Controller Access Control System)` separates
 Authentication, Authorization, and Accounting (AAA) into independent processes
 and encrypts the entire packet body for enhanced security.
-
 {abbr}`TACACS+ (Terminal Access Controller Access Control System)` is defined
 in {rfc}`8907`.
 (tacacs-configuration)=
@@ -532,14 +530,11 @@ login attempts.
 ```{cfgcmd} set system login timeout \<timeout\>
 
 **Configure the login session timeout, in seconds.**
-
 Idle login sessions are terminated after this period.
 ```
 
 ## Configuration examples
-
 Example 1: Multi-key SSH with MFA and source restrictions
-
 In this configuration, `User1` and `User2` both use the vyos user account,
 each with a unique SSH key. `User1` is restricted to authentication from a
 single IP address.
