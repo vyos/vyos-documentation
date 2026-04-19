@@ -250,6 +250,7 @@ disabled on it.
 
 ```{cmdincludemd} /_include/interface-dhcpv6-prefix-delegation.txt
 :var0: pppoe
+:var1: pppoe0
 ```
 
 ## Operation
