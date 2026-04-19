@@ -32,7 +32,6 @@ interface type.
 ## Operation
 
 ```{opcmd} show interfaces loopback
-
 Show brief interface information.
 
 :::{code-block} none
@@ -46,7 +45,6 @@ lo               127.0.0.1/8                       u/u
 ```
 
 ```{opcmd} show interfaces loopback lo
-
 Show detailed interface information.
 
 :::{code-block} none

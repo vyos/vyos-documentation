@@ -62,24 +62,19 @@ Terraform, Ansible, and vSphere, follow these steps:
 ### Deploy with Terraform
 
 Run the following commands on your Terraform instance:
-
 ```none
 cd /<your folder>
 terraform plan  
 terraform apply  
 yes
 ```
-
 After executing these commands, your VyOS instance is deployed to
 vSphere with your configuration.
 If you need to delete the instance, run the following command:
-
 ```none
 terraform destroy
 ```
-
 ## Structure of files in Terraform for vSphere
-
 ```none
 .
 ├── vyos.tf                                # The main script.
@@ -88,11 +83,8 @@ terraform destroy
 └── terraform.tfvars           # Values for all variables (passwords,
                        # login, IP addresses, etc.).
 ```
-
 ## File contents of Terraform for vSphere
-
 `vyos.tf`
-
 ```none
 provider "vsphere" {
   user           = var.vsphere_user
@@ -214,9 +206,7 @@ provisioner "remote-exec" {
 }
 }
 ```
-
 `versions.tf`
-
 ```none
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
@@ -230,9 +220,7 @@ terraform {
   }
 }
 ```
-
 `var.tf`
-
 ```none
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
@@ -298,9 +286,7 @@ variable "ansiblehost" {
   type        = string
 }
 ```
-
 `terraform.tfvars`
-
 ```none
 vsphere_user       = ""
 vsphere_password   = ""
@@ -315,9 +301,7 @@ ansiblepassword    = ""
 ansiblehost        = ""
 remotename         = ""
 ```
-
 ## Structure of files in Ansible for vSphere
-
 ```none
 .
 ├── group_vars
@@ -325,20 +309,15 @@ remotename         = ""
 ├── ansible.cfg
 └── instance.yml
 ```
-
 ## File contents of Ansible for vSphere
-
 `ansible.cfg`
-
 ```none
 [defaults]
 inventory = /root/vsphere/ip.txt
 host_key_checking= False
 remote_user=vyos
 ```
-
 `instance.yml`
-
 ```none
 ##############################################################################
 # About tasks:
@@ -364,9 +343,7 @@ remote_user=vyos
         save:
           true
 ```
-
 `group_vars/all`
-
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

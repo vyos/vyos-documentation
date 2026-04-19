@@ -775,7 +775,6 @@ Paths: (2 available, best #1)
      Originator: 10.0.0.8, Cluster list: 10.0.0.1
      Remote label: 80
      Last update: Wed Oct 13 12:39:34 202
-
 ```
 
 Now, let’s check routing information on out Hub PE:

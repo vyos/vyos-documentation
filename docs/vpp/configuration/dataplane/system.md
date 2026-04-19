@@ -24,10 +24,8 @@ Hugepages must be enabled before VPP configuration is applied.
 :::
 
 To enable hugepages:
-
 ```{cfgcmd} set system option kernel memory hugepage-size \<size\> hugepage-count '\<count\>'
 ```
-
 Enables hugepages with the specified size and count. The size can be either
 2MB or 1GB, and the count specifies the number of hugepages to allocate.
 
@@ -46,15 +44,11 @@ especially memory. There are two main settings that may need to be
 adjusted to ensure VPP runs smoothly:
 
 Maximum number of memory map areas a process may have:
-
 ```{cfgcmd} set system option resource-limits max-map-count \<value\>
 ```
-
 Maximum shared memory segment size:
-
 ```{cfgcmd} set system option resource-limits shmmax \<value\>
 ```
-
 Both settings are automatically calculated based on configured hugepages.
 
 ## Kernel Tuning
@@ -81,15 +75,12 @@ processes.
 The NMI (Non-Maskable Interrupt) watchdog can interfere with VPP
 performance by generating interrupts on isolated cores and is not
 compatible with nohz-full mode:
-
 ```{cfgcmd} set system option kernel cpu disable-nmi-watchdog
 
 Disables the NMI watchdog for detecting hard CPU lockups. This
 prevents unnecessary interrupts on VPP worker cores.
 ```
-
 **CPU Core Isolation**
-
 ```{cfgcmd} set system option kernel cpu isolate-cpus \<cpu-range\>
 
 Isolates specified CPUs from the kernel scheduler. Isolated cores will
@@ -111,9 +102,7 @@ remaining isolated cores as VPP worker cores. Ensure that VPP CPU
 assignments match the isolated CPU range.
 :::
 ```
-
 **Adaptive-Tick Mode**
-
 ```{cfgcmd} set system option kernel cpu nohz-full \<cpu-range\>
 
 Enables adaptive-tick mode (NO_HZ_FULL) for specified CPUs. This
@@ -123,9 +112,7 @@ overhead for dedicated workloads like VPP.
 
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
-
 **RCU Callback Offloading**
-
 ```{cfgcmd} set system option kernel cpu rcu-no-cbs \<cpu-range\>
 
 Offloads Read-Copy-Update (RCU) callback processing from specified
@@ -135,57 +122,45 @@ for nohz-full functionality.
 
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
-
 ### System Optimization
 Additional kernel optimizations can further improve VPP performance by
 disabling unnecessary features and reducing system overhead.
 
 **Disable High Precision Event Timer**
-
 ```{cfgcmd} set system option kernel disable-hpet
 
 Disables the High Precision Event Timer (HPET). HPET can cause
 additional interrupts and overhead that may impact VPP performance.
 ```
-
 **Disable Machine Check Exceptions**
-
 ```{cfgcmd} set system option kernel disable-mce
 
 Disables Machine Check Exception (MCE) reporting and handling. While
 MCE provides hardware error detection, it can introduce latency in
 high-performance scenarios.
 ```
-
 **Disable CPU Power Saving**
-
 ```{cfgcmd} set system option kernel disable-power-saving
 
 Disables CPU power saving mechanisms (C-states). This keeps CPU cores
 at maximum performance levels, eliminating latency from power state
 transitions.
 ```
-
 **Disable Soft Lockup Detection**
-
 ```{cfgcmd} set system option kernel disable-softlockup
 
 Disables the soft lockup detector for kernel threads. This prevents
 false positives when VPP worker threads are busy processing packets.
 ```
-
 **Disable CPU Mitigations**
-
 ```{cfgcmd} set system option kernel disable-mitigations
 
 Disables all optional CPU mitigations for security vulnerabilities
 (for example, Spectre, Meltdown). This may improve performance on some
 platforms.
 ```
-
 ### Optimal Configuration Example
 For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:
-
 ```none
 # Kernel CPU optimizations
 set system option kernel cpu disable-nmi-watchdog

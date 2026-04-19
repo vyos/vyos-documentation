@@ -26,7 +26,6 @@ can lead to increased latency in processing events.
 
 You can configure the polling delay using the following command in the
 VyOS CLI:
-
 ```{cfgcmd} set vpp settings poll-sleep-usec \<delay\>
 ```
 

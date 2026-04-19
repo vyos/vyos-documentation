@@ -24,42 +24,34 @@ bit-rate by ten results in the overall transmission speed in characters per
 second. This is also the default setting if none of those options are defined.
 
 ```{cfgcmd} set service console-server device \<device\> data-bits [7 | 8]
-
   Configure either seven or eight data bits. This defaults to eight data
   bits if left unconfigured.
-
 ```
 
 
 ```{cfgcmd} set service console-server device \<device\> description \<string\>
-
 A user friendly description identifying the connected peripheral.
 ```
 
 
 ```{cfgcmd} set service console-server device \<device\> alias \<string\>
-
 A user friendly alias for this connection. Can be used instead of the
 device name when connecting.
 ```
 
 
 ```{cfgcmd} set service console-server device \<device\> parity [even | odd | none]
-
 Set the parity option for the console. If unset this will default to none.
 ```
 
 
 ```{cfgcmd} set service console-server device \<device\> stop-bits [1 | 2]
-
 Configure either one or two stop bits. This defaults to one stop bits if
 left unconfigured.
 ```
 
 
 ```{cfgcmd} set service console-server device \<device\> speed [ 300 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 ]
-
-
 :::{note}
 USB to serial converters will handle most of their work in software
 so you should be carefull with the selected baudrate as some times they
@@ -73,7 +65,6 @@ Each individual configured console-server device can be directly exposed to
 the outside world. A user can directly connect via SSH to the configured
 port.
 ```{cfgcmd} set service console-server device \<device\> ssh port \<port\>
-
 Accept SSH connections for the given `<device>` on TCP port `<port>`.
 After successfull authentication the user will be directly dropped to
 the connected serial device.
@@ -86,7 +77,6 @@ one is allowed to write to the console port.
 ```
 ## Operation
 ```{opcmd} show console-server ports
-
 Show configured serial ports and their respective interface configuration.
 
 
@@ -98,7 +88,6 @@ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 
 
 ```{opcmd} show console-server user
-
 Show currently connected users.
 
 
@@ -108,7 +97,6 @@ usb0b2.4p1.0               up   vyos@localhost
 :::
 ```
 ```{opcmd} connect console \<device\>
-
 Locally connect to serial port identified by `<device>`.
 
 :::{code-block} none
@@ -131,6 +119,5 @@ connecting.
 :::
 ```
 ```{opcmd} show log console-server
-
 Show the console server log.
 ```

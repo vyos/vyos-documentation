@@ -27,7 +27,6 @@ main thread and doesn't create worker threads.
 
 ### `cpu-cores`
 This parameter defines the total number of CPU cores allocated to VPP.
-
 ```{cfgcmd} set vpp settings resource-allocation cpu-cores \<core-number\>
 ```
 

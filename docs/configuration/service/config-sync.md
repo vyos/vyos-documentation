@@ -21,21 +21,18 @@ routers should be online and run the same version of VyOS.
 ## Configuration
 
 ```{cfgcmd} set service config-sync secondary \<address|key|timeout|port\>
-
 Specify the address, API key, timeout and port of the secondary router.
 You need to enable and configure the HTTP API service on the secondary
 router for config sync to operate.
 ```
 
 ```{cfgcmd} set service config-sync section \<section\>
-
 Specify the section of the configuration to synchronize. If more than one
 section is to be synchronized, repeat the command to add additional
 sections as required.
 ```
 
 ```{cfgcmd} set service config-sync mode \<load|set\>
-
 Two options are available for mode: either load and replace or set
 the configuration section.
 ```
@@ -60,7 +57,6 @@ Supported options for <section> include:
 ## Operational Commands
 
 ```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
-
 Display configuration differences between the local node and
 a config-sync secondary node.
 

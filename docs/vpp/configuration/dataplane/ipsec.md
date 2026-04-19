@@ -24,10 +24,8 @@ section, see {ref}`ipsec_general`.
 When VPP is used for offloading IPsec, it creates a virtual interface to
 connect to peers. The interface type is always 'ipsec', which is used for
 IPsec tunnels.
-
 ```{cfgcmd} set vpp settings ipsec-acceleration
 ```
-
 Enabling this option allows VPP to handle IPsec traffic more efficiently by
 offloading processing from the kernel.
 
@@ -35,19 +33,14 @@ offloading processing from the kernel.
 VPP uses netlink to receive IPsec event messages from the kernel. Proper
 settings of the following parameters are crucial for ensuring that VPP can
 process all such messages:
-
 ```{cfgcmd} set vpp settings lcp netlink batch-delay-ms \<milliseconds\>
 ```
-
 This parameter specifies the delay in milliseconds between processing
 batch netlink messages.
-
 ```{cfgcmd} set vpp settings lcp netlink batch-size \<number\>
 ```
-
 This parameter specifies the maximum number of netlink messages to
 process in a single batch.
-
 ```{cfgcmd} set vpp settings lcp netlink rx-buffer-size \<number\>
 ```
 

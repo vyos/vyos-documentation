@@ -110,9 +110,7 @@ you build the ISO.
 To manually download the container from DockerHub, run:
 
 ```none
-
 $ docker pull vyos/vyos-build:current  # For VyOS rolling release
-
 ```
 
 ##### Build from source
@@ -120,11 +118,9 @@ $ docker pull vyos/vyos-build:current  # For VyOS rolling release
 The container can also be built directly from source:
 
 ```none
-
 $ git clone -b current --single-branch https://github.com/vyos/vyos-build
 $ cd vyos-build
 $ docker build -t vyos/vyos-build:current docker
-
 ```
 
 :::{note}
@@ -139,7 +135,6 @@ You can create Bash aliases to easily launch the latest container per release
 train (`current`). Add the following to your `.bash_aliases` file:
 
 ```none
-
 alias vybld='docker pull vyos/vyos-build:current && docker run --rm -it \
     -v "$(pwd)":/vyos \
     -v "$HOME/.gitconfig":/etc/gitconfig \
@@ -148,7 +143,6 @@ alias vybld='docker pull vyos/vyos-build:current && docker run --rm -it \
     -w /vyos --privileged --sysctl net.ipv6.conf.lo.disable_ipv6=0 \
     -e GOSU_UID=$(id -u) -e GOSU_GID=$(id -g) \
     vyos/vyos-build:current bash'
-
 ```
 
 Now you have a new alias `vybld` that launches development containers in
@@ -172,28 +166,22 @@ Now that you understand the prerequisites, you can build a VyOS ISO from source.
 First, fetch the latest source code from GitHub:
 
 ```none
-
 $ git clone -b current --single-branch https://github.com/vyos/vyos-build
-
 ```
 
 Now you can begin a fresh VyOS ISO build. Change to the `vyos-build`
 directory and run:
 
 ```none
-
 $ cd vyos-build
 $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
-
 ```
 
 Start the build:
 
 ```none
-
 vyos_bld@8153428c7e1f:/vyos$ sudo make clean
 vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
-
 ```
 
 When the build is successful, find the resulting ISO in the `build` directory
@@ -209,7 +197,6 @@ You can customize the ISO with the following configure options. Generate the
 full and current list with `./build-vyos-image --help`:
 
 ```none
-
 $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
   I: Checking if packages required for VyOS image build are installed
   usage: build-vyos-image [-h] [--architecture ARCHITECTURE]
@@ -249,7 +236,6 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
                           Custom APT key file
   --custom-package CUSTOM_PACKAGE
                           Custom package to install from repositories
-
 ```
 
 (iso_build_issues)=
@@ -262,7 +248,6 @@ reporting the root cause of the issue. Your ISO build will likely fail with a
 more or less similar looking error message:
 
 ```none
-
 The following packages have unmet dependencies:
  vyos-1x : Depends: accel-ppp but it is not installable
 E: Unable to correct problems, you have held broken packages.
@@ -278,7 +263,6 @@ Del frr-snmp 7.5-20210215-00-g8a5d3b7cd-0 [55.1 kB]
 Del frr-rpki-rtrlib 7.5-20210215-00-g8a5d3b7cd-0 [37.3 kB]
 make: *** [Makefile:30: iso] Error 1
 (10:13) vyos_bld ece068908a5b:/vyos [current] #
-
 ```
 
 To debug the build process and gain additional information of what could be the
@@ -286,26 +270,21 @@ root cause, you need to use `chroot` to change into the build directory. This is
 explained in the following step by step procedure:
 
 ```none
-
 vyos_bld ece068908a5b:/vyos [current] # sudo chroot build/chroot /bin/bash
-
 ```
 
 We now need to mount some required, volatile filesystems
 
 ```none
-
 (live)root@ece068908a5b:/# mount -t proc none /proc
 (live)root@ece068908a5b:/# mount -t sysfs none /sys
 (live)root@ece068908a5b:/# mount -t devtmpfs none /dev
-
 ```
 
 We now are free to run any command we would like to use for debugging, e.g.
 re-installing the failed package after updating the repository.
 
 ```none
-
 (live)root@ece068908a5b:/# apt-get update; apt-get install vyos-1x
 Get:1 file:/root/packages ./ InRelease
 Ign:1 file:/root/packages ./ InRelease
@@ -335,7 +314,6 @@ The following information may help to resolve the situation:
 The following packages have unmet dependencies:
  vyos-1x : Depends: accel-ppp but it is not installable
 E: Unable to correct problems, you have held broken packages.
-
 ```
 
 Now it's time to fix the package mirror and rerun the last step until the
@@ -352,10 +330,8 @@ kernel's LOCAL_VERSION. Both together form the kernel version variable in the
 system:
 
 ```none
-
 vyos@vyos:~$ uname -r
 6.1.52-amd64-vyos
-
 ```
 
 - Accel-PPP
@@ -366,7 +342,6 @@ Each of those modules holds a dependency on the kernel version and if you are
 lucky enough to receive an ISO build error which sounds like:
 
 ```none
-
 I: Create initramfs if it does not exist.
 Extra argument '6.1.52-amd64-vyos'
 Usage: update-initramfs {-c|-d|-u} [-k version] [-v] [-b directory]
@@ -379,7 +354,6 @@ Options:
  -v             Be verbose
 See update-initramfs(8) for further details.
 E: config/hooks/live/17-gen_initramfs.chroot failed (exit non-zero). You should check for errors.
-
 ```
 
 The most obvious reasons could be:
@@ -399,17 +373,14 @@ it.
 Clone the kernel source to `vyos-build/packages/linux-kernel/`:
 
 ```none
-
 $ cd vyos-build/packages/linux-kernel/
 $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-
 ```
 
 Check out the required kernel version - see `vyos-build/data/defaults.json`
 file (example uses kernel 4.19.146):
 
 ```none
-
 $ cd vyos-build/packages/linux-kernel/linux
 $ git checkout v4.19.146
 Checking out files: 100% (61536/61536), done.
@@ -423,7 +394,6 @@ If you want to create a new branch to retain commits you create, you may
 do so (now or later) by using -b with the checkout command again. Example:
   git checkout -b <new-branch-name>
 HEAD is now at 015e94d0e37b Linux 4.19.146
-
 ```
 
 Now you can use the helper script `build-kernel.sh`, which completes all
@@ -439,7 +409,6 @@ quantity of your CPU/cores and disk speed. Expect 20 minutes
 :::
 
 ```none
-
 (18:59) vyos_bld 412374ca36b8:/vyos/vyos-build/packages/linux-kernel [current] # ./build-kernel.sh
 I: Copy Kernel config (x86_64_vyos_defconfig) to Kernel Source
 I: Apply Kernel patch: /vyos/vyos-build/packages/linux-kernel/patches/kernel/0001-VyOS-Add-linkstate-IP-device-attribute.patch
@@ -510,7 +479,6 @@ dpkg-genchanges: warning: package linux-image-4.19.146-amd64-vyos-dbg in control
 dpkg-genchanges: info: binary-only upload (no source code included)
  dpkg-source --after-build .
 dpkg-buildpackage: info: binary-only upload (no source included)
-
 ```
 
 When complete, you will have kernel binary packages to use in your custom ISO
@@ -524,12 +492,10 @@ This builds a new `vyos-linux-firmware` package using the included helper
 scripts.
 
 ```none
-
 $ cd vyos-build/packages/linux-kernel
 $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
 $ ./build-linux-firmware.sh
 $ cp vyos-linux-firmware_*.deb ../
-
 ```
 
 The script automatically detects which firmware blobs are needed based on the
@@ -537,9 +503,7 @@ built drivers. If detection fails, you can manually add files to
 `vyos-build/packages/linux-kernel/build-linux-firmware.sh`:
 
 ```bash
-
 ADD_FW_FILES="iwlwifi* ath11k/QCA6390/*/*.bin"
-
 ```
 
 #### Building Out-Of-Tree Modules
@@ -555,17 +519,14 @@ currently required modules.
 First, clone the source code and check out the appropriate version:
 
 ```none
-
 $ cd vyos-build/packages/linux-kernel
 $ git clone https://github.com/accel-ppp/accel-ppp.git
-
 ```
 
 Use the helper script and patches to build the package. Run the following
 command:
 
 ```none
-
 $ ./build-accel-ppp.sh
 I: Build Accel-PPP Debian package
 CMake Deprecation Warning at CMakeLists.txt:3 (cmake_policy):
@@ -584,7 +545,6 @@ CPack: - Run preinstall target for: accel-ppp
 CPack: - Install project: accel-ppp
 CPack: Create package
 CPack: - package: /vyos/vyos-build/packages/linux-kernel/accel-ppp/build/accel-ppp.deb generated.
-
 ```
 
 After compiling the packages you will find yourself the newly generated `*.deb`
@@ -598,7 +558,6 @@ tarballs from a mirror and compiles them. Use the following wrapper script
 to build all driver modules:
 
 ```none
-
 ./build-intel-drivers.sh
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -612,7 +571,6 @@ Require just the needed backports instead, or 'backports/latest'.
 Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
 Created package {:path=>"vyos-intel-iavf_4.0.1-0_amd64.deb"}
 I: Cleanup iavf source
-
 ```
 
 After compilation, find the generated `*.deb` binaries in
@@ -627,7 +585,6 @@ website.
 Use the following wrapper script to build all driver modules:
 
 ```none
-
 $ ./build-intel-qat.sh
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -646,7 +603,6 @@ Require just the needed backports instead, or 'backports/latest'.
 Debian packaging tools generally labels all files in /etc as config files, as mandated by policy, so fpm defaults to this behavior for deb packages. You can disable this default behavior with --deb-no-default-config-files flag {:level=>:warn}
 Created package {:path=>"vyos-intel-qat_1.7.l.4.9.0-00008-0_amd64.deb"}
 I: Cleanup qat source
-
 ```
 
 After compiling the packages you will find yourself the newly generated `*.deb`
@@ -673,7 +629,6 @@ you suspect an APT dependencies or installation issue, you can apply this patch
 to increase APT verbosity during the ISO build.
 
 ```diff
-
 diff --git i/scripts/live-build-config w/scripts/live-build-config
 index 1b3b454..3696e4e 100755
 --- i/scripts/live-build-config
@@ -688,7 +643,6 @@ index 1b3b454..3696e4e 100755
          --apt-indices false
          "${@}"
  """
-
 ```
 
 (build-packages)=
@@ -708,9 +662,7 @@ Assuming you want to build the `vyos-1x` package and modify it for your needs,
 first clone the repository from GitHub:
 
 ```none
-
 $ git clone --recurse-submodules https://github.com/vyos/vyos-1x
-
 ```
 
 ### Build
@@ -718,7 +670,6 @@ $ git clone --recurse-submodules https://github.com/vyos/vyos-1x
 Launch the Docker container and build the package:
 
 ```none
-
 # For VyOS 1.3 (equuleus, current)
 $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:current bash
 
@@ -727,18 +678,15 @@ $ cd vyos-1x
 
 # Build DEB
 $ dpkg-buildpackage -uc -us -tc -b
-
 ```
 
 After a minute or two, the generated DEB packages are located next to the
 `vyos-1x` source directory:
 
 ```none
-
 # ls -al ../vyos-1x*.deb
 -rw-r--r-- 1 vyos_bld vyos_bld 567420 Aug  3 12:01 ../vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb
 -rw-r--r-- 1 vyos_bld vyos_bld   3808 Aug  3 12:01 ../vyos-1x-vmware_1.3dev0-1847-gb6dcb0a8_amd64.deb
-
 ```
 
 ### Install
@@ -749,14 +697,12 @@ and install the new `*.deb` package to replace the current one.
 Install the package using the following commands:
 
 ```none
-
 vyos@vyos:~$ dpkg --install /tmp/vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb
 (Reading database ... 58209 files and directories currently installed.)
 Preparing to unpack .../vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb ...
 Unpacking vyos-1x (1.3dev0-1847-gb6dcb0a8) over (1.3dev0-1847-gb6dcb0a8) ...
 Setting up vyos-1x (1.3dev0-1847-gb6dcb0a8) ...
 Processing triggers for rsyslog (8.1901.0-1) ...
-
 ```
 
 You can also place the generated `*.deb` in your ISO build environment to

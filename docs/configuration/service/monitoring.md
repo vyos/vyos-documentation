@@ -19,45 +19,37 @@ The following Telegraf plugins are configurable to export metrics and logs:
 Telegraf output plugin [azure-data-explorer].
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-id \<client-id\>
-
    Authentication application client-id.
-
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication client-secret \<client-secret\>
-
 Authentication application client-secret.
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer authentication tenant-id \<tenant-id\>
-
 Authentication application tenant-id
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer database \<name\>
-
 Remote database name.
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer group-metrics \<single-table | table-per-metric\>
-
 Type of metrics grouping when push to Azure Data Explorer. The default is
 ``table-per-metric``.
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer table \<name\>
-
 Name of the single table Only if set group-metrics single-table.
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer url \<url\>
-
 Remote URL.
 ```
 ### Prometheus client
@@ -65,125 +57,98 @@ Telegraf output plugin [prometheus-client]
 This plugin allows export of Telegraf metrics to Prometheus,
 for Prometheus native metrics through exporters see section below.
 ```{cfgcmd} set service monitoring telegraf prometheus-client
-
    Output plugin Prometheus client
-
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client allow-from \<prefix\>
-
 Networks allowed to query this server
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client authentication username \<username\>
-
 HTTP basic authentication username
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client authentication password \<password\>
-
 HTTP basic authentication username
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client listen-address \<address\>
-
 Local IP addresses to listen on
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client metric-version \<1 | 2\>
-
 Metris version, the default is ``2``
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf prometheus-client port \<port\>
-
 Port number used by connection, default is ``9273``
 ```
 Example:
 ```none
-
 set service monitoring telegraf prometheus-client
-
 ```
 
 
 ```none
-
 vyos@r14:~$ curl --silent localhost:9273/metrics | egrep -v "#" |  grep cpu_usage_system
-
 cpu_usage_system{cpu="cpu-total",host="r14"} 0.20040080160320556
-
 cpu_usage_system{cpu="cpu0",host="r14"} 0.17182130584191915
-
 cpu_usage_system{cpu="cpu1",host="r14"} 0.22896393817971655
-
 ```
 ### Splunk
 
 
 Telegraf output plugin [splunk] HTTP Event Collector.
 ```{cfgcmd} set service monitoring telegraf splunk authentication insecure
-
 Use TLS but skip host validation
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf splunk authentication token \<token\>
-
 Authorization token
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf splunk authentication url \<url\>
-
 Remote URL to Splunk collector
 ```
 Example:
 ```none
-
 set service monitoring telegraf splunk authentication insecure
-
 set service monitoring telegraf splunk authentication token 'xxxxf5b8-xxxx-452a-xxxx-43828911xxxx'
-
 set service monitoring telegraf splunk url 'https://192.0.2.10:8088/services/collector'
-
 ```
 ### InfluxDB
 
 
 Telegraf output plugin [influxdb] to write metrics to `InfluxDB` via HTTP.
 ```{cfgcmd} set service monitoring telegraf influxdb authentication organization \<organization\>
-
 Authentication organization name
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf influxdb authentication token \<token\>
-
 Authentication token
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf bucket \<bucket\>
-
 Remote ``InfluxDB`` bucket name
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf influxdb port \<port\>
-
 Remote port
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf influxdb url \<url\>
-
 Remote URL
 ```
 Example:
@@ -198,25 +163,20 @@ set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ### Loki
 Telegraf can be used to send logs to [loki] using tags as labels.
 ```{cfgcmd} set service monitoring telegraf loki port \<port\>
-
    Remote Loki port
 
 
    Default is 3100
-
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf loki url \<url\>
-
 Remote Loki url
 ```
 
 
 ```{cfgcmd} set service monitoring telegraf loki authentication username \<username\>
 ```
-
-
 ```{cfgcmd} set service monitoring telegraf loki authentication password \<password\>
 
 HTTP basic authentication.
@@ -224,7 +184,6 @@ HTTP basic authentication.
 
 If either is set both must be set.
 ```
-
 
 ```{cfgcmd} set service monitoring telegraf loki metric-name-label \<label\>
 
@@ -252,18 +211,15 @@ Prometheus [node_exporter] which provides a wide range of hardware and OS metric
 Configure the address node_exporter is listening on.
 ```
 
-
 ```{cfgcmd} set service monitoring prometheus node-exporter port \<port\>
 
 Configure the port number node_exporter is listening on.
 ```
 
-
 ```{cfgcmd} set service monitoring prometheus node-exporter vrf \<name\>
 
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
-
 
 ```{cfgcmd} set service monitoring prometheus node-exporter collectors textfile
 
@@ -278,12 +234,10 @@ Prometheus [frr_exporter] which provides free range routing metrics.
 
 ```
 
-
 ```{cfgcmd} set service monitoring prometheus frr-exporter port \<port\>
 
 Configure the port number frr_exporter is listening on.
 ```
-
 
 ```{cfgcmd} set service monitoring prometheus frr-exporter vrf \<name\>
 
@@ -297,11 +251,9 @@ HTTP, HTTPS, DNS, TCP, ICMP and gRPC .
 Configure the address blackbox_exporter is listening on.
 ```
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter port \<port\>
-
 Configure the port number blackbox_exporter is listening on.
 ```
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter vrf \<name\>
-
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 #### Configuring modules

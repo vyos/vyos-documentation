@@ -44,7 +44,6 @@ set vpn sstp ssl certificate 'Server'
 ```
 
 ```{cfgcmd} set vpn sstp authentication mode \<local | radius\>
-
 Set authentication backend. The configured authentication backend is used
 for all queries.
 * **radius**: All authentication queries are handled by a configured RADIUS
@@ -53,13 +52,11 @@ for all queries.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> password \<pass\>
-
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
 
 ```{cfgcmd} set vpn sstp client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
-
 Use this command to define the first IP address of a pool of
 addresses to be given to SSTP clients. If notation ``x.x.x.x-x.x.x.x``,
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
@@ -67,23 +64,19 @@ used there is possibility to set host/netmask.
 ```
 
 ```{cfgcmd} set vpn sstp default-pool \<POOL-NAME\>
-
 Use this command to define default address pool name.
 ```
 
 ```{cfgcmd} set vpn sstp gateway-address \<gateway\>
-
 Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
 
 ```{cfgcmd} set vpn sstp ssl ca-certificate \<file\>
-
 Name of installed certificate authority certificate.
 ```
 
 ```{cfgcmd} set vpn sstp ssl certificate \<file\>
-
 Name of installed server certificate.
 ```
 
@@ -99,7 +92,6 @@ set vpn sstp authentication mode radius
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> key \<secret\>
-
 Configure RADIUS `<server>` and its required shared `<secret>` for
 communicating with the RADIUS server.
 ```
@@ -124,7 +116,6 @@ RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
 
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
-
 Source IPv4 address used in all RADIUS server queires.
 
 The `source-address` must be configured to that of an interface.
@@ -139,70 +130,57 @@ queries, make sure to add your VyOS router to the allowed client list.
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> port \<port\>
-
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> fail-time \<time\>
-
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> disable
-
 Temporary disable this RADIUS server.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius acct-timeout \<timeout\>
-
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author server \<address\>
-
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author port \<port\>
-
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author key \<secret\>
-
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius max-try \<number\>
-
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius timeout \<timeout\>
-
 Timeout to wait response from server (seconds)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius nas-identifier \<identifier\>
-
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
 in DM/CoA requests.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius nas-ip-address \<address\>
-
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
-
 Source IPv4 address used in all RADIUS server queires.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit attribute \<attribute\>
-
 Specifies which RADIUS server attribute contains the rate limit information.
 The default attribute is `Filter-Id`.
 ```
@@ -213,12 +191,10 @@ dictionaries on the RADIUS server and client.
 :::
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit enable
-
 Enables bandwidth shaping via RADIUS.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit vendor
-
 Specifies the vendor dictionary, This dictionary needs to be present in
 /usr/share/accel-ppp/radius.
 ```
@@ -264,7 +240,6 @@ characters, otherwise the interface won't be renamed.
 ## IPv6
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6 \<require | prefer | allow | deny\>
-
 Specifies IPv6 negotiation preference.
 * **require** - Require IPv6 negotiation
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
@@ -273,7 +248,6 @@ Specifies IPv6 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask <number-of-bits>
-
 Use this comand to set the IPv6 address pool from which an SSTP client will
 get an IPv6 prefix of your defined length (mask) to terminate the SSTP
 endpoint at their side. The mask length can be set between 48 and 128 bits
@@ -281,7 +255,6 @@ long, the default value is 64.
 ```
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix <number-of-bits>
-
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on SSTP. You
 will have to set your IPv6 pool and the length of the delegation prefix. From
 the defined IPv6 pool you will be handing out networks of the defined length
@@ -290,7 +263,6 @@ the defined IPv6 pool you will be handing out networks of the defined length
 ```
 
 ```{cfgcmd} set vpn sstp default-ipv6-pool \<IPv6-POOL-NAME\>
-
 Use this command to define default IPv6 address pool name.
 ```
 
@@ -304,12 +276,10 @@ set vpn sstp default-ipv6-pool IPv6-POOL
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-accept-peer-interface-id
-
 Accept peer interface identifier. By default this is not defined.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
-
 Specifies if a fixed or random interface identifier is used for IPv6. The
 default is fixed.
 * **random** - Random interface identifier for IPv6
@@ -317,7 +287,6 @@ default is fixed.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
-
 Specifies the peer interface identifier for IPv6. The default is fixed.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
@@ -328,22 +297,18 @@ Specifies the peer interface identifier for IPv6. The default is fixed.
 ## Scripting
 
 ```{cfgcmd} set vpn sstp extended-scripts on-change \<path_to_script\>
-
 Script to run when the session interface is changed by RADIUS CoA handling
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-down \<path_to_script\>
-
 Script to run when the session interface about to terminate
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-pre-up \<path_to_script\>
-
 Script to run before the session interface comes up
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-up \<path_to_script\>
-
 Script to run when the session interface is completely configured and started
 ```
 
@@ -352,27 +317,22 @@ Script to run when the session interface is completely configured and started
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> disable
-
 Disable `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> static-ip \<address\>
-
 Assign a static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit download <bandwidth>
-
 Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit upload <bandwidth>
-
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn sstp authentication protocols \<pap | chap | mschap | mschap-v2\>
-
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
@@ -380,20 +340,17 @@ pap, chap, mschap, mschap-v2.
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn sstp client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
-
 Use this command to define the next address pool name.
 ```
 
 ### PPP Advanced Options
 
 ```{cfgcmd} set vpn sstp ppp-options disable-ccp
-
 Disable Compression Control Protocol (CCP).
 CCP is enabled by default.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options interface-cache \<number\>
-
 Specifies number of interfaces to cache. This prevents interfaces from being
 removed once the corresponding session is destroyed. Instead, interfaces are
 cached for later use in new sessions. This should reduce the kernel-level
@@ -402,7 +359,6 @@ Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options ipv4 \<require | prefer | allow | deny\>
-
 Specifies IPv4 negotiation preference.
 * **require** - Require IPv4 negotiation
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
@@ -411,27 +367,23 @@ Specifies IPv4 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options lcp-echo-failure \<number\>
-
 Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
 value `<number>`, the session will be reset. Default value is **3**.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options lcp-echo-interval \<interval\>
-
 If this option is specified and is greater than 0, then the PPP module will
 send LCP echo requests every `<interval>` seconds.
 Default value is **30**.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options lcp-echo-timeout
-
 Specifies timeout in seconds to wait for any peer activity. If this option is
 specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
 is not used. Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options min-mtu \<number\>
-
 Defines the minimum acceptable MTU. If a client tries to negotiate an MTU
 lower than this it will be NAKed, and disconnected if it rejects a greater
 MTU.
@@ -439,7 +391,6 @@ Default value is **100**.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options mppe \<require | prefer | deny\>
-
 Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
 * **require** - ask client for mppe, if it rejects drop connection
@@ -452,66 +403,54 @@ attribute.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options mru \<number\>
-
 Defines preferred MRU. By default is not defined.
 ```
 
 ### Global Advanced options
 
 ```{cfgcmd} set vpn sstp description \<description\>
-
 Set description.
 ```
 
 ```{cfgcmd} set vpn sstp limits burst \<value\>
-
 Burst count
 ```
 
 ```{cfgcmd} set vpn sstp limits connection-limit \<value\>
-
 Maximum accepted connection rate (e.g. 1/min, 60/sec)
 ```
 
 ```{cfgcmd} set vpn sstp limits timeout \<value\>
-
 Timeout in seconds
 ```
 
 ```{cfgcmd} set vpn sstp mtu
-
 Maximum Transmission Unit (MTU) (default: **1500**)
 ```
 
 ```{cfgcmd} set vpn sstp max-concurrent-sessions
-
 Maximum number of concurrent session start attempts
 ```
 
 ```{cfgcmd} set vpn sstp name-server \<address\>
-
 Connected clients should use `<address>` as their DNS server. This command
 accepts both IPv4 and IPv6 addresses. Up to two nameservers can be configured
 for IPv4, up to three for IPv6.
 ```
 
 ```{cfgcmd} set vpn sstp shaper fwmark \<1-2147483647\>
-
 Match firewall mark value
 ```
 
 ```{cfgcmd} set vpn sstp snmp master-agent
-
 Enable SNMP
 ```
 
 ```{cfgcmd} set vpn sstp wins-server \<address\>
-
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 
 ```{cfgcmd} set vpn sstp host-name \<hostname\>
-
 If this option is given, only SSTP connections to the specified host
 and with the same TLS SNI will be allowed.
 ```
@@ -577,7 +516,6 @@ $ ip addr show ppp0
 ## Monitoring
 
 ```{opcmd} show sstp-server sessions
-
 Use this command to locally check the active sessions in the SSTP
 server.
 ```

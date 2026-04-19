@@ -460,7 +460,6 @@ too.
 
 ```none
 Welcome to VyOS - vyos ttyS0
-
 vyos login:
 ```
 

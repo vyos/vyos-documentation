@@ -25,7 +25,6 @@ monitoring.
 ```
 ### Member interfaces
 ```{cfgcmd} set interfaces bonding \<interface\> member interface \<member\>
-
 **Add an interface to the bonding group.**
 **Example:**
 To configure eth0 and eth1 as members of the bonding interface bond0, execute
@@ -38,7 +37,6 @@ set interfaces bonding bond0 member interface eth1
 ```
 ### Bond modes
 ```{cfgcmd} set interfaces bonding \<interface\> mode \<802.3ad | active-backup | broadcast | round-robin | transmit-load-balance | adaptive-load-balance | xor-hash\>
-
 **Configure the bonding mode on the interface. The default mode is**
 ``802.3ad``.
 The available modes are:
@@ -90,7 +88,6 @@ packet delivery.
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
-
 **Configure how many member interfaces must be active (in the link-up state) to
 mark the bonding interface UP (carrier asserted).**
 This command applies only when the bonding interface is configured in 802.3ad
@@ -111,7 +108,6 @@ the bonding interface is marked UP (carrier asserted).
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> lacp-rate \<slow|fast\>
-
 **Configure the rate at which the bonding interface requests its link
 partner to send** {abbr}`LACPDUs (Link Aggregation Control Protocol Data
 Units)` **in 802.3ad mode.**
@@ -121,7 +117,6 @@ The following options are available:
 * **slow (default):** Requests the link partner to transmit LACPDUs every 30 seconds.
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> system-mac \<mac address\>
-
 **Configure a specific MAC address for the bonding interface.**
 
 
@@ -129,10 +124,8 @@ This sets the 802.3ad system MAC address, which is used for {abbr}`LACPDU (Link
 Aggregation Control Protocol Data Unit)` exchanges with the link partner.
 You can assign a fixed MAC address or generate a random one for these
 {abbr}`LACPDU (Link Aggregation Control Protocol Data Unit)` exchanges.
-
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> hash-policy \<policy\>
-
 **Configure which transmit hash policy to use for distributing traffic across
 member interfaces.**
 
@@ -212,7 +205,6 @@ The following policies are available:
 
 
 ```{cfgcmd} set interfaces bonding \<interface\> primary \<interface\>
-
 **Configure the primary member interface in the bond.**
 
 
@@ -230,7 +222,6 @@ This command applies only to ``active-backup``, ``transmit-load-balance``, and
 
 
 ```{cfgcmd} set interfaces bonding \<interface\> arp-monitor interval \<time\>
-
 **Configure the ARP monitoring interval, in seconds, for the bonding interface.**
 
 
@@ -255,7 +246,6 @@ The default value is 0.
 
 
 ```{cfgcmd} set interfaces bonding \<interface\> arp-monitor target \<address\>
-
 **Configure the IP addresses for ARP monitoring requests.**
 
 
@@ -314,8 +304,6 @@ The following two commands generate a 10-byte Type-3 ESI by combining the
 system MAC and local discriminator:
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-id \<1-16777215|10-byte ID\>
 ```
-
-
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-sys-mac \<xx:xx:xx:xx:xx:xx\>
 
 Alternatively, assign an ESINAME directly as a 10-byte Type-0 ESI using the
@@ -334,7 +322,6 @@ synchronization:
 * **Type 2 (MAC-IP advertisement)** routes are advertised with a
   destination ESI, enabling MAC-IP synchronization between ES peers.
 ```
-
 
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-df-pref \<1-65535\>
 
@@ -356,7 +343,6 @@ using non-DF filters. Similarly, traffic received from ES peers via the EVPN
 overlay is blocked from forwarding to the CE device to maintain split-horizon
 filtering with local bias.
 ```
-
 
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: bonding
@@ -392,7 +378,6 @@ set interfaces bonding bond0 member interface eth1
 set interfaces bonding bond0 member interface eth2
 
 ```
-
 :::{note}
 Not all transmit hash policies comply with 802.3ad, particularly
 :::
@@ -748,7 +733,6 @@ TX:  bytes  packets  errors  dropped  carrier  collisions
 :::
 ```
 ```{opcmd} show interfaces bonding \<interface\> detail
-
 Show detailed information about the underlying physical links on the given
 bonding interface.
 

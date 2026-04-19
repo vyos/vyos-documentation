@@ -9,21 +9,17 @@ and existing configurations are migrated to the new CLI command.
 ## Configuration
 
 ```{cfgcmd} set protocols static route 0.0.0.0/0 next-hop \<address\>
-
 Specify static route into the routing table sending all non local traffic
 to the nexthop address \<address\>.
-
 ```
 
 ```{cfgcmd} delete protocols static route 0.0.0.0/0
-
 Delete default route from the system.
 ```
 
 ## Operation
 
 ```{opcmd} show ip route 0.0.0.0
-
 Show routing table entry for the default route.
 
 :::{code-block} none

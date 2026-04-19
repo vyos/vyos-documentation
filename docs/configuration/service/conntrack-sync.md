@@ -34,17 +34,14 @@ Most examples below show Multicast, but unicast can be specified by using the
 ## Configuration
 
 ```{cfgcmd} set service conntrack-sync accept-protocol
-
 Accept only certain protocols: You may want to replicate the state of flows
 depending on their layer 4 protocol.
 
 Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
-
 ```
 
 
 ```{cfgcmd} set service conntrack-sync event-listen-queue-size \<size\>
-
 The daemon doubles the size of the netlink event socket buffer size if it
 detects netlink event message dropping. This clause sets the maximum buffer
 size growth that can be reached.
@@ -55,13 +52,11 @@ Queue size for listening to local conntrack events in MB.
 
 
 ```{cfgcmd} set service conntrack-sync expect-sync \<all|ftp|h323|nfs|sip|sqlnet\>
-
 Protocol for which expect entries need to be synchronized.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync failover-mechanism vrrp sync-group \<group\>
-
 Failover mechanism to use for conntrack-sync.
 
 
@@ -70,31 +65,26 @@ Only VRRP is supported. Required option.
 
 
 ```{cfgcmd} set service conntrack-sync ignore-address \<x.x.x.x\>
-
 IP addresses or networks for which local conntrack entries will not be synced
 ```
 
 
 ```{cfgcmd} set service conntrack-sync interface \<name\>
-
 Interface to use for syncing conntrack entries.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync interface \<name\> port \<port\>
-
 Port number used by connection.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync listen-address \<ipv4address\>
-
 Local IPv4 addresses for service to listen on.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync mcast-group \<x.x.x.x\>
-
 Multicast group to use for syncing conntrack entries.
 
 
@@ -103,27 +93,23 @@ Defaults to 225.0.0.50.
 
 
 ```{cfgcmd} set service conntrack-sync interface \<name\> peer \<address\>
-
 Peer to send unicast UDP conntrack sync entires to, if not using Multicast
 configuration from above above.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync sync-queue-size \<size\>
-
 Queue size for syncing conntrack entries in MB.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync disable-external-cache
-
 This diable the external cache and directly injects the flow-states into the
 in-kernel Connection Tracking System of the backup firewall.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync purge-timeout \<timeout\>
-
 Timeout (in seconds) for purging synchronized entries on handover events.
 
 
@@ -141,19 +127,16 @@ can be restored before conntrack state is purged.
 :::
 
 ```{cfgcmd} set service conntrack-sync disable-syslog
-
 Disable connection logging via Syslog.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync startup-resync
-
 Order conntrackd to request a complete conntrack table resync against
 the other node at startup.
 ```
 ## Operation
 ```{opcmd} show conntrack table ipv4
-
 Make sure conntrack is enabled by running and show connection tracking table.
 
 
@@ -181,19 +164,16 @@ rule. {cfgcmd}`set firewall state-policy established action accept`
 
 
 ```{opcmd} show conntrack-sync cache external
-
 Show connection syncing external cache entries
 ```
 
 
 ```{opcmd} show conntrack-sync cache internal
-
 Show connection syncing internal cache entries
 ```
 
 
 ```{opcmd} show conntrack-sync statistics
-
 Retrieve current statistics of connection tracking subsystem.
 
 
@@ -231,7 +211,6 @@ message tracking:
 :::
 ```
 ```{opcmd} show conntrack-sync status
-
 Retrieve current status of connection tracking subsystem.
 
 

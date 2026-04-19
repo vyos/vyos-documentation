@@ -75,7 +75,6 @@ Configure these interfaces under the `interfaces wwan` node.
 ### WWAN options
 
 ```{cfgcmd} set interfaces wwan \<interface\> apn \<apn\>
-
 **Configure the** {abbr}`APN (Access Point Name)` **for the WWAN connection.**
 
 Every WWAN connection requires an {abbr}`APN (Access Point Name)` to connect to
@@ -88,7 +87,6 @@ This parameter is mandatory. Contact your service provider for the correct
 ## Operation
 
 ```{opcmd} show interfaces wwan \<interface\>
-
   Show the operational status and traffic statistics for the specified WWAN
   interface.
 
@@ -112,7 +110,6 @@ This parameter is mandatory. Contact your service provider for the correct
 
 
 ```{opcmd} show interfaces wwan \<interface\> summary
-
 Show WWAN module hardware characteristics and connection information.
 
 
@@ -180,7 +177,6 @@ Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> capabilities
-
   Show WWAN module radio capabilities.
 
 
@@ -198,7 +194,6 @@ Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 
 
 ```{opcmd} show interfaces wwan \<interface\> firmware
-
 Show WWAN module firmware information.
 
 
@@ -215,7 +210,6 @@ Config version: unknown
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> imei
-
 Show WWAN module IMEI.
 
 :::{code-block} none
@@ -227,7 +221,6 @@ MEID: 'unknown'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> imsi
-
 Show the IMSI of the associated SIM card.
 
 :::{code-block} none
@@ -237,7 +230,6 @@ IMSI: '262xxxxxxxxxxxx'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> model
-
 Show WWAN module model.
 
 :::{code-block} none
@@ -247,7 +239,6 @@ Model: 'MC7710'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> msisdn
-
 Show the MSISDN of the associated SIM card.
 
 :::{code-block} none
@@ -257,7 +248,6 @@ MSISDN: '4917xxxxxxxx'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> revision
-
 Show WWAN module hardware revision.
 
 :::{code-block} none
@@ -267,7 +257,6 @@ Revision: 'SWI9200X_03.05.29.03ap r6485 CNSHZ-ED-XP0031 2014/12/02 17:53:15'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> signal
-
 Show signal information for the cellular connection.
 
 :::{code-block} none
@@ -284,7 +273,6 @@ Active Channel:    '1300'
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> sim
-
 Show WWAN module SIM card information.
 
 :::{code-block} none

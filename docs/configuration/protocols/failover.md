@@ -8,17 +8,13 @@ until the target becomes available.
 ## Failover Routes
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check target <target-address>
-
 Configure next-hop `<address>` and `<target-address>` for an IPv4 static
 route. Specify the target
 IPv4 address for health checking.
-
 ```
 
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check timeout <timeout>
-
-
 Timeout in seconds between health target checks.
 
 
@@ -27,8 +23,6 @@ Range is 1 to 300, default is 10.
 
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check type <protocol>
-
-
 Defines protocols for checking ARP, ICMP, TCP.
 ```
 - ICMP probe sends 2 ICMP request packets with a response timeout of 1 second.
@@ -44,8 +38,6 @@ Defines protocols for checking ARP, ICMP, TCP.
 
   > Default is `icmp`.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check policy <policy>
-
-
 Policy for checking targets
 ```
 - `all-available` all checking target addresses must be available to pass
@@ -58,15 +50,11 @@ Policy for checking targets
 
   > Default is `any-available`.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> interface <interface>
-
-
 Next-hop interface for the route
 ```
 
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> metric <metric>
-
-
 Route metric
 
 
@@ -80,7 +68,6 @@ set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check timeout '5'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check type 'icmp'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 interface 'eth0'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 metric '10'
-
 ```
 Show the route
 ```none
@@ -89,7 +76,6 @@ vyos@vyos:~$ show ip route 203.0.113.1
   Known via "kernel", distance 0, metric 10, best
   Last update 00:00:39 ago
   * 192.0.2.1, via eth0
-
 ```
 **Two gateways and different metrics:**
 ```none

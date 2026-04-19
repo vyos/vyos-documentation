@@ -14,21 +14,17 @@ upstream DNS servers. By not configuring any upstream DNS servers you also
 avoid being tracked by the provider of your upstream DNS server.
 
 ```{cfgcmd} set service dns forwarding system
-
    Forward incoming DNS queries to the DNS servers configured under the ``system
    name-server`` nodes.
-
 ```
 
 
 ```{cfgcmd} set service dns forwarding dhcp \<interface\>
-
 Interfaces whose DHCP client nameservers to forward requests to.
 ```
 
 
 ```{cfgcmd} set service dns forwarding name-server \<address\> port \<port\>
-
 Send all DNS queries to the IPv4/IPv6 DNS server specified under `<address>`
 on optional port specified under `<port>`. The port defaults to 53. You can
 configure multiple nameservers here.
@@ -36,7 +32,6 @@ configure multiple nameservers here.
 
 
 ```{cfgcmd} set service dns forwarding domain \<domain-name\> name-server \<address\>
-
 Forward received queries for a particular domain
 (specified via `domain-name`) to a given nameserver. Multiple nameservers
 can be specified. You can use this feature for a DNS split-horizon
@@ -50,20 +45,17 @@ This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
 
 
 ```{cfgcmd} set service dns forwarding domain \<domain-name\> addnta
-
 Add NTA (negative trust anchor) for this domain. This must be set if the
 domain does not support DNSSEC.
 ```
 
 
 ```{cfgcmd} set service dns forwarding domain \<domain-name\> recursion-desired
-
 Set the "recursion desired" bit in requests to the upstream nameserver.
 ```
 
 
 ```{cfgcmd} set service dns forwarding allow-from \<network\>
-
 Given the fact that open DNS recursors could be used on DDoS amplification
 attacks, you must configure the networks which are allowed to use this
 recursor. A network of ``0.0.0.0/0`` or ``::/0`` would allow all IPv4 and
@@ -72,8 +64,6 @@ IPv6 networks to query this server. This is generally a bad idea.
 
 
 ```{cfgcmd} set service dns forwarding dnssec <off | process-no-validate | process | log-fail | validate>
-
-
 The PowerDNS recursor has 5 different levels of DNSSEC processing, which can
 be set with the dnssec setting. In order from least to most processing, these
 are:
@@ -126,14 +116,12 @@ log-fail, failures will be logged too.
 
 
 ```{cfgcmd} set service dns forwarding ignore-hosts-file
-
 Do not use the local ``/etc/hosts`` file in name resolution. VyOS DHCP
 server will use this file to add resolvers to assigned addresses.
 ```
 
 
 ```{cfgcmd} set service dns forwarding cache-size \<0-2147483647\>
-
 Maximum number of DNS cache entries. 1 million per CPU core will generally
 suffice for most installations.
 
@@ -143,7 +131,6 @@ This defaults to 10000.
 
 
 ```{cfgcmd} set service dns forwarding negative-ttl \<0-7200\>
-
 A query for which there is authoritatively no answer is cached to quickly
 deny a record's existence later on, without putting a heavy load on the
 remote server. In practice, caches can become saturated with hundreds of
@@ -156,7 +143,6 @@ of time negative entries are cached.
 
 
 ```{cfgcmd} set service dns forwarding timeout \<10-60000\>
-
 The number of milliseconds to wait for a remote authoritative server to
 respond before timing out and responding with SERVFAIL.
 
@@ -166,21 +152,18 @@ This setting defaults to 1500 and is valid between 10 and 60000.
 
 
 ```{cfgcmd} set service dns forwarding listen-address \<address\>
-
 The local IPv4 or IPv6 addresses to bind the DNS forwarder to. The forwarder
 will listen on this address for incoming connections.
 ```
 
 
 ```{cfgcmd} set service dns forwarding source-address \<address\>
-
 The local IPv4 or IPv6 addresses to use as a source address for sending queries.
 The forwarder will send forwarded outbound DNS requests from this address.
 ```
 
 
 ```{cfgcmd} set service dns forwarding no-serve-rfc1918
-
 This makes the server authoritatively not aware of: 10.in-addr.arpa,
 168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream
 DNS server(s) to be used for reverse lookups of these zones.
@@ -190,22 +173,17 @@ DNS server(s) to be used for reverse lookups of these zones.
 
 The VyOS DNS forwarder can also be configured to host authoritative records for a domain.
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> disable
-
 Disable hosting authoritative zone for `<domain-name>` without deleting from
 configuration.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\> <name> disable
-
-
 Disable specific record without deleting it from configuration.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records \<type\> <name> ttl <seconds>
-
-
 Set the {abbr}`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds.
 ```
 #### Record types
@@ -218,29 +196,21 @@ support special `<name>` keywords:
 - `@` Use @ as record name to set the record for the root domain.
 - `any` Use any as record name to configure the record as a wildcard.
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records a <name> address <x.x.x.x>
-
-
 Set an {abbr}`A (Address)` record. Supports ``@`` and ``any`` keywords.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records aaaa <name> address <h:h:h:h:h:h:h:h>
-
-
 Set an {abbr}`AAAA (IPv6 Address)` record. Supports ``@`` and ``any`` keywords.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records cname <name> target <target-domain-name>
-
-
 Set an {abbr}`CNAME (Canonical name)` record. Supports ``@`` keyword.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records naptr <name> rule <rule-number> <option> <value>
-
-
 Set an {abbr}`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword.
 NAPTR records support the following options:
 
@@ -274,36 +244,26 @@ NAPTR records support the following options:
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records ns <name> target <target-name>
-
-
 Set an {abbr}`NS (Nameserver)` record.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records ptr <name> target <target-name>
-
-
 Set an {abbr}`PTR (Pointer record)` record. Supports ``@`` keyword.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records spf <name> value <value>
-
-
 Set an {abbr}`SPF (Sender policy framework)` record. Supports ``@`` keyword.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records srv <name> entry <entry-number> [hostname | port | priority | weight] <value>
-
-
 Set an {abbr}`SRV (Service)` record. Supports ``@`` keyword.
 ```
 
 
 ```{cfgcmd} set service dns forwarding authoritative-domain \<domain-name\> records txt <name> value <value>
-
-
 Set an {abbr}`TXT (Text)` record. Supports ``@`` keyword.
 ```
 ## Example
@@ -327,44 +287,28 @@ In this scenario:
 - The VyOS DNS forwarder will pass reverse lookups for 10.in-addr.arpa,
   168.192.in-addr.arpa, 16-31.172.in-addr.arpa zones to upstream server.
 ```none
-
 set service dns forwarding domain example.com name-server 192.0.2.254
-
 set service dns forwarding domain example.com name-server 2001:db8:cafe::1
-
 set service dns forwarding name-server 192.0.2.1
-
 set service dns forwarding name-server 192.0.2.2
-
 set service dns forwarding name-server 192.0.2.3 port 853
-
 set service dns forwarding name-server 2001:db8::1:ffff
-
 set service dns forwarding name-server 2001:db8::2:ffff
-
 set service dns forwarding name-server 2001:db8::3:ffff port 8053
-
 set service dns forwarding listen-address 192.168.1.254
-
 set service dns forwarding listen-address 2001:db8::ffff
-
 set service dns forwarding allow-from 192.168.1.0/24
-
 set service dns forwarding allow-from 2001:db8::/64
-
 set service dns forwarding no-serve-rfc1918
-
 ```
 ## Operation
 ```{opcmd} reset dns forwarding \<all | domain\>
-
 Resets the local DNS forwarding cache database. You can reset the cache
 for all entries or only for entries to a specific domain.
 ```
 
 
 ```{opcmd} restart dns forwarding
-
 Restarts the DNS recursor process. This also invalidates the local DNS
 forwarding cache.
 ```
@@ -383,55 +327,46 @@ You can configure both in VyOS.
 ## Configuration
 ### {rfc}`2136` Based
 ```{cfgcmd} set service dns dynamic name \<service-name\> address interface \<interface\>
-
    Create new dynamic DNS update configuration which will update the IP
    address assigned to `<interface>` on the service you configured under
    `<service-name>`.
-
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> description \<text\>
-
 Set description `<text>` for dynamic DNS service being configured.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> key \<filename\>
-
 File identified by `<filename>` containing the TSIG authentication key for RFC2136
 nsupdate on remote DNS server.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> server \<server\>
-
 Configure the DNS `<server>` IP/FQDN used when updating this dynamic
 assignment.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> zone \<zone\>
-
 Configure DNS `<zone>` to be updated.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> host-name \<record\>
-
 Configure DNS `<record>` which should be updated. This can be set multiple times.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> ttl \<ttl\>
-
 Configure optional TTL value on the given resource record. This defaults to
 600 seconds.
 ```
 
 
 ```{cfgcmd} set service dns dynamic interval \<60-3600\>
-
 Specify interval in seconds to wait between Dynamic DNS updates.
 The default is  300 seconds.
 ```
@@ -445,7 +380,6 @@ The default is  300 seconds.
 - Use auth key file at `/config/auth/my.key`
 - Set TTL to 300 seconds
 ```none
-
 # Configuration commands entered:
 
 #
@@ -496,11 +430,9 @@ vyos@vyos# show service dns dynamic
      zone vyos.io
 
  }
-
 ```
 This will render the following [ddclient] configuration entry:
 ```none
-
 # ddclient configuration for interface "eth0":
 
 #
@@ -523,7 +455,6 @@ password='/config/auth/my.key', \
 ttl=300 \
 
 example.vyos.io
-
 ```
 
 :::{note}
@@ -542,7 +473,6 @@ VyOS is also able to use any service relying on protocols supported by ddclient.
 To use such a service, one must define a login, password, one or multiple
 hostnames, protocol and server.
 ```{cfgcmd} set service dns dynamic name \<service-name\> address interface \<interface\>
-
 Create new dynamic DNS update configuration which will update the IP
 address assigned to `<interface>` on the service you configured under
 `<service-name>`.
@@ -550,34 +480,29 @@ address assigned to `<interface>` on the service you configured under
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> description \<text\>
-
 Set description `<text>` for dynamic DNS service being configured.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> host-name \<hostname\>
-
 Setup the dynamic DNS hostname `<hostname>` associated with the DynDNS
 provider identified by `<service-name>`.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> username \<username\>
-
 Configure `<username>` used when authenticating the update request for
 DynDNS service identified by `<service-name>`.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> password \<password\>
-
 Configure `<password>` used when authenticating the update request for
 DynDNS service identified by `<service-name>`.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> protocol \<protocol\>
-
 When a ``custom`` DynDNS provider is used, the protocol used for communicating
 to the provider must be specified under `<protocol>`. See the embedded
 completion helper when entering above command for available protocols.
@@ -585,14 +510,12 @@ completion helper when entering above command for available protocols.
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> server \<server\>
-
 When a ``custom`` DynDNS provider is used the `<server>` where update
 requests are being sent to must be specified.
 ```
 
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> ip-version 'ipv6'
-
 Allow explicit IPv6 address for the interface.
 ```
 #### Example:
@@ -630,12 +553,10 @@ record will be updated to point to your internal IP.
 [ddclient] has another way to determine the WAN IP address. This is controlled
 by:
 ```{cfgcmd} set service dns dynamic name \<service-name\> address web \<url\>
-
 Use configured `<url>` to determine your IP address. [ddclient] will load
 `<url>` and tries to extract your IP address from the response.
 ```
 ```{cfgcmd} set service dns dynamic name \<service-name\> address web skip \<pattern\>
-
 ddclient will skip any address located before the string set in `<pattern>`.
 ```
 

@@ -32,7 +32,6 @@ searching the connection tracking table faster. The hash table uses
 
 ```{cfgcmd} set system conntrack modules ftp
 ```
-
 ```{cfgcmd} set system conntrack modules h323
 ```
 
@@ -74,12 +73,10 @@ Policy to track previously established connections.
 
 Set the number of TCP maximum retransmit attempts.
 ```
-
 ### Contrack Timeouts
 You can define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
-
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> description <test>
 
 Set a rule description.
@@ -162,7 +159,6 @@ The whole list can also be "negated" using '!'. For example:
 
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
-
 ### Conntrack ignore rules
 
 :::{note}
@@ -172,7 +168,6 @@ Starting from vyos-1.5-rolling-202406120020, ignore rules can be defined in
 the future the conntrack ignore rules will be removed.
 > Customized ignore rules, based on a packet and flow selector.
 :::
-
 ```{cfgcmd} set system conntrack ignore [ipv4 | ipv6] rule \<1-999999\> description <text>
 ```
 
@@ -200,9 +195,7 @@ Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for
 inverted selection use ``not``, as shown in the example.
 ```
-
 ### Conntrack log
-
 ```{cfgcmd} set system conntrack log event destroy
 ```
 

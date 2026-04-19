@@ -26,7 +26,6 @@ outgoing traffic.
 ### Generate keypair
 
 ```{opcmd} generate pki wireguard key-pair
-
 Generate a keypair: a public and a private key.
 
 :::{note}
@@ -39,12 +38,10 @@ vyos@vyos:~$ generate pki wireguard key-pair
 Private key: iJJyEARGK52Ls1GYRCcFvPuTj7WyWYDo//BknoDU0XY=
 Public key: EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 :::
-
 ```
 
 
 ```{opcmd} generate pki wireguard key-pair install interface \<interface\>
-
 Generate a keypair and output the private key assignment command for the
 specified interface.
 
@@ -82,7 +79,6 @@ vyos@vyos# compare
 
 
 ```{opcmd} show interfaces wireguard \<interface\> public-key
-
 Show the public key assigned to the interface.
 
 :::{code-block} none
@@ -93,7 +89,6 @@ EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 #### Optional
 
 ```{opcmd} generate pki wireguard preshared-key
-
 Generate a pre-shared key.
 
 The pre-shared key is optional. It adds an additional layer of symmetric-key
@@ -106,7 +101,6 @@ Pre-shared key: OHH2EwZfMNK+1L6BXbYw3bKCtMrfjpR4mCAEeBlFnRs=
 ```
 
 ```{opcmd} generate pki wireguard preshared-key install interface \<interface\> peer \<peer\>
-
 Generate a pre-shared key and output the key assignment command for the
 specified peer.
 
@@ -124,7 +118,6 @@ Pre-shared key: +LuaZ8W6DjsDFJFX3jJzoNqrsXHhvq08JztM9z8LHCs=
 If you invoke this command from configuration mode with the run
 prefix, the generated key is automatically assigned to the specified peer.
 :::
-
 ```
 ## Interface configuration
 The next step is to configure your local WireGuard interface and define the
@@ -173,7 +166,6 @@ peers. This is a strict design restriction. For more information, check the
 :::
 
 ```{cfgcmd} set interfaces wireguard \<interface\> private-key \<private-key\>
-
 Assign a private key to the specified WireGuard interface.
 
 Example:
@@ -188,7 +180,6 @@ To generate a private key, use the following command:
 To view the public key assigned to the interface so you can share it with a
 peer, use the following command:
 {opcmd}`show interfaces wireguard wg01 public-key`.
-
 ```
 
 
@@ -327,7 +318,6 @@ PersistentKeepalive = 15
 
 ### Status
 ```{opcmd} show interfaces wireguard wg01 summary
-
 Show information about the WireGuard service, including the latest handshake.
 
 :::{code-block} none
@@ -348,7 +338,6 @@ transfer: 1.26 MiB received, 6.47 MiB sent
 
 
 ```{opcmd} show interfaces wireguard
-
 Show a list of all WireGuard interfaces.
 
 :::{code-block} none
@@ -360,7 +349,6 @@ wg01             10.0.0.1/24                       u/u
 ```
 
 ```{opcmd} show interfaces wireguard \<interface\>
-
 Show general information about a specific WireGuard interface.
 
 :::{code-block} none
@@ -386,7 +374,6 @@ create the private portion yourself and hand out only the public key.
 :::
 
 ```{opcmd} generate wireguard client-config \<name\> interface \<interface\> server \<ip|fqdn\> address \<client-ip\>
-
 **Generate a client configuration file that establishes a connection to the
 specified interface.**
 
@@ -404,7 +391,6 @@ an IPv6 (/128) address to the client.
 :::{figure} /_static/images/wireguard_qrcode.jpg
 :alt: WireGuard Client QR code
 :::
-
 ```
 
 [wireguard mailing list]: https://lists.zx2c4.com/pipermail/wireguard/2018-December/003704.html

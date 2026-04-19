@@ -14,37 +14,30 @@ Prefix filtering can be done using prefix-list and prefix-list6.
 ### IPv4 Prefix Lists (prefix-list)
 
 ```{cfgcmd} set policy prefix-list \<text\>
-
 This command creates the new prefix-list policy, identified by <text>.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> description \<text\>
-
 Set description for the prefix-list policy.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> rule \<1-65535\> action \<permit|deny\>
-
 This command creates a new rule in the prefix-list and defines an action.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> rule \<1-65535\> description \<text\>
-
 Set description for rule in the prefix-list.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> rule \<1-65535\> prefix \<x.x.x.x/x\>
-
 Prefix to match against.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> rule \<1-65535\> ge \<0-32\>
-
 Netmask greater than length.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> rule \<1-65535\> le \<0-32\>
-
 Netmask less than length
 ```
 
@@ -54,7 +47,6 @@ rules each with 1 prefix, and matches le (less than/equal to) /32.
 
 ```{cfgcmd} set policy prefix-list PL4-EXAMPLE-NAME rule 10 action 'permit'
 ```
-
 ```{cfgcmd} set policy prefix-list PL4-EXAMPLE-NAME rule 10 le '32'
 ```
 
@@ -78,9 +70,7 @@ rules each with 1 prefix, and matches le (less than/equal to) /32.
 
 ```{cfgcmd} set policy prefix-list PL4-EXAMPLE-NAME rule 30 prefix '203.0.113.0/24'
 ```
-
 ### IPv6 Prefix Lists (prefix-list6)
-
 ```{cfgcmd} set policy prefix-list6 \<text\>
 
 This command creates the new IPv6 prefix-list policy, identified by <text>.
@@ -116,11 +106,9 @@ Netmask greater than length.
 
 Netmask less than length
 ```
-
 ### Example: IPv6 Prefix Lists (prefix-list6)
 This example creates an IPv6 prefix-list6 named PL6-EXAMPLE-NAME, defines 3
 rules each with 1 prefix, and matches le (less than/equal to) /128.
-
 ```{cfgcmd} set policy prefix-list6 PL6-EXAMPLE-NAME rule 10 action 'permit'
 ```
 

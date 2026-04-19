@@ -18,7 +18,6 @@ set vpn pptp remote-access gateway-address 192.168.255.1
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication mode \<local | radius\>
-
 Set authentication backend. The configured authentication backend is used
 for all queries.
 * **radius**: All authentication queries are handled by a configured RADIUS
@@ -28,13 +27,11 @@ for all queries.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> password \<pass\>
-
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
-
 Use this command to define the first IP address of a pool of
 addresses to be given to PPTP clients. If notation ``x.x.x.x-x.x.x.x``,
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
@@ -42,12 +39,10 @@ used there is possibility to set host/netmask.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access default-pool \<POOL-NAME\>
-
 Use this command to define default address pool name.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access gateway-address \<gateway\>
-
 Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
@@ -64,7 +59,6 @@ set vpn pptp remote-access authentication mode radius
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius server \<server\> key \<secret\>
-
 Configure RADIUS `<server>` and its required shared `<secret>` for
 communicating with the RADIUS server.
 ```
@@ -89,7 +83,6 @@ RADIUS server is used. You can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius source-address \<address\>
-
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -101,70 +94,57 @@ queries, make sure to add your VyOS router to the allowed client list.
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius server \<server\> port \<port\>
-
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius server \<server\> fail-time \<time\>
-
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius server \<server\> disable
-
 Temporary disable this RADIUS server.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius acct-timeout \<timeout\>
-
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius dynamic-author server \<address\>
-
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius dynamic-author port \<port\>
-
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius dynamic-author key \<secret\>
-
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius max-try \<number\>
-
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius timeout \<timeout\>
-
 Timeout to wait response from server (seconds)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius nas-identifier \<identifier\>
-
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
 in DM/CoA requests.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius nas-ip-address \<address\>
-
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius source-address \<address\>
-
 Source IPv4 address used in all RADIUS server queires.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius rate-limit attribute \<attribute\>
-
 Specifies which RADIUS server attribute contains the rate limit information.
 The default attribute is `Filter-Id`.
 ```
@@ -175,12 +155,10 @@ dictionaries at RADIUS server and client.
 :::
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius rate-limit enable
-
 Enables bandwidth shaping via RADIUS.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius rate-limit vendor
-
 Specifies the vendor dictionary, dictionary needs to be in
 /usr/share/accel-ppp/radius.
 ```
@@ -223,7 +201,6 @@ characters, otherwise the interface won't be renamed.
 ## IPv6
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6 \<require | prefer | allow | deny\>
-
 Specifies IPv6 negotiation preference.
 * **require** - Require IPv6 negotiation
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
@@ -232,7 +209,6 @@ Specifies IPv6 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask <number-of-bits>
-
 Use this comand to set the IPv6 address pool from which an PPTP client
 will get an IPv6 prefix of your defined length (mask) to terminate the
 PPTP endpoint at their side. The mask length can be set from 48 to 128
@@ -240,7 +216,6 @@ bit long, the default value is 64.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix <number-of-bits>
-
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 PPTP. You will have to set your IPv6 pool and the length of the
 delegation prefix. From the defined IPv6 pool you will be handing out
@@ -249,7 +224,6 @@ delegation prefix can be set from 32 to 64 bit long.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access default-ipv6-pool \<IPv6-POOL-NAME\>
-
 Use this command to define default IPv6 address pool name.
 ```
 
@@ -263,12 +237,10 @@ set vpn pptp remote-access default-ipv6-pool IPv6-POOL
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-accept-peer-interface-id
-
 Accept peer interface identifier. By default is not defined.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
-
 Specifies fixed or random interface identifier for IPv6.
 By default is fixed.
 * **random** - Random interface identifier for IPv6
@@ -276,7 +248,6 @@ By default is fixed.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
-
 Specifies peer interface identifier for IPv6. By default is fixed.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
@@ -287,22 +258,18 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 ## Scripting
 
 ```{cfgcmd} set vpn pptp remote-access extended-scripts on-change \<path_to_script\>
-
 Script to run when session interface changed by RADIUS CoA handling
 ```
 
 ```{cfgcmd} set vpn pptp remote-access extended-scripts on-down \<path_to_script\>
-
 Script to run when session interface going to terminate
 ```
 
 ```{cfgcmd} set vpn pptp remote-access extended-scripts on-pre-up \<path_to_script\>
-
 Script to run before session interface comes up
 ```
 
 ```{cfgcmd} set vpn pptp remote-access extended-scripts on-up \<path_to_script\>
-
 Script to run when session interface is completely configured and started
 ```
 
@@ -311,27 +278,22 @@ Script to run when session interface is completely configured and started
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> disable
-
 Disable `<user>` account.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> static-ip \<address\>
-
 Assign static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> rate-limit download <bandwidth>
-
 Download bandwidth limit in kbit/s for `<user>`.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> rate-limit upload <bandwidth>
-
 Upload bandwidth limit in kbit/s for `<user>`.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access authentication protocols \<pap | chap | mschap | mschap-v2\>
-
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
@@ -339,20 +301,17 @@ pap, chap, mschap, mschap-v2.
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
-
 Use this command to define the next address pool name.
 ```
 
 ### PPP Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options disable-ccp
-
 Disable Compression Control Protocol (CCP).
 CCP is enabled by default.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options interface-cache \<number\>
-
 Specifies number of interfaces to keep in cache. It means that don’t
 destroy interface after corresponding session is destroyed, instead
 place it to cache and use it later for new sessions repeatedly.
@@ -361,7 +320,6 @@ Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv4 \<require | prefer | allow | deny\>
-
 Specifies IPv4 negotiation preference.
 * **require** - Require IPv4 negotiation
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
@@ -370,34 +328,29 @@ Specifies IPv4 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options lcp-echo-failure \<number\>
-
 Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
 value `<number>`, the session will be reset. Default value is **3**.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options lcp-echo-interval \<interval\>
-
 If this option is specified and is greater than 0, then the PPP module will
 send LCP pings of the echo request every `<interval>` seconds.
 Default value is **30**.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options lcp-echo-timeout
-
 Specifies timeout in seconds to wait for any peer activity. If this option
 specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
 is not used. Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options min-mtu \<number\>
-
 Defines minimum acceptable MTU. If client will try to negotiate less then
 specified MTU then it will be NAKed or disconnected if rejects greater MTU.
 Default value is **100**.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options mppe \<require | prefer | deny\>
-
 Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
 * **require** - ask client for mppe, if it rejects drop connection
@@ -410,68 +363,56 @@ attribute.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options mru \<number\>
-
 Defines preferred MRU. By default is not defined.
 ```
 
 ### Global Advanced options
 
 ```{cfgcmd} set vpn pptp remote-access description \<description\>
-
 Set description.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access limits burst \<value\>
-
 Burst count
 ```
 
 ```{cfgcmd} set vpn pptp remote-access limits connection-limit \<value\>
-
 Acceptable rate of connections (e.g. 1/min, 60/sec)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access limits timeout \<value\>
-
 Timeout in seconds
 ```
 
 ```{cfgcmd} set vpn pptp remote-access mtu
-
 Maximum Transmission Unit (MTU) (default: **1436**)
 ```
 
 ```{cfgcmd} set vpn pptp remote-access max-concurrent-sessions
-
 Maximum number of concurrent session start attempts
 ```
 
 ```{cfgcmd} set vpn pptp remote-access name-server \<address\>
-
 Connected client should use `<address>` as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access shaper fwmark \<1-2147483647\>
-
 Match firewall mark value
 ```
 
 ```{cfgcmd} set vpn pptp remote-access snmp master-agent
-
 Enable SNMP
 ```
 
 ```{cfgcmd} set vpn pptp remote-access wins-server \<address\>
-
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 
 ## Monitoring
 
 ```{opcmd} show pptp-server sessions
-
 Use this command to locally check the active sessions in the PPTP
 server.
 ```

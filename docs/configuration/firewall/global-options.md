@@ -16,9 +16,7 @@ Configuration commands covered in this section:
 
 ```{cfgcmd} set firewall global-options ...
 ```
-
 ## Configuration
-
 ```{cfgcmd} set firewall global-options all-ping [enable | disable]
 
 By default, when VyOS receives an ICMP echo request packet destined for
@@ -151,11 +149,9 @@ Set the global setting for invalid packets.
 
 Set the global setting for related connections.
 ```
-
 VyOS supports setting timeouts for connections by connection type. You can
 set timeout values for generic connections, ICMP connections, UDP
 connections, or TCP connections in various states.
-
 ```{cfgcmd} set firewall global-options timeout icmp \<1-21474836\>
 :defaultvalue:
 ```

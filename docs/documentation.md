@@ -66,11 +66,6 @@ All RST files must follow the same TOC Level syntax and have to start with
 #####
 Title
 #####
-
-
-
-
-
 ```
 
 The configuration mode folder and the articles cover the specific level of
@@ -255,27 +250,21 @@ descriptive way in the resulting HTML/PDF manual.
    `00:53:27:de:23:aa`.
 ```
 ````
-
 For an inline configuration level command, use `:cfgcmd:`
-
 ```none
 :cfgcmd:`set interface ethernet eth0`
 ```
-
 To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
 to `.. cfgcmd::` directive.
 To have this feature locally, the vyos-1x submodule must be initialized before.
 Please be aware to not update the submodule in your PR.
-
 ````none
 ```{cfgcmd} set system conntrack table-size \<1-50000000\>
-
     :defaultvalue:
     The connection tracking table contains one entry for each connection being
     tracked by the system.
 ```
 ````
-
 ##### opcmd
 
 When documenting operational level commands, use the `.. opcmd::` directive.
@@ -283,35 +272,26 @@ An explanation of the described command should be added below this statement.
 
 With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
-
 ````none
 ```{opcmd} show protocols static arp
-
    Display all known ARP table entries spanning across all interfaces
 ```
 ````
-
 For an inline operational level command, use `:opcmd:`
-
 ```none
 :opcmd:`add system image`
 ```
-
 ##### cmdinclude
 
 To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
-
 ````none
 ```{cmdincludemd} /_include/interface-address.txt
-
    :var0: ethernet
    :var1: eth1
 ```
 ````
-
 the content of interface-address.txt looks like this
-
 `````none
 ```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
    Configure interface `<interface>` with one or more interface
@@ -323,7 +303,6 @@ the content of interface-address.txt looks like this
    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
    server on this segment.
    Example:
-
 ````none
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
    set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
@@ -333,20 +312,17 @@ the content of interface-address.txt looks like this
 
 ```
 `````
-
 ##### vytask
 
 When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
 command called `vytask` that automatically renders to a proper Phabricator
 URL. This is heavily used in the {ref}`release-notes` section.
-
 ```none
 
 * :vytask:`T1605` Fixed regression in L2TP/IPsec server
 * :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
 
 ```
-
 ## Forking Workflow
 
 The Forking Workflow is fundamentally different from other popular Git
@@ -433,7 +409,6 @@ pull-request. This requires you already have a GitHub account.
   $ git fetch upstream
   $ git checkout current
   $ git merge upstream/current
-
 ```
 
 - If you also want to update your fork on GitHub, use the following: `$ git

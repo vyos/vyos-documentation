@@ -90,16 +90,13 @@ and download the key (a JSON file).
 
 ### Deploy with Terraform
 Run the following commands on your Terraform instance:
-
 ```none
 cd /<your folder>
 terraform plan  
 terraform apply  
 yes
 ```
-
 ## Create a GCP instance and check its configuration
-
 ```none
 # terraform apply
 
@@ -327,15 +324,12 @@ Outputs:
 
 public_ip_address = "104.***.***.158"
 ```
-
 After running all the commands, your VyOS instance is deployed on
 GCP with your specified configuration.
 To delete the instance, type the following command:
-
 ```none
 terraform destroy
 ```
-
 ## Troubleshooting
 
 - Increase the timeout value in `instance.yml` from 300 seconds to
@@ -343,7 +337,6 @@ terraform destroy
   security group allows access to the instance.
 - If Terraform doesn't connect via SSH to your Ansible instance:
   Check the correct login and password in the `VyOS.tf` file.
-
 ```none
 connection {
  type     = "ssh"
@@ -352,11 +345,8 @@ connection {
      host = var.host            # check the correct IP address of your Ansible host
 }
 ```
-
 Verify that Ansible can ping from Terraform.
-
 ## Structure of files in Terraform for Google Cloud
-
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -364,10 +354,8 @@ Verify that Ansible can ping from Terraform.
 ├── var.tf                                     # The file of all variables in "vyos.tf"
 └── terraform.tfvars           # The value of all variables (passwords, login, IP addresses and so on)
 ```
-
 ## File contents of Terraform for Google Cloud
 `vyos.tf`
-
 ```none
 ##############################################################################
 # Build a VyOS VM from the Marketplace
@@ -524,9 +512,7 @@ provisioner "remote-exec" {
 }
 }
 ```
-
 `var.tf`
-
 ```none
 variable "image" {
   type    = string
@@ -608,9 +594,7 @@ variable "host"{
   type = string
 }
 ```
-
 `terraform.tfvars`
-
 ```none
 ##############################################################################
 # Must be filled in
@@ -622,9 +606,7 @@ project_id    = ""                     # the google project
 password      = ""                     # password for Ansible SSH
 host          = ""                     # IP of my Ansible
 ```
-
 ## Structure of files in Ansible for Google Cloud
-
 ```none
 .
 ├── group_vars
@@ -632,19 +614,15 @@ host          = ""                     # IP of my Ansible
 ├── ansible.cfg
 └── instance.yml
 ```
-
 ## File contents of Ansible for Google Cloud
 `ansible.cfg`
-
 ```none
 [defaults]
 inventory = /root/google/ip.txt
 host_key_checking= False
 remote_user=vyos
 ```
-
 `instance.yml`
-
 ```none
 ##############################################################################
 # About tasks:
@@ -672,9 +650,7 @@ remote_user=vyos
         save:
           true
 ```
-
 `group_vars/all`
-
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

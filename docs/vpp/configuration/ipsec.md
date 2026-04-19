@@ -79,7 +79,6 @@ If you have configured ESP profiles with algorithms not supported by VPP and the
 **ACL for VPP IPsec Traffic**
 
 When using VPP for offloading IPsec traffic, you may need to adjust your firewall rules to allow the necessary protocols and ports. Below is an example of how to configure ACLs for VPP IPsec traffic:
-
 ```none
 set vpp acl ip interface <interface-name> input acl-tag 10 tag-name 'IPSEC'
 set vpp acl ip tag-name IPSEC description 'Allow IPsec traffic'
@@ -98,13 +97,9 @@ set vpp acl ip tag-name IPSEC rule 40 protocol 'udp'
 set vpp acl ip tag-name IPSEC rule 50 action 'permit'
 set vpp acl ip tag-name IPSEC rule 50 protocol 'esp'
 ```
-
 Pay attention to the order of the rules, as they are processed sequentially. Make sure to place IPsec-related rules before any other rules that might deny traffic to ensure that IPsec traffic is allowed.
-
 **Simple VTI-based IPsec Tunnel**
-
 On the VPP host:
-
 ```none
 set interfaces ethernet eth1 address '192.168.1.1/24'
 set interfaces ethernet eth2 address '192.168.100.1/24'
@@ -143,7 +138,6 @@ set vpp settings interface eth2
 set vpp settings ipsec netlink rx-buffer-size '32000'
 set vpp settings lcp ignore-kernel-routes
 ```
-
 Where:
 - `eth1` is the interface connected to the IPsec peer.
 - `eth2` is the interface connected to the local subnet, where unencrypted traffic is expected.
@@ -181,6 +175,5 @@ Improper IPsec configuration can lead to various issues, including:
 - **Connection is established but no traffic flows**
 
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
-
 ```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
 ```

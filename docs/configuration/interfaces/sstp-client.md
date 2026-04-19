@@ -44,7 +44,6 @@ VyOS includes a built-in SSTP server. For more information, see
 ### SSTP client options
 
 ```{cfgcmd} set interfaces sstpc \<interface\> no-default-route
-
 Request an IP address from the SSTP server without installing a default route.
 
 Example:
@@ -58,7 +57,6 @@ set interfaces sstpc sstpc0 no-default-route
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> default-route-distance \<distance\>
-
 Configure the distance for the default gateway provided by the SSTP server.
 
 Example:
@@ -69,12 +67,10 @@ set interfaces sstpc sstpc0 default-route-distance 220
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> no-peer-dns
-
 Disable the installation of advertised DNS nameservers on the local system.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> server \<address\>
-
 **Configure the remote SSTP server address for the client connection.**
 
 The address can be either an IP address or a {abbr}`FQDN (Fully Qualified
@@ -82,7 +78,6 @@ Domain Name)`.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> ip adjust-mss \<mss | clamp-mss-to-pmtu\>
-
 **Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 
@@ -103,7 +98,6 @@ options interface <name> adjust-mss <value>`` syntax.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> ip disable-forwarding
-
 **Configure the interface for host or router behavior.**
 
 If configured, the interface switches to host mode, and IPv4 forwarding is
@@ -111,7 +105,6 @@ disabled on it.
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> ip source-validation \<strict | loose | disable\>
-
 **Configure source IP address validation using**
 {abbr}`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
 {rfc}`3704`.
@@ -135,7 +128,6 @@ mode.
 ## Operation
 
 ```{opcmd} show interfaces sstpc \<interface\>
-
 Show detailed information about the specified interface.
 
 :::{code-block} none
@@ -157,11 +149,9 @@ sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast sta
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
-
 Disconnect the specified interface.
 ```
 
 ```{opcmd} connect interface \<interface\>
-
 Initiate a session on the specified interface.
 ```

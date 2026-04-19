@@ -367,7 +367,6 @@ interface Tunnel101
 ## Monitoring
 All spokes created IPSec tunnels to Hubs, are registered on Hubs using NHRP protocol and formed adjacency in OSPF.
 ```none
-
 vyos@HUB-1:~$ show vpn ipsec sa
 Connection                  State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
 --------------------------  -------  --------  --------------  ----------------  ----------------  -----------  ------------------------
@@ -388,11 +387,9 @@ Neighbor ID     Pri State           Up Time         Dead Time Address         In
 192.168.11.1      1 Full/DROther    17m01s            36.201s 10.100.100.11   tun100:10.100.100.1                  0     0     0
 192.168.12.1      1 Full/DROther    9m42s             37.443s 10.100.100.12   tun100:10.100.100.1                  0     0     0
 192.168.13.1      1 Full/DROther    9m15s             35.053s 10.100.100.13   tun100:10.100.100.1                  0     0     0
-
 ```
 First, we see that LANs are accessible through hubs using OSPF routes.
 ```none
-
 SPOKE-1#show ip route
 Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
        D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
@@ -432,12 +429,10 @@ C>* 192.168.12.0/24 is directly connected, eth1, weight 1, 01:24:43
 L>* 192.168.12.1/32 is directly connected, eth1, weight 1, 01:24:43
 O>* 192.168.13.0/24 [110/3] via 10.100.100.1, tun100 onlink, weight 1, 00:12:36
   *                         via 10.100.101.1, tun101 onlink, weight 1, 00:12:36
-
 ```
 After initiating traffic between SPOKES sites, Phase 3 of DMVPN will work.
 For instance, traceroute was generated from PC-SPOKE-2 to PC-SPOKE-1
 ```none
-
 PC-SPOKE-2 : 192.168.12.2 255.255.255.0 gateway 192.168.12.1
 
 PC-SPOKE-2> trace 192.168.11.2
@@ -452,12 +447,10 @@ trace to 192.168.11.2, 8 hops max, press Ctrl+C to stop
  1   192.168.12.1   0.562 ms  0.396 ms  0.364 ms
  2   10.100.100.11   4.401 ms  4.399 ms  4.174 ms
  3   *192.168.11.2   3.241 ms (ICMP type:3, code:3, Destination port unreachable)
-
 ```
 First trace goes via HUB but the second goes directly from SPOKE-1 to SPOKE-2.
 Now routing tables are changed. LAN networks 192.168.12.0/24 and 192.168.11.0/24 available directly via SPOKES.
 ```none
-
 vyos@SPOKE-2:~$ show ip route
 Codes: K - kernel route, C - connected, L - local, S - static,
        R - RIP, O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
@@ -487,11 +480,9 @@ Gateway of last resort is 10.0.11.1 to network 0.0.0.0
 O   % 192.168.12.0/24 [110/1002] via 10.100.101.1, 00:24:09, Tunnel101
                       [110/1002] via 10.100.100.1, 00:25:46, Tunnel100
                       [NHO][110/1] via 10.100.100.12, 00:00:03, Tunnel100
-
 ```
 NHRP shows shortcuts on Spokes
 ```none
-
 vyos@SPOKE-2:~$ show ip nhrp shortcut
 Type     Prefix                   Via                      Identity
 dynamic  192.168.11.0/24          10.100.100.11            10.0.11.2
@@ -505,11 +496,9 @@ SPOKE-1# show ip nhrp shortcut
    Tunnel100 created 00:02:38, expire 00:02:21
    Type: dynamic, Flags: router rib nho
    NBMA address: 10.0.12.2
-
 ```
 A new Spoke to Spoke IPSec tunnel is created
 ```none
-
 SPOKE-1#show crypto isakmp sa
 IPv4 Crypto ISAKMP SA
 dst             src             state          conn-id status
@@ -523,7 +512,6 @@ Connection                  State    Uptime    Bytes In/Out    Packets In/Out   
 dmvpn-NHRPVPN-tun100-child  up       7m26s     4K/4K           57/53             10.0.0.2          10.0.0.2     AES_CBC_256/HMAC_SHA1_96
 dmvpn-NHRPVPN-tun100-child  up       11m48s    316B/1K         3/15              10.0.11.2         10.0.11.2    AES_CBC_256/HMAC_SHA1_96
 dmvpn-NHRPVPN-tun101-child  up       5m58s     5K/4K           62/51             10.0.1.2          10.0.1.2     AES_CBC_256/HMAC_SHA1_96
-
 ```
 
 ## Summary

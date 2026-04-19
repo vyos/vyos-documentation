@@ -23,7 +23,6 @@ Policies, in VyOS, are implemented using FRR filtering and route maps. Detailed
 information of FRR could be found in <http://docs.frrouting.org/>
 
 ## Policy Sections
-
 ```{toctree}
 :includehidden: true
 :maxdepth: 1
@@ -38,10 +37,8 @@ community-list
 extcommunity-list
 large-community-list
 ```
-
 ## Examples
 Examples of policies usage:
-
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

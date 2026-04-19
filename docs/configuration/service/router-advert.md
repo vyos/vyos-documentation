@@ -43,7 +43,6 @@ Supported interface types:
 | Captive Portal | captive-portal | Advertise a URL pointing to an RFC 8908-compliant API to tell hosts that they are behind a captive portal |
 
 ### Advertising a Prefix
-
 ```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 
 :::{note}
@@ -52,7 +51,6 @@ Advertisements)`. This is a special wildcard prefix that will emit {abbr}`RAs (R
 This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 :::
 ```
-
 | VyOS Field | Description |
 |------------|-------------|
 | decrement-lifetime | Lifetime is decremented by the number of seconds since the last RA - use in conjunction with a DHCPv6-PD prefix |
@@ -63,7 +61,6 @@ This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 30 days) |
 
 ### Advertising a NAT64 Prefix
-
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in {rfc}`8781`.
@@ -74,14 +71,12 @@ NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 The well known NAT64 prefix is ``64:ff9b::/96``
 :::
 ```
-
 | VyOS Field | Description |
 |------------|-------------|
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 65528 seconds) |
 
 ### Disabling Advertisements
 To disable advertisements without deleting the configuration:
-
 ```{cfgcmd} set service router-advert interface \<interface\> no-send-advert
 
 If set, the router will no longer send periodic router advertisements and
@@ -93,11 +88,9 @@ will not respond to router solicitations.
 Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```
-
 ## Example
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router
 beeing `2001:db8:beef:2::1`
-
 ```none
 set interfaces ethernet eth0 address 2001:db8:beef:2::1/64
 

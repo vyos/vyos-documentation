@@ -172,7 +172,6 @@ To replace a bad disk within a RAID 1 set:
 ## Operation
 Learn how to add a disk partition to a RAID 1 set, initiate
 mirror synchronization, and check and display information.
-
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a
@@ -181,13 +180,11 @@ mirror synchronization, and check and display information.
 
 ```
 
-
 ```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
 
 This command is typically used to prepare a disk to be added to a preexisting
 RAID 1 set (of which ``disk-device2`` is already a member).
 ```
-
 
 ```{opcmd} show raid \<RAID‐1‐device\>
 
@@ -221,7 +218,6 @@ Rebuild Status : 17% complete
      2       8       17        1      spare rebuilding   /dev/sdb1
 :::
 ```
-
 
 ```{opcmd} show disk sda format
 

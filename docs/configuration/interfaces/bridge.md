@@ -34,7 +34,6 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 ### Member interfaces
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
-
 **Configure an interface as a bridge member.**
 Valid interface types are: {ref}`ethernet-interface`, {ref}`bond-interface`,
 {ref}`l2tpv3-interface`, {ref}`openvpn`, {ref}`vxlan-interface`,
@@ -44,7 +43,6 @@ Use tab completion to list interfaces that can be bridged.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> priority <priority>
-
 **Configure the** {abbr}`STP (Spanning Tree Protocol)` **port priority
 for a specific member interface within a bridge.**
 Within the {abbr}`STP (Spanning Tree Protocol)` topology, each member interface
@@ -58,7 +56,6 @@ A **lower** priority value means **higher** precedence in path selection.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> cost <cost>
-
 **Configure the** {abbr}`STP (Spanning Tree Protocol)` **path cost for a
 specific member interface within the bridge.**
 Path cost is the primary metric {abbr}`STP (Spanning Tree Protocol)` uses to
@@ -73,7 +70,6 @@ Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
 
 ```{cfgcmd} set interfaces bridge \<interface\> aging \<time\>
-
 **Configure the MAC address aging time for the bridge.**
 The duration in seconds that a MAC address remains in the bridge’s {abbr}`FDB
 (Forwarding Database)` before removal if no traffic is received from that
@@ -82,7 +78,6 @@ The default value is 300 seconds.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> max-age \<time\>
-
 **Configure the** {abbr}`STP (Spanning Tree Protocol)` **max age timer for
 the bridge.**
 The duration in seconds that the bridge waits for a {abbr}`BPDU (Bridge
@@ -93,7 +88,6 @@ a new root bridge election.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> igmp querier
-
 **Configure the bridge interface to act as the** {abbr}`IGMP (Internet Group
 Management Protocol)`/{abbr}`MLD (Multicast Listener Discovery)` **Querier.**
 **When configured:** The bridge interface sends {abbr}`IGMP (Internet Group
@@ -103,7 +97,6 @@ listeners.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> igmp snooping
-
 **Configure the bridge interface to perform** {abbr}`IGMP (Internet Group
 Management Protocol)`/{abbr}`MLD (Multicast Listener Discovery)`
 **snooping.**
@@ -127,12 +120,10 @@ To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
 
 ```{cfgcmd} set interfaces bridge \<interface\> stp
-
 Enable {abbr}`STP (Spanning Tree Protocol)` on the bridge interface.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> forwarding-delay \<delay\>
-
 **Configure the** {abbr}`STP (Spanning Tree Protocol)` **delay, in seconds,
 for the bridge interface.**
 This parameter defines how long the bridge interface remains in the listening
@@ -144,7 +135,6 @@ twice this value.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> hello-time \<interval\>
-
 **Configure the** {abbr}`STP (Spanning Tree Protocol)` **Hello advertisement
 interval, in seconds.**
 This parameter sets the frequency at which the bridge interface transmits
@@ -160,7 +150,6 @@ The default value is 2 seconds.
 #### VLAN-aware bridges
 
 ```{cfgcmd} set interfaces bridge \<interface\> enable-vlan
-
 **Enable VLAN filtering (also known as VLAN awareness) on the bridge interface.**
 When enabled, the bridge strictly segregates traffic among VLANs configured
 on its member interfaces.
@@ -173,7 +162,6 @@ handles all untagged traffic.
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> protocol \<802.1ad | 802.1q\>
-
 **Configure the VLAN protocol (EtherType) for the bridge interface.**
 The following options are available:
 * ``802.1q`` (default): Sets the EtherType to ``0x8100``. Used for standard
@@ -189,7 +177,6 @@ The following options are available:
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> native-vlan \<vlan-id\>
-
 **Configure the native VLAN ID for a specific member interface within a
 VLAN-aware bridge.**
 This assigns the specified ``<vlan-id>`` to untagged traffic entering the member
@@ -204,7 +191,6 @@ set interfaces bridge br1 member interface eth0 native-vlan 2
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> allowed-vlan \<vlan-id\>
-
 **Configure allowed VLAN IDs for a specific member interface within a
 VLAN-aware bridge.**
 Enter a single VLAN ID or a range of VLAN IDs separated by a hyphen.
@@ -310,7 +296,6 @@ vyos@vyos# show interfaces bridge br100
 ### Operation
 
 ```{opcmd} show bridge
-
 Show the status of member interfaces for all configured bridges.
 
 :::{code-block} none
@@ -323,7 +308,6 @@ priority 32 cost 100
 ```
 
 ```{opcmd} show bridge \<name\> fdb
-
 Show the {abbr}`FDB (Forwarding Database)` for the specified bridge.
 
 :::{code-block} none
@@ -351,7 +335,6 @@ vyos@vyos:~$ show bridge br0 fdb
 ```
 
 ```{opcmd} show bridge \<name\> mdb
-
 Show the {abbr}`MDB (Multicast group Database)` for the specified bridge.
 The {abbr}`MDB (Multicast group Database)` is populated by {abbr}`IGMP
 (Internet Group Management Protocol)`/{abbr}`MLD (Multicast Listener
@@ -368,7 +351,6 @@ dev br0 port br0 grp ff02::6a temp vid 1
 ```
 
 ```{opcmd} show bridge \<name\> macs
-
 Show the learned {abbr}`MAC (Media Access Control)` address table for the
 specified bridge.
 

@@ -37,21 +37,18 @@ SSH {ref}`ssh_key_based_authentication`
 ## Configuration
 
 ```{cfgcmd} set service ssh port \<port\>
-
 Enabling SSH only requires you to specify the port ``<port>`` you want SSH to
 listen on. By default, SSH runs on port 22.
 ```
 
 
 ```{cfgcmd} set service ssh listen-address \<address\>
-
 Specify IPv4/IPv6 listen address of SSH server. Multiple addresses can be
 defined.
 ```
 
 
 ```{cfgcmd} set service ssh cipher \<cipher\>
-
 Define allowed ciphers used for the SSH connection. A number of allowed
 ciphers can be specified, use multiple occurrences to allow multiple ciphers.
 
@@ -64,20 +61,17 @@ List of supported ciphers: ``3des-cbc``, ``aes128-cbc``, ``aes192-cbc``,
 
 
 ```{cfgcmd} set service ssh disable-password-authentication
-
 Disable password based authentication. Login via SSH keys only. This hardens
 security!
 ```
 
 
 ```{cfgcmd} set service ssh fido pin-required
-
 Require FIDO2 keys to attest that a user has been verified (e.g. via a PIN).
 ```
 
 
 ```{cfgcmd} set service ssh fido touch-required
-
 Require FIDO2 keys to attest that a user is physically present.
 
 
@@ -115,14 +109,12 @@ You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.
 
 
 ```{cfgcmd} set service ssh disable-host-validation
-
 Disable the host validation through reverse DNS lookups - can speedup login
 time when reverse lookup is not possible.
 ```
 
 
 ```{cfgcmd} set service ssh mac \<mac\>
-
 Specifies the available {abbr}`MAC (Message Authentication Code)` algorithms.
 The MAC algorithm is used in protocol version 2 for data integrity protection.
 Multiple algorithms can be provided by using multiple commands, defining
@@ -141,7 +133,6 @@ List of supported MACs: ``hmac-md5``, ``hmac-md5-96``, ``hmac-ripemd160``,
 
 
 ```{cfgcmd} set service ssh access-control \<allow | deny\> \<group | user\> \<name\>
-
 Add access-control directive to allow or deny users and groups. Directives
 are processed in the following order of precedence: ``deny-users``,
 ``allow-users``, ``deny-groups`` and ``allow-groups``.
@@ -149,13 +140,11 @@ are processed in the following order of precedence: ``deny-users``,
 
 
 ```{cfgcmd} set service ssh client-keepalive-interval \<interval\>
-
 Specify timeout interval for keepalive message in seconds.
 ```
 
 
 ```{cfgcmd} set service ssh key-exchange \<kex\>
-
 Specify allowed {abbr}`KEX (Key Exchange)` algorithms.
 
 
@@ -170,19 +159,16 @@ List of supported algorithms: ``diffie-hellman-group1-sha1``,
 
 
 ```{cfgcmd} set service ssh loglevel \<quiet | fatal | error | info | verbose\>
-
 Set the ``sshd`` log level. The default is ``info``.
 ```
 
 
 ```{cfgcmd} set service ssh vrf \<name\>
-
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 
 ```{cfgcmd} set service ssh pubkey-accepted-algorithm \<name\>
-
 Specifies the signature algorithms that will be accepted for public key
 authentication
 
@@ -204,7 +190,6 @@ List of supported algorithms: ``ssh-ed25519``,
 
 
 ```{cfgcmd} set service ssh trusted-user-ca \<name\>
-
 Specify the name of the OpenSSH key-pair that acts as certificate authority
 and will be used to verify user certificates.
 
@@ -238,37 +223,30 @@ SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
 attack, such as several login failures within a few seconds, is detected, the
 offending IP is blocked. Offenders are unblocked after a set interval.
 ```{cfgcmd} set service ssh dynamic-protection
-
 Allow ``ssh`` dynamic-protection.
 ```
 ```{cfgcmd} set service ssh dynamic-protection allow-from \<address | prefix\>
-
 Whitelist of addresses and networks. Always allow inbound connections from
 these systems.
 ```
 ```{cfgcmd} set service ssh dynamic-protection block-time \<sec\>
-
 Block source IP in seconds. Subsequent blocks increase by a factor of 1.5
 The default is 120.
 ```
 ```{cfgcmd} set service ssh dynamic-protection detect-time \<sec\>
-
 Remember source IP in seconds before reset their score. The default is 1800.
 ```
 ```{cfgcmd} set service ssh dynamic-protection threshold \<sec\>
-
 Block source IP when their cumulative attack score exceeds threshold. The
 default is 30.
 ```
 (ssh-operation)=
 ## Operation
 ```{opcmd} restart ssh
-
 Restart the SSH daemon process, the current session is not affected, only the
 background daemon is restarted.
 ```
 ```{opcmd} generate ssh server-key
-
 Re-generated the public/private keyportion which SSH uses to secure
 connections.
 
@@ -276,10 +254,8 @@ connections.
 Already learned known_hosts files of clients need an update as the
 public key will change.
 :::
-
 ```
 ```{opcmd} generate ssh client-key /path/to/private_key
-
 Re-generated a known pub/private keyfile which can be used to connect to
 other services (e.g. RPKI cache).
 
@@ -310,7 +286,6 @@ Two new files ``/config/auth/id_rsa_rpki`` and
 will be created.
 ```
 ```{opcmd} generate public-key-command user \<username\> path \<location\>
-
 Generate the configuration mode commands to add a public key for
 {ref}`ssh_key_based_authentication`.
 ``<location>`` can be a local path or a URL pointing at a remote file.
@@ -339,30 +314,23 @@ exit
 :::
 ```
 ```{opcmd} show log ssh
-
 Show SSH server log.
 ```
 ```{opcmd} monitor log ssh
-
 Follow the SSH server log.
 ```
 ```{opcmd} show log ssh dynamic-protection
-
 Show SSH dynamic-protection log.
 ```
 ```{opcmd} monitor log ssh dynamic-protection
-
 Follow the SSH dynamic-protection log.
 ```
 ```{opcmd} show ssh dynamic-protection
-
 Show list of IPs currently blocked by SSH dynamic-protection.
 ```
 ```{opcmd} show ssh fingerprints
-
 Show SSH server public key fingerprints.
 ```
 ```{opcmd} show ssh fingerprints ascii
-
 Show SSH server public key fingerprints, including a visual ASCII art representation.
 ```

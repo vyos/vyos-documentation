@@ -113,33 +113,27 @@ a class (Class ID), but that does not apply to every policy.
 The number of a class in a Priority Queue it does not only
 identify it, it also defines its priority.
 :::
-
 ```none
 set qos policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
 ```
-
 In the command above, we set the type of policy we are going to
 work with and the name we choose for it; a class (so that we can
 differentiate some traffic) and an identifiable number for that class;
 then we configure a matching rule (or filter) and a name for it.
 
 A class can have multiple match filters:
-
 ```none
 set qos policy shaper MY-SHAPER class 30 match HTTP
 set qos policy shaper MY-SHAPER class 30 match HTTPs
 ```
-
 A match filter can contain multiple criteria and will match traffic if
 all those criteria are true.
 
 For example:
-
 ```none
 set qos policy shaper MY-SHAPER class 30 match HTTP ip protocol tcp
 set qos policy shaper MY-SHAPER class 30 match HTTP ip source port 80
 ```
-
 This will match TCP traffic with source port 80.
 
 There are many parameters you will be able to use in order to match the
@@ -156,7 +150,6 @@ traffic you want for a class:
 
 When configuring your filter, you can use the `Tab` key to see the many
 different parameters you can configure.
-
 ```none
 vyos@vyos# set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER 
 Possible completions:
@@ -168,17 +161,14 @@ Possible completions:
    mark         Match on mark applied by firewall
    vif          Virtual Local Area Network (VLAN) ID for this match
 ```
-
 As shown in the example above, one of the possibilities to match packets
 is based on marks done by the firewall,
 [that can give you a great deal of flexibility].
 
 You can also write a description for a filter:
-
 ```none
 set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My filter description"
 ```
-
 :::{note}
 An IPv4 TCP filter will only match packets with an IPv4 header
 length of 20 bytes (which is the majority of IPv4 packets anyway).
@@ -195,7 +185,6 @@ In some case where we need to have an organization of our matching selection,
 in order to be more flexible and organize with our filter definition. We can
 apply traffic match groups, allowing us to create distinct filter groups within
 our policy and define various parameters for each group:
-
 ```none
 set qos traffic-match-group <group_name> match <match_name>
 Possible completions:
@@ -205,17 +194,12 @@ Possible completions:
    mark                 Match on mark applied by firewall
    vif                  Virtual Local Area Network (VLAN) ID for this match
 ```
-
 inherit matches from another group
-
 ```none
 set qos traffic-match-group <group_name> match-group <match_group_name>
 ```
-
 A match group can contain multiple criteria and inherit them in the same policy.
-
 For example:
-
 ```none
 set qos traffic-match-group Mission-Critical match AF31 ip dscp 'AF31'
 set qos traffic-match-group Mission-Critical match AF32 ip dscp 'AF42'
@@ -236,7 +220,6 @@ set qos policy shaper VyOS-HTB class 20 queue-type 'fair-queue'
 set qos policy shaper VyOS-HTB default bandwidth '20%'
 set qos policy shaper VyOS-HTB default queue-type 'fq-codel'
 ```
-
 In this example, we can observe that different DSCP criteria are defined based
 on our QoS configuration within the same policy group.
 
@@ -254,7 +237,6 @@ Once a class has a filter configured, you will also have to define what
 you want to do with the traffic of that class, what specific
 Traffic-Control treatment you want to give it. You will have different
 possibilities depending on the Traffic Policy you are configuring.
-
 ```none
 vyos@vyos# set qos policy shaper MY-SHAPER class 30
 Possible completions:
@@ -273,7 +255,6 @@ Possible completions:
    set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
    target       Acceptable minimum standing/persistent queue delay (default: 5)
 ```
-
 For instance, with {code}`set qos policy shaper MY-SHAPER
 class 30 set-dscp EF` you would be modifying the DSCP field value of packets in
 that class to Expedite Forwarding.
@@ -315,13 +296,11 @@ classful shaping one so that it takes effect.
 
 You can configure a policy into a class through the `queue-type`
 setting.
-
 ```none
 set qos policy shaper FQ-SHAPER bandwidth 4gbit
 set qos policy shaper FQ-SHAPER default bandwidth 100%
 set qos policy shaper FQ-SHAPER default queue-type fq-codel
 ```
-
 As shown in the last command of the example above, the `queue-type`
 setting allows these combinations. You will be able to use it
 in many policies.
@@ -380,7 +359,6 @@ release enough packets from its head.
 This is the policy that requires the lowest resources for the same
 amount of traffic. But **very likely you do not need it as you cannot
 get much from it. Sometimes it is used just to enable logging.**
-
 ```{cfgcmd} set qos policy drop-tail \<policy-name\> queue-limit \<number-of-packets\>
 
 Use this command to configure a drop-tail policy (PFIFO). Choose a
@@ -388,7 +366,6 @@ unique name for this policy and the size of the queue by setting the
 number of packets it can contain (maximum 4294967295).
 
 ```
-
 #### Fair Queue
 
 | **Queueing discipline:** SFQ (Stochastic Fairness Queuing).
@@ -399,7 +376,6 @@ transmission of packets based on flows, that is, it balances traffic
 distributing it through different sub-queues in order to ensure
 fairness so that each flow is able to send data in turn, preventing any
 single one from drowning out the rest.
-
 ```{cfgcmd} set qos policy fair-queue \<policy-name\>
 
    Use this command to create a Fair-Queue policy and give it a name.
@@ -407,7 +383,6 @@ single one from drowning out the rest.
    outbound traffic.
 
 ```
-
 In order to separate traffic, Fair Queue uses a classifier based on
 source address, destination address and source port. The algorithm
 enqueues packets to hash buckets based on those tree parameters.
@@ -420,24 +395,20 @@ packet reordering to occur. An advisable value could be 10 seconds.
 
 One of the uses of Fair Queue might be the mitigation of Denial of
 Service attacks.
-
 ```{cfgcmd} set qos policy fair-queue \<policy-name\> hash-interval \<seconds\>
 
 Use this command to define a Fair-Queue policy, based on the
 Stochastic Fairness Queueing, and set the number of seconds at which
 a new queue algorithm perturbation will occur (maximum 4294967295).
 ```
-
 When dequeuing, each hash-bucket with data is queried in a round robin
 fashion. You can configure the length of the queue.
-
 ```{cfgcmd} set qos policy fair-queue \<policy-name\> queue-limit \<limit\>
 
 Use this command to define a Fair-Queue policy, based on the
 Stochastic Fairness Queueing, and set the number of maximum packets
 allowed to wait in the queue. Any other packet will be dropped.
 ```
-
 :::{note}
 Fair Queue is a non-shaping (work-conserving) policy, so it
 will only be useful if your outgoing interface is really full. If it
@@ -514,7 +485,6 @@ something like 300 bytes.
 At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps
 being ok) you may also want to increase `target` to something like 15ms
 and increase `interval` to something around 150 ms.
-
 ```{cfgcmd} set qos policy fq-codel \<policy name\> codel-quantum \<bytes\>
 
 Use this command to configure an fq-codel policy, set its name and
@@ -522,14 +492,12 @@ the maximum number of bytes (default: 1514) to be dequeued from a
 queue at once.
 ```
 
-
 ```{cfgcmd} set qos policy fq-codel \<policy name\> flows \<number-of-flows\>
 
 Use this command to configure an fq-codel policy, set its name and
 the number of sub-queues (default: 1024) into which packets are
 classified.
 ```
-
 
 ```{cfgcmd} set qos policy fq-codel \<policy name\> interval \<milliseconds\>
 
@@ -539,7 +507,6 @@ persistent queue is developing, ensuring that the measured minimum
 delay does not become too stale (default: 100ms).
 ```
 
-
 ```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit <number-of-packets>
 
 
@@ -548,7 +515,6 @@ define a hard limit on the real queue size. When this limit is
 reached, new packets are dropped (default: 10240 packets).
 ```
 
-
 ```{cfgcmd} set qos policy fq-codel \<policy-name\> target \<milliseconds\>
 
 Use this command to configure an fq-codel policy, set its name, and
@@ -556,16 +522,13 @@ define the acceptable minimum standing/persistent queue delay. This
 minimum delay is identified by tracking the local minimum queue delay
 that packets experience (default: 5ms).
 ```
-
 ##### Example
 A simple example of an FQ-CoDel policy working inside a Shaper one.
-
 ```none
 set qos policy shaper FQ-CODEL-SHAPER bandwidth 2gbit
 set qos policy shaper FQ-CODEL-SHAPER default bandwidth 100%
 set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 ```
-
 #### Limiter
 
 | **Queueing discipline:** Ingress policer.
@@ -589,7 +552,6 @@ the configured classes.
 In the case you want to apply some kind of **shaping** to your
 **inbound** traffic, check the ingress-shaping section.
 :::
-
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match \<match-name\> description \<description\>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -597,10 +559,8 @@ a class identifier (1-4090), a class matching rule name and its
 description.
 
 ```
-
 Once the matching rules are set for a class, you can start configuring
 how you want matching traffic to behave.
-
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth \<rate\>
 
 Use this command to configure an Ingress Policer, defining its name,
@@ -639,7 +599,6 @@ which the rule is evaluated (the lower the number, the higher the
 priority).
 
 ```
-
 #### Network Emulator
 
 | **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
@@ -651,7 +610,6 @@ delay, packet loss, packet corruption or packet reordering.
 
 This could be helpful if you want to test how an application behaves
 under certain network conditions.
-
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> bandwidth \<rate\>
 
    Use this command to configure the maximum rate at which traffic will
@@ -659,7 +617,6 @@ under certain network conditions.
    and the rate.
 
 ```
-
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> burst \<burst-size\>
 
@@ -669,7 +626,6 @@ policy and its traffic burst size (it will be configured through the
 Token Bucket Filter qdisc). Default:15kb. It will only take effect if
 you have configured its bandwidth too.
 ```
-
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> delay <delay>
 
@@ -682,7 +638,6 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 50ms.
 ```
 
-
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption <percent>
 
 
@@ -692,7 +647,6 @@ random error will be introduced in a random position for the chosen
 percent of packets.
 ```
 
-
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> loss <percent>
 
 
@@ -700,7 +654,6 @@ Use this command to emulate packet-loss conditions in a Network
 Emulator policy. Set the policy name and the percentage of loss
 packets your traffic will suffer.
 ```
-
 
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering <percent>
 
@@ -710,7 +663,6 @@ Emulator policy. Set the policy name and the percentage of reordered
 packets your traffic will suffer.
 ```
 
-
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit <limit>
 
 
@@ -718,7 +670,6 @@ Use this command to define the length of the queue of your Network
 Emulator policy. Set the policy name and the maximum number of
 packets (1-4294967295) the queue may hold queued at a time.
 ```
-
 #### Priority Queue
 
 | **Queueing discipline:** PRIO.
@@ -750,7 +701,6 @@ number, the higher the priority.
 :::
 As with other policies, you can define different type of matching rules
 for your classes:
-
 ```none
 vyos@vyos# set qos policy priority-queue MY-PRIO class 3 match MY-MATCH-RULE 
 Possible completions:
@@ -762,11 +712,9 @@ Possible completions:
    mark         Match on mark applied by firewall
    vif          Virtual Local Area Network (VLAN) ID for this match
 ```
-
 As with other policies, you can embed other policies into the classes
 (and default) of your Priority Queue policy through the `queue-type`
 setting:
-
 ```none
 vyos@vyos# set qos policy priority-queue MY-PRIO class 3 queue-type 
 Possible completions:
@@ -786,7 +734,6 @@ the real queue size. When this limit is reached, new packets are
 dropped.
 
 ```
-
 (random-detect)=
 
 #### Random-Detect
@@ -823,7 +770,6 @@ IP precedence as defined in {rfc}`791`:
 Random-Detect could be useful for heavy traffic. One use of this
 algorithm might be to prevent a backbone overload. But only for TCP
 (because dropped packets could be retransmitted), not for UDP.
-
 ```{cfgcmd} set qos policy random-detect \<policy-name\> bandwidth \<bandwidth\>
 
    Use this command to configure a Random-Detect policy, set its name
@@ -834,7 +780,6 @@ algorithm might be to prevent a backbone overload. But only for TCP
 
 ```
 
-
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> average-packet <bytes>
 
 
@@ -843,12 +788,10 @@ name, then state the IP Precedence for the virtual queue you are
 configuring and what the size of its average-packet should be
 (in bytes, default: 1024).
 ```
-
 :::{note}
 When configuring a Random-Detect policy: **the higher the
 precedence number, the higher the priority**.
 :::
-
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> mark-probability <value>
 
 
@@ -868,7 +811,6 @@ be (from 0 to 4096 packets, default: 18). At this size, the marking
 
 ```
 
-
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> minimum-threshold <packets>
 
 
@@ -878,7 +820,6 @@ configuring and what its minimum threshold for random detection will
 be (from 0 to 4096 packets).  If this value is exceeded, packets
 start being eligible for being dropped.
 ```
-
 The default values for the minimum-threshold depend on IP precedence:
 > | Precedence | default min-threshold |
 > | ---------- | --------------------- |
@@ -890,7 +831,6 @@ The default values for the minimum-threshold depend on IP precedence:
 > | 2          | 11                    |
 > | 1          | 10                    |
 > | 0          | 9                     |
-
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> queue-limit \<packets\>
 
 Use this command to configure a Random-Detect policy and set its
@@ -900,7 +840,6 @@ configuring and what the maximum size of its queue will be (from 1 to
 length reaches this value.
 
 ```
-
 If the average queue size is lower than the **min-threshold**, an
 arriving packet will be placed in the queue.
 
@@ -932,7 +871,6 @@ Short bursts can be allowed to exceed the limit. On creation, the
 Rate-Control traffic is stocked with tokens which correspond to the
 amount of traffic that can be burst in one go. Tokens arrive at a steady
 rate, until the bucket is full.
-
 ```{cfgcmd} set qos policy rate-control \<policy-name\> bandwidth \<rate\>
 
    Use this command to configure a Rate-Control policy, set its name
@@ -940,19 +878,16 @@ rate, until the bucket is full.
 
 ```
 
-
 ```{cfgcmd} set qos policy rate-control \<policy-name\> burst \<burst-size\>
 
 Use this command to configure a Rate-Control policy, set its name
 and the size of the bucket in bytes which will be available for
 burst.
 ```
-
 As a reference: for 10mbit/s on Intel, you might need at least 10kbyte
 buffer if you want to reach your configured rate.
 
 A very small buffer will soon start dropping packets.
-
 ```{cfgcmd} set qos policy rate-control \<policy-name\> latency
 
 Use this command to configure a Rate-Control policy, set its name
@@ -960,7 +895,6 @@ and the maximum amount of time a packet can be queued (default: 50
 ms).
 
 ```
-
 Rate-Control is a CPU-friendly policy. You might consider using it when
 you just simply want to slow traffic down.
 (drr)=
@@ -990,7 +924,6 @@ deficit counter is reset to 0.
 
 At every round, the deficit counter adds the quantum so that even large
 packets will have their opportunity to be dequeued.
-
 ```{cfgcmd} set qos policy round-robin \<policy name\> class \<class-ID\> quantum \<packets\>
 
 Use this command to configure a Round-Robin policy, set its name, set
@@ -999,17 +932,14 @@ add that value each round.
 
 ```
 
-
 ```{cfgcmd} set qos policy round-robin \<policy name\> class <class ID> queue-limit <packets>
 
 
 Use this command to configure a Round-Robin policy, set its name, set
 a class ID, and the queue size in packets.
 ```
-
 As with other policies, Round-Robin can embed another policy into a
 class through the `queue-type` setting.
-
 ```none
 vyos@vyos# set qos policy round-robin DRR class 10 queue-type 
 Possible completions:
@@ -1020,7 +950,6 @@ Possible completions:
    random-detect
                 Random Early Detection (RED)
 ```
-
 (shaper)=
 
 
@@ -1048,7 +977,6 @@ several classes willing to use their ceilings, the priority parameter
 will establish the order in which that additional traffic will be
 allocated. Priority can be any number from 0 to 7. The lower the number,
 the higher the priority.
-
 ```{cfgcmd} set qos policy shaper \<policy-name\> bandwidth \<rate\>
 
 Use this command to configure a Shaper policy, set its name
@@ -1063,7 +991,6 @@ class.
 
 ```
 
-
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst <bytes>
 
 
@@ -1071,7 +998,6 @@ Use this command to configure a Shaper policy, set its name, define
 a class and set the size of the tocken bucket in bytes, which will
 be available to be sent at ceiling speed (default: 15Kb).
 ```
-
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling <bandwidth>
 
@@ -1081,7 +1007,6 @@ a class and set the maximum speed possible for this class. The
 default ceiling value is the bandwidth value.
 ```
 
-
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority <0-7>
 
 
@@ -1090,11 +1015,9 @@ a class and set the priority for usage of available bandwidth once
 guarantees have been met. The lower the priority number, the higher
 the priority. The default priority value is 0, the highest priority.
 ```
-
 As with other policies, Shaper can embed other policies into its
 classes through the `queue-type` setting and then configure their
 parameters.
-
 ```none
 vyos@vyos# set qos policy shaper HTB class 10 queue-type 
 Possible completions:
@@ -1124,7 +1047,6 @@ Possible completions:
    set-dscp     Change the Differentiated Services (DiffServ) field in the IP header
    target       Acceptable minimum standing/persistent queue delay (default: 5)
 ```
-
 :::{note}
 If you configure a class for **VoIP traffic**, don't give it any
 *ceiling*, otherwise new VoIP calls could start when the link is
@@ -1135,7 +1057,6 @@ their assigned *bandwidth* share.
 
 ##### Example
 A simple example of Shaper using priorities.
-
 ```none
 set qos policy shaper MY-HTB bandwidth '50mbit'
 set qos policy shaper MY-HTB class 10 bandwidth '20%'
@@ -1156,7 +1077,6 @@ set qos policy shaper MY-HTB default ceiling '100%'
 set qos policy shaper MY-HTB default priority '7'
 set qos policy shaper MY-HTB default queue-type 'fair-queue'
 ```
-
 (cake)=
 
 #### CAKE
@@ -1169,7 +1089,6 @@ system, implemented as a queue discipline (qdisc) for the Linux kernel. It is
 designed to replace and improve upon the complex hierarchy of simple qdiscs
 presently required to effectively tackle the bufferbloat problem at the network
 edge.
-
 ```{cfgcmd} set qos policy cake \<text\> bandwidth \<value\>
 
    Set the shaper bandwidth, either as an explicit bitrate or a percentage
@@ -1177,24 +1096,20 @@ edge.
 
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> description
 
 Set a description for the shaper.
 ```
-
 
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation blind
 
 Disables flow isolation, all traffic passes through a single queue.
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation dst-host
 
 Flows are defined only by destination address.
 ```
-
 
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation dual-dst-host
 
@@ -1202,13 +1117,11 @@ Flows are defined by the 5-tuple. Fairness is applied first over destination
 addresses, then over individual flows.
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation dual-src-host
 
 Flows are defined by the 5-tuple. Fairness is applied first over source
 addresses, then over individual flows.
 ```
-
 
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation flow
 
@@ -1216,24 +1129,20 @@ Flows are defined by the entire 5-tuple (source IP address, source port,
 destination IP address, destination port, transport protocol).
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation host
 
 Flows are defined by source-destination host pairs.
 ```
-
 
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation nat
 
 Perform NAT lookup before applying flow-isolation rules.
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation src-host
 
 Flows are defined only by source address.
 ```
-
 
 ```{cfgcmd} set qos policy cake \<text\> flow-isolation triple-isolate
 
@@ -1241,23 +1150,18 @@ Flows are defined only by source address.
 over source and destination addresses and also over individual flows.
 ```
 
-
 ```{cfgcmd} set qos policy cake \<text\> rtt
 
 Defines the round-trip time used for active queue management (AQM) in
 milliseconds. The default value is 100.
 ```
-
 ### Applying a traffic policy
 Once a traffic-policy is created, you can apply it to an interface:
-
 ```none
 set qos interface eth0 egress WAN-OUT
 ```
-
 You can only apply one policy per interface and direction, but you could
 reuse a policy on different interfaces and directions:
-
 ```none
 set qos interface eth0 ingress WAN-IN
 set qos interface eth0 egress WAN-OUT
@@ -1270,7 +1174,6 @@ set qos interface eth3 egress TWO-WAY-POLICY
 set qos interface eth4 ingress TWO-WAY-POLICY
 set qos interface eth4 egress TWO-WAY-POLICY
 ```
-
 (ingress-shaping)=
 
 ### The case of ingress shaping
@@ -1289,7 +1192,6 @@ you will be able to apply any of the policies that work for outbound
 traffic, for instance, a shaping one.
 
 That is how it is possible to do the so-called "ingress shaping".
-
 ```none
 set qos policy shaper MY-INGRESS-SHAPING bandwidth 1000kbit
 set qos policy shaper MY-INGRESS-SHAPING default bandwidth 1000kbit

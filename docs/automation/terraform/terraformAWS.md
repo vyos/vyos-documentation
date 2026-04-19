@@ -84,7 +84,6 @@ Terraform, Ansible, and AWS, follow these steps:
 ### Deploy with Terraform
 
 Run the following commands on your Terraform instance:
-
 ```none
 cd /<your folder>
 terraform plan
@@ -272,7 +271,6 @@ terraform destroy
 Make sure Ansible can ping from Terraform.
 
 ## Structure of files in Terraform for AWS
-
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -280,10 +278,8 @@ Make sure Ansible can ping from Terraform.
 ├── versions.tf                        # File for the changing version of Terraform.
 └── terraform.tfvars           # The value of all variables (passwords, login, ip adresses and so on)
 ```
-
 ## File contents of Terraform for AWS
 `vyos.tf`
-
 ```none
 ##############################################################################
 # Build a VyOS VM from the Marketplace.
@@ -394,9 +390,7 @@ provisioner "remote-exec" {
 }
 }
 ```
-
 `var.tf`
-
 ```none
 variable "password" {
    description = "pass for Ansible"
@@ -418,9 +412,7 @@ variable "secret" {
    sensitive = true
 }
 ```
-
 `versions.tf`
-
 ```none
  terraform {
   required_providers {
@@ -431,18 +423,14 @@ variable "secret" {
   }
 }
 ```
-
 `terraform.tfvars`
-
 ```none
 password  = ""   # password for Ansible SSH
 host      = ""   # IP of my Ansible
 access    = ""   # access_key for AWS
 secret    = ""   # secret_key for AWS
 ```
-
 ## Structure of files in Ansible for AWS
-
 ```none
 .
 ├── group_vars
@@ -451,10 +439,8 @@ secret    = ""   # secret_key for AWS
 ├── mykey.pem
 └── instance.yml
 ```
-
 ## File contents of Ansible for AWS
 `ansible.cfg`
-
 ```none
 [defaults]
 inventory = /root/aws/ip.txt
@@ -462,15 +448,11 @@ host_key_checking= False
 private_key_file = /root/aws/awsterraform.pem         # check the name
 remote_user=vyos
 ```
-
 `mykey.pem`
-
 ```none
 Copy your key.pem from AWS
 ```
-
 `instance.yml`
-
 ```none
 ##############################################################################
 # About tasks:
@@ -499,9 +481,7 @@ Copy your key.pem from AWS
         save:
           true
 ```
-
 `group_vars/all`
-
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

@@ -185,7 +185,6 @@ Similar combinations are applicable for the dead-peer-detection.
 ### Detailed Configuration Commands
 
 #### PSK Key Authentication
-
 ```{cfgcmd} set vpn ipsec authentication psk \<name\> dhcp-interface
 
   ID for authentication generated from DHCP address
@@ -193,13 +192,11 @@ Similar combinations are applicable for the dead-peer-detection.
 
 ```
 
-
 ```{cfgcmd} set vpn ipsec authentication psk id \<id\>
 
 static ID's for authentication. In general local and remote address
 ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
 ```
-
 
 ```{cfgcmd} set vpn ipsec authentication psk secret \<secret\>
 
@@ -207,7 +204,6 @@ A predefined shared secret used in configured mode
 ``pre-shared-secret``. Base64-encoded secrets are allowed if
 `secret-type base64` is configured.
 ```
-
 
 ```{cfgcmd} set vpn ipsec authentication psk secret-type \<type\>
 
@@ -217,12 +213,10 @@ Specifies the secret type:
 * **plaintext** - Plain text type (default value).
 * **base64** - Base64 type.
 ```
-
 #### Peer Configuration
 
 
 ##### Peer Authentication Commands
-
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication mode \<mode\>
 
 Mode for authentication between VyOS and remote peer:
@@ -283,9 +277,7 @@ for authenticating local router on remote peer.
 
 Private key passphrase, if needed.
 ```
-
 ##### Global Peer Configuration Commands
-
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
@@ -381,12 +373,10 @@ one or several IPv4 and/or IPv6 addresses are assigned from multiple
 pools by the responder. The wildcard addresses 0.0.0.0 and ::
 request an arbitrary address, specific addresses may be defined.
 ```
-
 ##### CHILD SAs Configuration Commands
 
 ###### Policy-Based CHILD SAs Configuration Commands
 Every configured tunnel under peer configuration is a new CHILD SA.
-
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> tunnel \<number\> disable
 
 Disable this tunnel.
@@ -430,7 +420,6 @@ IP network at the remote side.
 Remote port number. Have effect only when used together with
 ``prefix``.
 ```
-
 ###### Route-Based CHILD SAs Configuration Commands
 To configure route-based VPN it is enough to create vti interface and
 bind it to the peer. Any traffic, which will be send to VTI interface
@@ -444,7 +433,6 @@ for each remote network.
 When using site-to-site IPsec with VTI interfaces,
 be sure to disable route autoinstall.
 :::
-
 ```none
 set vpn ipsec options disable-route-autoinstall
 ```
@@ -458,10 +446,8 @@ VTI interface to bind to this peer.
 
 ESP group for encrypt traffic, passed this VTI interface.
 ```
-
 Traffic-selectors parameters for traffic that should pass via vti
 interface.
-
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> vti traffic-selector local prefix \<network\>
 
 Local prefix for interesting traffic.
@@ -471,9 +457,7 @@ Local prefix for interesting traffic.
 
 Remote prefix for interesting traffic.
 ```
-
 ### IPsec Op-mode Commands
-
 ```{opcmd} show vpn ike sa
 
 Shows active IKE SAs information.
@@ -547,7 +531,6 @@ reinitiate it if VyOS is configured as initiator.
 
 Restart Strongswan daemon.
 ```
-
 ## Examples:
 
 ### Policy-Based VPN Example
@@ -562,7 +545,6 @@ Restart Strongswan daemon.
 - `eth0` interface IP: `10.0.2.2/30`
 - `dum0` interface IP: `192.168.1.0/24` (for testing purposes)
 - Responder
-
 ```none
 # PEER1
 set interfaces dummy dum0 address '192.168.0.1/32'
@@ -627,9 +609,7 @@ set vpn ipsec site-to-site peer PEER1 remote-address '10.0.1.2'
 set vpn ipsec site-to-site peer PEER1 tunnel 0 local prefix '192.168.1.0/24'
 set vpn ipsec site-to-site peer PEER1 tunnel 0 remote prefix '192.168.0.0/24'
 ```
-
 Show status of policy-based IPsec VPN setup:
-
 ```none
 vyos@PEER2:~$ show vpn ike sa
 Peer ID / IP                            Local ID / IP
@@ -652,9 +632,7 @@ Connection      State    Type    Remote address    Local TS        Remote TS    
 PEER1           up       IKEv1   10.0.1.2          -               -               10.0.2.2    10.0.1.2     AES_CBC/256/HMAC_SHA1_96/MODP_2048
 PEER1-tunnel-0  up       IPsec   10.0.1.2          192.168.1.0/24  192.168.0.0/24  10.0.2.2    10.0.1.2     AES_CBC/256/HMAC_SHA1_96/MODP_2048
 ```
-
 If there is SNAT rules on eth0, need to add exclude rule
-
 ```none
 # PEER1 side
 set nat source rule 10 destination address '192.168.1.0/24'
@@ -668,7 +646,6 @@ set nat source rule 10 'exclude'
 set nat source rule 10 outbound-interface name 'eth0'
 set nat source rule 10 source address '192.168.1.0/24'
 ```
-
 ### Route-Based VPN Example
 **PEER1:**
 - WAN interface on `eth0`
@@ -683,7 +660,6 @@ set nat source rule 10 source address '192.168.1.0/24'
 - 'vti0' interface IP: `10.100.100.2/30`
 - `dum0` interface IP: `192.168.1.0/24` (for testing purposes)
 - Role: Responder
-
 ```none
 # PEER1
 set interfaces dummy dum0 address '192.168.0.1/32'
@@ -750,9 +726,7 @@ set vpn ipsec site-to-site peer PEER1 local-address '10.0.2.2'
 set vpn ipsec site-to-site peer PEER1 remote-address '10.0.1.2'
 set vpn ipsec site-to-site peer PEER1 vti bind 'vti0'
 ```
-
 Show status of route-based IPsec VPN setup:
-
 ```none
 vyos@PEER2:~$ show vpn ike sa
 Peer ID / IP                            Local ID / IP

@@ -11,7 +11,6 @@ is very simple to implement.
 ## Configuration
 
 ```{cfgcmd} set service tftp-server directory \<directory\>
-
 Enable TFTP service by specifying the `<directory>` which will be used to serve
 files.
 ```
@@ -23,7 +22,6 @@ will be migrated.
 :::
 
 ```{cfgcmd} set service tftp-server listen-address \<address\>
-
 Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
 IPv6 addresses can be given. There will be one TFTP server instances listening
 on each IP address.
@@ -37,20 +35,17 @@ Additional option to run TFTP server in the {abbr}`VRF (Virtual Routing and Forw
 :::{note}
 Configuring a listen-address is essential for the service to work.
 :::
-
 ```{cfgcmd} set service tftp-server allow-upload
 
 Optional, if you want to enable uploads, else TFTP server will act as a
 read-only server.
 ```
-
 ### Example
 Provide TFTP server listening on both IPv4 and IPv6 addresses `192.0.2.1` and
 `2001:db8::1` serving the content from `/config/tftpboot`. Uploading via
 TFTP to this server is disabled.
 
 The resulting configuration will look like:
-
 ```none
 vyos@vyos# show service
  tftp-server {
@@ -59,17 +54,13 @@ vyos@vyos# show service
     listen-address 192.0.2.1
  }
 ```
-
 ### Verification
 Client:
-
 ```none
 vyos@RTR2:~$ tftp -p -l /config/config.boot -r backup 192.0.2.1
 backup1             100% |******************************|   723  0:00:00 ETA
 ```
-
 Server:
-
 ```none
 vyos@RTR1# ls -ltr /config/tftpboot/
 total 1

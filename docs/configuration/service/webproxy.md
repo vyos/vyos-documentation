@@ -17,7 +17,6 @@ URL Filtering is provided by [SquidGuard].
 ## Configuration
 
 ```{cfgcmd} set service webproxy append-domain \<domain\>
-
   Use this command to specify a domain name to be appended to domain-names
   within URLs that do not include a dot ``.`` the domain is appended.
 
@@ -34,7 +33,6 @@ URL Filtering is provided by [SquidGuard].
 
 
 ```{cfgcmd} set service webproxy cache-size \<size\>
-
 The size of the on-disk Proxy cache is user configurable. The Proxies default
 cache-size is configured to 100 MB.
 
@@ -49,7 +47,6 @@ set service webproxy cache-size 1024
 
 
 ```{cfgcmd} set service webproxy default-port \<port\>
-
 Specify the port used on which the proxy service is listening for requests.
 This port is the default port used for the specified listen-address.
 
@@ -64,7 +61,6 @@ set service webproxy default-port 8080
 
 
 ```{cfgcmd} set service webproxy domain-block \<domain\>
-
 Used to block specific domains by the Proxy. Specifying "vyos.net" will block
 all access to vyos.net, and specifying ".xxx" will block all access to URLs
 having an URL ending on .xxx.
@@ -77,7 +73,6 @@ set service webproxy domain-block vyos.net
 
 
 ```{cfgcmd} set service webproxy domain-noncache \<domain\>
-
 Allow access to sites in a domain without retrieving them from the Proxy
 cache. Specifying "vyos.net" will allow access to vyos.net but the pages
 accessed will not be cached. It useful for working around problems with
@@ -91,7 +86,6 @@ set service webproxy domain-noncache vyos.net
 
 
 ```{cfgcmd} set service webproxy listen-address \<address\>
-
 Specifies proxy service listening address. The listen address is the IP
 address on which the web proxy service listens for client requests.
 
@@ -107,7 +101,6 @@ set service webproxy listen-address 192.0.2.1
 
 
 ```{cfgcmd} set service webproxy listen-address \<address\> disable-transparent
-
 Disables web proxy transparent mode at a listening address.
 
 
@@ -130,7 +123,6 @@ set service webproxy listen-address 192.0.2.1 disable-transparent
 
 
 ```{cfgcmd} set service webproxy listen-address \<address\> port \<port\>
-
 Sets the listening port for a listening address. This overrides the default
 port of 3128 on the specific listen address.
 
@@ -140,7 +132,6 @@ set service webproxy listen-address 192.0.2.1 port 8080
 :::
 ```
 ```{cfgcmd} set service webproxy reply-block-mime \<mime\>
-
 Used to block a specific mime-type.
 
 
@@ -150,7 +141,6 @@ set service webproxy reply-block-mime application/pdf
 :::
 ```
 ```{cfgcmd} set service webproxy reply-body-max-size \<size\>
-
   Specifies the maximum size of a reply body in KB, used to limit the reply
   size.
 
@@ -165,14 +155,12 @@ set service webproxy reply-block-mime application/pdf
 
 
 ```{cfgcmd} set service webproxy safe-ports \<port\>
-
 Add new port to Safe-ports acl. Ports included by default in Safe-ports acl:
 21, 70, 80, 210, 280, 443, 488, 591, 777, 873, 1025-65535
 ```
 
 
 ```{cfgcmd} set service webproxy ssl-safe-ports \<port\>
-
 Add new port to SSL-ports acl. Ports included by default in SSL-ports acl:
 443
 ```
@@ -181,7 +169,6 @@ The embedded Squid proxy can use LDAP to authenticate users against a company
 wide directory. The following configuration is an example of how to use Active
 Directory as authentication backend. Queries are done via LDAP.
 ```{cfgcmd} set service webproxy authentication children \<number\>
-
   Maximum number of authenticator processes to spawn. If you start too few
   Squid will have to wait for them to process a backlog of credential
   verifications, slowing it down. When password verifications are done via a
@@ -198,7 +185,6 @@ Directory as authentication backend. Queries are done via LDAP.
 
 
 ```{cfgcmd} set service webproxy authentication credentials-ttl \<time\>
-
 Specifies how long squid assumes an externally validated username:password
 pair is valid for - in other words how often the helper program is called for
 that user. Set this low to force revalidation with short lived passwords.
@@ -212,7 +198,6 @@ set service webproxy authentication credentials-ttl 120
 :::
 ```
 ```{cfgcmd} set service webproxy authentication method \<ldap\>
-
   Proxy authentication method, currently only LDAP is supported.
 
 
@@ -223,7 +208,6 @@ set service webproxy authentication credentials-ttl 120
 
 
 ```{cfgcmd} set service webproxy authentication realm
-
 Specifies the protection scope (aka realm name) which is to be reported to
 the client for the authentication scheme. It is commonly part of the text
 the user will see when prompted for their username and password.
@@ -235,7 +219,6 @@ set service webproxy authentication realm "VyOS proxy auth"
 ```
 #### LDAP
 ```{cfgcmd} set service webproxy authentication ldap base-dn \<base-dn\>
-
 Specifies the base DN under which the users are located.
 
 
@@ -244,7 +227,6 @@ set service webproxy authentication ldap base-dn DC=vyos,DC=net
 :::
 ```
 ```{cfgcmd} set service webproxy authentication ldap bind-dn \<bind-dn\>
-
   The DN and password to bind as while performing searches.
 
 
@@ -255,7 +237,6 @@ set service webproxy authentication ldap base-dn DC=vyos,DC=net
 
 
 ```{cfgcmd} set service webproxy authentication ldap filter-expression \<expr\>
-
 LDAP search filter to locate the user DN. Required if the users are in a
 hierarchy below the base DN, or if the login name is not what builds the user
 specific part of the users DN.
@@ -273,7 +254,6 @@ set service webproxy authentication ldap filter-expression (cn=%s)
 
 
 ```{cfgcmd} set service webproxy authentication ldap password \<password\>
-
 The DN and password to bind as while performing searches. As the password
 needs to be printed in plain text in your Squid configuration it is strongly
 recommended to use a account with minimal associated privileges. This to limit
@@ -288,7 +268,6 @@ set service webproxy authentication ldap password vyos
 
 
 ```{cfgcmd} set service webproxy authentication ldap persistent-connection
-
 Use a persistent LDAP connection. Normally the LDAP connection is only open
 while validating a username to preserve resources at the LDAP server. This
 option causes the LDAP connection to be kept open, allowing it to be reused
@@ -305,7 +284,6 @@ set service webproxy authentication ldap persistent-connection
 
 
 ```{cfgcmd} set service webproxy authentication ldap port \<port\>
-
 Specify an alternate TCP port where the ldap server is listening if other than
 the default LDAP port 389.
 
@@ -317,7 +295,6 @@ set service webproxy authentication ldap port 389
 
 
 ```{cfgcmd} set service webproxy authentication ldap server \<server\>
-
 Specify the LDAP server to connect to.
 
 
@@ -326,7 +303,6 @@ set service webproxy authentication ldap server ldap.vyos.net
 :::
 ```
 ```{cfgcmd} set service webproxy authentication ldap use-ssl
-
 Use TLS encryption.
 
 
@@ -335,7 +311,6 @@ set service webproxy authentication ldap use-ssl
 :::
 ```
 ```{cfgcmd} set service webproxy authentication ldap username-attribute \<attr\>
-
   Specifies the name of the DN attribute that contains the username/login.
   Combined with the base DN to construct the users DN when no search filter is
   specified (filter-expression).
@@ -360,7 +335,6 @@ set service webproxy authentication ldap use-ssl
 
 
 ```{cfgcmd} set service webproxy authentication ldap version \<2 | 3\>
-
 LDAP protocol version. Defaults to 3 if not specified.
 
 
@@ -380,7 +354,6 @@ set service webproxy url-filtering disable
 :::
 ```
 ## Operation
-
 ```{include} /_include/need_improvement.txt
 ```
 ### Filtering
@@ -416,9 +389,7 @@ vyos@vyos:~$
 :::
 ```
 ```{opcmd} update webproxy blacklists category \<category\>
-
 Download/Update partial blacklist.
-
 Use tab completion to get a list of categories.
 ```
 - To auto update the blacklist files

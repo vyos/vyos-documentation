@@ -20,8 +20,6 @@ Below see one example for curl and one for python. The rest of the documentation
 curl --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "showConfig", "path": []}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
-
 ```
 
 ```python
@@ -159,8 +157,6 @@ To get the whole configuration, pass an empty list to the `path` field
 curl --location --request POST 'https://vyos/retrieve' \
 --form data='{"op": "showConfig", "path": []}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
-
-
 ```
 
 To only get a part of the configuration, for example `system syslog`.

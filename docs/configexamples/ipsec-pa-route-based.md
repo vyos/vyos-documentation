@@ -115,12 +115,10 @@ GUI Configuration:
 ```{image} /_static/images/PA-IKE-GW-1.png
   :align: center
   ```
-
   ```{image} /_static/images/PA-IKE-GW-2.png
   :align: center
   ```
   Network -> Network Profiles -> IPSec Crypto
-
 ```{image} /_static/images/PA-ESP-group.png
   :align: center
   ```
@@ -128,7 +126,6 @@ GUI Configuration:
 ```{image} /_static/images/PA-tunnel-1.png
   :align: center
   ```
-
   ```{image} /_static/images/PA-tunnel-2.png
   :align: center
   ```
@@ -137,7 +134,6 @@ GUI Configuration:
   :align: center
   ```
   Network -> IPSec Tunnels
-
 ```{image} /_static/images/PA-IPsec-tunnel.png
   :align: center
   ```

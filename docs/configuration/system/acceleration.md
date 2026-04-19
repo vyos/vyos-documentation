@@ -8,7 +8,6 @@ At the moment only [Intel® QAT] is supported
 ## Intel® QAT
 
 ```{opcmd} show system acceleration qat
-
 use this command to check if there is an Intel® QAT supported Processor in your system.
 
 :::{code-block} none
@@ -24,13 +23,11 @@ if there is non device the command will show \`No QAT device found\`
 ```
 
 ```{cfgcmd} set system acceleration qat
-
 if there is a supported device, enable Intel® QAT
 ```
 
 
 ```{opcmd} show system acceleration qat status
-
 Check if the Intel® QAT device is up and ready to do the job.
 
 
@@ -45,19 +42,16 @@ qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3
 ### Operation Mode
 
 ```{opcmd} show system acceleration qat device \<device\> config
-
 Show the full config uploaded to the QAT device.
 ```
 
 
 ```{opcmd} show system acceleration qat device \<device\> flows
-
 Get an overview over the encryption counters.
 ```
 
 
 ```{opcmd} show system acceleration qat interrupts
-
 Show binded qat device interrupts to certain core.
 ```
 

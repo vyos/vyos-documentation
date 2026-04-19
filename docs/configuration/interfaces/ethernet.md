@@ -23,7 +23,6 @@ LANs and WANs.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> switchdev
-
 **Enable** ``switchdev`` **mode for the interface.**
 In ``switchdev`` mode, the interface offloads traffic switching between ports
 to the hardware, bypassing the host CPU. This increases the interface’s
@@ -38,7 +37,6 @@ interfaces and requires a switchdev-compatible driver.
 ### Ethernet options
 
 ```{cfgcmd} set interfaces ethernet \<interface\> duplex \<auto | full | half\>
-
 **Configure duplex mode for the interface.**
 The following duplex modes are available:
 * ``auto``: The interface negotiates the duplex mode with the connected device.
@@ -50,7 +48,6 @@ The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed \<auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000\>
-
 **Configure the interface's speed, in Mbit/s.**
 The following options are available:
 * ``auto``:  The interface negotiates the speed with the connected device.
@@ -60,7 +57,6 @@ The default option is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer rx \<value\>
-
 **Configure the receive (RX) ring buffer size for the interface.**
 The RX ring buffer size defines the number of incoming packets the interface
 can queue in hardware before the CPU processes them.
@@ -72,13 +68,10 @@ To view supported values for a specific interface, use:
 ```
 
 ```none
-
 ethtool -g <interface>
-
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer tx \<value\>
-
 **Configure the transmit (TX) ring buffer size.**
 The TX ring buffer size defines the number of outgoing packets the interface
 can queue in hardware before they are transmitted onto the network.
@@ -89,9 +82,7 @@ To view supported values for a specific interface, use:
 ```
 
 ```none
-
 ethtool -g <interface>
-
 ```
 
 #### Interrupt Coalescing
@@ -108,16 +99,13 @@ to verify which settings are supported by your hardware and driver.
 
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-rx
 ```
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-tx
 
 Enable adaptive interrupt coalescing. The NIC automatically tunes RX/TX
 interrupt pacing based on traffic patterns to reduce CPU utilization
 during high throughput while preserving latency at low packet rates.
 ```
-
 **Basic interrupt delay**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs \<0-16384\>
 ```
 
@@ -127,9 +115,7 @@ Set the delay in microseconds before generating an RX/TX interrupt after
 receiving or transmitting a packet. Lower values reduce latency; higher
 values reduce CPU load.
 ```
-
 **Interrupt frame thresholds**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-frames \<number\>
 ```
 
@@ -138,9 +124,7 @@ values reduce CPU load.
 Generate an RX/TX interrupt only after the specified number of packets
 have been received or transmitted.
 ```
-
 **IRQ-specific coalescing**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-irq \<number\>
 ```
 
@@ -156,9 +140,7 @@ Control interrupt coalescing parameters while the driver is already
 servicing an interrupt (IRQ context). These settings allow finer tuning
 of interrupt behavior under sustained load.
 ```
-
 **Adaptive rate thresholds**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing pkt-rate-low \<number\>
 ```
 
@@ -168,9 +150,7 @@ Define packet-rate thresholds (packets per second) used by adaptive
 coalescing to switch between low-rate and high-rate interrupt coalescing
 profiles.
 ```
-
 **Low-rate adaptive parameters**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-low \<number\>
 ```
 
@@ -185,9 +165,7 @@ profiles.
 Interrupt coalescing parameters applied when the packet rate is below
 ``pkt-rate-low``. Typically optimized for lower latency.
 ```
-
 **High-rate adaptive parameters**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-high \<number\>
 ```
 
@@ -203,9 +181,7 @@ Interrupt coalescing parameters applied when the packet rate exceeds
 ``pkt-rate-high``. Typically optimized for maximum throughput and
 reduced CPU utilization.
 ```
-
 **Statistics and sampling**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing stats-block-usecs \<number\>
 ```
 
@@ -214,9 +190,7 @@ reduced CPU utilization.
 Control how frequently coalescing statistics are updated and how often
 the NIC samples traffic rates for adaptive coalescing decisions.
 ```
-
 **Completion queue (CQE) mode**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing cqe-mode-rx
 ```
 
@@ -226,9 +200,7 @@ Enable RX/TX Completion Queue Entry (CQE) mode, if supported by the
 driver. CQE mode can improve performance on high-speed NICs by
 optimizing completion handling.
 ```
-
 **Transmit aggregation**
-
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-aggr-max-bytes \<number\>
 ```
 
@@ -240,9 +212,7 @@ optimizing completion handling.
 Control transmit packet aggregation. Packets may be buffered and sent
 together until one of the configured limits (bytes, frames, or time)
 ```
-
 #### Offloading
-
 ```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | sg\>
 
 **Configure the offloading features for the interface.**
@@ -309,48 +279,35 @@ multi-queue support.
    to the network, eliminating the need for the kernel to copy them into a
    contiguous block first.
 ```
-
 #### 802.1X (EAPOL) authentication
-
 ```{cmdincludemd} /_include/interface-eapol.txt
 :var0: ethernet
 :var1: eth0
 ```
-
 #### EVPN Multihoming
 Uplink/core tracking.
-
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: ethernet
 :var1: eth0
 ```
-
 ### VLAN
-
 #### Regular VLANs (802.1q)
-
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: ethernet
 :var1: eth0
 ```
-
 #### 802.1ad (QinQ)
-
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: ethernet
 :var1: eth0
 ```
-
 ### SPAN port mirroring
-
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: ethernet
 :var1: eth1
 :var2: eth3
 ```
-
 ## Operation
-
 ```{opcmd} show interfaces ethernet
 
 Show brief interface information.

@@ -11,20 +11,16 @@ lastproofread: '2026-03-30'
 
 ## Overview
 This section provides information on firewall configuration for flowtables.
-
 ```{cfgcmd} set firewall flowtable ...
 ```
-
 To learn about the general traffic flow in VyOS firewalls,
 see {doc}`Firewall </configuration/firewall/index>`.
-
 ```none
 - set firewall
     * flowtable
          - custom_flow_table
             + ...
 ```
-
 Flowtables let you define a fastpath through the flowtable datapath.
 Flowtables support layer 3 (IPv4 and IPv6) and layer 4 (TCP and UDP)
 protocols.
@@ -56,7 +52,6 @@ To use flowtables, you need to configure the following:
 >   `offload` and use your desired flowtable for `offload-target`.
 
 Creating a flow table:
-
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
 
 Specify interfaces to use in the flowtable.
@@ -64,22 +59,18 @@ Specify interfaces to use in the flowtable.
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
 ```
-
 Provide a description for the flow table.
-
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> offload \<hardware | software\>
 
 Specify the offload type the flowtable uses: ``hardware`` or
 ``software``. The default is ``software`` offload.
 ```
-
 :::{note}
 **Hardware offload**: Make sure your network interface controller
 (NIC) supports hardware offloading and that you have the necessary drivers
 > installed before enabling this option.
 :::
 Creating rules for using flow tables:
-
 ```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\> action offload
 
 Create a firewall rule in the forward chain with the action set to
@@ -91,7 +82,6 @@ Create a firewall rule in the forward chain with the action set to
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```
-
 ## Configuration Example
 Consider the following in this setup:
 > - This example uses two interfaces in the flowtables: `eth0` and `eth1`.
@@ -109,7 +99,6 @@ TCP protocol, and destination port 1122 is accepted.
 All other traffic to the router is dropped.
 
 ### Commands
-
 ```none
 set firewall flowtable FT01 interface 'eth0'
 set firewall flowtable FT01 interface 'eth1'
@@ -127,7 +116,6 @@ set firewall ipv4 forward filter rule 110 destination port '1122'
 set firewall ipv4 forward filter rule 110 inbound-interface name 'eth0'
 set firewall ipv4 forward filter rule 110 protocol 'tcp'
 ```
-
 ### Explanation
 Here's what happens for a desired connection:
 > 1. A packet arrives on `eth0` with destination address `192.0.2.100`, TCP
@@ -147,7 +135,6 @@ Here's what happens for a desired connection:
 ### Checks
 Check the conntrack table to verify that the system accepted and properly
 offloaded connections.
-
 ```none
 vyos@FlowTables:~$ show firewall ipv4 forward filter
 Ruleset Information
