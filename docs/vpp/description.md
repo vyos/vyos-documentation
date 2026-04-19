@@ -13,17 +13,22 @@ lastproofread: '2026-02-16'
 VyOS supports two packet forwarding dataplanes:
 - **Linux kernel dataplane** (traditional)
 - **Vector Packet Processor (VPP) dataplane** (optional)
+
 VPP is a high-performance user space packet processor that improves
 throughput for demanding network workloads.
 
 ## Key Benefits
+
 **Performance Improvement**
+
 VPP uses vector-based packet processing instead of one-by-one handling,
 delivering:
 - **Higher throughput** compared to kernel forwarding.
 - **Lower and more consistent latency** for time-sensitive applications.
 - **Linear scaling** with additional CPU cores.
+
 **VyOS Hybrid Integration**
+
 VyOS supports both dataplanes simultaneously, providing:
 - **Cross-dataplane forwarding**: Traffic can flow between the VPP dataplane
   and kernel interfaces seamlessly.
@@ -36,6 +41,7 @@ VyOS supports both dataplanes simultaneously, providing:
 **Consider VPP if you have:**
 - High-throughput requirements
 - Latency-sensitive applications requiring consistent performance
+
 **Stay with kernel dataplane if you have:**
 - Low to moderate traffic volumes
 - No latency-sensitive workloads

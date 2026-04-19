@@ -47,6 +47,7 @@ default ``local``) so that they can be reflected.
 
 Specify how many resource records are cached per interface. Bigger values
 allow mDNS work correctly in large LANs but also increase memory consumption.
+
 Defaults to: 4096
 ```
 
@@ -56,6 +57,7 @@ traverse the FORWARD hook chain in the firewall. Instead, they are processed
 through the following hooks:
 > - **INPUT**: For packets received by the local system
 > - **OUTPUT**: For packets sent from the local system
+
 To control or allow mDNS packet forwarding via the relay, you must define
 appropriate rules in the INPUT and OUTPUT directions. Rules in the FORWARD
 direction will have no effect on mDNS relay traffic.

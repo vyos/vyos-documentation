@@ -370,8 +370,10 @@ ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:0
 ### For RADIUS users
 The current attribute `Filter-Id` is being used as default and can be
 setup within RADIUS:
+
 Filter-Id=2000/3000 (means 2000Kbit down-stream rate and 3000Kbit
 up-stream rate)
+
 The command below enables it, assuming the RADIUS connection has been
 setup and is working.
 ```{cfgcmd} set service pppoe-server authentication radius rate-limit enable

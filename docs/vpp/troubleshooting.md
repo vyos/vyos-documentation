@@ -17,6 +17,7 @@ Collecting the right diagnostic data is crucial for effective troubleshooting.
 ## Packet Capture (PCAP)
 Packet capture is a valuable debugging tool for analyzing network traffic and
 identifying issues with packet processing, routing, and filtering.
+
 `pcap trace` in VPP captures packets at different states: received (rx),
 transmitted (tx), and dropped (drop).
 
@@ -39,6 +40,7 @@ transmitted (tx), and dropped (drop).
   directory.
 - `max-bytes-per-pkt <n>` - Maximum bytes to capture per packet
   (must be >= 32, \<= 9000)
+
 **Examples:**
 
 ```none
@@ -109,6 +111,7 @@ To start tracing packets at a specific graph node:
 - `<pkts>` - Number of packets to trace (for example, 100).
 - `[verbose]` - Optional flag to include detailed buffer information in the
   trace output.
+
 **Common node names for tracing:**
 - `dpdk-input`: Packets received from DPDK interfaces
 - `ethernet-input`: Ethernet frame processing
@@ -420,6 +423,7 @@ Save this script as `/config/scripts/vpp-collect-diagnostics`
 ```
 
 **2. Run VPP diagnostic collection**
+
 The script automatically collects all diagnostics and stores them in your home
 directory.
 
@@ -427,6 +431,7 @@ directory.
 ```
 
 **3. Generate VyOS tech-support archive separately**
+
 You can also generate a tech-support archive with system-wide diagnostics:
 
 ```{opcmd} generate tech-support archive
