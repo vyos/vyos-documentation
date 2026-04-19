@@ -71,8 +71,8 @@ Set match criteria based on connection mark.
 Match based on the firewall mark (fwmark), where \<match_criteria\> can be:
  * \<0-2147483647\> a single fwmark
  * !\<0-2147483647\> everything except a single fwmark
- * \<start-end\> a range of marks
- * !\<start-end\> everything except the range of marks
+ * &lt;start-end&gt; a range of marks
+ * !&lt;start-end&gt; everything except the range of marks
 
 :::{note}
 When using the ``set table`` or ``set vrf`` commands the mark
@@ -93,7 +93,7 @@ is set to 0x7FFFFFFF - the id of the table/VRF.
 ```{cfgcmd} set policy route6 \<name\> rule \<n\> destination address \<match_criteria\>
 
 Set match criteria based on source or destination ipv4|ipv6 address, where
-<match_criteria> could be:
+&lt;match_criteria&gt; could be:
 ```
 
 For ipv4:
@@ -124,7 +124,7 @@ And for ipv6:
 
 ```{cfgcmd} set policy route6 \<name\> rule \<n\> destination group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 
-Set match criteria based on source or destination groups, where \<text\>
+Set match criteria based on source or destination groups, where &lt;text&gt;
 would be the group name/identifier. Prepend character '!' for inverted
 matching criteria.
 ```
@@ -136,9 +136,9 @@ matching criteria.
 
 Set match criteria based on destination port, where \<match_criteria\> could
 be:
-* \<port name\>: Named port (any name in /etc/services, e.g., http).
+* &lt;port name&gt;: Named port (any name in /etc/services, e.g., http).
 * \<1-65535\>: Numbered port.
-* \<start\>-\<end\>: Numbered port range (e.g., 1001-1005).
+* &lt;start&gt;-&lt;end&gt;: Numbered port range (e.g., 1001-1005).
 
 Multiple destination ports can be specified as a comma-separated list. The
 whole list can also be "negated" using '!'. For example:
@@ -249,10 +249,10 @@ Match based on packet length criteria. Multiple values from 1 to 65535
 and ranges are supported.
 ```
 
-```{cfgcmd} set policy route \<name\> rule \<n\> packet-type [broadcast | host | multicast | other]
+```{cfgcmd} set policy route \<name\> rule \<n\> packet-type \[broadcast | host | multicast | other\]
 ```
 
-```{cfgcmd} set policy route6 \<name\> rule \<n\> packet-type [broadcast | host | multicast | other]
+```{cfgcmd} set policy route6 \<name\> rule \<n\> packet-type \[broadcast | host | multicast | other\]
 
 Match based on packet type criteria.
 ```

@@ -76,6 +76,7 @@ These commands show the next information:
   - Selected Encryption, Hash and Diffie-Hellman Group.
   - Mode (tunnel or transport).
   - Remote and local prefixes which are use for policy.
+
 There is a possibility to view the summarized information of SAs' status
 
 ```none
@@ -89,6 +90,7 @@ PEER-tunnel-1  up       IPsec   192.168.1.2       10.0.0.0/24  10.0.1.0/24  192.
 ## Viewing Logs for Debugging
 If IKE SAs or IPsec SAs are down, need to debug IPsec connectivity
 using logs `show log ipsec`
+
 The next example of the successful IPsec connection initialization.
 
 ```none
@@ -274,6 +276,7 @@ is configured on the initiator side.
 As in previous situation, IKE SA is in up state but IPsec SA is not up.
 According to logs we can see **TS_UNACCEPTABLE** notification. It means
 that prefixes (traffic selectors) mismatch on both sides
+
 Initiator:
 
 ```none

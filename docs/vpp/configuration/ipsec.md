@@ -38,6 +38,7 @@ VPP supports offloading IPsec connections in the following IPsec modes:
 :::{warning}
 Since VPP dataplane is used only to offload IPsec traffic processing, algorithms mentioned below are applicable to ESP profiles in the IPsec configuration. IKE profiles are not affected by these limitations and can use any algorithms supported by the kernel.
 :::
+
 VPP **supports** only the following **encryption algorithms**:
 - AES-CBC
 - AES-GCM with ICV
@@ -155,6 +156,14 @@ Where:
 VPP IPsec implementation is not as feature rich as Linux kernel IPsec. It supports only a subset of algorithms and modes.
 :::
 
+:::{note}
+**What is important in this configuration**
+
+VPP uses only remote traffic-selector to determine what traffic should be offloaded to the IPsec tunnel.
+
+Adding additional routes via VTI interface does not affect actual VPP IPsec operation.
+:::
+
 ## Potential Issues and Troubleshooting
 Improper IPsec configuration can lead to various issues, including:
 - **Unidirectional traffic flow or acceleration**
@@ -166,4 +175,5 @@ Improper IPsec configuration can lead to various issues, including:
 - **Connection is established but no traffic flows**
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
 
-```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation ```
+```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
+```

@@ -16,13 +16,16 @@ addresses and building forwarding tables to efficiently switch traffic
 between member interfaces. This provides transparent connectivity between
 different network segments while maintaining the performance benefits of
 VPP's optimized data plane.
+
 **Supported Member Interface Types:**
+
 VPP bridges support various interface types as members:
 - Physical Ethernet interfaces (managed through linux-cp)
 - {doc}`bonding` - VPP bonding interfaces
 - {doc}`gre` - GRE tunnel interfaces
 - {doc}`loopback` - Loopback interfaces (required for BVI)
 - {doc}`vxlan` - VXLAN tunnel interfaces
+
 This flexibility allows you to create complex Layer 2 topologies
 combining different networking technologies.
 
@@ -167,6 +170,7 @@ Bridge interfaces can be integrated with kernel interfaces for
 management and compatibility with standard Linux networking services.
 This is accomplished by binding a kernel interface to the Bridge
 Virtual Interface (BVI).
+
 **Example Integration:**
 
 ```none

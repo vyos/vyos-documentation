@@ -18,12 +18,14 @@ connectivity of the display to your system. This can be any serial port
 This is the name of the physical interface used to connect to your LCD
 display. Tab completion is supported and it will list you all available
 serial interface.
+
 For serial via USB port information please refor to: {ref}`hardware_usb`.
 ```
 
 ```{cfgcmd} set system lcd model \<model\>
 
 This is the LCD model used in your system.
+
 At the time of this writing the following displays are supported:
 * Crystalfontz CFA-533
 * Crystalfontz CFA-631
@@ -33,7 +35,7 @@ At the time of this writing the following displays are supported:
 :::{note}
 We can't support all displays from the beginning. If your display
 type is missing, please create a feature request via
-`Phabricator <https://vyos.dev/>`_.
+[Phabricator](https://vyos.dev/).
 :::
 ```
 

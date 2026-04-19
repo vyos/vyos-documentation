@@ -81,7 +81,8 @@ terraform init
 3. Create the folder for example /root/google/
 4. Copy all files into your Ansible project `/root/google/`
    (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
-   details, see [Structure of files in Ansible for Google Cloud]
+   details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
+
 You obtain `mykey.json` when you create a service account in GCP
 and download the key (a JSON file).
 

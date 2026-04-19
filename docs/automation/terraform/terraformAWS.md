@@ -260,16 +260,16 @@ terraform destroy
    security group allows access to the instance.
 2. If Terraform doesn't connect via SSH to your Ansible instance,
    verify the correct login and password in the `VyOS.tf` file.
-> 
-```none
 
-> connection {
-> type     = "ssh"
-> user     = "root"              # open root access using login and password on your Ansible
-> password = var.password        # check password in the file terraform.tfvars isn't empty
->     host = var.host            # check the correct IP address of your Ansible host
-> }
-> ```
+   ```none
+   connection {
+   type     = "ssh"
+   user     = "root"              # open root access using login and password on your Ansible
+   password = var.password        # check password in the file terraform.tfvars isn't empty
+       host = var.host            # check the correct IP address of your Ansible host
+   }
+   ```
+
 Make sure Ansible can ping from Terraform.
 
 ## Structure of files in Terraform for AWS

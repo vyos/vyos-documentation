@@ -61,7 +61,7 @@ mkdir /root/azvyos
 3. Create a folder, for example `/root/az/`.
 4. Copy all files into your Ansible project `/root/az/` (`ansible.cfg`,
    `instance.yml`, `all`). For more details, see
-   [Structure of files in Ansible for Azure]
+   [Structure of files in Ansible for Azure](#structure-of-files-in-ansible-for-azure)
 
 ### Deploy with Terraform
 

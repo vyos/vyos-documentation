@@ -99,6 +99,7 @@ The encapsulation process adds a 20-byte IPv4 header to each IPv6 packet.
 Consequently, 6in4 tunnel interfaces can transmit IPv6 packets up to 1480 bytes
 over an underlying network with a standard MTU of 1500 bytes without
 fragmentation.
+
 6in4 tunnel interfaces are frequently used by IPv6 tunnel brokers (such as
 [Hurricane Electric]) to connect isolated IPv6 networks or individual hosts to
 the IPv6 internet.
@@ -118,9 +119,11 @@ For a practical configuration example, see the
 :::
 
 ## Generic Routing Encapsulation (GRE)
+
 {abbr}`GRE (Generic Routing Encapsulation)` is a versatile encapsulation
 protocol defined in RFC 2784. Unlike simpler protocols such as IPIP, it allows
 both IPv4 and IPv6 to be transported through the same tunnel.
+
 {abbr}`GRE (Generic Routing Encapsulation)` encapsulates original data packets
 by adding a {abbr}`GRE (Generic Routing Encapsulation)` header, followed by an
 IP header (the delivery header). The delivery header uses IP protocol number 47
@@ -141,6 +144,7 @@ Example:
 The following example shows how to configure an IPv4/IPv6-over-IPv6 {abbr}`GRE
 (Generic Routing Encapsulation)` tunnel between a VyOS router and a Linux host
 running `systemd-networkd`.
+
 **VyOS router:**
 
 ```none
@@ -232,6 +236,7 @@ frequently occur because ACLs or firewall rules block IP protocol 47 or
 prevent direct communication between the tunnel endpoints.
 
 If your GRE tunnel fails to establish, perform these diagnostic steps:
+
 1\. Verify that the remote peer is reachable from the configured
 `source-address`.
 

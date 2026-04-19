@@ -204,15 +204,19 @@ designated monitor interface.
 * ``server``: Operates as a server in server-client mode.
 ```
 ### OpenVPN Data Channel Offload (DCO)
+
 OpenVPN {abbr}`DCO (Data Channel Offload)` improves the performance of
 encrypted OpenVPN data processing by keeping most data handling in the kernel
 and avoiding frequent context switches between the kernel and user space.
+
 As a result, packet processing becomes more efficient and may utilize hardware
 encryption offload support available in the kernel.
+
 :::{note}
 - {abbr}`DCO (Data Channel Offload)` is an **experimental**, not fully supported
   OpenVPN feature. Some OpenVPN features and deployment scenarios are **not
   compatible** with {abbr}`DCO (Data Channel Offload)`.
+
   For a complete list of supported features, visit:
   <https://community.openvpn.net/openvpn/wiki/DataChannelOffload/Features>
 - {abbr}`DCO (Data Channel Offload)` is configured per tunnel and disabled
@@ -285,7 +289,7 @@ Ensure the path and arguments are enclosed in single or double quotes.
 
 :::{note}
 Some raw configuration options require quotes. To include them, use
-the ``"`` statement.
+the " statement.
 :::
 ```
 
@@ -551,8 +555,10 @@ Configure the static secret key for a site-to-site OpenVPN connection.
 ```{cfgcmd} set interfaces openvpn \<interface\> tls auth-key \<key\>
 
 **Configure the TLS secret key for tls-auth.**
+
 This adds an HMAC signature to all SSL/TLS handshake packets to verify
 integrity.
+
 Use ``run generate pki openvpn shared-secret install <name>`` to generate
 the key.
 ```

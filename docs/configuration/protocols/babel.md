@@ -168,10 +168,13 @@ It is recommended to enable timestamps on tunnel interfaces.
 
 This command set the channel number that diversity routing uses for this
 interface (see diversity option above).
+
 **1-254** – interfaces with a channel number interfere with
 interfering interfaces and interfaces with the same channel number.
+
 **interfering** – interfering interfaces are assumed to interfere with all other channels except
 noninterfering channels.
+
 **noninterfering** – noninterfering interfaces are assumed to only interfere
 with themselves.
 ```
@@ -182,7 +185,9 @@ with themselves.
 
 This command redistributes routing information from the given route source
 to the Babel process.
+
 IPv4 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospf, rip, static.
+
 IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, static.
 ```
 
@@ -213,7 +218,9 @@ filter the Babel routes.
 ```
 
 ## Configuration Example
+
 Simple Babel configuration using 2 nodes and redistributing connected interfaces.
+
 **Node 1:**
 
 ```none

@@ -54,6 +54,7 @@ To use flowtables, you need to configure the following:
 >   that are going to be used by the flowtable.
 > - Create a firewall rule. Set the action to
 >   `offload` and use your desired flowtable for `offload-target`.
+
 Creating a flow table:
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
@@ -96,6 +97,7 @@ Consider the following in this setup:
 > - This example uses two interfaces in the flowtables: `eth0` and `eth1`.
 > - The example provides a minimal firewall ruleset with filtering rules
 >   and rules for using flowtable offload capabilities.
+
 The first packet is evaluated by the firewall path, so a
 desired connection should be explicitly accepted.
 The same should occur for traffic in reverse order.
