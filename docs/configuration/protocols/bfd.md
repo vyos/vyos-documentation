@@ -161,7 +161,7 @@ but when the BFD session is down it is removed from the RIB.
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
 
-Configure a static route for `<subnet>` using gateway `<address>`
+Configure a static route for \<subnet\> using gateway \<address\>
 and use the gateway address as BFD peer destination address.
 ```
 
@@ -169,7 +169,7 @@ and use the gateway address as BFD peer destination address.
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source \<address\> profile \<profile\>
 
 
-Configure a static route for `<subnet>` using gateway `<address>`,
+Configure a static route for \<subnet\> using gateway \<address\>,
 use source address to indentify the peer when is multi-hop session
 and the gateway address as BFD peer destination address.
 ```
@@ -178,7 +178,7 @@ and the gateway address as BFD peer destination address.
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
 
-Configure a static route for `<subnet>` using gateway `<address>`
+Configure a static route for \<subnet\> using gateway \<address\>
 and use the gateway address as BFD peer destination address.
 ```
 
@@ -186,7 +186,7 @@ and use the gateway address as BFD peer destination address.
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source \<address\> profile \<profile\>
 
 
-Configure a static route for `<subnet>` using gateway `<address>`,
+Configure a static route for \<subnet\> using gateway \<address\>,
 use source address to indentify the peer when is multi-hop session
 and the gateway address as BFD peer destination address.
 ```

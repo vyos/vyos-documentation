@@ -23,11 +23,9 @@ Type **e** to edit the first line, then type **Ctrl+X** to boot.
 
 ## Specify custom config file
 You can use a configuration file instead of the default `/config/config.boot`
-file.
-
-If the specified file doesn't exist or isn't readable, the system uses the
-default configuration file.
-No additional verification is performed, so specify a valid configuration file.
+file. If the specified file doesn't exist or isn't readable, the system uses the
+default configuration file. No additional verification is performed, so specify
+a valid configuration file.
 
 ```none
 vyos-config=/path/to/file
@@ -46,9 +44,9 @@ These options disable certain steps in the boot process. Understand the
 
 :::{glossary}
 no-vyos-migrate
-: Do not perform config migration.
+   Do not perform config migration.
 
 no-vyos-firewall
-: Do not initialize default firewall chains, renders any firewall
-  configuration unusable.
+   Do not initialize default firewall chains, renders any firewall
+   configuration unusable.
 :::

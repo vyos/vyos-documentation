@@ -835,6 +835,8 @@ Possible completions:
   https://<host>/<file>            Load from file on remote machine
   tftp://<host>/<file>         Load from file on remote machine
 :::
+
+If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
 ```
 
 #### Restore Default

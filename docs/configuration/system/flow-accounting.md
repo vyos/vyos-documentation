@@ -52,7 +52,7 @@ interface, the interface must be configured for flow accounting.
 ```{cfgcmd} set system flow-accounting interface \<interface\>
 
 Configure and enable collection of flow information for the interface
-identified by `<interface>`.
+identified by \<interface\>.
 
 You can configure multiple interfaces which would participate in flow
 accounting.
@@ -101,7 +101,7 @@ exported them to a collection server.
 
 ```{cfgcmd} set system flow-accounting netflow version \<version\>
 
-There are multiple versions available for the NetFlow data. The `<version>`
+There are multiple versions available for the NetFlow data. The \<version\>
 used in the exported flow data can be configured here. The following
 versions are supported:
 * **5** - Most common version, but restricted to IPv4 flows only
@@ -111,7 +111,7 @@ versions are supported:
 
 ```{cfgcmd} set system flow-accounting netflow server \<address\>
 
-Configure address of NetFlow collector. NetFlow server at `<address>` can
+Configure address of NetFlow collector. NetFlow server at \<address\> can
 be both listening on an IPv4 or IPv6 address.
 ```
 
@@ -128,7 +128,7 @@ NetFlow engine-id which will appear in NetFlow data. The range is 0 to 255.
 ```{cfgcmd} set system flow-accounting netflow sampling-rate \<rate\>
 
 Use this command to configure the  sampling rate for flow accounting. The
-system samples one in every `<rate>` packets, where `<rate>` is the value
+system samples one in every \<rate\> packets, where \<rate\> is the value
 configured for the sampling-rate option. The advantage of sampling every n
 packets, where n > 1, allows you to decrease the amount of processing
 resources required for flow accounting. The disadvantage of not sampling
@@ -168,7 +168,7 @@ display captured network traffic information for all configured interfaces.
 
 ```{opcmd} show flow-accounting interface \<interface\>
 
-Show flow accounting information for given `<interface>`.
+Show flow accounting information for given \<interface\>.
 
 % stop_vyoslinter
 
@@ -189,7 +189,7 @@ eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.
 
 ```{opcmd} show flow-accounting interface \<interface\> host \<address\>
 
-Show flow accounting information for given `<interface>` for a specific host
+Show flow accounting information for given \<interface\> for a specific host
 only.
 
 % stop_vyoslinter
