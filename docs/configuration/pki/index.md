@@ -13,6 +13,7 @@ system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
 A to system B a bit harder, as you had to copy the files and their permissions
 by hand.
+
 {vytask}`T3642` describes a new CLI subsystem that serves as a "certstore" to
 all services requiring any kind of encryption key(s). In short, public and
 private certificates are now stored in PKCS#8 format in the regular VyOS CLI.
@@ -156,9 +157,16 @@ The generated parameters are then output to the console.
 
 Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
 is requested by the CLI and defaults to 2048 bit.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ### OpenVPN
@@ -200,10 +208,11 @@ the console.
 
 :::{note}
 In addition to the command above, the output is in a format which can
- be used to directly import the key into the VyOS CLI by simply copy-pasting
- the output from op-mode into configuration mode.
- ``interface`` is used for the VyOS CLI command to identify the WireGuard
- interface where this private key is to be used.
+be used to directly import the key into the VyOS CLI by simply copy-pasting
+the output from op-mode into configuration mode.
+
+``interface`` is used for the VyOS CLI command to identify the WireGuard
+interface where this private key is to be used.
 :::
 ```
 
@@ -218,10 +227,11 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 
 :::{note}
 In addition to the command above, the output is in a format which can
- be used to directly import the key into the VyOS CLI by simply copy-pasting
- the output from op-mode into configuration mode.
- ``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
- this secret is to be used.
+be used to directly import the key into the VyOS CLI by simply copy-pasting
+the output from op-mode into configuration mode.
+
+``peer`` is used for the VyOS CLI command to identify the WireGuard peer where
+this secret is to be used.
 :::
 ```
 
@@ -238,6 +248,7 @@ When loading the certificate you need to manually strip the
  ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
  Also, the certificate/key needs to be presented in a single line without
  line breaks (``\n``), this can be done using the following shell command:
+
  ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 :::
 ```
@@ -263,6 +274,7 @@ When loading the certificate you need to manually strip the
  ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
  certificate/key needs to be presented in a single line without line
  breaks (``\n``), this can be done using the following shell command:
+
  ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 :::
 ```
@@ -286,6 +298,7 @@ When loading the certificate you need to manually strip the
  ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
  Also, the certificate/key needs to be presented in a single line without
  line breaks (``\n``), this can be done using the following shell command:
+
  ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 :::
 ```
@@ -305,6 +318,7 @@ When loading the certificate you need to manually strip the
  ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
  certificate/key needs to be presented in a single line without line
  breaks (``\n``), this can be done using the following shell command:
+
  ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 :::
 ```
@@ -360,12 +374,14 @@ using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
 ```{cfgcmd} set pki certificate \<name\> acme domain-name \<name\>
 
 Domain names to apply, multiple domain-names can be specified.
+
 This is a mandatory option
 ```
 
 ```{cfgcmd} set pki certificate \<name\> acme email \<address\>
 
 Email used for registration and recovery contact.
+
 This is a mandatory option
 ```
 
@@ -377,12 +393,14 @@ The address the server listens to during http-01 challenge
 ```{cfgcmd} set pki certificate \<name\> acme rsa-key-size \<2048 | 3072 | 4096\>
 
 Size of the RSA key.
+
 This options defaults to 2048
 ```
 
 ```{cfgcmd} set pki certificate \<name\> acme url \<url\>
 
 ACME Directory Resource URI.
+
 This defaults to https://acme-v02.api.letsencrypt.org/directory
 
 :::{note}
@@ -459,6 +477,7 @@ certificate for the router, and a client certificate for a user.
   signed by the server intermediary CA.
 - `vyos_example_user` is a leaf client certificate used to identify a user,
   signed by client intermediary CA.
+
 First, we create the root certificate authority.
 
 ```none

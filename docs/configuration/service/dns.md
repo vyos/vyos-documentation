@@ -373,11 +373,12 @@ forwarding cache.
 VyOS is able to update a remote DNS record when an interface gets a new IP
 address. In order to do so, VyOS includes [ddclient], a Perl script written for
 this only one purpose.
+
 [ddclient] uses two methods to update a DNS record. The first one will send
 updates directly to the DNS daemon, in compliance with {rfc}`2136`. The second
 one involves a third party service, like DynDNS.com or any other such
-service provider. This method uses HTTP requests to transmit the new IP address. You
-can configure both in VyOS.
+service provider. This method uses HTTP requests to transmit the new IP address.
+You can configure both in VyOS.
 (dns-dynamic-config)=
 ## Configuration
 ### {rfc}`2136` Based
@@ -625,6 +626,7 @@ set service dns dynamic name dedyn address interface 'eth0'
 By default, [ddclient] will update a dynamic dns record using the IP address
 directly attached to the interface. If your VyOS instance is behind NAT, your
 record will be updated to point to your internal IP.
+
 [ddclient] has another way to determine the WAN IP address. This is controlled
 by:
 ```{cfgcmd} set service dns dynamic name \<service-name\> address web \<url\>
