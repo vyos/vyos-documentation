@@ -41,6 +41,7 @@ Since VPP dataplane is used only to offload IPsec traffic processing, algorithms
 VPP **supports** only the following **encryption algorithms**:
 - AES-CBC
 - AES-GCM with ICV
+
 VPP **does not** support the following **encryption algorithms**:
 - Null encryption
 - AES-CTR
@@ -55,12 +56,14 @@ VPP **does not** support the following **encryption algorithms**:
 - Twofish-CBC
 - CAST-CBC
 - ChaCha20/Poly1305 with ICV
+
 VPP **supports** the following **integrity algorithms**:
 - MD5 HMAC
 - SHA1 HMAC
 - SHA2_256_128 HMAC
 - SHA2_384_192 HMAC
 - SHA2_512_256 HMAC
+
 VPP **does not** support the following **integrity algorithms**:
 - MD5_128 HMAC
 - SHA1_160 HMAC
@@ -68,10 +71,12 @@ VPP **does not** support the following **integrity algorithms**:
 - AES XCBC
 - AES CMAC
 - AES-GMAC
+
 If you have configured ESP profiles with algorithms not supported by VPP and the traffic for such peers flows trough VPP interfaces, such traffic will be dropped.
 
 ## Configuration Examples
 **ACL for VPP IPsec Traffic**
+
 When using VPP for offloading IPsec traffic, you may need to adjust your firewall rules to allow the necessary protocols and ports. Below is an example of how to configure ACLs for VPP IPsec traffic:
 
 ```none
@@ -94,7 +99,9 @@ set vpp acl ip tag-name IPSEC rule 50 protocol 'esp'
 ```
 
 Pay attention to the order of the rules, as they are processed sequentially. Make sure to place IPsec-related rules before any other rules that might deny traffic to ensure that IPsec traffic is allowed.
+
 **Simple VTI-based IPsec Tunnel**
+
 On the VPP host:
 
 ```none

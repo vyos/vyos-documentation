@@ -19,8 +19,10 @@ Hugepages can be configured in VyOS using the following commands:
 
 :::{warning}
 Changes to hugepage settings require a system reboot to take effect.
+
 Hugepages must be enabled before VPP configuration is applied.
 :::
+
 To enable hugepages:
 
 ```{cfgcmd} set system option kernel memory hugepage-size \<size\> hugepage-count
@@ -65,8 +67,12 @@ VPP dataplane processing without interference from the kernel scheduler
 or other system processes.
 
 :::{warning}
-Changes to hugepage settings require a system reboot to take effect.
-Hugepages must be enabled before VPP configuration is applied.
+Kernel tuning changes require a system reboot to take effect.
+:::
+
+:::{warning}
+Improper CPU isolation can lead to system instability if essential
+system processes are starved of CPU resources.
 :::
 
 ### CPU Isolation and Optimization
@@ -74,6 +80,7 @@ CPU isolation is crucial for VPP performance as it dedicates specific
 CPU cores exclusively to VPP dataplane processing. The isolated cores are
 removed from the kernel scheduler and will not run regular system
 processes.
+
 **Disable NMI Watchdog**
 The NMI (Non-Maskable Interrupt) watchdog can interfere with VPP
 performance by generating interrupts on isolated cores and is not
@@ -92,6 +99,7 @@ prevents unnecessary interrupts on VPP worker cores.
 Isolates specified CPUs from the kernel scheduler. Isolated cores will
 not run regular system processes and are dedicated to applications like
 VPP.
+
 The ``<cpu-range>`` can be:
 * Single core: ``2``
 * Range: ``2-5``
@@ -101,6 +109,7 @@ The ``<cpu-range>`` can be:
 Always reserve at least 2 cores for the operating system to ensure
 system stability. For example, on a 4-core system, isolate cores
 2-3 for VPP and leave cores 0-1 for the OS.
+
 Assign the first isolated core as the VPP main core and the
 remaining isolated cores as VPP worker cores. Ensure that VPP CPU
 assignments match the isolated CPU range.
@@ -115,6 +124,7 @@ Enables adaptive-tick mode (NO_HZ_FULL) for specified CPUs. This
 causes the kernel to avoid sending scheduling-clock interrupts to CPUs
 that have only one runnable task, significantly reducing interrupt
 overhead for dedicated workloads like VPP.
+
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
 
@@ -126,12 +136,14 @@ Offloads Read-Copy-Update (RCU) callback processing from specified
 CPUs. This ensures that RCU callbacks do not prevent the specified CPUs
 from entering dyntick-idle or adaptive-tick mode, which is essential
 for nohz-full functionality.
+
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
 
 ### System Optimization
 Additional kernel optimizations can further improve VPP performance by
 disabling unnecessary features and reducing system overhead.
+
 **Disable High Precision Event Timer**
 
 ```{cfgcmd} set system option kernel disable-hpet

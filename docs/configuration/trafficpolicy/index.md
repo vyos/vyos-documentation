@@ -11,7 +11,6 @@ instance, a bandwidth bottleneck in a link and you want to somehow
 prioritize some type of traffic over another.
 
 [tc] is a powerful tool for Traffic Control found at the Linux kernel.
-
 However, its configuration is often considered a cumbersome task.
 Fortunately, VyOS eases the job through its CLI, while using `tc` as
 backend.
@@ -343,6 +342,10 @@ VyOS lets you control traffic in many different ways, here we will cover
 every possibility. You can configure as many policies as you want, but
 you will only be able to apply one policy per interface and direction
 (inbound or outbound).
+
+Some policies already include other embedded policies inside. That is
+the case of Shaper: each of its classes use fair-queue unless you
+change it.
 
 Some policies can be combined, you will be able to [embed] a different
 policy that will be applied to a class of the main policy.
