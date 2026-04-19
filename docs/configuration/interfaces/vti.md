@@ -72,6 +72,8 @@ Show the operational status and traffic statistics for the specified VTI.
 ```
 
 ```{opcmd} show interfaces vti \<vtiX\> brief
+
+Show a brief operational status summary for the specified VTI.
 ```
 
 ## Example

@@ -644,6 +644,7 @@ is used, packets are also parsed by rules defined in ``set firewall ipv6
 ### Rule-set overview
 
 In this section you can find all useful firewall op-mode commands.
+
 General commands for firewall configuration, counter and statistics:
 
 ```{opcmd} show firewall

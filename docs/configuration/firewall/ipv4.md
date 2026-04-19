@@ -499,7 +499,7 @@ Match based on connection mark.
 
 
 Match based on connection tracking protocol helper module to secure use of
-that helper module. See below for possible completions `<module>`.
+that helper module. See below for possible completions \<module\>.
 
 
 :::{code-block} none
@@ -704,8 +704,7 @@ that the router is able to resolve this dns query.
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination geoip inverse-match
 
 
-Match IP addresses based on its geolocation. More info: `geoip matching
-<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>`_.
+Match IP addresses based on its geolocation. More info: [geoip matching](https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching).
 Use inverse-match to match anything except the given country-codes.
 ```
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,

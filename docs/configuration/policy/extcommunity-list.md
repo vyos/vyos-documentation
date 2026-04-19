@@ -9,7 +9,7 @@ manipulation: **extcommunity-list** is one of them.
 
 ```{cfgcmd} set policy extcommunity-list \<text\>
 
-Creat extcommunity-list policy identified by name `<text>`.
+Creat extcommunity-list policy identified by name \<text\>.
 ```
 ```{cfgcmd} set policy extcommunity-list \<text\> description \<text\>
 
@@ -27,7 +27,7 @@ Set description for rule.
 
 Regular expression to match against an extended community list, where text
 could be:
-* `<aa:nn:nn>`: Extended community list regular expression.
-* `<rt aa:nn:nn>`: Route Target regular expression.
-* `<soo aa:nn:nn>`: Site of Origin regular expression.
+* \<aa:nn:nn\>: Extended community list regular expression.
+* \<rt aa:nn:nn\>: Route Target regular expression.
+* \<soo aa:nn:nn\>: Site of Origin regular expression.
 ```
