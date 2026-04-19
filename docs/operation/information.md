@@ -37,7 +37,7 @@ Retrieve a tree-like representation of all connected USB devices.
 
 :::{note}
 If a device is unplugged and plugged in again, it is assigned a new
- ``Port``, ``Dev``, and ``If``.
+``Port``, ``Dev``, and ``If``.
 :::
 
 :::{code-block} none

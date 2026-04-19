@@ -92,7 +92,7 @@ destined to the router itself.
 
 :::{note}
 * A local zone cannot have any member interfaces
- * You cannot have multiple local zones
+* You cannot have multiple local zones
 :::
 ```
 

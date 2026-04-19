@@ -110,7 +110,7 @@ VNI filtering table.
 
 :::{note}
 VNI filtering works only if the interface is configured with the
- ``external`` parameter.
+``external`` parameter.
 :::
 ```
 

@@ -296,11 +296,11 @@ Add public key portion for the certificate named `name` to the VyOS CLI.
 
 :::{note}
 When loading the certificate you need to manually strip the
- ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
- Also, the certificate/key needs to be presented in a single line without
- line breaks (``\n``), this can be done using the following shell command:
+``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+Also, the certificate/key needs to be presented in a single line without
+line breaks (``\n``), this can be done using the following shell command:
 
- ``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
+``$ tail -n +2 cert.pem | head -n -1 | tr -d '\n'``
 :::
 ```
 
@@ -406,8 +406,8 @@ This defaults to https://acme-v02.api.letsencrypt.org/directory
 
 :::{note}
 During initial deployment we recommend using the staging API
- of LetsEncrypt to prevent and blacklisting of your system. The API
- endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
+of LetsEncrypt to prevent and blacklisting of your system. The API
+endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 :::
 ```
 

@@ -289,10 +289,10 @@ multiple offloading features for a single interface.
    use on routers and bridges.
 
  :::{note}
- The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
- set and IDs are not sequential, {abbr}`GSO (Generic Segmentation Offload)`
- alters them to maintain a consistent sequence for {abbr}`GSO (Generic
- Segmentation Offload)` compatibility.
+The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
+set and IDs are not sequential, {abbr}`GSO (Generic Segmentation Offload)`
+alters them to maintain a consistent sequence for {abbr}`GSO (Generic
+Segmentation Offload)` compatibility.
  :::
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
    the processing of incoming packets across multiple CPU cores.
@@ -300,9 +300,9 @@ multiple offloading features for a single interface.
    ensure packets from the same flow are processed by the same CPU core.
 
  :::{note}
- {abbr}`RPS (Receive Packet Steering)` is a software version of
- {abbr}`RSS (Receive Side Scaling)` and is useful for NICs without hardware
- multi-queue support.
+{abbr}`RPS (Receive Packet Steering)` is a software version of
+{abbr}`RSS (Receive Side Scaling)` and is useful for NICs without hardware
+multi-queue support.
  :::
  * ``sg`` **(Scatter-Gather/Scatter-Gather DMA):** Instructs the NIC to fetch
    data fragments from various RAM locations and transmit them as a single packet

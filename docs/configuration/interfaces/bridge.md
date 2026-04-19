@@ -167,8 +167,8 @@ on its member interfaces.
 
 :::{note}
 Do not configure **vif 1** on a VLAN-aware bridge. The main bridge
- interface acts as VLAN 1 (the default native VLAN) and automatically
- handles all untagged traffic.
+interface acts as VLAN 1 (the default native VLAN) and automatically
+handles all untagged traffic.
 :::
 ```
 

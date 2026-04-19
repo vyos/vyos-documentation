@@ -97,7 +97,7 @@ Beacon Protection: management frame protection for Beacon frames.
 
 :::{note}
 This option requires {abbr}`MFP (Management Frame Protection)`
- to be enabled.
+to be enabled.
 :::
 ```
 
@@ -185,8 +185,8 @@ Supported channel width set.
 
 :::{note}
 Channel availability for HT40- and HT40+ is limited. The following
- table lists channels permitted for HT40- and HT40+ according to IEEE
- 802.11n Annex J. Channel availability may vary by location.
+table lists channels permitted for HT40- and HT40+ according to IEEE
+802.11n Annex J. Channel availability may vary by location.
 
  ::::{code-block} none
  freq              HT40-           HT40+
@@ -196,9 +196,9 @@ Channel availability for HT40- and HT40+ is limited. The following
 :::
 :::{note}
 40 MHz channels may switch their primary and secondary channels if
- needed or creation of 40 MHz channel may be rejected based on overlapping
- BSSes. These changes are done automatically when hostapd is setting up the
- 40 MHz channel.
+needed or creation of 40 MHz channel may be rejected based on overlapping
+BSSes. These changes are done automatically when hostapd is setting up the
+40 MHz channel.
 :::
 ```
 
