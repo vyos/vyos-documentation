@@ -356,6 +356,7 @@ vyos@vyos#
 ::::{note}
 When going into configuration mode, prompt changes from `$` to `#`.
 ::::
+
 All commands executed here are relative to the configuration level you have entered. You can do everything from the top level, but commands will be quite lengthy when manually typing them.
 
 The current hierarchy level can be changed by the {cfgcmd}`edit` command.
@@ -374,6 +375,7 @@ You are now in a sublevel relative to `interfaces ethernet eth0`, all commands e
 ```
 
 The {cfgcmd}`show` command within configuration mode will show the working configuration indicating line changes with `+` for additions, `>` for replacements and `-` for deletions.
+
 **Example:**
 
 ``` none
@@ -517,6 +519,7 @@ Done
 ```{cfgcmd} exit \[discard\]
 
 Configuration mode can not be exited while uncommitted changes exist. To exit configuration mode without applying changes, the {cfgcmd}`exit discard` command must be used.
+
 All changes in the working config will thus be lost.
 
 :::{code-block} none
@@ -532,6 +535,7 @@ vyos@vyos# exit discard
 ```{cfgcmd} commit-confirm \<minutes\>
 
 Use this command to temporarily commit your changes and set the number of minutes available for confirmation. `confirm` must be entered within those minutes, otherwise the system will revert into a previous configuration. The default value is 10 minutes.
+
 The definition of \'revert\' and \'a previous configuration\' depends on the setting:
 
 :::{code-block} none
@@ -540,7 +544,9 @@ Possible completions:
 reload               Reload previous configuration if not confirmed
 reboot               Reboot to saved configuration if not confirmed (default)
 :::
+
 Note that \'reload\' loads the most recent completed configuration and does not require a reboot.
+
 What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the `commit-confirm` command, your changes will be committed, and if you don\'t issue the `confirm` command in 10 minutes, your system will reboot into previous config revision.
 
 :::{code-block} none
@@ -557,6 +563,7 @@ vyos@router# confirm
 ```{cfgcmd} copy
 
 Copy a configuration element.
+
 You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset `FromWorld` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to `firewall name FromWorld` and use `copy rule 10 to rule 20`, then modify rule 20.
 
 :::{code-block} none
@@ -583,6 +590,7 @@ vyos@router# commit
 ```{cfgcmd} rename
 
 Rename a configuration element.
+
 You can also rename config subtrees:
 
 :::{code-block} none
@@ -614,8 +622,11 @@ vyos@router# show
 ```{cfgcmd} comment \<config node\> "comment text"
 
 Add comment as an annotation to a configuration node.
+
 The `comment` command allows you to insert a comment above the `<config node>` configuration section. When shown, comments are enclosed with `/*` and `*/` as open/close delimiters. Comments need to be committed, just like other config changes.
+
 To remove an existing comment from your current configuration, specify an empty string enclosed in double quote marks (`""`) as the comment text.
+
 Example:
 
 :::{code-block} none
@@ -630,7 +641,7 @@ vyos@vyos# show
  }
 :::
 :::{note}
-An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the [show firewall]{.title-ref} command would return starting after the `firewall {` line, hiding the comment.
+An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the ``show firewall`` command would return starting after the `firewall {` line, hiding the comment.
 :::
 ```
 
@@ -642,6 +653,7 @@ When inside configuration mode you are not directly able to execute operational 
 ```{cfgcmd} run
 
 Access to these commands are possible through the use of the `run [command]` command. From this command you will have access to everything accessible from operational mode.
+
 Command completion and syntax help with `?` and `[tab]` will also work.
 
 :::{code-block} none
@@ -780,6 +792,7 @@ Specify remote location of commit archive as any of the below {abbr}`URI (Unifor
 - `scp://<user>:<passwd>@<host>:/<dir>`
 - `tftp://<host>/<dir>`
 - `git+https://<user>:<passwd>@<host>/<path>`
+
 Since username and password are part of the URI, they need to be properly url encoded if containing special characters.
 
 :::{note}
