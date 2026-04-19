@@ -43,9 +43,16 @@ private key on the console.
 
 Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
 private key on the console.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ```{opcmd} generate pki ca sign \<ca-name\>
@@ -58,9 +65,16 @@ the private key referenced by `ca-name`.
 
 Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
 the private key referenced by `name`.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ### Certificates
@@ -73,9 +87,16 @@ Create a new public/private keypair and output the certificate on the console.
 ```{opcmd} generate pki certificate install \<name\>
 
 Create a new public/private keypair and output the certificate on the console.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ```{opcmd} generate pki certificate self-signed
@@ -88,9 +109,16 @@ console.
 
 Create a new self-signed certificate. The public/private is then shown on the
 console.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ```{opcmd} generate pki certificate sign \<ca-name\>
@@ -103,9 +131,16 @@ Create a new public/private keypair which is signed by the CA referenced by
 
 Create a new public/private keypair which is signed by the CA referenced by
 `ca-name`. The signed certificate is then output to the console.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ### Diffie-Hellman parameters
@@ -138,9 +173,16 @@ the console.
 
 Generate a new OpenVPN shared secret. The generated secret is the output to
 the console.
-```{include} pki_cli_import_help.txt
 
-```
+:::{note}
+In addition to the command above, the output is in a format which can be used
+to directly import the key into the VyOS CLI by simply copy-pasting the output
+from op-mode into configuration mode.
+
+``name`` is used for the VyOS CLI command to identify this key. This
+key ``name`` is then used in the CLI configuration to reference the key
+instance.
+:::
 ```
 
 ### WireGuard

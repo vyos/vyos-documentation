@@ -114,16 +114,13 @@ are:
 
 :::{note}
 The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
-
-
- This might lead to unexpected query results when testing. Set ``+noad``
- on the ``dig`` command line when this is the case.
+This might lead to unexpected query results when testing. Set ``+noad``
+on the ``dig`` command line when this is the case.
 :::
+
 :::{note}
 The ``CD``-bit is honored correctly for process and validate. For
-
-
- log-fail, failures will be logged too.
+log-fail, failures will be logged too.
 :::
 ```
 
@@ -632,9 +629,12 @@ record will be updated to point to your internal IP.
 by:
 ```{cfgcmd} set service dns dynamic name \<service-name\> address web \<url\>
 
-Use configured `<url>` to determine your IP address. ddclient_ will load
+Use configured `<url>` to determine your IP address. [ddclient] will load
 `<url>` and tries to extract your IP address from the response.
 ```
-```{cfgcmd} set service dns dynamic name \<service-name\> address web skip \<pattern\> ddclient_ will skip any address located before the string set in `<pattern>`.
+```{cfgcmd} set service dns dynamic name \<service-name\> address web skip \<pattern\>
+
+ddclient will skip any address located before the string set in `<pattern>`.
 ```
+
 [ddclient]: https://github.com/ddclient/ddclient

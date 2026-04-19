@@ -52,8 +52,9 @@ searching the connection tracking table faster. The hash table uses
 
 Configure the connection tracking protocol helper modules.
 All modules are enable by default.
-| Use `delete system conntrack modules` to deactive all modules.
-| Or, for example ftp, `delete system conntrack modules ftp`.
+
+Use `delete system conntrack modules` to deactive all modules.
+Or, for example ftp, `delete system conntrack modules ftp`.
 ```
 
 ```{cfgcmd} set system conntrack tcp half-open-connections \<1-21474836\>

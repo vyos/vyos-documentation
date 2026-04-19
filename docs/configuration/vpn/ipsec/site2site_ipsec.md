@@ -196,7 +196,7 @@ Similar combinations are applicable for the dead-peer-detection.
 
 ```{cfgcmd} set vpn ipsec authentication psk id \<id\>
 
-Static ID's for authentication. In general local and remote address
+static ID's for authentication. In general local and remote address
 ``<x.x.x.x>``, ``<h:h:h:h:h:h:h:h>`` or ``%any``.
 ```
 
@@ -556,6 +556,7 @@ Restart Strongswan daemon.
 - `eth0` interface IP: `10.0.1.2/30`
 - `dum0` interface IP: `192.168.0.1/24` (for testing purposes)
 - Initiator
+
 **PEER2:**
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.2.2/30`
@@ -675,6 +676,7 @@ set nat source rule 10 source address '192.168.1.0/24'
 - 'vti0' interface IP: `10.100.100.1/30`
 - `dum0` interface IP: `192.168.0.1/24` (for testing purposes)
 - Role: Initiator
+
 **PEER2:**
 - WAN interface on `eth0`
 - `eth0` interface IP: `10.0.2.2/30`
