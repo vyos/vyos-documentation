@@ -152,18 +152,23 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 3945a923, Apr 19 2026):
+### Current state (commit 006b9f34, Apr 19 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
-**DOM diff complete** (46 pages scanned): 28 MATCH, 6 MINOR, 12 INVESTIGATE.
-All 100 Copilot comments addressed. Lint CI passing.
+**27 more pages fixed** (006b9f34): ospf, bgp, rip, traffic-engineering, mdns, https,
+conntrack-sync, ipoe-server, router-advert, config-sync, nat66, vpp/nat44, container/index,
+installation/install, acceleration, zone-policy, inter-vrf-routing-vrf-lite, testing,
+upstream-packages, vpp/buffers, vpp/memory, vpp/logging, vpp/xconnect, openconnect,
+wwan, firewall/groups, cgnat.
+
+**RTD rebuild in progress** — wait for build before running DOM diff.
 
 **Known remaining diffs (explained, not regressions):**
-- Interface pages (bonding/bridge/l2tpv3/macsec/pppoe/pseudo-ethernet): RST list-table vs MyST pipe table HTML structure — structural, unfixable without regression
-- `dhcp-server`, `dns`, `site2site_ipsec`: ADDED [CODE] elements from `\<param\>` angle brackets in MyST cfgcmd bodies (RST used `<cite>`, not captured by dom-diff)
+- Interface pages (bonding/bridge/l2tpv3/macsec/pppoe/pseudo-ethernet): RST list-table vs MyST pipe table HTML structure — structural, unfixable
+- `dhcp-server`, `dns`, `site2site_ipsec`: ADDED [CODE] elements from `\<param\>` angle brackets (RST used `<cite>`, not captured by dom-diff)
 - `protocols/static`, `service/eventhandler`: IMPROVED rendering (RST was broken)
 - `cli`: heading H1→H2 for "Configuration Overview", DT/DD vs P for page-mode commands
 - `coverage`: generated page, branches differ
-- MINOR: bfd (punctuation better in TEST), conntrack/login (content improvements), information (improved USB rendering), cgnat (content divergence)
+- MINOR: bfd, conntrack, login, information, cgnat
 
-**Next**: PR is ready for review. Mark as ready (remove draft status).
+**Next**: Wait for RTD rebuild → run full 253-page DOM diff (10 parallel agents) → if clean, mark PR ready for review.
