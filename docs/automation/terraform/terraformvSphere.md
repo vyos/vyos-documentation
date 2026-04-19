@@ -35,9 +35,9 @@ Terraform, Ansible, and vSphere, follow these steps:
   [Terraform](https://developer.hashicorp.com/terraform/install).
 - Create the folder for example `/root/vsphereterraform`.
 
-  ```none
-  mkdir /root/vsphereterraform
-  ```
+```none
+mkdir /root/vsphereterraform
+```
 
 - Copy all files into your Terraform project `/root/vsphereterraform`
   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
@@ -45,10 +45,10 @@ Terraform, Ansible, and vSphere, follow these steps:
   see [Structure of files in Terraform for vSphere](#structure-of-files-in-terraform-for-vsphere)
 - Run the following commands:
 
-  ```none
-  cd /<your folder>
-  terraform init
-  ```
+```none
+cd /<your folder>
+terraform init
+```
 
 ### Ansible
 

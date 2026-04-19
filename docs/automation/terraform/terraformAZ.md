@@ -33,9 +33,9 @@ Terraform, Ansible, and Azure, follow these steps:
   [Terraform](https://developer.hashicorp.com/terraform/install).
 - Create the folder for example `/root/azvyos/`.
 
-  ```none
-  mkdir /root/azvyos
-  ```
+```none
+mkdir /root/azvyos
+```
 
 - Copy all files into your Terraform project "/root/azvyos"
   (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
@@ -43,16 +43,16 @@ Terraform, Ansible, and Azure, follow these steps:
 
 - Log in to Azure using the command:
 
-  ```none
-  az login
-  ```
+```none
+az login
+```
 
 - Run the following commands to initialize Terraform:
 
-  ```none
-  cd /<your folder>
-  terraform init
-  ```
+```none
+cd /<your folder>
+terraform init
+```
 
 ### Ansible
 

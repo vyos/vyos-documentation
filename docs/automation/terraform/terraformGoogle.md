@@ -61,9 +61,9 @@ Terraform, Ansible, and GCP, follow these steps:
   [Terraform](https://developer.hashicorp.com/terraform/install).
 - Create the folder. For example, `/root/google`.
 
-  ```none
-  mkdir /root/google
-  ```
+```none
+mkdir /root/google
+```
 
 - Copy all files into your Terraform project `/root/google`
   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
@@ -71,10 +71,10 @@ Terraform, Ansible, and GCP, follow these steps:
   see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
 - Run the following commands:
 
-  ```none
-  cd /<your folder> 
-  terraform init
-  ```
+```none
+cd /<your folder> 
+terraform init
+```
 
 ### Ansible
 

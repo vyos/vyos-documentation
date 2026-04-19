@@ -55,9 +55,9 @@ Terraform, Ansible, and AWS, follow these steps:
   [Terraform](https://developer.hashicorp.com/terraform/install).
 - Create a folder, for example `/root/awsterraform`:
 
-  ```none
-  mkdir /root/awsterraform
-  ```
+```none
+mkdir /root/awsterraform
+```
 
 - Copy all files into your Terraform project
   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
@@ -65,10 +65,10 @@ Terraform, Ansible, and AWS, follow these steps:
 
 - Run the following commands:
 
-  ```none
-  cd /<your folder>
-  terraform init
-  ```
+```none
+cd /<your folder>
+terraform init
+```
 ### Ansible
 
 - Create a UNIX instance whenever you need.
@@ -259,14 +259,14 @@ terraform destroy
 2. If Terraform doesn't connect via SSH to your Ansible instance,
    verify the correct login and password in the `VyOS.tf` file.
 
-   ```none
-   connection {
-   type     = "ssh"
-   user     = "root"              # open root access using login and password on your Ansible
-   password = var.password        # check password in the file terraform.tfvars isn't empty
-       host = var.host            # check the correct IP address of your Ansible host
-   }
-   ```
+```none
+connection {
+type     = "ssh"
+user     = "root"              # open root access using login and password on your Ansible
+password = var.password        # check password in the file terraform.tfvars isn't empty
+    host = var.host            # check the correct IP address of your Ansible host
+}
+```
 
 Make sure Ansible can ping from Terraform.
 
