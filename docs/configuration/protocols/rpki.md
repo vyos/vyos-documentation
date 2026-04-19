@@ -98,7 +98,7 @@ In a nutshell, the current implementation provides the following features:
 
 ```{cfgcmd} set protocols rpki polling-period \<1-86400\>
 
-Define the time interval to update the local cache.
+Define the time interval to update the local cache
 
 The default value is 300 seconds.
 ```

@@ -203,6 +203,17 @@ Address      Protocol    Port    VRF  Description
 100.64.0.20  udp         53        0    Bypass subscriber DNS
 ```
 
+### Memory Requirements
+
+CGNAT memory usage scales with the number of internal customers.
+
+Each 256 customers (equivalent to a /24 subnet) requires approximately 4 MB of
+main heap memory. This memory maintains customer-to-port mappings and session
+state information.
+
+Configure your VPP main heap size appropriately based on your expected customer
+count. See VPP Memory Configuration for details on adjusting main heap size.
+
 ### Potential Issues and Troubleshooting
 Configuration fails to apply with an error similar to:
 

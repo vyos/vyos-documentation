@@ -79,7 +79,7 @@ Configure one or more attributes to the given NTP server.
 * ``ptp`` enables the PTP transport for this server (see {ref}`ptp-transport`).
 
 
-* ``interleave`` enables NTP interleaved mode, which can improve
+* ``interleave`` enables NTP interleaved mode (see [draft-ntp-interleaved-modes]), which can improve
   synchronization accuracy and stability when supported by both parties.
 ```
 
