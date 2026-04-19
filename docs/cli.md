@@ -49,14 +49,14 @@ You can scroll up with the keys `[Shift]+[PageUp]` and scroll down with `[Shift]
 When the output of a command results in more lines than can be displayed on the terminal screen the output is paginated as indicated by a `:` prompt.
 
 When viewing in page mode the following commands are available:
-- `q` key can be used to cancel output
-- `space` will scroll down one page
-- `b` will scroll back one page
-- `return` will scroll down one line
-- `up-arrow` and `down-arrow` will scroll up or down one line at a time
-  respectively
-- `left-arrow` and `right-arrow` can be used to scroll left or right in
-  the event that the output has lines which exceed the terminal size.
+: - `q` key can be used to cancel output
+  - `space` will scroll down one page
+  - `b` will scroll back one page
+  - `return` will scroll down one line
+  - `up-arrow` and `down-arrow` will scroll up or down one line at a time
+    respectively
+  - `left-arrow` and `right-arrow` can be used to scroll left or right in
+    the event that the output has lines which exceed the terminal size.
 
 ### Operational mode command families
 Many operational mode commands in VyOS are placed in families such as `show`, `clear`, or `reset`. Every such family has a specific meaning to allow the user to guess how the command is going to behave --- in particular, whether it will be disruptive to the system or not.
