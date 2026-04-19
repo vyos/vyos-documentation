@@ -25,10 +25,12 @@ as the peer of the other.
 
 ```{cmdincludemd} /_include/interface-address-with-dhcp.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 ```{cmdincludemd} /_include/interface-description.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 ### VLAN
@@ -44,14 +46,17 @@ as the peer of the other.
 
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 ```{cmdincludemd} /_include/interface-disable.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 ```{cmdincludemd} /_include/interface-vrf.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 ## Operation

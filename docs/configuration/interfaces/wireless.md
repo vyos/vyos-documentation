@@ -26,6 +26,7 @@ its MAC address) and configured to run in monitor mode.
 
 ```{cmdincludemd} /_include/interface-common-with-dhcp.txt
 :var0: wireless
+:var1: wlan0
 ```
 
 ### System-wide configuration

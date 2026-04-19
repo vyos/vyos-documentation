@@ -41,6 +41,7 @@ with other vendors, set the port to the IANA standard **4789**.
 
 ```{cmdincludemd} /_include/interface-common-without-dhcp.txt
 :var0: vxlan
+:var1: vxlan0
 ```
 
 ### VXLAN-specific options

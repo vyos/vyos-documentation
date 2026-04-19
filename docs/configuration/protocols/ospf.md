@@ -149,7 +149,7 @@ found in {rfc}`3509`. A "shortcut" model allows ABR to create routes
 between areas based on the topology of the areas connected to this router
 but not using a backbone area in case if non-backbone route will be
 cheaper. For more information about "shortcut" model,
-see :t:`ospf-shortcut-abr-02.txt`
+see ospf-shortcut-abr-02.txt
 ```
 
 
@@ -238,8 +238,9 @@ synchronization during convergence/interface flap events.
 ```
 
 
-```{cfgcmd} set protocols ospf capability opaque ospfd supports Opaque LSA {rfc}`2370` as partial support for MPLS Traffic
+```{cfgcmd} set protocols ospf capability opaque
 
+ospfd supports Opaque LSA {rfc}`2370` as partial support for MPLS Traffic
 Engineering LSAs. The opaque-lsa capability must be enabled in the
 configuration.
 

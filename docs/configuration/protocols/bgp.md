@@ -595,10 +595,8 @@ are treated as belonging to a default peer group, and will share updates.
 
    :::{note}
    If you apply a parameter to an individual neighbor IP address, you
-
-
-    override the action defined for a peer group that includes that IP
-    address.
+   override the action defined for a peer group that includes that IP
+   address.
    :::
 ```
 

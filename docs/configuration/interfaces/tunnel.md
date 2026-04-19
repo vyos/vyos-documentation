@@ -32,10 +32,12 @@ interfaces, as this may break their dependent configurations.
 
 ```{cmdincludemd} /_include/interface-address.txt
 :var0: tunnel
+:var1: tun0
 ```
 
 ```{cmdincludemd} /_include/interface-common-without-mac.txt
 :var0: tunnel
+:var1: tun0
 ```
 
 ## IPIP
