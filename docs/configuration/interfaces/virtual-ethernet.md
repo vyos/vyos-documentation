@@ -37,6 +37,7 @@ as the peer of the other.
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: virtual-ethernet
+:var1: veth0
 ```
 
 #### 802.1ad (QinQ)

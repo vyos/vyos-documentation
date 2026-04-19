@@ -44,4 +44,5 @@ Assign a physical Ethernet interface to the specified pseudo-Ethernet interface.
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: pseudo-ethernet
+:var1: peth0
 ```

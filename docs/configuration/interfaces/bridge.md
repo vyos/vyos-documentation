@@ -185,6 +185,7 @@ The following options are available:
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: bridge
+:var1: br0
 ```
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> native-vlan \<vlan-id\>
@@ -226,6 +227,7 @@ set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: bridge
 :var1: br1
+:var2: eth3
 ```
 
 ## Examples

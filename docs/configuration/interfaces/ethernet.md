@@ -329,6 +329,7 @@ Uplink/core tracking.
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: ethernet
+:var1: eth0
 ```
 
 #### 802.1ad (QinQ)
@@ -342,6 +343,7 @@ Uplink/core tracking.
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: ethernet
 :var1: eth1
+:var2: eth3
 ```
 
 ## Operation

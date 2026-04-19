@@ -508,6 +508,7 @@ interfaces {
 
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: wireless
+:var1: wlan0
 ```
 
 #### QinQ (802.1ad)
