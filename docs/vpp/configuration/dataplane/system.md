@@ -25,9 +25,7 @@ Hugepages must be enabled before VPP configuration is applied.
 
 To enable hugepages:
 
-```{cfgcmd} set system option kernel memory hugepage-size \<size\> hugepage-count
-
-   '<count>'
+```{cfgcmd} set system option kernel memory hugepage-size \<size\> hugepage-count '\<count\>'
 ```
 
 Enables hugepages with the specified size and count. The size can be either
