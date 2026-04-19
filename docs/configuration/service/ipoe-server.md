@@ -94,7 +94,7 @@ multiple such options.
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
 
- Specifies the client connectivity mode.
+Specifies the client connectivity mode.
 
 
 * **l2**: It means that clients are on same network where interface

@@ -246,11 +246,11 @@ Add the public CA certificate for the CA named `name` to the VyOS CLI.
 
 :::{note}
 When loading the certificate you need to manually strip the
- ``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
- Also, the certificate/key needs to be presented in a single line without
- line breaks (``\n``), this can be done using the following shell command:
+``-----BEGIN CERTIFICATE-----`` and ``-----END CERTIFICATE-----`` tags.
+Also, the certificate/key needs to be presented in a single line without
+line breaks (``\n``), this can be done using the following shell command:
 
- ``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
+``$ tail -n +2 ca.pem | head -n -1 | tr -d '\n'``
 :::
 ```
 
@@ -272,11 +272,11 @@ mentioned above.
 
 :::{note}
 When loading the certificate you need to manually strip the
- ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
- certificate/key needs to be presented in a single line without line
- breaks (``\n``), this can be done using the following shell command:
+``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+certificate/key needs to be presented in a single line without line
+breaks (``\n``), this can be done using the following shell command:
 
- ``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
+``$ tail -n +2 ca.key | head -n -1 | tr -d '\n'``
 :::
 ```
 
@@ -316,11 +316,11 @@ leave the system as it is used to decrypt the data.
 
 :::{note}
 When loading the certificate you need to manually strip the
- ``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
- certificate/key needs to be presented in a single line without line
- breaks (``\n``), this can be done using the following shell command:
+``-----BEGIN KEY-----`` and ``-----END KEY-----`` tags. Also, the
+certificate/key needs to be presented in a single line without line
+breaks (``\n``), this can be done using the following shell command:
 
- ``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
+``$ tail -n +2 cert.key | head -n -1 | tr -d '\n'``
 :::
 ```
 

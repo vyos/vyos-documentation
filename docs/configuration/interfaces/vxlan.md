@@ -59,7 +59,7 @@ Configure the UDP port of the remote VXLAN endpoint.
 
 :::{note}
 Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
- Linux default UDP port **8472** for VXLAN interfaces.
+Linux default UDP port **8472** for VXLAN interfaces.
 :::
 ```
 

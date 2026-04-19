@@ -49,8 +49,8 @@ Supported interface types:
 
 :::{note}
 You can also opt for using `::/64` as prefix for your {abbr}`RAs (Router
- Advertisements)`. This is a special wildcard prefix that will emit {abbr}`RAs (Router Advertisements)` for every prefix assigned to the interface.
- This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
+Advertisements)`. This is a special wildcard prefix that will emit {abbr}`RAs (Router Advertisements)` for every prefix assigned to the interface.
+This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 :::
 ```
 

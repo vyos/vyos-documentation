@@ -115,9 +115,7 @@ supported**.
 
 :::{note}
 This option ensures consistent encryption between two static peers
-
-
- without cipher negotiation capability.
+without cipher negotiation capability.
 :::
 ```
 
@@ -261,10 +259,8 @@ to the openvpn.conf file.
 
 :::{warning}
 Use this option only as a last resort. Invalid options or syntax
-
-
- may prevent OpenVPN from starting. Check system logs for errors after applying
- changes.
+may prevent OpenVPN from starting. Check system logs for errors after applying
+changes.
 :::
 Example:
 
@@ -289,9 +285,7 @@ Ensure the path and arguments are enclosed in single or double quotes.
 
 :::{note}
 Some raw configuration options require quotes. To include them, use
-
-
- the &quot; statement.
+the ``"`` statement.
 :::
 ```
 

@@ -481,10 +481,8 @@ policy configuration to create new inbound updates.
 
 :::{note}
 Storage of route updates uses memory. If you enable soft
-
-
- reconfiguration inbound for multiple neighbors, the amount of memory used
- can become significant.
+reconfiguration inbound for multiple neighbors, the amount of memory used
+can become significant.
 :::
 ```
 
@@ -836,9 +834,7 @@ distance range is 1 to 255.
 
 :::{note}
 Routes with a distance of 255 are effectively disabled and not
-
-
- installed into the kernel.
+installed into the kernel.
 :::
 ```
 ##### Timers
