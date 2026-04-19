@@ -57,7 +57,7 @@ Configure which log messages to save to a local log file.
 ```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
 
 **Configure syslog to save log messages for a specific facility and
-severity level to** ``/var/log/messages``.
+severity level to \`\`/var/log/messages\`\`.**
 
 Refer to the tables below for valid facility and severity options.
 ```
@@ -352,13 +352,25 @@ If no category is specified, all logs are shown.
 **Display logs for a specific image on the console.**
 
 Available log categories:
-- ``all`` — Displays the contents of system log files of the specified image.
-- ``authorization`` — Displays authorization attempts of the specified image.
-- ``directory`` — Displays user-defined log files of the specified image.
-- ``file <file name>`` — Displays the contents of a specified user-defined log
-  file of the specified image.
-- ``tail`` — Displays last lines of the system log of the specified image.
-- ``<lines>`` — Number of lines to be displayed, default 10.
+
+:::{list-table}
+:widths: 25 75
+:header-rows: 0
+
+* - all
+  - Displays the contents of system log files of the specified image.
+* - authorization
+  - Displays authorization attempts of the specified image.
+* - directory
+  - Displays user-defined log files of the specified image.
+* - file \<file name\>
+  - Displays the contents of a specified user-defined log file of the specified
+    image.
+* - tail
+  - Displays last lines of the system log of the specified image.
+* - \<lines\>
+  - Number of lines to be displayed, default 10.
+:::
 
 ```
 If no category is specified, the contents of the main syslog file are
