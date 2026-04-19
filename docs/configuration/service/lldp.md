@@ -52,8 +52,10 @@ say ``all`` here so LLDP is turned on on every interface.
 ```{cfgcmd} set service lldp interface \<interface\> mode [disable|rx-tx|rx|tx]
 
 Configure the administrative status of the given port.
+
 By default, all ports are configured to be in rx-tx mode. This means they
 can receive and transmit LLDP frames.
+
 In rx mode, they won't emit any frames. In tx mode, they won't receive
 any frames. In disabled mode, no frame will be sent and any incoming frame
 will be discarded.
