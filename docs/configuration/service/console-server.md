@@ -62,10 +62,8 @@ left unconfigured.
 
 :::{note}
 USB to serial converters will handle most of their work in software
-
-
- so you should be carefull with the selected baudrate as some times they
- can't cope with the expected speed.
+so you should be carefull with the selected baudrate as some times they
+can't cope with the expected speed.
 :::
 ```
 ### Remote Access
@@ -83,9 +81,7 @@ the connected serial device.
 
 :::{hint}
 Multiple users can connect to the same serial device but only
-
-
- one is allowed to write to the console port.
+one is allowed to write to the console port.
 :::
 ```
 ## Operation
@@ -123,15 +119,15 @@ vyos-r2 login:
 :::
 :::{hint}
 Multiple users can connect to the same serial device but only
- one is allowed to write to the console port.
+one is allowed to write to the console port.
 :::
 :::{hint}
 The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
- the session use: ``Ctrl+E c .``
+the session use: ``Ctrl+E c .``
 :::
 :::{hint}
 If ``alias`` is set, it can be used instead of the device when
- connecting.
+connecting.
 :::
 ```
 ```{opcmd} show log console-server

@@ -32,7 +32,7 @@ VyOS system), not IN or OUT traffic.
 
 :::{note}
 **firewall global-options all-ping** affects only LOCAL traffic
- and always behaves in the most restrictive way
+and always behaves in the most restrictive way
 :::
 :::{code-block} none
 set firewall global-options all-ping enable

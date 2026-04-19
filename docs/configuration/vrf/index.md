@@ -55,9 +55,7 @@ isis, ospf, rip, static
 
 :::{note}
 If you choose any as the option that will cause all protocols that
-
-
- are sending routes to zebra.
+are sending routes to zebra.
 :::
 ```
 
@@ -73,9 +71,7 @@ ospfv3, ripng, static
 
 :::{note}
 If you choose any as the option that will cause all protocols that
-
-
- are sending routes to zebra.
+are sending routes to zebra.
 :::
 ```
 ### Nexthop Tracking
@@ -189,7 +185,7 @@ red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,
 :::
 :::{note}
 Command should probably be extended to list also the real
- interfaces assigned to this one VRF to get a better overview.
+interfaces assigned to this one VRF to get a better overview.
 :::
 ```
 

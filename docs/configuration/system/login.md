@@ -133,7 +133,7 @@ The following encryption algorithm types are available:
 
 :::{note}
 To assign multiple SSH public keys to a user account, repeat the
- commands above with a unique identifier for each key.
+commands above with a unique identifier for each key.
 :::
 ```
 

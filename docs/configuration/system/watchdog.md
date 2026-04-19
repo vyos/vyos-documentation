@@ -26,7 +26,7 @@ The watchdog is enabled only when a watchdog device is available as
 
 :::{note}
 If multiple watchdog devices are present, only the first watchdog
- device is supported (VyOS uses ``/dev/watchdog0`` only).
+device is supported (VyOS uses ``/dev/watchdog0`` only).
 :::
 If ``/dev/watchdog0`` does not exist and no module is configured, commit will
 fail. If a module is configured but ``/dev/watchdog0`` still cannot be
@@ -54,12 +54,12 @@ Common modules include:
 
 :::{warning}
 ``softdog`` is not a hardware watchdog. It is implemented using
- kernel timers and therefore depends on the Linux kernel continuing to run.
- In some fault conditions (for example, a kernel hang), ``softdog`` may not
- be able to trigger a reset.
+kernel timers and therefore depends on the Linux kernel continuing to run.
+In some fault conditions (for example, a kernel hang), ``softdog`` may not
+be able to trigger a reset.
 
- Prefer a hardware watchdog driver whenever possible, as hardware watchdogs
- can operate independently of the operating system.
+Prefer a hardware watchdog driver whenever possible, as hardware watchdogs
+can operate independently of the operating system.
 :::
 
 If no module is specified, VyOS will use an existing ``/dev/watchdog0``
@@ -67,7 +67,7 @@ device if available.
 
 :::{note}
 If a module is specified but a different driver is actually bound
- to ``watchdog0``, VyOS will emit a warning during commit.
+to ``watchdog0``, VyOS will emit a warning during commit.
 :::
 Example:
 
@@ -85,8 +85,8 @@ Valid range: 1-65535 seconds
 
 :::{note}
 Some watchdog drivers expose minimum and maximum supported runtime
- timeouts via sysfs. When available, VyOS validates ``timeout`` against
- those driver limits during commit.
+timeouts via sysfs. When available, VyOS validates ``timeout`` against
+those driver limits during commit.
 :::
 
 This is the interval during which the system must respond to the watchdog.
@@ -112,9 +112,9 @@ without triggering the watchdog.
 
 :::{warning}
 Setting this value too low (below 120 seconds) may cause
- unclean shutdowns, as the system may not have enough time to properly
- stop all services and flush disk buffers. The recommended minimum value
- is 120 seconds.
+unclean shutdowns, as the system may not have enough time to properly
+stop all services and flush disk buffers. The recommended minimum value
+is 120 seconds.
 :::
 Example:
 
@@ -135,9 +135,9 @@ without triggering the watchdog during the transition.
 
 :::{warning}
 Setting this value too low (below 120 seconds) may cause
- unclean reboots, as the system may not have enough time to properly
- stop all services before restarting. The recommended minimum value
- is 120 seconds.
+unclean reboots, as the system may not have enough time to properly
+stop all services before restarting. The recommended minimum value
+is 120 seconds.
 :::
 Example:
 

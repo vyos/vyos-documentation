@@ -312,13 +312,13 @@ Operational mode defines how to handle this connection process.
 
 :::{note}
 For most site-to-site VPNs, configure one peer
- with ``connection-type initiate`` (active side) and the other peer
- with ``connection-type none`` (passive side) to
- ensure stable and predictable tunnel behavior.
- When using ``connection-type initiate``, you must also configure
- DPD or another session tracking method (such as ``close-action``)
- to automatically re-establish the tunnel after a disconnection.
- Otherwise, the tunnel will not reconnect automatically if it goes down.
+with ``connection-type initiate`` (active side) and the other peer
+with ``connection-type none`` (passive side) to
+ensure stable and predictable tunnel behavior.
+When using ``connection-type initiate``, you must also configure
+DPD or another session tracking method (such as ``close-action``)
+to automatically re-establish the tunnel after a disconnection.
+Otherwise, the tunnel will not reconnect automatically if it goes down.
 :::
 ```
 

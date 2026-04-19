@@ -146,8 +146,8 @@ VyOS IKE group has the next options:
 
 ```{cfgcmd} set vpn ipsec ike-group \<name\> close-action \<action\>
 
- Defines the action to take if the remote peer unexpectedly
- closes a CHILD_SA:
+Defines the action to take if the remote peer unexpectedly
+closes a CHILD_SA:
 * **none** - Set action to none (default),
 * **trap** - Installs a trap policy (IPsec policy without Security
   Association) for the CHILD_SA and traffic matching these policies
@@ -166,10 +166,10 @@ during an IKE rekey.
 
 ```{cfgcmd} set vpn ipsec ike-group \<name\> key-exchange
 
- Which protocol should be used to initialize the connection
- If not set both protocols are handled and connections will
- use IKEv2 when initiating, but accept any protocol version
- when responding:
+Which protocol should be used to initialize the connection
+If not set both protocols are handled and connections will
+use IKEv2 when initiating, but accept any protocol version
+when responding:
 * **ikev1** - Use IKEv1 for Key Exchange.
 * **ikev2** - Use IKEv2 for Key Exchange.
 ```
@@ -181,7 +181,7 @@ IKE lifetime in seconds <0-86400> (default 28800).
 
 ```{cfgcmd} set vpn ipsec ike-group \<name\> mode
 
- IKEv1 Phase 1 Mode Selection:
+IKEv1 Phase 1 Mode Selection:
 * **main** - Use Main mode for Key Exchanges in the IKEv1 Protocol
   (Recommended Default).
 * **aggressive** - Use Aggressive mode for Key Exchanges in the IKEv1
@@ -295,9 +295,9 @@ The type of the connection:
 
 ```{cfgcmd} set vpn ipsec esp-group \<name\> pfs \< dh-group\>
 
- Whether Perfect Forward Secrecy of keys is desired on the
- connection's keying channel and defines a Diffie-Hellman group for
- PFS:
+Whether Perfect Forward Secrecy of keys is desired on the
+connection's keying channel and defines a Diffie-Hellman group for
+PFS:
 
 
 * **enable** - Inherit Diffie-Hellman group from IKE group (default).
