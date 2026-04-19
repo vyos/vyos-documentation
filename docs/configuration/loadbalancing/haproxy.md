@@ -22,7 +22,7 @@ listens on all IPv4 and IPv6 addresses.
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> port \<port\>
 
-Create service `<name>` to listen on <port>
+Create service `<name>` to listen on \<port\>
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> mode \<tcp|http\>
@@ -32,12 +32,12 @@ Configure service `<name>` mode TCP or HTTP
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> backend \<name\>
 
-Configure service `<name>` to use the backend <name>
+Configure service `<name>` to use the backend \<name\>
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> ssl certificate \<name\>
 
-Set the SSL certificate <name> for service <name>. You can define
+Set the SSL certificate \<name\> for service \<name\>. You can define
 multiple certificates.
 ```
 
@@ -92,7 +92,7 @@ SSL match Server Name Indication (SNI) option:
 
 Define URL path matching rules for a specific service. Use this command
 to specify how to match the URL path against incoming requests.
-The available options for <match> are:
+The available options for \<match\> are:
  * ``begin`` Matches the beginning of the URL path
  * ``end`` Matches the end of the URL path.
  * ``exact`` Matches the URL path exactly.
@@ -376,9 +376,12 @@ set load-balancing haproxy backend bk-01 server srv02 port '8882'
 ### Balancing based on domain name
 The following configuration demonstrates how to use VyOS
 to achieve load balancing based on the domain name:
+
 The HTTP service listens on TCP port 80.
+
 Rule 10 matches requests with the domain name `node1.example.com` and
 forwards them to the backend `bk-api-01`.
+
 Rule 20 matches requests with the domain name `node2.example.com` and
 forwards them to the backend `bk-api-02`.
 ```none
@@ -402,16 +405,21 @@ set load-balancing haproxy backend bk-api-02 server api01 port '4432'
 ```
 ### Terminate SSL
 The following configuration terminates SSL on the router.
+
 The `http` service listens on port 80 and redirects HTTP requests to
 HTTPS.
+
 The `https` service listens on port 443 with the `bk-default` backend
 and handles HTTPS traffic using the `cert` certificate for SSL termination.
 The HSTS header is set with a 1-year expiry to tell browsers to always use
 SSL for the site.
+
 Rule 10 matches requests with the exact URL path `/.well-known/xxx` and
 redirects them to `/certs/`.
+
 Rule 20 matches requests with URL paths ending in `/mail` or the exact
 path `/email/bar` and redirects them to `/postfix/`.
+
 Global parameters include a maximum connection limit of 4000 and a minimum
 TLS version of 1.3.
 ```none
@@ -445,10 +453,13 @@ The following configuration terminates incoming HTTPS traffic on the router,
 then re-encrypts the traffic and sends it to the backend server via HTTPS.
 Use this when encryption is required for both paths but you do not want to
 install publicly trusted certificates on each backend server.
+
 Backend service certificates are checked against the certificate authority
 specified in the configuration, which could be an internal CA.
+
 The `https` service listens on port 443 with backend `bk-bridge-ssl` to
 handle HTTPS traffic. It uses certificate named `cert` for SSL termination.
+
 The `bk-bridge-ssl` backend connects to `sr01` server on port 443 via HTTPS
 and checks backend server has a valid certificate trusted by CA `cacert`
 ```none
