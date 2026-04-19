@@ -164,7 +164,7 @@ The file `/tmp/foo` contains the migrated configuration.
 ### Configuration Error on System Boot
 
 Running the latest rolling releases sometimes exposes bugs due to edge cases
-missed in design. File these bugs via [Phabricator], but you can help narrow
+missed in design. File these bugs via [Phabricator](https://vyos.dev/), but you can help narrow
 down the issue by following these steps:
 
 1. Log in to your VyOS system.
@@ -172,7 +172,7 @@ down the issue by following these steps:
 3. Reload your boot configuration: `load`
 
 You should see a Python backtrace that helps identify the issue. Attach it to
-the [Phabricator] task.
+the [Phabricator](https://vyos.dev/) task.
 
 ### Boot Timing
 
@@ -199,9 +199,6 @@ from lowest to highest priority. This provides deterministic behavior.
 To debug priority issues or see script execution order, use the
 `/opt/vyatta/sbin/priority.pl` script, which lists the execution order of
 scripts.
-
-```{include} /_include/common-references.txt
-```
 
 [bootchart.conf]: https://github.com/vyos/vyos-build/blob/current/data/live-build-config/includes.chroot/etc/systemd/bootchart.conf
 [vyatta-cfg]: https://github.com/vyos/vyatta-cfg

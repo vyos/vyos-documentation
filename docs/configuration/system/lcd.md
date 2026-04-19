@@ -39,5 +39,3 @@ type is missing, please create a feature request via
 :::
 ```
 
-```{include} /_include/common-references.txt
-```

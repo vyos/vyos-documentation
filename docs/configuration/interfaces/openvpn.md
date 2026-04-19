@@ -644,5 +644,3 @@ This section covers examples of OpenVPN configurations for various deployments.
 openvpn-examples
 ```
 
-```{include} /_include/common-references.txt
-```

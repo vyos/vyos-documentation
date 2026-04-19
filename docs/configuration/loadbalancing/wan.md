@@ -18,6 +18,7 @@ distributes traffic based on interface health and weight.
 In a minimal configuration, the following must be provided:
 > - An interface with a `nexthop`.
 > - One rule with a LAN (inbound-interface) and the WAN (interface).
+
 The following examples uses two DHCP WAN interfaces and one LAN (`eth2`):
 
 ```none

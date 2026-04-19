@@ -96,7 +96,7 @@ every configured interval. The remote peer is considered unreachable
 if no response to these packets is received within the DPD timeout.
 In IKEv2, DPD sends messages every configured interval. If one request
 is not responded, Strongswan execute its retransmission algorithm with
-its timers. [IKEv2 Retransmission]
+its timers.
 
 ## Post-Quantum Preshared Keys (PPK)
 

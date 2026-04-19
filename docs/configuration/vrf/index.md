@@ -755,5 +755,3 @@ Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down Sta
 10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
 :::
 ```
-```{include} /_include/common-references.txt
-```

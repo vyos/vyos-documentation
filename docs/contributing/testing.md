@@ -204,5 +204,3 @@ how those preconditions are fulfilled, check the [vyos-build](https://github.com
 the `scripts/check-qemu-install` file.
 :::
 
-```{include} /_include/common-references.txt
-```

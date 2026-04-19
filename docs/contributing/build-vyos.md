@@ -95,10 +95,9 @@ also not supported because block device operations are not implemented.
 
 The container can be built by hand or by fetching the pre-built one from
 DockerHub. It is recommended to use the pre-built containers from the
-
-``` VyOS DockerHub`organization_
-The container is built from Docker packages automatically after every commit
-to the ``vyos-build` ``` repository (this process may take 2-3 hours).
+[VyOS DockerHub organisation](https://hub.docker.com/u/vyos). The container
+is built from Docker packages automatically after every commit to the
+``vyos-build`` repository (this process may take 2-3 hours).
 
 :::{note}
 If you use the pre-built container, it will be automatically

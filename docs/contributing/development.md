@@ -545,6 +545,4 @@ references common CLI commands and their C/C++ entry points:
 
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252>
 
-```{include} /_include/common-references.txt
-```
 
