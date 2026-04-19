@@ -84,8 +84,7 @@ Match domain name
 SSL match Server Name Indication (SNI) option:
 :   - ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
     - ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
-    - ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name
-      Indication
+    - ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name Indication
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> url-path \<match\> \<url\>
