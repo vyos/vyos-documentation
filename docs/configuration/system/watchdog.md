@@ -36,12 +36,15 @@ created, VyOS will emit a warning and will not enable the systemd watchdog.
 ```{cfgcmd} set system watchdog module \<module-name\>
 
 Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
+
 The configured module must be a watchdog driver module, not an arbitrary
 kernel module.
+
 **In most cases, this option is not required** as the kernel will
 automatically load the appropriate watchdog driver for your system. Use this
 option if the kernel fails to load the required driver, or when you want to
 use the software watchdog (``softdog``).
+
 Common modules include:
 * ``softdog`` - Software watchdog timer (available on all systems)
 * ``iTCO_wdt`` - Intel TCO watchdog timer
@@ -54,9 +57,11 @@ Common modules include:
  kernel timers and therefore depends on the Linux kernel continuing to run.
  In some fault conditions (for example, a kernel hang), ``softdog`` may not
  be able to trigger a reset.
+
  Prefer a hardware watchdog driver whenever possible, as hardware watchdogs
  can operate independently of the operating system.
 :::
+
 If no module is specified, VyOS will use an existing ``/dev/watchdog0``
 device if available.
 

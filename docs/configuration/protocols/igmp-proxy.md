@@ -31,8 +31,10 @@ must be on the following format 'a.b.c.d/n'. By default, the router will
 accept data from sources on the same network as configured on an interface.
 If the multicast source lies on a remote network, one must define from where
 traffic should be accepted.
+
 This is especially useful for the upstream interface, since the source for
 multicast traffic is often from a remote location.
+
 This option can be supplied multiple times.
 ```
 
@@ -43,8 +45,10 @@ message upstream as soon as it receives a Leave message for any downstream
 interface. The daemon will not ask for Membership reports on the downstream
 interfaces, and if a report is received the group is not joined again the
 upstream.
+
 If it's vital that the daemon should act exactly like a real multicast client
 on the upstream interface, this function should be enabled.
+
 Enabling this function increases the risk of bandwidth saturation.
 ```
 
