@@ -9,7 +9,7 @@ useful and flexible tool for traffic manipulation.
 
 ```{cfgcmd} set policy route-map \<text\>
 
-   This command creates a new route-map policy, identified by <text>.
+   This command creates a new route-map policy, identified by \<text\>.
 
 ```
 

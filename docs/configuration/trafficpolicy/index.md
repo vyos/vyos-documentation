@@ -729,11 +729,12 @@ packets (Priority Queue is not a shaping policy), it simply dequeues
 packets according to their priority.
 
 :::{note}
-The meaning of the Class ID is not the same for every type of
-policy. Normally policies just need a meaningless number to identify
-a class (Class ID), but that does not apply to every policy.
-The number of a class in a Priority Queue it does not only
-identify it, it also defines its priority.
+Priority Queue, as other non-shaping policies, is only useful
+if your outgoing interface is really full. If it is not, VyOS will
+not own the queue and Priority Queue will have no effect. If there is
+bandwidth available on the physical link, you can embed Priority
+Queue into a classful shaping policy to make sure it owns the queue.
+In that case packets can be prioritized based on DSCP.
 :::
 Up to seven queues -defined as classes with different priorities- can
 be configured. Packets are placed into queues based on associated match

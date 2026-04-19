@@ -64,6 +64,7 @@ myst_enable_extensions = [
     "colon_fence",
     "deflist",
     "fieldlist",
+    "line_block",
     "substitution",
 ]
 

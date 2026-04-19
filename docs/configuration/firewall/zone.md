@@ -124,6 +124,7 @@ You create rule-sets as a custom firewall chain using the commands below
   `set firewall ipv4 name <name> ...`
 - For {ref}`IPv6<configuration/firewall/ipv6:Firewall - IPv6 Rules>`:
   `set firewall ipv6 name <name> ...`
+
 It is helpful to name the rule-sets in the format
 `<Source Zone>-<Destination Zone>-<v4 | v6>` to make them easily
 identifiable.

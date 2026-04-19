@@ -7,7 +7,6 @@ both in ordinary wired networks and in wireless mesh networks.
 By default, it uses hop-count on wired networks and a variant of ETX
 on wireless links, It can be configured to take radio diversity into account
 and to automatically compute a link's latency and include it in the metric.
-
 It is defined in {rfc}`8966`.
 
 Babel a dual stack protocol.
@@ -171,10 +170,8 @@ interface (see diversity option above).
 
 **1-254** – interfaces with a channel number interfere with
 interfering interfaces and interfaces with the same channel number.
-
 **interfering** – interfering interfaces are assumed to interfere with all other channels except
 noninterfering channels.
-
 **noninterfering** – noninterfering interfaces are assumed to only interfere
 with themselves.
 ```

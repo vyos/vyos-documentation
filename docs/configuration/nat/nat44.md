@@ -207,6 +207,7 @@ rule.
   :::{note}
   If no destination is specified the rule will match on any
   destination address and port.
+
    Example:
 
    - Configure SNAT rule (40) to only NAT packets with a destination
@@ -675,7 +676,6 @@ set nat source rule 10 load-balance backend 192.0.2.253 weight 34
 #### Example Network
 
 Here's one example of a network environment for an ASP.
-
 The ASP requests that all connections from this company should come from
 172.29.41.89 - an address that is assigned by the ASP and not in use at
 the customer site.

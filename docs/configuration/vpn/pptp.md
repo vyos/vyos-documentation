@@ -2,7 +2,7 @@
 
 # PPTP-Server
 
-The Point-to-Point Tunneling Protocol ([PPTP]) has been implemented in VyOS only
+The Point-to-Point Tunneling Protocol (PPTP) has been implemented in VyOS only
 for backwards compatibility. PPTP has many well known security issues and you
 should use one of the many other new VPN implementations.
 

@@ -151,7 +151,7 @@ set vpn l2tp remote-access authentication radius server 10.0.0.2 key 'foo'
 ```
 
 :::{note}
-Some [RADIUS] severs use an access control list which allows or denies
+Some RADIUS severs use an access control list which allows or denies
 queries, make sure to add your VyOS router to the allowed client list.
 :::
 
@@ -166,8 +166,8 @@ Source IPv4 address used in all RADIUS server queires.
 ```
 
 :::{note}
-Some [RADIUS] severs use an access control list which allows or denies
-queries, make sure to add your VyOS router to the allowed client list.
+The `source-address` must be configured to that of an interface.
+Best practice would be a loopback or dummy interface.
 :::
 
 ### RADIUS advanced options
