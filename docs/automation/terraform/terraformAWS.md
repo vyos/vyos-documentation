@@ -50,37 +50,36 @@ Terraform, Ansible, and AWS, follow these steps:
 ```
 
 ### Terraform
-1. Create an UNIX or Windows instance.
-2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
-3. Create a folder, for example `/root/awsterraform`:
+- Create an UNIX or Windows instance.
+- Download and install
+  [Terraform](https://developer.hashicorp.com/terraform/install).
+- Create a folder, for example `/root/awsterraform`:
 
-   ```none
-   mkdir /root/awsterraform
-   ```
+  ```none
+  mkdir /root/awsterraform
+  ```
 
-4. Copy all files into your Terraform project
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
-   See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
+- Copy all files into your Terraform project
+  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
+  See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
 
-5. Run the following commands:
+- Run the following commands:
 
-   ```none
-   cd /<your folder>
-   terraform init
-   ```
+  ```none
+  cd /<your folder>
+  terraform init
+  ```
 ### Ansible
 
-1. Create a UNIX instance whenever you need.
-2. Download and install Ansible
-3. Create a folder, for example `/root/aws/`.
-
-4. Copy all files into your Ansible project
-   (`ansible.cfg`, `instance.yml`,
-   `mykey.pem`, and `all`).
-   See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
-   You can obtain `mykey.pem` by creating a key [pair] in AWS and
-   downloading your `.pem` key.
+- Create a UNIX instance whenever you need.
+- Download and install Ansible
+- Create a folder, for example `/root/aws/`.
+- Copy all files into your Ansible project
+  (`ansible.cfg`, `instance.yml`,
+  `mykey.pem`, and `all`).
+  See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
+  You can obtain `mykey.pem` by creating a key [pair] in AWS and
+  downloading your `.pem` key.
 
 ### Deploy with Terraform
 

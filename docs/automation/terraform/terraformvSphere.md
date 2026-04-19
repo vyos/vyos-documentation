@@ -24,40 +24,40 @@ Terraform, Ansible, and vSphere, follow these steps:
 
 ### vSphere
 
-1. Add all necessary data to the `terraform.tfvars`
-   [file](https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars)
-   and create resources.
+- Add all necessary data to the `terraform.tfvars`
+  [file](https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars)
+  and create resources.
 
 ### Terraform
 
-1. Create an UNIX or Windows instance.
-2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
-3. Create the folder for example `/root/vsphereterraform`.
+- Create an UNIX or Windows instance.
+- Download and install
+  [Terraform](https://developer.hashicorp.com/terraform/install).
+- Create the folder for example `/root/vsphereterraform`.
 
-   ```none
-   mkdir /root/vsphereterraform
-   ```
+  ```none
+  mkdir /root/vsphereterraform
+  ```
 
-4. Copy all files into your Terraform project `/root/vsphereterraform`
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
-   For more details,
-   see [Structure of files in Terraform for vSphere](#structure-of-files-in-terraform-for-vsphere)
-5. Run the following commands:
+- Copy all files into your Terraform project `/root/vsphereterraform`
+  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
+  For more details,
+  see [Structure of files in Terraform for vSphere](#structure-of-files-in-terraform-for-vsphere)
+- Run the following commands:
 
-   ```none
-   cd /<your folder>
-   terraform init
-   ```
+  ```none
+  cd /<your folder>
+  terraform init
+  ```
 
 ### Ansible
 
-1. Create an UNIX instance either locally or in the cloud.
-2. Download and install Ansible.
-3. Create the folder. For example, `/root/vsphereterraform/`.
-4. Copy all files into your Ansible project `/root/vsphereterraform/`
-   (`ansible.cfg`, `instance.yml`, `all`). For more details, see
-   [Structure of files in Ansible for vSphere](#structure-of-files-in-ansible-for-vsphere)
+- Create an UNIX instance either locally or in the cloud.
+- Download and install Ansible.
+- Create the folder. For example, `/root/vsphereterraform/`.
+- Copy all files into your Ansible project `/root/vsphereterraform/`
+  (`ansible.cfg`, `instance.yml`, `all`). For more details, see
+  [Structure of files in Ansible for vSphere](#structure-of-files-in-ansible-for-vsphere)
 
 ### Deploy with Terraform
 

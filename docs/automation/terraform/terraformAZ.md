@@ -24,44 +24,44 @@ Terraform, Ansible, and Azure, follow these steps:
 
 ### Azure
 
-1. Create an [Azure account](https://azure.microsoft.com/).
+- Create an [Azure account](https://azure.microsoft.com/).
 
 ### Terraform
 
-1. Create an UNIX or Windows instance.
-2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
-3. Create the folder for example `/root/azvyos/`.
+- Create an UNIX or Windows instance.
+- Download and install
+  [Terraform](https://developer.hashicorp.com/terraform/install).
+- Create the folder for example `/root/azvyos/`.
 
-```none
-mkdir /root/azvyos
-```
+  ```none
+  mkdir /root/azvyos
+  ```
 
-4. Copy all files into your Terraform project "/root/azvyos"
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
-   [Structure of files in Terraform for Azure](#structure-of-files-in-terraform-for-azure).
+- Copy all files into your Terraform project "/root/azvyos"
+  (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
+  [Structure of files in Terraform for Azure](#structure-of-files-in-terraform-for-azure).
 
-5. Log in to Azure using the command:
+- Log in to Azure using the command:
 
-> ```none
-> az login
-> ```
+  ```none
+  az login
+  ```
 
-6. Run the following commands to initialize Terraform:
+- Run the following commands to initialize Terraform:
 
-> ```none
-> cd /<your folder>
-> terraform init
-> ```
+  ```none
+  cd /<your folder>
+  terraform init
+  ```
 
 ### Ansible
 
-1. Create an UNIX instance either locally or in the cloud.
-2. Download and install Ansible
-3. Create a folder, for example `/root/az/`.
-4. Copy all files into your Ansible project `/root/az/` (`ansible.cfg`,
-   `instance.yml`, `all`). For more details, see
-   [Structure of files in Ansible for Azure](#structure-of-files-in-ansible-for-azure)
+- Create an UNIX instance either locally or in the cloud.
+- Download and install Ansible
+- Create a folder, for example `/root/az/`.
+- Copy all files into your Ansible project `/root/az/` (`ansible.cfg`,
+  `instance.yml`, `all`). For more details, see
+  [Structure of files in Ansible for Azure](#structure-of-files-in-ansible-for-azure)
 
 ### Deploy with Terraform
 

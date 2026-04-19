@@ -23,65 +23,67 @@ Terraform, Ansible, and GCP, follow these steps:
 
 ### GCP
 
-1. Create an account with GCP and a new project.
+- Create an account with GCP and a new project.
 
-```{image} /_static/images/project.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+  ```{image} /_static/images/project.png
+  :align: center
+  :alt: Network Topology Diagram
+  :width: 50%
+  ```
 
-2. Create a service account and download your key (a JSON file).
+- Create a service account and download your key (a JSON file).
 
-```{image} /_static/images/service.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+  ```{image} /_static/images/service.png
+  :align: center
+  :alt: Network Topology Diagram
+  :width: 50%
+  ```
 
-```{image} /_static/images/key.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+  ```{image} /_static/images/key.png
+  :align: center
+  :alt: Network Topology Diagram
+  :width: 50%
+  ```
 
-The .JSON file downloads automatically after you create it and looks
-like the following:
+  The .JSON file downloads automatically after you create it and looks
+  like the following:
 
-```{image} /_static/images/json.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+  ```{image} /_static/images/json.png
+  :align: center
+  :alt: Network Topology Diagram
+  :width: 50%
+  ```
 
 ### Terraform
-1. Create an UNIX or Windows instance.
-2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
-3. Create the folder. For example, `/root/google`.
 
-```none
-mkdir /root/google
-```
+- Create an UNIX or Windows instance.
+- Download and install
+  [Terraform](https://developer.hashicorp.com/terraform/install).
+- Create the folder. For example, `/root/google`.
 
-4. Copy all files into your Terraform project `/root/google`
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
-   For more details,
-   see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
-5. Run the following commands:
+  ```none
+  mkdir /root/google
+  ```
 
-```none
-cd /<your folder> 
-terraform init
-```
+- Copy all files into your Terraform project `/root/google`
+  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
+  For more details,
+  see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
+- Run the following commands:
+
+  ```none
+  cd /<your folder> 
+  terraform init
+  ```
 
 ### Ansible
-1. Create an UNIX instance either locally or in the cloud.
-2. Download and install Ansible
-3. Create the folder for example /root/google/
-4. Copy all files into your Ansible project `/root/google/`
-   (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
-   details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
+
+- Create an UNIX instance either locally or in the cloud.
+- Download and install Ansible
+- Create the folder for example /root/google/
+- Copy all files into your Ansible project `/root/google/`
+  (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
+  details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
 
 You obtain `mykey.json` when you create a service account in GCP
 and download the key (a JSON file).
@@ -335,11 +337,12 @@ terraform destroy
 ```
 
 ## Troubleshooting
-1. Increase the timeout value in `instance.yml` from 300 seconds to
-   500 seconds or more (depends on your location). Ensure that the
-   security group allows access to the instance.
-2. If Terraform doesn't connect via SSH to your Ansible instance:
-   Check the correct login and password in the `VyOS.tf` file.
+
+- Increase the timeout value in `instance.yml` from 300 seconds to
+  500 seconds or more (depends on your location). Ensure that the
+  security group allows access to the instance.
+- If Terraform doesn't connect via SSH to your Ansible instance:
+  Check the correct login and password in the `VyOS.tf` file.
 
 ```none
 connection {
