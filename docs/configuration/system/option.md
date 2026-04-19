@@ -163,22 +163,23 @@ We now utilize `tuned` for dynamic resource balancing based on profiles.
 ```{cfgcmd} set system option performance \< throughput | latency \>
 
 Configure one of the predefined system performance profiles.
-**throughput**: A server profile focused on improving network throughput.
-This profile favors performance over power savings by setting
-``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network
-buffer sizes.
 
-It enables transparent huge pages, and uses cpupower to set the performance
-cpufreq governor. It also sets ``kernel.sched_min_granularity_ns`` to 10 us,
-``kernel.sched_wakeup_granularity_ns`` to 15 uss, and ``vm.dirty_ratio`` to
-40%.
+* ``throughput``: A server profile focused on improving network throughput.
+  This profile favors performance over power savings by setting
+  ``intel_pstate`` and ``max_perf_pct=100`` and increasing kernel network
+  buffer sizes.
 
-**latency**: A server profile focused on lowering network latency.
-This profile favors performance over power savings by setting
-``intel_pstate`` and ``min_perf_pct=100``.
+  It enables transparent huge pages, and uses cpupower to set the performance
+  cpufreq governor. It also sets ``kernel.sched_min_granularity_ns`` to 10 us,
+  ``kernel.sched_wakeup_granularity_ns`` to 15 uss, and ``vm.dirty_ratio`` to
+  40%.
 
-It disables transparent huge pages, and automatic NUMA balancing. It also
-uses cpupower to set the performance cpufreq governor, and requests a
-cpu_dma_latency value of 1. It also sets busy_read and busy_poll times to
-50 us, and tcp_fastopen to 3.
+* ``latency``: A server profile focused on lowering network latency.
+  This profile favors performance over power savings by setting
+  ``intel_pstate`` and ``min_perf_pct=100``.
+
+  It disables transparent huge pages, and automatic NUMA balancing. It also
+  uses cpupower to set the performance cpufreq governor, and requests a
+  cpu_dma_latency value of 1. It also sets busy_read and busy_poll times to
+  50 us, and tcp_fastopen to 3.
 ```
