@@ -302,7 +302,7 @@ PFS:
 
 * **enable** - Inherit Diffie-Hellman group from IKE group (default).
 * **disable** - Disable PFS.
-* **<dh-group>** - Defines a Diffie-Hellman group for PFS.
+* **\<dh-group\>** - Defines a Diffie-Hellman group for PFS.
 ```
 
 
@@ -397,7 +397,7 @@ Timeout in seconds before the first retransmission. Default value is **4**.
 Using the default values, packets are retransmitted as follows:
 
 | Attempts  | Formula     | Relative timeout | Absolute timeout |
-| --------- | ----------- | ---------------- | ---------------- | ---------------- | ---------------- |
+| --------- | ----------- | ---------------- | ---------------- |
 | 1         | 4 * 1.8 ^ 0 | 4s               | 4s               |
 | 2         | 4 * 1.8 ^ 1 | 7s               | 11s              |
 | 3         | 4 * 1.8 ^ 2 | 13s              | 24s              |

@@ -74,7 +74,7 @@ community(ies) into that prefix.
 ### IP Schema
 
 | Device-A | Device-B   | IPv4 Network   | IPv6 Network    |
-| -------- | ---------- | -------------- | --------------- | -------------- | --------------- |
+| -------- | ---------- | -------------- | --------------- |
 | Core     | LAN1       | 10.1.1.0/30    | 2001:db8::/127  |
 | Core     | LAN2       | 172.16.2.0/30  | 2001:db8::2/127 |
 | Core     | Management | 192.168.3.0/30 | 2001:db8::4/127 |
@@ -83,7 +83,7 @@ community(ies) into that prefix.
 ### RD & RT Schema
 
 | VRF        | RD        | RT        |
-| ---------- | --------- | --------- | --------- |
+| ---------- | --------- | --------- |
 | LAN1       | 64496:1   | 64496:1   |
 | LAN2       | 64496:2   | 64496:2   |
 | Management | 64496:50  | 64496:50  |
@@ -113,8 +113,9 @@ set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 
 #### Step 1: VRF and Configurations to remote networks
 - Configuration
-Set the VRF name and Table ID, set interface address and bind it to the VRF.
-Last add the static route to the remote network.
+
+  Set the VRF name and Table ID, set interface address and bind it to the VRF.
+  Last add the static route to the remote network.
 
 ```none
 # VRF name and table ID (MANDATORY)
@@ -131,9 +132,10 @@ set vrf name <VRF> protocols static route <NETWORK/CIDR> next-hop <REMOTE IP ADD
 ```
 
 - Verification
-Checking the routing table of the VRF should reveal both static and connected
-entries active. A PING test between the Core and remote router is a way to
-validate connectivity within the VRF.
+
+  Checking the routing table of the VRF should reveal both static and connected
+  entries active. A PING test between the Core and remote router is a way to
+  validate connectivity within the VRF.
 
 ```none
 # show ip route vrf <VRF>
@@ -196,8 +198,10 @@ rtt min/avg/max/mdev = 0.925/1.665/3.035/0.969 ms
 
 #### Step 2: BGP Configuration for VRF-Lite
 - Configuration
-Setting BGP global local-as as well inside the VRF. Redistribute static routes
-to inject configured networks into the BGP process but still inside the VRF.
+
+  Setting BGP global local-as as well inside the VRF. Redistribute static
+  routes to inject configured networks into the BGP process but still inside
+  the VRF.
 
 ```none
 # set BGP global local-as
@@ -208,8 +212,9 @@ set vrf name <VRF> protocols bgp address-family <AF IPv4/IPv6> redistribute stat
 ```
 
 - Verification
-Check the BGP VRF table and verify if the static routes are injected showing
-the correct next-hop information.
+
+  Check the BGP VRF table and verify if the static routes are injected showing
+  the correct next-hop information.
 
 ```none
 # show ip bgp vrf <VRF>
@@ -243,8 +248,9 @@ RPKI validation codes: V valid, I invalid, N Not found
 
 #### Step 3: VPN Configuration
 - Configuration
-Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT), then
-we enable the export/import VPN.
+
+  Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT),
+  then we enable the export/import VPN.
 
 ```none
 # set Route-distinguisher
@@ -268,9 +274,11 @@ VRF2 has to be in the IMPORT rt list from VRF1.
 
 There are some cases where this is not needed -for example, in some
 DDoS appliance- but most inter-vrf routing designs use the above configurations.
+
 - Verification
-After configured all the VRFs involved in this topology we take a deeper look
-at both BGP and Routing table for the VRF LAN1
+
+  After configured all the VRFs involved in this topology we take a deeper look
+  at both BGP and Routing table for the VRF LAN1
 
 ```none
 # show ip bgp vrf <VRF>
@@ -682,7 +690,8 @@ When importing routes using MP-BGP it is possible to filter a subset of them
 before are injected in the BGP table. One of the most common case is to use a
 route-map with an prefix-list.
 - Configuration
-We create a prefix-list first and add all the routes we need to.
+
+  We create a prefix-list first and add all the routes we need to.
 
 ```none
 # set both ipv4 and ipv6 policies

@@ -216,7 +216,7 @@ mandatory option!
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> remote-as <asn>
 
 
-This command creates a new neighbor whose remote-as is <asn>. The neighbor
+This command creates a new neighbor whose remote-as is \<asn\>. The neighbor
 address can be an IPv4 address or an IPv6 address or an interface to use
 for the connection. The command is applicable for peer and peer group.
 ```
@@ -615,10 +615,8 @@ This command is used for advertising IPv4 or IPv6 networks.
 
    :::{note}
    By default, the BGP prefix is advertised even if it's not present
-
-
-    in the routing table. This behaviour differs from the implementation of
-    some vendors.
+   in the routing table. This behaviour differs from the implementation of
+   some vendors.
    :::
 ```
 
@@ -857,6 +855,7 @@ network's routing tables. When the route is re-enabled, the change in
 availability is also advertised. A route that continually fails and returns
 requires a great deal of network traffic to update the network about the
 route's status.
+
 Route dampening wich described in {rfc}`2439` enables you to identify routes
 that repeatedly fail and return. If route dampening is enabled, an unstable
 route accumulates penalties each time the route fails and returns. If the
@@ -864,13 +863,16 @@ accumulated penalties exceed a threshold, the route is no longer advertised.
 This is route suppression. Routes that have been suppressed are re-entered
 into the routing table only when the amount of their penalty falls below a
 threshold.
+
 A penalty of 1000 is assessed each time the route fails. When the penalties
 reach a predefined threshold (suppress-value), the router stops advertising
 the route.
+
 Once a route is assessed a penalty, the penalty is decreased by half each time
 a predefined amount of time elapses (half-life-time). When the accumulated
 penalties fall below a predefined threshold (reuse-value), the route is
 unsuppressed and added back into the BGP routing table.
+
 No route is suppressed indefinitely. Maximum-suppress-time defines the maximum
 time a route can be suppressed before it is re-advertised.
 ```{cfgcmd} set protocols bgp parameters dampening half-life <minutes>
@@ -1008,10 +1010,13 @@ via EBGP.
 #### Route Filtering Configuration
 In order to control and modify routing information that is exchanged between
 peers you can use route-map, filter-list, prefix-list, distribute-list.
+
 For inbound updates the order of preference is:
+
 > - route-map
 > - filter-list
 > - prefix-list, distribute-list
+
 For outbound updates the order of preference is:
 > - prefix-list, distribute-list
 > - filter-list
@@ -1025,7 +1030,7 @@ For outbound updates the order of preference is:
 > :::
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> distribute-list \<export|import\> \<number\>
 
-This command applies the access list filters named in <number> to the
+This command applies the access list filters named in \<number\> to the
 specified BGP neighbor to restrict the routing information that BGP learns
 and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the access list are applied.
@@ -1036,7 +1041,7 @@ specify the direction in which the access list are applied.
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> prefix-list <export|import> <name>
 
 
-This command applies the prfefix list filters named in <name> to the
+This command applies the prfefix list filters named in \<name\> to the
 specified BGP neighbor to restrict the routing information that BGP learns
 and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the prefix list are applied.
@@ -1046,7 +1051,7 @@ specify the direction in which the prefix list are applied.
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> route-map <export|import> <name>
 
 
-This command applies the route map named in <name> to the specified BGP
+This command applies the route map named in \<name\> to the specified BGP
 neighbor to control and modify routing information that is exchanged
 between peers. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the route map are applied.
@@ -1056,7 +1061,7 @@ specify the direction in which the route map are applied.
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> filter-list <export|import> <name>
 
 
-This command applies the AS path access list filters named in <name> to the
+This command applies the AS path access list filters named in \<name\> to the
 specified BGP neighbor to restrict the routing information that BGP learns
 and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
 specify the direction in which the AS path access list are applied.
@@ -1129,7 +1134,7 @@ IBGP (called confederation BGP). Confederation mechanism is described in
 {rfc}`5065`
 ```{cfgcmd} set protocols bgp parameters confederation identifier \<asn\>
 
-This command specifies a BGP confederation identifier. <asn> is the number
+This command specifies a BGP confederation identifier. \<asn\> is the number
 of the autonomous system that internally includes multiple sub-autonomous
 systems (a confederation).
 
@@ -1138,8 +1143,8 @@ systems (a confederation).
 
 ```{cfgcmd} set protocols bgp parameters confederation peers \<nsubasn\>
 
-This command sets other confederations <nsubasn> as members of autonomous
-system specified by {cfgcmd}`confederation identifier <asn>`.
+This command sets other confederations \<nsubasn\> as members of autonomous
+system specified by {cfgcmd}`confederation identifier \<asn\>`.
 ```
 ## Operational Mode Commands
 ### Show
@@ -1313,6 +1318,7 @@ inbound and outbound soft reconfiguration are triggered.
 ## Examples
 ### IPv4 peering
 A simple eBGP configuration:
+
 **Node 1:**
 ```none
 set protocols bgp system-as 65534
@@ -1336,6 +1342,7 @@ set protocols bgp parameters router-id '192.168.0.2'
 Don't forget, the CIDR declared in the network statement MUST **exist in your
 routing table (dynamic or static), the best way to make sure that is true is
 creating a static route:**
+
 **Node 1:**
 ```none
 set protocols static route 172.16.0.0/16 blackhole distance '254'
@@ -1346,6 +1353,7 @@ set protocols static route 172.17.0.0/16 blackhole distance '254'
 ```
 ### IPv6 peering
 A simple BGP configuration via IPv6.
+
 **Node 1:**
 ```none
 set protocols bgp system-as 65534
@@ -1369,6 +1377,7 @@ set protocols bgp parameters router-id '10.1.1.2'
 Don't forget, the CIDR declared in the network statement **MUST exist in your
 routing table (dynamic or static), the best way to make sure that is true is
 creating a static route:**
+
 **Node 1:**
 ```none
 set protocols static route6 2001:db8:1::/48 blackhole distance '254'

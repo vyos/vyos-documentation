@@ -13,6 +13,7 @@ NAT44 has two main use cases:
   networks using dynamic or static address translation.
 - **Destination NAT (DNAT)**: Providing external access to internal services
   through static port forwarding rules.
+
 VyOS supports both dynamic translation using address pools and static
 mappings for predictable address translation requirements.
 
@@ -92,6 +93,7 @@ the technical definitions are:
   source NAT (SNAT)
 - **Outside interface**: Interface where traffic originates that needs
   destination NAT (DNAT)
+
 In complex network topologies, the same physical interface can be
 configured as both inside and outside to handle bidirectional NAT
 scenarios.
@@ -206,6 +208,7 @@ and public IP addresses. They are essential for:
   Internet.
 - **Consistent mappings**: Ensuring the same private IP always maps to the
   same public IP.
+
 Unlike dynamic NAT that uses a pool of addresses, static rules create
 one-to-one mappings that persist until explicitly removed.
 
@@ -223,6 +226,7 @@ Where:
 - `<rule-number>` is a unique identifier for the rule
 - `<internal-ip>` is the private IP address in your local network
 - `<external-ip>` is the public IP address that external hosts will use
+
 This basic configuration creates a static one-to-one mapping. Traffic from
 outside to the external IP will be translated to the internal IP, and vice
 versa.
@@ -350,7 +354,10 @@ set vpp nat nat44 static rule 300 description "Web service with twice-nat"
 :::{note}
 When using twice-nat or self-twice-nat options, ensure you have
 configured a twice-nat address pool using:
-`set vpp nat nat44 address-pool twice-nat address <twice-nat-ip-range>`
+
+```none
+set vpp nat nat44 address-pool twice-nat address <twice-nat-ip-range>
+```
 :::
 
 ## Exclude Rules Configuration
@@ -361,6 +368,7 @@ translation. This is particularly useful for:
 - **Service bypass**: Excluding specific services from NAT processing
 - **Traffic forwarding**: Allowing forwarded traffic to bypass NAT with 1-to-1
   mapping.
+
 Exclude rules take precedence over both dynamic and static NAT rules,
 ensuring that matching traffic bypasses NAT processing. For forwarded
 traffic, exclude rules create invisible 1-to-1 mappings that allow packets
@@ -369,6 +377,7 @@ to pass through without NAT modifications.
 ### Basic Exclude Rule Configuration
 To create an exclude rule, you need to specify the traffic characteristics
 that should bypass NAT. You can configure exclude rules in two ways:
+
 **Option 1: Using local address**
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
@@ -397,6 +406,7 @@ For more granular control, you can exclude only specific ports and protocols.
 
 You can combine port and protocol specifications with either `local-address` or
 `external-interface`:
+
 **With local address:**
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
@@ -478,16 +488,23 @@ set vpp nat nat44 exclude rule 40 description "Direct access to internal service
 
 ### Common Use Cases
 **Router Administration:**
+
 Exclude rules are essential when you need to manage the router from external
 networks. Without exclude rules, NAT would attempt to translate the router's
 own traffic, potentially breaking management connections.
+
 **Service Monitoring:**
+
 Network monitoring systems often need direct access to router services.
 Exclude rules ensure that monitoring traffic bypasses NAT translation.
+
 **Routing Protocols:**
+
 Some routing protocols or network services may require direct communication
 without NAT interference.
+
 **Traffic Forwarding:**
+
 Exclude rules also work for forwarded traffic between networks. Without
 exclude rules, traffic from external to local networks must either match a
 static rule or be dropped. With exclude rules, traffic can bypass NAT
@@ -551,6 +568,7 @@ Set the maximum number of NAT sessions per worker thread (Default:
 
 This setting helps prevent memory exhaustion and ensures predictable
 performance under high load.
+
 **Example:**
 
 ```none
@@ -561,6 +579,7 @@ set vpp nat nat44 session-limit 100000
 ## Complete Configuration Example
 Here's a complete example showing how to configure VyOS NAT44 for a typical
 network setup:
+
 **Network Topology:**
 
 ```none
@@ -649,18 +668,25 @@ set vpp nat nat44 static rule 300 description "API service (No Internet access f
 
 ### Common Configuration Issues
 **Static rules not working:**
+
 1. Verify that the external IP address is included in an address pool
 2. Check that interfaces are correctly configured as inside or outside
 3. Ensure firewall rules allow the traffic
+
 **Twice-NAT not functioning:**
+
 1. Confirm twice-nat pool is configured
 2. Verify static rules have the correct twice-nat option
 3. Check that both translation and twice-nat pools are properly defined
+
 **Router management access issues:**
+
 1. Verify exclude rules are configured for management services
 2. Check that local-address matches the router's interface IP
 3. Ensure external-interface is correctly specified
+
 **Forwarded traffic from external networks not bypassing NAT:**
+
 1. Verify exclude rules are configured for the specific traffic flow
 2. Check that local-address matches the destination IP in the internal
    network
