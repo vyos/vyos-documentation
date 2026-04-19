@@ -82,20 +82,21 @@ Match domain name
 ```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> ssl \<sni\>
 
 SSL match Server Name Indication (SNI) option:
- * ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
- * ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
- * ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name
-    Indication
+:   - ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
+    - ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
+    - ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name
+      Indication
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> url-path \<match\> \<url\>
 
 Define URL path matching rules for a specific service. Use this command
 to specify how to match the URL path against incoming requests.
+
 The available options for \<match\> are:
- * ``begin`` Matches the beginning of the URL path
- * ``end`` Matches the end of the URL path.
- * ``exact`` Matches the URL path exactly.
+:   - ``begin`` Matches the beginning of the URL path
+    - ``end`` Matches the end of the URL path.
+    - ``exact`` Matches the URL path exactly.
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> set backend \<name\>
@@ -111,17 +112,16 @@ Redirect URL to a new location.
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> balance \<balance\>
 
-  Specify the load balancing algorithm for distributing requests among
-  available servers.
+Specify the load balancing algorithm for distributing requests among
+available servers.
 
-
-  Balance algorithms:
-   * ``source-address`` Distributes requests based on the source IP address
-     of the client.
-   * ``round-robin`` Distributes requests in a circular manner,
-     sequentially sending each request to the next server in line.
-   * ``least-connection`` Distributes requests to the server with the fewest
-     active connections.
+Balance algorithms:
+:   - ``source-address`` Distributes requests based on the source IP address
+      of the client.
+    - ``round-robin`` Distributes requests in a circular manner,
+      sequentially sending each request to the next server in line.
+    - ``least-connection`` Distributes requests to the server with the fewest
+      active connections.
 
 ```
 
@@ -323,9 +323,9 @@ Set the expected result condition for a server to be considered healthy.
 
 
 Some possible examples are:
- * ``status 200`` Expecting a 200 response code
- * ``status 200-399`` Expecting a non-failure response code
- * ``string success`` Expecting the string `success` in the response body
+:   - ``status 200`` Expecting a 200 response code
+    - ``status 200-399`` Expecting a non-failure response code
+    - ``string success`` Expecting the string success in the response body
 ```
 ### TCP checks
 Configure health checks for TCP mode backends. You can configure protocol-aware
@@ -333,11 +333,11 @@ checks for a range of Layer 7 protocols:
 ```{cfgcmd} set load-balancing haproxy backend \<name\> health-check \<protocol\>
 
 Available health check protocols:
- * ``ldap`` LDAP protocol check.
- * ``redis`` Redis protocol check.
- * ``mysql`` MySQL protocol check.
- * ``pgsql`` PostgreSQL protocol check.
- * ``smtp`` SMTP protocol check.
+:   - ``ldap`` LDAP protocol check.
+    - ``redis`` Redis protocol check.
+    - ``mysql`` MySQL protocol check.
+    - ``pgsql`` PostgreSQL protocol check.
+    - ``smtp`` SMTP protocol check.
 ```
 
 :::{note}
