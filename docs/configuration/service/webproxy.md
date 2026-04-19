@@ -423,30 +423,40 @@ Use tab completion to get a list of categories.
 ```
 To auto update the blacklist files
 
+```none
 set service webproxy url-filtering squidguard auto-update update-hour 23
+```
 
 To configure blocking add the following to the configuration
 
+```none
 set service webproxy url-filtering squidguard block-category ads
 
 set service webproxy url-filtering squidguard block-category malware
+```
+
 #### Bypassing the webproxy
 ```{include} /_include/need_improvement.txt
 ```
 Some services don't work correctly when being handled via a web proxy.
 So sometimes it is useful to bypass a transparent proxy:
+
 To bypass the proxy for every request that is directed to a specific
 destination:
 
+```none
 set service webproxy whitelist destination-address 198.51.100.33
 
 set service webproxy whitelist destination-address 192.0.2.0/24
+```
 
 To bypass the proxy for every request that is coming from a specific source:
 
+```none
 set service webproxy whitelist source-address 192.168.1.2
 
 set service webproxy whitelist source-address 192.168.2.0/24
+```
 
 (This can be useful when a called service has many and/or often changing
 destination addresses - e.g. Netflix.)

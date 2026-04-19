@@ -195,7 +195,7 @@ $ umount /dev/sdX*
    name (for example, `/dev/sdb`), not the partition name
    (for example, `/dev/sdb1`).
 
-   **Warning**: This will destroy all data on the USB drive!
+**Warning**: This will destroy all data on the USB drive!
 
 ```none
 # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync

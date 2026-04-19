@@ -61,6 +61,7 @@ Now you are ready to setup IPsec. The key points:
    can identify IKE traffic from the responder correctly.
 4. On the responder, we need to set the local id so that initiator
    can know who's talking to it for the point #3 to work.
+
 On the LEFT (static address):
 
 ```none

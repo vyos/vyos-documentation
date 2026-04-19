@@ -18,6 +18,7 @@ below:
   to neighbors.
 - Prefer a specific routing protocol routes over another routing protocol
   running on the same router.
+
 Policies, in VyOS, are implemented using FRR filtering and route maps. Detailed
 information of FRR could be found in <http://docs.frrouting.org/>
 

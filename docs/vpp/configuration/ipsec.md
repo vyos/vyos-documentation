@@ -167,12 +167,19 @@ Adding additional routes via VTI interface does not affect actual VPP IPsec oper
 ## Potential Issues and Troubleshooting
 Improper IPsec configuration can lead to various issues, including:
 - **Unidirectional traffic flow or acceleration**
+
   If kernel has a conflicting route for the remote subnet, such route may take precedence over the policy route created for the IPsec tunnel in VPP. This may lead to unidirectional traffic flow or acceleration only in one direction. This has no security impact because traffic will still be encrypted by the kernel, but it may lead to performance degradation. To avoid this, ensure that no conflicting routes exist in the kernel routing table.
+
 - **Conflicting with kernel routes**
+
   If the kernel routes synchronization option is enabled, VPP will install all the routes from kernel. If you have there routes configured via VTI interfaces to the IPsec peer, they will conflict with the policy routes created for the IPsec tunnel in VPP. Consider using policy-based IPSec configuration to avoid this or {ref}`disable the kernel routes synchronization <vpp_config_dataplane_lcp_ignore-kernel-routes>`.
+
 - **Unsupported algorithms**
+
   If you have configured ESP profiles with algorithms not supported by VPP and the traffic for such peers flows through VPP interfaces, such traffic will be dropped. You can check system logs for messages from VPP with `linux-cp/ipsec: Invalid/Unsupported crypto algo` or `linux-cp/ipsec: Invalid/Unsupported integ algo` line to identify such cases.
+
 - **Connection is established but no traffic flows**
+
   Even if you use compatible algorithms, there can be other reasons why traffic is not flowing. One of most frequent is blocking traffic between peers - that is especially common in public clouds. Make sure that TCP/UDP ports 500 and 4500 and ESP protocol are allowed between the peers. Alternatively, consider enforcing UDP encapsulation on both sides of the tunnel:
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation

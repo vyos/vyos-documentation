@@ -31,6 +31,7 @@ site-2-site-cisco
 ```
 
 ## Configuration Blueprints (autotest)
+
 The next pages contain fully automated configuration examples.
 
 Each lab will build and test from an external script.
