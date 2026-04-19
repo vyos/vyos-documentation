@@ -41,9 +41,7 @@ protocols can be used: any, babel, bgp, isis, ospfv3, ripng, static
 
 :::{note}
 If you choose any as the option that will cause all protocols that
-
-
- are sending routes to zebra.
+are sending routes to zebra.
 :::
 ```
 ### Nexthop Tracking
@@ -85,7 +83,7 @@ Use this command to show IPv6 forwarding status.
 Use this command to show IPv6 routes.
 
 
-Check the many parameters available for the `show ipv6 route` command:
+Check the many parameters available for the show ipv6 route command:
 
 
 :::{code-block} none

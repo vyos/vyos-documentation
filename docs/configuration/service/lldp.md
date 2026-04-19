@@ -45,7 +45,7 @@ can be defined. Only addresses connected to the system will be transmitted.
 
 ```{cfgcmd} set service lldp interface \<interface\>
 
-Enable transmission of LLDP information on given `<interface>`. You can also
+Enable transmission of LLDP information on given \<interface\>. You can also
 say ``all`` here so LLDP is turned on on every interface.
 ```
 
@@ -144,7 +144,7 @@ Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
 
 ```{opcmd} show lldp neighbors interface \<interface\>
 
-Show LLDP neighbors connected via interface `<interface>`.
+Show LLDP neighbors connected via interface \<interface\>.
 ```
 
 ```{opcmd} show log lldp

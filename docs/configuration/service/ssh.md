@@ -92,10 +92,9 @@ ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
 :::
 
 During key generation, OpenSSH will:
-
-* Request user presence (for example, a physical touch or confirmation)
-* Optionally request user verification (PIN), if supported by the authenticator
-* Create a local key handle file and a corresponding public key (``.pub``)
+: - Request user presence (for example, a physical touch or confirmation)
+  - Optionally request user verification (PIN), if supported by the authenticator
+  - Create a local key handle file and a corresponding public key (``.pub``)
 
 
 The private key material never leaves the authenticator device.

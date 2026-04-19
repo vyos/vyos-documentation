@@ -392,7 +392,7 @@ If communication with the {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` server fails, the router falls back to local user authentication.
 During this process, users may experience a login delay while the system waits
 for the {abbr}`RADIUS (Remote Authentication Dial-In User Service)` request to
-time out. This delay depends on the configured `timeout` value.
+time out. This delay depends on the configured timeout value.
 
 :::{hint}
 To grant administrative privileges to {abbr}`RADIUS (Remote

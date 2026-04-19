@@ -8,7 +8,7 @@ be very difficult to compare logfiles from different systems.
 
 ```{cfgcmd} set system time-zone \<timezone\>
 
-Specify the systems ``<timezone>`` as the Region/Location that best defines
+Specify the systems \<timezone\> as the Region/Location that best defines
 your location. For example, specifying US/Pacific sets the time zone to US
 Pacific time.
 

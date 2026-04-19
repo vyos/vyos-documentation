@@ -59,7 +59,7 @@ the network
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> address-family <ipv4|ipv6>
 
 
-This command enables OpenFabric instance with <NAME> on this interface, and
+This command enables OpenFabric instance with \<NAME\> on this interface, and
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
 #### OpenFabric Global Configuration

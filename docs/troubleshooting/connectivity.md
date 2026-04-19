@@ -2,7 +2,7 @@
 
 ## Basic Connectivity Tests
 
-Verifying connectivity can be done with the familiar `ping` and `traceroute`
+Verifying connectivity can be done with the familiar ping and traceroute
 commands. The options for each are shown (the options for each command were
 displayed using the built-in help as described in the {ref}`cli`
 section and are omitted from the output here):
@@ -82,8 +82,8 @@ The output consumes the screen and will replace your command
 prompt.
 :::
 
-Several options are available for changing the display output. Press `h` to
-invoke the built in help system. To quit, just press `q` and you'll be
+Several options are available for changing the display output. Press h to
+invoke the built in help system. To quit, just press q and you'll be
 returned to the VyOS command prompt.
 ```
 
