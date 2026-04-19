@@ -50,6 +50,7 @@ with other vendors, set the port to the IANA standard **4789**.
 
 **Configure a** {abbr}`VNI (VXLAN Network Identifier)` **for the VXLAN
 interface.**
+
 Each VXLAN segment is identified by this 24-bit VNI, allowing up to 16 million
 segments to coexist within the same administrative domain.
 ```
@@ -77,6 +78,7 @@ This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 
 **Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
 interface.**
+
 To use this feature, you must configure the interface with the ``external``
 parameter.
 ```
@@ -85,12 +87,14 @@ parameter.
 
 **Configure the VXLAN interface to use an external control plane, such as BGP
 L2VPN/EVPN, for remote endpoint discovery.**
+
 If not configured, the internal {abbr}`FDB (Forwarding Database)` is used.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters neighbor-suppress
 
 **Enable ARP and ND suppression on the VXLAN interface.**
+
 This reduces ARP and ND message flooding across the VXLAN network. As defined
 in {rfc}`7432#section-10`, participating VTEPs use known MAC-to-IP bindings
 to reply to local requests on behalf of remote hosts.
@@ -106,6 +110,7 @@ the VXLAN interface.
 
 **Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
 interface.**
+
 When enabled, the interface only receives packets with VNIs configured in its
 VNI filtering table.
 
@@ -120,6 +125,7 @@ VNI filtering works only if the interface is configured with the
 ```{cfgcmd} set interfaces vxlan \<interface\> remote \<address\>
 
 **Configure the IPv4 or IPv6 address of the remote VTEP.**
+
 Unlike multicast setups, this command allows you to directly configure the
 remote IPv4 or IPv6 address.
 ```
@@ -129,18 +135,23 @@ remote IPv4 or IPv6 address.
 ```{cfgcmd} set interfaces vxlan \<interface\> source-interface \<interface\>
 
 **Configure the source interface for the VXLAN underlay.**
+
 All VXLAN traffic is sent and received through the specified interface.
+
 This setting is mandatory when deploying VXLAN over a multicast network.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> group \<address\>
 
 **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
+
 VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
 
 ## Multicast VXLAN
+
 Topology: PC4 - Leaf2 - Spine1 - Leaf3 - PC5
+
 PC4 uses the IP address `10.0.0.4/24`, and PC5 uses the IP address
 `10.0.0.5/24`. Both devices assume they reside within the same broadcast
 domain.
@@ -171,7 +182,9 @@ required for each VNI.
 ```{cfgcmd} set interfaces vxlan \<interface\> vlan-to-vni \<vlan\> vni \<vni\>
 
 **Map a VLAN ID to a VNI on the specified VXLAN interface.**
+
 The VXLAN interface can be added to a bridge.
+
 The following example shows an SVD configuration with multiple VLAN-to-VNI
 mappings.
 
@@ -191,6 +204,7 @@ The following example demonstrates a multicast VXLAN deployment.
 
 The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
 Leaf3, which are VyOS routers.
+
 **Topology:** Leaf2 - Spine1 - Leaf3.
 
 The topology is built using GNS3.
@@ -230,6 +244,7 @@ router ospf 1
 Multicast routing is required for scalable traffic forwarding between leaves.
 {abbr}`PIM (Protocol Independent Multicast)` must be enabled towards the leaves
 so the spine can learn from which multicast groups each leaf expects traffic.
+
 **Leaf2 configuration:**
 
 ```none
