@@ -357,7 +357,7 @@ class CmdInclude(SphinxDirective):
         linter_markers = {'.. stop_vyoslinter', '.. start_vyoslinter'}
         new_include_lines = []
         for line in file_content:
-            if line.rstrip() in linter_markers:
+            if line.strip() in linter_markers:
                 continue
             for i in range(10):
                 value = self.options.get(f'var{i}','')
