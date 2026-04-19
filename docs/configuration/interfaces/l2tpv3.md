@@ -33,6 +33,7 @@ L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 
 ```{cmdincludemd} /_include/interface-common-without-dhcp.txt
 :var0: l2tpv3
+:var1: l2tpv3-0
 ```
 
 ### L2TPv3 options

@@ -33,6 +33,7 @@ Pseudo-Ethernet interfaces may not work in environments that require a
 
 ```{cmdincludemd} /_include/interface-common-with-dhcp.txt
 :var0: pseudo-ethernet
+:var1: peth0
 ```
 ### MACVLAN (pseudo-Ethernet) options
 

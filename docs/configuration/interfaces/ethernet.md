@@ -314,6 +314,7 @@ multi-queue support.
 
 ```{cmdincludemd} /_include/interface-eapol.txt
 :var0: ethernet
+:var1: eth0
 ```
 
 #### EVPN Multihoming
@@ -321,6 +322,7 @@ Uplink/core tracking.
 
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: ethernet
+:var1: eth0
 ```
 
 ### VLAN
@@ -336,6 +338,7 @@ Uplink/core tracking.
 
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: ethernet
+:var1: eth0
 ```
 
 ### SPAN port mirroring

@@ -21,10 +21,12 @@ interface type.
 
 ```{cmdincludemd} /_include/interface-address.txt
 :var0: loopback
+:var1: lo
 ```
 
 ```{cmdincludemd} /_include/interface-description.txt
 :var0: loopback
+:var1: lo
 ```
 
 ## Operation

@@ -148,6 +148,7 @@ Wireless device type for this interface
 
 ```{cmdincludemd} /_include/interface-per-client-thread.txt
 :var0: wireless
+:var1: wlan0
 ```
 
 #### PPDU
@@ -516,6 +517,7 @@ interfaces {
 
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: wireless
+:var1: wlan0
 ```
 
 ## Operation
