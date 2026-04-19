@@ -347,25 +347,21 @@ Some policies already include other embedded policies inside. That is
 the case of Shaper: each of its classes use fair-queue unless you
 change it.
 
-Some policies can be combined, you will be able to [embed] a different
+Some policies can be combined, you will be able to embed a different
 policy that will be applied to a class of the main policy.
 
 :::{hint}
 **If you are looking for a policy for your outbound traffic**
 but you don't know which one you need and you don't want to go
 through every possible policy shown here, **our bet is that highly
-likely you are looking for a** [Shaper] **policy and you want to**
+likely you are looking for a** Shaper **policy and you want to**
 {ref}`set its queues <embed>` **as FQ-CoDel**.
 :::
 
 #### Drop Tail
 
-**Queueing discipline:**
-
- PFIFO (Packet First In First Out).
-**Applies to:**
-
- Outbound traffic.
+| **Queueing discipline:** PFIFO (Packet First In First Out).
+| **Applies to:** Outbound traffic.
 
 This the simplest queue possible you can apply to your traffic. Traffic
 must go through a finite queue before it is actually sent. You must
@@ -394,10 +390,9 @@ number of packets it can contain (maximum 4294967295).
 ```
 
 #### Fair Queue
-**Queueing discipline:**
- SFQ (Stochastic Fairness Queuing).
-**Applies to:**
- Outbound traffic.
+
+| **Queueing discipline:** SFQ (Stochastic Fairness Queuing).
+| **Applies to:** Outbound traffic.
 
 Fair Queue is a work-conserving scheduler which schedules the
 transmission of packets based on flows, that is, it balances traffic
@@ -448,7 +443,7 @@ Fair Queue is a non-shaping (work-conserving) policy, so it
 will only be useful if your outgoing interface is really full. If it
 is not, VyOS will not own the queue and Fair Queue will have no
 effect. If there is bandwidth available on the physical link, you can
-[embed] Fair-Queue into a classful shaping policy to make sure it owns
+embed Fair-Queue into a classful shaping policy to make sure it owns
 the queue.
 :::
 
@@ -459,15 +454,8 @@ the queue.
 #### FQ-CoDel
 
 
-**Queueing discipline**
-
-
- Fair/Flow Queue CoDel.
-
-**Applies to:**
-
-
- Outbound Traffic.
+| **Queueing discipline:** Fair/Flow Queue CoDel.
+| **Applies to:** Outbound Traffic.
 
 
 The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and
@@ -487,7 +475,7 @@ queuing discipline. Reordering within a flow is avoided since Codel
 internally uses a FIFO queue.
 
 
-FQ-CoDel is based on a modified Deficit Round Robin ([DRR]) queue
+FQ-CoDel is based on a modified Deficit Round Robin (DRR) queue
 scheduler with the CoDel Active Queue Management (AQM) algorithm
 operating on each queue.
 
@@ -497,7 +485,7 @@ FQ-Codel is a non-shaping (work-conserving) policy, so it
 will only be useful if your outgoing interface is really full. If it
 is not, VyOS will not own the queue and FQ-Codel will have no
 effect. If there is bandwidth available on the physical link, you can
-[embed] FQ-Codel into a classful shaping policy to make sure it owns
+embed FQ-Codel into a classful shaping policy to make sure it owns
 the queue. If you are not sure if you need to embed your FQ-CoDel
 policy into a Shaper, do it.
 :::
@@ -514,7 +502,7 @@ When running it at 1Gbit and lower, you may want to reduce the
 want to set it to 600 packets.
 
 
-If you are using FQ-CoDel embedded into [Shaper] and you have large rates
+If you are using FQ-CoDel embedded into Shaper and you have large rates
 (100Mbit and above), you may consider increasing `quantum` to 8000 or
 higher so that the scheduler saves CPU.
 
@@ -579,12 +567,11 @@ set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 ```
 
 #### Limiter
-**Queueing discipline:**
- Ingress policer.
-**Applies to:**
- Inbound traffic.
 
-Limiter is one of those policies that uses [classes] (Ingress qdisc is
+| **Queueing discipline:** Ingress policer.
+| **Applies to:** Inbound traffic.
+
+Limiter is one of those policies that uses classes (Ingress qdisc is
 actually a classless policy but filters do work in it).
 
 The limiter performs basic ingress policing of traffic flows. Multiple
@@ -600,7 +587,7 @@ the configured classes.
 
 :::{note}
 In the case you want to apply some kind of **shaping** to your
-**inbound** traffic, check the [ingress-shaping] section.
+**inbound** traffic, check the ingress-shaping section.
 :::
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match \<match-name\> description \<description\>
@@ -654,10 +641,9 @@ priority).
 ```
 
 #### Network Emulator
-**Queueing discipline:**
- netem (Network Emulator) + TBF (Token Bucket Filter).
-**Applies to:**
- Outbound traffic.
+
+| **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
+| **Applies to:** Outbound traffic.
 
 VyOS Network Emulator policy emulates the conditions you can suffer in a
 real network. You will be able to configure things like rate, burst,
@@ -734,10 +720,9 @@ packets (1-4294967295) the queue may hold queued at a time.
 ```
 
 #### Priority Queue
-**Queueing discipline:**
- PRIO.
-**Applies to:**
- Outbound traffic.
+
+| **Queueing discipline:** PRIO.
+| **Applies to:** Outbound traffic.
 
 The Priority Queue is a classful scheduling policy. It does not delay
 packets (Priority Queue is not a shaping policy), it simply dequeues
@@ -750,7 +735,7 @@ a class (Class ID), but that does not apply to every policy.
 The number of a class in a Priority Queue it does not only
 identify it, it also defines its priority.
 :::
-Up to seven queues -defined as [classes] with different priorities- can
+Up to seven queues -defined as classes with different priorities- can
 be configured. Packets are placed into queues based on associated match
 criteria. Packets are transmitted from the queues in priority order. If
 classes with a higher priority are being filled with packets
@@ -777,7 +762,7 @@ Possible completions:
    vif          Virtual Local Area Network (VLAN) ID for this match
 ```
 
-As with other policies, you can [embed] other policies into the classes
+As with other policies, you can embed other policies into the classes
 (and default) of your Priority Queue policy through the `queue-type`
 setting:
 
@@ -804,10 +789,9 @@ dropped.
 (random-detect)=
 
 #### Random-Detect
-**Queueing discipline:**
- Generalized Random Early Drop.
-**Applies to:**
- Outbound traffic.
+
+| **Queueing discipline:** Generalized Random Early Drop.
+| **Applies to:** Outbound traffic.
 
 A simple Random Early Detection (RED) policy would start randomly
 dropping packets from a queue before it reaches its queue limit thus
@@ -934,10 +918,9 @@ In principle, values must be
 {code}`min-threshold` < {code}`max-threshold` < {code}`queue-limit`.
 
 #### Rate Control
-**Queueing discipline:**
- Token Bucket Filter.
-**Applies to:**
- Outbound traffic.
+
+| **Queueing discipline:** Token Bucket Filter.
+| **Applies to:** Outbound traffic.
 
 Rate-Control is a classless policy that limits the packet flow to a set
 rate. It is a pure shaper, it does not schedule traffic. Traffic is
@@ -988,7 +971,7 @@ you just simply want to slow traffic down.
  Outbound traffic.
 
 The round-robin policy is a classful scheduler that divides traffic in
-different [classes] you can configure (up to 4096). You can [embed] a
+different classes you can configure (up to 4096). You can embed a
 new policy into each of those classes (default included).
 
 Each class is assigned a deficit counter (the number of bytes that a
@@ -1023,7 +1006,7 @@ Use this command to configure a Round-Robin policy, set its name, set
 a class ID, and the queue size in packets.
 ```
 
-As with other policies, Round-Robin can [embed] another policy into a
+As with other policies, Round-Robin can embed another policy into a
 class through the `queue-type` setting.
 
 ```none
@@ -1043,15 +1026,8 @@ Possible completions:
 #### Shaper
 
 
-**Queueing discipline:**
-
-
- Hierarchical Token Bucket.
-
-**Applies to:**
-
-
- Outbound traffic.
+| **Queueing discipline:** Hierarchical Token Bucket.
+| **Applies to:** Outbound traffic.
 
 
 The Shaper policy does not guarantee a low delay, but it does guarantee
@@ -1091,7 +1067,7 @@ class.
 
 
 Use this command to configure a Shaper policy, set its name, define
-a class and set the size of the `tocken bucket`_ in bytes, which will
+a class and set the size of the tocken bucket in bytes, which will
 be available to be sent at ceiling speed (default: 15Kb).
 ```
 
@@ -1114,7 +1090,7 @@ guarantees have been met. The lower the priority number, the higher
 the priority. The default priority value is 0, the highest priority.
 ```
 
-As with other policies, Shaper can [embed] other policies into its
+As with other policies, Shaper can embed other policies into its
 classes through the `queue-type` setting and then configure their
 parameters.
 
@@ -1183,11 +1159,11 @@ set qos policy shaper MY-HTB default queue-type 'fair-queue'
 (cake)=
 
 #### CAKE
-**Queueing discipline:**
- Deficit mode.
-**Applies to:**
- Outbound traffic.
-[Common Applications Kept Enhanced] (CAKE) is a comprehensive queue management
+
+| **Queueing discipline:** Deficit mode.
+| **Applies to:** Outbound traffic.
+
+Common Applications Kept Enhanced (CAKE) is a comprehensive queue management
 system, implemented as a queue discipline (qdisc) for the Linux kernel. It is
 designed to replace and improve upon the complex hierarchy of simple qdiscs
 presently required to effectively tackle the bufferbloat problem at the network
