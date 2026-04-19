@@ -80,7 +80,7 @@ Configure one or more attributes to the given NTP server.
 
 
 * ``interleave`` enables NTP interleaved mode (see
-  `draft-ntp-interleaved-modes`_), which can improve synchronization accuracy
+  [draft-ntp-interleaved-modes]), which can improve synchronization accuracy
   and stability when supported by both parties.
 ```
 
@@ -165,7 +165,7 @@ packets), chrony will leverage timestamping on transmitted packets only, which
 still provides some benefit.
 ```{cfgcmd} set service ntp timestamp interface \<interface\>
 
-Configures hardware timestamping on the interface <interface>. The special
+Configures hardware timestamping on the interface \<interface\>. The special
 value `all` can also be specified to enable timestamping on all interfaces
 that support it.
 
@@ -188,11 +188,13 @@ The following `receive-filter` modes can be selected:
   transmitted packets will still be leveraged, if supported by the NIC.
 (ptp-transport)=
 ## PTP Transport of NTP Packets
+
 The Precision Time Protocol (IEEE 1588) is a local network time synchronization
 protocol that provides high precision time synchronization by leveraging
 hardware clocks in NICs and other network elements. VyOS does not currently
 support standards-based PTP, which can be deployed independently of
 NTP.
+
 For networks consisting of VyOS and other Linux systems running relatively
 recent versions of the chrony daemon, NTP packets can be "tunneled" over
 PTP. NTP over PTP provides the best of both worlds, leveraging hardware support
