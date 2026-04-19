@@ -49,8 +49,8 @@ set service ipoe-server interface eth1 vlan '100-200'
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\>
 
-Creates local IPoE user with username=**\<interface\>** and
-password=**\<MAC\>** (mac-address)
+Creates local IPoE user with username=\*\*\<interface\>\*\* and
+password=\*\*\<MAC\>\*\* (mac-address)
 
 ```
 
@@ -98,7 +98,7 @@ Specifies the client connectivity mode.
 
 
 * **l2**: It means that clients are on same network where interface
-  is.**(default)**
+  is.(default)
 * **l3**: It means that client are behind some router.
 ```
 

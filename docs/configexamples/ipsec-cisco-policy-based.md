@@ -47,9 +47,12 @@ initiator role on VyOS side.
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
 | PFS        | disable |
-**Traffic Selectors**
-: 192.168.0.0/24 \<==> 192.168.10.0/24
-  192.168.1.0/24 \<==> 192.168.11.0/24
+
+Traffic Selectors
+: 192.168.0.0/24 <==> 192.168.10.0/24
+
+  192.168.1.0/24 <==> 192.168.11.0/24
+
 **Hosts configuration**
 
 | PC1 IP | 192.168.0.2  |

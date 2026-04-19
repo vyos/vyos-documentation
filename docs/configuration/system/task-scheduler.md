@@ -27,7 +27,7 @@ If suffix is omitted, minutes are implied.
 
 ```{cfgcmd} set system task-scheduler task \<task\> crontab-spec \<spec\>
 
-Set execution time in common cron_ time format. A cron `<spec>` of
+Set execution time in common cron time format. A cron `<spec>` of
 ``30 */6 * * *`` would execute the `<task>` at minute 30 past every 6th hour.
 ```
 

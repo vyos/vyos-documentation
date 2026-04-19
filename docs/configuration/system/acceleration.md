@@ -3,7 +3,6 @@
 # Acceleration
 
 In this command tree, all hardware acceleration options will be handled.
-
 At the moment only [Intel® QAT] is supported
 
 ## Intel® QAT

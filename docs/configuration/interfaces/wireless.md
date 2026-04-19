@@ -64,6 +64,7 @@ full SSID, i.e., require stations to know the SSID.
 
 Disassociate stations based on excessive transmission failures or other
 indications of connection loss.
+
 This depends on the driver capabilities and may not be available with all
 drivers.
 ```
@@ -72,6 +73,7 @@ drivers.
 
 Client isolation can be used to prevent low-level bridging of frames between
 associated stations in the BSS.
+
 By default, this bridging is allowed.
 ```
 
@@ -80,6 +82,7 @@ By default, this bridging is allowed.
 Maximum number of stations allowed in station table. New stations will be
 rejected after the station table is full. IEEE 802.11 has a limit of 2007
 different association IDs, so this number should not be larger than that.
+
 This defaults to 2007.
 ```
 
@@ -120,6 +123,7 @@ In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 ```{cfgcmd} set interfaces wireless \<interface\> physical-device \<device\>
 
 Wireless hardware device used as underlay radio.
+
 This defaults to phy0.
 ```
 
@@ -127,9 +131,11 @@ This defaults to phy0.
 
 Adds the Power Constraint information element to Beacon and Probe Response
 frames.
+
 This option adds the Power Constraint information element when applicable
 and the Country information element is configured. The Power Constraint
 element is required by Transmit Power Control.
+
 Valid values are 0..255.
 ```
 
@@ -284,8 +290,10 @@ Beamforming capabilities:
 
 VHT operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
+
 VHT operating channel center frequency - center freq 2
 (for use with the 80+80 mode)
+
 <number> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 ```
 
@@ -366,6 +374,7 @@ Beamforming capabilities:
 
 BSS coloring helps to prevent channel jamming when multiple APs use
 the same channels.
+
 Valid values are 1..63
 ```
 
@@ -373,8 +382,10 @@ Valid values are 1..63
 
 HE operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
+
 HE operating channel center frequency - center freq 2
 (for use with the 80+80 mode)
+
 <number> must be within 1..233. For 80 MHz channels it should be
 channel + 6 and for 160 MHz channels, it should be channel + 14.
 ```
@@ -398,6 +409,7 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 This setting configures Spatial Stream and Modulation Coding Scheme
 settings for HE mode (HE-MCS). It is usually not needed to set this
 explicitly, but it might help with some WiFi adapters.
+
 <number> must be one of:
 * ``0`` - HE-MCS 0-7
 * ``1`` - HE-MCS 0-9

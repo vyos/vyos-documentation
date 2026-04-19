@@ -129,5 +129,3 @@ Only 802.1Q-tagged packets are accepted on Ethernet vifs.
 :var4: 10
 ```
 
-```{include} /_include/common-references.txt
-```

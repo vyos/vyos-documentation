@@ -164,7 +164,4 @@ In VyOS, these tag types are associated with the following CLI options:
 :var7: 20
 ```
 
-```{include} /_include/common-references.txt
-```
-
 .. start_vyoslinter

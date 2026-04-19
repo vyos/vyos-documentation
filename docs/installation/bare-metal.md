@@ -426,7 +426,6 @@ is sufficient to install VyOS from a USB pendrive.
 ### First Boot
 
 Please note that there is a weirdness on the network interface mapping.
-
 The interface \<-> MAC mapping is going upwards but the NICs are placed
 somehow swapped on the mainboard/MACs programmed in a swapped order.
 
