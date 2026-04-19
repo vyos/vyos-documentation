@@ -999,6 +999,7 @@ set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 subn
 #### Address pools
 DHCPv6 address pools must be configured for the system to act as a DHCPv6
 server. The following example describes a common scenario.
+
 **Example:**
 - A shared network named `NET1` serves subnet `2001:db8::/64`
 - It is connected to `eth1`
@@ -1032,6 +1033,7 @@ show service dhcpv6-server
 #### Static mappings
 In order to map specific IPv6 addresses to specific hosts static mappings can
 be created. The following example explains the process.
+
 **Example:**
 - IPv6 address `2001:db8::101` shall be statically mapped
 - IPv6 prefix `2001:db8:0:101::/64` shall be statically mapped
