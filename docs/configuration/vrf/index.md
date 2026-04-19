@@ -266,9 +266,7 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 
    :::{note}
    Ping command can be interrupted at any given time using ``<Ctrl>+c``.
-
-
-    A brief statistic is shown afterwards.
+   A brief statistic is shown afterwards.
 
 
     ::::{code-block} none
@@ -484,24 +482,14 @@ PCS> ping 10.0.0.1
 
 ```
 
->
-> ```none
-
-> VPCS> show ip
-
->
-
-> NAME        : VPCS[1]
-
-> IP/MASK     : 10.30.0.1/24
-
-> GATEWAY     : 10.30.0.254
-
-> DNS         :
-
-> MAC         : 00:50:79:66:68:0f
-
-> ```
+```none
+VPCS> show ip
+NAME        : VPCS[1]
+IP/MASK     : 10.30.0.1/24
+GATEWAY     : 10.30.0.254
+DNS         :
+MAC         : 00:50:79:66:68:0f
+```
 ##### VRF default routing table
 
 
@@ -751,8 +739,8 @@ UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn summary
 
-      Print a summary of neighbor connections for the specified AFI/SAFI
-      combination.
+Print a summary of neighbor connections for the specified AFI/SAFI
+combination.
 
 
 :::{code-block} none

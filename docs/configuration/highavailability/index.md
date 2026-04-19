@@ -240,6 +240,7 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 ```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
 
 Set delay between gratuitous ARP messages sent on an interface.
+
 0 if not defined.
 ```
 
@@ -249,6 +250,7 @@ Set delay between gratuitous ARP messages sent on an interface.
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
 
 Set delay for second set of gratuitous ARPs after transition to MASTER.
+
 5 if not defined.
 ```
 
@@ -258,6 +260,7 @@ Set delay for second set of gratuitous ARPs after transition to MASTER.
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh \<1-600\>
 
 Set minimum time interval for refreshing gratuitous ARPs while MASTER.
+
 0 if not defined, which means no refreshing.
 ```
 
@@ -267,6 +270,7 @@ Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 ```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh-repeat <1-600>
 
 Set number of gratuitous ARP messages to send at a time while MASTER.
+
 1 if not defined.
 ```
 
@@ -277,6 +281,7 @@ Set number of gratuitous ARP messages to send at a time while MASTER.
 
 Set number of gratuitous ARP messages to send at a time after transition to
 MASTER.
+
 5 if not defined.
 ```
 
@@ -408,7 +413,8 @@ Virtual-server can be configured with VRRP virtual address or without VRRP.
 
 In the next example all traffic destined to `203.0.113.1` and port `8280`
 protocol TCP is balanced between 2 real servers `192.0.2.11` and
-`192.0.2.12` to port `80`
+`192.0.2.12` to port `80`.
+
 Real server is auto-excluded if port check with this server fail.
 
 ```none

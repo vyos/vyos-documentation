@@ -403,6 +403,7 @@ preference.
 * **require** - ask client for mppe, if it rejects drop connection
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
 * **deny** - deny mppe
+
 Default behavior - don't ask client for mppe, but allow it if client wants.
 Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
 attribute.

@@ -93,9 +93,12 @@ to allow the ports below:
 - UDP port 500 (IKE)
 - IP protocol number 50 (ESP)
 - UDP port 1701 for IPsec
+
 As well as the below to allow NAT-traversal (when NAT is detected by the
 VPN client, ESP is encapsulated in UDP for NAT-traversal):
+
 - UDP port 4500 (NAT-T)
+
 Example:
 
 ```none
@@ -491,9 +494,9 @@ preference.
 * **require** - ask client for mppe, if it rejects drop connection
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
 * **deny** - deny mppe
+
 Default behavior - don't ask the client for mppe, but allow it if the client
-wants.
-Please note that RADIUS may override this option with the
+wants. Please note that RADIUS may override this option with the
 MS-MPPE-Encryption-Policy attribute.
 ```
 

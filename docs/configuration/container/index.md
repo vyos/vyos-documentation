@@ -11,21 +11,20 @@ a deamonless container engine.
 
 ```{cfgcmd} set container name \<name\> image
 
-    Sets the image name in the hub registry
+Sets the image name in the hub registry
 
+:::{code-block} none
+set container name mysql-server image mysql:8.0
+:::
 
-    :::{code-block} none
-    set container name mysql-server image mysql:8.0
-    :::
-    If a registry is not specified, Docker.io will be used as the container
-    registry unless an alternative registry is specified using
-    **set container registry <name>** or the registry is included
-    in the image name
+If a registry is not specified, Docker.io will be used as the container
+registry unless an alternative registry is specified using
+`set container registry <name>` or the registry is included
+in the image name
 
-
-    :::{code-block} none
-    set container name mysql-server image quay.io/mysql:8.0
-    :::
+:::{code-block} none
+set container name mysql-server image quay.io/mysql:8.0
+:::
 ```
 
 

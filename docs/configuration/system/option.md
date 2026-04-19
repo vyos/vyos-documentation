@@ -20,8 +20,10 @@ Automatically reboot system on kernel panic after 60 seconds.
 
 Automatically reboot after `timeout` minutes into the previous running
 image, that was used to perform the image upgrade.
+
 Reboot `timeout` is configurable in minutes. This gives the user the change
 to log into the system and perform some analysis before automatic rebooting.
+
 Automatic reboot can be cancelled after login using: {opcmd}`reboot cancel`
 ```
 
@@ -42,6 +44,7 @@ available space on system boot.
 
 Disable all optional CPU mitigations. This improves system performance,
 but it may also expose users to several CPU vulnerabilities.
+
 This will add the following option to the Kernel commandline:
 * ``mitigations=off``
 
@@ -64,6 +67,7 @@ Setting will only become active with the next reboot!
 ```{cfgcmd} set system option kernel amd-pstate-driver \<mode\>
 
 Enables and configures p-state driver for modern AMD Ryzen and Epyc CPUs.
+
 The available modes are:
 * ``active`` This is the low-level firmware control mode based on the profile
   set and the system governor has no effect.
@@ -71,6 +75,7 @@ The available modes are:
   while providing available performance states.
 * ``guided`` The driver allows to set desired performance levels and the firmware
   selects a performance level in this range and fitting to the current workload.
+
 This will add the following two options to the Kernel commandline:
 * ``initcall_blacklist=acpi_cpufreq_init`` Disable default ACPI CPU frequency scale
 * ``amd_pstate={mode}`` Sets the p-state mode
@@ -131,6 +136,7 @@ the used keyboard layout on the system console.
 ```{cfgcmd} set system option keyboard-layout \<us | fr | de | fi | no | dk\>
 
 Change system keyboard layout to given language.
+
 Defaults to ``us``.
 
 :::{note}
