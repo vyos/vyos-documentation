@@ -58,10 +58,13 @@ these operations.
 
 Sets the maximum amount of physical memory VPP can use for packet
 processing and interface buffers.
+
 **Default**: 16GB (usually sufficient for most deployments)
+
 You may need to modify the value for high-throughput environments with
 many interfaces, large packet buffers, very high packet rates, or
 memory-constrained systems where you need to limit VPP's memory usage.
+
 **Physmem independent of main heap size** — physmem is for packet
 buffers, main heap is for routing tables.
 

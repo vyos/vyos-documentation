@@ -133,9 +133,9 @@ bottom until one of the factors can be used.
 11. **Router-ID check**
 
 
-    Prefer the route with the lowest `router-ID`. If the route has an
-    `ORIGINATOR_ID` attribute, through iBGP reflection, then that router ID is
-    used, otherwise the `router-ID` of the peer the route was received from is
+    Prefer the route with the lowest router-ID. If the route has an
+    ORIGINATOR_ID attribute, through iBGP reflection, then that router ID is
+    used, otherwise the router-ID of the peer the route was received from is
     used.
 
 
@@ -1144,7 +1144,7 @@ systems (a confederation).
 ```{cfgcmd} set protocols bgp parameters confederation peers \<nsubasn\>
 
 This command sets other confederations \<nsubasn\> as members of autonomous
-system specified by {cfgcmd}`confederation identifier \<asn\>`.
+system specified by {cfgcmd}`confederation identifier <asn>`.
 ```
 ## Operational Mode Commands
 ### Show
@@ -1388,6 +1388,7 @@ set protocols static route6 2001:db8:2::/48 blackhole distance '254'
 ```
 ### Route Filtering
 Route filter can be applied using a route-map:
+
 **Node1:**
 ```none
 set policy prefix-list AS65535-IN rule 10 action 'permit'

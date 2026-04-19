@@ -95,12 +95,12 @@ parameters. The key configuration fields are:
   Multi-line commands example:
 
   ```toml
-pre_build_hook = """
-  mkdir -p ../hello/vyos
-  mkdir -p ../vyos
-  cp example.txt ../vyos
-"""
-```
+  pre_build_hook = """
+    mkdir -p ../hello/vyos
+    mkdir -p ../vyos
+    cp example.txt ../vyos
+  """
+  ```
 
   Combined commands and scripts:
 

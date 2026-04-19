@@ -174,7 +174,7 @@ its address, but does not run the OSPF protocol (adjacencies are not formed
 and hello packets are not generated).
 
 
-The optional `disable` option allows to exclude interface from passive state.
+The optional disable option allows to exclude interface from passive state.
 This command is used if the command {cfgcmd}`passive-interface default` was
 configured.
 ```
@@ -414,8 +414,8 @@ to a backbone area. In this case between two ABR (one of them has a link to
 the backbone area) in the area (not stub area) a virtual link is organized.
 
 
-<number> – area identifier through which a virtual link goes.
-<A.B.C.D> – ABR router-id with which a virtual link is established. Virtual
+\<number\> – area identifier through which a virtual link goes.
+\<A.B.C.D\> – ABR router-id with which a virtual link is established. Virtual
 link must be configured on both routers.
 
 
@@ -630,7 +630,7 @@ To enable/disable helper support for a specific neighbour, the router-id
 
 ```{cfgcmd} set protocols ospf graceful-restart helper no-strict-lsa-checking
 
-By default `strict-lsa-checking` is configured then the helper will abort
+By default strict-lsa-checking is configured then the helper will abort
 the Graceful Restart when a LSA change occurs which affects the restarting
 router.
 
@@ -1284,6 +1284,7 @@ routers.
 
 This command allows to specify the distribution type for the network
 connected to this interface:
+
 **broadcast** – broadcast IP addresses distribution.
 **point-to-point** – address distribution in point-to-point networks.
 ```
@@ -1320,6 +1321,7 @@ default value is 1 seconds. The interval range is 3 to 65535.
 
 Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
 the default grace period is 120 seconds.
+
 To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
 ospf`` EXEC-level command needs to be issued before restarting the
 ospfd daemon.
@@ -1329,14 +1331,16 @@ ospfd daemon.
 Configure Graceful Restart {rfc}`3623` helper support. By default, helper support
 is disabled for all neighbours. This config enables/disables helper support
 on this router for all neighbours.
+
 To enable/disable helper support for a specific neighbour, the router-id
 (A.B.C.D) has to be specified.
 ```
 ```{cfgcmd} set protocols ospfv3 graceful-restart helper lsa-check-disable
 
-By default `strict-lsa-checking` is configured then the helper will abort
+By default strict-lsa-checking is configured then the helper will abort
 the Graceful Restart when a LSA change occurs which affects the restarting
 router.
+
 This command disables it.
 ```
 ```{cfgcmd} set protocols ospfv3 graceful-restart helper supported-grace-time
@@ -1346,6 +1350,7 @@ Supports as HELPER for configured grace period.
 ```{cfgcmd} set protocols ospfv3 graceful-restart helper planned-only
 
 It helps to support as HELPER only for planned restarts.
+
 By default, it supports both planned and unplanned outages.
 ```
 (ospf-v3-redistribution-config)=
@@ -1409,6 +1414,7 @@ This command displays external information redistributed into OSPFv3
 (ospf-v3-config-example)=
 #### Configuration Example
 A typical configuration using 2 nodes.
+
 **Node 1:**
 ```none
 set protocols ospfv3 interface eth1 area 0.0.0.0
@@ -1429,7 +1435,9 @@ show ipv6 ospfv3 redistribute
 ```
 Cost calculation wireguard interfaces is unreliable as ospfv3 uses the link speed to calculate the link cost.
 You might therefore want to set the link cost to a fixed value on WireGuard tunnels.
+
 Example configuration for WireGuard interfaces:
+
 **Node 1**
 ```none
 set interfaces wireguard wg01 peer ospf02 allowed-ips '::/0'

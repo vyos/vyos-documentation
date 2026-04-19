@@ -15,26 +15,26 @@ Traffic Engineering parameters are used for both IS-IS and OSPF (not supported y
   used in the following commands.
 
 
-  <bit-position-value> can have value 0-31. There cannot be two groups with same bit position.
+  \<bit-position-value\> can have value 0-31. There cannot be two groups with same bit position.
 
 ```
 
 
 ```{cfgcmd} set protocols traffic-engineering interface \<ifname\> admin-group \<admin-group-name\>
 
-Set administrative group for interface <ifname>. Multiple values can be provided.
+Set administrative group for interface \<ifname\>. Multiple values can be provided.
 ```
 
 
 ```{cfgcmd} set protocols traffic-engineering interface \<ifname\> max-bandwidth \<max-bandwidth-value-mbps\>
 
-Set maximum bandwidth for interface <ifname>. Value given in Mbits per second.
+Set maximum bandwidth for interface \<ifname\>. Value given in Mbits per second.
 ```
 
 
 ```{cfgcmd} set protocols traffic-engineering interface \<ifname\> max-reservable-bandwidth \<max-reservable-bandwidth-value-mbps\>
 
-Set maximum reservable bandwidth for interface <ifname>. Value given in Mbits per second.
+Set maximum reservable bandwidth for interface \<ifname\>. Value given in Mbits per second.
 ```
 ## IS-IS TE Configuration
 Traffic Engineering (TE) can be enabled and exported for IS-IS

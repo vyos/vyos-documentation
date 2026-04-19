@@ -79,7 +79,9 @@ Configure these interfaces under the `interfaces wwan` node.
 **Configure the** {abbr}`APN (Access Point Name)` **for the WWAN connection.**
 Every WWAN connection requires an {abbr}`APN (Access Point Name)` to connect to
 the cellular network.
+
 This parameter is mandatory. Contact your service provider for the correct
+{abbr}`APN (Access Point Name)`.
 ```
 
 ## Operation

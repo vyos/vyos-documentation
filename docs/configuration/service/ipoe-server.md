@@ -2,7 +2,7 @@
 
 # IPoE Server
 
-VyOS utilizes [accel-ppp] to provide {abbr}`IPoE (Internet Protocol over
+VyOS utilizes accel-ppp to provide {abbr}`IPoE (Internet Protocol over
 Ethernet)` server functionality. It can be used with local authentication
 (mac-address) or a connected RADIUS server.
 
@@ -49,8 +49,8 @@ set service ipoe-server interface eth1 vlan '100-200'
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\>
 
-Creates local IPoE user with username=**\<interface\>** and
-password=**\<MAC\>** (mac-address)
+Creates local IPoE user with username=**<interface>** and
+password=**<MAC>** (mac-address)
 
 ```
 
@@ -138,7 +138,7 @@ set service ipoe-server authentication mode radius
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
 
-Configure RADIUS `<server>` and its required shared `<secret>` for
+Configure RADIUS \<server\> and its required shared \<secret\> for
 communicating with the RADIUS server.
 ```
 Since the RADIUS server would be a single point of failure, multiple RADIUS
@@ -178,13 +178,13 @@ Best practice would be a loopback or dummy interface.
 ### RADIUS advanced options
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> port \<port\>
 
-Configure RADIUS `<server>` and its required port for authentication requests.
+Configure RADIUS \<server\> and its required port for authentication requests.
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> fail-time \<time\>
 
-Mark RADIUS server as offline for this given `<time>` in seconds.
+Mark RADIUS server as offline for this given \<time\> in seconds.
 ```
 
 
@@ -383,14 +383,14 @@ VLAN monitor for automatic creation of VLAN interfaces for specific user on spec
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit download <bandwidth>
 
 
-Download bandwidth limit in kbit/s for user on interface `<interface>`.
+Download bandwidth limit in kbit/s for user on interface \<interface\>.
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit upload <bandwidth>
 
 
-Upload bandwidth limit in kbit/s for for user on interface `<interface>`.
+Upload bandwidth limit in kbit/s for for user on interface \<interface\>.
 ```
 ### Client IP Pool Advanced Options
 ```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
@@ -439,7 +439,7 @@ Maximum number of concurrent session start attempts
 ```
 ```{cfgcmd} set service ipoe-server name-server \<address\>
 
-Connected client should use `<address>` as their DNS server. This
+Connected client should use \<address\> as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```

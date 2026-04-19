@@ -62,6 +62,7 @@ external network address.
 Every SNAT66 rule has a translation command defined. The prefix defined
 for the translation is the prefix used when the address information in
 a packet is replaced.、
+
 The {ref}`source-nat66` rule replaces the source address of the packet
 and calculates the converted address using the prefix specified in the rule.
 
@@ -79,6 +80,7 @@ set nat66 source rule 1 translation address 'fc00::/64'
 For the {ref}`destination-nat66` rule, the destination address of
 the packet isreplaced by the address calculated from the specified
 address or prefix in the `translation address` command
+
 Example:
 - Convert the address prefix of a single `fc00::/64` network
   to `fc01::/64`

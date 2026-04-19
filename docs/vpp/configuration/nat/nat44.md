@@ -256,10 +256,10 @@ Where:
 - `<protocol>` specifies the protocol (tcp, udp, icmp).
 
 :::{important}
-- If **dynamic NAT rules** are present, **all** traffic received on
-  "in" interfaces is subject to NAT processing.
-- If **only static NAT rules** are configured, traffic that does not
-  match any static rule is routed unchanged.
+If you do not specify ports and protocol, the rule will apply to *all*
+traffic between the specified internal and external addresses.
+
+Rules must contain either both ports and protocol, or neither.
 :::
 
 ### Advanced Static Rule Options
@@ -403,7 +403,6 @@ exclusive.
 
 ### Port-specific Exclude Rules
 For more granular control, you can exclude only specific ports and protocols.
-
 You can combine port and protocol specifications with either `local-address` or
 `external-interface`:
 

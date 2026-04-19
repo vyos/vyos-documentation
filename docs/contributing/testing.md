@@ -17,7 +17,7 @@ This section describes how the automated testing process at VyOS works.
 Smoketests execute predefined VyOS CLI commands and check if the desired
 daemon or service configuration is rendered.
 
-When an ISO image is assembled by the [VyOS CI], the `BUILD_SMOKETEST`
+When an ISO image is assembled by the [VyOS CI](https://ci.vyos.net), the `BUILD_SMOKETEST`
 parameter is enabled by default. This extends the ISO configuration line
 with the following packages:
 
@@ -30,7 +30,7 @@ def CUSTOM_PACKAGES = ''
 If you plan to build your own custom ISO image and want to use VyOS's
 smoketests, ensure that you have the `vyos-1x-smoketest` package installed.
 
-The `make test` command from the [vyos-build] repository launches a new
+The `make test` command from the [vyos-build](https://github.com/vyos/vyos-build) repository launches a new
 QEMU instance, and the ISO image is first installed to the virtual hard disk.
 
 After the first boot into the newly installed system, the main Smoketest script
@@ -200,7 +200,7 @@ vyos@vyos#
 Some configurations have preconditions that must be met. These most
 likely include generation of cryptographic keys before the config can be
 applied; otherwise, you will get a commit error. If you are interested in
-how those preconditions are fulfilled, check the [vyos-build] repository and
+how those preconditions are fulfilled, check the [vyos-build](https://github.com/vyos/vyos-build) repository and
 the `scripts/check-qemu-install` file.
 :::
 

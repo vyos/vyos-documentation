@@ -5,7 +5,7 @@ provided. Additional information can be obtained from
 <https://en.wikipedia.org/wiki/Multicast_DNS>.
 
 Multicast DNS uses the reserved address `224.0.0.251`, which is
-`"administratively scoped"` and does not leave the subnet. mDNS repeater
+"administratively scoped" and does not leave the subnet. mDNS repeater
 retransmits mDNS packets from one interface to other interfaces. This enables
 support for devices using mDNS discovery (like network printers, Apple Airplay,
 Chromecast, various IP based home-automation devices etc) across multiple VLANs.
@@ -28,13 +28,21 @@ all incoming mDNS packets from one interface configured here can be
 re-broadcasted to any other interface(s) configured under this section.
 ```
 
-```{cfgcmd} set service mdns repeater disable mDNS repeater can be temporarily disabled without deleting the service using
+```{cfgcmd} set service mdns repeater disable
+
+mDNS repeater can be temporarily disabled without deleting the service using
 ```
 
-```{cfgcmd} set service mdns repeater ip-version \<ipv4 | ipv6 | both\> mDNS repeater can be enabled either on IPv4 socket or on IPv6 socket or both to re-broadcast. By default, mDNS repeater will listen on both IPv4 and IPv6.
+```{cfgcmd} set service mdns repeater ip-version \<ipv4 | ipv6 | both\>
+
+mDNS repeater can be enabled either on IPv4 socket or on IPv6 socket or both
+to re-broadcast. By default, mDNS repeater will listen on both IPv4 and IPv6.
 ```
 
-```{cfgcmd} set service mdns repeater allow-service \<service\> mDNS repeater can be configured to re-broadcast only specific services. By default, all services are re-broadcasted.
+```{cfgcmd} set service mdns repeater allow-service \<service\>
+
+mDNS repeater can be configured to re-broadcast only specific services. By
+default, all services are re-broadcasted.
 ```
 
 ```{cfgcmd} set service mdns repeater browse-domain \<domain\>

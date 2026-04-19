@@ -8,17 +8,25 @@ At the moment only [Intel® QAT] is supported
 
 ## Intel® QAT
 
-```{opcmd} show system acceleration qat use this command to check if there is an Intel® QAT supported Processor in your system.
+```{opcmd} show system acceleration qat
+
+use this command to check if there is an Intel® QAT supported Processor in your system.
 
 :::{code-block} none
 vyos@vyos:~$ show system acceleration qat
 01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
 :::
-if there is no device the command will show ``No QAT device found``
+
+if there is non device the command will show ``No QAT device found``
+
+:::{code-block} none
+No QAT device found
+:::
 ```
 
-```{cfgcmd} set system acceleration qat if there is a supported device, enable Intel® QAT
+```{cfgcmd} set system acceleration qat
 
+if there is a supported device, enable Intel® QAT
 ```
 
 

@@ -80,6 +80,7 @@ the authentication mode to certificate, and defining what field (by OID)
 in the certificate will be used to identify the username. Two pre-defined
 shortcuts for Common Name (OID 2.5.4.3) and User ID
 (OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid.
+
 Otherwise a specific OID value must be provided.
 
 The user's certificate must be signed by the certificate authority
@@ -279,6 +280,11 @@ filename exactly.
 :::
 
 ### Configuring RADIUS accounting
+The RADIUS accounting feature must be used with the OpenConnect
+authentication mode RADIUS. It cannot be used with local
+authentication. You must configure the OpenConnect authentication mode
+to "radius".
+
 OpenConnect can be configured to send accounting information to a
 RADIUS server to capture user session data such as time of
 connect/disconnect, data transferred, and so on.

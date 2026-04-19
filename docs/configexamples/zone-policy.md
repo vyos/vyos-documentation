@@ -145,10 +145,12 @@ state packets from mistakenly being matched against other rules. Having
 the most matched rule listed first reduces CPU load in high volume
 environments. Note: I have filed a bug to have this added as a default
 action as well.
+
 ''It is important to note, that you do not want to add logging to the
 established state rule as you will be logging both the inbound and
 outbound packets for each session instead of just the initiation of the
 session. Your logs will be massive in a very short period of time.''
+
 In VyOS you must have the interfaces created before you can apply it to
 the zone and the rulesets must be created prior to applying it to a
 zone-policy.
@@ -371,6 +373,7 @@ ruleset between your tunnel interface and your LAN/DMZ zones instead of
 to the WAN.
 
 LAN, WAN, DMZ, local and TUN (tunnel)
+
 v6 pairs would be:
 
 ```none

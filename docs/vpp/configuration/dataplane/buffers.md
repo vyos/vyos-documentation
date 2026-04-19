@@ -8,6 +8,7 @@ lastproofread: '2026-02-23'
 ```
 
 # VPP Dataplane Buffers Configuration
+
 Buffers are essential for handling network packets efficiently. Proper
 configuration enhances performance and reliability, and is mandatory for
 VPP to work. Buffers temporarily store packets during processing. Therefore,
@@ -19,11 +20,13 @@ VPP buffers are allocated from the physical memory pool (`physmem`). The
 total amount of memory available for buffer allocation is controlled by the
 `physmem-max-size` setting, while the buffer configuration parameters
 below control how that memory is used for buffer allocation.
+
 See {ref}`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>`
 for details on configuring `physmem`.
 :::
 
 ## Buffer Configuration Parameters
+
 The following parameters can be configured for VPP buffers:
 
 ### buffers-per-numa
@@ -34,6 +37,7 @@ Typically, you need to tune this value if:
 - The system has many interfaces
 - NICs have many queues
 - NICs have large descriptor sizes
+
 Set this value carefully to balance memory usage and performance.
 
 ```{cfgcmd} set vpp settings resource-allocation buffers buffers-per-numa \<value\>

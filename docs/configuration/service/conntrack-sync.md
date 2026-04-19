@@ -35,11 +35,10 @@ Most examples below show Multicast, but unicast can be specified by using the
 
 ```{cfgcmd} set service conntrack-sync accept-protocol
 
-    Accept only certain protocols: You may want to replicate the state of flows
-    depending on their layer 4 protocol.
+Accept only certain protocols: You may want to replicate the state of flows
+depending on their layer 4 protocol.
 
-
-    Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
+Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
 
 ```
 
@@ -264,6 +263,7 @@ set service conntrack-sync mcast-group '225.0.0.50'
 On the active router, you should have information in the internal-cache of
 conntrack-sync. The same current active connections number should be shown in
 the external-cache of the standby router
+
 On active router run:
 ```none
 $ show conntrack-sync statistics

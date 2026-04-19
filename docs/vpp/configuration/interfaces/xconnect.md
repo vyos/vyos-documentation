@@ -24,6 +24,7 @@ VPP's high-performance packet processing.
   transparency, minimal overhead
 - **Bridge**: Multi-port, MAC learning, broadcast handling, more
   features but higher overhead
+
 Choose XConnect when you need simple point-to-point Layer 2 forwarding
 with maximum performance and transparency. Use bridges when you need
 multi-port switching with MAC learning and broadcast handling.

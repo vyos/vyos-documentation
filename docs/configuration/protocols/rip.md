@@ -70,9 +70,7 @@ This command specifies all interfaces to passive mode.
 
    :::{note}
    Routes with a distance of 255 are effectively disabled and not
-
-
-    installed into the kernel.
+   installed into the kernel.
    :::
 ```
 
@@ -276,6 +274,7 @@ Routing Protocol is "rip"
 ```
 ## Configuration Example
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
+
 **Node 1:**
 ```none
 set interfaces loopback address 10.1.1.1/32
