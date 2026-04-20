@@ -198,11 +198,10 @@ Display IPv4 routing table for VRF identified by `<name>`.
 :::{code-block} none
 vyos@vyos:~$ show ip route vrf blue
 Codes: K - kernel route, C - connected, S - static, R - RIP,
-O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-F - PBR, f - OpenFabric,
-> - selected route, * - FIB route, q - queued route, r - rejected route
-
+       O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
+       T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
+       F - PBR, f - OpenFabric,
+       > - selected route, * - FIB route, q - queued route, r - rejected route
 
 VRF blue:
 K   0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:00:50
@@ -217,11 +216,10 @@ Display IPv6 routing table for VRF identified by `<name>`.
 :::{code-block} none
 vyos@vyos:~$ show ipv6 route vrf red
 Codes: K - kernel route, C - connected, S - static, R - RIPng,
-O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
-v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
-f - OpenFabric,
-> - selected route, * - FIB route, q - queued route, r - rejected route
-
+       O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+       v - VNC, V - VNC-Direct, A - Babel, D - SHARP, F - PBR,
+       f - OpenFabric,
+       > - selected route, * - FIB route, q - queued route, r - rejected route
 
 VRF red:
 K   ::/0 [255/8192] unreachable (ICMP unreachable), 00:43:20
