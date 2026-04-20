@@ -1,7 +1,7 @@
 # L3VPN EVPN with VyOS
 
-Testdate: 2023-05-11\
-Version: 1.4-rolling-202305100734
+- Testdate: 2023-05-11
+- Version: 1.4-rolling-202305100734
 
 I spun up a new lab in EVE-NG, which represents this as the
 "Foo Bar - Service Provider Inc." that has 3 points of presence (PoP) in random

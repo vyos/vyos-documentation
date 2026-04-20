@@ -1,7 +1,7 @@
 # DHCP Relay through GRE-Bridge
 
-Testdate: 2023-05-11\
-Version: 1.4-rolling-202305100734
+- Testdate: 2023-05-11
+- Version: 1.4-rolling-202305100734
 
 This simple structure shows how to configure a DHCP Relay over a GRE Bridge
 interface.
