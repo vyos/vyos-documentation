@@ -127,6 +127,12 @@ This worktree IS the migration branch. All 254 RST files have been converted to 
 In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 `nested_render_text()` — the MyST renderer. RST directives do NOT render.
 
+**CRITICAL — No cross-references inside cfgcmd/opcmd bodies (`.md` files):**
+Both `{ref}`…``, `{doc}`…``, `:ref:`…``, `:doc:`…``, and `[text](file.md)` relative
+links ALL create `pending_xref` nodes that are never resolved inside directive
+bodies, crashing the HTML5 writer with `NotImplementedError: departing unknown
+node type: pending_xref`. Use plain text instead. Tested and confirmed Apr 2026.
+
 - **In `.md` files** — use MyST colon-fence syntax inside cfgcmd/opcmd bodies:
   - `:::{code-block} none` … `:::` (NOT `.. code-block:: none`)
   - `:::{note}` … `:::` (NOT `.. note::`)
@@ -134,6 +140,7 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
   - `% stop_vyoslinter` (NOT `.. stop_vyoslinter`)
   - Do NOT use `` ```none `` backtick fences inside `` ```{cfgcmd} `` bodies —
     same backtick depth closes the outer directive prematurely
+  - Do NOT use any cross-reference role — use plain text only
 
 - **In `_include/*.txt` templates** — templates use `::::` colon-fence cfgcmd/opcmd
   directives, so backtick fences (different depth) work fine inside them:
@@ -152,23 +159,44 @@ In `.md` files, `self.state` is MockState whose `nested_parse()` routes to
 5. Run 10 parallel Playwright scan agents (25 pages each, N=0,25,50,...,225)
 6. Analyze: separate pending-rebuild pages from genuine new issues
 
-### Current state (commit 006b9f34, Apr 19 2026):
+### Current state (commit e0c6e59e, Apr 20 2026):
 Full state in `~/.claude/projects/-Users-syncer-GitHub-vyos-documentation/memory/project_rst_myst_migration.md`
 
-**27 more pages fixed** (006b9f34): ospf, bgp, rip, traffic-engineering, mdns, https,
-conntrack-sync, ipoe-server, router-advert, config-sync, nat66, vpp/nat44, container/index,
-installation/install, acceleration, zone-policy, inter-vrf-routing-vrf-lite, testing,
-upstream-packages, vpp/buffers, vpp/memory, vpp/logging, vpp/xconnect, openconnect,
-wwan, firewall/groups, cgnat.
+**RTD build PASSING** (build 32341634, commit e0c6e59e). Fixed RTD build crash caused by
+cross-reference roles (`{ref}`, `{doc}`, `[text](file.md)`) inside cfgcmd/opcmd bodies
+creating unresolvable `pending_xref` nodes. Affected 8 files:
+firewall/index, interfaces/bridge, interfaces/openvpn, loadbalancing/haproxy,
+protocols/isis, service/ntp, service/ssh, system/lcd.
 
-**RTD rebuild in progress** — wait for build before running DOM diff.
+**Full 254-page Playwright scan completed Apr 20 2026.**
+12 genuine regressions found — need fixing before PR ready:
 
-**Known remaining diffs (explained, not regressions):**
-- Interface pages (bonding/bridge/l2tpv3/macsec/pppoe/pseudo-ethernet): RST list-table vs MyST pipe table HTML structure — structural, unfixable
-- `dhcp-server`, `dns`, `site2site_ipsec`: ADDED [CODE] elements from `\<param\>` angle brackets (RST used `<cite>`, not captured by dom-diff)
-- `protocols/static`, `service/eventhandler`: IMPROVED rendering (RST was broken)
-- `cli`: heading H1→H2 for "Configuration Overview", DT/DD vs P for page-mode commands
-- `coverage`: generated page, branches differ
-- MINOR: bfd, conntrack, login, information, cgnat
+1. `<text>` argument stripping in cfgcmd descriptions (angle bracket handling):
+   - `configuration/firewall/bridge` — 10 commands
+   - `configuration/policy/route-map` — 12 instances
+   - `configuration/policy/access-list`, `as-path-list`, `community-list`,
+     `large-community-list`, `prefix-list` — 1-2 each
 
-**Next**: Wait for RTD rebuild → run full 253-page DOM diff (10 parallel agents) → if clean, mark PR ready for review.
+2. cfgcmd body rendering:
+   - `configuration/container/index` — descriptions merged into command signature span
+   - `configuration/service/console-server` — `:::{note}` inside cfgcmd renders as literal text
+
+3. Heading hierarchy:
+   - `configuration/interfaces/openvpn-examples` — 5 H1 sections demoted to H3
+   - `configuration/interfaces/bonding` — "Operation" H2 missing section anchor id
+
+4. Missing content:
+   - `configuration/vrf/index` — one `show vrf name blue` code block missing
+   - `configuration/vpn/sstp` — note admonition replaced by duplicate
+
+5. URL encoding:
+   - `automation/terraform/terraformvSphere` — underscores shown as `%5F`
+
+**Known structural diffs (accepted, not regressions):**
+- Interface pages (bonding/bridge/l2tpv3/macsec/pppoe/pseudo-ethernet): RST list-table vs MyST pipe table
+- `dhcp-server`, `dns`, `site2site_ipsec`: ADDED [CODE] elements from angle brackets
+- `protocols/static`, `service/eventhandler`: IMPROVED rendering
+- `cli`: heading H1→H2, `coverage`: generated page differs
+- haproxy syslog cross-reference → plain text (pending_xref fix)
+
+**Next**: Fix 12 regressions → push → verify RTD build → mark PR ready.
