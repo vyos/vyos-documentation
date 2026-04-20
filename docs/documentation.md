@@ -62,7 +62,7 @@ and easily perused from a console.
 
 All RST files must follow the same TOC Level syntax and have to start with
 
-```
+```none
 #####
 Title
 #####
