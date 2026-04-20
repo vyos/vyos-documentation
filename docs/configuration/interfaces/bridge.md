@@ -35,10 +35,8 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
 **Configure an interface as a bridge member.**
-Valid interface types are: {ref}`ethernet-interface`, {ref}`bond-interface`,
-{ref}`l2tpv3-interface`, {ref}`openvpn`, {ref}`vxlan-interface`,
-{ref}`wireless-interface`, {ref}`tunnel-interface`, and
-{ref}`geneve-interface`.
+Valid interface types are: ethernet, bond, l2tpv3, openvpn, vxlan,
+wireless, tunnel, and geneve.
 Use tab completion to list interfaces that can be bridged.
 ```
 

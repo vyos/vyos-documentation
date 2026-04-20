@@ -49,8 +49,7 @@ Set custom HTTP headers to include in all responses.
 ```{cfgcmd} set load-balancing haproxy service \<name\> logging facility \<facility\> level \<level\>
 
 Specify facility and level for logging.
-For an explanation on {ref}`syslog_facilities` and
-{ref}`syslog_severity_level`,
+For an explanation on syslog facilities and severity levels,
 see tables in the syslog configuration section.
 ```
 
@@ -189,9 +188,8 @@ Set custom HTTP headers to include in all responses from the backend.
 
 
 Specify facility and level for logging.
-For an explanation on {ref}`syslog_facilities` and
-{ref}`syslog_severity_level`,
-see tables in the {ref}`syslog` configuration section.
+For an explanation on syslog facilities and severity levels,
+see tables in the syslog configuration section.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout check <seconds>
@@ -230,9 +228,8 @@ Specify the minimum required TLS version 1.2 or 1.3
 
 ```{cfgcmd} set load-balancing haproxy global-parameters logging facility <facility> level <level>
 Specify facility and level for logging.
-For an explanation on {ref}`syslog_facilities` and
-{ref}`syslog_severity_level`
-see tables in syslog configuration section.
+For an explanation on syslog facilities and severity levels,
+see tables in the syslog configuration section.
 ```
 
 

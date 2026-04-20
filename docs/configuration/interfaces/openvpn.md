@@ -233,7 +233,7 @@ VyOS CLI.
 
 
 If a required option is missing, you may submit a feature request at
-Phabricator so all users can benefit from it (see {ref}`issues_features`).
+Phabricator so all users can benefit from it (see Contributing/Issues and Features).
 
 
 Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
