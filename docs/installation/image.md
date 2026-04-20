@@ -70,24 +70,20 @@ Version:          VyOS 2025.07.16-0020-rolling
 Release train:    current
 Release flavor:   generic
 
-
 Built by:         autobuild@vyos.net
 Built on:         Wed 16 Jul 2025 00:21 UTC
 Build UUID:       20d432ee-6d55-4ebc-8462-46fe836246c9
 Build Commit ID:  f7ce0d8a692f2d
-
 
 Architecture:     x86_64
 Boot via:         installed image
 System type:      KVM guest
 Secure Boot:      n/a (BIOS)
 
-
 Hardware vendor:  QEMU
 Hardware model:   Standard PC (i440FX + PIIX, 1996)
 Hardware S/N:
 Hardware UUID:    b9831d42-c1fe-b2bd-7d3d-49db9418f5c9
-
 
 Copyright:        VyOS maintainers and contributors
 :::
