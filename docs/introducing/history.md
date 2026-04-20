@@ -5,7 +5,7 @@
 ## In the beginning...
 
 There was a network operating system based on Debian GNU/Linux, called
-Vyatta. [^footnote-1] Introduced in 2006, it served as a great free-software alternative
+Vyatta. :sup:`\*` Introduced in 2006, it served as a great free-software alternative
 to proprietary products. Vyatta came in two editions: Vyatta Core
 (formerly known as Vyatta Community Edition), which was free software, and
 Vyatta Subscription Edition, which included proprietary features and was
@@ -114,7 +114,7 @@ branch. VyOS 1.5 Circinus has not been released yet.
 
 Unlike Vyatta, VyOS has never had closed-source code and never will.
 The only proprietary material in VyOS is non-code assets, such as
-graphics and the trademark "VyOS". [^footnote-2]
+graphics and the trademark "VyOS". :sup:`†`
 
 Note that we do not provide support for images distributed by a third party.
 See the
@@ -122,6 +122,6 @@ See the
 and the end-user license agreement at `/usr/share/vyos/EULA` in
 any pre-built image for more information.
 
-[^footnote-1]: From the Sanskrit adjective "Vyātta" (व्यात्त), meaning opened.
+[\*] From the Sanskrit adjective "Vyātta" (व्यात्त), meaning opened.
 
-[^footnote-2]: This is similar to how Linus Torvalds owns the Linux trademark.
+[†] This is similar to how Linus Torvalds owns the Linux trademark.
