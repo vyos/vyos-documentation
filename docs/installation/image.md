@@ -50,9 +50,9 @@ Name                     Default boot    Running
    :::{code-block} none
    vyos@vyos:~$ delete system image
    The following images are installed:
-   1: 2025.07.16-0020-rolling (running) (default boot)
-   2: 1.4.1
-   3: 1.4.0
+           1: 2025.07.16-0020-rolling (running) (default boot)
+           2: 1.4.1
+           3: 1.4.0
    Select an image to delete: 3
    Do you really want to delete the image 1.4.0? [y/N] y
    The image "1.4.0" was successfully deleted
