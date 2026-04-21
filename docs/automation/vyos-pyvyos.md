@@ -1,41 +1,41 @@
 ---
-lastproofread: '2024-03-10'
+lastproofread: '2026-04-14'
 ---
 
 (vyos-pyvyos)=
 
-# pyvyos
+# PyVyOS
 
-pyvyos is a Python library designed for interacting with VyOS devices through
-their API. This documentation is intended to guide you in using pyvyos for
-programmatic management of your VyOS devices.
+PyVyOS is a Python library for configuring and managing VyOS devices through
+their API.
 
-- [pyvyos Documentation on Read the Docs](https://pyvyos.readthedocs.io/en/latest/) provides detailed instructions
-  on the installation, configuration, and operation of the pyvyos library.
-- [pyvyos Source Code on GitHub](https://github.com/robertoberto/pyvyos)
-  allows you to access and contribute to the library's code.
-- [pyvyos on PyPI](https://pypi.org/project/pyvyos/) for easy installation
-  via pip, the Python package installer. Execute `pip install pyvyos` in your
-  terminal to install.
+**Key resources:**
+
+- [Documentation](https://pyvyos.readthedocs.io/en/latest/): Provides
+  installation, configuration, and usage instructions.
+- [GitHub repository](https://github.com/robertoberto/pyvyos): Hosts the
+  source code.
+- [PyPI](https://pypi.org/project/pyvyos/): Hosts distribution packages for
+  installation via the Python package installer (`pip`).
 
 ## Installation
 
-You can install pyvyos using pip:
+To install PyVyOS via `pip`, run:
 
 ```bash
 pip install pyvyos
 ```
 
-## Getting Started
+## Getting started
 
-## Importing and Disabling Warnings for verify=False
+### Import and disable warnings for verify=false
 
 ```none
 import urllib3
 urllib3.disable_warnings()
 ```
 
-## Using API Response Class
+### Use API response class
 
 ```none
 @dataclass
@@ -46,7 +46,7 @@ class ApiResponse:
     error: str
 ```
 
-## Initializing a VyDevice Object
+### Initialize a VyDevice object
 
 ```none
 from dotenv import load_dotenv
@@ -63,9 +63,9 @@ verify = verify_ssl.lower() == "true" if verify_ssl else True
 device = VyDevice(hostname=hostname, apikey=apikey, port=port, protocol=protocol, verify=verify)
 ```
 
-## Using pyvyos
+## Use PyVyOS
 
-### Configure, then Set
+### Configure, then set
 
 ```none
 response = device.configure_set(path=["interfaces", "ethernet", "eth0", "address", "192.168.1.1/24"])
@@ -73,14 +73,14 @@ if not response.error:
     print(response.result)
 ```
 
-### Configure, then Show a Single Object Value
+### Configure, then show a single object value
 
 ```none
 response = device.retrieve_return_values(path=["interfaces", "dummy", "dum1", "address"])
 print(response.result)
 ```
 
-### Configure, then Show Object
+### Configure, then show object
 
 ```none
 response = device.retrieve_show_config(path=[])
@@ -88,32 +88,32 @@ if not response.error:
     print(response.result)
 ```
 
-### Configure, then Delete Object
+### Configure, then delete object
 
 ```none
 response = device.configure_delete(path=["interfaces", "dummy", "dum1"])
 ```
 
-### Configure, then Save
+### Configure, then save
 
 ```none
 response = device.config_file_save()
 ```
 
-## Configure, then Save File
+### Configure, then save file
 
 ```none
 response = device.config_file_save(file="/config/test300.config")
 ```
 
-### Show Object
+### Show object
 
 ```none
 response = device.show(path=["system", "image"])
 print(response.result)
 ```
 
-### Generate Object
+### Generate object
 
 ```none
 randstring = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(20))
@@ -121,7 +121,7 @@ keyrand =  f'/tmp/key_{randstring}'
 response = device.generate(path=["ssh", "client-key", keyrand])
 ```
 
-### Reset Object
+### Reset object
 
 ```none
 response = device.reset(path=["conntrack-sync", "internal-cache"])
@@ -129,7 +129,7 @@ if not response.error:
     print(response.result)
 ```
 
-### Configure, then Load File
+### Configure, then load file
 
 ```none
 response = device.config_file_load(file="/config/test300.config")

@@ -1,15 +1,19 @@
 ---
-lastproofread: '2023-01-16'
+lastproofread: '2026-04-13'
 ---
 
 (vyos-netmiko)=
 
 # Netmiko
 
-VyOS supports configuration via [netmiko].
-It requires to install `python3-netmiko` module.
+VyOS can be configured using [Netmiko]. To use Netmiko, install the
+`python3-netmiko` module.
 
 ## Example
+
+The following script connects to a VyOS device, applies configuration changes,
+commits them, and runs an operational mode command to verify the updated
+configuration.
 
 ```none
 #!/usr/bin/env python3
@@ -39,7 +43,7 @@ print(output)
 output = net_connect.commit()
 print(output)
 
-# op-mode commands
+# operational mode commands
 output = net_connect.send_command("run show interfaces")
 print(output)
 ```
@@ -51,12 +55,12 @@ $ ./vyos-netmiko.py
 configure
 set interfaces ethernet eth0 description WAN
 [edit]
-vyos@r4-1.3# set interfaces ethernet eth1 description LAN
+vyos@r4-1.5# set interfaces ethernet eth1 description LAN
 [edit]
-vyos@r4-1.3#
+vyos@r4-1.5#
 commit
 [edit]
-vyos@r4-1.3#
+vyos@r4-1.5#
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
 ---------        ----------                        ---  -----------

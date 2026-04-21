@@ -1,39 +1,38 @@
 ---
-lastproofread: '2024-03-10'
+lastproofread: '2026-04-14'
 ---
 
 (vyos-govyos)=
 
-# go-vyos
+# Go-VyOS
 
-go-vyos is a Go library designed for interacting with VyOS devices through
-their REST API. This documentation is intended to guide you in using go-vyos for
-programmatic management of your VyOS devices.
+Go-VyOS is a Go library for configuring and managing VyOS devices through
+their API.
 
-- [go-vyos Documentation & Source Code on GitHub](https://github.com/ganawaj/go-vyos)
-  allows you to access and contribute to the library's code.
-- [go-vyos on pkg.go.dev](https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos)
-  for detailed instructions on the installation, configuration, and
-  operation of the go-vyos library.
+- [GitHub repository](https://github.com/ganawaj/go-vyos): Hosts the source
+  code.
+- [Documentation](https://pkg.go.dev/github.com/ganawaj/go-vyos@v0.1.0/vyos):
+  Provides the complete API reference, including available types, functions, and
+  methods.
 
 ## Installation
 
-You can install go-vyos:
+To install Go-VyOS, run:
 
 ```bash
 go install "github.com/ganawaj/go-vyos/vyos"
 ```
 
-## Getting Started
+## Getting started
 
-## Importing and Disabling TLS Verification
+### Import and disable TLS verification
 
 ```none
 import "github.com/ganawaj/go-vyos/vyos"
 client := vyos.NewClient(nil).WithToken("AUTH_KEY").WithURL("https://192.168.0.1").Insecure()
 ```
 
-## Initializing a VyDevice Object
+### Initialize a VyDevice object
 
 ```none
 import (
@@ -55,9 +54,9 @@ if verify_ssl == "false" {
 }
 ```
 
-## Using go-vyos
+## Use Go-VyOS
 
-### Configure, then Set
+### Configure, then set
 
 ```none
 out, resp, err := c.Conf.Set(ctx, "interfaces ethernet eth0 address 192.168.1.1/24")
@@ -68,7 +67,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-### Show a Single Object Value
+### Show a single object value
 
 ```none
 out, resp, err := c.Show.Do(ctx, "interfaces dummy dum1 address")
@@ -80,7 +79,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
-### Configure, then Show Object
+### Configure, then show object
 
 ```none
 out, resp, err := c.Conf.Get(ctx, "interfaces dummy dum1", nil)
@@ -92,7 +91,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
-### Configure, then Show Multivalue Object
+### Configure, then show multivalue object
 
 ```none
 options := RetrieveOptions{
@@ -107,7 +106,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-### Configure, then Delete Object
+### Configure, then delete object
 
 ```none
 out, resp, err := c.Conf.Delete(ctx, "interfaces dummy dum1")
@@ -118,7 +117,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-### Configure, then Save
+### Configure, then save
 
 ```none
 out, resp, err := c.Conf.Save(ctx, "")
@@ -130,7 +129,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-## Configure, then Save File
+### Configure, then save file
 
 ```none
 out, resp, err := c.Conf.Save(ctx, "/config/test300.config")
@@ -142,7 +141,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
-### Show Object
+### Show object
 
 ```none
 out, resp, err := c.Show.Do(ctx, "system image")
@@ -154,7 +153,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
-### Generate Object
+### Generate object
 
 ```none
 out, resp, err := c.Generate.Do(ctx, "pki wireguard key-pair")
@@ -166,7 +165,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
-### Reset Object
+### Reset object
 
 ```none
 out, resp, err := c.Reset.Do(ctx, "ip bgp 192.0.2.11")
@@ -178,7 +177,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
-### Configure, then Load File
+### Configure, then load file
 
 ```none
 out, resp, err := c.ConfigFile.Load(ctx, "/config/test300.config")

@@ -63,6 +63,15 @@ By assigning a lower cost, you give the interface higher precedence during
 path selection.
 ```
 
+```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\> disable-learning
+**Disable MAC address learning for a specific member interface
+within a bridge.**
+When learning is disabled, the bridge will not add source MAC addresses
+observed on this port to its forwarding database (FDB). Frames destined
+to MACs not present in the FDB are then flooded to all bridge ports
+rather than unicast-forwarded.
+```
+
 ### Bridge options
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
