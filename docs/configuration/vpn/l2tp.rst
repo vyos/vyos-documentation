@@ -154,7 +154,7 @@ e.g. the loopback interface.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. note:: The ``source-address`` must be configured to that of an interface.
    Best practice would be a loopback or dummy interface.
@@ -211,7 +211,7 @@ RADIUS advanced options
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. cfgcmd:: set vpn l2tp remote-access authentication radius rate-limit attribute <attribute>
 
@@ -300,7 +300,7 @@ IPv6
 .. cfgcmd:: set vpn l2tp remote-access client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
    mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an l2tp client will
+  Use this command to set the IPv6 address pool from which an l2tp client will
   get an IPv6 prefix of your defined length (mask) to terminate the l2tp 
   endpoint at their side. The mask length can be set between 48 and 128 bits
   long, the default value is 64.

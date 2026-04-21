@@ -15,7 +15,7 @@ own requirements.
 
 * Bridge br0:
    * Isolated layer 2 bridge.
-   * Accept only IPv6 communication whithin the bridge.
+   * Accept only IPv6 communication within the bridge.
 
 * Bridge br1:
    * Drop all DHCP discover packets.
@@ -47,7 +47,7 @@ First, we need to configure the interfaces and bridges:
 
 .. code-block:: none
 
-  # Brige br0
+  # Bridge br0
   set interfaces bridge br0 description 'Isolated L2 bridge'
   set interfaces bridge br0 member interface eth1
   set interfaces bridge br0 member interface eth2
@@ -218,7 +218,7 @@ And the content of the custom rulesets:
   set firewall bridge name br1-fwd rule 20 action 'accept'
   set firewall bridge name br1-fwd rule 20 source address '10.1.1.102'
   set firewall bridge name br1-fwd rule 20 state 'new'
-    # Drop everythin else within the bridge:
+    # Drop everything else within the bridge:
   set firewall bridge name br1-fwd default-action 'drop'
 
   ### br2 - br2-fwd
@@ -265,7 +265,7 @@ router itself, to other local networks, and to the Internet.
 
 As a reminder, here's a link to the :doc:`firewall documentation
 </configuration/firewall/index>`, where you can find more information about
-the packet flow for traffic that comes from bridge layer and should be analized
+the packet flow for traffic that comes from bridge layer and should be analyzed
 by the IP firewall.
 
 Access to the router itself is controlled by the base chain ``input``, and

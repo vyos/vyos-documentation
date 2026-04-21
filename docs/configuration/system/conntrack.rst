@@ -41,9 +41,9 @@ Configure
 .. cfgcmd:: set system conntrack modules tftp
 
     Configure the connection tracking protocol helper modules.
-    All modules are enable by default.
+    All modules are enabled by default.
 
-    | Use `delete system conntrack modules` to deactive all modules.
+    | Use `delete system conntrack modules` to deactivate all modules.
     | Or, for example ftp, `delete system conntrack modules ftp`.
 
 .. cfgcmd:: set system conntrack tcp half-open-connections <1-21474836>

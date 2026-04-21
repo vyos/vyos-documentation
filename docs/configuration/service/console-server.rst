@@ -66,7 +66,7 @@ port.
 .. cfgcmd:: set service console-server device <device> ssh port <port>
 
   Accept SSH connections for the given `<device>` on TCP port `<port>`.
-  After successfull authentication the user will be directly dropped to
+  After successful authentication the user will be directly dropped to
   the connected serial device.
 
   .. hint:: Multiple users can connect to the same serial device but only

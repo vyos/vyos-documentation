@@ -90,7 +90,7 @@ devices, below configuration shows how to enable SR on IS-IS:
    
   A segment ID that contains an IP address prefix calculated by an IGP in the
   service provider core network. Prefix SIDs are globally unique, this value
-  indentify it 
+  identify it
 
 .. cfgcmd:: set protocols isis segment-routing prefix <address> index
    <no-php-flag | explicit-null| n-flag-clear>
@@ -168,7 +168,7 @@ devices, below configuration shows how to enable SR on OSPF:
    
   A segment ID that contains an IP address prefix calculated by an IGP in the
   service provider core network. Prefix SIDs are globally unique, this value
-  indentify it 
+  identify it
 
 .. cfgcmd:: set protocols ospf segment-routing prefix <address> index
    <no-php-flag | explicit-null| n-flag-clear>

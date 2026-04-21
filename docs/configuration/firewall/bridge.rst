@@ -393,7 +393,7 @@ Packet Modifications
 ====================
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-packets before they are sent out. This feaure provides more flexibility in
+packets before they are sent out. This feature provides more flexibility in
 packet handling.
 
 .. cfgcmd:: set firewall bridge [prerouting | forward | output] filter
