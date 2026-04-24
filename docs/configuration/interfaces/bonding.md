@@ -700,6 +700,8 @@ from ever becoming active.
 :::
 
 
+(operation)=
+
 ## Operation
 ```{opcmd} show interfaces bonding
 
