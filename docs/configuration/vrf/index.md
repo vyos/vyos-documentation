@@ -182,6 +182,7 @@ interfaces assigned to this one VRF to get a better overview.
 
 
 ```{opcmd} show vrf \<name\>
+
 :::{code-block} none
 vyos@vyos:~$ show vrf name blue
 VRF name          state     mac address        flags                     interfaces
