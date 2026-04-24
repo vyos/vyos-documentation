@@ -10,6 +10,7 @@ a deamonless container engine.
 ## Configuration
 
 ```{cfgcmd} set container name \<name\> image
+
 Sets the image name in the hub registry
 
 :::{code-block} none
@@ -28,26 +29,31 @@ set container name mysql-server image quay.io/mysql:8.0
 
 
 ```{cfgcmd} set container name \<name\> entrypoint \<entrypoint\>
+
 Override the default entrypoint from the image for a container.
 ```
 
 
 ```{cfgcmd} set container name \<name\> command \<command\>
+
 Override the default command from the image for a container.
 ```
 
 
 ```{cfgcmd} set container name \<name\> arguments \<arguments\>
+
 Set the command arguments for a container.
 ```
 
 
 ```{cfgcmd} set container name \<name\> host-name \<hostname\>
+
 Set the host name for a container.
 ```
 
 
 ```{cfgcmd} set container name \<name\> allow-host-pid
+
 The container and the host share the same process namespace.
 This means that processes running on the host are visible inside the
 container, and processes inside the container are visible on the host.
@@ -58,6 +64,7 @@ The command translates to "--pid host" when the container is created.
 
 
 ```{cfgcmd} set container name \<name\> allow-host-networks
+
 Allow host networking in a container. The network stack of the container is
 not isolated from the host and will use the host IP.
 
@@ -72,12 +79,14 @@ The command translates to "--net host" when the container is created.
 
 
 ```{cfgcmd} set container name \<name\> network \<networkname\>
+
 Attaches user-defined network to a container.
 Only one network must be specified and must already exist.
 ```
 
 
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
+
 Optionally set a specific static IPv4 or IPv6 address for the container.
 This address must be within the named network prefix.
 
@@ -90,6 +99,7 @@ engine and cannot be used
 
 
 ```{cfgcmd} set container name \<name\> name-server \<address\>
+
 Optionally set a custom name server.
 If a container network is used with DNS enabled,
 this setting will not have any effect.
@@ -97,11 +107,13 @@ this setting will not have any effect.
 
 
 ```{cfgcmd} set container name \<name\> description \<text\>
+
 Set a container description
 ```
 
 
 ```{cfgcmd} set container name \<name\> environment \<key\> value \<value\>
+
 Add custom environment variables.
 Multiple environment variables are allowed.
 The following commands translate to "-e key=value" when the container
@@ -395,24 +407,31 @@ Current default is journald.
 Pull a new image for container
 ```
 ```{opcmd} show container
+
 Show the list of all active containers.
 ```
 ```{opcmd} show container image
+
 Show the local container images.
 ```
 ```{opcmd} show container log \<containername\>
+
 Show logs from a given container
 ```
 ```{opcmd} show container network
+
 Show a list available container networks
 ```
 ```{opcmd} restart container \<containername\>
+
 Restart a given container
 ```
 ```{opcmd} update container image \<containername\>
+
 Update container image
 ```
 ```{opcmd} delete container image \<image id|all\> [force]
+
 Delete a particular container image based on it's image ID.
 You can also delete all container images at once.
 
