@@ -123,8 +123,8 @@ Best practice would be a loopback or dummy interface.
 ```
 
 :::{note}
-Some RADIUS severs use an access control list which allows or denies
-queries, make sure to add your VyOS router to the allowed client list.
+The `source-address` must be configured to that of an interface.
+Best practice would be a loopback or dummy interface.
 :::
 
 ### RADIUS advanced options
