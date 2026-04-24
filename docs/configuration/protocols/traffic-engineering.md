@@ -1,5 +1,3 @@
-(traffic-engineering)=
-
 # Traffic Engineering
 
 Traffic Engineering (TE) is possibility to send traffic from node to node using
@@ -9,53 +7,66 @@ alternative path.
 
 Traffic Engineering parameters are used for both IS-IS and OSPF (not supported yet).
 
-```{eval-rst}
-.. cfgcmd::  set protocols traffic-engineering admin-group <admin-group-name> bit-position <bit-position-value>
+<div class="cfgcmd">
 
-  Create Administrative group and assosiate bit position with it. These groups can be
-  used in the following commands.
+set protocols traffic-engineering admin-group \<admin-group-name\> bit-position \<bit-position-value\>
 
-  <bit-position-value> can have value 0-31. There cannot be two groups with same bit position.
-```
+Create Administrative group and assosiate bit position with it. These groups can be
+used in the following commands.
 
-```{eval-rst}
-.. cfgcmd::  set protocols traffic-engineering interface <ifname> admin-group <admin-group-name>
+\<bit-position-value\> can have value 0-31. There cannot be two groups with same bit position.
 
-  Set administrative group for interface <ifname>. Multiple values can be provided.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd::  set protocols traffic-engineering interface <ifname> max-bandwidth <max-bandwidth-value-mbps>
+<div class="cfgcmd">
 
-  Set maximum bandwidth for interface <ifname>. Value given in Mbits per second.
-```
+set protocols traffic-engineering interface \<ifname\> admin-group \<admin-group-name\>
 
-```{eval-rst}
-.. cfgcmd::  set protocols traffic-engineering interface <ifname> max-reservable-bandwidth <max-reservable-bandwidth-value-mbps>
+Set administrative group for interface \<ifname\>. Multiple values can be provided.
 
-  Set maximum reservable bandwidth for interface <ifname>. Value given in Mbits per second.
+</div>
 
-```
+<div class="cfgcmd">
+
+set protocols traffic-engineering interface \<ifname\> max-bandwidth \<max-bandwidth-value-mbps\>
+
+Set maximum bandwidth for interface \<ifname\>. Value given in Mbits per second.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols traffic-engineering interface \<ifname\> max-reservable-bandwidth \<max-reservable-bandwidth-value-mbps\>
+
+Set maximum reservable bandwidth for interface \<ifname\>. Value given in Mbits per second.
+
+</div>
 
 ## IS-IS TE Configuration
 
 Traffic Engineering (TE) can be enabled and exported for IS-IS
 using the following commands:
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis traffic-engineering enable
+<div class="cfgcmd">
 
-  Enable Traffic Engineering for IS-IS.
-```
+set protocols isis traffic-engineering enable
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis traffic-engineering export
+Enable Traffic Engineering for IS-IS.
 
-  Export Traffic Engineering data to neighbors.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis traffic-engineering address <ipv4-address>
+<div class="cfgcmd">
 
-  Configure IPv4 address for MPLS-TE.
-```
+set protocols isis traffic-engineering export
+
+Export Traffic Engineering data to neighbors.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols isis traffic-engineering address \<ipv4-address\>
+
+Configure IPv4 address for MPLS-TE.
+
+</div>

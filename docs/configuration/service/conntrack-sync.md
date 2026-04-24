@@ -1,5 +1,3 @@
-(conntrack-sync)=
-
 # Conntrack Sync
 
 One of the important features built on top of the Netfilter framework is
@@ -29,229 +27,282 @@ It is possible to use either Multicast or Unicast to sync conntrack traffic.
 Most examples below show Multicast, but unicast can be specified by using the
 "peer" keywork after the specified interface, as in the following example:
 
-{cfgcmd}`set service conntrack-sync interface eth0 peer 192.168.0.250`
+`set service conntrack-sync interface eth0 peer 192.168.0.250`
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync accept-protocol
+<div class="cfgcmd">
 
-    Accept only certain protocols: You may want to replicate the state of flows
-    depending on their layer 4 protocol.
+set service conntrack-sync accept-protocol
 
-    Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
-```
+Accept only certain protocols: You may want to replicate the state of flows
+depending on their layer 4 protocol.
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync event-listen-queue-size <size>
+Protocols are: tcp, sctp, dccp, udp, icmp and ipv6-icmp.
 
-    The daemon doubles the size of the netlink event socket buffer size if it
-    detects netlink event message dropping. This clause sets the maximum buffer
-    size growth that can be reached.
+</div>
 
-    Queue size for listening to local conntrack events in MB.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync expect-sync <all|ftp|h323|nfs|sip|sqlnet>
+set service conntrack-sync event-listen-queue-size \<size\>
 
-    Protocol for which expect entries need to be synchronized.
-```
+The daemon doubles the size of the netlink event socket buffer size if it
+detects netlink event message dropping. This clause sets the maximum buffer
+size growth that can be reached.
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync failover-mechanism vrrp sync-group <group>
+Queue size for listening to local conntrack events in MB.
 
-    Failover mechanism to use for conntrack-sync.
+</div>
 
-    Only VRRP is supported. Required option.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync ignore-address <x.x.x.x>
+set service conntrack-sync expect-sync \<all[|ftp|](##SUBST##|ftp|)h323[|nfs|](##SUBST##|nfs|)sip|sqlnet\>
 
-    IP addresses or networks for which local conntrack entries will not be synced
-```
+Protocol for which expect entries need to be synchronized.
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync interface <name>
+</div>
 
-    Interface to use for syncing conntrack entries.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync interface <name> port <port>
+set service conntrack-sync failover-mechanism vrrp sync-group \<group\>
 
-   Port number used by connection.
-```
+Failover mechanism to use for conntrack-sync.
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync listen-address <ipv4address>
+Only VRRP is supported. Required option.
 
-   Local IPv4 addresses for service to listen on.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync mcast-group <x.x.x.x>
+<div class="cfgcmd">
 
-    Multicast group to use for syncing conntrack entries.
+set service conntrack-sync ignore-address \<x.x.x.x\>
 
-    Defaults to 225.0.0.50.
-```
+IP addresses or networks for which local conntrack entries will not be synced
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync interface <name> peer <address>
+</div>
 
-    Peer to send unicast UDP conntrack sync entires to, if not using Multicast
-    configuration from above above.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync sync-queue-size <size>
+set service conntrack-sync interface \<name\>
 
-    Queue size for syncing conntrack entries in MB.
-```
+Interface to use for syncing conntrack entries.
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync disable-external-cache
+</div>
 
-   This diable the external cache and directly injects the flow-states into the
-   in-kernel Connection Tracking System of the backup firewall.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync purge-timeout <timeout>
+set service conntrack-sync interface \<name\> port \<port\>
 
-   Timeout (in seconds) for purging synchronized entries on handover events.
+Port number used by connection.
 
-   On handover, ``conntrackd -t`` is invoked, which schedules a conntrack table
-   flush after ``<timeout>`` seconds to purge stale (“zombie”) entries and
-   reduce clashes when multiple handovers occur in a short period.
-   The default is 60 seconds.
-```
+</div>
 
-:::{note}
+<div class="cfgcmd">
+
+set service conntrack-sync listen-address \<ipv4address\>
+
+Local IPv4 addresses for service to listen on.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync mcast-group \<x.x.x.x\>
+
+Multicast group to use for syncing conntrack entries.
+
+Defaults to 225.0.0.50.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync interface \<name\> peer \<address\>
+
+Peer to send unicast UDP conntrack sync entires to, if not using Multicast
+configuration from above above.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync sync-queue-size \<size\>
+
+Queue size for syncing conntrack entries in MB.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync disable-external-cache
+
+This diable the external cache and directly injects the flow-states into the
+in-kernel Connection Tracking System of the backup firewall.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync purge-timeout \<timeout\>
+
+Timeout (in seconds) for purging synchronized entries on handover events.
+
+On handover, `conntrackd -t` is invoked, which schedules a conntrack table
+flush after `<timeout>` seconds to purge stale (“zombie”) entries and
+reduce clashes when multiple handovers occur in a short period.
+The default is 60 seconds.
+
+</div>
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
 In VRRP stateful firewall deployments, align VRRP timing with this
 behavior: because synchronized conntrack state is purged after the purge
 timeout, set **VRRP preempt-delay** to ≥ **purge-timeout** so mastership
 can be restored before conntrack state is purged.
-:::
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync disable-syslog
+</div>
 
-   Disable connection logging via Syslog.
-```
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set service conntrack-sync startup-resync
+set service conntrack-sync disable-syslog
 
-   Order conntrackd to request a complete conntrack table resync against
-   the other node at startup.
-```
+Disable connection logging via Syslog.
+
+</div>
+
+<div class="cfgcmd">
+
+set service conntrack-sync startup-resync
+
+Order conntrackd to request a complete conntrack table resync against
+the other node at startup.
+
+</div>
 
 ## Operation
 
-```{eval-rst}
-.. opcmd:: show conntrack table ipv4
+<div class="opcmd">
 
-  Make sure conntrack is enabled by running and show connection tracking table.
+show conntrack table ipv4
 
-  .. code-block:: none
+Make sure conntrack is enabled by running and show connection tracking table.
 
-    vyos@vyos:~$ show conntrack table ipv4
-    TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
-                     FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
-                     TW - TIME WAIT, CL - CLOSE, LI - LISTEN
+``` none
+vyos@vyos:~$ show conntrack table ipv4
+TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
+                 FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
+                 TW - TIME WAIT, CL - CLOSE, LI - LISTEN
 
-    CONN ID    Source                 Destination            Protocol         TIMEOUT
-    1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
-    1006235648 10.35.101.221:57483    172.31.120.21:22       tcp [6] ES       413310
-    1006237088 10.100.68.100          172.31.120.21          icmp [1]         29
-    1015734848 10.35.100.87:56282     172.31.20.12:22        tcp [6] ES       300
-    1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
-    1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
-
-  .. note::
-
-    If the table is empty and you have a warning message, it means
-    conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
-    rule. {cfgcmd}`set firewall state-policy established action accept`
+CONN ID    Source                 Destination            Protocol         TIMEOUT
+1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
+1006235648 10.35.101.221:57483    172.31.120.21:22       tcp [6] ES       413310
+1006237088 10.100.68.100          172.31.120.21          icmp [1]         29
+1015734848 10.35.100.87:56282     172.31.20.12:22        tcp [6] ES       300
+1015734272 172.31.20.12:60286     239.10.10.14:694       udp [17]         29
+1006239392 10.35.101.221          172.31.120.21          icmp [1]         29
 ```
 
-```{eval-rst}
-.. opcmd:: show conntrack-sync cache external
+<div class="note">
 
-  Show connection syncing external cache entries
+<div class="title">
+
+Note
+
+</div>
+
+If the table is empty and you have a warning message, it means
+conntrack is not enabled. To enable conntrack, just create a NAT or a firewall
+rule. `set firewall state-policy established action accept`
+
+</div>
+
+</div>
+
+<div class="opcmd">
+
+show conntrack-sync cache external
+
+Show connection syncing external cache entries
+
+</div>
+
+<div class="opcmd">
+
+show conntrack-sync cache internal
+
+Show connection syncing internal cache entries
+
+</div>
+
+<div class="opcmd">
+
+show conntrack-sync statistics
+
+Retrieve current statistics of connection tracking subsystem.
+
+``` none
+vyos@vyos:~$ show conntrack-sync statistics
+Main Table Statistics:
+
+cache internal:
+current active connections:            19606
+connections created:                 6298470    failed:            0
+connections updated:                 3786793    failed:            0
+connections destroyed:               6278864    failed:            0
+
+cache external:
+current active connections:            15771
+connections created:                 1660193    failed:            0
+connections updated:                   77204    failed:            0
+connections destroyed:               1644422    failed:            0
+
+traffic processed:
+                   0 Bytes                         0 Pckts
+
+multicast traffic (active device=eth0.5):
+           976826240 Bytes sent            212898000 Bytes recv
+             8302333 Pckts sent              2009929 Pckts recv
+                   0 Error send                    0 Error recv
+
+message tracking:
+                   0 Malformed msgs                  263 Lost msgs
 ```
 
-```{eval-rst}
-.. opcmd:: show conntrack-sync cache internal
+</div>
 
-  Show connection syncing internal cache entries
+<div class="opcmd">
+
+show conntrack-sync status
+
+Retrieve current status of connection tracking subsystem.
+
+``` none
+vyos@vyos:~$ show conntrack-sync status
+sync-interface        : eth0.5
+failover-mechanism    : vrrp [sync-group GEFOEKOM]
+last state transition : no transition yet!
+ExpectationSync       : disabled
 ```
 
-```{eval-rst}
-.. opcmd:: show conntrack-sync statistics
-
-  Retrieve current statistics of connection tracking subsystem.
-
-  .. code-block:: none
-
-    vyos@vyos:~$ show conntrack-sync statistics
-    Main Table Statistics:
-
-    cache internal:
-    current active connections:            19606
-    connections created:                 6298470    failed:            0
-    connections updated:                 3786793    failed:            0
-    connections destroyed:               6278864    failed:            0
-
-    cache external:
-    current active connections:            15771
-    connections created:                 1660193    failed:            0
-    connections updated:                   77204    failed:            0
-    connections destroyed:               1644422    failed:            0
-
-    traffic processed:
-                       0 Bytes                         0 Pckts
-
-    multicast traffic (active device=eth0.5):
-               976826240 Bytes sent            212898000 Bytes recv
-                 8302333 Pckts sent              2009929 Pckts recv
-                       0 Error send                    0 Error recv
-
-    message tracking:
-                       0 Malformed msgs                  263 Lost msgs
-
-```
-
-```{eval-rst}
-.. opcmd:: show conntrack-sync status
-
-  Retrieve current status of connection tracking subsystem.
-
-  .. code-block:: none
-
-    vyos@vyos:~$ show conntrack-sync status
-    sync-interface        : eth0.5
-    failover-mechanism    : vrrp [sync-group GEFOEKOM]
-    last state transition : no transition yet!
-    ExpectationSync       : disabled
-
-```
+</div>
 
 ## Example
 
 The next example is a simple configuration of conntrack-sync.
 
-:::{figure} /_static/images/service_conntrack_sync-schema.png
-:alt: Conntrack Sync Example
-:scale: 60 %
-:::
+<figure>
+<img src="/_static/images/service_conntrack_sync-schema.png" alt="Conntrack Sync Example" />
+</figure>
 
 Now configure conntrack-sync service on `router1` **and** `router2`
 
-```none
+``` none
 set high-availability vrrp group internal virtual-address ... etc ...
 set high-availability vrrp sync-group syncgrp member 'internal'
 set service conntrack-sync accept-protocol 'tcp'
@@ -268,7 +319,7 @@ the external-cache of the standby router
 
 On active router run:
 
-```none
+``` none
 $ show conntrack-sync statistics
 
 Main Table Statistics:
@@ -299,7 +350,7 @@ message tracking:
 
 On standby router run:
 
-```none
+``` none
 $ show conntrack-sync statistics
 
 Main Table Statistics:

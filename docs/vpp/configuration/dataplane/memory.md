@@ -24,7 +24,7 @@ ensure that hugepages are enabled and properly configured on your
 system.
 
 ```{eval-rst}
-.. seealso:: :ref:`Hugepages in VyOS Configuration for VPP
+.. seealso:: {ref}`Hugepages in VyOS Configuration for VPP
    <vpp_config_hugepages>`
 ```
 
@@ -79,8 +79,8 @@ buffers, main heap is for routing tables.
 ```{eval-rst}
 .. seealso::
 
-   - :ref:`Hugepages in VyOS Configuration for VPP <vpp_config_hugepages>`
-   - :ref:`VPP Buffer Configuration <vpp_config_dataplane_buffers>` - for
+   - {ref}`Hugepages in VyOS Configuration for VPP <vpp_config_hugepages>`
+   - {ref}`VPP Buffer Configuration <vpp_config_dataplane_buffers>` - for
      controlling buffer allocation within physmem
 ```
 

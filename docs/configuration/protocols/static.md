@@ -1,11 +1,9 @@
-(routing-static)=
-
 # Static
 
 Static routes are manually configured routes, which, in general, cannot be
 updated dynamically from information VyOS learns about the network topology from
 other routing protocols. However, if a link fails, the router will remove
-routes, including static routes, from the {abbr}`RIPB (Routing Information
+routes, including static routes, from the `RIPB (Routing Information
 Base)` that used this interface to reach the next hop. In general, static
 routes should only be used for very simple network topologies, or to override
 the behavior of a dynamic routing protocol for a small number of routes. The
@@ -15,326 +13,407 @@ used to determine the forwarding table used for unicast packet forwarding.
 
 ## IPv4 Unicast Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address>
+<div class="cfgcmd">
 
-   Configure next-hop `<address>` for an IPv4 static route. Multiple static
-   routes can be created.
-```
+set protocols static route \<subnet\> next-hop \<address\>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address> disable
+Configure next-hop <span class="title-ref">\<address\></span> for an IPv4 static route. Multiple static
+routes can be created.
 
-   Disable this IPv4 static route entry.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address>
-   distance <distance>
+<div class="cfgcmd">
 
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
+set protocols static route \<subnet\> next-hop \<address\> disable
 
-   Range is 1 to 255, default is 1.
+Disable this IPv4 static route entry.
 
-   .. note:: Routes with a distance of 255 are effectively disabled and not
-      installed into the kernel.
-```
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route \<subnet\> next-hop \<address\>
+distance \<distance\>
+
+Defines next-hop distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+Range is 1 to 255, default is 1.
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
+Routes with a distance of 255 are effectively disabled and not
+installed into the kernel.
+
+</div>
+
+</div>
 
 ### IPv4 Interface Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> interface
-   <interface>
+<div class="cfgcmd">
 
-   Allows you to configure the next-hop interface for an interface-based IPv4
-   static route. `<interface>` will be the next-hop interface where traffic is
-   routed for the given `<subnet>`.
-```
+set protocols static route \<subnet\> interface
+\<interface\>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> interface
-   <interface> disable
+Allows you to configure the next-hop interface for an interface-based IPv4
+static route. <span class="title-ref">\<interface\></span> will be the next-hop interface where traffic is
+routed for the given <span class="title-ref">\<subnet\></span>.
 
-   Disables interface-based IPv4 static route.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> interface
-   <interface> distance <distance>
+<div class="cfgcmd">
 
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
+set protocols static route \<subnet\> interface
+\<interface\> disable
 
-   Range is 1 to 255, default is 1.
-```
+Disables interface-based IPv4 static route.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route \<subnet\> interface
+\<interface\> distance \<distance\>
+
+Defines next-hop distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+Range is 1 to 255, default is 1.
+
+</div>
 
 ### IPv4 BFD
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd
+<div class="cfgcmd">
 
-   Configure a static route for `<subnet>` using gateway `<address>` and use the
-   gateway address as BFD peer destination address.
-```
+set protocols static route \<subnet\> next-hop \<address\> bfd
 
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span> and use the
+gateway address as BFD peer destination address.
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd profile <profile>
-```
+</div>
 
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with BFD profile `<profile>`.
+<div class="cfgcmd">
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> next-hop <address> bfd multi-hop
-   source-address <source-address>
+set protocols static route \<subnet\> next-hop \<address\>
+bfd profile \<profile\>
 
-   Configure a static route for `<subnet>` using gateway `<address>` and use the
-   gateway address as BFD peer destination address with source address
-   `<source>` but initiate a multi-hop session.
-```
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span>
+and use the gateway address as BFD peer destination address with
+BFD profile <span class="title-ref">\<profile\></span>.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop
+source-address \<source-address\>
+
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span> and use the
+gateway address as BFD peer destination address with source address
+<span class="title-ref">\<source\></span> but initiate a multi-hop session.
+
+</div>
 
 ### DHCP Interface Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> dhcp-interface <interface>
+<div class="cfgcmd">
 
-   Defines route with DHCP interface supplying next-hop IP address.
-```
+set protocols static route \<subnet\> dhcp-interface \<interface\>
+
+Defines route with DHCP interface supplying next-hop IP address.
+
+</div>
 
 ### IPv4 Reject Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocol static route <subnet> reject
+<div class="cfgcmd">
 
-   Defines route which emits an ICMP unreachable when matched.
-```
+set protocol static route \<subnet\> reject
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> reject distance <distance>
+Defines route which emits an ICMP unreachable when matched.
 
-   Defines distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> reject tag <tag>
+<div class="cfgcmd">
 
-   Sets a tag for this route.
-```
+set protocols static route \<subnet\> reject distance \<distance\>
 
-```{eval-rst}
-.. cfgcmd:: set protocol static route6 <subnet> reject
+Defines distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
 
-   Defines route which emits an ICMP unreachable when matched.
-```
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route \<subnet\> reject tag \<tag\>
+
+Sets a tag for this route.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocol static route6 \<subnet\> reject
+
+Defines route which emits an ICMP unreachable when matched.
+
+</div>
 
 ### IPv4 Blackhole Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> blackhole
+<div class="cfgcmd">
 
-   Use this command to configure a "black-hole" route on the router. A
-   black-hole route is a route for which the system silently discard packets
-   that are matched. This prevents networks leaking out public interfaces, but
-   it does not prevent them from being used as a more specific route inside your
-   network.
-```
+set protocols static route \<subnet\> blackhole
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> blackhole distance <distance>
+Use this command to configure a "black-hole" route on the router. A
+black-hole route is a route for which the system silently discard packets
+that are matched. This prevents networks leaking out public interfaces, but
+it does not prevent them from being used as a more specific route inside your
+network.
 
-   Defines blackhole distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route <subnet> blackhole tag <tag>
+<div class="cfgcmd">
 
-   Sets a tag for this route.
-```
+set protocols static route \<subnet\> blackhole distance \<distance\>
+
+Defines blackhole distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route \<subnet\> blackhole tag \<tag\>
+
+Sets a tag for this route.
+
+</div>
 
 ## IPv6 Unicast Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
+<div class="cfgcmd">
 
-   Configure next-hop `<address>` for an IPv6 static route. Multiple static
-   routes can be created.
+set protocols static route6 \<subnet\> next-hop \<address\>
+
+Configure next-hop <span class="title-ref">\<address\></span> for an IPv6 static route. Multiple static
+routes can be created.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> next-hop \<address\> disable
+
+Disable this IPv6 static route entry.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> next-hop \<address\>
+distance \<distance\>
+
+Defines next-hop distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+Range is 1 to 255, default is 1.
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
+Routes with a distance of 255 are effectively disabled and not
+installed into the kernel.
+
+</div>
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> next-hop \<address\>
+segments \<segments\>
+
+It is possible to specify a static route for ipv6 prefixes using
+an SRv6 segments instruction. The <span class="title-ref">/</span> separator can be used to
+specify multiple segment instructions.
+
+Example:
+
+``` none
+set protocols static route6 2001:db8:1000::/36 next-hop 2001:db8:201::ffff segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> disable
-
-   Disable this IPv6 static route entry.
+``` none
+vyos@vyos:~$ show ipv6 route
+Codes: K - kernel route, C - connected, S - static, R - RIPng,
+      O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
+      v - VNC, V - VNC-Direct, A - Babel, F - PBR,
+      f - OpenFabric,
+      > - selected route, * - FIB route, q - queued, r - rejected, b - backup
+      t - trapped, o - offload failure
+C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
+S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address>
-   distance <distance>
-
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-
-   Range is 1 to 255, default is 1.
-
-   .. note:: Routes with a distance of 255 are effectively disabled and not
-      installed into the kernel.
-```
-
-
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> segments <segments>
-```
-
-%
-% It is possible to specify a static route for ipv6 prefixes using an
-% SRv6 segments instruction. The ``/`` separator can be used to specify
-% multiple segment instructions.
-%
-% Example:
-
-%
-% .. code-block:: none
-%
-%   set protocols static route6 2001:db8:1000::/36 next-hop 2001:db8:201::ffff segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
-%
-% .. code-block:: none
-%
-%   vyos@vyos:~$ show ipv6 route
-%   Codes: K - kernel route, C - connected, S - static, R - RIPng,
-%         O - OSPFv3, I - IS-IS, B - BGP, N - NHRP, T - Table,
-%         v - VNC, V - VNC-Direct, A - Babel, F - PBR,
-%         f - OpenFabric,
-%         > - selected route, * - FIB route, q - queued, r - rejected, b - backup
-%         t - trapped, o - offload failure
-%   C>* 2001:db8:201::/64 is directly connected, eth0.201, 00:00:46
-%   S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaaa::7,2002::4,2002::3,2002::2, weight 1, 00:00:08
-
+</div>
 
 ### IPv6 Interface Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> interface
-   <interface>
+<div class="cfgcmd">
 
-   Allows you to configure the next-hop interface for an interface-based IPv6
-   static route. `<interface>` will be the next-hop interface where traffic is
-   routed for the given `<subnet>`.
+set protocols static route6 \<subnet\> interface
+\<interface\>
+
+Allows you to configure the next-hop interface for an interface-based IPv6
+static route. <span class="title-ref">\<interface\></span> will be the next-hop interface where traffic is
+routed for the given <span class="title-ref">\<subnet\></span>.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> interface
+\<interface\> disable
+
+Disables interface-based IPv6 static route.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> interface
+\<interface\> distance \<distance\>
+
+Defines next-hop distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+Range is 1 to 255, default is 1.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> interface
+\<interface\> segments \<segments\>
+
+It is possible to specify a static route for ipv6 prefixes using
+an SRv6 segments instruction. The <span class="title-ref">/</span> separator can be used to
+specify multiple segment instructions.
+
+Example:
+
+``` none
+set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> interface
-   <interface> disable
-
-   Disables interface-based IPv6 static route.
-```
-
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> interface
-   <interface> distance <distance>
-
-   Defines next-hop distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-
-   Range is 1 to 255, default is 1.
-```
-
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> interface
-   <interface> segments <segments>
-
-   It is possible to specify a static route for ipv6 prefixes using an
-   SRv6 segments instruction. The ``/`` separator can be used to specify
-   multiple segment instructions.
-
-   Example:
-```
-
-%
-% .. code-block:: none
-%
-%   set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8:aaaa::7/2002::4/2002::3/2002::2'
-
+</div>
 
 ### IPv6 BFD
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd
+<div class="cfgcmd">
 
-   Configure a static route for `<subnet>` using gateway `<address>` and use the
-   gateway address as BFD peer destination address.
-```
+set protocols static route6 \<subnet\> next-hop \<address\> bfd
 
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span> and use the
+gateway address as BFD peer destination address.
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd profile <profile>
-```
+</div>
 
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with BFD profile `<profile>`.
+<div class="cfgcmd">
 
+set protocols static route6 \<subnet\> next-hop \<address\>
+bfd profile \<profile\>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> next-hop <address> bfd multi-hop
-   source-address <source>
-```
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span>
+and use the gateway address as BFD peer destination address with
+BFD profile <span class="title-ref">\<profile\></span>.
 
-%
-% Configure a static route for `<subnet>` using gateway `<address>` and use the
-% gateway address as BFD peer destination address with source address
-% `<source>` but initiate a multi-hop session.
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> next-hop \<address\>
+bfd multi-hop source-address \<source\>
+
+Configure a static route for <span class="title-ref">\<subnet\></span> using gateway <span class="title-ref">\<address\></span> and use the
+gateway address as BFD peer destination address with source address
+<span class="title-ref">\<source\></span> but initiate a multi-hop session.
+
+</div>
 
 ### IPv6 Reject Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocol static route6 <subnet> reject
+<div class="cfgcmd">
 
-   Defines route which emits an ICMP unreachable when matched.
-```
+set protocol static route6 \<subnet\> reject
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> reject distance <distance>
+Defines route which emits an ICMP unreachable when matched.
 
-   Defines distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> reject tag <tag>
+<div class="cfgcmd">
 
-   Sets a tag for this route.
-```
+set protocols static route6 \<subnet\> reject distance \<distance\>
+
+Defines distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> reject tag \<tag\>
+
+Sets a tag for this route.
+
+</div>
 
 ### IPv6 Blackhole Routes
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> blackhole
+<div class="cfgcmd">
 
-   Use this command to configure a "black-hole" route on the router. A
-   black-hole route is a route for which the system silently discard packets
-   that are matched. This prevents networks leaking out public interfaces, but
-   it does not prevent them from being used as a more specific route inside your
-   network.
-```
+set protocols static route6 \<subnet\> blackhole
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> blackhole distance <distance>
+Use this command to configure a "black-hole" route on the router. A
+black-hole route is a route for which the system silently discard packets
+that are matched. This prevents networks leaking out public interfaces, but
+it does not prevent them from being used as a more specific route inside your
+network.
 
-   Defines blackhole distance for this route, routes with smaller administrative
-   distance are elected prior to those with a higher distance.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route6 <subnet> blackhole tag <tag>
+<div class="cfgcmd">
 
-   Sets a tag for this route.
-```
+set protocols static route6 \<subnet\> blackhole distance \<distance\>
+
+Defines blackhole distance for this route, routes with smaller administrative
+distance are elected prior to those with a higher distance.
+
+</div>
+
+<div class="cfgcmd">
+
+set protocols static route6 \<subnet\> blackhole tag \<tag\>
+
+Sets a tag for this route.
+
+</div>
 
 ## Alternate Routing Tables
 
 Alternate routing tables are used with policy based routing by utilizing
-{ref}`vrf`.
+`vrf`.

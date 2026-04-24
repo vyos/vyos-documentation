@@ -1,8 +1,13 @@
-(snmp)=
-
 # SNMP
 
-{abbr}`SNMP (Simple Network Management Protocol)` is an Internet Standard
+<div class="todo">
+
+Convert raw command blocks in this file to cfgcmd/opcmd
+directives for command coverage tracking.
+
+</div>
+
+`SNMP (Simple Network Management Protocol)` is an Internet Standard
 protocol for collecting and organizing information about managed devices on
 IP networks and for modifying that information to change device behavior.
 Devices that typically support SNMP include cable modems, routers, switches,
@@ -10,7 +15,7 @@ servers, workstations, printers, and more.
 
 SNMP is widely used in network management for network monitoring. SNMP exposes
 management data in the form of variables on the managed systems organized in
-a management information base ([MIB]) which describe the system status and
+a management information base ([MIB](https://en.wikipedia.org/wiki/Management_information_base)) which describe the system status and
 configuration. These variables can then be remotely queried (and, in some
 circumstances, manipulated) by managing applications.
 
@@ -53,22 +58,28 @@ managed devices. NMSs provide the bulk of the processing and memory resources
 required for network management. One or more NMSs may exist on any managed
 network.
 
-:::{figure} /_static/images/service_snmp_communication_principles_diagram.png
-:alt: Principle of SNMP Communication
-:scale: 20 %
+<figure>
+<img src="/_static/images/service_snmp_communication_principles_diagram.png" alt="Principle of SNMP Communication" />
+<figcaption>Image thankfully borrowed from
+<a href="https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG">https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG</a>
+which is under the GNU Free Documentation License</figcaption>
+</figure>
 
-Image thankfully borrowed from
-<https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG>
-which is under the GNU Free Documentation License
-:::
+<div class="note">
 
-:::{note}
+<div class="title">
+
+Note
+
+</div>
+
 VyOS SNMP supports both IPv4 and IPv6.
-:::
+
+</div>
 
 ## SNMP Protocol Versions
 
-VyOS itself supports [SNMPv2] (version 2) and [SNMPv3] (version 3) where the
+VyOS itself supports [SNMPv2](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2) (version 2) and [SNMPv3](https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3) (version 3) where the
 later is recommended because of improved security (optional authentication and
 encryption).
 
@@ -90,7 +101,7 @@ plain text.
 
 #### Example
 
-```none
+``` none
 # Define a community
 set service snmp community routers authorization ro
 
@@ -132,15 +143,13 @@ The security approach in SNMPv3 targets:
   while in transit including an optional packet replay protection mechanism.
 - Authentication – to verify that the message is from a valid source.
 
-(snmp-v3-example)=
-
 #### Example
 
 - Let SNMP daemon listen only on IP address 192.0.2.1
 - Configure new SNMP user named "vyos" with password "vyos12345678"
 - New user will use SHA/AES for authentication and privacy
 
-```none
+``` none
 set service snmp listen-address 192.0.2.1
 set service snmp location 'VyOS Datacenter'
 set service snmp v3 engineid '000000000000000000000002'
@@ -157,7 +166,7 @@ set service snmp v3 view default oid 1
 After commit the plaintext passwords will be hashed and stored in your
 configuration. The resulting CLI config will look like:
 
-```none
+``` none
 vyos@vyos# show service snmp
  listen-address 192.0.2.1 {
  }
@@ -187,8 +196,7 @@ vyos@vyos# show service snmp
 ```
 
 You can test the SNMPv3 functionality from any linux based system, just run the
-following command: `snmpwalk -v 3 -u vyos -a SHA -A vyos12345678 -x AES
--X vyos12345678 -l authPriv 192.0.2.1 .1`
+following command: `snmpwalk -v 3 -u vyos -a SHA -A vyos12345678 -x AES -X vyos12345678 -l authPriv 192.0.2.1 .1`
 
 ## VyOS MIBs
 
@@ -197,7 +205,7 @@ All SNMP MIBs are located in each image of VyOS here: `/usr/share/snmp/mibs/`
 You are be able to download the files using SCP, once the SSH service
 has been activated like so
 
-```none
+``` none
 scp -r vyos@your_router:/usr/share/snmp/mibs /your_folder/mibs
 ```
 
@@ -210,17 +218,15 @@ script of course, then upload it to your VyOS instance via the command
 `scp your_script.sh vyos@your_router:/config/user-data`.
 Once the script is uploaded, it needs to be configured via the command below.
 
-```none
+``` none
 set service snmp script-extensions extension-name my-extension script your_script.sh
 commit
 ```
 
-
 The OID `.1.3.6.1.4.1.8072.1.3.2.3.1.1.4.116.101.115.116`, once called, will
 contain the output of the extension.
 
-
-```none
+``` none
 root@vyos:/home/vyos# snmpwalk -v2c  -c public 127.0.0.1 nsExtendOutput1
 NET-SNMP-EXTEND-MIB::nsExtendOutput1Line."my-extension" = STRING: hello
 NET-SNMP-EXTEND-MIB::nsExtendOutputFull."my-extension" = STRING: hello
@@ -233,11 +239,10 @@ NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
 If you happen to use SolarWinds Orion as NMS you can also use the Device
 Templates Management. A template for VyOS can be easily imported.
 
-
 Create a file named `VyOS-1.3.6.1.4.1.44641.ConfigMgmt-Commands` using the
 following content:
 
-```none
+``` none
 <Configuration-Management Device="VyOS" SystemOID="1.3.6.1.4.1.44641">
     <Commands>
         <Command Name="Reset" Value="set terminal width 0${CRLF}set terminal length 0"/>
@@ -252,8 +257,3 @@ following content:
     </Commands>
 </Configuration-Management>
 ```
-
-
-[mib]: https://en.wikipedia.org/wiki/Management_information_base
-[snmpv2]: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2
-[snmpv3]: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3

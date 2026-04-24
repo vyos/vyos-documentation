@@ -1,8 +1,5 @@
----
-lastproofread: '2023-03-26'
----
-
-(examples-nmp)=
+lastproofread  
+2023-03-26
 
 # NMP example
 
@@ -15,59 +12,29 @@ scale and expand with the needs of your network.
 First prepare our VyOS router for connection to NMP. We have to set
 up the SNMP protocol and connectivity between the router and NMP.
 
-
-```none
+``` none
 set interfaces ethernet eth0 address 'dhcp'
 set system name-server '8.8.8.8'
 set service snmp community router authorization 'test'
 set service snmp community router network '0.0.0.0/0'
 ```
 
-
 ## Configuration 'NMP'
 
 Next, you just should follow the pictures:
 
-```{image} /_static/images/nmp1.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp1.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp2.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp2.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp3.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp3.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp4.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp4.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp5.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp5.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp6.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp6.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-```{image} /_static/images/nmp7.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/nmp7.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 In the end, you'll get a powerful instrument for monitoring the VyOS systems.

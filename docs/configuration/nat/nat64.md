@@ -1,8 +1,13 @@
-(nat64)=
-
 # NAT64
 
-{abbr}`NAT64 (IPv6-to-IPv4 Prefix Translation)` is a critical component in
+<div class="todo">
+
+Convert raw command blocks in this file to cfgcmd/opcmd
+directives for command coverage tracking.
+
+</div>
+
+`NAT64 (IPv6-to-IPv4 Prefix Translation)` is a critical component in
 modern networking, facilitating communication between IPv6 and IPv4 networks.
 This documentation outlines the setup, configuration, and usage of the NAT64
 feature in your project. Whether you are transitioning to IPv6 or need to
@@ -15,11 +20,9 @@ IPv6-only clients to contact IPv4 servers using unicast UDP, TCP, or ICMP.
 
 ### Different NAT Types
 
-(source-nat64)=
-
 #### SNAT64
 
-{abbr}`SNAT64 (IPv6-to-IPv4 Source Address Translation)` is a stateful
+`SNAT64 (IPv6-to-IPv4 Source Address Translation)` is a stateful
 translation mechanism that translates IPv6 addresses to IPv4 addresses.
 
 `64:ff9b::/96` is the well-known prefix for IPv4-embedded IPv6 addresses.
@@ -34,7 +37,7 @@ The 192.0.2.10 address is used as the IPv4 address for the translation pool.
 
 NAT64 server configuration:
 
-```none
+``` none
 set interfaces ethernet eth0 address '192.0.2.1/24'
 set interfaces ethernet eth0 address '192.0.2.10/24'
 set interfaces ethernet eth0 description 'WAN'
@@ -52,7 +55,7 @@ set nat64 source rule 100 translation pool 10 port '1-65535'
 
 NAT64 client configuration:
 
-```none
+``` none
 set interfaces ethernet eth1 address '2001:db8::2/64'
 set protocols static route6 64:ff9b::/96 next-hop 2001:db8::1
 set system name-server '2001:db8::1'
@@ -60,8 +63,7 @@ set system name-server '2001:db8::1'
 
 Test from the IPv6 only client:
 
-
-```none
+``` none
 vyos@r1:~$ ping 64:ff9b::192.0.2.1 count 2
 PING 64:ff9b::192.0.2.1(64:ff9b::c000:201) 56 data bytes
 64 bytes from 64:ff9b::c000:201: icmp_seq=1 ttl=63 time=0.351 ms
@@ -71,4 +73,3 @@ PING 64:ff9b::192.0.2.1(64:ff9b::c000:201) 56 data bytes
 2 packets transmitted, 2 received, 0% packet loss, time 1023ms
 rtt min/avg/max/mdev = 0.351/0.362/0.373/0.011 ms
 ```
-

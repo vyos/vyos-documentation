@@ -2,7 +2,7 @@
 
 VyOS features several monitoring tools.
 
-```none
+``` none
 vyos@vyos:~$ monitor
 Possible completions:
   bandwidth     Monitor interface bandwidth in real time
@@ -35,10 +35,10 @@ Possible completions:
 
 ## Traffic Dumps
 
-To monitor interface traffic, issue the {code}`monitor traffic interface <name>`
-command, replacing `<name>` with your chosen interface.
+To monitor interface traffic, issue the `monitor traffic interface <name>`
+command, replacing <span class="title-ref">\<name\></span> with your chosen interface.
 
-```none
+``` none
 vyos@vyos:~$ monitor traffic interface eth0
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
@@ -53,12 +53,12 @@ listening on eth0, link-type EN10MB (Ethernet), capture size 262144 bytes
 vyos@vyos:~$
 ```
 
-To quit monitoring, press {kbd}`Ctrl-C` and you'll be returned to the VyOS command
+To quit monitoring, press `Ctrl-C` and you'll be returned to the VyOS command
 prompt.
 
 Traffic can be filtered and saved.
 
-```none
+``` none
 vyos@vyos:~$ monitor traffic interface eth0
 Possible completions:
   <Enter>       Execute the current command
@@ -70,38 +70,37 @@ Possible completions:
 
 To quickly view the bandwidth usage of an interface, use the `monitor bandwidth` command:
 
-```none
+``` none
 vyos@vyos:~$ monitor bandwidth interface eth0
 ```
 
 This shows the following:
 
-```none
-     B                      (RX Bytes/second)
+``` none
+B                      (RX Bytes/second)
 198.00 .|....|.....................................................
 165.00 .|....|.....................................................
 132.00 ||..|.|.....................................................
- 99.00 ||..|.|.....................................................
- 66.00 |||||||.....................................................
- 33.00 |||||||.....................................................
-       1   5   10   15   20   25   30   35   40   45   50   55   60
+99.00 ||..|.|.....................................................
+66.00 |||||||.....................................................
+33.00 |||||||.....................................................
+  1   5   10   15   20   25   30   35   40   45   50   55   60
 
-   KiB                      (TX Bytes/second)
-  3.67 ......|.....................................................
-  3.06 ......|.....................................................
-  2.45 ......|.....................................................
-  1.84 ......|.....................................................
-  1.22 ......|.....................................................
-  0.61 :::::||.....................................................
-       1   5   10   15   20   25   30   35   40   45   50   55   60
+KiB                      (TX Bytes/second)
+3.67 ......|.....................................................
+3.06 ......|.....................................................
+2.45 ......|.....................................................
+1.84 ......|.....................................................
+1.22 ......|.....................................................
+0.61 :::::||.....................................................
+  1   5   10   15   20   25   30   35   40   45   50   55   60
 ```
 
 ## Interface Performance
 
-To take a look on the network bandwidth between two nodes, the `monitor
-bandwidth-test` command is used to run iperf.
+To take a look on the network bandwidth between two nodes, the `monitor bandwidth-test` command is used to run iperf.
 
-```none
+``` none
 vyos@vyos:~$ monitor bandwidth-test
 Possible completions:
   accept        Wait for bandwidth test connections (port TCP/5001)
@@ -111,7 +110,7 @@ Possible completions:
 - The `accept` command opens a listening iperf server on TCP Port 5001
 - The `initiate` command connects to that server to perform the test.
 
-```none
+``` none
 vyos@vyos:~$ monitor bandwidth-test initiate
 Possible completions:
   <hostname>    Initiate a bandwidth test to specified host (port TCP/5001)
@@ -126,14 +125,14 @@ a continuously refreshed output. The command is run and output every 2 seconds,
 allowing you to monitor the output continuously without having to re-run the
 command. This can be useful to follow routing adjacency formation.
 
-```none
+``` none
 vyos@router:~$ monitor command "show interfaces"
 ```
 
 Will clear the screen and show you the output of `show interfaces` every
 2 seconds.
 
-```none
+``` none
 Every 2.0s: /opt/vyatta/bin/vyatta-op-cmd-wrapper    Sun Mar 26 02:49:46 2019
 
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down

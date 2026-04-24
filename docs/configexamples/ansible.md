@@ -1,8 +1,5 @@
----
-lastproofread: '2024-04-09'
----
-
-(examples-ansible)=
+lastproofread  
+2024-04-09
 
 # Ansible example
 
@@ -14,15 +11,11 @@ We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
 
-```{image} /_static/images/ansible.png
-:align: center
-:alt: Network Topology Diagram
-:width: 80%
-```
+<img src="/_static/images/ansible.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 We have four pre-configured routers with this configuration:
 
-```none
+``` none
 set interfaces ethernet eth0 address dhcp
 set service ssh
 commit
@@ -36,21 +29,20 @@ save
 
 ## Install Ansible:
 
-```none
+``` none
 # apt-get install ansible
 Do you want to continue? [Y/n] y
 ```
 
 ## Install Paramiko:
 
-```none
+``` none
 #apt-get install -y python3-paramiko
 ```
 
 ## Check the version:
 
-
-```none
+``` none
 # ansible --version
 ansible 2.10.8
 config file = None
@@ -60,10 +52,9 @@ executable location = /usr/bin/ansible
 python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 ```
 
-
 ## Basic configuration of ansible.cfg:
 
-```none
+``` none
 # nano /root/ansible.cfg
 [defaults]
 host_key_checking = no
@@ -71,7 +62,7 @@ host_key_checking = no
 
 ## Add all the VyOS hosts:
 
-```none
+``` none
 # nano /root/hosts
 [vyos_hosts]
 vyos7 ansible_ssh_host=192.0.2.105
@@ -82,7 +73,7 @@ vyos10 ansible_ssh_host=192.0.2.108
 
 ## Add general variables:
 
-```none
+``` none
 # mkdir /root/group_vars/
 # nano /root/group_vars/vyos_hosts
 ansible_python_interpreter: /usr/bin/python3
@@ -94,7 +85,7 @@ ansible_ssh_pass: vyos
 
 ## Add a simple playbook with the tasks for each router:
 
-```none
+``` none
 # nano /root/main.yml
 
 ---
@@ -104,19 +95,18 @@ ansible_ssh_pass: vyos
     - name: Configure general settings for the vyos hosts group
       vyos_config:
         lines:
-        - set system name-server 192.0.2.1
-        - set interfaces ethernet eth0 description '#WAN#'
-        - set interfaces ethernet eth1 description '#LAN#'
-        - set interfaces ethernet eth2 disable
-        - set interfaces ethernet eth3 disable
-        - set system host-name {{ inventory_hostname }}
+          - set system name-server 8.8.8.8
+          - set interfaces ethernet eth0 description '#WAN#'
+          - set interfaces ethernet eth1 description '#LAN#'
+          - set interfaces ethernet eth2 disable
+          - set interfaces ethernet eth3 disable
+          - set system host-name {{ inventory_hostname }}
         save: true
 ```
 
 ## Start the playbook:
 
-
-```none
+``` none
 ansible-playbook -i hosts main.yml
 PLAY [vyos_hosts] **************************************************************
 
@@ -133,10 +123,9 @@ vyos8                      : ok=2    changed=0    unreachable=0    failed=0    s
 vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-
 ## Check the result on the vyos10 router:
 
-```none
+``` none
 vyos@vyos10:~$ show interfaces
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
@@ -148,13 +137,13 @@ eth3             -                                 A/D
 lo               127.0.0.1/8                       u/u
                 ::1/128
 
-vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
-set system name-server '192.0.2.1'
+vyos@vyos10:~$ sh configuration commands | grep 8.8.8.8
+set system name-server '8.8.8.8'
 ```
 
 ## The simple way without configuration of the hostname (one task for all routers):
 
-```none
+``` none
 # nano /root/hosts_v2
 [vyos_hosts_group]
 vyos7 ansible_ssh_host=192.0.2.105
@@ -177,16 +166,15 @@ ansible_connection=network_cli
     - name: Configure remote vyos_hosts_group
       vyos_config:
         lines:
-        - set system name-server 192.0.2.1
-        - set interfaces ethernet eth0 description WAN
-        - set interfaces ethernet eth1 description LAN
-        - set interfaces ethernet eth2 disable
-        - set interfaces ethernet eth3 disable
+          - set system name-server 8.8.8.8
+          - set interfaces ethernet eth0 description WAN
+          - set interfaces ethernet eth1 description LAN
+          - set interfaces ethernet eth2 disable
+          - set interfaces ethernet eth3 disable
         save: true
 ```
 
-
-```none
+``` none
 # ansible-playbook -i hosts_v2 main_v2.yml
 
 PLAY [vyos_hosts_group] ********************************************************
@@ -203,7 +191,6 @@ vyos7                      : ok=1    changed=0    unreachable=0    failed=0    s
 vyos8                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
-
 
 In the next chapter of the example, we'll use Ansible with jinja2
 templates and variables.

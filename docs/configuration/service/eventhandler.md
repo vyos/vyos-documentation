@@ -25,6 +25,7 @@ can pass variables, arguments, and a full matching string to the script.
 ```{eval-rst}
 .. cfgcmd:: set service event-handler event <event-handler name>
 ```
+
 >
 > This is an optional command because the event handler will be
 > automatically created after any of the next commands.

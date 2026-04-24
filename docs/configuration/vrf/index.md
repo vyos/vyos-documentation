@@ -383,7 +383,9 @@ PCS> ping 10.0.0.1
 84 bytes from 10.0.0.1 icmp_seq=2 ttl=63 time=1.618 ms
 84 bytes from 10.0.0.1 icmp_seq=3 ttl=63 time=1.745 ms
 ```
+
 >
+
 ```none
 VPCS> show ip
 

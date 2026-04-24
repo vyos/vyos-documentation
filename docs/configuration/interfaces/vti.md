@@ -1,109 +1,22 @@
-(vti-interface)=
+# VTI - Virtual Tunnel Interface
 
-# VTI (virtual tunnel interface)
+<div class="todo">
 
-{abbr}`VTIs (virtual tunnel interfaces)` let you create secure, encrypted
-tunnels between private networks or hosts across public infrastructure, such as
-the Internet. They operate alongside an underlying IPsec tunnel, which handles
-encapsulation and encryption, while VTIs function exclusively as routing
-interfaces.
+Convert raw command blocks in this file to cfgcmd/opcmd
+directives for command coverage tracking.
 
-## Configuration
+</div>
 
-### Common interface configuration
+Set Virtual Tunnel Interface
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-address.txt
-   :var0: vti
-   :var1: vti0
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-description.txt
-   :var0: vti
-   :var1: vti0
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-disable.txt
-  :var0: vti
-  :var1: vti0
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-ip.txt
-  :var0: vti
-  :var1: vti0
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-ipv6.txt
-  :var0: vti
-  :var1: vti0
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-mtu.txt
-  :var0: vti
-  :var1: vti0
-```
-
-```{eval-rst}
-.. cfgcmd:: set interfaces vti <interface> mirror egress <monitor-interface>
-
-   Configure mirroring of outgoing traffic from the specified VTI to the
-   designated monitor interface.
-```
-
-```{eval-rst}
-.. cfgcmd:: set interfaces vti <interface> mirror ingress <monitor-interface>
-
-   Configure mirroring of incoming traffic from the specified VTI to the
-   designated monitor interface.
-```
-
-```{eval-rst}
-.. cfgcmd:: set interfaces vti <interface> redirect <interface>
-
-   Enable redirection of incoming packets to the specified interface.
-```
-
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-vrf.txt
-  :var0: vti
-  :var1: vti0
-```
-
-## Operation
-
-```{eval-rst}
-.. opcmd:: show interfaces vti <vtiX>
-
-   Show the operational status and traffic statistics for the specified VTI.
-```
-
-```{eval-rst}
-.. opcmd:: show interfaces vti <vtiX> brief
-
-   Show a brief operational status summary for the specified VTI.
-
-```
-
-## Example
-
-**Configure a VTI**
-
-Assign IPv4 and IPv6 addresses to the VTI, along with a brief description:
-
-```none
+``` none
 set interfaces vti vti0 address 192.168.2.249/30
 set interfaces vti vti0 address 2001:db8:2::249/64
-set interfaces vti vti0 description "Description"
 ```
 
-Resulting configuration:
+Results in:
 
-```none
+``` none
 vyos@vyos# show interfaces vti
 vti vti0 {
     address 192.168.2.249/30
@@ -112,21 +25,29 @@ vti vti0 {
 }
 ```
 
-:::{warning}
-When configuring site-to-site IPsec with VTIs, ensure that route
-autoinstall is disabled.
-:::
+<div class="warning">
 
-```none
+<div class="title">
+
+Warning
+
+</div>
+
+When using site-to-site IPsec with VTI interfaces,
+be sure to disable route autoinstall
+
+</div>
+
+``` none
 set vpn ipsec options disable-route-autoinstall
 ```
 
-For more information about the IPsec and VTI issue, as well as the
-`disable-route-autoinstall` option, see:
-<https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july>.
+More details about the IPsec and VTI issue and option disable-route-autoinstall
+<https://blog.vyos.io/vyos-1-dot-2-0-development-news-in-july>
 
-The root cause of the problem is that VTI tunnels require their traffic
-selectors to be set to `0.0.0.0/0` for traffic to match the tunnel, even
-though routing decisions are based on netfilter marks. Unless route insertion
-is explicitly disabled, strongSWAN incorrectly inserts a default route through
-the VTI peer address, causing all traffic to be misrouted.
+The root cause of the problem is that for VTI tunnels to work, their traffic
+selectors have to be set to 0.0.0.0/0 for traffic to match the tunnel, even
+though actual routing decision is made according to netfilter marks. Unless
+route insertion is disabled entirely, StrongSWAN thus mistakenly inserts a
+default route through the VTI peer address, which makes all traffic routed
+to nowhere.

@@ -107,7 +107,7 @@ Only the encryption algorithm type and key parts are required to
 configure the authorization entry in VyOS. The comment part is optional.
 
 ```{eval-rst}
-.. seealso:: :ref:`SSH operation <ssh_operation>`
+.. seealso:: {ref}`SSH operation <ssh_operation>`
 ```
 
 :::{warning}

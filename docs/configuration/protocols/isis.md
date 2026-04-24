@@ -445,7 +445,7 @@ occur within IS-IS when it comes to said duplication.
 ```{eval-rst}
 .. cfgcmd:: set protocols isis segment-routing srv6 interface <interface>
 
-  The :ref:`dummy interface<configuration/interfaces/dummy:dummy>` used
+  The {ref}`dummy interface<configuration/interfaces/dummy:dummy>` used
   to install SRv6 SIDs into the Linux data plane. The interface must exist and
   must be present when configuring IS-IS with
   SRv6.

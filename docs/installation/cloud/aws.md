@@ -76,6 +76,7 @@ Parameter Store. For instructions on creating a configuration, see
 ```none
 $ sudo apt list --installed | grep amazon-cloudwatch-agent
 ```
+
 >
 > :::{note}
 > The amazon-cloudwatch-agent package is normally included in
@@ -88,6 +89,7 @@ $ sudo apt list --installed | grep amazon-cloudwatch-agent
 ```none
 $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:<your-configuration-name>
 ```
+
 >
 > This step also enables systemd service and runs it.
 >

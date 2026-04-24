@@ -1,5 +1,3 @@
-(config-sync)=
-
 # Config Sync
 
 Configuration synchronization (config sync) is a feature of VyOS that
@@ -20,31 +18,37 @@ routers should be online and run the same version of VyOS.
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set service config-sync secondary
-   <address|key|timeout|port>
+<div class="cfgcmd">
 
-   Specify the address, API key, timeout and port of the secondary router.
-   You need to enable and configure the HTTP API service on the secondary
-   router for config sync to operate.
-```
+set service config-sync secondary
+\<address[|key|](##SUBST##|key|)timeout|port\>
 
-```{eval-rst}
-.. cfgcmd:: set service config-sync section <section>
+Specify the address, API key, timeout and port of the secondary router.
+You need to enable and configure the HTTP API service on the secondary
+router for config sync to operate.
 
-   Specify the section of the configuration to synchronize. If more than one
-   section is to be synchronized, repeat the command to add additional
-   sections as required.
-```
+</div>
 
-```{eval-rst}
-.. cfgcmd:: set service config-sync mode <load|set>
+<div class="cfgcmd">
 
-   Two options are available for `mode`: either `load` and replace or `set`
-   the configuration section.
-```
+set service config-sync section \<section\>
 
-```none
+Specify the section of the configuration to synchronize. If more than one
+section is to be synchronized, repeat the command to add additional
+sections as required.
+
+</div>
+
+<div class="cfgcmd">
+
+set service config-sync mode \<load|set\>
+
+Two options are available for \`mode\`: either <span class="title-ref">load</span> and replace or <span class="title-ref">set</span>
+the configuration section.
+
+</div>
+
+``` none
 Supported options for <section> include:
     firewall
     interfaces <interface>
@@ -55,11 +59,67 @@ Supported options for <section> include:
     protocols <protocol>
     qos <interface|policy>
     service <service>
-    system <conntrack|
+    system <conntrack| 
     flow-accounting|option|sflow|static-host-mapping|sysctl|time-zone>
     vpn
     vrf
 ```
+
+## Operational Commands
+
+<div class="opcmd">
+
+show configuration secondary sync \[commands\] \[running | candidate | saved\] \[\<config-node-path\>\]
+
+Display configuration differences between the local node and
+a config-sync secondary node.
+
+This command allows operators to compare configurations across nodes
+participating in configuration synchronization (e.g., primary and
+secondary routers). It helps detect configuration drift and validate
+intended changes before synchronization.
+
+**Parameters:**
+
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<tbody>
+<tr>
+<td><code>commands</code> (optional)</td>
+<td>Show output as a list of configuration commands instead of raw diff.</td>
+</tr>
+<tr>
+<td><code>running|candidate|saved</code> (optional, mutually exclusive)</td>
+<td>Select which configuration to compare:
+<code>running</code> (current active configuration, default),
+<code>candidate</code> (uncommitted changes), or
+<code>saved</code> (last saved configuration). Only one of these may be
+specified at a time; if omitted, <code>running</code> is used.</td>
+</tr>
+</tbody>
+</table>
+
+**Examples:**
+
+``` none
+# compare full running configuration with a secondary node
+show configuration secondary sync
+
+# compare only interface configuration
+show configuration secondary sync running interfaces dummy
+
+# compare candidate configuration and display as a list of commands
+show configuration secondary sync commands candidate
+```
+
+</div>
+
+Without a built-in cross-node diff, operators may unintentionally push
+changes that conflict with the remote configuration (e.g., mismatched
+interfaces, firewall policies, or protocol settings).
 
 ## Example
 
@@ -68,7 +128,7 @@ Supported options for <section> include:
 
 Configure the HTTP API service on Router B
 
-```none
+``` none
 set service https listen-address '10.0.20.112'
 set service https port '8443'
 set service https api keys id KID key 'foo'
@@ -77,7 +137,7 @@ set service https api rest
 
 Configure the config-sync service on Router A
 
-```none
+``` none
 set service config-sync mode 'load'
 set service config-sync secondary address '10.0.20.112'
 set service config-sync secondary port '8443'
@@ -88,23 +148,23 @@ set service config-sync section system 'time-zone'
 
 Make config-sync relevant changes to Router A's configuration
 
-```none
+``` none
 vyos@vyos-A# set system time-zone 'America/Los_Angeles'
 vyos@vyos-A# commit
-INFO:vyos_config_sync:Config synchronization: Mode=load,
+INFO:vyos_config_sync:Config synchronization: Mode=load, 
 Secondary=10.0.20.112
 vyos@vyos-A# save
 
 vyos@vyos-A# set protocols ospf area 0 network '10.0.48.0/30'
 vyos@vyos-A# commit
-INFO:vyos_config_sync:Config synchronization: Mode=load,
+INFO:vyos_config_sync:Config synchronization: Mode=load, 
 Secondary=10.0.20.112
 yos@vyos-A# save
 ```
 
 Verify configuration changes have been replicated to Router B
 
-```none
+``` none
 vyos@vyos-B:~$ show configuration commands | match time-zone
 set system time-zone 'America/Los_Angeles'
 
@@ -114,5 +174,5 @@ set protocols ospf area 0 network '10.0.48.0/30'
 
 ## Known issues
 
-Configuration resynchronization. With the current implementation of `service
-config-sync`, the secondary node must be online.
+Configuration resynchronization. With the current implementation of <span class="title-ref">service
+config-sync</span>, the secondary node must be online.

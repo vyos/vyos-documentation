@@ -1,13 +1,13 @@
-(nat66)=
-
 # NAT66(NPTv6)
 
-```{eval-rst}
-.. TODO:: Convert raw command blocks in this file to cfgcmd/opcmd
-   directives for command coverage tracking.
-```
+<div class="todo">
 
-{abbr}`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address
+Convert raw command blocks in this file to cfgcmd/opcmd
+directives for command coverage tracking.
+
+</div>
+
+`NPTv6 (IPv6-to-IPv6 Network Prefix Translation)` is an address
 translation technology based on IPv6 networks, used to convert an IPv6
 address prefix in an IPv6 message into another IPv6 address prefix.
 We call this address translation method NAT66. Devices that support the NAT66
@@ -18,11 +18,9 @@ and destination address translation functions.
 
 ### Different NAT Types
 
-(source-nat66)=
-
 #### SNAT66
 
-{abbr}`SNPTv6 (Source IPv6-to-IPv6 Network Prefix Translation)` The conversion
+`SNPTv6 (Source IPv6-to-IPv6 Network Prefix Translation)` The conversion
 function is mainly used in the following scenarios:
 
 - A single internal network and external network. Use the NAT66 device to
@@ -47,11 +45,9 @@ function is mainly used in the following scenarios:
   network addresses, and realize the mapping of the same internal
   address to multiple external addresses.
 
-(destination-nat66)=
-
 #### DNAT66
 
-The {abbr}`DNPTv6 (Destination IPv6-to-IPv6 Network Prefix Translation)`
+The `DNPTv6 (Destination IPv6-to-IPv6 Network Prefix Translation)`
 destination address translation function is used in scenarios where the
 server in the internal network provides services to the external network,
 such as providing Web services or FTP services to the external network.
@@ -69,15 +65,15 @@ Every SNAT66 rule has a translation command defined. The prefix defined
 for the translation is the prefix used when the address information in
 a packet is replaced.、
 
-The {ref}`source-nat66` rule replaces the source address of the packet
+The `source-nat66` rule replaces the source address of the packet
 and calculates the converted address using the prefix specified in the rule.
 
 Example:
 
-- Convert the address prefix of a single `fc01::/64` network to `fc00::/64`
-- Output from `eth0` network interface
+- Convert the address prefix of a single <span class="title-ref">fc01::/64</span> network to <span class="title-ref">fc00::/64</span>
+- Output from <span class="title-ref">eth0</span> network interface
 
-```none
+``` none
 set nat66 source rule 1 outbound-interface name 'eth0'
 set nat66 source rule 1 source prefix 'fc01::/64'
 set nat66 source rule 1 translation address 'fc00::/64'
@@ -85,17 +81,17 @@ set nat66 source rule 1 translation address 'fc00::/64'
 
 #### Destination Prefix
 
-For the {ref}`destination-nat66` rule, the destination address of
+For the `destination-nat66` rule, the destination address of
 the packet isreplaced by the address calculated from the specified
-address or prefix in the `translation address` command
+address or prefix in the <span class="title-ref">translation address</span> command
 
 Example:
 
-- Convert the address prefix of a single `fc00::/64` network
-  to `fc01::/64`
-- Input from `eth0` network interface
+- Convert the address prefix of a single <span class="title-ref">fc00::/64</span> network
+  to <span class="title-ref">fc01::/64</span>
+- Input from <span class="title-ref">eth0</span> network interface
 
-```none
+``` none
 set nat66 destination rule 1 inbound-interface name 'eth0'
 set nat66 destination rule 1 destination address 'fc00::/64'
 set nat66 destination rule 1 translation address 'fc01::/64'
@@ -105,7 +101,7 @@ For the destination, groups can also be used instead of an address.
 
 Example:
 
-```none
+``` none
 set firewall group ipv6-address-group ADR-INSIDE-v6 address fc00::1
 
 set nat66 destination rule 1 inbound-interface name 'eth0'
@@ -119,13 +115,13 @@ Use the following topology to build a nat66 based isolated
 network between internal and external networks (dynamic prefix is
 not supported):
 
-:::{figure} /_static/images/vyos_1_4_nat66_simple.png
-:alt: VyOS NAT66 Simple Configure
-:::
+<figure>
+<img src="/_static/images/vyos_1_4_nat66_simple.png" alt="VyOS NAT66 Simple Configure" />
+</figure>
 
 R1:
 
-```none
+``` none
 set interfaces ethernet eth0 ipv6 address autoconf
 set interfaces ethernet eth1 address 'fc01::1/64'
 set nat66 destination rule 1 destination address 'fc00:470:f1cd:101::/64'
@@ -138,7 +134,7 @@ set nat66 source rule 1 translation address 'fc00:470:f1cd:101::/64'
 
 R2:
 
-```none
+``` none
 set interfaces bridge br1 address 'fc01::2/64'
 set interfaces bridge br1 member interface eth0
 set interfaces bridge br1 member interface eth1
@@ -150,14 +146,13 @@ Use the following topology to translate internal user local addresses
 (`fc::/7`) to DHCPv6-PD provided prefixes from an ISP connected to
 a VyOS HA pair.
 
-:::{figure} /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
-:alt: VyOS NAT66 DHCPv6 using a dummy interface
-:::
+<figure>
+<img src="/_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png" alt="VyOS NAT66 DHCPv6 using a dummy interface" />
+</figure>
 
 Configure both routers (a and b) for DHCPv6-PD via dummy interface:
 
-
-```none
+``` none
 set interfaces dummy dum1 description 'DHCPv6-PD NPT dummy'
 set interfaces bonding bond0 vif 20 dhcpv6-options pd 0 interface dum1 address '0'
 set interfaces bonding bond0 vif 20 dhcpv6-options pd 1 interface dum1 address '0'
@@ -167,10 +162,9 @@ set interfaces bonding bond0 vif 20 dhcpv6-options rapid-commit
 commit
 ```
 
-
 Get the DHCPv6-PD prefixes from both routers:
 
-```none
+``` none
 trae@cr01a-vyos# run show interfaces dummy dum1 br
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
@@ -192,7 +186,7 @@ dum1             2001:db8:123:b00d::/64           u/u  DHCPv6-PD NPT dummy
 
 Configure the A-side router for NPTv6 using the prefixes above:
 
-```none
+``` none
 set nat66 source rule 10 description 'NPT to VLAN 10'
 set nat66 source rule 10 outbound-interface name 'bond0.20'
 set nat66 source rule 10 source prefix 'fd52:d62e:8011:a::/64'
@@ -214,7 +208,7 @@ commit
 
 Configure the B-side router for NPTv6 using the prefixes above:
 
-```none
+``` none
 set nat66 source rule 10 description 'NPT to VLAN 10'
 set nat66 source rule 10 outbound-interface name 'bond0.20'
 set nat66 source rule 10 source prefix 'fd52:d62e:8011:a::/64'
@@ -236,7 +230,7 @@ commit
 
 Verify that connections are hitting the rule on both sides:
 
-```none
+``` none
 trae@cr01a-vyos# run show nat66 source statistics
 Rule    Packets    Bytes    Interface
 ------  ---------  -------  -----------

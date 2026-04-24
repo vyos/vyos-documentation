@@ -490,6 +490,7 @@ By default, no health checks are run, even when defined by the image.
 > For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
 > to the declarative VyOS CLI syntax.
 >
+
 ```none
 set container network zabbix prefix 172.20.0.0/16
 set container network zabbix description 'Network for Zabbix component containers'

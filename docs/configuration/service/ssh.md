@@ -31,7 +31,7 @@ to tighter security in VyOS 1.2.
 :::
 
 ```{eval-rst}
-.. seealso:: SSH :ref:`ssh_key_based_authentication`
+.. seealso:: SSH {ref}`ssh_key_based_authentication`
 ```
 
 ## Configuration
@@ -325,7 +325,7 @@ offending IP is blocked. Offenders are unblocked after a set interval.
 .. opcmd:: generate public-key-command user <username> path <location>
 
    Generate the configuration mode commands to add a public key for
-   :ref:`ssh_key_based_authentication`.
+   {ref}`ssh_key_based_authentication`.
    ``<location>`` can be a local path or a URL pointing at a remote file.
 
    Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.

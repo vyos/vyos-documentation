@@ -1,12 +1,15 @@
 # BGP Example
 
-:::{todo}
-Convert raw command blocks in this file to cfgcmd/opcmd directives for command coverage tracking.
-:::
+<div class="todo">
+
+Convert raw command blocks in this file to cfgcmd/opcmd
+directives for command coverage tracking.
+
+</div>
 
 **Policy definition:**
 
-```none
+``` none
 # Create policy
 set policy route-map setmet rule 2 action 'permit'
 set policy route-map setmet rule 2 set as-path prepend '2 2 2'
@@ -22,7 +25,7 @@ neighbor.
 
 **Routes learned before routing policy applied:**
 
-```none
+``` none
 vyos@vos1:~$ show ip bgp
 BGP table version is 0, local router ID is 192.168.56.101
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
@@ -37,7 +40,7 @@ Total number of prefixes 1
 
 **Routes learned after routing policy applied:**
 
-```none
+``` none
 vyos@vos1:~$ show ip bgp
 BGP table version is 0, local router ID is 192.168.56.101
 Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
@@ -58,7 +61,7 @@ You now see the longer AS path.
 The following example will show how VyOS can be used to redirect web
 traffic to an external transparent proxy:
 
-```none
+``` none
 set policy route FILTER-WEB rule 1000 destination port 80
 set policy route FILTER-WEB rule 1000 protocol tcp
 set policy route FILTER-WEB rule 1000 set table 100
@@ -71,7 +74,7 @@ instead of the default routing table.
 To create routing table 100 and add a new default gateway to be used by
 traffic matching our route policy:
 
-```none
+``` none
 set protocols static table 100 route 0.0.0.0/0 next-hop 10.255.0.2
 ```
 
@@ -81,7 +84,7 @@ command.
 Finally, to apply the policy route to ingress traffic on our LAN
 interface, we use:
 
-```none
+``` none
 set policy route FILTER-WEB interface eth1
 ```
 
@@ -97,24 +100,22 @@ Routing tables that will be used in this example are:
 - `main` Routing table used by VyOS and other interfaces not
   participating in PBR
 
-:::{figure} /_static/images/pbr_example_1.png
-:alt: PBR multiple uplinks
-:scale: 80 %
-
-Policy-Based Routing with multiple ISP uplinks
-(source ./draw.io/pbr_example_1.drawio)
-:::
+<figure>
+<img src="/_static/images/pbr_example_1.png" alt="PBR multiple uplinks" />
+<figcaption>Policy-Based Routing with multiple ISP uplinks
+(source ./draw.io/pbr_example_1.drawio)</figcaption>
+</figure>
 
 Add default routes for routing `table 10` and `table 11`
 
-```none
+``` none
 set protocols static table 10 route 0.0.0.0/0 next-hop 192.0.1.1
 set protocols static table 11 route 0.0.0.0/0 next-hop 192.0.2.2
 ```
 
 Add policy route matching VLAN source addresses
 
-```none
+``` none
 set policy route PBR rule 20 set table '10'
 set policy route PBR rule 20 description 'Route VLAN10 traffic to table 10'
 set policy route PBR rule 20 source address '192.168.188.0/24'
@@ -126,7 +127,7 @@ set policy route PBR rule 30 source address '192.168.189.0/24'
 
 Apply routing policy to **inbound** direction of out VLAN interfaces
 
-```none
+``` none
 set policy route 'PBR' interface eth0.10
 set policy route 'PBR' interface eth0.11
 ```
@@ -134,7 +135,7 @@ set policy route 'PBR' interface eth0.11
 **OPTIONAL:** Exclude Inter-VLAN traffic (between VLAN10 and VLAN11)
 from PBR
 
-```none
+``` none
 set firewall group network-group VLANS-GR description 'VLANs networks'
 set firewall group network-group VLANS-GR network '192.168.188.0/24'
 set firewall group network-group VLANS-GR network '192.168.189.0/24'
@@ -149,7 +150,7 @@ each other using the main routing table.
 
 ## Local route
 
-The following example allows VyOS to use {abbr}`PBR (Policy-Based Routing)`
+The following example allows VyOS to use `PBR (Policy-Based Routing)`
 for traffic, which originated from the router itself. That solution for multiple
 ISP's and VyOS router will respond from the same interface that the packet was
 received. Also, it used, if we want that one VPN tunnel to be through one
@@ -160,7 +161,7 @@ provider, and the second through another.
 - `table 10` Routing table used for ISP1
 - `table 11` Routing table used for ISP2
 
-```none
+``` none
 set policy local-route rule 101 set table '10'
 set policy local-route rule 101 source address '203.0.113.254'
 set policy local-route rule 102 set table '11'
@@ -171,7 +172,7 @@ set protocols static table 11 route 0.0.0.0/0 next-hop '192.0.2.2'
 
 Add multiple source IP in one rule with same priority
 
-```none
+``` none
 set policy local-route rule 101 set table '10'
 set policy local-route rule 101 source address '203.0.113.254'
 set policy local-route rule 101 source address '203.0.113.253'
@@ -183,7 +184,7 @@ set policy local-route rule 101 source address '198.51.100.0/24'
 This example shows how to target an MSS clamp (in our example to 1360 bytes)
 to a specific destination IP.
 
-```none
+``` none
 set policy route IP-MSS-CLAMP rule 10 description 'Clamp TCP session MSS to 1360 for 198.51.100.30'
 set policy route IP-MSS-CLAMP rule 10 destination address '198.51.100.30/32'
 set policy route IP-MSS-CLAMP rule 10 protocol 'tcp'
@@ -195,13 +196,13 @@ To apply this policy to the correct interface, configure it on the
 interface the inbound local host will send through to reach our
 destined target host (in our example eth1).
 
-```none
+``` none
 set policy route IP-MSS-CLAMP interface eth1
 ```
 
 You can view that the policy is being correctly (or incorrectly) utilised
 with the following command:
 
-```none
+``` none
 show policy route statistics
 ```

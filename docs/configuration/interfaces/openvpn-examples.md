@@ -34,9 +34,9 @@ In both cases, we will use the following settings:
 - The `persistent-tunnel` directive allows us to configure tunnel-related
   attributes, such as firewall policy, as we would on any standard network
   interface.
-- If known, the remote router's IP address can be configured using the
-  `remote-host` directive. If unknown, it can be omitted. We assume
-  the remote router has a dynamic IP address.
+- If known, the remote router's IP address can be configured using
+  the `remote-host` directive. If unknown, it can be omitted.
+  We assume the remote router has a dynamic IP address.
 
 <figure>
 <img src="/_static/images/openvpn_site2site_diagram.jpg" />
@@ -249,7 +249,7 @@ Client CN    Remote Host        Tunnel IP    Local Host    TX bytes    RX bytes 
 N/A          10.110.12.54:1195  N/A          N/A           504.0 B     656.0 B     N/A
 ```
 
-### Server-client
+# Server-client
 
 In OpenVPN’s server-client mode, the server acts as a central hub, allowing
 multiple clients to connect and securely route their traffic or access a
@@ -412,8 +412,7 @@ connection resets or daemon reloads. Clients are identified by the CN attribute
 in their SSL certificates.
 
 To grant clients access to a specific network behind the router, use the
-push-route option to automatically install the appropriate route on
-each client.
+push-route option to automatically install the appropriate route on each client.
 
 ``` none
 set interfaces openvpn vtun10 server push-route 192.168.0.0/16
@@ -461,7 +460,7 @@ Client CN    Remote Host         Tunnel IP    Local Host        TX bytes    RX b
 client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
 ```
 
-### Server bridge
+# Server bridge
 
 In Ethernet bridging configurations, an OpenVPN interface operating in server
 mode with the device type set to TAP can be added to a bridge. By encapsulating
@@ -506,7 +505,7 @@ set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
 set interfaces openvpn vtun10 tls certificate 'client-1'
 ```
 
-### Server LDAP authentication
+# Server LDAP authentication
 
 ## LDAP
 
@@ -549,7 +548,7 @@ RequireGroup    false
 </Authorization>
 ```
 
-#### Active Directory
+### Active Directory
 
 A sample configuration file is shown below:
 
@@ -584,9 +583,8 @@ A sample configuration file is shown below:
 </Authorization>
 ```
 
-If you only want to check that the user account is enabled and can
-authenticate (against the primary group), the following snippet is
-sufficient:
+If you only want to check that the user account is enabled and can authenticate
+(against the primary group), the following snippet is sufficient:
 
 ``` none
 <LDAP>
@@ -605,8 +603,8 @@ sufficient:
 </Authorization>
 ```
 
-A complete example of an LDAP authentication configuration for OpenVPN
-is shown below:
+A complete example of an LDAP authentication configuration for OpenVPN is shown
+below:
 
 ``` none
 vyos@vyos# show interfaces openvpn
@@ -635,10 +633,9 @@ vyos@vyos# show interfaces openvpn
  }
 ```
 
-For a detailed example, refer to
-`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
+For a detailed example, refer to `OpenVPN with LDAP </configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
-### Multi-factor authentication
+# Multi-factor authentication
 
 VyOS supports multi-factor authentication (MFA) or two-factor authentication
 using Time-based One-Time Passwords (TOTP). It is compatible with Google
@@ -692,7 +689,7 @@ vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
 Scan the QR code to add the user account to Google Authenticator. On the client
 side, use the generated OTP as the password.
 
-### Authentication with username/password
+# Authentication with username/password
 
 An OpenVPN server can securely obtain a username and password from a connecting
 client and use this information for authentication.

@@ -1,6 +1,5 @@
----
-lastproofread: '2024-09-11'
----
+lastproofread  
+2024-09-11
 
 # Bridge and firewall example
 
@@ -12,27 +11,29 @@ firewall rules.
 Three non VLAN-aware bridges are going to be configured, and each one has its
 own requirements.
 
-- Bridge br0:
-  : - Isolated layer 2 bridge.
-    - Accept only IPv6 communication whithin the bridge.
-- Bridge br1:
-  : - Drop all DHCP discover packets.
-    - Accept all ARP packets.
-    - Within the bridge, accept only new IPv4 connections from host 10.1.1.102
-    - Drop all other IPv4 connections.
-    - Drop all IPv6 connections.
-    - Accept access to router itself.
-    - Allow connections to internet
-    - Drop connections to other LANs.
-- Bridge br2:
-  : - Accept all DHCP discover packets.
-    - Accept only DHCP offers from valid server and|or trusted bridge port.
-    - Accept all ARP packets.
-    - Accept all IPv4 connections.
-    - Drop all IPv6 connections.
-    - Deny access to the router.
-    - Allow connections to internet.
-    - Allow connections to bridge br1.
+- Bridge br0:  
+  - Isolated layer 2 bridge.
+  - Accept only IPv6 communication whithin the bridge.
+
+- Bridge br1:  
+  - Drop all DHCP discover packets.
+  - Accept all ARP packets.
+  - Within the bridge, accept only new IPv4 connections from host 10.1.1.102
+  - Drop all other IPv4 connections.
+  - Drop all IPv6 connections.
+  - Accept access to router itself.
+  - Allow connections to internet
+  - Drop connections to other LANs.
+
+- Bridge br2:  
+  - Accept all DHCP discover packets.
+  - Accept only DHCP offers from valid server and|or trusted bridge port.
+  - Accept all ARP packets.
+  - Accept all IPv4 connections.
+  - Drop all IPv6 connections.
+  - Deny access to the router.
+  - Allow connections to internet.
+  - Allow connections to bridge br1.
 
 ## Configuration
 
@@ -40,7 +41,7 @@ own requirements.
 
 First, we need to configure the interfaces and bridges:
 
-```none
+``` none
 # Brige br0
 set interfaces bridge br0 description 'Isolated L2 bridge'
 set interfaces bridge br0 member interface eth1
@@ -81,7 +82,7 @@ firewall configuration.
 
 So first, let's create the required firewall interface groups:
 
-```none
+``` none
 # Bridge br0 interface-group:
 set firewall group interface-group br0-ifaces interface 'br0'
 set firewall group interface-group br0-ifaces interface 'eth1'
@@ -104,7 +105,7 @@ bridge, that will be used in the `prerouting` chain, in order to drop as much
 unwanted traffic as early as possible. So, custom rulesets used in
 `prerouting` chain are going to be `br0-pre`, `br1-pre`, and `br2-pre`:
 
-```none
+``` none
 # Prerouting - Catch all traffic for br0
 set firewall bridge prerouting filter rule 10 action 'jump'
 set firewall bridge prerouting filter rule 10 description 'br0 traffic'
@@ -126,7 +127,7 @@ set firewall bridge prerouting filter rule 30 jump-target 'br2-pre'
 
 And then create the custom rulesets:
 
-```none
+``` none
 ### br0 - br0-pre
   # Requirements: accept only IPv6 communication within the bridge
 set firewall bridge name br0-pre rule 10 description 'Accept IPv6 traffic'
@@ -164,7 +165,7 @@ Now, in the `forward` chain, we are going to define state policies, and
 custom rulesets for each bridge that would be used in the `forward` chain.
 These rulesets are `br0-fwd`, `br1-fwd`, and `br2-fwd`:
 
-```none
+``` none
 # Forward - State policies if not defined globally
 set firewall bridge forward filter rule 5 action 'accept'
 set firewall bridge forward filter rule 5 state 'established'
@@ -196,7 +197,7 @@ set firewall bridge forward filter default-action 'drop'
 
 And the content of the custom rulesets:
 
-```none
+``` none
 ### br0 - br0-fwd
   # Accept everything that wasn't dropped in prerouting
 set firewall bridge name br0-fwd default-action 'accept'
@@ -255,7 +256,7 @@ bridge firewall, we need to use the IP firewall to implement them.
 For bridge br1 and br2, we need to control the traffic that is going to the
 router itself, to other local networks, and to the Internet.
 
-As a reminder, here's a link to the {doc}`firewall documentation
+As a reminder, here's a link to the `firewall documentation
 </configuration/firewall/index>`, where you can find more information about
 the packet flow for traffic that comes from bridge layer and should be analized
 by the IP firewall.
@@ -263,9 +264,9 @@ by the IP firewall.
 Access to the router itself is controlled by the base chain `input`, and
 rules to accomplish all the requirements are:
 
-```none
+``` none
 # First of all, if not using global state policies, we need to define them:
-set firewall ipv4 input filter rule 10 state 'established'
+set firewall ipv4 input filter rule 10 state 'established' 
 set firewall ipv4 input filter rule 10 state 'related'
 set firewall ipv4 input filter rule 10 action 'accept'
 set firewall ipv4 input filter rule 20 state 'invalid'
@@ -287,7 +288,7 @@ need to use the base chain `forward`. As in the bridge firewall, we are
 going to use custom rulesets for each bridge, that would be used in the
 `forward` chain. Those rulesets are `ip-br1-fwd` and `ip-br2-fwd`:
 
-```none
+``` none
 # First of all, if not using global state policies, we need to define them:
 set firewall ipv4 forward filter rule 5 action 'accept'
 set firewall ipv4 forward filter rule 5 state 'established'
@@ -313,7 +314,7 @@ set firewall ipv4 forward filter default-action 'drop'
 
 And the content of the custom rulesets:
 
-```none
+``` none
 ### br1 - ip-br1-fwd
   # Requirement: Allow connections to internet
 set firewall ipv4 name ip-br1-fwd rule 10 description 'br1 - allow internet access'
@@ -344,21 +345,19 @@ For example, while a host tries to get an IP address from a DHCP server in
 br1 all DHCP discover are dropped, and in br2, we can see that DHCP offers from
 untrusted servers are dropped:
 
-
-```none
+``` none
 vyos@bridge:~$ show log firewall bridge
 Sep 17 14:22:35 kernel: [bri-NAM-br2-fwd-22-D]IN=eth7 OUT=eth5 MAC=50:00:00:09:00:00:50:00:00:04:00:00:08:00 SRC=10.2.2.199 DST=10.2.2.92 LEN=322 TOS=0x10 PREC=0x00 TTL=128 ID=0 DF PROTO=UDP SPT=67 DPT=68 LEN=302
 Sep 17 14:28:18 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
 Sep 17 14:28:19 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
 ```
 
-
 And with operational mode commands, we can check rules matchers, actions, and
 counters.
 
 Bridge firewall rulset:
 
-```none
+``` none
 vyos@bri:~$ show firewall bridge
 Rulesets bridge Information
 
@@ -437,12 +436,12 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 30       jump      all                84     8276  iifname @I_br2-ifaces  jump NAME_br2-pre
 default  drop      all                 0        0
 
-vyos@bridge:~$
+vyos@bridge:~$ 
 ```
 
 IPv4 firewall rulset:
 
-```none
+``` none
 vyos@bridge:~$ show firewall ipv4
 Rulesets ipv4 Information
 
@@ -485,5 +484,5 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 20       accept    all                 2      168  oifname @I_br1-ifaces  accept
 default  drop      all                 0        0
 
-vyos@bridge:~$
+vyos@bridge:~$ 
 ```

@@ -1,5 +1,3 @@
-(examples-site-2-site-cisco)=
-
 # Site-to-Site IPSec VPN to Cisco using FlexVPN
 
 This guide shows a sample configuration for FlexVPN site-to-site Internet
@@ -18,7 +16,7 @@ The lab was built using EVE-NG.
 
 - GRE:
 
-```none
+``` none
 set interfaces tunnel tun1 encapsulation 'gre'
 set interfaces tunnel tun1 ip adjust-mss '1336'
 set interfaces tunnel tun1 mtu '1376'
@@ -28,7 +26,7 @@ set interfaces tunnel tun1 source-address '198.51.100.1'
 
 - IPsec:
 
-```none
+``` none
 set vpn ipsec authentication psk vyos_cisco_l id 'vyos.net’
 set vpn ipsec authentication psk vyos_cisco_l id 'cisco.hub.net'
 set vpn ipsec authentication psk vyos_cisco_l secret 'secret'
@@ -63,7 +61,7 @@ set vpn ipsec site-to-site peer cisco_hub virtual-address '0.0.0.0'
 
 ### Cisco
 
-```none
+``` none
 aaa new-model
 !
 !
@@ -125,7 +123,7 @@ the link in order to exchange routing information
 
 ## Verification
 
-```none
+``` none
 vyos@vyos$ show interfaces
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description

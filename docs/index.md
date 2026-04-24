@@ -1,122 +1,117 @@
-(index)=
-
 # VyOS User Guide
 
-```{eval-rst}
-.. grid:: 3
-   :gutter: 2
+<div class="grid" gutter="2">
 
-   .. grid-item-card:: Get / Build VyOS
+3
 
+<div class="grid-item-card">
 
-      Quickly :ref:`Build<contributing/build-vyos:build vyos>`
-      your own Image or take a look at how to
-      :ref:`download<installation/install:download>`
-      a free or supported version.
+Get / Build VyOS
 
+Quickly `Build<contributing/build-vyos:build vyos>`
+your own Image or take a look at how to
+`download<installation/install:download>`
+a free or supported version.
 
-   .. grid-item-card:: Install VyOS
+</div>
 
-      Read about how to install VyOS on
-      :ref:`Bare Metal<installation/install:installation>`
-      or in a :ref:`VM <installation/virtual/index:Virtual Environments>`
-      and how to use an image with the usual
-      :ref:`cloud<installation/cloud/index:Cloud Environments>`
-      providers
+<div class="grid-item-card">
 
+Install VyOS
 
-   .. grid-item-card:: Configuration and Operation
+Read about how to install VyOS on
+`Bare Metal<installation/install:installation>`
+or in a `VM <installation/virtual/index:Virtual Environments>`
+and how to use an image with the usual
+`cloud<installation/cloud/index:Cloud Environments>`
+providers
 
-      Use the :ref:`Quickstart Guide<quick-start:Quick Start>`,
-      to have a fast overview. Or go deeper and set up
-      :ref:`advanced routing<configuration/protocols/index:protocols>`,
-      :ref:`VRFs<configuration/vrf/index:vrf>`, or
-      :ref:`VPNs<configuration/vpn/index:vpn>` for example.
+</div>
 
+<div class="grid-item-card">
 
-   .. grid-item-card:: Automate
+Configuration and Operation
 
-      Integrate VyOS in your automation Workflow with
-      :ref:`Ansible<vyos-ansible>`,
-      have your own :ref:`local scripts<command-scripting>`,
-      or configure VyOS with the
-      :ref:`HTTPS-API<vyosapi>`.
+Use the `Quickstart Guide<quick-start:Quick Start>`,
+to have a fast overview. Or go deeper and set up
+`advanced routing<configuration/protocols/index:protocols>`,
+`VRFs<configuration/vrf/index:vrf>`, or
+`VPNs<configuration/vpn/index:vpn>` for example.
 
+</div>
 
-   .. grid-item-card::  Examples
+<div class="grid-item-card">
 
-      Get some inspiration from the
-      :ref:`Blueprints <configexamples/index:Configuration Blueprints>`
-      to build your infrastructure.
+Automate
 
+Integrate VyOS in your automation Workflow with
+`Ansible<vyos-ansible>`,
+have your own `local scripts<command-scripting>`,
+or configure VyOS with the
+`HTTPS-API<vyosapi>`.
 
-   .. grid-item-card:: Contribute and Community
+</div>
 
-      | There are many ways to contribute to the project.
-      | Add missing parts or improve the
-        :ref:`Documentation<documentation:Write Documentation>`.
-      | Discuss in `Slack <https://slack.vyos.io/>`_
-        or the `Forum <https://forum.vyos.io>`_.
-      | Or you can pick up a `Task <https://vyos.dev/>`_
-        and fix the
-        :ref:`code<contributing/development:development>`.
+<div class="grid-item-card">
 
-```
+Examples
 
-```{eval-rst}
-.. toctree::
-   :hidden:
-   :maxdepth: 1
+Get some inspiration from the
+`Blueprints <configexamples/index:Configuration Blueprints>`
+to build your infrastructure.
 
-   introducing/about
-   introducing/history
+</div>
 
-```
+<div class="grid-item-card">
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: First Steps
+Contribute and Community
 
-   installation/index
-   quick-start
-   cli
-```
+There are many ways to contribute to the project.\
+Add missing parts or improve the `Documentation<documentation:Write Documentation>`.\
+Discuss in [Slack](https://slack.vyos.io/) or the [Forum](https://forum.vyos.io).\
+Or you can pick up a [Task](https://vyos.dev/) and fix the `code<contributing/development:development>`.
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Adminguide
+</div>
 
+</div>
 
-   configuration/index
-   operation/index
-   automation/index
-   troubleshooting/index
-   configexamples/index
-   vpp/index
+<div class="toctree" hidden="" maxdepth="1">
 
-```
+introducing/about
+introducing/history
+changelog/index
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Development
+</div>
 
-   contributing/index
+<div class="toctree" maxdepth="2" hidden="" caption="First Steps">
 
-```
+installation/index
+quick-start
+cli
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Misc
+</div>
 
-   documentation
-   coverage
-   copyright
-```
+<div class="toctree" maxdepth="2" hidden="" caption="Adminguide">
+
+configuration/index
+operation/index
+automation/index
+troubleshooting/index
+configexamples/index
+vpp/index
+
+</div>
+
+<div class="toctree" maxdepth="2" hidden="" caption="Development">
+
+contributing/index
+
+</div>
+
+<div class="toctree" maxdepth="2" hidden="" caption="Misc">
+
+documentation
+coverage
+copyright
+
+</div>

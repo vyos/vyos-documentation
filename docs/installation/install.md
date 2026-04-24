@@ -186,9 +186,11 @@ the `dd` command:
 > 3. Unmount the USB drive. Replace `X` with your device letter and keep the
 >    asterisk (\*) to unmount all partitions.
 >
+
 ```none
 $ umount /dev/sdX*
 ```
+
 >
 > 1. Write the image (your VyOS .iso file) to the USB drive. Use the device
 >    name (for example, `/dev/sdb`), not the partition name
@@ -196,9 +198,11 @@ $ umount /dev/sdX*
 >
 > > **Warning**: This will destroy all data on the USB drive!
 >
+
 ```none
 # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
 ```
+
 >
 > 1. Wait for the operation to complete (bytes copied). On some systems, this
 >    may take more than one minute.
@@ -244,6 +248,7 @@ In order to proceed with a permanent installation:
 >    (login: `vyos`, password: `vyos`).
 > 2. Run the `install image` command and follow the wizard:
 >
+
 ```none
 vyos@vyos:~$ install image
 Welcome to VyOS installation!
@@ -278,14 +283,17 @@ Unmounting target filesystems
 Removing temporary files
 The image installed successfully; please reboot now.
 ```
+
 >
 > 3. After installation completes, remove the live USB drive or CD.
 > 4. Reboot the system.
 >
+
 ```none
 vyos@vyos:~$ reboot
 Proceed with reboot? (Yes/No) [No] Yes
 ```
+
 >
 > You will boot now into a permanent VyOS system.
 

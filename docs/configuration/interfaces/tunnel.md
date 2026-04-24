@@ -121,7 +121,7 @@ set interfaces tunnel tun0 address 2001:db8:bb::1/64
 
 ```{eval-rst}
 .. seealso:: For a practical configuration example, see the
-   :ref:`Tunnelbroker.net (IPv6) <examples-tunnelbroker-ipv6>` section.
+   {ref}`Tunnelbroker.net (IPv6) <examples-tunnelbroker-ipv6>` section.
 ```
 
 ## Generic Routing Encapsulation (GRE)
