@@ -25,7 +25,7 @@ Terraform, Ansible, and vSphere, follow these steps:
 ### vSphere
 
 - Add all necessary data to the `terraform.tfvars`
-  [file](https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars)
+  [file](<https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars>)
   and create resources.
 
 ### Terraform
@@ -359,4 +359,4 @@ ansible_ssh_pass: 12345678
 All files related to deploying VyOS on vSphere with Terraform and Ansible
 can be found in the [vyos-automation] repository.
 
-[vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main
+[vyos-automation]: <https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main>
