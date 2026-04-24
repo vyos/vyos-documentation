@@ -11,7 +11,7 @@ Basic filtering can be done using access-list and access-list6.
 ### Access Lists
 
 ```{cfgcmd} set policy access-list \<acl_number\>
-This command creates the new access list policy, where <acl_number> must be
+This command creates the new access list policy, where `<acl_number>` must be
 a number from 1 to 2699.
 ```
 
@@ -38,7 +38,7 @@ criteria could be applied to destination or source parameters:
 Basic filtering could also be applied to IPv6 traffic.
 
 ```{cfgcmd} set policy access-list6 \<text\>
-This command creates the new IPv6 access list, identified by <text>
+This command creates the new IPv6 access list, identified by `<text>`
 ```
 
 ```{cfgcmd} set policy access-list6 \<text\> description \<text\>

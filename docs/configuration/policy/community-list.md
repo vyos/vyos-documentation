@@ -8,7 +8,7 @@ manipulation: **community-list** is one of them.
 ### policy community-list
 
 ```{cfgcmd} set policy community-list \<text\>
-Creat community-list policy identified by name <text>.
+Creat community-list policy identified by name `<text>`.
 ```
 ```{cfgcmd} set policy community-list \<text\> description \<text\>
 Set description for community-list policy.

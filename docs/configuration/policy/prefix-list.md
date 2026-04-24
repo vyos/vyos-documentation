@@ -14,7 +14,7 @@ Prefix filtering can be done using prefix-list and prefix-list6.
 ### IPv4 Prefix Lists (prefix-list)
 
 ```{cfgcmd} set policy prefix-list \<text\>
-This command creates the new prefix-list policy, identified by <text>.
+This command creates the new prefix-list policy, identified by `<text>`.
 ```
 
 ```{cfgcmd} set policy prefix-list \<text\> description \<text\>
@@ -73,7 +73,7 @@ rules each with 1 prefix, and matches le (less than/equal to) /32.
 ### IPv6 Prefix Lists (prefix-list6)
 ```{cfgcmd} set policy prefix-list6 \<text\>
 
-This command creates the new IPv6 prefix-list policy, identified by <text>.
+This command creates the new IPv6 prefix-list policy, identified by `<text>`.
 ```
 
 ```{cfgcmd} set policy prefix-list6 \<text\> description \<text\>

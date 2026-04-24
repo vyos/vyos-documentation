@@ -8,7 +8,7 @@ manipulation: **large-community-list** is one of them.
 ### policy large-community-list
 
 ```{cfgcmd} set policy large-community-list \<text\>
-Create large-community-list policy identified by name <text>.
+Create large-community-list policy identified by name `<text>`.
 ```
 ```{cfgcmd} set policy large-community-list \<text\> description \<text\>
 Set description for large-community-list policy.

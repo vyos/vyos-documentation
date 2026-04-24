@@ -8,7 +8,7 @@ manipulation: **as-path-list** is one of them.
 ### policy as-path-list
 
 ```{cfgcmd} set policy as-path-list \<text\>
-Create as-path-policy identified by name <text>.
+Create as-path-policy identified by name `<text>`.
 ```
 ```{cfgcmd} set policy as-path-list \<text\> description \<text\>
 Set description for as-path-list policy.
