@@ -151,7 +151,7 @@ Follow the instructions to generate server cert (in configuration mode):
   2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
   [edit]
 
-Each of the install command should be applied to the configuration and commited
+Each of the install command should be applied to the configuration and committed
 before using under the openconnect configuration:
 
 .. code-block:: none

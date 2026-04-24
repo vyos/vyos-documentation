@@ -81,7 +81,7 @@ for Prometheus native metrics through exporters see section below.
 
 .. cfgcmd:: set service monitoring telegraf prometheus-client metric-version <1 | 2>
 
-   Metris version, the default is ``2``
+   Metrics version, the default is ``2``
 
 .. cfgcmd:: set service monitoring telegraf prometheus-client port <port>
 

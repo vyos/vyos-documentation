@@ -127,7 +127,7 @@ e.g. the loopback interface.
 
 .. cfgcmd:: set vpn sstp authentication radius source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. note:: The ``source-address`` must be configured to that of an interface.
    Best practice would be a loopback or dummy interface.
@@ -184,7 +184,7 @@ RADIUS advanced options
 
 .. cfgcmd:: set vpn sstp authentication radius source-address <address>
 
-  Source IPv4 address used in all RADIUS server queires.
+  Source IPv4 address used in all RADIUS server queries.
 
 .. cfgcmd:: set vpn sstp authentication radius rate-limit attribute <attribute>
 
@@ -258,7 +258,7 @@ IPv6
 .. cfgcmd:: set vpn sstp client-ipv6-pool <IPv6-POOL-NAME> prefix <address>
    mask <number-of-bits>
 
-  Use this comand to set the IPv6 address pool from which an SSTP client will
+  Use this command to set the IPv6 address pool from which an SSTP client will
   get an IPv6 prefix of your defined length (mask) to terminate the SSTP
   endpoint at their side. The mask length can be set between 48 and 128 bits
   long, the default value is 64.
@@ -513,7 +513,7 @@ The following PPP configuration tests MSCHAP-v2:
   debug
 
 
-You can now "dial" the peer with the follwoing command: ``sstpc --log-level 4
+You can now "dial" the peer with the following command: ``sstpc --log-level 4
 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos``.
 
 A connection attempt will be shown as:

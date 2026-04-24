@@ -19,10 +19,10 @@ using the :opcmd:`add system image` command (:ref:`update_vyos`).
 
 .. cfgcmd:: set system proxy username <username>
 
-   Some proxys require/support the "basic" HTTP authentication scheme as per
+   Some proxies require/support the "basic" HTTP authentication scheme as per
    :rfc:`7617`, thus a username can be configured.
 
 .. cfgcmd:: set system proxy password <password>
 
-   Some proxys require/support the "basic" HTTP authentication scheme as per
+   Some proxies require/support the "basic" HTTP authentication scheme as per
    :rfc:`7617`, thus a password can be configured.
