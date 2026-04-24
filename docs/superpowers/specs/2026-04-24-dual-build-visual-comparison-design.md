@@ -21,25 +21,38 @@ Each build sees only one format per page, so `foo.rst` and `foo.md` never confli
 
 ### Conf.py Strategy
 
-The RST build uses the existing `conf.py` with an added `**/*.md` exclusion. The MyST build uses a separate `_confmyst/conf.py` that:
+Both builds use separate conf directories to avoid modifying the main `conf.py`:
 
+**RST build** uses `docs/_confrst/conf.py`:
+1. Executes the main `conf.py` via `exec()` (inherits all settings)
+2. Appends `"**/*.md"` and `"_confrst"` and `"_confmyst"` to `exclude_patterns`
+
+**MyST build** uses `docs/_confmyst/conf.py`:
 1. Executes the main `conf.py` via `exec()` (inherits all settings)
 2. Appends `myst_parser` to `extensions`
-3. Overrides `exclude_patterns` to exclude `**/*.rst`
+3. Overrides `exclude_patterns` to exclude `"**/*.rst"`, `"_confrst"`, `"_confmyst"`
 4. Sets `source_suffix = {".md": "markdown"}`
+
+`compare_local.py` invokes Sphinx with `-c _confrst` and `-c _confmyst` respectively. The main `conf.py` is never modified during comparison — cleanup only needs to delete the two conf directories and update `conf.py` once at the end.
 
 Verified in POC: this approach works with Sphinx 7.x.
 
 ### Index File
 
-`index.rst` is the doctree root. The MyST build requires `index.md` — without it, Sphinx fails with "root file not found". Both `index.rst` and `index.md` must exist simultaneously. The conversion pipeline already produces `index.md`. The toctree entries in both must reference the same document names (Sphinx resolves documents without extension).
+`index.rst` is the doctree root. The MyST build requires `index.md` — without it, Sphinx fails with "root file not found". Both `index.rst` and `index.md` must exist simultaneously. The conversion pipeline already produces `index.md`.
+
+Toctree entries use document names without extensions (e.g., `configuration/firewall/index`), so both RST and MyST toctrees resolve to the same documents regardless of source format. The conversion pipeline preserves toctree structure.
+
+### Page Parity Check
+
+`compare_local.py` enumerates HTML pages in both build outputs and flags any page present in one build but missing from the other. This catches toctree divergence, conversion failures, or missing files before the pixel comparison runs.
 
 ### File Merge Strategy
 
 The converted `.md` files exist in worktrees (`myst-sagitta`, `myst-circinus`, `myst-current`) where the `.rst` files were deleted during conversion. To get both formats side-by-side:
 
 1. On the target branch (e.g., `sagitta`), copy all `.md` files from the converted worktree
-2. Also copy `_confmyst/conf.py`
+2. Create `_confrst/conf.py` and `_confmyst/conf.py`
 3. Commit as "add MyST files alongside RST for visual comparison"
 
 This is a file copy, not a git merge — the converted branches deleted `.rst` files which we need to keep.
@@ -104,16 +117,16 @@ Reads `comparison-results.json`, deletes `.rst` files whose diff_status is in th
 `--dry-run` lists files that would be deleted without acting.
 
 After all `.rst` files are removed:
-- Remove `_confmyst/` directory
+- Remove `_confrst/` and `_confmyst/` directories
 - Update `conf.py`: add `myst_parser` to extensions, set `source_suffix = {".md": "markdown"}`
-- Remove both exclude patterns: `**/*.md` from the main `conf.py` (added for RST build) and `**/*.rst` from `_confmyst/conf.py` (no longer needed since `_confmyst/` is deleted)
+- No exclude pattern cleanup needed in `conf.py` — the main `conf.py` was never modified during comparison
 
 ## Workflow Per Branch
 
 ```
 1. git checkout sagitta
 2. Copy all .md files from myst-sagitta worktree
-3. Add _confmyst/conf.py
+3. Create _confrst/conf.py and _confmyst/conf.py
 4. git commit -m "add MyST files for visual comparison"
 5. python scripts/compare_local.py
 6. Review "investigate" pages:
@@ -123,7 +136,7 @@ After all `.rst` files are removed:
 8. For accepted investigate pages: python scripts/phase_out.py --status investigate --force
 9. git commit -m "phase out verified RST files"
 10. Repeat step 5-9 until all pages are phased out
-11. Clean up: remove _confmyst/, update conf.py for MyST-only
+11. Clean up: remove _confrst/, _confmyst/, update conf.py for MyST-only
 12. git commit -m "complete RST→MyST migration"
 ```
 
@@ -180,7 +193,7 @@ Results written to scripts/comparison-results.json
 - All `.md` files must be present for a fair comparison. Partial copies produce inflated diffs due to missing sidebar/nav entries.
 - `index.md` must exist for the MyST build to succeed.
 - `_include/*.txt` template files are shared between both formats (RST directives work in both via the vyos.py extension).
-- The `_confmyst/` directory must be in `exclude_patterns` for both builds to avoid Sphinx picking it up as content.
+- Both `_confrst/` and `_confmyst/` directories must be in `exclude_patterns` for both builds to avoid Sphinx picking them up as content.
 
 ## Testing
 
