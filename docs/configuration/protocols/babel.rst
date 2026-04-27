@@ -74,7 +74,7 @@ Optional configuration
 Interfaces configuration
 ------------------------
 
-.. cfgcmd:: set protocols babel interface type <auto|wired|wireless>
+.. cfgcmd:: set protocols babel interface <interface> type <auto|wired|wireless>
 
    **Configure the network type for the Babel-enabled interface.**
 
@@ -89,7 +89,7 @@ Interfaces configuration
 
    The default value is ``auto``.
 
-.. cfgcmd:: set protocols babel interface split-horizon <default|disable|enable>
+.. cfgcmd:: set protocols babel interface <interface> split-horizon <default|disable|enable>
 
    **Configure the split-horizon routing behavior for the specified 
    interface.**
