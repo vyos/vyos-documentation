@@ -87,8 +87,6 @@ Interfaces configuration
      interfaces. Specifying wireless is always correct, but may cause slower 
      convergence and increased routing traffic.
 
-   The default value is ``auto``.
-
 .. cfgcmd:: set protocols babel interface <interface> split-horizon <default|disable|enable>
 
    **Configure the split-horizon routing behavior for the specified 
@@ -103,8 +101,6 @@ Interfaces configuration
      networks.
    * ``disable``: Babel disables split-horizon on the interface. Disabling 
      split-horizon is always safe and correct.
-
-   The default value is ``default``.
 
 .. cfgcmd:: set protocols babel interface <interface> hello-interval <20-655340>
 
