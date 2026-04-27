@@ -200,7 +200,7 @@ Redistribution configuration
    * **ipv6:** ``bgp``, ``connected``, ``eigrp``, ``isis``, ``kernel``, 
      ``nhrp``, ``ospfv3``, ``ripng``, ``static``
 
-.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> access-list <in|out>
+.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> access-list <in|out> <number>
 
    **Configure global Babel route filtering using an access list.**
 
@@ -209,7 +209,7 @@ Redistribution configuration
    * ``in``: Filters incoming routes.
    * ``out``: Filters outgoing routes.
 
-.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> interface <interface> access-list <in|out>
+.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> interface <interface> access-list <in|out> <number>
 
    **Configure Babel route filtering on the specified interface using an 
    access list.**
@@ -219,7 +219,7 @@ Redistribution configuration
    * ``in``: Filters incoming routes.
    * ``out``: Filters outgoing routes.
 
-.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> prefix-list <in|out>
+.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> prefix-list <in|out> <name>
 
    **Configure global Babel route filtering using a prefix list.**
 
@@ -228,7 +228,7 @@ Redistribution configuration
    * ``in``: Filters incoming routes.
    * ``out``: Filters outgoing routes.
 
-.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> interface <interface> prefix-list <in|out>
+.. cfgcmd:: set protocols babel distribute-list <ipv4|ipv6> interface <interface> prefix-list <in|out> <name>
 
    **Configure Babel route filtering on the specified interface using a 
    prefix list.**
