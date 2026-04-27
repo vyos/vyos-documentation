@@ -20,6 +20,7 @@ official documentation for Terraform_ and Ansible_.
    :maxdepth: 1
    :caption: Guides
    
+   terraformvyos
    terraformAWS
    terraformAZ
    terraformGoogle
