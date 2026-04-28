@@ -1,3 +1,8 @@
+:description: VyOS history chronicles the evolution of the open-source network
+              operating system from its 2013 Vyatta fork through its current
+              major releases.
+:keywords: vyos, history, vyatta, router, firewall, network, release, milestone
+
 .. _history:
 
 #######
@@ -42,7 +47,6 @@ ordered by their solid angle area, beginning with the smallest.
 
 Hydrogen (1.0)
 --------------
-
 Released just in time for the holidays on 22 December 2013, Hydrogen was
 the first major VyOS release. It fixed features that were broken in
 Vyatta Core 6.6, such as IPv4 BGP peer groups and DHCPv6 relay, and
@@ -56,7 +60,6 @@ VyOS Project. The release introduced an event handler, L2TPv3 support,
 802.1ad (QinQ), and IGMP proxy, as well as experimental support for VXLAN 
 and DMVPN. Notably, DMVPN remained non-functional in Vyatta Core due to its 
 reliance on a proprietary NHRP implementation.
-
 
 Crux (1.2)
 ----------
@@ -81,7 +84,6 @@ Crux reached the end of support in 2023.
 
 Equuleus (1.3)
 --------------
-
 Equuleus (the Little Horse) was a long-term support version released 
 on 21 December 2021, just in time for the winter holidays.
 
@@ -95,7 +97,6 @@ Equuleus reached the end of support in 2025.
 
 Sagitta (1.4)
 -------------
-
 Sagitta (the Arrow), the current LTS release, became generally available on 
 4 June 2024. Its development began in late 2021 and focused on eliminating 
 remaining legacy components and reworking core subsystems.
@@ -116,9 +117,41 @@ The underlying base system was upgraded to Debian 12 (Bookworm).
 
 Circinus (1.5)
 --------------
+Circinus (the Drawing Compass) became generally available as an LTS release on
+31 March 2026. Its development began in 2024 and focused on major performance
+upgrades and modernizing core services.
 
-Circinus (the Drawing Compass) is the codename for the upcoming development
-branch. VyOS 1.5 Circinus has not been released yet.
+Circinus introduces several major architectural improvements, most notably an
+optional VPP-based accelerated dataplane. Using the DPDK driver, this dataplane
+can offer performance up to 15x faster than the Linux kernel dataplane and
+allows administrators to selectively enable hardware acceleration on a
+per-interface and per-feature basis.
+
+Other significant additions and updates include:
+
+* A high-performance kernel-mode NetFlow sensor based on ipt-netflow,
+  replacing the older pmacct implementation.
+* Unification of sFlow to exclusively use the much faster hsflowd
+  implementation.
+* Transition of the DHCP server to a Kea-based implementation, replacing the
+  legacy, end-of-life ISC DHCPD.
+* A completely rewritten WAN load balancing implementation to resolve
+  long-standing stability issues and introduce support for firewall groups in
+  load balancing rules.
+* A new ``execute`` operational mode command family to separate action commands
+  that do not depend on or modify system configuration.
+
+The release also cleans up several legacy and underutilized components.
+FastNetMon was removed, OpenVPN support for Blowfish and Twofish ciphers was
+dropped for security reasons, and the Salt minion integration was deprecated.
+
+Like Sagitta (1.4), the underlying base system for Circinus remains Debian 12
+(Bookworm).
+
+Scutum (1.6)
+--------------
+Scutum (the Shield) is the codename for the upcoming development
+branch. VyOS 1.6 Scutum has not been released yet.
 
 A note on copyright
 ===================
