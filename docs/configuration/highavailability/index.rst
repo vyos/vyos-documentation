@@ -337,6 +337,18 @@ times:
   set high-availability vrrp group Foo health-check interval 60
   set high-availability vrrp group Foo health-check failure-count 3
 
+An optional ``timeout`` can be set to define the maximum number of seconds the
+script is allowed to run. This is useful for scripts that may hang or take
+longer than expected — setting the timeout higher than the interval allows
+longer-running scripts to complete before being considered failed.
+
+.. code-block:: none
+
+  set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
+  set high-availability vrrp group Foo health-check interval 20
+  set high-availability vrrp group Foo health-check failure-count 3
+  set high-availability vrrp group Foo health-check timeout 40
+
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
 This example shows how to configure it for the sync group:
