@@ -119,7 +119,7 @@ Circinus (1.5)
 --------------
 Circinus (the Drawing Compass) became generally available as an LTS release on
 31 March 2026. Its development began in 2024 and focused on major performance
-upgrades and modernizing core services.
+upgrades and modernizing core subsystems.
 
 Circinus introduces several major architectural improvements, most notably an
 optional VPP-based accelerated dataplane. Using the DPDK driver, this dataplane
