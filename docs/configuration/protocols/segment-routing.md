@@ -47,9 +47,9 @@ Only one SRGB and default SPF Algorithm is supported
 :::
 
 ```{cfgcmd} set protocols isis segment-routing global-block high-label-value \<label-value\>
-  Set the Segment Routing Global Block i.e. the label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.
+Set the Segment Routing Global Block i.e. the label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.
 ```
 
 

@@ -204,8 +204,8 @@ Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
  Raid Devices : 2
 Total Devices : 2
 Preferred Minor : 0
-  Persistence : Superblock is persistent
-  Update Time : Wed Oct 29 19:34:23 2008
+Persistence : Superblock is persistent
+Update Time : Wed Oct 29 19:34:23 2008
         State : active, degraded, recovering
 Active Devices : 1
 Working Devices : 2
@@ -214,7 +214,7 @@ Spare Devices : 1
 Rebuild Status : 17% complete
          UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
        Events : 0.103
-  Number   Major   Minor   RaidDevice State
+Number   Major   Minor   RaidDevice State
      0       8        1        0      active sync   /dev/sda1
      2       8       17        1      spare rebuilding   /dev/sdb1
 :::

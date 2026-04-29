@@ -248,16 +248,16 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
    Ping command can be interrupted at any given time using ``<Ctrl>+c``.
    A brief statistic is shown afterwards.
 
-    ::::{code-block} none
-    vyos@vyos:~$ ping 192.0.2.1 vrf red
-    PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
-    64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
-    64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
-    ^C
-    --- 192.0.2.1 ping statistics ---
-    2 packets transmitted, 2 received, 0% packet loss, time 4ms
-    rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
-    ::::
+  ::::{code-block} none
+  vyos@vyos:~$ ping 192.0.2.1 vrf red
+  PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
+  64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
+  64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
+  ^C
+  --- 192.0.2.1 ping statistics ---
+  2 packets transmitted, 2 received, 0% packet loss, time 4ms
+  rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
+  ::::
    :::
 ```
 

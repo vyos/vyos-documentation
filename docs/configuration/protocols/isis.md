@@ -33,30 +33,30 @@ occur within IS-IS when it comes to said duplication.
 
 ```{cfgcmd} set protocols isis net \<network-entity-title\>
 
-  This command sets network entity title (NET) provided in ISO format.
+This command sets network entity title (NET) provided in ISO format.
 
-  Here is an example {abbr}`NET (Network Entity Title)` value:
+Here is an example {abbr}`NET (Network Entity Title)` value:
 
-  :::{code-block} none
-  49.0001.1921.6800.1002.00
-  :::
-  The CLNS address consists of the following parts:
+:::{code-block} none
+49.0001.1921.6800.1002.00
+:::
+The CLNS address consists of the following parts:
 
-  * {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
-    49 is what IS-IS uses for private addressing.
+* {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
+  49 is what IS-IS uses for private addressing.
 
-  * Area identifier: ``0001`` IS-IS area number (numerical area ``1``)
+* Area identifier: ``0001`` IS-IS area number (numerical area ``1``)
 
-  * System identifier: ``1921.6800.1002`` - for system identifiers we recommend
-    to use IP address or MAC address of the router itself. The way to construct
-    this is to keep all of the zeroes of the router IP address, and then change
-    the periods from being every three numbers to every four numbers. The
-    address that is listed here is ``192.168.1.2``, which if expanded will turn
-    into ``192.168.001.002``. Then all one has to do is move the dots to have
-    four numbers instead of three. This gives us ``1921.6800.1002``.
+* System identifier: ``1921.6800.1002`` - for system identifiers we recommend
+  to use IP address or MAC address of the router itself. The way to construct
+  this is to keep all of the zeroes of the router IP address, and then change
+  the periods from being every three numbers to every four numbers. The
+  address that is listed here is ``192.168.1.2``, which if expanded will turn
+  into ``192.168.001.002``. Then all one has to do is move the dots to have
+  four numbers instead of three. This gives us ``1921.6800.1002``.
 
-  * {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
-    setting indicates "this system" or "local system."
+* {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
+  setting indicates "this system" or "local system."
 
 ```
 
@@ -130,10 +130,10 @@ This command will generate a default-route in L2 database.
 
 ```{cfgcmd} set protocols isis ldp-sync
 
-  This command will enable IGP-LDP synchronization globally for ISIS. This
-  requires for LDP to be functional. This is described in {rfc}`5443`. By
-  default all interfaces operational in IS-IS are enabled for synchronization.
-  Loopbacks are exempt.
+This command will enable IGP-LDP synchronization globally for ISIS. This
+requires for LDP to be functional. This is described in {rfc}`5443`. By
+default all interfaces operational in IS-IS are enabled for synchronization.
+Loopbacks are exempt.
 
 ```
 
@@ -145,11 +145,11 @@ synchronization during convergence/interface flap events.
 #### Interface Configuration
 ```{cfgcmd} set protocols isis interface \<interface\> circuit-type \<level-1|level-1-2|level-2-only\>
 
-  This command specifies circuit type for interface:
+This command specifies circuit type for interface:
 
-  * **level-1** - Level-1 only adjacencies are formed.
-  * **level-1-2** - Level-1-2 adjacencies are formed
-  * **level-2-only** - Level-2 only adjacencies are formed
+* **level-1** - Level-1 only adjacencies are formed.
+* **level-1-2** - Level-1-2 adjacencies are formed
+* **level-2-only** - Level-2 only adjacencies are formed
 
 ```
 

@@ -22,8 +22,8 @@ Supported versions of RIP are:
 ## General Configuration
 
 ```{cfgcmd} set protocols rip network \<A.B.C.D/M\>
-  This command enables RIP and sets the RIP enable interface by NETWORK.
-  The interfaces which have addresses matching with NETWORK are enabled.
+This command enables RIP and sets the RIP enable interface by NETWORK.
+The interfaces which have addresses matching with NETWORK are enabled.
 ```
 
 
@@ -59,7 +59,7 @@ This command specifies all interfaces to passive mode.
 ## Optional Configuration
 
 ```{cfgcmd} set protocols rip default-distance \<distance\>
-  This command change the distance value of RIP. The distance range is 1 to 255.
+This command change the distance value of RIP. The distance range is 1 to 255.
 
    :::{note}
    Routes with a distance of 255 are effectively disabled and not
@@ -148,9 +148,9 @@ seconds.
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols rip redistribute \<route source\>
-  This command redistributes routing information from the given route source
-  into the RIP tables. There are five modes available for route source: bgp,
-  connected, kernel, ospf, static.
+This command redistributes routing information from the given route source
+into the RIP tables. There are five modes available for route source: bgp,
+connected, kernel, ospf, static.
 ```
 
 
@@ -178,9 +178,9 @@ value, please use {cfgcmd}`redistribute connected metric`.
 ## Interfaces Configuration
 
 ```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip authentication plaintext-password \<text\>
-  This command sets the interface with RIP simple password authentication.
-  This command also sets authentication string. The string must be shorter
-  than 16 characters.
+This command sets the interface with RIP simple password authentication.
+This command also sets authentication string. The string must be shorter
+than 16 characters.
 ```
 
 

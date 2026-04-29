@@ -264,7 +264,7 @@ Prometheus [frr_exporter] which provides free range routing metrics.
 
 ```{cfgcmd} set service monitoring prometheus frr-exporter listen-address \<address\>
 
-  Configure the address frr_exporter is listening on.
+Configure the address frr_exporter is listening on.
 
 ```
 

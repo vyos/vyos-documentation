@@ -14,13 +14,13 @@ upstream interface, and one or more downstream interfaces.
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> role \<upstream | downstream\>
 * **upstream:** The upstream network interface is the outgoing interface
-  which is responsible for communicating to available multicast data sources.
-  There can only be one upstream interface.
+which is responsible for communicating to available multicast data sources.
+There can only be one upstream interface.
 
 * **downstream:** Downstream network interfaces are the distribution
-  interfaces to the destination networks, where multicast clients can join
-  groups and receive multicast data. One or more downstream interfaces must
-  be configured.
+interfaces to the destination networks, where multicast clients can join
+groups and receive multicast data. One or more downstream interfaces must
+be configured.
 ```
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> alt-subnet \<network\>

@@ -24,8 +24,8 @@ bit-rate by ten results in the overall transmission speed in characters per
 second. This is also the default setting if none of those options are defined.
 
 ```{cfgcmd} set service console-server device \<device\> data-bits [7 | 8]
-  Configure either seven or eight data bits. This defaults to eight data
-  bits if left unconfigured.
+Configure either seven or eight data bits. This defaults to eight data
+bits if left unconfigured.
 ```
 
 

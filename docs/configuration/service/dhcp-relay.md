@@ -63,14 +63,14 @@ relay agent information. Range 64...1400, default 576.
 ```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets \<append | discard | forward | replace\>
 Four policies for reforwarding DHCP packets exist:
 * **append:** The relay agent is allowed to append its own relay information
-  to a received DHCP packet, disregarding relay information already present
-  in the packet.
+to a received DHCP packet, disregarding relay information already present
+in the packet.
 * **discard:** Received packets which already contain relay information will
-  be discarded.
+be discarded.
 * **forward:** All packets are forwarded, relay information already present
-  will be ignored.
+will be ignored.
 * **replace:** Relay information already present in a packet is stripped and
-  replaced with the router's own relay information set.
+replaced with the router's own relay information set.
 ```
 
 ### Example

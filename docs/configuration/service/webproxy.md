@@ -17,16 +17,16 @@ URL Filtering is provided by [SquidGuard].
 ## Configuration
 
 ```{cfgcmd} set service webproxy append-domain \<domain\>
-  Use this command to specify a domain name to be appended to domain-names
-  within URLs that do not include a dot ``.`` the domain is appended.
+Use this command to specify a domain name to be appended to domain-names
+within URLs that do not include a dot ``.`` the domain is appended.
 
-  Example: to be appended is set to ``vyos.net`` and the URL received is
-  ``www/foo.html``, the system will use the generated, final URL of
-  ``www.vyos.net/foo.html``.
+Example: to be appended is set to ``vyos.net`` and the URL received is
+``www/foo.html``, the system will use the generated, final URL of
+``www.vyos.net/foo.html``.
 
-  :::{code-block} none
-  set service webproxy append-domain vyos.net
-  :::
+:::{code-block} none
+set service webproxy append-domain vyos.net
+:::
 ```
 
 
@@ -126,14 +126,14 @@ set service webproxy reply-block-mime application/pdf
 :::
 ```
 ```{cfgcmd} set service webproxy reply-body-max-size \<size\>
-  Specifies the maximum size of a reply body in KB, used to limit the reply
-  size.
+Specifies the maximum size of a reply body in KB, used to limit the reply
+size.
 
-  All reply sizes are accepted by default.
+All reply sizes are accepted by default.
 
-  :::{code-block} none
-  set service webproxy reply-body-max-size 2048
-  :::
+:::{code-block} none
+set service webproxy reply-body-max-size 2048
+:::
 ```
 
 
@@ -154,16 +154,16 @@ wide directory. The following configuration is an example of how to use Active
 Directory as authentication backend. Queries are done via LDAP.
 
 ```{cfgcmd} set service webproxy authentication children \<number\>
-  Maximum number of authenticator processes to spawn. If you start too few
-  Squid will have to wait for them to process a backlog of credential
-  verifications, slowing it down. When password verifications are done via a
-  (slow) network you are likely to need lots of authenticator processes.
+Maximum number of authenticator processes to spawn. If you start too few
+Squid will have to wait for them to process a backlog of credential
+verifications, slowing it down. When password verifications are done via a
+(slow) network you are likely to need lots of authenticator processes.
 
-  This defaults to 5.
+This defaults to 5.
 
-  :::{code-block} none
-  set service webproxy authentication children 10
-  :::
+:::{code-block} none
+set service webproxy authentication children 10
+:::
 ```
 
 
@@ -179,11 +179,11 @@ set service webproxy authentication credentials-ttl 120
 :::
 ```
 ```{cfgcmd} set service webproxy authentication method \<ldap\>
-  Proxy authentication method, currently only LDAP is supported.
+Proxy authentication method, currently only LDAP is supported.
 
-  :::{code-block} none
-  set service webproxy authentication method ldap
-  :::
+:::{code-block} none
+set service webproxy authentication method ldap
+:::
 ```
 
 
@@ -205,11 +205,11 @@ set service webproxy authentication ldap base-dn DC=vyos,DC=net
 :::
 ```
 ```{cfgcmd} set service webproxy authentication ldap bind-dn \<bind-dn\>
-  The DN and password to bind as while performing searches.
+The DN and password to bind as while performing searches.
 
-  :::{code-block} none
-  set service webproxy authentication ldap bind-dn CN=proxyuser,CN=Users,DC=vyos,DC=net
-  :::
+:::{code-block} none
+set service webproxy authentication ldap bind-dn CN=proxyuser,CN=Users,DC=vyos,DC=net
+:::
 ```
 
 
@@ -280,23 +280,23 @@ set service webproxy authentication ldap use-ssl
 :::
 ```
 ```{cfgcmd} set service webproxy authentication ldap username-attribute \<attr\>
-  Specifies the name of the DN attribute that contains the username/login.
-  Combined with the base DN to construct the users DN when no search filter is
-  specified (filter-expression).
+Specifies the name of the DN attribute that contains the username/login.
+Combined with the base DN to construct the users DN when no search filter is
+specified (filter-expression).
 
-  Defaults to 'uid'
+Defaults to 'uid'
 
-  :::{note}
-  This can only be done if all your users are located directly under
-  the same position in the LDAP tree and the login name is used for naming
-  each user object. If your LDAP tree does not match these criterias or if you
-  want to filter who are valid users then you need to use a search filter to
-  search for your users DN (filter-expression).
+:::{note}
+This can only be done if all your users are located directly under
+the same position in the LDAP tree and the login name is used for naming
+each user object. If your LDAP tree does not match these criterias or if you
+want to filter who are valid users then you need to use a search filter to
+search for your users DN (filter-expression).
 
    ::::{code-block} none
    set service webproxy authentication ldap username-attribute uid
    ::::
-  :::
+:::
 ```
 
 

@@ -83,8 +83,8 @@ packet delivery.
 | **Traffic distribution:** | **Outgoing:** Identical to ``transmit-load-balance``. **Incoming:** Distributed based on ARP manipulation. For both local and remote connections, the bonding driver intercepts ARP traffic and changes the source MAC address to the MAC address of the least loaded member interface. All traffic from that peer is then routed to the chosen member interface. |
 | **Failover:** | If a member interface's state changes (fails, recovers, is added, or excluded), the traffic is redistributed among all active member interfaces. |
 * ``xor-hash``: Provides load balancing and fault tolerance based on a hash formula.
-  Distributes traffic and handles failover identically to ``802.3ad``, but operates
-  without the {abbr}`LACP (Link Aggregation Control Protocol)`.
+Distributes traffic and handles failover identically to ``802.3ad``, but operates
+without the {abbr}`LACP (Link Aggregation Control Protocol)`.
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
@@ -132,74 +132,74 @@ The following policies are available:
 
 * ``layer2``
 
-  **Description:** Routes all traffic destined for a specific network peer through
-  the same member interface. The policy is 802.3ad-compliant.
+**Description:** Routes all traffic destined for a specific network peer through
+the same member interface. The policy is 802.3ad-compliant.
 
-  **Hash inputs:** Source MAC address, destination MAC address, and Ethernet packet
-  type ID.
+**Hash inputs:** Source MAC address, destination MAC address, and Ethernet packet
+type ID.
 
-  **Formula:**
+**Formula:**
 
-  :::{code-block} none
-  hash = source MAC address XOR destination MAC address XOR packet type ID
-  member interface number = hash modulo member interface count
-  :::
+:::{code-block} none
+hash = source MAC address XOR destination MAC address XOR packet type ID
+member interface number = hash modulo member interface count
+:::
 
 * ``layer2+3``
 
-  **Description:** Similar to ``layer2``, routes all traffic destined for a specific
-  network peer through the same member interface and is IEEE 802.3ad-compliant. Uses
-  both Layer 2 and Layer 3 information to provide a more balanced traffic distribution.
+**Description:** Similar to ``layer2``, routes all traffic destined for a specific
+network peer through the same member interface and is IEEE 802.3ad-compliant. Uses
+both Layer 2 and Layer 3 information to provide a more balanced traffic distribution.
 
-  **Hash inputs:**
-  * Source MAC address, destination MAC address, and Ethernet packet type ID.
-  * Source IP address, destination IP address. IPv6 addresses are first hashed
-    using ``IPv6_addr_hash``.
+**Hash inputs:**
+* Source MAC address, destination MAC address, and Ethernet packet type ID.
+* Source IP address, destination IP address. IPv6 addresses are first hashed
+  using ``IPv6_addr_hash``.
 
-  **Formula:**
+**Formula:**
 
-  :::{code-block} none
-  hash = source MAC address XOR destination MAC address XOR packet type ID
-  hash = hash XOR source IP address XOR destination IP address
-  hash = hash XOR (hash RSHIFT 16)
-  hash = hash XOR (hash RSHIFT 8)
-  member interface number = hash modulo member interface count
-  :::
+:::{code-block} none
+hash = source MAC address XOR destination MAC address XOR packet type ID
+hash = hash XOR source IP address XOR destination IP address
+hash = hash XOR (hash RSHIFT 16)
+hash = hash XOR (hash RSHIFT 8)
+member interface number = hash modulo member interface count
+:::
 
-  For non-IP traffic, the formula is the same as for ``layer2``.
+For non-IP traffic, the formula is the same as for ``layer2``.
 
 * ``layer3+4``
 
-  **Description:** Routes different connections (flows) destined for a specific
-  network peer through multiple member interfaces, but ensures each individual
-  flow is routed through only one member interface.
+**Description:** Routes different connections (flows) destined for a specific
+network peer through multiple member interfaces, but ensures each individual
+flow is routed through only one member interface.
 
-  :::{note}
-  This policy is not fully 802.3ad-compliant. When a single TCP or UDP flow
-  contains both fragmented and unfragmented packets, the algorithm may distribute
-  them across different member interfaces. This may result in out-of-order packet
-  delivery, violating the 802.3ad standard.
-  :::
+:::{note}
+This policy is not fully 802.3ad-compliant. When a single TCP or UDP flow
+contains both fragmented and unfragmented packets, the algorithm may distribute
+them across different member interfaces. This may result in out-of-order packet
+delivery, violating the 802.3ad standard.
+:::
 
-  **Hash inputs:**
-  * Source port, destination port (if available).
-  * Source IP address, destination IP address. IPv6 addresses are first hashed
-    using ``IPv6_addr_hash``.
+**Hash inputs:**
+* Source port, destination port (if available).
+* Source IP address, destination IP address. IPv6 addresses are first hashed
+  using ``IPv6_addr_hash``.
 
-  **Formula:**
+**Formula:**
 
-  :::{code-block} none
-  hash = source port, destination port (as in the header)
-  hash = hash XOR source IP address XOR destination IP address
-  hash = hash XOR (hash RSHIFT 16)
-  hash = hash XOR (hash RSHIFT 8)
-  member interface number = hash modulo member interface count
-  :::
+:::{code-block} none
+hash = source port, destination port (as in the header)
+hash = hash XOR source IP address XOR destination IP address
+hash = hash XOR (hash RSHIFT 16)
+hash = hash XOR (hash RSHIFT 8)
+member interface number = hash modulo member interface count
+:::
 
-  For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
-  source and destination port information is omitted.
+For fragmented TCP or UDP packets and all other IPv4 and IPv6 traffic, the
+source and destination port information is omitted.
 
-  For non-IP traffic, the formula is the same as for ``layer2``.
+For non-IP traffic, the formula is the same as for ``layer2``.
 ```
 
 
@@ -306,9 +306,9 @@ EVPN-MH uses BGP-EVPN route types 1 and 2 for ES discovery and MAC-IP
 synchronization:
 
 * **Type 1 (EAD-per-ES and EAD-per-EVI)** routes advertise the locally
-  attached ESs and discover remote ESs in the network.
+attached ESs and discover remote ESs in the network.
 * **Type 2 (MAC-IP advertisement)** routes are advertised with a
-  destination ESI, enabling MAC-IP synchronization between ES peers.
+destination ESI, enabling MAC-IP synchronization between ES peers.
 ```
 
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-df-pref \<1-65535\>

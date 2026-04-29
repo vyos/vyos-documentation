@@ -87,23 +87,23 @@ This parameter is mandatory. Contact your service provider for the correct
 ## Operation
 
 ```{opcmd} show interfaces wwan \<interface\>
-  Show the operational status and traffic statistics for the specified WWAN
-  interface.
+Show the operational status and traffic statistics for the specified WWAN
+interface.
 
-  :::{code-block} none
-  vyos@vyos:~$ show interfaces wwan wwan0
-  wwan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 1000
-  link/ether 02:c2:f3:00:01:02 brd ff:ff:ff:ff:ff:ff
-  inet 10.155.144.12/30 brd 10.155.144.15 scope global dynamic wwan0
-  valid_lft 7012sec preferred_lft 7012sec
-  inet6 fe80::c2:f3ff:fe00:0102/64 scope link
-  valid_lft forever preferred_lft forever
+:::{code-block} none
+vyos@vyos:~$ show interfaces wwan wwan0
+wwan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 1000
+link/ether 02:c2:f3:00:01:02 brd ff:ff:ff:ff:ff:ff
+inet 10.155.144.12/30 brd 10.155.144.15 scope global dynamic wwan0
+valid_lft 7012sec preferred_lft 7012sec
+inet6 fe80::c2:f3ff:fe00:0102/64 scope link
+valid_lft forever preferred_lft forever
 
-  RX:  bytes  packets  errors  dropped  overrun       mcast
-  640        2       0        0        0           0
-  TX:  bytes  packets  errors  dropped  carrier  collisions
-  3229       16       0        0        0           0
-  :::
+RX:  bytes  packets  errors  dropped  overrun       mcast
+640        2       0        0        0           0
+TX:  bytes  packets  errors  dropped  carrier  collisions
+3229       16       0        0        0           0
+:::
 ```
 
 
@@ -174,18 +174,18 @@ Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 ```
 
 ```{opcmd} show interfaces wwan \<interface\> capabilities
-  Show WWAN module radio capabilities.
+Show WWAN module radio capabilities.
 
-  :::{code-block} none
-  vyos@vyos:~$ show interfaces wwan wwan0 capabilities
-  Max TX channel rate: '50000000'
-  Max RX channel rate: '100000000'
-  Data Service: 'simultaneous-cs-ps'
-  SIM: 'supported'
-  Networks: 'gsm, umts, lte'
-  Bands: 'gsm-dcs-1800, gsm-900-extended, gsm-900-primary, gsm-pcs-1900, wcdma-2100, wcdma-900'
-  LTE bands: '1, 3, 7, 8, 20'
-  :::
+:::{code-block} none
+vyos@vyos:~$ show interfaces wwan wwan0 capabilities
+Max TX channel rate: '50000000'
+Max RX channel rate: '100000000'
+Data Service: 'simultaneous-cs-ps'
+SIM: 'supported'
+Networks: 'gsm, umts, lte'
+Bands: 'gsm-dcs-1800, gsm-900-extended, gsm-900-primary, gsm-pcs-1900, wcdma-2100, wcdma-900'
+LTE bands: '1, 3, 7, 8, 20'
+:::
 ```
 
 

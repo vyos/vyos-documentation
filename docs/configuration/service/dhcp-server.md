@@ -223,15 +223,15 @@ Should be used in most situations.
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update replace-client-name [ never | always | when-present | when-not-present ]
 * **never**: use the name sent by the client. If the client didn't provide any,
-  do not generate one. This is the default behavior
+do not generate one. This is the default behavior
 
 * **always**: always generate a name for the client
 
 * **when-present**: replace the name the client sent with a generated one, if
-  the client didn't send any, do not generate one
+the client didn't send any, do not generate one
 
 * **when-not-present**: use the name sent by the client. If the client didn't
-  send any, generate one for the client
+send any, generate one for the client
 
 The names are generated using ``generated-prefix``, ``qualifying-suffix`` and the
 client's IP address string.

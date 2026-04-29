@@ -90,8 +90,8 @@ The following options are available:
 
 * ``mss``: Sets the MSS to a specific value in bytes.
 * ``clamp-mss-to-pmtu``: Sets the MSS to the interface’s MTU minus 40 bytes for
-  IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
-  This option is recommended to automatically set the proper value.
+IPv4 traffic (20 bytes for the IPv4 header and 20 bytes for the TCP header).
+This option is recommended to automatically set the proper value.
 
 :::{note} Introduced in VyOS 1.4, this command replaces the older ``set firewall
 options interface <name> adjust-mss <value>`` syntax.
@@ -113,13 +113,13 @@ disabled on it.
 The following options are available:
 
 * ``strict``: Each incoming packet’s source IP address is checked against the
-  {abbr}`FIB (Forwarding Information Base)`. If the interface is not the best
-  route back to that source, validation fails, and the packet is dropped.
+{abbr}`FIB (Forwarding Information Base)`. If the interface is not the best
+route back to that source, validation fails, and the packet is dropped.
 * ``loose``: Each incoming packet’s source IP address is checked against the
-  {abbr}`FIB (Forwarding Information Base)`. If the source IP address is
-  unreachable through any interface, validation fails.
+{abbr}`FIB (Forwarding Information Base)`. If the source IP address is
+unreachable through any interface, validation fails.
 * ``disable``: No source IP address validation is performed. All incoming
-  packets are accepted.
+packets are accepted.
 
 {rfc}`3704` recommends enabling ``strict`` mode to prevent IP spoofing, such as
 DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
@@ -134,15 +134,15 @@ Show detailed information about the specified interface.
 :::{code-block} none
 vyos@vyos:~$ show interfaces sstpc sstpc10
 sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 3
-    link/ppp
-    inet 192.0.2.5 peer 192.0.2.254/32 scope global sstpc10
+  link/ppp
+  inet 192.0.2.5 peer 192.0.2.254/32 scope global sstpc10
        valid_lft forever preferred_lft forever
-    inet6 fe80::fd53:c7ff:fe8b:144f/64 scope link
+  inet6 fe80::fd53:c7ff:fe8b:144f/64 scope link
        valid_lft forever preferred_lft forever
 
-    RX:  bytes  packets  errors  dropped  overrun       mcast
+  RX:  bytes  packets  errors  dropped  overrun       mcast
            215        9       0        0        0           0
-    TX:  bytes  packets  errors  dropped  carrier  collisions
+  TX:  bytes  packets  errors  dropped  carrier  collisions
            539       14       0        0        0           0
 :::
 ```

@@ -10,10 +10,10 @@ alternative path.
 Traffic Engineering parameters are used for both IS-IS and OSPF (not supported yet).
 
 ```{cfgcmd} set protocols traffic-engineering admin-group \<admin-group-name\> bit-position \<bit-position-value\>
-  Create Administrative group and assosiate bit position with it. These groups can be
-  used in the following commands.
+Create Administrative group and assosiate bit position with it. These groups can be
+used in the following commands.
 
-  \<bit-position-value\> can have value 0-31. There cannot be two groups with same bit position.
+\<bit-position-value\> can have value 0-31. There cannot be two groups with same bit position.
 ```
 
 

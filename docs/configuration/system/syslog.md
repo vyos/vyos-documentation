@@ -196,26 +196,26 @@ server's identity.
 
 The following authentication modes are available:
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
-  server's identity. This mode is **not recommended**, as it is vulnerable to
-  {abbr}`MITM (Man-in-the-Middle)` attacks.
+server's identity. This mode is **not recommended**, as it is vulnerable to
+{abbr}`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
-  value preconfigured with:
+value preconfigured with:
 
-  :::{code-block} none
-  set system syslog remote <address> tls permitted-peer <peer>
-  :::
+:::{code-block} none
+set system syslog remote <address> tls permitted-peer <peer>
+:::
 * ``certvalid``: Verifies the server certificate is signed by a trusted
-  {abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
+{abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
 * ``name``: Verifies that:
-  * The server’s certificate is signed by a trusted {abbr}`CA (Certificate
-    Authority)`.
-  * The {abbr}`CN (Common Name)` in the certificate matches the value
-    preconfigured with:
+* The server’s certificate is signed by a trusted {abbr}`CA (Certificate
+  Authority)`.
+* The {abbr}`CN (Common Name)` in the certificate matches the value
+  preconfigured with:
 
-  :::{code-block} none
-  set system syslog remote <address> tls permitted-peer <peer>
-  :::
-  This is a **recommended** secure mode for production environments.
+:::{code-block} none
+set system syslog remote <address> tls permitted-peer <peer>
+:::
+This is a **recommended** secure mode for production environments.
 
 ```
 
@@ -225,7 +225,7 @@ The following authentication modes are available:
 
 The certificate identifier format depends on the authentication mode:
 * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
-  SHA-256).
+SHA-256).
 * ``name``: Enter the expected certificate {abbr}`CNs (Common Names)`.
 
 For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
@@ -352,18 +352,18 @@ Available log categories:
 :header-rows: 0
 
 * - all
-  - Displays the contents of system log files of the specified image.
+- Displays the contents of system log files of the specified image.
 * - authorization
-  - Displays authorization attempts of the specified image.
+- Displays authorization attempts of the specified image.
 * - directory
-  - Displays user-defined log files of the specified image.
+- Displays user-defined log files of the specified image.
 * - file \<file name\>
-  - Displays the contents of a specified user-defined log file of the specified
-    image.
+- Displays the contents of a specified user-defined log file of the specified
+  image.
 * - tail
-  - Displays last lines of the system log of the specified image.
+- Displays last lines of the system log of the specified image.
 * - \<lines\>
-  - Number of lines to be displayed, default 10.
+- Number of lines to be displayed, default 10.
 :::
 
 ```

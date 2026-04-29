@@ -151,9 +151,9 @@ Defines the action to take if the remote peer unexpectedly
 closes a CHILD_SA:
 * **none** - Set action to none (default),
 * **trap** - Installs a trap policy (IPsec policy without Security
-  Association) for the CHILD_SA and traffic matching these policies
-  will trigger acquire events that cause the daemon to establish the
-  required IKE/IPsec SAs.
+Association) for the CHILD_SA and traffic matching these policies
+will trigger acquire events that cause the daemon to establish the
+required IKE/IPsec SAs.
 * **start** - Tries to immediately re-create the CHILD_SA.
 ```
 
@@ -184,9 +184,9 @@ IKE lifetime in seconds <0-86400> (default 28800).
 
 IKEv1 Phase 1 Mode Selection:
 * **main** - Use Main mode for Key Exchanges in the IKEv1 Protocol
-  (Recommended Default).
+(Recommended Default).
 * **aggressive** - Use Aggressive mode for Key Exchanges in the IKEv1
-  protocol aggressive mode is much more insecure compared to Main mode.
+protocol aggressive mode is much more insecure compared to Main mode.
 ```
 
 ```{cfgcmd} set vpn ipsec ike-group \<name\> proposal \<number\> dh-group \<dh-group number\>
@@ -211,15 +211,15 @@ Pseudo-random function.
 ### DPD (Dead Peer Detection) Configuration
 ```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection action \<action\>
 
-  Action to perform for this CHILD_SA on DPD timeout.
+Action to perform for this CHILD_SA on DPD timeout.
 
-  * **trap** - Installs a trap policy (IPsec policy without Security
-    Association), which will catch matching traffic and tries to
-    re-negotiate the tunnel on-demand.
-  * **clear** - Closes the CHILD_SA and does not take further action
-    (default).
-  * **restart** - Immediately tries to re-negotiate the CHILD_SA
-    under a fresh IKE_SA.
+* **trap** - Installs a trap policy (IPsec policy without Security
+  Association), which will catch matching traffic and tries to
+  re-negotiate the tunnel on-demand.
+* **clear** - Closes the CHILD_SA and does not take further action
+  (default).
+* **restart** - Immediately tries to re-negotiate the CHILD_SA
+  under a fresh IKE_SA.
 
 ```
 

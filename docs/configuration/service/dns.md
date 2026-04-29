@@ -70,32 +70,32 @@ be set with the dnssec setting. In order from least to most processing, these
 are:
 
 * **off** In this mode, no DNSSEC processing takes place. The recursor will
-  not set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the
-  DO and AD bits in queries.
+not set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the
+DO and AD bits in queries.
 
 * **process-no-validate** In this mode the recursor acts as a "security
-  aware, non-validating" nameserver, meaning it will set the DO-bit on
-  outgoing queries and will provide DNSSEC related RRsets (NSEC, RRSIG) to
-  clients that ask for them (by means of a DO-bit in the query), except for
-  zones provided through the auth-zones setting. It will not do any
-  validation in this mode, not even when requested by the client.
+aware, non-validating" nameserver, meaning it will set the DO-bit on
+outgoing queries and will provide DNSSEC related RRsets (NSEC, RRSIG) to
+clients that ask for them (by means of a DO-bit in the query), except for
+zones provided through the auth-zones setting. It will not do any
+validation in this mode, not even when requested by the client.
 
 * **process** When dnssec is set to process the behavior is similar to
-  process-no-validate. However, the recursor will try to validate the data
-  if at least one of the DO or AD bits is set in the query; in that case,
-  it will set the AD-bit in the response when the data is validated
-  successfully, or send SERVFAIL when the validation comes up bogus.
+process-no-validate. However, the recursor will try to validate the data
+if at least one of the DO or AD bits is set in the query; in that case,
+it will set the AD-bit in the response when the data is validated
+successfully, or send SERVFAIL when the validation comes up bogus.
 
 * **log-fail** In this mode, the recursor will attempt to validate all data
-  it retrieves from authoritative servers, regardless of the client's DNSSEC
-  desires, and will log the validation result. This mode can be used to
-  determine the extra load and amount of possibly bogus answers before
-  turning on full-blown validation. Responses to client queries are the same
-  as with process.
+it retrieves from authoritative servers, regardless of the client's DNSSEC
+desires, and will log the validation result. This mode can be used to
+determine the extra load and amount of possibly bogus answers before
+turning on full-blown validation. Responses to client queries are the same
+as with process.
 
 * **validate** The highest mode of DNSSEC processing. In this mode, all
-  queries will be validated and will be answered with a SERVFAIL in case of
-  bogus data, regardless of the client's request.
+queries will be validated and will be answered with a SERVFAIL in case of
+bogus data, regardless of the client's request.
 
 :::{note}
 The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.

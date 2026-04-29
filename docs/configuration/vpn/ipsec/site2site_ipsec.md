@@ -187,8 +187,8 @@ Similar combinations are applicable for the dead-peer-detection.
 #### PSK Key Authentication
 ```{cfgcmd} set vpn ipsec authentication psk \<name\> dhcp-interface
 
-  ID for authentication generated from DHCP address
-  dynamically.
+ID for authentication generated from DHCP address
+dynamically.
 
 ```
 
@@ -280,25 +280,25 @@ Private key passphrase, if needed.
 
 Operational mode defines how to handle this connection process.
 * **initiate** - does initial connection to remote peer immediately
-  after configuring and after boot. In this mode the connection will
-  not be restarted in case of disconnection, therefore should be used
-  only together with DPD or another session tracking methods.
+after configuring and after boot. In this mode the connection will
+not be restarted in case of disconnection, therefore should be used
+only together with DPD or another session tracking methods.
 * **trap** - does not try to initiate a connection to a remote
-  peer immediately. Instead, it installs a trap policy that will
-  trigger IKE negotiation and establish the IPsec session when
-  matching traffic is sent from the local side. This can be useful
-  when there is no direct connectivity to the peer due to firewall
-  or NAT in the middle of the local and remote side.
+peer immediately. Instead, it installs a trap policy that will
+trigger IKE negotiation and establish the IPsec session when
+matching traffic is sent from the local side. This can be useful
+when there is no direct connectivity to the peer due to firewall
+or NAT in the middle of the local and remote side.
 
-  :::{warning}
-  The ``trap`` mode is not needed in most environments
+:::{warning}
+The ``trap`` mode is not needed in most environments
    and can lead to connection confusion or unintended tunnel uptime
    behavior if used incorrectly. Using this mode requires careful
    coordination with parameters such as ``close-action`` and DPD.
    For most deployments, use ``initiate`` and ``none`` as described below.
-  :::
+:::
 * **none** - loads the connection only, which then can be manually
-  initiated or used as a responder configuration.
+initiated or used as a responder configuration.
 
 :::{note}
 For most site-to-site VPNs, configure one peer

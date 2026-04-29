@@ -80,8 +80,8 @@ Assign interfaces as a member of a zone.
 :::{note}
 * An interface can only be a member of one zone.
 * You can have multiple interfaces in a zone. Traffic between
-  interfaces in the same zone follows the intra-zone-filtering
-  policy (allowed by default).
+interfaces in the same zone follows the intra-zone-filtering
+policy (allowed by default).
 :::
 ```
 

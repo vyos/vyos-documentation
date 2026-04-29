@@ -187,9 +187,9 @@ Set the restart behavior of the container.
 
 - **no**: Do not restart containers on exit
 - **on-failure**: Restart containers when they exit with a non-zero
-  exit code, retrying indefinitely (default)
+exit code, retrying indefinitely (default)
 - **always**: Restart containers when they exit, regardless of status,
-  retrying indefinitely
+retrying indefinitely
 ```
 
 ```{cfgcmd} set container name \<name\> cpu-quota \<num\>
@@ -225,11 +225,11 @@ Set container capabilities or permissions.
 
 - **net-admin**: Network operations (interface, firewall, routing tables)
 - **net-bind-service**: Bind a socket to privileged ports
-  (port numbers less than 1024)
+(port numbers less than 1024)
 - **net-raw**: Permission to create raw network sockets
 - **setpcap**: Capability sets (from bounded or inherited set)
 - **sys-admin**: Administration operations (quotactl, mount, sethostname,
-  setdomainame)
+setdomainame)
 - **sys-time**: Permission to set system clock
 ```
 
@@ -240,7 +240,7 @@ Set container sysctl values.
 The subset of possible parameters are:
 
 - Kernel Parameters: kernel.msgmax, kernel.msgmnb, kernel.msgmni, kernel.sem,
-  kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
+kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
 - Parameters beginning with fs.mqueue.*
 - Parameters beginning with net.* (only if user-defined network is used)
 ```

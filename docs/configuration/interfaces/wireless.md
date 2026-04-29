@@ -174,9 +174,9 @@ WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
 Supported channel width set.
 * ``ht20`` - 20 MHz channel width
 * ``ht40-`` - Both 20 MHz and 40 MHz with secondary channel below the primary
-  channel
+channel
 * ``ht40+`` - Both 20 MHz and 40 MHz with secondary channel above the primary
-  channel
+channel
 
 :::{note}
 Channel availability for HT40- and HT40+ is limited. The following
@@ -261,13 +261,13 @@ Set if antenna pattern does not change during the lifetime of an association
 
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
-  single user beamformer
+single user beamformer
 * ``single-user-beamformee`` - Support for operation as
-  single user beamformee
+single user beamformee
 * ``multi-user-beamformer`` - Support for operation as
-  multi user beamformer
+multi user beamformer
 * ``multi-user-beamformee`` - Support for operation as
-  multi user beamformee
+multi user beamformee
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht center-channel-freq \<freq-1 | freq-2\> \<number\>
@@ -345,11 +345,11 @@ during the lifetime of an association.
 
 Beamforming capabilities:
 * ``single-user-beamformer`` - Support for operation as
-  single user beamformer
+single user beamformer
 * ``single-user-beamformee`` - Support for operation as
-  single user beamformee
+single user beamformee
 * ``multi-user-beamformer`` - Support for operation as multi
-  user beamformer
+user beamformer
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he bss-color \<number\>
@@ -378,9 +378,9 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 
 * ``81`` - 20 MHz channel width (2.4GHz)
 * ``83`` - 40 MHz channel width, secondary 20MHz channel above primary
-  channel (2.4GHz)
+channel (2.4GHz)
 * ``84`` - 40 MHz channel width, secondary 20MHz channel below primary
-  channel (2.4GHz)
+channel (2.4GHz)
 * ``131`` - 20 MHz channel width (6GHz)
 * ``132`` - 40 MHz channel width (6GHz)
 * ``133`` - 80 MHz channel width (6GHz)

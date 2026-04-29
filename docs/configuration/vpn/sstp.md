@@ -47,7 +47,7 @@ set vpn sstp ssl certificate 'Server'
 Set authentication backend. The configured authentication backend is used
 for all queries.
 * **radius**: All authentication queries are handled by a configured RADIUS
-  server.
+server.
 * **local**: All authentication queries are handled locally.
 ```
 

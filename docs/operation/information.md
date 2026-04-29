@@ -42,15 +42,15 @@ If a device is unplugged and plugged in again, it is assigned a new
 :::{code-block} none
 vyos@vyos:~$ show hardware usb
 /:  Bus 03.Port 1: Dev 1, Class=root_hub, Driver=ehci-pci/2p, 480M
-    |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M
+  |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M
         |__ Port 3: Dev 4, If 0, Class=Vendor Specific Class, Driver=qcserial, 480M
         |__ Port 3: Dev 4, If 2, Class=Vendor Specific Class, Driver=qcserial, 480M
         |__ Port 3: Dev 4, If 3, Class=Vendor Specific Class, Driver=qcserial, 480M
         |__ Port 3: Dev 4, If 8, Class=Vendor Specific Class, Driver=qmi_wwan, 480M
 /:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/2p, 5000M
 /:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/2p, 480M
-    |__ Port 1: Dev 2, If 0, Class=Vendor Specific Class, Driver=pl2303, 12M
-    |__ Port 2: Dev 3, If 0, Class=Hub, Driver=hub/4p, 480M
+  |__ Port 1: Dev 2, If 0, Class=Vendor Specific Class, Driver=pl2303, 12M
+  |__ Port 2: Dev 3, If 0, Class=Hub, Driver=hub/4p, 480M
         |__ Port 4: Dev 5, If 2, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
         |__ Port 4: Dev 5, If 0, Class=Vendor Specific Class, Driver=ftdi_sio, 480M
         |__ Port 4: Dev 5, If 3, Class=Vendor Specific Class, Driver=ftdi_sio, 480M

@@ -165,44 +165,44 @@ View the current active configuration, also known as the running configuration, 
 :::{code-block} none
 vyos@vyos:~$ show configuration
 interfaces {
-    ethernet eth0 {
+  ethernet eth0 {
         address dhcp
         hw-id 00:53:00:00:aa:01
-    }
-    loopback lo {
-    }
+  }
+  loopback lo {
+  }
 }
 service {
-    ssh {
+  ssh {
         port 22
-    }
+  }
 }
 system {
-    config-management {
+  config-management {
         commit-revisions 20
-    }
-    console {
+  }
+  console {
         device ttyS0 {
             speed 9600
         }
-    }
-    login {
+  }
+  login {
         user vyos {
             authentication {
                 encrypted-password ****************
             }
             level admin
         }
-    }
-    ntp {
+  }
+  ntp {
         server 0.pool.ntp.org {
         }
         server 1.pool.ntp.org {
         }
         server 2.pool.ntp.org {
         }
-    }
-    syslog {
+  }
+  syslog {
         global {
             facility all {
                 level notice
@@ -211,7 +211,7 @@ system {
                 level debug
             }
         }
-    }
+  }
 }
 :::
 ```
@@ -259,7 +259,7 @@ View the current active configuration in readable JSON format.
 
 :::{code-block} none
 {
-    "interfaces": {
+  "interfaces": {
         "ethernet": {
             "eth0": {
                 "address": [
@@ -278,8 +278,8 @@ View the current active configuration in readable JSON format.
         "loopback": {
             "lo": {}
         }
-    },
-    "protocols": {
+  },
+  "protocols": {
         "static": {
             "route": {
                 "0.0.0.0/0": {
@@ -289,13 +289,13 @@ View the current active configuration in readable JSON format.
                 }
             }
         }
-    },
-    "service": {
+  },
+  "service": {
         "ssh": {
             "disable-host-validation": {}
         }
-    },
-    "system": {
+  },
+  "system": {
         "config-management": {
             "commit-revisions": "100"
         },
@@ -346,7 +346,7 @@ View the current active configuration in readable JSON format.
             }
         },
         "time-zone": "America/New_York"
-    }
+  }
 }
 :::
 ```
@@ -710,22 +710,22 @@ Use this command to spot what the differences are between different configuratio
 :::{code-block} none
 vyos@vyos# compare [tab]
 Possible completions:
-  <Enter>  Compare working & active configurations
-  saved        Compare working & saved configurations
-  <N>      Compare working with revision N
-  <N> <M>  Compare revision N with M
-  Revisions:
-    0     2013-12-17 20:01:37 root by boot-config-loader
-    1     2013-12-13 15:59:31 root by boot-config-loader
-    2     2013-12-12 21:56:22 vyos by cli
-    3     2013-12-12 21:55:11 vyos by cli
-    4     2013-12-12 21:27:54 vyos by cli
-    5     2013-12-12 21:23:29 vyos by cli
-    6     2013-12-12 21:13:59 root by boot-config-loader
-    7     2013-12-12 16:25:19 vyos by cli
-    8     2013-12-12 15:44:36 vyos by cli
-    9     2013-12-12 15:42:07 root by boot-config-loader
-    10   2013-12-12 15:42:06 root by init
+<Enter>  Compare working & active configurations
+saved        Compare working & saved configurations
+<N>      Compare working with revision N
+<N> <M>  Compare revision N with M
+Revisions:
+  0     2013-12-17 20:01:37 root by boot-config-loader
+  1     2013-12-13 15:59:31 root by boot-config-loader
+  2     2013-12-12 21:56:22 vyos by cli
+  3     2013-12-12 21:55:11 vyos by cli
+  4     2013-12-12 21:27:54 vyos by cli
+  5     2013-12-12 21:23:29 vyos by cli
+  6     2013-12-12 21:13:59 root by boot-config-loader
+  7     2013-12-12 16:25:19 vyos by cli
+  8     2013-12-12 15:44:36 vyos by cli
+  9     2013-12-12 15:42:07 root by boot-config-loader
+  10   2013-12-12 15:42:06 root by init
 :::
 The command {cfgcmd}`compare` allows you to compare different type of configurations. It also lets you compare different revisions through the {cfgcmd}`compare N M` command, where N and M are revision numbers. The output will describe how the configuration N is when compared to M indicating with a plus sign (`+`) the additional parts N has when compared to M, and indicating with a minus sign (`-`) the lacking parts N misses when compared to M.
 
@@ -828,14 +828,14 @@ Use this command to load a configuration which will replace the running configur
 :::{code-block} none
 vyos@vyos# load
 Possible completions:
-  <Enter>                      Load from system config file
-  <file>                       Load from file on local machine
-  scp://<user>:<passwd>@<host>:/<file> Load from file on remote machine
-  sftp://<user>:<passwd>@<host>/<file> Load from file on remote machine
-  ftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
-  http://<host>/<file>         Load from file on remote machine
-  https://<host>/<file>            Load from file on remote machine
-  tftp://<host>/<file>         Load from file on remote machine
+<Enter>                      Load from system config file
+<file>                       Load from file on local machine
+scp://<user>:<passwd>@<host>:/<file> Load from file on remote machine
+sftp://<user>:<passwd>@<host>/<file> Load from file on remote machine
+ftp://<user>:<passwd>@<host>/<file>  Load from file on remote machine
+http://<host>/<file>         Load from file on remote machine
+https://<host>/<file>            Load from file on remote machine
+tftp://<host>/<file>         Load from file on remote machine
 :::
 
 If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.

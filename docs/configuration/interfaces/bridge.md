@@ -175,7 +175,7 @@ handles all untagged traffic.
 **Configure the VLAN protocol (EtherType) for the bridge interface.**
 The following options are available:
 * ``802.1q`` (default): Sets the EtherType to ``0x8100``. Used for standard
-  enterprise VLANs.
+enterprise VLANs.
 * ``802.1ad``: Sets the EtherType to ``0x88a8``. Used for QinQ (provider bridging).
 ```
 

@@ -38,7 +38,7 @@ Set authentication backend. The configured authentication backend is used
 for all queries.
 
 * **radius**: All authentication queries are handled by a configured RADIUS
-  server.
+server.
 * **local**: All authentication queries are handled locally.
 * **noauth**: Authentication disabled.
 ```
@@ -87,8 +87,8 @@ set service pppoe-server authentication mode radius
 ```
 
 ```{cfgcmd} set service pppoe-server authentication radius server \<server\> key \<secret\>
-  Configure RADIUS `<server>` and its required shared `<secret>` for
-  communicating with the RADIUS server.
+Configure RADIUS `<server>` and its required shared `<secret>` for
+communicating with the RADIUS server.
 ```
 
 Since the RADIUS server would be a single point of failure, multiple RADIUS
