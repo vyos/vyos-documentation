@@ -76,7 +76,7 @@ The distance range is 1 to 255.
 ```
 
 
-```{cfgcmd} set protocols ospf distance ospf \<external|inter-area|intra-area\> <distance>
+```{cfgcmd} set protocols ospf distance ospf \<external|inter-area|intra-area\> \<distance\>
 This command change distance value of OSPF. The arguments are the distance
 values for external routes, inter-area routes and intra-area routes
 respectively. The distance range is 1 to 255.
@@ -95,7 +95,7 @@ Without {cfgcmd}`detail`, only changes to full or regressions are shown.
 ```
 
 
-```{cfgcmd} set protocols ospf max-metric router-lsa <administrative|on-shutdown <seconds>|on-startup <seconds>>
+```{cfgcmd} set protocols ospf max-metric router-lsa \<administrative|on-shutdown <seconds\>|on-startup \<seconds\>>
 This enables {rfc}`3137` support, where the OSPF process describes its
 transit links in its router-LSA as having infinite distance so that other
 routers will avoid calculating transit paths through the router while
@@ -110,7 +110,7 @@ and/or for a period of seconds prior to shutdown with the
 ```
 
 
-```{cfgcmd} set protocols ospf parameters abr-type <cisco|ibm|shortcut|standard>
+```{cfgcmd} set protocols ospf parameters abr-type \<cisco|ibm|shortcut|standard\>
 This command selects ABR model. OSPF router supports four ABR models:
 
 **cisco** – a router will be considered as ABR if it has several configured
@@ -179,7 +179,7 @@ The timer range is 10 to 1800.
 ```
 
 
-```{cfgcmd} set protocols ospf timers throttle spf <delay|initial-holdtime|max-holdtime> <seconds>
+```{cfgcmd} set protocols ospf timers throttle spf \<delay|initial-holdtime|max-holdtime\> \<seconds\>
 This command sets the initial delay, the initial-holdtime and the
 maximum-holdtime between when SPF is calculated and the event which
 triggered the calculation. The times are specified in milliseconds and must
@@ -238,7 +238,7 @@ summary route is allowed.
 ```
 
 
-```{cfgcmd} set protocols ospf area \<number\> area-type stub default-cost <number>
+```{cfgcmd} set protocols ospf area \<number\> area-type stub default-cost \<number\>
 This command sets the cost of default-summary LSAs announced to stubby
 areas. The cost range is 0 to 16777215.
 ```
@@ -263,13 +263,13 @@ ABR are allowed.
 ```
 
 
-```{cfgcmd} set protocols ospf area \<number\> area-type nssa default-cost <number>
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa default-cost \<number\>
 This command sets the default cost of LSAs announced to NSSA areas.
 The cost range is 0 to 16777215.
 ```
 
 
-```{cfgcmd} set protocols ospf area \<number\> area-type nssa translate <always|candidate|never>
+```{cfgcmd} set protocols ospf area \<number\> area-type nssa translate \<always|candidate|never\>
 Specifies whether this NSSA border router will unconditionally translate
 Type-7 LSAs into Type-5 LSAs. When role is Always, Type-7 LSAs are
 translated into Type-5 LSAs regardless of the translator state of other
@@ -326,7 +326,7 @@ This command makes sense in ABR only.
 ```
 
 
-```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> substitute <E.F.G.H/M>
+```{cfgcmd} set protocols ospf area \<number\> range \<A.B.C.D/M\> substitute \<E.F.G.H/M\>
 One Type-3 summary-LSA with routing info <E.F.G.H/M> is announced into
 backbone area if defined area contains at least one intra-area network
 (i.e. described with router-LSA or network-LSA) from range <A.B.C.D/M>.
@@ -374,7 +374,7 @@ This pseudo-network is considered to belong to a backbone area.
 ```
 
 
-```{cfgcmd} set protocols ospf interface \<interface\> authentication plaintext-password <text>
+```{cfgcmd} set protocols ospf interface \<interface\> authentication plaintext-password \<text\>
 This command sets OSPF authentication key to a simple password. After
 setting, all OSPF packets are authenticated. Key has length up to 8 chars.
 
@@ -383,7 +383,7 @@ MD5 HMAC authentication.
 ```
 
 
-```{cfgcmd} set protocols ospf interface \<interface\> authentication md5 key-id <id> md5-key <text>
+```{cfgcmd} set protocols ospf interface \<interface\> authentication md5 key-id \<id\> md5-key \<text\>
 This command specifys that MD5 HMAC authentication must be used on this
 interface. It sets OSPF authentication key to a cryptographic password.
 Key-id identifies secret key used to create the message digest. This ID
@@ -466,7 +466,7 @@ Designated Router. The default value is 1. The interval range is 0 to 255.
 ```
 
 
-```{cfgcmd} set protocols ospf interface \<interface\> retransmit-interval <number>
+```{cfgcmd} set protocols ospf interface \<interface\> retransmit-interval \<number\>
 This command sets number of seconds for RxmtInterval timer value. This
 value is used when retransmitting Database Description and Link State
 Request packets if acknowledge was not received. The default value is 5
@@ -849,7 +849,7 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
 ```
 
 
-```{opcmd} show ip ospf database \<type\> [A.B.C.D] [adv-router <A.B.C.D>|self-originate]
+```{opcmd} show ip ospf database \<type\> [A.B.C.D] [adv-router \<A.B.C.D\>|self-originate]
  This command displays a database contents for a specific link advertisement
  type.
 

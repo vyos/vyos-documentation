@@ -106,7 +106,7 @@ Set the IP address of the LDP peer and a session hold time that should be
 configured for it. You may have to reset the neighbor for this to work.
 ```
 
-```{cfgcmd} set protocols mpls ldp neighbor \<address\> ttl-security <disable | hop count>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> ttl-security \<disable | hop count\>
 
 Use this command to enable, disable, or specify hop count for TTL security
 for LDP peers. By default the value is set to 255 (or max TTL).
@@ -216,16 +216,16 @@ Use this command to enable the local router to try and connect with a targeted
 LDP session to another router.
 ```
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime \<seconds\>
 ```
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-interval <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-interval \<seconds\>
 ```
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime \<seconds\>
 ```
 
-```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-interval <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-interval \<seconds\>
 
 Use these commands if you would like to set the discovery hello and hold time
 parameters for the targeted LDP neighbors.
