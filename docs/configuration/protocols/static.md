@@ -21,6 +21,7 @@ routes can be created.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> disable
+
 Disable this IPv4 static route entry.
 ```
 
@@ -45,6 +46,7 @@ routed for the given `<subnet>`.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> disable
+
 Disables interface-based IPv4 static route.
 ```
 
@@ -76,12 +78,14 @@ gateway address as BFD peer destination address with source address
 ### DHCP Interface Routes
 
 ```{cfgcmd} set protocols static route \<subnet\> dhcp-interface \<interface\>
+
 Defines route with DHCP interface supplying next-hop IP address.
 ```
 
 ### IPv4 Reject Routes
 
 ```{cfgcmd} set protocol static route \<subnet\> reject
+
 Defines route which emits an ICMP unreachable when matched.
 ```
 
@@ -91,10 +95,12 @@ distance are elected prior to those with a higher distance.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> reject tag \<tag\>
+
 Sets a tag for this route.
 ```
 
 ```{cfgcmd} set protocol static route6 \<subnet\> reject
+
 Defines route which emits an ICMP unreachable when matched.
 ```
 
@@ -114,6 +120,7 @@ distance are elected prior to those with a higher distance.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> blackhole tag \<tag\>
+
 Sets a tag for this route.
 ```
 
@@ -125,6 +132,7 @@ routes can be created.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> disable
+
 Disable this IPv6 static route entry.
 ```
 
@@ -173,6 +181,7 @@ routed for the given `<subnet>`.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> disable
+
 Disables interface-based IPv6 static route.
 ```
 
@@ -216,6 +225,7 @@ gateway address as BFD peer destination address with source address
 ### IPv6 Reject Routes
 
 ```{cfgcmd} set protocol static route6 \<subnet\> reject
+
 Defines route which emits an ICMP unreachable when matched.
 ```
 
@@ -225,6 +235,7 @@ distance are elected prior to those with a higher distance.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> reject tag \<tag\>
+
 Sets a tag for this route.
 ```
 
@@ -244,6 +255,7 @@ distance are elected prior to those with a higher distance.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> blackhole tag \<tag\>
+
 Sets a tag for this route.
 ```
 

@@ -274,6 +274,7 @@ With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 ````none
 ```{opcmd} show protocols static arp
+
    Display all known ARP table entries spanning across all interfaces
 ```
 ````

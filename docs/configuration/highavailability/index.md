@@ -234,6 +234,7 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 `global-parameters` and/or in `group` section.
 
 ```{cfgcmd} set high-availability vrrp global-parameters garp interval \<0.000-1000\>
+
 ```
 ```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
 

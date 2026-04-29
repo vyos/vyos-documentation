@@ -35,6 +35,7 @@ executed.
 ```
 
 ```{cfgcmd} set system task-scheduler task \<task\> executable arguments \<args\>
+
 Arguments which will be passed to the executable.
 ```
 

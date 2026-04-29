@@ -32,6 +32,7 @@ These are the commands for a basic setup.
 
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld disable
+
 Disable MLD reports and query on the interface.
 ```
 
@@ -45,6 +46,7 @@ The default value is 125 seconds.
 ```
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld join \<multicast-address\>
+
 Use this command to allow the selected interface to join a multicast group.
 ```
 
@@ -54,18 +56,22 @@ group.
 ```
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld last-member-query-count \<count\>
+
 Set the MLD last member query count. The default value is 2.
 ```
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld last-member-query-interval \<milliseconds\>
+
 Set the MLD last member query interval in milliseconds (100-6553500). The default value is 1000 milliseconds.
 ```
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld max-response-time \<milliseconds\>
+
 Set the MLD query response timeout in milliseconds (100-6553500). The default value is 10000 milliseconds.
 ```
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld version \<version-number\>
+
 Set the MLD version used on this interface. The default value is 2.
 ```
 

@@ -23,6 +23,7 @@ Range is 1 to 300, default is 10.
 
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check type <protocol>
+
 Defines protocols for checking ARP, ICMP, TCP.
 ```
 - ICMP probe sends 2 ICMP request packets with a response timeout of 1 second.
@@ -38,6 +39,7 @@ Defines protocols for checking ARP, ICMP, TCP.
 
   > Default is `icmp`.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check policy <policy>
+
 Policy for checking targets
 ```
 - `all-available` all checking target addresses must be available to pass
@@ -50,6 +52,7 @@ Policy for checking targets
 
   > Default is `any-available`.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> interface <interface>
+
 Next-hop interface for the route
 ```
 

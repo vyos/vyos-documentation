@@ -212,16 +212,19 @@ Value range 1-3600 seconds.
 ### Global
 Global configuration parameters:
 ```{cfgcmd} set load-balancing haproxy global-parameters max-connections \<num\>
+
   Limit maximum number of connections
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy global-parameters ssl-bind-ciphers \<ciphers\>
+
 Limit the cipher algorithms allowed during SSL/TLS handshake.
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy global-parameters tls-version-min \<version\>
+
 Specify the minimum required TLS version 1.2 or 1.3
 ```
 
@@ -270,11 +273,13 @@ expecting a successful response code in the 200-399 range.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check method <method>
+
 Set the HTTP method: ``OPTION``, ``GET``, ``POST``, or ``PUT``.
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check uri <path>
+
 Set the endpoint to use for health checks.
 ```
 

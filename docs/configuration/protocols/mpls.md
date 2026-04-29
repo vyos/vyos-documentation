@@ -67,11 +67,13 @@ change to work.
 ## Configuration Options
 
 ```{cfgcmd} set protocols mpls interface \<interface\>
+
   Use this command to enable MPLS processing on the interface you define.
 ```
 
 
 ```{cfgcmd} set protocols mpls ldp interface \<interface\>
+
 Use this command to enable LDP on the interface you define.
 ```
 
@@ -83,6 +85,7 @@ local device.
 
 
 ```{cfgcmd} set protocols mpls ldp discovery transport-ipv4-address \<address\>
+
 ```
 ```{cfgcmd} set protocols mpls ldp discovery transport-ipv6-address \<address\>
 

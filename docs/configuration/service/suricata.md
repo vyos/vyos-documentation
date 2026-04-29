@@ -60,6 +60,7 @@ the configuration more flexible.
 
 
 ```{cfgcmd} set service suricata interface \<text\>
+
 The interface that will be monitored by the Suricata service.
 ```
 ```{cfgcmd} set service suricata log eve \<filename | filetype | type\>

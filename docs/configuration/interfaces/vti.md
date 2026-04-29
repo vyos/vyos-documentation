@@ -53,6 +53,7 @@ designated monitor interface.
 ```
 
 ```{cfgcmd} set interfaces vti \<interface\> redirect \<interface\>
+
 Enable redirection of incoming packets to the specified interface.
 ```
 
@@ -64,10 +65,12 @@ Enable redirection of incoming packets to the specified interface.
 ## Operation
 
 ```{opcmd} show interfaces vti \<vtiX\>
+
 Show the operational status and traffic statistics for the specified VTI.
 ```
 
 ```{opcmd} show interfaces vti \<vtiX\> brief
+
 Show a brief operational status summary for the specified VTI.
 ```
 

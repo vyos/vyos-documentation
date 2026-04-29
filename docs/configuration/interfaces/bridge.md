@@ -127,6 +127,7 @@ To activate loop prevention, you must explicitly enable the protocol and
 configure its parameters.
 
 ```{cfgcmd} set interfaces bridge \<interface\> stp
+
 Enable {abbr}`STP (Spanning Tree Protocol)` on the bridge interface.
 ```
 

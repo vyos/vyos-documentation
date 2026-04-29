@@ -128,6 +128,7 @@ Valid values are 0..255.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> ssid \<ssid\>
+
 SSID to be used in IEEE 802.11 management frames
 ```
 
@@ -146,6 +147,7 @@ Wireless device type for this interface
 #### PPDU
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-ht
+
 ```
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-vht
 ```

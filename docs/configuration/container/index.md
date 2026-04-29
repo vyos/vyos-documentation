@@ -130,6 +130,7 @@ set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
 
 
 ```{cfgcmd} set container name \<name\> port \<portname\> source \<portnumber\>
+
 ```
 ```{cfgcmd} set container name \<name\> port \<portname\> destination \<portnumber\>
 ```

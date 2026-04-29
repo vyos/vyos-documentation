@@ -3,6 +3,7 @@
 ## System configuration commands
 
 ```{cfgcmd} set system ipv6 disable-forwarding
+
    Use this command to disable IPv6 forwarding on all interfaces.
 ```
 
@@ -20,6 +21,7 @@ Duplicate Address Detection fails on Link-Local address.
 
 
 ```{cfgcmd} set system ipv6 multipath layer4-hashing
+
 Use this command to user Layer 4 information for ECMP hashing.
 ```
 ### Zebra/Kernel route filtering
@@ -54,16 +56,19 @@ subnode.
 
 ### Show commands
 ```{opcmd} show ipv6 neighbors
+
 Use this command to show IPv6 Neighbor Discovery Protocol information.
 ```
 
 
 ```{opcmd} show ipv6 groups
+
 Use this command to show IPv6 multicast group membership.
 ```
 
 
 ```{opcmd} show ipv6 forwarding
+
 Use this command to show IPv6 forwarding status.
 ```
 
@@ -154,11 +159,13 @@ Possible completions:
 
 
 ```{opcmd} show ipv6 ripng
+
 Use this command to get information about the RIPNG protocol
 ```
 
 
 ```{opcmd} show ipv6 ripng status
+
 Use this command to show the status of the RIPNG protocol
 ```
 ### Reset commands

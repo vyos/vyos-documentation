@@ -14,6 +14,7 @@ to the nexthop address \<address\>.
 ```
 
 ```{cfgcmd} delete protocols static route 0.0.0.0/0
+
 Delete default route from the system.
 ```
 

@@ -64,6 +64,7 @@ used there is possibility to set host/netmask.
 ```
 
 ```{cfgcmd} set vpn sstp default-pool \<POOL-NAME\>
+
 Use this command to define default address pool name.
 ```
 
@@ -73,10 +74,12 @@ interfaces.
 ```
 
 ```{cfgcmd} set vpn sstp ssl ca-certificate \<file\>
+
 Name of installed certificate authority certificate.
 ```
 
 ```{cfgcmd} set vpn sstp ssl certificate \<file\>
+
 Name of installed server certificate.
 ```
 
@@ -130,18 +133,22 @@ Best practice would be a loopback or dummy interface.
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> port \<port\>
+
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> fail-time \<time\>
+
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> disable
+
 Temporary disable this RADIUS server.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius acct-timeout \<timeout\>
+
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
@@ -151,18 +158,22 @@ This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author port \<port\>
+
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author key \<secret\>
+
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius max-try \<number\>
+
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius timeout \<timeout\>
+
 Timeout to wait response from server (seconds)
 ```
 
@@ -177,6 +188,7 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
+
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -191,6 +203,7 @@ dictionaries on the RADIUS server and client.
 :::
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit enable
+
 Enables bandwidth shaping via RADIUS.
 ```
 
@@ -263,6 +276,7 @@ the defined IPv6 pool you will be handing out networks of the defined length
 ```
 
 ```{cfgcmd} set vpn sstp default-ipv6-pool \<IPv6-POOL-NAME\>
+
 Use this command to define default IPv6 address pool name.
 ```
 
@@ -276,6 +290,7 @@ set vpn sstp default-ipv6-pool IPv6-POOL
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-accept-peer-interface-id
+
 Accept peer interface identifier. By default this is not defined.
 ```
 
@@ -297,18 +312,22 @@ Specifies the peer interface identifier for IPv6. The default is fixed.
 ## Scripting
 
 ```{cfgcmd} set vpn sstp extended-scripts on-change \<path_to_script\>
+
 Script to run when the session interface is changed by RADIUS CoA handling
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-down \<path_to_script\>
+
 Script to run when the session interface about to terminate
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-pre-up \<path_to_script\>
+
 Script to run before the session interface comes up
 ```
 
 ```{cfgcmd} set vpn sstp extended-scripts on-up \<path_to_script\>
+
 Script to run when the session interface is completely configured and started
 ```
 
@@ -317,18 +336,22 @@ Script to run when the session interface is completely configured and started
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> disable
+
 Disable `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> static-ip \<address\>
+
 Assign a static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit download <bandwidth>
+
 Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> rate-limit upload <bandwidth>
+
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
@@ -340,6 +363,7 @@ pap, chap, mschap, mschap-v2.
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn sstp client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
+
 Use this command to define the next address pool name.
 ```
 
@@ -403,32 +427,39 @@ attribute.
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options mru \<number\>
+
 Defines preferred MRU. By default is not defined.
 ```
 
 ### Global Advanced options
 
 ```{cfgcmd} set vpn sstp description \<description\>
+
 Set description.
 ```
 
 ```{cfgcmd} set vpn sstp limits burst \<value\>
+
 Burst count
 ```
 
 ```{cfgcmd} set vpn sstp limits connection-limit \<value\>
+
 Maximum accepted connection rate (e.g. 1/min, 60/sec)
 ```
 
 ```{cfgcmd} set vpn sstp limits timeout \<value\>
+
 Timeout in seconds
 ```
 
 ```{cfgcmd} set vpn sstp mtu
+
 Maximum Transmission Unit (MTU) (default: **1500**)
 ```
 
 ```{cfgcmd} set vpn sstp max-concurrent-sessions
+
 Maximum number of concurrent session start attempts
 ```
 
@@ -439,14 +470,17 @@ for IPv4, up to three for IPv6.
 ```
 
 ```{cfgcmd} set vpn sstp shaper fwmark \<1-2147483647\>
+
 Match firewall mark value
 ```
 
 ```{cfgcmd} set vpn sstp snmp master-agent
+
 Enable SNMP
 ```
 
 ```{cfgcmd} set vpn sstp wins-server \<address\>
+
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 

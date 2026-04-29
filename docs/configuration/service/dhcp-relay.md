@@ -23,10 +23,12 @@ new implementations should use ``listen-interface`` and
 ```
 
 ```{cfgcmd} set service dhcp-relay listen-interface \<interface\>
+
 Interface for DHCP Relay Agent to listen for requests.
 ```
 
 ```{cfgcmd} set service dhcp-relay upstream-interface \<interface\>
+
 Interface for DHCP Relay Agent to forward requests out.
 ```
 
@@ -41,6 +43,7 @@ information to ensure that only requests from DHCP clients are forwarded.
 ```
 
 ```{cfgcmd} set service dhcp-relay disable
+
 Disable dhcp-relay service.
 ```
 
@@ -109,6 +112,7 @@ show service dhcp-relay
 ### Operation
 
 ```{opcmd} restart dhcp relay-agent
+
 Restart DHCP relay service
 ```
 
@@ -130,6 +134,7 @@ Specifies an upstream network `<interface>` from which replies from
 (dhcp-relay-ipv6-options)=
 
 ```{cfgcmd} set service dhcpv6-relay disable
+
 Disable dhcpv6-relay service.
 ```
 
@@ -138,6 +143,7 @@ Disable dhcpv6-relay service.
 #### Options
 
 ```{cfgcmd} set service dhcpv6-relay max-hop-count \<count\>
+
 Set maximum hop count before packets are discarded, default: 10
 ```
 
@@ -175,5 +181,6 @@ show service dhcpv6-relay
 ### Operation
 
 ```{opcmd} restart dhcpv6 relay-agent
+
 Restart DHCPv6 relay agent immediately.
 ```

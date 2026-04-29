@@ -148,6 +148,7 @@ the DR for a LAN segment.
 ```
 
 ```{cfgcmd} set protocols pim interface \<interface\> hello \<n\>
+
 Set the PIM hello and hold interval for a interface.
 ```
 
@@ -162,6 +163,7 @@ unicast bootstrap messages.
 ```
 
 ```{cfgcmd} set protocols pim interface \<interface\> passive
+
 Disable sending and receiving PIM control packets on the interface.
 ```
 

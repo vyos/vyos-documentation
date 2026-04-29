@@ -52,6 +52,7 @@ Queue size for listening to local conntrack events in MB.
 
 
 ```{cfgcmd} set service conntrack-sync expect-sync \<all|ftp|h323|nfs|sip|sqlnet\>
+
 Protocol for which expect entries need to be synchronized.
 ```
 
@@ -65,21 +66,25 @@ Only VRRP is supported. Required option.
 
 
 ```{cfgcmd} set service conntrack-sync ignore-address \<x.x.x.x\>
+
 IP addresses or networks for which local conntrack entries will not be synced
 ```
 
 
 ```{cfgcmd} set service conntrack-sync interface \<name\>
+
 Interface to use for syncing conntrack entries.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync interface \<name\> port \<port\>
+
 Port number used by connection.
 ```
 
 
 ```{cfgcmd} set service conntrack-sync listen-address \<ipv4address\>
+
 Local IPv4 addresses for service to listen on.
 ```
 
@@ -99,6 +104,7 @@ configuration from above above.
 
 
 ```{cfgcmd} set service conntrack-sync sync-queue-size \<size\>
+
 Queue size for syncing conntrack entries in MB.
 ```
 
@@ -127,6 +133,7 @@ can be restored before conntrack state is purged.
 :::
 
 ```{cfgcmd} set service conntrack-sync disable-syslog
+
 Disable connection logging via Syslog.
 ```
 
@@ -164,11 +171,13 @@ rule. {cfgcmd}`set firewall state-policy established action accept`
 
 
 ```{opcmd} show conntrack-sync cache external
+
 Show connection syncing external cache entries
 ```
 
 
 ```{opcmd} show conntrack-sync cache internal
+
 Show connection syncing internal cache entries
 ```
 

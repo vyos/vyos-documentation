@@ -95,6 +95,7 @@ Map an IP address of a station to the station’s NBMA address.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> mtu \<mtu\>
+
 Configure NHRP advertised MTU.
 ```
 
@@ -151,36 +152,44 @@ always is set to 'clear'.
 :::
 
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication mode pre-shared-secret
+
 Set preshared secret mode authentication
 ```
 
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> authentication pre-shared-secret \<secret\>
+
 Set preshared secret
 ```
 
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> bind tunnel \<tunnel name\>
+
 Bind IPSEC profile to the specific tunnel interface.
 ```
 
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> esp-group 'ESP-HUB'
+
 Map ESP group to IPSEC profile
 ```
 
 ```{cfgcmd} set vpn ipsec profile \<profile-name\> ike-group 'IKE-HUB'
+
 Map IKE group to IPSEC profile
 ```
 
 ## Monitoring
 
 ```{opcmd} show ip nhrp cache
+
 Forwarding cache information.
 ```
 
 ```{opcmd} show ip nhrp nhs
+
 Next hop server information.
 ```
 
 ```{opcmd} show ip nhrp shortcut
+
 Shortcut information.
 ```
 

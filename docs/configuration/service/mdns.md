@@ -28,6 +28,7 @@ re-broadcasted to any other interface(s) configured under this section.
 ```
 
 ```{cfgcmd} set service mdns repeater disable
+
 mDNS repeater can be temporarily disabled without deleting the service using
 ```
 
@@ -103,14 +104,17 @@ set service mdns repeater browse-domain 'openthread.thread.home.arpa'
 ## Operation
 
 ```{opcmd} restart mdns repeater
+
 Restart mDNS repeater service.
 ```
 
 ```{opcmd} show log mdns repeater
+
 Show logs for mDNS repeater service.
 ```
 
 ```{opcmd} monitor log mdns repeater
+
 Follow the logs for mDNS repeater service.
 ```
 

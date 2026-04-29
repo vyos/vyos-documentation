@@ -109,10 +109,12 @@ be both listening on an IPv4 or IPv6 address.
 ```
 
 ```{cfgcmd} set system flow-accounting netflow source-ip \<address\>
+
 IPv4 or IPv6 source address of NetFlow packets
 ```
 
 ```{cfgcmd} set system flow-accounting netflow engine-id \<id\>
+
 NetFlow engine-id which will appear in NetFlow data. The range is 0 to 255.
 ```
 

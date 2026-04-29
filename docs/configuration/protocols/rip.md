@@ -53,6 +53,7 @@ specified with neighbor command.
 
 
 ```{cfgcmd} set protocols rip passive-interface interface default
+
 This command specifies all interfaces to passive mode.
 ```
 ## Optional Configuration
@@ -82,6 +83,7 @@ prefix and the specified access-list.
 
 
 ```{cfgcmd} set protocols rip default-information originate
+
 This command generate a default route into the RIP.
 ```
 
@@ -204,6 +206,7 @@ as unreachable over the interface on which the route was learned.
 ## Operational Mode Commands
 
 ```{opcmd} show ip rip
+
 This command displays RIP routes.
 ```
 ```none

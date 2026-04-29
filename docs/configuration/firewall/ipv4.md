@@ -1549,11 +1549,13 @@ vyos@vyos:~$
 ```
 
 ```{opcmd} show firewall statistics
+
 This will show you statistics of all rule-sets since the last boot.
 ```
 ### Show Firewall log
 
 ```{opcmd} show log firewall
+
 ```
 ```{opcmd} show log firewall ipv4
 ```

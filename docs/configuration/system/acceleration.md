@@ -23,6 +23,7 @@ if there is non device the command will show \`No QAT device found\`
 ```
 
 ```{cfgcmd} set system acceleration qat
+
 if there is a supported device, enable Intel® QAT
 ```
 
@@ -42,16 +43,19 @@ qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3
 ### Operation Mode
 
 ```{opcmd} show system acceleration qat device \<device\> config
+
 Show the full config uploaded to the QAT device.
 ```
 
 
 ```{opcmd} show system acceleration qat device \<device\> flows
+
 Get an overview over the encryption counters.
 ```
 
 
 ```{opcmd} show system acceleration qat interrupts
+
 Show binded qat device interrupts to certain core.
 ```
 

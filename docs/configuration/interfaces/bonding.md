@@ -303,6 +303,7 @@ discriminator, or an Ethernet Segment Identifier Name (ESINAME).
 The following two commands generate a 10-byte Type-3 ESI by combining the
 system MAC and local discriminator:
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-id \<1-16777215|10-byte ID\>
+
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-sys-mac \<xx:xx:xx:xx:xx:xx\>
 

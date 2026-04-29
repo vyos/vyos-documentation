@@ -30,6 +30,7 @@ second. This is also the default setting if none of those options are defined.
 
 
 ```{cfgcmd} set service console-server device \<device\> description \<string\>
+
 A user friendly description identifying the connected peripheral.
 ```
 
@@ -41,6 +42,7 @@ device name when connecting.
 
 
 ```{cfgcmd} set service console-server device \<device\> parity [even | odd | none]
+
 Set the parity option for the console. If unset this will default to none.
 ```
 
@@ -120,5 +122,6 @@ connecting.
 :::
 ```
 ```{opcmd} show log console-server
+
 Show the console server log.
 ```
