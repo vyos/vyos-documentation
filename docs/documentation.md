@@ -164,7 +164,7 @@ to use an alternative hyperlink use it this way:
 
 `` {ref}`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
 
-##### handle build errors
+### handle build errors
 
 The plugin will warn on build if a headline has a duplicate name in the
 same document. To prevent this warning, you have to put a custom link on
@@ -233,7 +233,7 @@ Custom commands have been developed for writing the documentation. Please
 make yourself comfortable with those commands as this eases the way we
 render the documentation.
 
-##### cfgcmd
+### cfgcmd
 
 When documenting CLI commands, use the `.. cfgcmd::` directive
 for all configuration mode commands. An explanation of the described command
@@ -269,7 +269,7 @@ Please be aware to not update the submodule in your PR.
     tracked by the system.
 ```
 ````
-##### opcmd
+### opcmd
 
 When documenting operational level commands, use the `.. opcmd::` directive.
 An explanation of the described command should be added below this statement.
@@ -289,7 +289,7 @@ For an inline operational level command, use `{opcmd}`
 ```none
 {opcmd}`add system image`
 ```
-##### cmdinclude
+### cmdinclude
 
 To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.

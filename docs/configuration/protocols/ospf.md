@@ -901,7 +901,7 @@ Length: 36
 This command displays LSAs in MaxAge list.
 ```
 #### Examples
-##### Enable OSPF
+### Enable OSPF
 
 **Node 1**
 
@@ -965,7 +965,7 @@ O>* 10.1.1.1/32 [110/1] via 192.168.0.1, eth0, weight 1, 00:00:11
 O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:00:04
 O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:18
 ```
-##### Enable OSPF with route redistribution of the loopback and default originate:
+### Enable OSPF with route redistribution of the loopback and default originate:
 
 **Node 1**
 
@@ -997,7 +997,7 @@ set protocols ospf redistribute connected route-map CONNECT
 set policy route-map CONNECT rule 10 action permit
 set policy route-map CONNECT rule 10 match interface lo
 ```
-##### Enable OSPF and IGP-LDP synchronization:
+### Enable OSPF and IGP-LDP synchronization:
 
 **Node 1:**
 
@@ -1028,7 +1028,7 @@ Node-1@vyos:~$ show ip ospf mpls ldp-sync
   Holddown timer in seconds: 0
   State: Sync achieved
 ```
-##### Enable OSPF with Segment Routing (Experimental):
+### Enable OSPF with Segment Routing (Experimental):
 
 **Node 1**
 
