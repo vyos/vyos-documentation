@@ -78,15 +78,20 @@ terraform init
 ```
 ### Ansible
 
-- Create a UNIX instance whenever you need.
-- Download and install Ansible
-- Create a folder, for example `/root/aws/`.
-- Copy all files into your Ansible project
-  (`ansible.cfg`, `instance.yml`,
-  `mykey.pem`, and `all`).
-  See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
-  You can obtain `mykey.pem` by creating a key [pair] in AWS and
-  downloading your `.pem` key.
+1. Create a UNIX instance whenever you need.
+
+2. Download and install Ansible
+
+3. Create a folder, for example `/root/aws/`.
+
+<!-- -->
+
+4. Copy all files into your Ansible project
+   (`ansible.cfg`, `instance.yml`,
+   `mykey.pem`, and `all`).
+   See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
+   You can obtain `mykey.pem` by creating a key [pair] in AWS and
+   downloading your `.pem` key.
 
 ### Deploy with Terraform
 
@@ -100,11 +105,9 @@ yes
 ```
 ## Create an AWS instance and check its configuration
 ```none
-
 root@localhost:~/awsterraform# terraform apply
 
 Terraform used the selected providers to generate the following execution plan.
-
 Resource actions are indicated with the following symbols:
   + create
 
@@ -248,7 +251,6 @@ Apply complete! Resources: 4 added, 0 changed, 0 destroyed.
 Outputs:
 
 my_IP = "54.xxx.xxx.xxx"
-
 ```
 
 After running all the commands, your VyOS instance is deployed on
