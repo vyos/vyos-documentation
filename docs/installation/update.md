@@ -51,7 +51,7 @@ from the VyOS `1.2.1` image, run:
 copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 ```
 
-###### Example
+#### Example
 
 ```none
 vyos@vyos:~$ add system image https://s3.amazonaws.com/s3-us.vyos.io/rolling/current/vyos-1.4-rolling-202201120317-amd64.iso

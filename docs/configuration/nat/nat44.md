@@ -698,7 +698,7 @@ The required configuration can be broken down into 4 major pieces:
 - IPSec IKE and ESP Groups;
 - IPSec VPN tunnels.
 
-##### Dummy interface
+### Dummy interface
 
 The dummy interface allows us to have an equivalent of the Cisco IOS
 Loopback interface - a router-internal interface we can use for IP
@@ -712,7 +712,7 @@ We only need a single step for this interface:
 set interfaces dummy dum0 address '172.29.41.89/32'
 
 ```
-##### NAT Configuration
+### NAT Configuration
 ```none
 
 set nat source rule 110 description 'Internal to ASP'
@@ -725,7 +725,7 @@ set nat source rule 120 source address '192.168.43.0/24'
 set nat source rule 120 translation address '172.29.41.89'
 
 ```
-##### IPSec IKE and ESP
+### IPSec IKE and ESP
 
 The ASP has documented their IPSec requirements:
 - IKE Phase:
@@ -756,7 +756,7 @@ set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
 set vpn ipsec interface 'eth1'
 
 ```
-##### IPSec VPN Tunnels
+### IPSec VPN Tunnels
 
 We'll use the IKE and ESP groups created above for this VPN. Because we
 need access to 2 different subnets on the far side, we will need two
@@ -784,7 +784,7 @@ set vpn ipsec site-to-site peer branch tunnel 1 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
 
 ```
-##### Testing and Validation
+### Testing and Validation
 
 If you've completed all the above steps you no doubt want to see if it's
 all working.

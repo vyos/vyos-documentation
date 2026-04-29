@@ -476,7 +476,7 @@ but `server-1` is questionable.
 
 Follow these guidelines for consistent, readable help strings:
 
-##### Capitalization and Punctuation
+### Capitalization and Punctuation
 
 - Capitalize the first word of every help string.
 - Do not use a period at the end of help strings.
@@ -490,7 +490,7 @@ Examples:
 - Bad: "Frobnication algorithm."
 - Incorrect: "frobnication algorithm."
 
-##### Abbreviations and Acronyms
+### Abbreviations and Acronyms
 
 - Capitalize all abbreviations and acronyms.
 
@@ -515,7 +515,7 @@ Examples:
 - Bad: PPPOE, IPSEC
 - Bad: pppoe, ipsec
 
-##### Verbs
+### Verbs
 
 - Avoid verbs. If a verb can be omitted, omit it.
 

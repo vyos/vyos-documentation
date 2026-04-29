@@ -464,7 +464,7 @@ GATEWAY     : 10.30.0.254
 DNS         :
 MAC         : 00:50:79:66:68:0f
 ```
-##### VRF default routing table
+### VRF default routing table
 
 
 > 
@@ -490,7 +490,7 @@ S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:3
 
 S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 ```
-##### VRF red routing table
+### VRF red routing table
 
 
 > 
@@ -518,7 +518,7 @@ S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07
 
 C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 ```
-##### VRF blue routing table
+### VRF blue routing table
 
 
 > 

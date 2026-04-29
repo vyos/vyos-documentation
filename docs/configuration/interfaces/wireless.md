@@ -154,7 +154,7 @@ Wireless device type for this interface
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-he
 ```
-##### HT (High Throughput) capabilities (802.11n)
+### HT (High Throughput) capabilities (802.11n)
 
 > Configuring HT mode options is required when using 802.11n or
 > 802.11ax at 2.4GHz.
@@ -245,7 +245,7 @@ Enable receiving PPDU using STBC (Space Time Block Coding)
 
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
-##### VHT (Very High Throughput) capabilities (802.11ac)
+### VHT (Very High Throughput) capabilities (802.11ac)
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
 
@@ -334,7 +334,7 @@ Enable VHT TXOP Power Save Mode
 
 Station supports receiving VHT variant HT Control field
 ```
-##### HE (High Efficiency) capabilities (802.11ax)
+### HE (High Efficiency) capabilities (802.11ax)
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he antenna-pattern-fixed
 
 Tell the AP that antenna positions are fixed and will not change

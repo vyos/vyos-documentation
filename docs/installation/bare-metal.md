@@ -108,7 +108,7 @@ dual front cover.
 
 #### Extension Modules
 
-##### WiFi
+### WiFi
 
 Refer to {ref}`wireless-interface` for additional information, below listed
 modules have been tested successfully on this Hardware platform:
@@ -117,7 +117,7 @@ modules have been tested successfully on this Hardware platform:
 - Intel Corporation AX200 mini-PCIe WiFi module, only supported in mPCIe slot 1.
   (see {ref}`wireless-interface-intel-ax200`)
 
-##### WWAN
+### WWAN
 
 Refer to {ref}`wwan-interface` for additional information, below listed modules
 have been tested successfully on this Hardware platform using VyOS 1.3
@@ -221,7 +221,7 @@ noise.
 :scale: 25 %
 :::
 
-##### VyOS custom print
+### VyOS custom print
 
 :::{figure} /_static/images/apu4_rack_vyos_print.jpg
 :alt: APU4 custom VyOS powder coat

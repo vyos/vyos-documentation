@@ -11,7 +11,7 @@ welcome via the [VyOS documentation repository](https://github.com/vyos/vyos-doc
 
 ## References
 
-https://www.oracle.com/cloud/
+<https://www.oracle.com/cloud/>
 
-https://docs.oracle.com/en/cloud/paas/developer-cloud-classic/csdcc/deploy-application.html
+<https://docs.oracle.com/en/cloud/paas/developer-cloud-classic/csdcc/deploy-application.html>
 

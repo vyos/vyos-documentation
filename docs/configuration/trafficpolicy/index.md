@@ -544,7 +544,7 @@ define the acceptable minimum standing/persistent queue delay. This
 minimum delay is identified by tracking the local minimum queue delay
 that packets experience (default: 5ms).
 ```
-##### Example
+### Example
 
 A simple example of an FQ-CoDel policy working inside a Shaper one.
 
@@ -1093,7 +1093,7 @@ their assigned *bandwidth* share.
 
 (traffic-policy-shaper-example)=
 
-##### Example
+### Example
 
 A simple example of Shaper using priorities.
 

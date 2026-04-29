@@ -215,7 +215,7 @@ Specifies the secret type:
 #### Peer Configuration
 
 
-##### Peer Authentication Commands
+### Peer Authentication Commands
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication mode \<mode\>
 
 Mode for authentication between VyOS and remote peer:
@@ -275,7 +275,7 @@ for authenticating local router on remote peer.
 
 Private key passphrase, if needed.
 ```
-##### Global Peer Configuration Commands
+### Global Peer Configuration Commands
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
@@ -371,9 +371,9 @@ one or several IPv4 and/or IPv6 addresses are assigned from multiple
 pools by the responder. The wildcard addresses 0.0.0.0 and ::
 request an arbitrary address, specific addresses may be defined.
 ```
-##### CHILD SAs Configuration Commands
+### CHILD SAs Configuration Commands
 
-###### Policy-Based CHILD SAs Configuration Commands
+#### Policy-Based CHILD SAs Configuration Commands
 
 Every configured tunnel under peer configuration is a new CHILD SA.
 
@@ -420,7 +420,7 @@ IP network at the remote side.
 Remote port number. Have effect only when used together with
 ``prefix``.
 ```
-###### Route-Based CHILD SAs Configuration Commands
+#### Route-Based CHILD SAs Configuration Commands
 
 To configure route-based VPN it is enough to create vti interface and
 bind it to the peer. Any traffic, which will be send to VTI interface
