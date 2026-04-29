@@ -1,6 +1,6 @@
-:description: VyOS history chronicles the evolution of the open-source network
-              operating system from its 2013 Vyatta fork through its current
-              major releases.
+:description: Overview of the VyOS project's history, from its 2013 fork of Vyatta Core
+              through each major LTS release. Covers release codenames, base Debian
+              versions, and the headline features introduced in each version.
 :keywords: vyos, history, vyatta, router, firewall, network, release, milestone
 
 .. _history:
