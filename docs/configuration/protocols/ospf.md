@@ -27,17 +27,14 @@ starts when the first ospf enabled interface is configured.
    interface so router can provide network information to the other ospf
    routers via this interface.
 
-
    This command is also used to enable the OSPF process. The area number can be
    specified in decimal notation in the range from 0 to 4294967295. Or it
    can be specified in dotted decimal notation similar to ip address.
-
 
    Prefix length in interface must be equal or bigger (i.e. smaller network)
    than prefix length in network statement. For example statement above doesn't
    enable ospf on interface with address 192.168.1.1/23, but it does on
    interface with address 192.168.1.129/25.
-
 
    In some cases it may be more convenient to enable OSPF on a per
    interface/subnet
@@ -84,7 +81,6 @@ This command change distance value of OSPF. The arguments are the distance
 values for external routes, inter-area routes and intra-area routes
 respectively. The distance range is 1 to 255.
 
-
 :::{note}
 Routes with a distance of 255 are effectively disabled and not
 installed into the kernel.
@@ -105,7 +101,6 @@ transit links in its router-LSA as having infinite distance so that other
 routers will avoid calculating transit paths through the router while
 still being able to reach networks through the router.
 
-
 This support may be enabled administratively (and indefinitely) with the
 {cfgcmd}`administrative` command. It may also be enabled conditionally.
 Conditional enabling of max-metric router-lsas can be for a period of
@@ -118,7 +113,6 @@ and/or for a period of seconds prior to shutdown with the
 ```{cfgcmd} set protocols ospf parameters abr-type <cisco|ibm|shortcut|standard>
 This command selects ABR model. OSPF router supports four ABR models:
 
-
 **cisco** – a router will be considered as ABR if it has several configured
 links to the networks in different areas one of which is a backbone area.
 Moreover, the link to the backbone area should be active (working).
@@ -128,7 +122,6 @@ may not be active.
 **shortcut** – identical to "standard" but in this model a router is
 allowed to use a connected areas topology without involving a backbone
 area for inter-area connections.
-
 
 Detailed information about "cisco" and "ibm" models differences can be
 found in {rfc}`3509`. A "shortcut" model allows ABR to create routes
@@ -147,7 +140,6 @@ of OSPFv2. More specifically it demands that inter-area paths and
 intra-area backbone path are now of equal preference but still both
 preferred to external paths.
 
-
 This command should NOT be set normally.
 ```
 
@@ -156,7 +148,6 @@ This command should NOT be set normally.
 This command specifies interface as passive. Passive interface advertises
 its address, but does not run the OSPF protocol (adjacencies are not formed
 and hello packets are not generated).
-
 
 The optional disable option allows to exclude interface from passive state.
 This command is used if the command {cfgcmd}`passive-interface default` was
@@ -220,9 +211,7 @@ ospfd supports Opaque LSA {rfc}`2370` as partial support for MPLS Traffic
 Engineering LSAs. The opaque-lsa capability must be enabled in the
 configuration.
 
-
 An alternate command could be "mpls-te on" (Traffic Engineering)
-
 
 :::{note}
 FRR offers only partial support for some of the routing
@@ -349,7 +338,6 @@ This command makes sense in ABR only.
 This parameter allows to "shortcut" routes (non-backbone) for inter-area
 routes. There are three modes available for routes shortcutting:
 
-
 **default** –  this area will be used for shortcutting only if ABR does not
 have a link to the backbone area or this link was lost.
 **enable** – the area will be used for shortcutting every time the route
@@ -361,7 +349,6 @@ that goes through it is cheaper.
 ```{cfgcmd} set protocols ospf area \<number\> virtual-link \<A.B.C.D\>
 Provides a backbone area coherence by virtual link establishment.
 
-
 In general, OSPF protocol requires a backbone area (area 0) to be coherent
 and fully connected. I.e. any backbone area router must have a route to any
 other backbone area router. Moreover, every ABR must have a link to
@@ -369,11 +356,9 @@ backbone area. However, it is not always possible to have a physical link
 to a backbone area. In this case between two ABR (one of them has a link to
 the backbone area) in the area (not stub area) a virtual link is organized.
 
-
 \<number\> – area identifier through which a virtual link goes.
 \<A.B.C.D\> – ABR router-id with which a virtual link is established. Virtual
 link must be configured on both routers.
-
 
 Formally, a virtual link looks like a point-to-point network connecting two
 ABR from one area one of which physically connected to a backbone area.
@@ -384,7 +369,6 @@ This pseudo-network is considered to belong to a backbone area.
 ```{cfgcmd} set protocols ospf interface \<interface\> area \<x.x.x.x | x\>
    Enable ospf on an interface and set associated area.
 
-
    If you have a lot of interfaces, and/or a lot of subnets, then enabling
    OSPF via this command may result in a slight performance improvement.
 ```
@@ -393,7 +377,6 @@ This pseudo-network is considered to belong to a backbone area.
 ```{cfgcmd} set protocols ospf interface \<interface\> authentication plaintext-password <text>
 This command sets OSPF authentication key to a simple password. After
 setting, all OSPF packets are authenticated. Key has length up to 8 chars.
-
 
 Simple text password authentication is insecure and deprecated in favour of
 MD5 HMAC authentication.
@@ -467,7 +450,6 @@ though there is an interface MTU mismatch between two OSPF routers.
 This command allows to specify the distribution type for the network
 connected to this interface:
 
-
 **broadcast** – broadcast IP addresses distribution.
 **non-broadcast** – address distribution in NBMA networks topology.
 **point-to-multipoint** – address distribution in point-to-multipoint
@@ -518,14 +500,12 @@ Route will be originated on-behalf of all matched external LSAs.
 ```{cfgcmd} set protocols ospf aggregation timer \<seconds\>
 Configure aggregation delay timer interval.
 
-
 Summarisation starts only after this delay timer expiry.
 ```
 
 
 ```{cfgcmd} set protocols ospf summary-address x.x.x.x/y [tag (1-4294967295)]
 This command enable/disables summarisation for the configured address range.
-
 
 Tag is the optional parameter. If tag configured Summary route will be
 originated with the configured tag.
@@ -541,7 +521,6 @@ external LSAs.
 Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
 the default grace period is 120 seconds.
 
-
 To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
 ospf`` EXEC-level command needs to be issued before restarting the
 ospfd daemon.
@@ -553,7 +532,6 @@ Configure Graceful Restart {rfc}`3623` helper support. By default, helper suppor
 is disabled for all neighbours. This config enables/disables helper support
 on this router for all neighbours.
 
-
 To enable/disable helper support for a specific neighbour, the router-id
 (A.B.C.D) has to be specified.
 ```
@@ -563,7 +541,6 @@ To enable/disable helper support for a specific neighbour, the router-id
 By default strict-lsa-checking is configured then the helper will abort
 the Graceful Restart when a LSA change occurs which affects the restarting
 router.
-
 
 This command disables it.
 ```
@@ -577,7 +554,6 @@ Supports as HELPER for configured grace period.
 
 ```{cfgcmd} set protocols ospf graceful-restart helper planned-only
 It helps to support as HELPER only for planned restarts.
-
 
 By default, it supports both planned and unplanned outages.
 ```
@@ -873,21 +849,17 @@ Link ID         ADV Router      Age  Seq#       CkSum  Route
  This command displays a database contents for a specific link advertisement
  type.
 
-
  The type can be the following:
  asbr-summary, external, network, nssa-external, opaque-area, opaque-as,
  opaque-link, router, summary.
-
 
  [A.B.C.D] – link-state-id. With this specified the command displays portion
  of the network environment that is being described by the advertisement.
  The value entered depends on the advertisement’s LS type. It must be
  entered in the form of an IP address.
 
-
  {cfgcmd}`adv-router <A.B.C.D>` – router id, which link advertisements need
  to be reviewed.
-
 
  {cfgcmd}`self-originate` displays only self-originated LSAs from the local
  router.

@@ -236,9 +236,7 @@ The translation address must be set to one of the available
 addresses on the configured `outbound-interface` or it must be set to
 `masquerade` which will use the primary IP address of the
 `outbound-interface` as its translation address.
-:::
 
-:::{note}
 When using NAT for a large number of host systems it
 recommended that a minimum of 1 IP address is used to NAT every 256
 private host systems. This is due to the limit of 65,000 port numbers

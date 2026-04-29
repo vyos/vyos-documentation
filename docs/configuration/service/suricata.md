@@ -37,9 +37,7 @@ from operational mode, waiting for Suricata to update all its rules, which are u
    you can use the group name instead of the actual IP address. This simplifies rule management and makes the
    configuration more flexible.
 
-
    * ``address`` IP address or subnet.
-
 
    * ``group``  Address group.
 ```
@@ -51,9 +49,7 @@ For example, if you want to create a rule that monitors traffic directed to a sp
 you can use the group name instead of the actual port. This also simplifies rule management and makes
 the configuration more flexible.
 
-
 * ``port``  Port number.
-
 
 * ``group``  Port group.
 ```
@@ -66,12 +62,9 @@ The interface that will be monitored by the Suricata service.
 ```{cfgcmd} set service suricata log eve \<filename | filetype | type\>
    Configuration of the logging file.
 
-
    * ``filename``  Log file (default: eve.json).
 
-
    * ``filetype``  EVE logging destination (default: regular).
-
 
    * ``type``  Log types.
 ```

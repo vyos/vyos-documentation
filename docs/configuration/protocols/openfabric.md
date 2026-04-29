@@ -23,22 +23,17 @@ the network
 ```{cfgcmd} set protocols openfabric net \<network-entity-title\>
   This command sets network entity title (NET) provided in ISO format.
 
-
   Here is an example {abbr}`NET (Network Entity Title)` value:
-
 
   :::{code-block} none
   49.0001.1921.6800.1002.00
   :::
   The CLNS address consists of the following parts:
 
-
   * {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what OpenFabric uses for private addressing.
 
-
   * Area identifier: ``0001`` OpenFabric area number (numerical area ``1``)
-
 
   * System identifier: ``1921.6800.1002`` - for system identifiers we recommend
     to use IP address or MAC address of the router itself. The way to construct
@@ -47,7 +42,6 @@ the network
     address that is listed here is ``192.168.1.2``, which if expanded will turn
     into ``192.168.001.002``. Then all one has to do is move the dots to have
     four numbers instead of three. This gives us ``1921.6800.1002``.
-
 
   * {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
     setting indicates "this system" or "local system."

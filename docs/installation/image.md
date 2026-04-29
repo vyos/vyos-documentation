@@ -31,7 +31,6 @@ boot if needed, but the system boots the default image by default.
 ```{opcmd} show system image
 List all available system images which can be booted on the current system.
 
-
 :::{code-block} none
 vyos@vyos:~$ show system image
 Name                     Default boot    Running
@@ -45,7 +44,6 @@ Name                     Default boot    Running
    Delete unused images from the system. You can specify an optional image name
    to delete. Use the {opcmd}`show system image` command to list available
    images.
-
 
    :::{code-block} none
    vyos@vyos:~$ delete system image
@@ -62,7 +60,6 @@ Name                     Default boot    Running
 
 ```{opcmd} show version
 Show current system image version.
-
 
 :::{code-block} none
 vyos@vyos:~$ show version

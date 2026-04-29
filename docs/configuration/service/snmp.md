@@ -250,6 +250,6 @@ following content:
 </Configuration-Management>
 ```
 
-[mib]: https://en.wikipedia.org/wiki/Management_information_base
-[snmpv2]: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2
-[snmpv3]: https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3
+[mib]: <https://en.wikipedia.org/wiki/Management_information_base>
+[snmpv2]: <https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_2>
+[snmpv3]: <https://en.wikipedia.org/wiki/Simple_Network_Management_Protocol#Version_3>

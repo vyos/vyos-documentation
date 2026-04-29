@@ -20,9 +20,7 @@ implemented.
 This will configure a static ARP entry always resolving `<address>` to
 `<mac>` for interface `<interface>`.
 
-
 Example:
-
 
 :::{code-block} none
 set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
@@ -52,4 +50,4 @@ Address                  HWtype  HWaddress           Flags Mask     Iface
 10.1.1.100               ether   00:53:00:de:23:aa   CM             eth1
 ```
 
-[arp]: https://en.wikipedia.org/wiki/Address_Resolution_Protocol
+[arp]: <https://en.wikipedia.org/wiki/Address_Resolution_Protocol>

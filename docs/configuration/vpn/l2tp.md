@@ -20,7 +20,6 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
   Set authentication backend. The configured authentication backend is used
   for all queries.
 
-
   * **radius**: All authentication queries are handled by a configured RADIUS
     server.
   * **local**: All authentication queries are handled locally.
@@ -579,7 +578,7 @@ l2tp:
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
 [freeradius]: https://freeradius.org
 [google public dns]: https://developers.google.com/speed/public-dns
-[network policy server]: https://en.wikipedia.org/wiki/Network_Policy_Server
+[network policy server]: <https://en.wikipedia.org/wiki/Network_Policy_Server>
 [opennic]: https://www.opennic.org/
 [quad9]: https://quad9.net
 [radius]: https://en.wikipedia.org/wiki/RADIUS

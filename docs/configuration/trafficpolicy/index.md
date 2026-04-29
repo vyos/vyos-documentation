@@ -172,9 +172,7 @@ set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My f
 :::{note}
 An IPv4 TCP filter will only match packets with an IPv4 header
 length of 20 bytes (which is the majority of IPv4 packets anyway).
-:::
 
-:::{note}
 IPv6 TCP filters will only match IPv6 packets with no header
 extension, see <https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers>
 :::
@@ -509,7 +507,6 @@ delay does not become too stale (default: 100ms).
 
 ```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit <number-of-packets>
 
-
 Use this command to configure an fq-codel policy, set its name, and
 define a hard limit on the real queue size. When this limit is
 reached, new packets are dropped (default: 10240 packets).
@@ -629,7 +626,6 @@ you have configured its bandwidth too.
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> delay <delay>
 
-
 Use this command to configure a Network Emulator policy defining its
 name and the fixed amount of time you want to add to all packet going
 out of the interface. The latency will be added through the
@@ -640,7 +636,6 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption <percent>
 
-
 Use this command to emulate noise in a Network Emulator policy. Set
 the policy name and the percentage of corrupted packets you want. A
 random error will be introduced in a random position for the chosen
@@ -649,7 +644,6 @@ percent of packets.
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> loss <percent>
 
-
 Use this command to emulate packet-loss conditions in a Network
 Emulator policy. Set the policy name and the percentage of loss
 packets your traffic will suffer.
@@ -657,14 +651,12 @@ packets your traffic will suffer.
 
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering <percent>
 
-
 Use this command to emulate packet-reordering conditions in a Network
 Emulator policy. Set the policy name and the percentage of reordered
 packets your traffic will suffer.
 ```
 
 ```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit <limit>
-
 
 Use this command to define the length of the queue of your Network
 Emulator policy. Set the policy name and the maximum number of
@@ -782,7 +774,6 @@ algorithm might be to prevent a backbone overload. But only for TCP
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> average-packet <bytes>
 
-
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
 configuring and what the size of its average-packet should be
@@ -793,7 +784,6 @@ When configuring a Random-Detect policy: **the higher the
 precedence number, the higher the priority**.
 :::
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> mark-probability <value>
-
 
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
@@ -812,7 +802,6 @@ be (from 0 to 4096 packets, default: 18). At this size, the marking
 ```
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> minimum-threshold <packets>
-
 
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
@@ -934,7 +923,6 @@ add that value each round.
 
 ```{cfgcmd} set qos policy round-robin \<policy name\> class <class ID> queue-limit <packets>
 
-
 Use this command to configure a Round-Robin policy, set its name, set
 a class ID, and the queue size in packets.
 ```
@@ -993,7 +981,6 @@ class.
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst <bytes>
 
-
 Use this command to configure a Shaper policy, set its name, define
 a class and set the size of the tocken bucket in bytes, which will
 be available to be sent at ceiling speed (default: 15Kb).
@@ -1001,14 +988,12 @@ be available to be sent at ceiling speed (default: 15Kb).
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling <bandwidth>
 
-
 Use this command to configure a Shaper policy, set its name, define
 a class and set the maximum speed possible for this class. The
 default ceiling value is the bandwidth value.
 ```
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority <0-7>
-
 
 Use this command to configure a Shaper policy, set its name, define
 a class and set the priority for usage of available bandwidth once
@@ -1211,8 +1196,8 @@ which can be solved with `sudo ip link delete ifb0`.
 :::
 
 [common applications kept enhanced]: https://www.bufferbloat.net/projects/codel/wiki/Cake/
-[hfsc]: https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve
+[hfsc]: <https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve>
 [intermediate functional block]: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
-[tc]: https://en.wikipedia.org/wiki/Tc_(Linux)
+[tc]: <https://en.wikipedia.org/wiki/Tc_(Linux)>
 [that can give you a great deal of flexibility]: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
-[tocken bucket]: https://en.wikipedia.org/wiki/Token_bucket
+[tocken bucket]: <https://en.wikipedia.org/wiki/Token_bucket>

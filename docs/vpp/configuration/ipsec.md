@@ -148,9 +148,7 @@ Where:
 
 :::{note}
 VPP IPsec implementation is not as feature rich as Linux kernel IPsec. It supports only a subset of algorithms and modes.
-:::
 
-:::{note}
 **What is important in this configuration**
 
 VPP uses only remote traffic-selector to determine what traffic should be offloaded to the IPsec tunnel.

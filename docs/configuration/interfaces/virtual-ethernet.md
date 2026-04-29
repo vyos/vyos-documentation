@@ -86,7 +86,6 @@ valid_lft forever preferred_lft forever
 inet6 fe80::b07b:dfff:fe47:e911/64 scope link
 valid_lft forever preferred_lft forever
 
-
 RX:  bytes    packets     errors    dropped    overrun      mcast
 0          0          0          0          0          0
 TX:  bytes    packets     errors    dropped    carrier collisions

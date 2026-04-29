@@ -90,7 +90,6 @@ This parameter is mandatory. Contact your service provider for the correct
   Show the operational status and traffic statistics for the specified WWAN
   interface.
 
-
   :::{code-block} none
   vyos@vyos:~$ show interfaces wwan wwan0
   wwan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 1000
@@ -99,7 +98,6 @@ This parameter is mandatory. Contact your service provider for the correct
   valid_lft 7012sec preferred_lft 7012sec
   inet6 fe80::c2:f3ff:fe00:0102/64 scope link
   valid_lft forever preferred_lft forever
-
 
   RX:  bytes  packets  errors  dropped  overrun       mcast
   640        2       0        0        0           0
@@ -111,7 +109,6 @@ This parameter is mandatory. Contact your service provider for the correct
 
 ```{opcmd} show interfaces wwan \<interface\> summary
 Show WWAN module hardware characteristics and connection information.
-
 
 :::{code-block} none
 vyos@vyos:~$ show interfaces wwan wwan0 summary
@@ -179,7 +176,6 @@ Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 ```{opcmd} show interfaces wwan \<interface\> capabilities
   Show WWAN module radio capabilities.
 
-
   :::{code-block} none
   vyos@vyos:~$ show interfaces wwan wwan0 capabilities
   Max TX channel rate: '50000000'
@@ -195,7 +191,6 @@ Bearer   |            dbus path: /org/freedesktop/ModemManager1/Bearer/0
 
 ```{opcmd} show interfaces wwan \<interface\> firmware
 Show WWAN module firmware information.
-
 
 :::{code-block} none
 vyos@vyos:~$ show interfaces wwan wwan0 firmware

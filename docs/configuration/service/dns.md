@@ -38,7 +38,6 @@ Forward received queries for a particular domain
 can be specified. You can use this feature for a DNS split-horizon
 configuration.
 
-
 :::{note}
 This also works for reverse-lookup zones (``18.172.in-addr.arpa``).
 :::
@@ -70,11 +69,9 @@ The PowerDNS recursor has 5 different levels of DNSSEC processing, which can
 be set with the dnssec setting. In order from least to most processing, these
 are:
 
-
 * **off** In this mode, no DNSSEC processing takes place. The recursor will
   not set the DNSSEC OK (DO) bit in the outgoing queries and will ignore the
   DO and AD bits in queries.
-
 
 * **process-no-validate** In this mode the recursor acts as a "security
   aware, non-validating" nameserver, meaning it will set the DO-bit on
@@ -83,13 +80,11 @@ are:
   zones provided through the auth-zones setting. It will not do any
   validation in this mode, not even when requested by the client.
 
-
 * **process** When dnssec is set to process the behavior is similar to
   process-no-validate. However, the recursor will try to validate the data
   if at least one of the DO or AD bits is set in the query; in that case,
   it will set the AD-bit in the response when the data is validated
   successfully, or send SERVFAIL when the validation comes up bogus.
-
 
 * **log-fail** In this mode, the recursor will attempt to validate all data
   it retrieves from authoritative servers, regardless of the client's DNSSEC
@@ -98,19 +93,15 @@ are:
   turning on full-blown validation. Responses to client queries are the same
   as with process.
 
-
 * **validate** The highest mode of DNSSEC processing. In this mode, all
   queries will be validated and will be answered with a SERVFAIL in case of
   bogus data, regardless of the client's request.
-
 
 :::{note}
 The popular Unix/Linux ``dig`` tool sets the AD-bit in the query.
 This might lead to unexpected query results when testing. Set ``+noad``
 on the ``dig`` command line when this is the case.
-:::
 
-:::{note}
 The ``CD``-bit is honored correctly for process and validate. For
 log-fail, failures will be logged too.
 :::
@@ -127,7 +118,6 @@ server will use this file to add resolvers to assigned addresses.
 Maximum number of DNS cache entries. 1 million per CPU core will generally
 suffice for most installations.
 
-
 This defaults to 10000.
 ```
 
@@ -138,7 +128,6 @@ deny a record's existence later on, without putting a heavy load on the
 remote server. In practice, caches can become saturated with hundreds of
 thousands of hosts which are tried only once.
 
-
 This setting, which defaults to 3600 seconds, puts a maximum on the amount
 of time negative entries are cached.
 ```
@@ -147,7 +136,6 @@ of time negative entries are cached.
 ```{cfgcmd} set service dns forwarding timeout \<10-60000\>
 The number of milliseconds to wait for a remote authoritative server to
 respond before timing out and responding with SERVFAIL.
-
 
 This setting defaults to 1500 and is valid between 10 and 60000.
 ```
@@ -221,30 +209,21 @@ Set an {abbr}`CNAME (Canonical name)` record. Supports ``@`` keyword.
 Set an {abbr}`NAPTR (Naming authority pointer)` record. Supports ``@`` keyword.
 NAPTR records support the following options:
 
-
 * **lookup-a** A Flag.
-
 
 * **lookup-srv** S flag.
 
-
 * **order** Rule order. Requires `<value>`.
-
 
 * **preference** Rule preference. Requires `<value>`. Defaults to 0 if not set.
 
-
 * **protocol-specific** P flag.
-
 
 * **regexp** Regular expression. Requires `<value>`.
 
-
 * **replacement** Replacement DNS name.
 
-
 * **resolve-uri** U flag.
-
 
 * **service** Service type. Requires `<value>`.
 ```

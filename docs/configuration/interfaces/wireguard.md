@@ -327,7 +327,6 @@ public key:
 private key: (hidden)
 listening port: 51820
 
-
 peer: <peer pubkey>
 endpoint: <peer public IP>
 allowed ips: 10.69.69.2/32

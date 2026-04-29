@@ -247,7 +247,6 @@ BGP aggregator attribute: AS number or IP address of an aggregation.
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path exclude \<1-4294967295 | all\>
 Drop AS-NUMBER from the BGP AS path.
 
-
 If ``all`` is specified, remove all AS numbers from the AS_PATH of the BGP
 path's NLRI.
 ```

@@ -119,7 +119,6 @@ The following options are available:
 ```{cfgcmd} set interfaces bonding \<interface\> system-mac \<mac address\>
 **Configure a specific MAC address for the bonding interface.**
 
-
 This sets the 802.3ad system MAC address, which is used for {abbr}`LACPDU (Link
 Aggregation Control Protocol Data Unit)` exchanges with the link partner.
 You can assign a fixed MAC address or generate a random one for these
@@ -207,14 +206,11 @@ The following policies are available:
 ```{cfgcmd} set interfaces bonding \<interface\> primary \<interface\>
 **Configure the primary member interface in the bond.**
 
-
 The primary member interface remains active as long as it is operational;
 alternative member interfaces are used only if it fails.
 
-
 Use this configuration when a specific member interface is preferred,
 such as one with higher throughput.
-
 
 This command applies only to ``active-backup``, ``transmit-load-balance``, and
 ``adaptive-load-balance`` modes.
@@ -224,12 +220,10 @@ This command applies only to ``active-backup``, ``transmit-load-balance``, and
 ```{cfgcmd} set interfaces bonding \<interface\> arp-monitor interval \<time\>
 **Configure the ARP monitoring interval, in seconds, for the bonding interface.**
 
-
 ARP monitoring periodically assesses the health of each member interface by
 checking whether it has recently sent or received traffic (this criterion
 varies depending on the bonding mode and the member interface’s state). ARP
 probes are sent to the IP addresses specified with the arp-monitor target option.
-
 
 When ARP monitoring is used with EtherChannel-compatible modes (such as
 ``round-robin`` or ``xor-hash``), the switch should be configured to distribute
@@ -237,9 +231,7 @@ traffic across all member interfaces. If the switch distributes traffic using
 an XOR-based policy, all ARP replies will be received on one member interface,
 causing other member interfaces to be incorrectly marked as failed.
 
-
 Setting this value to 0 disables ARP monitoring.
-
 
 The default value is 0.
 ```
@@ -248,14 +240,11 @@ The default value is 0.
 ```{cfgcmd} set interfaces bonding \<interface\> arp-monitor target \<address\>
 **Configure the IP addresses for ARP monitoring requests.**
 
-
 The bonding driver sends ARP requests to these IP addresses to check the
 state of member interfaces.
 
-
 To enable ARP monitoring, configure at least one IP address (up to 16 per
 bonding interface).
-
 
 By default, no IP addresses are configured.
 ```
@@ -310,13 +299,10 @@ system MAC and local discriminator:
 Alternatively, assign an ESINAME directly as a 10-byte Type-0 ESI using the
 following format: 00:AA:BB:CC:DD:EE:FF:GG:HH:II.
 
-
 **BGP-EVPN route usage**
-
 
 EVPN-MH uses BGP-EVPN route types 1 and 2 for ES discovery and MAC-IP
 synchronization:
-
 
 * **Type 1 (EAD-per-ES and EAD-per-EVI)** routes advertise the locally
   attached ESs and discover remote ESs in the network.
@@ -331,13 +317,11 @@ the interface. A higher value indicates a higher preference to become the**
 {abbr}`DF (Designated Forwarder)`. **The** {abbr}`DF (Designated Forwarder)`
 **preference is configured per-ES.**
 
-
 The DF election process determines which interface in a specific ES forwards
 {abbr}`BUM (Broadcast, Unknown Unicast, and Multicast)` traffic from the EVPN
 overlay to the connected CE device. EVPN Type-4 (Ethernet Segment) routes are
 used to elect the DF, implementing the preference-based election method defined
 in RFC 9785.
-
 
 Interfaces not elected as the DF drop any BUM traffic from the EVPN overlay
 using non-DF filters. Similarly, traffic received from ES peers via the EVPN

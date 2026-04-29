@@ -46,7 +46,6 @@ The daemon doubles the size of the netlink event socket buffer size if it
 detects netlink event message dropping. This clause sets the maximum buffer
 size growth that can be reached.
 
-
 Queue size for listening to local conntrack events in MB.
 ```
 
@@ -59,7 +58,6 @@ Protocol for which expect entries need to be synchronized.
 
 ```{cfgcmd} set service conntrack-sync failover-mechanism vrrp sync-group \<group\>
 Failover mechanism to use for conntrack-sync.
-
 
 Only VRRP is supported. Required option.
 ```
@@ -92,7 +90,6 @@ Local IPv4 addresses for service to listen on.
 ```{cfgcmd} set service conntrack-sync mcast-group \<x.x.x.x\>
 Multicast group to use for syncing conntrack entries.
 
-
 Defaults to 225.0.0.50.
 ```
 
@@ -117,7 +114,6 @@ in-kernel Connection Tracking System of the backup firewall.
 
 ```{cfgcmd} set service conntrack-sync purge-timeout \<timeout\>
 Timeout (in seconds) for purging synchronized entries on handover events.
-
 
 On handover, ``conntrackd -t`` is invoked, which schedules a conntrack table
 flush after ``<timeout>`` seconds to purge stale (“zombie”) entries and
@@ -146,13 +142,11 @@ the other node at startup.
 ```{opcmd} show conntrack table ipv4
 Make sure conntrack is enabled by running and show connection tracking table.
 
-
 :::{code-block} none
 vyos@vyos:~$ show conntrack table ipv4
 TCP state codes: SS - SYN SENT, SR - SYN RECEIVED, ES - ESTABLISHED,
 FW - FIN WAIT, CW - CLOSE WAIT, LA - LAST ACK,
 TW - TIME WAIT, CL - CLOSE, LI - LISTEN
-
 
 CONN ID    Source                 Destination            Protocol         TIMEOUT
 1015736576 10.35.100.87:58172     172.31.20.12:22        tcp [6] ES       430279
@@ -185,11 +179,9 @@ Show connection syncing internal cache entries
 ```{opcmd} show conntrack-sync statistics
 Retrieve current statistics of connection tracking subsystem.
 
-
 :::{code-block} none
 vyos@vyos:~$ show conntrack-sync statistics
 Main Table Statistics:
-
 
 cache internal:
 current active connections:            19606
@@ -197,23 +189,19 @@ connections created:                 6298470    failed:            0
 connections updated:                 3786793    failed:            0
 connections destroyed:               6278864    failed:            0
 
-
 cache external:
 current active connections:            15771
 connections created:                 1660193    failed:            0
 connections updated:                   77204    failed:            0
 connections destroyed:               1644422    failed:            0
 
-
 traffic processed:
 0 Bytes                         0 Pckts
-
 
 multicast traffic (active device=eth0.5):
 976826240 Bytes sent            212898000 Bytes recv
 8302333 Pckts sent              2009929 Pckts recv
 0 Error send                    0 Error recv
-
 
 message tracking:
 0 Malformed msgs                  263 Lost msgs
@@ -221,7 +209,6 @@ message tracking:
 ```
 ```{opcmd} show conntrack-sync status
 Retrieve current status of connection tracking subsystem.
-
 
 :::{code-block} none
 vyos@vyos:~$ show conntrack-sync status

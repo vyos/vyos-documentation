@@ -203,7 +203,6 @@ Pseudo-random function.
 
   Action to perform for this CHILD_SA on DPD timeout.
 
-
   * **trap** - Installs a trap policy (IPsec policy without Security
     Association), which will catch matching traffic and tries to
     re-negotiate the tunnel on-demand.
@@ -267,7 +266,6 @@ from successful negotiation to expiry.
 
 The type of the connection:
 
-
 * **tunnel** - Tunnel mode (default).
 * **transport** - Transport mode.
 ```
@@ -277,7 +275,6 @@ The type of the connection:
 Whether Perfect Forward Secrecy of keys is desired on the
 connection's keying channel and defines a Diffie-Hellman group for
 PFS:
-
 
 * **enable** - Inherit Diffie-Hellman group from IKE group (default).
 * **disable** - Disable PFS.

@@ -420,4 +420,4 @@ ansible_ssh_pass: Vyos0!
 All files related to deploying VyOS on Azure with Terraform and Ansible
 can be found in the [vyos-automation] repository.
 
-[vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main
+[vyos-automation]: <https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Azure_terraform_ansible_single_vyos_instance-main>

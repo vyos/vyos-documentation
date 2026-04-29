@@ -124,30 +124,25 @@ Balance algorithms:
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> mode \<mode\>
 
-
 Configure backend `<name>` mode TCP or HTTP.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> address \<x.x.x.x\>
-
 
 Set the address of the backend server that receives incoming traffic.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> port \<port\>
 
-
 Set the address of the backend port.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> check
 
-
 Active health check backend server.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> check port \<port\>
-
 
 Set an alternative port number for health checks.
 Overrides the default server port used for TCP/HTTP checks.
@@ -155,18 +150,15 @@ Overrides the default server port used for TCP/HTTP checks.
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> send-proxy
 
-
 Send a Proxy Protocol version 1 header (text format).
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> send-proxy-v2
 
-
 Send a Proxy Protocol version 2 header (binary format).
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> ssl ca-certificate <ca-certificate>
-
 
 Use SSL encryption for backend requests and authenticate the backend
 against ``<ca-certificate>``.
@@ -180,12 +172,10 @@ certificate.
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-response-headers <header-name> value <header-value>
 
-
 Set custom HTTP headers to include in all responses from the backend.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> logging facility <facility> level <level>
-
 
 Specify facility and level for logging.
 For an explanation on syslog facilities and severity levels,
@@ -193,7 +183,6 @@ see tables in the syslog configuration section.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout check <seconds>
-
 
 Set the timeout in seconds for established connections.
 Value range 1-3600 seconds.
@@ -286,7 +275,6 @@ Set the endpoint to use for health checks.
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check expect <condition>
 Set the expected result condition for a server to be considered healthy.
-
 
 Some possible examples are:
 :   - ``status 200`` Expecting a 200 response code

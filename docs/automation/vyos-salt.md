@@ -174,5 +174,5 @@ r11-proxy:
 / #
 ```
 
-[netmiko]: https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.netmiko_mod.html#module-salt.modules.netmiko_mod
+[netmiko]: <https://docs.saltproject.io/en/latest/ref/modules/all/salt.modules.netmiko_mod.html#module-salt.modules.netmiko_mod>
 [salt]: https://docs.saltproject.io/en/latest/contents.html

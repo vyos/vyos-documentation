@@ -32,7 +32,7 @@ originally named Sentrium and was later reorganized under the VyOS brand.
 VyOS originally named its major versions after elements by atomic number.
 Beginning with version 1.2, this naming scheme was changed. It now uses the
 Latin names of constellations recognized by the International Astronomical
-Union ([IAU](https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area)),
+Union ([IAU](<https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area>)),
 ordered by their solid angle area, beginning with the smallest.
 
 ### Hydrogen (1.0)

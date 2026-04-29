@@ -45,10 +45,8 @@ can be used to filter which routes zebra will install in the kernel.
 ```{cfgcmd} set vrf \<name\> ip protocol \<protocol\> route-map \<route-map\>
 Apply a route-map filter to routes for the specified protocol.
 
-
 The following protocols can be used: any, babel, bgp, eigrp,
 isis, ospf, rip, static
-
 
 :::{note}
 If you choose any as the option that will cause all protocols that
@@ -60,10 +58,8 @@ are sending routes to zebra.
 ```{cfgcmd} set vrf \<name\> ipv6 protocol \<protocol\> route-map \<route-map\>
 Apply a route-map filter to routes for the specified protocol.
 
-
 The following protocols can be used: any, babel, bgp, isis,
 ospfv3, ripng, static
-
 
 :::{note}
 If you choose any as the option that will cause all protocols that
@@ -167,7 +163,6 @@ For VRF maintenance the following operational commands are in place.
 ```{opcmd} show vrf
 Lists VRFs that have been created
 
-
 :::{code-block} none
 vyos@vyos:~$ show vrf
 VRF name          state     mac address        flags                     interfaces
@@ -196,7 +191,6 @@ blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,
 ```{opcmd} show ip route vrf \<name\>
 Display IPv4 routing table for VRF identified by `<name>`.
 
-
 :::{code-block} none
 vyos@vyos:~$ show ip route vrf blue
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -213,7 +207,6 @@ C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
 ```
 ```{opcmd} show ipv6 route vrf \<name\>
 Display IPv6 routing table for VRF identified by `<name>`.
-
 
 :::{code-block} none
 vyos@vyos:~$ show ipv6 route vrf red
@@ -233,28 +226,23 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 ```{opcmd} ping \<host\> vrf \<name\>
    The ping command is used to test whether a network host is reachable or not.
 
-
    Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
    ICMP ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams (pings)
    will have an IP and ICMP header, followed by "struct timeval" and an
    arbitrary number of pad bytes used to fill out the packet.
-
 
    When doing fault isolation with ping, you should first run it on the local
    host, to verify that the local network interface is up and running. Then,
    continue with hosts and gateways further down the road towards your
    destination. Round-trip time and packet loss statistics are computed.
 
-
    Duplicate packets are not included in the packet loss calculation, although
    the round-trip time of these packets is used in calculating the minimum/
    average/maximum round-trip time numbers.
 
-
    :::{note}
    Ping command can be interrupted at any given time using ``<Ctrl>+c``.
    A brief statistic is shown afterwards.
-
 
     ::::{code-block} none
     vyos@vyos:~$ ping 192.0.2.1 vrf red
@@ -281,9 +269,7 @@ useful when the host is specified as a hostname rather than an IP address.
 ```{opcmd} force vrf \<name\>
 Join a given VRF. This will open a new subshell within the specified VRF.
 
-
 The prompt is adjusted to reflect this change in both config and op-mode.
-
 
 :::{code-block} none
 vyos@vyos:~$ force vrf blue
@@ -672,7 +658,6 @@ are in place.
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn
  Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
 
-
 :::{code-block} none
 BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
 Default local pref 100, local AS 65001
@@ -680,7 +665,6 @@ Status codes:  s suppressed, d damped, h history, * valid, > best, = multipath,
 i internal, r RIB-failure, S Stale, R Removed
 Nexthop codes: @NNN nexthop's vrf id, < announce-nh-self
 Origin codes:  i - IGP, e - EGP, ? - incomplete
-
 
 Network          Next Hop            Metric LocPrf Weight Path
 Route Distinguisher: 10.50.50.1:1011
@@ -697,14 +681,12 @@ UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 Print a summary of neighbor connections for the specified AFI/SAFI
 combination.
 
-
 :::{code-block} none
 BGP router identifier 10.0.1.1, local AS number 65001 vrf-id 0
 BGP table version 0
 RIB entries 9, using 1728 bytes of memory
 Peers 4, using 85 KiB of memory
 Peer groups 1, using 64 bytes of memory
-
 
 Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
 10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10

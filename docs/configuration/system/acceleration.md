@@ -31,7 +31,6 @@ if there is a supported device, enable Intel® QAT
 ```{opcmd} show system acceleration qat status
 Check if the Intel® QAT device is up and ready to do the job.
 
-
 :::{code-block} none
 vyos@vyos:~$ show system acceleration qat status
 Checking status of all devices.

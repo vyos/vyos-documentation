@@ -454,7 +454,7 @@ Installation can then continue as outlined above.
 [balenaetcher]: https://www.balena.io/etcher/
 [configuration]: https://wiki.syslinux.org/wiki/index.php?title=Config
 [default]: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
-[many others]: https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems
+[many others]: <https://en.wikipedia.org/wiki/List_of_tools_to_create_Live_USB_systems>
 [python's simplehttpserver]: https://docs.python.org/2/library/simplehttpserver.html
 [rufus]: https://rufus.ie/
 [syslinux]: http://www.syslinux.org/

@@ -141,7 +141,6 @@ The action can be:
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return]
 
-
 This required setting defines the action of the current rule. If you set
 the action to jump, you must also specify a jump-target.
 ```
@@ -156,7 +155,6 @@ the action to jump, you must also specify a jump-target.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> jump-target <text>
-
 
 Use this command only when the action is set to ``jump``. Specify the
 jump target.
@@ -173,7 +171,6 @@ jump target.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> queue <0-65535>
 
-
 Use this command only when the action is set to ``queue``. Specify the
 queue target to use. Queue range is also supported.
 ```
@@ -188,7 +185,6 @@ queue target to use. Queue range is also supported.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> queue-options bypass
-
 
 Use this command only when the action is set to ``queue``. Allow the packet
 to pass through the firewall when no userspace software is connected to the
@@ -206,7 +202,6 @@ queue.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> queue-options fanout
 
-
 Use this command only when the action is set to ``queue``. Distribute
 packets between several queues.
 ```
@@ -223,7 +218,6 @@ match any rule in its chain. For base chains, possible options for
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> default-action [accept | drop | jump | queue | reject | return]
-
 
 This command sets the default action of the rule-set if a packet does not
 match the criteria of any rule. If you set the default-action to ``jump``,
@@ -292,7 +286,6 @@ chain.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 
-
 Define the log level. Only applicable if you enable rule logging.
 ```
 
@@ -306,7 +299,6 @@ Define the log level. Only applicable if you enable rule logging.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> log-options group <0-65535>
-
 
 Define the log group to send messages to. Only applicable if you enable rule
 logging.
@@ -323,7 +315,6 @@ logging.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> log-options snapshot-length <0-9000>
 
-
 Define the length of packet payload to include in a netlink message. Only
 applicable if you enable rule logging and define the log group.
 ```
@@ -338,7 +329,6 @@ applicable if you enable rule logging and define the log group.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> log-options queue-threshold <0-65535>
-
 
 Define the number of packets to queue inside the kernel before sending them
 to userspace. Only applicable if you enable rule logging and define the log
@@ -400,7 +390,6 @@ There are a lot of matching criteria against which the packet can be tested.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-status nat [destination | source]
 
-
 Match based on nat connection status.
 ```
 
@@ -414,7 +403,6 @@ Match based on nat connection status.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-mark <1-2147483647>
-
 
 Match based on connection mark.
 ```
@@ -430,10 +418,8 @@ Match based on connection mark.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> conntrack-helper <module>
 
-
 Match based on connection tracking protocol helper module to secure use of
 that helper module. See below for possible completions \<module\>.
-
 
 :::{code-block} none
 Possible completions:
@@ -470,11 +456,9 @@ sqlnet               Related traffic from SQLNet helper
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination address [address | addressrange | CIDR]
 
-
 Match criteria based on source and/or destination address. This is similar
 to the network groups part, but here you are able to negate the matching
 addresses.
-
 
 :::{code-block} none
 set firewall ipv4 name FOO rule 50 source address 192.0.2.10-192.0.2.11
@@ -506,13 +490,10 @@ set firewall ipv4 input filter FOO rule 51 source address !203.0.113.0/24
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination address-mask [address]
 
-
 An arbitrary netmask can be applied to mask addresses to only match against
 a specific portion.
 
-
 This functions for both individual addresses and address groups.
-
 
 :::{code-block} none
 # Match any IPv4 address with `11` as the 2nd octet and `13` as the forth octet
@@ -543,7 +524,6 @@ set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination fqdn <fqdn>
-
 
 Specify a Fully Qualified Domain Name as source/destination to match. Ensure
 that the router is able to resolve this dns query.
@@ -596,8 +576,7 @@ that the router is able to resolve this dns query.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination geoip inverse-match
 
-
-Match IP addresses based on its geolocation. More info: [geoip matching](https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching).
+Match IP addresses based on its geolocation. More info: [geoip matching](<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>).
 Use inverse-match to match anything except the given country-codes.
 ```
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
@@ -615,9 +594,7 @@ geoip) to keep database and rules updated.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> source mac-address <mac-address>
 
-
 You can only specify a source mac-address to match.
-
 
 :::{code-block} none
 set firewall ipv4 input filter rule 100 source mac-address 00:53:00:11:22:33
@@ -648,9 +625,7 @@ set firewall ipv4 input filter rule 101 source mac-address !00:53:00:aa:12:34
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination port [1-65535 | portname | start-end]
 
-
 A port can be set by number or name as defined in ``/etc/services``.
-
 
 :::{code-block} none
 set firewall ipv4 forward filter rule 10 source port '22'
@@ -684,7 +659,6 @@ The whole list can also be "negated" using ``!``. For example:
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group address-group <name | !name>
 
-
 Use a specific address-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
 ```
@@ -711,7 +685,6 @@ criteria to match is also supported.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group dynamic-address-group <name | !name>
-
 
 Use a specific dynamic-address-group. Prepending the character ``!`` to
 invert the criteria to match is also supported.
@@ -740,7 +713,6 @@ invert the criteria to match is also supported.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group network-group <name | !name>
 
-
 Use a specific network-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
 ```
@@ -767,7 +739,6 @@ criteria to match is also supported.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group port-group <name | !name>
-
 
 Use a specific port-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
@@ -796,7 +767,6 @@ criteria to match is also supported.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group domain-group <name | !name>
 
-
 Use a specific domain-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
 ```
@@ -823,7 +793,6 @@ criteria to match is also supported.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination group mac-group <name | !name>
-
 
 Use a specific mac-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
@@ -852,7 +821,6 @@ criteria to match is also supported.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> dscp-exclude [0-63 | start-end]
 
-
 Match based on dscp value.
 ```
 
@@ -866,7 +834,6 @@ Match based on dscp value.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> fragment [match-frag | match-non-frag]
-
 
 Match based on fragmentation.
 ```
@@ -882,7 +849,6 @@ Match based on fragmentation.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> icmp [code | type] <0-255>
 
-
 Match based on icmp code and type.
 ```
 
@@ -897,7 +863,6 @@ Match based on icmp code and type.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> icmp type-name <text>
 
-
 Match based on icmp type-name. Use tab for information
 about what **type-name** criteria are supported.
 ```
@@ -909,7 +874,6 @@ about what **type-name** criteria are supported.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> inbound-interface name <iface>
-
 
 Match based on inbound interface. Wildcard ``*`` is supported. For example:
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
@@ -928,7 +892,6 @@ ipv4 forward filter rule 10 inbound-interface name MGMT`
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> inbound-interface group <iface_group>
 
-
 Match based on the inbound interface group. Prepend the character ``!`` to
 invert the criteria. For example, ``!IFACE_GROUP``
 ```
@@ -940,7 +903,6 @@ invert the criteria. For example, ``!IFACE_GROUP``
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> outbound-interface name <iface>
-
 
 Match based on outbound interface. Wildcard ``*`` is supported. For example:
 ``eth2*``. Prepend the character ``!`` to invert the criteria. For example:
@@ -959,7 +921,6 @@ If an interface is attached to a non-default vrf, when using
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> outbound-interface group <iface_group>
 
-
 Match based on outbound interface group. Prepend the character ``!`` to
 invert the criteria. For example: ``!IFACE_GROUP``
 ```
@@ -975,7 +936,6 @@ invert the criteria. For example: ``!IFACE_GROUP``
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> ipsec [match-ipsec-in | match-ipsec-out | match-none-in | match-none-out]
 
-
 Match based on ipsec.
 ```
 
@@ -990,7 +950,6 @@ Match based on ipsec.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> limit burst <0-4294967295>
 
-
 Match based on the maximum number of packets to allow in excess of rate.
 ```
 
@@ -1004,7 +963,6 @@ Match based on the maximum number of packets to allow in excess of rate.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> limit rate <text>
-
 
 Specify the maximum average rate as **integer/unit**. For example:
 **5/minutes**
@@ -1033,7 +991,6 @@ Specify the maximum average rate as **integer/unit**. For example:
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> packet-length-exclude <text>
 
-
 Match based on packet length. Specify multiple values from 1 to 65535 and
 ranges.
 ```
@@ -1049,7 +1006,6 @@ ranges.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> packet-type [broadcast | host | multicast | other]
 
-
 Match based on the packet type.
 ```
 
@@ -1064,11 +1020,9 @@ Match based on the packet type.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> protocol [<text> | <0-255> | all | tcp_udp]
 
-
 Match based on protocol number or name as defined in ``/etc/protocols``.
 Special names are ``all`` for all protocols and ``tcp_udp`` for TCP and UDP
 based packets. The ``!`` character negates the selected protocol.
-
 
 :::{code-block} none
 set firewall ipv4 forward filter rule 10 protocol tcp_udp
@@ -1099,7 +1053,6 @@ set firewall ipv4 forward filter rule 11 protocol !tcp_udp
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> recent time [second | minute | hour]
 
-
 Match based on recently seen sources.
 ```
 
@@ -1114,11 +1067,9 @@ Match based on recently seen sources.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp flags [not] <text>
 
-
 Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
 ``psh``, ``rst``, ``syn``, and ``urg``. Specify multiple values, and use
 ``not`` for inverted selection, as shown in the example.
-
 
 :::{code-block} none
 set firewall ipv4 input filter rule 10 tcp flags 'ack'
@@ -1137,7 +1088,6 @@ set firewall ipv4 input filter rule 13 tcp flags not 'fin'
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> state [established | invalid | new | related]
-
 
 Match against the state of a packet.
 ```
@@ -1201,7 +1151,6 @@ Match against the state of a packet.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time weekdays <text>
 
-
 Time to match the defined rule.
 ```
 
@@ -1215,7 +1164,6 @@ Time to match the defined rule.
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> ttl <eq | gt | lt> <0-255>
-
 
 Match the time to live parameter, where 'eq' means 'equal', 'gt' means
 'greater than', and 'lt' means 'less than'.
@@ -1244,7 +1192,6 @@ Match the time to live parameter, where 'eq' means 'equal', 'gt' means
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> recent time <second | minute | hour>
 
-
 Match when 'count' amount of connections appear within 'time'. Use these
 matching criteria to block brute-force attempts.
 ```
@@ -1262,7 +1209,6 @@ packet handling.
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set dscp <0-63>
 
-
 Set a specific value of Differentiated Services Codepoint (DSCP).
 ```
 
@@ -1273,7 +1219,6 @@ Set a specific value of Differentiated Services Codepoint (DSCP).
 ```
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set mark <1-2147483647>
-
 
 Set a specific packet mark value.
 ```
@@ -1286,7 +1231,6 @@ Set a specific packet mark value.
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set tcp-mss <500-1460>
 
-
 Set the TCP-MSS (TCP maximum segment size) for the connection.
 ```
 
@@ -1298,7 +1242,6 @@ Set the TCP-MSS (TCP maximum segment size) for the connection.
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set ttl <0-255>
 
-
 Set the TTL (Time to Live) value.
 ```
 
@@ -1306,7 +1249,6 @@ Set the TTL (Time to Live) value.
 ```
 
 ```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set connection-mark <0-2147483647>
-
 
 Set connection mark value.
 ```
@@ -1322,12 +1264,10 @@ Synproxy connections
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule \<1-999999\> synproxy tcp mss <501-65535>
 
-
  Set the TCP-MSS (maximum segment size) for the connection
 ```
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule \<1-999999\> synproxy tcp window-scale <1-14>
-
 
  Set the window scale factor for TCP window scaling
 ```
@@ -1382,15 +1322,12 @@ set firewall ipv4 input filter rule 1000 state invalid
 This will show you a basic firewall overview, for all rule-sets, not
 only for IPv4.
 
-
 :::{code-block} none
 vyos@vyos:~$ show firewall
 Rulesets Information
 
-
 ---------------------------------
 ipv4 Firewall "forward filter"
-
 
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -----------------------------
@@ -1398,20 +1335,16 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 21       jump      all                 0        0  jump NAME_AUX
 default  accept    all                 0        0
 
-
 ---------------------------------
 ipv4 Firewall "input filter"
-
 
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -------------------------
 10       accept    all               156    14377  iifname != @I_LAN  accept
 default  accept    all                 0        0
 
-
 ---------------------------------
 ipv4 Firewall "name AUX"
-
 
 Rule  Action    Protocol      Packets    Bytes  Conditions
 ------  --------  ----------  ---------  -------  --------------------------------------------
@@ -1419,10 +1352,8 @@ Rule  Action    Protocol      Packets    Bytes  Conditions
 20  accept    udp                 0        0  meta l4proto udp ip saddr @A_SERVERS  accept
 30  drop      all                 0        0  ip saddr != @A_SERVERS iifname "eth2"
 
-
 ---------------------------------
 ipv4 Firewall "output filter"
-
 
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  ----------------------------------------
@@ -1430,16 +1361,13 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 20       accept    icmp                2      168  meta l4proto icmp oifname "eth0"  accept
 default  accept    all                72     9258
 
-
 ---------------------------------
 ipv6 Firewall "input filter"
-
 
 Rule     Action    Protocol      Packets    Bytes  Conditions
 -------  --------  ----------  ---------  -------  -------------------------------
 10       accept    all                 0        0  ip6 saddr @N6_TRUSTEDv6  accept
 default  accept    all                 2      112
-
 
 vyos@vyos:~$
 :::
@@ -1449,14 +1377,11 @@ vyos@vyos:~$
 
 This shows you a summary of rule-sets and groups.
 
-
 :::{code-block} none
 vyos@vyos:~$ show firewall summary
 Ruleset Summary
 
-
 IPv6 Ruleset:
-
 
 Ruleset Hook    Ruleset Priority      Description
 --------------  --------------------  -------------------------
@@ -1465,9 +1390,7 @@ input           filter
 ipv6_name       IPV6-VyOS_MANAGEMENT
 ipv6_name       IPV6-WAN_IN           PUBLIC_INTERNET
 
-
 IPv4 Ruleset:
-
 
 Ruleset Hook    Ruleset Priority    Description
 --------------  ------------------  -------------------------
@@ -1476,9 +1399,7 @@ input           filter
 name            VyOS_MANAGEMENT
 name            WAN_IN              PUBLIC_INTERNET
 
-
 Firewall Groups
-
 
 Name                     Type                References               Members
 -----------------------  ------------------  -----------------------  ----------------

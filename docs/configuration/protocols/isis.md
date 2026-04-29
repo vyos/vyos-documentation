@@ -32,22 +32,17 @@ occur within IS-IS when it comes to said duplication.
 
   This command sets network entity title (NET) provided in ISO format.
 
-
   Here is an example {abbr}`NET (Network Entity Title)` value:
-
 
   :::{code-block} none
   49.0001.1921.6800.1002.00
   :::
   The CLNS address consists of the following parts:
 
-
   * {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what IS-IS uses for private addressing.
 
-
   * Area identifier: ``0001`` IS-IS area number (numerical area ``1``)
-
 
   * System identifier: ``1921.6800.1002`` - for system identifiers we recommend
     to use IP address or MAC address of the router itself. The way to construct
@@ -56,7 +51,6 @@ occur within IS-IS when it comes to said duplication.
     address that is listed here is ``192.168.1.2``, which if expanded will turn
     into ``192.168.001.002``. Then all one has to do is move the dots to have
     four numbers instead of three. This gives us ``1921.6800.1002``.
-
 
   * {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
     setting indicates "this system" or "local system."
@@ -81,7 +75,6 @@ Exchange Mechanism for IS-IS.
 
 This command defines the IS-IS router behavior:
 
-
 * **level-1** - Act as a station (Level 1) router only.
 * **level-1-2** - Act as a station (Level 1) router and area (Level 2) router.
 * **level-2-only** - Act as an area (Level 2) router only.
@@ -96,7 +89,6 @@ This command configures the maximum size of generated
 ```{cfgcmd} set protocols isis metric-style \<narrow|transition|wide\>
 
 This command sets old-style (ISO 10589) or new style packet formats:
-
 
 * **narrow** - Use old style of TLVs with narrow metric.
 * **transition** - Send and accept both styles of TLVs during transition.
@@ -125,12 +117,10 @@ router. It is described in {rfc}`3787`.
 
 ```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\> level-1
 
-
 This command will generate a default-route in L1 database.
 ```
 
 ```{cfgcmd} set protocols isis default-information originate \<ipv4|ipv6\> level-2
-
 
 This command will generate a default-route in L2 database.
 ```
@@ -154,7 +144,6 @@ synchronization during convergence/interface flap events.
 
   This command specifies circuit type for interface:
 
-
   * **level-1** - Level-1 only adjacencies are formed.
   * **level-1-2** - Level-1-2 adjacencies are formed
   * **level-2-only** - Level-2 only adjacencies are formed
@@ -163,13 +152,11 @@ synchronization during convergence/interface flap events.
 
 ```{cfgcmd} set protocols isis interface \<interface\> hello-interval <seconds>
 
-
 This command sets hello interval in seconds on a given interface.
 The range is 1 to 600.
 ```
 
 ```{cfgcmd} set protocols isis interface \<interface\> hello-multiplier <seconds>
-
 
 This command sets multiplier for hello holding time on a given
 interface. The range is 2 to 100.
@@ -187,13 +174,11 @@ routing devices MTU does not meet the requirements to establish the adjacency.
 
 This command set default metric for circuit.
 
-
 The metric range is 1 to 16777215 (Max value depend if metric support narrow
 or wide value).
 ```
 
 ```{cfgcmd} set protocols isis interface \<interface\> network point-to-point
-
 
 This command specifies network type to Point-to-Point. The default
 network type is broadcast.
@@ -205,7 +190,6 @@ This command configures the passive mode for this interface.
 ```
 
 ```{cfgcmd} set protocols isis interface \<interface\> password plaintext-password <text>
-
 
 This command configures the authentication password for the interface.
 ```
@@ -219,13 +203,11 @@ range is 0 to 127.
 
 ```{cfgcmd} set protocols isis interface \<interface\> psnp-interval <number>
 
-
 This command sets PSNP interval in seconds. The interval range is 0
 to 127.
 ```
 
 ```{cfgcmd} set protocols isis interface \<interface\> no-three-way-handshake
-
 
 This command disables Three-Way Handshake for P2P adjacencies which
 described in {rfc}`5303`. Three-Way Handshake is enabled by default.
@@ -237,7 +219,6 @@ This command disables IGP-LDP sync for this specific interface.
 ```
 
 ```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown \<seconds\>
-
 
 This command will change the hold down value for IGP-LDP synchronization
 during convergence/interface flap events, but for this interface only.
@@ -289,14 +270,12 @@ source: bgp, connected, kernel, ospf, rip, static.
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> <level-1|level-2> metric <number>
 
-
 This command specifies metric for redistributed routes from the given route
 source. There are six modes available for route source: bgp, connected,
 kernel, ospf, rip, static. The metric range is 1 to 16777215.
 ```
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> <level-1|level-2> route-map <name>
-
 
 This command allows to use route map to filter redistributed routes from
 the given route source. There are six modes available for route source:

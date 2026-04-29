@@ -209,7 +209,6 @@ A predefined shared secret used in configured mode
 
 Specifies the secret type:
 
-
 * **plaintext** - Plain text type (default value).
 * **base64** - Base64 type.
 ```
@@ -220,7 +219,6 @@ Specifies the secret type:
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication mode \<mode\>
 
 Mode for authentication between VyOS and remote peer:
-
 
 * **pre-shared-secret** - Use predefined shared secret phrase.
 * **rsa** - Use simple shared RSA key.

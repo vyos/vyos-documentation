@@ -758,11 +758,9 @@ Since username and password are part of the URI, they need to be properly url en
 
 :::{note}
 The number of revisions don\'t affect the commit-archive.
-:::
-:::{note}
+
 When using Git as destination for the commit archive the `source-address` CLI option has no effect.
-:::
-:::{note}
+
 You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
 :::
 :::{code-block} none

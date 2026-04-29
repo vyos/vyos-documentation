@@ -32,14 +32,12 @@ interfaces openvpn` rather than `set vpn`, which is often overlooked.
 ```{cfgcmd} set interfaces openvpn \<interface\> authentication password \<text\>
    **Configure the password for the** ``auth-user-pass`` **authentication method.**
 
-
    This option applies only to OpenVPN clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> authentication username \<text\>
 **Configure the username for the** ``auth-user-pass`` **authentication method.**
-
 
 This option applies only to OpenVPN clients.
 ```
@@ -53,7 +51,6 @@ Configure the description for the OpenVPN interface.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> device-type \<tap | tun\>
 **Configure the virtual network device type for the OpenVPN interface:**
-
 
 * ``tun`` **(default)**: Operates at Layer 3, encapsulating IPv4 or IPv6 packets.
 * ``tap``: Operates at Layer 2, encapsulating Ethernet 802.3 frames.
@@ -69,10 +66,8 @@ Disable the specific OpenVPN interface.
 ```{cfgcmd} set interfaces openvpn \<interface\> encryption cipher \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
 **Configure the static encryption cipher for the OpenVPN tunnel.**
 
-
 The ``cipher`` option maps to OpenVPN’s ``--cipher`` directive and specifies
 the symmetric encryption algorithm for both control and data channels.
-
 
 This was previously the default encryption method in all OpenVPN modes. In
 newer OpenVPN versions, the ``--cipher`` directive is considered **legacy**
@@ -84,12 +79,10 @@ and should be used only in compatibility scenarios.
 **Configure a prioritized list of negotiated ciphers for OpenVPN in**
 ``client`` **or** ``server`` **mode.**
 
-
 The ``data-ciphers`` option represents a list of supported encryption
 algorithms. It corresponds to OpenVPN’s ``--data-ciphers`` directive and
 enables cipher negotiation, where both peers automatically agree on a mutually
 supported cipher during session startup.
-
 
 :::{note}
 This option is not compatible with ``site-to-site`` mode.
@@ -100,11 +93,9 @@ This option is not compatible with ``site-to-site`` mode.
 ```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers-fallback \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
 **Configure the fallback cipher for** ``site-to-site`` **mode.**
 
-
 The ``data-ciphers-fallback`` option maps to OpenVPN’s ``--data-ciphers-
 fallback`` directive. It defines the cipher to use if negotiation is **not
 supported**.
-
 
 :::{note}
 This option ensures consistent encryption between two static peers
@@ -134,14 +125,12 @@ Configure the hashing algorithm for the OpenVPN interface.
 ```{cfgcmd} set interfaces openvpn \<interface\> keep-alive failure-count \<value\>
 **Configure the number of tolerated keepalive packet failures.**
 
-
 Default: 60 consecutive failures.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> keep-alive interval \<value\>
 **Configure the frequency, in seconds, at which keepalive packets are sent.**
-
 
 Default: 10 seconds.
 ```
@@ -156,9 +145,7 @@ Configure the local tunnel IP address for ``site-to-site`` mode.
 ```{cfgcmd} set interfaces openvpn \<interface\> local-host \<address\>
 **Configure the local IP address to accept connections.**
 
-
 If configured, OpenVPN binds to this IP address only.
-
 
 By default, OpenVPN binds to all interfaces.
 ```
@@ -184,7 +171,6 @@ designated monitor interface.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> mode \<site-to-site | server | client\>
 **Configure OpenVPN operation mode:**
-
 
 * ``site-to-site``: Establishes a site-to-site VPN connection.
 * ``client``: Operates as a client in server-client mode.
@@ -217,9 +203,7 @@ enabled to avoid compatibility issues with existing clients.
    **Enable** {abbr}`DCO (Data Channel Offload)` **for the specified OpenVPN
    interface.**
 
-
    Example:
-
 
    :::{code-block} none
    set interfaces openvpn vtun0 offload dco
@@ -232,18 +216,14 @@ enabled to avoid compatibility issues with existing clients.
 ```{cfgcmd} set interfaces openvpn \<interface\> openvpn-option \<text\>
 **Add raw OpenVPN configuration options to the openvpn.conf file.**
 
-
 OpenVPN provides many configuration options, but not all are available in the
 VyOS CLI.
-
 
 If a required option is missing, you may submit a feature request at
 Phabricator so all users can benefit from it (see Contributing/Issues and Features).
 
-
 Alternatively, use ``openvpn-option`` to pass raw OpenVPN configuration options
 to the openvpn.conf file.
-
 
 :::{warning}
 Use this option only as a last resort. Invalid options or syntax
@@ -252,13 +232,11 @@ changes.
 :::
 Example:
 
-
 :::{code-block} none
 set interfaces openvpn vtun0 openvpn-option 'persist-key'
 :::
 This command adds ``persist-key`` to the configuration file. This solves the
 problem by persisting keys across resets, so they do not need to be re-read.
-
 
 :::{code-block} none
 set interfaces openvpn vtun0 openvpn-option 'route-up &quot;/config/auth/tun_up.sh arg1&quot;'
@@ -267,9 +245,7 @@ This command adds ``route-up "/config/auth/tun_up.sh arg1"`` to the
 configuration file. This option is executed after connection authentication,
 either immediately or after a short delay, as defined.
 
-
 Ensure the path and arguments are enclosed in single or double quotes.
-
 
 :::{note}
 Some raw configuration options require quotes. To include them, use
@@ -281,7 +257,6 @@ the " statement.
 ```{cfgcmd} set interfaces openvpn \<interface\> persistent-tunnel
 **Enable always-active mode for the TUN/TAP device.**
 
-
 When enabled, the TUN/TAP device remains active upon connection resets or
 daemon reloads.
 ```
@@ -289,7 +264,6 @@ daemon reloads.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> protocol \<udp | tcp-passive | tcp-active \>
 **Configure the protocol for OpenVPN communication with a remote host:**
-
 
 * ``udp`` **(default)**: Uses the UDP protocol.
 * ``tcp-passive``: Uses the TCP protocol and accepts connections passively.
@@ -312,7 +286,6 @@ Configure the remote tunnel IP address for site-to-site mode.
 ```{cfgcmd} set interfaces openvpn \<interface\> remote-host \<address | host\>
 **Configure the IPv4/IPv6 address or hostname for a server device if OpenVPN
 runs in client mode.**
-
 
 This setting is not used in server mode.
 ```
@@ -388,7 +361,6 @@ Configure a route to be pushed to the specific client.
 **Configure a fixed subnet to be routed from the server to the specified
 client.**
 
-
 Used as OpenVPN’s ``iroute`` directive.
 ```
 
@@ -407,7 +379,6 @@ allocated to connecting clients.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool subnet \<netmask\>
 **Configure the subnet mask pushed to dynamic clients.**
-
 
 Use this command only for the TAP device type. Do not use it for bridged
 interfaces.
@@ -442,14 +413,12 @@ response protocol.
 **Configure the number of digits to use for the** {abbr}`TOTP (Time-based
 One-Time Password)` **hash.**
 
-
 Default: 6.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp drift \<1-65535\>
 **Configure the time drift in seconds.**
-
 
 Default: 0.
 ```
@@ -458,7 +427,6 @@ Default: 0.
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp slop \<1-65535\>
 **Configure the allowed clock slop in seconds.**
 
-
 Default: 180.
 ```
 
@@ -466,7 +434,6 @@ Default: 180.
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp step \<1-65535\>
 **Configure the step value for** {abbr}`TOTP (Time-based One-Time Password)`
 **in seconds.**
-
 
 Default: 30.
 ```
@@ -493,7 +460,6 @@ Reject connections from clients that are not explicitly configured.
 ```{cfgcmd} set interfaces openvpn \<interface\> server subnet \<subnet\>
 **Configure the IPv4 or IPv6 network.**
 
-
 This parameter is mandatory when operating in server mode.
 ```
 
@@ -501,10 +467,8 @@ This parameter is mandatory when operating in server mode.
 ```{cfgcmd} set interfaces openvpn \<interface\> server topology \< net30 | point-to-point | subnet\>
 **Configure the virtual addressing topology for** ``tun`` **mode.**
 
-
 This command does not affect ``tap`` mode, which always uses the ``subnet``
 topology.
-
 
 * ``subnet`` **(default)**: Allocates a single IP address to each connecting client.
   This is the recommended topology.
@@ -513,7 +477,6 @@ topology.
 * ``point-to-point``: Creates a point-to-point topology where the remote
   endpoint of the client’s ``tun`` interface always points to the local endpoint
   of the server’s ``tun`` interface.
-
 
   Like ``subnet``, this topology allocates a single IP address per client. Use it
   only if no clients run Windows operating systems.

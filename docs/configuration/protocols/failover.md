@@ -17,7 +17,6 @@ IPv4 address for health checking.
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check timeout <timeout>
 Timeout in seconds between health target checks.
 
-
 Range is 1 to 300, default is 10.
 ```
 
@@ -59,7 +58,6 @@ Next-hop interface for the route
 
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> metric <metric>
 Route metric
-
 
 Default 1.
 ```

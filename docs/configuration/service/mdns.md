@@ -118,4 +118,4 @@ Show logs for mDNS repeater service.
 Follow the logs for mDNS repeater service.
 ```
 
-[multicast dns]: https://en.wikipedia.org/wiki/Multicast_DNS
+[multicast dns]: <https://en.wikipedia.org/wiki/Multicast_DNS>

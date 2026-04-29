@@ -57,7 +57,6 @@ password=\*\*\<MAC\>\*\* (mac-address)
 Set authentication backend. The configured authentication backend is used
 for all queries.
 
-
 * **radius**: All authentication queries are handled by a configured RADIUS
   server.
 * **local**: All authentication queries are handled locally.
@@ -90,7 +89,6 @@ multiple such options.
 ```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
 Specifies the client connectivity mode.
 
-
 * **l2**: It means that clients are on same network where interface
   is.\*\*(default)\*\*
 * **l3**: It means that client are behind some router.
@@ -99,7 +97,6 @@ Specifies the client connectivity mode.
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> network \<shared | vlan\>
 Specify where interface is shared by multiple users or it is vlan-per-user.
-
 
 * **shared**: Multiple clients share the same network. **(default)**
 * **vlan**: One VLAN per client.

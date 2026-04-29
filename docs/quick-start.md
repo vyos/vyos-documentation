@@ -113,7 +113,7 @@ set nat source rule 100 translation address masquerade
 A new firewall structure—which uses the `nftables` backend, rather
 than `iptables`—is available on all installations starting from
 VyOS `1.4-rolling-202308040557`. The firewall supports creation of distinct,
-interlinked chains for each [Netfilter hook](https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks)
+interlinked chains for each [Netfilter hook](<https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>)
 and allows for more granular control over the packet filtering process.
 
 The firewall begins with the base `filter` tables you define for each of the

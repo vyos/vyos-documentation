@@ -20,7 +20,6 @@ Use this command to install a new system image. You can retrieve the
 image from the web (``http://``, ``https://``) or from your local system.
 For example: /tmp/vyos-1.2.3-amd64.iso.
 
-
    The ``add system image`` command also supports installing new VyOS versions
    through an optional VRF. If the URL requires authentication, you can specify
    an optional username and password on the command line, which will be passed

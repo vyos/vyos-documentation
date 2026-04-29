@@ -663,4 +663,4 @@ ansible_ssh_pass: vyos
 All files related to deploying VyOS on Google Cloud Platform with
 Terraform and Ansible can be found in the [vyos-automation] repository.
 
-[vyos-automation]: https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main
+[vyos-automation]: <https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main>
