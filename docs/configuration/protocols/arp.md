@@ -31,6 +31,7 @@ set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
 ## Operation
 
 ```{opcmd} show protocols static arp
+
 Display all known ARP table entries spanning across all interfaces
 ```
 ```none
@@ -41,6 +42,7 @@ Address                  HWtype  HWaddress           Flags Mask     Iface
 ```
 
 ```{opcmd} show protocols static arp interface eth1
+
 Display all known ARP table entries on a given interface only (`eth1`):
 ```
 ```none

@@ -50,6 +50,7 @@ Enabling this function increases the risk of bandwidth saturation.
 ```
 
 ```{cfgcmd} set protocols igmp-proxy disable
+
 Disable this service.
 ```
 
@@ -68,5 +69,6 @@ set protocols igmp-proxy interface eth1 role downstream
 ## Operation
 
 ```{opcmd} restart igmp-proxy
+
 Restart the IGMP proxy process.
 ```

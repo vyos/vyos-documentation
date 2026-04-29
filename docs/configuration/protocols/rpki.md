@@ -139,14 +139,17 @@ an SSH client keypair using `generate ssh client-key
 connection.
 
 ```{cfgcmd} set protocols rpki cache \<address\> ssh username \<user\>
+
 SSH username to establish an SSH connection to the cache server.
 ```
 
 ```{cfgcmd} set protocols rpki cache \<address\> ssh private-key-file \<filepath\>
+
 Local path that includes the private key file of the router.
 ```
 
 ```{cfgcmd} set protocols rpki cache \<address\> ssh public-key-file \<filepath\>
+
 Local path that includes the public key file of the router.
 ```
 

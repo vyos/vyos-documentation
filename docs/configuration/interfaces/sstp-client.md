@@ -67,6 +67,7 @@ set interfaces sstpc sstpc0 default-route-distance 220
 ```
 
 ```{cfgcmd} set interfaces sstpc \<interface\> no-peer-dns
+
 Disable the installation of advertised DNS nameservers on the local system.
 ```
 
@@ -149,9 +150,11 @@ sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast sta
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
+
 Disconnect the specified interface.
 ```
 
 ```{opcmd} connect interface \<interface\>
+
 Initiate a session on the specified interface.
 ```

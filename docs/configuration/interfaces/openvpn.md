@@ -46,6 +46,7 @@ This option applies only to OpenVPN clients.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> description \<description\>
+
 Configure the description for the OpenVPN interface.
 ```
 
@@ -60,6 +61,7 @@ Configure the description for the OpenVPN interface.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> disable
+
 Disable the specific OpenVPN interface.
 ```
 
@@ -112,6 +114,7 @@ without cipher negotiation capability.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> hash \<md5 | sha1 | sha256 | ...\>
+
 Configure the hashing algorithm for the OpenVPN interface.
 ```
 
@@ -145,6 +148,7 @@ Default: 10 seconds.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> local-address \<address\>
+
 Configure the local tunnel IP address for ``site-to-site`` mode.
 ```
 
@@ -161,6 +165,7 @@ By default, OpenVPN binds to all interfaces.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> local-port \<port\>
+
 Configure the local port to accept connections.
 ```
 
@@ -293,11 +298,13 @@ daemon reloads.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> redirect \<interface\>
+
 Enable redirection of incoming packets to the specified interface.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> remote-address \<address\>
+
 Configure the remote tunnel IP address for site-to-site mode.
 ```
 
@@ -312,56 +319,67 @@ This setting is not used in server mode.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> remote-port \<port\>
+
 Configure the remote port to connect to the server.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> replace-default-route
+
 Configure the OpenVPN tunnel as the default route.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server bridge disable
+
 Disable the given instance.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server bridge gateway \<ipv4 address\>
+
 Configure the gateway IP address.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server bridge start \<ipv4 address\>
+
 Configure the first IP address in the pool to allocate to connecting clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server bridge stop \<ipv4 address\>
+
 Configure the last IP address in the pool to allocate to connecting clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server bridge subnet-mask \<ipv4 subnet mask\>
+
 Configure the subnet mask pushed to dynamic clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client \<name\>
+
 Configure the Common Name (CN) specified in the client certificate.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client \<name\> disable
+
 Disable the client connection.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client \<name\> ip \<address\>
+
 Configure the IPv4/IPv6 address for the client.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client \<name\> push-route \<subnet\>
+
 Configure a route to be pushed to the specific client.
 ```
 
@@ -397,16 +415,19 @@ interfaces.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client-ipv6-pool base \<ipv6addr/bits\>
+
 Configure the IPv6 address pool for dynamic assignment to clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server domain-name \<name\>
+
 Configure the DNS suffix to be pushed to all clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server max-connections \<1-4096\>
+
 Configure the maximum number of client connections.
 ```
 
@@ -452,16 +473,19 @@ Default: 30.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server name-server \<address\>
+
 Define the client DNS configuration to be used with the connection.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server push-route \<subnet\>
+
 Configure the route to be pushed to all clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server reject-unconfigured-client
+
 Reject connections from clients that are not explicitly configured.
 ```
 
@@ -495,6 +519,7 @@ topology.
   only if no clients run Windows operating systems.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> shared-secret-key \<key\>
+
 Configure the static secret key for a site-to-site OpenVPN connection.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls auth-key \<key\>
@@ -507,9 +532,11 @@ Use ``run generate pki openvpn shared-secret install <name>`` to generate
 the key.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls ca-certificate \<name\>
+
 Configure the Certificate Authority chain in the PKI configuration.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls certificate \<name\>
+
 Configure the certificate name in the PKI configuration.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls crypt-key
@@ -517,9 +544,11 @@ Configure a shared secret key to provide an additional level of security,
 a variant similar to tls-auth.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls dh-params
+
 Configure Diffie-Hellman parameters for server mode.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls peer-fingerprint \<text\>
+
 Configure the peer certificate SHA256 fingerprint for site-to-site mode.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls role \<active | passive\>
@@ -528,38 +557,49 @@ Configure the peer certificate SHA256 fingerprint for site-to-site mode.
 * ``passive``: Waits for incoming TLS connections.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls tls-version-min \<1.0 | 1.1 | 1.2 | 1.3 \>
+
 Configure the minimum TLS version to be accepted from the peer.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> use-lzo-compression
+
 Configure fast LZO compression on this TUN/TAP interface.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> vrf \<name\>
+
 Assign the interface to a specific VRF instance.
 ```
 ## Operation mode
 
 ```{opcmd} show openvpn site-to-site
+
 Show tunnel status for OpenVPN site-to-site interfaces.
 ```
 ```{opcmd} show openvpn server
+
 Show tunnel status for OpenVPN server interfaces.
 ```
 ```{opcmd} show openvpn client
+
 Show tunnel status for OpenVPN client interfaces.
 ```
 ```{opcmd} show log openvpn
+
 Show logs for all OpenVPN interfaces.
 ```
 ```{opcmd} show log openvpn interface \<interface\>
+
 Show logs for the specific OpenVPN interface.
 ```
 ```{opcmd} reset openvpn client \<text\>
+
 Reset the specified OpenVPN client.
 ```
 ```{opcmd} reset openvpn interface \<interface\>
+
 Reset the OpenVPN process on the specified interface.
 ```
 ```{opcmd} generate openvpn client-config interface \<interface\> ca \<name\> certificate \<name\>
+
 Generate an OpenVPN client configuration file in the .ovpn format for client machines.
 ```
 ## Examples

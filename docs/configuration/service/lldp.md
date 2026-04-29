@@ -33,6 +33,7 @@ database. Information that may be retrieved include:
 ## Configuration
 
 ```{cfgcmd} set service lldp
+
 Enable LLDP service
 ```
 
@@ -58,6 +59,7 @@ will be discarded.
 ```
 
 ```{cfgcmd} set service lldp snmp
+
 Enable SNMP queries of the LLDP database
 ```
 
@@ -135,9 +137,11 @@ Interface:    eth0, via: LLDP, RID: 28, Time: 0 day, 00:24:33
 ```
 
 ```{opcmd} show lldp neighbors interface \<interface\>
+
 Show LLDP neighbors connected via interface \<interface\>.
 ```
 
 ```{opcmd} show log lldp
+
 Used for troubleshooting.
 ```

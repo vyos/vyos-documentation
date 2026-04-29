@@ -9,12 +9,15 @@ The sFlow accounting based on hsflowd <https://sflow.net/>
 ## Configuration
 
 ```{cfgcmd} set system sflow agent-address \<address\>
+
 Configure sFlow agent IPv4 or IPv6 address
 ```
 ```{cfgcmd} set system sflow agent-interface \<interface\>
+
 Configure agent IP address associated with this interface.
 ```
 ```{cfgcmd} set system sflow drop-monitor-limit \<limit\>
+
    Dropped packets reported on DROPMON Netlink channel by Linux kernel are exported via the standard sFlow v5 extension for reporting dropped packets
 ```
 
@@ -26,21 +29,25 @@ Configure and enable collection of flow information for the interface identified
 You can configure multiple interfaces which would participate in sflow accounting.
 ```
 ```{cfgcmd} set system sflow polling \<sec\>
+
    Configure schedule counter-polling in seconds (default: 30)
 ```
 
 
 ```{cfgcmd} set system sflow sampling-rate \<rate\>
+
 Use this command to configure the sampling rate for sFlow accounting (default: 1000)
 ```
 
 
 ```{cfgcmd} set system sflow server \<address\> port \<port\>
+
 Configure address of sFlow collector. sFlow server at <address> can be both listening on an IPv4 or IPv6 address.
 ```
 
 
 ```{cfgcmd} set system sflow enable-egress
+
 Use this command to if you need to sample also egress traffic
 ```
 ## Example

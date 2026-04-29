@@ -34,6 +34,7 @@ Default: 1200 seconds.
 ```
 
 ```{cfgcmd} set system syslog marker disable
+
 Disable sending syslog mark messages.
 ```
 
@@ -129,6 +130,7 @@ for log transmission.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> source-address \<address\>
+
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
 

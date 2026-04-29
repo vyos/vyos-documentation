@@ -67,6 +67,7 @@ security!
 
 
 ```{cfgcmd} set service ssh fido pin-required
+
 Require FIDO2 keys to attest that a user has been verified (e.g. via a PIN).
 ```
 
@@ -140,6 +141,7 @@ are processed in the following order of precedence: ``deny-users``,
 
 
 ```{cfgcmd} set service ssh client-keepalive-interval \<interval\>
+
 Specify timeout interval for keepalive message in seconds.
 ```
 
@@ -159,11 +161,13 @@ List of supported algorithms: ``diffie-hellman-group1-sha1``,
 
 
 ```{cfgcmd} set service ssh loglevel \<quiet | fatal | error | info | verbose\>
+
 Set the ``sshd`` log level. The default is ``info``.
 ```
 
 
 ```{cfgcmd} set service ssh vrf \<name\>
+
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
@@ -223,6 +227,7 @@ SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
 attack, such as several login failures within a few seconds, is detected, the
 offending IP is blocked. Offenders are unblocked after a set interval.
 ```{cfgcmd} set service ssh dynamic-protection
+
 Allow ``ssh`` dynamic-protection.
 ```
 ```{cfgcmd} set service ssh dynamic-protection allow-from \<address | prefix\>
@@ -234,6 +239,7 @@ Block source IP in seconds. Subsequent blocks increase by a factor of 1.5
 The default is 120.
 ```
 ```{cfgcmd} set service ssh dynamic-protection detect-time \<sec\>
+
 Remember source IP in seconds before reset their score. The default is 1800.
 ```
 ```{cfgcmd} set service ssh dynamic-protection threshold \<sec\>
@@ -314,23 +320,30 @@ exit
 :::
 ```
 ```{opcmd} show log ssh
+
 Show SSH server log.
 ```
 ```{opcmd} monitor log ssh
+
 Follow the SSH server log.
 ```
 ```{opcmd} show log ssh dynamic-protection
+
 Show SSH dynamic-protection log.
 ```
 ```{opcmd} monitor log ssh dynamic-protection
+
 Follow the SSH dynamic-protection log.
 ```
 ```{opcmd} show ssh dynamic-protection
+
 Show list of IPs currently blocked by SSH dynamic-protection.
 ```
 ```{opcmd} show ssh fingerprints
+
 Show SSH server public key fingerprints.
 ```
 ```{opcmd} show ssh fingerprints ascii
+
 Show SSH server public key fingerprints, including a visual ASCII art representation.
 ```

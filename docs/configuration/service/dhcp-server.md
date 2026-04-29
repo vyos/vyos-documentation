@@ -169,6 +169,7 @@ database accordingly.
 VyOS built-in DNS Forwarder does not support DDNS, you will need an external DNS
 server with RFC-2136 DDNS support.
 ```{cfgcmd} set service dhcp-server dynamic-dns-update
+
 Enables DDNS globally.
 ```
 **Behavioral settings**
@@ -231,16 +232,19 @@ client's IP address string.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update generated-prefix \<prefix\>
+
 Prefix used in client name generation.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update qualifying-suffix \<suffix\>
+
 DNS suffix used in client name generation.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update ttl-percent \<0-100\>
+
 TTL of the DNS record as a percentage of the DHCP lease time.
 ```
 
@@ -252,6 +256,7 @@ with ``hostname-char-replacement`` string.
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update hostname-char-replacement \<character string\>
+
 Replacement string for the invalid characters defined by ``hostname-char-set``.
 ```
 **TSIG keys definition**
@@ -266,6 +271,7 @@ Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\> secret \<key-secret\>
+
 base64-encoded TSIG key secret value
 ```
 **DNS domains definition**
@@ -274,16 +280,19 @@ base64-encoded TSIG key secret value
 This is global configuration of DNS servers for the updatable forward and reverse
 DNS domains. For every domain multiple DNS servers can be specified.
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain \<domain-name\> key-name \<tsig-key-name\>
+
 TSIG key used for the domain.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain \<domain-name\> dns-server \<number\> address \<ip-address\>
+
 IP address of the DNS server.
 ```
 
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain \<domain-name\> dns-server \<number\> port \<port\>
+
 UDP port of the DNS server. ``53`` is the default.
 ```
 **Example:**
@@ -346,6 +355,7 @@ is not specified is `active-active`
 
 
 ```{cfgcmd} set service dhcp-server high-availability source-address \<address\>
+
 Local IP `<address>` used when communicating to the HA peer.
 ```
 
@@ -733,26 +743,31 @@ set service dhcp-server high-availability status 'secondary'
 
 ### Operation Mode
 ```{opcmd} show log dhcp server
+
 Show DHCP server daemon log file
 ```
 
 
 ```{opcmd} show log dhcp client
+
 Show logs from all DHCP client processes.
 ```
 
 
 ```{opcmd} show log dhcp client interface \<interface\>
+
 Show logs from specific `interface` DHCP client process.
 ```
 
 
 ```{opcmd} restart dhcp server
+
 Restart the DHCP server
 ```
 
 
 ```{opcmd} show dhcp server statistics
+
 Show the DHCP server statistics:
 ```
 
@@ -766,11 +781,13 @@ dhcpexample      99         2           97  2%
 
 
 ```{opcmd} show dhcp server statistics pool \<pool\>
+
 Show the DHCP server statistics for the specified pool.
 ```
 
 
 ```{opcmd} show dhcp server leases
+
 Show statuses of all active leases:
 ```
 
@@ -807,6 +824,7 @@ vyos@vyos:~$
 
 
 ```{opcmd} show dhcp server leases pool \<pool\>
+
 Show only leases in the specified pool.
 ```
 
@@ -868,11 +886,13 @@ domain is similar to the NIS domain one:
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> option nis-server \<address\>
+
 Specify a NIS server address for DHCPv6 clients.
 ```
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> option nisplus-server \<address\>
+
 Specify a NIS+ server address for DHCPv6 clients.
 ```
 
@@ -884,6 +904,7 @@ address of Fully Qualified Domain Name for all DHCPv6 clients.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> option sntp-server-address \<address\>
+
 A SNTP server address can be specified for DHCPv6 clients.
 ```
 #### Prefix Delegation
@@ -904,9 +925,11 @@ in subnet `<prefix>` when the request for prefix delegation.
 
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> prefix-delegation prefix \<pd-prefix\> excluded-prefix \<exclude-prefix\>
+
 Exclude `<exclude-prefix>` from `<pd-prefix>`.
 ```
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> prefix-delegation prefix \<pd-prefix\> excluded-prefix-length \<length\>
+
 Define lenght of exclude prefix in `<pd-prefix>`.
 ```
 **Example:**
@@ -990,18 +1013,23 @@ show service dhcpv6-server shared-network-name NET1
 (dhcp-server-v6-op-cmd)=
 ### Operation Mode
 ```{opcmd} show log dhcpv6 server
+
 Show DHCPv6 server daemon log file
 ```
 ```{opcmd} show log dhcpv6 client
+
 Show logs from all DHCPv6 client processes.
 ```
 ```{opcmd} show log dhcpv6 client interface \<interface\>
+
 Show logs from specific `interface` DHCPv6 client process.
 ```
 ```{opcmd} restart dhcpv6 server
+
 To restart the DHCPv6 server
 ```
 ```{opcmd} show dhcpv6 server leases
+
 Shows status of all assigned leases:
 ```
 ```none
@@ -1019,6 +1047,7 @@ server leases state all`.
 :::
 
 ```{opcmd} show dhcpv6 server leases pool \<pool\>
+
 Show only leases in the specified pool.
 ```
 ```{opcmd} show dhcpv6 server leases sort \<key\>

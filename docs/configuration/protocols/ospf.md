@@ -501,6 +501,7 @@ default value is 1 seconds. The interval range is 3 to 65535.
 
 
 ```{cfgcmd} set protocols ospf interface \<interface\> ldp-sync disable
+
 This command disables IGP-LDP sync for this specific interface.
 ```
 
@@ -569,6 +570,7 @@ This command disables it.
 
 
 ```{cfgcmd} set protocols ospf graceful-restart helper supported-grace-time
+
 Supports as HELPER for configured grace period.
 ```
 
@@ -588,6 +590,7 @@ Because an NBMA network does not support broadcast (or multicast), the
 device cannot discover its neighbors dynamically, so you must configure all
 the neighbors statically.
 ```{cfgcmd} set protocols ospf neighbor \<A.B.C.D\>
+
 This command specifies the IP address of the neighboring device.
 ```
 
@@ -654,6 +657,7 @@ bgp, connected, kernel, rip, static.
 #### Operational Mode Commands
 
 ```{opcmd} show ip ospf neighbor
+
    This command displays the neighbors status.
 ```
 
@@ -831,6 +835,7 @@ system boundary routers.
 
 
 ```{opcmd} show ip ospf database
+
 This command displays a summary table with a database contents (LSA).
 ```
 
@@ -916,6 +921,7 @@ Length: 36
 
 
 ```{opcmd} show ip ospf database max-age
+
 This command displays LSAs in MaxAge list.
 ```
 #### Examples
@@ -1229,6 +1235,7 @@ router.
 This command disables it.
 ```
 ```{cfgcmd} set protocols ospfv3 graceful-restart helper supported-grace-time
+
 Supports as HELPER for configured grace period.
 ```
 ```{cfgcmd} set protocols ospfv3 graceful-restart helper planned-only
@@ -1250,6 +1257,7 @@ connected, kernel, ripng, static.
 (ospf-v3-op-cmd)=
 #### Operational Mode Commands
 ```{opcmd} show ipv6 ospfv3 neighbor
+
 This command displays the neighbors status.
 ```
 ```{opcmd} show ipv6 ospfv3 neighbor detail
@@ -1257,6 +1265,7 @@ This command displays the neighbors information in a detailed form, not
 just a summary table.
 ```
 ```{opcmd} show ipv6 ospfv3 neighbor drchoice
+
 This command displays the neighbor DR choice information.
 ```
 ```{opcmd} show ipv6 ospfv3 interface [prefix]|[\<interface\> [prefix]]
@@ -1273,6 +1282,7 @@ This command displays a table of paths to area boundary and autonomous
 system boundary routers.
 ```
 ```{opcmd} show ipv6 ospfv3 database
+
 This command displays a summary table with a database contents (LSA).
 ```
 ```{opcmd} show ipv6 ospfv3 database \<type\> [A.B.C.D] [adv-router \<A.B.C.D\>|self-originate]
@@ -1280,6 +1290,7 @@ This command displays a database contents for a specific link
 advertisement type.
 ```
 ```{opcmd} show ipv6 ospfv3 redistribute
+
 This command displays external information redistributed into OSPFv3
 ```
 (ospf-v3-config-example)=

@@ -42,6 +42,7 @@ used there is possibility to set host/netmask.
 
 
 ```{cfgcmd} set vpn l2tp remote-access default-pool \<POOL-NAME\>
+
 Use this command to define default address pool name.
 ```
 
@@ -61,16 +62,19 @@ set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret secre
 
 
 ```{cfgcmd} set vpn ipsec interface \<INTERFACE\>
+
 Use this command to define IPsec interface.
 ```
 
 
 ```{cfgcmd} set vpn l2tp remote-access ipsec-settings authentication mode \<pre-shared-secret | x509\>
+
 Set mode for IPsec authentication between VyOS and L2TP clients.
 ```
 
 
 ```{cfgcmd} set vpn l2tp remote-access ipsec-settings authentication pre-shared-secret \<secret\>
+
 Set predefined shared secret phrase.
 ```
 
@@ -146,6 +150,7 @@ RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius source-address \<address\>
+
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -157,18 +162,22 @@ Best practice would be a loopback or dummy interface.
 ### RADIUS advanced options
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server \<server\> port \<port\>
+
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server \<server\> fail-time \<time\>
+
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server \<server\> disable
+
 Temporary disable this RADIUS server.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius acct-timeout \<timeout\>
+
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
@@ -178,18 +187,22 @@ This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius dynamic-author port \<port\>
+
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius dynamic-author key \<secret\>
+
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius max-try \<number\>
+
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius timeout \<timeout\>
+
 Timeout to wait response from server (seconds)
 ```
 
@@ -204,6 +217,7 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius source-address \<address\>
+
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -218,6 +232,7 @@ dictionaries on the RADIUS server and client.
 :::
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius rate-limit enable
+
 Enables bandwidth shaping via RADIUS.
 ```
 
@@ -268,10 +283,12 @@ characters, otherwise the interface won't be renamed.
 LNS are often used to connect to a LAC (L2TP Access Concentrator).
 
 ```{cfgcmd} set vpn l2tp remote-access lns host-name \<hostname\>
+
 Sent to the client (LAC) in the Host-Name attribute
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access lns shared-secret \<secret\>
+
 Tunnel password used to authenticate the client (LAC)
 ```
 
@@ -303,6 +320,7 @@ be between 32 and 64 bits long.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access default-ipv6-pool \<IPv6-POOL-NAME\>
+
 Use this command to define default IPv6 address pool name.
 ```
 
@@ -316,6 +334,7 @@ set vpn l2tp remote-access default-ipv6-pool IPv6-POOL
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-accept-peer-interface-id
+
 Accept peer interface identifier. By default this is not defined.
 ```
 
@@ -337,18 +356,22 @@ Specifies the peer interface identifier for IPv6. The default is fixed.
 ## Scripting
 
 ```{cfgcmd} set vpn l2tp remote-access extended-scripts on-change \<path_to_script\>
+
 Script to run when the session interface is changed by RADIUS CoA handling
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access extended-scripts on-down \<path_to_script\>
+
 Script to run when the session interface is about to terminate
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access extended-scripts on-pre-up \<path_to_script\>
+
 Script to run before the session interface comes up
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access extended-scripts on-up \<path_to_script\>
+
 Script to run when the session interface is completely configured and started
 ```
 
@@ -357,18 +380,22 @@ Script to run when the session interface is completely configured and started
 ### Authentication Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> disable
+
 Disable `<user>` account.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> static-ip \<address\>
+
 Assign a static IP address to `<user>` account.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> rate-limit download <bandwidth>
+
 Rate limit the download bandwidth for `<user>` to `<bandwidth>` kbit/s.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> rate-limit upload <bandwidth>
+
 Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s
 ```
 
@@ -380,6 +407,7 @@ pap, chap, mschap, mschap-v2.
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
+
 Use this command to define the next address pool name.
 ```
 
@@ -443,32 +471,39 @@ MS-MPPE-Encryption-Policy attribute.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options mru \<number\>
+
 Defines preferred MRU. By default is not defined.
 ```
 
 ### Global Advanced options
 
 ```{cfgcmd} set vpn l2tp remote-access description \<description\>
+
 Set description.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access limits burst \<value\>
+
 Burst count
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access limits connection-limit \<value\>
+
 Maximum accepted connection rate (e.g. 1/min, 60/sec)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access limits timeout \<value\>
+
 Timeout in seconds
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access mtu
+
 Maximum Transmission Unit (MTU) (default: **1436**)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access max-concurrent-sessions
+
 Maximum number of concurrent session start attempts
 ```
 
@@ -479,14 +514,17 @@ for IPv4, up to three for IPv6.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access shaper fwmark \<1-2147483647\>
+
 Match firewall mark value
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access snmp master-agent
+
 Enable SNMP
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access wins-server \<address\>
+
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 

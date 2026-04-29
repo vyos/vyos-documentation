@@ -60,6 +60,7 @@ used there is possibility to set host/netmask.
 
 
 ```{cfgcmd} set service pppoe-server default-pool \<POOL-NAME\>
+
 Use this command to define default address pool name.
 ```
 
@@ -109,6 +110,7 @@ If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
 ```{cfgcmd} set service pppoe-server authentication radius source-address <address>
+
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -120,21 +122,25 @@ Best practice would be a loopback or dummy interface.
 
 ### RADIUS advanced options
 ```{cfgcmd} set service pppoe-server authentication radius server <server> port <port>
+
 Configure RADIUS `<server>` and its required port for authentication requests.
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius server <server> fail-time <time>
+
 Mark RADIUS server as offline for this given `<time>` in seconds.
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius server <server> disable
+
 Temporary disable this RADIUS server.
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius acct-timeout <timeout>
+
 Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
@@ -146,21 +152,25 @@ This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 
 
 ```{cfgcmd} set service pppoe-server authentication radius dynamic-author port <port>
+
 UDP port for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius dynamic-author key <secret>
+
 Secret for Dynamic Authorization Extension server (DM/CoA)
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius max-try <number>
+
 Maximum number of tries to send Access-Request/Accounting-Request queries
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication radius timeout <timeout>
+
 Timeout to wait response from server (seconds)
 ```
 
@@ -178,6 +188,7 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 
 
 ```{cfgcmd} set service pppoe-server authentication radius source-address <address>
+
 Source IPv4 address used in all RADIUS server queires.
 ```
 
@@ -193,6 +204,7 @@ dictionaries at RADIUS server and client.
 :::
 
 ```{cfgcmd} set service pppoe-server authentication radius rate-limit enable
+
 Enables bandwidth shaping via RADIUS.
 ```
 
@@ -282,11 +294,13 @@ attributes.
 
 ### For Local Users
 ```{cfgcmd} set service pppoe-server authentication local-users username \<user\> rate-limit download \<bandwidth\>
+
 Download bandwidth limit in kbit/s for `<user>`.
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication local-users username \<user\> rate-limit upload \<bandwidth\>
+
 Upload bandwidth limit in kbit/s for `<user>`.
 ```
 ```none
@@ -320,6 +334,7 @@ up-stream rate)
 The command below enables it, assuming the RADIUS connection has been
 setup and is working.
 ```{cfgcmd} set service pppoe-server authentication radius rate-limit enable
+
    Use this command to enable bandwidth shaping via RADIUS.
 ```
 Other attributes can be used, but they have to be in one of the
@@ -376,6 +391,7 @@ delegation prefix can be set from 32 to 64 bit long.
 
 
 ```{cfgcmd} set service pppoe-server default-ipv6-pool \<IPv6-POOL-NAME\>
+
 Use this command to define default IPv6 address pool name.
 ```
 
@@ -388,6 +404,7 @@ set service pppoe-server default-ipv6-pool IPv6-POOL
 ```
 ### IPv6 Advanced Options
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-accept-peer-interface-id
+
 Accept peer interface identifier. By default is not defined.
 ```
 
@@ -413,21 +430,25 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 ```
 ## Scripting
 ```{cfgcmd} set service pppoe-server extended-scripts on-change \<path_to_script\>
+
 Script to run when session interface changed by RADIUS CoA handling
 ```
 
 
 ```{cfgcmd} set service pppoe-server extended-scripts on-down \<path_to_script\>
+
 Script to run when session interface going to terminate
 ```
 
 
 ```{cfgcmd} set service pppoe-server extended-scripts on-pre-up \<path_to_script\>
+
 Script to run before session interface comes up
 ```
 
 
 ```{cfgcmd} set service pppoe-server extended-scripts on-up \<path_to_script\>
+
 Script to run when session interface is completely configured and started
 ```
 ## Advanced Options
@@ -435,11 +456,13 @@ Script to run when session interface is completely configured and started
 
 ### Authentication Advanced Options
 ```{cfgcmd} set service pppoe-server authentication local-users username <user> disable
+
 Disable `<user>` account.
 ```
 
 
 ```{cfgcmd} set service pppoe-server authentication local-users username <user> static-ip <address>
+
 Assign static IP address to `<user>` account.
 ```
 
@@ -450,6 +473,7 @@ pap, chap, mschap, mschap-v2.
 ```
 ### Client IP Pool Advanced Options
 ```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\> next-pool <NEXT-POOL-NAME>
+
 Use this command to define the next address pool name.
 ```
 ### PPP Advanced Options
@@ -523,35 +547,42 @@ attribute.
 
 
 ```{cfgcmd} set service pppoe-server ppp-options mru \<number\>
+
 Defines preferred MRU. By default is not defined.
 ```
 ### Global Advanced options
 ```{cfgcmd} set service pppoe-server description \<description\>
+
 Set description.
 ```
 
 
 ```{cfgcmd} set service pppoe-server limits burst \<value\>
+
 Burst count
 ```
 
 
 ```{cfgcmd} set service pppoe-server limits connection-limit \<value\>
+
 Acceptable rate of connections (e.g. 1/min, 60/sec)
 ```
 
 
 ```{cfgcmd} set service pppoe-server limits timeout \<value\>
+
 Timeout in seconds
 ```
 
 
 ```{cfgcmd} set service pppoe-server mtu
+
 Maximum Transmission Unit (MTU) (default: **1492**)
 ```
 
 
 ```{cfgcmd} set service pppoe-server max-concurrent-sessions
+
 Maximum number of concurrent session start attempts
 ```
 
@@ -582,16 +613,19 @@ its first session and can then authentication again.
 
 
 ```{cfgcmd} set service pppoe-server shaper fwmark \<1-2147483647\>
+
 Match firewall mark value
 ```
 
 
 ```{cfgcmd} set service pppoe-server snmp master-agent
+
 Enable SNMP
 ```
 
 
 ```{cfgcmd} set service pppoe-server wins-server \<address\>
+
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 ## Monitoring

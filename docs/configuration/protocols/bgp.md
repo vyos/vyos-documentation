@@ -287,6 +287,7 @@ the delete form of this command.
 
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> description <text>
+
 Set description of the peer or peer group.
 ```
 
@@ -542,6 +543,7 @@ are treated as belonging to a default peer group, and will share updates.
 
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> peer-group <name>
+
 This command bind specific peer to peer group with a given name.
 ```
 #### Network Advertisement Configuration
@@ -650,6 +652,7 @@ between the peers, Graceful Restart procedures apply, and routes will be retaine
 
 
 ```{cfgcmd} set protocols bgp parameters log-neighbor-changes
+
 This command enable logging neighbor up/down changes and reset reason.
 ```
 
@@ -665,6 +668,7 @@ to disable client-to-client reflection.
 
 
 ```{cfgcmd} set protocols bgp parameters no-fast-external-failover
+
 Disable immediate session reset if peer's connected link goes down.
 ```
 
@@ -821,6 +825,7 @@ the knob, the entire AS_PATH must match for multipath computation.
 
 
 ```{cfgcmd} set protocols bgp parameters bestpath as-path ignore
+
 Ignore AS_PATH length when selecting a route
 ```
 
@@ -949,6 +954,7 @@ derection.
 
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> solo
+
 This command prevents from sending back prefixes learned from the neighbor.
 ```
 #### BGP Scaling Configuration
@@ -979,6 +985,7 @@ reflector will “reflect” routes to, the non-client is just a regular IBGP
 neighbor. Route reflectors mechanism is described in {rfc}`4456` and updated
 by {rfc}`7606`.
 ```{cfgcmd} set protocols bgp neighbor \<address\> address-family <ipv4-unicast|ipv6-unicast> route-reflector-client
+
 This command specifies the given neighbor as route reflector client.
 ```
 
@@ -1009,6 +1016,7 @@ system specified by {cfgcmd}`confederation identifier <asn>`.
 ## Operational Mode Commands
 ### Show
 ```{opcmd} show bgp \<ipv4|ipv6\>
+
    This command displays all entries in BGP routing table.
 ```
 
@@ -1049,6 +1057,7 @@ Paths: (1 available, best #1, table default)
 
 
 ```{opcmd} show bgp cidr-only
+
 This command displays routes with classless interdomain routing (CIDR).
 ```
 
@@ -1068,11 +1077,13 @@ community list.
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> dampening dampened-paths
+
 This command displays BGP dampened routes.
 ```
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> dampening flap-statistics
+
 This command displays information about flapping BGP routes.
 ```
 
@@ -1084,6 +1095,7 @@ access list.
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> neighbors \<address\> advertised-routes
+
 This command displays BGP routes advertised to a neighbor.
 ```
 
@@ -1096,11 +1108,13 @@ soft reconfiguration must be enabled.
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> neighbors \<address\> routes
+
 This command displays BGP received-routes that are accepted after filtering.
 ```
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> neighbors \<address\> dampened-routes
+
 This command displays dampened routes received from BGP neighbor.
 ```
 
@@ -1112,6 +1126,7 @@ matches the specified regular expression.
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> summary
+
 This command displays the status of all BGP connections.
 ```
 
@@ -1141,11 +1156,13 @@ inbound and outbound soft reconfiguration are triggered.
 
 
 ```{opcmd} reset bgp all
+
 This command resets all BGP connections of given router.
 ```
 
 
 ```{opcmd} reset bgp \<ipv4|ipv6\> external
+
 This command resets all external BGP peers of given router.
 ```
 

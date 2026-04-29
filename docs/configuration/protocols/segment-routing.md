@@ -100,11 +100,13 @@ to configure Anycast-SIDs.
 ```
 
 ```{opcmd} show isis segment-routing node
+
    Show detailed information about all learned Segment Routing Nodes
 ```
 
 
 ```{opcmd} show isis route prefix-sid
+
 Show detailed information about prefix-sid and label learned
 ```
 

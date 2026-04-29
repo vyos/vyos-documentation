@@ -66,6 +66,7 @@ as clear text or md5 one.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> purge-originator
+
 This command enables {rfc}`6232` purge originator identification.
 ```
 
@@ -77,6 +78,7 @@ router.
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> log-adjacency-changes
+
 Log changes in adjacency state.
 ```
 
@@ -107,11 +109,13 @@ The metric range is 1 to 16777215.
 
 
 ```{cfgcmd} set protocols openfabric interface \<interface\> passive
+
 This command enables the passive mode for this interface.
 ```
 
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> password plaintext-password <text>
+
 This command sets the authentication password for the interface.
 ```
 

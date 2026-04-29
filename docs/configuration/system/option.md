@@ -7,10 +7,12 @@ This chapter describe the possibilities of advanced system behavior.
 ## General
 
 ```{cfgcmd} set system option ctrl-alt-delete \<ignore | reboot | poweroff\>
+
 Action which will be run once the ctrl-alt-del keystroke is received.
 ```
 
 ```{cfgcmd} set system option reboot-on-panic
+
 Automatically reboot system on kernel panic after 60 seconds.
 ```
 
@@ -25,6 +27,7 @@ Automatic reboot can be cancelled after login using: {opcmd}`reboot cancel`
 ```
 
 ```{cfgcmd} set system option startup-beep
+
 Play an audible beep to the system speaker when system is ready.
 ```
 

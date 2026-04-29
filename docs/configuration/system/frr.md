@@ -7,6 +7,7 @@ and static routing. The routing daemon behavior can be adjusted during runtime,
 but requires either a restart of the routing daemon, or a reboot of the system.
 
 ```{cfgcmd} set system frr bmp
+
 Enable {abbr}`BMP (BGP Monitoring Protocol)` support.
 ```
 
@@ -18,6 +19,7 @@ this to happen.
 ```
 
 ```{cfgcmd} set system frr irdp
+
 Enable ICMP Router Discovery Protocol support.
 ```
 

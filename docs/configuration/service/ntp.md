@@ -98,6 +98,7 @@ Multiple networks/client IP addresses can be configured.
 
 
 ```{cfgcmd} set service ntp vrf \<name\>
+
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
@@ -197,6 +198,7 @@ configured PTP port. Note that one or more servers must be individually
 enabled for PTP before the daemon will synchronize over the transport.
 ```
 ```{cfgcmd} set service ntp ptp port \<port\>
+
 Configures the PTP port. By default, the standard port 319 is used.
 ```
 [draft-ntp-interleaved-modes]: https://datatracker.ietf.org/doc/draft-ietf-ntp-interleaved-modes/07/

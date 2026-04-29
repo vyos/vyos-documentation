@@ -11,6 +11,7 @@ Set proxy for all connections initiated by VyOS, including HTTP, HTTPS, and
 FTP (anonymous ftp).
 ```
 ```{cfgcmd} set system proxy port \<port\>
+
 Configure proxy port if it does not listen to the default port 80.
 ```
 ```{cfgcmd} set system proxy username \<username\>

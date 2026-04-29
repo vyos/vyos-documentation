@@ -56,6 +56,7 @@ string.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> mac \<mac address\>
+
 **Configure the MAC address associated with the MACsec peer.**
 ```
 

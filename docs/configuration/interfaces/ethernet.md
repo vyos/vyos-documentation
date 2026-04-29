@@ -98,6 +98,7 @@ to verify which settings are supported by your hardware and driver.
 **Basic adaptive coalescing**
 
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-rx
+
 ```
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-tx
 

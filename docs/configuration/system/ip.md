@@ -3,6 +3,7 @@
 ## System configuration commands
 
 ```{cfgcmd} set system ip disable-forwarding
+
 Use this command to disable IPv4 forwarding on all interfaces.
 ```
 
@@ -20,10 +21,12 @@ the ARP cache (1024, 2048, 4096, 8192, 16384, 32768).
 ```
 
 ```{cfgcmd} set system ip multipath layer4-hashing
+
 Use this command to use Layer 4 information for IPv4 ECMP hashing.
 ```
 
 ```{cfgcmd} set system ip import-table \<table-id\>
+
 Use this command to immport the table, by given table id, into the main RIB.
 ```
 

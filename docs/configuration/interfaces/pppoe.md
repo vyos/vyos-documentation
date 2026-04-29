@@ -136,6 +136,7 @@ By default, this IP address is negotiated.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> no-peer-dns
+
 Disable the installation of advertised DNS nameservers on the local system.
 ```
 
@@ -265,10 +266,12 @@ backlog 0b 0p requeues 0
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
+
 Disconnect the specified interface.
 ```
 
 ```{opcmd} connect interface \<interface\>
+
 Initiate a session on the specified interface.
 ```
 
