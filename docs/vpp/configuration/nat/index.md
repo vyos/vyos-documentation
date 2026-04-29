@@ -5,17 +5,16 @@ lastproofread: '2026-03-05'
 (vpp-config-nat-index)=
 
 ```{include} /_include/need_improvement.txt
-```
 
+```
 # VPP NAT Configuration
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-   cgnat
-   nat44
+cgnat
+nat44
 ```
 
 VPP Dataplane in VyOS supports two types of NAT:

@@ -21,7 +21,7 @@ guide how to do so.
 
 :::{note}
 In contrast to submitting code patches, there is no requirement that
-you open up a [Phabricator] task prior to submitting a Pull-Request to the
+you open up a [Phabricator](https://vyos.dev/) task prior to submitting a Pull-Request to the
 documentation.
 :::
 
@@ -62,7 +62,7 @@ and easily perused from a console.
 
 All RST files must follow the same TOC Level syntax and have to start with
 
-```
+```none
 #####
 Title
 #####
@@ -152,17 +152,17 @@ Paragraphs
 
 A plugin will be used to generate a reference label for each headline.
 To reference a page or a section in the documentation use the
-`{ref}` command.
+`:ref:` command.
 
 For example, you want to reference the headline **VLAN** in the
 **ethernet.rst** page. The plugin generates the label based on
 the headline and the file path.
 
-`` {ref}`configuration/interfaces/ethernet:vlan ``
+`` :ref:`configuration/interfaces/ethernet:vlan ``
 
 to use an alternative hyperlink use it this way:
 
-`` {ref}`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
+`` :ref:`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
 
 ##### handle build errors
 
@@ -243,32 +243,28 @@ Replace all variable contents with \<value> or something similar.
 With those custom commands, it will be possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
-```none
-.. cfgcmd:: protocols static arp <ipaddress> hwaddr <macaddress>
+````none
+```{cfgcmd} protocols static arp \<ipaddress\> hwaddr \<macaddress\>
 
    This will configure a static ARP entry, always resolving `192.0.2.100` to
    `00:53:27:de:23:aa`.
 ```
-
-For an inline configuration level command, use `{cfgcmd}`
-
+````
+For an inline configuration level command, use `:cfgcmd:`
 ```none
-{cfgcmd}`set interface ethernet eth0`
+:cfgcmd:`set interface ethernet eth0`
 ```
-
 To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
 to `.. cfgcmd::` directive.
 To have this feature locally, the vyos-1x submodule must be initialized before.
 Please be aware to not update the submodule in your PR.
-
-```none
-.. cfgcmd:: set system conntrack table-size <1-50000000>
+````none
+```{cfgcmd} set system conntrack table-size \<1-50000000\>
     :defaultvalue:
-
     The connection tracking table contains one entry for each connection being
     tracked by the system.
 ```
-
+````
 ##### opcmd
 
 When documenting operational level commands, use the `.. opcmd::` directive.
@@ -276,67 +272,57 @@ An explanation of the described command should be added below this statement.
 
 With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
-
-```none
-.. opcmd:: show protocols static arp
-
+````none
+```{opcmd} show protocols static arp
    Display all known ARP table entries spanning across all interfaces
 ```
-
-For an inline operational level command, use `{opcmd}`
-
+````
+For an inline operational level command, use `:opcmd:`
 ```none
-{opcmd}`add system image`
+:opcmd:`add system image`
 ```
-
 ##### cmdinclude
 
 To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
-
-```none
-.. cmdincludemd:: /_include/interface-address.txt
+````none
+```{cmdincludemd} /_include/interface-address.txt
    :var0: ethernet
    :var1: eth1
 ```
-
+````
 the content of interface-address.txt looks like this
-
-```none
-.. cfgcmd:: set interfaces {{ var0 }} <interface> address <address | dhcp |
-   dhcpv6>
-
+`````none
+```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
    Configure interface `<interface>` with one or more interface
    addresses.
-
    * **address** can be specified multiple times as IPv4 and/or IPv6
    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
    * **dhcp** interface address is received by DHCP from a DHCP server
    on this segment.
    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
    server on this segment.
-
    Example:
+````none
+   set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
+   set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
+   set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
+   set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
+   ````
 
-   .. code-block:: none
-
-      set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
-      set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
-      set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
-      set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
 ```
-
+`````
 ##### vytask
 
 When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
 command called `vytask` that automatically renders to a proper Phabricator
 URL. This is heavily used in the {ref}`release-notes` section.
-
 ```none
-* {vytask}`T1605` Fixed regression in L2TP/IPsec server
-* {vytask}`T1613` Netflow/sFlow captures IPv6 traffic correctly
-```
 
+* :vytask:`T1605` Fixed regression in L2TP/IPsec server
+* :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
+
+```
 ## Forking Workflow
 
 The Forking Workflow is fundamentally different from other popular Git
@@ -356,6 +342,7 @@ access to the official codebase.
 Updates to our documentation should be delivered by a GitHub
 pull-request. This requires you already have a GitHub account.
 :::
+
 
 - Fork this project on GitHub <https://github.com/vyos/vyos-documentation/fork>
 
@@ -412,7 +399,7 @@ pull-request. This requires you already have a GitHub account.
   origin    https://github.com/<username>/vyos.documentation.git (push)
   upstream  https://github.com/vyos/vyos-documentation.git (fetch)
   upstream  https://github.com/vyos/vyos-documentation.git (push)
-  ```
+```
 
   Your remote repo on Github is called `origin`, while the original repo you
   have forked is called `upstream`. Now you can locally update your forked
@@ -422,15 +409,10 @@ pull-request. This requires you already have a GitHub account.
   $ git fetch upstream
   $ git checkout current
   $ git merge upstream/current
-  ```
+```
 
 - If you also want to update your fork on GitHub, use the following: `$ git
   push origin current`
-
-
-```{include} /_include/common-references.txt
-```
-
 
 [dockerfile]: https://github.com/vyos/vyos-documentation/blob/current/docker/Dockerfile
 [grammarly]: https://www.grammarly.com/

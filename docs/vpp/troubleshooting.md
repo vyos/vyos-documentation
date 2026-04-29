@@ -8,7 +8,6 @@ lastproofread: '2026-02-18'
 ```
 
 # VPP Dataplane Troubleshooting
-
 This page shows you how to collect diagnostic information to troubleshoot VPP
 dataplane issues. These techniques help you resolve problems yourself and
 provide support teams with the information they need.
@@ -16,7 +15,6 @@ provide support teams with the information they need.
 Collecting the right diagnostic data is crucial for effective troubleshooting.
 
 ## Packet Capture (PCAP)
-
 Packet capture is a valuable debugging tool for analyzing network traffic and
 identifying issues with packet processing, routing, and filtering.
 
@@ -24,19 +22,10 @@ identifying issues with packet processing, routing, and filtering.
 transmitted (tx), and dropped (drop).
 
 ### Starting Packet Capture
-
 **Command syntax:**
-
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl pcap trace [rx] [tx] [drop] [max <n>] [intfc <interface-name|any>] [file <name>] [max-bytes-per-pkt <n>]
+```{opcmd} sudo vppctl pcap trace [rx] [tx] [drop] [max \<n\>] [intfc \<interface-name|any\>] [file \<name\>] [max-bytes-per-pkt \<n\>]
 ```
-
-
 **Parameters:**
-
 - `rx` - Capture received packets
 - `tx` - Capture transmitted packets
 - `drop` - Capture dropped packets
@@ -51,7 +40,6 @@ transmitted (tx), and dropped (drop).
   (must be >= 32, \<= 9000)
 
 **Examples:**
-
 ```none
 # Start capturing tx packets with specific parameters
 sudo vppctl pcap trace tx max 35 intfc eth1 file vpp_eth1.pcap
@@ -59,19 +47,11 @@ sudo vppctl pcap trace tx max 35 intfc eth1 file vpp_eth1.pcap
 # Capture all packet types from any interface
 sudo vppctl pcap trace rx tx drop max 1000 intfc any file vpp_capture.pcap max-bytes-per-pkt 128
 ```
-
 ### Monitoring Capture Status
-
 To check the capture status:
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl pcap trace status
+```{opcmd} sudo vppctl pcap trace status
 ```
-
 This command displays:
-
 - Whether capture is active
 - Capture parameters
 - Number of packets captured
@@ -84,23 +64,14 @@ VPP does not automatically stop packet captures. If left running, captures
 consume resources indefinitely. Always stop captures when you're done
 with them.
 :::
-
 To stop the active packet capture:
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl pcap trace off
+```{opcmd} sudo vppctl pcap trace off
 ```
-
 Example output when stopping:
-
 ```none
 Write 35 packets to /tmp/vpp_eth1.pcap, and stop capture...
 ```
-
 **Notes:**
-
 - PCAP files are stored in the `/tmp/` directory.
 - Existing files are overwritten.
 - If you don't specify a filename, default names are used: `/tmp/rx.pcap`,
@@ -109,7 +80,6 @@ Write 35 packets to /tmp/vpp_eth1.pcap, and stop capture...
 - Stop captures promptly to avoid filling storage.
 
 ## Packet Tracing
-
 VPP packet tracing shows how packets flow through the VPP processing graph,
 including which nodes process each packet and what transformations occur.
 
@@ -121,15 +91,9 @@ systems. Limit the number of traced packets to avoid overwhelming the system.
 ### Basic Packet Tracing Commands
 
 #### Start tracing
-
 To start tracing packets at a specific graph node:
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl trace add <input-graph-node> <pkts> [verbose]
+```{opcmd} sudo vppctl trace add \<input-graph-node\> \<pkts\> [verbose]
 ```
-
 - `<input-graph-node>` - Graph node name where tracing starts
   (for example, `dpdk-input`, `ethernet-input`, or `ip4-input`).
 - `<pkts>` - Number of packets to trace (for example, 100).
@@ -137,7 +101,6 @@ To start tracing packets at a specific graph node:
   trace output.
 
 **Common node names for tracing:**
-
 - `dpdk-input`: Packets received from DPDK interfaces
 - `ethernet-input`: Ethernet frame processing
 - `ip4-input`: IPv4 packet processing
@@ -146,30 +109,17 @@ To start tracing packets at a specific graph node:
 - `ip6-lookup`: IPv6 routing table lookup
 
 #### View traces
-
 After packets are traced, view the results:
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl show trace [max COUNT]
+```{opcmd} sudo vppctl show trace [max COUNT]
 ```
-
 - `[max COUNT]` - Optional limit on number of packets to display
   (default: all)
 
 #### Clear traces
-
 After reviewing traces, clear them to free up resources:
-
-```{eval-rst}
-.. opcmd::
-
-   sudo vppctl clear trace
+```{opcmd} sudo vppctl clear trace
 ```
-
 #### Example Workflow
-
 ```none
 # Add traces for 100 packets on dpdk-input node
 sudo vppctl trace add dpdk-input 100
@@ -180,21 +130,18 @@ sudo vppctl show trace
 # Clear traces for next test
 sudo vppctl clear trace
 ```
-
 ### Understanding Trace Output
-
 Trace output shows how packets flow through VPP processing nodes:
-
 ```none
 Packet 1
 
 01:00:09:508438: dpdk-input
   eth2 rx queue 0
   buffer 0x8533: current data 0, length 98, buffer-pool 0, ref-count 1, trace handle 0x1000000
-                 ext-hdr-valid
+                 ext-hdr-valid 
   PKT MBUF: port 1, nb_segs 1, pkt_len 98
     buf_len 1828, data_len 98, ol_flags 0x0, data_off 128, phys_addr 0x78814d40
-    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0
+    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0 
     rss 0x0 fdir.hi 0x0 fdir.lo 0x0
   IP4: 0c:87:6c:4e:00:01 -> 0c:de:0d:e2:00:02
   ICMP: 192.168.102.2 -> 192.168.99.3
@@ -215,8 +162,8 @@ Packet 1
   in2out next_index 2 arc_next_index 10
 01:00:09:508462: nat44-ed-in2out
   NAT44_IN2OUT_ED_FAST_PATH: sw_if_index 2, next index 10, session 0, translation result 'success' via i2of
-  i2of match: saddr 192.168.102.2 sport 3024 daddr 192.168.99.3 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.1 daddr 192.168.99.3 icmp-id 3024 txfib 0
-  o2if match: saddr 192.168.99.3 sport 3024 daddr 192.168.99.1 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.3 daddr 192.168.102.2 icmp-id 3024 txfib 0
+  i2of match: saddr 192.168.102.2 sport 3024 daddr 192.168.99.3 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.1 daddr 192.168.99.3 icmp-id 3024 txfib 0 
+  o2if match: saddr 192.168.99.3 sport 3024 daddr 192.168.99.1 dport 3024 proto ICMP fib_idx 0 rewrite: saddr 192.168.99.3 daddr 192.168.102.2 icmp-id 3024 txfib 0 
   search key local 192.168.102.2:3024 remote 192.168.99.3:3024 proto ICMP fib 0 thread-index 0 session-index 0
 01:00:09:508469: ip4-lookup
   fib 0 dpo-idx 10 flow hash: 0x00000000
@@ -238,11 +185,11 @@ Packet 1
 01:00:09:508477: eth1-tx
   eth1 tx queue 0
   buffer 0x8533: current data 0, length 98, buffer-pool 0, ref-count 1, trace handle 0x1000000
-                 ext-hdr-valid
-                 natted l2-hdr-offset 0 l3-hdr-offset 14
+                 ext-hdr-valid 
+                 natted l2-hdr-offset 0 l3-hdr-offset 14 
   PKT MBUF: port 1, nb_segs 1, pkt_len 98
     buf_len 1828, data_len 98, ol_flags 0x0, data_off 128, phys_addr 0x78814d40
-    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0
+    packet_type 0x0 l2_len 0 l3_len 0 outer_l2_len 0 outer_l3_len 0 
     rss 0x0 fdir.hi 0x0 fdir.lo 0x0
   IP4: 0c:de:0d:e2:00:01 -> 0c:ce:a7:04:00:01
   ICMP: 192.168.99.1 -> 192.168.99.3
@@ -250,9 +197,7 @@ Packet 1
     fragment id 0x37c5, flags DONT_FRAGMENT
   ICMP echo_request checksum 0x64e id 3024
 ```
-
 In this example, the trace shows:
-
 - The packet is received on `eth2` interface at the `dpdk-input` node.
 - It flows through `ethernet-input` and `ip4-input` nodes.
 - NAT translation occurs at the `nat44-ed-in2out` node, changing the source
@@ -261,23 +206,18 @@ In this example, the trace shows:
 - It transmits out of `eth1` interface at the `eth1-tx` node.
 
 ## Additional Diagnostic Information
-
 When reporting issues to support teams or performing advanced troubleshooting,
 collect additional diagnostic information.
 
 ### Before/After Traffic Analysis
-
 Before you send traffic:
-
 ```none
 sudo vppctl clear hardware-interfaces
 sudo vppctl clear interfaces
 sudo vppctl clear error
 sudo vppctl clear runtime
 ```
-
 After you send traffic:
-
 ```none
 sudo vppctl show version verbose
 sudo vppctl show hardware-interfaces
@@ -286,66 +226,48 @@ sudo vppctl show interface
 sudo vppctl show runtime
 sudo vppctl show error
 ```
-
 ### Core System Information
-
 **Memory and buffer information:**
-
 ```none
 sudo vppctl show memory api-segment stats-segment numa-heaps main-heap map verbose
 sudo vppctl show buffers
 sudo vppctl show physmem detail
 sudo vppctl show physmem map
 ```
-
 **Runtime and performance data:**
-
 ```none
 sudo vppctl show cpu
 sudo vppctl show threads
 sudo vppctl show runtime
 sudo vppctl show node counters
 ```
-
 ### Protocol-Specific Information
-
 **Layer 2 data (if configured):**
-
 ```none
 sudo vppctl show l2fib
 sudo vppctl show bridge-domain
 ```
-
 **IPv4 data (if configured):**
-
 ```none
 sudo vppctl show ip fib
 sudo vppctl show ip neighbors
 ```
-
 **IPv6 data (if configured):**
-
 ```none
 sudo vppctl show ip6 fib
 sudo vppctl show ip6 neighbors
 ```
-
 **MPLS data (if configured):**
-
 ```none
 sudo vppctl show mpls fib
 sudo vppctl show mpls tunnel
 ```
-
 ## Creating Support Packages
-
 Use the automated diagnostic collection script to gather comprehensive VPP
 troubleshooting information when contacting support or reporting issues.
 
 ### VPP Diagnostic Collection Script
-
 Create the diagnostic collection script:
-
 ```python
 #!/usr/bin/env python3
 """VyOS VPP Diagnostic Collection Script"""
@@ -454,38 +376,21 @@ def main():
 if __name__ == "__main__":
     main()
 ```
-
 Save this script as `/config/scripts/vpp-collect-diagnostics`
 
 ### Installation and Usage
-
 **1. Make the script executable**
-
-```{eval-rst}
-.. opcmd::
-
-   sudo chmod +x /config/scripts/vpp-collect-diagnostics
+```{opcmd} sudo chmod +x /config/scripts/vpp-collect-diagnostics
 ```
-
 **2. Run VPP diagnostic collection**
 
 The script automatically collects all diagnostics and stores them in your home
 directory.
-
-```{eval-rst}
-.. opcmd::
-
-    /config/scripts/vpp-collect-diagnostics
+```{opcmd} /config/scripts/vpp-collect-diagnostics
 ```
-
 **3. Generate VyOS tech-support archive separately**
-
 You can also generate a tech-support archive with system-wide diagnostics:
-
-```{eval-rst}
-.. opcmd::
-
-    generate tech-support archive
+```{opcmd} generate tech-support archive
 ```
 
 ### What the Script Collects

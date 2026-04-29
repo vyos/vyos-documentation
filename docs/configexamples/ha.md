@@ -214,6 +214,7 @@ set high-availability vrrp group int vrid '201'
 ### Public Network
 
 This has a floating IP address of 203.0.113.1/24, using virtual router ID 113.
+
 The virtual router ID is just a random number between 1 and 254, and can be set
 to whatever you want. Best practices suggest you try to keep them unique
 enterprise-wide.

@@ -102,7 +102,7 @@ When VyOS detects a previously configured RAID 1 set,
 the installation utility displays the following prompt:
 
 ```none
-Would you like to use this one?
+Would you like to use this one? 
 ```
 
 1\. To break up the current RAID 1 set, enter **No** at the prompt. The
@@ -119,7 +119,7 @@ at the prompt. VyOS prompts you to indicate which partition you would
 like the system installed on.
 
 ```none
-Which partition should I install the root on? [sda1]:
+Which partition should I install the root on? [sda1]: 
 ```
 
 3\. Enter the partition where you would like the system installed. The system
@@ -145,106 +145,92 @@ To replace a bad disk within a RAID 1 set:
 
 1. Remove the failed disk from the RAID 1 set:
 
-   ```{eval-rst}
-   .. opcmd:: delete raid <RAID‐1‐device> member <disk‐partition>
+   ```{opcmd} delete raid \<RAID‐1‐device\> member \<disk‐partition\>
    ```
-
    where `RAID-1-device` is the name of the RAID 1 device. For example,
    `md0` and
    `disk-partition` is the name of the failed disk partition. For example,
    `sdb2`.
-
 2. Physically remove the failed disk from the system. If the drives are not
    hot-swappable, then you must shut down the system before removing the disk.
-
 3. Replace the failed drive with a drive of the same size or larger.
-
 4. Format the new disk for RAID 1 by running the following command:
 
-   ```{eval-rst}
-   .. opcmd:: format disk <disk‐device1> like <disk‐device2>
+   ```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
    ```
-
    where `disk-device1` is the replacement disk. For example, `sdb` and
    `disk-device2` is the existing healthy disk. For example, `sda`.
 
 5. Add the replacement disk to the RAID 1 set by running the following command:
 
-   ```{eval-rst}
-   .. opcmd:: add raid <RAID‐1‐device> member <disk‐partition>
+   ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
    ```
-
    where `RAID-1-device` is the name of the RAID 1 device. For example,
    `md0` and `disk-partition` is the name of the replacement disk partition.
    For example, `sdb2`.
 
 ## Operation
-
 Learn how to add a disk partition to a RAID 1 set, initiate
 mirror synchronization, and check and display information.
-
-```{eval-rst}
-.. opcmd:: add raid <RAID‐1‐device> member <disk‐partition>
+```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a
    disk partition to a RAID 1 set initiates mirror synchronization, where all
    data on the existing member partition is copied to the new partition.
+
 ```
 
-```{eval-rst}
-.. opcmd:: format disk <disk‐device1> like <disk‐device2>
+```{opcmd} format disk \<disk‐device1\> like \<disk‐device2\>
 
-   This command is typically used to prepare a disk to be added to a preexisting
-   RAID 1 set (of which ``disk-device2`` is already a member).
+This command is typically used to prepare a disk to be added to a preexisting
+RAID 1 set (of which ``disk-device2`` is already a member).
 ```
 
-```{eval-rst}
-.. opcmd:: show raid <RAID‐1‐device>
+```{opcmd} show raid \<RAID‐1‐device\>
 
-   shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
-   set and is in the process of being resynchronized.
+shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
+set and is in the process of being resynchronized.
 
-   .. code-block:: none
 
-      vyos@vyos:~$ show raid md0
-      /dev/md0:
-            Version : 00.90
-      Creation Time : Wed Oct 29 09:19:09 2008
-         Raid Level : raid1
-         Array Size : 1044800 (1020.48 MiB 1069.88 MB)
-      Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
-       Raid Devices : 2
-      Total Devices : 2
-      Preferred Minor : 0
-        Persistence : Superblock is persistent
-        Update Time : Wed Oct 29 19:34:23 2008
-              State : active, degraded, recovering
-      Active Devices : 1
-      Working Devices : 2
-      Failed Devices : 0
-      Spare Devices : 1
-      Rebuild Status : 17% complete
-               UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
-             Events : 0.103
-        Number   Major   Minor   RaidDevice State
-           0       8        1        0      active sync   /dev/sda1
-           2       8       17        1      spare rebuilding   /dev/sdb1
+:::{code-block} none
+vyos@vyos:~$ show raid md0
+/dev/md0:
+      Version : 00.90
+Creation Time : Wed Oct 29 09:19:09 2008
+   Raid Level : raid1
+   Array Size : 1044800 (1020.48 MiB 1069.88 MB)
+Used Dev Size : 1044800 (1020.48 MiB 1069.88 MB)
+ Raid Devices : 2
+Total Devices : 2
+Preferred Minor : 0
+  Persistence : Superblock is persistent
+  Update Time : Wed Oct 29 19:34:23 2008
+        State : active, degraded, recovering
+Active Devices : 1
+Working Devices : 2
+Failed Devices : 0
+Spare Devices : 1
+Rebuild Status : 17% complete
+         UUID : 981abd77:9f8c8dd8:fdbf4de4:3436c70f
+       Events : 0.103
+  Number   Major   Minor   RaidDevice State
+     0       8        1        0      active sync   /dev/sda1
+     2       8       17        1      spare rebuilding   /dev/sdb1
+:::
 ```
 
-```{eval-rst}
-.. opcmd:: show disk sda format
+```{opcmd} show disk sda format
 
-   Use this command to display the formatting of a hard disk.
-
-   .. code-block:: none
-
-      vyos@vyos:~$ show disk sda format
-      Disk /dev/sda: 1073 MB, 1073741824 bytes
-      85 heads, 9 sectors/track, 2741 cylinders
-      Units = cylinders of 765 * 512 = 391680 bytes
-      Disk identifier: 0x000b7179
-       Device Boot      Start         End      Blocks   Id  System
-      /dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
+Use this command to display the formatting of a hard disk.
 
 
+:::{code-block} none
+vyos@vyos:~$ show disk sda format
+Disk /dev/sda: 1073 MB, 1073741824 bytes
+85 heads, 9 sectors/track, 2741 cylinders
+Units = cylinders of 765 * 512 = 391680 bytes
+Disk identifier: 0x000b7179
+Device Boot      Start         End      Blocks   Id  System
+/dev/sda1               6        2737     1044922+  fd  Linux raid autodetect
+:::
 ```

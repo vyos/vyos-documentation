@@ -1,11 +1,10 @@
 # Cloud Environments
 
-```{eval-rst}
-.. toctree::
-   :caption: Content
+```{toctree}
+:caption: Content
 
-   aws
-   azure
-   gcp
-   oracle
+aws
+azure
+gcp
+oracle
 ```

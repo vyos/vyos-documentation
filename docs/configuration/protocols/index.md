@@ -1,6 +1,8 @@
 # Protocols
 
-<div class="toctree" maxdepth="1" includehidden="">
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
 arp
 babel
@@ -20,5 +22,4 @@ pim6
 rip
 rpki
 static
-
-</div>
+```

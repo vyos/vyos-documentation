@@ -1,5 +1,8 @@
-lastproofread  
-2026-03-16
+---
+lastproofread: '2026-03-16'
+---
+
+(command-scripting)=
 
 # Command scripting
 
@@ -10,7 +13,7 @@ To include VyOS-specific functions and aliases, source the
 `/opt/vyatta/etc/functions/script-template` file at the beginning of your
 script.
 
-``` none
+```none
 #!/bin/vbash
 source /opt/vyatta/etc/functions/script-template
 exit
@@ -24,7 +27,7 @@ can execute them.
 To make your scripts executable, grant them **execute permissions**. Use the
 following command:
 
-``` none
+```none
 chmod +x /config/scripts/script-name.sh
 ```
 
@@ -36,7 +39,7 @@ session.
 For example, to disable a BGP peer during a VRRP transition to the backup
 state, use the following syntax:
 
-``` none
+```none
 #!/bin/vbash
 source /opt/vyatta/etc/functions/script-template
 configure
@@ -50,7 +53,7 @@ exit
 
 In scripts, **always** prefix operational commands with `run`.
 
-``` none
+```none
 #!/bin/vbash
 source /opt/vyatta/etc/functions/script-template
 run show interfaces
@@ -62,7 +65,7 @@ exit
 You can execute multiple **operational commands** on a remote VyOS system by
 passing a script block over SSH.
 
-``` none
+```none
 ssh 192.0.2.1 'vbash -s' <<EOF
 source /opt/vyatta/etc/functions/script-template
 run show interfaces
@@ -72,7 +75,7 @@ EOF
 
 Example output:
 
-``` none
+```none
 Welcome to VyOS
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
 Interface        IP Address                        S/L  Description
@@ -89,14 +92,14 @@ output the relevant commands, and then source that output into a bash script.
 
 The following example demonstrates this two-step process:
 
-``` python
+```python
 #!/usr/bin/env python3
 print("delete firewall group address-group somehosts")
 print("set firewall group address-group somehosts address '192.0.2.3'")
 print("set firewall group address-group somehosts address '203.0.113.55'")
 ```
 
-``` none
+```none
 #!/bin/vbash
 source /opt/vyatta/etc/functions/script-template
 configure
@@ -112,7 +115,7 @@ In VyOS, if you prefix a script that modifies the configuration with `sudo`
 (see the code snippet below), subsequent manual configuration changes fail with
 the `Set failed` error. Recovery requires a system reboot.
 
-``` none
+```none
 sudo ./myscript.sh # Modifies config
 configure
 set ... # Any configuration parameter
@@ -121,14 +124,14 @@ set ... # Any configuration parameter
 To avoid this issue, run scripts under the `vyattacfg` group using the `sg`
 command:
 
-``` none
+```none
 sg vyattacfg -c ./myscript.sh
 ```
 
 To ensure the script is executed under the `vyattacfg` group, safeguard it as
 follows:
 
-``` none
+```none
 if [ "$(id -g -n)" != 'vyattacfg' ] ; then
     exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
 fi
@@ -140,7 +143,7 @@ VyOS allows you to run custom scripts **before** and **after** each commit.
 
 Place your custom scripts in the following default directories:
 
-``` none
+```none
 /config/scripts/commit/pre-hooks.d   - Directory with scripts that run before
                                        each commit.
 
@@ -152,23 +155,15 @@ Scripts run in alphabetical order. Filenames must consist only of ASCII letters
 (upper and lowercase), digits (0-9), underscores (\_), and hyphens (-). No other
 characters are allowed.
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
+:::{note}
 Custom scripts are executed **without** root privileges. Prefix
 specific commands with `sudo` in your script when required.
-
-</div>
+:::
 
 The following example shows the output after executing a post-hook script
 that runs the `show interfaces` command:
 
-``` none
+```none
 vyos@vyos# set interfaces ethernet eth1  address 192.0.2.3/24
 vyos@vyos# commit
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -191,7 +186,7 @@ or enhancements not yet available in VyOS.
 
 The default script contains the following:
 
-``` none
+```none
 #!/bin/sh
 # This script is executed at boot time before VyOS configuration is applied.
 # Any modifications required to work around unfixed bugs or use
@@ -208,22 +203,14 @@ or enhancements not yet available in VyOS.
 
 The default script contains the following:
 
-``` none
+```none
 #!/bin/sh
 # This script is executed at boot time after VyOS configuration is fully
 # applied. Any modifications required to work around unfixed bugs or use
 # services not available through the VyOS CLI system can be placed here.
 ```
 
-<div class="warning">
-
-<div class="title">
-
-Warning
-
-</div>
-
+:::{warning}
 For configuration or upgrade management issues, modify this script
 only as a last resort. Always try CLI-based solutions first.
-
-</div>
+:::

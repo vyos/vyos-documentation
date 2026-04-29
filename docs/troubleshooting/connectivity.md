@@ -2,19 +2,16 @@
 
 ## Basic Connectivity Tests
 
-Verifying connectivity can be done with the familiar <span class="title-ref">ping</span> and <span class="title-ref">traceroute</span>
+Verifying connectivity can be done with the familiar ping and traceroute
 commands. The options for each are shown (the options for each command were
-displayed using the built-in help as described in the `cli`
+displayed using the built-in help as described in the {ref}`cli`
 section and are omitted from the output here):
 
-<div class="opcmd">
-
-ping \<destination\>
-
+```{opcmd} ping \<destination\>
 Send ICMP echo requests to destination host. There are multiple options to
 ping, including VRF support.
 
-``` none
+:::{code-block} none
 vyos@vyos:~$ ping 10.1.1.1
 Possible completions:
   <Enter>       Execute the current command
@@ -40,17 +37,13 @@ Possible completions:
   ttl
   verbose
   vrf
+:::
 ```
 
-</div>
-
-<div class="opcmd">
-
-traceroute \<destination\>
-
+```{opcmd} traceroute \<destination\>
 Trace path to target.
 
-``` none
+:::{code-block} none
 vyos@vyos:~$ traceroute
 Possible completions:
   <hostname>    Track network path to specified node
@@ -58,20 +51,16 @@ Possible completions:
   <h:h:h:h:h:h:h:h>
   ipv4          Track network path to <hostname|IPv4 address>
   ipv6          Track network path to <hostname|IPv6 address>
+:::
 ```
-
-</div>
 
 ## Advanced Connectivity Tests
 
-<div class="opcmd">
-
-monitor traceroute \<destination\>
-
+```{opcmd} monitor traceroute \<destination\>
 However, another helper is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
 
-``` none
+:::{code-block} none
 vyos@vyos:~$ mtr 10.62.212.12
 
                            My traceroute  [v0.85]
@@ -83,42 +72,29 @@ Host                            Loss%   Snt   Last   Avg  Best  Wrst StDev
 2. 10.62.255.184                 0.0%    34    1.1   1.0   0.9   1.4   0.1
 3. 10.62.255.71                  0.0%    34    1.4   1.4   1.3   2.0   0.1
 4. 10.62.212.12                  0.0%    34    1.6   1.6   1.6   1.7   0.0
-```
+:::
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
+:::{note}
 The output consumes the screen and will replace your command
 prompt.
+:::
 
-</div>
-
-Several options are available for changing the display output. Press <span class="title-ref">h</span> to
-invoke the built in help system. To quit, just press <span class="title-ref">q</span> and you'll be
+Several options are available for changing the display output. Press h to
+invoke the built in help system. To quit, just press q and you'll be
 returned to the VyOS command prompt.
-
-</div>
+```
 
 ## IPv6 Topology Discovery
-
 IPv6 uses different techniques to discover its Neighbors/topology.
 
 ### Router Discovery
 
-<div class="opcmd">
-
-force ipv6-rd interface \<interface\> \[address \<ipv6-address\>\]
-
+```{opcmd} force ipv6-rd interface \<interface\> [address \<ipv6-address\>]
 Discover routers via eth0.
 
 Example:
 
-``` none
+:::{code-block} none
 vyos@vyos:~$ force ipv6-rd interface eth0
 Soliciting ff02::2 (ff02::2) on eth0...
 
@@ -145,23 +121,18 @@ Retransmit time           :  unspecified (0x00000000)
   DNS server lifetime     :          600 (0x00000258) seconds
  Source link-layer address: 00:98:2B:F8:3F:11
  from fe80::298:2bff:fef8:3f11
+:::
 ```
-
-</div>
 
 ### Neighbor Discovery
 
-<div class="opcmd">
-
-force ipv6-nd interface \<interface\> address \<ipv6-address\>
-
+```{opcmd} force ipv6-nd interface \<interface\> address \<ipv6-address\>
 Example:
 
-``` none
+:::{code-block} none
 vyos@vyos:~$ force ipv6-nd interface eth0 address fc00:470:f1cd:101::1
 
 Soliciting fc00:470:f1cd:101::1 (fc00:470:f1cd:101::1) on eth0...
 Target link-layer address: 00:98:2B:F8:3F:11 from fc00:470:f1cd:101::1
+:::
 ```
-
-</div>

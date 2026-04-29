@@ -31,24 +31,18 @@ Pseudo-Ethernet interfaces may not work in environments that require a
 
 ### Common interface configuration
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-common-with-dhcp.txt
-   :var0: pseudo-ethernet
-   :var1: peth0
+```{cmdincludemd} /_include/interface-common-with-dhcp.txt
+:var0: pseudo-ethernet
+:var1: peth0
 ```
-
 ### MACVLAN (pseudo-Ethernet) options
 
-```{eval-rst}
-.. cfgcmd:: set interfaces pseudo-ethernet <interface> source-interface <ethX>
-
-   Assign a physical Ethernet interface to the specified pseudo-Ethernet interface.
+```{cfgcmd} set interfaces pseudo-ethernet \<interface\> source-interface \<ethX\>
+Assign a physical Ethernet interface to the specified pseudo-Ethernet interface.
 ```
-
 ### VLAN
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-vlan-8021q.txt
-   :var0: pseudo-ethernet
-   :var1: peth0
+```{cmdincludemd} /_include/interface-vlan-8021q.txt
+:var0: pseudo-ethernet
+:var1: peth0
 ```

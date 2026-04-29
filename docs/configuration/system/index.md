@@ -1,37 +1,34 @@
 # System
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-   acceleration
-   conntrack
-   console
-   flow-accounting
-   frr
-   host-name
-   ip
-   ipv6
-   lcd
-   login
-   name-server
-   option
-   proxy
-   sflow
-   syslog
-   sysctl
-   task-scheduler
-   time-zone
-   updates
-   watchdog
-
+acceleration
+conntrack
+console
+flow-accounting
+frr
+host-name
+ip
+ipv6
+lcd
+login
+name-server
+option
+proxy
+sflow
+syslog
+sysctl
+task-scheduler
+time-zone
+updates
+watchdog
 ```
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-   default-route
+default-route
 ```

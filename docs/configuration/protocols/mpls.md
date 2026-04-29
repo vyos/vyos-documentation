@@ -66,216 +66,173 @@ change to work.
 
 ## Configuration Options
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls interface <interface>
-
+```{cfgcmd} set protocols mpls interface \<interface\>
   Use this command to enable MPLS processing on the interface you define.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp interface <interface>
 
-  Use this command to enable LDP on the interface you define.
+```{cfgcmd} set protocols mpls ldp interface \<interface\>
+Use this command to enable LDP on the interface you define.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp router-id <address>
 
-  Use this command to configure the IP address used as the LDP router-id of the
-  local device.
+```{cfgcmd} set protocols mpls ldp router-id \<address\>
+Use this command to configure the IP address used as the LDP router-id of the
+local device.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv4-address <address>
+
+```{cfgcmd} set protocols mpls ldp discovery transport-ipv4-address \<address\>
+```
+```{cfgcmd} set protocols mpls ldp discovery transport-ipv6-address \<address\>
+
+Use this command to set the IPv4 or IPv6 transport-address used by LDP.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery transport-ipv6-address <address>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> password \<password\>
 
-  Use this command to set the IPv4 or IPv6 transport-address used by LDP.
+Use this command to configure authentication for LDP peers. Set the
+IP address of the LDP peer and a password that should be shared in
+order to become neighbors.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp neighbor <address> password <password>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> session-holdtime \<seconds\>
 
-  Use this command to configure authentication for LDP peers. Set the
-  IP address of the LDP peer and a password that should be shared in
-  order to become neighbors.
+Use this command to configure a specific session hold time for LDP peers.
+Set the IP address of the LDP peer and a session hold time that should be
+configured for it. You may have to reset the neighbor for this to work.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp neighbor <address> session-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp neighbor \<address\> ttl-security <disable | hop count>
 
-  Use this command to configure a specific session hold time for LDP peers.
-  Set the IP address of the LDP peer and a session hold time that should be
-  configured for it. You may have to reset the neighbor for this to work.
+
+Use this command to enable, disable, or specify hop count for TTL security
+for LDP peers. By default the value is set to 255 (or max TTL).
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp neighbor <address> ttl-security
-  <disable | hop count>
-
-  Use this command to enable, disable, or specify hop count for TTL security
-  for LDP peers. By default the value is set to 255 (or max TTL).
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-interval \<seconds\>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-interval <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-holdtime \<seconds\>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-interval \<seconds\>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery hello-ipv6-interval <seconds>
+```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-holdtime \<seconds\>
+
+Use these commands if you would like to set the discovery hello and hold time
+parameters.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery hello-ipv6-holdtime <seconds>
-
-  Use these commands if you would like to set the discovery hello and hold time
-  parameters.
+```{cfgcmd} set protocols mpls ldp discovery session-ipv4-holdtime \<seconds\>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery session-ipv4-holdtime <seconds>
+```{cfgcmd} set protocols mpls ldp discovery session-ipv6-holdtime \<seconds\>
+
+Use this command if you would like to set the TCP session hold time intervals.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp discovery session-ipv6-holdtime <seconds>
-
-  Use this command if you would like to set the TCP session hold time intervals.
+```{cfgcmd} set protocols mpls ldp import ipv4 import-filter filter-access-list <access list number>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp import ipv4 import-filter filter-access-list
-  <access list number>
+```{cfgcmd} set protocols mpls ldp import ipv6 import-filter filter-access-list6 <access list number>
+
+
+Use these commands to control the importing of forwarding equivalence classes
+(FECs) for LDP from neighbors. This would be useful for example on only
+accepting the labeled routes that are needed and not ones that are not
+needed, such as accepting loopback interfaces and rejecting all others.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp import ipv6 import-filter filter-access-list6
-  <access list number>
-
-  Use these commands to control the importing of forwarding equivalence classes
-  (FECs) for LDP from neighbors. This would be useful for example on only
-  accepting the labeled routes that are needed and not ones that are not
-  needed, such as accepting loopback interfaces and rejecting all others.
+```{cfgcmd} set protocols mpls ldp export ipv4 export-filter filter-access-list <access list number>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp export ipv4 export-filter filter-access-list
-  <access list number>
+```{cfgcmd} set protocols mpls ldp export ipv6 export-filter filter-access-list6 <access list number>
+
+
+Use these commands to control the exporting of forwarding equivalence classes
+(FECs) for LDP to neighbors. This would be useful for example on only
+announcing the labeled routes that are needed and not ones that are not
+needed, such as announcing loopback interfaces and no others.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp export ipv6 export-filter filter-access-list6
-  <access list number>
-
-  Use these commands to control the exporting of forwarding equivalence classes
-  (FECs) for LDP to neighbors. This would be useful for example on only
-  announcing the labeled routes that are needed and not ones that are not
-  needed, such as announcing loopback interfaces and no others.
+```{cfgcmd} set protocols mpls ldp export ipv4 explicit-null
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp export ipv4 explicit-null
+```{cfgcmd} set protocols mpls ldp export ipv6 explicit-null
+
+Use this command if you would like for the router to advertise FECs with a
+label of 0 for explicit null operations.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp export ipv6 explicit-null
-
-  Use this command if you would like for the router to advertise FECs with a
-  label of 0 for explicit null operations.
+```{cfgcmd} set protocols mpls ldp allocation ipv4 access-list <access list number>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp allocation ipv4 access-list
-  <access list number>
+```{cfgcmd} set protocols mpls ldp allocation ipv6 access-list6 <access list number>
+
+
+Use this command if you would like to control the local FEC allocations for
+LDP. A good example would be for your local router to not allocate a label for
+everything. Just a label for what it's useful. A good example would be just a
+loopback label.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp allocation ipv6 access-list6
-  <access list number>
+```{cfgcmd} set protocols mpls ldp parameters cisco-interop-tlv
 
-  Use this command if you would like to control the local FEC allocations for
-  LDP. A good example would be for your local router to not allocate a label for
-  everything. Just a label for what it's useful. A good example would be just a
-  loopback label.
+Use this command to use a Cisco non-compliant format to send and interpret
+the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
+{rfc}`7552`.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp parameters cisco-interop-tlv
+```{cfgcmd} set protocols mpls ldp parameters ordered-control
 
-  Use this command to use a Cisco non-compliant format to send and interpret
-  the Dual-Stack capability TLV for IPv6 LDP communications. This is related to
-  {rfc}`7552`.
+Use this command to use ordered label distribution control mode. FRR
+by default uses independent label distribution control mode for label
+distribution.  This is related to {rfc}`5036`.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp parameters ordered-control
+```{cfgcmd} set protocols mpls ldp parameters transport-prefer-ipv4
 
-  Use this command to use ordered label distribution control mode. FRR
-  by default uses independent label distribution control mode for label
-  distribution.  This is related to {rfc}`5036`.
+Use this command to prefer IPv4 for TCP peer transport connection for LDP
+when both an IPv4 and IPv6 LDP address are configured on the same interface.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp parameters transport-prefer-ipv4
-
-  Use this command to prefer IPv4 for TCP peer transport connection for LDP
-  when both an IPv4 and IPv6 LDP address are configured on the same interface.
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 enable
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 enable
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 enable
+
+Use this command to enable targeted LDP sessions to the local router. The
+router will then respond to any sessions that are trying to connect to it that
+are not a link local type of TCP connection.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 enable
-
-  Use this command to enable targeted LDP sessions to the local router. The
-  router will then respond to any sessions that are trying to connect to it that
-  are not a link local type of TCP connection.
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 address \<address\>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 address <address>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 address \<address\>
+
+Use this command to enable the local router to try and connect with a targeted
+LDP session to another router.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 address <address>
-
-  Use this command to enable the local router to try and connect with a targeted
-  LDP session to another router.
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime <seconds>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-holdtime
-  <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv4 hello-interval <seconds>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv4 hello-interval
-  <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime <seconds>
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-holdtime
-  <seconds>
+```{cfgcmd} set protocols mpls ldp targeted-neighbor ipv6 hello-interval <seconds>
+
+
+Use these commands if you would like to set the discovery hello and hold time
+parameters for the targeted LDP neighbors.
 ```
-
-```{eval-rst}
-.. cfgcmd:: set protocols mpls ldp targeted-neighbor ipv6 hello-interval
-  <seconds>
-
-  Use these commands if you would like to set the discovery hello and hold time
-  parameters for the targeted LDP neighbors.
-
-```
-
 ### Sample configuration to setup LDP on VyOS
-
 ```none
 set protocols ospf area 0 network '192.168.255.252/32'                      <--- Routing for loopback
 set protocols ospf area 0 network '192.168.0.5/32'                          <--- Routing for an interface connecting to the network
@@ -288,54 +245,40 @@ set protocols mpls ldp router-id '192.168.255.252'                          <---
 set interfaces ethernet eth1 address '192.168.0.5/31'                       <--- Interface IP for connecting to network
 set interfaces loopback lo address '192.168.255.252/32'                     <--- Interface loopback IP for router ID and other uses
 ```
-
 ## Operational Mode Commands
-
 When LDP is working, you will be able to see label information in the outcome
 of `show ip route`. Besides that information, there are also specific *show*
 commands for LDP:
-
 ### Show
-
-```{eval-rst}
-.. opcmd:: show mpls ldp binding
+```{opcmd} show mpls ldp binding
 
   Use this command to see the Label Information Base.
+
 ```
 
-```{eval-rst}
-.. opcmd:: show mpls ldp discovery
+```{opcmd} show mpls ldp discovery
 
-  Use this command to see discovery hello information
+Use this command to see discovery hello information
 ```
 
-```{eval-rst}
-.. opcmd:: show mpls ldp interface
+```{opcmd} show mpls ldp interface
 
-  Use this command to see LDP interface information
+Use this command to see LDP interface information
 ```
 
-```{eval-rst}
-.. opcmd:: show mpls ldp neighbor
+```{opcmd} show mpls ldp neighbor
 
-  Use this command to see LDP neighbor information
+Use this command to see LDP neighbor information
 ```
 
-```{eval-rst}
-.. opcmd:: show mpls ldp neighbor detail
+```{opcmd} show mpls ldp neighbor detail
 
-  Use this command to see detailed LDP neighbor information
+Use this command to see detailed LDP neighbor information
 ```
-
 ### Reset
+```{opcmd} reset mpls ldp neighbor \<IPv4 or IPv6 address\>
 
-```{eval-rst}
-.. opcmd:: reset mpls ldp neighbor <IPv4 or IPv6 address>
-
-  Use this command to reset an LDP neighbor/TCP session that is established
-
+Use this command to reset an LDP neighbor/TCP session that is established
 ```
-
-
 
 [wikipedia (mpls)]: https://en.wikipedia.org/wiki/Multiprotocol_Label_Switching

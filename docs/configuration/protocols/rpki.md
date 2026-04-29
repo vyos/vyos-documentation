@@ -2,14 +2,13 @@
 
 # RPKI
 
-```{eval-rst}
-.. pull-quote::
+:::{pull-quote}
 
-   There are two types of Network Admins who deal with BGP, those who have
-   created an international incident and/or outage, and those who are lying
+There are two types of Network Admins who deal with BGP, those who have
+created an international incident and/or outage, and those who are lying
 
-   -- `tweet by EvilMog`_, 2020-02-21
-```
+-- tweet by EvilMog, 2020-02-21
+:::
 
 {abbr}`RPKI (Resource Public Key Infrastructure)` is a framework designed to
 secure the Internet routing infrastructure. It associates BGP route
@@ -97,52 +96,40 @@ In a nutshell, the current implementation provides the following features:
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki polling-period <1-86400>
-
-  Define the time interval to update the local cache
-
-  The default value is 300 seconds.
+```{cfgcmd} set protocols rpki polling-period \<1-86400\>
+Define the time interval to update the local cache
+The default value is 300 seconds.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki expire-interval <600-172800>
+```{cfgcmd} set protocols rpki expire-interval \<600-172800\>
+Set the number of seconds the router waits until the router
+expires the cache.
 
-  Set the number of seconds the router waits until the router
-  expires the cache.
-
-  The default value is 7200 seconds.
+The default value is 7200 seconds.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki retry-interval <1-7200>
+```{cfgcmd} set protocols rpki retry-interval \<1-7200\>
+Set the number of seconds the router waits until retrying to connect
+to the cache server.
 
-  Set the number of seconds the router waits until retrying to connect
-  to the cache server.
-
-  The default value is 600 seconds.
+The default value is 600 seconds.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki cache <address> port <port>
+```{cfgcmd} set protocols rpki cache \<address\> port \<port\>
+Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
+instance which is used.
 
-  Defined the IPv4, IPv6 or FQDN and port number of the caching RPKI caching
-  instance which is used.
-
-  This is a mandatory setting.
+This is a mandatory setting.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki cache <address> preference <preference>
+```{cfgcmd} set protocols rpki cache \<address\> preference \<preference\>
+Multiple RPKI caching instances can be supplied and they need a preference in
+which their result sets are used.
 
-  Multiple RPKI caching instances can be supplied and they need a preference in
-  which their result sets are used.
-
-  This is a mandatory setting.
+This is a mandatory setting.
 ```
 
 ### SSH
-
 Connections to the RPKI caching server can not only be established by TCP using
 the RTR protocol but you can also rely on a secure SSH session to the server.
 This provides transport integrity and confidentiality and it is a good idea if
@@ -151,22 +138,16 @@ an SSH client keypair using `generate ssh client-key
 /config/auth/id_rsa_rpki`. Once your key is created you can setup the
 connection.
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki cache <address> ssh username <user>
-
-  SSH username to establish an SSH connection to the cache server.
+```{cfgcmd} set protocols rpki cache \<address\> ssh username \<user\>
+SSH username to establish an SSH connection to the cache server.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki cache <address> ssh private-key-file <filepath>
-
-  Local path that includes the private key file of the router.
+```{cfgcmd} set protocols rpki cache \<address\> ssh private-key-file \<filepath\>
+Local path that includes the private key file of the router.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols rpki cache <address> ssh public-key-file <filepath>
-
-  Local path that includes the public key file of the router.
+```{cfgcmd} set protocols rpki cache \<address\> ssh public-key-file \<filepath\>
+Local path that includes the public key file of the router.
 ```
 
 :::{note}
@@ -175,7 +156,6 @@ are mandatory options.
 :::
 
 ## Example
-
 We can build route-maps for import based on these states. Here is a simple
 RPKI configuration, where `routinator` is the RPKI-validating "cache"
 server with ip `192.0.2.1`:
@@ -206,8 +186,6 @@ test whether the configuration is working correctly using Cloudflare's [test]
 website. Keep in mind that in order for this to work, you need to have no
 default routes or anything else that would still send traffic to RPKI-invalid
 destinations.
-
-
 
 [excellent guide to rpki]: https://rpki.readthedocs.io/
 [help and operational guidance]: https://rpki.readthedocs.io/en/latest/about/help.html

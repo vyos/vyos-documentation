@@ -35,7 +35,7 @@ Segment routing (SR) is used by the IGP protocols to interconnect network
 devices, below configuration shows how to enable SR on IS-IS:
 
 :::{note}
-`Known limitations:`
+``Known limitations:``
 
 No support for level redistribution (L1 to L2 or L2 to L1)
 
@@ -46,168 +46,129 @@ No support for SRLB
 Only one SRGB and default SPF Algorithm is supported
 :::
 
-```{eval-rst}
-.. cfgcmd::  set protocols isis segment-routing global-block high-label-value
-  <label-value>
-
+```{cfgcmd} set protocols isis segment-routing global-block high-label-value \<label-value\>
   Set the Segment Routing Global Block i.e. the label range used by MPLS to
   store label in the MPLS FIB for Prefix SID. Note that the block size may
   not exceed 65535.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing global-block low-label-value
-  <label-value>
 
-  Set the Segment Routing Global Block i.e. the low label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.
+```{cfgcmd} set protocols isis segment-routing global-block low-label-value \<label-value\>
+Set the Segment Routing Global Block i.e. the low label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing local-block high-label-value
-  <label-value>
 
-  Set the Segment Routing Local Block i.e. the label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.Segment Routing Local Block, The negative command always
-  unsets both.
+```{cfgcmd} set protocols isis segment-routing local-block high-label-value \<label-value\>
+Set the Segment Routing Local Block i.e. the label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.Segment Routing Local Block, The negative command always
+unsets both.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing local-block <low-label-value
-  <label-value>
 
-  Set the Segment Routing Local Block i.e. the low label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.Segment Routing Local Block, The negative command always
-  unsets both.
+```{cfgcmd} set protocols isis segment-routing local-block \<low-label-value \<label-value\>
+Set the Segment Routing Local Block i.e. the low label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.Segment Routing Local Block, The negative command always
+unsets both.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing maximum-label-depth <1-16>
 
-  Set the Maximum Stack Depth supported by the router. The value depend of
-  the MPLS dataplane.
+```{cfgcmd} set protocols isis segment-routing maximum-label-depth \<1-16\>
+Set the Maximum Stack Depth supported by the router. The value depend of
+the MPLS dataplane.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing prefix <address> index value
-  <0-65535>
 
-  A segment ID that contains an IP address prefix calculated by an IGP in the
-  service provider core network. Prefix SIDs are globally unique, this value
-  indentify it
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value \<0-65535\>
+A segment ID that contains an IP address prefix calculated by an IGP in the
+service provider core network. Prefix SIDs are globally unique, this value
+indentify it
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols isis segment-routing prefix <address> index
-   <no-php-flag | explicit-null| n-flag-clear>
 
-   this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
-   Penultimate Hop Popping that allows SR node to request to its neighbor to
-   not pop the label. The ‘explicit-null’ flag allows SR node to request to its
-   neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
-   option can be used to explicitly clear the Node flag that is set by default
-   for Prefix-SIDs associated to loopback addresses. This option is necessary
-   to configure Anycast-SIDs.
-
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
+this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
+Penultimate Hop Popping that allows SR node to request to its neighbor to
+not pop the label. The ‘explicit-null’ flag allows SR node to request to its
+neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
+option can be used to explicitly clear the Node flag that is set by default
+for Prefix-SIDs associated to loopback addresses. This option is necessary
+to configure Anycast-SIDs.
 ```
 
-```{eval-rst}
-.. opcmd:: show isis segment-routing node
-
+```{opcmd} show isis segment-routing node
    Show detailed information about all learned Segment Routing Nodes
 ```
 
-```{eval-rst}
-.. opcmd:: show isis route prefix-sid
 
-   Show detailed information about prefix-sid and label learned
+```{opcmd} show isis route prefix-sid
+Show detailed information about prefix-sid and label learned
 ```
 
 :::{note}
 more information related IGP - {ref}`routing-isis`
 :::
 
+
 ## OSPF SR Configuration
+
 
 Segment routing (SR) is used by the IGP protocols to interconnect network
 devices, below configuration shows how to enable SR on OSPF:
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf parameters opaque-lsa
-
-  Enable the Opaque-LSA capability (rfc2370), necessary to transport label
-  on IGP
-
+```{cfgcmd} set protocols ospf parameters opaque-lsa
+Enable the Opaque-LSA capability (rfc2370), necessary to transport label
+on IGP
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing global-block high-label-value
-  <label-value>
-
-  Set the Segment Routing Global Block i.e. the label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.
+```{cfgcmd} set protocols ospf segment-routing global-block high-label-value \<label-value\>
+Set the Segment Routing Global Block i.e. the label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing global-block low-label-value
-  <label-value>
-
-  Set the Segment Routing Global Block i.e. the low label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.
+```{cfgcmd} set protocols ospf segment-routing global-block low-label-value \<label-value\>
+Set the Segment Routing Global Block i.e. the low label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing local-block high-label-value
-  <label-value>
-
-  Set the Segment Routing Local Block i.e. the label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.Segment Routing Local Block, The negative command always
-  unsets both.
+```{cfgcmd} set protocols ospf segment-routing local-block high-label-value \<label-value\>
+Set the Segment Routing Local Block i.e. the label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.Segment Routing Local Block, The negative command always
+unsets both.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing local-block <low-label-value
-  <label-value>
-
-  Set the Segment Routing Local Block i.e. the low label range used by MPLS to
-  store label in the MPLS FIB for Prefix SID. Note that the block size may
-  not exceed 65535.Segment Routing Local Block, The negative command always
-  unsets both.
+```{cfgcmd} set protocols ospf segment-routing local-block \<low-label-value \<label-value\>
+Set the Segment Routing Local Block i.e. the low label range used by MPLS to
+store label in the MPLS FIB for Prefix SID. Note that the block size may
+not exceed 65535.Segment Routing Local Block, The negative command always
+unsets both.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing maximum-label-depth <1-16>
-
-  Set the Maximum Stack Depth supported by the router. The value depend of
-  the MPLS dataplane.
+```{cfgcmd} set protocols ospf segment-routing maximum-label-depth \<1-16\>
+Set the Maximum Stack Depth supported by the router. The value depend of
+the MPLS dataplane.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing prefix <address> index value
-  <0-65535>
-
-  A segment ID that contains an IP address prefix calculated by an IGP in the
-  service provider core network. Prefix SIDs are globally unique, this value
-  indentify it
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index value \<0-65535\>
+A segment ID that contains an IP address prefix calculated by an IGP in the
+service provider core network. Prefix SIDs are globally unique, this value
+indentify it
 ```
 
-```{eval-rst}
-.. cfgcmd:: set protocols ospf segment-routing prefix <address> index
-   <no-php-flag | explicit-null| n-flag-clear>
-
-   this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
-   Penultimate Hop Popping that allows SR node to request to its neighbor to
-   not pop the label. The ‘explicit-null’ flag allows SR node to request to its
-   neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
-   option can be used to explicitly clear the Node flag that is set by default
-   for Prefix-SIDs associated to loopback addresses. This option is necessary
-   to configure Anycast-SIDs.
+```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
+this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
+Penultimate Hop Popping that allows SR node to request to its neighbor to
+not pop the label. The ‘explicit-null’ flag allows SR node to request to its
+neighbor to send IP packet with the EXPLICIT-NULL label. The ‘n-flag-clear’
+option can be used to explicitly clear the Node flag that is set by default
+for Prefix-SIDs associated to loopback addresses. This option is necessary
+to configure Anycast-SIDs.
 ```
 
 :::{note}
@@ -215,12 +176,10 @@ more information related IGP - {ref}`routing-ospf`
 :::
 
 ## Configuration Example
-
 we described the configuration SR ISIS / SR OSPF using 2 connected with them to
 share label information.
 
 ### Enable IS-IS with Segment Routing (Experimental)
-
 **Node 1:**
 
 ```none
@@ -302,7 +261,6 @@ I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, w
 ```
 
 ### Enable OSPF with Segment Routing (Experimental):
-
 **Node 1**
 
 ```none

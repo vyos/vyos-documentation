@@ -4,18 +4,12 @@ VyOS supports online checking for updates
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set system update-check auto-check
-
-   Configure auto-checking for new images
-
+```{cfgcmd} set system update-check auto-check
+Configure auto-checking for new images
 ```
 
-```{eval-rst}
-.. cfgcmd:: set system update-check url <url>
-
-   Configure a URL that contains information about images.
-
+```{cfgcmd} set system update-check url \<url\>
+Configure a URL that contains information about images.
 ```
 
 ## Example

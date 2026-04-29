@@ -117,9 +117,6 @@ When a task is set to **Needs reporter action**:
 We do not auto-close tasks with any other status and do not close tasks due to
 lack of maintainer activity.
 
-```{include} /_include/common-references.txt
-```
-
 [documentation]: https://docs.vyos.io
 [forum]: https://forum.vyos.io
 [slack]: https://slack.vyos.io

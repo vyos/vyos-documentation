@@ -41,75 +41,60 @@ Geneve header:
 
 ### Common interface configuration
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-address.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-address.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-description.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-description.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-disable.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-disable.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-mac.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-mac.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-mtu.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-mtu.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-ip.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-ip.txt
+:var0: geneve
+:var1: gnv0
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-ipv6.txt
-  :var0: geneve
-  :var1: gnv0
+```{cmdincludemd} /_include/interface-ipv6.txt
+:var0: geneve
+:var1: gnv0
 ```
 
 ### Geneve options
 
-```{eval-rst}
-.. cfgcmd:: set interfaces geneve gnv0 remote <address>
-
-   Configure the remote endpoint IP address for the Geneve tunnel.
+```{cfgcmd} set interfaces geneve gnv0 remote \<address\>
+Configure the remote endpoint IP address for the Geneve tunnel.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces geneve gnv0 vni <vni>
+```{cfgcmd} set interfaces geneve gnv0 vni \<vni\>
+**Configure** {abbr}`VNI (Virtual Network Identifier)` **for the Geneve
+interface.**
 
-   **Configure** {abbr}`VNI (Virtual Network Identifier)` **for the Geneve
-   interface.**
+The VNI is a virtual network identifier. It allows multiple virtual networks to
+share the same physical infrastructure and remain isolated.
 
-   The VNI is a virtual network identifier. It allows multiple virtual networks to
-   share the same physical infrastructure and remain isolated.
-
-   The VNI is also used to distribute traffic after it leaves the tunnel, for
-   example, to map packets with overlapping IP addresses to specific routing
-   tables.
+The VNI is also used to distribute traffic after it leaves the tunnel, for
+example, to map packets with overlapping IP addresses to specific routing
+tables.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces gnv0 <interface> port <port>
-
-   **Configure the destination UDP port for the remote Geneve tunnel endpoint.**
-
-   Ensure the remote peer is configured to listen on this specific port.
-
+```{cfgcmd} set interfaces gnv0 \<interface\> port \<port\>
+**Configure the destination UDP port for the remote Geneve tunnel endpoint.**
+Ensure the remote peer is configured to listen on this specific port.
 ```

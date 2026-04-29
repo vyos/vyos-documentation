@@ -16,16 +16,15 @@ Example: `02:00:00:00:00:01`, where the second-least-significant bit
 (`02` in hexadecimal) is set to `1`.
 :::
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 2
-   :caption: Content
+```{toctree}
+:caption: Content
+:maxdepth: 2
 
-   install
-   virtual/index
-   cloud/index
-   bare-metal
-   update
-   image
-   secure-boot
+install
+virtual/index
+cloud/index
+bare-metal
+update
+image
+secure-boot
 ```

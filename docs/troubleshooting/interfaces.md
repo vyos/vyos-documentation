@@ -11,7 +11,7 @@ your MAC addresses have changed.
 
   Log into VyOS and run this command to display your interface settings.
 
-  ``` none
+  ```none
   show interfaces detail
   ```
 
@@ -20,7 +20,7 @@ your MAC addresses have changed.
   Now, in order to update a MAC address in the configuration, run this command
   specifying the interface name and MAC address you want.
 
-  ``` none
+  ```none
   set interfaces ethernet eth0 hw-id 00:0c:29:da:a4:fe
   ```
 

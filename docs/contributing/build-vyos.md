@@ -95,10 +95,9 @@ also not supported because block device operations are not implemented.
 
 The container can be built by hand or by fetching the pre-built one from
 DockerHub. It is recommended to use the pre-built containers from the
-
-``` VyOS DockerHub`organization_
-The container is built from Docker packages automatically after every commit
-to the ``vyos-build` ``` repository (this process may take 2-3 hours).
+[VyOS DockerHub organisation](https://hub.docker.com/u/vyos). The container
+is built from Docker packages automatically after every commit to the
+``vyos-build`` repository (this process may take 2-3 hours).
 
 :::{note}
 If you use the pre-built container, it will be automatically
@@ -210,10 +209,8 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
   [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY]
   [--custom-package CUSTOM_PACKAGE]
       [build_flavor]
-
   positional arguments:
   build_flavor          Build flavor
-
   optional arguments:
   -h, --help            show this help message and exit
   --architecture ARCHITECTURE
@@ -396,9 +393,7 @@ state without impacting any branches by performing another checkout.
 
 If you want to create a new branch to retain commits you create, you may
 do so (now or later) by using -b with the checkout command again. Example:
-
   git checkout -b <new-branch-name>
-
 HEAD is now at 015e94d0e37b Linux 4.19.146
 ```
 
@@ -445,6 +440,7 @@ I: make x86_64_vyos_defconfig
   HOSTCC  scripts/kconfig/zconf.tab.o
   HOSTLD  scripts/kconfig/conf
 #
+
 # configuration written to .config
 #
 I: Generate environment file containing Kernel variable
@@ -462,9 +458,7 @@ dpkg-buildpackage: warning: debian/rules is not executable; fixing that
  debian/rules build
 make KERNELRELEASE=4.19.146-amd64-vyos ARCH=x86         KBUILD_BUILD_VERSION=1 KBUILD_SRC=
   SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
-
 ...
-
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
 dpkg-shlibdeps: warning: binaries to analyze should already be installed in their package's directory
@@ -539,14 +533,11 @@ I: Build Accel-PPP Debian package
 CMake Deprecation Warning at CMakeLists.txt:3 (cmake_policy):
   The OLD behavior for policy CMP0003 will be removed from a future version
   of CMake.
-
   The cmake-policies(7) manual explains that the OLD behaviors of all
   policies are deprecated and that a policy should be set to OLD only under
   specific short-term circumstances.  Projects should be ported to the NEW
   behavior and not rely on setting a policy to OLD.
-
 -- The C compiler identification is GNU 8.3.0
-
 ...
 
 CPack: Create package using DEB
@@ -573,7 +564,6 @@ to build all driver modules:
                                  Dload  Upload   Total   Spent    Left  Speed
 100  490k  100  490k    0     0   648k      0 --:--:-- --:--:-- --:--:--  648k
 I: Compile Kernel module for Intel ixgbe driver
-
 ...
 
 I: Building Debian package vyos-intel-iavf
@@ -606,7 +596,6 @@ checking whether build environment is sane... yes
 checking for a thread-safe mkdir -p... /bin/mkdir -p
 checking for gawk... gawk
 checking whether make sets $(MAKE)... yes
-
 ...
 
 I: Building Debian package vyos-intel-qat
@@ -640,7 +629,6 @@ Debian APT does not provide verbose error messages. If your ISO build fails and
 you suspect an APT dependencies or installation issue, you can apply this patch
 to increase APT verbosity during the ISO build.
 
-
 ```diff
 diff --git i/scripts/live-build-config w/scripts/live-build-config
 index 1b3b454..3696e4e 100755
@@ -657,7 +645,6 @@ index 1b3b454..3696e4e 100755
          "${@}"
  """
 ```
-
 
 (build-packages)=
 
@@ -729,8 +716,6 @@ ISO during the build, replacing upstream packages. Delete both the source
 directories and built DEB packages if you want to build an ISO from purely
 upstream packages.
 :::
-
-
 
 [docker]: https://docs.docker.com/engine/install/debian/
 [docker as non-root]: https://docs.docker.com/engine/install/linux-postinstall

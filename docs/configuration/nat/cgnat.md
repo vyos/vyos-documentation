@@ -64,50 +64,41 @@ When implementing CGNAT, ensuring that there are enough ports allocated per subs
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat pool external <pool-name> external-port-range <port-range>
-
-    Set an external port-range for the external pool, the default range is
-    1024-65535. Multiple entries can be added to the same pool.
+```{cfgcmd} set nat cgnat pool external \<pool-name\> external-port-range \<port-range\>
+Set an external port-range for the external pool, the default range is
+1024-65535. Multiple entries can be added to the same pool.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat pool external <pool-name> per-user-limit port <num>
 
-    Set external source port limits that will be allocated to each subscriber
-    individually. The default value is 2000.
+```{cfgcmd} set nat cgnat pool external \<pool-name\> per-user-limit port \<num\>
+Set external source port limits that will be allocated to each subscriber
+individually. The default value is 2000.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat pool external <pool-name> range [address | address range | network] [seq]
 
-    Set the range of external IP addresses for the CGNAT pool.
-    The sequence is optional; if set, a lower value means higher priority.
+```{cfgcmd} set nat cgnat pool external \<pool-name\> range [address | address range | network] [seq]
+Set the range of external IP addresses for the CGNAT pool.
+The sequence is optional; if set, a lower value means higher priority.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat pool internal <pool-name> range [address range | network]
 
-    Set the range of internal IP addresses for the CGNAT pool.
+```{cfgcmd} set nat cgnat pool internal \<pool-name\> range [address range | network]
+Set the range of internal IP addresses for the CGNAT pool.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat rule <num> source pool <internal-pool-name>
 
-    Set the rule for the source pool.
+```{cfgcmd} set nat cgnat rule \<num\> source pool \<internal-pool-name\>
+Set the rule for the source pool.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat rule <num> translation pool <external-pool-name>
 
-    Set the rule for the translation pool.
+```{cfgcmd} set nat cgnat rule \<num\> translation pool \<external-pool-name\>
+Set the rule for the translation pool.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set nat cgnat log-allocation
 
-    Enable logging of IP address and ports allocations.
-
+```{cfgcmd} set nat cgnat log-allocation
+Enable logging of IP address and ports allocations.
 ```
 
 ## Configuration Examples
@@ -115,7 +106,8 @@ When implementing CGNAT, ensuring that there are enough ports allocated per subs
 ### Single external address
 
 Example of setting up a basic CGNAT configuration:
-In the following example, we define an external pool named `ext-1` with one external IP address
+In the following example, we define an external pool named `ext-1` with one
+external IP address.
 
 Each subscriber will be allocated a maximum of 2000 ports from the external pool.
 
@@ -153,22 +145,16 @@ set nat cgnat rule 10 translation pool 'ext-01'
 
 ## Operation commands
 
-```{eval-rst}
-.. opcmd:: show nat cgnat allocation
-
-    Show address and port allocations
+```{opcmd} show nat cgnat allocation
+Show address and port allocations
 ```
 
-```{eval-rst}
-.. opcmd:: show nat cgnat allocation external-address <address>
-
-    Show all allocations for an external IP address
+```{opcmd} show nat cgnat allocation external-address \<address\>
+Show all allocations for an external IP address
 ```
 
-```{eval-rst}
-.. opcmd:: show nat cgnat allocation internal-address <address>
-
-    Show all allocations for an internal IP address
+```{opcmd} show nat cgnat allocation internal-address \<address\>
+Show all allocations for an internal IP address
 ```
 
 ### Show CGNAT allocations

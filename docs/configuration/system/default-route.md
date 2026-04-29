@@ -8,36 +8,29 @@ and existing configurations are migrated to the new CLI command.
 
 ## Configuration
 
-```{eval-rst}
-.. cfgcmd:: set protocols static route 0.0.0.0/0 next-hop <address>
-
-   Specify static route into the routing table sending all non local traffic
-   to the nexthop address `<address>`.
-
+```{cfgcmd} set protocols static route 0.0.0.0/0 next-hop \<address\>
+Specify static route into the routing table sending all non local traffic
+to the nexthop address \<address\>.
 ```
 
-```{eval-rst}
-.. cfgcmd:: delete protocols static route 0.0.0.0/0
-
-   Delete default route from the system.
+```{cfgcmd} delete protocols static route 0.0.0.0/0
+Delete default route from the system.
 ```
 
 ## Operation
 
-```{eval-rst}
-.. opcmd:: show ip route 0.0.0.0
+```{opcmd} show ip route 0.0.0.0
+Show routing table entry for the default route.
 
-   Show routing table entry for the default route.
-
-   .. code-block:: none
-
-      vyos@vyos:~$ show ip route 0.0.0.0
-      Routing entry for 0.0.0.0/0
-        Known via "static", distance 10, metric 0, best
-        Last update 09:46:30 ago
-        * 172.18.201.254, via eth0.201
+:::{code-block} none
+vyos@vyos:~$ show ip route 0.0.0.0
+Routing entry for 0.0.0.0/0
+  Known via "static", distance 10, metric 0, best
+  Last update 09:46:30 ago
+  * 172.18.201.254, via eth0.201
+:::
 ```
 
-```{eval-rst}
-.. seealso:: Configuration of {ref}`routing-static`
-```
+:::{seealso}
+Configuration of {ref}`routing-static`
+:::

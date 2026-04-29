@@ -6,7 +6,6 @@ lastproofread: '2026-02-17'
 
 ```{include} /_include/need_improvement.txt
 ```
-
 # VPP Dataplane Limitations
 
 VPP Dataplane provides significant performance advantages, but has some

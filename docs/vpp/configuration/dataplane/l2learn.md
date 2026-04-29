@@ -6,7 +6,6 @@ lastproofread: '2026-02-26'
 
 ```{include} /_include/need_improvement.txt
 ```
-
 # VPP L2LEARN Configuration
 
 When VPP dataplane connects to an L2 domain, it learns MAC addresses of
@@ -14,11 +13,8 @@ devices in the domain. By default, the number of MAC addresses it can
 learn is limited.
 
 You can configure the limit using the following command:
-
-```{eval-rst}
-.. cfgcmd:: set vpp settings resource-allocation mac-limit <value>
+```{cfgcmd} set vpp settings resource-allocation mac-limit \<value\>
 ```
-
 This parameter sets the maximum number of MAC addresses that can be
 learned in the L2 domain. If you have many devices, you may need to
 increase this limit to ensure VPP learns all MAC addresses.

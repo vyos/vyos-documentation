@@ -65,64 +65,62 @@ prerequisites before enabling VPP:
 
   Supported NICs:
 
-  ```{eval-rst}
-  .. list-table::
-     :widths: 15 18 40 35
-     :header-rows: 1
+  :::{list-table}
+  :widths: 15 18 40 35
+  :header-rows: 1
 
-     * - **Filter Type**
-       - **Filter Value**
-       - **NIC Name/Description**
-       - **Platform Where NIC Can Be Found**
-     * - PCI ID
-       - 15b3:1019
-       - Mellanox Technologies MT28800 Family
-         [ConnectX-5 Ex]
-       - Bare-metal
-     * - PCI ID
-       - 15b3:101d
-       - Mellanox Technologies MT2892 Family
-         [ConnectX-6 Dx]
-       - Bare-metal
-     * - PCI ID
-       - 15b3:101e
-       - Mellanox Technologies ConnectX Family
-         mlx5Gen Virtual Function
-       - Oracle Cloud
-     * - PCI ID
-       - 8086:1592
-       - Intel Corporation Ethernet Controller
-         E810-C for QSFP
-       - Bare-metal
-     * - PCI ID
-       - 1ae0:0042
-       - Google, Inc. Compute Engine Virtual
-         Ethernet [gVNIC]
-       - Google Cloud
-     * - PCI ID
-       - 1af4:1000
-       - Red Hat, Inc. Virtio network device
-       - KVM-based hypervisors, including with
-         Open vSwitch; Google Cloud
-     * - PCI ID
-       - 1d0f:ec20
-       - Amazon.com, Inc. Elastic Network
-         Adapter (ENA)
-       - AWS
-     * - Kernel Driver
-       - hv_netvsc
-       - Microsoft Hyper-V network interface
-         card
-       - Microsoft Azure
-  ```
+  * - **Filter Type**
+    - **Filter Value**
+    - **NIC Name/Description**
+    - **Platform Where NIC Can Be Found**
+  * - PCI ID
+    - 15b3:1019
+    - Mellanox Technologies MT28800 Family
+      [ConnectX-5 Ex]
+    - Bare-metal
+  * - PCI ID
+    - 15b3:101d
+    - Mellanox Technologies MT2892 Family
+      [ConnectX-6 Dx]
+    - Bare-metal
+  * - PCI ID
+    - 15b3:101e
+    - Mellanox Technologies ConnectX Family
+      mlx5Gen Virtual Function
+    - Oracle Cloud
+  * - PCI ID
+    - 8086:1592
+    - Intel Corporation Ethernet Controller
+      E810-C for QSFP
+    - Bare-metal
+  * - PCI ID
+    - 1ae0:0042
+    - Google, Inc. Compute Engine Virtual
+      Ethernet [gVNIC]
+    - Google Cloud
+  * - PCI ID
+    - 1af4:1000
+    - Red Hat, Inc. Virtio network device
+    - KVM-based hypervisors, including with
+      Open vSwitch; Google Cloud
+  * - PCI ID
+    - 1d0f:ec20
+    - Amazon.com, Inc. Elastic Network
+      Adapter (ENA)
+    - AWS
+  * - Kernel Driver
+    - hv_netvsc
+    - Microsoft Hyper-V network interface
+      card
+    - Microsoft Azure
+  :::
 
   If no supported NIC is detected, VPP activation will be rejected.
 
   In testing or advanced deployments, unsupported hardware can be explicitly
   allowed in the configuration:
 
-  ```{eval-rst}
-  .. cfgcmd:: set vpp settings allow-unsupported-nics
+  ```{cfgcmd} set vpp settings allow-unsupported-nics
   ```
 
   :::{note}

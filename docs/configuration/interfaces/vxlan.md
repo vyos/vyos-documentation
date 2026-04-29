@@ -39,119 +39,99 @@ with other vendors, set the port to the IANA standard **4789**.
 
 ### Common interface configuration
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-common-without-dhcp.txt
-  :var0: vxlan
-  :var1: vxlan0
+```{cmdincludemd} /_include/interface-common-without-dhcp.txt
+:var0: vxlan
+:var1: vxlan0
 ```
 
 ### VXLAN-specific options
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> vni <number>
+```{cfgcmd} set interfaces vxlan \<interface\> vni \<number\>
+**Configure a** {abbr}`VNI (VXLAN Network Identifier)` **for the VXLAN
+interface.**
 
-  **Configure a** {abbr}`VNI (VXLAN Network Identifier)` **for the VXLAN
-  interface.**
-
-  Each VXLAN segment is identified by this 24-bit VNI, allowing up to 16 million
-  segments to coexist within the same administrative domain.
+Each VXLAN segment is identified by this 24-bit VNI, allowing up to 16 million
+segments to coexist within the same administrative domain.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> port <port>
+```{cfgcmd} set interfaces vxlan \<interface\> port \<port\>
+Configure the UDP port of the remote VXLAN endpoint.
 
-  Configure the UDP port of the remote VXLAN endpoint.
-
-  .. note:: Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
-     Linux default UDP port **8472** for VXLAN interfaces.
+:::{note}
+Although the IANA-assigned VXLAN port is **4789**, VyOS uses the
+Linux default UDP port **8472** for VXLAN interfaces.
+:::
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> source-address <address>
+```{cfgcmd} set interfaces vxlan \<interface\> source-address \<address\>
+Configure the source IP address for the VXLAN underlay.
 
-  Configure the source IP address for the VXLAN underlay.
-
-  .. warning:: This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
+:::{warning}
+This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
+:::
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> gpe
+```{cfgcmd} set interfaces vxlan \<interface\> gpe
+**Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
+interface.**
 
-   **Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
-   interface.**
-
-   To use this feature, you must configure the interface with the ``external``
-   parameter.
+To use this feature, you must configure the interface with the ``external``
+parameter.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> parameters external
+```{cfgcmd} set interfaces vxlan \<interface\> parameters external
+**Configure the VXLAN interface to use an external control plane, such as BGP
+L2VPN/EVPN, for remote endpoint discovery.**
 
-   **Configure the VXLAN interface to use an external control plane, such as BGP
-   L2VPN/EVPN, for remote endpoint discovery.**
-
-   If not configured, the internal {abbr}`FDB (Forwarding Database)` is used.
+If not configured, the internal {abbr}`FDB (Forwarding Database)` is used.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> parameters neighbor-suppress
+```{cfgcmd} set interfaces vxlan \<interface\> parameters neighbor-suppress
+**Enable ARP and ND suppression on the VXLAN interface.**
 
-   **Enable ARP and ND suppression on the VXLAN interface.**
-
-   This reduces ARP and ND message flooding across the VXLAN network. As defined
-   in {rfc}`7432#section-10`, participating VTEPs use known MAC-to-IP bindings
-   to reply to local requests on behalf of remote hosts.
+This reduces ARP and ND message flooding across the VXLAN network. As defined
+in {rfc}`7432#section-10`, participating VTEPs use known MAC-to-IP bindings
+to reply to local requests on behalf of remote hosts.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> parameters nolearning
-
-   Disable {abbr}`SLLA (Source Link-Layer Address)` and IP address learning on
-   the VXLAN interface.
+```{cfgcmd} set interfaces vxlan \<interface\> parameters nolearning
+Disable {abbr}`SLLA (Source Link-Layer Address)` and IP address learning on
+the VXLAN interface.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> parameters vni-filter
+```{cfgcmd} set interfaces vxlan \<interface\> parameters vni-filter
+**Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
+interface.**
 
-   **Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
-   interface.**
+When enabled, the interface only receives packets with VNIs configured in its
+VNI filtering table.
 
-   When enabled, the interface only receives packets with VNIs configured in its
-   VNI filtering table.
-
-   .. note:: VNI filtering works only if the interface is configured with the
-      ``external`` parameter.
+:::{note}
+VNI filtering works only if the interface is configured with the
+``external`` parameter.
+:::
 ```
 
 #### Unicast
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> remote <address>
+```{cfgcmd} set interfaces vxlan \<interface\> remote \<address\>
+**Configure the IPv4 or IPv6 address of the remote VTEP.**
 
-   **Configure the IPv4 or IPv6 address of the remote VTEP.**
-
-   Unlike multicast setups, this command allows you to directly configure the
-   remote IPv4 or IPv6 address.
+Unlike multicast setups, this command allows you to directly configure the
+remote IPv4 or IPv6 address.
 ```
 
 #### Multicast
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> source-interface <interface>
-
-  **Configure the source interface for the VXLAN underlay.**
-
-  All VXLAN traffic is sent and received through the specified interface.
-
-  This setting is mandatory when deploying VXLAN over a multicast network.
+```{cfgcmd} set interfaces vxlan \<interface\> source-interface \<interface\>
+**Configure the source interface for the VXLAN underlay.**
+All VXLAN traffic is sent and received through the specified interface.
+This setting is mandatory when deploying VXLAN over a multicast network.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> group <address>
-
-  **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
-
-  VXLAN tunnels can be built using either multicast group or unicast IP addresses.
+```{cfgcmd} set interfaces vxlan \<interface\> group \<address\>
+**Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
+VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
 
 ## Multicast VXLAN
@@ -180,35 +160,31 @@ locations. This reduces multicast traffic and network load, improving
 scalability as more leaves are added.
 
 ## Single VXLAN device (SVD)
-
 In VyOS, you can configure multiple **VLAN-to-VNI mappings** for EVPN-VXLAN on
 a single container interface, known as a single VXLAN device (SVD). This
 enables significant VNI scaling because a separate VXLAN interface is not
 required for each VNI.
 
-```{eval-rst}
-.. cfgcmd:: set interfaces vxlan <interface> vlan-to-vni <vlan> vni <vni>
+```{cfgcmd} set interfaces vxlan \<interface\> vlan-to-vni \<vlan\> vni \<vni\>
+**Map a VLAN ID to a VNI on the specified VXLAN interface.**
 
-   **Map a VLAN ID to a VNI on the specified VXLAN interface.**
+The VXLAN interface can be added to a bridge.
 
-   The VXLAN interface can be added to a bridge.
+The following example shows an SVD configuration with multiple VLAN-to-VNI
+mappings.
 
-   The following example shows an SVD configuration with multiple VLAN-to-VNI
-   mappings.
-
-   .. code-block:: none
-
-    set interfaces bridge br0 member interface vxlan0
-    set interfaces vxlan vxlan0 parameters external
-    set interfaces vxlan vxlan0 source-interface 'dum0'
-    set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
-    set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'
-    set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
-    set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
+:::{code-block} none
+set interfaces bridge br0 member interface vxlan0
+set interfaces vxlan vxlan0 parameters external
+set interfaces vxlan vxlan0 source-interface 'dum0'
+set interfaces vxlan vxlan0 vlan-to-vni 10 vni '10010'
+set interfaces vxlan vxlan0 vlan-to-vni 11 vni '10011'
+set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
+set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
+:::
 ```
 
 ### Example
-
 The following example demonstrates a multicast VXLAN deployment.
 
 The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
@@ -355,7 +331,6 @@ VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This
 command allows you to configure a different UDP port.
 
 ## Unicast VXLAN
-
 As an alternative to multicast, you can configure the VXLAN tunnel by
 specifying the remote IPv4 address directly. The following updates the previous
 multicast example:

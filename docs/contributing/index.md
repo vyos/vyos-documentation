@@ -1,6 +1,7 @@
 # Contributing
 
-<div class="toctree" maxdepth="1">
+```{toctree}
+:maxdepth: 1
 
 build-vyos
 development
@@ -9,5 +10,4 @@ issues-features
 upstream-packages
 debugging
 testing
-
-</div>
+```

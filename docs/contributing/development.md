@@ -41,12 +41,12 @@ VyOS is open-source and welcomes patches.
 All submissions must adhere to these guidelines:
 
 - Each commit addresses a single issue or feature.
-- Each commit message references a [Phabricator] task ID
+- Each commit message references a [Phabricator](https://vyos.dev/) task ID
   (for example, `T1234`).
 - Each commit is associated with a username and email address
-  to identify the author (see [Configure your Git identity]).
+  to identify the author (see [Configure your Git identity](configure-your-git-identity)).
 - Only submit bugfixes in packages other than <https://github.com/vyos/vyos-1x>.
-- Commits follow the [coding guidelines] outlined below.
+- Commits follow the [coding guidelines](coding-guidelines) outlined below.
 
 ### Determining package ownership
 
@@ -82,7 +82,7 @@ To fork a VyOS repository:
    - Single file: `git add myfile`
    - Directory: `git add somedir/*`
 
-5. Commit your changes with a meaningful headline and [Phabricator] reference:
+5. Commit your changes with a meaningful headline and [Phabricator](https://vyos.dev/) reference:
 
    `git commit`
 
@@ -91,7 +91,7 @@ To fork a VyOS repository:
    `git push`
 
 Alternatively, you can export commits as patches and send them to
-<mailto:maintainers@vyos.net> or attach them directly to the [Phabricator] task:
+<mailto:maintainers@vyos.net> or attach them directly to the [Phabricator](https://vyos.dev/) task:
 
 - Export last commit: `git format-patch`
 - Export last two commits: `git format-patch -2`
@@ -103,12 +103,12 @@ with `git log path/to/file.txt`.
 
 Every change must be associated with a task number (prefixed with **T**) and
 a component. If no bug report or feature request exists for your changes,
-create a [Phabricator] task first. Reference the task ID in your commit message:
+create a [Phabricator](https://vyos.dev/) task first. Reference the task ID in your commit message:
 
 - `ddclient: T1030: auto create runtime directories`
 - `Jenkins: add current Git commit ID to build description`
 
-If your pull request lacks a [Phabricator] reference, maintainers will request
+If your pull request lacks a [Phabricator](https://vyos.dev/) reference, maintainers will request
 that you amend the commit message.
 
 ### Writing good commit messages
@@ -121,7 +121,7 @@ Commit message format:
 
 1. **Summary line** (50 characters recommended, 80 maximum): Include the
    component
-   prefix and [Phabricator] reference (for example, `snmp: T1111:` or
+   prefix and [Phabricator](https://vyos.dev/) reference (for example, `snmp: T1111:` or
    `ethernet: T2222:`). Concatenate multiple components with colons
    (for example, `snmp: ethernet: T3333`).
 2. **Blank line**: Separate the summary from the body.
@@ -168,11 +168,9 @@ codebase and understand its logic.
 
 Use tools like VIM extensions (xmllint) to enforce correct indentation. Add this
 to your `.vimrc` file:
-
 ```none
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 ```
-
 Then use `gg=G` in command mode to run the linter.
 
 ### Text generation
@@ -194,7 +192,6 @@ follow these guidelines:
   GitHub on mobile devices and reads well in side-by-side diffs.
 
 Structure your scripts with these functions:
-
 ```python
 #!/usr/bin/env python3
 #
@@ -251,7 +248,6 @@ except ConfigError as e:
     print(e)
     sys.exit(1)
 ```
-
 `get_config()`: This function converts a VyOS config object to an abstract
 internal representation. No other function may call the `vyos.config.Config`
 object directly. Limiting config reads to one function makes it easier to
@@ -332,7 +328,6 @@ Schemas provide two benefits:
 - Complete grammar verification
 - Automatic validation against the schema
 
-
 The [build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
 script converts XML definitions to
 old-style templates and verifies them against the schema. A bad definition
@@ -341,7 +336,6 @@ format provides this level of verification. Specialized XML editors can help
 manage verbosity.
 
 Example XML interface definition:
-
 ```xml
 <?xml version="1.0"?>
 <!-- Cron configuration -->
@@ -417,7 +411,6 @@ Example XML interface definition:
   </node>
 </interfaceDefinition>
 ```
-
 XML definitions are purely declarative and contain no logic. All logic for
 generating config files, restarting services, and related tasks is implemented
 in configuration scripts.
@@ -435,7 +428,6 @@ duplication in common areas:
 
 Instead of repeating XML nodes, use include files with predefined features:
 
-
 - [IPv4, IPv6, and DHCP(v6)](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i)
   address assignment.
 - [IPv4 and IPv6](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i)
@@ -449,9 +441,7 @@ The `.in` files are preprocessed and stored in the [interface-definitions](https
 folder. The [scripts/build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
 script then operates on this folder to generate all required CLI nodes.
 
-
 Example preprocessor output:
-
 ```none
 $ make interface_definitions
 install -d -m 0755 build/interface-definitions
@@ -541,7 +531,6 @@ references common CLI commands and their C/C++ entry points:
 
 `set`:
 
-
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352>
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549>
 
@@ -549,6 +538,4 @@ references common CLI commands and their C/C++ entry points:
 
 - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252>
 
-```{include} /_include/common-references.txt
-```
 

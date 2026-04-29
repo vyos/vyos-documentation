@@ -11,10 +11,8 @@ Many base system packages are pulled straight from Debian's `main` and
 a fresh ISO image, you can skip
 this section. This information may be useful for a deeper dive into VyOS.
 
-
 System packages that are not directly pulled from Debian are built through a
 separate build system, `build.py` in the [vyos-build](https://github.com/vyos/vyos-build/tree/current/scripts/package-build) repository.
-
 
 ## Overview
 
@@ -64,7 +62,6 @@ parameters. The key configuration fields are:
 : The Git URL of the upstream source repository
   (e.g., `https://github.com/FRRouting/frr.git`)
 
-
 **build_cmd**
 
 : The command to execute for building the package. This replaces what was
@@ -77,7 +74,6 @@ parameters. The key configuration fields are:
   ```toml
   build_cmd = "sudo dpkg -i ../*.deb; dpkg-buildpackage -us -uc -tc -b -Ppkg.frr.rtrlib,pkg.frr.lua"
   ```
-
 
 **pre_build_hook** (Optional)
 
@@ -133,7 +129,6 @@ parameters. The key configuration fields are:
 ## Example package.toml file
 
 Here's an example configuration for the FRRouting (FRR) package:
-
 ```toml
 name = "frr"
 commit_id = "stable/10.5"

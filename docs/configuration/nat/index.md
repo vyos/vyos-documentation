@@ -2,13 +2,12 @@
 
 # NAT
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-   nat44
-   nat64
-   nat66
-   cgnat
+nat44
+nat64
+nat66
+cgnat
 ```

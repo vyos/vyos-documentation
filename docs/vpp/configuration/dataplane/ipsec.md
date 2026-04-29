@@ -8,7 +8,6 @@ lastproofread: '2026-02-23'
 ```
 
 # VPP IPsec Configuration
-
 VPP supports IPsec (Internet Protocol Security) offloading from the
 kernel, which speeds up cryptographic operations by leveraging VPP's
 high-performance packet processing capabilities.
@@ -22,40 +21,27 @@ section, see {ref}`ipsec_general`.
 ## IPsec Configuration Parameters
 
 ### enable IPsec acceleration
-
 When VPP is used for offloading IPsec, it creates a virtual interface to
 connect to peers. The interface type is always 'ipsec', which is used for
 IPsec tunnels.
-
-```{eval-rst}
-.. cfgcmd:: set vpp settings ipsec-acceleration
+```{cfgcmd} set vpp settings ipsec-acceleration
 ```
-
 Enabling this option allows VPP to handle IPsec traffic more efficiently by
 offloading processing from the kernel.
 
 ### netlink
-
 VPP uses netlink to receive IPsec event messages from the kernel. Proper
 settings of the following parameters are crucial for ensuring that VPP can
 process all such messages:
-
-```{eval-rst}
-.. cfgcmd:: set vpp settings lcp netlink batch-delay-ms <milliseconds>
+```{cfgcmd} set vpp settings lcp netlink batch-delay-ms \<milliseconds\>
 ```
-
 This parameter specifies the delay in milliseconds between processing
 batch netlink messages.
-
-```{eval-rst}
-.. cfgcmd:: set vpp settings lcp netlink batch-size <number>
+```{cfgcmd} set vpp settings lcp netlink batch-size \<number\>
 ```
-
 This parameter specifies the maximum number of netlink messages to
 process in a single batch.
-
-```{eval-rst}
-.. cfgcmd:: set vpp settings lcp netlink rx-buffer-size <number>
+```{cfgcmd} set vpp settings lcp netlink rx-buffer-size \<number\>
 ```
 
 This parameter specifies the size of the receive buffer for netlink

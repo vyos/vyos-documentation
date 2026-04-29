@@ -6,21 +6,18 @@ lastproofread: '2026-03-13'
 
 ```{include} /_include/need_improvement.txt
 ```
-
 # VPP Interfaces Configuration
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
-
-   bonding
-   bridge
-   gre
-   ipip
-   loopback
-   vxlan
-   xconnect
+bonding
+bridge
+gre
+ipip
+loopback
+vxlan
+xconnect
 ```
 
 VyOS utilizes VPP (Vector Packet Processor) to provide high-performance data

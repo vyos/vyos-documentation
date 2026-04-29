@@ -19,52 +19,46 @@ interface type.
 
 ### Common interface configuration
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-address.txt
-   :var0: loopback
-   :var1: lo
+```{cmdincludemd} /_include/interface-address.txt
+:var0: loopback
+:var1: lo
 ```
 
-```{eval-rst}
-.. cmdincludemd:: /_include/interface-description.txt
-   :var0: loopback
-   :var1: lo
+```{cmdincludemd} /_include/interface-description.txt
+:var0: loopback
+:var1: lo
 ```
 
 ## Operation
 
-```{eval-rst}
-.. opcmd:: show interfaces loopback
+```{opcmd} show interfaces loopback
+Show brief interface information.
 
-   Show brief interface information.
-
-   .. code-block:: none
-
-     vyos@vyos:~$ show interfaces loopback
-     Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
-     Interface        IP Address                        S/L  Description
-     ---------        ----------                        ---  -----------
-     lo               127.0.0.1/8                       u/u
-                      ::1/128
+:::{code-block} none
+vyos@vyos:~$ show interfaces loopback
+Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
+Interface        IP Address                        S/L  Description
+---------        ----------                        ---  -----------
+lo               127.0.0.1/8                       u/u
+                 ::1/128
+:::
 ```
 
-```{eval-rst}
-.. opcmd:: show interfaces loopback lo
+```{opcmd} show interfaces loopback lo
+Show detailed interface information.
 
-   Show detailed interface information.
+:::{code-block} none
+vyos@vyos:~$ show interfaces loopback lo
+lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
 
-   .. code-block:: none
-
-     vyos@vyos:~$ show interfaces loopback lo
-     lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-         link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-         inet 127.0.0.1/8 scope host lo
-            valid_lft forever preferred_lft forever
-         inet6 ::1/128 scope host
-            valid_lft forever preferred_lft forever
-
-         RX:  bytes    packets     errors    dropped    overrun      mcast
-                300          6          0          0          0          0
-         TX:  bytes    packets     errors    dropped    carrier collisions
-                300          6          0          0          0          0
+    RX:  bytes    packets     errors    dropped    overrun      mcast
+           300          6          0          0          0          0
+    TX:  bytes    packets     errors    dropped    carrier collisions
+           300          6          0          0          0          0
+:::
 ```

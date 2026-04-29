@@ -1,13 +1,12 @@
 # Operation Mode
 
-```{eval-rst}
-.. toctree::
-   :maxdepth: 1
-   :includehidden:
+```{toctree}
+:includehidden: true
+:maxdepth: 1
 
-   information
-   boot-options
-   upgrade-recovery
-   password-recovery
-   raid
+information
+boot-options
+upgrade-recovery
+password-recovery
+raid
 ```

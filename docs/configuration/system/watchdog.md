@@ -17,137 +17,136 @@ will reset the system.
 The watchdog feature is configured under the `system watchdog` configuration
 tree. The presence of the `system watchdog` node enables the watchdog feature.
 
-```{eval-rst}
-.. cfgcmd:: set system watchdog
+```{cfgcmd} set system watchdog
+Enable watchdog support.
 
-   Enable watchdog support.
+The watchdog is enabled only when a watchdog device is available as
+``/dev/watchdog0``.
 
-   The watchdog is enabled only when a watchdog device is available as
-   ``/dev/watchdog0``.
-
-   .. note:: If multiple watchdog devices are present, only the first watchdog
-      device is supported (VyOS uses ``/dev/watchdog0`` only).
-
-   If ``/dev/watchdog0`` does not exist and no module is configured, commit will
-   fail. If a module is configured but ``/dev/watchdog0`` still cannot be
-   created, VyOS will emit a warning and will not enable the systemd watchdog.
+:::{note}
+If multiple watchdog devices are present, only the first watchdog
+device is supported (VyOS uses ``/dev/watchdog0`` only).
+:::
+If ``/dev/watchdog0`` does not exist and no module is configured, commit will
+fail. If a module is configured but ``/dev/watchdog0`` still cannot be
+created, VyOS will emit a warning and will not enable the systemd watchdog.
 ```
 
-```{eval-rst}
-.. cfgcmd:: set system watchdog module <module-name>
+```{cfgcmd} set system watchdog module \<module-name\>
+Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
 
-   Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
+The configured module must be a watchdog driver module, not an arbitrary
+kernel module.
 
-   The configured module must be a watchdog driver module, not an arbitrary
-   kernel module.
+**In most cases, this option is not required** as the kernel will
+automatically load the appropriate watchdog driver for your system. Use this
+option if the kernel fails to load the required driver, or when you want to
+use the software watchdog (``softdog``).
 
-   **In most cases, this option is not required** as the kernel will
-   automatically load the appropriate watchdog driver for your system. Use this
-   option if the kernel fails to load the required driver, or when you want to
-   use the software watchdog (``softdog``).
+Common modules include:
+* ``softdog`` - Software watchdog timer (available on all systems)
+* ``iTCO_wdt`` - Intel TCO watchdog timer
+* ``sp5100_tco`` - AMD SP5100 TCO watchdog timer
+* ``i6300esb`` - Intel 6300ESB watchdog timer
+* ``ipmi_watchdog`` - IPMI watchdog timer
 
-   Common modules include:
+:::{warning}
+``softdog`` is not a hardware watchdog. It is implemented using
+kernel timers and therefore depends on the Linux kernel continuing to run.
+In some fault conditions (for example, a kernel hang), ``softdog`` may not
+be able to trigger a reset.
 
-   * ``softdog`` - Software watchdog timer (available on all systems)
-   * ``iTCO_wdt`` - Intel TCO watchdog timer
-   * ``sp5100_tco`` - AMD SP5100 TCO watchdog timer
-   * ``i6300esb`` - Intel 6300ESB watchdog timer
-   * ``ipmi_watchdog`` - IPMI watchdog timer
+Prefer a hardware watchdog driver whenever possible, as hardware watchdogs
+can operate independently of the operating system.
+:::
 
-   .. warning:: ``softdog`` is not a hardware watchdog. It is implemented using
-      kernel timers and therefore depends on the Linux kernel continuing to run.
-      In some fault conditions (for example, a kernel hang), ``softdog`` may not
-      be able to trigger a reset.
+If no module is specified, VyOS will use an existing ``/dev/watchdog0``
+device if available.
 
-      Prefer a hardware watchdog driver whenever possible, as hardware watchdogs
-      can operate independently of the operating system.
+:::{note}
+If a module is specified but a different driver is actually bound
+to ``watchdog0``, VyOS will emit a warning during commit.
+:::
+Example:
 
-   If no module is specified, VyOS will use an existing ``/dev/watchdog0``
-   device if available.
-
-   .. note:: If a module is specified but a different driver is actually bound
-      to ``watchdog0``, VyOS will emit a warning during commit.
-
-   Example:
-
-   .. code-block:: none
-
-      set system watchdog module softdog
+:::{code-block} none
+set system watchdog module softdog
+:::
 ```
 
-```{eval-rst}
-.. cfgcmd:: set system watchdog timeout <seconds>
-   :defaultvalue:
+```{cfgcmd} set system watchdog timeout \<seconds\>
+:defaultvalue:
 
-   Set the watchdog timeout for normal runtime operation in seconds.
+Set the watchdog timeout for normal runtime operation in seconds.
 
-   Valid range: 1-65535 seconds
+Valid range: 1-65535 seconds
 
-   .. note:: Some watchdog drivers expose minimum and maximum supported runtime
-      timeouts via sysfs. When available, VyOS validates ``timeout`` against
-      those driver limits during commit.
+:::{note}
+Some watchdog drivers expose minimum and maximum supported runtime
+timeouts via sysfs. When available, VyOS validates ``timeout`` against
+those driver limits during commit.
+:::
 
-   This is the interval during which the system must respond to the watchdog.
-   If the system does not respond within this time, the watchdog will trigger
-   a reboot.
+This is the interval during which the system must respond to the watchdog.
+If the system does not respond within this time, the watchdog will trigger
+a reboot.
 
-   Example:
+Example:
 
-   .. code-block:: none
-
-      set system watchdog timeout 30
+:::{code-block} none
+set system watchdog timeout 30
+:::
 ```
 
-```{eval-rst}
-.. cfgcmd:: set system watchdog shutdown-timeout <seconds>
-   :defaultvalue:
+```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
+:defaultvalue:
 
-   Set the watchdog timeout during system shutdown in seconds.
+Set the watchdog timeout during system shutdown in seconds.
 
-   Valid range: 60-65535 seconds
+Valid range: 60-65535 seconds
 
-   This extended timeout allows the system to complete a graceful shutdown
-   without triggering the watchdog.
+This extended timeout allows the system to complete a graceful shutdown
+without triggering the watchdog.
 
-   .. warning:: Setting this value too low (below 120 seconds) may cause
-      unclean shutdowns, as the system may not have enough time to properly
-      stop all services and flush disk buffers. The recommended minimum value
-      is 120 seconds.
+:::{warning}
+Setting this value too low (below 120 seconds) may cause
+unclean shutdowns, as the system may not have enough time to properly
+stop all services and flush disk buffers. The recommended minimum value
+is 120 seconds.
+:::
+Example:
 
-   Example:
-
-   .. code-block:: none
-
-      set system watchdog shutdown-timeout 180
+:::{code-block} none
+set system watchdog shutdown-timeout 180
+:::
 ```
 
-```{eval-rst}
-.. cfgcmd:: set system watchdog reboot-timeout <seconds>
-   :defaultvalue:
+```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
+:defaultvalue:
 
-   Set the watchdog timeout during system reboot in seconds.
+Set the watchdog timeout during system reboot in seconds.
 
-   Valid range: 60-65535 seconds
+Valid range: 60-65535 seconds
 
-   This extended timeout allows the system to complete the reboot process
-   without triggering the watchdog during the transition.
+This extended timeout allows the system to complete the reboot process
+without triggering the watchdog during the transition.
 
-   .. warning:: Setting this value too low (below 120 seconds) may cause
-      unclean reboots, as the system may not have enough time to properly
-      stop all services before restarting. The recommended minimum value
-      is 120 seconds.
+:::{warning}
+Setting this value too low (below 120 seconds) may cause
+unclean reboots, as the system may not have enough time to properly
+stop all services before restarting. The recommended minimum value
+is 120 seconds.
+:::
+Example:
 
-   Example:
-
-   .. code-block:: none
-
-      set system watchdog reboot-timeout 180
+:::{code-block} none
+set system watchdog reboot-timeout 180
+:::
 ```
 
 ## Examples
 
 ### Basic Configuration with Software Watchdog
-
 This example configures a basic software watchdog with default timeouts:
 
 ```none
@@ -155,14 +154,12 @@ set system watchdog module softdog
 ```
 
 This will:
-
 - Enable the watchdog feature
 - Load the `softdog` kernel module
 - Use a 10-second runtime timeout (default)
 - Use 120-second shutdown and reboot timeouts (default)
 
 ### Advanced Configuration
-
 This example shows a more customized configuration suitable for a production
 system:
 

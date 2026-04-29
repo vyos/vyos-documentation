@@ -7,67 +7,60 @@ At the moment only [Intel® QAT] is supported
 
 ## Intel® QAT
 
-````{eval-rst}
-.. opcmd:: show system acceleration qat
+```{opcmd} show system acceleration qat
+use this command to check if there is an Intel® QAT supported Processor in your system.
 
-    use this command to check if there is an Intel® QAT supported Processor in
-    your system.
+:::{code-block} none
+vyos@vyos:~$ show system acceleration qat
+01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
+:::
 
-    .. code-block:: none
+if there is non device the command will show \`No QAT device found\`
 
-        vyos@vyos:~$ show system acceleration qat
-        01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
-
-    if there is non device the command will show ```No QAT device found```
-````
-
-```{eval-rst}
-.. cfgcmd:: set system acceleration qat
-
-    if there is a supported device, enable Intel® QAT
+:::{code-block} none
+`No QAT device found`
+:::
 ```
 
-```{eval-rst}
-.. opcmd:: show system acceleration qat status
+```{cfgcmd} set system acceleration qat
+if there is a supported device, enable Intel® QAT
+```
 
-    Check if the Intel® QAT device is up and ready to do the job.
 
-    .. code-block:: none
+```{opcmd} show system acceleration qat status
+Check if the Intel® QAT device is up and ready to do the job.
 
-        vyos@vyos:~$ show system acceleration qat status
-        Checking status of all devices.
-        There is 1 QAT acceleration device(s) in the system:
-        qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
+
+:::{code-block} none
+vyos@vyos:~$ show system acceleration qat status
+Checking status of all devices.
+There is 1 QAT acceleration device(s) in the system:
+qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3 #engines: 6 state: up
+:::
 ```
 
 ### Operation Mode
 
-```{eval-rst}
-.. opcmd:: show system acceleration qat device <device> config
-
-    Show the full config uploaded to the QAT device.
+```{opcmd} show system acceleration qat device \<device\> config
+Show the full config uploaded to the QAT device.
 ```
 
-```{eval-rst}
-.. opcmd:: show system acceleration qat device <device> flows
 
-    Get an overview over the encryption counters.
+```{opcmd} show system acceleration qat device \<device\> flows
+Get an overview over the encryption counters.
 ```
 
-```{eval-rst}
-.. opcmd:: show system acceleration qat interrupts
 
-    Show binded qat device interrupts to certain core.
-
+```{opcmd} show system acceleration qat interrupts
+Show binded qat device interrupts to certain core.
 ```
 
 ### Example
-
 Let's build a simple VPN between 2 Intel® QAT ready devices.
 
 Side A:
 
-```none
+```
 set interfaces vti vti1 address '192.168.1.2/24'
 set vpn ipsec authentication psk right id '10.10.10.2'
 set vpn ipsec authentication psk right id '10.10.10.1'
@@ -87,11 +80,11 @@ set vpn ipsec site-to-site peer right ike-group 'MyIKEGroup'
 set vpn ipsec site-to-site peer right local-address '10.10.10.2'
 set vpn ipsec site-to-site peer right remote-address '10.10.10.1'
 set vpn ipsec site-to-site peer right vti bind 'vti1'
-```none
+```
 
 Side B:
 
-```none
+```
 set interfaces vti vti1 address '192.168.1.1/24'
 set vpn ipsec authentication psk left id '10.10.10.2'
 set vpn ipsec authentication psk left id '10.10.10.1'
@@ -111,11 +104,11 @@ set vpn ipsec site-to-site peer left ike-group 'MyIKEGroup'
 set vpn ipsec site-to-site peer left local-address '10.10.10.1'
 set vpn ipsec site-to-site peer left remote-address '10.10.10.2'
 set vpn ipsec site-to-site peer left vti bind 'vti1'
-```none
+```
 
 a bandwidth test over the VPN got these results:
 
-```none
+```
 Connecting to host 192.168.1.2, port 5201
 [  9] local 192.168.1.1 port 51344 connected to 192.168.1.2 port 5201
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
@@ -133,12 +126,12 @@ Connecting to host 192.168.1.2, port 5201
 [ ID] Interval           Transfer     Bitrate         Retr
 [  9]   0.00-10.00  sec   322 MBytes   270 Mbits/sec    0           sender
 [  9]   0.00-10.00  sec   322 MBytes   270 Mbits/sec                receiver
-```none
+```
 
 with {cfgcmd}`set system acceleration qat` on both systems the bandwidth
 increases.
 
-```none
+```
 Connecting to host 192.168.1.2, port 5201
 [  9] local 192.168.1.1 port 51340 connected to 192.168.1.2 port 5201
 [ ID] Interval           Transfer     Bitrate         Retr  Cwnd
@@ -156,6 +149,6 @@ Connecting to host 192.168.1.2, port 5201
 [ ID] Interval           Transfer     Bitrate         Retr
 [  9]   0.00-10.00  sec   927 MBytes   778 Mbits/sec    0             sender
 [  9]   0.00-10.01  sec   925 MBytes   775 Mbits/sec                  receiver
-```none
+```
 
 [intel® qat]: https://www.intel.com/content/www/us/en/architecture-and-technology/intel-quick-assist-technology-overview.html

@@ -16,29 +16,23 @@ implemented.
 
 ## Configure
 
-```{eval-rst}
-.. cfgcmd:: set protocols static arp interface <interface> address <host>
-   mac <mac>
+```{cfgcmd} set protocols static arp interface \<interface\> address \<host\> mac <mac>
+This will configure a static ARP entry always resolving `<address>` to
+`<mac>` for interface `<interface>`.
 
-   This will configure a static ARP entry always resolving `<address>` to
-   `<mac>` for interface `<interface>`.
 
-   Example:
+Example:
 
-   .. code-block:: none
 
-     set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
-
+:::{code-block} none
+set protocols static arp interface eth0 address 192.0.2.1 mac 01:23:45:67:89:01
+:::
 ```
-
 ## Operation
 
-```{eval-rst}
-.. opcmd:: show protocols static arp
-
-   Display all known ARP table entries spanning across all interfaces
+```{opcmd} show protocols static arp
+Display all known ARP table entries spanning across all interfaces
 ```
-
 ```none
 vyos@vyos:~$ show protocols static arp
 Address                  HWtype  HWaddress           Flags Mask     Iface
@@ -46,12 +40,9 @@ Address                  HWtype  HWaddress           Flags Mask     Iface
 10.1.1.100               ether   00:53:00:de:23:aa   CM             eth1
 ```
 
-```{eval-rst}
-.. opcmd:: show protocols static arp interface eth1
-
-   Display all known ARP table entries on a given interface only (`eth1`):
+```{opcmd} show protocols static arp interface eth1
+Display all known ARP table entries on a given interface only (`eth1`):
 ```
-
 ```none
 vyos@vyos:~$ show protocols static arp interface eth1
 Address                  HWtype  HWaddress           Flags Mask     Iface
