@@ -152,17 +152,17 @@ Paragraphs
 
 A plugin will be used to generate a reference label for each headline.
 To reference a page or a section in the documentation use the
-`:ref:` command.
+`{ref}` command.
 
 For example, you want to reference the headline **VLAN** in the
 **ethernet.rst** page. The plugin generates the label based on
 the headline and the file path.
 
-`` :ref:`configuration/interfaces/ethernet:vlan ``
+`` {ref}`configuration/interfaces/ethernet:vlan ``
 
 to use an alternative hyperlink use it this way:
 
-`` :ref:`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
+`` {ref}`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
 
 ##### handle build errors
 
@@ -250,9 +250,9 @@ descriptive way in the resulting HTML/PDF manual.
    `00:53:27:de:23:aa`.
 ```
 ````
-For an inline configuration level command, use `:cfgcmd:`
+For an inline configuration level command, use `{cfgcmd}`
 ```none
-:cfgcmd:`set interface ethernet eth0`
+{cfgcmd}`set interface ethernet eth0`
 ```
 To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
 to `.. cfgcmd::` directive.
@@ -278,9 +278,9 @@ descriptive way in the resulting HTML/PDF manual.
    Display all known ARP table entries spanning across all interfaces
 ```
 ````
-For an inline operational level command, use `:opcmd:`
+For an inline operational level command, use `{opcmd}`
 ```none
-:opcmd:`add system image`
+{opcmd}`add system image`
 ```
 ##### cmdinclude
 
@@ -320,8 +320,8 @@ command called `vytask` that automatically renders to a proper Phabricator
 URL. This is heavily used in the {ref}`release-notes` section.
 ```none
 
-* :vytask:`T1605` Fixed regression in L2TP/IPsec server
-* :vytask:`T1613` Netflow/sFlow captures IPv6 traffic correctly
+* {vytask}`T1605` Fixed regression in L2TP/IPsec server
+* {vytask}`T1613` Netflow/sFlow captures IPv6 traffic correctly
 
 ```
 ## Forking Workflow

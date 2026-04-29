@@ -466,7 +466,6 @@ Examples include SLAAC and [tokenised IPv6 addresses](https://datatracker.ietf.o
 
 This function works for both individual addresses and address groups.
 
-% stop_vyoslinter
 
 :::{code-block} none
 # Match any IPv6 address with the suffix ::0000:0000:0000:beef
@@ -478,7 +477,6 @@ set firewall group ipv6-address-group WEBSERVERS address ::2000
 set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
 set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
 :::
-% start_vyoslinter
 ```
 
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source fqdn <fqdn>
