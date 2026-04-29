@@ -473,15 +473,15 @@ This command does not affect ``tap`` mode, which always uses the ``subnet``
 topology.
 
 * ``subnet`` **(default)**: Allocates a single IP address to each connecting client.
-  This is the recommended topology.
+This is the recommended topology.
 * ``net30``: Allocates a /30 subnet to each connecting client. This is a legacy
-  topology used to support Windows clients. It is now effectively deprecated.
+topology used to support Windows clients. It is now effectively deprecated.
 * ``point-to-point``: Creates a point-to-point topology where the remote
-  endpoint of the client’s ``tun`` interface always points to the local endpoint
-  of the server’s ``tun`` interface.
+endpoint of the client’s ``tun`` interface always points to the local endpoint
+of the server’s ``tun`` interface.
 
-  Like ``subnet``, this topology allocates a single IP address per client. Use it
-  only if no clients run Windows operating systems.
+Like ``subnet``, this topology allocates a single IP address per client. Use it
+only if no clients run Windows operating systems.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> shared-secret-key \<key\>
 

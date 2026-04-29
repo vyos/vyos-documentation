@@ -68,7 +68,7 @@ change to work.
 
 ```{cfgcmd} set protocols mpls interface \<interface\>
 
-  Use this command to enable MPLS processing on the interface you define.
+Use this command to enable MPLS processing on the interface you define.
 ```
 
 
@@ -252,7 +252,7 @@ commands for LDP:
 ### Show
 ```{opcmd} show mpls ldp binding
 
-  Use this command to see the Label Information Base.
+Use this command to see the Label Information Base.
 
 ```
 

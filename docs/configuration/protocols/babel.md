@@ -18,9 +18,9 @@ VyOS does not have a special command to start the Babel process.
 The Babel process starts when the first Babel enabled interface is configured.
 
 ```{cfgcmd} set protocols babel interface \<interface\>
-  This command specifies a Babel enabled interface by interface name. Both
-  the sending and receiving of Babel packets will be enabled on the interface
-  specified in this command.
+This command specifies a Babel enabled interface by interface name. Both
+the sending and receiving of Babel packets will be enabled on the interface
+specified in this command.
 ```
 
 ## Optional Configuration

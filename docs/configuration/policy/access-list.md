@@ -61,5 +61,5 @@ criteria could be applied to source parameters:
 * any: any IPv6 address to match.
 * exact-match: exact match of the network prefixes.
 * network: network/netmask to match (requires inverse-match be defined) BUG,
-  NO invert-match option in access-list6
+NO invert-match option in access-list6
 ```

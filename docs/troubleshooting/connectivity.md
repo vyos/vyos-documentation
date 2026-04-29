@@ -14,29 +14,29 @@ ping, including VRF support.
 :::{code-block} none
 vyos@vyos:~$ ping 10.1.1.1
 Possible completions:
-  <Enter>       Execute the current command
-  adaptive      Ping options
-  allow-broadcast
-  audible
-  bypass-route
-  count
-  deadline
-  do-not-fragment
-  flood
-  interface
-  interval
-  mark
-  no-loopback
-  numeric
-  pattern
-  quiet
-  record-route
-  size
-  timestamp
-  tos
-  ttl
-  verbose
-  vrf
+<Enter>       Execute the current command
+adaptive      Ping options
+allow-broadcast
+audible
+bypass-route
+count
+deadline
+do-not-fragment
+flood
+interface
+interval
+mark
+no-loopback
+numeric
+pattern
+quiet
+record-route
+size
+timestamp
+tos
+ttl
+verbose
+vrf
 :::
 ```
 
@@ -46,11 +46,11 @@ Trace path to target.
 :::{code-block} none
 vyos@vyos:~$ traceroute
 Possible completions:
-  <hostname>    Track network path to specified node
-  <x.x.x.x>
-  <h:h:h:h:h:h:h:h>
-  ipv4          Track network path to <hostname|IPv4 address>
-  ipv6          Track network path to <hostname|IPv6 address>
+<hostname>    Track network path to specified node
+<x.x.x.x>
+<h:h:h:h:h:h:h:h>
+ipv4          Track network path to <hostname|IPv4 address>
+ipv6          Track network path to <hostname|IPv6 address>
 :::
 ```
 
@@ -109,17 +109,17 @@ Router lifetime           :         1800 (0x00000708) seconds
 Reachable time            :  unspecified (0x00000000)
 Retransmit time           :  unspecified (0x00000000)
  Prefix                   : 240e:fe:8ca7:ea01::/64
-  On-link                 :          Yes
-  Autonomous address conf.:          Yes
-  Valid time              :      2592000 (0x00278d00) seconds
-  Pref. time              :        14400 (0x00003840) seconds
+On-link                 :          Yes
+Autonomous address conf.:          Yes
+Valid time              :      2592000 (0x00278d00) seconds
+Pref. time              :        14400 (0x00003840) seconds
  Prefix                   : fc00:470:f1cd:101::/64
-  On-link                 :          Yes
-  Autonomous address conf.:          Yes
-  Valid time              :      2592000 (0x00278d00) seconds
-  Pref. time              :        14400 (0x00003840) seconds
+On-link                 :          Yes
+Autonomous address conf.:          Yes
+Valid time              :      2592000 (0x00278d00) seconds
+Pref. time              :        14400 (0x00003840) seconds
  Recursive DNS server     : fc00:470:f1cd::ff00
-  DNS server lifetime     :          600 (0x00000258) seconds
+DNS server lifetime     :          600 (0x00000258) seconds
  Source link-layer address: 00:98:2B:F8:3F:11
  from fe80::298:2bff:fef8:3f11
 :::

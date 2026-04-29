@@ -33,8 +33,8 @@ BGP. BGP is a distance vector routing protocol, and the AS-Path framework
 provides distance vector metric and loop detection to BGP.
 
 ```{cfgcmd} set protocols bgp system-as \<asn\>
-  Set local {abbr}`ASN (Autonomous System Number)` that this router represents.
-  This is a a mandatory option!
+Set local {abbr}`ASN (Autonomous System Number)` that this router represents.
+This is a a mandatory option!
 ```
 
 (bgp-address-families)=

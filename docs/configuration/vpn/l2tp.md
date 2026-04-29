@@ -17,12 +17,12 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication mode \<local | radius\>
-  Set authentication backend. The configured authentication backend is used
-  for all queries.
+Set authentication backend. The configured authentication backend is used
+for all queries.
 
-  * **radius**: All authentication queries are handled by a configured RADIUS
-    server.
-  * **local**: All authentication queries are handled locally.
+* **radius**: All authentication queries are handled by a configured RADIUS
+  server.
+* **local**: All authentication queries are handled locally.
 ```
 
 

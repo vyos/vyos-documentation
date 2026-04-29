@@ -58,7 +58,7 @@ Set authentication backend. The configured authentication backend is used
 for all queries.
 
 * **radius**: All authentication queries are handled by a configured RADIUS
-  server.
+server.
 * **local**: All authentication queries are handled locally.
 * **noauth**: Authentication disabled
 ```
@@ -90,7 +90,7 @@ multiple such options.
 Specifies the client connectivity mode.
 
 * **l2**: It means that clients are on same network where interface
-  is.\*\*(default)\*\*
+is.\*\*(default)\*\*
 * **l3**: It means that client are behind some router.
 ```
 

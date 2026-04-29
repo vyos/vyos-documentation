@@ -50,15 +50,15 @@ Show detailed interface information.
 :::{code-block} none
 vyos@vyos:~$ show interfaces loopback lo
 lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
+  link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+  inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host
+  inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
 
-    RX:  bytes    packets     errors    dropped    overrun      mcast
+  RX:  bytes    packets     errors    dropped    overrun      mcast
            300          6          0          0          0          0
-    TX:  bytes    packets     errors    dropped    carrier collisions
+  TX:  bytes    packets     errors    dropped    carrier collisions
            300          6          0          0          0          0
 :::
 ```

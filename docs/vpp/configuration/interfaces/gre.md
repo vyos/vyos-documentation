@@ -61,7 +61,7 @@ Set the GRE tunnel encapsulation type:
 * ``l3`` - Generic Routing Encapsulation for network layer traffic (default).
 * ``teb`` - Transparent Ethernet Bridge for Layer 2 frame transport.
 * ``erspan`` - Encapsulated Remote Switched Port Analyzer for traffic
-  mirroring.
+mirroring.
 ```
 ### Kernel Interface Integration
 
