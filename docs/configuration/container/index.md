@@ -58,7 +58,6 @@ The container and the host share the same process namespace.
 This means that processes running on the host are visible inside the
 container, and processes inside the container are visible on the host.
 
-
 The command translates to "--pid host" when the container is created.
 ```
 
@@ -68,9 +67,7 @@ The command translates to "--pid host" when the container is created.
 Allow host networking in a container. The network stack of the container is
 not isolated from the host and will use the host IP.
 
-
 The command translates to "--net host" when the container is created.
-
 
 :::{note}
 **allow-host-networks** cannot be used with **network**
@@ -89,7 +86,6 @@ Only one network must be specified and must already exist.
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
 This address must be within the named network prefix.
-
 
 :::{note}
 The first IP in the container network is reserved by the
@@ -119,7 +115,6 @@ Multiple environment variables are allowed.
 The following commands translate to "-e key=value" when the container
 is created.
 
-
 :::{code-block} none
 set container name mysql-server environment MYSQL_DATABASE value 'zabbix'
 set container name mysql-server environment MYSQL_USER value 'zabbix'
@@ -139,7 +134,6 @@ set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
 
 Publish a port for the container.
 
-
 :::{code-block} none
 set container name zabbix-web-nginx-mysql port http source 80
 set container name zabbix-web-nginx-mysql port http destination 8080
@@ -156,7 +150,6 @@ using destination NAT and static IP assignment for the container is available.
 ```{cfgcmd} set container name \<name\> volume \<volumename\> destination \<path\>
 
 Mount a volume into the container
-
 
 :::{code-block} none
 set container name coredns volume 'corefile' source /config/coredns/Corefile
@@ -192,7 +185,6 @@ Set the User ID or Group ID of the container
 
 Set the restart behavior of the container.
 
-
 - **no**: Do not restart containers on exit
 - **on-failure**: Restart containers when they exit with a non-zero
   exit code, retrying indefinitely (default)
@@ -204,12 +196,10 @@ Set the restart behavior of the container.
 
 This specifies the number of CPU resources the container can use.
 
-
 Default is 0 for unlimited.
 For example, 1.25 limits the container to use up to 1.25 cores
 worth of CPU time.
 This can be a decimal number with up to three decimal places.
-
 
 The command translates to "--cpus=\<num\>" when the container is created.
 ```
@@ -217,7 +207,6 @@ The command translates to "--cpus=\<num\>" when the container is created.
 ```{cfgcmd} set container name \<name\> memory \<MB\>
 
 Constrain the memory available to the container.
-
 
 Default is 512 MB. Use 0 MB for unlimited memory.
 ```
@@ -234,7 +223,6 @@ Add a host device to the container.
 
 Set container capabilities or permissions.
 
-
 - **net-admin**: Network operations (interface, firewall, routing tables)
 - **net-bind-service**: Bind a socket to privileged ports
   (port numbers less than 1024)
@@ -249,9 +237,7 @@ Set container capabilities or permissions.
 
 Set container sysctl values.
 
-
 The subset of possible parameters are:
-
 
 - Kernel Parameters: kernel.msgmax, kernel.msgmnb, kernel.msgmni, kernel.sem,
   kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
@@ -348,7 +334,6 @@ Disable a given container registry
 
 Some container registries require credentials to be used.
 
-
 Credentials can be defined here and will only be used when adding a
 container image to the system.
 ```
@@ -372,9 +357,7 @@ untrusted certificates.
 
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
-
 If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
-
 
 :::{code-block} none
 set container registry docker.io mirror address 192.168.1.1
@@ -382,7 +365,6 @@ set container registry docker.io mirror port 8080
 set container registry docker.io insecure
 :::
 If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/some/repo`` or run ``podman pull 192.168.1.1:8080/some/repo``
-
 
 :::{code-block} none
 set container registry 192.168.1.1:8080 insecure
@@ -393,11 +375,9 @@ set container registry 192.168.1.1:8080 insecure
 
 Set the default log driver for containers.
 
-
 - **k8s-file**: Log to a plain text file in Kubernetes-style format.
 - **journald**: Log to the system journal
 - **none**: Disable logging for the container
-
 
 Current default is journald.
 

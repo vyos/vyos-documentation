@@ -221,7 +221,6 @@ The interface offloading features define whether specific packet-processing task
 are performed by hardware (the NIC) or by software (the kernel). You can enable
 multiple offloading features for a single interface.
 
-
  * ``lro`` **(Large Receive Offload):** Instructs the NIC to merge multiple
    incoming packets into one larger packet before sending it to the CPU.
 

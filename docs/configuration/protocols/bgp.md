@@ -245,35 +245,27 @@ built-in check of the corresponding value. In case of a mismatch the
 new OPEN Roles Mismatch Notification <2, 11> would be sent.
 The correct Role pairs are:
 
-
 Provider - Customer
-
 
 Peer - Peer
 
-
 RS-Server - RS-Client
-
 
 If {cfgcmd}`strict` is set the BGP session won’t become established
 until the BGP neighbor sets local Role on its side. This
 configuration parameter is defined in RFC {rfc}`9234` and is used to
 enforce the corresponding configuration at your counter-parts side.
 
-
 Routes that are sent from provider, rs-server, or the peer local-role
 (or if received by customer, rs-client, or the peer local-role) will
 be marked with a new Only to Customer (OTC) attribute.
-
 
 Routes with this attribute can only be sent to your neighbor if your
 local-role is provider or rs-server. Routes with this attribute can
 be received only if your local-role is customer or rs-client.
 
-
 In case of peer-peer relationship routes can be received only if OTC
 value is equal to your neighbor AS number.
-
 
 All these rules with OTC will help to detect and mitigate route leaks
 and happen automatically if local-role is set.
@@ -320,17 +312,14 @@ Suppress sending Capability Negotiation as OPEN message optional
 parameter to the peer. This command only affects the peer is
 configured other than IPv4 unicast configuration.
 
-
 When remote peer does not have capability negotiation feature,
 remote peer will not send any capabilities at all. In that case,
 bgp configures the peer with configured capabilities.
-
 
 You may prefer locally configured capabilities more than the negotiated
 capabilities even though remote peer sends capabilities. If the peer is
 configured by {cfgcmd}`override-capability`, VyOS ignores received
 capabilities then override negotiated capabilities with configured values.
-
 
 Additionally you should keep in mind that this feature fundamentally
 disables the ability to use widely deployed BGP features. BGP unnumbered,
@@ -350,7 +339,6 @@ This command forces strictly compare remote capabilities and local
 capabilities. If capabilities are different, send Unsupported Capability
 error then reset connection.
 
-
 You may want to disable sending Capability Negotiation OPEN message
 optional parameter to the peer when remote peer does not implement
 Capability Negotiation. Please use {cfgcmd}`disable-capability-negotiation`
@@ -364,10 +352,8 @@ number with the same value as the current system AS. This is
 used when you want to use the same AS number in your sites,
 but you can’t connect them directly.
 
-
    The number parameter (1-10) configures the amount of accepted
    occurences of the system AS number in AS path.
-
 
    This command is only allowed for eBGP peers. It is not applicable
    for peer groups.
@@ -378,13 +364,11 @@ but you can’t connect them directly.
 This command override AS number of the originating router with
 the local AS number.
 
-
 Usually this configuration is used in PEs (Provider Edge) to
 replace the incoming customer AS number so the connected CE (
 Customer Edge) can use the same AS number as the other customer
 sites. This allows customers of the provider network to use the
 same AS number across their sites.
-
 
 This command is only allowed for eBGP peers.
 ```
@@ -414,10 +398,8 @@ This command removes the private ASN of routes that are advertised
 to the configured peer. It removes only private ASNs on routes
 advertised to EBGP peers.
 
-
 If the AS-Path for the route has only private ASNs, the private
 ASNs are removed.
-
 
 If the AS-Path for the route has a private ASN between public
 ASNs, it is assumed that this is a design choice, and the
@@ -431,12 +413,10 @@ large negative impact on network operations. Soft reconfiguration enables you
 to generate inbound updates from a neighbor, change and activate BGP policies
 without clearing the BGP session.
 
-
 This command specifies that route updates received from this neighbor will be
 stored unmodified, regardless of the inbound policy. When inbound soft
 reconfiguration is enabled, the stored updates are processed by the new
 policy configuration to create new inbound updates.
-
 
 :::{note}
 Storage of route updates uses memory. If you enable soft
@@ -487,15 +467,12 @@ local-as is prepended to the received AS_PATH when receiving routing
 updates from the peer, and prepended to the outgoing AS_PATH (after
 the process local AS) when transmitting local routes to the peer.
 
-
 If the {cfgcmd}`no-prepend` attribute is specified, then the supplied
 local-as is not prepended to the received AS_PATH.
-
 
 If the {cfgcmd}`replace-as` attribute is specified, then only the supplied
 local-as is prepended to the AS_PATH when transmitting local-route
 updates to this peer.
-
 
 :::{note}
 This command is only allowed for eBGP peers.
@@ -533,7 +510,6 @@ are treated as belonging to a default peer group, and will share updates.
    This command defines a new peer group. You can specify to the group the same
    parameters that you can specify for specific neighbors.
 
-
    :::{note}
    If you apply a parameter to an individual neighbor IP address, you
    override the action defined for a peer group that includes that IP
@@ -550,7 +526,6 @@ This command bind specific peer to peer group with a given name.
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> network <prefix>
 This command is used for advertising IPv4 or IPv6 networks.
-
 
    :::{note}
    By default, the BGP prefix is advertised even if it's not present
@@ -715,7 +690,6 @@ enable {rfc}`8212` functionality to operate.
 By default, locally advertised prefixes use the implicit-null label to
 encode in the outgoing NLRI.
 
-
 The following command uses the explicit-null label value for all the
 BGP instances.
 ```
@@ -731,7 +705,6 @@ The distance range is 1 to 255.
 ```{cfgcmd} set protocols bgp parameters distance prefix \<subnet\> distance <distance>
 This command sets the administrative distance for a particular route. The
 distance range is 1 to 255.
-
 
 :::{note}
 Routes with a distance of 255 are effectively disabled and not
@@ -835,15 +808,12 @@ Ensure that when comparing routes where both are equal on most metrics,
 including local-pref, AS_PATH length, IGP cost, MED, that the tie is
 broken based on router-ID.
 
-
 If this option is enabled, then the already-selected check, where
 already selected eBGP routes are preferred, is skipped.
-
 
 If a route has an ORIGINATOR_ID attribute because it has been reflected,
 that ORIGINATOR_ID will be used. Otherwise, the router-ID of the peer
 the route was received from will be used.
-
 
 The advantage of this is that the route-selection (at this point) will
 be more deterministic. The disadvantage is that a few or even one lowest-ID

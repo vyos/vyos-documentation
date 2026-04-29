@@ -191,7 +191,6 @@ RAID 1 set (of which ``disk-device2`` is already a member).
 shows output for ``show raid md0`` as ``sdb1`` is being added to the RAID 1
 set and is in the process of being resynchronized.
 
-
 :::{code-block} none
 vyos@vyos:~$ show raid md0
 /dev/md0:
@@ -222,7 +221,6 @@ Rebuild Status : 17% complete
 ```{opcmd} show disk sda format
 
 Use this command to display the formatting of a hard disk.
-
 
 :::{code-block} none
 vyos@vyos:~$ show disk sda format

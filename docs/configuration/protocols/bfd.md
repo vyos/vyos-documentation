@@ -100,7 +100,6 @@ Enable BFD for ISIS on an interface
 
    Show all BFD peers
 
-
    :::{code-block} none
    BFD Peers:
    peer 198.51.100.33 vrf default interface eth4.100
@@ -118,7 +117,6 @@ Enable BFD for ISIS on an interface
    Receive interval: 300ms
    Transmission interval: 300ms
    Echo transmission interval: 0ms
-
 
    peer 198.51.100.55 vrf default interface eth4.101
    ID: 4618932327
@@ -148,13 +146,11 @@ but when the BFD session is down it is removed from the RIB.
 ### Configuration
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-
 Configure a static route for \<subnet\> using gateway \<address\>
 and use the gateway address as BFD peer destination address.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source \<address\> profile \<profile\>
-
 
 Configure a static route for \<subnet\> using gateway \<address\>,
 use source address to indentify the peer when is multi-hop session
@@ -163,13 +159,11 @@ and the gateway address as BFD peer destination address.
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-
 Configure a static route for \<subnet\> using gateway \<address\>
 and use the gateway address as BFD peer destination address.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source \<address\> profile \<profile\>
-
 
 Configure a static route for \<subnet\> using gateway \<address\>,
 use source address to indentify the peer when is multi-hop session

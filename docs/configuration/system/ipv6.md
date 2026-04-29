@@ -34,7 +34,6 @@ can be used to filter which routes zebra will install in the kernel.
 Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, isis, ospfv3, ripng, static
 
-
 :::{note}
 If you choose any as the option that will cause all protocols that
 are sending routes to zebra.
@@ -76,9 +75,7 @@ Use this command to show IPv6 forwarding status.
 ```{opcmd} show ipv6 route
 Use this command to show IPv6 routes.
 
-
 Check the many parameters available for the show ipv6 route command:
-
 
 :::{code-block} none
 vyos@vyos:~$ show ipv6 route
@@ -104,9 +101,7 @@ vrf           Show IPv6 routes in VRF
 ```{opcmd} show ipv6 prefix-list
    Use this command to show all IPv6 prefix lists
 
-
    There are different parameters for getting prefix-list information:
-
 
    :::{code-block} none
    vyos@vyos:~$ show ipv6 prefix-list
@@ -122,9 +117,7 @@ vrf           Show IPv6 routes in VRF
 ```{opcmd} show ipv6 access-list
 Use this command to show all IPv6 access lists
 
-
 You can also specify which IPv6 access-list should be shown:
-
 
 :::{code-block} none
 vyos@vyos:~$ show ipv6 access-list
@@ -136,10 +129,8 @@ Possible completions:
 ```{opcmd} show ipv6 ospfv3
    Use this command to get information about OSPFv3.
 
-
    You can get more specific OSPFv3 information by using the parameters
    shown below:
-
 
    :::{code-block} none
    vyos@vyos:~$ show ipv6 ospfv3

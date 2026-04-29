@@ -72,7 +72,6 @@ Accept SSH connections for the given `<device>` on TCP port `<port>`.
 After successfull authentication the user will be directly dropped to
 the connected serial device.
 
-
 :::{hint}
 Multiple users can connect to the same serial device but only
 one is allowed to write to the console port.
@@ -81,7 +80,6 @@ one is allowed to write to the console port.
 ## Operation
 ```{opcmd} show console-server ports
 Show configured serial ports and their respective interface configuration.
-
 
 :::{code-block} none
 vyos@vyos:~$ show console-server ports
@@ -92,7 +90,6 @@ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 
 ```{opcmd} show console-server user
 Show currently connected users.
-
 
 :::{code-block} none
 vyos@vyos:~$ show console-server user
@@ -111,12 +108,10 @@ vyos-r2 login:
 :::{hint}
 Multiple users can connect to the same serial device but only
 one is allowed to write to the console port.
-:::
-:::{hint}
+
 The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
 the session use: ``Ctrl+E c .``
-:::
-:::{hint}
+
 If ``alias`` is set, it can be used instead of the device when
 connecting.
 :::

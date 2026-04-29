@@ -198,4 +198,4 @@ destinations.
 [software]: https://rpki.readthedocs.io/en/latest/ops/tools.html#relying-party-software
 [stayrtr]: https://github.com/bgp/stayrtr/
 [test]: https://isbgpsafeyet.com/
-[tweet by evilmog]: https://twitter.com/Evil_Mog/status/1230924170508169216
+[tweet by evilmog]: <https://twitter.com/Evil_Mog/status/1230924170508169216>

@@ -186,7 +186,6 @@ Telegraf can be used to send logs to [loki] using tags as labels.
 ```{cfgcmd} set service monitoring telegraf loki port \<port\>
    Remote Loki port
 
-
    Default is 3100
 ```
 
@@ -204,14 +203,12 @@ Remote Loki url
 
 HTTP basic authentication.
 
-
 If either is set both must be set.
 ```
 
 ```{cfgcmd} set service monitoring telegraf loki metric-name-label \<label\>
 
 Label to use for the metric name when sending metrics.
-
 
 If set to an empty string, the label will not be added.
 This is NOT recommended, as it makes it impossible to differentiate
@@ -296,11 +293,11 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-p
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 timeout 3
 ```
 
-[azure-data-explorer]: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer
-[blackbox_exporter]: https://github.com/prometheus/blackbox_exporter
-[frr_exporter]: https://github.com/tynany/frr_exporter
-[influxdb]: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2
+[azure-data-explorer]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
+[blackbox_exporter]: <https://github.com/prometheus/blackbox_exporter>
+[frr_exporter]: <https://github.com/tynany/frr_exporter>
+[influxdb]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2>
 [loki]: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/loki
-[node_exporter]: https://github.com/prometheus/node_exporter
-[prometheus-client]: https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client
-[splunk]: https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html
+[node_exporter]: <https://github.com/prometheus/node_exporter>
+[prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
+[splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>

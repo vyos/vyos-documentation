@@ -29,7 +29,6 @@ The Babel process starts when the first Babel enabled interface is configured.
 This command enables routing using radio frequency diversity.
 This is highly recommended in networks with many wireless nodes.
 
-
 :::{note}
 If you enable this, you will probably want to
 set diversity-factor and channel below.
@@ -66,7 +65,6 @@ networks. The default is 4 s.
 ```{cfgcmd} set protocols babel interface \<interface\> type \<auto|wired|wireless\>
 This command sets the interface type:
 
-
 **auto** – automatically determines the interface type.
 **wired** – enables optimisations for wired interfaces.
 **wireless** – disables a number of optimisations that are only correct
@@ -80,7 +78,6 @@ This command specifies whether to perform split-horizon on the interface.
 Specifying no babel split-horizon is always correct, while babel split-horizon
 is an optimisation that should only be used on symmetric
 and transitive (wired) networks.
-
 
 **default** – enable split-horizon on wired interfaces, and disable
 split-horizon on wireless interfaces.

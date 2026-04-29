@@ -42,9 +42,7 @@ the `allow-client` directive.
    Configure one or more servers for synchronisation. Server name can be either
    an IP address or {abbr}`FQDN (Fully Qualified Domain Name)`.
 
-
    There are 3 default NTP server set. You are able to change them.
-
 
    * ``time1.vyos.net``
    * ``time2.vyos.net``
@@ -55,26 +53,20 @@ the `allow-client` directive.
 ```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave\>
 Configure one or more attributes to the given NTP server.
 
-
 * ``noselect`` marks the server as unused, except for display purposes. The
   server is discarded by the selection algorithm.
-
 
 * ``nts`` enables Network Time Security (NTS) for the server as specified
   in {rfc}`8915`
 
-
 * ``pool`` mobilizes persistent client mode association with a number of
   remote servers.
-
 
 * ``prefer`` marks the server as preferred. All other things being equal,
   this host will be chosen for synchronization among a set of correctly
   operating hosts.
 
-
 * ``ptp`` enables the PTP transport for this server (see the PTP transport configuration section).
-
 
 * ``interleave`` enables NTP interleaved mode (see [draft-ntp-interleaved-modes]), which can improve
   synchronization accuracy and stability when supported by both parties.
@@ -92,7 +84,6 @@ IPv6 address can be configured, using separate commands for each.
 ```{cfgcmd} set service ntp allow-client address \<address\>
 List of networks or client addresses permitted to contact this NTP server.
 
-
 Multiple networks/client IP addresses can be configured.
 ```
 
@@ -106,11 +97,9 @@ Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```{cfgcmd} set service ntp leap-second [ignore|smear|system|timezone]
 Define how to handle leap-seconds.
 
-
 * `ignore`: No correction is applied to the clock for the leap second. The
   clock will be corrected later in normal operation when new measurements are
   made and the estimated offset includes the one second error.
-
 
 * `smear`: When smearing a leap second, the leap status is suppressed on the
   server and the served time is corrected slowly by slewing instead of
@@ -120,12 +109,10 @@ Define how to handle leap-seconds.
   only NTP servers which smear the leap second in exactly the same way for
   synchronisation.
 
-
 * `system`: When inserting a leap second, the kernel steps the system clock
   backwards by one second when the clock gets to 00:00:00 UTC. When deleting
   a leap second, it steps forward by one second when the clock gets to
   23:59:59 UTC.
-
 
 * `timezone`: This directive specifies a timezone in the system timezone
   database which chronyd can use to determine when will the next leap second
@@ -161,9 +148,7 @@ Configures hardware timestamping on the interface \<interface\>. The special
 value `all` can also be specified to enable timestamping on all interfaces
 that support it.
 
-
 Configure the timestamping behavior with the following option:
-
 
 * ``receive-filter [all|ntp|ptp|none]`` selects the receive filter mode,
   which controls which inbound packets the NIC applies timestamps to. The

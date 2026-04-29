@@ -22,7 +22,6 @@ the command line prompt.
    must start and end with a letter or digit, and have as interior characters
    only letters, digits, or a hyphen.
 
-
    The default hostname used is `vyos`.
 ```
 ## Domain Name
