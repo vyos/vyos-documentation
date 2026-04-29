@@ -1,7 +1,8 @@
 :description: Overview of the VyOS project's history, from its 2013 fork of Vyatta Core
               through each major LTS release. Covers release codenames, base Debian
               versions, and the headline features introduced in each version.
-:keywords: vyos, history, vyatta, router, firewall, network, release, milestone
+:keywords: vyos history, vyatta fork, lts release, scutum, circinus, sagitta, 
+           equuleus, crux, debian
 
 .. _history:
 
