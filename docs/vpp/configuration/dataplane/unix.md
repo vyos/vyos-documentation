@@ -49,6 +49,6 @@ If you do not need to reduce CPU usage, it is recommended to leave the
 polling delay at its default value of 0 for optimal performance.
 
 If you need to reduce CPU usage, you may also consider using `interrupt` or
-`adaptive` {ref}`DPDK driver modes <vpp_config_dataplane_interface_rx_mode>`,
+`adaptive` {ref}`DPDK driver modes <vpp-config-dataplane-interface-rx-mode>`,
 which can provide a balance between performance and resource utilization
 without affecting polling behavior.
