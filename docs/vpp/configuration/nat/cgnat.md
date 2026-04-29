@@ -192,7 +192,7 @@ vpp_papi.vpp_papi.VPPIOError: [Errno 2] VPP API client: read failed
 CGNAT utilizes main heap memory and if you are trying to configure big
 prefixes or a large number of NAT sessions, you may run into memory allocation
 issues. Try to {ref}`increase the main heap size in VPP configuration
-<vpp_config_dataplane_memory>`.
+<vpp-config-dataplane-memory>`.
 
 ## SSH/DNS Reachability After Enabling CGNAT
 If SSH access to the router (or local-originated DNS queries) stops working

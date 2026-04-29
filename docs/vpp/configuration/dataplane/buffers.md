@@ -21,7 +21,7 @@ total amount of memory available for buffer allocation is controlled by the
 `physmem-max-size` setting, while the buffer configuration parameters
 below control how that memory is used for buffer allocation.
 
-See {ref}`VPP Physical Memory Configuration <vpp_config_dataplane_physmem>`
+See {ref}`VPP Physical Memory Configuration <vpp-config-dataplane-physmem>`
 for details on configuring `physmem`.
 :::
 
