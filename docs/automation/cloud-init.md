@@ -147,8 +147,11 @@ write_files:
     content: |
       #!/bin/vbash
       source /opt/vyatta/etc/functions/script-template
-      filename=/tmp/bgp_status_`date +"%Y_%m_%d_%I_%M_%p"`.log
-      run show ip bgp summary >> $filename
+      hostname=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
+      configure
+      set system host-name $hostname
+      commit
+      exit
 ```
 
 ## NoCloud
