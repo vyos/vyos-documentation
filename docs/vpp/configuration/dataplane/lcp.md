@@ -32,6 +32,7 @@ to VPP interfaces, and you don't need forwarding between those
 destinations and destinations reachable via VPP, you can disable this
 behavior using the following command:
 (vpp-config-dataplane-lcp-ignore-kernel-routes)=
+(vpp_config_dataplane_lcp_ignore-kernel-routes)=
 ```{cfgcmd} set vpp settings ignore-kernel-routes
 ```
 

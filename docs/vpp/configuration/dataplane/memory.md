@@ -3,6 +3,7 @@ lastproofread: '2026-02-27'
 ---
 
 (vpp-config-dataplane-memory)=
+(vpp_config_dataplane_memory)=
 
 ```{include} /_include/need_improvement.txt
 ```
