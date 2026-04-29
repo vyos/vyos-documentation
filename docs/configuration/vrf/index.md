@@ -18,6 +18,7 @@ A VRF device is created with an associated route table. Network interfaces are
 then enslaved to a VRF device.
 
 ```{cfgcmd} set vrf name \<name\> table \<id\>
+
 Create a new VRF instance with `<name>` and `<id>`. The name is used when placing
 individual interfaces into the VRF.
 
@@ -28,6 +29,7 @@ only be changed by deleting and re-adding the VRF instance.
 ```
 
 ```{cfgcmd} set vrf bind-to-all
+
 By default the scope of the port bindings for unbound sockets is limited to
 the default VRF. That is, it will not be matched by packets arriving on
 interfaces enslaved to a VRF and processes may bind to the same port if
@@ -44,6 +46,7 @@ other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
 
 ```{cfgcmd} set vrf \<name\> ip protocol \<protocol\> route-map \<route-map\>
+
 Apply a route-map filter to routes for the specified protocol.
 
 The following protocols can be used: any, babel, bgp, eigrp,
@@ -57,6 +60,7 @@ are sending routes to zebra.
 
 
 ```{cfgcmd} set vrf \<name\> ipv6 protocol \<protocol\> route-map \<route-map\>
+
 Apply a route-map filter to routes for the specified protocol.
 
 The following protocols can be used: any, babel, bgp, isis,
@@ -75,6 +79,7 @@ by default for a traditional profile of FRR which we use. It and can be disabled
 you do not want to e.g. allow BGP to peer across the default route.
 
 ```{cfgcmd} set vrf name \<name\> ip nht no-resolve-via-default
+
 Do not allow IPv4 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.
@@ -82,6 +87,7 @@ subnode.
 
 
 ```{cfgcmd} set vrf name \<name\> ipv6 nht no-resolve-via-default
+
 Do not allow IPv6 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.
@@ -165,6 +171,7 @@ It is not sufficient to only configure a VRF but VRFs must be maintained, too.
 For VRF maintenance the following operational commands are in place.
 
 ```{opcmd} show vrf
+
 Lists VRFs that have been created
 
 :::{code-block} none
@@ -193,6 +200,7 @@ blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,
 
 
 ```{opcmd} show ip route vrf \<name\>
+
 Display IPv4 routing table for VRF identified by `<name>`.
 
 :::{code-block} none
@@ -210,6 +218,7 @@ C>* 192.0.2.0/24 is directly connected, dum1, 00:00:06
 :::
 ```
 ```{opcmd} show ipv6 route vrf \<name\>
+
 Display IPv6 routing table for VRF identified by `<name>`.
 
 :::{code-block} none
@@ -228,6 +237,7 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 :::
 ```
 ```{opcmd} ping \<host\> vrf \<name\>
+
    The ping command is used to test whether a network host is reachable or not.
 
    Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
@@ -263,6 +273,7 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 
 
 ```{opcmd} traceroute vrf \<name\> [ipv4 | ipv6] \<host\>
+
 Displays the route packets taken to a network host utilizing VRF instance
 identified by `<name>`. When using the IPv4 or IPv6 option, displays the
 route packets taken to the given hosts IP address family. This option is
@@ -271,6 +282,7 @@ useful when the host is specified as a hostname rather than an IP address.
 
 
 ```{opcmd} force vrf \<name\>
+
 Join a given VRF. This will open a new subshell within the specified VRF.
 
 The prompt is adjusted to reflect this change in both config and op-mode.
@@ -599,12 +611,14 @@ of the default VRF is accomplished via commands in the context of a VRF
 address-family.
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> rd vpn export \<asn:nn|address:nn\>
+
 Specifies the route distinguisher to be added to a route exported from the
 current unicast VRF to VPN.
 ```
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-target vpn \<import|export|both\> [RTLIST]
+
 Specifies the route-target list to be attached to a route (export) or the
 route-target list to match against (import) when exporting/importing
 between the current unicast VRF and VPN.The RTLIST is a space-separated
@@ -614,6 +628,7 @@ described in Extended Communities Attribute.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> label vpn export \<0-1048575|auto\>
+
 Enables an MPLS label to be attached to a route exported from the current
 unicast VRF to VPN. If the value specified is auto, the label value is
 automatically assigned from a pool maintained.
@@ -621,6 +636,7 @@ automatically assigned from a pool maintained.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> label vpn allocation-mode per-nexthop
+
 Select how labels are allocated in the given VRF. By default, the per-vrf
 mode is selected, and one label is used for all prefixes from the VRF. The
 per-nexthop will use a unique label for all prefixes that are reachable via
@@ -629,6 +645,7 @@ the same nexthop.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\> [route-map \<name\>]
+
 Specifies an optional route-map to be applied to routes imported or
 exported between the current unicast VRF and VPN.
 ```
@@ -641,6 +658,7 @@ Enables import or export of routes between the current unicast VRF and VPN.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> import vrf \<name\>
+
 Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the
 current VRF using the VPN RIB as intermediary. The RD and RT are auto
 derived and should not be specified explicitly for either the source or
@@ -655,6 +673,7 @@ Specifies an optional route-map to be applied to routes imported from VRFs.
 
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp interface \<interface\> mpls forwarding
+
 It is possible to permit BGP install VPN prefixes without transport labels.
 This configuration will install VPN prefixes originated from an e-bgp session,
 and with the next-hop directly connected.
@@ -671,6 +690,7 @@ maintained, too.For L3VPN VRF maintenance the following operational commands
 are in place.
 
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn
+
  Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
 
 :::{code-block} none
@@ -693,6 +713,7 @@ UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 
 
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn summary
+
 Print a summary of neighbor connections for the specified AFI/SAFI
 combination.
 

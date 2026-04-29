@@ -62,6 +62,7 @@ as the peer of the other.
 ## Operation
 
 ```{opcmd} show interfaces virtual-ethernet
+
 Show brief interface information.
 
 :::{code-block} none
@@ -75,6 +76,7 @@ veth11           100.64.0.1/31                     u/u
 ```
 
 ```{opcmd} show interfaces virtual-ethernet \<interface\>
+
 Show detailed interface information.
 
 :::{code-block} none

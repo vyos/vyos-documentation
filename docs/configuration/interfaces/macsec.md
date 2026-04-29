@@ -26,11 +26,13 @@ addresses distinct use cases.
 ### MACsec options
 
 ```{cfgcmd} set interfaces macsec \<interface\> security cipher \<gcm-aes-128|gcm-aes-256\>
+
 **Configure the cipher suite for the MACsec interface.**
 This configuration parameter is mandatory.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> security encrypt
+
 **Enable encryption on the MACsec interface.**
 By default, MACsec interfaces only provide authentication; encryption is
 optional.
@@ -38,6 +40,7 @@ When enabled, outgoing packets are encrypted using the configured cipher suite.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> source-interface \<physical-source\>
+
 **Configure a physical source interface for the MACsec interface.**
 Traffic transmitted through this interface is authenticated and, if configured,
 encrypted.
@@ -51,6 +54,7 @@ each MACsec peer. {abbr}`MKA (MACsec Key Agreement protocol)` cannot be used in
 this mode.
 
 ```{cfgcmd} set interfaces macsec \<interface\> security static key \<key\>
+
 **Configure the Transmit (TX) SAK for the MACsec interface.**
 The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
 string.
@@ -62,6 +66,7 @@ string.
 ```
 
 ```{cfgcmd} set interfaces macsec \<interface\> security static peer \<peer\> key \<key\>
+
 **Configure the RX SAK for traffic from the MACsec peer.**
 The key must be a 16-byte (GCM-AES-128) or 64-byte (GCM-AES-256) hexadecimal
 string.

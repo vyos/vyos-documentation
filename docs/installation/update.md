@@ -16,6 +16,7 @@ Only LTS releases are PGP-signed.
 :::
 
 ```{opcmd} add system image \<url | path\> | [latest] [vrf name] [username user [password pass]]
+
 Use this command to install a new system image. You can retrieve the
 image from the web (``http://``, ``https://``) or from your local system.
 For example: /tmp/vyos-1.2.3-amd64.iso.

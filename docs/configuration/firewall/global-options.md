@@ -210,6 +210,7 @@ connections, or TCP connections in various states.
 ```
 
 ```{cfgcmd} set firewall global-options timeout udp stream \<1-21474836\>
+
 :defaultvalue:
 
 Set the timeout in seconds for a protocol or state.

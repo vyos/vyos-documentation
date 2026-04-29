@@ -39,6 +39,7 @@ the `allow-client` directive.
 ## Configuration
 
 ```{cfgcmd} set service ntp server \<address\>
+
    Configure one or more servers for synchronisation. Server name can be either
    an IP address or {abbr}`FQDN (Fully Qualified Domain Name)`.
 
@@ -51,6 +52,7 @@ the `allow-client` directive.
 
 
 ```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave\>
+
 Configure one or more attributes to the given NTP server.
 
 * ``noselect`` marks the server as unused, except for display purposes. The
@@ -74,6 +76,7 @@ synchronization accuracy and stability when supported by both parties.
 
 
 ```{cfgcmd} set service ntp listen-address \<address\>
+
 NTP process will only listen on the specified IP address. You must specify
 the `<address>` and optionally the permitted clients. Multiple listen
 addresses for same IP family is no longer supported. Only one IPv4 and one
@@ -82,6 +85,7 @@ IPv6 address can be configured, using separate commands for each.
 
 
 ```{cfgcmd} set service ntp allow-client address \<address\>
+
 List of networks or client addresses permitted to contact this NTP server.
 
 Multiple networks/client IP addresses can be configured.
@@ -95,6 +99,7 @@ Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 
 
 ```{cfgcmd} set service ntp leap-second [ignore|smear|system|timezone]
+
 Define how to handle leap-seconds.
 
 * `ignore`: No correction is applied to the clock for the leap second. The
@@ -145,6 +150,7 @@ packets), chrony will leverage timestamping on transmitted packets only, which
 still provides some benefit.
 
 ```{cfgcmd} set service ntp timestamp interface \<interface\>
+
 Configures hardware timestamping on the interface \<interface\>. The special
 value `all` can also be specified to enable timestamping on all interfaces
 that support it.
@@ -182,6 +188,7 @@ for timestamping PTP packets while retaining the configuration flexibility and
 fault tolerance of NTP.
 
 ```{cfgcmd} set service ntp ptp
+
 Enables the NTP daemon PTP transport. The NTP daemon will listen on the
 configured PTP port. Note that one or more servers must be individually
 enabled for PTP before the daemon will synchronize over the transport.

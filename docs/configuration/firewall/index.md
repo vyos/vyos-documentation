@@ -177,22 +177,26 @@ Here is a list of VyOS firewall CLI subcommands and their
 corresponding pages in the documentation:
 
 ```{cfgcmd} set firewall bridge ...
+
 Configure bridge firewall rules for traffic at the bridge layer.
 See the Bridge Firewall Configuration page for detailed information.
 ```
 
 ```{cfgcmd} set firewall flowtable ...
+
 Configure firewall flowtables for stateful connection tracking and rules.
 See the Flowtables Firewall Configuration page for detailed information.
 ```
 
 ```{cfgcmd} set firewall global-options ...
+
 Configure global firewall options such as ``all-ping``, ``broadcast-ping``,
 ``syn-cookies``, and other system-wide firewall settings.
 See the Global Firewall Options page for detailed information.
 ```
 
 ```{cfgcmd} set firewall group ...
+
 Organize firewall rules by creating reusable address, network, interface,
 MAC, port, and domain groups. Use groups in multiple rules to simplify
 configuration and maintenance.
@@ -200,16 +204,19 @@ See the Firewall Groups page for detailed information.
 ```
 
 ```{cfgcmd} set firewall ipv4 ...
+
 Configure IPv4-specific firewall rules.
 See the IPv4 Firewall Configuration page for detailed information.
 ```
 
 ```{cfgcmd} set firewall ipv6 ...
+
 Configure IPv6-specific firewall rules.
 See the IPv6 Firewall Configuration page for detailed information.
 ```
 
 ```{cfgcmd} set firewall zone ...
+
 Configure zone-based firewall policies for controlling traffic between
 different network zones.
 See the Zone-Based Firewall Configuration page for detailed information.

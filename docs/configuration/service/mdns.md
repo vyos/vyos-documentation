@@ -22,6 +22,7 @@ are launched in a subnet you will experience the mDNS packet storm death!
 ## Configuration
 
 ```{cfgcmd} set service mdns repeater interface \<interface\>
+
 To enable mDNS repeater you need to configure at least two interfaces so that
 all incoming mDNS packets from one interface configured here can be
 re-broadcasted to any other interface(s) configured under this section.
@@ -33,21 +34,25 @@ mDNS repeater can be temporarily disabled without deleting the service using
 ```
 
 ```{cfgcmd} set service mdns repeater ip-version \<ipv4 | ipv6 | both\>
+
 mDNS repeater can be enabled either on IPv4 socket or on IPv6 socket or both
 to re-broadcast. By default, mDNS repeater will listen on both IPv4 and IPv6.
 ```
 
 ```{cfgcmd} set service mdns repeater allow-service \<service\>
+
 mDNS repeater can be configured to re-broadcast only specific services. By
 default, all services are re-broadcasted.
 ```
 
 ```{cfgcmd} set service mdns repeater browse-domain \<domain\>
+
 Allow listing additional custom domains to be browsed (in addition to the
 default ``local``) so that they can be reflected.
 ```
 
 ```{cfgcmd} set service mdns repeater cache-entries \<entries\>
+
 Specify how many resource records are cached per interface. Bigger values
 allow mDNS work correctly in large LANs but also increase memory consumption.
 

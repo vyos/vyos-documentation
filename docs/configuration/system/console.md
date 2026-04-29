@@ -14,6 +14,7 @@ access to the console is the only way to diagnose and correct software failures.
 Major upgrades to the installed distribution may also require console access.
 
 ```{cfgcmd} set system console device \<device\>
+
 Defines the specified device as a system console. Available console devices
 can be (see completion helper):
 * ``ttySN`` - Serial device name
@@ -23,6 +24,7 @@ can be (see completion helper):
 ```
 
 ```{cfgcmd} set system console device \<device\> kernel
+
 When set, the selected serial console is used as the kernel boot console.
 When removed, the kernel boot console falls back to tty0.
 
@@ -35,6 +37,7 @@ for the serial interface used during installation; usually ``ttyS0`` or
 ```
 
 ```{cfgcmd} set system console device \<device\> speed \<speed\>
+
 The speed (baudrate) of the console device. Supported values are:
 * ``1200`` - 1200 bps
 * ``2400`` - 2400 bps

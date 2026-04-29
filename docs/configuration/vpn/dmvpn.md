@@ -75,12 +75,14 @@ prefix basis when direct tunnel is not established.
 ### NHRP protocol configuration
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> authentication \<secret\>
+
 Enables Cisco style authentication on NHRP packets. This embeds the
 plaintext password to the outgoing NHRP packets. Maximum length of
 the password is 8 characters.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> holdtime \<timeout\>
+
 Holdtime is the number of seconds that have to pass before stopping to
 advertise an NHRP NBMA address as valid. It also controls how often NHRP
 registration requests are sent. By default registrations are sent every
@@ -88,6 +90,7 @@ one third of the holdtime
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\> nbma \<nbma-ip\>
+
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x**.
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **local**
 
@@ -100,6 +103,7 @@ Configure NHRP advertised MTU.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> multicast \<nbma-ip\>
+
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **dynamic**
 
 Sends multicast packets to the specified NBMA address. If dynamic is specified
@@ -107,6 +111,7 @@ then destination NBMA address (or addresses) are learnt dynamically.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> network-id \<network-id\>
+
 * **network-id** - NHRP network id <1-4294967295>
 
 Enable NHRP on this interface and set the interface’s network ID. The network ID
@@ -118,6 +123,7 @@ received on an interface they are assigned to the local NHRP domain for that int
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> nhs tunnel-ip \<tunnel-ip\> nbma \<nbma-ip\>
+
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x** or **dynamic**
 * **nbma-ip** - NBMA ip address in format **x.x.x.x**
 
@@ -126,17 +132,20 @@ then Next Hop Server can have dynamic address which maps to its NBMA address.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> redirect
+
 This enable redirect replies on the NHS similar to ICMP redirects except this is
 managed by the nhrp protocol. This setting allows spokes to communicate with each
 others directly.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> registration-no-unique
+
 Allow the client to not set the unique flag in the NHRP packets. This is useful when
 a station has a dynamic IP address that could change over time.
 ```
 
 ```{cfgcmd} set protocols nhrp tunnel \<tunnel\> shortcut
+
 Enable shortcut (spoke-to-spoke) tunnels to allow NHC to talk to each others directly
 after establishing a connection without going through the hub.
 ```

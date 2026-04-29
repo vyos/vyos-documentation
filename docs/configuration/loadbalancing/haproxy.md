@@ -201,6 +201,7 @@ Value range 1-3600 seconds.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> timeout server \<seconds\>
+
 Set the maximum inactivity time on the server side.
 Value range 1-3600 seconds.
 ```
@@ -227,6 +228,7 @@ Specify the minimum required TLS version 1.2 or 1.3
 
 
 ```{cfgcmd} set load-balancing haproxy global-parameters logging facility \<facility\> level \<level\>
+
 Specify facility and level for logging.
 For an explanation on syslog facilities and severity levels,
 see tables in the syslog configuration section.
@@ -234,24 +236,28 @@ see tables in the syslog configuration section.
 
 
 ```{cfgcmd} set load-balancing haproxy timeout check \<seconds\>
+
 Set the timeout in seconds for established connections.
 Value range 1-3600 seconds. Default is 5 seconds.
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy timeout client \<seconds\>
+
 Set the maximum inactivity time on the client side.
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy timeout connect \<seconds\>
+
 Set the maximum time to wait for a connection attempt to a server to succeed.
 Value range 1-3600 seconds. Default is 10 seconds.
 ```
 
 
 ```{cfgcmd} set load-balancing haproxy timeout server \<seconds\>
+
 Set the maximum inactivity time on the server side.
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
@@ -265,6 +271,7 @@ Use HTTP health checks to monitor web applications that provide health status
 information and determine their availability.
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check
+
 Enables HTTP health checks using OPTION HTTP requests against '/' and
 expecting a successful response code in the 200-399 range.
 ```
@@ -283,6 +290,7 @@ Set the endpoint to use for health checks.
 
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-check expect \<condition\>
+
 Set the expected result condition for a server to be considered healthy.
 
 Some possible examples are:
@@ -296,6 +304,7 @@ Configure health checks for TCP mode backends. You can configure protocol-aware
 checks for a range of Layer 7 protocols:
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> health-check \<protocol\>
+
 Available health check protocols:
 :   - ``ldap`` LDAP protocol check.
   - ``redis`` Redis protocol check.

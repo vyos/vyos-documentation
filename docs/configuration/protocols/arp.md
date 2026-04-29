@@ -17,6 +17,7 @@ implemented.
 ## Configure
 
 ```{cfgcmd} set protocols static arp interface \<interface\> address \<host\> mac \<mac\>
+
 This will configure a static ARP entry always resolving `<address>` to
 `<mac>` for interface `<interface>`.
 

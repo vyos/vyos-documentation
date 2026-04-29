@@ -32,6 +32,7 @@ its MAC address) and configured to run in monitor mode.
 ### System-wide configuration
 
 ```{cfgcmd} set system wireless country-code \<cc\>
+
 Country code (ISO/IEC 3166-1). Used to set regulatory domain. Set as needed
 to indicate country in which device is operating. This can limit available
 channels and transmit power.
@@ -44,6 +45,7 @@ This option is mandatory in ``access-point`` mode.
 ### Wireless options
 
 ```{cfgcmd} set interfaces wireless \<interface\> channel \<number\>
+
 Configure the IEEE 802.11 wireless radio channel for the interface.
 Channel allocation depends on the frequency band:
 * **2.4 GHz** (802.11b/g/n/ax): Channels range from 1 to 14.
@@ -53,11 +55,13 @@ Channel allocation depends on the frequency band:
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> disable-broadcast-ssid
+
 Send empty SSID in beacons and ignore probe request frames that do not specify
 full SSID, i.e., require stations to know the SSID.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> expunge-failing-stations
+
 Disassociate stations based on excessive transmission failures or other
 indications of connection loss.
 
@@ -66,6 +70,7 @@ drivers.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> isolate-stations
+
 Client isolation can be used to prevent low-level bridging of frames between
 associated stations in the BSS.
 
@@ -73,6 +78,7 @@ By default, this bridging is allowed.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> max-stations \<count\>
+
 Maximum number of stations allowed in station table. New stations will be
 rejected after the station table is full. IEEE 802.11 has a limit of 2007
 different association IDs, so this number should not be larger than that.
@@ -81,6 +87,7 @@ This defaults to 2007.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> mgmt-frame-protection
+
 Management Frame Protection (MFP) according to IEEE 802.11w
 
 :::{note}
@@ -89,6 +96,7 @@ Management Frame Protection (MFP) according to IEEE 802.11w
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> enable-bf-protection
+
 Beacon Protection: management frame protection for Beacon frames.
 
 :::{note}
@@ -98,6 +106,7 @@ to be enabled.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> mode \<a | b | g | n | ac | ax\>
+
 Operation mode of wireless radio.
 * ``a`` - 802.11a - 54 Mbits/sec
 * ``b`` - 802.11b - 11 Mbits/sec
@@ -112,11 +121,13 @@ In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> physical-device \<device\>
+
 Wireless hardware device used as underlay radio.
 This defaults to phy0.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> reduce-transmit-power \<number\>
+
 Adds the Power Constraint information element to Beacon and Probe Response
 frames.
 
@@ -133,6 +144,7 @@ SSID to be used in IEEE 802.11 management frames
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> type \<access-point | station | monitor\>
+
 Wireless device type for this interface
 * ``access-point``: Forwards packets between other nodes.
 * ``station``: Connects to another {abbr}`AP (Access Point)`.

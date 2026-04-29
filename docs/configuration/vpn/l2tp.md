@@ -17,6 +17,7 @@ set vpn l2tp remote-access gateway-address 192.168.255.1
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication mode \<local | radius\>
+
 Set authentication backend. The configured authentication backend is used
 for all queries.
 
@@ -27,12 +28,14 @@ for all queries.
 
 
 ```{cfgcmd} set vpn l2tp remote-access authentication local-users username \<user\> password \<pass\>
+
 Create `<user>` for local authentication on this system. The users password
 will be set to `<pass>`.
 ```
 
 
 ```{cfgcmd} set vpn l2tp remote-access client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
+
 Use this command to define the first IP address of a pool of
 addresses to be given to l2tp clients. If notation ``x.x.x.x-x.x.x.x``,
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
@@ -47,6 +50,7 @@ Use this command to define default address pool name.
 
 
 ```{cfgcmd} set vpn l2tp remote-access gateway-address \<gateway\>
+
 Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
@@ -126,6 +130,7 @@ set vpn l2tp remote-access authentication mode radius
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius server \<server\> key \<secret\>
+
 Configure RADIUS `<server>` and its required shared `<secret>` for
 communicating with the RADIUS server.
 ```
@@ -183,6 +188,7 @@ Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius dynamic-author server \<address\>
+
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
@@ -208,11 +214,13 @@ Timeout to wait response from server (seconds)
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius nas-identifier \<identifier\>
+
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
 in DM/CoA requests.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius nas-ip-address \<address\>
+
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
@@ -223,6 +231,7 @@ Source IPv4 address used in all RADIUS server queires.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius rate-limit attribute \<attribute\>
+
 Specifies which RADIUS server attribute contains the rate limit information.
 The default attribute is `Filter-Id`.
 ```
@@ -238,6 +247,7 @@ Enables bandwidth shaping via RADIUS.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication radius rate-limit vendor
+
 Specifies the vendor dictionary. This dictionary needs to be present in
 /usr/share/accel-ppp/radius.
 ```
@@ -302,6 +312,7 @@ To explain the usage of LNS follow our blueprint {ref}`examples-lac-lns`.
 ## IPv6
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6 \<require | prefer | allow | deny\>
+
 Specifies IPv6 negotiation preference.
 * **require** - Require IPv6 negotiation
 * **prefer** - Ask client for IPv6 negotiation, do not fail if it rejects
@@ -310,6 +321,7 @@ Specifies IPv6 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
+
 Use this comand to set the IPv6 address pool from which an l2tp client will
 get an IPv6 prefix of your defined length (mask) to terminate the l2tp
 endpoint at their side. The mask length can be set between 48 and 128 bits
@@ -317,6 +329,7 @@ long, the default value is 64.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
+
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on l2tp.
 You will have to set your IPv6 pool and the length of the delegation
 prefix. From the defined IPv6 pool you will be handing out networks of the
@@ -344,6 +357,7 @@ Accept peer interface identifier. By default this is not defined.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
+
 Specifies if a fixed or random interface identifier is used for IPv6. The
 default is fixed.
 * **random** - Random interface identifier for IPv6
@@ -351,6 +365,7 @@ default is fixed.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
+
 Specifies the peer interface identifier for IPv6. The default is fixed.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
@@ -405,6 +420,7 @@ Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access authentication protocols \<pap | chap | mschap | mschap-v2\>
+
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
@@ -419,11 +435,13 @@ Use this command to define the next address pool name.
 ### PPP Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options disable-ccp
+
 Disable Compression Control Protocol (CCP).
 CCP is enabled by default.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options interface-cache \<number\>
+
 Specifies number of interfaces to cache. This prevents interfaces from being
 removed once the corresponding session is destroyed. Instead, interfaces are
 cached for later use in new sessions. This should reduce the kernel-level
@@ -432,6 +450,7 @@ Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv4 \<require | prefer | allow | deny\>
+
 Specifies IPv4 negotiation preference.
 * **require** - Require IPv4 negotiation
 * **prefer** - Ask client for IPv4 negotiation, do not fail if it rejects
@@ -440,23 +459,27 @@ Specifies IPv4 negotiation preference.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options lcp-echo-failure \<number\>
+
 Defines the maximum `<number>` of unanswered echo requests. Upon reaching the
 value `<number>`, the session will be reset. Default value is **3**.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options lcp-echo-interval \<interval\>
+
 If this option is specified and is greater than 0, then the PPP module will
 send LCP echo requests every `<interval>` seconds.
 Default value is **30**.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options lcp-echo-timeout
+
 Specifies timeout in seconds to wait for any peer activity. If this option is
 specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
 is not used. Default value is **0**.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options min-mtu \<number\>
+
 Defines the minimum acceptable MTU. If a client tries to negotiate an MTU
 lower than this it will be NAKed, and disconnected if it rejects a greater
 MTU.
@@ -464,6 +487,7 @@ Default value is **100**.
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options mppe \<require | prefer | deny\>
+
 Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
 preference.
 * **require** - ask client for mppe, if it rejects drop connection
@@ -513,6 +537,7 @@ Maximum number of concurrent session start attempts
 ```
 
 ```{cfgcmd} set vpn l2tp remote-access name-server \<address\>
+
 Connected clients should use `<address>` as their DNS server. This command
 accepts both IPv4 and IPv6 addresses. Up to two nameservers can be configured
 for IPv4, up to three for IPv6.

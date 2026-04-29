@@ -11,6 +11,7 @@ is very simple to implement.
 ## Configuration
 
 ```{cfgcmd} set service tftp-server directory \<directory\>
+
 Enable TFTP service by specifying the `<directory>` which will be used to serve
 files.
 ```
@@ -22,6 +23,7 @@ will be migrated.
 :::
 
 ```{cfgcmd} set service tftp-server listen-address \<address\>
+
 Configure the IPv4 or IPv6 listen address of the TFTP server. Multiple IPv4 and
 IPv6 addresses can be given. There will be one TFTP server instances listening
 on each IP address.

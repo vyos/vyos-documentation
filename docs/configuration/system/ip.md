@@ -8,6 +8,7 @@ Use this command to disable IPv4 forwarding on all interfaces.
 ```
 
 ```{cfgcmd} set system ip disable-directed-broadcast
+
 Use this command to disable IPv4 directed broadcast forwarding on all
 interfaces.
 If set, IPv4 directed broadcast forwarding will be completely disabled
@@ -16,6 +17,7 @@ enabled or not.
 ```
 
 ```{cfgcmd} set system ip arp table-size \<number\>
+
 Use this command to define the maximum number of entries to keep in
 the ARP cache (1024, 2048, 4096, 8192, 16384, 32768).
 ```
@@ -31,11 +33,13 @@ Use this command to immport the table, by given table id, into the main RIB.
 ```
 
 ```{cfgcmd} set system ip import-table \<table-id\> distance \<distance\>
+
 Use this command to override the default distance when importing routers
 from the alternate table.
 ```
 
 ```{cfgcmd} set system ip import-table \<table-id\> route-map \<route-map\>
+
 Use this command to filter routes that are imported into the main table
 from alternate table using route-map.
 ```
@@ -47,6 +51,7 @@ other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
 
 ```{cfgcmd} set system ip protocol \<protocol\> route-map \<route-map\>
+
 Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, eigrp, isis, ospf, rip, static
 
@@ -63,6 +68,7 @@ by default for a traditional profile of FRR which we use. It and can be disabled
 you do not want to e.g. allow BGP to peer across the default route.
 
 ```{cfgcmd} set system ip nht no-resolve-via-default
+
 Do not allow IPv4 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.

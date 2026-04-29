@@ -160,6 +160,7 @@ A VyOS system has three major types of configurations:
 ### Seeing and navigating the configuration
 
 ```{opcmd} show configuration
+
 View the current active configuration, also known as the running configuration, from the operational mode.
 
 :::{code-block} none
@@ -219,6 +220,7 @@ system {
 By default, the configuration is displayed in a hierarchy like the above example, this is only one of the possible ways to display the configuration. When the configuration is generated and the device is configured, changes are added through a collection of {cfgcmd}`set` and {cfgcmd}`delete` commands.
 
 ```{opcmd} show configuration commands
+
 Get a collection of all the set commands required which led to the running configuration.
 
 :::{code-block} none
@@ -247,6 +249,7 @@ Use the `show configuration commands | strip-private` command when you want to h
 ::::
 
 ```{opcmd} show configuration json
+
 View the current active configuration in JSON format.
 
 :::{code-block} none
@@ -255,6 +258,7 @@ View the current active configuration in JSON format.
 ```
 
 ```{opcmd} show configuration json pretty
+
 View the current active configuration in readable JSON format.
 
 :::{code-block} none

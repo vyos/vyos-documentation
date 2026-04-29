@@ -18,6 +18,7 @@ The watchdog feature is configured under the `system watchdog` configuration
 tree. The presence of the `system watchdog` node enables the watchdog feature.
 
 ```{cfgcmd} set system watchdog
+
 Enable watchdog support.
 
 The watchdog is enabled only when a watchdog device is available as
@@ -33,6 +34,7 @@ created, VyOS will emit a warning and will not enable the systemd watchdog.
 ```
 
 ```{cfgcmd} set system watchdog module \<module-name\>
+
 Specify the kernel watchdog driver module to load for ``/dev/watchdog0``.
 
 The configured module must be a watchdog driver module, not an arbitrary
@@ -75,6 +77,7 @@ set system watchdog module softdog
 ```
 
 ```{cfgcmd} set system watchdog timeout \<seconds\>
+
 :defaultvalue:
 
 Set the watchdog timeout for normal runtime operation in seconds.
@@ -99,6 +102,7 @@ set system watchdog timeout 30
 ```
 
 ```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
+
 :defaultvalue:
 
 Set the watchdog timeout during system shutdown in seconds.
@@ -122,6 +126,7 @@ set system watchdog shutdown-timeout 180
 ```
 
 ```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
+
 :defaultvalue:
 
 Set the watchdog timeout during system reboot in seconds.

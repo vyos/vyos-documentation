@@ -12,6 +12,7 @@ these commands.
 Use with caution. Most of the time this will not be necessary.
 
 ```{cfgcmd} set protocols static mroute \<subnet\> next-hop \<address\> [distance \<distance\>]
+
 Insert into the Multicast RIB Route `<subnet>` with specified next-hop.
 The distance can be specified as well if desired.
 ```
@@ -20,6 +21,7 @@ The distance can be specified as well if desired.
 Do not install route for `<subnet>` into the Multicast RIB.
 ```
 ```{cfgcmd} set protocols static mroute \<subnet\> interface \<interface\> [distance \<distance\>]
+
 Insert into the Multicast RIB Route `<subnet>` with specified `<interface>`.
 The distance can be specified as well if desired.
 ```

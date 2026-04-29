@@ -30,6 +30,7 @@ interfaces openvpn` rather than `set vpn`, which is often overlooked.
 ## Configuration
 
 ```{cfgcmd} set interfaces openvpn \<interface\> authentication password \<text\>
+
    **Configure the password for the** ``auth-user-pass`` **authentication method.**
 
    This option applies only to OpenVPN clients.
@@ -37,6 +38,7 @@ interfaces openvpn` rather than `set vpn`, which is often overlooked.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> authentication username \<text\>
+
 **Configure the username for the** ``auth-user-pass`` **authentication method.**
 
 This option applies only to OpenVPN clients.
@@ -50,6 +52,7 @@ Configure the description for the OpenVPN interface.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> device-type \<tap | tun\>
+
 **Configure the virtual network device type for the OpenVPN interface:**
 
 * ``tun`` **(default)**: Operates at Layer 3, encapsulating IPv4 or IPv6 packets.
@@ -64,6 +67,7 @@ Disable the specific OpenVPN interface.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> encryption cipher \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
+
 **Configure the static encryption cipher for the OpenVPN tunnel.**
 
 The ``cipher`` option maps to OpenVPN’s ``--cipher`` directive and specifies
@@ -76,6 +80,7 @@ and should be used only in compatibility scenarios.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
+
 **Configure a prioritized list of negotiated ciphers for OpenVPN in**
 ``client`` **or** ``server`` **mode.**
 
@@ -91,6 +96,7 @@ This option is not compatible with ``site-to-site`` mode.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers-fallback \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
+
 **Configure the fallback cipher for** ``site-to-site`` **mode.**
 
 The ``data-ciphers-fallback`` option maps to OpenVPN’s ``--data-ciphers-
@@ -123,6 +129,7 @@ Configure the hashing algorithm for the OpenVPN interface.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> keep-alive failure-count \<value\>
+
 **Configure the number of tolerated keepalive packet failures.**
 
 Default: 60 consecutive failures.
@@ -130,6 +137,7 @@ Default: 60 consecutive failures.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> keep-alive interval \<value\>
+
 **Configure the frequency, in seconds, at which keepalive packets are sent.**
 
 Default: 10 seconds.
@@ -143,6 +151,7 @@ Configure the local tunnel IP address for ``site-to-site`` mode.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> local-host \<address\>
+
 **Configure the local IP address to accept connections.**
 
 If configured, OpenVPN binds to this IP address only.
@@ -158,18 +167,21 @@ Configure the local port to accept connections.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> mirror egress \<monitor-interface\>
+
 Configure mirroring of outgoing traffic from this OpenVPN interface to the
 designated monitor interface.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> mirror ingress \<monitor-interface\>
+
 Configure mirroring of incoming traffic from this OpenVPN interface to the
 designated monitor interface.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> mode \<site-to-site | server | client\>
+
 **Configure OpenVPN operation mode:**
 
 * ``site-to-site``: Establishes a site-to-site VPN connection.
@@ -202,6 +214,7 @@ encryption offload support available in the kernel.
 enabled to avoid compatibility issues with existing clients.
 
 ```{cfgcmd} set interfaces openvpn \<interface\> offload dco
+
    **Enable** {abbr}`DCO (Data Channel Offload)` **for the specified OpenVPN
    interface.**
 
@@ -216,6 +229,7 @@ enabled to avoid compatibility issues with existing clients.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> openvpn-option \<text\>
+
 **Add raw OpenVPN configuration options to the openvpn.conf file.**
 
 OpenVPN provides many configuration options, but not all are available in the
@@ -257,6 +271,7 @@ the " statement.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> persistent-tunnel
+
 **Enable always-active mode for the TUN/TAP device.**
 
 When enabled, the TUN/TAP device remains active upon connection resets or
@@ -265,6 +280,7 @@ daemon reloads.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> protocol \<udp | tcp-passive | tcp-active \>
+
 **Configure the protocol for OpenVPN communication with a remote host:**
 
 * ``udp`` **(default)**: Uses the UDP protocol.
@@ -286,6 +302,7 @@ Configure the remote tunnel IP address for site-to-site mode.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> remote-host \<address | host\>
+
 **Configure the IPv4/IPv6 address or hostname for a server device if OpenVPN
 runs in client mode.**
 
@@ -360,6 +377,7 @@ Configure a route to be pushed to the specific client.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client \<name\> subnet \<subnet\>
+
 **Configure a fixed subnet to be routed from the server to the specified
 client.**
 
@@ -368,18 +386,21 @@ Used as OpenVPN’s ``iroute`` directive.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool start \<address\>
+
 Configure the first IP address in the subnet's IPv4 pool to be dynamically
 allocated to connecting clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool stop \<address\>
+
 Configure the last IP address in the subnet's IPv4 pool to be dynamically
 allocated to connecting clients.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool subnet \<netmask\>
+
 **Configure the subnet mask pushed to dynamic clients.**
 
 Use this command only for the TAP device type. Do not use it for bridged
@@ -406,12 +427,14 @@ Configure the maximum number of client connections.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp challenge \<enable | disable\>
+
 If enabled, openvpn-otp expects a password as a result of the challenge/
 response protocol.
 ```
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp digits \<1-65535\>
+
 **Configure the number of digits to use for the** {abbr}`TOTP (Time-based
 One-Time Password)` **hash.**
 
@@ -420,6 +443,7 @@ Default: 6.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp drift \<1-65535\>
+
 **Configure the time drift in seconds.**
 
 Default: 0.
@@ -427,6 +451,7 @@ Default: 0.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp slop \<1-65535\>
+
 **Configure the allowed clock slop in seconds.**
 
 Default: 180.
@@ -434,6 +459,7 @@ Default: 180.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server mfa totp step \<1-65535\>
+
 **Configure the step value for** {abbr}`TOTP (Time-based One-Time Password)`
 **in seconds.**
 
@@ -460,6 +486,7 @@ Reject connections from clients that are not explicitly configured.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server subnet \<subnet\>
+
 **Configure the IPv4 or IPv6 network.**
 
 This parameter is mandatory when operating in server mode.
@@ -467,6 +494,7 @@ This parameter is mandatory when operating in server mode.
 
 
 ```{cfgcmd} set interfaces openvpn \<interface\> server topology \< net30 | point-to-point | subnet\>
+
 **Configure the virtual addressing topology for** ``tun`` **mode.**
 
 This command does not affect ``tap`` mode, which always uses the ``subnet``
@@ -488,6 +516,7 @@ only if no clients run Windows operating systems.
 Configure the static secret key for a site-to-site OpenVPN connection.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls auth-key \<key\>
+
 **Configure the TLS secret key for tls-auth.**
 
 This adds an HMAC signature to all SSL/TLS handshake packets to verify
@@ -505,6 +534,7 @@ Configure the Certificate Authority chain in the PKI configuration.
 Configure the certificate name in the PKI configuration.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls crypt-key
+
 Configure a shared secret key to provide an additional level of security,
 a variant similar to tls-auth.
 ```
@@ -517,6 +547,7 @@ Configure Diffie-Hellman parameters for server mode.
 Configure the peer certificate SHA256 fingerprint for site-to-site mode.
 ```
 ```{cfgcmd} set interfaces openvpn \<interface\> tls role \<active | passive\>
+
 **Configure the TLS negotiation role, preferably used in site-to-site mode:**
 * ``active``: Initiates TLS negotiation actively.
 * ``passive``: Waits for incoming TLS connections.

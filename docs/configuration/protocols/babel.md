@@ -18,6 +18,7 @@ VyOS does not have a special command to start the Babel process.
 The Babel process starts when the first Babel enabled interface is configured.
 
 ```{cfgcmd} set protocols babel interface \<interface\>
+
 This command specifies a Babel enabled interface by interface name. Both
 the sending and receiving of Babel packets will be enabled on the interface
 specified in this command.
@@ -26,6 +27,7 @@ specified in this command.
 ## Optional Configuration
 
 ```{cfgcmd} set protocols babel parameters diversity
+
 This command enables routing using radio frequency diversity.
 This is highly recommended in networks with many wireless nodes.
 
@@ -37,6 +39,7 @@ set diversity-factor and channel below.
 
 
 ```{cfgcmd} set protocols babel parameters diversity-factor \<1-256\>
+
 This command sets the multiplicative factor used for diversity routing,
 in units of 1/256; lower values cause diversity to play a more important role
 in route selection.
@@ -47,12 +50,14 @@ with multiple independent radios.
 
 
 ```{cfgcmd} set protocols babel parameters resend-delay \<milliseconds\>
+
 This command specifies the time in milliseconds after which an 'important'
 request or update will be resent. The default is 2000 ms.
 ```
 
 
 ```{cfgcmd} set protocols babel parameters smoothing-half-life \<seconds\>
+
 This command specifies the time constant, in seconds, of the smoothing
 algorithm used for implementing hysteresis.
 Larger values reduce route oscillation at the cost of very slightly increasing
@@ -63,6 +68,7 @@ networks. The default is 4 s.
 ## Interfaces Configuration
 
 ```{cfgcmd} set protocols babel interface \<interface\> type \<auto|wired|wireless\>
+
 This command sets the interface type:
 
 **auto** – automatically determines the interface type.
@@ -74,6 +80,7 @@ but may cause slower convergence and extra routing traffic.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> split-horizon \<default|disable|enable\>
+
 This command specifies whether to perform split-horizon on the interface.
 Specifying no babel split-horizon is always correct, while babel split-horizon
 is an optimisation that should only be used on symmetric
@@ -87,6 +94,7 @@ split-horizon on wireless interfaces.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> hello-interval \<milliseconds\>
+
 This command specifies the time in milliseconds between two scheduled hellos.
 On wired links, Babel notices a link failure within two hello intervals;
 on wireless links, the link quality value is reestimated at every hello
@@ -96,6 +104,7 @@ The default is 4000 ms.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> update-interval \<milliseconds\>
+
 This command specifies the time in milliseconds between two scheduled updates.
 Since Babel makes extensive use of triggered updates,
 this can be set to fairly high values on links with little packet loss.
@@ -104,6 +113,7 @@ The default is 20000 ms.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> rxcost \<1-65534\>
+
 This command specifies the base receive cost for this interface.
 For wireless interfaces, it specifies the multiplier used for computing
 the ETX reception cost (default 256);
@@ -113,6 +123,7 @@ neighbours.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-decay \<1-256\>
+
 This command specifies the decay factor for the exponential moving average
 of RTT samples, in units of 1/256.
 Higher values discard old samples faster. The default is 42.
@@ -120,6 +131,7 @@ Higher values discard old samples faster. The default is 42.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-min \<milliseconds\>
+
 This command specifies the minimum RTT, in milliseconds,
 starting from which we increase the cost to a neighbour.
 The additional cost is linear in (rtt - rtt-min). The default is 10 ms.
@@ -127,11 +139,13 @@ The additional cost is linear in (rtt - rtt-min). The default is 10 ms.
 
 
 ```{cfgcmd} set protocols babel interface \<interface\> rtt-max \<milliseconds\>
+
 This command specifies the maximum RTT, in milliseconds, above which
 we don't increase the cost to a neighbour. The default is 120 ms.
 ```
 
 ```{cfgcmd} set protocols babel interface \<interface\> max-rtt-penalty \<milliseconds\>
+
 This command specifies the maximum cost added to a neighbour because of RTT,
 i.e. when the RTT is higher or equal than rtt-max.
 The default is 150.
@@ -139,12 +153,14 @@ Setting it to 0 effectively disables the use of a RTT-based cost.
 ```
 
 ```{cfgcmd} set protocols babel interface \<interface\> enable-timestamps
+
 This command enables sending timestamps with each Hello and IHU message
 in order to compute RTT values.
 It is recommended to enable timestamps on tunnel interfaces.
 ```
 
 ```{cfgcmd} set protocols babel interface \<interface\> channel \<1-254|interfering|noninterfering\>
+
 This command set the channel number that diversity routing uses for this
 interface (see diversity option above).
 
@@ -159,6 +175,7 @@ with themselves.
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols babel redistribute \<ipv4|ipv6\> \<route source\>
+
 This command redistributes routing information from the given route source
 to the Babel process.
 
@@ -168,23 +185,27 @@ IPv6 route source: bgp, connected, eigrp, isis, kernel, nhrp, ospfv3, ripng, sta
 ```
 
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> access-list \<in|out\> \<number\>
+
 This command can be used to filter the Babel routes using access lists.
 {cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the access
 lists are applied.
 ```
 
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> interface \<interface\> access-list \<in|out\> \<number\>
+
 This command allows you apply access lists to a chosen interface to
 filter the Babel routes.
 ```
 
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> prefix-list \<in|out\> \<name\>
+
 This command can be used to filter the Babel routes using prefix lists.
 {cfgcmd}`in` and {cfgcmd}`out` this is the direction in which the prefix
 lists are applied.
 ```
 
 ```{cfgcmd} set protocols babel distribute-list \<ipv4|ipv6\> interface \<interface\> prefix-list \<in|out\> \<name\>
+
 This command allows you apply prefix lists to a chosen interface to
 filter the Babel routes.
 ```

@@ -14,6 +14,7 @@ uplink to the DHCP server.
 ### Configuration
 
 ```{cfgcmd} set service dhcp-relay interface \<interface\>
+
 Interfaces that participate in the DHCP relay process. If this command is
 used, at least two entries of it are required: one for the interface that
 captures the dhcp-requests, and one for the interface to forward such
@@ -33,11 +34,13 @@ Interface for DHCP Relay Agent to forward requests out.
 ```
 
 ```{cfgcmd} set service dhcp-relay server \<server\>
+
 Configure IP address of the DHCP `<server>` which will handle the relayed
 packets.
 ```
 
 ```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets discard
+
 The router should discard DHCP packages already containing relay agent
 information to ensure that only requests from DHCP clients are forwarded.
 ```
@@ -50,17 +53,20 @@ Disable dhcp-relay service.
 #### Options
 
 ```{cfgcmd} set service dhcp-relay relay-options hop-count \<count\>
+
 Set the maximum hop `<count>` before packets are discarded. Range 0...255,
 default 10.
 ```
 
 ```{cfgcmd} set service dhcp-relay relay-options max-size \<size\>
+
 Set maximum `<size>` of DHCP packets including relay agent information. If a
 DHCP packet size surpasses this value it will be forwarded without appending
 relay agent information. Range 64...1400, default 576.
 ```
 
 ```{cfgcmd} set service dhcp-relay relay-options relay-agents-packets \<append | discard | forward | replace\>
+
 Four policies for reforwarding DHCP packets exist:
 * **append:** The relay agent is allowed to append its own relay information
 to a received DHCP packet, disregarding relay information already present
@@ -125,11 +131,13 @@ Restart DHCP relay service
 ### Configuration
 
 ```{cfgcmd} set service dhcpv6-relay listen-interface \<interface\>
+
 Set eth1 to be the listening interface for the DHCPv6 relay.
 Multiple interfaces may be specified.
 ```
 
 ```{cfgcmd} set service dhcpv6-relay upstream-interface \<interface\> address \<server\>
+
 Specifies an upstream network `<interface>` from which replies from
 `<server>` and other relay agents will be accepted.
 ```
@@ -151,6 +159,7 @@ Set maximum hop count before packets are discarded, default: 10
 ```
 
 ```{cfgcmd} set service dhcpv6-relay use-interface-id-option
+
 If this is set the relay agent will insert the interface ID. This option is
 set automatically if more than one listening interfaces are in use.
 ```

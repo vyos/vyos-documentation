@@ -264,6 +264,7 @@ Please be aware to not update the submodule in your PR.
 
 ````none
 ```{cfgcmd} set system conntrack table-size \<1-50000000\>
+
   :defaultvalue:
   The connection tracking table contains one entry for each connection being
   tracked by the system.
@@ -305,6 +306,7 @@ the content of interface-address.txt looks like this
 
 `````none
 ```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
+
    Configure interface `<interface>` with one or more interface
    addresses.
    * **address** can be specified multiple times as IPv4 and/or IPv6

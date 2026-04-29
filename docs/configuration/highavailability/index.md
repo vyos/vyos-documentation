@@ -224,6 +224,7 @@ default configuration is enough. But there are cases were extra configuration
 is needed.
 
 ```{cfgcmd} set high-availability vrrp global-parameters startup_delay \<1-600\>
+
 This option specifies a delay in seconds before vrrp instances start up
 after keepalived starts.
 ```

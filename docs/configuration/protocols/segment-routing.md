@@ -47,6 +47,7 @@ Only one SRGB and default SPF Algorithm is supported
 :::
 
 ```{cfgcmd} set protocols isis segment-routing global-block high-label-value \<label-value\>
+
 Set the Segment Routing Global Block i.e. the label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.
@@ -54,6 +55,7 @@ not exceed 65535.
 
 
 ```{cfgcmd} set protocols isis segment-routing global-block low-label-value \<label-value\>
+
 Set the Segment Routing Global Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.
@@ -61,6 +63,7 @@ not exceed 65535.
 
 
 ```{cfgcmd} set protocols isis segment-routing local-block high-label-value \<label-value\>
+
 Set the Segment Routing Local Block i.e. the label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always
@@ -69,6 +72,7 @@ unsets both.
 
 
 ```{cfgcmd} set protocols isis segment-routing local-block \<low-label-value \<label-value\>
+
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always
@@ -77,12 +81,14 @@ unsets both.
 
 
 ```{cfgcmd} set protocols isis segment-routing maximum-label-depth \<1-16\>
+
 Set the Maximum Stack Depth supported by the router. The value depend of
 the MPLS dataplane.
 ```
 
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value \<0-65535\>
+
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
 indentify it
@@ -90,6 +96,7 @@ indentify it
 
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
+
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
 Penultimate Hop Popping that allows SR node to request to its neighbor to
 not pop the label. The ‘explicit-null’ flag allows SR node to request to its
@@ -122,23 +129,27 @@ Segment routing (SR) is used by the IGP protocols to interconnect network
 devices, below configuration shows how to enable SR on OSPF:
 
 ```{cfgcmd} set protocols ospf parameters opaque-lsa
+
 Enable the Opaque-LSA capability (rfc2370), necessary to transport label
 on IGP
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing global-block high-label-value \<label-value\>
+
 Set the Segment Routing Global Block i.e. the label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing global-block low-label-value \<label-value\>
+
 Set the Segment Routing Global Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing local-block high-label-value \<label-value\>
+
 Set the Segment Routing Local Block i.e. the label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always
@@ -146,6 +157,7 @@ unsets both.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing local-block \<low-label-value \<label-value\>
+
 Set the Segment Routing Local Block i.e. the low label range used by MPLS to
 store label in the MPLS FIB for Prefix SID. Note that the block size may
 not exceed 65535.Segment Routing Local Block, The negative command always
@@ -153,17 +165,20 @@ unsets both.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing maximum-label-depth \<1-16\>
+
 Set the Maximum Stack Depth supported by the router. The value depend of
 the MPLS dataplane.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index value \<0-65535\>
+
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
 indentify it
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing prefix \<address\> index \<no-php-flag | explicit-null| n-flag-clear\>
+
 this option allows to configure prefix-sid on SR. The ‘no-php-flag’ means NO
 Penultimate Hop Popping that allows SR node to request to its neighbor to
 not pop the label. The ‘explicit-null’ flag allows SR node to request to its

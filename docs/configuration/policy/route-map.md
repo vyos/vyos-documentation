@@ -86,6 +86,7 @@ IP address of route to match, based on prefix-list.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip address prefix-len \<0-32\>
+
 IP address of route to match, based on specified prefix-length.
 Note that this can be used for kernel routes only.
 Do not apply to the routes of dynamic routing protocols (e.g. BGP,
@@ -148,6 +149,7 @@ IPv6 address of route to match, based on IPv6 prefix-list.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 address prefix-len \<0-128\>
+
 IPv6 address of route to match, based on specified prefix-length.
 Note that this can be used for kernel routes only.
 Do not apply to the routes of dynamic routing protocols (e.g. BGP,
@@ -192,6 +194,7 @@ Peer IP address to match.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match protocol \<protocol\>
+
 Source protocol to match.
 * ``babel`` - Babel routing protocol (Babel)
 * ``bgp`` - Border Gateway Protocol (BGP)
@@ -245,6 +248,7 @@ BGP aggregator attribute: AS number or IP address of an aggregation.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path exclude \<1-4294967295 | all\>
+
 Drop AS-NUMBER from the BGP AS path.
 
 If ``all`` is specified, remove all AS numbers from the AS_PATH of the BGP
@@ -271,6 +275,7 @@ BGP atomic aggregate attribute.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set community \<add|replace\> \<community\>
+
 Add or replace BGP community attribute in format ``<0-65535:0-65535>``
 or from well-known community list
 ```
@@ -289,6 +294,7 @@ Delete BGP communities matching the community-list.
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set large-community \<add|replace\> \<GA:LDP1:LDP2\>
+
 Add or replace BGP large-community attribute in format
 ``<0-4294967295:0-4294967295:0-4294967295>``
 ```
@@ -345,10 +351,12 @@ Locally significant administrative distance.
 Nexthop IP address.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ip-next-hop unchanged
+
 Set the next-hop as unchanged. Pass through the route-map without
 changing its value
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ip-next-hop peer-address
+
 Set the BGP nexthop address to the address of the peer. For an incoming
 route-map this means the ip address of our peer is used. For an
 outgoing route-map this means the ip address of our self is used to
@@ -359,12 +367,14 @@ establish the peering with our neighbor.
 Nexthop IPv6 address.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ipv6-next-hop peer-address
+
 Set the BGP nexthop address to the address of the peer. For an incoming
 route-map this means the ip address of our peer is used. For an
 outgoing route-map this means the ip address of our self is used to
 establish the peering with our neighbor.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ipv6-next-hop prefer-global
+
 For Incoming and Import Route-maps if we receive a v6 global and v6 LL
 address for the route, then prefer to use the global address as the
 nexthop.
@@ -374,6 +384,7 @@ nexthop.
 Set BGP local preference attribute.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set metric \<+/-metric|0-4294967295|rtt|+rtt|-rtt\>
+
 Set the route metric. When used with BGP, set the BGP attribute MED
 to a specific value. Use ``+/-`` to add or subtract the specified value
 to/from the existing/MED. Use ``rtt`` to set the MED to the round trip
