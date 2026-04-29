@@ -33,7 +33,7 @@ At the time of this writing the following displays are supported:
 :::{note}
 We can't support all displays from the beginning. If your display
 type is missing, please create a feature request via
-[Phabricator](https://vyos.dev/).
+Phabricator.
 :::
 ```
 

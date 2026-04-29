@@ -87,7 +87,7 @@ registration requests are sent. By default registrations are sent every
 one third of the holdtime
 ```
 
-```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\> nbma <nbma-ip>
+```{cfgcmd} set protocols nhrp tunnel \<tunnel\> map tunnel-ip \<tunnel-ip\> nbma \<nbma-ip\>
 * **tunnel-ip** - Tunnel ip address in format **x.x.x.x**.
 * **nbma-ip** - NBMA ip address in format **x.x.x.x** or **local**
 

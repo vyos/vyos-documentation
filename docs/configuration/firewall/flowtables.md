@@ -89,7 +89,7 @@ Create a firewall rule in the forward chain with the action set to
 ``offload``.
 ```
 
-```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\> offload-target <flowtable>
+```{cfgcmd} set firewall [ipv4 | ipv6] forward filter rule \<1-999999\> offload-target \<flowtable\>
 
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.

@@ -43,10 +43,10 @@ Deploy VyOS on Azure.
 
 8. Connect to the instance with your SSH key.
 
-> ```none
-> ssh -i ~/.ssh/vyos_azure vyos@203.0.113.3
-> vyos@vyos-doc-r1:~$
-> ```
+```none
+ssh -i ~/.ssh/vyos_azure vyos@203.0.113.3
+vyos@vyos-doc-r1:~$
+```
 
 ## Add interface
 

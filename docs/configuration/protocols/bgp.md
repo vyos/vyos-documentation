@@ -212,7 +212,7 @@ mandatory option!
 
 
 ##### Defining Peers
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> remote-as <asn>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> remote-as \<asn\>
 This command creates a new neighbor whose remote-as is \<asn\>. The neighbor
 address can be an IPv4 address or an IPv6 address or an interface to use
 for the connection. The command is applicable for peer and peer group.
@@ -239,7 +239,7 @@ remote ASN is detected automatically from the OPEN message.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> local-role <role> [strict]
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> local-role \<role\> [strict]
 BGP roles are defined in RFC {rfc}`9234` and provide an easy way to
 add route leak prevention, detection and mitigation. The local Role
 value is negotiated with the new BGP Role capability which has a
@@ -280,13 +280,13 @@ the delete form of this command.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> description <text>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> description \<text\>
 
 Set description of the peer or peer group.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> update-source <address|interface>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> update-source \<address|interface\>
 Specify the IPv4 source address to use for the BGP session to this neighbor,
 may be specified as either an IPv4 address directly or as an interface name.
 ```
@@ -363,7 +363,7 @@ but you can’t connect them directly.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> as-override
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> as-override
 This command override AS number of the originating router with
 the local AS number.
 
@@ -377,26 +377,26 @@ This command is only allowed for eBGP peers.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> attribute-unchanged <as-path|med|next-hop>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> attribute-unchanged \<as-path|med|next-hop\>
 This command specifies attributes to be left unchanged for
 advertisements sent to a peer or peer group.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> maximum-prefix <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> maximum-prefix \<number\>
 This command specifies a maximum number of prefixes we can receive
 from a given peer. If this number is exceeded, the BGP session
 will be destroyed. The number range is 1 to 4294967295.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> nexthop-self
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> nexthop-self
 This command forces the BGP speaker to report itself as the
 next hop for an advertised route it advertised to a neighbor.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> remove-private-as
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> remove-private-as
 This command removes the private ASN of routes that are advertised
 to the configured peer. It removes only private ASNs on routes
 advertised to EBGP peers.
@@ -410,7 +410,7 @@ private ASN is not removed.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> soft-reconfiguration inbound
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> soft-reconfiguration inbound
 Changes in BGP policies require the BGP session to be cleared. Clearing has a
 large negative impact on network operations. Soft reconfiguration enables you
 to generate inbound updates from a neighbor, change and activate BGP policies
@@ -429,13 +429,13 @@ can become significant.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> weight <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> weight \<number\>
 This command specifies a default weight value for the neighbor’s
 routes. The number range is 1 to 65535.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> advertisement-interval <seconds>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> advertisement-interval \<seconds\>
 This command specifies the minimum route advertisement interval for
 the peer. The interval value is 0 to 600 seconds, with the default
 advertisement interval being 0.
@@ -448,13 +448,13 @@ using loopback addresses without adjusting the default TTL of 1.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> disable-send-community <extended|standard>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> disable-send-community \<extended|standard\>
 This command specifies that the community attribute should not be sent
 in route updates to a peer. By default community attribute is sent.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> ebgp-multihop <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> ebgp-multihop \<number\>
 This command allows sessions to be established with eBGP neighbors
 when they are multiple hops away. When the neighbor is not directly
 connected and this knob is not enabled, the session will not establish.
@@ -489,13 +489,13 @@ from, but does not initiate outbound connections to the peer or peer group.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> password <text>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> password \<text\>
 This command specifies a MD5 password to be used with the tcp socket that
 is being used to connect to the remote peer.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> ttl-security hops <number>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> ttl-security hops \<number\>
 This command enforces Generalized TTL Security Mechanism (GTSM),
 as specified in {rfc}`5082`. With this command, only neighbors
 that are specified number of hops away will be allowed to
@@ -523,13 +523,13 @@ are treated as belonging to a default peer group, and will share updates.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> peer-group <name>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> peer-group \<name\>
 
 This command bind specific peer to peer group with a given name.
 ```
 #### Network Advertisement Configuration
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> network <prefix>
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> network \<prefix\>
 This command is used for advertising IPv4 or IPv6 networks.
 
    :::{note}
@@ -546,7 +546,7 @@ have this configured the underlying network must exist in the routing table.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> default-originate [route-map <name>]
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> default-originate [route-map \<name\>]
 By default, VyOS does not advertise a default route (0.0.0.0/0) even if it is
 in routing table. When you want to announce default routes to the peer, use
 this command. Using optional argument {cfgcmd}`route-map` you can inject the
@@ -555,27 +555,27 @@ met.
 ```
 #### Route Aggregation Configuration
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address <prefix>
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address \<prefix\>
 This command specifies an aggregate address. The router will also
 announce longer-prefixes inside of the aggregate address.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address <prefix> as-set
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address \<prefix\> as-set
 This command specifies an aggregate address with a mathematical set of
 autonomous systems. This command summarizes the AS_PATH attributes of
 all the individual routes.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address <prefix> summary-only
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address \<prefix\> summary-only
 This command specifies an aggregate address and provides that
 longer-prefixes inside of the aggregate address are suppressed
 before sending BGP updates out to peers.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> unsuppress-map <name>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> unsuppress-map \<name\>
 This command applies route-map to selectively unsuppress prefixes
 suppressed by summarisation.
 ```
@@ -588,14 +588,14 @@ connected, kernel, ospf, rip, static, table.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> redistribute <route source> metric <number>
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> redistribute <route source> metric \<number\>
 This command specifies metric (MED) for redistributed routes. The
 metric range is 0 to 4294967295. There are six modes available for
 route source: connected, kernel, ospf, rip, static, table.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> redistribute <route source> route-map <name>
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> redistribute <route source> route-map \<name\>
 This command allows to use route map to filter redistributed routes.
 There are six modes available for route source: connected, kernel,
 ospf, rip, static, table.
@@ -615,7 +615,7 @@ use the highest interface IP address.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> maximum-paths <ebgp|ibgp> <number>
+```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> maximum-paths \<ebgp|ibgp\> \<number\>
 This command defines the maximum number of parallel routes that
 the BGP can support. In order for BGP to use the second path, the
 following attributes have to match: Weight, Local Preference, AS
@@ -707,7 +707,7 @@ The distance range is 1 to 255.
 ```
 
 
-```{cfgcmd} set protocols bgp parameters distance prefix \<subnet\> distance <distance>
+```{cfgcmd} set protocols bgp parameters distance prefix \<subnet\> distance \<distance\>
 This command sets the administrative distance for a particular route. The
 distance range is 1 to 255.
 
@@ -757,26 +757,26 @@ unsuppressed and added back into the BGP routing table.
 No route is suppressed indefinitely. Maximum-suppress-time defines the maximum
 time a route can be suppressed before it is re-advertised.
 
-```{cfgcmd} set protocols bgp parameters dampening half-life <minutes>
+```{cfgcmd} set protocols bgp parameters dampening half-life \<minutes\>
 This command defines the amount of time in minutes after
 which a penalty is reduced by half. The timer range is
 10 to 45 minutes.
 ```
 
 
-```{cfgcmd} set protocols bgp parameters dampening re-use <seconds>
+```{cfgcmd} set protocols bgp parameters dampening re-use \<seconds\>
 This command defines the accumulated penalty amount at which the
 route is re-advertised. The penalty range is 1 to 20000.
 ```
 
 
-```{cfgcmd} set protocols bgp parameters dampening start-suppress-time <seconds>
+```{cfgcmd} set protocols bgp parameters dampening start-suppress-time \<seconds\>
 This command defines the accumulated penalty amount at which the
 route is suppressed. The penalty range is 1 to 20000.
 ```
 
 
-```{cfgcmd} set protocols bgp parameters dampening max-suppress-time <seconds>
+```{cfgcmd} set protocols bgp parameters dampening max-suppress-time \<seconds\>
 This command defines the maximum time in minutes that a route is
 suppressed. The timer range is 1 to 255 minutes.
 ```
@@ -861,7 +861,7 @@ the best entries of each group are compared.
 ```
 
 
-```{cfgcmd} set protocols bgp address-family ipv4-unicast network <prefix> backdoor
+```{cfgcmd} set protocols bgp address-family ipv4-unicast network \<prefix\> backdoor
 This command allows the router to prefer route to specified prefix learned
 via IGP through backdoor link instead of a route to the same prefix learned
 via EBGP.
@@ -897,7 +897,7 @@ specify the direction in which the access list are applied.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> prefix-list <export|import> <name>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> prefix-list \<export|import\> \<name\>
 This command applies the prfefix list filters named in \<name\> to the
 specified BGP neighbor to restrict the routing information that BGP learns
 and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
@@ -905,7 +905,7 @@ specify the direction in which the prefix list are applied.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> route-map <export|import> <name>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> route-map \<export|import\> \<name\>
 This command applies the route map named in \<name\> to the specified BGP
 neighbor to control and modify routing information that is exchanged
 between peers. The arguments {cfgcmd}`export` and {cfgcmd}`import`
@@ -913,7 +913,7 @@ specify the direction in which the route map are applied.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> filter-list <export|import> <name>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> filter-list \<export|import\> \<name\>
 This command applies the AS path access list filters named in \<name\> to the
 specified BGP neighbor to restrict the routing information that BGP learns
 and/or advertises. The arguments {cfgcmd}`export` and {cfgcmd}`import`
@@ -921,7 +921,7 @@ specify the direction in which the AS path access list are applied.
 ```
 
 
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family <ipv4-unicast|ipv6-unicast> capability orf <receive|send>
+```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> capability orf \<receive|send\>
 This command enables the ORF capability (described in {rfc}`5291`) on the
 local router, and enables ORF capability advertisement to the specified BGP
 peer. The {cfgcmd}`receive` keyword configures a router to advertise ORF
@@ -964,7 +964,7 @@ reflector will “reflect” routes to, the non-client is just a regular IBGP
 neighbor. Route reflectors mechanism is described in {rfc}`4456` and updated
 by {rfc}`7606`.
 
-```{cfgcmd} set protocols bgp neighbor \<address\> address-family <ipv4-unicast|ipv6-unicast> route-reflector-client
+```{cfgcmd} set protocols bgp neighbor \<address\> address-family \<ipv4-unicast|ipv6-unicast\> route-reflector-client
 
 This command specifies the given neighbor as route reflector client.
 ```

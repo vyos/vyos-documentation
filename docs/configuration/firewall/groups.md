@@ -196,10 +196,10 @@ commands to define dynamic IPv4 and IPv6 address groups:
 
 Add description to firewall groups:
 
-```{cfgcmd} set firewall group dynamic-group address-group \<name\> description <text>
+```{cfgcmd} set firewall group dynamic-group address-group \<name\> description \<text\>
 ```
 
-```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\> description <text>
+```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\> description \<text\>
 ```
 #### Adding elements to Dynamic Firewall Groups
 
@@ -212,13 +212,13 @@ Commands used for this task are:
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group <name>
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group <name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
 - Add source IP address of the connection to a dynamic address group:
@@ -226,13 +226,13 @@ Commands used for this task are:
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group source-address address-group \<name\>
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group <name>
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group \<name\>
 ```
 
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group source-address address-group \<name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group <name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group \<name\>
 ```
 
 You can define specific timeouts per rule. When a rule matches, the source or
@@ -241,13 +241,13 @@ until the timeout expires. If you do not define a timeout, the element remains
 in the group until the next reboot or until you commit firewall configuration
 changes.
 
-```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout <timeout>
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
 ```
 
-```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout <timeout>
+```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
 ```
 
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>

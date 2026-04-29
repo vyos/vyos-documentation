@@ -294,7 +294,7 @@ Define it in your RADIUS server.
 
 
 ## IPv6
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask <number-of-bits>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
 Use this comand to set the IPv6 address pool from which an IPoE client
 will get an IPv6 prefix of your defined length (mask) to terminate the
 IPoE endpoint at their side. The mask length can be set from 48 to 128
@@ -302,7 +302,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix <number-of-bits>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 IPoE. You will have to set your IPv6 pool and the length of the
 delegation prefix. From the defined IPv6 pool you will be handing out
@@ -355,13 +355,13 @@ VLAN monitor for automatic creation of VLAN interfaces for specific user on spec
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit download <bandwidth>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit download \<bandwidth\>
 
 Download bandwidth limit in kbit/s for user on interface \<interface\>.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit upload <bandwidth>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit upload \<bandwidth\>
 
 Upload bandwidth limit in kbit/s for for user on interface \<interface\>.
 ```

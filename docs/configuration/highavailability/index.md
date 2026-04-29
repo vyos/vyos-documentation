@@ -264,10 +264,10 @@ Set minimum time interval for refreshing gratuitous ARPs while MASTER.
 0 if not defined, which means no refreshing.
 ```
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh-repeat <1-600>
+```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh-repeat \<1-600\>
 ```
 
-```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh-repeat <1-600>
+```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh-repeat \<1-600\>
 
 Set number of gratuitous ARP messages to send at a time while MASTER.
 

@@ -39,50 +39,50 @@ show you the different units you can use.
 
 They can be **decimal** prefixes.
 
-> ```none
-> kbit  (10^3)    kilobit per second
-> mbit  (10^6)    megabit per second
-> gbit  (10^9)    gigabit per second
-> tbit  (10^12)   terabit per second
->
-> kbps  (8*10^3)  kilobyte per second
-> mbps  (8*10^6)  megabyte per second
-> gbps  (8*10^9)  gigabyte per second
-> tbps  (8*10^12) terabyte per second
-> ```
+```none
+kbit  (10^3)    kilobit per second
+mbit  (10^6)    megabit per second
+gbit  (10^9)    gigabit per second
+tbit  (10^12)   terabit per second
+
+kbps  (8*10^3)  kilobyte per second
+mbps  (8*10^6)  megabyte per second
+gbps  (8*10^9)  gigabyte per second
+tbps  (8*10^12) terabyte per second
+```
 
 Or **binary** prefixes.
 
-> ```none
-> kibit (2^10 = 1024)    kibibit per second
-> mibit (2^20 = 1024^2)  mebibit per second
-> gibit (2^30 = 1024^3)  gibibit per second
-> tbit  (2^40 = 1024^4)  tebibit per second
->
-> kibps (1024*8)         kibibyte (KiB) per second
-> mibps (1024^2*8)       mebibyte (MiB) per second
-> gibps (1024^3*8)       gibibyte (GiB) per second
-> tibps (1024^4*8)       tebibyte (TiB) per second
-> ```
+```none
+kibit (2^10 = 1024)    kibibit per second
+mibit (2^20 = 1024^2)  mebibit per second
+gibit (2^30 = 1024^3)  gibibit per second
+tbit  (2^40 = 1024^4)  tebibit per second
+
+kibps (1024*8)         kibibyte (KiB) per second
+mibps (1024^2*8)       mebibyte (MiB) per second
+gibps (1024^3*8)       gibibyte (GiB) per second
+tibps (1024^4*8)       tebibyte (TiB) per second
+```
 
 #### Suffixes
 
 A *bit* is written as **bit**,
 
-> ```none
-> kbit (kilobits per second)
-> mbit (megabits per second)
-> gbit (gigabits per second)
-> tbit (terabits per second)
-> ```
+```none
+kbit (kilobits per second)
+mbit (megabits per second)
+gbit (gigabits per second)
+tbit (terabits per second)
+```
 
 while a *byte* is written as a single **b**.
 
-> ```none
-> kbps (kilobytes per second)
-> mbps (megabytes per second)
-> gbps (gigabytes per second)
-> ```
+```none
+kbps (kilobytes per second)
+mbps (megabytes per second)
+gbps (gigabytes per second)
+```
 
 (classes)=
 
@@ -530,7 +530,7 @@ persistent queue is developing, ensuring that the measured minimum
 delay does not become too stale (default: 100ms).
 ```
 
-```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit <number-of-packets>
+```{cfgcmd} set qos policy fq-codel \<policy-name\> queue-limit \<number-of-packets\>
 
 Use this command to configure an fq-codel policy, set its name, and
 define a hard limit on the real queue size. When this limit is
@@ -654,7 +654,7 @@ Token Bucket Filter qdisc). Default:15kb. It will only take effect if
 you have configured its bandwidth too.
 ```
 
-```{cfgcmd} set qos policy network-emulator \<policy-name\> delay <delay>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> delay \<delay\>
 
 Use this command to configure a Network Emulator policy defining its
 name and the fixed amount of time you want to add to all packet going
@@ -664,7 +664,7 @@ configured its bandwidth too. You can use secs, ms and us. Default:
 50ms.
 ```
 
-```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption <percent>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption \<percent\>
 
 Use this command to emulate noise in a Network Emulator policy. Set
 the policy name and the percentage of corrupted packets you want. A
@@ -672,21 +672,21 @@ random error will be introduced in a random position for the chosen
 percent of packets.
 ```
 
-```{cfgcmd} set qos policy network-emulator \<policy-name\> loss <percent>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> loss \<percent\>
 
 Use this command to emulate packet-loss conditions in a Network
 Emulator policy. Set the policy name and the percentage of loss
 packets your traffic will suffer.
 ```
 
-```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering <percent>
+```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering \<percent\>
 
 Use this command to emulate packet-reordering conditions in a Network
 Emulator policy. Set the policy name and the percentage of reordered
 packets your traffic will suffer.
 ```
 
-```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit <limit>
+```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit \<limit\>
 
 Use this command to define the length of the queue of your Network
 Emulator policy. Set the policy name and the maximum number of
@@ -753,7 +753,7 @@ Possible completions:
                 Random Early Detection (RED)
 ```
 
-```{cfgcmd} set qos policy priority-queue \<policy-name\> class \<class-ID\> queue-limit <limit>
+```{cfgcmd} set qos policy priority-queue \<policy-name\> class \<class-ID\> queue-limit \<limit\>
 
 Use this command to configure a Priority Queue policy, set its name,
 set a class with a priority from 1 to 7 and define a hard limit on
@@ -809,7 +809,7 @@ algorithm might be to prevent a backbone overload. But only for TCP
 
 ```
 
-```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> average-packet <bytes>
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> average-packet \<bytes\>
 
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
@@ -820,7 +820,7 @@ configuring and what the size of its average-packet should be
 When configuring a Random-Detect policy: **the higher the
 precedence number, the higher the priority**.
 :::
-```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> mark-probability <value>
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> mark-probability \<value\>
 
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
@@ -838,7 +838,7 @@ be (from 0 to 4096 packets, default: 18). At this size, the marking
 
 ```
 
-```{cfgcmd} set qos policy random-detect \<policy-name\> precedence <IP-precedence-value> minimum-threshold <packets>
+```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> minimum-threshold \<packets\>
 
 Use this command to configure a Random-Detect policy and set its
 name, then state the IP Precedence for the virtual queue you are
@@ -967,7 +967,7 @@ add that value each round.
 
 ```
 
-```{cfgcmd} set qos policy round-robin \<policy name\> class <class ID> queue-limit <packets>
+```{cfgcmd} set qos policy round-robin \<policy name\> class <class ID> queue-limit \<packets\>
 
 Use this command to configure a Round-Robin policy, set its name, set
 a class ID, and the queue size in packets.
@@ -1029,21 +1029,21 @@ class.
 
 ```
 
-```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst <bytes>
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> burst \<bytes\>
 
 Use this command to configure a Shaper policy, set its name, define
 a class and set the size of the tocken bucket in bytes, which will
 be available to be sent at ceiling speed (default: 15Kb).
 ```
 
-```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling <bandwidth>
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> ceiling \<bandwidth\>
 
 Use this command to configure a Shaper policy, set its name, define
 a class and set the maximum speed possible for this class. The
 default ceiling value is the bandwidth value.
 ```
 
-```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority <0-7>
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority \<0-7\>
 
 Use this command to configure a Shaper policy, set its name, define
 a class and set the priority for usage of available bandwidth once

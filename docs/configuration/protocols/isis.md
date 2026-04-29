@@ -153,13 +153,13 @@ synchronization during convergence/interface flap events.
 
 ```
 
-```{cfgcmd} set protocols isis interface \<interface\> hello-interval <seconds>
+```{cfgcmd} set protocols isis interface \<interface\> hello-interval \<seconds\>
 
 This command sets hello interval in seconds on a given interface.
 The range is 1 to 600.
 ```
 
-```{cfgcmd} set protocols isis interface \<interface\> hello-multiplier <seconds>
+```{cfgcmd} set protocols isis interface \<interface\> hello-multiplier \<seconds\>
 
 This command sets multiplier for hello holding time on a given
 interface. The range is 2 to 100.
@@ -192,7 +192,7 @@ network type is broadcast.
 This command configures the passive mode for this interface.
 ```
 
-```{cfgcmd} set protocols isis interface \<interface\> password plaintext-password <text>
+```{cfgcmd} set protocols isis interface \<interface\> password plaintext-password \<text\>
 
 This command configures the authentication password for the interface.
 ```
@@ -204,7 +204,7 @@ This command sets priority for the interface for
 range is 0 to 127.
 ```
 
-```{cfgcmd} set protocols isis interface \<interface\> psnp-interval <number>
+```{cfgcmd} set protocols isis interface \<interface\> psnp-interval \<number\>
 
 This command sets PSNP interval in seconds. The interval range is 0
 to 127.
@@ -271,14 +271,14 @@ into the ISIS database as Level-2. There are six modes available for route
 source: bgp, connected, kernel, ospf, rip, static.
 ```
 
-```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> <level-1|level-2> metric <number>
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> \<level-1|level-2\> metric \<number\>
 
 This command specifies metric for redistributed routes from the given route
 source. There are six modes available for route source: bgp, connected,
 kernel, ospf, rip, static. The metric range is 1 to 16777215.
 ```
 
-```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> <level-1|level-2> route-map <name>
+```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> \<level-1|level-2\> route-map \<name\>
 
 This command allows to use route map to filter redistributed routes from
 the given route source. There are six modes available for route source:
@@ -348,7 +348,7 @@ will select eligible PQ nodes for remote LFA backups.
 This command disables the load sharing across multiple LFA backups.
 ```
 
-```{cfgcmd} set protocols isis fast-reroute lfa local tiebreaker \<downstream|lowest-backup-metric|node-protecting\> index \<number\> <level-1|level-2>
+```{cfgcmd} set protocols isis fast-reroute lfa local tiebreaker \<downstream|lowest-backup-metric|node-protecting\> index \<number\> \<level-1|level-2\>
 
 This command will configure a tie-breaker for multiple local LFA backups.
 The lower index numbers will be processed first.

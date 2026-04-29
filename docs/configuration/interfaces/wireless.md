@@ -169,7 +169,7 @@ Device is incapable of 40 MHz, do not advertise. This sets ``[40-INTOLERANT]``
 WMM-PS Unscheduled Automatic Power Save Delivery [U-APSD]
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities ht channel-set-width <ht20 | ht40+ | ht40->
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht channel-set-width \<ht20 | ht40+ | ht40-\>
 
 Supported channel width set.
 * ``ht20`` - 20 MHz channel width
@@ -226,12 +226,12 @@ Enable L-SIG TXOP protection capability
 Maximum A-MSDU length 3839 (default) or 7935 octets
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities ht short-gi <20 | 40>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht short-gi \<20 | 40\>
 
 Short GI capabilities for 20 and 40 MHz
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities ht smps <static | dynamic>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities ht smps \<static | dynamic\>
 
 Spatial Multiplexing Power Save (SMPS) settings
 ```
@@ -270,7 +270,7 @@ Beamforming capabilities:
   multi user beamformee
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht center-channel-freq <freq-1 | freq-2> <number>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht center-channel-freq \<freq-1 | freq-2\> \<number\>
 
 VHT operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
@@ -281,7 +281,7 @@ VHT operating channel center frequency - center freq 2
 \<number\> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht channel-set-width <0 | 1 | 2 | 3>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht channel-set-width \<0 | 1 | 2 | 3\>
 
 * ``0`` - 20 or 40 MHz channel width (default)
 * ``1`` - 80 MHz channel width
@@ -299,18 +299,18 @@ Enable LDPC (Low Density Parity Check) coding capability
 VHT link adaptation capabilities
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht max-mpdu <value>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht max-mpdu \<value\>
 
 Increase Maximum MPDU length to 7991 or 11454 octets (default 3895 octets)
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht max-mpdu-exp <value>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht max-mpdu-exp \<value\>
 
 Set the maximum length of A-MPDU pre-EOF padding that the station can
 receive
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities vht short-gi <80 | 160>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities vht short-gi \<80 | 160\>
 
 Short GI capabilities
 ```
@@ -352,7 +352,7 @@ Beamforming capabilities:
   user beamformer
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities he bss-color <number>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he bss-color \<number\>
 
 BSS coloring helps to prevent channel jamming when multiple APs use
 the same channels.
@@ -360,7 +360,7 @@ the same channels.
 Valid values are 1..63
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities he center-channel-freq <freq-1 | freq-2> <number>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he center-channel-freq \<freq-1 | freq-2\> \<number\>
 
 HE operating channel center frequency - center freq 1
 (for use with 80, 80+80 and 160 modes)
@@ -388,7 +388,7 @@ channel + 6 and for 160 MHz channels, it should be channel + 14.
 * ``135`` - 80+80 MHz channel width (6GHz)
 ```
 
-```{cfgcmd} set interfaces wireless \<interface\> capabilities he coding-scheme <number>
+```{cfgcmd} set interfaces wireless \<interface\> capabilities he coding-scheme \<number\>
 
 This setting configures Spatial Stream and Modulation Coding Scheme
 settings for HE mode (HE-MCS). It is usually not needed to set this

@@ -148,31 +148,31 @@ This required setting defines the action of the current rule. If you set
 the action to jump, you must also define a jump-target.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> jump-target <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> jump-target \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> jump-target <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> jump-target \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> jump-target <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> jump-target \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> jump-target <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> jump-target \<text\>
 
 Use this command only when action is set to ``jump``. Specify the jump
 target.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> queue <0-65535>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> queue \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> queue <0-65535>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> queue \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> queue <0-65535>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> queue \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> queue <0-65535>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> queue \<0-65535\>
 
 Use this command only when action is set to ``queue``. Specify the queue
 target. Queue ranges are also supported.
@@ -295,46 +295,46 @@ the specified chain.
 Define log-level. Only applicable if rule log is enabled.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options group <0-65535>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options group \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options group <0-65535>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options group \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options group <0-65535>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options group \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options group <0-65535>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options group \<0-65535\>
 
 Define the log group to send messages to. Only applicable if rule log is
 enabled.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options snapshot-length \<0-9000\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options snapshot-length \<0-9000\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options snapshot-length \<0-9000\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options snapshot-length <0-9000>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options snapshot-length \<0-9000\>
 
 Define the length of packet payload to include in a netlink message. Only
 applicable when rule logging is enabled and log group is defined.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> log-options queue-threshold \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> log-options queue-threshold \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> log-options queue-threshold \<0-65535\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options queue-threshold <0-65535>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> log-options queue-threshold \<0-65535\>
 
 Define the number of packets to queue inside the kernel before sending them
 to userspace. Only applicable when rule logging is enabled and log group is
@@ -350,13 +350,13 @@ For reference, you can define descriptions on every rule and custom chain.
 Provide a rule-set description to a custom firewall chain.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> description <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> description \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> description <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> description \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> description <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> description \<text\>
 ```
 
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> description \<text\>
@@ -401,16 +401,16 @@ There are a lot of matching criteria against which the packet can be tested.
 Match packets based on NAT connection status.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> connection-mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> connection-mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> connection-mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> connection-mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> connection-mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> connection-mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> connection-mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> connection-mark \<1-2147483647\>
 
 Match packets based on connection mark.
 ```
@@ -472,7 +472,7 @@ set firewall ipv6 name FOO rule 100 source address 2001:db8::202
 Apply an arbitrary netmask to mask addresses and match only a specific
 portion. This is useful for IPv6 because rules remain valid when the IPv6
 prefix changes if the host portion of the system's IPv6 address is static.
-Examples include SLAAC and [tokenised IPv6 addresses](https://datatracker.ietf.org/doc/id/draft-chown-6man-tokenised-ipv6-identifiers-02.txt)
+Examples include SLAAC and tokenised IPv6 addresses
 
 This function works for both individual addresses and address groups.
 
@@ -489,55 +489,55 @@ set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:f
 :::
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination fqdn \<fqdn\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination fqdn <fqdn>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination fqdn \<fqdn\>
 
 Specify a Fully Qualified Domain Name as source or destination to match.
 Ensure that the router can resolve the DNS query.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source geoip country-code <country>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source geoip country-code <country>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source geoip country-code <country>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source geoip country-code <country>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination geoip country-code <country>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination geoip country-code <country>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination geoip country-code <country>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination geoip country-code \<country\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination geoip country-code <country>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination geoip country-code \<country\>
 ```
 
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source geoip inverse-match
@@ -564,7 +564,7 @@ Ensure that the router can resolve the DNS query.
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination geoip inverse-match
 
 Match IP addresses based on their geolocation. For more information, see
-[GeoIP matching](<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>).
+GeoIP matching.
 Use inverse-match to match anything except the specified country codes.
 ```
 
@@ -574,16 +574,16 @@ redistribution is permitted, allowing VyOS to include a database in images
 can manually call through op-mode update geoip to keep the database and rules
 updated.
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source mac-address <mac-address>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source mac-address \<mac-address\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source mac-address <mac-address>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source mac-address \<mac-address\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source mac-address <mac-address>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source mac-address \<mac-address\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source mac-address <mac-address>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source mac-address \<mac-address\>
 
 You can specify only a source MAC address to match.
 
@@ -631,163 +631,163 @@ set firewall ipv6 forward filter rule 10 source port '!22,https,3333-3338'
 :::
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group address-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group address-group \<name | !name\>
 
 Specify an address group. You can prepend the character ``!`` to invert the
 matching criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group dynamic-address-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group dynamic-address-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group dynamic-address-group \<name | !name\>
 
 Specify a dynamic address group. You can prepend the character ``!`` to
 invert the matching criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group network-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group network-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group network-group \<name | !name\>
 
 Specify a network group. You can prepend the character ``!`` to invert the
 matching criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group port-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group port-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group port-group \<name | !name\>
 
 Specify a port group. You can prepend the character ``!`` to invert the
 matching criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group domain-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group domain-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group domain-group \<name | !name\>
 
 Specify a domain group. You can prepend the character ``!`` to invert the
 matching criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination group mac-group \<name | !name\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group mac-group <name | !name>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination group mac-group \<name | !name\>
 
 Specify a MAC group. You can prepend the character ``!`` to invert the
 matching criteria.
@@ -833,42 +833,42 @@ Match based on dscp value.
 Match packets based on fragmentation.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> icmpv6 [code | type] <0-255>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> icmpv6 [code | type] \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> icmpv6 [code | type] <0-255>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> icmpv6 [code | type] \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> icmpv6 [code | type] <0-255>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> icmpv6 [code | type] \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> icmpv6 [code | type] <0-255>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> icmpv6 [code | type] \<0-255\>
 
 Match packets based on ICMP or ICMPv6 code and type.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> icmpv6 type-name <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> icmpv6 type-name \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> icmpv6 type-name <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> icmpv6 type-name \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> icmpv6 type-name <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> icmpv6 type-name \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> icmpv6 type-name <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> icmpv6 type-name \<text\>
 
 Match based on ICMPv6 type-name. Press **Tab** for information about
 supported **type-name** criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> inbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> inbound-interface name \<iface\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> inbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> inbound-interface name \<iface\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> inbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> inbound-interface name \<iface\>
 
 Match based on inbound interface. You can use the wildcard ``*``. For
 example: ``eth2*``. You can prepend the character ``!`` to invert the
@@ -879,25 +879,25 @@ If an interface is attached to a non-default VRF, when using
 **inbound-interface**, use the VRF name. For example:
 `set firewall ipv6 forward filter rule 10 inbound-interface name MGMT`
 :::
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> inbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> inbound-interface group \<iface_group\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> inbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> inbound-interface group \<iface_group\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> inbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> inbound-interface group \<iface_group\>
 
 Match based on the inbound interface group. You can prepend the character
 ``!`` to invert the matching criteria. For example ``!IFACE_GROUP``
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> outbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> outbound-interface name \<iface\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> outbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> outbound-interface name \<iface\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> outbound-interface name <iface>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> outbound-interface name \<iface\>
 
 Match based on outbound interface. You can use the wildcard ``*``. For
 example: ``eth2*``. You can prepend the character ``!`` to invert the
@@ -908,13 +908,13 @@ If an interface is attached to a non-default VRF, when using
 **outbound-interface**, use the physical interface name. For example:
 `set firewall ipv6 forward filter rule 10 outbound-interface name eth0`
 :::
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> outbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> outbound-interface group \<iface_group\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> outbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> outbound-interface group \<iface_group\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> outbound-interface group <iface_group>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> outbound-interface group \<iface_group\>
 
 Match based on outbound interface group. You can prepend the character ``!``
 to invert the matching criteria. For example ``!IFACE_GROUP``
@@ -934,58 +934,58 @@ to invert the matching criteria. For example ``!IFACE_GROUP``
 Match packets based on IPsec.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> limit burst <0-4294967295>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> limit burst \<0-4294967295\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> limit burst <0-4294967295>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> limit burst \<0-4294967295\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> limit burst <0-4294967295>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> limit burst \<0-4294967295\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> limit burst <0-4294967295>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> limit burst \<0-4294967295\>
 
 Match based on the maximum number of packets allowed to exceed the rate
 limit.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> limit rate <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> limit rate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> limit rate <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> limit rate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> limit rate <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> limit rate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> limit rate <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> limit rate \<text\>
 
 Match based on the maximum average rate, specified as ``integer/unit``.
 For example, specify ``5/minutes``.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> packet-length <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> packet-length \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> packet-length <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> packet-length \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> packet-length <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> packet-length \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> packet-length <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> packet-length \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> packet-length-exclude <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> packet-length-exclude \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> packet-length-exclude <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> packet-length-exclude \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> packet-length-exclude <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> packet-length-exclude \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> packet-length-exclude <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> packet-length-exclude \<text\>
 
 Match based on packet length. You can specify multiple values from 1 to
 65535 and ranges.
@@ -1005,16 +1005,16 @@ Match based on packet length. You can specify multiple values from 1 to
 Match based on packet type.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> protocol [<text> | <0-255> | all | tcp_udp]
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> protocol [\<text\> | \<0-255\> | all | tcp_udp]
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> protocol [<text> | <0-255> | all | tcp_udp]
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> protocol [\<text\> | \<0-255\> | all | tcp_udp]
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> protocol [<text> | <0-255> | all | tcp_udp]
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> protocol [\<text\> | \<0-255\> | all | tcp_udp]
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> protocol [<text> | <0-255> | all | tcp_udp]
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> protocol [\<text\> | \<0-255\> | all | tcp_udp]
 
 Match based on protocol number or name as defined in ``/etc/protocols``.
 Specify ``all`` for all protocols and ``tcp_udp`` for TCP and UDP packets.
@@ -1025,16 +1025,16 @@ set firewall ipv6 input filter rule 10 protocol tcp
 :::
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent count \<1-255\>
 ```
 
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent time [second | minute | hour]
@@ -1051,16 +1051,16 @@ set firewall ipv6 input filter rule 10 protocol tcp
 Match packets based on recently seen sources.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> tcp flags [not] <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> tcp flags [not] \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> tcp flags [not] <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> tcp flags [not] \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> tcp flags [not] <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> tcp flags [not] \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> tcp flags [not] <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> tcp flags [not] \<text\>
 
 Allowed values for TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn``, and ``urg``. You can specify multiple values. To invert
@@ -1087,105 +1087,105 @@ set firewall ipv6 input filter rule 13 tcp flags not 'fin'
 Match based on packet state.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time startdate <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time startdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time startdate <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time startdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time startdate <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time startdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time startdate <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time startdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time starttime <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time starttime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time starttime <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time starttime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time starttime <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time starttime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time starttime <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time starttime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time stopdate <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time stopdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time stopdate <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time stopdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time stopdate <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time stopdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time stopdate <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time stopdate \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time stoptime <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time stoptime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time stoptime <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time stoptime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time stoptime <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time stoptime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time stoptime <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time stoptime \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time weekdays <text>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> time weekdays \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time weekdays <text>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> time weekdays \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time weekdays <text>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> time weekdays \<text\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time weekdays <text>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> time weekdays \<text\>
 
 Match packets based on time criteria.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> hop-limit <eq | gt | lt> <0-255>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> hop-limit \<eq | gt | lt\> \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> hop-limit <eq | gt | lt> <0-255>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> hop-limit \<eq | gt | lt\> \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> hop-limit <eq | gt | lt> <0-255>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> hop-limit \<eq | gt | lt\> \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> hop-limit <eq | gt | lt> <0-255>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> hop-limit \<eq | gt | lt\> \<0-255\>
 
 Match the hop-limit parameter. Use ``eq`` for equal, ``gt`` for greater than,
 and ``lt`` for less than.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent count <1-255>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent count \<1-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent time <second | minute | hour>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> recent time \<second | minute | hour\>
 ```
 
-```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent time <second | minute | hour>
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> recent time \<second | minute | hour\>
 ```
 
-```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent time <second | minute | hour>
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> recent time \<second | minute | hour\>
 ```
 
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent time <second | minute | hour>
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> recent time \<second | minute | hour\>
 
 Match when the specified number of connections occur within the specified
 time period. Use these criteria to block brute-force attempts.
@@ -1196,54 +1196,54 @@ time period. Use these criteria to block brute-force attempts.
 The firewall can modify packets before sending them.
 This feature provides more flexibility for packet handling.
 
-```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set dscp <0-63>
+```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set dscp \<0-63\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set dscp <0-63>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set dscp \<0-63\>
 ```
 
-```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set dscp <0-63>
+```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set dscp \<0-63\>
 
 Set a specific value of Differentiated Services Codepoint (DSCP).
 ```
 
-```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set mark \<1-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set mark <1-2147483647>
+```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set mark \<1-2147483647\>
 
 Set a specific packet mark value.
 ```
 
-```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set tcp-mss <500-1460>
+```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set tcp-mss \<500-1460\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set tcp-mss <500-1460>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set tcp-mss \<500-1460\>
 ```
 
-```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set tcp-mss <500-1460>
+```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set tcp-mss \<500-1460\>
 
 Set the TCP-MSS (TCP maximum segment size) for the connection.
 ```
 
-```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set hop-limit <0-255>
+```{cfgcmd} set firewall ipv6 prerouting raw rule \<1-999999\> set hop-limit \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set hop-limit <0-255>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set hop-limit \<0-255\>
 ```
 
-```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set hop-limit <0-255>
+```{cfgcmd} set firewall ipv6 output [filter | raw] rule \<1-999999\> set hop-limit \<0-255\>
 
 Set hop limit value.
 ```
 
-```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set connection-mark <0-2147483647>
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> set connection-mark \<0-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set connection-mark <0-2147483647>
+```{cfgcmd} set firewall ipv4 output [filter | raw] rule \<1-999999\> set connection-mark \<0-2147483647\>
 
 Set connection mark value.
 ```
@@ -1258,12 +1258,12 @@ Synproxy connections
 ```{cfgcmd} set firewall ipv6 [input | forward] filter rule \<1-999999\> protocol tcp
 ```
 
-```{cfgcmd} set firewall ipv6 [input | forward] filter rule \<1-999999\> synproxy tcp mss <501-65535>
+```{cfgcmd} set firewall ipv6 [input | forward] filter rule \<1-999999\> synproxy tcp mss \<501-65535\>
 
  Set the TCP MSS (maximum segment size) for the connection.
 ```
 
-```{cfgcmd} set firewall ipv6 [input | forward] filter rule \<1-999999\> synproxy tcp window-scale <1-14>
+```{cfgcmd} set firewall ipv6 [input | forward] filter rule \<1-999999\> synproxy tcp window-scale \<1-14\>
 
  Set the window scale factor for TCP window scaling.
 ```
@@ -1456,7 +1456,7 @@ vyos@vyos:~$
 :::
 ```
 
-```{opcmd} show firewall ipv6 [forward | input | output] filter rule <1-999999>
+```{opcmd} show firewall ipv6 [forward | input | output] filter rule \<1-999999\>
 ```
 
 ```{opcmd} show firewall ipv6 name \<name\> rule \<1-999999\>

@@ -92,7 +92,7 @@ subnode.
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
 
-```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\> <interface> vrf <name>
+```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\> \<interface\> vrf \<name\>
 
 Assign interface identified by `<interface>` to VRF named `<name>`.
 ```
@@ -628,7 +628,7 @@ the same nexthop.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\> [route-map <name>]
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vpn \<import|export\> [route-map \<name\>]
 Specifies an optional route-map to be applied to routes imported or
 exported between the current unicast VRF and VPN.
 ```
@@ -648,7 +648,7 @@ destination VRF’s.
 ```
 
 
-```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vrf import [route-map <name>]
+```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-map vrf import [route-map \<name\>]
 
 Specifies an optional route-map to be applied to routes imported from VRFs.
 ```

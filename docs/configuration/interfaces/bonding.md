@@ -533,40 +533,40 @@ Let's assume the following topology:
 
 >     }
 
-> ```
+```
 **R2**
 
 
-> 
+
 ```none
 
-> interfaces {
+interfaces {
 
->     bonding bond10 {
+    bonding bond10 {
 
->         hash-policy layer3+4
+        hash-policy layer3+4
 
->         member {
+        member {
 
->             interface eth1
+            interface eth1
 
->             interface eth2
+            interface eth2
 
->         }
+        }
 
->         mode 802.3ad
+        mode 802.3ad
 
->         vif 100 {
+        vif 100 {
 
->             address 192.0.2.2/30
+            address 192.0.2.2/30
 
->             address 2001:db8::2/64
+            address 2001:db8::2/64
 
->         }
+        }
 
->     }
+    }
 
-> ```
+```
 **SW1**
 
 
@@ -625,66 +625,66 @@ Let's assume the following topology:
 
 > !
 
-> ```
+```
 **SW2**
 
 
-> 
+
 ```none
 
-> !
+!
 
-> vlan 100
+vlan 100
 
->    name FOO
+   name FOO
 
-> !
+!
 
-> interface Port-Channel10
+interface Port-Channel10
 
->    switchport trunk allowed vlan 100
+   switchport trunk allowed vlan 100
 
->    switchport mode trunk
+   switchport mode trunk
 
->    spanning-tree portfast
+   spanning-tree portfast
 
-> !
+!
 
-> interface Port-Channel20
+interface Port-Channel20
 
->    switchport mode trunk
+   switchport mode trunk
 
->    no spanning-tree portfast auto
+   no spanning-tree portfast auto
 
->    spanning-tree portfast network
+   spanning-tree portfast network
 
-> !
+!
 
-> interface Ethernet1
+interface Ethernet1
 
->    channel-group 10 mode active
+   channel-group 10 mode active
 
-> !
+!
 
-> interface Ethernet2
+interface Ethernet2
 
->    channel-group 10 mode active
+   channel-group 10 mode active
 
-> !
+!
 
-> interface Ethernet3
+interface Ethernet3
 
->    channel-group 20 mode active
+   channel-group 20 mode active
 
-> !
+!
 
-> interface Ethernet4
+interface Ethernet4
 
->    channel-group 20 mode active
+   channel-group 20 mode active
 
-> !
+!
 
-> ```
+```
 :::{note}
 When testing this environment in EVE-NG, ensure the e1000 driver
 is chosen for your VyOS network interfaces. If the default virtio driver
