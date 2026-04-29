@@ -53,20 +53,24 @@ Terraform, Ansible, and AWS, follow these steps:
 
 ### Terraform
 
-- Create an UNIX or Windows instance.
-- Download and install
-  [Terraform](https://developer.hashicorp.com/terraform/install).
-- Create a folder, for example `/root/awsterraform`:
+1. Create an UNIX or Windows instance.
+
+2. Download and install
+   [Terraform](https://developer.hashicorp.com/terraform/install).
+
+3. Create a folder, for example `/root/awsterraform`:
 
 ```none
 mkdir /root/awsterraform
 ```
 
-- Copy all files into your Terraform project
-  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
-  See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
+4. Copy all files into your Terraform project
+   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
+   See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
 
-- Run the following commands:
+<!-- -->
+
+5. Run the following commands:
 
 ```none
 cd /<your folder>
@@ -252,9 +256,7 @@ AWS with your specified configuration.
 To delete the instance, type the following command:
 
 ```none
-
 terraform destroy
-
 ```
 ## Troubleshooting
 
