@@ -53,6 +53,7 @@ Dummy interfaces are also used for testing and simulation purposes.
 ## Operation
 
 ```{opcmd} show interfaces dummy
+
 Show brief interface information.
 
 :::{code-block} none
@@ -65,6 +66,7 @@ dum0             172.18.254.201/32                 u/u
 ```
 
 ```{opcmd} show interfaces dummy \<interface\>
+
 Show detailed interface information.
 
 :::{code-block} none

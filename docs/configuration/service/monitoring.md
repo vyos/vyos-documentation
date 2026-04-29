@@ -43,6 +43,7 @@ Remote database name.
 
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer group-metrics \<single-table | table-per-metric\>
+
 Type of metrics grouping when push to Azure Data Explorer. The default is
 ``table-per-metric``.
 ```
@@ -195,6 +196,7 @@ set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 Telegraf can be used to send logs to [loki] using tags as labels.
 
 ```{cfgcmd} set service monitoring telegraf loki port \<port\>
+
    Remote Loki port
 
    Default is 3100

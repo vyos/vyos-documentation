@@ -79,6 +79,7 @@ Use this command to enable LDP on the interface you define.
 
 
 ```{cfgcmd} set protocols mpls ldp router-id \<address\>
+
 Use this command to configure the IP address used as the LDP router-id of the
 local device.
 ```

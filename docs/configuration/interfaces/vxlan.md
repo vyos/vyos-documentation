@@ -47,6 +47,7 @@ with other vendors, set the port to the IANA standard **4789**.
 ### VXLAN-specific options
 
 ```{cfgcmd} set interfaces vxlan \<interface\> vni \<number\>
+
 **Configure a** {abbr}`VNI (VXLAN Network Identifier)` **for the VXLAN
 interface.**
 
@@ -55,6 +56,7 @@ segments to coexist within the same administrative domain.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> port \<port\>
+
 Configure the UDP port of the remote VXLAN endpoint.
 
 :::{note}
@@ -64,6 +66,7 @@ Linux default UDP port **8472** for VXLAN interfaces.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> source-address \<address\>
+
 Configure the source IP address for the VXLAN underlay.
 
 :::{warning}
@@ -72,6 +75,7 @@ This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> gpe
+
 **Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
 interface.**
 
@@ -80,6 +84,7 @@ parameter.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters external
+
 **Configure the VXLAN interface to use an external control plane, such as BGP
 L2VPN/EVPN, for remote endpoint discovery.**
 
@@ -87,6 +92,7 @@ If not configured, the internal {abbr}`FDB (Forwarding Database)` is used.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters neighbor-suppress
+
 **Enable ARP and ND suppression on the VXLAN interface.**
 
 This reduces ARP and ND message flooding across the VXLAN network. As defined
@@ -95,11 +101,13 @@ to reply to local requests on behalf of remote hosts.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters nolearning
+
 Disable {abbr}`SLLA (Source Link-Layer Address)` and IP address learning on
 the VXLAN interface.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters vni-filter
+
 **Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
 interface.**
 
@@ -115,6 +123,7 @@ VNI filtering works only if the interface is configured with the
 #### Unicast
 
 ```{cfgcmd} set interfaces vxlan \<interface\> remote \<address\>
+
 **Configure the IPv4 or IPv6 address of the remote VTEP.**
 
 Unlike multicast setups, this command allows you to directly configure the
@@ -124,12 +133,14 @@ remote IPv4 or IPv6 address.
 #### Multicast
 
 ```{cfgcmd} set interfaces vxlan \<interface\> source-interface \<interface\>
+
 **Configure the source interface for the VXLAN underlay.**
 All VXLAN traffic is sent and received through the specified interface.
 This setting is mandatory when deploying VXLAN over a multicast network.
 ```
 
 ```{cfgcmd} set interfaces vxlan \<interface\> group \<address\>
+
 **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
 VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
@@ -167,6 +178,7 @@ enables significant VNI scaling because a separate VXLAN interface is not
 required for each VNI.
 
 ```{cfgcmd} set interfaces vxlan \<interface\> vlan-to-vni \<vlan\> vni \<vni\>
+
 **Map a VLAN ID to a VNI on the specified VXLAN interface.**
 
 The VXLAN interface can be added to a bridge.

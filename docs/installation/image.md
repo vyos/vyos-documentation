@@ -29,6 +29,7 @@ VyOS releases on the same storage device. You can manually select the image at
 boot if needed, but the system boots the default image by default.
 
 ```{opcmd} show system image
+
 List all available system images which can be booted on the current system.
 
 :::{code-block} none
@@ -41,6 +42,7 @@ Name                     Default boot    Running
 :::
 ```
 ```{opcmd} delete system image [image-name]
+
    Delete unused images from the system. You can specify an optional image name
    to delete. Use the {opcmd}`show system image` command to list available
    images.
@@ -59,6 +61,7 @@ Name                     Default boot    Running
 
 
 ```{opcmd} show version
+
 Show current system image version.
 
 :::{code-block} none
@@ -92,6 +95,7 @@ To roll back to a previous image, first view the available images by using the
 command:
 
 ```{opcmd} set system image default-boot [image-name]
+
 Select the default boot image which will be started on the next boot
 of the system.
 ```

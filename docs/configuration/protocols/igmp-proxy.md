@@ -13,6 +13,7 @@ upstream interface, and one or more downstream interfaces.
 ## Configuration
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> role \<upstream | downstream\>
+
 * **upstream:** The upstream network interface is the outgoing interface
 which is responsible for communicating to available multicast data sources.
 There can only be one upstream interface.
@@ -24,6 +25,7 @@ be configured.
 ```
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> alt-subnet \<network\>
+
 Defines alternate sources for multicasting and IGMP data. The network address
 must be on the following format 'a.b.c.d/n'. By default, the router will
 accept data from sources on the same network as configured on an interface.
@@ -37,6 +39,7 @@ This option can be supplied multiple times.
 ```
 
 ```{cfgcmd} set protocols igmp-proxy disable-quickleave
+
 Disables quickleave mode. In this mode the daemon will not send a Leave IGMP
 message upstream as soon as it receives a Leave message for any downstream
 interface. The daemon will not ask for Membership reports on the downstream

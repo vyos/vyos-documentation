@@ -24,6 +24,7 @@ Set action to take on entries matching this rule.
 Set description for rule.
 ```
 ```{cfgcmd} set policy extcommunity-list \<text\> rule \<1-65535\> regex \<text\>
+
 Regular expression to match against an extended community list, where text
 could be:
 * \<aa:nn:nn\>: Extended community list regular expression.

@@ -8,6 +8,7 @@ displayed using the built-in help as described in the {ref}`cli`
 section and are omitted from the output here):
 
 ```{opcmd} ping \<destination\>
+
 Send ICMP echo requests to destination host. There are multiple options to
 ping, including VRF support.
 
@@ -41,6 +42,7 @@ vrf
 ```
 
 ```{opcmd} traceroute \<destination\>
+
 Trace path to target.
 
 :::{code-block} none
@@ -57,6 +59,7 @@ ipv6          Track network path to <hostname|IPv6 address>
 ## Advanced Connectivity Tests
 
 ```{opcmd} monitor traceroute \<destination\>
+
 However, another helper is available which combines ping and traceroute
 into a single tool. An example of its output is shown:
 
@@ -91,6 +94,7 @@ IPv6 uses different techniques to discover its Neighbors/topology.
 ### Router Discovery
 
 ```{opcmd} force ipv6-rd interface \<interface\> [address \<ipv6-address\>]
+
 Discover routers via eth0.
 
 Example:
@@ -128,6 +132,7 @@ DNS server lifetime     :          600 (0x00000258) seconds
 ### Neighbor Discovery
 
 ```{opcmd} force ipv6-nd interface \<interface\> address \<ipv6-address\>
+
 Example:
 
 :::{code-block} none

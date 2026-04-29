@@ -23,6 +23,7 @@ Configure agent IP address associated with this interface.
 
 
 ```{cfgcmd} set system sflow interface \<interface\>
+
 Configure and enable collection of flow information for the interface identified by <interface>.
 
 You can configure multiple interfaces which would participate in sflow accounting.

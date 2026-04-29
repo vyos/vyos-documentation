@@ -37,6 +37,7 @@ It's often used for connecting ISP clients to a broadband access server.
 ### PPPoE options
 
 ```{cfgcmd} set interfaces pppoe \<interface\> access-concentrator \<name\>
+
 **Configure the name of the target access concentrator for the PPPoE session.**
 During the PPPoE discovery process, the client sends a PPPoE initiation packet.
 Multiple access concentrators may respond with offer packets, and the client
@@ -46,18 +47,21 @@ specified access concentrator.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> authentication username \<username\>
+
 **Configure the username for PPPoE session authentication.**
 Although authentication is optional in the interface configuration, most ISPs
 require it to establish a connection.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> authentication password \<password\>
+
 **Configure the password for PPPoE session authentication.**
 Although authentication is optional in the interface configuration, most ISPs
 require it to establish a connection.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> connect-on-demand
+
 **Enable dial-on-demand on the PPPoE interface.**
 When enabled, the system establishes a PPPoE connection only when traffic
 passes through the interface. If the connection fails, it is reestablished when
@@ -74,6 +78,7 @@ continuously; if the connection fails, it is reestablished immediately.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> no-default-route
+
 Request an IP address from the PPPoE server without installing a default route.
 Example:
 
@@ -88,6 +93,7 @@ Introduced in VyOS 1.4, this command inverts the logic of the former
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> default-route-distance \<distance\>
+
 Configure the distance for the default gateway provided by the PPPoE server.
 Example:
 
@@ -97,6 +103,7 @@ set interfaces pppoe pppoe0 default-route-distance 220
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> mru \<mru\>
+
 **Configure the** {abbr}`MRU (Maximum Receive Unit)` **for the PPPoE
 interface.**
 This setting instructs the pppd daemon to restrict the remote peer from sending
@@ -112,6 +119,7 @@ When using the IPv6 protocol, the MRU must be at least 1280 bytes.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> idle-timeout \<time\>
+
 **Configure the idle timeout for on-demand PPPoE sessions.**
 This setting defines how long the connection remains active without any traffic
 before being disconnected.
@@ -123,6 +131,7 @@ the connection active continuously once established.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> holdoff \<time\>
+
 **Configure the redial delay for persistent PPPoE sessions.**
 If a persistent session (with ``connect-on-demand`` disabled) is terminated by
 the remote peer or drops unexpectedly, the router waits the specified interval
@@ -131,6 +140,7 @@ The default redial delay is 30 seconds.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> local-address \<address\>
+
 **Configure the local endpoint IP address for PPPoE sessions.**
 By default, this IP address is negotiated.
 ```
@@ -141,23 +151,27 @@ Disable the installation of advertised DNS nameservers on the local system.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> remote-address \<address\>
+
 **Configure the remote endpoint IP address for PPPoE sessions.**
 By default, this IP address is negotiated.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> service-name \<name\>
+
 **Configure the service name of the target access concentrator for the PPPoE
 session.**
 By default, the PPPoE interface connects to any available access concentrator.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> source-interface \<source-interface\>
+
 **Configure the underlying interface for the PPPoE connection.**
 Each PPPoE connection is established over an underlying interface, which can be
 an Ethernet interface, a VIF, or a bonding interface.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ip adjust-mss \<mss | clamp-mss-to-pmtu\>
+
 **Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
@@ -176,12 +190,14 @@ options interface <name> adjust-mss <value>`` syntax.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ip disable-forwarding
+
 **Configure the interface for host or router behavior.**
 If configured, the interface switches to host mode, and IPv4 forwarding is
 disabled on it.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ip source-validation \<strict | loose | disable\>
+
 **Configure source IP address validation using**
 {abbr}`RPF (Reverse Path Forwarding)` **on this interface, as specified in**
 {rfc}`3704`.
@@ -202,11 +218,13 @@ mode.
 #### IPv6
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 address autoconf
+
 Enable IPv6 address assignment via {abbr}`SLAAC (Stateless Address
 Auto-Configuration)` on this interface.
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 adjust-mss \<mss | clamp-mss-to-pmtu\>
+
 **Configure the** {abbr}`MSS (Maximum Segment Size)` **advertised in outgoing
 TCP SYN packets on the specified interface.**
 By clamping the MSS value in TCP SYN packets, you instruct the remote side not
@@ -224,6 +242,7 @@ Introduced in VyOS 1.4, this command replaces the older ``set firewall
 ```
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 disable-forwarding
+
 **Configure the interface for host or router behavior.**
 If configured, the interface switches to host mode, and IPv6 forwarding is
 disabled on it.
@@ -237,6 +256,7 @@ disabled on it.
 ## Operation
 
 ```{opcmd} show interfaces pppoe \<interface\>
+
 Show detailed information about a specific PPPoE interface.
 
 :::{code-block} none
@@ -253,6 +273,7 @@ TX:  bytes    packets     errors    dropped    carrier collisions
 ```
 
 ```{opcmd} show interfaces pppoe \<interface\> queue
+
 Show queue information for a specific PPPoE interface.
 
 :::{code-block} none

@@ -48,12 +48,14 @@ set service ipoe-server interface eth1 vlan '100-200'
 ```
 
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\>
+
 Creates local IPoE user with username=\*\*\<interface\>\*\* and
 password=\*\*\<MAC\>\*\* (mac-address)
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication mode \<local | radius\>
+
 Set authentication backend. The configured authentication backend is used
 for all queries.
 
@@ -65,6 +67,7 @@ server.
 
 
 ```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
+
 Use this command to define the first IP address of a pool of
 addresses to be given to IPoE clients. If notation ``x.x.x.x-x.x.x.x``,
 it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
@@ -79,6 +82,7 @@ Use this command to define default address pool name.
 
 
 ```{cfgcmd} set service ipoe-server gateway-address \<x.x.x.x/x\>
+
 Specifies address to be used as server ip address if radius can assign
 only client address. In such case if client address is matched network
 and mask then specified address and mask will be used. You can specify
@@ -87,6 +91,7 @@ multiple such options.
 
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
+
 Specifies the client connectivity mode.
 
 * **l2**: It means that clients are on same network where interface
@@ -96,6 +101,7 @@ is.\*\*(default)\*\*
 
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> network \<shared | vlan\>
+
 Specify where interface is shared by multiple users or it is vlan-per-user.
 
 * **shared**: Multiple clients share the same network. **(default)**
@@ -126,6 +132,7 @@ set service ipoe-server authentication mode radius
 
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
+
 Configure RADIUS \<server\> and its required shared \<secret\> for
 communicating with the RADIUS server.
 ```
@@ -189,6 +196,7 @@ Timeout to wait reply for Interim-Update packets. (default 3 seconds)
 
 
 ```{cfgcmd} set service ipoe-server authentication radius dynamic-author server \<address\>
+
 Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
 This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
 ```
@@ -219,12 +227,14 @@ Timeout to wait response from server (seconds)
 
 
 ```{cfgcmd} set service ipoe-server authentication radius nas-identifier \<identifier\>
+
 Value to send to RADIUS server in NAS-Identifier attribute and to be matched
 in DM/CoA requests.
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication radius nas-ip-address \<address\>
+
 Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
@@ -237,6 +247,7 @@ Source IPv4 address used in all RADIUS server queires.
 
 
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute \<attribute\>
+
 Specifies which RADIUS server attribute contains the rate limit information.
 The default attribute is `Filter-Id`.
 ```
@@ -253,6 +264,7 @@ Enables bandwidth shaping via RADIUS.
 
 
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit vendor
+
 Specifies the vendor dictionary, dictionary needs to be in
 /usr/share/accel-ppp/radius.
 ```
@@ -295,6 +307,7 @@ Define it in your RADIUS server.
 
 ## IPv6
 ```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
+
 Use this comand to set the IPv6 address pool from which an IPoE client
 will get an IPv6 prefix of your defined length (mask) to terminate the
 IPoE endpoint at their side. The mask length can be set from 48 to 128
@@ -303,6 +316,7 @@ bit long, the default value is 64.
 
 
 ```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
+
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 IPoE. You will have to set your IPv6 pool and the length of the
 delegation prefix. From the defined IPv6 pool you will be handing out
@@ -372,6 +386,7 @@ Use this command to define the next address pool name.
 ```
 ### Advanced Interface Options
 ```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
+
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
 If you need more customization use `client-ip-pool`
 ```
@@ -410,6 +425,7 @@ Timeout in seconds
 Maximum number of concurrent session start attempts
 ```
 ```{cfgcmd} set service ipoe-server name-server \<address\>
+
 Connected client should use \<address\> as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
@@ -425,6 +441,7 @@ Enable SNMP
 ## Monitoring
 
 ```{opcmd} show ipoe-server sessions
+
 Use this command to locally check the active sessions in the IPoE
 server.
 ```

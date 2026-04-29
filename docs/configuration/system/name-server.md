@@ -15,6 +15,7 @@ This section describes configuring DNS on the system, namely:
 ## DNS name servers
 
 ```{cfgcmd} set system name-server \<address\>
+
 Use this command to specify a DNS server for the system to be used
 for DNS lookups. More than one DNS server can be added, configuring
 one at a time. Both IPv4 and IPv6 addresses are supported.
@@ -38,6 +39,7 @@ In order for the system to use and complete unqualified host names, a
 list can be defined which will be used for domain searches.
 
 ```{cfgcmd} set system domain-search \<domain\>
+
 Use this command to define domains, one at a time, so that the system
 uses them to complete unqualified host names. Maximum: 6 entries.
 ```

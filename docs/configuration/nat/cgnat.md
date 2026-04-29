@@ -65,18 +65,21 @@ When implementing CGNAT, ensuring that there are enough ports allocated per subs
 ## Configuration
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> external-port-range \<port-range\>
+
 Set an external port-range for the external pool, the default range is
 1024-65535. Multiple entries can be added to the same pool.
 ```
 
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> per-user-limit port \<num\>
+
 Set external source port limits that will be allocated to each subscriber
 individually. The default value is 2000.
 ```
 
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> range [address | address range | network] [seq]
+
 Set the range of external IP addresses for the CGNAT pool.
 The sequence is optional; if set, a lower value means higher priority.
 ```

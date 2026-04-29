@@ -8,6 +8,7 @@ At the moment only [Intel® QAT] is supported
 ## Intel® QAT
 
 ```{opcmd} show system acceleration qat
+
 use this command to check if there is an Intel® QAT supported Processor in your system.
 
 :::{code-block} none
@@ -29,6 +30,7 @@ if there is a supported device, enable Intel® QAT
 
 
 ```{opcmd} show system acceleration qat status
+
 Check if the Intel® QAT device is up and ready to do the job.
 
 :::{code-block} none

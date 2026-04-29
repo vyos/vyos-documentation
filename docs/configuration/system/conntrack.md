@@ -7,6 +7,7 @@ stateful firewall or NAT is configured.
 ## Configure
 
 ```{cfgcmd} set system conntrack table-size \<1-50000000\>
+
 :defaultvalue:
 
 The connection tracking table contains one entry for each connection being
@@ -14,6 +15,7 @@ tracked by the system.
 ```
 
 ```{cfgcmd} set system conntrack expect-table-size \<1-50000000\>
+
 :defaultvalue:
 
 The connection tracking expect table contains one entry for each expected
@@ -23,6 +25,7 @@ The default size of the expect table is 2048 entries.
 ```
 
 ```{cfgcmd} set system conntrack hash-size \<1-50000000\>
+
 :defaultvalue:
 
 Set the size of the hash table. The connection tracking hash table makes
@@ -58,18 +61,21 @@ Or, for example ftp, delete system conntrack modules ftp.
 ```
 
 ```{cfgcmd} set system conntrack tcp half-open-connections \<1-21474836\>
+
 :defaultvalue:
 
 Set the maximum number of TCP half-open connections.
 ```
 
 ```{cfgcmd} set system conntrack tcp loose \<enable | disable\>
+
 :defaultvalue:
 
 Policy to track previously established connections.
 ```
 
 ```{cfgcmd} set system conntrack tcp max-retrans \<1-2147483647\>
+
 :defaultvalue:
 
 Set the number of TCP maximum retransmit attempts.

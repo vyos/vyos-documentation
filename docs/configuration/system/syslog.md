@@ -28,6 +28,7 @@ The syslog configuration is organized into the following categories:
 Configure the general behavior of the syslog service.
 
 ```{cfgcmd} set system syslog marker interval \<number\>
+
 **Configure the interval, in seconds, for sending syslog mark messages.**
 Syslog mark messages confirm the logging service is operational.
 Default: 1200 seconds.
@@ -39,6 +40,7 @@ Disable sending syslog mark messages.
 ```
 
 ```{cfgcmd} set system syslog preserve-fqdn
+
 **Configure how the logging device's hostname appears in log messages sent
 to a remote syslog server.**
 
@@ -51,6 +53,7 @@ Name)` in log messages, even if the syslog server is in the same domain.
 Configure which log messages to save to a local log file.
 
 ```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
+
 **Configure syslog to save log messages for a specific facility and
 severity level to \`\`/var/log/messages\`\`.**
 
@@ -64,6 +67,7 @@ Refer to the tables below for valid facility and severity options.
 Configure which log messages to send to `/dev/console`.
 
 ```{cfgcmd} set system syslog console facility \<keyword\> level \<keyword\>
+
 **Configure syslog to send log messages for a specific facility and severity
 level to the device's console.**
 
@@ -81,6 +85,7 @@ runs in parallel with them. Remote logging supports sending log messages
 to multiple hosts.
 
 ```{cfgcmd} set system syslog remote \<address\> facility \<keyword\> level \<keyword\>
+
 **Configure log transmission to the remote syslog server for a specific
 facility and severity level.**
 
@@ -91,6 +96,7 @@ Refer to the tables below for valid facility and severity options.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> protocol \<udp | tcp\>
+
 **Configure the protocol for log transmission.**
 
 The protocol can be either UDP or TCP. By default, log messages are sent
@@ -98,11 +104,13 @@ over UDP.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> port \<port\>
+
 **Configure the port for log transmission.**
 By default, the standard port 514 is used.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> format include-timezone
+
 **Configure log transmission in the RFC 5424 format.**
 
 The RFC 5424 format includes the timezone in the timestamp. For example:
@@ -119,6 +127,7 @@ By default, log messages are sent in the RFC 3164 format. For example:
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> format octet-counted
+
 **Enable octet-counted framing for log transmission.**
 
 When enabled, multi-line log messages are sent without splitting. Ensure
@@ -128,6 +137,7 @@ Octet-counted framing is not available for the UDP protocol.
 ```
 
 ```{cfgcmd} set system syslog remote \<address\> vrf \<name\>
+
 Configure the {abbr}`VRF (Virtual Routing and Forwarding)` instance
 for log transmission.
 ```

@@ -23,6 +23,7 @@ LANs and WANs.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> switchdev
+
 **Enable** ``switchdev`` **mode for the interface.**
 In ``switchdev`` mode, the interface offloads traffic switching between ports
 to the hardware, bypassing the host CPU. This increases the interface’s
@@ -37,6 +38,7 @@ interfaces and requires a switchdev-compatible driver.
 ### Ethernet options
 
 ```{cfgcmd} set interfaces ethernet \<interface\> duplex \<auto | full | half\>
+
 **Configure duplex mode for the interface.**
 The following duplex modes are available:
 * ``auto``: The interface negotiates the duplex mode with the connected device.
@@ -48,6 +50,7 @@ The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed \<auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000\>
+
 **Configure the interface's speed, in Mbit/s.**
 The following options are available:
 * ``auto``:  The interface negotiates the speed with the connected device.
@@ -57,6 +60,7 @@ The default option is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer rx \<value\>
+
 **Configure the receive (RX) ring buffer size for the interface.**
 The RX ring buffer size defines the number of incoming packets the interface
 can queue in hardware before the CPU processes them.
@@ -72,6 +76,7 @@ ethtool -g <interface>
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer tx \<value\>
+
 **Configure the transmit (TX) ring buffer size.**
 The TX ring buffer size defines the number of outgoing packets the interface
 can queue in hardware before they are transmitted onto the network.
