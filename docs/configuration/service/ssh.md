@@ -212,10 +212,12 @@ $ set service ssh trusted-user-ca test_ca
 You can now log into the system using: ``ssh -i vyos_testca vyos_testca@vyos.test.com``
 ```
 ## Dynamic-protection
+
 Protects host from brute-force attacks against
 SSH. Log messages are parsed, line-by-line, for recognized patterns. If an
 attack, such as several login failures within a few seconds, is detected, the
 offending IP is blocked. Offenders are unblocked after a set interval.
+
 ```{cfgcmd} set service ssh dynamic-protection
 
 Allow ``ssh`` dynamic-protection.
@@ -236,7 +238,9 @@ Remember source IP in seconds before reset their score. The default is 1800.
 Block source IP when their cumulative attack score exceeds threshold. The
 default is 30.
 ```
+
 (ssh-operation)=
+
 ## Operation
 ```{opcmd} restart ssh
 Restart the SSH daemon process, the current session is not affected, only the

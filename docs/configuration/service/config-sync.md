@@ -91,6 +91,7 @@ interfaces, firewall policies, or protocol settings).
 ```
 
 ## Example
+
 - Synchronize the time-zone and OSPF configuration from Router A to Router B
 - The address of Router B is 10.0.20.112 and the port used is 8443
 

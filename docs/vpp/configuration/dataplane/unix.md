@@ -8,6 +8,7 @@ lastproofread: '2026-02-27'
 ```
 
 # VPP Unix Dataplane Configuration
+
 The UNIX configuration section is used to control VPP's interaction
 with the underlying operating system, including operations scheduling.
 
@@ -26,6 +27,7 @@ can lead to increased latency in processing events.
 
 You can configure the polling delay using the following command in the
 VyOS CLI:
+
 ```{cfgcmd} set vpp settings poll-sleep-usec \<delay\>
 ```
 

@@ -30,6 +30,7 @@ Use this command to user Layer 4 information for ECMP hashing.
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
+
 ```{cfgcmd} set system ipv6 protocol \<protocol\> route-map \<route-map\>
 Apply a route-map filter to routes for the specified protocol. The following
 protocols can be used: any, babel, bgp, isis, ospfv3, ripng, static
@@ -45,6 +46,7 @@ are sending routes to zebra.
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
 by default for a traditional profile of FRR which we use. It and can be disabled if
 you do not want to e.g. allow BGP to peer across the default route.
+
 ```{cfgcmd} set system ipv6 nht no-resolve-via-default
 Do not allow IPv6 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF

@@ -8,6 +8,7 @@ lastproofread: '2026-03-05'
 ```
 
 # VPP NAT44 Configuration
+
 NAT44 has two main use cases:
 - **Source NAT (SNAT)**: Enabling internet access for hosts in private
   networks using dynamic or static address translation.
@@ -22,6 +23,7 @@ Configuring NAT44 involves a few steps:
 2. Create NAT rules for SNAT or DNAT.
 
 ## Dynamic and Static Operations
+
 NAT44 configuration can be done in one of two ways or in both ways
 simultaneously:
 1. Dynamically performing NAT using a pool of public IP addresses.
@@ -36,6 +38,7 @@ predictable mappings between private and public IP addresses. They are also
 the only way to configure DNAT.
 
 ### NAT Rule Processing and Traffic Flow
+
 This section explains how different combinations of NAT rules affect
 traffic handling on a router. There are three possible combinations of NAT
 rule configurations:
@@ -59,24 +62,31 @@ rule configurations:
 :::
 
 ## Interfaces Configuration
+
 The first step in configuring NAT44 is defining which interfaces handle
 inside (private) and outside (public) traffic. VyOS uses these interface
 designations to determine the direction of translation.
 
 ### Inside Interfaces
+
 Inside interfaces connect to private networks where hosts need source NAT
 to access external networks.
+
 ```{cfgcmd} set vpp nat nat44 interface inside \<inside-interface\>
 ```
+
 Traffic flowing **from** inside interfaces gets source NAT applied,
 translating private source addresses to public addresses from the
 translation pool.
 
 ### Outside Interfaces
+
 Outside interfaces connect to public networks where external hosts may
 need to access internal services.
+
 ```{cfgcmd} set vpp nat nat44 interface outside \<outside-interface\>
 ```
+
 Traffic flowing **to** outside interfaces can trigger destination NAT
 based on static rules, allowing external access to internal services.
 
@@ -94,6 +104,7 @@ In complex network topologies, the same physical interface can be
 configured as both inside and outside to handle bidirectional NAT
 scenarios.
 :::
+
 **Traffic Processing:**
 1. **Inside → Outside** (SNAT): Private hosts accessing external networks
 2. **Outside → Inside** (DNAT): External hosts accessing internal services
@@ -103,8 +114,10 @@ scenarios.
    traffic
 
 ### Multiple Interface Support
+
 You can configure multiple interfaces as inside or outside to support
 complex network topologies:
+
 ```none
 # Multiple inside interfaces (different private networks)
 set vpp nat nat44 interface inside eth0
@@ -115,20 +128,25 @@ set vpp nat nat44 interface outside eth1
 set vpp nat nat44 interface outside eth3
 ```
 ## Address Pool Configuration
+
 Address pools define ranges of IP addresses that can be used for NAT
 translations. VyOS NAT44 supports two types of address pools, each serving
 different purposes.
 
 ### Translation Pools
+
 Translation pools are used for dynamic source NAT (SNAT). They provide a
 range of public IP addresses that can be dynamically assigned to private
 hosts when they access external networks.
+
 ```{cfgcmd} set vpp nat nat44 address-pool translation address \<ip-address | ip-address-range\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 address-pool translation interface \<interface-name\>
 ```
+
 **Examples:**
+
 ```none
 # Single address pool
 set vpp nat nat44 address-pool translation address 203.0.113.10
@@ -140,18 +158,22 @@ set vpp nat nat44 address-pool translation address 203.0.113.10-203.0.113.20
 set vpp nat nat44 address-pool translation interface eth1
 ```
 ### Twice-NAT Pools
+
 Twice-NAT pools are used when performing both source and destination NAT on
 the same traffic flow. This is particularly useful in scenarios where you
 need to:
 - Translate both source and destination addresses
 - Provide access between networks with overlapping IP ranges
 - Implement advanced NAT scenarios like self-twice-nat
+
 ```{cfgcmd} set vpp nat nat44 address-pool twice-nat address \<ip-address | ip-address-range\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 address-pool twice-nat interface \<interface-name\>
 ```
+
 **Examples:**
+
 ```none
 # Twice-NAT pool for advanced scenarios
 set vpp nat nat44 address-pool twice-nat address 192.168.100.1-192.168.100.10
@@ -171,6 +193,7 @@ set vpp nat nat44 address-pool twice-nat interface eth2
 :::
 
 ### Pool Selection Priority
+
 When multiple pools are configured, VyOS uses the following selection
 priority:
 1. **Static mappings**: Always use the specific external address defined in
@@ -186,6 +209,7 @@ operational.
 :::
 
 ## Static Rules Configuration
+
 Static NAT rules provide predictable and consistent mappings between private
 and public IP addresses. They are essential for:
 - **Destination NAT (DNAT)**: Allowing external hosts to access services in
@@ -199,13 +223,16 @@ Unlike dynamic NAT that uses a pool of addresses, static rules create
 one-to-one mappings that persist until explicitly removed.
 
 ### Basic Static Rule Configuration
+
 To create a static NAT rule, you need to define the local (internal) and
 external (public) address mappings:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> local address \<internal-ip\>
 ```
 
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> external address \<external-ip\>
 ```
+
 Where:
 - `<rule-number>` is a unique identifier for the rule
 - `<internal-ip>` is the private IP address in your local network
@@ -216,8 +243,10 @@ outside to the external IP will be translated to the internal IP, and vice
 versa.
 
 ### Port-based Static Rules
+
 For more granular control, you can create port-specific static rules. This
 is useful when you want to publish specific services:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> local address \<internal-ip\>
 ```
 
@@ -232,6 +261,7 @@ is useful when you want to publish specific services:
 
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> protocol \<protocol\>
 ```
+
 Where:
 - `<internal-port>` and `<external-port>` are the port numbers used by
   the connection.
@@ -245,9 +275,11 @@ Rules must contain either both ports and protocol, or neither.
 :::
 
 ### Advanced Static Rule Options
+
 VyOS NAT44 supports several advanced options for static rules:
 
 #### Twice-NAT
+
 Twice-NAT performs both source and destination NAT. When an external host
 accesses an internal service, the source IP of such a connection is
 translated to an address from the twice-NAT address pool.
@@ -256,13 +288,17 @@ This is practical in scenarios where internal services cannot connect to
 public networks, so they see such traffic as internal.
 
 The twice-NAT option can be enabled with the following command:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat
 ```
 #### Self Twice-NAT
+
 Self Twice-NAT is used when a local host needs to access itself via the
 external address:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options self-twice-nat
 ```
+
 This option rewrites source IP addresses on packets sent only from a local
 address to an external address configured in a rule.
 
@@ -275,30 +311,41 @@ address to an external address configured in a rule.
 :::
 
 #### Out-to-In Only
+
 Restricts the rule to only apply to traffic from outside to inside
 interfaces:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options out-to-in-only
 ```
+
 This prevents the creation of sessions from the inside interface, making it
 a purely DNAT rule.
 
 #### Force Twice-NAT Address
+
 When using twice-nat, you can force the use of a specific IP address from
 the twice-nat address pool:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat-address \<ip-address\>
 ```
 #### Rule Description
+
 To document your rules, you can add a description:
+
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> description \<description\>
 ```
 ### Static Rules Configuration Examples
+
 **Full one-to-one NAT mapping:**
+
 ```none
 set vpp nat nat44 static rule 100 local address 192.168.1.10
 set vpp nat nat44 static rule 100 external address 203.0.113.10
 set vpp nat nat44 static rule 100 description "One-to-one mapping"
 ```
+
 **Port-specific SSH access:**
+
 ```none
 set vpp nat nat44 static rule 200 local address 192.168.1.20
 set vpp nat nat44 static rule 200 local port 22
@@ -307,7 +354,9 @@ set vpp nat nat44 static rule 200 external port 2222
 set vpp nat nat44 static rule 200 protocol tcp
 set vpp nat nat44 static rule 200 description "SSH access to server"
 ```
+
 **Twice-NAT for local service access:**
+
 ```none
 set vpp nat nat44 static rule 300 local address 192.168.1.30
 set vpp nat nat44 static rule 300 local port 80
@@ -326,6 +375,7 @@ set vpp nat nat44 address-pool twice-nat address <twice-nat-ip-range>
 :::
 
 ## Exclude Rules Configuration
+
 Exclude rules allow you to prevent specific traffic from undergoing NAT
 translation. This is particularly useful for:
 - **Router management**: Allowing SSH access to the router itself from
@@ -340,15 +390,20 @@ traffic, exclude rules create invisible 1-to-1 mappings that allow packets
 to pass through without NAT modifications.
 
 ### Basic Exclude Rule Configuration
+
 To create an exclude rule, you need to specify the traffic characteristics
 that should bypass NAT. You can configure exclude rules in two ways:
 
 **Option 1: Using local address**
+
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
 ```
+
 **Option 2: Using external interface**
+
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface \<interface-name\>
 ```
+
 Where:
 - `<rule-number>` is a unique identifier for the exclude rule.
 - `<internal-ip>` is the local IP address that should be excluded from
@@ -363,11 +418,13 @@ exclusive.
 :::
 
 ### Port-specific Exclude Rules
+
 For more granular control, you can exclude only specific ports and protocols.
 You can combine port and protocol specifications with either `local-address` or
 `external-interface`:
 
 **With local address:**
+
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> local-address \<internal-ip\>
 ```
 
@@ -376,7 +433,9 @@ You can combine port and protocol specifications with either `local-address` or
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> protocol \<protocol\>
 ```
+
 **With external interface:**
+
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> external-interface \<interface-name\>
 ```
 
@@ -385,16 +444,21 @@ You can combine port and protocol specifications with either `local-address` or
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> protocol \<protocol\>
 ```
+
 Where:
 - `<port-number>` is the specific port to exclude (1-65535)
 - `<protocol>` can be `tcp`, `udp`, `icmp`, or `all` (default)
 
 ### Rule Documentation
+
 Add descriptions to your exclude rules for better management:
+
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> description \<description\>
 ```
 ### Exclude Rules Configuration Examples
+
 **Exclude SSH access to router:**
+
 ```none
 # Allow external SSH access to router without NAT
 set vpp nat nat44 exclude rule 10 local-address 192.168.1.1
@@ -402,7 +466,9 @@ set vpp nat nat44 exclude rule 10 local-port 22
 set vpp nat nat44 exclude rule 10 protocol tcp
 set vpp nat nat44 exclude rule 10 description "SSH access to router"
 ```
+
 **Exclude SNMP monitoring:**
+
 ```none
 # Allow SNMP monitoring without NAT translation
 set vpp nat nat44 exclude rule 20 local-port 161
@@ -410,19 +476,25 @@ set vpp nat nat44 exclude rule 20 protocol udp
 set vpp nat nat44 exclude rule 20 external-interface eth1
 set vpp nat nat44 exclude rule 20 description "SNMP monitoring"
 ```
+
 **Exclude all traffic to router management interface:**
+
 ```none
 # Exclude all traffic to router's management IP
 set vpp nat nat44 exclude rule 30 local-address 192.168.100.1
 set vpp nat nat44 exclude rule 30 description "Management interface bypass"
 ```
+
 **Exclude all traffic from external interface:**
+
 ```none
 # Exclude all traffic from external interface (alternative approach)
 set vpp nat nat44 exclude rule 31 external-interface eth1
 set vpp nat nat44 exclude rule 31 description "External interface bypass"
 ```
+
 **Exclude forwarded traffic for specific service:**
+
 ```none
 # Allow external access to internal server without NAT translation
 set vpp nat nat44 exclude rule 40 local-address 192.168.1.50
@@ -431,6 +503,7 @@ set vpp nat nat44 exclude rule 40 protocol tcp
 set vpp nat nat44 exclude rule 40 description "Direct access to internal service"
 ```
 ### Common Use Cases
+
 **Router Administration:**
 
 Exclude rules are essential when you need to manage the router from external
@@ -463,12 +536,15 @@ bypass NAT entirely.
 :::
 
 ## Advanced NAT44 Settings
+
 VyOS provides additional NAT44 settings for fine-tuning performance and
 behavior.
 
 ### Session Timeouts
+
 NAT44 maintains translation sessions with configurable timeout values for
 different protocols:
+
 ```{cfgcmd} set vpp nat nat44 timeout icmp \<seconds\>
 
 Set the timeout for ICMP sessions (Default: 60 seconds).
@@ -490,7 +566,9 @@ Set the timeout for transitory TCP connections (setup/teardown) (Default:
 
 Set the timeout for UDP sessions (Default: 300 seconds or 5 minutes).
 ```
+
 **Example:**
+
 ```none
 # Customize timeouts for high-traffic environment
 set vpp nat nat44 timeout tcp-established 3600
@@ -498,25 +576,31 @@ set vpp nat nat44 timeout udp 600
 set vpp nat nat44 timeout icmp 30
 ```
 ### Session Limits
+
 Control the maximum number of concurrent NAT sessions:
+
 ```{cfgcmd} set vpp nat nat44 session-limit \<number\>
 
 Set the maximum number of NAT sessions per worker thread (Default:
 64512).
 ```
+
 This setting helps prevent memory exhaustion and ensures predictable
 performance under high load.
 
 **Example:**
+
 ```none
 # Increase session limit for high-capacity deployment
 set vpp nat nat44 session-limit 100000
 ```
 ## Complete Configuration Example
+
 Here's a complete example showing how to configure VyOS NAT44 for a typical
 network setup:
 
 **Network Topology:**
+
 ```none
 Internet (203.0.113.0/24)
         |
@@ -531,7 +615,9 @@ Internal Network (192.168.1.0/24)
 ├── 192.168.1.20 (SSH Server)  
 └── 192.168.1.30 (API Service)
 ```
+
 **Configuration:**
+
 ```none
 # Configure interfaces
 set vpp nat nat44 interface inside eth0
@@ -588,6 +674,7 @@ set vpp nat nat44 static rule 300 description "API service (No Internet access f
 ## Best Practices and Troubleshooting
 
 ### Recommendations
+
 - **Use exclude rules** for router management services like SSH
 - **Use out-to-in-only** for services that do not need access to external
   : networks.
@@ -599,6 +686,7 @@ set vpp nat nat44 static rule 300 description "API service (No Internet access f
   : connections in your network.
 
 ### Common Configuration Issues
+
 **Static rules not working:**
 
 1. Verify that the external IP address is included in an address pool
@@ -625,8 +713,10 @@ set vpp nat nat44 static rule 300 description "API service (No Internet access f
 3. Ensure protocol and port specifications match the traffic requirements
 
 ## Operational Commands
+
 Monitor NAT44 status and active connections using VyOS operational
 commands:
+
 ```{opcmd} show vpp nat nat44 addresses
 
 Display configured NAT44 address pools.

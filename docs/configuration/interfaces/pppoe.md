@@ -278,6 +278,7 @@ Initiate a session on the specified interface.
 ## Example
 
 ### PPPoE over DSL
+
 **Configuration scenario:**
 - Your ISP's DSL modem is connected to the `eth0` interface on your VyOS
   router.
@@ -313,6 +314,7 @@ set firewall ipv4 forward filter rule 10 inbound-interface name 'pppoe0'
 ```
 
 ### PPPoE over VLAN
+
 Some ISPs require PPPoE connections to be
 established over a VLAN interface. This specific topology is fully supported by
 VyOS.
@@ -327,6 +329,7 @@ set interfaces pppoe pppoe0 source-interface 'eth0.7'
 ```
 
 #### IPv6 DHCPv6 prefix delegation
+
 **Configuration scenario:**
 The following configuration establishes a PPPoE session on the `eth1`
 interface, requests a `/56` IPv6 prefix delegation from the ISP, and assigns

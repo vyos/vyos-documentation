@@ -25,6 +25,7 @@ Range is 1 to 300, default is 10.
 
 Defines protocols for checking ARP, ICMP, TCP.
 ```
+
 - ICMP probe sends 2 ICMP request packets with a response timeout of 1 second.
   If one ICMP response is received, the health check is successful.
 
@@ -37,10 +38,12 @@ Defines protocols for checking ARP, ICMP, TCP.
 
 
   > Default is `icmp`.
+
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> check policy <policy>
 
 Policy for checking targets
 ```
+
 - `all-available` all checking target addresses must be available to pass
   this check
 
@@ -50,6 +53,7 @@ Policy for checking targets
 
 
   > Default is `any-available`.
+
 ```{cfgcmd} set protocols failover route \<subnet\> next-hop \<address\> interface <interface>
 
 Next-hop interface for the route
@@ -62,7 +66,9 @@ Route metric
 Default 1.
 ```
 ## Example
+
 **One gateway:**
+
 ```none
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check target '192.0.2.1'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check timeout '5'
@@ -70,7 +76,9 @@ set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check type 'icmp'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 interface 'eth0'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 metric '10'
 ```
+
 Show the route
+
 ```none
 vyos@vyos:~$ show ip route 203.0.113.1
   Routing entry for 203.0.113.1/32
@@ -78,7 +86,9 @@ vyos@vyos:~$ show ip route 203.0.113.1
   Last update 00:00:39 ago
   * 192.0.2.1, via eth0
 ```
+
 **Two gateways and different metrics:**
+
 ```none
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check target '192.0.2.1'
 set protocols failover route 203.0.113.1/32 next-hop 192.0.2.1 check timeout '5'
@@ -92,7 +102,9 @@ set protocols failover route 203.0.113.1/32 next-hop 198.51.100.1 check type 'ic
 set protocols failover route 203.0.113.1/32 next-hop 198.51.100.1 interface 'eth2'
 set protocols failover route 203.0.113.1/32 next-hop 198.51.100.1 metric '20'
 ```
+
 Show the route
+
 ```none
 vyos@vyos:~$ show ip route 203.0.113.1
 Routing entry for 203.0.113.1/32

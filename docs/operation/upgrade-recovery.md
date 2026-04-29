@@ -34,30 +34,37 @@ To enable upgrade recovery, run the following command:
 (how-it-works)=
 
 ## How it works
+
 After a VyOS upgrade, the system monitors the boot process. Upon detecting a
 boot failure, VyOS initiates a revert to the last working version and displays
 the following warning:
+
 ```none
 Booting failed, reverting to previous image
 Automatic reboot in xx minutes
 Use "reboot cancel" to cancel
 ```
+
 If no action is taken, the reboot happens automatically after the configured
 timeout. Upon successful recovery and reboot, the following message appears:
+
 ```none
 WARNING: Image update to "VyOS 1.5.xxxx" failed
 Please check the logs:
 /usr/lib/live/mount/persistence/boot/NAME/rw/var/log
 Message is cleared on next reboot!
 ```
+
 (cancelling-recovery)=
 
 ## Cancelling recovery
+
 Upon detecting a boot failure, you have the predefined timeout to cancel
 upgrade recovery. This is useful if you want to troubleshoot the faulty VyOS
 version on your own.
 
 To cancel upgrade recovery, run the following command:
+
 ```none
 reboot cancel
 ```

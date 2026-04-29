@@ -41,11 +41,13 @@ Optional, if you want to enable uploads, else TFTP server will act as a
 read-only server.
 ```
 ### Example
+
 Provide TFTP server listening on both IPv4 and IPv6 addresses `192.0.2.1` and
 `2001:db8::1` serving the content from `/config/tftpboot`. Uploading via
 TFTP to this server is disabled.
 
 The resulting configuration will look like:
+
 ```none
 vyos@vyos# show service
  tftp-server {
@@ -55,12 +57,16 @@ vyos@vyos# show service
  }
 ```
 ### Verification
+
 Client:
+
 ```none
 vyos@RTR2:~$ tftp -p -l /config/config.boot -r backup 192.0.2.1
 backup1             100% |******************************|   723  0:00:00 ETA
 ```
+
 Server:
+
 ```none
 vyos@RTR1# ls -ltr /config/tftpboot/
 total 1

@@ -75,9 +75,11 @@ Policy to track previously established connections.
 Set the number of TCP maximum retransmit attempts.
 ```
 ### Contrack Timeouts
+
 You can define custom timeout values to apply to a specific subset of
 connections, based on a packet and flow selector. To do this, you need to
 create a rule defining the packet and flow selector.
+
 ```{cfgcmd} set system conntrack timeout custom [ipv4 | ipv6] rule \<1-999999\> description <test>
 
 Set a rule description.

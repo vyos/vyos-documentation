@@ -67,6 +67,7 @@ can't cope with the expected speed.
 Each individual configured console-server device can be directly exposed to
 the outside world. A user can directly connect via SSH to the configured
 port.
+
 ```{cfgcmd} set service console-server device \<device\> ssh port \<port\>
 Accept SSH connections for the given `<device>` on TCP port `<port>`.
 After successfull authentication the user will be directly dropped to

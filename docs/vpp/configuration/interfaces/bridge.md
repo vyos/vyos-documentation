@@ -8,6 +8,7 @@ lastproofread: '2026-03-10'
 ```
 
 # VPP Bridge Configuration
+
 VPP bridge interfaces provide Layer 2 switching functionality, allowing
 multiple interfaces to be connected at the data link layer.
 
@@ -42,7 +43,9 @@ Bridge domain `vppbr0` is reserved by VPP and cannot be
 configured through VyOS. Start with `vppbr1` for your bridge
 configurations.
 :::
+
 **Example:**
+
 ```none
 set interfaces vpp bridge vppbr1
 ```
@@ -51,7 +54,9 @@ set interfaces vpp bridge vppbr1
 
 Set a descriptive name for the bridge interface.
 ```
+
 **Example:**
+
 ```none
 set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ```
@@ -61,7 +66,9 @@ set interfaces vpp bridge vppbr1 description "Main campus bridge"
 
 Add an interface as a member of the bridge.
 ```
+
 **Examples:**
+
 ```none
 # Add physical interfaces
 set interfaces vpp bridge vppbr1 member interface eth0
@@ -81,6 +88,7 @@ Bridge members can include various interface types such as:
 :::
 
 ## Bridge Virtual Interface (BVI)
+
 A Bridge Virtual Interface (BVI) provides Layer 3 connectivity to a
 bridge domain, allowing the bridge to have an IP address and participate
 in routing.
@@ -91,7 +99,9 @@ in routing.
 Designate a loopback interface as the Bridge Virtual Interface for
 the bridge domain.
 ```
+
 **Example:**
+
 ```none
 # Create a loopback interface first
 set interfaces vpp loopback vpplo1
@@ -143,12 +153,14 @@ set interfaces vpp bridge vppbr3 member interface vppvxlan1
 set interfaces vpp bridge vppbr3 member interface vpplo2 bvi
 ```
 ## Integration with Kernel Interfaces
+
 Bridge interfaces can be integrated with kernel interfaces for
 management and compatibility with standard Linux networking services.
 This is accomplished by binding a kernel interface to the Bridge
 Virtual Interface (BVI).
 
 **Example Integration:**
+
 ```none
 # Create VPP bridge with member interfaces
 set interfaces vpp bridge vppbr1

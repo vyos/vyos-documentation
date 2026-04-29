@@ -178,10 +178,12 @@ more information related IGP - {ref}`routing-ospf`
 :::
 
 ## Configuration Example
+
 we described the configuration SR ISIS / SR OSPF using 2 connected with them to
 share label information.
 
 ### Enable IS-IS with Segment Routing (Experimental)
+
 **Node 1:**
 
 ```none
@@ -263,6 +265,7 @@ I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, w
 ```
 
 ### Enable OSPF with Segment Routing (Experimental):
+
 **Node 1**
 
 ```none

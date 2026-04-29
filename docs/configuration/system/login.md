@@ -66,6 +66,7 @@ VyOS locks the account, preventing the user from logging in.
 (ssh_key_based_authentication)=
 
 ## Key-based authentication
+
 Key-based authentication is the recommended method for securing SSH access in
 VyOS. It uses a **public/private key pair** to verify user identity without
 requiring a password. To authorize access, you assign **SSH public keys** to
@@ -74,6 +75,7 @@ VyOS allows assigning multiple SSH public keys to a single user account, which
 is useful for accessing a router from different devices.
 
 ### Generate the key pair
+
 Generate an SSH key pair on your **local machine** using the `ssh-keygen`
 command. This creates two files:
 - **Private key** (e.g., `id_rsa`): Remains on your local machine and must
@@ -100,6 +102,7 @@ line** to function correctly.
 :::
 
 ### Configure the router
+
 To configure SSH public key authentication for a user account, run the
 following two commands using the same `<identifier>`:
 
@@ -143,6 +146,7 @@ use: ``from=&quot;10.0.0.0/24&quot;``.
 ```
 
 ## OTP-based MFA
+
 VyOS lets you enhance user access security by enabling {abbr}`OTP (One-time
 password)`-based {abbr}`MFA (Multi-factor Authentication)` for individual
 users. Users with {abbr}`OTP (One-time password)`-based {abbr}`MFA
@@ -200,11 +204,14 @@ The valid range is 1 to 21.
 ```
 
 ### Generate an OTP-key
+
 Use the following command to generate an OTP key:
 
 ```{cfgcmd} generate system login username \<username\> otp-key hotp-time rate-limit \<1-10\> rate-time \<15-600\> window-size \<1-21\>
 ```
+
 Key generation example:
+
 ```none
 vyos@vyos:~$ generate system login username otptester otp-key hotp-time rate-limit 2 rate-time 20 window-size 5
 # You can share it with the user, he just needs to scan the QR in his OTP app
@@ -241,11 +248,15 @@ set system login user otptester authentication otp rate-time '20'
 set system login user otptester authentication otp window-size '5'
 ```
 ### Display the OTP key for a user
+
 Use the following command to display the {abbr}`OTP (One-time password)`
 key for a user:
+
 ```{cfgcmd} sh system login authentication user \<username\> otp \<full | key-b32 | qrcode | uri\>
 ```
+
 Example:
+
 ```none
 vyos@vyos:~$ sh system login authentication user otptester otp full
 # You can share the OTP key with the user. They just need to scan the QR in their OTP app.
@@ -281,6 +292,7 @@ set system login user otptester authentication otp rate-limit '2'
 set system login user otptester authentication otp rate-time '20'
 set system login user otptester authentication otp window-size '5'
 ```
+
 Once {abbr}`OTP (One-time password)`-based {abbr}`MFA (Multi-factor
 Authentication)` is configured for a user account, this user must enter their
 standard password followed by the current 6-digit OTP code at login. For
@@ -288,6 +300,7 @@ example, if the user's password is `vyosrocks` and the OTP is `817454`, they
 should enter `vyosrocks817454`.
 
 ## RADIUS authentication
+
 For large-scale deployments, managing individual user accounts across multiple
 VyOS instances is inefficient. VyOS supports centralized authentication via
 {abbr}`RADIUS (Remote Authentication Dial-In User Service)`, consolidating user
@@ -362,6 +375,7 @@ set system login radius server 192.168.0.2 port '1812'
 set system login radius server 192.168.0.2 timeout '5'
 set system login radius source-address '192.168.0.1'
 ```
+
 If communication with the {abbr}`RADIUS (Remote Authentication Dial-In User
 Service)` server fails, the router falls back to local user authentication.
 During this process, users may experience a login delay while the system waits
@@ -376,6 +390,7 @@ receive standard privileges and cannot perform configuration tasks.
 :::
 
 ## TACACS+ authentication
+
 In addition to {abbr}`RADIUS (Remote Authentication Dial-In User Service)`,
 VyOS supports {abbr}`TACACS+ (Terminal Access Controller Access Control
 System)`, which is commonly used in large enterprise environments.
@@ -453,22 +468,27 @@ Access Control System)` authentication requests via a specific VRF.
 By default, {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 authentication requests are sent via the global routing table.
 ```
+
 (login-tacacs-example)=
+
 ### Configuration example
 ```none
 set system login tacacs server 192.168.0.2 key 'test-vyos'
 set system login tacacs server 192.168.0.2 port '49'
 set system login tacacs source-address '192.168.0.1'
 ```
+
 If communication with the {abbr}`TACACS+ (Terminal Access Controller Access
 Control System)` server fails, the router falls back to local user
 authentication.
 
 ## Login banners
+
 VyOS allows you to configure **pre-login** and **post-login** banners.
 Pre-login banners are typically used for system identification, legal disclaimers, or security warnings
 displayed before authentication, while post-login banners provide system
 information or operational notices to users after login.
+
 ```{cfgcmd} set system login banner pre-login \<message\>
 
 Configure a message to be shown to users before the ``username`` and ``password``
@@ -509,6 +529,7 @@ single IP address.
 
 For both users, password-based logins require {abbr}`OTP (One-time password)`
 -based {abbr}`MFA (Multi-factor Authentication)`.
+
 ```none
 set system login user vyos authentication public-keys 'User1' key "AAAAB3Nz...KwEW"
 set system login user vyos authentication public-keys 'User1' type ssh-rsa
@@ -520,6 +541,7 @@ set system login user vyos authentication public-keys 'User2' type ssh-rsa
 set system login user vyos authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUUE2
 set system login user vyos authentication plaintext-password vyos
 ```
+
 Example 2: Containerized {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
 deployment with redundancy.
 
@@ -532,10 +554,13 @@ System logins are authenticated against credentials stored within these internal
 containers rather than the router's local user database.
 
 First, download the image in operational mode:
+
 ```none
 add container image lfkeitel/tacacs_plus:latest
 ```
+
 Next, configure the containers in configuration mode:
+
 ```none
 set container network tac-test prefix '100.64.0.0/24'
 

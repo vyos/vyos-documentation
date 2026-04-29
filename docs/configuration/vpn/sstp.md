@@ -84,6 +84,7 @@ Name of installed server certificate.
 ```
 
 ## Configuring RADIUS authentication
+
 To enable RADIUS based authentication, the authentication mode needs to be
 changed within the configuration. Previous settings like the local users still
 exist within the configuration, however they are not used if the mode has been
@@ -114,6 +115,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 :::
 
 ### RADIUS source address
+
 If you are using OSPF as your IGP, use the interface connected closest to the
 RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
 e.g. the loopback interface.
@@ -216,6 +218,7 @@ Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
 
 ### Allocation clients ip addresses by RADIUS
+
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
 address will be allocated to the client and the option `default-pool` within
 the CLI config will being ignored.
@@ -236,12 +239,14 @@ whose name equals the attribute value.
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
+
 The client's interface can be put into a VRF context via a RADIUS Access-Accept
 packet, or changed via RADIUS CoA. `Accel-VRF-Name` is used for these
 purposes. This is a custom [ACCEL-PPP attribute]. Define it in your RADIUS
 server.
 
 ### Renaming clients interfaces by RADIUS
+
 If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
 renamed.
 
@@ -490,6 +495,7 @@ and with the same TLS SNI will be allowed.
 ```
 
 ## Configuring SSTP client
+
 Once you have setup your SSTP server there comes the time to do some basic
 testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.

@@ -57,10 +57,12 @@ entire shared network definition. All subnets will inherit this
 configuration item if not specified locally. An example for Ubiquiti is
 shown below:
 ```
+
 **Example:**
 
 
 Pass address of Unifi controller at `172.16.100.1` to all clients of `NET1`
+
 ```none
 set service dhcp-server shared-network-name 'NET1' option vendor-option
 ubiquiti '172.16.100.1'
@@ -148,11 +150,13 @@ This configuration parameter lets you specify a vendor-option for the
 subnet specified within the shared network definition. An example for
 Ubiquiti is shown below:
 ```
+
 **Example:**
 
 
 Create `172.18.201.0/24` as a subnet within `NET1` and pass address of
 Unifi controller at `172.16.100.1` to clients of that subnet.
+
 ```none
 set service dhcp-server shared-network-name 'NET1' subnet
 '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
@@ -168,15 +172,18 @@ database accordingly.
 
 VyOS built-in DNS Forwarder does not support DDNS, you will need an external DNS
 server with RFC-2136 DDNS support.
+
 ```{cfgcmd} set service dhcp-server dynamic-dns-update
 
 Enables DDNS globally.
 ```
+
 **Behavioral settings**
 
 
 These settings can be configured on the global level and overridden on the scope
 level, i.e. for individual shared networks or subnets. See examples below.
+
 ```{cfgcmd} set service dhcp-server dynamic-dns-update send-updates [ enable | disable ]
 If set to ``enable`` on global level, updates for all scopes will be enabled,
 except if explicitly set to ``disable`` on the scope level. If set to ``disable``,
@@ -259,11 +266,13 @@ with ``hostname-char-replacement`` string.
 
 Replacement string for the invalid characters defined by ``hostname-char-set``.
 ```
+
 **TSIG keys definition**
 
 
 This is the global list of TSIG keys for DDNS updates. They need to be specified by
 the name in the DNS domain definitions.
+
 ```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\> algorithm \<algorithm\>
 Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 ``hmac-sha1``, ``hmac-sha224``, ``hmac-sha256``, ``hmac-sha384``, ``hmac-sha512``
@@ -274,11 +283,13 @@ Sets the algorithm for the TSIG key. Supported algorithms are ``hmac-md5``,
 
 base64-encoded TSIG key secret value
 ```
+
 **DNS domains definition**
 
 
 This is global configuration of DNS servers for the updatable forward and reverse
 DNS domains. For every domain multiple DNS servers can be specified.
+
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain \<domain-name\> key-name \<tsig-key-name\>
 
 TSIG key used for the domain.
@@ -295,32 +306,42 @@ IP address of the DNS server.
 
 UDP port of the DNS server. ``53`` is the default.
 ```
+
 **Example:**
 
 
 Global configuration you will most likely want:
+
 ```none
 set service dhcp-server dynamic-dns-update send-updates enable
 set service dhcp-server dynamic-dns-update conflict-resolution enable
 ```
+
 Override the above configuration for a shared network NET1:
+
 ```none
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update replace-client-name when-not-present
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update generated-prefix ip
 set service dhcp-server shared-network-name 'NET1' dynamic-dns-update qualifying-suffix mybigdomain.net
 ```
+
 And in a subnet within the same shared network:
+
 ```none
 set service dhcp-server shared-network-name 'NET1' subnet '172.18.201.0/24' dynamic-dns-update qualifying-suffix mydomain.net
 ```
+
 Configure TSIG keys:
+
 ```none
 set service dhcp-server dynamic-dns-update tsig-key mydomain-net algorithm hmac-sha256
 set service dhcp-server dynamic-dns-update tsig-key mydomain-net secret eWF5YW15bGl0dGxla2V5IQ==
 set service dhcp-server dynamic-dns-update tsig-key reverse-172-18-201 algorithm hmac-sha256
 set service dhcp-server dynamic-dns-update tsig-key reverse-172-18-201 secret eWF5YW15YW5vdGhlcmxpdHRsZWtleSE=
 ```
+
 Configure DDNS domains:
+
 ```none
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net key-name mydomain-net
 set service dhcp-server dynamic-dns-update forward-domain mydomain.net dns-server 1 address '172.18.0.254'
@@ -348,6 +369,7 @@ Availability can act in two different modes:
 
 DHCP High Availability must be configured explicitly by the following
 statements on both servers:
+
 ```{cfgcmd} set service dhcp-server high-availability mode [active-active | active-passive]
 Define operation mode of High Availability feature. Default value if command
 is not specified is `active-active`
@@ -400,6 +422,7 @@ to ensure that the HA partnership is immune to disruption
 You can specify a static DHCP assignment on a per host basis. You will need the
 MAC address of the station and your desired IP address. The address must be
 inside the subnet definition but can be outside of the range statement.
+
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\> static-mapping \<description\> mac \<address\>
 Create a new DHCP static mapping named `<description>` which is valid for
 the host identified by its MAC `<address>`.
@@ -426,16 +449,20 @@ This is the equivalent of the host block in dhcpd.conf of
 isc-dhcpd.
 :::
 ```
+
 **Example:**
 
 
 - IP address `192.168.1.100` shall be statically mapped to client named `client1`
+
 ```none
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 subnet-id 1
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 ip-address 192.168.1.100
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 static-mapping client1 mac aa:bb:11:22:33:00
 ```
+
 The configuration will look as follows:
+
 ```none
 show service dhcp-server shared-network-name NET1
  subnet 192.168.1.0/24 {
@@ -470,6 +497,7 @@ how you want the server to behave.
 
 
 **Client Class definition**
+
 ```{cfgcmd} set service dhcp-server client-class \<name\> relay-agent-information circuit-id \<value\>
 Create a new client class (if not already defined) and set it to match on
 the "Circuit ID" part of the Option 82 field in the DHCP request. This is
@@ -487,7 +515,9 @@ interpreted as a raw hex value, if it starts with the prefix 0x, or ASCII text
 otherwise. e.g. ``10.100.0.41`` and ``0x31302e3130302e302e3431`` are the
 same
 ```
+
 **Client Class application**
+
 ```{cfgcmd} set service dhcp-server shared-network-name \<subnet-name\> subnet \<CIDR\> client-class \<class-name\>
 Applies the Client Class with the name `<class-name>` to the subnet `<subnet-name>`.
 This means that whenever the client class matches a request it is always
@@ -501,6 +531,7 @@ Applies the Client Class with the name `<class-name>` to the range
 client class matches a request it is always routed to this range definition
 first.
 ```
+
 NB: Kea (the DHCP server used by VyOS) is programmed to offer as many
 alternatives as it can to repeated DHCP Discover requests. Some operating
 systems (Notably Microsoft Windows) make multiple DHCP Discover requests before
@@ -523,6 +554,7 @@ switches set the Remote ID to the IP address of the management interface but
 that should not be relied upon. Check the documentation of your DHCP Relay for
 more detail or, as a measure of last resort, inspect the DHCP requests in
 Wireshark.
+
 ```none
 service {
     dhcp-server {
@@ -714,6 +746,7 @@ Configuration of a DHCP HA pair:
 
 
 Common configuration, valid for both primary and secondary node.
+
 ```none
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option default-router '192.0.2.254'
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 option name-server '192.0.2.254'
@@ -722,7 +755,9 @@ set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 range 0 stop '192.0.2.250'
 set service dhcp-server shared-network-name NET-VYOS subnet 192.0.2.0/24 subnet-id '1'
 ```
+
 **Primary**
+
 ```none
 set service dhcp-server high-availability mode 'active-active'
 set service dhcp-server high-availability source-address '192.168.189.252'
@@ -730,7 +765,9 @@ set service dhcp-server high-availability name 'dhcp-secondary'
 set service dhcp-server high-availability remote '192.168.189.253'
 set service dhcp-server high-availability status 'primary'
 ```
+
 **Secondary**
+
 ```none
 set service dhcp-server high-availability mode 'active-active'
 set service dhcp-server high-availability source-address '192.168.189.253'
@@ -738,6 +775,7 @@ set service dhcp-server high-availability name 'dhcp-primary'
 set service dhcp-server high-availability remote '192.168.189.252'
 set service dhcp-server high-availability status 'secondary'
 ```
+
 (dhcp-server-v4-example-raw)=
 
 
@@ -850,9 +888,11 @@ Show only leases with the specified state. Possible states: all, active,
 free, expired, released, abandoned, reset, backup (default = active)
 ```
 ## IPv6 server
+
 VyOS also provides DHCPv6 server functionality which is described in this
 section.
 (dhcp-server-v6-config)=
+
 ### Configuration
 ```{cfgcmd} set service dhcpv6-server preference \<preference value\>
    Clients receiving advertise messages from multiple servers choose the server
@@ -912,6 +952,7 @@ A SNTP server address can be specified for DHCPv6 clients.
 
 To hand out individual prefixes to your clients the following configuration is
 used:
+
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> subnet \<prefix\> prefix-delegation prefix \<pd-prefix\> prefix-length \<lenght\>
 Delegate prefixes from `<pd-prefix>` to clients in subnet `<prefix>`. Range
 is defined by `<lenght>` in bits, 32 to 64.
@@ -932,11 +973,13 @@ Exclude `<exclude-prefix>` from `<pd-prefix>`.
 
 Define lenght of exclude prefix in `<pd-prefix>`.
 ```
+
 **Example:**
 - A shared network named `PD-NET` serves subnet `2001:db8::/64`.
 - It is connected to `eth1`.
 - Address pool shall be `2001:db8::100` through `2001:db8::199`.
 - It hands out prefixes `2001:db8:0:10::/64` through `2001:db8:0:1f::/64`.
+
 ```none
 set service dhcpv6-server shared-network-name 'PD-NET' interface 'eth1'
 set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 range 1 start 2001:db8::100
@@ -946,6 +989,7 @@ set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 pref
 set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 subnet-id 1
 ```
 #### Address pools
+
 DHCPv6 address pools must be configured for the system to act as a DHCPv6
 server. The following example describes a common scenario.
 
@@ -955,6 +999,7 @@ server. The following example describes a common scenario.
 - DNS server is located at `2001:db8::ffff`
 - Address pool shall be `2001:db8::100` through `2001:db8::199`.
 - Lease time will be left at the default value which is 24 hours
+
 ```none
 set service dhcpv6-server shared-network-name 'NET' interface 'eth1'
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 1 start 2001:db8::100
@@ -962,7 +1007,9 @@ set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 range 
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 option name-server 2001:db8::ffff
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 subnet-id 1
 ```
+
 The configuration will look as follows:
+
 ```none
 show service dhcpv6-server
     shared-network-name NET1 {
@@ -978,8 +1025,11 @@ show service dhcpv6-server
         }
     }
 ```
+
 (dhcp-server-v6-static-mapping)=
+
 #### Static mappings
+
 In order to map specific IPv6 addresses to specific hosts static mappings can
 be created. The following example explains the process.
 
@@ -987,6 +1037,7 @@ be created. The following example explains the process.
 - IPv6 address `2001:db8::101` shall be statically mapped
 - IPv6 prefix `2001:db8:0:101::/64` shall be statically mapped
 - Host specific mapping shall be named `client1`
+
 :::{hint}
 The identifier is the device's DUID: colon-separated hex list (as
 used by isc-dhcp option dhcpv6.client-id). If the device already has a
@@ -999,7 +1050,9 @@ set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-prefix 2001:db8:0:101::/64
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 duid 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
+
 The configuration will look as follows:
+
 ```none
 show service dhcpv6-server shared-network-name NET1
  subnet 2001:db8::/64 {
@@ -1010,7 +1063,9 @@ show service dhcpv6-server shared-network-name NET1
      }
  }
 ```
+
 (dhcp-server-v6-op-cmd)=
+
 ### Operation Mode
 ```{opcmd} show log dhcpv6 server
 

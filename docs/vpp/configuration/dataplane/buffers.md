@@ -30,6 +30,7 @@ for details on configuring `physmem`.
 The following parameters can be configured for VPP buffers:
 
 ### buffers-per-numa
+
 Number of buffers allocated per NUMA node. This setting optimizes
 memory access patterns for multi-CPU systems.
 
@@ -39,12 +40,16 @@ Typically, you need to tune this value if:
 - NICs have large descriptor sizes
 
 Set this value carefully to balance memory usage and performance.
+
 ```{cfgcmd} set vpp settings resource-allocation buffers buffers-per-numa \<value\>
 ```
+
 The common approach for the calculation is to use the formula:
+
 ```none
 buffers-per-numa = (num-rx-queues * num-rx-desc) + (num-tx-queues * num-tx-desc)
 ```
+
 Calculate this formula for each NIC and sum the results. Multiply the
 total by 2.5 to get the minimum recommended value for
 `buffers-per-numa`.
@@ -52,20 +57,25 @@ total by 2.5 to get the minimum recommended value for
 Avoid setting this value too low to prevent packet drops.
 
 ### data-size
+
 This value sets how much payload data can be stored in a single buffer
 allocated by VPP. Larger values reduce buffer chains for large packets,
 while smaller values conserve memory for environments handling mostly
 small packets.
+
 ```{cfgcmd} set vpp settings resource-allocation buffers data-size \<value\>
 ```
+
 Optimal size depends on the typical packet size in your network. If
 unsure, use the largest MTU in your network plus overhead (for example,
 128 bytes).
 
 ### page-size
+
 A memory pages type used for buffer allocation. Common values are 4K, 2M, or 1G.
 
 Use page sizes configured in your system settings.
+
 ```{cfgcmd} set vpp settings resource-allocation buffers page-size \<value\>
 ```
 

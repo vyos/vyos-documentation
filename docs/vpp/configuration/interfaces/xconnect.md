@@ -8,6 +8,7 @@ lastproofread: '2026-03-13'
 ```
 
 # VPP XConnect Configuration
+
 VPP XConnect provides direct Layer 2 packet forwarding between two
 interfaces with maximum transparency and minimal overhead. XConnect
 creates a simple point-to-point bridge that forwards all Layer 2 packets
@@ -20,6 +21,7 @@ modification. This provides the simplest possible Layer 2 forwarding with
 VPP's high-performance packet processing.
 
 ## Comparison with Bridges
+
 - **XConnect**: Point-to-point only, no MAC learning, maximum
   transparency, minimal overhead
 - **Bridge**: Multi-port, MAC learning, broadcast handling, more
@@ -43,12 +45,15 @@ convention ``vppxcon1``, ``vppxcon2``, etc.
 Add an interface as a member of the XConnect. Exactly two member
 interfaces must be configured to create bidirectional forwarding.
 ```
+
 **Basic Example:**
+
 ```none
 set interfaces vpp xconnect vppxcon1
 set interfaces vpp xconnect vppxcon1 member interface eth0
 set interfaces vpp xconnect vppxcon1 member interface eth1
 ```
+
 This configuration creates transparent forwarding between `eth0` and `eth1`,
 where any packet received on either interface is immediately forwarded to
 the other without any processing.
@@ -67,6 +72,7 @@ set interfaces vpp xconnect vppxcon1 description "Transparent wire between ports
 set interfaces vpp xconnect vppxcon1 member interface eth0
 set interfaces vpp xconnect vppxcon1 member interface eth1
 ```
+
 This creates a transparent wire between two physical ports, effectively
 making them function as a single cable.
 
@@ -78,6 +84,7 @@ set interfaces vpp xconnect vppxcon2 description "GRE tunnel to physical bridge"
 set interfaces vpp xconnect vppxcon2 member interface vppgre1
 set interfaces vpp xconnect vppxcon2 member interface eth2
 ```
+
 This forwards all traffic from a GRE tunnel directly to a physical
 interface and vice versa.
 

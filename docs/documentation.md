@@ -250,14 +250,18 @@ descriptive way in the resulting HTML/PDF manual.
    `00:53:27:de:23:aa`.
 ```
 ````
+
 For an inline configuration level command, use `{cfgcmd}`
+
 ```none
 {cfgcmd}`set interface ethernet eth0`
 ```
+
 To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
 to `.. cfgcmd::` directive.
 To have this feature locally, the vyos-1x submodule must be initialized before.
 Please be aware to not update the submodule in your PR.
+
 ````none
 ```{cfgcmd} set system conntrack table-size \<1-50000000\>
     :defaultvalue:
@@ -272,13 +276,16 @@ An explanation of the described command should be added below this statement.
 
 With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
+
 ````none
 ```{opcmd} show protocols static arp
 
    Display all known ARP table entries spanning across all interfaces
 ```
 ````
+
 For an inline operational level command, use `{opcmd}`
+
 ```none
 {opcmd}`add system image`
 ```
@@ -286,13 +293,16 @@ For an inline operational level command, use `{opcmd}`
 
 To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
+
 ````none
 ```{cmdincludemd} /_include/interface-address.txt
    :var0: ethernet
    :var1: eth1
 ```
 ````
+
 the content of interface-address.txt looks like this
+
 `````none
 ```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
    Configure interface `<interface>` with one or more interface
@@ -318,6 +328,7 @@ the content of interface-address.txt looks like this
 When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup
 command called `vytask` that automatically renders to a proper Phabricator
 URL. This is heavily used in the {ref}`release-notes` section.
+
 ```none
 
 * {vytask}`T1605` Fixed regression in L2TP/IPsec server
@@ -400,6 +411,7 @@ pull-request. This requires you already have a GitHub account.
   origin    https://github.com/<username>/vyos.documentation.git (push)
   upstream  https://github.com/vyos/vyos-documentation.git (fetch)
   upstream  https://github.com/vyos/vyos-documentation.git (push)
+
 ```
 
   Your remote repo on Github is called `origin`, while the original repo you

@@ -59,9 +59,11 @@ Name of the single table Only if set group-metrics single-table.
 Remote URL.
 ```
 ### Prometheus client
+
 Telegraf output plugin [prometheus-client]
 This plugin allows export of Telegraf metrics to Prometheus,
 for Prometheus native metrics through exporters see section below.
+
 ```{cfgcmd} set service monitoring telegraf prometheus-client
 
    Output plugin Prometheus client
@@ -102,7 +104,9 @@ Metris version, the default is ``2``
 
 Port number used by connection, default is ``9273``
 ```
+
 Example:
+
 ```none
 set service monitoring telegraf prometheus-client
 ```
@@ -118,6 +122,7 @@ cpu_usage_system{cpu="cpu1",host="r14"} 0.22896393817971655
 
 
 Telegraf output plugin [splunk] HTTP Event Collector.
+
 ```{cfgcmd} set service monitoring telegraf splunk authentication insecure
 
 Use TLS but skip host validation
@@ -134,7 +139,9 @@ Authorization token
 
 Remote URL to Splunk collector
 ```
+
 Example:
+
 ```none
 set service monitoring telegraf splunk authentication insecure
 set service monitoring telegraf splunk authentication token 'xxxxf5b8-xxxx-452a-xxxx-43828911xxxx'
@@ -144,6 +151,7 @@ set service monitoring telegraf splunk url 'https://192.0.2.10:8088/services/col
 
 
 Telegraf output plugin [influxdb] to write metrics to `InfluxDB` via HTTP.
+
 ```{cfgcmd} set service monitoring telegraf influxdb authentication organization \<organization\>
 
 Authentication organization name
@@ -172,6 +180,7 @@ Remote port
 
 Remote URL
 ```
+
 Example:
 
 ```none
@@ -182,7 +191,9 @@ set service monitoring telegraf influxdb port '8086'
 set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ```
 ### Loki
+
 Telegraf can be used to send logs to [loki] using tags as labels.
+
 ```{cfgcmd} set service monitoring telegraf loki port \<port\>
    Remote Loki port
 
@@ -226,6 +237,7 @@ The following Prometheus exporters are configurable to export metrics:
 
 
 Prometheus [node_exporter] which provides a wide range of hardware and OS metrics.
+
 ```{cfgcmd} set service monitoring prometheus node-exporter listen-address \<address\>
 
 Configure the address node_exporter is listening on.
@@ -247,7 +259,9 @@ Configure textfile collector to export custom metrics read from
 `/run/node_exporter/collector`
 ```
 ### FRR Exporter
+
 Prometheus [frr_exporter] which provides free range routing metrics.
+
 ```{cfgcmd} set service monitoring prometheus frr-exporter listen-address \<address\>
 
   Configure the address frr_exporter is listening on.
@@ -264,8 +278,10 @@ Configure the port number frr_exporter is listening on.
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 ### Blackbox Exporter
+
 Prometheus [blackbox_exporter] which allows probing of endpoints over
 HTTP, HTTPS, DNS, TCP, ICMP and gRPC .
+
 ```{cfgcmd} set service monitoring prometheus blackbox-exporter listen-address \<address\>
 
 Configure the address blackbox_exporter is listening on.
@@ -279,14 +295,18 @@ Configure the port number blackbox_exporter is listening on.
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 #### Configuring modules
+
 Blackbox exporter can be configured with different modules for probing DNS or ICMP.
 DNS module example:
+
 ```none
 set service monitoring prometheus blackbox-exporter modules dns name dns4 preferred-ip-protocol ipv4
 set service monitoring prometheus blackbox-exporter modules dns name dns4 query-name vyos.io
 set service monitoring prometheus blackbox-exporter modules dns name dns4 query-type A
 ```
+
 ICMP module example:
+
 ```none
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 preferred-ip-protocol ipv6
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-protocol-fallback

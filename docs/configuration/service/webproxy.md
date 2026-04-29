@@ -148,9 +148,11 @@ Add new port to SSL-ports acl. Ports included by default in SSL-ports acl:
 443
 ```
 ### Authentication
+
 The embedded Squid proxy can use LDAP to authenticate users against a company
 wide directory. The following configuration is an example of how to use Active
 Directory as authentication backend. Queries are done via LDAP.
+
 ```{cfgcmd} set service webproxy authentication children \<number\>
   Maximum number of authenticator processes to spawn. If you start too few
   Squid will have to wait for them to process a backlog of credential
@@ -321,8 +323,10 @@ set service webproxy url-filtering disable
 ```
 ### Filtering
 #### Update
+
 If you want to use existing blacklists you have to create/download a database
 first. Otherwise you will not be able to commit the config changes.
+
 ```{opcmd} update webproxy blacklists
 
 Download/Update complete blacklist
@@ -355,6 +359,7 @@ vyos@vyos:~$
 Download/Update partial blacklist.
 Use tab completion to get a list of categories.
 ```
+
 - To auto update the blacklist files
 
   `set service webproxy url-filtering squidguard auto-update update-hour 23`
@@ -368,6 +373,7 @@ Use tab completion to get a list of categories.
 #### Bypassing the webproxy
 ```{include} /_include/need_improvement.txt
 ```
+
 Some services don't work correctly when being handled via a web proxy.
 So sometimes it is useful to bypass a transparent proxy:
 
@@ -386,6 +392,7 @@ So sometimes it is useful to bypass a transparent proxy:
 
   (This can be useful when a called service has many and/or often changing
   destination addresses - e.g. Netflix.)
+
 ## Examples
 ```none
 vyos@vyos# show service webproxy

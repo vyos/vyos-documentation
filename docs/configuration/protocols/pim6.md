@@ -37,6 +37,7 @@ Disable MLD reports and query on the interface.
 ```
 
 ## Tuning commands
+
 You can also tune multicast with the following commands.
 
 ```{cfgcmd} set protocols pim6 interface \<interface-name\> mld interval \<seconds\>
@@ -76,6 +77,7 @@ Set the MLD version used on this interface. The default value is 2.
 ```
 
 ### Configuration Example
+
 To enable MLD reports and query on interfaces `eth0` and `eth1`:
 
 ```none

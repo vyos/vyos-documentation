@@ -197,8 +197,10 @@ encryption offload support available in the kernel.
   Offload)` unless it is explicitly enabled.
 - Enabling {abbr}`DCO (Data Channel Offload)` resets the interface.
 :::
+
 **Best practice:** Create a new tunnel with {abbr}`DCO (Data Channel Offload)`
 enabled to avoid compatibility issues with existing clients.
+
 ```{cfgcmd} set interfaces openvpn \<interface\> offload dco
    **Enable** {abbr}`DCO (Data Channel Offload)` **for the specified OpenVPN
    interface.**
@@ -566,7 +568,9 @@ Reset the OpenVPN process on the specified interface.
 Generate an OpenVPN client configuration file in the .ovpn format for client machines.
 ```
 ## Examples
+
 This section covers examples of OpenVPN configurations for various deployments.
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

@@ -8,6 +8,7 @@ lastproofread: '2024-01-05'
 (pki)=
 
 # PKI
+
 VyOS 1.4 changed the way in how encryption keys or certificates are stored on the
 system. In the pre VyOS 1.4 era, certificates got stored under /config and every
 service referenced a file. That made copying a running configuration from system
@@ -31,8 +32,10 @@ for you!
 ## Key Generation
 
 ### Certificate Authority (CA)
+
 VyOS now also has the ability to create CAs, keys, Diffie-Hellman and other
 keypairs from an easy to access operational level command.
+
 ```{opcmd} generate pki ca
 
 Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
@@ -274,8 +277,10 @@ Mark the CAs private key as password protected. User is asked for the password
 when the key is referenced.
 ```
 ### Server Certificate
+
 After we have imported the CA certificate(s) we can now import and add
 certificates used by services on this router.
+
 ```{cfgcmd} set pki certificate \<name\> certificate
 
 Add public key portion for the certificate named `name` to the VyOS CLI.
@@ -321,9 +326,11 @@ when the key is referenced.
 If CA is present, this certificate will be included in generated CRLs
 ```
 ### Import files to PKI format
+
 VyOS provides this utility to import existing certificates/key files directly
 into PKI from op-mode. Previous to VyOS 1.4, certificates were stored under the
 /config folder permanently and will be retained post upgrade.
+
 ```{opcmd} import pki ca \<name\> file \<Path to CA certificate file\>
 
 Import the public CA certificate from the defined file to VyOS CLI.
@@ -352,8 +359,10 @@ leave the system as it is used to decrypt the data.
 Import the OpenVPN shared secret stored in file to the VyOS CLI.
 ```
 #### ACME
+
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
 using the {abbr}`ACME (Automatic Certificate Management Environment)` protocol.
+
 ```{cfgcmd} set pki certificate \<name\> acme domain-name \<name\>
 
 Domain names to apply, multiple domain-names can be specified.
@@ -393,8 +402,10 @@ endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 :::
 ```
 ## Operation
+
 VyOS operational mode commands are not only available for generating keys but
 also to display them.
+
 ```{opcmd} show pki ca
 
 Show a list of installed {abbr}`CA (Certificate Authority)` certificates.
@@ -446,6 +457,7 @@ Manually trigger certificate renewal. This will be done twice a day.
 ## Examples
 
 ### Create a CA chain and leaf certificates
+
 This configuration generates & installs into the VyOS PKI system a root
 certificate authority, alongside two intermediary certificate authorities for
 client & server certificates. These CAs are then used to generate a server
@@ -459,6 +471,7 @@ certificate for the router, and a client certificate for a user.
   signed by client intermediary CA.
 
 First, we create the root certificate authority.
+
 ```none
 [edit]
 vyos@vyos# run generate pki ca install vyos_root_ca
@@ -474,8 +487,10 @@ Note: If you plan to use the generated key on this router, do not encrypt the pr
 Do you want to encrypt the private key with a passphrase? [y/N] n
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
 ```
+
 Secondly, we create the intermediary certificate authorities, which are used to
 sign the leaf certificates.
+
 ```none
 [edit]
 vyos@vyos# run generate pki ca sign vyos_root_ca install vyos_server_ca
@@ -508,7 +523,9 @@ Note: If you plan to use the generated key on this router, do not encrypt the pr
 Do you want to encrypt the private key with a passphrase? [y/N] n
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
 ```
+
 Lastly, we can create the leaf certificates that devices and users will utilise.
+
 ```none
 [edit]
 vyos@vyos# run generate pki certificate sign vyos_server_ca install vyos_cert

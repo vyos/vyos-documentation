@@ -86,6 +86,7 @@ ethtool -g <interface>
 ```
 
 #### Interrupt Coalescing
+
 Interrupt coalescing is a mechanism that reduces CPU interrupt load by bundling
 multiple packets into a single interrupt event instead of interrupting
 the CPU for every packet arrival or transmission.
@@ -95,6 +96,7 @@ Not all network drivers or virtual interfaces support all
 coalescing parameters. Use `ethtool --show-coalesce <interface>`
 to verify which settings are supported by your hardware and driver.
 :::
+
 **Basic adaptive coalescing**
 
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing adaptive-rx
@@ -106,7 +108,9 @@ Enable adaptive interrupt coalescing. The NIC automatically tunes RX/TX
 interrupt pacing based on traffic patterns to reduce CPU utilization
 during high throughput while preserving latency at low packet rates.
 ```
+
 **Basic interrupt delay**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs \<0-16384\>
 ```
 
@@ -116,7 +120,9 @@ Set the delay in microseconds before generating an RX/TX interrupt after
 receiving or transmitting a packet. Lower values reduce latency; higher
 values reduce CPU load.
 ```
+
 **Interrupt frame thresholds**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-frames \<number\>
 ```
 
@@ -125,7 +131,9 @@ values reduce CPU load.
 Generate an RX/TX interrupt only after the specified number of packets
 have been received or transmitted.
 ```
+
 **IRQ-specific coalescing**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-irq \<number\>
 ```
 
@@ -141,7 +149,9 @@ Control interrupt coalescing parameters while the driver is already
 servicing an interrupt (IRQ context). These settings allow finer tuning
 of interrupt behavior under sustained load.
 ```
+
 **Adaptive rate thresholds**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing pkt-rate-low \<number\>
 ```
 
@@ -151,7 +161,9 @@ Define packet-rate thresholds (packets per second) used by adaptive
 coalescing to switch between low-rate and high-rate interrupt coalescing
 profiles.
 ```
+
 **Low-rate adaptive parameters**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-low \<number\>
 ```
 
@@ -166,7 +178,9 @@ profiles.
 Interrupt coalescing parameters applied when the packet rate is below
 ``pkt-rate-low``. Typically optimized for lower latency.
 ```
+
 **High-rate adaptive parameters**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing rx-usecs-high \<number\>
 ```
 
@@ -182,7 +196,9 @@ Interrupt coalescing parameters applied when the packet rate exceeds
 ``pkt-rate-high``. Typically optimized for maximum throughput and
 reduced CPU utilization.
 ```
+
 **Statistics and sampling**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing stats-block-usecs \<number\>
 ```
 
@@ -191,7 +207,9 @@ reduced CPU utilization.
 Control how frequently coalescing statistics are updated and how often
 the NIC samples traffic rates for adaptive coalescing decisions.
 ```
+
 **Completion queue (CQE) mode**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing cqe-mode-rx
 ```
 
@@ -201,7 +219,9 @@ Enable RX/TX Completion Queue Entry (CQE) mode, if supported by the
 driver. CQE mode can improve performance on high-speed NICs by
 optimizing completion handling.
 ```
+
 **Transmit aggregation**
+
 ```{cfgcmd} set interfaces ethernet \<interface\> interrupt-coalescing tx-aggr-max-bytes \<number\>
 ```
 
@@ -285,7 +305,9 @@ multi-queue support.
 :var1: eth0
 ```
 #### EVPN Multihoming
+
 Uplink/core tracking.
+
 ```{cmdincludemd} /_include/interface-evpn-uplink.txt
 :var0: ethernet
 :var1: eth0

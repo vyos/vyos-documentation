@@ -41,6 +41,7 @@ from alternate table using route-map.
 ```
 
 ### Zebra/Kernel route filtering
+
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
@@ -56,6 +57,7 @@ are sending routes to zebra.
 ```
 
 ### Nexthop Tracking
+
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
 by default for a traditional profile of FRR which we use. It and can be disabled if
 you do not want to e.g. allow BGP to peer across the default route.
@@ -69,6 +71,7 @@ subnode.
 ## Operational commands
 
 ### show commands
+
 See below the different parameters available for the IPv4 **show** command:
 
 ```none
@@ -98,6 +101,7 @@ Possible completions:
 ```
 
 ### reset commands
+
 And the different IPv4 **reset** commands available:
 
 ```none

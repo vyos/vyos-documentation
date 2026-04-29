@@ -31,6 +31,7 @@ A domain name is the label (name) assigned to a computer network and is thus
 unique. VyOS appends the domain name as a suffix to any unqualified name. For
 example, if you set the domain name `example.com`, and you would ping the
 unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
+
 ```{cfgcmd} set system domain-name \<domain\>
 Configure system domain name. A domain name must start and end with a letter
 or digit, and have as interior characters only letters, digits, or a hyphen.

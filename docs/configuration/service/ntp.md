@@ -143,6 +143,7 @@ not supported, chrony will attempt to set it to timestamp all packets. If
 neither option is supported (e.g. the NIC can only timestamp received PTP
 packets), chrony will leverage timestamping on transmitted packets only, which
 still provides some benefit.
+
 ```{cfgcmd} set service ntp timestamp interface \<interface\>
 Configures hardware timestamping on the interface \<interface\>. The special
 value `all` can also be specified to enable timestamping on all interfaces
@@ -155,6 +156,7 @@ Configure the timestamping behavior with the following option:
   selected mode must be supported by the NIC, or timestamping will be
   disabled for the interface.
 ```
+
 The following `receive-filter` modes can be selected:
 - `all`: All received packets will be timestamped.
 - `ntp`: Only received NTP protocol packets will be timestamped.
@@ -164,6 +166,7 @@ The following `receive-filter` modes can be selected:
 - `none`: No received packets will be timestamped. Hardware timestamping of
   transmitted packets will still be leveraged, if supported by the NIC.
 (ptp-transport)=
+
 ## PTP Transport of NTP Packets
 
 The Precision Time Protocol (IEEE 1588) is a local network time synchronization
@@ -177,6 +180,7 @@ recent versions of the chrony daemon, NTP packets can be "tunneled" over
 PTP. NTP over PTP provides the best of both worlds, leveraging hardware support
 for timestamping PTP packets while retaining the configuration flexibility and
 fault tolerance of NTP.
+
 ```{cfgcmd} set service ntp ptp
 Enables the NTP daemon PTP transport. The NTP daemon will listen on the
 configured PTP port. Note that one or more servers must be individually
@@ -186,4 +190,5 @@ enabled for PTP before the daemon will synchronize over the transport.
 
 Configures the PTP port. By default, the standard port 319 is used.
 ```
+
 [draft-ntp-interleaved-modes]: https://datatracker.ietf.org/doc/draft-ietf-ntp-interleaved-modes/07/

@@ -8,28 +8,37 @@ lastproofread: '2026-02-23'
 ```
 
 # VPP Dataplane Interfaces Configuration
+
 Only Ethernet interfaces (physical or virtual) can be connected to the
 VPP dataplane. Interfaces configured here act as a bridge between VPP
 and the outside world, allowing VPP to send and receive network
 packets.
 
 ## Interface Configuration Parameters
+
 Interfaces connected to the VPP dataplane use the DPDK driver by default,
 providing high performance and low latency.
+
 ```{cfgcmd} set vpp settings interface \<interface-name\>
 ```
+
 Some network interface cards (NICs) may not be compatible with the DPDK driver.
 
 ### DPDK interface options
+
 This section shows how to configures DPDK-specific settings for an interface.
+
 ```{cfgcmd} set vpp settings interface \<interface-name\> num-rx-queues \<value\>
 ```
+
 Specifies the number of receive queues for the interface. More queues
 improve performance on multi-core systems by allowing parallel
 processing of incoming packets. Each queue is assigned to a separate
 CPU core.
+
 ```{cfgcmd} set vpp settings interface \<interface-name\> num-tx-queues \<value\>
 ```
+
 Specifies the number of transmit queues for the interface. Similar to
 receive queues, more transmit queues improve performance by enabling
 parallel processing of outgoing packets. By default, the VPP Dataplane
@@ -41,18 +50,23 @@ workers are configured.
 :::
 ```{cfgcmd} set vpp settings interface \<interface-name\> num-rx-desc \<value\>
 ```
+
 Defines the size of each receive queue. Larger queue sizes accommodate
 bursts of incoming traffic and reduce the likelihood of packet drops
 during high traffic periods.
+
 ```{cfgcmd} set vpp settings interface \<interface-name\> num-tx-desc \<value\>
 ```
+
 Defines the size of each transmit queue. Larger sizes help manage
 bursts of outgoing traffic more effectively.
 
 ## Global Interface Parameters
+
 (vpp-config-dataplane-interface-rx-mode)=
 
 ### interface-rx-mode
+
 The `interface-rx-mode` parameter defines how VPP handles incoming
 packets on interfaces. There are several modes available, each with its
 own advantages and use cases:
@@ -69,6 +83,7 @@ own advantages and use cases:
 - `adaptive`: Adaptive mode combines the benefits of interrupt and
   polling modes. VPP starts in interrupt mode and switches to polling
   mode when traffic load increases.
+
 ```{cfgcmd} set vpp settings interface-rx-mode \<mode\>
 ```
 

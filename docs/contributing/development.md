@@ -170,9 +170,11 @@ codebase and understand its logic.
 
 Use tools like VIM extensions (xmllint) to enforce correct indentation. Add this
 to your `.vimrc` file:
+
 ```none
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 ```
+
 Then use `gg=G` in command mode to run the linter.
 
 ### Text generation
@@ -194,6 +196,7 @@ follow these guidelines:
   GitHub on mobile devices and reads well in side-by-side diffs.
 
 Structure your scripts with these functions:
+
 ```python
 #!/usr/bin/env python3
 #
@@ -250,6 +253,7 @@ except ConfigError as e:
     print(e)
     sys.exit(1)
 ```
+
 `get_config()`: This function converts a VyOS config object to an abstract
 internal representation. No other function may call the `vyos.config.Config`
 object directly. Limiting config reads to one function makes it easier to
@@ -338,6 +342,7 @@ format provides this level of verification. Specialized XML editors can help
 manage verbosity.
 
 Example XML interface definition:
+
 ```xml
 <?xml version="1.0"?>
 <!-- Cron configuration -->
@@ -413,6 +418,7 @@ Example XML interface definition:
   </node>
 </interfaceDefinition>
 ```
+
 XML definitions are purely declarative and contain no logic. All logic for
 generating config files, restarting services, and related tasks is implemented
 in configuration scripts.
@@ -444,6 +450,7 @@ folder. The [scripts/build-command-templates](https://github.com/vyos/vyos-1x/bl
 script then operates on this folder to generate all required CLI nodes.
 
 Example preprocessor output:
+
 ```none
 $ make interface_definitions
 install -d -m 0755 build/interface-definitions

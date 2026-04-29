@@ -8,6 +8,7 @@ lastproofread: '2023-01-27'
 (routing-bfd)=
 
 # BFD
+
 {abbr}`BFD (Bidirectional Forwarding Detection)` is described and extended by
 the following RFCs: {rfc}`5880`, {rfc}`5881` and {rfc}`5883`.
 
@@ -169,7 +170,9 @@ Configure a static route for \<subnet\> using gateway \<address\>,
 use source address to indentify the peer when is multi-hop session
 and the gateway address as BFD peer destination address.
 ```
+
 (bfd-operational-commands)=
+
 ## Operational Commands
 ```{opcmd} show bfd static routes
 

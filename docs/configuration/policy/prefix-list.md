@@ -49,6 +49,7 @@ Netmask less than length
 ```
 
 ### Example: IPv4 Prefix Lists (prefix-list)
+
 This example creates an IPv4 prefix-list named PL4-EXAMPLE-NAME, defines 3
 rules each with 1 prefix, and matches le (less than/equal to) /32.
 
@@ -115,8 +116,10 @@ Netmask greater than length.
 Netmask less than length
 ```
 ### Example: IPv6 Prefix Lists (prefix-list6)
+
 This example creates an IPv6 prefix-list6 named PL6-EXAMPLE-NAME, defines 3
 rules each with 1 prefix, and matches le (less than/equal to) /128.
+
 ```{cfgcmd} set policy prefix-list6 PL6-EXAMPLE-NAME rule 10 action 'permit'
 ```
 
