@@ -120,6 +120,7 @@ prefix, the generated key is automatically assigned to the specified peer.
 :::
 ```
 ## Interface configuration
+
 The next step is to configure your local WireGuard interface and define the
 networks you want to tunnel (`allowed-ips`).
 
@@ -144,6 +145,7 @@ The local side is configured with the following parameters:
 - Remote peer endpoint: `192.0.2.1` on port `51820`
 - Remote peer public key: `XMrlPykaxhdAAiSjhtPlvi30NVkvLQliQuKP7AI7CyI=`
 - Allowed networks: `192.168.2.0/24`
+
 ```none
 set interfaces wireguard wg01 address '10.1.0.1/30'
 set interfaces wireguard wg01 description 'VPN-to-wg02'
@@ -155,10 +157,12 @@ set interfaces wireguard wg01 port '51820'
 
 set protocols static route 192.168.2.0/24 interface wg01
 ```
+
 To send traffic destined for `192.168.2.0/24` through the WireGuard interface
 (`wg01`), configure a static route. Multiple IP addresses or networks can be
 defined and routed. The final check is performed against `allowed-ips`, which
 either permits or drops the traffic.
+
 :::{warning}
 You cannot assign the same `allowed-ips` to multiple WireGuard
 peers. This is a strict design restriction. For more information, check the
@@ -187,7 +191,9 @@ peer, use the following command:
 :var0: wireguard
 :var1: wg01
 ```
+
 **Remote side configuration**
+
 ```none
 set interfaces wireguard wg01 address '10.1.0.2/30'
 set interfaces wireguard wg01 description 'VPN-to-wg01'
@@ -205,6 +211,7 @@ set protocols static route 192.168.1.0/24 interface wg01
 
 To allow WireGuard traffic through the WAN interface, create a firewall
 exception:
+
 ```none
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 action accept
 set firewall ipv4 name OUTSIDE_LOCAL rule 10 description 'Allow established/related'
@@ -216,15 +223,19 @@ set firewall ipv4 name OUTSIDE_LOCAL rule 20 destination port 51820
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 log enable
 set firewall ipv4 name OUTSIDE_LOCAL rule 20 protocol udp
 ```
+
 Ensure that the OUTSIDE_LOCAL firewall group is applied to the WAN interface
 and in an input (local) direction.
+
 ```none
 set firewall ipv4 input filter rule 10 action jump
 set firewall ipv4 input filter rule 10 jump-target 'OUTSIDE_LOCAL'
 set firewall ipv4 input filter rule 10 inbound-interface name 'eth0'
 ```
+
 Verify that your firewall rules permit traffic. If so, your WireGuard VPN
 should be operational.
+
 ```none
 wg01# ping 192.168.1.1
 PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
@@ -236,14 +247,18 @@ PING 192.168.2.1 (192.168.2.1) 56(84) bytes of data.
 64 bytes from 192.168.2.1: icmp_seq=1 ttl=64 time=4.40 ms
 64 bytes from 192.168.2.1: icmp_seq=2 ttl=64 time=1.02 ms
 ```
+
 An additional layer of symmetric-key cryptography can be used on top of the
 asymmetric cryptography. This is optional.
+
 ```none
 vyos@vyos:~$ generate pki wireguard preshared-key
 Pre-shared key: rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc=
 ```
+
 Copy the key, as it is not stored locally. Since it is a symmetric key, only
 you and your peer should know its contents. Distribute the key securely.
+
 ```none
 wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
@@ -264,6 +279,7 @@ Additionally, this setup uses a `persistent-keepalive` flag set to 15 seconds
 to keep the connection alive. This setting is mainly relevant if a peer is
 behind NAT and cannot be reached if the connection is lost. For effectiveness,
 the value should be lower than the UDP timeout.
+
 ```none
 wireguard wg01 {
     address 10.172.24.1/24
@@ -285,8 +301,10 @@ wireguard wg01 {
     private-key OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+vJLGoFU=
 }
 ```
+
 Below is the configuration for the iPhone peer. The `AllowedIPs` wildcard
 setting directs all IPv4 and IPv6 traffic through the VPN connection.
+
 ```none
 [Interface]
 PrivateKey = ARAKLSDJsadlkfjasdfiowqeruriowqeuasdf=
@@ -299,9 +317,11 @@ AllowedIPs = 0.0.0.0/0, ::/0
 Endpoint = 192.0.2.1:2224
 PersistentKeepalive = 15
 ```
+
 To enable split tunneling, specify the remote subnets. This ensures that only
 traffic destined for the remote site is sent through the tunnel, while all
 other traffic remains unaffected.
+
 ```none
 [Interface]
 PrivateKey = 8Iasdfweirousd1EVGUk5XsT+wYFZ9mhPnQhmjzaJE6Go=
@@ -364,8 +384,10 @@ TX:  bytes  packets  errors  dropped  carrier  collisions
 :::
 ```
 ## Remote access (road warrior) clients
+
 Some users connect mobile devices to their VyOS router using WireGuard. To
 simplify deployment, generate a per-mobile configuration from the VyOS CLI.
+
 :::{warning}
 From a security perspective, it is not recommended to let a third
 party create and share the private key for a secure connection. You should

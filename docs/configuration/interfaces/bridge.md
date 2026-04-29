@@ -73,6 +73,7 @@ rather than unicast-forwarded.
 ```
 
 ### Bridge options
+
 Configure how bridge interfaces maintain their {abbr}`FDB (Forwarding Database)`
 , react to topology changes, and optimize multicast data streams.
 
@@ -116,6 +117,7 @@ listeners. This prevents network flooding.
 (stp)=
 
 #### STP configuration
+
 {abbr}`STP (Spanning Tree Protocol)` is a Layer 2 protocol that prevents loops
 in Ethernet networks by ensuring only one logical path exists between any two
 bridges. This creates a loop-free topology and prevents broadcast storms that
@@ -227,6 +229,7 @@ set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 ## Examples
 
 ### Configure a standard bridge
+
 The following example creates a bridge named br100 with {abbr}`STP (Spanning
 Tree Protocol)` enabled.
 
@@ -260,6 +263,7 @@ vyos@vyos# show interfaces bridge br100
 ```
 
 ### Configure a VLAN-aware bridge
+
 The following example creates a VLAN-aware bridge named br100. In this setup,
 one member interface is configured as a trunk port, and the other as an access
 port. The VLAN interface is configured with IP addresses.

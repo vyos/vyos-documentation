@@ -142,6 +142,7 @@ after establishing a connection without going through the hub.
 ```
 
 ### IPSEC configuration
+
 - Please refer to the {ref}`ipsec_general` documentation for the individual IPSec
   related options.
 
@@ -194,6 +195,7 @@ Shortcut information.
 ```
 
 ## Example
+
 This blueprint uses VyOS as the DMVPN Hub and Cisco IOSv 15.5(3)M and VyOS as
 multiple spoke sites.
 
@@ -203,6 +205,7 @@ multiple spoke sites.
 :width: 70%
 DMVPN Network Topology Diagram
 :::
+
 Each node (Hub and Spoke) uses an IP address from the network 10.0.0.0/24.
 
 The below referenced IP address `192.168.0.2` is used as example address
@@ -262,6 +265,7 @@ through the details pane below your EC2 instance in the AWS console).
 :::
 
 #### Spokes
+
 > The individual spoke configurations only differ in interface IP addresses.
 
 ##### VyOS-Spoke-1 and VyOS-Spoke-2
@@ -354,6 +358,7 @@ ip route 0.0.0.0 0.0.0.0 192.168.3.1
 ```
 
 ##### Monitoring DMVPN Network
+
 Let send ICMP packets from VyOS-SPOKE-1 to Cisco-SPOKE-3
 
 ```none

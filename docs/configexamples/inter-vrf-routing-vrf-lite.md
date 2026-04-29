@@ -98,6 +98,7 @@ but any dynamic routing protocol can be used.
 :::
 
 ### Remote Networks
+
 The following template configuration can be used in each remote router based
 in our topology.
 
@@ -112,6 +113,7 @@ set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 ### Core Router
 
 #### Step 1: VRF and Configurations to remote networks
+
 - Configuration
 
 Set the VRF name and Table ID, set interface address and bind it to the VRF.
@@ -197,6 +199,7 @@ rtt min/avg/max/mdev = 0.925/1.665/3.035/0.969 ms
 ```
 
 #### Step 2: BGP Configuration for VRF-Lite
+
 - Configuration
 
 Setting BGP global local-as as well inside the VRF. Redistribute static
@@ -247,6 +250,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 ```
 
 #### Step 3: VPN Configuration
+
 - Configuration
 
 Within the VRF we set the Route-Distinguisher (RD) and Route-Targets (RT),
@@ -373,6 +377,7 @@ followed by the VPN id; In the routing table of the VRF, if the route was
 installed, we can see -between round brackets- the exported VRF table.
 
 #### Step 4: End to End verification
+
 Now we perform some end-to-end testing
 - From Management to LAN1/LAN2
 
@@ -516,6 +521,7 @@ we are using "source-address" option cause we are not redistributing
 connected interfaces into BGP on the Core router hence there is no comeback
 route and ping will fail.
 :::
+
 - LAN1 to LAN2
 
 ```none
@@ -539,6 +545,7 @@ rtt min/avg/max/mdev = 1.949/2.915/4.815/1.343 ms
 ```
 
 ## Conclusions
+
 Inter-VRF routing is a well-known solution to address complex routing scenarios
 that enable -in a dynamic way- to leak routes between VRFs. Is recommended to
 take special consideration while designing route-targets and its application as
@@ -548,6 +555,7 @@ take the desired effect in its propagation.
 ## Appendix-A
 
 ### Full configuration from all devices
+
 - Core
 
 ```none
@@ -686,6 +694,7 @@ set protocols static route6 ::/0 next-hop 2001:db8::6
 ## Appendix-B
 
 ### Route-Filtering
+
 When importing routes using MP-BGP it is possible to filter a subset of them
 before are injected in the BGP table. One of the most common case is to use a
 route-map with an prefix-list.

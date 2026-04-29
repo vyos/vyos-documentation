@@ -37,6 +37,7 @@ set interfaces pppoe pppoe0 source-interface 'eth0'
 - `service-name` can be an arbitrary string.
 
 ### DHCPv6-PD Setup
+
 During address configuration, in addition to assigning an address to the WAN
 interface, ISP also provides a prefix to allow the router to configure addresses
 of LAN interface and other nodes connecting to LAN, which is called prefix
@@ -54,6 +55,7 @@ set interfaces pppoe pppoe0 dhcpv6-options pd 0 interface eth1 address '100'
   for more information.
 
 ### Router Advertisement
+
 We need to enable router advertisement for LAN network so that PC can receive
 the prefix and use SLAAC to configure the address automatically.
 
@@ -73,6 +75,7 @@ set service router-advert interface eth1 prefix ::/64 valid-lifetime '172800'
   `valid-lifetime` to 2 days to allow PC for phasing out old address.
 
 ### Basic Firewall
+
 To have basic protection while keeping IPv6 network functional, we need to:
 - Allow all established and related traffic for router and LAN
 - Allow all icmpv6 packets for router and LAN

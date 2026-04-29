@@ -47,6 +47,7 @@ Name)` in log messages, even if the syslog server is in the same domain.
 ```
 
 ### Local logging
+
 Configure which log messages to save to a local log file.
 
 ```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
@@ -59,6 +60,7 @@ Refer to the tables below for valid facility and severity options.
 (syslog-console)=
 
 ### Console logging
+
 Configure which log messages to send to `/dev/console`.
 
 ```{cfgcmd} set system syslog console facility \<keyword\> level \<keyword\>
@@ -71,6 +73,7 @@ Refer to the tables below for valid facility and severity options.
 (syslog-remote)=
 
 ### Remote logging
+
 Configure **remote logging** to send log messages to a remote syslog server.
 
 Remote logging does not affect either **local** or **console logging** and
@@ -135,6 +138,7 @@ Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
 
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
+
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 over TCP to ensure secure transmission of syslog data to remote syslog servers.
 
@@ -148,6 +152,7 @@ Security)`-encrypted remote logging, ensure you have:
   ```none
   set system syslog remote <address> protocol tcp
   ```
+
 :::{note}
 {abbr}`TLS (Transport Layer Security)`-encrypted remote logging is
 **not supported** over **UDP**.
@@ -264,6 +269,7 @@ set system syslog remote graylog.example.com tls permitted-peers 'graylog.exampl
 
 ```
 #### Security recommendations
+
 - For secure deployments, always use the `name` authentication mode. It
   ensures that the server is validated by a trusted {abbr}`CA (Certificate
   Authority)` and that the hostname matches the certificate.
@@ -272,12 +278,15 @@ set system syslog remote graylog.example.com tls permitted-peers 'graylog.exampl
 - Ensure private keys are generated, stored, and maintained exclusively within
   the {doc}`PKI system </configuration/pki/index>`.
 (syslog_facilities)=
+
 ## Syslog facilities
+
 This section lists facilities used by syslog. Most facility names are self-
 explanatory. The local0–local7 facilities are used for custom purposes, such as
 logging from network nodes and equipment. Facility assignment is flexible and
 should be tailored to your company's needs. Consider facilities as categorization
 tools, rather than strict directives.
+
 | Facility code | Keyword  | Description                             |
 | ------------- | -------- | --------------------------------------- |
 |               | all      | All facilities                          |
@@ -305,7 +314,9 @@ tools, rather than strict directives.
 | 21            | local5   | local use 5 (local5)                    |
 | 22            | local6   | local use 6 (local6)                    |
 | 23            | local7   | local use 7 (local7)                    |
+
 (syslog_severity_level)=
+
 ## Severity levels
 | Value | Severity      | Keyword | Description                                                                                                               |
 | ----- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -356,6 +367,7 @@ Available log categories:
 :::
 
 ```
+
 If no category is specified, the contents of the main syslog file are
 displayed.
 

@@ -66,15 +66,18 @@ terraform init
 ### Deploy with Terraform
 
 Run the following commands on your Terraform instance:
+
 ```none
 cd /<your folder>
 terraform plan  
 terraform apply  
 yes
 ```
+
 After executing all the commands, your VyOS instance is deployed to
 Azure with your configuration.
 If you need to delete the instance, run the following command:
+
 ```none
 terraform destroy
 ```
@@ -87,7 +90,9 @@ terraform destroy
                        # login, IP addresses, etc.)
 ```
 ## File contents of Terraform for Azure
+
 `vyos.tf`
+
 ```none
 ##############################################################################
 # HashiCorp Guide to Using Terraform on Azure
@@ -253,7 +258,9 @@ provisioner "remote-exec" {
 }
 }
 ```
+
 `var.tf`
+
 ```none
 ##############################################################################
 # Variables File
@@ -357,7 +364,9 @@ variable "host"{
    description = "IP of my Ansible"
 }
 ```
+
 `terraform.tfvars`
+
 ```none
 password  = ""   # password for Ansible SSH
 host      = ""   # IP of my Ansible
@@ -371,14 +380,18 @@ host      = ""   # IP of my Ansible
 └── instance.yml
 ```
 ## File contents of Ansible for Azure
+
 `ansible.cfg`
+
 ```none
 [defaults]
 inventory = /root/az/ip.txt
 host_key_checking= False
 remote_user=vyos
 ```
+
 `instance.yml`
+
 ```none
 ##############################################################################
 # About tasks:
@@ -405,7 +418,9 @@ remote_user=vyos
         save:
           true
 ```
+
 `group_vars/all`
+
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

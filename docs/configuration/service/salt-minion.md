@@ -44,6 +44,7 @@ The hostname or IP address of the master
 
 URL with signature of master for auth reply verification
 ```
+
 Please take a look in the Automation section to find some usefull
 Examples.
 

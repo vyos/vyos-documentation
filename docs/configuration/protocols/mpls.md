@@ -244,9 +244,11 @@ set interfaces ethernet eth1 address '192.168.0.5/31'                       <---
 set interfaces loopback lo address '192.168.255.252/32'                     <--- Interface loopback IP for router ID and other uses
 ```
 ## Operational Mode Commands
+
 When LDP is working, you will be able to see label information in the outcome
 of `show ip route`. Besides that information, there are also specific *show*
 commands for LDP:
+
 ### Show
 ```{opcmd} show mpls ldp binding
 

@@ -119,6 +119,7 @@ source address of the connection.
 ```
 
 ## Keyboard Layout
+
 When starting a VyOS live system (the installation CD) the configured keyboard
 layout defaults to US. As this might not suite everyone's use case you can adjust
 the used keyboard layout on the system console.
@@ -138,6 +139,7 @@ layout here corresponds to your access system.
 (system-options-performance)=
 
 ## Performance
+
 As more and more routers run on Hypervisors, expecially with a {abbr}`NOS
 (Network Operating System)` as VyOS, it makes fewer and fewer sense to use
 static resource bindings like `smp-affinity` as present in VyOS 1.2 and

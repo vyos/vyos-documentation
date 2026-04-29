@@ -119,6 +119,7 @@ changed within the configuration. Previous settings like the local users, still
 exists within the configuration, however they are not used if the mode has been
 changed from local to radius. Once changed back to local, it will use all local
 accounts again.
+
 ```none
 set service ipoe-server authentication mode radius
 ```
@@ -128,9 +129,11 @@ set service ipoe-server authentication mode radius
 Configure RADIUS \<server\> and its required shared \<secret\> for
 communicating with the RADIUS server.
 ```
+
 Since the RADIUS server would be a single point of failure, multiple RADIUS
 servers can be setup and will be used subsequentially.
 For example:
+
 ```none
 set service ipoe-server authentication radius server 10.0.0.1 key 'foo'
 set service ipoe-server authentication radius server 10.0.0.2 key 'foo'
@@ -148,6 +151,7 @@ queries, make sure to add your VyOS router to the allowed client list.
 If you are using OSPF as IGP, always the closest interface connected to the
 RADIUS server is used. With VyOS 1.2 you can bind all outgoing RADIUS requests
 to a single source IP e.g. the loopback interface.
+
 ```{cfgcmd} set service ipoe-server authentication radius source-address \<address\>
 
 Source IPv4 address used in all RADIUS server queires.
@@ -252,6 +256,7 @@ Enables bandwidth shaping via RADIUS.
 Specifies the vendor dictionary, dictionary needs to be in
 /usr/share/accel-ppp/radius.
 ```
+
 Received RADIUS attributes have a higher priority than parameters defined within
 the CLI configuration, refer to the explanation below.
 

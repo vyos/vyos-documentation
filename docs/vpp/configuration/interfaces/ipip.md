@@ -8,6 +8,7 @@ lastproofread: '2026-03-13'
 ```
 
 # VPP IPIP Configuration
+
 VPP IPIP interfaces provide IP-in-IP tunneling with high-performance
 packet processing. IPIP tunnels encapsulate IP packets within IP
 packets, creating point-to-point connections across Layer 3 networks.
@@ -32,7 +33,9 @@ addresses.
 Set the tunnel source address. The source address must match an address
 configured on the local system.
 ```
+
 **Basic Example:**
+
 ```none
 set interfaces vpp ipip vppipip1
 set interfaces vpp ipip vppipip1 remote 203.0.113.2
@@ -50,6 +53,7 @@ Set a descriptive name for the IPIP interface.
 Administratively disable the IPIP interface.
 ```
 ### Kernel Interface Integration
+
 Kernel interface is bound to the VPP IPIP interface for management and
 application compatibility.
 
@@ -59,7 +63,9 @@ application compatibility.
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
+
 **Examples:**
+
 ```none
 # IPv4 address
 set interfaces vpp ipip vppipip0 address 192.168.1.10/24

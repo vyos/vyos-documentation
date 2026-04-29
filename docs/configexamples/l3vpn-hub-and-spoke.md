@@ -54,6 +54,7 @@ General information can be found in the
 ```
 
 ## How does it work?
+
 As we know the main assumption of L3VPN “Hub and Spoke” is, that the
 traffic between spokes have to pass via hub, in our scenario VyOS-PE2
 is the Hub PE
@@ -82,6 +83,7 @@ L3VPN configuration parameters table:
 ## Configuration
 
 ### Step-1: Configuring IGP and enabling MPLS LDP
+
 At the first step we need to configure the IP/MPLS backbone network using OSPF
 as IGP protocol and LDP as label-switching protocol for the base connectivity
 between **P** (rovider), **P** (rovider) **E** (dge) and **R** (oute) **R**
@@ -292,6 +294,7 @@ set protocols ospf parameters router-id '10.0.0.2'
 ```
 
 ### Step-2: Configuring iBGP for L3VPN control-plane
+
 At this step we are going to enable iBGP protocol on MPLS nodes and
 Route Reflectors (two routers for redundancy) that will deliver IPv4
 VPN (L3VPN) routes between them:
@@ -372,6 +375,7 @@ set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
 
 ### Step-3: Configuring L3VPN VRFs on PE nodes
+
 This section provides configuration steps for setting up VRFs on our
 PE nodes including CE facing interfaces, BGP, rd and route-target
 import/export based on the pre-defined parameters.
@@ -439,6 +443,7 @@ set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 ```
 
 ### Step-4: Configuring CE nodes
+
 Dynamic routing used between CE and PE nodes and eBGP peering
 established for the route exchanging between them. All routes
 received by PEs are then exported to L3VPN and delivered from
@@ -497,6 +502,7 @@ set protocols bgp parameters router-id '10.60.60.2'
 ```
 
 ### Step-5: Verification
+
 This section describes verification commands for MPLS/BGP/LDP
 protocols and L3VPN related routes as well as diagnosis and
 reachability checks between CE nodes.

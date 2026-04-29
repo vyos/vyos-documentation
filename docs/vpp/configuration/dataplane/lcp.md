@@ -8,6 +8,7 @@ lastproofread: '2026-02-26'
 ```
 
 # VPP LCP Configuration
+
 Linux Control Plane (LCP) is a core component of VPP that lets you
 offload various control plane functions to the Linux kernel. LCP provides
 seamless integration with other VyOS components, letting you use system
@@ -33,6 +34,7 @@ destinations and destinations reachable via VPP, you can disable this
 behavior using the following command:
 (vpp-config-dataplane-lcp-ignore-kernel-routes)=
 (vpp_config_dataplane_lcp_ignore-kernel-routes)=
+
 ```{cfgcmd} set vpp settings ignore-kernel-routes
 ```
 

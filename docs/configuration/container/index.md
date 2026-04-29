@@ -258,6 +258,7 @@ Disable a container.
 
 
 By default, no health checks are run, even when defined by the image.
+
 ```{cfgcmd} set container name \<name\> health-check
 
 Default health check is run for the container if defined by the image.

@@ -20,18 +20,21 @@ initiator role on VyOS side.
 ```
 
 ## Prerequirements
+
 **VyOS:**
 
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
+
 **Cisco:**
 
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
+
 **IKE parameters:**
 
 | Encryption        | AES-256 |
@@ -40,6 +43,7 @@ initiator role on VyOS side.
 | Diff-Helman Group | 14      |
 | Life-Time         | 28800   |
 | IKE Version       | 2       |
+
 **IPsec parameters:**
 
 | Encryption | AES-256 |
@@ -159,6 +163,7 @@ ip access-list extended cryptoacl
 ## Monitoring
 
 ### Monitoring on VyOS side
+
 IKE SAs:
 
 ```none
@@ -183,6 +188,7 @@ CISCO-tunnel-2  up       6m6s      0B/0B           0/0               10.0.2.2   
 ```
 
 ### Monitoring on Cisco side
+
 IKE SAs:
 
 ```none
@@ -297,6 +303,7 @@ interface: GigabitEthernet0/0
 ```
 
 ### Checking Connectivity
+
 ICMP packets from PC1 to PC3.
 
 ```none

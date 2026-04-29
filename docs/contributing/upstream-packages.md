@@ -129,6 +129,7 @@ parameters. The key configuration fields are:
 ## Example package.toml file
 
 Here's an example configuration for the FRRouting (FRR) package:
+
 ```toml
 name = "frr"
 commit_id = "stable/10.5"

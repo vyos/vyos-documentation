@@ -76,7 +76,9 @@ The well known NAT64 prefix is ``64:ff9b::/96``
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 65528 seconds) |
 
 ### Disabling Advertisements
+
 To disable advertisements without deleting the configuration:
+
 ```{cfgcmd} set service router-advert interface \<interface\> no-send-advert
 
 If set, the router will no longer send periodic router advertisements and
@@ -89,8 +91,10 @@ Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```
 ## Example
+
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router
 beeing `2001:db8:beef:2::1`
+
 ```none
 set interfaces ethernet eth0 address 2001:db8:beef:2::1/64
 

@@ -43,6 +43,7 @@ SSH access to the PE (Provider Edge) routers.
 ```
 
 ## Topology
+
 We use the following network topology in this example:
 
 ```{image} _include/topology.png
@@ -50,6 +51,7 @@ We use the following network topology in this example:
 ```
 
 ## Core network
+
 I chose to run OSPF as the IGP (Interior Gateway Protocol).
 All required BGP sessions are established via a dummy interfaces
 (similar to the loopback, but in Linux you can have only one loopback,
@@ -90,6 +92,7 @@ PE3
 ```
 
 ## Tenant networks (VRFs)
+
 Once all routers can be safely remotely managed and the core network is
 operational, we can now setup the tenant networks.
 
@@ -130,6 +133,7 @@ PE3
 ```
 
 ## Testing and debugging
+
 You managed to come this far, now we want to see the network and routing
 tables in action.
 

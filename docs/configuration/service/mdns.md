@@ -55,6 +55,7 @@ Defaults to: 4096
 ```
 
 ## Firewall recommendations
+
 Unlike typical routed traffic, mDNS packets relayed between interfaces do not
 traverse the FORWARD hook chain in the firewall. Instead, they are processed
 through the following hooks:
@@ -77,6 +78,7 @@ set firewall ipv4 output filter rule 10 protocol 'udp'
 ```
 
 ## Example
+
 To listen on both `eth0` and `eth1` mDNS packets and also repeat packets
 received on `eth0` to `eth1` (and vice-versa) use the following commands:
 

@@ -291,6 +291,7 @@ discriminator, or an Ethernet Segment Identifier Name (ESINAME).
 
 The following two commands generate a 10-byte Type-3 ESI by combining the
 system MAC and local discriminator:
+
 ```{cfgcmd} set interfaces bonding \<interface\> evpn es-id \<1-16777215|10-byte ID\>
 
 ```
@@ -340,6 +341,7 @@ The following configuration example applies to all listed third-party vendors.
 It creates a bonding interface with two member interfaces, defines VLANs 10
 and 100 on the bonding interface, and assigns an IPv4 address to each VLAN
 subinterface.
+
 ```none
 
 # Create the bonding interface bond0 with 802.3ad LACP
@@ -376,6 +378,7 @@ interface.
 
 
 Assign member interfaces to PortChannel:
+
 ```none
 
 interface GigabitEthernet1/0/23
@@ -395,8 +398,10 @@ interface GigabitEthernet1/0/24
 !
 
 ```
+
 A new interface, `Port-channel1`, becomes available; all configuration,
 such as allowed VLAN interfaces and STP, is applied here.
+
 ```none
 
 interface Port-channel1
@@ -419,6 +424,7 @@ interface Port-channel1
 
 Configure a Juniper EX Series switch to integrate with a two-member VyOS bonding
 interface.
+
 ```none
 
 # Create aggregated ethernet device with 802.3ad LACP and port speeds of 10gbit/s
@@ -463,6 +469,7 @@ set interfaces xe-1/1/0 ether-options 802.3ad ae0
 
 Configure an Aruba/HP 2510G switch to integrate with a two-member VyOS bonding
 interface.
+
 ```none
 
 # Create trunk with 2 member interfaces (interface 1 and 2) and LACP
@@ -497,6 +504,7 @@ Let's assume the following topology:
 
 
 > 
+
 ```none
 
 > interfaces {

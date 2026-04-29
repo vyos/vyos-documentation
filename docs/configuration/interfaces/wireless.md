@@ -155,8 +155,10 @@ Wireless device type for this interface
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-he
 ```
 ##### HT (High Throughput) capabilities (802.11n)
+
 > Configuring HT mode options is required when using 802.11n or
 > 802.11ax at 2.4GHz.
+
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities ht 40mhz-incapable
 
 Device is incapable of 40 MHz, do not advertise. This sets ``[40-INTOLERANT]``
@@ -246,8 +248,10 @@ Enable sending PPDU using STBC (Space Time Block Coding)
 ##### VHT (Very High Throughput) capabilities (802.11ac)
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
+
 %
 % Number of antennas on this card
+
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-pattern-fixed
 
 Set if antenna pattern does not change during the lifetime of an association
@@ -397,9 +401,11 @@ explicitly, but it might help with some WiFi adapters.
 * ``3`` - HE-MCS is not supported
 ```
 ### Wireless options (Station/Client)
+
 The example creates a wireless station (commonly referred to as Wi-Fi client)
 that accesses the network through the WAP defined in the above example. The
 default physical device (`phy0`) is used.
+
 ```none
 set system wireless country-code de
 set interfaces wireless wlan0 type station
@@ -407,7 +413,9 @@ set interfaces wireless wlan0 address dhcp
 set interfaces wireless wlan0 ssid 'TEST'
 set interfaces wireless wlan0 security wpa passphrase '12345678'
 ```
+
 Resulting configuration:
+
 ```none
 system {
   wireless {
@@ -427,6 +435,7 @@ interfaces {
   }
 ```
 ### Security
+
 {abbr}`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in
 combination with 802.1X based authentication can be used to authenticate
 users or computers in a domain.
@@ -445,6 +454,7 @@ The WAP in this example has the following characteristics:
 - Use 802.11n protocol
 - Wireless channel `1`
 - RADIUS server at `192.168.3.10` with shared-secret `VyOSPassword`
+
 ```none
 set system wireless country-code de
 set interfaces wireless wlan0 address '192.168.2.1/24'
@@ -457,7 +467,9 @@ set interfaces wireless wlan0 security wpa cipher CCMP
 set interfaces wireless wlan0 security wpa radius server 192.168.3.10 key 'VyOSPassword'
 set interfaces wireless wlan0 security wpa radius server 192.168.3.10 port 1812
 ```
+
 Resulting configuration:
+
 ```none
 system {
   wireless {
@@ -501,8 +513,10 @@ interfaces {
 ## Operation
 ```{opcmd} show interfaces wireless info
 ```
+
 Use this command to view operational status and wireless-specific information
 about all wireless interfaces.
+
 ```none
 vyos@vyos:~$ show interfaces wireless info
 Interface  Type          SSID                         Channel
@@ -511,8 +525,10 @@ wlan0      access-point  VyOS-TEST-0                        1
 
 ```{opcmd} show interfaces wireless detail
 ```
+
 Show the operational status and detailed wireless-specific
 information about all wireless interfaces.
+
 ```none
 vyos@vyos:~$ show interfaces wireless detail
 wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
@@ -542,8 +558,10 @@ wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
 
 ```{opcmd} show interfaces wireless \<wlanX\>
 ```
+
 This command shows both status and statistics on the specified wireless
 interface. The wireless interface identifier can range from wlan0 to wlan999.
+
 ```none
 vyos@vyos:~$ show interfaces wireless wlan0
 wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
@@ -561,8 +579,10 @@ wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
 
 ```{opcmd} show interfaces wireless \<wlanX\> brief
 ```
+
 This command gives a brief status overview of a specified wireless interface.
 The wireless interface identifier can range from wlan0 to wlan999.
+
 ```none
 vyos@vyos:~$ show interfaces wireless wlan0 brief
 Codes: S - State, L - Link, u - Up, D - Down, A - Admin Down
@@ -573,8 +593,10 @@ wlan0            192.168.2.254/24                    u/u
 
 ```{opcmd} show interfaces wireless \<wlanX\> queue
 ```
+
 Use this command to view wireless interface queue information.
 The wireless interface identifier can range from wlan0 to wlan999.
+
 ```none
 vyos@vyos:~$ show interfaces wireless wlan0 queue
 qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
@@ -584,6 +606,7 @@ qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
 
 ```{opcmd} show interfaces wireless \<wlanX\> scan
 ```
+
 This command is used to retrieve information about WAP within the range of your
 wireless interface. This command is useful on wireless interfaces configured
 in station mode.
@@ -612,6 +635,7 @@ Address            SSID                          Channel  Signal (dbm)
 00:53:44:46:d2:0b  Vodafone Hotspot                    1  -87.00
 ```
 ## Examples
+
 The following example creates a WAP. When configuring multiple WAP interfaces,
 you must specify unique IP addresses, channels, Network IDs commonly referred
 to as {abbr}`SSID (Service Set Identifier)`, and MAC addresses.
@@ -622,6 +646,7 @@ The WAP in this example has the following characteristics:
 - WPA passphrase `12345678`
 - Use 802.11n protocol
 - Wireless channel `1`
+
 ```none
 set system wireless country-code de
 set interfaces wireless wlan0 address '192.168.2.1/24'
@@ -633,7 +658,9 @@ set interfaces wireless wlan0 security wpa mode wpa2
 set interfaces wireless wlan0 security wpa cipher CCMP
 set interfaces wireless wlan0 security wpa passphrase '12345678'
 ```
+
 Resulting configuration:
+
 ```none
 system {
   wireless {
@@ -658,11 +685,13 @@ interfaces {
     }
 }
 ```
+
 To enable access point functionality, configure a DHCP server for this
 interface's network, or add the interface to an existing local bridge
 (see {ref}`bridge-interface` for details).
 
 ### Wi-Fi 6/6E (802.11ax)
+
 The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 {abbr}`APs (Access Points)` with the following parameters:
 - Network ID (SSID): `test.ax`
@@ -672,7 +701,9 @@ The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 - Wireless channel for 6 GHz: `5`
 
 #### Example configuration: Wi-Fi 6 at 2.4 GHz
+
 You may expect real throughput around 10 MB/s or higher in crowded areas.
+
 ```none
 set system wireless country-code de
 set interfaces wireless wlan0 capabilities he antenna-pattern-fixed
@@ -702,7 +733,9 @@ set interfaces wireless wlan0 ssid test.ax
 set interfaces wireless wlan0 type access-point
 commit
 ```
+
 Resulting configuration:
+
 ```none
 system {
   wireless {
@@ -757,10 +790,12 @@ interfaces {
 }
 ```
 #### Example configuration: Wi-Fi 6E at 6 GHz
+
 You may expect real throughput between 50 MB/s and 150 MB/s, depending on
 obstructions from walls, water, metal, or other materials
 with high electromagnetic damping at 6 GHz. Best results are achieved
 with the AP being in the same room and in line-of-sight.
+
 ```none
 set system wireless country-code de
 set interfaces wireless wlan0 capabilities he antenna-pattern-fixed
@@ -786,7 +821,9 @@ set interfaces wireless wlan0 type access-point
 set interfaces wireless wlan0 stationary-ap
 commit
 ```
+
 Resulting configuration:
+
 ```none
 system {
   wireless {
@@ -834,11 +871,14 @@ interfaces {
     }
 }
 ```
+
 (wireless-interface-intel-ax200)=
 
 ### Intel AX200
+
 The Intel AX200 card does not work out of the box in AP mode. You can
 still put this card into AP mode using the following configuration:
+
 ```none
 set system wireless country-code 'us'
 set interfaces wireless wlan0 channel '1'

@@ -14,7 +14,9 @@ configuration commands:
 
 ```{cfgcmd} set firewall ipv4 ...
 ```
+
 To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </configuration/firewall/index>`.
+
 ```none
 - set firewall
     * ipv4
@@ -31,6 +33,7 @@ To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </
             + custom_name
 
 ```
+
 First, the router receives all traffic and processes it in the **prerouting**
 stage.
 
@@ -130,6 +133,7 @@ The action can be:
   of the last chain.
 - `queue`: Enqueue packet to userspace.
 - `synproxy`: Synproxy the packet.
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return | synproxy]
 ```
 
@@ -205,9 +209,11 @@ queue.
 Use this command only when the action is set to ``queue``. Distribute
 packets between several queues.
 ```
+
 Also, **default-action** is an action that applies when a packet does not
 match any rule in its chain. For base chains, possible options for
 **default-action** are **accept** or **drop**.
+
 ```{cfgcmd} set firewall ipv4 forward filter default-action [accept | drop]
 ```
 
@@ -245,6 +251,7 @@ do not define a default action, the system sets the default-action to
 
 You can enable logging for every single firewall rule. If you enable logging,
 you can define other log options.
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> log
 ```
 
@@ -339,6 +346,7 @@ group.
 
 You can add a description for reference for every single rule and for every
 defined custom chain.
+
 ```{cfgcmd} set firewall ipv4 name \<name\> description \<text\>
 
 Provide a rule-set description for a custom firewall chain.
@@ -362,6 +370,7 @@ Provide a description for each rule.
 
 When you define a rule, it is enabled by default. In some cases, it is useful
 to disable the rule rather than removing it.
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> disable
 ```
 
@@ -379,6 +388,7 @@ Command for disabling a rule but keeping it in the configuration.
 
 
 There are a lot of matching criteria against which the packet can be tested.
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> connection-status nat [destination | source]
 ```
 
@@ -579,10 +589,12 @@ that the router is able to resolve this dns query.
 Match IP addresses based on its geolocation. More info: [geoip matching](<https://wiki.nftables.org/wiki-nftables/index.php/GeoIP_matching>).
 Use inverse-match to match anything except the given country-codes.
 ```
+
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
 permits redistribution so we can include a database in images(~3MB
 compressed). Includes cron script (manually callable by op-mode update
 geoip) to keep database and rules updated.
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source mac-address <mac-address>
 ```
 
@@ -1201,6 +1213,7 @@ matching criteria to block brute-force attempts.
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
 packets before sending them out. This feature provides more flexibility in
 packet handling.
+
 ```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> set dscp <0-63>
 ```
 
@@ -1256,6 +1269,7 @@ Set connection mark value.
 
 
 Synproxy connections
+
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule \<1-999999\> action synproxy
 ```
 
@@ -1280,6 +1294,7 @@ Requirements to enable synproxy:
 - Traffic must be symmetric.
 - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled.
 - Disable conntrack loose track option.
+
 ```none
 
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'

@@ -25,6 +25,7 @@ For example: /tmp/vyos-1.2.3-amd64.iso.
    an optional username and password on the command line, which will be passed
    as "Basic-Auth" to the server.
 ```
+
 If there isn't enough free disk space, the installation will be canceled.
 To delete images, use the {opcmd}`delete system image` command.
 
@@ -76,6 +77,7 @@ OK.  This image will be named: vyos-1.3-rolling-201912201452
 ```
 
 You can use `latest` option. It loads the latest available Rolling release.
+
 ```none
 vyos@vyos:~$ add system image latest
 ```

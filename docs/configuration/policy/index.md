@@ -6,6 +6,7 @@ lastproofread: '2021-07-12'
 ```
 
 # Policy
+
 Policies are used for filtering and traffic management. With policies, network
 administrators could filter and treat traffic
 according to their needs.
@@ -38,7 +39,9 @@ extcommunity-list
 large-community-list
 ```
 ## Examples
+
 Examples of policies usage:
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1

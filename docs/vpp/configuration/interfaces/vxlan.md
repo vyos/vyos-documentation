@@ -8,6 +8,7 @@ lastproofread: '2026-03-13'
 ```
 
 # VPP VXLAN Configuration
+
 VPP VXLAN interfaces provide virtual extensible local area network (VXLAN)
 tunneling with high-performance packet processing. VXLAN extends Layer 2
 domains across Layer 3 networks using UDP encapsulation, enabling scalable
@@ -39,7 +40,9 @@ addresses.
 Set the tunnel source address. Must match an address configured on the
 local system.
 ```
+
 **Basic Example:**
+
 ```none
 set interfaces vpp vxlan vppvxlan1
 set interfaces vpp vxlan vppvxlan1 vni 100
@@ -58,6 +61,7 @@ Set a descriptive name for the VXLAN interface.
 Administratively disable the VXLAN interface.
 ```
 ### Kernel Interface Integration
+
 The kernel interface is bound to the VXLAN tunnel for management and
 application compatibility.
 
@@ -67,7 +71,9 @@ application compatibility.
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
+
 **Examples:**
+
 ```none
 set interfaces vpp vxlan vppvxlan1 address 192.168.1.10/24
 set interfaces vpp vxlan vppvxlan1 address 2001:db8::10/64
@@ -106,8 +112,10 @@ set interfaces vpp vxlan vppvxlan3 source-address 192.168.1.1
 set interfaces vpp vxlan vppvxlan3 address 10.0.3.1/24
 ```
 ## Bridge Integration
+
 VXLAN interfaces are commonly used as members in VPP bridges for Layer 2
 extension. See {doc}`bridge` for more information.
+
 ```none
 # Add VXLAN tunnel to bridge
 set interfaces vpp bridge vppbr1

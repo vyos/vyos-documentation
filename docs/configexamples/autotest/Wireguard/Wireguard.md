@@ -16,6 +16,7 @@ test, in each site.
 ```
 
 ## Configuration
+
 Set the local subnet on eth2 and the public ip address eth1 on each site.
 
 Central
@@ -75,6 +76,7 @@ Branch
 ```
 
 ## Testing and debugging
+
 After all is done and commit, let's take a look if the Wireguard interface is
 up and running.
 

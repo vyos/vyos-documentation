@@ -42,6 +42,7 @@ VRF device) can work across all VRF domains by enabling this option.
 Zebra supports prefix-lists and Route Maps to match routes received from
 other FRR components. The permit/deny facilities provided by these commands
 can be used to filter which routes zebra will install in the kernel.
+
 ```{cfgcmd} set vrf \<name\> ip protocol \<protocol\> route-map \<route-map\>
 Apply a route-map filter to routes for the specified protocol.
 
@@ -72,6 +73,7 @@ are sending routes to zebra.
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
 by default for a traditional profile of FRR which we use. It and can be disabled if
 you do not want to e.g. allow BGP to peer across the default route.
+
 ```{cfgcmd} set vrf name \<name\> ip nht no-resolve-via-default
 Do not allow IPv4 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
@@ -89,6 +91,7 @@ subnode.
 
 When VRFs are used it is not only mandatory to create a VRF but also the VRF
 itself needs to be assigned to an interface.
+
 ```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\> <interface> vrf <name>
 
 Assign interface identified by `<interface>` to VRF named `<name>`.
@@ -160,6 +163,7 @@ inside a given vrf:
 
 It is not sufficient to only configure a VRF but VRFs must be maintained, too.
 For VRF maintenance the following operational commands are in place.
+
 ```{opcmd} show vrf
 Lists VRFs that have been created
 
@@ -276,6 +280,7 @@ vyos@vyos:~$ force vrf blue
 vyos@vyos(vrf:blue):~$
 :::
 ```
+
 (vrf-example)=
 
 
@@ -310,6 +315,7 @@ VRF route leaking
 
 
 > 
+
 ```none
 set interfaces bridge br10 address '10.30.0.254/24'
 
@@ -369,6 +375,7 @@ set vrf name red table '2000'
 
 
 > 
+
 ```none
 set interfaces ethernet eth0 address '172.16.50.12/24'
 
@@ -424,6 +431,7 @@ set vrf name red protocols static route 192.168.130.0/24 interface eth1 vrf 'blu
 
 set vrf name red table '2020'
 ```
+
 (vrf-example-operation)=
 
 
@@ -435,6 +443,7 @@ installed, and try to ICMP ping PC1 from PC3.
 
 
 > 
+
 ```none
 PCS> ping 10.0.0.1
 
@@ -459,6 +468,7 @@ MAC         : 00:50:79:66:68:0f
 
 
 > 
+
 ```none
 vyos@R1:~$ show ip route
 
@@ -484,6 +494,7 @@ S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 
 
 > 
+
 ```none
 vyos@R1:~$ show ip route vrf red
 
@@ -511,6 +522,7 @@ C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 
 
 > 
+
 ```none
 vyos@R1:~$ show ip route vrf blue
 
@@ -585,6 +597,7 @@ these two parameters.
 Configuration of route leaking between a unicast VRF RIB and the VPN SAFI RIB
 of the default VRF is accomplished via commands in the context of a VRF
 address-family.
+
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> rd vpn export \<asn:nn|address:nn\>
 Specifies the route distinguisher to be added to a route exported from the
 current unicast VRF to VPN.
@@ -646,6 +659,7 @@ It is possible to permit BGP install VPN prefixes without transport labels.
 This configuration will install VPN prefixes originated from an e-bgp session,
 and with the next-hop directly connected.
 ```
+
 (l3vpn-vrf-example-operation)=
 
 
@@ -655,6 +669,7 @@ and with the next-hop directly connected.
 It is not sufficient to only configure a L3VPN VRFs but L3VPN VRFs must be
 maintained, too.For L3VPN VRF maintenance the following operational commands
 are in place.
+
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn
  Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
 

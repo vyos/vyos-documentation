@@ -497,6 +497,7 @@ during convergence/interface flap events, but for this interface only.
 
 This feature summarises originated external LSAs (Type-5 and Type-7). Summary
 Route will be originated on-behalf of all matched external LSAs.
+
 ```{cfgcmd} set protocols ospf aggregation timer \<seconds\>
 Configure aggregation delay timer interval.
 
@@ -565,6 +566,7 @@ listening to the broadcast or multicast hello packets on the network.
 Because an NBMA network does not support broadcast (or multicast), the
 device cannot discover its neighbors dynamically, so you must configure all
 the neighbors statically.
+
 ```{cfgcmd} set protocols ospf neighbor \<A.B.C.D\>
 
 This command specifies the IP address of the neighboring device.
@@ -788,6 +790,7 @@ R    10.0.34.4             [2] area: 0.0.0.0, ASBR
 N E2 172.16.0.0/24         [2/20] tag: 0
                            via 10.0.13.3, eth0
 ```
+
 The table consists of following data:
 
 
@@ -804,6 +807,7 @@ accessible ABRs and ASBRs.
 external to the OSPF process. "E" flag points to the external link metric type
 (E1 – metric type 1, E2 – metric type 2). External link metric is printed in
 the "\<metric of the router which advertised the link>/\<link metric>" format.
+
 ```{opcmd} show ip ospf border-routers
 This command displays a table of paths to area boundary and autonomous
 system boundary routers.
@@ -898,7 +902,9 @@ This command displays LSAs in MaxAge list.
 ```
 #### Examples
 ##### Enable OSPF
+
 **Node 1**
+
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces ethernet eth0 address 192.168.0.1/24
@@ -906,7 +912,9 @@ set protocols ospf area 0 network 192.168.0.0/24
 set protocols ospf area 0 network 10.1.1.1/32
 set protocols ospf parameters router-id 10.1.1.1
 ```
+
 **Node 2**
+
 ```none
 set interfaces loopback lo address 10.1.1.2/32
 set interfaces ethernet eth0 address 192.168.0.2/24
@@ -914,7 +922,9 @@ set protocols ospf area 0 network 192.168.0.0/24
 set protocols ospf area 0 network 10.1.1.2/32
 set protocols ospf parameters router-id 10.1.1.2
 ```
+
 Here's the neighbors up:
+
 ```none
 Node-1@vyos:~$ show ip ospf neighbor
 
@@ -927,7 +937,9 @@ Node-2@vyos:~$ show ip ospf neighbor
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
 10.1.1.1          1 Full/Backup     3m47s             31.736s 192.168.0.1     eth0:192.168.0.2                     0     0     0
 ```
+
 Here's the routes:
+
 ```none
 Node-1@vyos:~$ show ip route ospf
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -954,7 +966,9 @@ O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:00:04
 O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:18
 ```
 ##### Enable OSPF with route redistribution of the loopback and default originate:
+
 **Node 1**
+
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set protocols ospf area 0 network 192.168.0.0/24
@@ -969,7 +983,9 @@ set protocols ospf redistribute connected route-map CONNECT
 set policy route-map CONNECT rule 10 action permit
 set policy route-map CONNECT rule 10 match interface lo
 ```
+
 **Node 2**
+
 ```none
 set interfaces loopback lo address 10.2.2.2/32
 set protocols ospf area 0 network 192.168.0.0/24
@@ -982,7 +998,9 @@ set policy route-map CONNECT rule 10 action permit
 set policy route-map CONNECT rule 10 match interface lo
 ```
 ##### Enable OSPF and IGP-LDP synchronization:
+
 **Node 1:**
+
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces ethernet eth0 address 192.168.0.1/24
@@ -999,8 +1017,10 @@ set protocols mpls ldp interface eth0
 set protocols mpls ldp parameters transport-prefer-ipv4
 set protocols mpls ldp router-id 10.1.1.1
 ```
+
 This gives us IGP-LDP synchronization for all non-loopback interfaces with
 a holddown timer of zero seconds:
+
 ```none
 Node-1@vyos:~$ show ip ospf mpls ldp-sync
   eth0
@@ -1009,7 +1029,9 @@ Node-1@vyos:~$ show ip ospf mpls ldp-sync
   State: Sync achieved
 ```
 ##### Enable OSPF with Segment Routing (Experimental):
+
 **Node 1**
+
 ```none
 set interfaces loopback lo address 10.1.1.1/32
 set interfaces ethernet eth0 address 192.168.0.1/24
@@ -1023,7 +1045,9 @@ set protocols ospf segment-routing global-block low-label-value '1000'
 set protocols ospf segment-routing prefix 10.1.1.1/32 index explicit-null
 set protocols ospf segment-routing prefix 10.1.1.1/32 index value '1'
 ```
+
 **Node 2**
+
 ```none
 set interfaces loopback lo address 10.1.1.2/32
 set interfaces ethernet eth0 address 192.168.0.2/24
@@ -1037,7 +1061,9 @@ set protocols ospf segment-routing global-block low-label-value '1000'
 set protocols ospf segment-routing prefix 10.1.1.2/32 index explicit-null
 set protocols ospf segment-routing prefix 10.1.1.2/32 index value '2'
 ```
+
 This gives us MPLS segment routing enabled and labels for far end loopbacks:
+
 ```none
 Node-1@vyos:~$ show mpls table
  Inbound Label  Type       Nexthop      Outbound Label
@@ -1053,7 +1079,9 @@ Node-2@vyos:~$ show mpls table
  15000          SR (OSPF)  192.168.0.1  implicit-null
  15001          SR (OSPF)  192.168.0.1  implicit-null
 ```
+
 Here is the routing tables showing the MPLS segment routing label operations:
+
 ```none
 Node-1@vyos:~$ show ip route ospf
 Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -1079,14 +1107,22 @@ O>* 10.1.1.1/32 [110/1] via 192.168.0.1, eth0, label IPv4 Explicit Null, weight 
 O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:03:51
 O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:51
 ```
+
 (routing-ospfv3)=
+
 ## OSPFv3 (IPv6)
+
 (ospf-v3-configuration)=
+
 ### Configuration
+
 (ospf-v3-general)=
+
 #### General
+
 VyOS does not have a special command to start the OSPFv3 process. The OSPFv3
 process starts when the first ospf enabled interface is configured.
+
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> area \<number\>
    This command specifies the OSPFv3 enabled interface. This command is also
    used to enable the OSPF process. The area number can be specified in
@@ -1102,7 +1138,9 @@ an IP address of the router, but need not be – it can be any arbitrary
 the OSPFv3 speaker – bad things will happen if multiple OSPFv3 speakers are
 configured with the same router-ID!
 ```
+
 (ospf-v3-optional)=
+
 #### Optional
 ```{cfgcmd} set protocols ospfv3 distance global \<distance\>
 This command change distance value of OSPFv3 globally.
@@ -1113,7 +1151,9 @@ This command change distance value of OSPFv3. The arguments are the
 distance values for external routes, inter-area routes and intra-area
 routes respectively. The distance range is 1 to 255.
 ```
+
 (ospf-v3-area-configuration)=
+
 #### Area Configuration
 ```{cfgcmd} set protocols ospfv3 area \<number\> range \<prefix\>
 This command summarizes intra area paths from specified area into one
@@ -1125,7 +1165,9 @@ This command instead of summarizing intra area paths filter them - i.e.
 intra area paths from this range are not advertised into other areas. This
 command makes sense in ABR only.
 ```
+
 (ospf-v3-interface-config)=
+
 #### Interface Configuration
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> ipv6 cost \<number\>
 This command sets link cost for the specified interface. The cost value is
@@ -1181,7 +1223,9 @@ set and adjust for each interface the delay interval before starting the
 synchronizing process of the router's database with all neighbors. The
 default value is 1 seconds. The interval range is 3 to 65535.
 ```
+
 (ospf-v3-graceful-restart)=
+
 #### Graceful Restart
 ```{cfgcmd} set protocols ospfv3 graceful-restart [grace-period (1-1800)]
 Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
@@ -1214,7 +1258,9 @@ Supports as HELPER for configured grace period.
 It helps to support as HELPER only for planned restarts.
 By default, it supports both planned and unplanned outages.
 ```
+
 (ospf-v3-redistribution-config)=
+
 #### Redistribution Configuration
 ```{cfgcmd} set protocols ospfv3 redistribute \<route source\>
 This command redistributes routing information from the given route source
@@ -1226,7 +1272,9 @@ This command allows to use route map to filter redistributed routes from
 given route source. There are five modes available for route source: bgp,
 connected, kernel, ripng, static.
 ```
+
 (ospf-v3-op-cmd)=
+
 #### Operational Mode Commands
 ```{opcmd} show ipv6 ospfv3 neighbor
 
@@ -1265,34 +1313,44 @@ advertisement type.
 
 This command displays external information redistributed into OSPFv3
 ```
+
 (ospf-v3-config-example)=
+
 #### Configuration Example
+
 A typical configuration using 2 nodes.
 
 **Node 1:**
+
 ```none
 set protocols ospfv3 interface eth1 area 0.0.0.0
 set protocols ospfv3 area 0.0.0.0 range 2001:db8:1::/64
 set protocols ospfv3 parameters router-id 192.168.1.1
 set protocols ospfv3 redistribute connected
 ```
+
 **Node 2:**
+
 ```none
 set protocols ospfv3 interface eth1 area 0.0.0.0
 set protocols ospfv3 area 0.0.0.0 range 2001:db8:2::/64
 set protocols ospfv3 parameters router-id 192.168.2.1
 set protocols ospfv3 redistribute connected
 ```
+
 **To see the redistributed routes:**
+
 ```none
 show ipv6 ospfv3 redistribute
 ```
+
 Cost calculation wireguard interfaces is unreliable as ospfv3 uses the link speed to calculate the link cost.
 You might therefore want to set the link cost to a fixed value on WireGuard tunnels.
 
 Example configuration for WireGuard interfaces:
 
 **Node 1**
+
 ```none
 set interfaces wireguard wg01 peer ospf02 allowed-ips '::/0'
 set interfaces wireguard wg01 peer ospf02 endpoint '10.1.1.101:12345'
@@ -1303,7 +1361,9 @@ set protocols ospfv3 interface 'wg01' area 0.0.0.0
 set protocols ospfv3 interface 'wg01' cost 10
 set protocols ospfv3 interface 'lo' area 0.0.0.0
 ```
+
 **Node 2**
+
 ```none
 set interfaces wireguard wg01 peer ospf01 allowed-ips '::/0'
 set interfaces wireguard wg01 peer ospf01 endpoint '10.1.1.100:12345'
@@ -1314,7 +1374,9 @@ set protocols ospfv3 interface 'wg01' area 0.0.0.0
 set protocols ospfv3 interface 'wg01' cost 10
 set protocols ospfv3 interface 'lo' area 0.0.0.0
 ```
+
 **Status**
+
 ```none
 vyos@ospf01:~$ sh ipv6 ospfv3 neighbor
 Neighbor ID     Pri    DeadTime    State/IfState         Duration I/F[State]

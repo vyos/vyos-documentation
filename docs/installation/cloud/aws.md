@@ -148,6 +148,7 @@ the following article from AWS:
 ### Configuration Example
 
 Configure the AWS GWLB service with the following commands:
+
 ```none
 set service aws glb script on-create '/config/scripts/glb-create.sh'
 set service aws glb script on-destroy '/config/scripts/glb-destroy.sh'

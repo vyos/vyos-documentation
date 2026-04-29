@@ -35,6 +35,7 @@ As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
   - Allow connection to PROD.
 
 ## Configuration
+
 First, we need to configure the interfaces and VRFs:
 
 ```none

@@ -42,6 +42,7 @@ In the end, we will configure the traffic shaper using QoS mechanisms
 on the “VYOS2” router.
 
 ## Configuration:
+
 Set IP addresses on all VPCs and a default gateway 172.17.1.1. We'll
 use in this case only static routes.
 On the VyOS3 router, we need to change the 'dscp' labels for the

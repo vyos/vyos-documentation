@@ -27,6 +27,7 @@ client, to test a single LAN setup
 ```
 
 ### Configuration
+
 First, we configure the `vyos-wan` interface to get a DHCP address.
 
 ```{literalinclude} _include/vyos-wan.conf
@@ -96,6 +97,7 @@ rtt min/avg/max/mdev = 176.707/206.638/285.128/45.457 ms
 ```
 
 ### LAN Configuration
+
 At this point, your VyOS install should have full IPv6, but now your LAN devices
 need access.
 
@@ -111,6 +113,7 @@ if you ever want to have multiple LANs, VLANs, DMZ, etc, you'll want to ignore
 the assigned /64, and request the /48 and use that.
 
 ## Single LAN Setup
+
 Single LAN setup where eth2 is your LAN interface. Use the Tunnelbroker
 Routed /64 prefix:
 
@@ -151,6 +154,7 @@ rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 ```
 
 ## Multiple LAN/DMZ Setup
+
 That's how you can expand the example above.
 Use the `Routed /48` information. This allows you to assign a
 different /64 to every interface, LAN, or even device. Or you could break your

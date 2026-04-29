@@ -50,9 +50,11 @@ Provide a description for each rule.
 Option to enable or disable log matching rule.
 ```
 ### Matching criteria
+
 There are a lot of matching criteria options available, both for
 `policy route` and `policy route6`. These options are listed
 in this section.
+
 ```{cfgcmd} set policy route \<name\> rule \<n\> connection-mark \<1-2147483647\>
 ```
 
@@ -93,6 +95,7 @@ is set to 0x7FFFFFFF - the id of the table/VRF.
 Set match criteria based on source or destination ipv4|ipv6 address, where
 &lt;match_criteria&gt; could be:
 ```
+
 For ipv4:
 : - \<x.x.x.x>: IP address to match.
   - \<x.x.x.x/x>: Subnet to match.
@@ -109,6 +112,7 @@ And for ipv6:
   - !\<h:h:h:h:h:h:h:h/x>: Match everything except the specified prefix.
   - !\<h:h:h:h:h:h:h:h>-\<h:h:h:h:h:h:h:h>: Match everything except the
     specified range.
+
 ```{cfgcmd} set policy route \<name\> rule \<n\> source group \<address-group|domain-group|mac-group|network-group|port-group\> \<text\>
 ```
 
@@ -344,9 +348,11 @@ Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
 'greater than', and 'lt' stands for 'less than'.
 ```
 ### Actions
+
 When mathcing all patterns defined in a rule, then different actions can
 be made. This includes droping the packet, modifying certain data, or
 setting a different routing table.
+
 ```{cfgcmd} set policy route \<name\> rule \<n\> action drop
 ```
 

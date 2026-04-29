@@ -74,6 +74,7 @@ Four policies for reforwarding DHCP packets exist:
 ```
 
 ### Example
+
 - Listen for DHCP requests on interface `eth1`.
 - DHCP server is located at IPv4 address 10.0.1.4 on `eth2`.
 - Router receives DHCP client requests on `eth1` and relays them to the
@@ -84,6 +85,7 @@ Four policies for reforwarding DHCP packets exist:
 :scale: 80 %
 DHCP relay example
 :::
+
 The generated configuration will look like:
 
 ```none
@@ -117,6 +119,7 @@ Restart DHCP relay service
 ```
 
 ## IPv6 relay
+
 (dhcp-relay-ipv6-configuration)=
 
 ### Configuration
@@ -155,6 +158,7 @@ set automatically if more than one listening interfaces are in use.
 (dhcp-relay-ipv6-example)=
 
 ### Example
+
 - DHCPv6 requests are received by the router on `listening interface` `eth1`
 - Requests are forwarded through `eth2` as the `upstream interface`
 - External DHCPv6 server is at 2001:db8::4
@@ -164,6 +168,7 @@ set automatically if more than one listening interfaces are in use.
 :scale: 80 %
 DHCPv6 relay example
 :::
+
 The generated configuration will look like:
 
 ```none

@@ -8,6 +8,7 @@ lastproofread: '2026-03-13'
 ```
 
 # VPP Loopback Interface Configuration
+
 VPP loopback interfaces provide virtual interfaces that remain
 administratively up and are commonly used for stable addressing,
 routing protocols, and as Bridge Virtual Interfaces (BVI). Loopback
@@ -22,7 +23,9 @@ packet processing.
 Create a loopback interface where ``<vpploN>`` follows the naming
 convention ``vpplo1``, ``vpplo2``, etc.
 ```
+
 **Basic Example:**
+
 ```none
 set interfaces vpp loopback vpplo1
 ```
@@ -38,6 +41,7 @@ Set a descriptive name for the loopback interface.
 Administratively disable the loopback interface.
 ```
 ### Kernel Interface Integration
+
 Kernel interface is bounded to the VPP loopback interface for management
 and application compatibility.
 
@@ -47,7 +51,9 @@ and application compatibility.
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
 addresses can be assigned.
 ```
+
 **Examples:**
+
 ```none
 # IPv4 address
 set interfaces vpp loopback vpplo1 address 192.168.1.10/24
@@ -62,6 +68,7 @@ Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```
 ## VLAN Configuration
+
 VPP kernel interfaces support VLAN (Virtual LAN) sub-interfaces for network
 segmentation.
 
@@ -71,8 +78,10 @@ segmentation.
 Create a VLAN sub-interface with the specified VLAN ID (0-4094).
 ```
 ### VLAN Sub-interface Configuration
+
 VLAN sub-interfaces support the same configuration options as the parent
 interface:
+
 ```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> address \<ip-address/prefix\>
 ```
 
@@ -84,7 +93,9 @@ interface:
 
 ```{cfgcmd} set interfaces vpp loopback \<vpploN\> vif \<vlan-id\> mtu \<size\>
 ```
+
 **Examples:**
+
 ```none
 # Configure VLAN 100
 set interfaces vpp loopback vpplo1 vif 100 address 192.168.100.1/24

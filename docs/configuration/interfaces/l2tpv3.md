@@ -37,6 +37,7 @@ L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 ```
 
 ### L2TPv3 options
+
 Use the following commands to configure the L2TPv3 tunnel's specific parameters.
 
 ```{cfgcmd} set interfaces l2tpv3 \<interface\> encapsulation \<udp | ip\>
@@ -98,6 +99,7 @@ on the remote peer.
 ## Example
 
 ### L2TPv3 tunnel with IP encapsulation
+
 The following example shows the configuration of an L2TPv3 tunnel using direct
 IP encapsulation:
 
@@ -118,6 +120,7 @@ l2tpv3 l2tpeth10 {
 The inverse configuration must be applied to the remote peer.
 
 ### L2TPv3 tunnel with UDP encapsulation
+
 The following example shows the configuration of an L2TPv3 tunnel using UDP
 encapsulation.
 

@@ -109,21 +109,29 @@ available. The use of PPKs in IKEv2 is described in {rfc}`8784`.
 
 PPKs can be configued within VyOS under the `vpn ipsec authentication ppk`
 config.
+
 ```{cfgcmd} set vpn authentication ppk \<name\> secret-type \<plaintext|hex|base64\>
 ```
+
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
 required for a successful IPsec connection. The secret can be plain text, a
 hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
+
 ```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk id \<id\>
 ```
+
 To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
+
 ```{cfgcmd} set vpn ipsec site-to-site \<name\> ppk required
 ```
+
 Optionally, you can require the use of PPK to have a successful connection.
+
 ```{opcmd} show vpn ipsec connections
 ```
+
 You can view the PPK column for information on if PPK is configured, and
 if it is in use. The output is in the format of `<configured> / <in use>`.
 The options for configured are none if not conifugred, opt if configured
@@ -134,7 +142,9 @@ but optional, and `req` is configured and required. The in use will show yes
 ## Configuration IKE
 
 ### IKE (Internet Key Exchange) Attributes
+
 VyOS IKE group has the next options:
+
 ```{cfgcmd} set vpn ipsec ike-group \<name\> close-action \<action\>
 
 Defines the action to take if the remote peer unexpectedly
@@ -230,6 +240,7 @@ Multiple proposals can be specified in a single group.
 
 
 VyOS ESP group has the next options:
+
 ```{cfgcmd} set vpn ipsec esp-group \<name\> compression
 
 Enables the  IPComp(IP Payload Compression) protocol which allows
@@ -339,9 +350,11 @@ will be installed on the outbound interface.
 Allows the installation of virtual-ip addresses.
 ```
 ### IKEv2 Retransmission
+
 If the peer does not respond on DPD packet, the router starts retransmission procedure.
 
 The following formula is used to calculate the timeout:
+
 ```none
 relative timeout = timeout * base ^ (attempts-1)
 ```

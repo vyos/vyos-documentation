@@ -299,6 +299,7 @@ PUK2 retries: '10'
 ```
 
 ## Example
+
 The following example shows how to configure a cellular connection using a
 Sierra Wireless MC7710 miniPCIe card that operates over USB despite its form
 factor. The card is installed in a {ref}`pc-engines-apu4`.
@@ -309,6 +310,7 @@ set interfaces wwan wwan0 address 'dhcp'
 ```
 
 ## Supported hardware
+
 The following WWAN modules have been successfully tested with a
 {ref}`pc-engines-apu4` board:
 - Sierra Wireless AirPrime MC7304 miniPCIe card (LTE)
@@ -320,6 +322,7 @@ The following WWAN modules have been successfully tested with a
 - HP LT4120 Snapdragon X5 LTE
 
 ## Firmware update
+
 WWAN modules include reprogrammable firmware, and most vendors regularly
 provide updates for it.
 

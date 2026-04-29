@@ -160,6 +160,7 @@ locations. This reduces multicast traffic and network load, improving
 scalability as more leaves are added.
 
 ## Single VXLAN device (SVD)
+
 In VyOS, you can configure multiple **VLAN-to-VNI mappings** for EVPN-VXLAN on
 a single container interface, known as a single VXLAN device (SVD). This
 enables significant VNI scaling because a separate VXLAN interface is not
@@ -185,6 +186,7 @@ set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
 ```
 
 ### Example
+
 The following example demonstrates a multicast VXLAN deployment.
 
 The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
@@ -331,6 +333,7 @@ VyOS uses the Linux default UDP port **8472** for VXLAN interfaces. This
 command allows you to configure a different UDP port.
 
 ## Unicast VXLAN
+
 As an alternative to multicast, you can configure the VXLAN tunnel by
 specifying the remote IPv4 address directly. The following updates the previous
 multicast example:

@@ -22,6 +22,7 @@ Type **e** to edit the first line, then type **Ctrl+X** to boot.
 ```
 
 ## Specify custom config file
+
 You can use a configuration file instead of the default `/config/config.boot`
 file. If the specified file doesn't exist or isn't readable, the system uses the
 default configuration file. No additional verification is performed, so specify

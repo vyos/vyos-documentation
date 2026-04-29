@@ -41,6 +41,7 @@ interfaces, as this may break their dependent configurations.
 ```
 
 ## IPIP
+
 IPIP is a straightforward encapsulation protocol defined in RFC 2003. It
 encapsulates one IPv4 packet inside another IPv4 packet.
 
@@ -58,6 +59,7 @@ set interfaces tunnel tun0 address 192.168.100.200/24
 ```
 
 ## IP6IP6
+
 IP6IP6 is the IPv6 counterpart to IPIP. It encapsulates one IPv6 packet inside
 another IPv6 packet.
 
@@ -75,6 +77,7 @@ set interfaces tunnel tun0 address 2001:db8:bb::1/64
 ```
 
 ## IPIP6
+
 IPIP6 is an encapsulation protocol that wraps IPv4 packets inside IPv6 packets.
 
 Similar to IPIP and IP6IP6, protocol-specific configuration for tunnels with
@@ -90,6 +93,7 @@ set interfaces tunnel tun0 address 192.168.70.80/24
 ```
 
 ## 6in4 (SIT)
+
 6in4, also known as {abbr}`SIT (Simple Internet Transition)`, is an
 encapsulation protocol defined in {rfc}`4213` that wraps IPv6 packets
 inside IPv4 packets. The encapsulating IPv4 headers use IP protocol number 41,
@@ -134,6 +138,7 @@ over both IPv4 (encapsulation `gre`) and IPv6 (encapsulation `ip6gre`)
 transport networks.
 
 ### Configuration
+
 To configure a {abbr}`GRE (Generic Routing Encapsulation)` tunnel, you need to
 define a tunnel source IP address, a tunnel destination IP address, an
 encapsulation type ({abbr}`GRE (Generic Routing Encapsulation)`), and a tunnel
@@ -184,6 +189,7 @@ Address=192.168.5.2/30
 ```
 
 ### GRE keys
+
 A GRE key is an optional 32-bit field in the GRE header that allows multiple
 GRE tunnels to operate between the same source and destination endpoints. When
 a packet arrives, the receiver checks the GRE key to determine which tunnel
@@ -209,6 +215,7 @@ set interfaces tunnel tun1 parameters ip key 20
 ```
 
 ### GRETAP
+
 Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates
 Layer 2 (Ethernet) frames.
 
@@ -229,6 +236,7 @@ set interfaces tunnel tun0 remote 203.0.113.10
 ```
 
 ### Troubleshooting
+
 GRE is a standardized tunneling protocol used in many network environments.
 
 Although the GRE tunnel setup is straightforward, connectivity failures

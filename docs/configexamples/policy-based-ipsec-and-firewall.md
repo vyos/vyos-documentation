@@ -35,7 +35,9 @@ This configuration example and the requirements consists of:
 ```
 
 ## Configuration
+
 Interface and routing configuration:
+
 ```none
 # LEFT router:
 set interfaces ethernet eth0 address '198.51.100.14/30'
@@ -48,7 +50,9 @@ set interfaces ethernet eth0 address '192.0.2.130/30'
 set interfaces ethernet eth1 vif 221 address '10.2.21.1/24'
 set interfaces ethernet eth2 vif 222 address '10.2.22.1/24'
 ```
+
 IPSec configuration:
+
 ```none
 # LEFT router:
 set vpn ipsec authentication psk RIGHT id '198.51.100.14'
@@ -104,7 +108,9 @@ set vpn ipsec site-to-site peer LEFT tunnel 2 remote prefix '10.1.12.0/24'
 set vpn ipsec site-to-site peer LEFT tunnel 3 local prefix '10.2.22.0/24'
 set vpn ipsec site-to-site peer LEFT tunnel 3 remote prefix '10.1.12.0/24'
 ```
+
 Firewall Configuration:
+
 ```none
 # Firewall Groups:
 set firewall group network-group LOCAL-NETS network '10.1.11.0/24'
@@ -170,7 +176,9 @@ set firewall ipv4 input filter rule 25 source group network-group 'LOCAL-NETS'
 set firewall ipv4 input filter rule 30 action 'accept'
 set firewall ipv4 input filter rule 30 protocol 'icmp'
 ```
+
 And NAT Configuration:
+
 ```none
 set nat source rule 10 destination group network-group 'REMOTE-NETS'
 set nat source rule 10 exclude
@@ -181,7 +189,9 @@ set nat source rule 20 source group network-group 'LOCAL-NETS'
 set nat source rule 20 translation address 'masquerade'
 ```
 ## Checking through op-mode commands
+
 After some testing, we can check IPSec status, and counter on every tunnel:
+
 ```none
 vyos@LEFT:~$ show vpn ipsec sa
 Connection      State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
@@ -192,7 +202,9 @@ RIGHT-tunnel-2  up       35m50s    1K/1K           15/15             192.0.2.130
 RIGHT-tunnel-3  up       36m54s    2K/2K           32/32             192.0.2.130       192.0.2.130  AES_CBC_256/HMAC_SHA2_256_128/MODP_2048
 vyos@LEFT:~$ 
 ```
+
 Also, we can check firewall counters:
+
 ```none
 vyos@LEFT:~$ show firewall
 Rulesets Information

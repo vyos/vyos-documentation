@@ -17,9 +17,11 @@ and destination address translation functions.
 ## Overview
 
 ### Different NAT Types
+
 (source-nat66)=
 
 #### SNAT66
+
 {abbr}`SNPTv6 (Source IPv6-to-IPv6 Network Prefix Translation)` The conversion
 function is mainly used in the following scenarios:
 - A single internal network and external network. Use the NAT66 device to
@@ -46,6 +48,7 @@ function is mainly used in the following scenarios:
 (destination-nat66)=
 
 #### DNAT66
+
 The {abbr}`DNPTv6 (Destination IPv6-to-IPv6 Network Prefix Translation)`
 destination address translation function is used in scenarios where the
 server in the internal network provides services to the external network,
@@ -59,6 +62,7 @@ external network address.
 ### Prefix Conversion
 
 #### Source Prefix
+
 Every SNAT66 rule has a translation command defined. The prefix defined
 for the translation is the prefix used when the address information in
 a packet is replaced.、
@@ -77,6 +81,7 @@ set nat66 source rule 1 translation address 'fc00::/64'
 ```
 
 #### Destination Prefix
+
 For the {ref}`destination-nat66` rule, the destination address of
 the packet isreplaced by the address calculated from the specified
 address or prefix in the `translation address` command
@@ -105,6 +110,7 @@ set nat66 destination rule 1 translation address 'fc01::/64'
 ```
 
 ## Configuration Examples
+
 Use the following topology to build a nat66 based isolated
 network between internal and external networks (dynamic prefix is
 not supported):
@@ -112,6 +118,7 @@ not supported):
 :::{figure} /_static/images/vyos_1_4_nat66_simple.png
 :alt: VyOS NAT66 Simple Configure
 :::
+
 R1:
 
 ```none
@@ -142,6 +149,7 @@ a VyOS HA pair.
 :::{figure} /_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png
 :alt: VyOS NAT66 DHCPv6 using a dummy interface
 :::
+
 Configure both routers (a and b) for DHCPv6-PD via dummy interface:
 
 ```none

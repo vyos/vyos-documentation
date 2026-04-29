@@ -8,6 +8,7 @@ directives for command coverage tracking.
 ```
 
 ## Introduction
+
 This document describes the methodology to monitor and troubleshoot
 Site-to-Site VPN IPsec.
 
@@ -21,6 +22,7 @@ Steps for troubleshooting problems with Site-to-Site VPN IPsec:
   5. Check logs to view debug messages.
 
 ## Checking IKE SA Status
+
 The next command shows IKE SAs' statuses.
 
 ```none
@@ -44,6 +46,7 @@ This command shows the next information:
   - A-Time: established time, L-Time: time for next rekeying.
 
 ## IPsec SA (CHILD SA) Status
+
 The next commands show IPsec SAs' statuses.
 
 ```none
@@ -88,6 +91,7 @@ PEER-tunnel-1  up       IPsec   192.168.1.2       10.0.0.0/24  10.0.1.0/24  192.
 ```
 
 ## Viewing Logs for Debugging
+
 If IKE SAs or IPsec SAs are down, need to debug IPsec connectivity
 using logs `show log ipsec`
 
@@ -132,6 +136,7 @@ Jun 20 14:29:47 charon-systemd[2428]: CHILD_SA PEER-tunnel-1{1} established with
 ## Troubleshooting Examples
 
 ### IKE PROPOSAL are Different
+
 In this situation, IKE SAs can be down or not active.
 
 ```none
@@ -166,6 +171,7 @@ Encryption **AES_CBC_128** is configured in IKE policy on the responder
 but **AES_CBC_256** is configured on the initiator side.
 
 ### PSK Secret Mismatch
+
 In this situation, IKE SAs can be down or not active.
 
 ```none
@@ -194,6 +200,7 @@ The notification **AUTHENTICATION_FAILED** means that the authentication
 is failed. There is a reason to check PSK on both side.
 
 ### ESP Proposal Mismatch
+
 The output of **show** commands shows us that IKE SA is established but
 IPSec SA is not.
 
@@ -273,6 +280,7 @@ Encryption **AES_CBC_128** is configured in IKE policy on the responder but **AE
 is configured on the initiator side.
 
 ### Prefixes in Policies Mismatch
+
 As in previous situation, IKE SA is in up state but IPsec SA is not up.
 According to logs we can see **TS_UNACCEPTABLE** notification. It means
 that prefixes (traffic selectors) mismatch on both sides

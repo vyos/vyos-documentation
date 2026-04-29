@@ -147,6 +147,7 @@ set system watchdog reboot-timeout 180
 ## Examples
 
 ### Basic Configuration with Software Watchdog
+
 This example configures a basic software watchdog with default timeouts:
 
 ```none
@@ -160,6 +161,7 @@ This will:
 - Use 120-second shutdown and reboot timeouts (default)
 
 ### Advanced Configuration
+
 This example shows a more customized configuration suitable for a production
 system:
 

@@ -76,6 +76,7 @@ interfaces {
 ```
 
 ## Zones Basics
+
 Each interface is assigned to a zone. The interface can be physical or
 virtual such as tunnels (VPN, PPTP, GRE, etc) and are treated exactly
 the same.
@@ -365,6 +366,7 @@ everything but the Firewall, Interfaces, and zone-policy sections. It is
 long enough as is.
 
 ## IPv6 Tunnel
+
 If you are using a IPv6 tunnel from HE.net or someone else, the basis is
 the same except you have two WAN interfaces. One for v4 and one for v6.
 

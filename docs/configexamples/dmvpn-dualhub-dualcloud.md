@@ -23,6 +23,7 @@ as a Spoke.
 ## Configurations
 
 ### Underlay configuration
+
 Networks 192.168.X.0/24 are used as LANs for every spoke.
 
 HUB-1
@@ -75,6 +76,7 @@ set protocols static route 0.0.0.0/0 next-hop 10.0.13.1
 ```
 
 ### NHRP configuration
+
 The next step is to configure the NHRP protocol. In a Dual cloud network, every HUB has to be configured with one GRE
 multipoint tunnel interface and every spoke has to be configured with two tunnel interfaces, one tunnel to each hub.
 In this example tunnel networks are 10.100.100.0/24 for the first cloud and 10.100.101.0/24 for the second cloud.
@@ -203,6 +205,7 @@ set protocols nhrp tunnel tun101 shortcut
 ```
 
 ### Overlay configuration
+
 The last step is to configure the routing protocol. In this scenario, OSPF was chosen as the dynamic routing protocol.
 But you can use iBGP or eBGP. To form fast convergence it is possible to use BFD protocol.
 
@@ -272,6 +275,7 @@ set protocols ospf passive-interface 'default'
 ```
 
 ### Security configuration
+
 Tunnels can be encrypted by IPSEC for security.
 
 HUB-1
@@ -365,7 +369,9 @@ interface Tunnel101
 ```
 
 ## Monitoring
+
 All spokes created IPSec tunnels to Hubs, are registered on Hubs using NHRP protocol and formed adjacency in OSPF.
+
 ```none
 vyos@HUB-1:~$ show vpn ipsec sa
 Connection                  State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
@@ -388,7 +394,9 @@ Neighbor ID     Pri State           Up Time         Dead Time Address         In
 192.168.12.1      1 Full/DROther    9m42s             37.443s 10.100.100.12   tun100:10.100.100.1                  0     0     0
 192.168.13.1      1 Full/DROther    9m15s             35.053s 10.100.100.13   tun100:10.100.100.1                  0     0     0
 ```
+
 First, we see that LANs are accessible through hubs using OSPF routes.
+
 ```none
 SPOKE-1#show ip route
 Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
@@ -430,8 +438,10 @@ L>* 192.168.12.1/32 is directly connected, eth1, weight 1, 01:24:43
 O>* 192.168.13.0/24 [110/3] via 10.100.100.1, tun100 onlink, weight 1, 00:12:36
   *                         via 10.100.101.1, tun101 onlink, weight 1, 00:12:36
 ```
+
 After initiating traffic between SPOKES sites, Phase 3 of DMVPN will work.
 For instance, traceroute was generated from PC-SPOKE-2 to PC-SPOKE-1
+
 ```none
 PC-SPOKE-2 : 192.168.12.2 255.255.255.0 gateway 192.168.12.1
 
@@ -448,8 +458,10 @@ trace to 192.168.11.2, 8 hops max, press Ctrl+C to stop
  2   10.100.100.11   4.401 ms  4.399 ms  4.174 ms
  3   *192.168.11.2   3.241 ms (ICMP type:3, code:3, Destination port unreachable)
 ```
+
 First trace goes via HUB but the second goes directly from SPOKE-1 to SPOKE-2.
 Now routing tables are changed. LAN networks 192.168.12.0/24 and 192.168.11.0/24 available directly via SPOKES.
+
 ```none
 vyos@SPOKE-2:~$ show ip route
 Codes: K - kernel route, C - connected, L - local, S - static,
@@ -481,7 +493,9 @@ O   % 192.168.12.0/24 [110/1002] via 10.100.101.1, 00:24:09, Tunnel101
                       [110/1002] via 10.100.100.1, 00:25:46, Tunnel100
                       [NHO][110/1] via 10.100.100.12, 00:00:03, Tunnel100
 ```
+
 NHRP shows shortcuts on Spokes
+
 ```none
 vyos@SPOKE-2:~$ show ip nhrp shortcut
 Type     Prefix                   Via                      Identity
@@ -497,7 +511,9 @@ SPOKE-1# show ip nhrp shortcut
    Type: dynamic, Flags: router rib nho
    NBMA address: 10.0.12.2
 ```
+
 A new Spoke to Spoke IPSec tunnel is created
+
 ```none
 SPOKE-1#show crypto isakmp sa
 IPv4 Crypto ISAKMP SA

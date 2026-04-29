@@ -22,10 +22,12 @@ On this page you'll learn how to:
   provisioning.
 
 ## Prepare to deploy VyOS with Terraform on AWS
+
 To create a single instance and install your configuration using
 Terraform, Ansible, and AWS, follow these steps:
 
 ### AWS
+
 1. Create an account with AWS and get your `access_key` and `secret_key`.
 2. Create a key [pair] and download your `.pem` key.
 
@@ -50,6 +52,7 @@ Terraform, Ansible, and AWS, follow these steps:
 ```
 
 ### Terraform
+
 - Create an UNIX or Windows instance.
 - Download and install
   [Terraform](https://developer.hashicorp.com/terraform/install).
@@ -84,6 +87,7 @@ terraform init
 ### Deploy with Terraform
 
 Run the following commands on your Terraform instance:
+
 ```none
 cd /<your folder>
 terraform plan
@@ -242,15 +246,18 @@ Outputs:
 my_IP = "54.xxx.xxx.xxx"
 
 ```
+
 After running all the commands, your VyOS instance is deployed on
 AWS with your specified configuration.
 To delete the instance, type the following command:
+
 ```none
 
 terraform destroy
 
 ```
 ## Troubleshooting
+
 1. If Ansible doesn't connect via SSH to your AWS instance, verify that
    your SSH key is in the path `/root/aws/`. You might need to
    increase the timeout in `instance.yml` from 300 seconds to 500
@@ -279,7 +286,9 @@ Make sure Ansible can ping from Terraform.
 └── terraform.tfvars           # The value of all variables (passwords, login, ip adresses and so on)
 ```
 ## File contents of Terraform for AWS
+
 `vyos.tf`
+
 ```none
 ##############################################################################
 # Build a VyOS VM from the Marketplace.
@@ -390,7 +399,9 @@ provisioner "remote-exec" {
 }
 }
 ```
+
 `var.tf`
+
 ```none
 variable "password" {
    description = "pass for Ansible"
@@ -412,7 +423,9 @@ variable "secret" {
    sensitive = true
 }
 ```
+
 `versions.tf`
+
 ```none
  terraform {
   required_providers {
@@ -423,7 +436,9 @@ variable "secret" {
   }
 }
 ```
+
 `terraform.tfvars`
+
 ```none
 password  = ""   # password for Ansible SSH
 host      = ""   # IP of my Ansible
@@ -440,7 +455,9 @@ secret    = ""   # secret_key for AWS
 └── instance.yml
 ```
 ## File contents of Ansible for AWS
+
 `ansible.cfg`
+
 ```none
 [defaults]
 inventory = /root/aws/ip.txt
@@ -448,11 +465,15 @@ host_key_checking= False
 private_key_file = /root/aws/awsterraform.pem         # check the name
 remote_user=vyos
 ```
+
 `mykey.pem`
+
 ```none
 Copy your key.pem from AWS
 ```
+
 `instance.yml`
+
 ```none
 ##############################################################################
 # About tasks:
@@ -481,7 +502,9 @@ Copy your key.pem from AWS
         save:
           true
 ```
+
 `group_vars/all`
+
 ```none
 ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos

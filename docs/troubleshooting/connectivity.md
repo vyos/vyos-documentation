@@ -85,6 +85,7 @@ returned to the VyOS command prompt.
 ```
 
 ## IPv6 Topology Discovery
+
 IPv6 uses different techniques to discover its Neighbors/topology.
 
 ### Router Discovery

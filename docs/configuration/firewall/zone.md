@@ -22,12 +22,14 @@ commands:
 
 To learn about the general traffic flow in VyOS firewalls,
 see {doc}`Firewall </configuration/firewall/index>`.
+
 ```none
 - set firewall
     * zone
          - custom_zone_name
             + ...
 ```
+
 In zone-based policy, you assign interfaces to zones and apply inspection
 policy to traffic moving between zones. The firewall acts on traffic
 according to rules. A zone is a group of interfaces that have similar
@@ -70,6 +72,7 @@ The following steps are required to create a zone-based firewall:
 ### Define a Zone
 
 To define a zone, set up either one with interfaces or as the local zone.
+
 ```{cfgcmd} set firewall zone \<name\> interface \<interface\>
 
 Assign interfaces as a member of a zone.
@@ -130,13 +133,16 @@ identifiable.
 After you define a rule-set, apply it to the source and destination zones.
 The configuration syntax anchors to the destination zone, with each of the
 source zone rule-sets listed against the destination.
+
 ```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\> firewall name <ipv4-rule-set-name>
 ```
 
 ```{cfgcmd} set firewall zone \<Destination Zone\> from \<Source Zone\> firewall ipv6-name <ipv6-rule-set-name>
 ```
+
 You should create two rule-sets for each source-destination zone
 pair.
+
 ```none
 set firewall zone DMZ from LAN firewall name LAN-DMZ-v4
 set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
@@ -148,6 +154,7 @@ or when you require a complex set of default policies, you can apply an
 optional default rule-set. The default rule-set applies to all zones that do
 not have a rule-set configured as defined in
 {ref}`IPv4<configuration/firewall/zone:Applying a Rule-Set to a Zone>`
+
 ```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall name \<ipv4-rule-set-name\>
 ```
 

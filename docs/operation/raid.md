@@ -170,8 +170,10 @@ To replace a bad disk within a RAID 1 set:
    For example, `sdb2`.
 
 ## Operation
+
 Learn how to add a disk partition to a RAID 1 set, initiate
 mirror synchronization, and check and display information.
+
 ```{opcmd} add raid \<RAID‐1‐device\> member \<disk‐partition\>
 
    Use this command to add a member disk partition to the RAID 1 set. Adding a

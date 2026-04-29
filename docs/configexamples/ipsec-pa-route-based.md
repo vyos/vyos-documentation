@@ -22,18 +22,21 @@ include firewall configuration.
 ```
 
 ## Prerequirements
+
 **VyOS:**
 
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
+
 **Cisco:**
 
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
+
 **IKE parameters:**
 
 | Encryption        | AES-128 |
@@ -42,6 +45,7 @@ include firewall configuration.
 | Diff-Helman Group | 14      |
 | Life-Time         | 28800   |
 | IKE Version       | 1       |
+
 **IPsec parameters:**
 
 | Encryption | AES-256 |
@@ -49,6 +53,7 @@ include firewall configuration.
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
 | PFS        | disable |
+
 **Hosts configuration**
 
 | PC1 IP | 192.168.0.2  |
@@ -105,6 +110,7 @@ set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 ```
 
 ### Palo Alto
+
 GUI Configuration:
 : Network -> Network Profiles -> IKE Crypto
 
@@ -195,7 +201,9 @@ set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1
 ```
 ## Monitoring
 ### Monitoring on VyOS side
+
 IKE SAs:
+
 ```none
 
 vyos@vyos:~$ show vpn ike sa
@@ -208,7 +216,9 @@ Peer ID / IP                            Local ID / IP
     up     IKEv1   AES_CBC_128  HMAC_SHA1_96  MODP_2048      no     1372    25802
 
 ```
+
 IPsec SAs:
+
 ```none
 
 vyos@vyos:~$ show vpn ipsec sa
@@ -217,7 +227,9 @@ Connection    State    Uptime    Bytes In/Out    Packets In/Out    Remote addres
 PA-vti        up       23m27s    9K/10K          149/151           10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 
 ```
+
 OSPF Neighbor Status:
+
 ```none
 
 vyos@vyos:~$ show ip ospf neighbor
@@ -226,7 +238,9 @@ Neighbor ID     Pri State           Up Time         Dead Time Address         In
 1.1.1.1           1 Full/-          23m56s            37.948s 10.100.100.2    vti1:10.100.100.1                    0     0     0
 
 ```
+
 Routing Table:
+
 ```none
 
 vyos@vyos:~$ show ip route
@@ -254,7 +268,9 @@ O>* 192.168.11.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 
 ```
 ### Monitoring on Cisco side
+
 IKE SAs:
+
 ```none
 
 admin@PA-VM> show vpn ike-sa
@@ -278,7 +294,9 @@ Show IKEv1 phase2 SA: Total 1 gateways found. 1 ike sa found.
 There is no IKEv2 SA found.
 
 ```
+
 IPsec SAs:
+
 ```none
 
 admin@PA-VM> show vpn ipsec-sa
@@ -290,7 +308,9 @@ GwID/client IP  TnID   Peer-Address           Tunnel(Gateway)                   
 Show IPSec SA: Total 1 tunnels found. 1 ipsec sa found.
 
 ```
+
 OSPF Neighbor Status:
+
 ```none
 
 admin@PA-VM> show routing protocol ospf neighbor
@@ -316,7 +336,9 @@ admin@PA-VM> show routing protocol ospf neighbor
   restart helper exit reason:    none
 
 ```
+
 Routing Table:
+
 ```none
 
 admin@PA-VM> show routing route
@@ -346,7 +368,9 @@ total routes shown: 14
 
 ```
 ### Checking Connectivity
+
 ICMP packets from PC1 to PC3.
+
 ```none
 
 PC1> ping 192.168.10.2
@@ -358,7 +382,9 @@ PC1> ping 192.168.10.2
 84 bytes from 192.168.10.2 icmp_seq=5 ttl=62 time=3.978 ms
 
 ```
+
 ICMP packets from PC2 to PC4.
+
 ```none
 
 PC2> ping 192.168.11.2

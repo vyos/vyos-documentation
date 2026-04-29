@@ -72,9 +72,11 @@ vyos@vyos# run show pki certificate openvpn-local fingerprint sha256
 ::::{note}
 Certificate names are arbitrary. While `openvpn-local` and `openvpn-remote` are used here, you may choose any names.
 ::::
+
 Repeat the procedure on the other router.
 
 ## Set up site-to-site OpenVPN
+
 Local configuration:
 
 ``` none
@@ -110,6 +112,7 @@ set interfaces openvpn vtun1 tls role passive
 ```
 
 ## Set up pre-shared keys
+
 Before VyOS 1.4, site-to-site OpenVPN without PKI required pre-shared keys. This option is still available but is deprecated and will be removed in future releases. If you need to set up a tunnel to an older VyOS version or a system with older OpenVPN, you still need to use pre-shared keys.
 
 First, generate a key by running `run generate pki openvpn shared-secret  install <name>` in configuration mode. You can use any name; in this example, we use `s2s`.
@@ -144,6 +147,7 @@ set interfaces openvpn vtun1 shared-secret-key s2s
 ```
 
 ## Set up firewall exceptions
+
 To allow OpenVPN traffic to pass through the WAN interface, create a firewall exception:
 
 ``` none
@@ -199,9 +203,11 @@ N/A          10.110.12.54:1195  N/A          N/A           504.0 B     656.0 B  
 ```
 
 ### Server-client
+
 In OpenVPN's server-client mode, the server acts as a central hub, allowing multiple clients to connect and securely route their traffic or access a private network. Multi-client server is the most popular OpenVPN mode for routers.
 
 ## Set up server-client certificates
+
 Server-client mode always uses x.509 authentication and therefore requires a PKI setup. The PKI utility now simplifies the creation of Certificate Authorities (CAs), server and client certificates, and Diffie-Hellman keys directly in VyOS using configuration or operational mode commands.
 
 On the server, generate all certificates by running the following commands in configuration mode. The certificates will be added to the configuration session\'s PKI subtree.
@@ -312,6 +318,7 @@ Manually copy the CA, client certificate, and Diffie-Hellman key to the client d
 For more options, refer to {ref}`configuration/pki/index:pki`.
 
 ## Set up server-client OpenVPN
+
 The following example demonstrates the most complicated scenario: each client acts as a router with its own subnet (e.g., an HQ and multiple branch offices). Simpler setups are subsets of it.
 
 In this scenario, the 10.23.1.0/24 network is used for client tunnel endpoints, and all client subnets belong to 10.23.0.0/20. Each client needs access to the 192.168.0.0/16 network.
@@ -353,6 +360,7 @@ set protocols static route 10.23.0.0/20 interface vtun10
 ```
 
 ## Set up OpenVPN client
+
 VyOS can operate not only as an OpenVPN site-to-site peer or a server for multiple clients, but also as an OpenVPN client. Any VyOS OpenVPN interface can be configured to connect to another VyOS or third-party OpenVPN server.
 
 Client configuration:
@@ -370,6 +378,7 @@ set interfaces openvpn vtun10 tls certificate client1
 ```
 
 ## Verification
+
 Check the tunnel status:
 
 ``` none
@@ -383,6 +392,7 @@ client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.
 ```
 
 ### Server bridge
+
 In Ethernet bridging configurations, an OpenVPN interface operating in server mode with the device type set to TAP can be added to a bridge. By encapsulating entire Ethernet frames (up to 1514 bytes) rather than just IP packets (up to 1500 bytes), this setup enables clients to transmit Layer 2 frames through the OpenVPN tunnel.
 
 The following is a basic configuration example:
@@ -425,6 +435,7 @@ set interfaces openvpn vtun10 tls certificate 'client-1'
 ### Server LDAP authentication
 
 ## LDAP
+
 Enterprise installations usually include a directory service to centralize employee password management. VyOS and OpenVPN support using LDAP and Active Directory as a single user backend.
 
 Authentication is performed by the `openvpn-auth-ldap.so` plugin, included with every VyOS installation. To use it, you must create a dedicated configuration file.
@@ -459,6 +470,7 @@ RequireGroup    false
 ```
 
 ### Active Directory
+
 A sample configuration file is shown below:
 
 ``` none
@@ -543,6 +555,7 @@ vyos@vyos# show interfaces openvpn
 For a detailed example, refer to {doc}`OpenVPN with LDAP</configexamples/autotest/OpenVPN_with_LDAP/OpenVPN_with_LDAP>`.
 
 ### Multi-factor authentication
+
 VyOS supports multi-factor authentication (MFA) or two-factor authentication using Time-based One-Time Passwords (TOTP). It is compatible with Google Authenticator and other software tokens.
 
 ## Server side
@@ -591,6 +604,7 @@ vyos@vyos:~$ sh interfaces openvpn vtun20 user user1 mfa qrcode
 Scan the QR code to add the user account to Google Authenticator. On the client side, use the generated OTP as the password.
 
 ### Authentication with username/password
+
 An OpenVPN server can securely obtain a username and password from a connecting client and use this information for authentication.
 
 First, configure the server to use an authentication plugin or script. The server calls this plugin every time a client tries to connect, passing it the client\'s credentials.
@@ -633,6 +647,7 @@ fi
 ```
 
 ## Client configuration
+
 Storing the client certificate locally lets you generate the OpenVPN client configuration file. Use the following command:
 
 ``` none

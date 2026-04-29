@@ -86,13 +86,16 @@ Copyright:        VyOS maintainers and contributors
 :::
 ```
 ## System rollback
+
 To roll back to a previous image, first view the available images by using the
 {opcmd}`show system image` command, then select your image with the following
 command:
+
 ```{opcmd} set system image default-boot [image-name]
 Select the default boot image which will be started on the next boot
 of the system.
 ```
+
 Then reboot the system.
 
 :::{note}

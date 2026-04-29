@@ -20,6 +20,7 @@ does not drop when changing networks from e.g. WIFI to LTE and back).
 Authentication can be achieved with X.509 certificates.
 
 ## Setting up certificates:
+
 First of all, we need to create a CA root certificate and server certificate
 on the server side.
 
@@ -77,6 +78,7 @@ session, to the pki subtree. You can then review the proposed changes and
 commit them.
 
 ## Setting up IPSec:
+
 After the PKI certs are all set up we can start configuring our IPSec/IKE
 proposals used for key-exchange end data encryption. The used encryption ciphers
 and integrity algorithms vary from operating system to operating system. The
@@ -141,6 +143,7 @@ set vpn ipsec remote-access connection rw authentication always-send-cert
 ```
 
 ## Client Configuration
+
 Most operating systems include native client support for IPsec IKEv2 VPN
 connections, and others typically have an app or add-on package which adds the
 capability.

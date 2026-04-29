@@ -36,6 +36,7 @@ incompatible with routing protocols.
 :::
 
 ## Load balancing rules
+
 You define interfaces, their weight, and the traffic type to balance in
 numbered rule sets. The load balancer executes rules in numerical order
 against outgoing packets. When a packet matches a rule, it is sent through the
@@ -60,6 +61,7 @@ protocol                Protocol to match
 ```
 
 ### Interface weight
+
 By default, the load balancer distributes outbound
 traffic randomly across available interfaces. You can assign weights to
 interfaces to influence the distribution. If `eth0` has more bandwidth
@@ -75,6 +77,7 @@ In this example,\`\`eth0\`\` receives 66% of traffic, and `eth1` receives
 33% of traffic.
 
 ### Rate limit
+
 Set a packet rate limit for a rule to apply it to traffic above or below a
 specified threshold. To configure rate limiting, use:
 
@@ -91,6 +94,7 @@ set load-balancing wan rule <rule> limit <parameter>
 - `threshold`: `below` or `above` the specified rate limit.
 
 ### Flow and packet-based balancing
+
 The load balancer balances outgoing traffic by flow. A connection tracking
 table tracks flows by source address, destination address, and port. Each
 flow is assigned to an interface based on the balancing rules, and subsequent
@@ -105,6 +109,7 @@ set load-balancing wan rule <rule> per-packet-balancing
 ```
 
 ### Exclude traffic
+
 To exclude traffic from load balancing, traffic matching an exclude rule
 bypasses load balancing and uses the system routing table instead:
 
@@ -113,6 +118,7 @@ set load-balancing wan rule <rule> exclude
 ```
 
 ## Health checks
+
 The load balancer periodically checks the health of interfaces and paths by
 sending ICMP packets (ping) to remote destinations, performing TTL tests, or
 executing a user-defined script. If an interface fails the health check, the
@@ -173,6 +179,7 @@ type         WLB test type
   script.
 
 ## Source NAT rules
+
 By default, interfaces in a load balancing pool replace the source IP of
 each outgoing packet with their own address to ensure replies arrive on the
 same interface. The load balancer handles this through automatically generated
@@ -184,6 +191,7 @@ set load-balancing wan disable-source-nat
 ```
 
 ## Sticky connections
+
 Inbound connections to a WAN interface can be improperly handled when
 replies are sent back to the client.
 
@@ -201,6 +209,7 @@ set load-balancing wan sticky-connections inbound
 ```
 
 ## Failover
+
 In failover mode, one interface is primary and other interfaces are
 secondary or spare. The load balancer uses only the primary interface. If it
 fails, a secondary interface from the available pool takes over. The load
@@ -227,6 +236,7 @@ flow-based to packet-based balancing until each flow is reestablished.
 :::
 
 ## Script execution
+
 Run a script when an interface state changes. Scripts run from the
 `/config/scripts` directory. To use a script in another location,
 specify the full path:
@@ -245,6 +255,7 @@ script does not return.
 :::
 
 ## Handling and monitoring
+
 The following command shows WAN load balancer information including test
 types and targets. The character at the start of each line indicates the test
 state:

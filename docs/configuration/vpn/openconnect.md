@@ -22,6 +22,7 @@ network.
 ## Configuration
 
 ### SSL Certificates
+
 We need to generate the certificate which authenticates users who attempt to
 access the network resource through the SSL VPN tunnels. The following commands
 will create a self signed certificates and will be stored in configuration:
@@ -54,6 +55,7 @@ set vpn openconnect ssl passphrase <pki-password>
 ```
 
 ### 2FA OTP support
+
 Instead of password only authentication, 2FA password
 authentication + OTP key can be used. Alternatively, OTP authentication only,
 without a password, can be used.
@@ -75,6 +77,7 @@ generate openconnect username <user> otp-key hotp-time
 ```
 
 ### User Certificate Authentication
+
 You can configure users to be authenticated by certificate by setting
 the authentication mode to certificate, and defining what field (by OID)
 in the certificate will be used to identify the username. Two pre-defined
@@ -108,6 +111,7 @@ It is compatible with Cisco (R) AnyConnect (R) clients.
 ## Example
 
 ### SSL Certificates generation
+
 Follow the instructions to generate CA cert (in configuration mode):
 
 ```none
@@ -160,6 +164,7 @@ Done
 ```
 
 ### Openconnect Configuration
+
 Simple setup with one user added and password authentication:
 
 ```none
@@ -179,6 +184,7 @@ set vpn openconnect http-security-headers
 ```
 
 ### Adding a 2FA with an OTP-key
+
 First the OTP keys must be generated and sent to the user and to the
 configuration:
 
@@ -228,6 +234,7 @@ When using Time-based one-time password (TOTP) (OTP HOTP-time),
 be sure that the time on the server and the
 OTP token generator are synchronized by NTP
 :::
+
 To display the configured OTP user settings, use the command:
 
 ```none
@@ -235,6 +242,7 @@ show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
 ```
 
 ### Identity Based Configuration
+
 OpenConnect supports a subset of it's configuration options to be applied on a
 per user/group basis, for configuration purposes we refer to this functionality
 as "Identity based config". The following [OpenConnect Server Manual](https://ocserv.gitlab.io/www/manual.html#:~:text=Configuration%20files%20that%20will%20be%20applied%20per%20user%20connection%20or%0A%23%20per%20group)
@@ -256,6 +264,7 @@ The above directory and default-config must be a child directory
 of /config/auth, since files outside this directory are not persisted after an
 image upgrade.
 :::
+
 Once you commit the above changes you can create a config file in the
 /config/auth/ocserv/config-per-user directory that matches a username of a
 user you have created e.g. "tst". Now when logging in with the "tst" user the
@@ -280,6 +289,7 @@ filename exactly.
 :::
 
 ### Configuring RADIUS accounting
+
 The RADIUS accounting feature must be used with the OpenConnect
 authentication mode RADIUS. It cannot be used with local
 authentication. You must configure the OpenConnect authentication mode
@@ -303,6 +313,7 @@ When using Time-based one-time password (TOTP) (OTP HOTP-time),
 be sure that the time on the server and the
 OTP token generator are synchronized by NTP
 :::
+
 An example of the data captured by a FREERADIUS server with sql accounting:
 
 ```none

@@ -99,6 +99,7 @@ accomplishes that.
 :::
 
 ### Client
+
 In this lab we use Windows PPPoE client.
 
 ```{image} /_static/images/lac-lns-winclient.jpg
@@ -108,6 +109,7 @@ In this lab we use Windows PPPoE client.
 ```
 
 ### Monitoring
+
 Monitoring on LNS side
 
 ```none

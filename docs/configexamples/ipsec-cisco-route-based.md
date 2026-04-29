@@ -21,18 +21,21 @@ inside the tunnel.
 ```
 
 ## Prerequirements
+
 **VyOS:**
 
 | WAN IP  | 10.0.1.2/30    |
 | ------- | -------------- |
 | LAN1 IP | 192.168.0.1/24 |
 | LAN2 IP | 192.168.1.1/24 |
+
 **Cisco:**
 
 | WAN IP  | 10.0.2.2/30     |
 | ------- | --------------- |
 | LAN1 IP | 192.168.10.1/24 |
 | LAN2 IP | 192.168.11.1/24 |
+
 **IKE parameters:**
 
 | Encryption        | AES-128 |
@@ -41,6 +44,7 @@ inside the tunnel.
 | Diff-Helman Group | 14      |
 | Life-Time         | 28800   |
 | IKE Version       | 1       |
+
 **IPsec parameters:**
 
 | Encryption | AES-256 |
@@ -48,6 +52,7 @@ inside the tunnel.
 | HASH       | SHA-256 |
 | Life-Time  | 3600    |
 | PFS        | disable |
+
 **Hosts configuration**
 
 | PC1 IP | 192.168.0.2  |
@@ -173,6 +178,7 @@ ip route 0.0.0.0 0.0.0.0 10.0.2.1
 ## Monitoring
 
 ### Monitoring on VyOS side
+
 IKE SAs:
 
 ```none
@@ -232,6 +238,7 @@ O>* 192.168.11.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 ```
 
 ### Monitoring on Cisco side
+
 IKE SAs:
 
 ```none
@@ -341,6 +348,7 @@ L        192.168.11.1/32 is directly connected, GigabitEthernet0/2
 ```
 
 ### Checking Connectivity
+
 ICMP packets from PC1 to PC3.
 
 ```none
