@@ -79,7 +79,6 @@ Or you can pick up a [Task](https://vyos.dev/) and fix the `code<contributing/de
 
 introducing/about
 introducing/history
-changelog/index
 
 </div>
 
