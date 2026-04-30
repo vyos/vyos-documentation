@@ -12,13 +12,12 @@ Deploy VyOS from CLI with qcow2 image
 =====================================
 
 1. Download the ``.qcow2`` image from https://support.vyos.io/. 
-   Official ``.qcow2`` images are available from the support portal 
-   for users with a valid subscription.
+   Official images are available to users with a valid subscription.
 
 2. Copy the ``.qcow2`` image to a temporary directory on the Proxmox server.
 
-3. The commands assume virtual machine ID `200` is unused and you want
-   the disk stored in a storage pool named `local-lvm`.
+3. The following commands assume that virtual machine (VM) ID `200` is unused
+   and that the imported disk will be stored in a storage pool named `local-lvm`.
 
 
     .. code-block:: none
@@ -29,22 +28,25 @@ Deploy VyOS from CLI with qcow2 image
       $ qm set 200 --boot order=virtio0 
 
 
-4. When using a ``.qcow2`` image, default login credentials are not included.
-   A user account must be defined using Cloud-Init before the first boot. 
-   Without this configuration, login access is not possible.
-   
-   Attach a Cloud-Init data source to the VM (e.g, using 
-   `local-lvm` storage):
+4. When using a ``qcow2`` image on proxmox, the system
+   **does not include any preconfigured user accounts**. 
+   You must define a user account using **Cloud-Init** before the first boot. Otherwise, login access is not possible.
 
-    .. code-block:: none
+   Attach a Cloud-Init data source to the VM. For example, using ``local-lvm`` storage:
+
+   .. code-block:: bash
 
       $ qm set 200 --ide2 local-lvm:cloudinit
 
+   Alternatively, add a Cloud-Init drive using the Proxmox GUI:
 
-   For a complete Cloud-init configuration example in Proxmox,
-   refer to 
+   #. Open the VM and navigate to **Hardware**
+   #. Click **Add** → **CloudInit Drive**
+   #. Select a storage (for example, ``local-lvm``)
+   #. Click **Add**
 
-5. Start the virtual machine using the Proxmox GUI or run ``qm start 200``.
+
+5. Start the virtual machine using the Proxmox GUI or by running ``qm start 200``.
 
 
 
@@ -67,11 +69,10 @@ Deploy VyOS from CLI with rolling release ISO
   --ide2 local:iso/vyos-<version>.iso,media=cdrom \
   --boot order=ide2
 
-3. Start the VM using ``qm start 200`` or using the start button in the
+3. Start the VM using ``qm start 200`` or by clicking **Start** button in the
    Proxmox GUI.
-4. Open the virtual console for your VM using the Proxmox web GUI.
-   Login username and password are both ``vyos``.
-5. Once booted into the live system, type ``install image`` and follow
+4. In the Proxmox GUI, open the virtual console for your new VM. The login username and password are `vyos`/`vyos`
+5. After booting into the live system, type ``install image`` and follow
    the prompts to install VyOS to the virtual drive. 
 6. After installation completes, remove the installation ISO using the
    GUI or run ``qm set 200 --ide2 none``, then set the boot device with ``qm set 200 --boot order=scsi0``.
