@@ -7,6 +7,7 @@ lastproofread: '2026-03-10'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Bridge Configuration
 
 VPP bridge interfaces provide Layer 2 switching functionality, allowing
@@ -33,6 +34,7 @@ combining different networking technologies.
 ## Basic Configuration
 
 ### Creating a Bridge Interface
+
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\>
 
 Create a bridge interface where ``<vppbrN>`` follows the naming
@@ -49,7 +51,9 @@ configurations.
 ```none
 set interfaces vpp bridge vppbr1
 ```
+
 ### Interface Description
+
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\> description \<description\>
 
 Set a descriptive name for the bridge interface.
@@ -60,8 +64,10 @@ Set a descriptive name for the bridge interface.
 ```none
 set interfaces vpp bridge vppbr1 description "Main campus bridge"
 ```
+
 ## Member Interface Configuration
 ### Adding Member Interfaces
+
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface \<interface-name\>
 
 Add an interface as a member of the bridge.
@@ -94,6 +100,7 @@ bridge domain, allowing the bridge to have an IP address and participate
 in routing.
 
 ### Configuring BVI
+
 ```{cfgcmd} set interfaces vpp bridge \<vppbrN\> member interface \<loopback-interface\> bvi
 
 Designate a loopback interface as the Bridge Virtual Interface for
@@ -118,6 +125,7 @@ set interfaces vpp bridge vppbr1 member interface vpplo1 bvi
 ## Configuration Examples
 
 ### Basic Bridge Setup
+
 ```none
 # Create bridge interface
 set interfaces vpp bridge vppbr1
@@ -128,7 +136,9 @@ set interfaces vpp bridge vppbr1 member interface eth0
 set interfaces vpp bridge vppbr1 member interface eth1
 set interfaces vpp bridge vppbr1 member interface eth2
 ```
+
 ### Bridge with BVI
+
 ```none
 # Create bridge and loopback for BVI
 set interfaces vpp bridge vppbr2
@@ -140,7 +150,9 @@ set interfaces vpp bridge vppbr2 member interface eth3
 set interfaces vpp bridge vppbr2 member interface eth4
 set interfaces vpp bridge vppbr2 member interface vpplo1 bvi
 ```
+
 ### Multi-Technology Bridge
+
 ```none
 # Create bridge combining different interface types
 set interfaces vpp bridge vppbr3
@@ -152,6 +164,7 @@ set interfaces vpp bridge vppbr3 member interface vppgre1
 set interfaces vpp bridge vppbr3 member interface vppvxlan1
 set interfaces vpp bridge vppbr3 member interface vpplo2 bvi
 ```
+
 ## Integration with Kernel Interfaces
 
 Bridge interfaces can be integrated with kernel interfaces for

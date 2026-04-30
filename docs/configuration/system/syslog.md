@@ -48,6 +48,7 @@ If configured, the device includes its {abbr}`FQDN (Fully Qualified Domain
 Name)` in log messages, even if the syslog server is in the same domain.
 ```
 
+
 ### Local logging
 
 Configure which log messages to save to a local log file.
@@ -147,6 +148,7 @@ for log transmission.
 Configure the source IP address (IPv4 or IPv6) for log transmission.
 ```
 
+
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
@@ -242,7 +244,9 @@ For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
 are not required.
 
 ```
+
 #### Examples:
+
 ```none
 
 # Example of 'anon' authentication mode
@@ -278,6 +282,7 @@ set system syslog remote graylog.example.com tls auth-mode name
 set system syslog remote graylog.example.com tls permitted-peers 'graylog.example.com'
 
 ```
+
 #### Security recommendations
 
 - For secure deployments, always use the `name` authentication mode. It
@@ -341,6 +346,7 @@ tools, rather than strict directives.
 | 7     | Debug         | debug   | Debug-level messages - Messages that contain information normally of use only when debugging a program.                   |
 
 ## Display logs
+
 ```{opcmd} show log [all | authorization | cluster | conntrack-sync | ...]
 
 **Display logs for a specific category on the console.**

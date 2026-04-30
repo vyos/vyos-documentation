@@ -25,6 +25,7 @@ the command line prompt.
 
    The default hostname used is `vyos`.
 ```
+
 ## Domain Name
 
 
@@ -38,6 +39,7 @@ unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
 Configure system domain name. A domain name must start and end with a letter
 or digit, and have as interior characters only letters, digits, or a hyphen.
 ```
+
 ## Static Hostname Mapping
 
 

@@ -222,6 +222,7 @@ $ set service ssh trusted-user-ca test_ca
 :::
 You can now log into the system using: ``ssh -i vyos_testca vyos_testca@vyos.test.com``
 ```
+
 ## Dynamic-protection
 
 Protects host from brute-force attacks against
@@ -256,6 +257,7 @@ default is 30.
 (ssh-operation)=
 
 ## Operation
+
 ```{opcmd} restart ssh
 
 Restart the SSH daemon process, the current session is not affected, only the

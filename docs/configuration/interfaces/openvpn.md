@@ -188,6 +188,7 @@ designated monitor interface.
 * ``client``: Operates as a client in server-client mode.
 * ``server``: Operates as a server in server-client mode.
 ```
+
 ### OpenVPN Data Channel Offload (DCO)
 
 OpenVPN {abbr}`DCO (Data Channel Offload)` improves the performance of
@@ -564,6 +565,7 @@ Configure fast LZO compression on this TUN/TAP interface.
 
 Assign the interface to a specific VRF instance.
 ```
+
 ## Operation mode
 
 ```{opcmd} show openvpn site-to-site
@@ -598,6 +600,7 @@ Reset the OpenVPN process on the specified interface.
 
 Generate an OpenVPN client configuration file in the .ovpn format for client machines.
 ```
+
 ## Examples
 
 This section covers examples of OpenVPN configurations for various deployments.

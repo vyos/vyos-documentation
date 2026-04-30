@@ -7,6 +7,7 @@ lastproofread: '2026-02-16'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Dataplane Description
 
 ## What is VPP in VyOS?
@@ -60,6 +61,7 @@ Traffic flow examples between VPP and kernel dataplane interfaces:
 ```{image} /_static/images/vpp/vyos_vpp_integration.svg
 :align: center
 ```
+
 
 ### Green path
 

@@ -254,6 +254,7 @@ Add metadata label for this container.
 
 Disable a container.
 ```
+
 ### Container Health checks
 
 
@@ -283,7 +284,9 @@ Override the default health-check timeout. For example: `10`
 
 Number of health check retries before container is considered unhealthy. For example: `1`
 ```
+
 ### Container Networks
+
 ```{cfgcmd} set container network \<name\>
 
 Creates a named container network
@@ -315,7 +318,9 @@ Disable Domain Name System (DNS) plugin for this network.
 
 Bind container network to a given VRF instance.
 ```
+
 ### Container Registry
+
 ```{cfgcmd} set container registry \<name\>
 
 Adds registry to list of unqualified-search-registries. By default, for any
@@ -371,7 +376,9 @@ If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/
 set container registry 192.168.1.1:8080 insecure
 :::
 ```
+
 ### Log Configuration
+
 ```{cfgcmd} set container name \<name\> log-driver [k8s-file | journald | none]
 
 Set the default log driver for containers.
@@ -383,7 +390,9 @@ Set the default log driver for containers.
 Current default is journald.
 
 ```
+
 ## Operation Commands
+
 ```{opcmd} add container image \<containername\>
 
 Pull a new image for container
@@ -421,6 +430,7 @@ You can not delete a container image if it has more then one tag
 assigned, this is why there is a `force` option to pass down to
 the container image to also remove those images.
 ```
+
 ## Example Configuration
 
 For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)

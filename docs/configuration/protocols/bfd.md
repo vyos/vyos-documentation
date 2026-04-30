@@ -20,6 +20,7 @@ BFD sends lots of small UDP packets very quickly to ensures that the peer is sti
 This allows avoiding the timers defined in BGP and OSPF protocol to expires.
 
 ## Configure BFD
+
 ```{cfgcmd} set protocols bfd peer \<address\>
 
 Set BFD peer IPv4 address or IPv6 address
@@ -69,7 +70,9 @@ incoming BFD control packet.
 This feature serves the purpose of thightening the packet validation
 requirements to avoid receiving BFD control packets from other sessions.
 ```
+
 ### Enable BFD in BGP
+
 ```{cfgcmd} set protocols bgp neighbor \<neighbor\> bfd
 
 Enable BFD on a single BGP neighbor
@@ -79,7 +82,9 @@ Enable BFD on a single BGP neighbor
 
 Enable BFD on a BGP peer group
 ```
+
 ### Enable BFD in OSPF
+
 ```{cfgcmd} set protocols ospf interface \<interface\> bfd
 
    Enable BFD for OSPF on an interface
@@ -90,13 +95,17 @@ Enable BFD on a BGP peer group
 
 Enable BFD for OSPFv3 on an interface
 ```
+
 ### Enable BFD in ISIS
+
 ```{cfgcmd} set protocols isis \<name\> interface \<interface\> bfd
 
 Enable BFD for ISIS on an interface
 
 ```
+
 ## Operational Commands
+
 ```{opcmd} show bfd peers
 
    Show all BFD peers
@@ -136,6 +145,7 @@ Enable BFD for ISIS on an interface
    Echo transmission interval: 0ms
    :::
 ```
+
 ## BFD Static Route Monitoring
 
 
@@ -145,6 +155,7 @@ but when the BFD session is down it is removed from the RIB.
 
 
 ### Configuration
+
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
 Configure a static route for \<subnet\> using gateway \<address\>
@@ -174,6 +185,7 @@ and the gateway address as BFD peer destination address.
 (bfd-operational-commands)=
 
 ## Operational Commands
+
 ```{opcmd} show bfd static routes
 
 Showing BFD monitored static routes

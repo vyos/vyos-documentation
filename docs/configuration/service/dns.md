@@ -171,6 +171,7 @@ This makes the server authoritatively not aware of: 10.in-addr.arpa,
 168.192.in-addr.arpa, 16-31.172.in-addr.arpa, which enabling upstream
 DNS server(s) to be used for reverse lookups of these zones.
 ```
+
 ### Authoritative zones
 
 
@@ -193,6 +194,7 @@ Disable specific record without deleting it from configuration.
 
 Set the {abbr}`TTL (Time-to-live)` for the record in seconds. Default is 300 seconds.
 ```
+
 #### Record types
 
 
@@ -274,6 +276,7 @@ Set an {abbr}`SRV (Service)` record. Supports ``@`` keyword.
 
 Set an {abbr}`TXT (Text)` record. Supports ``@`` keyword.
 ```
+
 ## Example
 
 
@@ -310,7 +313,9 @@ set service dns forwarding allow-from 192.168.1.0/24
 set service dns forwarding allow-from 2001:db8::/64
 set service dns forwarding no-serve-rfc1918
 ```
+
 ## Operation
+
 ```{opcmd} reset dns forwarding \<all | domain\>
 
 Resets the local DNS forwarding cache database. You can reset the cache
@@ -341,6 +346,7 @@ You can configure both in VyOS.
 
 ## Configuration
 ### {rfc}`2136` Based
+
 ```{cfgcmd} set service dns dynamic name \<service-name\> address interface \<interface\>
 
    Create new dynamic DNS update configuration which will update the IP
@@ -554,6 +560,7 @@ requests are being sent to must be specified.
 
 Allow explicit IPv6 address for the interface.
 ```
+
 #### Example:
 
 Use deSEC (dedyn.io) as your preferred provider:
@@ -573,6 +580,7 @@ Multiple services can be used per interface. Just specify as many
 services per interface as you like!
 :::
 #### Example IPv6 only:
+
 ```none
 set service dns dynamic name dedyn description 'deSEC ipv6 dynamic dns service'
 set service dns dynamic name dedyn username 'myusername'
@@ -583,6 +591,7 @@ set service dns dynamic name dedyn ip-version 'ipv6'
 set service dns dynamic name dedyn server 'update6.dedyn.io'
 set service dns dynamic name dedyn address interface 'eth0'
 ```
+
 ### Running Behind NAT
 
 By default, [ddclient] will update a dynamic dns record using the IP address

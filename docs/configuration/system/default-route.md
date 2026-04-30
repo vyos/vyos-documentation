@@ -19,6 +19,7 @@ to the nexthop address \<address\>.
 Delete default route from the system.
 ```
 
+
 ## Operation
 
 ```{opcmd} show ip route 0.0.0.0

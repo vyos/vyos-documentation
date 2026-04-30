@@ -7,6 +7,7 @@ lastproofread: '2026-03-03'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP CGNAT Configuration
 
 Carrier-grade NAT (CGNAT) is a NAT type designed for Internet Service
@@ -139,6 +140,7 @@ set vpp nat cgnat timeout tcp-established <timeout-value>
 set vpp nat cgnat timeout tcp-transitory <timeout-value>
 set vpp nat cgnat timeout udp <timeout-value>
 ```
+
 ## Example Configuration
 
 Here is an example CGNAT configuration with these assumptions:
@@ -160,6 +162,7 @@ set vpp nat cgnat exclude rule 20 local-address 100.64.0.20
 set vpp nat cgnat exclude rule 20 protocol udp
 set vpp nat cgnat exclude rule 20 local-port 53
 ```
+
 ### Operational Commands
 
 Once the CGNAT is configured, you can use the following commands to monitor
@@ -208,6 +211,7 @@ Address      Protocol    Port    VRF  Description
 100.64.0.10  all         any       0    Bypass management host
 100.64.0.20  udp         53        0    Bypass subscriber DNS
 ```
+
 ### Memory Requirements
 
 CGNAT memory usage scales with the number of internal customers.

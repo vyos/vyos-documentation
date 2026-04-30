@@ -34,6 +34,7 @@ Set maximum bandwidth for interface \<ifname\>. Value given in Mbits per second.
 
 Set maximum reservable bandwidth for interface \<ifname\>. Value given in Mbits per second.
 ```
+
 ## IS-IS TE Configuration
 
 Traffic Engineering (TE) can be enabled and exported for IS-IS

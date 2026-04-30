@@ -7,6 +7,7 @@ lastproofread: '2026-02-18'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Dataplane Troubleshooting
 
 This page shows you how to collect diagnostic information to troubleshoot VPP
@@ -53,6 +54,7 @@ sudo vppctl pcap trace tx max 35 intfc eth1 file vpp_eth1.pcap
 # Capture all packet types from any interface
 sudo vppctl pcap trace rx tx drop max 1000 intfc any file vpp_capture.pcap max-bytes-per-pkt 128
 ```
+
 ### Monitoring Capture Status
 
 To check the capture status:
@@ -142,7 +144,9 @@ After reviewing traces, clear them to free up resources:
 
 ```{opcmd} sudo vppctl clear trace
 ```
+
 #### Example Workflow
+
 ```none
 # Add traces for 100 packets on dpdk-input node
 sudo vppctl trace add dpdk-input 100
@@ -153,6 +157,7 @@ sudo vppctl show trace
 # Clear traces for next test
 sudo vppctl clear trace
 ```
+
 ### Understanding Trace Output
 
 Trace output shows how packets flow through VPP processing nodes:
@@ -257,6 +262,7 @@ sudo vppctl show interface
 sudo vppctl show runtime
 sudo vppctl show error
 ```
+
 ### Core System Information
 
 **Memory and buffer information:**
@@ -276,6 +282,7 @@ sudo vppctl show threads
 sudo vppctl show runtime
 sudo vppctl show node counters
 ```
+
 ### Protocol-Specific Information
 
 **Layer 2 data (if configured):**
@@ -305,6 +312,7 @@ sudo vppctl show ip6 neighbors
 sudo vppctl show mpls fib
 sudo vppctl show mpls tunnel
 ```
+
 ## Creating Support Packages
 
 Use the automated diagnostic collection script to gather comprehensive VPP
@@ -445,6 +453,7 @@ You can also generate a tech-support archive with system-wide diagnostics:
 
 ```{opcmd} generate tech-support archive
 ```
+
 
 ### What the Script Collects
 

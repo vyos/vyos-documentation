@@ -7,6 +7,7 @@ lastproofread: '2026-03-05'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP NAT44 Configuration
 
 NAT44 has two main use cases:
@@ -127,6 +128,7 @@ set vpp nat nat44 interface inside eth2
 set vpp nat nat44 interface outside eth1
 set vpp nat nat44 interface outside eth3
 ```
+
 ## Address Pool Configuration
 
 Address pools define ranges of IP addresses that can be used for NAT
@@ -157,6 +159,7 @@ set vpp nat nat44 address-pool translation address 203.0.113.10-203.0.113.20
 # Interface-based pool (use a first IP assigned to the interface)
 set vpp nat nat44 address-pool translation interface eth1
 ```
+
 ### Twice-NAT Pools
 
 Twice-NAT pools are used when performing both source and destination NAT on
@@ -181,6 +184,7 @@ set vpp nat nat44 address-pool twice-nat address 192.168.100.1-192.168.100.10
 # Interface-based twice-nat pool
 set vpp nat nat44 address-pool twice-nat interface eth2
 ```
+
 ### Pool Requirements
 
 :::{important}
@@ -291,6 +295,7 @@ The twice-NAT option can be enabled with the following command:
 
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat
 ```
+
 #### Self Twice-NAT
 
 Self Twice-NAT is used when a local host needs to access itself via the
@@ -328,12 +333,14 @@ the twice-nat address pool:
 
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> options twice-nat-address \<ip-address\>
 ```
+
 #### Rule Description
 
 To document your rules, you can add a description:
 
 ```{cfgcmd} set vpp nat nat44 static rule \<rule-number\> description \<description\>
 ```
+
 ### Static Rules Configuration Examples
 
 **Full one-to-one NAT mapping:**
@@ -455,6 +462,7 @@ Add descriptions to your exclude rules for better management:
 
 ```{cfgcmd} set vpp nat nat44 exclude rule \<rule-number\> description \<description\>
 ```
+
 ### Exclude Rules Configuration Examples
 
 **Exclude SSH access to router:**
@@ -502,6 +510,7 @@ set vpp nat nat44 exclude rule 40 local-port 8080
 set vpp nat nat44 exclude rule 40 protocol tcp
 set vpp nat nat44 exclude rule 40 description "Direct access to internal service"
 ```
+
 ### Common Use Cases
 
 **Router Administration:**
@@ -575,6 +584,7 @@ set vpp nat nat44 timeout tcp-established 3600
 set vpp nat nat44 timeout udp 600
 set vpp nat nat44 timeout icmp 30
 ```
+
 ### Session Limits
 
 Control the maximum number of concurrent NAT sessions:
@@ -594,6 +604,7 @@ performance under high load.
 # Increase session limit for high-capacity deployment
 set vpp nat nat44 session-limit 100000
 ```
+
 ## Complete Configuration Example
 
 Here's a complete example showing how to configure VyOS NAT44 for a typical
@@ -671,6 +682,7 @@ set vpp nat nat44 static rule 300 protocol tcp
 set vpp nat nat44 static rule 300 options out-to-in-only
 set vpp nat nat44 static rule 300 description "API service (No Internet access for it)"
 ```
+
 ## Best Practices and Troubleshooting
 
 ### Recommendations

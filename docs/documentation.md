@@ -148,6 +148,7 @@ Paragraphs
 """"""""""
 ```
 
+
 #### Cross-References
 
 A plugin will be used to generate a reference label for each headline.
@@ -193,6 +194,7 @@ Example
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr
 ```
+
 
 #### Address space
 
@@ -290,6 +292,7 @@ For an inline operational level command, use `{opcmd}`
 ```none
 {opcmd}`add system image`
 ```
+
 ### cmdinclude
 
 To minimize redundancy, there is a special include directive. It includes a txt
@@ -337,6 +340,7 @@ URL. This is heavily used in the {ref}`release-notes` section.
 * {vytask}`T1613` Netflow/sFlow captures IPv6 traffic correctly
 
 ```
+
 ## Forking Workflow
 
 The Forking Workflow is fundamentally different from other popular Git

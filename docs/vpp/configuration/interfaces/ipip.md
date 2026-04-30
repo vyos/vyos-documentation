@@ -7,6 +7,7 @@ lastproofread: '2026-03-13'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP IPIP Configuration
 
 VPP IPIP interfaces provide IP-in-IP tunneling with high-performance
@@ -16,6 +17,7 @@ packets, creating point-to-point connections across Layer 3 networks.
 ## Basic Configuration
 
 ### Creating an IPIP Interface
+
 ```{cfgcmd} set interfaces vpp ipip \<vppipipN\>
 
 Create an IPIP interface where ``<vppipipN>`` follows the naming
@@ -41,8 +43,10 @@ set interfaces vpp ipip vppipip1
 set interfaces vpp ipip vppipip1 remote 203.0.113.2
 set interfaces vpp ipip vppipip1 source-address 192.168.1.1
 ```
+
 ## Interface Configuration
 ### Description and Administrative Control
+
 ```{cfgcmd} set interfaces vpp ipip \<vppipipN\> description \<description\>
 
 Set a descriptive name for the IPIP interface.
@@ -52,12 +56,14 @@ Set a descriptive name for the IPIP interface.
 
 Administratively disable the IPIP interface.
 ```
+
 ### Kernel Interface Integration
 
 Kernel interface is bound to the VPP IPIP interface for management and
 application compatibility.
 
 ## IP Address Configuration
+
 ```{cfgcmd} set interfaces vpp ipip \<vppipipN\> address \<ip-address/prefix\>
 
 Configure IPv4 or IPv6 addresses on the kernel interface. Multiple
@@ -73,14 +79,18 @@ set interfaces vpp ipip vppipip0 address 192.168.1.10/24
 # IPv6 address
 set interfaces vpp ipip vppipip0 address 2001:db8::10/64
 ```
+
 ## MTU Configuration
+
 ```{cfgcmd} set interfaces vpp ipip \<vppipipN\> mtu \<size\>
 
 Set the Maximum Transmission Unit (MTU) for the kernel interface.
 The MTU must be compatible with the connected VPP interface.
 ```
+
 ## Configuration Examples
 ### IPv4 IPIP Tunnel
+
 ```none
 # Basic IPv4 IPIP tunnel
 set interfaces vpp ipip vppipip1
@@ -88,14 +98,18 @@ set interfaces vpp ipip vppipip1 description "Site-to-site IPIP tunnel"
 set interfaces vpp ipip vppipip1 remote 203.0.113.10
 set interfaces vpp ipip vppipip1 source-address 192.168.1.1
 ```
+
 ### IPv6 IPIP Tunnel
+
 ```none
 # IPv6 endpoints
 set interfaces vpp ipip vppipip2
 set interfaces vpp ipip vppipip2 remote 2001:db8::2
 set interfaces vpp ipip vppipip2 source-address 2001:db8::1
 ```
+
 ### IPIP with Kernel Interface
+
 ```none
 # IPIP tunnel with management interface
 set interfaces vpp ipip vppipip3

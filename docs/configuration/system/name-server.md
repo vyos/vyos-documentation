@@ -21,6 +21,7 @@ for DNS lookups. More than one DNS server can be added, configuring
 one at a time. Both IPv4 and IPv6 addresses are supported.
 ```
 
+
 ### Example
 
 In this example, some *OpenNIC* servers are used, two IPv4 addresses
@@ -32,6 +33,7 @@ set system name-server 195.10.195.195
 set system name-server 2a01:4f8:161:3441::1
 set system name-server 2a00:f826:8:2::195
 ```
+
 
 ## Domain search order
 

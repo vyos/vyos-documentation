@@ -68,6 +68,7 @@ Route metric
 
 Default 1.
 ```
+
 ## Example
 
 **One gateway:**

@@ -20,6 +20,7 @@ vyos@vyos$ configure
 vyos@vyos#
 ```
 
+
 ## Commit and Save
 
 After every configuration change, you need to apply the changes by using the
@@ -35,6 +36,7 @@ the following command:
 ```none
 save
 ```
+
 
 ## Interface Configuration
 
@@ -52,6 +54,7 @@ set interfaces ethernet eth0 description 'OUTSIDE'
 set interfaces ethernet eth1 address '192.168.0.1/24'
 set interfaces ethernet eth1 description 'LAN'
 ```
+
 
 ## SSH Management
 
@@ -96,6 +99,7 @@ set service dns forwarding listen-address '192.168.0.1'
 set service dns forwarding allow-from '192.168.0.0/24'
 ```
 
+
 ## NAT
 
 The following settings will configure {ref}`source-nat` rules for our
@@ -107,6 +111,7 @@ set nat source rule 100 outbound-interface name 'eth0'
 set nat source rule 100 source address '192.168.0.0/24'
 set nat source rule 100 translation address masquerade
 ```
+
 
 ## Firewall
 
@@ -139,6 +144,7 @@ set firewall group interface-group LAN interface eth1
 set firewall group network-group NET-INSIDE-v4 network '192.168.0.0/24'
 ```
 
+
 ### Configure Stateful Packet Filtering
 
 With the new firewall structure, we have have a lot of flexibility in how we
@@ -159,6 +165,7 @@ set firewall global-options state-policy established action accept
 set firewall global-options state-policy related action accept
 set firewall global-options state-policy invalid action drop
 ```
+
 
 #### Option 2: Common/Custom Chain
 
@@ -197,6 +204,7 @@ set firewall ipv4 input filter rule 10 action 'jump'
 set firewall ipv4 input filter rule 10 jump-target CONN_FILTER
 ```
 
+
 #### Option 3: Per-Hook Chain
 
 Alternatively, you can take the more traditional stateful connection
@@ -215,6 +223,7 @@ set firewall ipv4 input filter rule 5 state related
 set firewall ipv4 input filter rule 10 action 'drop'
 set firewall ipv4 input filter rule 10 state invalid
 ```
+
 
 ### Block Incoming Traffic
 
@@ -244,6 +253,7 @@ set the default action to `drop`:
 ```none
 set firewall ipv4 input filter default-action 'drop'
 ```
+
 
 ### Allow Management Access
 
@@ -288,6 +298,7 @@ set firewall ipv4 name VyOS_MANAGEMENT rule 21 state new
 set firewall ipv4 name VyOS_MANAGEMENT rule 21 inbound-interface group 'WAN'
 ```
 
+
 ### Allow Access to Services
 
 Here we're allowing the router to respond to pings. Then, we can allow access to
@@ -324,6 +335,7 @@ Done
 vyos@vyos# exit
 vyos@vyos$
 ```
+
 
 ## Hardening
 

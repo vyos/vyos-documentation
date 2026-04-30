@@ -57,6 +57,7 @@ Supported options for <section> include:
     vrf
 ```
 
+
 ## Operational Commands
 
 ```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
@@ -93,6 +94,7 @@ Without a built-in cross-node diff, operators may unintentionally push
 changes that conflict with the remote configuration (e.g., mismatched
 interfaces, firewall policies, or protocol settings).
 ```
+
 
 ## Example
 
@@ -144,6 +146,7 @@ set system time-zone 'America/Los_Angeles'
 vyos@vyos-B:~$ show configuration commands | match ospf
 set protocols ospf area 0 network '10.0.48.0/30'
 ```
+
 
 ## Known issues
 

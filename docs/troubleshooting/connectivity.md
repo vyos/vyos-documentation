@@ -56,6 +56,7 @@ ipv6          Track network path to <hostname|IPv6 address>
 :::
 ```
 
+
 ## Advanced Connectivity Tests
 
 ```{opcmd} monitor traceroute \<destination\>
@@ -86,6 +87,7 @@ Several options are available for changing the display output. Press h to
 invoke the built in help system. To quit, just press q and you'll be
 returned to the VyOS command prompt.
 ```
+
 
 ## IPv6 Topology Discovery
 
@@ -128,6 +130,7 @@ DNS server lifetime     :          600 (0x00000258) seconds
  from fe80::298:2bff:fef8:3f11
 :::
 ```
+
 
 ### Neighbor Discovery
 

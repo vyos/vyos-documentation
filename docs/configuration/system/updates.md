@@ -14,6 +14,7 @@ Configure auto-checking for new images
 Configure a URL that contains information about images.
 ```
 
+
 ## Example
 
 ```none

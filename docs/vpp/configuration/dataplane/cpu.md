@@ -7,6 +7,7 @@ lastproofread: '2026-02-23'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Dataplane CPU Configuration
 
 VPP can utilize multiple CPU cores for better packet processing

@@ -50,6 +50,7 @@ Dummy interfaces are also used for testing and simulation purposes.
 :var1: dum0
 ```
 
+
 ## Operation
 
 ```{opcmd} show interfaces dummy

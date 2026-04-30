@@ -75,6 +75,7 @@ Enable given legacy protocol on this LLDP instance. Legacy protocols include:
 * ``sonmp`` - Listen for SONMP for Nortel routers/switches
 ```
 
+
 ## Operation
 
 ```{opcmd} show lldp neighbors

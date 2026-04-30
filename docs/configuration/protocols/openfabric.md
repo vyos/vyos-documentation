@@ -54,7 +54,9 @@ The CLNS address consists of the following parts:
 This command enables OpenFabric instance with \<NAME\> on this interface, and
 allows for adjacency to occur for address family (IPv4 or IPv6 or both).
 ```
+
 #### OpenFabric Global Configuration
+
 ```{cfgcmd} set protocols openfabric domain-password \<plaintext-password|md5\> \<password\>
 
 This command configures the authentication password for a routing domain,
@@ -86,6 +88,7 @@ Log changes in adjacency state.
 This command sets a static tier number to advertise as location
 in the fabric.
 ```
+
 #### Interface Configuration
 
 ```{cfgcmd} set protocols openfabric interface \<interface\> hello-interval \<seconds\>
@@ -134,7 +137,9 @@ The interval range is 1 to 600.
 This command sets Partial Sequence Number Packets (PSNP) interval in seconds.
 The interval range is 1 to 120.
 ```
+
 #### Timers
+
 ```{cfgcmd} set protocols openfabric domain \<name\> lsp-gen-interval \<seconds\>
 
 This command sets minimum interval at which link-state packets (LSPs) are
@@ -165,6 +170,7 @@ they are refreshed.
 This command sets minimum interval between consecutive shortest path first
 (SPF) calculations in seconds.The interval range is 1 to 120.
 ```
+
 ## Examples
 ### Enable OpenFabric
 

@@ -153,6 +153,7 @@ For example, to restrict allowed source IP addresses for an SSH public key,
 use: ``from=&quot;10.0.0.0/24&quot;``.
 ```
 
+
 ## OTP-based MFA
 
 VyOS lets you enhance user access security by enabling {abbr}`OTP (One-time
@@ -174,6 +175,7 @@ authenticator app to generate valid {abbr}`OTPs (One-time passwords)`.
 **When configured**, the user is required to enter their password followed by
 a valid OTP for all subsequent logins.
 ```
+
 
 ### OTP settings
 
@@ -214,6 +216,7 @@ allows for a time skew of up to 4 minutes.
 
 The valid range is 1 to 21.
 ```
+
 
 ### Generate an OTP-key
 
@@ -259,6 +262,7 @@ set system login user otptester authentication otp rate-limit '2'
 set system login user otptester authentication otp rate-time '20'
 set system login user otptester authentication otp window-size '5'
 ```
+
 ### Display the OTP key for a user
 
 Use the following command to display the {abbr}`OTP (One-time password)`
@@ -319,6 +323,7 @@ VyOS instances is inefficient. VyOS supports centralized authentication via
 account management on a single backend server.
 
 ### Configuration
+
 ```{cfgcmd} set system login radius server \<address\> key \<secret\>
 
 **Configure the** {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
@@ -380,7 +385,9 @@ Dial-In User Service)` **authentication requests via a specific VRF.**
 By default, {abbr}`RADIUS (Remote Authentication Dial-In User Service)`
 authentication requests are sent via the global routing table.
 ```
+
 ### Configuration example
+
 ```none
 set system login radius server 192.168.0.2 key 'test-vyos'
 set system login radius server 192.168.0.2 port '1812'
@@ -417,6 +424,7 @@ in {rfc}`8907`.
 (tacacs-configuration)=
 
 ### Configuration
+
 ```{cfgcmd} set system login tacacs server \<address\> key \<secret\>
 
 **Configure the** {abbr}`TACACS+ (Terminal Access Controller Access Control
@@ -484,6 +492,7 @@ authentication requests are sent via the global routing table.
 (login-tacacs-example)=
 
 ### Configuration example
+
 ```none
 set system login tacacs server 192.168.0.2 key 'test-vyos'
 set system login tacacs server 192.168.0.2 port '49'
@@ -516,6 +525,7 @@ Use `\\n` to insert line breaks in multi-line banner messages.
 :::
 
 ## Login session limits
+
 ```{cfgcmd} set system login max-login-session \<number\>
 
 **Configure the maximum number of concurrent login sessions.**
@@ -531,6 +541,7 @@ login attempts.
 
 Idle login sessions are terminated after this period.
 ```
+
 ## Configuration examples
 
 Example 1: Multi-key SSH with MFA and source restrictions

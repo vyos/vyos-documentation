@@ -81,7 +81,9 @@ requests sent to the specified address, it is only realistically useful for
 a server whose only clients are reached via unicasts, such as via DHCP relay
 agents.
 ```
+
 #### Individual Client Subnet
+
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> authoritative
 
 This says that this device is the only DHCP server for this network. If other
@@ -178,6 +180,7 @@ Unifi controller at `172.16.100.1` to clients of that subnet.
 set service dhcp-server shared-network-name 'NET1' subnet
 '172.18.201.0/24' option vendor-option ubiquiti '172.16.100.1'
 ```
+
 #### Dynamic DNS Update (RFC 2136)
 
 
@@ -379,6 +382,7 @@ set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arp
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 2 address '192.168.124.254'
 set service dhcp-server dynamic-dns-update reverse-domain 201.18.172.in-addr.arpa dns-server 2 port 53
 ```
+
 #### High Availability
 
 
@@ -445,6 +449,7 @@ to ensure that the HA partnership is immune to disruption
 (accidental or otherwise) via third parties.
 :::
 ```
+
 #### Static mappings
 
 
@@ -505,6 +510,7 @@ show service dhcp-server shared-network-name NET1
      subnet-id 1
  }
 ```
+
 #### Relay agent information (Option 82)
 
 
@@ -617,6 +623,7 @@ service {
     }
 }
 ```
+
 ### Options
 
 
@@ -816,6 +823,7 @@ set service dhcp-server high-availability status 'secondary'
 
 
 ### Operation Mode
+
 ```{opcmd} show log dhcp server
 
 Show DHCP server daemon log file
@@ -926,6 +934,7 @@ state, start, end, remaining, pool, hostname (default = ip)
 Show only leases with the specified state. Possible states: all, active,
 free, expired, released, abandoned, reset, backup (default = active)
 ```
+
 ## IPv6 server
 
 VyOS also provides DHCPv6 server functionality which is described in this
@@ -933,6 +942,7 @@ section.
 (dhcp-server-v6-config)=
 
 ### Configuration
+
 ```{cfgcmd} set service dhcpv6-server preference \<preference value\>
 
    Clients receiving advertise messages from multiple servers choose the server
@@ -992,6 +1002,7 @@ address of Fully Qualified Domain Name for all DHCPv6 clients.
 
 A SNTP server address can be specified for DHCPv6 clients.
 ```
+
 #### Prefix Delegation
 
 
@@ -1035,6 +1046,7 @@ set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 pref
 set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 prefix-delegation prefix 2001:db8:0:10:: prefix-length '60'
 set service dhcpv6-server shared-network-name 'PD-NET' subnet 2001:db8::/64 subnet-id 1
 ```
+
 #### Address pools
 
 DHCPv6 address pools must be configured for the system to act as a DHCPv6
@@ -1114,6 +1126,7 @@ show service dhcpv6-server shared-network-name NET1
 (dhcp-server-v6-op-cmd)=
 
 ### Operation Mode
+
 ```{opcmd} show log dhcpv6 server
 
 Show DHCPv6 server daemon log file

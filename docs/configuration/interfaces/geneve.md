@@ -37,6 +37,7 @@ Geneve header:
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
+
 ## Configuration
 
 ### Common interface configuration
@@ -75,6 +76,7 @@ Geneve header:
 :var0: geneve
 :var1: gnv0
 ```
+
 
 ### Geneve options
 

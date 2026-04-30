@@ -149,6 +149,7 @@ set system watchdog reboot-timeout 180
 :::
 ```
 
+
 ## Examples
 
 ### Basic Configuration with Software Watchdog

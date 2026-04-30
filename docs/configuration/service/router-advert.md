@@ -43,6 +43,7 @@ Supported interface types:
 | Captive Portal | captive-portal | Advertise a URL pointing to an RFC 8908-compliant API to tell hosts that they are behind a captive portal |
 
 ### Advertising a Prefix
+
 ```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix/mask\>
 
 :::{note}
@@ -61,6 +62,7 @@ This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 | valid-lifetime | Time in seconds that the prefix will remain valid (default: 30 days) |
 
 ### Advertising a NAT64 Prefix
+
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in {rfc}`8781`.
@@ -90,6 +92,7 @@ will not respond to router solicitations.
 Advertisement Interval Option (specified by Mobile IPv6) is always included in
 Router Advertisements unless this option is set.
 ```
+
 ## Example
 
 Your LAN connected on eth0 uses prefix `2001:db8:beef:2::/64` with the router

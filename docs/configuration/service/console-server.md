@@ -64,6 +64,7 @@ so you should be carefull with the selected baudrate as some times they
 can't cope with the expected speed.
 :::
 ```
+
 ### Remote Access
 
 
@@ -82,7 +83,9 @@ Multiple users can connect to the same serial device but only
 one is allowed to write to the console port.
 :::
 ```
+
 ## Operation
+
 ```{opcmd} show console-server ports
 
 Show configured serial ports and their respective interface configuration.

@@ -33,6 +33,7 @@ as the peer of the other.
 :var1: veth0
 ```
 
+
 ### VLAN
 
 #### Regular VLANs (802.1q)
@@ -41,6 +42,7 @@ as the peer of the other.
 :var0: virtual-ethernet
 :var1: veth0
 ```
+
 
 #### 802.1ad (QinQ)
 
@@ -58,6 +60,7 @@ as the peer of the other.
 :var0: virtual-ethernet
 :var1: veth0
 ```
+
 
 ## Operation
 
@@ -94,6 +97,7 @@ TX:  bytes    packets     errors    dropped    carrier collisions
 1369707       4267          0          0          0          0
 :::
 ```
+
 
 ## Example
 

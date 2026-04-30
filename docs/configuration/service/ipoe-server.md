@@ -117,6 +117,7 @@ vyos@vyos:~$ show ipoe-server sessions
  ipoe0  | eth1.100 | 00:50:79:66:68:00 | 192.168.0.2 |            | ipoe |      | active | 00:04:55
  ipoe1  | eth1.101 | 00:50:79:66:68:01 | 192.168.0.3 |            | ipoe |      | active | 00:04:44
 ```
+
 ## Configuring RADIUS authentication
 
 
@@ -171,6 +172,7 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
+
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> port \<port\>
 
 Configure RADIUS \<server\> and its required port for authentication requests.
@@ -306,6 +308,7 @@ Define it in your RADIUS server.
 
 
 ## IPv6
+
 ```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
 
 Use this comand to set the IPv6 address pool from which an IPoE client
@@ -336,7 +339,9 @@ set service ipoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48'
 set service ipoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
 set service ipoe-server default-ipv6-pool IPv6-POOL
 ```
+
 ## Scripting
+
 ```{cfgcmd} set service ipoe-server extended-scripts on-change \<path_to_script\>
 
 Script to run when session interface changed by RADIUS CoA handling
@@ -359,10 +364,12 @@ Script to run before session interface comes up
 
 Script to run when session interface is completely configured and started
 ```
+
 ## Advanced Options
 
 
 ### Authentication Advanced Options
+
 ```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan \<vlan-id\>
 
 VLAN monitor for automatic creation of VLAN interfaces for specific user on specific \<interface\>
@@ -379,12 +386,16 @@ Download bandwidth limit in kbit/s for user on interface \<interface\>.
 
 Upload bandwidth limit in kbit/s for for user on interface \<interface\>.
 ```
+
 ### Client IP Pool Advanced Options
+
 ```{cfgcmd} set service ipoe-server client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
+
 ### Advanced Interface Options
+
 ```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
@@ -402,6 +413,7 @@ Specify DHCPv4 relay IP address to pass requests to. If specified giaddr is also
 
 Specifies relay agent IP addre
 ```
+
 ### Global Advanced options
 
 ```{cfgcmd} set service ipoe-server description \<description\>
@@ -438,6 +450,7 @@ Match firewall mark value
 
 Enable SNMP
 ```
+
 ## Monitoring
 
 ```{opcmd} show ipoe-server sessions
@@ -478,7 +491,9 @@ ipoe:
   active: 1
   delayed: 0
 ```
+
 ## Toubleshooting
+
 ```none
 vyos@vyos:~$ show log ipoe-server
 

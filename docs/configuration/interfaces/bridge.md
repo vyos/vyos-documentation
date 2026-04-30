@@ -31,6 +31,7 @@ and must be explicitly enabled if required. See {ref}`stp` for details.
 :var1: br0
 ```
 
+
 ### Member interfaces
 
 ```{cfgcmd} set interfaces bridge \<interface\> member interface \<member\>
@@ -75,6 +76,7 @@ observed on this port to its forwarding database (FDB). Frames destined
 to MACs not present in the FDB are then flooded to all bridge ports
 rather than unicast-forwarded.
 ```
+
 
 ### Bridge options
 
@@ -165,6 +167,7 @@ trigger a topology recalculation.
 The default value is 2 seconds.
 ```
 
+
 ### VLAN
 
 #### VLAN-aware bridges
@@ -190,6 +193,7 @@ The following options are available:
 enterprise VLANs.
 * ``802.1ad``: Sets the EtherType to ``0x88a8``. Used for QinQ (provider bridging).
 ```
+
 
 #### VLAN configuration
 
@@ -232,6 +236,7 @@ set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 :::
 ```
 
+
 ### SPAN port mirroring
 
 ```{cmdincludemd} ../../_include/interface-mirror.txt
@@ -239,6 +244,7 @@ set interfaces bridge br1 member interface eth0 allowed-vlan 6-8
 :var1: br1
 :var2: eth3
 ```
+
 
 ## Examples
 
@@ -275,6 +281,7 @@ vyos@vyos# show interfaces bridge br100
  }
  stp
 ```
+
 
 ### Configure a VLAN-aware bridge
 
@@ -318,6 +325,7 @@ vyos@vyos# show interfaces bridge br100
      address 2001:db8::ffff/64
  }
 ```
+
 
 ### Operation
 

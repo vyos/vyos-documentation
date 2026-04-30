@@ -44,6 +44,7 @@ with other vendors, set the port to the IANA standard **4789**.
 :var1: vxlan0
 ```
 
+
 ### VXLAN-specific options
 
 ```{cfgcmd} set interfaces vxlan \<interface\> vni \<number\>
@@ -120,6 +121,7 @@ VNI filtering works only if the interface is configured with the
 :::
 ```
 
+
 #### Unicast
 
 ```{cfgcmd} set interfaces vxlan \<interface\> remote \<address\>
@@ -129,6 +131,7 @@ VNI filtering works only if the interface is configured with the
 Unlike multicast setups, this command allows you to directly configure the
 remote IPv4 or IPv6 address.
 ```
+
 
 #### Multicast
 
@@ -144,6 +147,7 @@ This setting is mandatory when deploying VXLAN over a multicast network.
 **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
 VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
+
 
 ## Multicast VXLAN
 
@@ -196,6 +200,7 @@ set interfaces vxlan vxlan0 vlan-to-vni 30 vni '10030'
 set interfaces vxlan vxlan0 vlan-to-vni 31 vni '10031'
 :::
 ```
+
 
 ### Example
 

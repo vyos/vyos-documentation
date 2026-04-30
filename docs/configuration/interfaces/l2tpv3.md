@@ -36,6 +36,7 @@ L2TPv3 tunnels can be established over both IPv4 and IPv6 underlying networks.
 :var1: l2tpv3-0
 ```
 
+
 ### L2TPv3 options
 
 Use the following commands to configure the L2TPv3 tunnel's specific parameters.
@@ -102,6 +103,7 @@ tunnel on that peer.
 The ``peer-tunnel-id`` must match the ``tunnel-id`` that identifies this tunnel
 on the remote peer.
 ```
+
 
 ## Example
 

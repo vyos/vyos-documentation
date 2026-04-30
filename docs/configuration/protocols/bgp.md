@@ -210,10 +210,12 @@ process. The BGP process starts when the first neighbor is configured.
 Set local autonomous system number that this router represents. This is a
 mandatory option!
 ```
+
 #### Peers Configuration
 
 
 ### Defining Peers
+
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> remote-as \<asn\>
 
 This command creates a new neighbor whose remote-as is \<asn\>. The neighbor
@@ -304,6 +306,7 @@ may be specified as either an IPv4 address directly or as an interface name.
 
 
 ### Capability Negotiation
+
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> capability dynamic
 
 This command would allow the dynamic update of capabilities over an
@@ -361,6 +364,7 @@ optional parameter to the peer when remote peer does not implement
 Capability Negotiation. Please use {cfgcmd}`disable-capability-negotiation`
 command to disable the feature.
 ```
+
 ### Peer Parameters
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> allowas-in number \<number\>
@@ -532,6 +536,7 @@ that are specified number of hops away will be allowed to
 become neighbors. The number of hops range is 1 to 254. This
 command is mutually exclusive with {cfgcmd}`ebgp-multihop`.
 ```
+
 ### Peer Groups
 
 Peer groups are used to help improve scaling by generating the same update
@@ -558,6 +563,7 @@ are treated as belonging to a default peer group, and will share updates.
 
 This command bind specific peer to peer group with a given name.
 ```
+
 #### Network Advertisement Configuration
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> network \<prefix\>
@@ -587,6 +593,7 @@ this command. Using optional argument {cfgcmd}`route-map` you can inject the
 default route to given neighbor only if the conditions in the route map are
 met.
 ```
+
 #### Route Aggregation Configuration
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> aggregate-address \<prefix\>
@@ -617,6 +624,7 @@ before sending BGP updates out to peers.
 This command applies route-map to selectively unsuppress prefixes
 suppressed by summarisation.
 ```
+
 #### Redistribution Configuration
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> redistribute <route source>
@@ -641,8 +649,10 @@ This command allows to use route map to filter redistributed routes.
 There are six modes available for route source: connected, kernel,
 ospf, rip, static, table.
 ```
+
 #### General Configuration
 ### Common parameters
+
 ```{cfgcmd} set protocols bgp parameters allow-martian-nexthop
 
    When a peer receives a martian nexthop as part of the NLRI for a route
@@ -749,6 +759,7 @@ encode in the outgoing NLRI.
 The following command uses the explicit-null label value for all the
 BGP instances.
 ```
+
 ### Administrative Distance
 
 ```{cfgcmd} set protocols bgp parameters distance global \<external|internal|local\> \<distance\>
@@ -769,6 +780,7 @@ Routes with a distance of 255 are effectively disabled and not
 installed into the kernel.
 :::
 ```
+
 ### Timers
 
 ```{cfgcmd} set protocols bgp timers holdtime \<seconds\>
@@ -784,6 +796,7 @@ installed into the kernel.
 This command specifies keep-alive time in seconds. The timer
 can range from 4 to 65535. The default value is 60 second.
 ```
+
 ### Route Dampening
 
 When a route fails, a routing update is sent to withdraw the route from the
@@ -839,6 +852,7 @@ route is suppressed. The penalty range is 1 to 20000.
 This command defines the maximum time in minutes that a route is
 suppressed. The timer range is 1 to 255 minutes.
 ```
+
 #### Route Selection Configuration
 
 ```{cfgcmd} set protocols bgp parameters always-compare-med
@@ -934,6 +948,7 @@ This command allows the router to prefer route to specified prefix learned
 via IGP through backdoor link instead of a route to the same prefix learned
 via EBGP.
 ```
+
 #### Route Filtering Configuration
 
 In order to control and modify routing information that is exchanged between
@@ -1009,6 +1024,7 @@ derection.
 
 This command prevents from sending back prefixes learned from the neighbor.
 ```
+
 #### BGP Scaling Configuration
 
 
@@ -1050,6 +1066,7 @@ reflectors and their clients, and is used by route reflectors to avoid
 looping. By default cluster ID is set to the BGP router id value, but can be
 set to an arbitrary 32-bit value.
 ```
+
 ### Confederation Configuration
 
 A BGP confederation divides our AS into sub-ASes to reduce the number of
@@ -1071,8 +1088,10 @@ systems (a confederation).
 This command sets other confederations \<nsubasn\> as members of autonomous
 system specified by {cfgcmd}`confederation identifier <asn>`.
 ```
+
 ## Operational Mode Commands
 ### Show
+
 ```{opcmd} show bgp \<ipv4|ipv6\>
 
    This command displays all entries in BGP routing table.
@@ -1210,7 +1229,9 @@ Neighbor        V         AS MsgRcvd MsgSent   TblVer  InQ OutQ  Up/Down State/P
 
 Total number of neighbors 4
 ```
+
 ### Reset
+
 ```{opcmd} reset bgp \<ipv4|ipv6\> \<address\> [soft [in|out]]
 
 This command resets BGP connections to the specified neighbor IP address.
@@ -1239,6 +1260,7 @@ With argument {cfgcmd}`soft` this command initiates a soft reset. If
 you do not specify the {cfgcmd}`in` or {cfgcmd}`out` options, both
 inbound and outbound soft reconfiguration are triggered.
 ```
+
 ## Examples
 ### IPv4 peering
 
@@ -1283,6 +1305,7 @@ set protocols static route 172.16.0.0/16 blackhole distance '254'
 ```none
 set protocols static route 172.17.0.0/16 blackhole distance '254'
 ```
+
 ### IPv6 peering
 
 A simple BGP configuration via IPv6.
@@ -1326,6 +1349,7 @@ set protocols static route6 2001:db8:1::/48 blackhole distance '254'
 ```none
 set protocols static route6 2001:db8:2::/48 blackhole distance '254'
 ```
+
 ### Route Filtering
 
 Route filter can be applied using a route-map:

@@ -108,6 +108,7 @@ Set the rule for the translation pool.
 Enable logging of IP address and ports allocations.
 ```
 
+
 ## Configuration Examples
 
 ### Single external address
@@ -127,6 +128,7 @@ set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
 
+
 ### Multiple external addresses
 
 ```none
@@ -139,6 +141,7 @@ set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
 
+
 ### External address sequences
 
 ```none
@@ -149,6 +152,7 @@ set nat cgnat pool internal int-01 range '100.64.0.0/29'
 set nat cgnat rule 10 source pool 'int-01'
 set nat cgnat rule 10 translation pool 'ext-01'
 ```
+
 
 ## Operation commands
 
@@ -166,6 +170,7 @@ Show all allocations for an external IP address
 
 Show all allocations for an internal IP address
 ```
+
 
 ### Show CGNAT allocations
 
@@ -187,6 +192,7 @@ Internal IP    External IP    Port range
 -------------  -------------  ------------
 100.64.0.4     192.0.2.1      1024-17023
 ```
+
 
 ## Further Reading
 

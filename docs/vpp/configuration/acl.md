@@ -7,6 +7,7 @@ lastproofread: '2025-09-04'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP ACL Configuration
 
 VPP ACLs (Access Control Lists) provide a way to filter traffic passing through VPP interfaces. They offer a high-performance packet filtering solution that can be used as a fast firewall alternative.
@@ -63,6 +64,7 @@ Example:
 set vpp acl ip tag-name 'WEB-FILTER'
 set vpp acl ip tag-name 'WEB-FILTER' description 'Web server access control'
 ```
+
 ### Adding Rules to IP ACL Tags
 
 Rules are added to IP ACL tags with specific rule numbers:
@@ -70,6 +72,7 @@ Rules are added to IP ACL tags with specific rule numbers:
 ```none
 set vpp acl ip tag-name <tag-name> rule <rule-number>
 ```
+
 #### Basic IP ACL Rule Configuration
 
 Each rule requires an action and matching criteria:
@@ -122,8 +125,10 @@ set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags is-set <ack|cwr|
 # Match packets without specific flags set
 set vpp acl ip tag-name <tag-name> rule <rule-number> tcp-flags is-not-set <ack|cwr|ecn|fin|psh|rst|syn|urg>
 ```
+
 ### IP ACL Configuration Examples
 #### Example 1: Basic Web Server ACL
+
 ```none
 # Create ACL for web server access
 set vpp acl ip tag-name 'WEB-SERVER'
@@ -143,7 +148,9 @@ set vpp acl ip tag-name 'WEB-SERVER' rule 20 destination port 443
 set vpp acl ip tag-name 'WEB-SERVER' rule 999 action deny
 set vpp acl ip tag-name 'WEB-SERVER' rule 999 protocol all
 ```
+
 #### Example 2: Network Segmentation ACL
+
 ```none
 # Create ACL for network segmentation
 set vpp acl ip tag-name 'DMZ-FILTER'
@@ -165,7 +172,9 @@ set vpp acl ip tag-name 'DMZ-FILTER' rule 20 destination port 53
 set vpp acl ip tag-name 'DMZ-FILTER' rule 100 action deny
 set vpp acl ip tag-name 'DMZ-FILTER' rule 100 destination prefix '192.168.0.0/16'
 ```
+
 #### Example 3: Reflexive ACL
+
 ```none
 # Create reflexive ACL for outbound connections
 set vpp acl ip tag-name 'OUTBOUND-REFLECT'
@@ -180,6 +189,7 @@ set vpp acl ip tag-name 'OUTBOUND-REFLECT' rule 20 action permit-reflect
 set vpp acl ip tag-name 'OUTBOUND-REFLECT' rule 20 protocol tcp
 set vpp acl ip tag-name 'OUTBOUND-REFLECT' rule 20 destination port 443
 ```
+
 ### Applying IP ACL Tags to Interfaces
 
 IP ACL tags are applied to interfaces using the interface configuration:
@@ -211,6 +221,7 @@ set vpp acl ip interface eth1 output acl-tag 10 tag-name 'OUTBOUND-REFLECT'
 # Apply multiple ACLs to the same interface and direction
 set vpp acl ip interface eth0 input acl-tag 20 tag-name 'FIREWALL'
 ```
+
 ## L2/MAC ACLs
 
 MAC ACLs provide Layer 2 filtering capabilities based on MAC addresses and IP prefixes. They are particularly useful for controlling access at the data link layer.
@@ -234,6 +245,7 @@ Example:
 set vpp acl mac tag-name 'MAC-FILTER'
 set vpp acl mac tag-name 'MAC-FILTER' description 'Layer 2 MAC address filtering'
 ```
+
 ### Adding Rules to MAC ACL Tags
 
 Rules are added to MAC ACL tags with specific rule numbers:
@@ -241,6 +253,7 @@ Rules are added to MAC ACL tags with specific rule numbers:
 ```none
 set vpp acl mac tag-name <tag-name> rule <rule-number>
 ```
+
 #### Basic MAC ACL Rule Configuration
 
 Each rule requires an action and matching criteria:
@@ -288,6 +301,7 @@ set vpp acl mac tag-name <tag-name> rule <rule-number> prefix <ip-prefix>
 ### MAC ACL Configuration Examples
 
 #### Example 1: Device Whitelist
+
 ```none
 # Create MAC ACL for device whitelisting
 set vpp acl mac tag-name 'DEVICE-WHITELIST'
@@ -310,7 +324,9 @@ set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 action deny
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-address '00:00:00:00:00:00'
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-mask '00:00:00:00:00:00'
 ```
+
 #### Example 2: Vendor-Based Filtering
+
 ```none
 # Create MAC ACL for vendor-based filtering
 set vpp acl mac tag-name 'VENDOR-FILTER'
@@ -328,7 +344,9 @@ set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 mac-address '00:00:00:00:00:00
 set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 mac-mask '00:00:00:00:00:00'
 set vpp acl mac tag-name 'VENDOR-FILTER' rule 100 description 'Allow all other vendors'
 ```
+
 #### Example 3: Network Segmentation by MAC
+
 ```none
 # Create MAC ACL for network segmentation
 set vpp acl mac tag-name 'SEGMENT-FILTER'
@@ -348,6 +366,7 @@ set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 mac-mask 'ff:ff:00:00:00:00'
 set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 prefix '10.2.0.0/16'
 set vpp acl mac tag-name 'SEGMENT-FILTER' rule 20 description 'User VLAN'
 ```
+
 ### Applying MAC ACL Tags to Interfaces
 
 MAC ACL tags can only be applied to the input direction of interfaces:
@@ -370,6 +389,7 @@ Example:
 set vpp acl mac interface eth0 tag-name 'MAC-FILTER'
 set vpp acl mac interface eth1 tag-name 'DEVICE-WHITELIST'
 ```
+
 ## Configuration Best Practices
 
 ### Rule Ordering
@@ -418,6 +438,7 @@ show configuration commands | grep "vpp acl.*interface"
 # View commit history for ACL changes
 show configuration commit-revisions | grep -A5 -B5 "vpp acl"
 ```
+
 ## Operational Commands
 
 VyOS provides several operational commands to monitor and troubleshoot VPP ACL configurations and their status.
@@ -450,6 +471,7 @@ Rule  Action    IP prefix    MAC address        MAC mask
     10  deny      0.0.0.0/0    00:e0:4c:00:00:00  ff:ff:ff:00:00:00
     100  permit   0.0.0.0/0    00:00:00:00:00:00  00:00:00:00:00:00
 ```
+
 ### IP ACL Commands
 
 View all IP ACLs:
@@ -489,6 +511,7 @@ IP ACL "tag-name WEB-SERVER" acl_index 0
     20  permit    0.0.0.0/0     0-65535     0.0.0.0/0     443               6
    999  deny      0.0.0.0/0     0-65535     0.0.0.0/0     0-65535           0
 ```
+
 ### MAC ACL Commands
 
 View all MAC ACLs:
@@ -527,6 +550,7 @@ MACIP ACL "tag-name VENDOR-FILTER" acl_index 0
     10  deny      0.0.0.0/0    00:e0:4c:00:00:00  ff:ff:ff:00:00:00
    100  permit    0.0.0.0/0    00:00:00:00:00:00  00:00:00:00:00:00
 ```
+
 
 ### Understanding Command Output
 

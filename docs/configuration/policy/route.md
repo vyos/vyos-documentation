@@ -49,6 +49,7 @@ Provide a description for each rule.
 
 Option to enable or disable log matching rule.
 ```
+
 ### Matching criteria
 
 There are a lot of matching criteria options available, both for
@@ -347,6 +348,7 @@ Match time to live parameter, where 'eq' stands for 'equal'; 'gt' stands for
 Match hop-limit parameter, where 'eq' stands for 'equal'; 'gt' stands for
 'greater than', and 'lt' stands for 'less than'.
 ```
+
 ### Actions
 
 When mathcing all patterns defined in a rule, then different actions can

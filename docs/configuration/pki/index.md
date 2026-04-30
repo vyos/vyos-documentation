@@ -79,7 +79,9 @@ key ``name`` is then used in the CLI configuration to reference the key
 instance.
 :::
 ```
+
 ### Certificates
+
 ```{opcmd} generate pki certificate
 
 Create a new public/private keypair and output the certificate on the console.
@@ -143,7 +145,9 @@ key ``name`` is then used in the CLI configuration to reference the key
 instance.
 :::
 ```
+
 ### Diffie-Hellman parameters
+
 ```{opcmd} generate pki dh
 
 Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
@@ -167,7 +171,9 @@ key ``name`` is then used in the CLI configuration to reference the key
 instance.
 :::
 ```
+
 ### OpenVPN
+
 ```{opcmd} generate pki openvpn shared-secret
 
 Generate a new OpenVPN shared secret. The generated secret is the output to
@@ -189,7 +195,9 @@ key ``name`` is then used in the CLI configuration to reference the key
 instance.
 :::
 ```
+
 ### WireGuard
+
 ```{opcmd} generate pki wireguard key-pair
 
 Generate a new WireGuard public/private key portion and output the result to
@@ -229,8 +237,10 @@ the output from op-mode into configuration mode.
 this secret is to be used.
 :::
 ```
+
 ## Key usage (CLI)
 ### CA (Certificate Authority)
+
 ```{cfgcmd} set pki ca \<name\> certificate
 
 Add the public CA certificate for the CA named `name` to the VyOS CLI.
@@ -276,6 +286,7 @@ breaks (``\n``), this can be done using the following shell command:
 Mark the CAs private key as password protected. User is asked for the password
 when the key is referenced.
 ```
+
 ### Server Certificate
 
 After we have imported the CA certificate(s) we can now import and add
@@ -325,6 +336,7 @@ when the key is referenced.
 
 If CA is present, this certificate will be included in generated CRLs
 ```
+
 ### Import files to PKI format
 
 VyOS provides this utility to import existing certificates/key files directly
@@ -358,6 +370,7 @@ leave the system as it is used to decrypt the data.
 
 Import the OpenVPN shared secret stored in file to the VyOS CLI.
 ```
+
 #### ACME
 
 The VyOS PKI subsystem can also be used to automatically retrieve Certificates
@@ -401,6 +414,7 @@ of LetsEncrypt to prevent and blacklisting of your system. The API
 endpoint is https://acme-staging-v02.api.letsencrypt.org/directory
 :::
 ```
+
 ## Operation
 
 VyOS operational mode commands are not only available for generating keys but
@@ -454,6 +468,7 @@ Show a list of installed {abbr}`CRLs (Certificate Revocation List)`.
 
 Manually trigger certificate renewal. This will be done twice a day.
 ```
+
 ## Examples
 
 ### Create a CA chain and leaf certificates

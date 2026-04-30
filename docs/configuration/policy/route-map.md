@@ -418,6 +418,7 @@ Set tag value for routing protocol.
 
 Set BGP weight attribute
 ```
+
 ### List of well-known communities
 
 > - `local-as` - Well-known communities value NO_EXPORT_SUBCONFED 0xFFFFFF03

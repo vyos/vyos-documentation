@@ -55,6 +55,7 @@ Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
 
+
 ## Configuring IPsec
 
 ```none
@@ -116,6 +117,7 @@ set nat source rule 110 outbound-interface name 'eth0'
 set nat source rule 110 source address '192.168.255.0/24'
 set nat source rule 110 translation address masquerade
 ```
+
 
 ## Configuring RADIUS authentication
 
@@ -349,6 +351,7 @@ set vpn l2tp remote-access client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48
 set vpn l2tp remote-access default-ipv6-pool IPv6-POOL
 ```
 
+
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access ppp-options ipv6-accept-peer-interface-id
@@ -373,6 +376,7 @@ Specifies the peer interface identifier for IPv6. The default is fixed.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 
+
 ## Scripting
 
 ```{cfgcmd} set vpn l2tp remote-access extended-scripts on-change \<path_to_script\>
@@ -394,6 +398,7 @@ Script to run before the session interface comes up
 
 Script to run when the session interface is completely configured and started
 ```
+
 
 ## Advanced Options
 
@@ -425,12 +430,14 @@ Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
 
+
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn l2tp remote-access client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
+
 
 ### PPP Advanced Options
 
@@ -504,6 +511,7 @@ MS-MPPE-Encryption-Policy attribute.
 Defines preferred MRU. By default is not defined.
 ```
 
+
 ### Global Advanced options
 
 ```{cfgcmd} set vpn l2tp remote-access description \<description\>
@@ -557,6 +565,7 @@ Enable SNMP
 
 Windows Internet Name Service (WINS) servers propagated to client
 ```
+
 
 ## Monitoring
 

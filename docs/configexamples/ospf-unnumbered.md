@@ -44,6 +44,7 @@ set protocols ospf parameters router-id '192.168.0.2'
 set protocols ospf redistribute connected
 ```
 
+
 ## Results
 
 - Router A:

@@ -60,6 +60,7 @@ specified with neighbor command.
 
 This command specifies all interfaces to passive mode.
 ```
+
 ## Optional Configuration
 
 ```{cfgcmd} set protocols rip default-distance \<distance\>
@@ -160,6 +161,7 @@ the garbage-collection timer, the route is finally removed from the
 routing table. The time range is 5 to 2147483647. The default value is 120
 seconds.
 ```
+
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols rip redistribute \<route source\>
@@ -194,6 +196,7 @@ does not affect connected route even if it is redistributed by
 {cfgcmd}`redistribute connected`. To modify connected routes metric
 value, please use {cfgcmd}`redistribute connected metric`.
 ```
+
 ## Interfaces Configuration
 
 ```{cfgcmd} set interfaces \<inttype\> \<intname\> ip rip authentication plaintext-password \<text\>
@@ -225,6 +228,7 @@ This command enables poison-reverse on the interface. If both poison reverse
 and split horizon are enabled, then VyOS advertises the learned routes
 as unreachable over the interface on which the route was learned.
 ```
+
 ## Operational Mode Commands
 
 ```{opcmd} show ip rip
@@ -268,6 +272,7 @@ Routing Protocol is "rip"
     10.0.12.2                0         0       120   00:00:11
   Distance: (default is 120)
 ```
+
 ## Configuration Example
 
 Simple RIP configuration using 2 nodes and redistributing connected interfaces.
