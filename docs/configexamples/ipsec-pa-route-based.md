@@ -21,6 +21,7 @@ include firewall configuration.
 :alt: Network Topology Diagram
 ```
 
+
 ## Prerequirements
 
 **VyOS:**
@@ -108,6 +109,7 @@ set vpn ipsec site-to-site peer CISCO local-address '10.0.1.2'
 set vpn ipsec site-to-site peer CISCO remote-address '10.0.2.2'
 set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 ```
+
 
 ### Palo Alto
 
@@ -199,6 +201,7 @@ set network virtual-router default protocol ospf router-id 1.1.1.1
 set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1/3 tunnel.1 ]
 
 ```
+
 ## Monitoring
 ### Monitoring on VyOS side
 
@@ -267,6 +270,7 @@ O>* 192.168.10.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 O>* 192.168.11.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 
 ```
+
 ### Monitoring on Cisco side
 
 IKE SAs:
@@ -367,6 +371,7 @@ destination                                 nexthop                             
 total routes shown: 14
 
 ```
+
 ### Checking Connectivity
 
 ICMP packets from PC1 to PC3.

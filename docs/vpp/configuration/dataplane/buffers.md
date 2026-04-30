@@ -7,6 +7,7 @@ lastproofread: '2026-02-23'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Dataplane Buffers Configuration
 
 Buffers are essential for handling network packets efficiently. Proper
@@ -78,6 +79,7 @@ Use page sizes configured in your system settings.
 
 ```{cfgcmd} set vpp settings resource-allocation buffers page-size \<value\>
 ```
+
 
 ## Potential Issues and Troubleshooting
 

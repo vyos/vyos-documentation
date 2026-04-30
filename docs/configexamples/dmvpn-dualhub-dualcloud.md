@@ -20,6 +20,7 @@ as a Spoke.
 :width: 80%
 ```
 
+
 ## Configurations
 
 ### Underlay configuration
@@ -74,6 +75,7 @@ set interfaces ethernet eth0 address '10.0.13.2/30'
 set interfaces ethernet eth1 address '192.168.13.1/24'
 set protocols static route 0.0.0.0/0 next-hop 10.0.13.1
 ```
+
 
 ### NHRP configuration
 
@@ -204,6 +206,7 @@ set protocols nhrp tunnel tun101 registration-no-unique
 set protocols nhrp tunnel tun101 shortcut
 ```
 
+
 ### Overlay configuration
 
 The last step is to configure the routing protocol. In this scenario, OSPF was chosen as the dynamic routing protocol.
@@ -273,6 +276,7 @@ set protocols ospf interface tun101 network 'point-to-multipoint'
 set protocols ospf interface tun101 passive disable
 set protocols ospf passive-interface 'default'
 ```
+
 
 ### Security configuration
 
@@ -367,6 +371,7 @@ interface Tunnel100
 interface Tunnel101
  tunnel protection ipsec profile gre_protection shared
 ```
+
 
 ## Monitoring
 
@@ -529,6 +534,7 @@ dmvpn-NHRPVPN-tun100-child  up       7m26s     4K/4K           57/53            
 dmvpn-NHRPVPN-tun100-child  up       11m48s    316B/1K         3/15              10.0.11.2         10.0.11.2    AES_CBC_256/HMAC_SHA1_96
 dmvpn-NHRPVPN-tun101-child  up       5m58s     5K/4K           62/51             10.0.1.2          10.0.1.2     AES_CBC_256/HMAC_SHA1_96
 ```
+
 
 ## Summary
 

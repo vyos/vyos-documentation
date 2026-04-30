@@ -29,6 +29,7 @@ interface type.
 :var1: lo
 ```
 
+
 ## Operation
 
 ```{opcmd} show interfaces loopback

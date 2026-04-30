@@ -76,6 +76,7 @@ cd /<your folder>
 terraform init
 ```
 
+
 ### Ansible
 
 - Create an UNIX instance either locally or in the cloud.
@@ -98,7 +99,9 @@ terraform plan
 terraform apply  
 yes
 ```
+
 ## Create a GCP instance and check its configuration
+
 ```none
 # terraform apply
 
@@ -334,6 +337,7 @@ To delete the instance, type the following command:
 ```none
 terraform destroy
 ```
+
 ## Troubleshooting
 
 - Increase the timeout value in `instance.yml` from 300 seconds to
@@ -354,6 +358,7 @@ connection {
 Verify that Ansible can ping from Terraform.
 
 ## Structure of files in Terraform for Google Cloud
+
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -361,6 +366,7 @@ Verify that Ansible can ping from Terraform.
 ├── var.tf                                     # The file of all variables in "vyos.tf"
 └── terraform.tfvars           # The value of all variables (passwords, login, IP addresses and so on)
 ```
+
 ## File contents of Terraform for Google Cloud
 
 `vyos.tf`
@@ -619,7 +625,9 @@ project_id    = ""                     # the google project
 password      = ""                     # password for Ansible SSH
 host          = ""                     # IP of my Ansible
 ```
+
 ## Structure of files in Ansible for Google Cloud
+
 ```none
 .
 ├── group_vars
@@ -627,6 +635,7 @@ host          = ""                     # IP of my Ansible
 ├── ansible.cfg
 └── instance.yml
 ```
+
 ## File contents of Ansible for Google Cloud
 
 `ansible.cfg`
@@ -676,6 +685,7 @@ ansible_network_os: vyos.vyos.vyos
 ansible_user: vyos
 ansible_ssh_pass: vyos
 ```
+
 
 ## Source files on GitHub
 

@@ -41,6 +41,7 @@ VyOS includes a built-in SSTP server. For more information, see
 :var1: sstpc0
 ```
 
+
 ### SSTP client options
 
 ```{cfgcmd} set interfaces sstpc \<interface\> no-default-route
@@ -132,6 +133,7 @@ DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```
 
+
 ## Operation
 
 ```{opcmd} show interfaces sstpc \<interface\>
@@ -153,6 +155,7 @@ sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast sta
            539       14       0        0        0           0
 :::
 ```
+
 
 ### Connect/disconnect
 

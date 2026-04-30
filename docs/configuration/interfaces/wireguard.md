@@ -89,6 +89,7 @@ vyos@vyos:~$ show interfaces wireguard wg01 public-key
 EKY0dxRrSD98QHjfHOK13mZ5PJ7hnddRZt5woB3szyw=
 :::
 ```
+
 #### Optional
 
 ```{opcmd} generate pki wireguard preshared-key
@@ -124,6 +125,7 @@ If you invoke this command from configuration mode with the run
 prefix, the generated key is automatically assigned to the specified peer.
 :::
 ```
+
 ## Interface configuration
 
 The next step is to configure your local WireGuard interface and define the
@@ -212,6 +214,7 @@ set interfaces wireguard wg01 private-key 'OLTQY3HuK5qWDgVs6fJR093SwPgOmCKkDI1+v
 
 set protocols static route 192.168.1.0/24 interface wg01
 ```
+
 ## Firewall exceptions
 
 
@@ -269,6 +272,7 @@ you and your peer should know its contents. Distribute the key securely.
 wg01# set interfaces wireguard wg01 peer to-wg02 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5p7TNAmHBMEGTHbPU8Qqg8c/sUqc='
 ```
+
 ## Remote access (road warrior)
 
 
@@ -339,10 +343,12 @@ AllowedIPs = 10.172.24.30/24, 2001:db8:470:22::/64
 Endpoint = 192.0.2.1:2224
 PersistentKeepalive = 15
 ```
+
 ## Operational commands
 
 
 ### Status
+
 ```{opcmd} show interfaces wireguard wg01 summary
 
 Show information about the WireGuard service, including the latest handshake.
@@ -392,6 +398,7 @@ TX:  bytes  packets  errors  dropped  carrier  collisions
 0        0       0        0        0           0
 :::
 ```
+
 ## Remote access (road warrior) clients
 
 Some users connect mobile devices to their VyOS router using WireGuard. To

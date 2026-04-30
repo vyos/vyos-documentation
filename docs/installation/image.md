@@ -88,6 +88,7 @@ Hardware UUID:    b9831d42-c1fe-b2bd-7d3d-49db9418f5c9
 Copyright:        VyOS maintainers and contributors
 :::
 ```
+
 ## System rollback
 
 To roll back to a previous image, first view the available images by using the

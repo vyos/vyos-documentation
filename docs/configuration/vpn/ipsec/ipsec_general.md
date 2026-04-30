@@ -208,7 +208,9 @@ Hash algorithm. Default value is **sha1**.
 
 Pseudo-random function.
 ```
+
 ### DPD (Dead Peer Detection) Configuration
+
 ```{cfgcmd} set vpn ipsec ike-group \<name\> dead-peer-detection action \<action\>
 
 Action to perform for this CHILD_SA on DPD timeout.
@@ -232,6 +234,7 @@ Keep-alive interval in seconds <2-86400> (default 30).
 
 Keep-alive timeout in seconds <2-86400> (default 120) **IKEv1 only**
 ```
+
 ### ESP (Encapsulating Security Payload) Attributes
 
 
@@ -301,7 +304,9 @@ Encryption algorithm. Default value is **aes128**.
 
 Hash algorithm. Default value is **sha1**.
 ```
+
 ### Global IPsec Settings
+
 ```{cfgcmd} set vpn ipsec interface \<name\>
 
 Interface name to restrict outbound IPsec policies. There is a possibility
@@ -318,7 +323,9 @@ Level of logging. Default value is **0**.
 
 Subsystem of the daemon.
 ```
+
 ### Options
+
 ```{cfgcmd} set vpn ipsec options disable-route-autoinstall
 
 Do not automatically install routes to remote
@@ -349,6 +356,7 @@ will be installed on the outbound interface.
 
 Allows the installation of virtual-ip addresses.
 ```
+
 ### IKEv2 Retransmission
 
 If the peer does not respond on DPD packet, the router starts retransmission procedure.

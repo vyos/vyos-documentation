@@ -7,6 +7,7 @@ lastproofread: '2026-02-26'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP IPv6 Configuration
 
 VPP lets you configure resources allocated for IPv6 traffic processing

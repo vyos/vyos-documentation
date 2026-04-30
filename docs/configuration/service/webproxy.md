@@ -159,6 +159,7 @@ Add new port to Safe-ports acl. Ports included by default in Safe-ports acl:
 Add new port to SSL-ports acl. Ports included by default in SSL-ports acl:
 443
 ```
+
 ### Authentication
 
 The embedded Squid proxy can use LDAP to authenticate users against a company
@@ -212,7 +213,9 @@ the user will see when prompted for their username and password.
 set service webproxy authentication realm "VyOS proxy auth"
 :::
 ```
+
 #### LDAP
+
 ```{cfgcmd} set service webproxy authentication ldap base-dn \<base-dn\>
 
 Specifies the base DN under which the users are located.
@@ -333,7 +336,9 @@ LDAP protocol version. Defaults to 3 if not specified.
 set service webproxy authentication ldap version 2
 :::
 ```
+
 ### URL filtering
+
 ```{include} /_include/need_improvement.txt
 ```
 ```{cfgcmd} set service webproxy url-filtering disable
@@ -344,9 +349,12 @@ Disables web filtering without discarding configuration.
 set service webproxy url-filtering disable
 :::
 ```
+
 ## Operation
+
 ```{include} /_include/need_improvement.txt
 ```
+
 ### Filtering
 #### Update
 
@@ -398,6 +406,7 @@ Use tab completion to get a list of categories.
   `set service webproxy url-filtering squidguard block-category malware`
 
 #### Bypassing the webproxy
+
 ```{include} /_include/need_improvement.txt
 ```
 
@@ -421,6 +430,7 @@ So sometimes it is useful to bypass a transparent proxy:
   destination addresses - e.g. Netflix.)
 
 ## Examples
+
 ```none
 vyos@vyos# show service webproxy
  authentication {

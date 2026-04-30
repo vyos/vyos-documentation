@@ -44,6 +44,7 @@ Use this command to filter routes that are imported into the main table
 from alternate table using route-map.
 ```
 
+
 ### Zebra/Kernel route filtering
 
 Zebra supports prefix-lists and Route Maps to match routes received from
@@ -61,6 +62,7 @@ are sending routes to zebra.
 :::
 ```
 
+
 ### Nexthop Tracking
 
 Nexthop tracking resolve nexthops via the default route by default. This is enabled
@@ -73,6 +75,7 @@ Do not allow IPv4 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.
 ```
+
 
 ## Operational commands
 
@@ -105,6 +108,7 @@ Possible completions:
   rip           Show Routing Information Protocol (RIP) information
   route         Show IP routes
 ```
+
 
 ### reset commands
 

@@ -81,6 +81,7 @@ interface, we use:
 set policy route FILTER-WEB interface eth1
 ```
 
+
 # Multiple Uplinks
 
 VyOS Policy-Based Routing (PBR) works by matching source IP address
@@ -173,6 +174,7 @@ set policy local-route rule 101 source address '203.0.113.254'
 set policy local-route rule 101 source address '203.0.113.253'
 set policy local-route rule 101 source address '198.51.100.0/24'
 ```
+
 
 # Clamp MSS for a specific IP
 

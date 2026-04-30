@@ -5,6 +5,7 @@ lastproofread: '2021-07-12'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # Policy
 
 Policies are used for filtering and traffic management. With policies, network
@@ -24,6 +25,7 @@ Policies, in VyOS, are implemented using FRR filtering and route maps. Detailed
 information of FRR could be found in <http://docs.frrouting.org/>
 
 ## Policy Sections
+
 ```{toctree}
 :includehidden: true
 :maxdepth: 1
@@ -38,6 +40,7 @@ community-list
 extcommunity-list
 large-community-list
 ```
+
 ## Examples
 
 Examples of policies usage:

@@ -90,6 +90,7 @@ To view supported values for a specific interface, use:
 ethtool -g <interface>
 ```
 
+
 #### Interrupt Coalescing
 
 Interrupt coalescing is a mechanism that reduces CPU interrupt load by bundling
@@ -238,7 +239,9 @@ optimizing completion handling.
 Control transmit packet aggregation. Packets may be buffered and sent
 together until one of the configured limits (bytes, frames, or time)
 ```
+
 #### Offloading
+
 ```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | sg\>
 
 **Configure the offloading features for the interface.**
@@ -304,11 +307,14 @@ multi-queue support.
    to the network, eliminating the need for the kernel to copy them into a
    contiguous block first.
 ```
+
 #### 802.1X (EAPOL) authentication
+
 ```{cmdincludemd} /_include/interface-eapol.txt
 :var0: ethernet
 :var1: eth0
 ```
+
 #### EVPN Multihoming
 
 Uplink/core tracking.
@@ -317,24 +323,32 @@ Uplink/core tracking.
 :var0: ethernet
 :var1: eth0
 ```
+
 ### VLAN
 #### Regular VLANs (802.1q)
+
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: ethernet
 :var1: eth0
 ```
+
 #### 802.1ad (QinQ)
+
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: ethernet
 :var1: eth0
 ```
+
 ### SPAN port mirroring
+
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: ethernet
 :var1: eth1
 :var2: eth3
 ```
+
 ## Operation
+
 ```{opcmd} show interfaces ethernet
 
 Show brief interface information.

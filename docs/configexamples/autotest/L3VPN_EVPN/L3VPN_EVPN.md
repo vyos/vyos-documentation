@@ -42,6 +42,7 @@ SSH access to the PE (Provider Edge) routers.
 :lines: 1-6
 ```
 
+
 ## Topology
 
 We use the following network topology in this example:
@@ -49,6 +50,7 @@ We use the following network topology in this example:
 ```{image} _include/topology.png
 :alt: L3VPN EVPN with VyOS topology image
 ```
+
 
 ## Core network
 
@@ -91,6 +93,7 @@ PE3
 :lines: 8-38
 ```
 
+
 ## Tenant networks (VRFs)
 
 Once all routers can be safely remotely managed and the core network is
@@ -131,6 +134,7 @@ PE3
 :language: none
 :lines: 40-89
 ```
+
 
 ## Testing and debugging
 

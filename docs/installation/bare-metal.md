@@ -448,6 +448,7 @@ lo           127.0.0.1/8     00:00:00:00:00:00  default  65536  u/u
 wwan0        -               d2:39:76:8e:05:12  default   1500  A/D
 ```
 
+
 #### VyOS 1.4 (sagitta)
 
 Connect serial port to a PC through a USB \<-> RJ45 console cable. Set terminal
@@ -549,6 +550,7 @@ Removing temporary files
 The image installed successfully; please reboot now.
 ```
 
+
 ### Hardware
 
 ```none
@@ -604,6 +606,7 @@ Bus 002 Device 002: ID 05e3:0620 Genesys Logic, Inc. GL3523 Hub
 Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
+
 
 #### WWAN
 

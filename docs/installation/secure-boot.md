@@ -36,6 +36,7 @@ openssl x509 -req -in ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.csr -CA ${CA_DIR}/${SHI
   -CAkey ${CA_DIR}/${SHIM_CERT_NAME}.key -CAcreateserial -out ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.pem -days 3650 -sha256
 ```
 
+
 ## Installation
 
 As our version of `shim` is not signed by Microsoft we need to enroll the
@@ -131,6 +132,7 @@ Hardware UUID:    1f6e7f5c-fb52-4c33-96c9-782fbea36436
 Copyright:        VyOS maintainers and contributors
 ```
 
+
 ## Image Update
 
 :::{note}
@@ -151,6 +153,7 @@ you'll see this error:
 error: bad shim signature
 error: you need to load the kernel first
 ```
+
 
 ## Linux Kernel
 

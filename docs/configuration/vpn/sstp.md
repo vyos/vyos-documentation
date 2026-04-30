@@ -31,6 +31,7 @@ vyos@vyos:~$ generate pki ca install CA
 vyos@vyos:~$ generate pki certificate sign CA install Server
 ```
 
+
 ### Configuration
 
 ```none
@@ -86,6 +87,7 @@ Name of installed certificate authority certificate.
 
 Name of installed server certificate.
 ```
+
 
 ## Configuring RADIUS authentication
 
@@ -306,6 +308,7 @@ set vpn sstp client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
 set vpn sstp default-ipv6-pool IPv6-POOL
 ```
 
+
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-accept-peer-interface-id
@@ -330,6 +333,7 @@ Specifies the peer interface identifier for IPv6. The default is fixed.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 
+
 ## Scripting
 
 ```{cfgcmd} set vpn sstp extended-scripts on-change \<path_to_script\>
@@ -351,6 +355,7 @@ Script to run before the session interface comes up
 
 Script to run when the session interface is completely configured and started
 ```
+
 
 ## Advanced Options
 
@@ -382,12 +387,14 @@ Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
 
+
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn sstp client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
+
 
 ### PPP Advanced Options
 
@@ -461,6 +468,7 @@ attribute.
 Defines preferred MRU. By default is not defined.
 ```
 
+
 ### Global Advanced options
 
 ```{cfgcmd} set vpn sstp description \<description\>
@@ -521,6 +529,7 @@ If this option is given, only SSTP connections to the specified host
 and with the same TLS SNI will be allowed.
 ```
 
+
 ## Configuring SSTP client
 
 Once you have setup your SSTP server there comes the time to do some basic
@@ -580,6 +589,7 @@ $ ip addr show ppp0
         valid_lft forever preferred_lft forever
 ```
 
+
 ## Monitoring
 
 ```{opcmd} show sstp-server sessions
@@ -620,6 +630,7 @@ sstp:
   starting: 0
   active: 1
 ```
+
 
 ## Troubleshooting
 

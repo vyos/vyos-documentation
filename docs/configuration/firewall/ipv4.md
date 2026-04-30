@@ -341,6 +341,7 @@ Define the number of packets to queue inside the kernel before sending them
 to userspace. Only applicable if you enable rule logging and define the log
 group.
 ```
+
 ### Firewall Description
 
 
@@ -365,6 +366,7 @@ Provide a rule-set description for a custom firewall chain.
 
 Provide a description for each rule.
 ```
+
 ### Rule Status
 
 
@@ -384,6 +386,7 @@ to disable the rule rather than removing it.
 
 Command for disabling a rule but keeping it in the configuration.
 ```
+
 ### Matching criteria
 
 
@@ -1207,6 +1210,7 @@ Match the time to live parameter, where 'eq' means 'equal', 'gt' means
 Match when 'count' amount of connections appear within 'time'. Use these
 matching criteria to block brute-force attempts.
 ```
+
 ### Packet Modifications
 
 
@@ -1265,6 +1269,7 @@ Set the TTL (Time to Live) value.
 
 Set connection mark value.
 ```
+
 ## Synproxy
 
 
@@ -1285,6 +1290,7 @@ Synproxy connections
 
  Set the window scale factor for TCP window scaling
 ```
+
 ### Example synproxy
 
 
@@ -1328,10 +1334,12 @@ set firewall ipv4 input filter rule 1000 action 'drop'
 set firewall ipv4 input filter rule 1000 state invalid
 
 ```
+
 ## Operation-mode Firewall
 
 
 ### Rule-set overview
+
 ```{opcmd} show firewall
 
 This will show you a basic firewall overview, for all rule-sets, not
@@ -1488,6 +1496,7 @@ vyos@vyos:~$
 
 This will show you statistics of all rule-sets since the last boot.
 ```
+
 ### Show Firewall log
 
 ```{opcmd} show log firewall
@@ -1514,7 +1523,9 @@ Show the logs of all firewall; show all IPv4 firewall logs; show all logs
 for particular hook; show all logs for particular hook and priority;
 show all logs for particular custom chain; show logs for specific rule-set.
 ```
+
 ### Example Partial Config
+
 ```none
 firewall {
     group {
@@ -1556,7 +1567,9 @@ firewall {
     }
 }
 ```
+
 ### Update geoip database
+
 ```{opcmd} update geoip
 
 Command to update GeoIP database and firewall sets.

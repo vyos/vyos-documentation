@@ -70,6 +70,7 @@ set protocols igmp-proxy interface eth0 alt-subnet 10.0.0.0/23
 set protocols igmp-proxy interface eth1 role downstream
 ```
 
+
 ## Operation
 
 ```{opcmd} restart igmp-proxy

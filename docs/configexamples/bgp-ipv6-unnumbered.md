@@ -50,6 +50,7 @@ set protocols bgp peer-group fabric capability extended-nexthop
 set protocols bgp peer-group fabric remote-as 'external'
 ```
 
+
 ## Results
 
 - Router A:

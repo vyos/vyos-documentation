@@ -17,6 +17,7 @@ The setup used in this example is shown in the following diagram:
 :width: 80%
 ```
 
+
 ### Overview
 
 > - All traffic coming in through eth2 is balanced between eth0 and eth1
@@ -40,6 +41,7 @@ set protocols static route 55.66.77.88/32 next-hop 22.33.44.1
 set protocols static route 66.77.88.99/32 next-hop 22.33.44.1
 ```
 
+
 ### Configure the load balancer
 
 Configure the WAN load balancer with the parameters described above:
@@ -61,6 +63,7 @@ set load-balancing wan rule 10 inbound-interface eth2
 set load-balancing wan rule 10 interface eth0
 set load-balancing wan rule 10 interface eth1
 ```
+
 
 ## Example 2: Failover based on interface weights
 
@@ -86,6 +89,7 @@ set load-balancing wan rule 10 inbound-interface eth2
 set load-balancing wan rule 10 interface eth0 weight 10
 set load-balancing wan rule 10 interface eth1 weight 1
 ```
+
 
 ## Example 3: Failover based on rule order
 
@@ -113,6 +117,7 @@ set load-balancing wan rule 10 interface eth0
 set load-balancing wan rule 20 inbound-interface eth2
 set load-balancing wan rule 20 interface eth1
 ```
+
 
 ## Example 4: Failover based on rule order - priority traffic
 
@@ -143,6 +148,7 @@ set load-balancing wan rule 20 protocol tcp
 set protocols static route 0.0.0.0/0 next-hop 11.22.33.1
 ```
 
+
 ## Example 5: Exclude traffic from load balancing
 
 In this example two LAN interfaces exist in different subnets instead
@@ -153,6 +159,7 @@ of one like in the previous examples:
 :alt: Network Topology Diagram
 :width: 80%
 ```
+
 
 ### Adding a rule for the second interface
 

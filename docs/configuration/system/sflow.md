@@ -50,6 +50,7 @@ Configure address of sFlow collector. sFlow server at <address> can be both list
 
 Use this command to if you need to sample also egress traffic
 ```
+
 ## Example
 
 ```none

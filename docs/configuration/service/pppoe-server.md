@@ -80,6 +80,7 @@ listen for PPPoE clients.
 Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
+
 ## Configuring RADIUS authentication
 
 To enable RADIUS based authentication, the authentication mode needs to be
@@ -132,6 +133,7 @@ Best practice would be a loopback or dummy interface.
 
 
 ### RADIUS advanced options
+
 ```{cfgcmd} set service pppoe-server authentication radius server \<server\> port \<port\>
 
 Configure RADIUS `<server>` and its required port for authentication requests.
@@ -282,6 +284,7 @@ characters, otherwise the interface won't be renamed.
 
 
 ## Automatic VLAN Creation
+
 ```{cfgcmd} set service pppoe-server interface \<interface\> vlan \<id | range\>
 
 VLAN's can be created by Accel-ppp on the fly via the use of a Kernel module
@@ -302,6 +305,7 @@ set service pppoe-server interface eth3 vlan 200
 set service pppoe-server interface eth3 vlan 500-1000
 set service pppoe-server interface eth3 vlan 2000-3000
 ```
+
 ## Bandwidth Shaping
 
 
@@ -310,6 +314,7 @@ attributes.
 
 
 ### For Local Users
+
 ```{cfgcmd} set service pppoe-server authentication local-users username \<user\> rate-limit download \<bandwidth\>
 
 Download bandwidth limit in kbit/s for `<user>`.
@@ -343,6 +348,7 @@ ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  upt
 -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
 ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 ```
+
 ### For RADIUS users
 
 The current attribute `Filter-Id` is being used as default and can be
@@ -364,6 +370,7 @@ dictionaries in */usr/share/accel-ppp/radius*.
 
 
 ## Load Balancing
+
 ```{cfgcmd} set service pppoe-server pado-delay \<number-of-ms\> sessions \<number-of-sessions\>
 
 Use this command to enable the delay of PADO (PPPoE Active Discovery
@@ -386,6 +393,7 @@ other servers. Last command says that this PPPoE server can serve only
 
 
 ## IPv6
+
 ```{cfgcmd} set service pppoe-server ppp-options ipv6 \<require | prefer | allow | deny\>
 
 Specifies IPv6 negotiation preference.
@@ -428,7 +436,9 @@ set service pppoe-server client-ipv6-pool IPv6-POOL delegate '2001:db8:8003::/48
 set service pppoe-server client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48' mask '64'
 set service pppoe-server default-ipv6-pool IPv6-POOL
 ```
+
 ### IPv6 Advanced Options
+
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-accept-peer-interface-id
 
 Accept peer interface identifier. By default is not defined.
@@ -454,7 +464,9 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
+
 ## Scripting
+
 ```{cfgcmd} set service pppoe-server extended-scripts on-change \<path_to_script\>
 
 Script to run when session interface changed by RADIUS CoA handling
@@ -477,10 +489,12 @@ Script to run before session interface comes up
 
 Script to run when session interface is completely configured and started
 ```
+
 ## Advanced Options
 
 
 ### Authentication Advanced Options
+
 ```{cfgcmd} set service pppoe-server authentication local-users username \<user\> disable
 
 Disable `<user>` account.
@@ -498,12 +512,16 @@ Assign static IP address to `<user>` account.
 Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
+
 ### Client IP Pool Advanced Options
+
 ```{cfgcmd} set service pppoe-server client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
+
 ### PPP Advanced Options
+
 ```{cfgcmd} set service pppoe-server ppp-options disable-ccp
 
 Disable Compression Control Protocol (CCP).
@@ -582,7 +600,9 @@ attribute.
 
 Defines preferred MRU. By default is not defined.
 ```
+
 ### Global Advanced options
+
 ```{cfgcmd} set service pppoe-server description \<description\>
 
 Set description.
@@ -665,7 +685,9 @@ Enable SNMP
 
 Windows Internet Name Service (WINS) servers propagated to client
 ```
+
 ## Monitoring
+
 ```{opcmd} show pppoe-server sessions
 
 Use this command to locally check the active sessions in the PPPoE
@@ -677,6 +699,7 @@ ifname | username |     ip     |    calling-sid    | rate-limit  | state  |  upt
 -------+----------+------------+-------------------+-------------+--------+----------+----------+----------
 ppp0   | foo      | 10.1.1.100 | 00:53:00:ba:db:15 | 20480/10240 | active | 00:00:11 | 214 B    | 76 B
 ```
+
 ## Examples
 ### IPv4
 
@@ -695,6 +718,7 @@ set service pppoe-server gateway-address '10.1.1.2'
 set service pppoe-server name-server '10.100.100.1'
 set service pppoe-server name-server '10.100.200.1'
 ```
+
 ### Dual-Stack IPv4/IPv6 provisioning with Prefix Delegation
 
 The example below covers a dual-stack configuration.

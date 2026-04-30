@@ -350,6 +350,7 @@ Define the number of packets to queue inside the kernel before sending them
 to userspace. Only applicable if rule log is enabled and the log group is
 defined.
 ```
+
 ### Firewall Description
 
 
@@ -376,6 +377,7 @@ Provide a rule-set description to a custom firewall chain.
 
 Provide a description for each rule.
 ```
+
 ### Rule Status
 
 
@@ -398,6 +400,7 @@ useful to disable the rule instead of removing it.
 
 Command for disabling a rule but keep it in the configuration.
 ```
+
 ### Matching criteria
 
 
@@ -481,6 +484,7 @@ Match based on VLAN identifier. Range is also supported.
 Match based on VLAN priority (Priority Code Point - PCP). Range is also
 supported.
 ```
+
 ### Packet Modifications
 
 
@@ -517,6 +521,7 @@ Set hop limit value.
 
 Set connection mark value.
 ```
+
 ### Use IP firewall
 
 By default, for switched traffic, only the rules defined under `set firewall
@@ -537,6 +542,7 @@ This command enables the IPv6 firewall for bridged traffic. If this option
 is used, packets are also parsed by rules defined in ``set firewall ipv6
 ...``
 ```
+
 ## Operation-mode Firewall
 ### Rule-set overview
 
@@ -568,7 +574,9 @@ And, to print only bridge firewall information:
 
 ```{opcmd} show firewall bridge name \<name\> rule \<rule\>
 ```
+
 ### Show Firewall log
+
 ```{opcmd} show log firewall
 ```
 
@@ -593,6 +601,7 @@ Show the logs of all firewall; show all bridge firewall logs; show all logs
 for forward hook; show all logs for forward hook and priority filter; show
 all logs for particular custom chain; show logs for specific Rule-Set.
 ```
+
 ### Example
 
 Configuration example:

@@ -41,11 +41,13 @@ save
 Do you want to continue? [Y/n] y
 ```
 
+
 ## Install Paramiko:
 
 ```none
 #apt-get install -y python3-paramiko
 ```
+
 
 ## Check the version:
 
@@ -59,6 +61,7 @@ executable location = /usr/bin/ansible
 python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 ```
 
+
 ## Basic configuration of ansible.cfg:
 
 ```none
@@ -66,6 +69,7 @@ python version = 3.9.2 (default, Feb 28 2021, 17:03:44) [GCC 10.2.1 20210110]
 [defaults]
 host_key_checking = no
 ```
+
 
 ## Add all the VyOS hosts:
 
@@ -78,6 +82,7 @@ vyos9 ansible_ssh_host=192.0.2.107
 vyos10 ansible_ssh_host=192.0.2.108
 ```
 
+
 ## Add general variables:
 
 ```none
@@ -89,6 +94,7 @@ ansible_connection: network_cli
 ansible_user: vyos
 ansible_ssh_pass: vyos
 ```
+
 
 ## Add a simple playbook with the tasks for each router:
 
@@ -111,6 +117,7 @@ ansible_ssh_pass: vyos
         save: true
 ```
 
+
 ## Start the playbook:
 
 ```none
@@ -130,6 +137,7 @@ vyos8                      : ok=2    changed=0    unreachable=0    failed=0    s
 vyos9                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
+
 ## Check the result on the vyos10 router:
 
 ```none
@@ -147,6 +155,7 @@ lo               127.0.0.1/8                       u/u
 vyos@vyos10:~$ sh configuration commands | grep 192.0.2.1
 set system name-server '192.0.2.1'
 ```
+
 
 ## The simple way without configuration of the hostname (one task for all routers):
 

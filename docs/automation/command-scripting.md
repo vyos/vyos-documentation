@@ -19,6 +19,7 @@ source /opt/vyatta/etc/functions/script-template
 exit
 ```
 
+
 ## Script execute permissions
 
 Simply placing script files in `/config/scripts/` does not mean the system
@@ -30,6 +31,7 @@ following command:
 ```none
 chmod +x /config/scripts/script-name.sh
 ```
+
 
 ## Run configuration commands
 
@@ -49,6 +51,7 @@ commit
 exit
 ```
 
+
 ## Run operational commands
 
 In scripts, **always** prefix operational commands with `run`.
@@ -59,6 +62,7 @@ source /opt/vyatta/etc/functions/script-template
 run show interfaces
 exit
 ```
+
 
 ## Run commands remotely
 
@@ -85,6 +89,7 @@ lo               127.0.0.1/8                       u/u
                 ::1/128
 ```
 
+
 ## Other script languages
 
 If you use a scripting language other than bash, configure your script to
@@ -106,6 +111,7 @@ configure
 source <(/config/scripts/setfirewallgroup.py)
 commit
 ```
+
 
 ## Execute configuration scripts
 
@@ -136,6 +142,7 @@ if [ "$(id -g -n)" != 'vyattacfg' ] ; then
     exec sg vyattacfg -c "/bin/vbash $(readlink -f $0) $@"
 fi
 ```
+
 
 ## Executing pre-hooks/post-hooks scripts
 
@@ -176,6 +183,7 @@ eth3             -                                 u/u
 lo               203.0.113.5/24                    u/u
 ```
 
+
 ## Preconfig script on boot
 
 VyOS runs `/config/scripts/vyos-preconfig-bootup.script` at boot, **before**
@@ -191,7 +199,9 @@ The default script contains the following:
 # This script is executed at boot time before VyOS configuration is applied.
 # Any modifications required to work around unfixed bugs or use
 # services not available through the VyOS CLI system can be placed here.
+
 ```
+
 
 ## Postconfig script on boot
 
@@ -208,6 +218,7 @@ The default script contains the following:
 # This script is executed at boot time after VyOS configuration is fully
 # applied. Any modifications required to work around unfixed bugs or use
 # services not available through the VyOS CLI system can be placed here.
+
 ```
 
 :::{warning}

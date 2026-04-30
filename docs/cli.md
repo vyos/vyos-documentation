@@ -355,6 +355,7 @@ View the current active configuration in readable JSON format.
 :::
 ```
 
+
 #### The config mode
 
 When entering the configuration mode you are navigating inside a tree structure, to enter configuration mode enter the command {opcmd}`configure` when in operational mode.
@@ -444,6 +445,7 @@ vyos@vyos# exit
 vyos@vyos# exit
 Warning: configuration changes have not been saved.
 ```
+
 ### Editing the configuration
 
 The configuration can be edited by the use of {cfgcmd}`set` and {cfgcmd}`delete` commands from within configuration mode.
@@ -674,6 +676,7 @@ Interface        IP Address                        S/L  Description
 eth0             0.0.0.0/0                         u/u
 :::
 ```
+
 ### Managing configurations
 
 VyOS comes with an integrated versioning system for the system configuration. It automatically maintains a backup of every previous configuration which has been committed to the system. The configurations are versioned locally for rollback but they can also be stored on a remote host for archiving/backup reasons.
@@ -703,6 +706,7 @@ vyos@vyos:~$ show system commit
 
 You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally.
 ```
+
 #### Compare configurations
 
 VyOS lets you compare different configurations.
@@ -786,6 +790,7 @@ Broadcast message from root@vyos-1 (pts/0) (Tue Dec 17 21:07:45 2013):
 The system is going down for reboot NOW!
 :::
 ```
+
 #### Remote Archive
 
 VyOS can upload the configuration to a remote location after each call to {cfgcmd}`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a {cfgcmd}`commit` is successful the `config.boot` file will be copied to the defined destination(s). The filename used on the remote host will be `config.boot-hostname.YYYYMMDD_HHMMSS`.
@@ -819,6 +824,7 @@ vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used to upload the configuration to the remote system.
 ```
+
 #### Saving and loading manually
 
 You can use the `save` and `load` commands if you want to manually manage specific configuration files.
@@ -844,6 +850,7 @@ tftp://<host>/<file>         Load from file on remote machine
 
 If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
 ```
+
 #### Restore Default
 
 In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:

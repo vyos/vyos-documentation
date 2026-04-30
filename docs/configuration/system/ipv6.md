@@ -26,6 +26,7 @@ Duplicate Address Detection fails on Link-Local address.
 
 Use this command to user Layer 4 information for ECMP hashing.
 ```
+
 ### Zebra/Kernel route filtering
 
 
@@ -43,6 +44,7 @@ If you choose any as the option that will cause all protocols that
 are sending routes to zebra.
 :::
 ```
+
 ### Nexthop Tracking
 
 
@@ -56,10 +58,12 @@ Do not allow IPv6 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.
 ```
+
 ## Operational commands
 
 
 ### Show commands
+
 ```{opcmd} show ipv6 neighbors
 
 Use this command to show IPv6 Neighbor Discovery Protocol information.
@@ -169,6 +173,7 @@ Use this command to get information about the RIPNG protocol
 
 Use this command to show the status of the RIPNG protocol
 ```
+
 ### Reset commands
 
 ```{opcmd} reset bgp ipv6 \<address\>

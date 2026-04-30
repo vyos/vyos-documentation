@@ -26,6 +26,7 @@ client, to test a single LAN setup
 :alt: Tunnelbroker topology image
 ```
 
+
 ### Configuration
 
 First, we configure the `vyos-wan` interface to get a DHCP address.
@@ -96,6 +97,7 @@ PING tunnelbroker.net(tunnelbroker.net (2001:470:0:63::2)) 56 data bytes
 rtt min/avg/max/mdev = 176.707/206.638/285.128/45.457 ms
 ```
 
+
 ### LAN Configuration
 
 At this point, your VyOS install should have full IPv6, but now your LAN devices
@@ -152,6 +154,7 @@ PING 2001:470:20::2(2001:470:20::2) 56 data bytes
 4 packets transmitted, 4 received, 0% packet loss, time 3005ms
 rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 ```
+
 
 ## Multiple LAN/DMZ Setup
 

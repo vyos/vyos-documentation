@@ -25,6 +25,7 @@ All users with domain **vyos.io** will be tunneled to LNS via L2TP.
 :width: 60%
 ```
 
+
 ## Configurations
 
 ### LAC
@@ -73,6 +74,7 @@ interface Virtual-Template1
 !
 ```
 
+
 ### LNS
 
 ```none
@@ -107,6 +109,7 @@ In this lab we use Windows PPPoE client.
 :alt: Window PPPoE Client Configuration
 :width: 100%
 ```
+
 
 ### Monitoring
 

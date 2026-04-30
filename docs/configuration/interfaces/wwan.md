@@ -72,6 +72,7 @@ Configure these interfaces under the `interfaces wwan` node.
 :var1: wwan0
 ```
 
+
 ### WWAN options
 
 ```{cfgcmd} set interfaces wwan \<interface\> apn \<apn\>
@@ -84,6 +85,7 @@ the cellular network.
 This parameter is mandatory. Contact your service provider for the correct
 {abbr}`APN (Access Point Name)`.
 ```
+
 
 ## Operation
 
@@ -310,6 +312,7 @@ PUK2 retries: '10'
 :::
 ```
 
+
 ## Example
 
 The following example shows how to configure a cellular connection using a
@@ -320,6 +323,7 @@ factor. The card is installed in a {ref}`pc-engines-apu4`.
 set interfaces wwan wwan0 apn 'internet.telekom'
 set interfaces wwan wwan0 address 'dhcp'
 ```
+
 
 ## Supported hardware
 

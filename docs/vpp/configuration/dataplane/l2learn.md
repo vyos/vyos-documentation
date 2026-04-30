@@ -6,6 +6,7 @@ lastproofread: '2026-02-26'
 
 ```{include} /_include/need_improvement.txt
 ```
+
 # VPP L2LEARN Configuration
 
 When VPP dataplane connects to an L2 domain, it learns MAC addresses of

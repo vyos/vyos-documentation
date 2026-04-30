@@ -114,6 +114,7 @@ set service snmp listen-address 172.16.254.36 port 161
 set service snmp listen-address 2001:db8::f00::1
 ```
 
+
 ### SNMPv3
 
 SNMPv3 (version 3 of the SNMP protocol) introduced a whole slew of new security
@@ -201,6 +202,7 @@ has been activated like so
 scp -r vyos@your_router:/usr/share/snmp/mibs /your_folder/mibs
 ```
 
+
 ## SNMP Extensions
 
 To extend SNMP agent functionality, custom scripts can be executed every time
@@ -225,6 +227,7 @@ NET-SNMP-EXTEND-MIB::nsExtendOutputFull."my-extension" = STRING: hello
 NET-SNMP-EXTEND-MIB::nsExtendOutNumLines."my-extension" = INTEGER: 1
 NET-SNMP-EXTEND-MIB::nsExtendResult."my-extension" = INTEGER: 0
 ```
+
 
 ## SolarWinds
 

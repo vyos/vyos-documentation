@@ -61,6 +61,7 @@ set vpn ipsec site-to-site peer cisco_hub tunnel 1 remote prefix '10.1.1.6/32'
 set vpn ipsec site-to-site peer cisco_hub virtual-address '0.0.0.0'
 ```
 
+
 ### Cisco
 
 ```none

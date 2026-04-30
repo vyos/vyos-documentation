@@ -40,6 +40,7 @@ interfaces, as this may break their dependent configurations.
 :var1: tun0
 ```
 
+
 ## IPIP
 
 IPIP is a straightforward encapsulation protocol defined in RFC 2003. It
@@ -57,6 +58,7 @@ set interfaces tunnel tun0 source-address 192.0.2.10
 set interfaces tunnel tun0 remote 203.0.113.20
 set interfaces tunnel tun0 address 192.168.100.200/24
 ```
+
 
 ## IP6IP6
 
@@ -76,6 +78,7 @@ set interfaces tunnel tun0 remote 2001:db8:aa::2
 set interfaces tunnel tun0 address 2001:db8:bb::1/64
 ```
 
+
 ## IPIP6
 
 IPIP6 is an encapsulation protocol that wraps IPv4 packets inside IPv6 packets.
@@ -91,6 +94,7 @@ set interfaces tunnel tun0 source-address 2001:db8:aa::1
 set interfaces tunnel tun0 remote 2001:db8:aa::2
 set interfaces tunnel tun0 address 192.168.70.80/24
 ```
+
 
 ## 6in4 (SIT)
 
@@ -188,6 +192,7 @@ Address=2001:db8:feed:beef::2/126
 Address=192.168.5.2/30
 ```
 
+
 ### GRE keys
 
 A GRE key is an optional 32-bit field in the GRE header that allows multiple
@@ -214,6 +219,7 @@ set interfaces tunnel tun1 address 172.16.17.18/24
 set interfaces tunnel tun1 parameters ip key 20
 ```
 
+
 ### GRETAP
 
 Unlike GRE, which encapsulates only Layer 3 (IP) traffic, GRETAP encapsulates
@@ -234,6 +240,7 @@ set interfaces tunnel tun0 encapsulation gretap
 set interfaces tunnel tun0 source-address 198.51.100.2
 set interfaces tunnel tun0 remote 203.0.113.10
 ```
+
 
 ### Troubleshooting
 

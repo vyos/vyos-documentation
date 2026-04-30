@@ -113,6 +113,7 @@ To manually download the container from DockerHub, run:
 $ docker pull vyos/vyos-build:current  # For VyOS rolling release
 ```
 
+
 ### Build from source
 
 The container can also be built directly from source:
@@ -507,6 +508,7 @@ built drivers. If detection fails, you can manually add files to
 ADD_FW_FILES="iwlwifi* ath11k/QCA6390/*/*.bin"
 ```
 
+
 #### Building Out-Of-Tree Modules
 
 Building the kernel is one step. You must also build required out-of-tree
@@ -666,6 +668,7 @@ first clone the repository from GitHub:
 $ git clone --recurse-submodules https://github.com/vyos/vyos-1x
 ```
 
+
 ### Build
 
 Launch the Docker container and build the package:
@@ -689,6 +692,7 @@ After a minute or two, the generated DEB packages are located next to the
 -rw-r--r-- 1 vyos_bld vyos_bld 567420 Aug  3 12:01 ../vyos-1x_1.3dev0-1847-gb6dcb0a8_all.deb
 -rw-r--r-- 1 vyos_bld vyos_bld   3808 Aug  3 12:01 ../vyos-1x-vmware_1.3dev0-1847-gb6dcb0a8_amd64.deb
 ```
+
 
 ### Install
 

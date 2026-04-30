@@ -64,6 +64,7 @@ Enable redirection of incoming packets to the specified interface.
 :var1: vti0
 ```
 
+
 ## Operation
 
 ```{opcmd} show interfaces vti \<vtiX\>
@@ -75,6 +76,7 @@ Show the operational status and traffic statistics for the specified VTI.
 
 Show a brief operational status summary for the specified VTI.
 ```
+
 
 ## Example
 

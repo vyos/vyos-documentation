@@ -16,6 +16,7 @@ Network.
 :alt: Ansible Example topology image
 ```
 
+
 ## Configuration
 
 First, we configure the transport network and the Tunnel interface.
@@ -57,6 +58,7 @@ DHCP-Relay
 :language: none
 :lines: 9-10
 ```
+
 
 ## Test the result
 

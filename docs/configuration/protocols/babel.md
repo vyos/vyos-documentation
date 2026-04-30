@@ -24,6 +24,7 @@ the sending and receiving of Babel packets will be enabled on the interface
 specified in this command.
 ```
 
+
 ## Optional Configuration
 
 ```{cfgcmd} set protocols babel parameters diversity
@@ -64,6 +65,7 @@ Larger values reduce route oscillation at the cost of very slightly increasing
 convergence time. The value 0 disables hysteresis, and is suitable for wired
 networks. The default is 4 s.
 ```
+
 
 ## Interfaces Configuration
 
@@ -172,6 +174,7 @@ noninterfering channels.
 with themselves.
 ```
 
+
 ## Redistribution Configuration
 
 ```{cfgcmd} set protocols babel redistribute \<ipv4|ipv6\> \<route source\>
@@ -209,6 +212,7 @@ lists are applied.
 This command allows you apply prefix lists to a chosen interface to
 filter the Babel routes.
 ```
+
 
 ## Configuration Example
 

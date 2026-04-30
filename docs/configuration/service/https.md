@@ -63,6 +63,7 @@ Start Webserver in given VRF.
 Set the maximum request body size in megabytes. Default is 1MB.
 ```
 
+
 ### API
 
 ```{cfgcmd} set service https api keys id \<name\> key \<apikey\>
@@ -70,6 +71,7 @@ Set the maximum request body size in megabytes. Default is 1MB.
 Set a named api key. Every key has the same, full permissions
 on the system.
 ```
+
 
 ### REST
 
@@ -88,6 +90,7 @@ To enable debug messages. Available via {opcmd}`show log` or
 
 Enforce strict path checking.
 ```
+
 
 ### GraphQL
 
@@ -121,6 +124,7 @@ Set the byte length of the JWT secret. Default is 32.
 
 Allow cross-origin requests from \<origin\>.
 ```
+
 
 ## Example Configuration
 

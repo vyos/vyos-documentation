@@ -22,6 +22,7 @@ Arrange your Ansible project directory as follows:
 └── main.yml
 ```
 
+
 ## File contents
 
 - `ansible.cfg`
@@ -82,6 +83,7 @@ Defines the configuration tasks to be applied to the target VyOS devices.
           - set system time-zone America/Los_Angeles
           - set interfaces ethernet eth0 description WAN
 ```
+
 
 ## Run Ansible
 

@@ -59,6 +59,7 @@ Name of the single table Only if set group-metrics single-table.
 
 Remote URL.
 ```
+
 ### Prometheus client
 
 Telegraf output plugin [prometheus-client]
@@ -119,6 +120,7 @@ cpu_usage_system{cpu="cpu-total",host="r14"} 0.20040080160320556
 cpu_usage_system{cpu="cpu0",host="r14"} 0.17182130584191915
 cpu_usage_system{cpu="cpu1",host="r14"} 0.22896393817971655
 ```
+
 ### Splunk
 
 
@@ -148,6 +150,7 @@ set service monitoring telegraf splunk authentication insecure
 set service monitoring telegraf splunk authentication token 'xxxxf5b8-xxxx-452a-xxxx-43828911xxxx'
 set service monitoring telegraf splunk url 'https://192.0.2.10:8088/services/collector'
 ```
+
 ### InfluxDB
 
 
@@ -191,6 +194,7 @@ set service monitoring telegraf influxdb bucket 'bucket_vyos'
 set service monitoring telegraf influxdb port '8086'
 set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ```
+
 ### Loki
 
 Telegraf can be used to send logs to [loki] using tags as labels.
@@ -227,6 +231,7 @@ If set to an empty string, the label will not be added.
 This is NOT recommended, as it makes it impossible to differentiate
 between multiple metrics.
 ```
+
 ## Prometheus
 
 
@@ -260,6 +265,7 @@ Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 Configure textfile collector to export custom metrics read from
 `/run/node_exporter/collector`
 ```
+
 ### FRR Exporter
 
 Prometheus [frr_exporter] which provides free range routing metrics.
@@ -279,6 +285,7 @@ Configure the port number frr_exporter is listening on.
 
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
+
 ### Blackbox Exporter
 
 Prometheus [blackbox_exporter] which allows probing of endpoints over
@@ -296,6 +303,7 @@ Configure the port number blackbox_exporter is listening on.
 
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
+
 #### Configuring modules
 
 Blackbox exporter can be configured with different modules for probing DNS or ICMP.

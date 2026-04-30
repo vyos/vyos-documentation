@@ -231,7 +231,9 @@ LDP session to another router.
 Use these commands if you would like to set the discovery hello and hold time
 parameters for the targeted LDP neighbors.
 ```
+
 ### Sample configuration to setup LDP on VyOS
+
 ```none
 set protocols ospf area 0 network '192.168.255.252/32'                      <--- Routing for loopback
 set protocols ospf area 0 network '192.168.0.5/32'                          <--- Routing for an interface connecting to the network
@@ -244,6 +246,7 @@ set protocols mpls ldp router-id '192.168.255.252'                          <---
 set interfaces ethernet eth1 address '192.168.0.5/31'                       <--- Interface IP for connecting to network
 set interfaces loopback lo address '192.168.255.252/32'                     <--- Interface loopback IP for router ID and other uses
 ```
+
 ## Operational Mode Commands
 
 When LDP is working, you will be able to see label information in the outcome
@@ -251,6 +254,7 @@ of `show ip route`. Besides that information, there are also specific *show*
 commands for LDP:
 
 ### Show
+
 ```{opcmd} show mpls ldp binding
 
 Use this command to see the Label Information Base.
@@ -276,7 +280,9 @@ Use this command to see LDP neighbor information
 
 Use this command to see detailed LDP neighbor information
 ```
+
 ### Reset
+
 ```{opcmd} reset mpls ldp neighbor \<IPv4 or IPv6 address\>
 
 Use this command to reset an LDP neighbor/TCP session that is established

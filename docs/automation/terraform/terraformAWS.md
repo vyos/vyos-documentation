@@ -51,6 +51,7 @@ Terraform, Ansible, and AWS, follow these steps:
 :width: 50%
 ```
 
+
 ### Terraform
 
 1. Create an UNIX or Windows instance.
@@ -76,6 +77,7 @@ mkdir /root/awsterraform
 cd /<your folder>
 terraform init
 ```
+
 ### Ansible
 
 1. Create a UNIX instance whenever you need.
@@ -103,7 +105,9 @@ terraform plan
 terraform apply
 yes
 ```
+
 ## Create an AWS instance and check its configuration
+
 ```none
 root@localhost:~/awsterraform# terraform apply
 
@@ -260,6 +264,7 @@ To delete the instance, type the following command:
 ```none
 terraform destroy
 ```
+
 ## Troubleshooting
 
 1. If Ansible doesn't connect via SSH to your AWS instance, verify that
@@ -282,6 +287,7 @@ password = var.password        # check password in the file terraform.tfvars isn
 Make sure Ansible can ping from Terraform.
 
 ## Structure of files in Terraform for AWS
+
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -289,6 +295,7 @@ Make sure Ansible can ping from Terraform.
 ├── versions.tf                        # File for the changing version of Terraform.
 └── terraform.tfvars           # The value of all variables (passwords, login, ip adresses and so on)
 ```
+
 ## File contents of Terraform for AWS
 
 `vyos.tf`
@@ -449,7 +456,9 @@ host      = ""   # IP of my Ansible
 access    = ""   # access_key for AWS
 secret    = ""   # secret_key for AWS
 ```
+
 ## Structure of files in Ansible for AWS
+
 ```none
 .
 ├── group_vars
@@ -458,6 +467,7 @@ secret    = ""   # secret_key for AWS
 ├── mykey.pem
 └── instance.yml
 ```
+
 ## File contents of Ansible for AWS
 
 `ansible.cfg`
@@ -514,6 +524,7 @@ ansible_connection: ansible.netcommon.network_cli
 ansible_network_os: vyos.vyos.vyos
 ansible_user: vyos
 ```
+
 
 ## Source files on GitHub
 

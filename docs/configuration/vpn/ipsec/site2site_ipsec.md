@@ -185,6 +185,7 @@ Similar combinations are applicable for the dead-peer-detection.
 ### Detailed Configuration Commands
 
 #### PSK Key Authentication
+
 ```{cfgcmd} set vpn ipsec authentication psk \<name\> dhcp-interface
 
 ID for authentication generated from DHCP address
@@ -212,10 +213,12 @@ Specifies the secret type:
 * **plaintext** - Plain text type (default value).
 * **base64** - Base64 type.
 ```
+
 #### Peer Configuration
 
 
 ### Peer Authentication Commands
+
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication mode \<mode\>
 
 Mode for authentication between VyOS and remote peer:
@@ -275,7 +278,9 @@ for authenticating local router on remote peer.
 
 Private key passphrase, if needed.
 ```
+
 ### Global Peer Configuration Commands
+
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
@@ -371,6 +376,7 @@ one or several IPv4 and/or IPv6 addresses are assigned from multiple
 pools by the responder. The wildcard addresses 0.0.0.0 and ::
 request an arbitrary address, specific addresses may be defined.
 ```
+
 ### CHILD SAs Configuration Commands
 
 #### Policy-Based CHILD SAs Configuration Commands
@@ -420,6 +426,7 @@ IP network at the remote side.
 Remote port number. Have effect only when used together with
 ``prefix``.
 ```
+
 #### Route-Based CHILD SAs Configuration Commands
 
 To configure route-based VPN it is enough to create vti interface and
@@ -460,7 +467,9 @@ Local prefix for interesting traffic.
 
 Remote prefix for interesting traffic.
 ```
+
 ### IPsec Op-mode Commands
+
 ```{opcmd} show vpn ike sa
 
 Shows active IKE SAs information.
@@ -534,6 +543,7 @@ reinitiate it if VyOS is configured as initiator.
 
 Restart Strongswan daemon.
 ```
+
 ## Examples:
 
 ### Policy-Based VPN Example
@@ -655,6 +665,7 @@ set nat source rule 10 'exclude'
 set nat source rule 10 outbound-interface name 'eth0'
 set nat source rule 10 source address '192.168.1.0/24'
 ```
+
 ### Route-Based VPN Example
 
 **PEER1:**

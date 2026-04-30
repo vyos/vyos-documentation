@@ -38,6 +38,7 @@ they bind to a VRF.
 TCP & UDP services running in the default VRF context (ie., not bound to any
 VRF device) can work across all VRF domains by enabling this option.
 ```
+
 ### Zebra/Kernel route filtering
 
 
@@ -71,6 +72,7 @@ If you choose any as the option that will cause all protocols that
 are sending routes to zebra.
 :::
 ```
+
 ### Nexthop Tracking
 
 
@@ -92,6 +94,7 @@ Do not allow IPv6 nexthop tracking to resolve via the default route. This
 parameter is configured per-VRF, so the command is also available in the VRF
 subnode.
 ```
+
 ### Interfaces
 
 
@@ -102,6 +105,7 @@ itself needs to be assigned to an interface.
 
 Assign interface identified by `<interface>` to VRF named `<name>`.
 ```
+
 ### Routing
 
 
@@ -377,6 +381,7 @@ set vrf name red protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
 
 set vrf name red table '2000'
 ```
+
 ### VRF and NAT
 
 
@@ -476,6 +481,7 @@ GATEWAY     : 10.30.0.254
 DNS         :
 MAC         : 00:50:79:66:68:0f
 ```
+
 ### VRF default routing table
 
 
@@ -502,6 +508,7 @@ S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:3
 
 S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 ```
+
 ### VRF red routing table
 
 
@@ -530,6 +537,7 @@ S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07
 
 C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 ```
+
 ### VRF blue routing table
 
 
@@ -558,6 +566,7 @@ S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07
 
 C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 ```
+
 # L3VPN VRFs
 
 

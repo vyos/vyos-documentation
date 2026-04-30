@@ -22,6 +22,7 @@ set service snmp community router authorization 'test'
 set service snmp community router network '0.0.0.0/0'
 ```
 
+
 ## Configuration 'NMP'
 
 Next, you just should follow the pictures:

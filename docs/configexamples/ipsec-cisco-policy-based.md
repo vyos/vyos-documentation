@@ -19,6 +19,7 @@ initiator role on VyOS side.
 :alt: Network Topology Diagram
 ```
 
+
 ## Prerequirements
 
 **VyOS:**
@@ -108,6 +109,7 @@ set vpn ipsec site-to-site peer CISCO tunnel 2 local prefix '192.168.1.0/24'
 set vpn ipsec site-to-site peer CISCO tunnel 2 remote prefix '192.168.11.0/24'
 ```
 
+
 ### Cisco
 
 ```none
@@ -160,6 +162,7 @@ ip access-list extended cryptoacl
  permit ip 192.168.11.0 0.0.0.255 192.168.1.0 0.0.0.255
 ```
 
+
 ## Monitoring
 
 ### Monitoring on VyOS side
@@ -186,6 +189,7 @@ Connection      State    Uptime    Bytes In/Out    Packets In/Out    Remote addr
 CISCO-tunnel-1  up       6m6s      0B/0B           0/0               10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 CISCO-tunnel-2  up       6m6s      0B/0B           0/0               10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
 ```
+
 
 ### Monitoring on Cisco side
 
@@ -301,6 +305,7 @@ interface: GigabitEthernet0/0
 
      outbound pcp sas:
 ```
+
 
 ### Checking Connectivity
 

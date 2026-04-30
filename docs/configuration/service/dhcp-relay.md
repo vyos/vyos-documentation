@@ -50,6 +50,7 @@ information to ensure that only requests from DHCP clients are forwarded.
 Disable dhcp-relay service.
 ```
 
+
 #### Options
 
 ```{cfgcmd} set service dhcp-relay relay-options hop-count \<count\>
@@ -78,6 +79,7 @@ will be ignored.
 * **replace:** Relay information already present in a packet is stripped and
 replaced with the router's own relay information set.
 ```
+
 
 ### Example
 
@@ -117,12 +119,14 @@ show service dhcp-relay
     }
 ```
 
+
 ### Operation
 
 ```{opcmd} restart dhcp relay-agent
 
 Restart DHCP relay service
 ```
+
 
 ## IPv6 relay
 

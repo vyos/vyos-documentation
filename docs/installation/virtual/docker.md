@@ -25,6 +25,7 @@ Here's an example using the `macvlan` driver.
 docker network create --ipv6 -d macvlan -o parent=eth0 --subnet 2001:db8::/64 --subnet 192.0.2.0/24 mynet
 ```
 
+
 ### Method 2: Add IPv6 support to the Docker daemon
 
 Edit /etc/docker/daemon.json to set the `ipv6` key to `true` and specify
@@ -42,6 +43,7 @@ Reload the Docker configuration.
 ```none
 $ sudo systemctl reload docker
 ```
+
 
 ## Deploy container from ISO
 

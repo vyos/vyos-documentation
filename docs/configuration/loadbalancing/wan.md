@@ -60,6 +60,7 @@ protocol                Protocol to match
 > source                Source information
 ```
 
+
 ### Interface weight
 
 By default, the load balancer distributes outbound
@@ -108,6 +109,7 @@ order is not critical. Enable per-packet balancing for a rule with:
 set load-balancing wan rule <rule> per-packet-balancing
 ```
 
+
 ### Exclude traffic
 
 To exclude traffic from load balancing, traffic matching an exclude rule
@@ -116,6 +118,7 @@ bypasses load balancing and uses the system routing table instead:
 ```none
 set load-balancing wan rule <rule> exclude
 ```
+
 
 ## Health checks
 
@@ -190,6 +193,7 @@ automatic generation of SNAT rules when this behavior is not desired, use:
 set load-balancing wan disable-source-nat
 ```
 
+
 ## Sticky connections
 
 Inbound connections to a WAN interface can be improperly handled when
@@ -207,6 +211,7 @@ connections in the load balancer to do this:
 ```none
 set load-balancing wan sticky-connections inbound
 ```
+
 
 ## Failover
 
@@ -292,6 +297,7 @@ tcp     TIME_WAIT       10.1.1.13:38040         203.0.113.2:80          203.0.11
 udp                     10.1.1.13:41891         198.51.100.3:53         198.51.100.3 192.168.188.71
 udp                     10.1.1.13:55437         198.51.100.3:53         198.51.100.3 192.168.188.71
 ```
+
 
 ### Restart
 

@@ -7,6 +7,7 @@ Convert raw command blocks in this file to cfgcmd/opcmd
 directives for command coverage tracking.
 ```
 
+
 ## Introduction
 
 This document describes the methodology to monitor and troubleshoot
@@ -90,6 +91,7 @@ PEER           up       IKEv2   192.168.1.2       -            -            192.
 PEER-tunnel-1  up       IPsec   192.168.1.2       10.0.0.0/24  10.0.1.0/24  192.168.0.1  192.168.1.2  AES_CBC/128/HMAC_SHA1_96/MODP_2048
 ```
 
+
 ## Viewing Logs for Debugging
 
 If IKE SAs or IPsec SAs are down, need to debug IPsec connectivity
@@ -132,6 +134,7 @@ Jun 20 14:29:47 charon-systemd[2428]: selected proposal: ESP:AES_CBC_128/HMAC_SH
 Jun 20 14:29:47 charon[2428]: 13[IKE] <PEER|1> CHILD_SA PEER-tunnel-1{1} established with SPIs cb94fb3f_i ca99c8a9_o and TS 10.0.0.0/24 === 10.0.1.0/24
 Jun 20 14:29:47 charon-systemd[2428]: CHILD_SA PEER-tunnel-1{1} established with SPIs cb94fb3f_i ca99c8a9_o and TS 10.0.0.0/24 === 10.0.1.0/24
 ```
+
 
 ## Troubleshooting Examples
 

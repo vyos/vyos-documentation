@@ -58,6 +58,7 @@ ssh -i ~/.ssh/amazon.pem vyos@203.0.113.3
 vyos@ip-192-0-2-10:~$
 ```
 
+
 ## Amazon CloudWatch Agent Usage
 
 To use the Amazon CloudWatch agent, configure it in the Amazon Systems Manager
@@ -159,6 +160,7 @@ set service aws glb threads tunnel-affinity '1-2'
 set service aws glb threads udp '4'
 set service aws glb threads udp-affinity '0-3'
 ```
+
 
 ## References
 

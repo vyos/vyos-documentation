@@ -21,6 +21,7 @@ pip3 install napalm
 pip3 install napalm-vyos
 ```
 
+
 ## Retrieve device data
 
 The following script connects to a VyOS device, retrieves device facts and
@@ -86,6 +87,7 @@ $ ./vyos-napalm.py
     }
 ]
 ```
+
 
 ## Apply a configuration
 

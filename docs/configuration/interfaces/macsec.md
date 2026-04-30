@@ -23,6 +23,7 @@ addresses distinct use cases.
 :var1: macsec0
 ```
 
+
 ### MACsec options
 
 ```{cfgcmd} set interfaces macsec \<interface\> security cipher \<gcm-aes-128|gcm-aes-256\>
@@ -45,6 +46,7 @@ When enabled, outgoing packets are encrypted using the configured cipher suite.
 Traffic transmitted through this interface is authenticated and, if configured,
 encrypted.
 ```
+
 
 #### MACsec key management
 
@@ -100,7 +102,9 @@ MACsec interface.
 Configure the MKA key server priority for the MACsec interface.
 The peer with the lowest priority is elected as the key server.
 ```
+
 #### Replay protection
+
 ```{cfgcmd} set interfaces macsec \<interface\> security replay-window \<window\>
 
 The replay protection window defines how many out-of-order frames can be
@@ -109,7 +113,9 @@ The following values are valid:
 - ``0``: Any out-of-order frame is immediately dropped.
 - ``1-4294967295``: Allows the specified number of out-of-order frames.
 ```
+
 ## Operation
+
 ```{opcmd} run generate macsec mka cak \<gcm-aes-128|gcm-aes-256\>
 
 Generate a 128-bit (GCM-AES-128) or 256-bit (GCM-AES-256) {abbr}`MKA (MACsec
@@ -158,6 +164,7 @@ cipher suite: GCM-AES-128, using ICV length 16
 TXSC: 005056bfefaa0001 on SA 0
 :::
 ```
+
 ## Examples
 
 **Site-to-site MACsec with dynamic MKA over an untrusted network**
@@ -252,6 +259,7 @@ set interfaces macsec macsec1 security static peer R1 mac 00:11:22:33:44:01
 set interfaces macsec macsec1 security static peer R1 key 'ddd6f4a7be4d8bbaf88b26f10e1c05f7'
 set interfaces macsec macsec1 source-interface 'eth1'
 ```
+
 ## MACsec over WAN
 
 MACsec offers an alternative to traditional tunneling solutions by securing

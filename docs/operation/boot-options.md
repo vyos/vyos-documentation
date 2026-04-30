@@ -21,6 +21,7 @@ Type **e** to edit the first line, then type **Ctrl+X** to boot.
 :width: 80%
 ```
 
+
 ## Specify custom config file
 
 You can use a configuration file instead of the default `/config/config.boot`
@@ -37,6 +38,7 @@ To load the *factory default* configuration, use:
 ```none
 vyos-config=/opt/vyatta/etc/config.boot.default
 ```
+
 
 ## Disable specific boot process steps
 

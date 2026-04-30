@@ -71,6 +71,7 @@ community(ies) into that prefix.
 :width: 70%
 ```
 
+
 ### IP Schema
 
 | Device-A | Device-B   | IPv4 Network   | IPv6 Network    |
@@ -109,6 +110,7 @@ set interface eth eth<N> address <IP ADDRESS/CIDR>
 # Static default route back to Core
 set procotols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
 ```
+
 
 ### Core Router
 
@@ -198,6 +200,7 @@ PING 2001:db8:0:1::1(2001:db8:0:1::1) 56 data bytes
 rtt min/avg/max/mdev = 0.925/1.665/3.035/0.969 ms
 ```
 
+
 #### Step 2: BGP Configuration for VRF-Lite
 
 - Configuration
@@ -248,6 +251,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 *> 2001:db8:0:1::/64
                     2001:db8::1              0         32768 ?
 ```
+
 
 #### Step 3: VPN Configuration
 
@@ -544,6 +548,7 @@ PING 2001:db8:0:2::1(2001:db8:0:2::1) from 2001:db8:0:1::1 : 56 data bytes
 rtt min/avg/max/mdev = 1.949/2.915/4.815/1.343 ms
 ```
 
+
 ## Conclusions
 
 Inter-VRF routing is a well-known solution to address complex routing scenarios
@@ -690,6 +695,7 @@ set protocols bgp neighbor 2001:db8::6 remote-as '64496'
 set protocols static route 0.0.0.0/0 next-hop 10.2.2.1
 set protocols static route6 ::/0 next-hop 2001:db8::6
 ```
+
 
 ## Appendix-B
 

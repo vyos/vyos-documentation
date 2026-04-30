@@ -38,6 +38,7 @@ Enables the root partition auto-extension and resizes to the maximum
 available space on system boot.
 ```
 
+
 ### Kernel
 
 ```{cfgcmd} set system option kernel disable-mitigations
@@ -95,6 +96,7 @@ Suppress most kernel messages during boot. This is useful for systems with
 embedded serial console interfaces to speed up the boot process.
 ```
 
+
 ## HTTP client
 
 ```{cfgcmd} set system option http-client source-address \<address\>
@@ -127,6 +129,7 @@ connection. Only useful on systems with more than one address.
 Use the address of the specified interface on the local machine as the
 source address of the connection.
 ```
+
 
 ## Keyboard Layout
 

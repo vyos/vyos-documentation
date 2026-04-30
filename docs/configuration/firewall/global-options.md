@@ -16,7 +16,9 @@ Configuration commands covered in this section:
 
 ```{cfgcmd} set firewall global-options ...
 ```
+
 ## Configuration
+
 ```{cfgcmd} set firewall global-options all-ping [enable | disable]
 
 By default, when VyOS receives an ICMP echo request packet destined for

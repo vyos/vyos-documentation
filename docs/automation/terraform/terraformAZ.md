@@ -56,6 +56,7 @@ cd /<your folder>
 terraform init
 ```
 
+
 ### Ansible
 
 1. Create an UNIX instance either locally or in the cloud.
@@ -86,7 +87,10 @@ If you need to delete the instance, run the following command:
 ```none
 terraform destroy
 ```
+
+
 ## Structure of files in Terraform for Azure
+
 ```none
 .
 ├── vyos.tf                            # The main script
@@ -94,6 +98,8 @@ terraform destroy
 └── terraform.tfvars           # Values for all variables (passwords,
                        # login, IP addresses, etc.)
 ```
+
+
 ## File contents of Terraform for Azure
 
 `vyos.tf`
@@ -413,7 +419,10 @@ variable "host"{
 password  = ""   # password for Ansible SSH
 host      = ""   # IP of my Ansible
 ```
+
+
 ## Structure of files in Ansible for Azure
+
 ```none
 .
 ├── group_vars
@@ -421,6 +430,8 @@ host      = ""   # IP of my Ansible
 ├── ansible.cfg
 └── instance.yml
 ```
+
+
 ## File contents of Ansible for Azure
 
 `ansible.cfg`
@@ -475,6 +486,7 @@ ansible_network_os: vyos.vyos.vyos
 ansible_user: vyos
 ansible_ssh_pass: Vyos0!
 ```
+
 
 ## Source files on GitHub
 

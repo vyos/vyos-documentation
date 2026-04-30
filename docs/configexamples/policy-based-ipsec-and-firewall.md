@@ -34,6 +34,7 @@ This configuration example and the requirements consists of:
 ```{image} /_static/images/policy-based-ipsec-and-firewall.png
 ```
 
+
 ## Configuration
 
 Interface and routing configuration:
@@ -188,6 +189,7 @@ set nat source rule 20 outbound-interface name 'eth0'
 set nat source rule 20 source group network-group 'LOCAL-NETS'
 set nat source rule 20 translation address 'masquerade'
 ```
+
 ## Checking through op-mode commands
 
 After some testing, we can check IPSec status, and counter on every tunnel:

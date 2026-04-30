@@ -131,6 +131,7 @@ set interfaces bonding bond0 member interface 'eth1'
 set interfaces bonding bond0 mode '802.3ad'
 ```
 
+
 ### Assign external IP addresses
 
 VLAN 100 and 201 will have floating IP addresses, but VLAN50 does not, as this
@@ -150,6 +151,7 @@ In this case, the hardware router has a different IP, so it would be
 set interfaces ethernet bond0 vif 50 address '192.0.2.22/24'
 ```
 
+
 ### Add (temporary) default route
 
 It is assumed that the routers provided by upstream are capable of acting as a
@@ -160,6 +162,7 @@ set protocols static route 0.0.0.0/0 next-hop 192.0.2.11
 commit
 save
 ```
+
 
 ### Enable SSH
 
@@ -211,6 +214,7 @@ set high-availability vrrp group int address '10.200.201.1/24'
 set high-availability vrrp group int vrid '201'
 ```
 
+
 ### Public Network
 
 This has a floating IP address of 203.0.113.1/24, using virtual router ID 113.
@@ -245,6 +249,7 @@ set high-availability vrrp group public address '203.0.113.1/24'
 set high-availability vrrp group public vrid '113'
 ```
 
+
 ### Create VRRP sync-group
 
 The sync group is used to replicate connection tracking. It needs to be assigned
@@ -254,6 +259,7 @@ the vrrp group `int`.
 ```none
 set high-availability vrrp sync-group sync member 'int'
 ```
+
 
 ### Testing
 
@@ -288,6 +294,7 @@ set nat source rule 10 outbound-interface name 'eth0.50'
 set nat source rule 10 source address '10.200.201.0/24'
 set nat source rule 10 translation address '203.0.113.1'
 ```
+
 
 ### Configure conntrack-sync and enable helpers
 
@@ -384,6 +391,7 @@ set protocols ospf interface wg01 retransmit-interval '5'
 set protocols ospf interface wg01 transmit-delay '1'
 ```
 
+
 ### Test WireGuard
 
 Make sure you can ping 10.254.60.1 and .2 from both routers.
@@ -417,6 +425,7 @@ set policy access-list 150 rule 100 destination any
 set policy access-list 150 rule 100 source any
 ```
 
+
 ### Create Import Filter
 
 We only want to import networks we know. Our OSPF peer should only be
@@ -437,6 +446,7 @@ set policy route-map PUBOSPF rule 100 match ip address access-list '100'
 set policy route-map PUBOSPF rule 500 action 'permit'
 ```
 
+
 ### Enable OSPF
 
 Every router **must** have a unique router-id.
@@ -453,6 +463,7 @@ set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.254.60.2'
 set system ip protocol ospf route-map PUBOSPF
 ```
+
 
 ### Test OSPF
 

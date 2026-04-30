@@ -82,6 +82,7 @@ vyos_config_commands:
   - set protocols static route 198.51.100.0/24 next-hop '192.0.2.1'
 ```
 
+
 ### Instance defaults/fallbacks
 
 If no external configuration data is provided, VyOS applies the following
@@ -154,6 +155,7 @@ write_files:
       exit
 ```
 
+
 ## NoCloud
 
 Injecting configuration data is not limited to cloud platforms. The NoCloud
@@ -210,6 +212,7 @@ steps:
 sudo grep vyos /var/log/cloud-init.log
 ```
 
+
 ## Cloud-init on Proxmox
 
 Before you begin, review the `cloud-init` [network-config-docs] to
@@ -259,6 +262,7 @@ This generates your new image at `/tmp/vyos-1.5.0-cloud-init-10G-qemu.qcow2`.
 ```sh
 sudo scp /tmp/vyos-1.5.0-cloud-init-10G-qemu.qcow2 root@192.168.0.253:/tmp/
 ```
+
 
 ### Prepare cloud-init files
 
@@ -357,6 +361,7 @@ qm set 555 --ide2 media=cdrom,file=local:iso/seed.iso
 qm set 555 --net1 virtio,bridge=vmbr0,firewall=1,tag=25
 qm set 555 --net2 virtio,bridge=vmbr0,firewall=1,tag=26
 ```
+
 
 ### Power on and verify the VM
 

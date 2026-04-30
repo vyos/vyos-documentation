@@ -59,6 +59,7 @@ allow mDNS work correctly in large LANs but also increase memory consumption.
 Defaults to: 4096
 ```
 
+
 ## Firewall recommendations
 
 Unlike typical routed traffic, mDNS packets relayed between interfaces do not
@@ -81,6 +82,7 @@ set firewall ipv4 output filter rule 10 destination address '224.0.0.251'
 set firewall ipv4 output filter rule 10 destination port '5353'
 set firewall ipv4 output filter rule 10 protocol 'udp'
 ```
+
 
 ## Example
 
@@ -107,6 +109,7 @@ default `local`, use the following command:
 ```none
 set service mdns repeater browse-domain 'openthread.thread.home.arpa'
 ```
+
 
 ## Operation
 

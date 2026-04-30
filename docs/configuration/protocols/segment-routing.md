@@ -279,6 +279,7 @@ I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:07:46
 I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, weight 1, 00:03:43
 ```
 
+
 ### Enable OSPF with Segment Routing (Experimental):
 
 **Node 1**

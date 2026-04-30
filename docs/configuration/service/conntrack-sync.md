@@ -146,7 +146,9 @@ Disable connection logging via Syslog.
 Order conntrackd to request a complete conntrack table resync against
 the other node at startup.
 ```
+
 ## Operation
+
 ```{opcmd} show conntrack table ipv4
 
 Make sure conntrack is enabled by running and show connection tracking table.
@@ -229,6 +231,7 @@ last state transition : no transition yet!
 ExpectationSync       : disabled
 :::
 ```
+
 ## Example
 
 The next example is a simple configuration of conntrack-sync.

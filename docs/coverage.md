@@ -51,6 +51,7 @@ the following two tables:
 ```{cfgcmdlist}
 :show-coverage:
 ```
+
 ## Operational Commands
 
 ```{opcmdlist}

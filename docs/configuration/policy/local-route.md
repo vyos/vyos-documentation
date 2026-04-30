@@ -51,6 +51,7 @@ Match specified destination port.
 Match specified inbound interface.
 ```
 
+
 ### Local Route IPv6
 
 ```{cfgcmd} set policy local-route6 rule \<1-32765\> set table \<1-200|main\>

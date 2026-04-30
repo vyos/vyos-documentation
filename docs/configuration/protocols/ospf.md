@@ -61,6 +61,7 @@ number. However it MUST be unique within the entire OSPF domain to the OSPF
 speaker – bad things will happen if multiple OSPF speakers are configured
 with the same router-ID!
 ```
+
 #### Optional
 
 ```{cfgcmd} set protocols ospf default-information originate [always] [metric \<number\>] [metric-type \<1|2\>] [route-map \<name\>]
@@ -237,7 +238,9 @@ protocol extensions that are used with MPLS-TE; it does not
 support a complete RSVP-TE solution.
 :::
 ```
+
 #### Area Configuration
+
 ```{cfgcmd} set protocols ospf area \<number\> area-type stub
 
 This command specifies the area to be a Stub Area. That is, an area where
@@ -398,6 +401,7 @@ Formally, a virtual link looks like a point-to-point network connecting two
 ABR from one area one of which physically connected to a backbone area.
 This pseudo-network is considered to belong to a backbone area.
 ```
+
 #### Interface Configuration
 
 ```{cfgcmd} set protocols ospf interface \<interface\> area \<x.x.x.x | x\>
@@ -541,6 +545,7 @@ This command disables IGP-LDP sync for this specific interface.
 This command will change the hold down value for IGP-LDP synchronization
 during convergence/interface flap events, but for this interface only.
 ```
+
 #### External Route Summarisation
 
 
@@ -569,7 +574,9 @@ originated with the configured tag.
 This command to ensure not advertise the summary lsa for the matched
 external LSAs.
 ```
+
 #### Graceful Restart
+
 ```{cfgcmd} set protocols ospf graceful-restart [grace-period (1-1800)]
 
 Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
@@ -614,6 +621,7 @@ It helps to support as HELPER only for planned restarts.
 
 By default, it supports both planned and unplanned outages.
 ```
+
 #### Manual Neighbor Configuration
 
 
@@ -644,6 +652,7 @@ This command specifies the router priority value of the nonbroadcast
 neighbor associated with the IP address specified. The default is 0.
 This keyword does not apply to point-to-multipoint interfaces.
 ```
+
 #### Redistribution Configuration
 
 ```{cfgcmd} set protocols ospf redistribute \<route source\>
@@ -695,6 +704,7 @@ This command allows to use route map to filter redistributed routes from
 the given route source. There are five modes available for route source:
 bgp, connected, kernel, rip, static.
 ```
+
 #### Operational Mode Commands
 
 ```{opcmd} show ip ospf neighbor
@@ -970,6 +980,7 @@ Length: 36
 
 This command displays LSAs in MaxAge list.
 ```
+
 #### Examples
 ### Enable OSPF
 
@@ -1035,6 +1046,7 @@ O>* 10.1.1.1/32 [110/1] via 192.168.0.1, eth0, weight 1, 00:00:11
 O   10.1.1.2/32 [110/0] is directly connected, lo, weight 1, 00:00:04
 O   192.168.0.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:18
 ```
+
 ### Enable OSPF with route redistribution of the loopback and default originate:
 
 **Node 1**
@@ -1067,6 +1079,7 @@ set protocols ospf redistribute connected route-map CONNECT
 set policy route-map CONNECT rule 10 action permit
 set policy route-map CONNECT rule 10 match interface lo
 ```
+
 ### Enable OSPF and IGP-LDP synchronization:
 
 **Node 1:**
@@ -1098,6 +1111,7 @@ Node-1@vyos:~$ show ip ospf mpls ldp-sync
   Holddown timer in seconds: 0
   State: Sync achieved
 ```
+
 ### Enable OSPF with Segment Routing (Experimental):
 
 **Node 1**
@@ -1214,6 +1228,7 @@ configured with the same router-ID!
 (ospf-v3-optional)=
 
 #### Optional
+
 ```{cfgcmd} set protocols ospfv3 distance global \<distance\>
 
 This command change distance value of OSPFv3 globally.
@@ -1229,6 +1244,7 @@ routes respectively. The distance range is 1 to 255.
 (ospf-v3-area-configuration)=
 
 #### Area Configuration
+
 ```{cfgcmd} set protocols ospfv3 area \<number\> range \<prefix\>
 
 This command summarizes intra area paths from specified area into one
@@ -1245,6 +1261,7 @@ command makes sense in ABR only.
 (ospf-v3-interface-config)=
 
 #### Interface Configuration
+
 ```{cfgcmd} set protocols ospfv3 interface \<interface\> ipv6 cost \<number\>
 
 This command sets link cost for the specified interface. The cost value is
@@ -1312,6 +1329,7 @@ default value is 1 seconds. The interval range is 3 to 65535.
 (ospf-v3-graceful-restart)=
 
 #### Graceful Restart
+
 ```{cfgcmd} set protocols ospfv3 graceful-restart [grace-period (1-1800)]
 
 Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
@@ -1351,6 +1369,7 @@ By default, it supports both planned and unplanned outages.
 (ospf-v3-redistribution-config)=
 
 #### Redistribution Configuration
+
 ```{cfgcmd} set protocols ospfv3 redistribute \<route source\>
 
 This command redistributes routing information from the given route source
@@ -1367,6 +1386,7 @@ connected, kernel, ripng, static.
 (ospf-v3-op-cmd)=
 
 #### Operational Mode Commands
+
 ```{opcmd} show ipv6 ospfv3 neighbor
 
 This command displays the neighbors status.

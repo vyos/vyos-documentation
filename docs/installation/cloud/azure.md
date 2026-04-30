@@ -48,6 +48,7 @@ ssh -i ~/.ssh/vyos_azure vyos@203.0.113.3
 vyos@vyos-doc-r1:~$
 ```
 
+
 ## Add interface
 
 If your instance was deployed with one **eth0** (`WAN`) interface and you

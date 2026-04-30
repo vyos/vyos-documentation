@@ -23,7 +23,9 @@ monitoring.
 :var0: bonding
 :var1: bond0
 ```
+
 ### Member interfaces
+
 ```{cfgcmd} set interfaces bonding \<interface\> member interface \<member\>
 
 **Add an interface to the bonding group.**
@@ -36,7 +38,9 @@ the following commands:
 set interfaces bonding bond0 member interface eth0
 set interfaces bonding bond0 member interface eth1
 ```
+
 ### Bond modes
+
 ```{cfgcmd} set interfaces bonding \<interface\> mode \<802.3ad | active-backup | broadcast | round-robin | transmit-load-balance | adaptive-load-balance | xor-hash\>
 
 **Configure the bonding mode on the interface. The default mode is**
@@ -257,17 +261,22 @@ bonding interface).
 
 By default, no IP addresses are configured.
 ```
+
 ### {abbr}`VLAN (Virtual Local Area Network)`
+
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: bonding
 :var1: bond0
 ```
+
 ### SPAN port mirroring
+
 ```{cmdincludemd} ../../_include/interface-mirror.txt
 :var0: bonding
 :var1: bond1
 :var2: eth3
 ```
+
 #### EVPN multihoming
 
 
@@ -343,6 +352,7 @@ filtering with local bias.
 :var0: bonding
 :var1: bond0
 ```
+
 ## Example
 
 
@@ -428,6 +438,7 @@ interface Port-channel1
 !
 
 ```
+
 ### Juniper EX Switch configuration
 
 
@@ -473,6 +484,7 @@ set interfaces xe-0/1/0 ether-options 802.3ad ae0
 set interfaces xe-1/1/0 ether-options 802.3ad ae0
 
 ```
+
 ### Aruba/HP configuration
 
 
@@ -493,6 +505,7 @@ vlan 10 tagged Trk1
 vlan 100 tagged Trk1
 
 ```
+
 ### Arista EOS configuration
 
 
@@ -705,6 +718,7 @@ from ever becoming active.
 (operation)=
 
 ## Operation
+
 ```{opcmd} show interfaces bonding
 
 Show brief interface information.

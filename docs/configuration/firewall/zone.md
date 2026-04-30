@@ -112,6 +112,7 @@ by default).
 
 Add a meaningful description.
 ```
+
 ### Defining a Rule-Set
 
 Zone-based firewall rule-sets define traffic from a *Source Zone* to a
@@ -147,6 +148,7 @@ pair.
 set firewall zone DMZ from LAN firewall name LAN-DMZ-v4
 set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
 ```
+
 ### Applying a Default Rule-Set to a Zone
 
 When a destination zone shares a common rule-set for multiple source zones,
@@ -160,7 +162,9 @@ not have a rule-set configured as defined in
 
 ```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall ipv6-name \<ipv6-rule-set-name\>
 ```
+
 ## Operation-mode
+
 ```{opcmd} show firewall zone-policy
 
 Display a basic summary of the zone configuration.

@@ -29,6 +29,7 @@ its MAC address) and configured to run in monitor mode.
 :var1: wlan0
 ```
 
+
 ### System-wide configuration
 
 ```{cfgcmd} set system wireless country-code \<cc\>
@@ -41,6 +42,7 @@ channels and transmit power.
 This option is mandatory in ``access-point`` mode.
 :::
 ```
+
 
 ### Wireless options
 
@@ -156,6 +158,7 @@ Wireless device type for this interface
 :var1: wlan0
 ```
 
+
 #### PPDU
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-ht
@@ -166,6 +169,7 @@ Wireless device type for this interface
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-he
 ```
+
 ### HT (High Throughput) capabilities (802.11n)
 
 > Configuring HT mode options is required when using 802.11n or
@@ -257,7 +261,9 @@ Enable receiving PPDU using STBC (Space Time Block Coding)
 
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
+
 ### VHT (Very High Throughput) capabilities (802.11ac)
+
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
 
@@ -346,7 +352,9 @@ Enable VHT TXOP Power Save Mode
 
 Station supports receiving VHT variant HT Control field
 ```
+
 ### HE (High Efficiency) capabilities (802.11ax)
+
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he antenna-pattern-fixed
 
 Tell the AP that antenna positions are fixed and will not change
@@ -412,6 +420,7 @@ explicitly, but it might help with some WiFi adapters.
 * ``2`` - HE-MCS 0-11
 * ``3`` - HE-MCS is not supported
 ```
+
 ### Wireless options (Station/Client)
 
 The example creates a wireless station (commonly referred to as Wi-Fi client)
@@ -446,6 +455,7 @@ interfaces {
     type station
   }
 ```
+
 ### Security
 
 {abbr}`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in
@@ -511,18 +521,24 @@ interfaces {
     }
 }
 ```
+
 ### VLAN
 #### Regular VLANs (802.1q)
+
 ```{cmdincludemd} /_include/interface-vlan-8021q.txt
 :var0: wireless
 :var1: wlan0
 ```
+
 #### QinQ (802.1ad)
+
 ```{cmdincludemd} /_include/interface-vlan-8021ad.txt
 :var0: wireless
 :var1: wlan0
 ```
+
 ## Operation
+
 ```{opcmd} show interfaces wireless info
 ```
 
@@ -646,6 +662,7 @@ Address            SSID                          Channel  Signal (dbm)
 00:53:7c:99:ce:76  Vodafone Hotspot                    1  -86.00
 00:53:44:46:d2:0b  Vodafone Hotspot                    1  -87.00
 ```
+
 ## Examples
 
 The following example creates a WAP. When configuring multiple WAP interfaces,
@@ -801,6 +818,7 @@ interfaces {
     }
 }
 ```
+
 #### Example configuration: Wi-Fi 6E at 6 GHz
 
 You may expect real throughput between 50 MB/s and 150 MB/s, depending on

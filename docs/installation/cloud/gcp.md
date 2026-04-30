@@ -55,6 +55,7 @@ ssh -i ~/.ssh/vyos_gcp vyos@203.0.113.3
 vyos@vyos-r1-vm:~$
 ```
 
+
 ## References
 
 <https://console.cloud.google.com/>

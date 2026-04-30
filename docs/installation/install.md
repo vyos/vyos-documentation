@@ -199,6 +199,7 @@ $ umount /dev/sdX*
 
 ```none
 # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
+
 ```
 
 5. Wait for the operation to complete (bytes copied). On some systems, this
@@ -395,6 +396,7 @@ LABEL VyOS123
  KERNEL vmlinuz
  APPEND initrd=initrd.img-4.19.54-amd64-vyos boot=live nopersistence noautologin nonetworking fetch=http://address:8000/filesystem.squashfs
 ```
+
 
 #### Step 3: HTTP
 

@@ -52,6 +52,7 @@ Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
 
+
 ## Configuring RADIUS authentication
 
 To enable RADIUS based authentication, the authentication mode needs to be
@@ -265,6 +266,7 @@ set vpn pptp remote-access client-ipv6-pool IPv6-POOL prefix '2001:db8:8002::/48
 set vpn pptp remote-access default-ipv6-pool IPv6-POOL
 ```
 
+
 ### IPv6 Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-accept-peer-interface-id
@@ -289,6 +291,7 @@ Specifies peer interface identifier for IPv6. By default is fixed.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 
+
 ## Scripting
 
 ```{cfgcmd} set vpn pptp remote-access extended-scripts on-change \<path_to_script\>
@@ -310,6 +313,7 @@ Script to run before session interface comes up
 
 Script to run when session interface is completely configured and started
 ```
+
 
 ## Advanced Options
 
@@ -341,12 +345,14 @@ Require the peer to authenticate itself using one of the following protocols:
 pap, chap, mschap, mschap-v2.
 ```
 
+
 ### Client IP Pool Advanced Options
 
 ```{cfgcmd} set vpn pptp remote-access client-ip-pool \<POOL-NAME\> next-pool \<NEXT-POOL-NAME\>
 
 Use this command to define the next address pool name.
 ```
+
 
 ### PPP Advanced Options
 
@@ -419,6 +425,7 @@ attribute.
 Defines preferred MRU. By default is not defined.
 ```
 
+
 ### Global Advanced options
 
 ```{cfgcmd} set vpn pptp remote-access description \<description\>
@@ -473,6 +480,7 @@ Enable SNMP
 Windows Internet Name Service (WINS) servers propagated to client
 ```
 
+
 ## Monitoring
 
 ```{opcmd} show pptp-server sessions
@@ -513,6 +521,7 @@ pptp:
   starting: 0
   active: 1
 ```
+
 
 ## Troubleshooting
 

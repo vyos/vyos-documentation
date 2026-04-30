@@ -28,6 +28,7 @@ This is an optional command because the event handler will be
 automatically created after any of the next commands.
 ```
 
+
 ### 2. Add regex to the script
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> filter pattern \<regex\>
@@ -41,6 +42,7 @@ string matches the pattern.
 :::
 ```
 
+
 ### 3. Add a full path to the script
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> script path \<path to script\>
@@ -48,6 +50,7 @@ string matches the pattern.
 This is a mandatory command. Sets the full path to the script.
 The script file must be executable.
 ```
+
 
 ### 4. Add optional parameters
 
@@ -77,6 +80,7 @@ We don't recommend to use arguments. Using environments
 is more preferable.
 :::
 ```
+
 
 ## Example
 

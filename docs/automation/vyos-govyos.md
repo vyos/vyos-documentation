@@ -23,6 +23,7 @@ To install Go-VyOS, run:
 go install "github.com/ganawaj/go-vyos/vyos"
 ```
 
+
 ## Getting started
 
 ### Import and disable TLS verification
@@ -31,6 +32,7 @@ go install "github.com/ganawaj/go-vyos/vyos"
 import "github.com/ganawaj/go-vyos/vyos"
 client := vyos.NewClient(nil).WithToken("AUTH_KEY").WithURL("https://192.168.0.1").Insecure()
 ```
+
 
 ### Initialize a VyDevice object
 
@@ -54,6 +56,7 @@ if verify_ssl == "false" {
 }
 ```
 
+
 ## Use Go-VyOS
 
 ### Configure, then set
@@ -67,6 +70,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
+
 ### Show a single object value
 
 ```none
@@ -79,6 +83,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
+
 ### Configure, then show object
 
 ```none
@@ -90,6 +95,7 @@ if err != nil {
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
+
 
 ### Configure, then show multivalue object
 
@@ -106,6 +112,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
+
 ### Configure, then delete object
 
 ```none
@@ -116,6 +123,7 @@ if err != nil {
 
 fmt.Println(out.Success)
 ```
+
 
 ### Configure, then save
 
@@ -129,6 +137,7 @@ if err != nil {
 fmt.Println(out.Success)
 ```
 
+
 ### Configure, then save file
 
 ```none
@@ -140,6 +149,7 @@ if err != nil {
 
 fmt.Println(out.Success)
 ```
+
 
 ### Show object
 
@@ -153,6 +163,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
+
 ### Generate object
 
 ```none
@@ -165,6 +176,7 @@ fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
 
+
 ### Reset object
 
 ```none
@@ -176,6 +188,7 @@ if err != nil {
 fmt.Println(out.Success)
 fmt.Printf("Data: %v\n", out.Data)
 ```
+
 
 ### Configure, then load file
 

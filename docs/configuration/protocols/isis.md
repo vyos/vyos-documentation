@@ -66,7 +66,9 @@ This command enables IS-IS on this interface, and allows for
 adjacency to occur. Note that the name of IS-IS instance must be
 the same as the one used to configure the IS-IS process.
 ```
+
 #### IS-IS Global Configuration
+
 ```{cfgcmd} set protocols isis dynamic-hostname
 
 This command enables support for dynamic hostname TLV. Dynamic hostname
@@ -142,7 +144,9 @@ Loopbacks are exempt.
 This command will change the hold down value globally for IGP-LDP
 synchronization during convergence/interface flap events.
 ```
+
 #### Interface Configuration
+
 ```{cfgcmd} set protocols isis interface \<interface\> circuit-type \<level-1|level-1-2|level-2-only\>
 
 This command specifies circuit type for interface:
@@ -256,7 +260,9 @@ When node protection is used, option link-fallback enables the computation
 and use of link-protecting LFAs for destinations unprotected by node
 protection.
 ```
+
 #### Route Redistribution
+
 ```{cfgcmd} set protocols isis redistribute ipv4 \<route source\> level-1
 
 This command redistributes routing information from the given route source
@@ -284,7 +290,9 @@ This command allows to use route map to filter redistributed routes from
 the given route source. There are six modes available for route source:
 bgp, connected, kernel, ospf, rip, static.
 ```
+
 #### Timers
+
 ```{cfgcmd} set protocols isis lsp-gen-interval \<seconds\>
 
 This command sets minimum interval in seconds between regenerating same
@@ -335,7 +343,9 @@ This commands specifies the Finite State Machine (FSM) intended to
 control the timing of the execution of SPF calculations in response
 to IGP events. The process described in {rfc}`8405`.
 ```
+
 #### Loop Free Alternate (LFA)
+
 ```{cfgcmd} set protocols isis fast-reroute lfa remote prefix-list \<name\> \<level-1|level-2\>
 
 This command enables IP fast re-routing that is part of {rfc}`5286`.
@@ -359,7 +369,9 @@ The lower index numbers will be processed first.
 This command will limit LFA backup computation up to the specified
 prefix priority.
 ```
+
 #### Segment Routing over IPv6 (SRv6)
+
 ```{cfgcmd} set protocols isis segment-routing srv6 interface \<interface\>
 
 The dummy interface used
@@ -426,6 +438,7 @@ If no value is advertised, the supported value is 0.
 
 Reference: {rfc}`9352`
 ```
+
 ## Examples
 
 ### Enable IS-IS
@@ -495,6 +508,7 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
 I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:02:21
 I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, weight 1, 00:02:21
 ```
+
 ### Enable IS-IS and redistribute routes not natively in IS-IS
 
 **Node 1:**
@@ -534,6 +548,7 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
 
 I   203.0.113.0/24 [115/10] via 192.0.2.1, eth1, 00:03:42
 ```
+
 ### Enable IS-IS and IGP-LDP synchronization
 
 **Node 1:**
@@ -565,6 +580,7 @@ eth0
   holddown timer in seconds: 0
   State: Sync achieved
 ```
+
 ### Enable IS-IS with Segment Routing (Experimental)
 
 **Node 1:**
@@ -646,6 +662,7 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
 I   192.0.2.0/24 [115/20] via 192.0.2.1, eth1 inactive, weight 1, 00:07:46
 I>* 192.168.255.255/32 [115/20] via 192.0.2.1, eth1, label IPv4 Explicit Null, weight 1, 00:03:43
 ```
+
 ### Enable IS-IS with Segment Routing over IPv6 (Experimental)
 
 **Node 1:**
@@ -681,6 +698,7 @@ set protocols isis net '49.0001.1921.6825.5254.00'
 set protocols isis segment-routing srv6 locator MAIN
 set protocols isis segment-routing srv6 interface dum6
 ```
+
 ### Enable IS-IS with Segment Routing over IPv6 (uSID) (Experimental)
 
 **Node 1:**

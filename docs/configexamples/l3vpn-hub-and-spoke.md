@@ -53,6 +53,7 @@ General information can be found in the
 :width: 80%
 ```
 
+
 ## How does it work?
 
 As we know the main assumption of L3VPN “Hub and Spoke” is, that the
@@ -293,6 +294,7 @@ set protocols ospf parameters abr-type 'cisco'
 set protocols ospf parameters router-id '10.0.0.2'
 ```
 
+
 ### Step-2: Configuring iBGP for L3VPN control-plane
 
 At this step we are going to enable iBGP protocol on MPLS nodes and
@@ -374,6 +376,7 @@ set protocols bgp peer-group RR_VPNv4 remote-as '65001'
 set protocols bgp peer-group RR_VPNv4 update-source 'dum10'
 ```
 
+
 ### Step-3: Configuring L3VPN VRFs on PE nodes
 
 This section provides configuration steps for setting up VRFs on our
@@ -442,6 +445,7 @@ set interfaces ethernet eth3 address '10.60.60.1/24'
 set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 ```
 
+
 ### Step-4: Configuring CE nodes
 
 Dynamic routing used between CE and PE nodes and eBGP peering
@@ -500,6 +504,7 @@ set protocols bgp neighbor 10.60.60.1 update-source 'eth0'
 set protocols bgp parameters log-neighbor-changes
 set protocols bgp parameters router-id '10.60.60.2'
 ```
+
 
 ### Step-5: Verification
 

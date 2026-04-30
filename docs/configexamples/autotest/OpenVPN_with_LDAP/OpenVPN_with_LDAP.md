@@ -16,6 +16,7 @@ Topology consists of:
 :alt: OpenVPN with LDAP topology image
 ```
 
+
 ## Active Directory on Windows server
 
 The lab assumes a full running Active Directory on the Windows Server.
@@ -32,6 +33,7 @@ Install-ADDSForest -DomainName "vyos.local" -DomainNetBiosName "VYOS" -InstallDn
 New-ADUser binduser -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
 New-ADUser user01 -AccountPassword(Read-Host -AsSecureString "Input Password") -Enabled $true
 ```
+
 
 ## Configure VyOS as OpenVPN Server
 
@@ -89,6 +91,7 @@ OpenVPN Server configuration can be carried out.
 ```{literalinclude} _include/ovpn-server.conf
 :language: none
 ```
+
 
 ## Client configuration
 
@@ -248,6 +251,7 @@ imfwWKrYNYhESN7A5/hWcrNUhE4PI+Pjd74npimqs5TDSst2Jc6DiahdaZ6JNNzp
 </key>
 ```
 
+
 ### Configure VyOS as client
 
 ```none
@@ -263,6 +267,7 @@ set interfaces openvpn vtun10 remote-port '1194'
 set interfaces openvpn vtun10 tls ca-certificate 'OVPN-CA'
 set interfaces openvpn vtun10 tls certificate 'CLIENT'
 ```
+
 
 ## Monitoring
 

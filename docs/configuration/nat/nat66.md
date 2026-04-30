@@ -80,6 +80,7 @@ set nat66 source rule 1 source prefix 'fc01::/64'
 set nat66 source rule 1 translation address 'fc00::/64'
 ```
 
+
 #### Destination Prefix
 
 For the {ref}`destination-nat66` rule, the destination address of
@@ -108,6 +109,7 @@ set nat66 destination rule 1 inbound-interface name 'eth0'
 set nat66 destination rule 1 destination group address-group ADR-INSIDE-v6
 set nat66 destination rule 1 translation address 'fc01::/64'
 ```
+
 
 ## Configuration Examples
 

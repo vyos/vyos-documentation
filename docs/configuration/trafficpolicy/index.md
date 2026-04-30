@@ -65,6 +65,7 @@ gibps (1024^3*8)       gibibyte (GiB) per second
 tibps (1024^4*8)       tebibyte (TiB) per second
 ```
 
+
 #### Suffixes
 
 A *bit* is written as **bit**,
@@ -383,6 +384,7 @@ unique name for this policy and the size of the queue by setting the
 number of packets it can contain (maximum 4294967295).
 
 ```
+
 #### Fair Queue
 
 | **Queueing discipline:** SFQ (Stochastic Fairness Queuing).
@@ -544,6 +546,7 @@ define the acceptable minimum standing/persistent queue delay. This
 minimum delay is identified by tracking the local minimum queue delay
 that packets experience (default: 5ms).
 ```
+
 ### Example
 
 A simple example of an FQ-CoDel policy working inside a Shaper one.
@@ -553,6 +556,7 @@ set qos policy shaper FQ-CODEL-SHAPER bandwidth 2gbit
 set qos policy shaper FQ-CODEL-SHAPER default bandwidth 100%
 set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 ```
+
 #### Limiter
 
 | **Queueing discipline:** Ingress policer.
@@ -625,6 +629,7 @@ which the rule is evaluated (the lower the number, the higher the
 priority).
 
 ```
+
 #### Network Emulator
 
 | **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
@@ -692,6 +697,7 @@ Use this command to define the length of the queue of your Network
 Emulator policy. Set the policy name and the maximum number of
 packets (1-4294967295) the queue may hold queued at a time.
 ```
+
 #### Priority Queue
 
 | **Queueing discipline:** PRIO.
@@ -1197,6 +1203,7 @@ over source and destination addresses and also over individual flows.
 Defines the round-trip time used for active queue management (AQM) in
 milliseconds. The default value is 100.
 ```
+
 ### Applying a traffic policy
 
 Once a traffic-policy is created, you can apply it to an interface:

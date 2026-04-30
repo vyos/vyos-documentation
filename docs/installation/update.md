@@ -52,6 +52,7 @@ from the VyOS `1.2.1` image, run:
 copy file 1.2.1://config/config.boot to /tmp/config.boot.1.2.1
 ```
 
+
 #### Example
 
 ```none

@@ -8,6 +8,7 @@ lastproofread: '2026-02-27'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP Memory Configuration
 
 VPP heavily relies on hugepages for its memory management. Hugepages
@@ -78,6 +79,7 @@ buffers, main heap is for routing tables.
 :::
 
 ### Common configurations
+
 ```none
 # Reduce for memory-constrained systems
 set vpp settings physmem max-size 4G
@@ -85,6 +87,7 @@ set vpp settings physmem max-size 4G
 # Increase for high-throughput environments
 set vpp settings physmem max-size 32G
 ```
+
 ## Stats Memory Configuration
 
 VPP uses a dedicated statistics memory segment to store runtime

@@ -15,6 +15,7 @@ test, in each site.
 :alt: Ansible Example topology image
 ```
 
+
 ## Configuration
 
 Set the local subnet on eth2 and the public ip address eth1 on each site.
@@ -74,6 +75,7 @@ Branch
 :language: none
 :lines: 14
 ```
+
 
 ## Testing and debugging
 

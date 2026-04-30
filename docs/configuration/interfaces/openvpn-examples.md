@@ -111,6 +111,7 @@ set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>      
 set interfaces openvpn vtun1 tls role passive
 ```
 
+
 ## Set up pre-shared keys
 
 Before VyOS 1.4, site-to-site OpenVPN without PKI required pre-shared keys. This option is still available but is deprecated and will be removed in future releases. If you need to set up a tunnel to an older VyOS version or a system with older OpenVPN, you still need to use pre-shared keys.
@@ -145,6 +146,7 @@ Finally, configure the key in your OpenVPN interface settings:
 ``` none
 set interfaces openvpn vtun1 shared-secret-key s2s
 ```
+
 
 ## Set up firewall exceptions
 
@@ -201,6 +203,7 @@ Client CN    Remote Host        Tunnel IP    Local Host    TX bytes    RX bytes 
 -----------  -----------------  -----------  ------------  ----------  ----------  -----------------
 N/A          10.110.12.54:1195  N/A          N/A           504.0 B     656.0 B     N/A
 ```
+
 
 ### Server-client
 
@@ -359,6 +362,7 @@ OpenVPN does not automatically create kernel routes for client subnets when clie
 set protocols static route 10.23.0.0/20 interface vtun10
 ```
 
+
 ## Set up OpenVPN client
 
 VyOS can operate not only as an OpenVPN site-to-site peer or a server for multiple clients, but also as an OpenVPN client. Any VyOS OpenVPN interface can be configured to connect to another VyOS or third-party OpenVPN server.
@@ -377,6 +381,7 @@ set interfaces openvpn vtun10 tls ca-certificate ca-1
 set interfaces openvpn vtun10 tls certificate client1
 ```
 
+
 ## Verification
 
 Check the tunnel status:
@@ -390,6 +395,7 @@ Client CN    Remote Host         Tunnel IP    Local Host        TX bytes    RX b
 -----------  ------------------  -----------  ----------------  ----------  ----------  -------------------
 client1      172.16.12.54:33166  10.23.1.10   172.18.201.10:1194  3.4 KB      3.4 KB      2024-06-11 12:07:25
 ```
+
 
 ### Server bridge
 
@@ -432,6 +438,7 @@ set interfaces openvpn vtun10 tls ca-certificate 'ca-1'
 set interfaces openvpn vtun10 tls certificate 'client-1'
 ```
 
+
 ### Server LDAP authentication
 
 ## LDAP
@@ -468,6 +475,7 @@ SearchFilter    "(&(uid=%u)(objectClass=shadowAccount))"
 RequireGroup    false
 </Authorization>
 ```
+
 
 ### Active Directory
 
@@ -645,6 +653,7 @@ else
     exit 1
 fi
 ```
+
 
 ## Client configuration
 

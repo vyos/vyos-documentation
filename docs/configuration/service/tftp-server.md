@@ -42,6 +42,7 @@ Configuring a listen-address is essential for the service to work.
 Optional, if you want to enable uploads, else TFTP server will act as a
 read-only server.
 ```
+
 ### Example
 
 Provide TFTP server listening on both IPv4 and IPv6 addresses `192.0.2.1` and
@@ -58,6 +59,7 @@ vyos@vyos# show service
     listen-address 192.0.2.1
  }
 ```
+
 ### Verification
 
 Client:

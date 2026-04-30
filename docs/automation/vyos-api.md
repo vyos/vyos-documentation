@@ -34,6 +34,7 @@ response = requests.request("POST", url, headers=headers, data=payload)
 print(response.text)
 ```
 
+
 ## API endpoints
 
 ### /info
@@ -148,6 +149,7 @@ response
 }
 ```
 
+
 ### /retrieve
 
 The `/retrieve` endpoint returns either specific parts or the entire
@@ -242,6 +244,7 @@ response:
 }
 ```
 
+
 ### /reset
 
 The `/reset` endpoint runs the `reset` command.
@@ -258,6 +261,7 @@ response:
   "error": null
 }
 ```
+
 
 ### /reboot
 
@@ -276,6 +280,7 @@ response:
 }
 ```
 
+
 ### /poweroff
 
 To power off the system, use the `/poweroff` endpoint.
@@ -292,6 +297,7 @@ response:
   "error": null
 }
 ```
+
 
 ### /image
 
@@ -329,6 +335,7 @@ response:
 }
 ```
 
+
 ### /show
 
 The `/show` endpoint runs operational mode commands and returns the resulting
@@ -352,6 +359,7 @@ response:
 }
 ```
 
+
 ### /generate
 
 The `/generate` endpoint runs a `generate` command.
@@ -369,6 +377,7 @@ response:
    "error": null
 }
 ```
+
 
 ### /configure
 
@@ -423,6 +432,7 @@ response:
    "error": null
 }
 ```
+
 
 ### /config-file
 
@@ -505,6 +515,7 @@ response:
    "error": null
 }
 ```
+
 
 ## Commit-confirm
 

@@ -18,6 +18,7 @@ configuration defines the load balancing method and specifies the backend
 servers.
 
 ### Service
+
 ```{cfgcmd} set load-balancing haproxy service \<name\> listen-address \<address\>
 
 Set the IP address for the service to bind to. By default, the service
@@ -73,6 +74,7 @@ Set the compression algorithm to be used when compressing HTTP responses.
 Set the list of HTTP response MIME types which haproxy will attempt to
 compress, if received uncompressed from backend server.
 ```
+
 #### Rules
 
 Rules control and route incoming traffic to specific backends based on
@@ -112,7 +114,9 @@ Assign a specific backend to a rule
 
 Redirect URL to a new location.
 ```
+
 ### Backend
+
 ```{cfgcmd} set load-balancing haproxy backend \<name\> balance \<balance\>
 
 Specify the load balancing algorithm for distributing requests among
@@ -205,6 +209,7 @@ Value range 1-3600 seconds.
 Set the maximum inactivity time on the server side.
 Value range 1-3600 seconds.
 ```
+
 ### Global
 
 Global configuration parameters:
@@ -261,6 +266,7 @@ Value range 1-3600 seconds. Default is 10 seconds.
 Set the maximum inactivity time on the server side.
 Value range 1-3600 seconds. Default is 50 seconds.
 ```
+
 ## Health checks
 
 
@@ -298,6 +304,7 @@ Some possible examples are:
   - ``status 200-399`` Expecting a non-failure response code
   - ``string success`` Expecting the string success in the response body
 ```
+
 ### TCP checks
 
 Configure health checks for TCP mode backends. You can configure protocol-aware
@@ -352,6 +359,7 @@ set load-balancing haproxy backend bk-01 server srv01 port '8881'
 set load-balancing haproxy backend bk-01 server srv02 address '192.0.2.12'
 set load-balancing haproxy backend bk-01 server srv02 port '8882'
 ```
+
 ### Balancing based on domain name
 
 The following configuration demonstrates how to use VyOS
@@ -384,6 +392,7 @@ set load-balancing haproxy backend bk-api-02 mode 'tcp'
 set load-balancing haproxy backend bk-api-02 server api01 address '127.0.0.2'
 set load-balancing haproxy backend bk-api-02 server api01 port '4432'
 ```
+
 ### Terminate SSL
 
 The following configuration terminates SSL on the router.
@@ -431,6 +440,7 @@ set load-balancing haproxy backend bk-default server sr01 port '80'
 set load-balancing haproxy global-parameters max-connections '4000'
 set load-balancing haproxy global-parameters tls-version-min '1.3'
 ```
+
 ### SSL Bridging
 
 The following configuration terminates incoming HTTPS traffic on the router,
@@ -460,6 +470,7 @@ set load-balancing haproxy backend bk-bridge-ssl ssl ca-certificate 'cacert'
 set load-balancing haproxy backend bk-bridge-ssl server sr01 address '192.0.2.23'
 set load-balancing haproxy backend bk-bridge-ssl server sr01 port '443'
 ```
+
 ### Balancing with HTTP health checks
 
 This configuration enables HTTP health checks for backend servers.

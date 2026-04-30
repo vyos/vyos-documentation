@@ -41,6 +41,7 @@ qat_dev0 - type: c3xxx,  inst_id: 0,  node_id: 0,  bsf: 0000:01:00.0,  #accel: 3
 :::
 ```
 
+
 ### Operation Mode
 
 ```{opcmd} show system acceleration qat device \<device\> config
@@ -59,6 +60,7 @@ Get an overview over the encryption counters.
 
 Show binded qat device interrupts to certain core.
 ```
+
 
 ### Example
 

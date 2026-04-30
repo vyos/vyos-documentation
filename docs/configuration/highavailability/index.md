@@ -47,6 +47,7 @@ Name        Interface      VRID  State    Last Transition
 Foo         eth1             10  MASTER   2s
 ```
 
+
 ## IPv6 support
 
 The `address` parameter can be either an IPv4 or IPv6 address, but you can
@@ -64,6 +65,7 @@ set high-availability vrrp group Foo address 192.0.2.1/24
 set high-availability vrrp group Foo address 203.0.113.22/24 interface eth2
 set high-availability vrrp group Foo address 198.51.100.33/24 interface eth3
 ```
+
 
 ## Disabling a VRRP group
 
@@ -88,6 +90,7 @@ set high-availability vrrp group Foo excluded-address '203.0.113.254/24'
 set high-availability vrrp group Foo excluded-address '2001:db8:aa::1/64'
 set high-availability vrrp group Foo excluded-address '2001:db8:22::1/64'
 ```
+
 
 ## Setting VRRP group priority
 
@@ -161,6 +164,7 @@ seconds, use:
 set high-availability vrrp group Foo preempt-delay 180
 ```
 
+
 ## Track
 
 Track option to track non VRRP interface states. VRRP changes status to
@@ -177,6 +181,7 @@ Ignore VRRP main interface faults
 set high-availability vrrp group Foo track exclude-vrrp-interface
 ```
 
+
 ## Unicast VRRP
 
 By default VRRP uses multicast packets. If your network does not support
@@ -187,6 +192,7 @@ instead.
 set high-availability vrrp group Foo peer-address 192.0.2.10
 set high-availability vrrp group Foo hello-source-address 192.0.2.15
 ```
+
 
 ## rfc3768-compatibility
 
@@ -228,6 +234,7 @@ is needed.
 This option specifies a delay in seconds before vrrp instances start up
 after keepalived starts.
 ```
+
 
 ## Gratuitous ARP
 
@@ -285,12 +292,15 @@ MASTER.
 
 5 if not defined.
 ```
+
 ## Version
+
 ```{cfgcmd} set high-availability vrrp global-parameters version 2|3
 
 Set the default VRRP version to use. This defaults to 2, but IPv6 instances
 will always use version 3.
 ```
+
 ## Scripting
 
 VRRP functionality can be extended with scripts. VyOS supports two kinds of
@@ -340,6 +350,7 @@ set high-availability vrrp sync-group Bar health-check script /config/scripts/vr
 set high-availability vrrp sync-group Bar health-check interval 60
 set high-availability vrrp sync-group Bar health-check failure-count 3
 ```
+
 ### Transition scripts
 
 Transition scripts can help you implement various fixups, such as starting and
@@ -357,6 +368,7 @@ set high-availability vrrp group Foo transition-script master "/config/scripts/v
 To know more about scripting, check the {ref}`command-scripting` section.
 
 ## Virtual-server
+
 ```{include} /_include/need_improvement.txt
 ```
 
@@ -377,6 +389,7 @@ Load-balancing schedule algorithm:
 ```none
 set high-availability virtual-server 203.0.113.1 algorithm 'least-connection'
 ```
+
 ### Forward method
 
 - NAT
@@ -386,6 +399,7 @@ set high-availability virtual-server 203.0.113.1 algorithm 'least-connection'
 ```none
 set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 ```
+
 ### Health-check
 
 Custom health-check script allows checking real-server availability
@@ -393,6 +407,7 @@ Custom health-check script allows checking real-server availability
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
 ```
+
 ### Fwmark
 
 Firewall mark. It possible to loadbalancing traffic based on `fwmark` value
@@ -400,6 +415,7 @@ Firewall mark. It possible to loadbalancing traffic based on `fwmark` value
 ```none
 set high-availability virtual-server 203.0.113.1 fwmark '111'
 ```
+
 ### Real server
 
 Real server IP address and port
@@ -407,6 +423,7 @@ Real server IP address and port
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
 ```
+
 ### Example
 
 Virtual-server can be configured with VRRP virtual address or without VRRP.

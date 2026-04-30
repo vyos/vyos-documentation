@@ -41,6 +41,7 @@ server.
 sudo certbot certonly --standalone --preferred-challenges http -d <domain name>
 ```
 
+
 ### Server Configuration
 
 ```none
@@ -53,6 +54,7 @@ set vpn openconnect ssl ca-certificate <pki-ca-name>
 set vpn openconnect ssl certificate <pki-cert-name>
 set vpn openconnect ssl passphrase <pki-password>
 ```
+
 
 ### 2FA OTP support
 
@@ -76,6 +78,7 @@ For generating an OTP key in VyOS, you can use the CLI command
 generate openconnect username <user> otp-key hotp-time
 ```
 
+
 ### User Certificate Authentication
 
 You can configure users to be authenticated by certificate by setting
@@ -94,6 +97,7 @@ set vpn openconnect authentication mode certificate
 set vpn openconnect authentication mode certificate user-identifier-field cn
 set vpn openconnect ssl ca-certificate <cert>
 ```
+
 
 ## Verification
 
@@ -163,6 +167,7 @@ Done
 [edit]
 ```
 
+
 ### Openconnect Configuration
 
 Simple setup with one user added and password authentication:
@@ -182,6 +187,7 @@ To enable the HTTP security headers in the configuration file, use the command:
 ```none
 set vpn openconnect http-security-headers
 ```
+
 
 ### Adding a 2FA with an OTP-key
 
@@ -240,6 +246,7 @@ To display the configured OTP user settings, use the command:
 ```none
 show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
 ```
+
 
 ### Identity Based Configuration
 

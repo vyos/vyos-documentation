@@ -340,6 +340,7 @@ Define the number of packets to queue inside the kernel before sending them
 to userspace. Only applicable when rule logging is enabled and log group is
 defined.
 ```
+
 ### Firewall Description
 
 
@@ -363,6 +364,7 @@ Provide a rule-set description to a custom firewall chain.
 
 Provide a description for each rule.
 ```
+
 ### Rule Status
 
 
@@ -382,6 +384,7 @@ rule rather than remove it.
 
 Command for disabling a rule but keep it in the configuration.
 ```
+
 ### Matching criteria
 
 
@@ -1190,6 +1193,7 @@ and ``lt`` for less than.
 Match when the specified number of connections occur within the specified
 time period. Use these criteria to block brute-force attempts.
 ```
+
 ### Packet Modifications
 
 
@@ -1247,6 +1251,7 @@ Set hop limit value.
 
 Set connection mark value.
 ```
+
 ## Synproxy
 
 
@@ -1267,6 +1272,7 @@ Synproxy connections
 
  Set the window scale factor for TCP window scaling.
 ```
+
 ### Example synproxy
 
 
@@ -1310,10 +1316,12 @@ set firewall ipv6 input filter rule 1000 action 'drop'
 set firewall ipv6 input filter rule 1000 state invalid
 
 ```
+
 ## Operation-mode Firewall
 
 
 ### Rule-set overview
+
 ```{opcmd} show firewall
 
 Show a basic firewall overview for all rule-sets, not only for IPv6:
@@ -1489,7 +1497,9 @@ WAN_IN-30
 
 Show statistics of all rule-sets since the last boot.
 ```
+
 ### Show Firewall log
+
 ```{opcmd} show log firewall
 ```
 
@@ -1513,7 +1523,9 @@ Show statistics of all rule-sets since the last boot.
 Show firewall logs for all firewalls, all IPv6 firewalls, specific hooks,
 specific priorities, specific custom chains, or specific rule-sets.
 ```
+
 ### Example Partial Config
+
 ```none
 firewall {
     ipv6 {
@@ -1547,7 +1559,9 @@ firewall {
     }
 }
 ```
+
 ### Update geoip database
+
 ```{opcmd} update geoip
 
 Command used to update GeoIP database and firewall sets.

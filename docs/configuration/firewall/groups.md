@@ -38,6 +38,7 @@ set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
 
 Provide an IPv4 or IPv6 address group description.
 ```
+
 ### Remote Groups
 
 A **remote-group** uses a URL that hosts a newline-delimited list of IPv4
@@ -71,6 +72,7 @@ acceptable formats that VyOS parses correctly:
 2001:db8:cafe::/48
 2001:db8:cafe::1-2001:db8:cafe::ffff
 ```
+
 ### Network Groups
 
 **Network groups** accept IP networks in CIDR notation. You can add specific
@@ -98,6 +100,7 @@ set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
 
 Provide an IPv4 or IPv6 network group description.
 ```
+
 ### Interface Groups
 
 An **interface group** represents a collection of interfaces.
@@ -118,6 +121,7 @@ set firewall group interface-group LAN interface eth3*
 
 Provide an interface group description.
 ```
+
 ### Port Groups
 
 A **port group** represents only port numbers, not the protocol. You can
@@ -141,6 +145,7 @@ set firewall group port-group PORT-TCP-SERVER1 port 5000-5010
 
 Provide a port group description.
 ```
+
 ### MAC Groups
 
 A **mac group** represents a collection of mac addresses.
@@ -159,6 +164,7 @@ set firewall group mac-group MAC-G01 mac-address 4c:d5:77:c0:19:81
 
 Provide a MAC group description.
 ```
+
 ### Domain Groups
 
 A **domain group** represents a collection of domains.
@@ -176,6 +182,7 @@ set firewall group domain-group DOM address example.com
 
 Provide a domain group description.
 ```
+
 ### Dynamic Groups
 
 Firewall dynamic groups differ from other groups because you can use them as
@@ -201,6 +208,7 @@ Add description to firewall groups:
 
 ```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\> description \<text\>
 ```
+
 #### Adding elements to Dynamic Firewall Groups
 
 After you define dynamic firewall groups, use them in firewall rules to
@@ -263,6 +271,7 @@ Possible completions:
 <number>h            Timeout value in hours
 <number>d            Timeout value in days
 ```
+
 #### Using Dynamic Firewall Groups
 
 Like other firewall groups, you can use dynamic firewall groups in firewall
@@ -272,6 +281,7 @@ rules as matching options. For example:
 set firewall ipv4 input filter rule 10 source group dynamic-address-group FOO
 set firewall ipv4 input filter rule 10 destination group dynamic-address-group BAR
 ```
+
 ## Examples
 
 ### General example
@@ -311,6 +321,7 @@ set policy route PBR rule 201 destination group port-group PORT-SERVERS
 set policy route PBR rule 201 protocol tcp
 set policy route PBR rule 201 set table 15
 ```
+
 ### Port knocking example
 
 You can use dynamic firewall groups with port knocking to secure access to
@@ -423,6 +434,7 @@ With this configuration, to gain SSH access to the router, the user must:
    configured).
 
 ## Operation-mode
+
 ```{opcmd} show firewall group
 ```
 

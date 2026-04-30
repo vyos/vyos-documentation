@@ -126,6 +126,7 @@ periodically check if 23:59:59 and 23:59:60 are valid times in the
 timezone. This normally works with the right/UTC timezone which is the
 default
 ```
+
 ## Hardware Timestamping of NTP Packets
 
 

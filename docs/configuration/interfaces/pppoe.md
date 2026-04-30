@@ -34,6 +34,7 @@ It's often used for connecting ISP clients to a broadband access server.
 :var1: pppoe0
 ```
 
+
 ### PPPoE options
 
 ```{cfgcmd} set interfaces pppoe \<interface\> access-concentrator \<name\>
@@ -215,6 +216,7 @@ DDoS attacks. For asymmetric or other complex routing scenarios, use ``loose``
 mode.
 ```
 
+
 #### IPv6
 
 ```{cfgcmd} set interfaces pppoe \<interface\> ipv6 address autoconf
@@ -253,6 +255,7 @@ disabled on it.
 :var1: pppoe0
 ```
 
+
 ## Operation
 
 ```{opcmd} show interfaces pppoe \<interface\>
@@ -284,6 +287,7 @@ backlog 0b 0p requeues 0
 :::
 ```
 
+
 ### Connect/disconnect
 
 ```{opcmd} disconnect interface \<interface\>
@@ -295,6 +299,7 @@ Disconnect the specified interface.
 
 Initiate a session on the specified interface.
 ```
+
 
 ## Example
 
@@ -334,6 +339,7 @@ set firewall ipv4 input filter rule 10 inbound-interface name 'pppoe0'
 set firewall ipv4 forward filter rule 10 inbound-interface name 'pppoe0'
 ```
 
+
 ### PPPoE over VLAN
 
 Some ISPs require PPPoE connections to be
@@ -348,6 +354,7 @@ set interfaces pppoe pppoe0 authentication username 'userid'
 set interfaces pppoe pppoe0 authentication password 'secret'
 set interfaces pppoe pppoe0 source-interface 'eth0.7'
 ```
+
 
 #### IPv6 DHCPv6 prefix delegation
 

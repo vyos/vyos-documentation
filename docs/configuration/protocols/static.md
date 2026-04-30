@@ -39,6 +39,7 @@ installed into the kernel.
 :::
 ```
 
+
 ### IPv4 Interface Routes
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\>
@@ -61,6 +62,7 @@ distance are elected prior to those with a higher distance.
 Range is 1 to 255, default is 1.
 ```
 
+
 ### IPv4 BFD
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd
@@ -82,12 +84,14 @@ gateway address as BFD peer destination address with source address
 `<source-address>` but initiate a multi-hop session.
 ```
 
+
 ### DHCP Interface Routes
 
 ```{cfgcmd} set protocols static route \<subnet\> dhcp-interface \<interface\>
 
 Defines route with DHCP interface supplying next-hop IP address.
 ```
+
 
 ### IPv4 Reject Routes
 
@@ -112,6 +116,7 @@ Sets a tag for this route.
 Defines route which emits an ICMP unreachable when matched.
 ```
 
+
 ### IPv4 Blackhole Routes
 
 ```{cfgcmd} set protocols static route \<subnet\> blackhole
@@ -133,6 +138,7 @@ distance are elected prior to those with a higher distance.
 
 Sets a tag for this route.
 ```
+
 
 ## IPv6 Unicast Routes
 
@@ -185,6 +191,7 @@ S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaa
 :::
 ```
 
+
 ### IPv6 Interface Routes
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\>
@@ -220,6 +227,7 @@ set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8
 :::
 ```
 
+
 ### IPv6 BFD
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd
@@ -241,6 +249,7 @@ gateway address as BFD peer destination address with source address
 `<source>` but initiate a multi-hop session.
 ```
 
+
 ### IPv6 Reject Routes
 
 ```{cfgcmd} set protocol static route6 \<subnet\> reject
@@ -258,6 +267,7 @@ distance are elected prior to those with a higher distance.
 
 Sets a tag for this route.
 ```
+
 
 ### IPv6 Blackhole Routes
 
@@ -280,6 +290,7 @@ distance are elected prior to those with a higher distance.
 
 Sets a tag for this route.
 ```
+
 
 ## Alternate Routing Tables
 

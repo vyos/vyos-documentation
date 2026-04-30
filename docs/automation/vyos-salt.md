@@ -7,6 +7,7 @@ lastproofread: '2023-01-16'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # Salt
 
 VyOS supports op-mode and configuration via [salt].
@@ -87,6 +88,7 @@ r14:
     aa:bb:cc:dd:2e:80:
         203.0.113.1
 ```
+
 ## Netmiko-proxy
 
 It is possible to configure VyOS via [netmiko] proxy module.
@@ -158,6 +160,7 @@ r11-proxy:
     True
 / #
 ```
+
 ### Examples
 
 Example of op-mode:

@@ -9,6 +9,7 @@ lastproofread: '2026-03-30'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 ## Overview
 
 This section provides information on firewall configuration for flowtables.
@@ -94,6 +95,7 @@ Create a firewall rule in the forward chain with the action set to
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```
+
 ## Configuration Example
 
 Consider the following in this setup:
@@ -112,6 +114,7 @@ TCP protocol, and destination port 1122 is accepted.
 All other traffic to the router is dropped.
 
 ### Commands
+
 ```none
 set firewall flowtable FT01 interface 'eth0'
 set firewall flowtable FT01 interface 'eth1'
@@ -129,6 +132,7 @@ set firewall ipv4 forward filter rule 110 destination port '1122'
 set firewall ipv4 forward filter rule 110 inbound-interface name 'eth0'
 set firewall ipv4 forward filter rule 110 protocol 'tcp'
 ```
+
 ### Explanation
 
 Here's what happens for a desired connection:

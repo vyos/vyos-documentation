@@ -26,6 +26,7 @@ To install PyVyOS via `pip`, run:
 pip install pyvyos
 ```
 
+
 ## Getting started
 
 ### Import and disable warnings for verify=false
@@ -34,6 +35,7 @@ pip install pyvyos
 import urllib3
 urllib3.disable_warnings()
 ```
+
 
 ### Use API response class
 
@@ -45,6 +47,7 @@ class ApiResponse:
     result: dict
     error: str
 ```
+
 
 ### Initialize a VyDevice object
 
@@ -63,6 +66,7 @@ verify = verify_ssl.lower() == "true" if verify_ssl else True
 device = VyDevice(hostname=hostname, apikey=apikey, port=port, protocol=protocol, verify=verify)
 ```
 
+
 ## Use PyVyOS
 
 ### Configure, then set
@@ -73,12 +77,14 @@ if not response.error:
     print(response.result)
 ```
 
+
 ### Configure, then show a single object value
 
 ```none
 response = device.retrieve_return_values(path=["interfaces", "dummy", "dum1", "address"])
 print(response.result)
 ```
+
 
 ### Configure, then show object
 
@@ -88,11 +94,13 @@ if not response.error:
     print(response.result)
 ```
 
+
 ### Configure, then delete object
 
 ```none
 response = device.configure_delete(path=["interfaces", "dummy", "dum1"])
 ```
+
 
 ### Configure, then save
 
@@ -100,11 +108,13 @@ response = device.configure_delete(path=["interfaces", "dummy", "dum1"])
 response = device.config_file_save()
 ```
 
+
 ### Configure, then save file
 
 ```none
 response = device.config_file_save(file="/config/test300.config")
 ```
+
 
 ### Show object
 
@@ -112,6 +122,7 @@ response = device.config_file_save(file="/config/test300.config")
 response = device.show(path=["system", "image"])
 print(response.result)
 ```
+
 
 ### Generate object
 
@@ -121,6 +132,7 @@ keyrand =  f'/tmp/key_{randstring}'
 response = device.generate(path=["ssh", "client-key", keyrand])
 ```
 
+
 ### Reset object
 
 ```none
@@ -128,6 +140,7 @@ response = device.reset(path=["conntrack-sync", "internal-cache"])
 if not response.error:
     print(response.result)
 ```
+
 
 ### Configure, then load file
 

@@ -67,6 +67,7 @@ set interfaces ethernet eth6 description 'br2 - Trusted DHCP Server'
 set interfaces ethernet eth7 description 'br2'
 ```
 
+
 ### Bridge firewall configuration
 
 In this section, we are going to configure the firewall rules that will be used
@@ -248,6 +249,7 @@ set firewall bridge name br2-fwd rule 40 ethernet-type 'ipv4'
 set firewall bridge name br2-fwd default-action 'drop'
 ```
 
+
 ### IP firewall configuration
 
 Since some of the requirements listed above exceed the capabilities of the
@@ -334,6 +336,7 @@ set firewall ipv4 name ip-br2-fwd rule 20 outbound-interface group 'br1-ifaces'
   # Requirement: Drop all other connections
 set firewall ipv4 name ip-br2-fwd default-action 'drop'
 ```
+
 
 ## Validation
 

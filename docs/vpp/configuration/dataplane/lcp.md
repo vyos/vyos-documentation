@@ -7,6 +7,7 @@ lastproofread: '2026-02-26'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VPP LCP Configuration
 
 Linux Control Plane (LCP) is a core component of VPP that lets you

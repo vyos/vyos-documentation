@@ -111,6 +111,7 @@ set vpn ipsec remote-access pool ra-rw-ipv6 name-server '2001:db8:1000::1'
 set vpn ipsec remote-access pool ra-rw-ipv6 prefix '2001:db8:2000::/64'
 ```
 
+
 ## Setting up tunnel:
 
 ```none
@@ -141,6 +142,7 @@ requested.
 ```none
 set vpn ipsec remote-access connection rw authentication always-send-cert
 ```
+
 
 ## Client Configuration
 

@@ -80,6 +80,7 @@ Policy to track previously established connections.
 
 Set the number of TCP maximum retransmit attempts.
 ```
+
 ### Contrack Timeouts
 
 You can define custom timeout values to apply to a specific subset of
@@ -168,6 +169,7 @@ The whole list can also be "negated" using '!'. For example:
 
 Set the timeout in seconds for a protocol or state in a custom rule.
 ```
+
 ### Conntrack ignore rules
 
 :::{note}
@@ -204,7 +206,9 @@ Allowed values fpr TCP flags: ``ack``, ``cwr``, ``ecn``, ``fin``, ``psh``,
 ``rst``, ``syn`` and ``urg``. Multiple values are supported, and for
 inverted selection use ``not``, as shown in the example.
 ```
+
 ### Conntrack log
+
 ```{cfgcmd} set system conntrack log event destroy
 ```
 

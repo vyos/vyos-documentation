@@ -50,6 +50,7 @@ cd /<your folder>
 terraform init
 ```
 
+
 ### Ansible
 
 - Create an UNIX instance either locally or in the cloud.
@@ -77,7 +78,9 @@ If you need to delete the instance, run the following command:
 ```none
 terraform destroy
 ```
+
 ## Structure of files in Terraform for vSphere
+
 ```none
 .
 ├── vyos.tf                                # The main script.
@@ -86,6 +89,7 @@ terraform destroy
 └── terraform.tfvars           # Values for all variables (passwords,
                        # login, IP addresses, etc.).
 ```
+
 ## File contents of Terraform for vSphere
 
 `vyos.tf`
@@ -312,7 +316,9 @@ ansiblepassword    = ""
 ansiblehost        = ""
 remotename         = ""
 ```
+
 ## Structure of files in Ansible for vSphere
+
 ```none
 .
 ├── group_vars
@@ -320,6 +326,7 @@ remotename         = ""
 ├── ansible.cfg
 └── instance.yml
 ```
+
 ## File contents of Ansible for vSphere
 
 `ansible.cfg`
@@ -370,6 +377,7 @@ ansible_user: vyos
 # get from vyos.tf "vapp"
 ansible_ssh_pass: 12345678
 ```
+
 
 ## Source files on GitHub
 

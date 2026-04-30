@@ -259,6 +259,7 @@ set nat source rule 30 translation address 'masquerade'
 set nat source rule 40 translation address 100.64.0.10-100.64.0.20
 
 ```
+
 #### Destination Address
 
 For {ref}`destination-nat` rules the packets destination address will be
@@ -286,6 +287,7 @@ Example of redirection:
 set nat destination rule 10 translation redirect port 22
 
 ```
+
 ### NAT Load Balance
 
 Advanced configuration can be used in order to apply source or destination NAT,
@@ -311,6 +313,7 @@ percentage of the connections that will receive such backend.
 ```{cfgcmd} set nat [source | destination] rule \<rule\> load-balance backend \<x.x.x.x\> weight \<1-100\>
 
 ```
+
 ## Configuration Examples
 
 To setup SNAT, we need to know:
@@ -495,6 +498,7 @@ vyos@vyos# show nat
  }
 
 ```
+
 ### Destination NAT
 
 DNAT is typically referred to as a **Port Forward**. When using VyOS as
@@ -597,6 +601,7 @@ ipv4 {
 }
 
 ```
+
 ### 1-to-1 NAT
 
 Another term often used for DNAT is **1-to-1 NAT**. For a 1-to-1 NAT
@@ -678,6 +683,7 @@ set nat source rule 10 load-balance backend 192.0.2.252 weight 33
 set nat source rule 10 load-balance backend 192.0.2.253 weight 34
 
 ```
+
 #### Example Network
 
 Here's one example of a network environment for an ASP.
@@ -712,7 +718,9 @@ We only need a single step for this interface:
 set interfaces dummy dum0 address '172.29.41.89/32'
 
 ```
+
 ### NAT Configuration
+
 ```none
 
 set nat source rule 110 description 'Internal to ASP'
@@ -725,6 +733,7 @@ set nat source rule 120 source address '192.168.43.0/24'
 set nat source rule 120 translation address '172.29.41.89'
 
 ```
+
 ### IPSec IKE and ESP
 
 The ASP has documented their IPSec requirements:
@@ -756,6 +765,7 @@ set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
 set vpn ipsec interface 'eth1'
 
 ```
+
 ### IPSec VPN Tunnels
 
 We'll use the IKE and ESP groups created above for this VPN. Because we
@@ -784,6 +794,7 @@ set vpn ipsec site-to-site peer branch tunnel 1 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
 
 ```
+
 ### Testing and Validation
 
 If you've completed all the above steps you no doubt want to see if it's

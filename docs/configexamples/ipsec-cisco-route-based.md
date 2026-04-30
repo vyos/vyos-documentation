@@ -20,6 +20,7 @@ inside the tunnel.
 :alt: Network Topology Diagram
 ```
 
+
 ## Prerequirements
 
 **VyOS:**
@@ -112,6 +113,7 @@ set vpn ipsec site-to-site peer CISCO remote-address '10.0.2.2'
 set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 ```
 
+
 ### Cisco
 
 ```none
@@ -175,6 +177,7 @@ router ospf 1
 ip route 0.0.0.0 0.0.0.0 10.0.2.1
 ```
 
+
 ## Monitoring
 
 ### Monitoring on VyOS side
@@ -236,6 +239,7 @@ L>* 192.168.1.1/32 is directly connected, eth2, weight 1, 00:07:59
 O>* 192.168.10.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 O>* 192.168.11.0/24 [110/2] via 10.100.100.2, vti1, weight 1, 00:07:34
 ```
+
 
 ### Monitoring on Cisco side
 
@@ -346,6 +350,7 @@ L        192.168.10.1/32 is directly connected, GigabitEthernet0/1
 C        192.168.11.0/24 is directly connected, GigabitEthernet0/2
 L        192.168.11.1/32 is directly connected, GigabitEthernet0/2
 ```
+
 
 ### Checking Connectivity
 

@@ -7,6 +7,7 @@ lastproofread: '2026-02-27'
 ```{include} /_include/need_improvement.txt
 ```
 
+
 # VyOS Configuration for VPP
 
 (vpp-config-hugepages)=
@@ -140,6 +141,7 @@ for nohz-full functionality.
 
 Use the same CPU range as configured for ``isolate-cpus``.
 ```
+
 ### System Optimization
 
 Additional kernel optimizations can further improve VPP performance by
@@ -187,6 +189,7 @@ Disables all optional CPU mitigations for security vulnerabilities
 (for example, Spectre, Meltdown). This may improve performance on some
 platforms.
 ```
+
 ### Optimal Configuration Example
 
 For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:

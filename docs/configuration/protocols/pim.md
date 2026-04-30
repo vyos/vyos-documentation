@@ -140,6 +140,7 @@ Specify a range of group addresses via a prefix-list that forces PIM to never
 do {abbr}`SSM (Source-Specific Multicast)` over.
 ```
 
+
 ### Interface specific commands
 
 ```{cfgcmd} set protocols pim interface \<interface\> bfd [profile \<name\>]
@@ -189,6 +190,7 @@ If you have multiple addresses configured on a particular interface and would
 like PIM to use a specific source address associated with that interface.
 ```
 
+
 ## IGMP - Internet Group Management Protocol)
 
 ```{cfgcmd} set protocols pim igmp watermark-warning \<n\>
@@ -229,6 +231,7 @@ choose IGMP version 2 or 3.
 
 The default value is 3.
 ```
+
 
 #### Example
 
