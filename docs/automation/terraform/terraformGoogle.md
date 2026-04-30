@@ -12,9 +12,10 @@ infrastructure when it's no longer needed.
 Additionally, you can use Ansible for provisioning.
 
 On this page you'll learn how to:
-\* Create the necessary files for Terraform and Ansible.
-\* Use Terraform to create a single instance on GCP and use Ansible for
-provisioning.
+
+- Create the necessary files for Terraform and Ansible.
+- Use Terraform to create a single instance on GCP and use Ansible for
+  provisioning.
 
 ## Prepare to deploy VyOS with Terraform on GCP
 
@@ -23,68 +24,75 @@ Terraform, Ansible, and GCP, follow these steps:
 
 ### GCP
 
-- Create an account with GCP and a new project.
+1. Create an account with GCP and a new project.
 
-  ```{image} /_static/images/project.png
-  :align: center
-  :alt: Network Topology Diagram
-  :width: 50%
-  ```
+```{image} /_static/images/project.png
+:align: center
+:alt: Network Topology Diagram
+:width: 50%
+```
 
-- Create a service account and download your key (a JSON file).
+2. Create a service account and download your key (a JSON file).
 
-  ```{image} /_static/images/service.png
-  :align: center
-  :alt: Network Topology Diagram
-  :width: 50%
-  ```
+```{image} /_static/images/service.png
+:align: center
+:alt: Network Topology Diagram
+:width: 50%
+```
 
-  ```{image} /_static/images/key.png
-  :align: center
-  :alt: Network Topology Diagram
-  :width: 50%
-  ```
+```{image} /_static/images/key.png
+:align: center
+:alt: Network Topology Diagram
+:width: 50%
+```
 
-  The .JSON file downloads automatically after you create it and looks
-  like the following:
+The .JSON file downloads automatically after you create it and looks
+like the following:
 
-  ```{image} /_static/images/json.png
-  :align: center
-  :alt: Network Topology Diagram
-  :width: 50%
-  ```
+```{image} /_static/images/json.png
+:align: center
+:alt: Network Topology Diagram
+:width: 50%
+```
 
 ### Terraform
 
-- Create an UNIX or Windows instance.
-- Download and install
-  [Terraform](https://developer.hashicorp.com/terraform/install).
-- Create the folder. For example, `/root/google`.
+1. Create an UNIX or Windows instance.
+
+2. Download and install
+   [Terraform](https://developer.hashicorp.com/terraform/install).
+
+3. Create the folder. For example, `/root/google`.
 
 ```none
 mkdir /root/google
 ```
 
-- Copy all files into your Terraform project `/root/google`
-  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
-  For more details,
-  see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
-- Run the following commands:
+4. Copy all files into your Terraform project `/root/google`
+   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
+   For more details,
+   see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
+
+<!-- -->
+
+5. Run the following commands:
 
 ```none
 cd /<your folder> 
 terraform init
 ```
 
-
 ### Ansible
 
-- Create an UNIX instance either locally or in the cloud.
-- Download and install Ansible
-- Create the folder for example /root/google/
-- Copy all files into your Ansible project `/root/google/`
-  (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
-  details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
+1. Create an UNIX instance either locally or in the cloud.
+
+2. Download and install Ansible
+
+3. Create the folder for example /root/google/
+
+4. Copy all files into your Ansible project `/root/google/`
+   (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
+   details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
 
 You obtain `mykey.json` when you create a service account in GCP
 and download the key (a JSON file).
