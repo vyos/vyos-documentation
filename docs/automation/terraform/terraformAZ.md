@@ -43,6 +43,8 @@ mkdir /root/azvyos
    (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
    [Structure of files in Terraform for Azure](#structure-of-files-in-terraform-for-azure).
 
+<!-- -->
+
 5. Log in to Azure using the command:
 
 ```none
