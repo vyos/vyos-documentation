@@ -146,7 +146,9 @@ vyos@vyos:~$
 
 See the configuration section of this document for more information on configuration mode.
 
-## Configuration Overview
+(configuration-overview)=
+
+# Configuration Overview
 
 VyOS makes use of a unified configuration file for the entire system\'s configuration: `/config/config.boot`. This allows easy template creation, backup, and replication of system configuration. A system can thus also be easily cloned by simply copying the required configuration files.
 
@@ -507,8 +509,6 @@ Use this command to preserve configuration changes upon reboot. By default it is
 vyos@vyos# save
 Saving configuration to '/config/config.boot'...
 Done
-
-
 ```
 
 ``` none

@@ -2,8 +2,10 @@
 
 # OpenVPN with LDAP
 
-% Testdate: 2023-05-11
-% Version: 1.4-rolling-202305100734
+```{eval-rst}
+| Testdate: 2023-05-11
+| Version: 1.4-rolling-202305100734
+```
 
 This LAB shows how to use OpenVPN with a Active Directory authentication method.
 
@@ -40,13 +42,15 @@ New-ADUser user01 -AccountPassword(Read-Host -AsSecureString "Input Password") -
 In this example OpenVPN will be setup with a client certificate and username / password authentication.
 
 First a CA, a signed server and client ceftificate and a Diffie-Hellman parameter musst be generated and installed.
-
 Please look {ref}`here <configuration/pki/index:pki>` for more information.
 
-Add the LDAP plugin configuration file 
-`/config/auth/ldap-auth.config`
-Check all possible settings 
-[here](https://github.com/threerings/openvpn-auth-ldap/blob/master/auth-ldap.conf)
+```{eval-rst}
+| Add the LDAP plugin configuration file `/config/auth/ldap-auth.config`
+```
+
+```{eval-rst}
+| Check all possible settings `here <https://github.com/threerings/openvpn-auth-ldap/blob/master/auth-ldap.conf>`_.
+```
 
 ```{literalinclude} _include/ldap-auth.config
 :language: none

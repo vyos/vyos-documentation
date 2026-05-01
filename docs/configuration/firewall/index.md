@@ -34,84 +34,94 @@ are:
 If the interface where the packet was received is not part of a bridge, the
 packet is processed at the **IP Layer**:
 
-- **Prerouting**: The router processes all packets in this stage,
-  regardless of the destination. You can perform several actions in
-  this stage, and these actions are also defined in different parts of the
-  VyOS configuration. Order is important. The relevant configuration that
-  applies in this stage includes:
+```{eval-rst}
+   * **Prerouting**: The router processes all packets in this stage,
+     regardless of the destination. You can perform several actions in
+     this stage, and these actions are also defined in different parts of the
+     VyOS configuration. Order is important. The relevant configuration that
+     applies in this stage includes:
 
-  - **Firewall prerouting**: Rules you define under `set firewall
-    [ipv4 | ipv6] prerouting raw...`. The system processes all rules in
-    this section before the connection tracking subsystem.
-  - **Conntrack Ignore**: Rules you define under `set system conntrack
-    ignore [ipv4 | ipv6] ...`. You can configure this section with
-    `firewall [ipv4 | ipv6] prerouting ...`. For compatibility reasons,
-    this feature is supported, but will be deprecated in the future.
-  - **Policy Route**: Rules you define under `set policy [route |
-    route6] ...`.
-  - **Destination NAT**: Rules you define under `set [nat | nat66]
-    destination...`.
+      * **Firewall prerouting**: Rules you define under ``set firewall
+        [ipv4 | ipv6] prerouting raw...``. The system processes all rules in
+        this section before the connection tracking subsystem.
 
-- **Destination is the router?**: Choose the appropriate path based on the
-  destination IP address. Transit traffic continues to **forward**, while
-  traffic destined for the router continues to **input**.
+      * **Conntrack Ignore**: Rules you define under ``set system conntrack
+        ignore [ipv4 | ipv6] ...``. You can configure this section with
+        ``firewall [ipv4 | ipv6] prerouting ...``. For compatibility reasons,
+        this feature is supported, but will be deprecated in the future.
 
-- **Input**: The stage where you filter and control traffic destined for
-  the router itself. This is where you enforce all rules for securing the
-  router. This includes IPv4 and IPv6 filtering rules, defined in:
+      * **Policy Route**: Rules you define under ``set policy [route |
+        route6] ...``.
 
-  - `set firewall ipv4 input filter ...`.
-  - `set firewall ipv6 input filter ...`.
+      * **Destination NAT**: Rules you define under ``set [nat | nat66]
+        destination...``.
 
-- **Forward**: The stage where you filter and control transit traffic.
-  This includes IPv4 and IPv6 filtering rules, defined in:
+   * **Destination is the router?**: Choose the appropriate path based on the
+     destination IP address. Transit traffic continues to **forward**, while
+     traffic destined for the router continues to **input**.
 
-  - `set firewall ipv4 forward filter ...`.
-  - `set firewall ipv6 forward filter ...`.
+   * **Input**: The stage where you filter and control traffic destined for
+     the router itself. This is where you enforce all rules for securing the
+     router. This includes IPv4 and IPv6 filtering rules, defined in:
 
-- **Output**: The stage where you filter and control traffic that the
-  router originates. Note that this traffic comes from either a new
-  connection that an internal process on the VyOS router (such as NTP)
-  originates or a response to traffic the router receives externally through
-  **input** (for example, a response to an SSH login attempt). This includes
-  IPv4 and IPv6 rules, and two different sections apply:
+     * ``set firewall ipv4 input filter ...``.
 
-  - **Output Prerouting**: `set firewall [ipv4 | ipv6] output
-    filter ...`. As described in **Prerouting**, the system processes
-    rules in this section before the connection tracking subsystem.
-  - **Output Filter**: `set firewall [ipv4 | ipv6] output filter ...`.
+     * ``set firewall ipv6 input filter ...``.
 
-- **Postrouting**: As in **Prerouting**, you can perform several actions
-  defined in different parts of VyOS configuration in this stage. This
-  includes:
+   * **Forward**: The stage where you filter and control transit traffic.
+     This includes IPv4 and IPv6 filtering rules, defined in:
 
-  - **Source NAT**: Rules you define under `set [nat | nat66]
-    destination...`.
+     * ``set firewall ipv4 forward filter ...``.
+
+     * ``set firewall ipv6 forward filter ...``.
+
+   * **Output**: The stage where you filter and control traffic that the
+     router originates. Note that this traffic comes from either a new
+     connection that an internal process on the VyOS router (such as NTP)
+     originates or a response to traffic the router receives externally through
+     **input** (for example, a response to an SSH login attempt). This includes
+     IPv4 and IPv6 rules, and two different sections apply:
+
+     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output
+       filter ...``. As described in **Prerouting**, the system processes
+       rules in this section before the connection tracking subsystem.
+
+     * **Output Filter**: ``set firewall [ipv4 | ipv6] output filter ...``.
+
+   * **Postrouting**: As in **Prerouting**, you can perform several actions
+     defined in different parts of VyOS configuration in this stage. This
+     includes:
+
+     * **Source NAT**: Rules you define under ``set [nat | nat66]
+       destination...``.
+```
 
 If the interface where the packet was received is part of a bridge, the
 packet is processed at the **Bridge Layer**:
 
-- **Prerouting (Bridge)**: The bridge processes all packets it receives in
-  this stage, regardless of the destination. First, you can apply filters
-  here, or you can configure rules that ignore the connection tracking
-  system. The relevant configuration that applies:
+```{eval-rst}
+   * **Prerouting (Bridge)**: The bridge processes all packets it receives in
+     this stage, regardless of the destination. First, you can apply filters
+     here, or you can configure rules that ignore the connection tracking
+     system. The relevant configuration that applies:
 
-  - `set firewall bridge prerouting filter ...`.
+     * ``set firewall bridge prerouting filter ...``.
 
-- **Forward (Bridge)**: The stage where you filter and control traffic
-  that passes through the bridge:
+   * **Forward (Bridge)**: The stage where you filter and control traffic
+     that passes through the bridge:
 
-  - `set firewall bridge forward filter ...`.
+     * ``set firewall bridge forward filter ...``.
 
-- **Input (Bridge)**: The stage where you filter and control traffic
-  destined for the bridge itself:
+   * **Input (Bridge)**: The stage where you filter and control traffic
+     destined for the bridge itself:
 
-  - `set firewall bridge input filter ...`.
+     * ``set firewall bridge input filter ...``.
 
-- **Output (Bridge)**: The stage where you filter and control traffic that
-  the bridge originates:
+   * **Output (Bridge)**: The stage where you filter and control traffic that
+     the bridge originates:
 
-  - `set firewall bridge output filter ...`.
+     * ``set firewall bridge output filter ...``.
+```
 
 The following is the overall structure of the VyOS firewall CLI:
 

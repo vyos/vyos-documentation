@@ -253,7 +253,6 @@ Example:
   100.64.0.20 on SNAT rule 40 when doing the translation
 
 ```none
-
 set nat source rule 20 translation address 100.64.0.1
 set nat source rule 30 translation address 'masquerade'
 set nat source rule 40 translation address 100.64.0.10-100.64.0.20
@@ -271,7 +270,6 @@ Example:
   with 192.0.2.10
 
 ```none
-
 set nat destination rule 10 translation address 192.0.2.10
 
 ```
@@ -283,7 +281,6 @@ the destination address to the local host’s one.
 Example of redirection:
 
 ```none
-
 set nat destination rule 10 translation redirect port 22
 
 ```
@@ -423,7 +420,6 @@ Example:
   reachable via interface `eth0.10`.
 
 ```none
-
 set nat destination rule 100 description 'Regular destination NAT from external'
 set nat destination rule 100 destination port '3389'
 set nat destination rule 100 inbound-interface name 'pppoe0'
@@ -448,7 +444,6 @@ set nat source rule 110 translation address 'masquerade'
 Which results in a configuration of:
 
 ```none
-
 vyos@vyos# show nat
  destination {
      rule 100 {
@@ -521,7 +516,6 @@ on port 80. For other common port numbers, see:
 Our configuration commands would be:
 
 ```none
-
 set nat destination rule 10 description 'Port Forward: HTTP to 192.168.0.100'
 set nat destination rule 10 destination port '80'
 set nat destination rule 10 inbound-interface name 'eth0'
@@ -533,7 +527,6 @@ set nat destination rule 10 translation address '192.168.0.100'
 Which would generate the following NAT destination configuration:
 
 ```none
-
 nat {
     destination {
         rule 10 {
@@ -575,7 +568,6 @@ destination nat rule, we can accept all **'dnat'** connections with one simple
 rule, using `connection-status` matcher:
 
 ```none
-
 set firewall ipv4 forward filter rule 10 action accept
 set firewall ipv4 forward filter rule 10 connection-status nat destination
 set firewall ipv4 forward filter rule 10 state new
@@ -585,7 +577,6 @@ set firewall ipv4 forward filter rule 10 state new
 This would generate the following configuration:
 
 ```none
-
 ipv4 {
     forward {
         filter {
@@ -620,7 +611,6 @@ Here's an extract of a simple 1-to-1 NAT configuration with one internal
 and one external interface:
 
 ```none
-
 set interfaces ethernet eth0 address '192.168.1.1/24'
 set interfaces ethernet eth0 description 'Inside interface'
 set interfaces ethernet eth1 address '192.0.2.30/24'
@@ -656,7 +646,6 @@ the request, second backend should get 20%, third 15% and the fourth 35%
 We will use source and destination address for hash generation.
 
 ```none
-
 set nat destination rule 10 inbound-interface name eth0
 set nat destination rule 10 protocol tcp
 set nat destination rule 10 destination port 80
@@ -674,7 +663,6 @@ LAN 10.0.0.0/8, using 3 public addresses and equal distribution.
 We will generate the hash randomly.
 
 ```none
-
 set nat source rule 10 outbound-interface name eth0
 set nat source rule 10 source address 10.0.0.0/8
 set nat source rule 10 load-balance hash random
@@ -714,7 +702,6 @@ assigned to a real network.
 We only need a single step for this interface:
 
 ```none
-
 set interfaces dummy dum0 address '172.29.41.89/32'
 
 ```
@@ -722,7 +709,6 @@ set interfaces dummy dum0 address '172.29.41.89/32'
 ### NAT Configuration
 
 ```none
-
 set nat source rule 110 description 'Internal to ASP'
 set nat source rule 110 destination address '172.27.1.0/24'
 set nat source rule 110 source address '192.168.43.0/24'
@@ -749,7 +735,6 @@ Additionally, we want to use VPNs only on our eth1 interface (the
 external interface in the image above)
 
 ```none
-
 set vpn ipsec ike-group my-ike key-exchange 'ikev1'
 set vpn ipsec ike-group my-ike lifetime '7800'
 set vpn ipsec ike-group my-ike proposal 1 dh-group '14'
@@ -775,7 +760,6 @@ group in the previous step, make sure you use the correct names here
 too.
 
 ```none
-
 set vpn ipsec authentication psk vyos id '203.0.113.46'
 set vpn ipsec authentication psk vyos id '198.51.100.243'
 set vpn ipsec authentication psk vyos secret 'MYSECRETPASSWORD'
@@ -803,7 +787,6 @@ all working.
 Start by checking for IPSec SAs (Security Associations) with:
 
 ```none
-
 $ show vpn ipsec sa
 
 Peer ID / IP                            Local ID / IP

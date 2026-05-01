@@ -84,6 +84,7 @@ generate openconnect username <user> otp-key hotp-time
 You can configure users to be authenticated by certificate by setting
 the authentication mode to certificate, and defining what field (by OID)
 in the certificate will be used to identify the username. Two pre-defined
+
 shortcuts for Common Name (OID 2.5.4.3) and User ID
 (OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid.
 
@@ -297,11 +298,6 @@ filename exactly.
 
 ### Configuring RADIUS accounting
 
-The RADIUS accounting feature must be used with the OpenConnect
-authentication mode RADIUS. It cannot be used with local
-authentication. You must configure the OpenConnect authentication mode
-to "radius".
-
 OpenConnect can be configured to send accounting information to a
 RADIUS server to capture user session data such as time of
 connect/disconnect, data transferred, and so on.
@@ -316,9 +312,9 @@ set vpn openconnect accounting radius server 172.20.20.10 key your_radius_secret
 ```
 
 :::{warning}
-When using Time-based one-time password (TOTP) (OTP HOTP-time),
-be sure that the time on the server and the
-OTP token generator are synchronized by NTP
+The RADIUS accounting feature must be used with the OpenConnect
+authentication mode RADIUS. It cannot be used with local authentication.
+You must configure the OpenConnect authentication mode to "radius".
 :::
 
 An example of the data captured by a FREERADIUS server with sql accounting:

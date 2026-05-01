@@ -24,52 +24,53 @@ Interfaces (VTIs). This type of IPsec VPNs allows using routing protocols.
 
 **Negotiated parameters that need to match**
 
+```{eval-rst}
 Phase 1
-: - IKE version
-  - Authentication
-  - Encryption
-  - Hashing
-  - PRF
-  - Lifetime
+ * IKE version
+ * Authentication
+ * Encryption
+ * Hashing
+ * PRF
+ * Lifetime
 
-  :::{note}
-  Strongswan recommends to use the same lifetime value on both peers
-  :::
+ .. note:: Strongswan recommends to use the same lifetime value on both peers
 
 Phase 2
-: - Encryption
-  - Hashing
-  - PFS
-  - Mode (tunnel or transport)
-  - Lifetime
+ * Encryption
+ * Hashing
+ * PFS
+ * Mode (tunnel or transport)
+ * Lifetime
 
-  :::{note}
-  Strongswan recommends to use the same lifetime value on both peers
-   - Remote and Local networks in SA must be compatible on both peers
-  :::
+ .. note:: Strongswan recommends to use the same lifetime value on both peers
+
+ * Remote and Local networks in SA must be compatible on both peers
+```
 
 ### Configuration Steps for Site-to-Site VPN
 
 The next example shows the configuration one of the router participating in
 IPsec VPN.
 
+```{eval-rst}
 Tunnel information:
-: - Phase 1:
-    : - encryption: AES256
-      - hash: SHA256
-      - PRF: SHA256
-      - DH: 14
-      - lifetime: 28800
-  - Phase 2:
-    : - IPsec mode: tunnel
-      - encryption: AES256
-      - hash: SHA256
-      - PFS: inherited from DH Phase 1
-      - lifetime: 3600
-  - If Policy based VPN is used
-    : - Remote network is 192.168.50.0/24. Local network is 192.168.10.0/24
-  - If Route based VPN is used
-    : - IP of the VTI interface is 10.0.0.1/30
+    * Phase 1:
+        * encryption: AES256
+        * hash: SHA256
+        * PRF: SHA256
+        * DH: 14
+        * lifetime: 28800
+    * Phase 2:
+        * IPsec mode: tunnel
+        * encryption: AES256
+        * hash: SHA256
+        * PFS: inherited from DH Phase 1
+        * lifetime: 3600
+    * If Policy based VPN is used
+        * Remote network is 192.168.50.0/24. Local network is 192.168.10.0/24
+    * If Route based VPN is used
+        * IP of the VTI interface is 10.0.0.1/30
+```
 
 :::{note}
 We do not recommend using policy-based vpn and route-based vpn configurations to the same peer.
@@ -177,8 +178,9 @@ The result of wrong value selection can be unstable work of the VPN.
 Below flow-chart could be a quick reference for the close-action
 combination depending on how the peer is configured.
 
-:::{figure} /_static/images/IPSec_close_action_settings.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/IPSec_close_action_settings.*
+```
 
 Similar combinations are applicable for the dead-peer-detection.
 
@@ -217,7 +219,7 @@ Specifies the secret type:
 #### Peer Configuration
 
 
-### Peer Authentication Commands
+##### Peer Authentication Commands
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> authentication mode \<mode\>
 
@@ -279,31 +281,34 @@ for authenticating local router on remote peer.
 Private key passphrase, if needed.
 ```
 
-### Global Peer Configuration Commands
+##### Global Peer Configuration Commands
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
-* **initiate** - does initial connection to remote peer immediately
-after configuring and after boot. In this mode the connection will
-not be restarted in case of disconnection, therefore should be used
-only together with DPD or another session tracking methods.
-* **trap** - does not try to initiate a connection to a remote
-peer immediately. Instead, it installs a trap policy that will
-trigger IKE negotiation and establish the IPsec session when
-matching traffic is sent from the local side. This can be useful
-when there is no direct connectivity to the peer due to firewall
-or NAT in the middle of the local and remote side.
 
-:::{warning}
-The ``trap`` mode is not needed in most environments
-   and can lead to connection confusion or unintended tunnel uptime
-   behavior if used incorrectly. Using this mode requires careful
-   coordination with parameters such as ``close-action`` and DPD.
-   For most deployments, use ``initiate`` and ``none`` as described below.
-:::
+* **initiate** - does initial connection to remote peer immediately
+  after configuring and after boot. In this mode the connection will
+  not be restarted in case of disconnection, therefore should be used
+  only together with DPD or another session tracking methods.
+
+* **trap** - does not try to initiate a connection to a remote
+  peer immediately. Instead, it installs a trap policy that will
+  trigger IKE negotiation and establish the IPsec session when
+  matching traffic is sent from the local side. This can be useful
+  when there is no direct connectivity to the peer due to firewall
+  or NAT in the middle of the local and remote side.
+
+  :::{warning}
+  The ``trap`` mode is not needed in most environments
+  and can lead to connection confusion or unintended tunnel uptime
+  behavior if used incorrectly. Using this mode requires careful
+  coordination with parameters such as ``close-action`` and DPD.
+  For most deployments, use ``initiate`` and ``none`` as described below.
+  :::
+
 * **none** - loads the connection only, which then can be manually
-initiated or used as a responder configuration.
+  initiated or used as a responder configuration.
 
 :::{note}
 For most site-to-site VPNs, configure one peer
@@ -377,9 +382,9 @@ pools by the responder. The wildcard addresses 0.0.0.0 and ::
 request an arbitrary address, specific addresses may be defined.
 ```
 
-### CHILD SAs Configuration Commands
+##### CHILD SAs Configuration Commands
 
-#### Policy-Based CHILD SAs Configuration Commands
+###### Policy-Based CHILD SAs Configuration Commands
 
 Every configured tunnel under peer configuration is a new CHILD SA.
 
@@ -427,7 +432,7 @@ Remote port number. Have effect only when used together with
 ``prefix``.
 ```
 
-#### Route-Based CHILD SAs Configuration Commands
+###### Route-Based CHILD SAs Configuration Commands
 
 To configure route-based VPN it is enough to create vti interface and
 bind it to the peer. Any traffic, which will be send to VTI interface

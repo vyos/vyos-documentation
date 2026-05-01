@@ -27,17 +27,17 @@ listens on all IPv4 and IPv6 addresses.
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> port \<port\>
 
-Create service `<name>` to listen on \<port\>
+Create service *<name>* to listen on \<port\>
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> mode \<tcp|http\>
 
-Configure service `<name>` mode TCP or HTTP
+Configure service *<name>* mode TCP or HTTP
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> backend \<name\>
 
-Configure service `<name>` to use the backend \<name\>
+Configure service *<name>* to use the backend \<name\>
 ```
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> ssl certificate \<name\>
@@ -54,7 +54,8 @@ Set custom HTTP headers to include in all responses.
 ```{cfgcmd} set load-balancing haproxy service \<name\> logging facility \<facility\> level \<level\>
 
 Specify facility and level for logging.
-For an explanation on syslog facilities and severity levels,
+For an explanation on {ref}`syslog_facilities` and
+{ref}`syslog_severity_level`,
 see tables in the syslog configuration section.
 ```
 
@@ -86,24 +87,30 @@ to perform.
 Match domain name
 ```
 
-```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> ssl \<sni\>
+````{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> ssl \<sni\>
 
+```{eval-rst}
 SSL match Server Name Indication (SNI) option:
-:   - ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
-  - ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
-  - ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name Indication
-```
+ * ``req-ssl-sni`` SSL Server Name Indication (SNI) request match
+ * ``ssl-fc-sni`` SSL frontend connection Server Name Indication match
+ * ``ssl-fc-sni-end`` SSL frontend match end of connection Server Name
 
-```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> url-path \<match\> \<url\>
+    Indication
+```
+````
+
+````{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> url-path \<match\> \<url\>
 
 Define URL path matching rules for a specific service. Use this command
 to specify how to match the URL path against incoming requests.
 
-The available options for \<match\> are:
-:   - ``begin`` Matches the beginning of the URL path
-  - ``end`` Matches the end of the URL path.
-  - ``exact`` Matches the URL path exactly.
+```{eval-rst}
+The available options for <match> are:
+ * ``begin`` Matches the beginning of the URL path
+ * ``end`` Matches the end of the URL path.
+ * ``exact`` Matches the URL path exactly.
 ```
+````
 
 ```{cfgcmd} set load-balancing haproxy service \<name\> rule \<rule\> set backend \<name\>
 
@@ -117,24 +124,25 @@ Redirect URL to a new location.
 
 ### Backend
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> balance \<balance\>
+````{cfgcmd} set load-balancing haproxy backend \<name\> balance \<balance\>
 
 Specify the load balancing algorithm for distributing requests among
 available servers.
 
+```{eval-rst}
 Balance algorithms:
-:   - ``source-address`` Distributes requests based on the source IP address
-      of the client.
-  - ``round-robin`` Distributes requests in a circular manner,
-      sequentially sending each request to the next server in line.
-  - ``least-connection`` Distributes requests to the server with the fewest
-      active connections.
-
+ * ``source-address`` Distributes requests based on the source IP address
+   of the client.
+ * ``round-robin`` Distributes requests in a circular manner,
+   sequentially sending each request to the next server in line.
+ * ``least-connection`` Distributes requests to the server with the fewest
+   active connections.
 ```
+````
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> mode \<mode\>
 
-Configure backend `<name>` mode TCP or HTTP.
+Configure backend *<name>* mode TCP or HTTP.
 ```
 
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> address \<x.x.x.x\>
@@ -188,7 +196,8 @@ Set custom HTTP headers to include in all responses from the backend.
 ```{cfgcmd} set load-balancing haproxy backend \<name\> logging facility \<facility\> level \<level\>
 
 Specify facility and level for logging.
-For an explanation on syslog facilities and severity levels,
+For an explanation on {ref}`syslog_facilities` and
+{ref}`syslog_severity_level`,
 see tables in the syslog configuration section.
 ```
 
@@ -235,7 +244,8 @@ Specify the minimum required TLS version 1.2 or 1.3
 ```{cfgcmd} set load-balancing haproxy global-parameters logging facility \<facility\> level \<level\>
 
 Specify facility and level for logging.
-For an explanation on syslog facilities and severity levels,
+For an explanation on {ref}`syslog_facilities` and
+{ref}`syslog_severity_level`,
 see tables in the syslog configuration section.
 ```
 
@@ -295,30 +305,34 @@ Set the endpoint to use for health checks.
 ```
 
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> http-check expect \<condition\>
+````{cfgcmd} set load-balancing haproxy backend \<name\> http-check expect \<condition\>
 
 Set the expected result condition for a server to be considered healthy.
 
+```{eval-rst}
 Some possible examples are:
-:   - ``status 200`` Expecting a 200 response code
-  - ``status 200-399`` Expecting a non-failure response code
-  - ``string success`` Expecting the string success in the response body
+ * ``status 200`` Expecting a 200 response code
+ * ``status 200-399`` Expecting a non-failure response code
+ * ``string success`` Expecting the string success in the response body
 ```
+````
 
 ### TCP checks
 
 Configure health checks for TCP mode backends. You can configure protocol-aware
 checks for a range of Layer 7 protocols:
 
-```{cfgcmd} set load-balancing haproxy backend \<name\> health-check \<protocol\>
+````{cfgcmd} set load-balancing haproxy backend \<name\> health-check \<protocol\>
 
+```{eval-rst}
 Available health check protocols:
-:   - ``ldap`` LDAP protocol check.
-  - ``redis`` Redis protocol check.
-  - ``mysql`` MySQL protocol check.
-  - ``pgsql`` PostgreSQL protocol check.
-  - ``smtp`` SMTP protocol check.
+ * ``ldap`` LDAP protocol check.
+ * ``redis`` Redis protocol check.
+ * ``mysql`` MySQL protocol check.
+ * ``pgsql`` PostgreSQL protocol check.
+ * ``smtp`` SMTP protocol check.
 ```
+````
 
 :::{note}
 If you specify a server to check but do not configure a

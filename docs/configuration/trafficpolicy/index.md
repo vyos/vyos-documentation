@@ -39,30 +39,34 @@ show you the different units you can use.
 
 They can be **decimal** prefixes.
 
-```none
-kbit  (10^3)    kilobit per second
-mbit  (10^6)    megabit per second
-gbit  (10^9)    gigabit per second
-tbit  (10^12)   terabit per second
+```{eval-rst}
+   .. code-block:: none
 
-kbps  (8*10^3)  kilobyte per second
-mbps  (8*10^6)  megabyte per second
-gbps  (8*10^9)  gigabyte per second
-tbps  (8*10^12) terabyte per second
+    kbit  (10^3)    kilobit per second
+    mbit  (10^6)    megabit per second
+    gbit  (10^9)    gigabit per second
+    tbit  (10^12)   terabit per second
+
+    kbps  (8*10^3)  kilobyte per second
+    mbps  (8*10^6)  megabyte per second
+    gbps  (8*10^9)  gigabyte per second
+    tbps  (8*10^12) terabyte per second
 ```
 
 Or **binary** prefixes.
 
-```none
-kibit (2^10 = 1024)    kibibit per second
-mibit (2^20 = 1024^2)  mebibit per second
-gibit (2^30 = 1024^3)  gibibit per second
-tbit  (2^40 = 1024^4)  tebibit per second
+```{eval-rst}
+   .. code-block:: none
 
-kibps (1024*8)         kibibyte (KiB) per second
-mibps (1024^2*8)       mebibyte (MiB) per second
-gibps (1024^3*8)       gibibyte (GiB) per second
-tibps (1024^4*8)       tebibyte (TiB) per second
+    kibit (2^10 = 1024)    kibibit per second
+    mibit (2^20 = 1024^2)  mebibit per second
+    gibit (2^30 = 1024^3)  gibibit per second
+    tbit  (2^40 = 1024^4)  tebibit per second
+
+    kibps (1024*8)         kibibyte (KiB) per second
+    mibps (1024^2*8)       mebibyte (MiB) per second
+    gibps (1024^3*8)       gibibyte (GiB) per second
+    tibps (1024^4*8)       tebibyte (TiB) per second
 ```
 
 
@@ -70,19 +74,23 @@ tibps (1024^4*8)       tebibyte (TiB) per second
 
 A *bit* is written as **bit**,
 
-```none
-kbit (kilobits per second)
-mbit (megabits per second)
-gbit (gigabits per second)
-tbit (terabits per second)
+```{eval-rst}
+   .. code-block:: none
+
+        kbit (kilobits per second)
+        mbit (megabits per second)
+        gbit (gigabits per second)
+        tbit (terabits per second)
 ```
 
 while a *byte* is written as a single **b**.
 
-```none
-kbps (kilobytes per second)
-mbps (megabytes per second)
-gbps (gigabytes per second)
+```{eval-rst}
+   .. code-block:: none
+
+        kbps (kilobytes per second)
+        mbps (megabytes per second)
+        gbps (gigabytes per second)
 ```
 
 (classes)=
@@ -181,7 +189,9 @@ set qos policy shaper MY-SHAPER class 30 match MY-FIRST-FILTER description "My f
 :::{note}
 An IPv4 TCP filter will only match packets with an IPv4 header
 length of 20 bytes (which is the majority of IPv4 packets anyway).
+:::
 
+:::{note}
 IPv6 TCP filters will only match IPv6 packets with no header
 extension, see <https://en.wikipedia.org/wiki/IPv6_packet#Extension_headers>
 :::
@@ -210,6 +220,7 @@ set qos traffic-match-group <group_name> match-group <match_group_name>
 ```
 
 A match group can contain multiple criteria and inherit them in the same policy.
+
 For example:
 
 ```none
@@ -356,8 +367,10 @@ likely you are looking for a** Shaper **policy and you want to**
 
 #### Drop Tail
 
+```{eval-rst}
 | **Queueing discipline:** PFIFO (Packet First In First Out).
 | **Applies to:** Outbound traffic.
+```
 
 This the simplest queue possible you can apply to your traffic. Traffic
 must go through a finite queue before it is actually sent. You must
@@ -387,8 +400,10 @@ number of packets it can contain (maximum 4294967295).
 
 #### Fair Queue
 
+```{eval-rst}
 | **Queueing discipline:** SFQ (Stochastic Fairness Queuing).
 | **Applies to:** Outbound traffic.
+```
 
 Fair Queue is a work-conserving scheduler which schedules the
 transmission of packets based on flows, that is, it balances traffic
@@ -449,8 +464,10 @@ the queue.
 #### FQ-CoDel
 
 
+```{eval-rst}
 | **Queueing discipline:** Fair/Flow Queue CoDel.
 | **Applies to:** Outbound Traffic.
+```
 
 
 The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and
@@ -547,7 +564,7 @@ minimum delay is identified by tracking the local minimum queue delay
 that packets experience (default: 5ms).
 ```
 
-### Example
+##### Example
 
 A simple example of an FQ-CoDel policy working inside a Shaper one.
 
@@ -559,8 +576,10 @@ set qos policy shaper FQ-CODEL-SHAPER default queue-type fq-codel
 
 #### Limiter
 
+```{eval-rst}
 | **Queueing discipline:** Ingress policer.
 | **Applies to:** Inbound traffic.
+```
 
 Limiter is one of those policies that uses classes (Ingress qdisc is
 actually a classless policy but filters do work in it).
@@ -632,8 +651,10 @@ priority).
 
 #### Network Emulator
 
+```{eval-rst}
 | **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
 | **Applies to:** Outbound traffic.
+```
 
 VyOS Network Emulator policy emulates the conditions you can suffer in a
 real network. You will be able to configure things like rate, burst,
@@ -700,8 +721,10 @@ packets (1-4294967295) the queue may hold queued at a time.
 
 #### Priority Queue
 
+```{eval-rst}
 | **Queueing discipline:** PRIO.
 | **Applies to:** Outbound traffic.
+```
 
 The Priority Queue is a classful scheduling policy. It does not delay
 packets (Priority Queue is not a shaping policy), it simply dequeues
@@ -772,8 +795,10 @@ dropped.
 
 #### Random-Detect
 
+```{eval-rst}
 | **Queueing discipline:** Generalized Random Early Drop.
 | **Applies to:** Outbound traffic.
+```
 
 A simple Random Early Detection (RED) policy would start randomly
 dropping packets from a queue before it reaches its queue limit thus
@@ -894,8 +919,10 @@ In principle, values must be
 
 #### Rate Control
 
+```{eval-rst}
 | **Queueing discipline:** Token Bucket Filter.
 | **Applies to:** Outbound traffic.
+```
 
 Rate-Control is a classless policy that limits the packet flow to a set
 rate. It is a pure shaper, it does not schedule traffic. Traffic is
@@ -999,8 +1026,10 @@ Possible completions:
 #### Shaper
 
 
+```{eval-rst}
 | **Queueing discipline:** Hierarchical Token Bucket.
 | **Applies to:** Outbound traffic.
+```
 
 
 The Shaper policy does not guarantee a low delay, but it does guarantee
@@ -1099,7 +1128,7 @@ their assigned *bandwidth* share.
 
 (traffic-policy-shaper-example)=
 
-### Example
+##### Example
 
 A simple example of Shaper using priorities.
 
@@ -1128,8 +1157,10 @@ set qos policy shaper MY-HTB default queue-type 'fair-queue'
 
 #### CAKE
 
+```{eval-rst}
 | **Queueing discipline:** Deficit mode.
 | **Applies to:** Outbound traffic.
+```
 
 Common Applications Kept Enhanced (CAKE) is a comprehensive queue management
 system, implemented as a queue discipline (qdisc) for the Linux kernel. It is

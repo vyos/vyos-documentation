@@ -75,11 +75,18 @@ routes exchange and minimize iBGP peerings between devices.
 
 L3VPN configuration parameters table:
 
-| Node     | Role  | VRF        | RD              | RT import             | RT export  |
-| -------- | ----- | ---------- | --------------- | --------------------- | ---------- |
-| VyOS-PE2 | Hub   | BLUE_HUB   | 10.80.80.1:1011 | 65035:1011 65035:1030 | 65035:1030 |
-| VyOS-PE1 | Spoke | BLUE_SPOKE | 10.50.50.1:1011 | 65035:1030            | 65035:1011 |
-| VyOS-PE3 | Spoke | BLUE_SPOKE | 10.60.60.1:1011 | 65035:1030            | 65035:1011 |
+```{eval-rst}
++----------+-------+------------+-----------------+-------------+-------------+
+|   Node   |  Role |     VRF    |        RD       |  RT import  |  RT export  |
++----------+-------+------------+-----------------+-------------+-------------+
+| VyOS-PE2 | Hub   | BLUE_HUB   | 10.80.80.1:1011 | 65035:1011  | 65035:1030  |
+|          |       |            |                 | 65035:1030  |             |
++----------+-------+------------+-----------------+-------------+-------------+
+| VyOS-PE1 | Spoke | BLUE_SPOKE | 10.50.50.1:1011 | 65035:1030  | 65035:1011  |
++----------+-------+------------+-----------------+-------------+-------------+
+| VyOS-PE3 | Spoke | BLUE_SPOKE | 10.60.60.1:1011 | 65035:1030  | 65035:1011  |
++----------+-------+------------+-----------------+-------------+-------------+
+```
 
 ## Configuration
 
@@ -92,7 +99,7 @@ between **P** (rovider), **P** (rovider) **E** (dge) and **R** (oute) **R**
 - VyOS-P1:
 
 ```none
-# interfaces 
+# interfaces
 set interfaces dummy dum10 address '10.0.0.3/32'
 set interfaces ethernet eth0 address '172.16.30.1/24'
 set interfaces ethernet eth1 address '172.16.40.1/24'
@@ -181,6 +188,7 @@ set interfaces ethernet eth2 address '172.16.50.2/24'
 set interfaces ethernet eth3 address '172.16.60.2/24'
 set interfaces ethernet eth5 address '172.16.140.1/24'
 
+
 # protocols ospf + ldp
 set protocols mpls interface 'eth1'
 set protocols mpls interface 'eth2'
@@ -206,7 +214,7 @@ set protocols ospf parameters router-id '10.0.0.6'
 set interfaces dummy dum10 address '10.0.0.7/32'
 set interfaces ethernet eth0 address '172.16.90.2/24'
 
-# protocols  ospf + ldp 
+# protocols  ospf + ldp
 set protocols mpls interface 'eth0'
 set protocols mpls ldp discovery transport-ipv4-address '10.0.0.7'
 set protocols mpls ldp interface 'eth0'
@@ -225,7 +233,7 @@ set interfaces ethernet eth0 address '172.16.110.2/24'
 set interfaces ethernet eth1 address '172.16.100.2/24'
 set interfaces ethernet eth2 address '172.16.80.1/24'
 
-# protocols  ospf + ldp 
+# protocols  ospf + ldp
 set protocols mpls interface 'eth0'
 set protocols mpls interface 'eth1'
 set protocols mpls ldp discovery transport-ipv4-address '10.0.0.8'
@@ -406,7 +414,7 @@ set interfaces ethernet eth3 vrf 'BLUE_SPOKE'
 - VyOS-PE2:
 
 ```none
-# VRF settings 
+# VRF settings
 set vrf name BLUE_HUB table '400'
 set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast export vpn
 set vrf name BLUE_HUB protocols bgp address-family ipv4-unicast import vpn
@@ -461,7 +469,7 @@ set interfaces dummy dum20 address '10.0.0.80/32'
 set interfaces ethernet eth0 address '10.50.50.2/24'
 
 # BGP for peering with PE
-set protocols bgp system-as 65035 
+set protocols bgp system-as 65035
 set protocols bgp address-family ipv4-unicast network 10.0.0.80/32
 set protocols bgp neighbor 10.50.50.1 ebgp-multihop '2'
 set protocols bgp neighbor 10.50.50.1 remote-as '65001'
@@ -478,7 +486,7 @@ set interfaces dummy dum20 address '10.0.0.100/32'
 set interfaces ethernet eth0 address '10.80.80.2/24'
 
 # BGP for peering with PE
-set protocols bgp system-as 65035 
+set protocols bgp system-as 65035
 set protocols bgp address-family ipv4-unicast network 10.0.0.100/32
 set protocols bgp address-family ipv4-unicast redistribute connected
 set protocols bgp neighbor 10.80.80.1 ebgp-multihop '2'
@@ -495,8 +503,8 @@ set protocols bgp parameters router-id '10.80.80.2'
 set interfaces dummy dum20 address '10.0.0.90/32'
 set interfaces ethernet eth0 address '10.60.60.2/24'
 
-# BGP for peering with PE 
-set protocols bgp system-as 65035 
+# BGP for peering with PE
+set protocols bgp system-as 65035
 set protocols bgp address-family ipv4-unicast network 10.0.0.90/32
 set protocols bgp neighbor 10.60.60.1 ebgp-multihop '2'
 set protocols bgp neighbor 10.60.60.1 remote-as '65001'
@@ -947,7 +955,7 @@ Finally, let’s check the reachability between CEs:
 - VyOS-CE1-SPOKE -----> VyOS-CE-HUB
 
 ```none
-# check rib 
+# check rib
 vyos@VyOS-CE1-SPOKE:~$ show ip route
 Codes: K - kernel route, C - connected, S - static, R - RIP,
      O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,

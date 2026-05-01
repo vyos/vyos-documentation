@@ -114,15 +114,21 @@ Locally connect to serial port identified by `<device>`.
 vyos@vyos-r1:~$ connect console usb0b2.4p1.0
 [Enter `^Ec?' for help]
 [-- MOTD -- VyOS Console Server]
+
 vyos-r2 login:
 :::
+
 :::{hint}
 Multiple users can connect to the same serial device but only
 one is allowed to write to the console port.
+:::
 
+:::{hint}
 The sequence ``^Ec?`` translates to: ``Ctrl+E c ?``. To quit
 the session use: ``Ctrl+E c .``
+:::
 
+:::{hint}
 If ``alias`` is set, it can be used instead of the device when
 connecting.
 :::

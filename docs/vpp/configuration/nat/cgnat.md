@@ -2,7 +2,7 @@
 lastproofread: '2026-03-03'
 ---
 
-(vpp-config-nat-cgnat)=
+(vpp_config_nat_cgnat)=
 
 ```{include} /_include/need_improvement.txt
 ```
@@ -110,12 +110,16 @@ example DNS queries) when CGNAT is enabled.
 :::
 
 :::{important}
-Exclude-rule validation rules:
-- `local-address` must be specified.
-- `protocol` and `local-port` must either both be specified or both be
-  : omitted.
-- Duplicate identity mappings are not allowed (same local-address,
-  : protocol, local-port tuple).
+**Memory Requirements**
+
+CGNAT memory usage scales with the number of internal customers.
+
+**Each 256 customers** (equivalent to a /24 subnet) requires
+approximately **4 MB of main heap memory**. This memory maintains
+customer-to-port mappings and session state information.
+
+Configure your VPP main heap size appropriately based on your expected
+customer count. See {ref}`VPP Memory Configuration <vpp_config_dataplane_memory>` for details on adjusting main heap size.
 :::
 
 ## Session Limitations
@@ -211,17 +215,6 @@ Address      Protocol    Port    VRF  Description
 100.64.0.10  all         any       0    Bypass management host
 100.64.0.20  udp         53        0    Bypass subscriber DNS
 ```
-
-### Memory Requirements
-
-CGNAT memory usage scales with the number of internal customers.
-
-Each 256 customers (equivalent to a /24 subnet) requires approximately 4 MB of
-main heap memory. This memory maintains customer-to-port mappings and session
-state information.
-
-Configure your VPP main heap size appropriately based on your expected customer
-count. See VPP Memory Configuration for details on adjusting main heap size.
 
 ### Potential Issues and Troubleshooting
 

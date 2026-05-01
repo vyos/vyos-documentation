@@ -62,10 +62,12 @@ and easily perused from a console.
 
 All RST files must follow the same TOC Level syntax and have to start with
 
-```none
-#####
-Title
-#####
+```{eval-rst}
+.. code-block::
+
+   #####
+   Title
+   #####
 ```
 
 The configuration mode folder and the articles cover the specific level of
@@ -165,7 +167,7 @@ to use an alternative hyperlink use it this way:
 
 `` {ref}`Check out VLAN<configuration/interfaces/ethernet:vlan> ``
 
-### handle build errors
+##### handle build errors
 
 The plugin will warn on build if a headline has a duplicate name in the
 same document. To prevent this warning, you have to put a custom link on
@@ -235,9 +237,9 @@ Custom commands have been developed for writing the documentation. Please
 make yourself comfortable with those commands as this eases the way we
 render the documentation.
 
-### cfgcmd
+##### cfgcmd
 
-When documenting CLI commands, use the `.. cfgcmd::` directive
+When documenting CLI commands, use the ``.. cfgcmd::`` directive
 for all configuration mode commands. An explanation of the described command
 should be added below this statement.
 Replace all variable contents with \<value> or something similar.
@@ -245,89 +247,90 @@ Replace all variable contents with \<value> or something similar.
 With those custom commands, it will be possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
-````none
-```{cfgcmd} protocols static arp \<ipaddress\> hwaddr \<macaddress\>
+```none
+.. cfgcmd:: protocols static arp <ipaddress> hwaddr <macaddress>
 
    This will configure a static ARP entry, always resolving `192.0.2.100` to
    `00:53:27:de:23:aa`.
 ```
-````
 
-For an inline configuration level command, use `{cfgcmd}`
+For an inline configuration level command, use ``:cfgcmd:``
 
 ```none
-{cfgcmd}`set interface ethernet eth0`
+:cfgcmd:`set interface ethernet eth0`
 ```
 
-To extract a defaultvalue from the XML definitions add a `:defaultvalue:`
-to `.. cfgcmd::` directive.
+
+To extract a defaultvalue from the XML definitions add a ``:defaultvalue:``
+to ``.. cfgcmd::`` directive.
 To have this feature locally, the vyos-1x submodule must be initialized before.
 Please be aware to not update the submodule in your PR.
 
-````none
-```{cfgcmd} set system conntrack table-size \<1-50000000\>
+```none
+.. cfgcmd:: set system conntrack table-size <1-50000000>
+    :defaultvalue:
 
-  :defaultvalue:
-  The connection tracking table contains one entry for each connection being
-  tracked by the system.
+    The connection tracking table contains one entry for each connection being
+    tracked by the system.
 ```
-````
-### opcmd
 
-When documenting operational level commands, use the `.. opcmd::` directive.
+
+##### opcmd
+
+When documenting operational level commands, use the ``.. opcmd::`` directive.
 An explanation of the described command should be added below this statement.
 
 With those custom commands, it is possible to render them in a more
 descriptive way in the resulting HTML/PDF manual.
 
-````none
-```{opcmd} show protocols static arp
+```none
+.. opcmd:: show protocols static arp
 
    Display all known ARP table entries spanning across all interfaces
 ```
-````
 
-For an inline operational level command, use `{opcmd}`
+For an inline operational level command, use ``:opcmd:``
 
 ```none
-{opcmd}`add system image`
+:opcmd:`add system image`
 ```
 
-### cmdinclude
+##### cmdinclude
 
 To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
 
-````none
-```{cmdincludemd} /_include/interface-address.txt
-   :var0: ethernet
-   :var1: eth1
+```none
+ .. cmdinclude:: /_include/interface-address.txt
+    :var0: ethernet
+    :var1: eth1
 ```
-````
 
 the content of interface-address.txt looks like this
 
-`````none
-```{cfgcmd} set interfaces {{ var0 }} \<interface\> address \<address | dhcp | dhcpv6\>
+```none
+ .. cfgcmd:: set interfaces {{ var0 }} <interface> address <address | dhcp |
+    dhcpv6>
 
-   Configure interface `<interface>` with one or more interface
-   addresses.
-   * **address** can be specified multiple times as IPv4 and/or IPv6
-   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-   * **dhcp** interface address is received by DHCP from a DHCP server
-   on this segment.
-   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
-   server on this segment.
-   Example:
-````none
-   set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
-   set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
-   set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
-   set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
-   ````
+    Configure interface `<interface>` with one or more interface
+    addresses.
 
+    * **address** can be specified multiple times as IPv4 and/or IPv6
+    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+    * **dhcp** interface address is received by DHCP from a DHCP server
+    on this segment.
+    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
+    server on this segment.
+
+    Example:
+
+    .. code-block:: none
+
+       set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
+       set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
+       set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
+       set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
 ```
-`````
 ##### vytask
 
 When referencing to VyOS Phabricator Tasks, there is a custom Sphinx Markup

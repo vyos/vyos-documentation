@@ -1284,7 +1284,6 @@ Requirements to enable synproxy:
 - Disable conntrack loose track option
 
 ```none
-
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'
 
 

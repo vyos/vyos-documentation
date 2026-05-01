@@ -31,15 +31,12 @@ To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </
             + raw
          - name
             + custom_name
-
 ```
 
 First, the router receives all traffic and processes it in the **prerouting**
 stage.
 
-
 This stage includes:
-
 
 - **Firewall Prerouting**: commands found under `set firewall ipv4
   prerouting raw ...`
@@ -50,45 +47,36 @@ This stage includes:
 - {doc}`Destination NAT</configuration/nat/nat44>`: commands found under
   `set nat destination ...`
 
-
 For transit traffic, which is received by the router and forwarded, the base
 chain is **forward**. The following is a simplified packet flow diagram for
 transit traffic:
 
-
 :::{figure} /_static/images/firewall-fwd-packet-flow.png
 :::
-
 
 The base firewall chain for configuring filtering rules for transit traffic is
 `set firewall ipv4 forward filter ...`, which occurs in stage 5, highlighted
 in red.
-
 
 For traffic to the router itself, the base chain is **input**. For traffic
 the router originates, the base chain is **output**. A simplified packet flow
 diagram is shown next, which shows the path for traffic destined to the router
 itself and traffic the router generates (starting from circle number 6):
 
-
 :::{figure} /_static/images/firewall-input-packet-flow.png
 :::
-
 
 The base chain for traffic towards the router is
 `set firewall ipv4 input filter ...`
 
-
 The base chain for traffic the router generates is `set firewall ipv4
 output ...`, where two sub-chains are available: **filter** and **raw**:
-
 
 - **Output Prerouting**: `set firewall ipv4 output raw ...`. As described
   in **Prerouting**, the system processes rules in this section before the
   connection tracking subsystem.
 - **Output Filter**: `set firewall ipv4 output filter ...`. The system
   processes rules in this section after the connection tracking subsystem.
-
 
 :::{note}
 **Important note about default-actions:**
@@ -98,31 +86,24 @@ do not define a default action, the system sets the default-action to
 **drop**.
 :::
 
-
 You can create custom firewall chains using the following commands:
 `set firewall ipv4 name <name> ...`. To use a custom chain, you must define
 a rule with the **action jump** and the appropriate **target** in a base
 chain.
 
-
 ## Firewall - IPv4 Rules
-
 
 Each firewall rule has a
 number, an action to apply if the rule matches, and the ability to specify
 multiple matching criteria. Packets traverse rules numbered 1-999999, so order
 is crucial. The system executes the rule action at the first match.
 
-
 ### Actions
-
 
 If you define a rule, you must define an action for it. The action tells the
 firewall what to do if all the criteria you define for that rule are met.
 
-
 The action can be:
-
 
 - `accept`: Accept the packet.
 - `continue`: Continue parsing the next rule.
@@ -245,9 +226,7 @@ do not define a default action, the system sets the default-action to
 **drop**.
 :::
 
-
 ### Firewall Logs
-
 
 You can enable logging for every single firewall rule. If you enable logging,
 you can define other log options.
@@ -344,7 +323,6 @@ group.
 
 ### Firewall Description
 
-
 You can add a description for reference for every single rule and for every
 defined custom chain.
 
@@ -369,7 +347,6 @@ Provide a description for each rule.
 
 ### Rule Status
 
-
 When you define a rule, it is enabled by default. In some cases, it is useful
 to disable the rule rather than removing it.
 
@@ -388,7 +365,6 @@ Command for disabling a rule but keeping it in the configuration.
 ```
 
 ### Matching criteria
-
 
 There are a lot of matching criteria against which the packet can be tested.
 
@@ -1213,7 +1189,6 @@ matching criteria to block brute-force attempts.
 
 ### Packet Modifications
 
-
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
 packets before sending them out. This feature provides more flexibility in
 packet handling.
@@ -1272,7 +1247,6 @@ Set connection mark value.
 
 ## Synproxy
 
-
 Synproxy connections
 
 ```{cfgcmd} set firewall ipv4 [input | forward] filter rule \<1-999999\> action synproxy
@@ -1293,18 +1267,14 @@ Synproxy connections
 
 ### Example synproxy
 
-
 Requirements to enable synproxy:
-
 
 - Traffic must be symmetric.
 - Synproxy relies on syncookies and TCP timestamps, ensure these are enabled.
 - Disable conntrack loose track option.
 
 ```none
-
 set system sysctl parameter net.ipv4.tcp_timestamps value '1'
-
 
 set system conntrack tcp loose disable
 
@@ -1313,7 +1283,6 @@ set system conntrack ignore ipv4 rule 10 destination port '8080'
 set system conntrack ignore ipv4 rule 10 protocol 'tcp'
 
 set system conntrack ignore ipv4 rule 10 tcp flags syn
-
 
 set firewall global-options syn-cookies 'enable'
 
@@ -1336,7 +1305,6 @@ set firewall ipv4 input filter rule 1000 state invalid
 ```
 
 ## Operation-mode Firewall
-
 
 ### Rule-set overview
 

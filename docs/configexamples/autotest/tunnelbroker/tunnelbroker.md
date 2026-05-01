@@ -2,8 +2,10 @@
 
 # Tunnelbroker.net (IPv6)
 
-% Testdate: 2024-01-13
-% Version: 1.5-rolling-202401121239
+```{eval-rst}
+| Testdate: 2024-01-13
+| Version: 1.5-rolling-202401121239
+```
 
 This guide walks through the setup of <https://www.tunnelbroker.net/> for an
 IPv6 Tunnel.

@@ -261,17 +261,17 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
    :::{note}
    Ping command can be interrupted at any given time using ``<Ctrl>+c``.
    A brief statistic is shown afterwards.
+   :::
 
-  ::::{code-block} none
-  vyos@vyos:~$ ping 192.0.2.1 vrf red
-  PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
-  64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
-  64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
-  ^C
-  --- 192.0.2.1 ping statistics ---
-  2 packets transmitted, 2 received, 0% packet loss, time 4ms
-  rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
-  ::::
+   :::{code-block} none
+   vyos@vyos:~$ ping 192.0.2.1 vrf red
+   PING 192.0.2.1 (192.0.2.1) 56(84) bytes of data.
+   64 bytes from 192.0.2.1: icmp_seq=1 ttl=64 time=0.070 ms
+   64 bytes from 192.0.2.1: icmp_seq=2 ttl=64 time=0.078 ms
+   ^C
+   --- 192.0.2.1 ping statistics ---
+   2 packets transmitted, 2 received, 0% packet loss, time 4ms
+   rtt min/avg/max/mdev = 0.070/0.074/0.078/0.004 ms
    :::
 ```
 
@@ -309,12 +309,13 @@ vyos@vyos(vrf:blue):~$
 The following example topology was built using EVE-NG.
 
 
-:::{figure} /_static/images/vrf-example-topology-01.png
-:alt: VRF topology example
+```{eval-rst}
+.. figure:: /_static/images/vrf-example-topology-01.*
+   :alt: VRF topology example
 
 
-VRF route leaking
-:::
+   VRF route leaking
+```
 
 
 - PC1 is in the `default` VRF and acting as e.g. a "fileserver"
@@ -330,55 +331,30 @@ VRF route leaking
 #### Configuration
 
 
-> 
-
 ```none
 set interfaces bridge br10 address '10.30.0.254/24'
-
 set interfaces bridge br10 member interface eth3
-
 set interfaces bridge br10 member interface eth4
-
 set interfaces bridge br10 vrf 'red'
 
-
-
 set interfaces ethernet eth0 address 'dhcp'
-
 set interfaces ethernet eth0 vrf 'mgmt'
-
 set interfaces ethernet eth1 address '10.0.0.254/24'
-
 set interfaces ethernet eth2 address '10.20.0.254/24'
-
 set interfaces ethernet eth2 vrf 'blue'
 
-
-
 set protocols static route 10.20.0.0/24 interface eth2 vrf 'blue'
-
 set protocols static route 10.30.0.0/24 interface br10 vrf 'red'
 
-
-
 set service ssh disable-host-validation
-
 set service ssh vrf 'mgmt'
-
-
 
 set system name-server 'eth0'
 
-
-
 set vrf name blue protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
-
 set vrf name blue table '3000'
-
 set vrf name mgmt table '1000'
-
 set vrf name red protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
-
 set vrf name red table '2000'
 ```
 
@@ -391,61 +367,33 @@ set vrf name red table '2000'
 #### Configuration
 
 
-> 
-
 ```none
 set interfaces ethernet eth0 address '172.16.50.12/24'
-
 set interfaces ethernet eth0 vrf 'red'
 
-
-
 set interfaces ethernet eth1 address '192.168.130.100/24'
-
 set interfaces ethernet eth1 vrf 'blue'
 
-
-
 set nat destination rule 110 description 'NAT ssh- INSIDE'
-
 set nat destination rule 110 destination port '2022'
-
 set nat destination rule 110 inbound-interface name 'eth0'
-
 set nat destination rule 110 protocol 'tcp'
-
 set nat destination rule 110 translation address '192.168.130.40'
 
-
-
 set nat source rule 100 outbound-interface name 'eth0'
-
 set nat source rule 100 protocol 'all'
-
 set nat source rule 100 source address '192.168.130.0/24'
-
 set nat source rule 100 translation address 'masquerade'
-
-
 
 set service ssh vrf 'red'
 
-
-
 set vrf bind-to-all
-
 set vrf name blue protocols static route 0.0.0.0/0 next-hop 172.16.50.1 vrf 'red'
-
 set vrf name blue protocols static route 172.16.50.0/24 interface eth0 vrf 'red'
-
 set vrf name blue table '1010'
 
-
-
 set vrf name red protocols static route 0.0.0.0/0 next-hop 172.16.50.1
-
 set vrf name red protocols static route 192.168.130.0/24 interface eth1 vrf 'blue'
-
 set vrf name red table '2020'
 ```
 
@@ -459,17 +407,11 @@ After committing the configuration we can verify all leaked routes are
 installed, and try to ICMP ping PC1 from PC3.
 
 
-> 
-
 ```none
 PCS> ping 10.0.0.1
 
-
-
 84 bytes from 10.0.0.1 icmp_seq=1 ttl=63 time=1.943 ms
-
 84 bytes from 10.0.0.1 icmp_seq=2 ttl=63 time=1.618 ms
-
 84 bytes from 10.0.0.1 icmp_seq=3 ttl=63 time=1.745 ms
 ```
 
@@ -482,88 +424,53 @@ DNS         :
 MAC         : 00:50:79:66:68:0f
 ```
 
-### VRF default routing table
+###### VRF default routing table
 
-
-> 
 
 ```none
 vyos@R1:~$ show ip route
-
 Codes: K - kernel route, C - connected, S - static, R - RIP,
-
        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-
        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-
        F - PBR, f - OpenFabric,
-
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
 
-
-
 C>* 10.0.0.0/24 is directly connected, eth1, 00:07:44
-
 S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:38
-
 S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 ```
 
-### VRF red routing table
+###### VRF red routing table
 
-
-> 
 
 ```none
 vyos@R1:~$ show ip route vrf red
-
 Codes: K - kernel route, C - connected, S - static, R - RIP,
-
        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-
        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-
        F - PBR, f - OpenFabric,
-
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
 
-
-
 VRF red:
-
 K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:07:57
-
 S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:40
-
 C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 ```
 
-### VRF blue routing table
+###### VRF blue routing table
 
-
-> 
 
 ```none
 vyos@R1:~$ show ip route vrf blue
-
 Codes: K - kernel route, C - connected, S - static, R - RIP,
-
        O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
-
        T - Table, v - VNC, V - VNC-Direct, A - Babel, D - SHARP,
-
        F - PBR, f - OpenFabric,
-
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
 
-
-
 VRF blue:
-
 K>* 0.0.0.0/0 [255/8192] unreachable (ICMP unreachable), 00:08:00
-
 S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:44
-
 C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 ```
 

@@ -177,42 +177,43 @@ into a fully functional VyOS system**. After testing it, you can start a
 {ref}`permanent_installation` on your hard drive or power off your system
 and remove the USB drive.
 
+```{eval-rst}
 If you have a GNU/Linux system, you can create a bootable VyOS USB drive using
-the `dd` command:
+the ``dd`` command:
 
-1. Open your terminal emulator.
+ 1. Open your terminal emulator.
 
-2. Find the device name of your USB drive (use the `lsblk` command).
+ 2. Find the device name of your USB drive (use the ``lsblk`` command).
 
-3. Unmount the USB drive. Replace `X` with your device letter and keep the
-   asterisk (*) to unmount all partitions.
+ 3. Unmount the USB drive. Replace ``X`` with your device letter and keep the
+    asterisk (*) to unmount all partitions.
 
-```none
-$ umount /dev/sdX*
+ .. code-block:: none
+
+  $ umount /dev/sdX*
+
+ 1. Write the image (your VyOS .iso file) to the USB drive. Use the device
+    name (for example, ``/dev/sdb``), not the partition name
+    (for example, ``/dev/sdb1``).
+
+  **Warning**: This will destroy all data on the USB drive!
+
+ .. code-block:: none
+
+   # dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
+
+ 1. Wait for the operation to complete (bytes copied). On some systems, this
+    may take more than one minute.
+
+ 2. Once ``dd`` has finished, pull the USB drive out and plug it into
+    the powered-off computer where you want to install (or test) VyOS.
+
+ 3. Power on the computer and ensure it boots from the USB drive
+    (you may need to select the boot device or change boot settings).
+
+ 4. When VyOS finishes loading, sign in using the default credentials
+    (login: ``vyos``, password: ``vyos``).
 ```
-
-4. Write the image (your VyOS .iso file) to the USB drive. Use the device
-   name (for example, `/dev/sdb`), not the partition name
-   (for example, `/dev/sdb1`).
-
-**Warning**: This will destroy all data on the USB drive!
-
-```none
-# dd if=/path/to/vyos.iso of=/dev/sdX bs=8M; sync
-
-```
-
-5. Wait for the operation to complete (bytes copied). On some systems, this
-   may take more than one minute.
-
-6. Once `dd` has finished, pull the USB drive out and plug it into
-   the powered-off computer where you want to install (or test) VyOS.
-
-7. Power on the computer and ensure it boots from the USB drive
-   (you may need to select the boot device or change boot settings).
-
-8. When VyOS finishes loading, sign in using the default credentials
-   (login: `vyos`, password: `vyos`).
 
 If you encounter issues with this method, prefer a different operating
 system, or want a GUI program, you can use other tools to create a
@@ -243,58 +244,61 @@ Each version is contained in its own squashfs image mounted in a union
 filesystem along with a directory for mutable data such as configurations,
 keys, and custom scripts.
 
+```{eval-rst}
 In order to proceed with a permanent installation:
 
-1. Sign in to the VyOS live system using the default credentials
-   (login: `vyos`, password: `vyos`).
+ 1. Sign in to the VyOS live system using the default credentials
+    (login: ``vyos``, password: ``vyos``).
 
-2. Run the `install image` command and follow the wizard:
+ 2. Run the ``install image`` command and follow the wizard:
 
-```none
-vyos@vyos:~$ install image
-Welcome to VyOS installation!
-This command will install VyOS to your permanent storage.
-Would you like to continue? [y/N] y
-What would you like to name this image? (Default: 2025.09.17-0018-rolling)
-Please enter a password for the "vyos" user:
-Please confirm password for the "vyos" user:
-What console should be used by default? (K: KVM, S: Serial)? (Default: S)
-Probing disks
-1 disk(s) found
-The following disks were found:
-Drive: /dev/vda (10.0 GB)
-Which one should be used for installation? (Default: /dev/vda)
-Installation will delete all data on the drive. Continue? [y/N] y
-Searching for data from previous installations
-No previous installation found
-Would you like to use all the free space on the drive? [Y/n] Y
-Creating partition table...
-The following config files are available for boot:
-        1: /opt/vyatta/etc/config/config.boot
-        2: /opt/vyatta/etc/config.boot.default
-Which file would you like as boot config? (Default: 1)
-Creating temporary directories
-Mounting new partitions
-Creating a configuration file
-Copying system image files
-Installing GRUB configuration files
-Installing GRUB to the drive
-Cleaning up
-Unmounting target filesystems
-Removing temporary files
-The image installed successfully; please reboot now.
+ .. code-block:: none
+
+   vyos@vyos:~$ install image
+   Welcome to VyOS installation!
+   This command will install VyOS to your permanent storage.
+   Would you like to continue? [y/N] y
+   What would you like to name this image? (Default: 2025.09.17-0018-rolling)
+   Please enter a password for the "vyos" user:
+   Please confirm password for the "vyos" user:
+   What console should be used by default? (K: KVM, S: Serial)? (Default: S)
+   Probing disks
+   1 disk(s) found
+   The following disks were found:
+   Drive: /dev/vda (10.0 GB)
+   Which one should be used for installation? (Default: /dev/vda)
+   Installation will delete all data on the drive. Continue? [y/N] y
+   Searching for data from previous installations
+   No previous installation found
+   Would you like to use all the free space on the drive? [Y/n] Y
+   Creating partition table...
+   The following config files are available for boot:
+           1: /opt/vyatta/etc/config/config.boot
+           2: /opt/vyatta/etc/config.boot.default
+   Which file would you like as boot config? (Default: 1)
+   Creating temporary directories
+   Mounting new partitions
+   Creating a configuration file
+   Copying system image files
+   Installing GRUB configuration files
+   Installing GRUB to the drive
+   Cleaning up
+   Unmounting target filesystems
+   Removing temporary files
+   The image installed successfully; please reboot now.
+
+
+ 3. After installation completes, remove the live USB drive or CD.
+
+ 4. Reboot the system.
+
+ .. code-block:: none
+
+  vyos@vyos:~$ reboot
+  Proceed with reboot? (Yes/No) [No] Yes
+
+ You will boot now into a permanent VyOS system.
 ```
-
-3. After installation completes, remove the live USB drive or CD.
-
-4. Reboot the system.
-
-```none
-vyos@vyos:~$ reboot
-Proceed with reboot? (Yes/No) [No] Yes
-```
-
-You will boot now into a permanent VyOS system.
 
 ## PXE Boot
 

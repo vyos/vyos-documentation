@@ -1,7 +1,9 @@
 # Wireguard
 
-- Testdate: 2024-01-13
-- Version: 1.5-rolling-202401121239
+```{eval-rst}
+| Testdate: 2024-01-13
+| Version: 1.5-rolling-202401121239
+```
 
 This simple structure show how to connect two offices. One remote branch and the
 central office.

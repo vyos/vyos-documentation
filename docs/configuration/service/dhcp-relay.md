@@ -137,6 +137,7 @@ Restart DHCP relay service
 ```{cfgcmd} set service dhcpv6-relay listen-interface \<interface\>
 
 Set eth1 to be the listening interface for the DHCPv6 relay.
+
 Multiple interfaces may be specified.
 ```
 

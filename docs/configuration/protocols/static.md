@@ -17,7 +17,7 @@ used to determine the forwarding table used for unicast packet forwarding.
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\>
 
-Configure next-hop `<address>` for an IPv4 static route. Multiple static
+Configure next-hop *\<address\>* for an IPv4 static route. Multiple static
 routes can be created.
 ```
 
@@ -45,8 +45,8 @@ installed into the kernel.
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\>
 
 Allows you to configure the next-hop interface for an interface-based IPv4
-static route. `<interface>` will be the next-hop interface where traffic is
-routed for the given `<subnet>`.
+static route. *\<interface\>* will be the next-hop interface where traffic is
+routed for the given *\<subnet\>*.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> disable
@@ -67,21 +67,21 @@ Range is 1 to 255, default is 1.
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
 gateway address as BFD peer destination address.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
-gateway address as BFD peer destination address with BFD profile `<profile>`.
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
+gateway address as BFD peer destination address with BFD profile *\<profile\>*.
 ```
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
 gateway address as BFD peer destination address with source address
-`<source-address>` but initiate a multi-hop session.
+*\<source\>* but initiate a multi-hop session.
 ```
 
 
@@ -144,7 +144,7 @@ Sets a tag for this route.
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\>
 
-Configure next-hop `<address>` for an IPv6 static route. Multiple static
+Configure next-hop *\<address\>* for an IPv6 static route. Multiple static
 routes can be created.
 ```
 
@@ -197,8 +197,8 @@ S>* 2001:db8:1000::/36 [1/0] via 2001:db8:201::ffff, eth0.201, seg6 2001:db8:aaa
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\>
 
 Allows you to configure the next-hop interface for an interface-based IPv6
-static route. `<interface>` will be the next-hop interface where traffic is
-routed for the given `<subnet>`.
+static route. *\<interface\>* will be the next-hop interface where traffic is
+routed for the given *\<subnet\>*.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> disable
@@ -232,21 +232,21 @@ set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
 gateway address as BFD peer destination address.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
-gateway address as BFD peer destination address with BFD profile `<profile>`.
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
+gateway address as BFD peer destination address with BFD profile *\<profile\>*.
 ```
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source\>
 
-Configure a static route for `<subnet>` using gateway `<address>` and use the
+Configure a static route for *\<subnet\>* using gateway *\<address\>* and use the
 gateway address as BFD peer destination address with source address
-`<source>` but initiate a multi-hop session.
+*\<source\>* but initiate a multi-hop session.
 ```
 
 

@@ -30,7 +30,9 @@ Configure the general behavior of the syslog service.
 ```{cfgcmd} set system syslog marker interval \<number\>
 
 **Configure the interval, in seconds, for sending syslog mark messages.**
+
 Syslog mark messages confirm the logging service is operational.
+
 Default: 1200 seconds.
 ```
 
@@ -107,6 +109,7 @@ over UDP.
 ```{cfgcmd} set system syslog remote \<address\> port \<port\>
 
 **Configure the port for log transmission.**
+
 By default, the standard port 514 is used.
 ```
 
@@ -199,7 +202,7 @@ client certificate verification.
 
 ```
 
-```{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
+````{cfgcmd} set system syslog remote \<address\> tls auth-mode \<anon | fingerprint | certvalid | name\>
 
 **Configure the authentication mode.**
 
@@ -207,29 +210,35 @@ The authentication mode defines how the syslog client verifies the syslog
 server's identity.
 
 The following authentication modes are available:
+
+```{eval-rst}
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
-server's identity. This mode is **not recommended**, as it is vulnerable to
-{abbr}`MITM (Man-in-the-Middle)` attacks.
+  server's identity. This mode is **not recommended**, as it is vulnerable to
+  :abbr:`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
-value preconfigured with:
+  value preconfigured with:
 
-:::{code-block} none
-set system syslog remote <address> tls permitted-peer <peer>
-:::
+  .. code-block:: none
+
+     set system syslog remote <address> tls permitted-peer <peer>
+
 * ``certvalid``: Verifies the server certificate is signed by a trusted
-{abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
+  :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
 * ``name``: Verifies that:
-* The server’s certificate is signed by a trusted {abbr}`CA (Certificate
-  Authority)`.
-* The {abbr}`CN (Common Name)` in the certificate matches the value
-  preconfigured with:
 
-:::{code-block} none
-set system syslog remote <address> tls permitted-peer <peer>
-:::
-This is a **recommended** secure mode for production environments.
+  * The server’s certificate is signed by a trusted :abbr:`CA (Certificate
+    Authority)`.
+  * The :abbr:`CN (Common Name)` in the certificate matches the value
+    preconfigured with:
 
+  .. code-block:: none
+
+     set system syslog remote <address> tls permitted-peer <peer>
+
+  This is a **recommended** secure mode for production environments.
 ```
+
+````
 
 ```{cfgcmd} set system syslog remote \<address\> tls permitted-peer \<peer\>
 
@@ -248,13 +257,11 @@ are not required.
 #### Examples:
 
 ```none
-
 # Example of 'anon' authentication mode
 set system syslog remote 10.10.2.3 facility all level debug
 set system syslog remote 10.10.2.3 port 6514
 set system syslog remote 10.10.2.3 protocol tcp
 set system syslog remote 10.10.2.3 tls auth-mode anon
-
 # or just use 'set system syslog remote 10.10.2.3 tls'
 
 # Example of 'certvalid' authentication mode
@@ -280,7 +287,6 @@ set system syslog remote graylog.example.com tls ca-certificate my-ca
 set system syslog remote graylog.example.com tls certificate syslog-client
 set system syslog remote graylog.example.com tls auth-mode name
 set system syslog remote graylog.example.com tls permitted-peers 'graylog.example.com'
-
 ```
 
 #### Security recommendations
@@ -289,7 +295,7 @@ set system syslog remote graylog.example.com tls permitted-peers 'graylog.exampl
   ensures that the server is validated by a trusted {abbr}`CA (Certificate
   Authority)` and that the hostname matches the certificate.
 - Use the `anon` authentication mode only in testing environments, as it
-  doesn't provide server authentication.
+  doesn't provide  server authentication.
 - Ensure private keys are generated, stored, and maintained exclusively within
   the {doc}`PKI system </configuration/pki/index>`.
 (syslog_facilities)=
@@ -302,48 +308,98 @@ logging from network nodes and equipment. Facility assignment is flexible and
 should be tailored to your company's needs. Consider facilities as categorization
 tools, rather than strict directives.
 
-| Facility code | Keyword  | Description                             |
-| ------------- | -------- | --------------------------------------- |
-|               | all      | All facilities                          |
-| 0             | kern     | Kernel messages                         |
-| 1             | user     | User-level messages                     |
-| 2             | mail     | Mail system                             |
-| 3             | daemon   | System daemons                          |
-| 4             | auth     | Security/authentication messages        |
-| 5             | syslog   | Messages generated internally by syslog |
-| 6             | lpr      | Line printer subsystem                  |
-| 7             | news     | Network news subsystem                  |
-| 8             | uucp     | UUCP subsystem                          |
-| 9             | cron     | Clock daemon                            |
-| 10            | security | Security/authentication messages        |
-| 11            | ftp      | FTP daemon                              |
-| 12            | ntp      | NTP subsystem                           |
-| 13            | logaudit | Log audit                               |
-| 14            | logalert | Log alert                               |
-| 15            | clock    | clock daemon (note 2)                   |
-| 16            | local0   | local use 0 (local0)                    |
-| 17            | local1   | local use 1 (local1)                    |
-| 18            | local2   | local use 2 (local2)                    |
-| 19            | local3   | local use 3 (local3)                    |
-| 20            | local4   | local use 4 (local4)                    |
-| 21            | local5   | local use 5 (local5)                    |
-| 22            | local6   | local use 6 (local6)                    |
-| 23            | local7   | local use 7 (local7)                    |
+```{eval-rst}
++----------+----------+----------------------------------------------------+
+| Facility | Keyword  | Description                                        |
+| code     |          |                                                    |
++==========+==========+====================================================+
+|          | all      | All facilities                                     |
++----------+----------+----------------------------------------------------+
+| 0        | kern     | Kernel messages                                    |
++----------+----------+----------------------------------------------------+
+| 1        | user     | User-level messages                                |
++----------+----------+----------------------------------------------------+
+| 2        | mail     | Mail system                                        |
++----------+----------+----------------------------------------------------+
+| 3        | daemon   | System daemons                                     |
++----------+----------+----------------------------------------------------+
+| 4        | auth     | Security/authentication messages                   |
++----------+----------+----------------------------------------------------+
+| 5        | syslog   | Messages generated internally by syslog            |
++----------+----------+----------------------------------------------------+
+| 6        | lpr      | Line printer subsystem                             |
++----------+----------+----------------------------------------------------+
+| 7        | news     | Network news subsystem                             |
++----------+----------+----------------------------------------------------+
+| 8        | uucp     | UUCP subsystem                                     |
++----------+----------+----------------------------------------------------+
+| 9        | cron     | Clock daemon                                       |
++----------+----------+----------------------------------------------------+
+| 10       | security | Security/authentication messages                   |
++----------+----------+----------------------------------------------------+
+| 11       | ftp      | FTP daemon                                         |
++----------+----------+----------------------------------------------------+
+| 12       | ntp      | NTP subsystem                                      |
++----------+----------+----------------------------------------------------+
+| 13       | logaudit | Log audit                                          |
++----------+----------+----------------------------------------------------+
+| 14       | logalert | Log alert                                          |
++----------+----------+----------------------------------------------------+
+| 15       | clock    | clock daemon (note 2)                              |
++----------+----------+----------------------------------------------------+
+| 16       | local0   | local use 0 (local0)                               |
++----------+----------+----------------------------------------------------+
+| 17       | local1   | local use 1 (local1)                               |
++----------+----------+----------------------------------------------------+
+| 18       | local2   | local use 2 (local2)                               |
++----------+----------+----------------------------------------------------+
+| 19       | local3   | local use 3 (local3)                               |
++----------+----------+----------------------------------------------------+
+| 20       | local4   | local use 4 (local4)                               |
++----------+----------+----------------------------------------------------+
+| 21       | local5   | local use 5 (local5)                               |
++----------+----------+----------------------------------------------------+
+| 22       | local6   | local use 6 (local6)                               |
++----------+----------+----------------------------------------------------+
+| 23       | local7   | local use 7 (local7)                               |
++----------+----------+----------------------------------------------------+
+```
 
 (syslog_severity_level)=
 
 ## Severity levels
-| Value | Severity      | Keyword | Description                                                                                                               |
-| ----- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------- |
-|       |               | all     | Log everything.                                                                                                           |
-| 0     | Emergency     | emerg   | System is unusable - a panic condition.                                                                                   |
-| 1     | Alert         | alert   | Action must be taken immediately - A condition that should be corrected immediately, such as a corrupted system database. |
-| 2     | Critical      | crit    | Critical conditions - e.g., hard drive errors.                                                                            |
-| 3     | Error         | err     | Error conditions.                                                                                                         |
-| 4     | Warning       | warning | Warning conditions.                                                                                                       |
-| 5     | Notice        | notice  | Normal but significant conditions - conditions that are not error conditions, but that may require special handling.      |
-| 6     | Informational | info    | Informational messages.                                                                                                   |
-| 7     | Debug         | debug   | Debug-level messages - Messages that contain information normally of use only when debugging a program.                   |
+
+```{eval-rst}
++-------+---------------+---------+-------------------------------------------+
+| Value | Severity      | Keyword | Description                               |
++=======+===============+=========+===========================================+
+|       |               | all     | Log everything.                           |
++-------+---------------+---------+-------------------------------------------+
+| 0     | Emergency     | emerg   | System is unusable - a panic condition.   |
++-------+---------------+---------+-------------------------------------------+
+| 1     | Alert         | alert   | Action must be taken immediately - A      |
+|       |               |         | condition that should be corrected        |
+|       |               |         | immediately, such as a corrupted system   |
+|       |               |         | database.                                 |
++-------+---------------+---------+-------------------------------------------+
+| 2     | Critical      | crit    | Critical conditions - e.g., hard drive    |
+|       |               |         | errors.                                   |
++-------+---------------+---------+-------------------------------------------+
+| 3     | Error         | err     | Error conditions.                         |
++-------+---------------+---------+-------------------------------------------+
+| 4     | Warning       | warning | Warning conditions.                       |
++-------+---------------+---------+-------------------------------------------+
+| 5     | Notice        | notice  | Normal but significant conditions -       |
+|       |               |         | conditions that are not error conditions, |
+|       |               |         | but that may require special handling.    |
++-------+---------------+---------+-------------------------------------------+
+| 6     | Informational | info    | Informational messages.                   |
++-------+---------------+---------+-------------------------------------------+
+| 7     | Debug         | debug   | Debug-level messages - Messages that      |
+|       |               |         | contain information normally of use only  |
+|       |               |         | when debugging a program.                 |
++-------+---------------+---------+-------------------------------------------+
+```
 
 ## Display logs
 
@@ -357,32 +413,33 @@ If no category is specified, all logs are shown.
 
 ```
 
-```{opcmd} show log image \<name\> [all | authorization | directory | file \<file name\> | tail \<lines\>]
+````{opcmd} show log image \<name\> [all | authorization | directory | file \<file name\> | tail \<lines\>]
 
 **Display logs for a specific image on the console.**
 
 Available log categories:
 
-:::{list-table}
-:widths: 25 75
-:header-rows: 0
+```{eval-rst}
+.. list-table::
+   :widths: 25 75
+   :header-rows: 0
 
-* - all
-- Displays the contents of system log files of the specified image.
-* - authorization
-- Displays authorization attempts of the specified image.
-* - directory
-- Displays user-defined log files of the specified image.
-* - file \<file name\>
-- Displays the contents of a specified user-defined log file of the specified
-  image.
-* - tail
-- Displays last lines of the system log of the specified image.
-* - \<lines\>
-- Number of lines to be displayed, default 10.
-:::
-
+   * - all
+     - Displays the contents of system log files of the specified image.
+   * - authorization
+     - Displays authorization attempts of the specified image.
+   * - directory
+     - Displays user-defined log files of the specified image.
+   * - file <file name>
+     - Displays the contents of a specified user-defined log file of the specified
+       image.
+   * - tail
+     - Displays last lines of the system log of the specified image.
+   * - <lines>
+     - Number of lines to be displayed, default 10.
 ```
+
+````
 
 If no category is specified, the contents of the main syslog file are
 displayed.

@@ -214,7 +214,7 @@ mandatory option!
 #### Peers Configuration
 
 
-### Defining Peers
+##### Defining Peers
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> remote-as \<asn\>
 
@@ -305,7 +305,7 @@ may be specified as either an IPv4 address directly or as an interface name.
 (bgp-capability-negotiation-1)=
 
 
-### Capability Negotiation
+##### Capability Negotiation
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> capability dynamic
 
@@ -365,7 +365,7 @@ Capability Negotiation. Please use {cfgcmd}`disable-capability-negotiation`
 command to disable the feature.
 ```
 
-### Peer Parameters
+##### Peer Parameters
 
 ```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> allowas-in number \<number\>
 
@@ -537,7 +537,7 @@ become neighbors. The number of hops range is 1 to 254. This
 command is mutually exclusive with {cfgcmd}`ebgp-multihop`.
 ```
 
-### Peer Groups
+##### Peer Groups
 
 Peer groups are used to help improve scaling by generating the same update
 information to all members of a peer group. Note that this means that the
@@ -651,7 +651,7 @@ ospf, rip, static, table.
 ```
 
 #### General Configuration
-### Common parameters
+##### Common parameters
 
 ```{cfgcmd} set protocols bgp parameters allow-martian-nexthop
 
@@ -760,7 +760,7 @@ The following command uses the explicit-null label value for all the
 BGP instances.
 ```
 
-### Administrative Distance
+##### Administrative Distance
 
 ```{cfgcmd} set protocols bgp parameters distance global \<external|internal|local\> \<distance\>
 
@@ -781,7 +781,7 @@ installed into the kernel.
 :::
 ```
 
-### Timers
+##### Timers
 
 ```{cfgcmd} set protocols bgp timers holdtime \<seconds\>
 
@@ -797,7 +797,7 @@ This command specifies keep-alive time in seconds. The timer
 can range from 4 to 65535. The default value is 60 second.
 ```
 
-### Route Dampening
+##### Route Dampening
 
 When a route fails, a routing update is sent to withdraw the route from the
 network's routing tables. When the route is re-enabled, the change in
@@ -1043,7 +1043,7 @@ a network:
 > - Using BGP confederation
 
 
-### Route Reflector Configuration
+##### Route Reflector Configuration
 
 
 Introducing route reflectors removes the need for the full-mesh. When you
@@ -1067,7 +1067,7 @@ looping. By default cluster ID is set to the BGP router id value, but can be
 set to an arbitrary 32-bit value.
 ```
 
-### Confederation Configuration
+##### Confederation Configuration
 
 A BGP confederation divides our AS into sub-ASes to reduce the number of
 required IBGP peerings. Within a sub-AS we still require full-mesh IBGP but

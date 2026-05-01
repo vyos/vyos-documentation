@@ -130,9 +130,6 @@ e.g. the loopback interface.
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
 
 Source IPv4 address used in all RADIUS server queires.
-
-The `source-address` must be configured to that of an interface.
-Best practice would be a loopback or dummy interface.
 ```
 
 :::{note}

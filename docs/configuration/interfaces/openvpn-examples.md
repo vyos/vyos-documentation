@@ -1,6 +1,6 @@
 # Site-to-site
 
-::: todo
+:::{todo}
 Convert raw command blocks in this file to cfgcmd/opcmd directives for command coverage tracking.
 :::
 

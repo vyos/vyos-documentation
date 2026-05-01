@@ -362,7 +362,6 @@ and 100 on the bonding interface, and assigns an IPv4 address to each VLAN
 subinterface.
 
 ```none
-
 # Create the bonding interface bond0 with 802.3ad LACP
 
 set interfaces bonding bond0 hash-policy 'layer2'
@@ -399,7 +398,6 @@ interface.
 Assign member interfaces to PortChannel:
 
 ```none
-
 interface GigabitEthernet1/0/23
 
  description VyOS eth1
@@ -422,7 +420,6 @@ A new interface, `Port-channel1`, becomes available; all configuration,
 such as allowed VLAN interfaces and STP, is applied here.
 
 ```none
-
 interface Port-channel1
 
  description LACP Channel for VyOS
@@ -446,7 +443,6 @@ Configure a Juniper EX Series switch to integrate with a two-member VyOS bonding
 interface.
 
 ```none
-
 # Create aggregated ethernet device with 802.3ad LACP and port speeds of 10gbit/s
 
 set interfaces ae0 aggregated-ether-options link-speed 10g
@@ -492,7 +488,6 @@ Configure an Aruba/HP 2510G switch to integrate with a two-member VyOS bonding
 interface.
 
 ```none
-
 # Create trunk with 2 member interfaces (interface 1 and 2) and LACP
 
 trunk 1-2 Trk1 LACP
@@ -528,7 +523,6 @@ Let's assume the following topology:
 > 
 
 ```none
-
 > interfaces {
 
 >     bonding bond10 {
@@ -561,7 +555,6 @@ Let's assume the following topology:
 
 
 ```none
-
 interfaces {
 
     bonding bond10 {
@@ -594,7 +587,6 @@ interfaces {
 
 > 
 ```none
-
 > !
 
 > vlan 100
@@ -653,7 +645,6 @@ interfaces {
 
 
 ```none
-
 !
 
 vlan 100

@@ -26,42 +26,71 @@ include firewall configuration.
 
 **VyOS:**
 
-| WAN IP  | 10.0.1.2/30    |
-| ------- | -------------- |
+```{eval-rst}
++---------+----------------+
+| WAN IP  |  10.0.1.2/30   |
++---------+----------------+
 | LAN1 IP | 192.168.0.1/24 |
++---------+----------------+
 | LAN2 IP | 192.168.1.1/24 |
++---------+----------------+
+```
 
 **Cisco:**
 
+```{eval-rst}
++---------+-----------------+
 | WAN IP  | 10.0.2.2/30     |
-| ------- | --------------- |
++---------+-----------------+
 | LAN1 IP | 192.168.10.1/24 |
++---------+-----------------+
 | LAN2 IP | 192.168.11.1/24 |
++---------+-----------------+
+```
 
 **IKE parameters:**
 
+```{eval-rst}
++-------------------+---------+
 | Encryption        | AES-128 |
-| ----------------- | ------- |
++-------------------+---------+
 | HASH              | SHA-1   |
++-------------------+---------+
 | Diff-Helman Group | 14      |
++-------------------+---------+
 | Life-Time         | 28800   |
++-------------------+---------+
 | IKE Version       | 1       |
++-------------------+---------+
+```
 
 **IPsec parameters:**
 
+```{eval-rst}
++------------+---------+
 | Encryption | AES-256 |
-| ---------- | ------- |
++------------+---------+
 | HASH       | SHA-256 |
++------------+---------+
 | Life-Time  | 3600    |
++------------+---------+
 | PFS        | disable |
++------------+---------+
+```
 
 **Hosts configuration**
 
+```{eval-rst}
++--------+--------------+
 | PC1 IP | 192.168.0.2  |
-| ------ | ------------ |
++--------+--------------+
 | PC2 IP | 192.168.1.2  |
++--------+--------------+
 | PC3 IP | 192.168.10.2 |
++--------+--------------+
 | PC4 IP | 192.168.11.2 |
++--------+--------------+
+```
 
 ## Configuration
 
@@ -113,41 +142,44 @@ set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 
 ### Palo Alto
 
+```{eval-rst}
 GUI Configuration:
-: Network -> Network Profiles -> IKE Crypto
+ Network -> Network Profiles -> IKE Crypto
 
-```{image} /_static/images/PA-IKE-group.png
-  :align: center
-  ```
-  Network -> Network Profiles -> IKE Gateways
-```{image} /_static/images/PA-IKE-GW-1.png
-  :align: center
-  ```
-  ```{image} /_static/images/PA-IKE-GW-2.png
-  :align: center
-  ```
-  Network -> Network Profiles -> IPSec Crypto
-```{image} /_static/images/PA-ESP-group.png
-  :align: center
-  ```
-  Network -> Interfaces
-```{image} /_static/images/PA-tunnel-1.png
-  :align: center
-  ```
-  ```{image} /_static/images/PA-tunnel-2.png
-  :align: center
-  ```
+ .. image:: /_static/images/PA-IKE-group.png
+   :align: center
 
-  ```{image} /_static/images/PA-tunnel-3.png
-  :align: center
-  ```
-  Network -> IPSec Tunnels
-```{image} /_static/images/PA-IPsec-tunnel.png
-  :align: center
-  ```
+ Network -> Network Profiles -> IKE Gateways
+
+ .. image:: /_static/images/PA-IKE-GW-1.png
+   :align: center
+
+ .. image:: /_static/images/PA-IKE-GW-2.png
+   :align: center
+
+ Network -> Network Profiles -> IPSec Crypto
+
+ .. image:: /_static/images/PA-ESP-group.png
+   :align: center
+
+ Network -> Interfaces
+
+ .. image:: /_static/images/PA-tunnel-1.png
+   :align: center
+
+ .. image:: /_static/images/PA-tunnel-2.png
+   :align: center
+
+ .. image:: /_static/images/PA-tunnel-3.png
+   :align: center
+
+ Network -> IPSec Tunnels
+
+ .. image:: /_static/images/PA-IPsec-tunnel.png
+   :align: center
+```
 CLI configuration with OSPF:
 ```none
-
 set network interface ethernet ethernet1/1 layer3 ip 10.0.2.2/30
 set network interface ethernet ethernet1/1 layer3 interface-management-profile Allow
 set network interface ethernet ethernet1/2 layer3 ip 192.168.10.1/24
@@ -199,7 +231,6 @@ set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet
 set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet1/3 link-type broadcast
 set network virtual-router default protocol ospf router-id 1.1.1.1
 set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1/3 tunnel.1 ]
-
 ```
 
 ## Monitoring
@@ -208,7 +239,6 @@ set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1
 IKE SAs:
 
 ```none
-
 vyos@vyos:~$ show vpn ike sa
 Peer ID / IP                            Local ID / IP
 ------------                            -------------
@@ -217,35 +247,29 @@ Peer ID / IP                            Local ID / IP
     State  IKEVer  Encrypt      Hash          D-H Group      NAT-T  A-Time  L-Time
     -----  ------  -------      ----          ---------      -----  ------  ------
     up     IKEv1   AES_CBC_128  HMAC_SHA1_96  MODP_2048      no     1372    25802
-
 ```
 
 IPsec SAs:
 
 ```none
-
 vyos@vyos:~$ show vpn ipsec sa
 Connection    State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID    Proposal
 ------------  -------  --------  --------------  ----------------  ----------------  -----------  -----------------------------
 PA-vti        up       23m27s    9K/10K          149/151           10.0.2.2          10.0.2.2     AES_CBC_256/HMAC_SHA2_256_128
-
 ```
 
 OSPF Neighbor Status:
 
 ```none
-
 vyos@vyos:~$ show ip ospf neighbor
 
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
 1.1.1.1           1 Full/-          23m56s            37.948s 10.100.100.2    vti1:10.100.100.1                    0     0     0
-
 ```
 
 Routing Table:
 
 ```none
-
 vyos@vyos:~$ show ip route
 Codes: K - kernel route, C - connected, L - local, S - static,
        R - RIP, O - OSPF, I - IS-IS, B - BGP, E - EIGRP, N - NHRP,
@@ -268,7 +292,6 @@ C>* 192.168.1.0/24 is directly connected, eth2, weight 1, 00:27:34
 L>* 192.168.1.1/32 is directly connected, eth2, weight 1, 00:27:34
 O>* 192.168.10.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 O>* 192.168.11.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
-
 ```
 
 ### Monitoring on Cisco side
@@ -276,7 +299,6 @@ O>* 192.168.11.0/24 [110/11] via 10.100.100.2, vti1, weight 1, 00:24:19
 IKE SAs:
 
 ```none
-
 admin@PA-VM> show vpn ike-sa
 
 IKEv1 phase-1 SAs
@@ -296,13 +318,11 @@ Show IKEv1 phase2 SA: Total 1 gateways found. 1 ike sa found.
 
 
 There is no IKEv2 SA found.
-
 ```
 
 IPsec SAs:
 
 ```none
-
 admin@PA-VM> show vpn ipsec-sa
 
 GwID/client IP  TnID   Peer-Address           Tunnel(Gateway)                                                                                                                  Algorithm          SPI(in)  SPI(out) life(Sec/KB)             remain-time(Sec)
@@ -310,13 +330,11 @@ GwID/client IP  TnID   Peer-Address           Tunnel(Gateway)                   
 1               1      10.0.1.2               VyOS-tunnel(VyOS)                                                                                                                ESP/A256/SHA256    8827A3D9 C204F4FA 3600/Unlimited           2733
 
 Show IPSec SA: Total 1 tunnels found. 1 ipsec sa found.
-
 ```
 
 OSPF Neighbor Status:
 
 ```none
-
 admin@PA-VM> show routing protocol ospf neighbor
 
   Options: 0x80:reserved, O:Opaq-LSA capability, DC:demand circuits, EA:Ext-Attr LSA capability,
@@ -338,13 +356,11 @@ admin@PA-VM> show routing protocol ospf neighbor
   restart helper status:         not helping
   restart helper time remaining: 0
   restart helper exit reason:    none
-
 ```
 
 Routing Table:
 
 ```none
-
 admin@PA-VM> show routing route
 
 flags: A:active, ?:loose, C:connect, H:host, S:static, ~:internal, R:rip, O:ospf, B:bgp,
@@ -369,7 +385,6 @@ destination                                 nexthop                             
 192.168.11.0/24                             192.168.11.1                            0      A C              ethernet1/3
 192.168.11.1/32                             0.0.0.0                                 0      A H
 total routes shown: 14
-
 ```
 
 ### Checking Connectivity
@@ -377,7 +392,6 @@ total routes shown: 14
 ICMP packets from PC1 to PC3.
 
 ```none
-
 PC1> ping 192.168.10.2
 
 84 bytes from 192.168.10.2 icmp_seq=1 ttl=62 time=8.479 ms
@@ -385,17 +399,14 @@ PC1> ping 192.168.10.2
 84 bytes from 192.168.10.2 icmp_seq=3 ttl=62 time=3.139 ms
 84 bytes from 192.168.10.2 icmp_seq=4 ttl=62 time=3.176 ms
 84 bytes from 192.168.10.2 icmp_seq=5 ttl=62 time=3.978 ms
-
 ```
 
 ICMP packets from PC2 to PC4.
 
 ```none
-
 PC2> ping 192.168.11.2
 
 84 bytes from 192.168.11.2 icmp_seq=1 ttl=62 time=9.687 ms
 84 bytes from 192.168.11.2 icmp_seq=2 ttl=62 time=3.286 ms
 84 bytes from 192.168.11.2 icmp_seq=3 ttl=62 time=2.972 ms
-
 ```

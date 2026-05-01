@@ -80,6 +80,7 @@ r14:
       netmask:
           255.255.255.0
 
+
 / # salt r14 network.arp
 r14:
     ----------

@@ -105,7 +105,7 @@ downloaded from DockerHub if it is not found on your local machine when
 you build the ISO.
 :::
 
-### Dockerhub
+##### Dockerhub
 
 To manually download the container from DockerHub, run:
 
@@ -114,7 +114,7 @@ $ docker pull vyos/vyos-build:current  # For VyOS rolling release
 ```
 
 
-### Build from source
+##### Build from source
 
 The container can also be built directly from source:
 
@@ -210,8 +210,10 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
   [--custom-apt-entry CUSTOM_APT_ENTRY] [--custom-apt-key CUSTOM_APT_KEY]
   [--custom-package CUSTOM_PACKAGE]
       [build_flavor]
+
   positional arguments:
   build_flavor          Build flavor
+
   optional arguments:
   -h, --help            show this help message and exit
   --architecture ARCHITECTURE
@@ -487,7 +489,7 @@ When complete, you will have kernel binary packages to use in your custom ISO
 build. Place all `*.deb` files in the `vyos-build/packages` folder, where
 the build process will use them automatically.
 
-### Firmware
+##### Firmware
 
 If you upgrade your kernel or include new drivers you may need new firmware.
 This builds a new `vyos-linux-firmware` package using the included helper
@@ -517,7 +519,7 @@ Refer to `vyos-build/packages/linux-kernel/Jenkinsfile`
 for all required modules and their versions. We show you how to build the
 currently required modules.
 
-### Accel-PPP
+##### Accel-PPP
 
 First, clone the source code and check out the appropriate version:
 
@@ -554,7 +556,7 @@ After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in `vyos-build/packages/linux-kernel` from which you can copy them
 to the `vyos-build/packages` folder for inclusion during the ISO build.
 
-### Intel NIC
+##### Intel NIC
 
 The Intel NIC drivers do not come from a Git repository. VyOS fetches the
 tarballs from a mirror and compiles them. Use the following wrapper script
@@ -580,7 +582,7 @@ After compilation, find the generated `*.deb` binaries in
 `vyos-build/packages/linux-kernel`. Copy them to the `vyos-build/packages`
 folder for inclusion in the ISO build.
 
-### Intel QAT
+##### Intel QAT
 
 The Intel QAT (Quick Assist Technology) drivers do not come from a Git
 repository. VyOS fetches the tarballs from `01.org`, Intel's open-source

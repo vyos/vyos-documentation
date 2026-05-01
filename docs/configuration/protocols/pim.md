@@ -106,7 +106,6 @@ Modify the time out value for a S,G flow from 1-65535 seconds at
 defaults to 210 seconds. However, at the {abbr}`RP (Rendezvous Point)`, the
 keepalive period must be at least the Register_Suppression_Time, or the RP
 may time out the (S,G) state before the next Null-Register arrives.
-
 Thus, the KAT(S,G) is set to max(Keepalive_Period, RP_Keepalive_Period)
 when a Register-Stop is sent.
 
