@@ -138,6 +138,7 @@ eth3             172.16.1.2/24                     u/u
 lo               127.0.0.1/8                       u/u
                  ::1/128
 tun1             172.16.122.2/32                   u/u
+
 vyos@vyos:~$ show vpn ipsec sa
 Connection          State    Uptime    Bytes In/Out    Packets In/Out    Remote address    Remote ID              Proposal
 ------------------  -------  --------  --------------  ----------------  ----------------  ---------------------  -----------------------------

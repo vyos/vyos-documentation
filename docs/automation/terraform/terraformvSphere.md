@@ -352,7 +352,9 @@ remote_user=vyos
 - name: integration of terraform and ansible
   hosts: all
   gather_facts: 'no'
+
   tasks:
+
     - name: "Wait 300 seconds, but only start checking after 60 seconds"
       wait_for_connection:
         delay: 60

@@ -15,9 +15,10 @@ inside the tunnel.
 
 ## Network Topology
 
-```{image} /_static/images/cisco-vpn-ipsec.png
-:align: center
-:alt: Network Topology Diagram
+```{eval-rst}
+.. image:: /_static/images/cisco-vpn-ipsec.*
+   :align: center
+   :alt: Network Topology Diagram
 ```
 
 
@@ -252,7 +253,6 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        f - OpenFabric, t - Table-Direct,
        > - selected route, * - FIB route, q - queued, r - rejected, b - backup
        t - trapped, o - offload failure
-
 S>* 0.0.0.0/0 [1/0] via 10.0.1.1, eth0, weight 1, 00:07:54
 C>* 10.0.1.0/30 is directly connected, eth0, weight 1, 00:07:59
 L>* 10.0.1.2/32 is directly connected, eth0, weight 1, 00:07:59

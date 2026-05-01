@@ -10,10 +10,11 @@ You can use Terraform to quickly deploy VyOS-based infrastructure
 on AWS and remove infrastructure when it's no longer needed.
 Additionally, you can use Ansible for provisioning.
 
-```{image} /_static/images/aws.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
+```{eval-rst}
+.. image:: /_static/images/aws.*
+   :width: 50%
+   :align: center
+   :alt: Network Topology Diagram
 ```
 
 On this page you'll learn how to:
@@ -31,69 +32,78 @@ Terraform, Ansible, and AWS, follow these steps:
 1. Create an account with AWS and get your `access_key` and `secret_key`.
 2. Create a key [pair] and download your `.pem` key.
 
-```{image} /_static/images/keypairs.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
+```{eval-rst}
+.. image:: /_static/images/keypairs.*
+   :width: 50%
+   :align: center
+   :alt: Network Topology Diagram
 ```
 
 3. Create a security [group] for the new VyOS instance and open all traffic.
 
-```{image} /_static/images/sg.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
+```{eval-rst}
+.. image:: /_static/images/sg.*
+   :width: 50%
+   :align: center
+   :alt: Network Topology Diagram
 ```
 
-```{image} /_static/images/traffic.png
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
+```{eval-rst}
+.. image:: /_static/images/traffic.*
+   :width: 50%
+   :align: center
+   :alt: Network Topology Diagram
 ```
 
 
 ### Terraform
 
+```{eval-rst}
 1. Create an UNIX or Windows instance.
 
 2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
-3. Create a folder, for example `/root/awsterraform`:
+3. Create a folder, for example ``/root/awsterraform``:
 
-```none
-mkdir /root/awsterraform
-```
+  .. code-block:: none
+
+    mkdir /root/awsterraform
+
+.. stop_vyoslinter
 
 4. Copy all files into your Terraform project
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
-   See [Structure of files in Terraform for AWS](#structure-of-files-in-terraform-for-aws) for more details.
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``, ``version.tf``).
+   See `Structure of files in Terraform for AWS <#structure-of-files-in-terraform-for-aws>`__ for more details.
 
-<!-- -->
+.. start_vyoslinter
 
 5. Run the following commands:
 
-```none
-cd /<your folder>
-terraform init
+.. code-block:: none
+
+   cd /<your folder>
+   terraform init
 ```
 
 ### Ansible
 
+```{eval-rst}
 1. Create a UNIX instance whenever you need.
 
 2. Download and install Ansible
 
-3. Create a folder, for example `/root/aws/`.
+3. Create a folder, for example ``/root/aws/``.
 
-<!-- -->
+.. stop_vyoslinter
 
 4. Copy all files into your Ansible project
-   (`ansible.cfg`, `instance.yml`,
-   `mykey.pem`, and `all`).
-   See [Structure of files in Ansible for AWS](#structure-of-files-in-ansible-for-aws) for more details.
-   You can obtain `mykey.pem` by creating a key [pair] in AWS and
-   downloading your `.pem` key.
+   (``ansible.cfg``, ``instance.yml``,
+   ``mykey.pem``, and ``all``).
+   See `Structure of files in Ansible for AWS <#structure-of-files-in-ansible-for-aws>`__ for more details.
+   You can obtain ``mykey.pem`` by creating a key `pair <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html>`__ in AWS and
+   downloading your ``.pem`` key.
+```
 
 ### Deploy with Terraform
 
@@ -275,13 +285,15 @@ terraform destroy
 2. If Terraform doesn't connect via SSH to your Ansible instance,
    verify the correct login and password in the `VyOS.tf` file.
 
-```none
-connection {
-type     = "ssh"
-user     = "root"              # open root access using login and password on your Ansible
-password = var.password        # check password in the file terraform.tfvars isn't empty
-    host = var.host            # check the correct IP address of your Ansible host
-}
+```{eval-rst}
+  .. code-block:: none
+
+    connection {
+    type     = "ssh"
+    user     = "root"              # open root access using login and password on your Ansible
+    password = var.password        # check password in the file terraform.tfvars isn't empty
+        host = var.host            # check the correct IP address of your Ansible host
+    }
 ```
 
 Make sure Ansible can ping from Terraform.

@@ -28,34 +28,38 @@ Terraform, Ansible, and Azure, follow these steps:
 
 ### Terraform
 
+```{eval-rst}
 1. Create an UNIX or Windows instance.
 
 2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
+   `Terraform <https://developer.hashicorp.com/terraform/install>`__.
 
-3. Create the folder for example `/root/azvyos/`.
+3. Create the folder for example ``/root/azvyos/``.
 
-```none
-mkdir /root/azvyos
-```
+.. code-block:: none
+
+  mkdir /root/azvyos
+
+.. stop_vyoslinter
 
 4. Copy all files into your Terraform project "/root/azvyos"
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`). For more details, see
-   [Structure of files in Terraform for Azure](#structure-of-files-in-terraform-for-azure).
+   (``vyos.tf``, ``var.tf``, ``terraform.tfvars``). For more details, see
+   `Structure of files in Terraform for Azure <#structure-of-files-in-terraform-for-azure>`_.
 
-<!-- -->
+.. start_vyoslinter
 
 5. Log in to Azure using the command:
 
-```none
-az login
-```
+  .. code-block:: none
+
+    az login
 
 6. Run the following commands to initialize Terraform:
 
-```none
-cd /<your folder>
-terraform init
+  .. code-block:: none
+
+    cd /<your folder>
+    terraform init
 ```
 
 

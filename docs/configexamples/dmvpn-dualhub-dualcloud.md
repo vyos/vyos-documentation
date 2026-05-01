@@ -284,92 +284,100 @@ Tunnels can be encrypted by IPSEC for security.
 
 HUB-1
 
-```none
-set vpn ipsec esp-group ESP-HUB lifetime '1800'
-set vpn ipsec esp-group ESP-HUB mode 'transport'
-set vpn ipsec esp-group ESP-HUB pfs 'disable'
-set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
-set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
-set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
-set vpn ipsec ike-group IKE-HUB lifetime '3600'
-set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
-set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
-set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
-set vpn ipsec interface 'eth0'
-set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
-set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
-set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
-set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
-set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
+```{eval-rst}
+ .. code-block:: none
+
+    set vpn ipsec esp-group ESP-HUB lifetime '1800'
+    set vpn ipsec esp-group ESP-HUB mode 'transport'
+    set vpn ipsec esp-group ESP-HUB pfs 'disable'
+    set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
+    set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
+    set vpn ipsec ike-group IKE-HUB lifetime '3600'
+    set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
+    set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
+    set vpn ipsec interface 'eth0'
+    set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
+    set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
+    set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
+    set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
+    set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
 
 HUB-2
 
-```none
-set vpn ipsec esp-group ESP-HUB lifetime '1800'
-set vpn ipsec esp-group ESP-HUB mode 'transport'
-set vpn ipsec esp-group ESP-HUB pfs 'disable'
-set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
-set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
-set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
-set vpn ipsec ike-group IKE-HUB lifetime '3600'
-set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
-set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
-set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
-set vpn ipsec interface 'eth0'
-set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
-set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
-set vpn ipsec profile NHRPVPN bind tunnel 'tun101'
-set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
-set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
+```{eval-rst}
+ .. code-block:: none
+
+    set vpn ipsec esp-group ESP-HUB lifetime '1800'
+    set vpn ipsec esp-group ESP-HUB mode 'transport'
+    set vpn ipsec esp-group ESP-HUB pfs 'disable'
+    set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
+    set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
+    set vpn ipsec ike-group IKE-HUB lifetime '3600'
+    set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
+    set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
+    set vpn ipsec interface 'eth0'
+    set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
+    set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
+    set vpn ipsec profile NHRPVPN bind tunnel 'tun101'
+    set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
+    set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
 
 VyOS Spokes have the same configuration
 
-```none
-set vpn ipsec esp-group ESP-HUB lifetime '1800'
-set vpn ipsec esp-group ESP-HUB mode 'transport'
-set vpn ipsec esp-group ESP-HUB pfs 'disable'
-set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
-set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
-set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
-set vpn ipsec ike-group IKE-HUB lifetime '3600'
-set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
-set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
-set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
-set vpn ipsec interface 'eth0'
-set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
-set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
-set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
-set vpn ipsec profile NHRPVPN bind tunnel 'tun101'
-set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
-set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
+```{eval-rst}
+ .. code-block:: none
+
+    set vpn ipsec esp-group ESP-HUB lifetime '1800'
+    set vpn ipsec esp-group ESP-HUB mode 'transport'
+    set vpn ipsec esp-group ESP-HUB pfs 'disable'
+    set vpn ipsec esp-group ESP-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec esp-group ESP-HUB proposal 1 hash 'sha1'
+    set vpn ipsec ike-group IKE-HUB key-exchange 'ikev1'
+    set vpn ipsec ike-group IKE-HUB lifetime '3600'
+    set vpn ipsec ike-group IKE-HUB proposal 1 dh-group '2'
+    set vpn ipsec ike-group IKE-HUB proposal 1 encryption 'aes256'
+    set vpn ipsec ike-group IKE-HUB proposal 1 hash 'sha1'
+    set vpn ipsec interface 'eth0'
+    set vpn ipsec profile NHRPVPN authentication mode 'pre-shared-secret'
+    set vpn ipsec profile NHRPVPN authentication pre-shared-secret 'secret'
+    set vpn ipsec profile NHRPVPN bind tunnel 'tun100'
+    set vpn ipsec profile NHRPVPN bind tunnel 'tun101'
+    set vpn ipsec profile NHRPVPN esp-group 'ESP-HUB'
+    set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
 
 SPOKE-1
 
-```none
-crypto isakmp policy 1
- encr aes 256
- authentication pre-share
- group 2
- lifetime 3600
-crypto isakmp key secret address 0.0.0.0
-!
-!
-crypto ipsec transform-set ESP_TRANSFORMSET esp-aes 256 esp-sha-hmac
- mode transport
-!
-!
-crypto ipsec profile gre_protection
- set security-association lifetime seconds 1800
- set transform-set ESP_TRANSFORMSET
-!
-interface Tunnel100
- tunnel protection ipsec profile gre_protection shared
-!
-interface Tunnel101
- tunnel protection ipsec profile gre_protection shared
+```{eval-rst}
+ .. code-block:: none
+
+    crypto isakmp policy 1
+     encr aes 256
+     authentication pre-share
+     group 2
+     lifetime 3600
+    crypto isakmp key secret address 0.0.0.0
+    !
+    !
+    crypto ipsec transform-set ESP_TRANSFORMSET esp-aes 256 esp-sha-hmac
+     mode transport
+    !
+    !
+    crypto ipsec profile gre_protection
+     set security-association lifetime seconds 1800
+     set transform-set ESP_TRANSFORMSET
+    !
+    interface Tunnel100
+     tunnel protection ipsec profile gre_protection shared
+    !
+    interface Tunnel101
+     tunnel protection ipsec profile gre_protection shared
 ```
 
 
@@ -434,7 +442,6 @@ Codes: K - kernel route, C - connected, L - local, S - static,
        t - trapped, o - offload failure
 
 ......
-
 O>* 192.168.11.0/24 [110/3] via 10.100.100.1, tun100 onlink, weight 1, 00:12:36
   *                         via 10.100.101.1, tun101 onlink, weight 1, 00:12:36
 O   192.168.12.0/24 [110/1] is directly connected, eth1, weight 1, 01:24:40

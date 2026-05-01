@@ -290,36 +290,40 @@ After you create firewall groups, you can reference them in firewall, NAT,
 NAT66, and/or policy-route rules. The following example creates multiple
 groups:
 
-```none
-set firewall group address-group SERVERS address 198.51.100.101
-set firewall group address-group SERVERS address 198.51.100.102
-set firewall group network-group TRUSTEDv4 network 192.0.2.0/30
-set firewall group network-group TRUSTEDv4 network 203.0.113.128/25
-set firewall group ipv6-network-group TRUSTEDv6 network 2001:db8::/64
-set firewall group interface-group LAN interface eth2.2001
-set firewall group interface-group LAN interface bon0
-set firewall group port-group PORT-SERVERS port http
-set firewall group port-group PORT-SERVERS port 443
-set firewall group port-group PORT-SERVERS port 5000-5010
+```{eval-rst}
+   .. code-block:: none
+
+      set firewall group address-group SERVERS address 198.51.100.101
+      set firewall group address-group SERVERS address 198.51.100.102
+      set firewall group network-group TRUSTEDv4 network 192.0.2.0/30
+      set firewall group network-group TRUSTEDv4 network 203.0.113.128/25
+      set firewall group ipv6-network-group TRUSTEDv6 network 2001:db8::/64
+      set firewall group interface-group LAN interface eth2.2001
+      set firewall group interface-group LAN interface bon0
+      set firewall group port-group PORT-SERVERS port http
+      set firewall group port-group PORT-SERVERS port 443
+      set firewall group port-group PORT-SERVERS port 5000-5010
 ```
 
 And next, some configuration example where groups are used:
 
-```none
-set firewall ipv4 output filter rule 10 action accept
-set firewall ipv4 output filter rule 10 outbound-interface group !LAN
-set firewall ipv4 forward filter rule 20 action accept
-set firewall ipv4 forward filter rule 20 source group network-group TRUSTEDv4
-set firewall ipv6 input filter rule 10 action accept
-set firewall ipv6 input filter rule 10 source group network-group TRUSTEDv6
-set nat destination rule 101 inbound-interface group LAN
-set nat destination rule 101 destination group address-group SERVERS
-set nat destination rule 101 protocol tcp
-set nat destination rule 101 destination group port-group PORT-SERVERS
-set nat destination rule 101 translation address 203.0.113.250
-set policy route PBR rule 201 destination group port-group PORT-SERVERS
-set policy route PBR rule 201 protocol tcp
-set policy route PBR rule 201 set table 15
+```{eval-rst}
+   .. code-block:: none
+
+      set firewall ipv4 output filter rule 10 action accept
+      set firewall ipv4 output filter rule 10 outbound-interface group !LAN
+      set firewall ipv4 forward filter rule 20 action accept
+      set firewall ipv4 forward filter rule 20 source group network-group TRUSTEDv4
+      set firewall ipv6 input filter rule 10 action accept
+      set firewall ipv6 input filter rule 10 source group network-group TRUSTEDv6
+      set nat destination rule 101 inbound-interface group LAN
+      set nat destination rule 101 destination group address-group SERVERS
+      set nat destination rule 101 protocol tcp
+      set nat destination rule 101 destination group port-group PORT-SERVERS
+      set nat destination rule 101 translation address 203.0.113.250
+      set policy route PBR rule 201 destination group port-group PORT-SERVERS
+      set policy route PBR rule 201 protocol tcp
+      set policy route PBR rule 201 set table 15
 ```
 
 ### Port knocking example
@@ -328,41 +332,43 @@ You can use dynamic firewall groups with port knocking to secure access to
 the router or any other device. The following example shows a 4-step port
 knocking configuration:
 
-```none
-set firewall global-options state-policy established action 'accept'
-set firewall global-options state-policy invalid action 'drop'
-set firewall global-options state-policy related action 'accept'
-set firewall group dynamic-group address-group ALLOWED
-set firewall group dynamic-group address-group PN_01
-set firewall group dynamic-group address-group PN_02
-set firewall ipv4 input filter default-action 'drop'
-set firewall ipv4 input filter rule 5 action 'accept'
-set firewall ipv4 input filter rule 5 protocol 'icmp'
-set firewall ipv4 input filter rule 10 action 'drop'
-set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group 'PN_01'
-set firewall ipv4 input filter rule 10 add-address-to-group source-address timeout '2m'
-set firewall ipv4 input filter rule 10 description 'Port_nock 01'
-set firewall ipv4 input filter rule 10 destination port '9990'
-set firewall ipv4 input filter rule 10 protocol 'tcp'
-set firewall ipv4 input filter rule 20 action 'drop'
-set firewall ipv4 input filter rule 20 add-address-to-group source-address address-group 'PN_02'
-set firewall ipv4 input filter rule 20 add-address-to-group source-address timeout '3m'
-set firewall ipv4 input filter rule 20 description 'Port_nock 02'
-set firewall ipv4 input filter rule 20 destination port '9991'
-set firewall ipv4 input filter rule 20 protocol 'tcp'
-set firewall ipv4 input filter rule 20 source group dynamic-address-group 'PN_01'
-set firewall ipv4 input filter rule 30 action 'drop'
-set firewall ipv4 input filter rule 30 add-address-to-group source-address address-group 'ALLOWED'
-set firewall ipv4 input filter rule 30 add-address-to-group source-address timeout '2h'
-set firewall ipv4 input filter rule 30 description 'Port_nock 03'
-set firewall ipv4 input filter rule 30 destination port '9992'
-set firewall ipv4 input filter rule 30 protocol 'tcp'
-set firewall ipv4 input filter rule 30 source group dynamic-address-group 'PN_02'
-set firewall ipv4 input filter rule 99 action 'accept'
-set firewall ipv4 input filter rule 99 description 'Port_nock 04 - Allow ssh'
-set firewall ipv4 input filter rule 99 destination port '22'
-set firewall ipv4 input filter rule 99 protocol 'tcp'
-set firewall ipv4 input filter rule 99 source group dynamic-address-group 'ALLOWED'
+```{eval-rst}
+   .. code-block:: none
+
+      set firewall global-options state-policy established action 'accept'
+      set firewall global-options state-policy invalid action 'drop'
+      set firewall global-options state-policy related action 'accept'
+      set firewall group dynamic-group address-group ALLOWED
+      set firewall group dynamic-group address-group PN_01
+      set firewall group dynamic-group address-group PN_02
+      set firewall ipv4 input filter default-action 'drop'
+      set firewall ipv4 input filter rule 5 action 'accept'
+      set firewall ipv4 input filter rule 5 protocol 'icmp'
+      set firewall ipv4 input filter rule 10 action 'drop'
+      set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group 'PN_01'
+      set firewall ipv4 input filter rule 10 add-address-to-group source-address timeout '2m'
+      set firewall ipv4 input filter rule 10 description 'Port_nock 01'
+      set firewall ipv4 input filter rule 10 destination port '9990'
+      set firewall ipv4 input filter rule 10 protocol 'tcp'
+      set firewall ipv4 input filter rule 20 action 'drop'
+      set firewall ipv4 input filter rule 20 add-address-to-group source-address address-group 'PN_02'
+      set firewall ipv4 input filter rule 20 add-address-to-group source-address timeout '3m'
+      set firewall ipv4 input filter rule 20 description 'Port_nock 02'
+      set firewall ipv4 input filter rule 20 destination port '9991'
+      set firewall ipv4 input filter rule 20 protocol 'tcp'
+      set firewall ipv4 input filter rule 20 source group dynamic-address-group 'PN_01'
+      set firewall ipv4 input filter rule 30 action 'drop'
+      set firewall ipv4 input filter rule 30 add-address-to-group source-address address-group 'ALLOWED'
+      set firewall ipv4 input filter rule 30 add-address-to-group source-address timeout '2h'
+      set firewall ipv4 input filter rule 30 description 'Port_nock 03'
+      set firewall ipv4 input filter rule 30 destination port '9992'
+      set firewall ipv4 input filter rule 30 protocol 'tcp'
+      set firewall ipv4 input filter rule 30 source group dynamic-address-group 'PN_02'
+      set firewall ipv4 input filter rule 99 action 'accept'
+      set firewall ipv4 input filter rule 99 description 'Port_nock 04 - Allow ssh'
+      set firewall ipv4 input filter rule 99 destination port '22'
+      set firewall ipv4 input filter rule 99 protocol 'tcp'
+      set firewall ipv4 input filter rule 99 source group dynamic-address-group 'ALLOWED'
 ```
 
 Before testing, we can check the members of firewall groups:

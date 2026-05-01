@@ -159,7 +159,7 @@ A VyOS system has three major types of configurations:
 - **Working configuration** is the one that is currently being modified in configuration mode. Changes made to the working configuration do not go into effect until the changes are committed with the {cfgcmd}`commit` command. At which time the working configuration will become the active or running configuration.
 - **Saved configuration** is the one saved to a file using the {cfgcmd}`save` command. It allows you to keep safe a configuration for future uses. There can be multiple configuration files. The default or \"boot\" configuration is saved and loaded from the file `/config/config.boot`.
 
-### Seeing and navigating the configuration
+## Seeing and navigating the configuration
 
 ```{opcmd} show configuration
 
@@ -358,7 +358,7 @@ View the current active configuration in readable JSON format.
 ```
 
 
-#### The config mode
+### The config mode
 
 When entering the configuration mode you are navigating inside a tree structure, to enter configuration mode enter the command {opcmd}`configure` when in operational mode.
 
@@ -448,7 +448,7 @@ vyos@vyos# exit
 Warning: configuration changes have not been saved.
 ```
 
-### Editing the configuration
+## Editing the configuration
 
 The configuration can be edited by the use of {cfgcmd}`set` and {cfgcmd}`delete` commands from within configuration mode.
 
@@ -657,7 +657,7 @@ An important thing to note is that since the comment is added on top of the sect
 
 (run_opmode_from_config_mode)=
 
-### Access opmode from config mode
+## Access opmode from config mode
 
 When inside configuration mode you are not directly able to execute operational commands.
 
@@ -677,11 +677,11 @@ eth0             0.0.0.0/0                         u/u
 :::
 ```
 
-### Managing configurations
+## Managing configurations
 
 VyOS comes with an integrated versioning system for the system configuration. It automatically maintains a backup of every previous configuration which has been committed to the system. The configurations are versioned locally for rollback but they can also be stored on a remote host for archiving/backup reasons.
 
-#### Local Archive
+### Local Archive
 
 Revisions are stored on disk. You can view, compare and rollback them to any previous revisions if something goes wrong.
 
@@ -707,7 +707,7 @@ vyos@vyos:~$ show system commit
 You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally.
 ```
 
-#### Compare configurations
+### Compare configurations
 
 VyOS lets you compare different configurations.
 
@@ -770,7 +770,7 @@ vyos@router# run show system commit diff 4
 
 This means four commits ago we did `set system ipv6 disable-forwarding`.
 
-#### Rollback Changes
+### Rollback Changes
 
 You can rollback configuration changes using the rollback command. This will apply the selected revision and trigger a system reboot.
 
@@ -791,7 +791,7 @@ The system is going down for reboot NOW!
 :::
 ```
 
-#### Remote Archive
+### Remote Archive
 
 VyOS can upload the configuration to a remote location after each call to {cfgcmd}`commit`. You will have to set the commit-archive location. TFTP, FTP, SCP and SFTP servers are supported. Every time a {cfgcmd}`commit` is successful the `config.boot` file will be copied to the defined destination(s). The filename used on the remote host will be `config.boot-hostname.YYYYMMDD_HHMMSS`.
 
@@ -825,7 +825,7 @@ vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used to upload the configuration to the remote system.
 ```
 
-#### Saving and loading manually
+### Saving and loading manually
 
 You can use the `save` and `load` commands if you want to manually manage specific configuration files.
 
@@ -851,7 +851,7 @@ tftp://<host>/<file>         Load from file on remote machine
 If you are remotely connected, you will lose your connection. You may want to copy first the config, edit it to ensure connectivity, and load the edited config.
 ```
 
-#### Restore Default
+### Restore Default
 
 In the case you want to completely delete your configuration and restore the default one, you can enter the following command in configuration mode:
 
