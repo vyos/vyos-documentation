@@ -8,8 +8,8 @@
 ARP
 ###
 
-The :abbr:`ARP (Address Resolution Protocol)` resolves network-layer 
-addresses, typically IPv4, to link-layer hardware addresses, such as MAC 
+The :abbr:`ARP (Address Resolution Protocol)` resolves IPv4 network layer addresses
+to link layer MAC addresses. 
 addresses. This mapping is essential for communication within the Internet 
 Protocol suite. ARP was standardized in 1982 by :rfc:`826` (STD 37).
 
