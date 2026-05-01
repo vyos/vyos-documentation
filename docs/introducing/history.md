@@ -1,3 +1,13 @@
+---
+description: |-
+  Overview of the VyOS project's history, from its 2013 fork of Vyatta Core
+  through each major LTS release. Covers release codenames, base Debian
+  versions, and the headline features introduced in each version.
+keywords: |-
+  vyos history, vyatta fork, lts release, scutum, circinus, sagitta,
+  equuleus, crux, debian
+---
+
 (history)=
 
 # History
@@ -5,7 +15,7 @@
 ## In the beginning...
 
 There was a network operating system based on Debian GNU/Linux, called
-Vyatta. :sup:`\*` Introduced in 2006, it served as a great free-software alternative
+Vyatta. [^footnote-1] Introduced in 2006, it served as a great free-software alternative
 to proprietary products. Vyatta came in two editions: Vyatta Core
 (formerly known as Vyatta Community Edition), which was free software, and
 Vyatta Subscription Edition, which included proprietary features and was
@@ -32,7 +42,7 @@ originally named Sentrium and was later reorganized under the VyOS brand.
 VyOS originally named its major versions after elements by atomic number.
 Beginning with version 1.2, this naming scheme was changed. It now uses the
 Latin names of constellations recognized by the International Astronomical
-Union ([IAU](<https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area>)),
+Union ([IAU](https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area)),
 ordered by their solid angle area, beginning with the smallest.
 
 ### Hydrogen (1.0)
@@ -107,14 +117,47 @@ The underlying base system was upgraded to Debian 12 (Bookworm).
 
 ### Circinus (1.5)
 
-Circinus (the Drawing Compass) is the codename for the upcoming development
-branch. VyOS 1.5 Circinus has not been released yet.
+Circinus (the Drawing Compass) became generally available as an LTS release on
+31 March 2026. Its development began in 2024 and focused on major performance
+upgrades and modernizing core subsystems.
+
+Circinus introduces several major architectural improvements, most notably an
+optional VPP-based accelerated dataplane. Using the DPDK driver, this dataplane
+can offer performance up to 15x faster than the Linux kernel dataplane and
+allows administrators to selectively enable hardware acceleration on a
+per-interface and per-feature basis.
+
+Other significant additions and updates include:
+
+- A high-performance kernel-mode NetFlow sensor based on ipt-netflow,
+  replacing the older pmacct implementation.
+- Unification of sFlow to exclusively use the much faster hsflowd
+  implementation.
+- Transition of the DHCP server to a Kea-based implementation, replacing the
+  legacy, end-of-life ISC DHCPD.
+- A completely rewritten WAN load balancing implementation to resolve
+  long-standing stability issues and introduce support for firewall groups in
+  load balancing rules.
+- A new `execute` operational mode command family to separate action commands
+  that do not depend on or modify system configuration.
+
+The release also cleans up several legacy and underutilized components.
+FastNetMon was removed, OpenVPN support for Blowfish and Twofish ciphers was
+dropped for security reasons, and the Salt minion integration was deprecated.
+
+Like Sagitta (1.4), the underlying base system for Circinus remains Debian 12
+(Bookworm).
+
+### Scutum (1.6)
+
+Scutum (the Shield) is the codename for the upcoming development
+branch. VyOS 1.6 Scutum has not been released yet.
 
 ## A note on copyright
 
 Unlike Vyatta, VyOS has never had closed-source code and never will.
 The only proprietary material in VyOS is non-code assets, such as
-graphics and the trademark "VyOS". :sup:`†`
+graphics and the trademark "VyOS". [^footnote-2]
 
 Note that we do not provide support for images distributed by a third party.
 See the
@@ -122,6 +165,7 @@ See the
 and the end-user license agreement at `/usr/share/vyos/EULA` in
 any pre-built image for more information.
 
-[\*] From the Sanskrit adjective "Vyātta" (व्यात्त), meaning opened.
+[^footnote-1]: From the Sanskrit adjective "Vyātta" (व्यात्त), meaning opened.
 
-[†] This is similar to how Linus Torvalds owns the Linux trademark.
+[^footnote-2]: This is similar to how Linus Torvalds owns the Linux trademark.
+

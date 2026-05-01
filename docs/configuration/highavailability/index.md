@@ -47,7 +47,6 @@ Name        Interface      VRID  State    Last Transition
 Foo         eth1             10  MASTER   2s
 ```
 
-
 ## IPv6 support
 
 The `address` parameter can be either an IPv4 or IPv6 address, but you can
@@ -65,7 +64,6 @@ set high-availability vrrp group Foo address 192.0.2.1/24
 set high-availability vrrp group Foo address 203.0.113.22/24 interface eth2
 set high-availability vrrp group Foo address 198.51.100.33/24 interface eth3
 ```
-
 
 ## Disabling a VRRP group
 
@@ -90,7 +88,6 @@ set high-availability vrrp group Foo excluded-address '203.0.113.254/24'
 set high-availability vrrp group Foo excluded-address '2001:db8:aa::1/64'
 set high-availability vrrp group Foo excluded-address '2001:db8:22::1/64'
 ```
-
 
 ## Setting VRRP group priority
 
@@ -164,7 +161,6 @@ seconds, use:
 set high-availability vrrp group Foo preempt-delay 180
 ```
 
-
 ## Track
 
 Track option to track non VRRP interface states. VRRP changes status to
@@ -181,7 +177,6 @@ Ignore VRRP main interface faults
 set high-availability vrrp group Foo track exclude-vrrp-interface
 ```
 
-
 ## Unicast VRRP
 
 By default VRRP uses multicast packets. If your network does not support
@@ -192,7 +187,6 @@ instead.
 set high-availability vrrp group Foo peer-address 192.0.2.10
 set high-availability vrrp group Foo hello-source-address 192.0.2.15
 ```
-
 
 ## rfc3768-compatibility
 
@@ -229,12 +223,12 @@ On most scenarios, there's no need to change specific parameters, and using
 default configuration is enough. But there are cases were extra configuration
 is needed.
 
-```{cfgcmd} set high-availability vrrp global-parameters startup_delay \<1-600\>
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters startup_delay <1-600>
 
-This option specifies a delay in seconds before vrrp instances start up
-after keepalived starts.
+   This option specifies a delay in seconds before vrrp instances start up
+   after keepalived starts.
 ```
-
 
 ## Gratuitous ARP
 
@@ -242,63 +236,85 @@ These configuration is not mandatory and in most cases there's no
 need to configure it. But if necessary, Gratuitous ARP can be configured in
 `global-parameters` and/or in `group` section.
 
-```{cfgcmd} set high-availability vrrp global-parameters garp interval \<0.000-1000\>
-
-```
-```{cfgcmd} set high-availability vrrp group \<name\> garp interval \<0.000-1000\>
-
-Set delay between gratuitous ARP messages sent on an interface.
-
-0 if not defined.
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters garp interval
+   <0.000-1000>
 ```
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-delay \<1-255\>
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp group <name> garp interval <0.000-1000>
+
+   Set delay between gratuitous ARP messages sent on an interface.
+
+   0 if not defined.
 ```
 
-```{cfgcmd} set high-availability vrrp group \<name\> garp master-delay \<1-255\>
+% stop_vyoslinter
 
-Set delay for second set of gratuitous ARPs after transition to MASTER.
-
-5 if not defined.
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-delay <1-255>
 ```
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh \<1-600\>
+% start_vyoslinter
+
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp group <name> garp master-delay <1-255>
+
+   Set delay for second set of gratuitous ARPs after transition to MASTER.
+
+   5 if not defined.
 ```
 
-```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh \<1-600\>
-
-Set minimum time interval for refreshing gratuitous ARPs while MASTER.
-
-0 if not defined, which means no refreshing.
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-refresh
+   <1-600>
 ```
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-refresh-repeat \<1-600\>
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp group <name> garp master-refresh
+   <1-600>
+
+   Set minimum time interval for refreshing gratuitous ARPs while MASTER.
+
+   0 if not defined, which means no refreshing.
 ```
 
-```{cfgcmd} set high-availability vrrp group \<name\> garp master-refresh-repeat \<1-600\>
-
-Set number of gratuitous ARP messages to send at a time while MASTER.
-
-1 if not defined.
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters garp
+   master-refresh-repeat <1-600>
 ```
 
-```{cfgcmd} set high-availability vrrp global-parameters garp master-repeat \<1-600\>
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp group <name> garp
+   master-refresh-repeat <1-600>
+
+   Set number of gratuitous ARP messages to send at a time while MASTER.
+
+   1 if not defined.
 ```
 
-```{cfgcmd} set high-availability vrrp group \<name\> garp master-repeat \<1-600\>
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters garp master-repeat
+   <1-600>
+```
 
-Set number of gratuitous ARP messages to send at a time after transition to
-MASTER.
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp group <name> garp master-repeat
+   <1-600>
 
-5 if not defined.
+   Set number of gratuitous ARP messages to send at a time after transition to
+   MASTER.
+
+   5 if not defined.
 ```
 
 ## Version
 
-```{cfgcmd} set high-availability vrrp global-parameters version 2|3
+```{eval-rst}
+.. cfgcmd:: set high-availability vrrp global-parameters version 2|3
 
-Set the default VRRP version to use. This defaults to 2, but IPv6 instances
-will always use version 3.
+   Set the default VRRP version to use. This defaults to 2, but IPv6 instances
+   will always use version 3.
 ```
 
 ## Scripting
@@ -313,6 +329,7 @@ vice versa and can be used to enable or disable certain services, for example.
 Simply placing script files in `/config/scripts/` does not mean the
 system can execute them. To make custom scripts executable, grant them
 **execute permissions**. Use the following command:
+
 ```none
 chmod +x /config/scripts/script-name.sh
 ```
@@ -335,21 +352,45 @@ This setup will make the VRRP process execute the
 group to the fault state if it fails (i.e. exits with non-zero status) three
 times:
 
+% stop_vyoslinter
+
 ```none
 set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
 set high-availability vrrp group Foo health-check interval 60
 set high-availability vrrp group Foo health-check failure-count 3
 ```
 
+% start_vyoslinter
+
+An optional `timeout` can be set to define the maximum number of seconds the
+script is allowed to run. This is useful for scripts that may hang or take
+longer than expected — setting the timeout higher than the interval allows
+longer-running scripts to complete before being considered failed.
+
+% stop_vyoslinter
+
+```none
+set high-availability vrrp group Foo health-check script /config/scripts/vrrp-check.sh
+set high-availability vrrp group Foo health-check interval 20
+set high-availability vrrp group Foo health-check failure-count 3
+set high-availability vrrp group Foo health-check timeout 40
+```
+
+% start_vyoslinter
+
 When the vrrp group is a member of the sync group will use only
 the sync group health check script.
 This example shows how to configure it for the sync group:
+
+% stop_vyoslinter
 
 ```none
 set high-availability vrrp sync-group Bar health-check script /config/scripts/vrrp-check.sh
 set high-availability vrrp sync-group Bar health-check interval 60
 set high-availability vrrp sync-group Bar health-check failure-count 3
 ```
+
+% start_vyoslinter
 
 ### Transition scripts
 
@@ -359,17 +400,22 @@ This setup will make the VRRP process execute the
 `/config/scripts/vrrp-fail.sh` with argument `Foo` when VRRP fails,
 and the `/config/scripts/vrrp-master.sh` when the router becomes the master:
 
+% stop_vyoslinter
+
 ```none
 set high-availability vrrp group Foo transition-script backup "/config/scripts/vrrp-fail.sh Foo"
 set high-availability vrrp group Foo transition-script fault "/config/scripts/vrrp-fail.sh Foo"
 set high-availability vrrp group Foo transition-script master "/config/scripts/vrrp-master.sh Foo"
 ```
 
+% start_vyoslinter
+
 To know more about scripting, check the {ref}`command-scripting` section.
 
 ## Virtual-server
 
-```{include} /_include/need_improvement.txt
+```{eval-rst}
+.. include:: /_include/need_improvement.txt
 ```
 
 Virtual Server allows to Load-balance traffic destination virtual-address:port
@@ -378,6 +424,7 @@ between several real servers.
 ### Algorithm
 
 Load-balancing schedule algorithm:
+
 - round-robin
 - weighted-round-robin
 - least-connection
@@ -404,9 +451,13 @@ set high-availability virtual-server 203.0.113.1 forward-method 'nat'
 
 Custom health-check script allows checking real-server availability
 
+% stop_vyoslinter
+
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 health-check script <path-to-script>
 ```
+
+% start_vyoslinter
 
 ### Fwmark
 
@@ -420,9 +471,13 @@ set high-availability virtual-server 203.0.113.1 fwmark '111'
 
 Real server IP address and port
 
+% stop_vyoslinter
+
 ```none
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80'
 ```
+
+% start_vyoslinter
 
 ### Example
 
@@ -430,9 +485,11 @@ Virtual-server can be configured with VRRP virtual address or without VRRP.
 
 In the next example all traffic destined to `203.0.113.1` and port `8280`
 protocol TCP is balanced between 2 real servers `192.0.2.11` and
-`192.0.2.12` to port `80`.
+`192.0.2.12` to port `80`
 
 Real server is auto-excluded if port check with this server fail.
+
+% stop_vyoslinter
 
 ```none
 set interfaces ethernet eth0 address '203.0.113.11/24'
@@ -453,6 +510,8 @@ set high-availability virtual-server 203.0.113.1 real-server 192.0.2.11 port '80
 set high-availability virtual-server 203.0.113.1 real-server 192.0.2.12 port '80'
 ```
 
+% start_vyoslinter
+
 A firewall mark `fwmark` allows using multiple ports for high-availability
 virtual-server.
 It uses fwmark value.
@@ -460,6 +519,8 @@ It uses fwmark value.
 In this example all traffic destined to ports "80, 2222, 8888" protocol TCP
 marks to fwmark "111" and balanced between 2 real servers.
 Port "0" is required if multiple ports are used.
+
+% stop_vyoslinter
 
 ```none
 set interfaces ethernet eth0 address 'dhcp'
@@ -484,6 +545,8 @@ set nat source rule 100 source address '192.0.2.0/24'
 set nat source rule 100 translation address 'masquerade'
 ```
 
+% start_vyoslinter
+
 Op-mode check virtual-server status
 
 ```none
@@ -495,3 +558,4 @@ FWM  111 lc persistent 300
   -> 192.0.2.11:0                 Masq    1      0          0
   -> 192.0.2.12:0                 Masq    1      1          0
 ```
+
