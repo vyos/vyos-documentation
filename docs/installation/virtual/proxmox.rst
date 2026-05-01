@@ -17,7 +17,7 @@ Deploy VyOS from CLI with qcow2 image
 2. Copy the ``.qcow2`` image to a temporary directory on the Proxmox server.
 
 3. The following commands assume that virtual machine (VM) ID `200` is unused
-   and that the imported disk will be stored in a storage pool named `local-lvm`.
+   and that the imported disk will be stored in a storage pool named ``local-lvm``.
 
 
     .. code-block:: none
