@@ -109,7 +109,7 @@ which should be rewritten here.
 ### NAT Ruleset
 
 {abbr}`NAT (Network Address Translation)` is configured entirely on a
-series of so called `rules`. Rules are numbered and evaluated by the
+series of so called *rules*. Rules are numbered and evaluated by the
 underlying OS in numerical order! The rule numbers can be changes by
 utilizing the {cfgcmd}`rename` and {cfgcmd}`copy` commands.
 
@@ -171,7 +171,7 @@ rule.
 
 - **protocol** - specify which types of protocols this translation rule
   applies to. Only packets matching the specified protocol are NATed.
-  By default this applies to `all` protocols.
+  By default this applies to *all* protocols.
 
   Example:
 
@@ -233,9 +233,9 @@ address.
 
 :::{note}
 The translation address must be set to one of the available
-addresses on the configured `outbound-interface` or it must be set to
-`masquerade` which will use the primary IP address of the
-`outbound-interface` as its translation address.
+addresses on the configured *outbound-interface* or it must be set to
+*masquerade* which will use the primary IP address of the
+*outbound-interface* as its translation address.
 
 When using NAT for a large number of host systems it
 recommended that a minimum of 1 IP address is used to NAT every 256
@@ -247,7 +247,7 @@ available for unique translations and a reserving an average of
 Example:
 
 - Define a discrete source IP address of 100.64.0.1 for SNAT rule 20
-- Use address `masquerade` (the interfaces primary address) on rule 30
+- Use address *masquerade* (the interfaces primary address) on rule 30
 - For a large amount of private machines behind the NAT your address
   pool might to be bigger. Use any address in the range 100.64.0.10 -
   100.64.0.20 on SNAT rule 40 when doing the translation
@@ -262,7 +262,7 @@ set nat source rule 40 translation address 100.64.0.10-100.64.0.20
 #### Destination Address
 
 For {ref}`destination-nat` rules the packets destination address will be
-replaced by the specified address in the `translation address` command.
+replaced by the specified address in the *translation address* command.
 
 Example:
 
@@ -417,7 +417,7 @@ Example:
   network via {ref}`destination-nat` in rule 110 to the internal,
   private host 192.0.2.40. We also need a {ref}`source-nat` rule 110 for
   the reverse path of the traffic. The internal network 192.0.2.0/24 is
-  reachable via interface `eth0.10`.
+  reachable via interface *eth0.10*.
 
 ```none
 set nat destination rule 100 description 'Regular destination NAT from external'
@@ -549,7 +549,7 @@ nat {
 :::{note}
 If forwarding traffic to a different port than it is arriving
 on, you may also configure the translation port using
-`set nat destination rule [n] translation port`.
+*set nat destination rule [n] translation port*.
 :::
 
 This establishes our Port Forward rule, but if we created a firewall
@@ -679,11 +679,13 @@ The ASP requests that all connections from this company should come from
 172.29.41.89 - an address that is assigned by the ASP and not in use at
 the customer site.
 
-:::{figure} /_static/images/nat_before_vpn_topology.png
-:alt: NAT before VPN Topology
-:scale: 100 %
-NAT before VPN Topology
-:::
+```{eval-rst}
+.. figure:: /_static/images/nat_before_vpn_topology.*
+   :scale: 100 %
+   :alt: NAT before VPN Topology
+
+   NAT before VPN Topology
+```
 #### Configuration
 
 The required configuration can be broken down into 4 major pieces:

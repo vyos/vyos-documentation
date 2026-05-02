@@ -10,52 +10,63 @@ Deploy VyOS on Amazon {abbr}`AWS (Amazon Web Services)`.
 
 1. Click **Instances** and then click **Launch Instance**.
 
-:::{figure} /_static/images/cloud-aws-01.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-01.*
+```
 
 2. Search for "VyOS" in the Marketplace.
 
-:::{figure} /_static/images/cloud-aws-02.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-02.*
+```
 
 3. Choose the instance type. The recommended minimum is `m3.medium`.
 
-:::{figure} /_static/images/cloud-aws-03.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-03.*
+```
 
 4. Configure the instance for your requirements. Select the number of
    instances, network, and subnet.
 
-:::{figure} /_static/images/cloud-aws-04.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-04.*
+```
 
 5. Configure additional storage. You can remove the additional storage
    `/dev/sdb`. The root device will be `/dev/xvda`. You can skip this step.
 
-:::{figure} /_static/images/cloud-aws-05.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-05.*
+```
 
 6. Configure the security group. We recommend configuring SSH access
    only from specific sources, or you can permit any IP address (the default).
 
-:::{figure} /_static/images/cloud-aws-06.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-06.*
+```
 
 7. Select the SSH key pair and click **Launch Instances**.
 
-:::{figure} /_static/images/cloud-aws-07.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-07.*
+```
 
 8. Note your public IP address.
 
-:::{figure} /_static/images/cloud-aws-08.png
-:::
+```{eval-rst}
+.. figure:: /_static/images/cloud-aws-08.*
+```
 
 9. Connect to the instance using your SSH key.
 
-```none
-ssh -i ~/.ssh/amazon.pem vyos@203.0.113.3
-vyos@ip-192-0-2-10:~$
+```{eval-rst}
+
+  .. code-block:: none
+
+    ssh -i ~/.ssh/amazon.pem vyos@203.0.113.3
+    vyos@ip-192-0-2-10:~$
 ```
 
 
@@ -74,29 +85,31 @@ Parameter Store. For instructions on creating a configuration, see
    instance.
 3. Ensure the amazon-cloudwatch-agent package is installed.
 
-```none
-$ sudo apt list --installed | grep amazon-cloudwatch-agent
+```{eval-rst}
+
+  .. code-block:: none
+
+    $ sudo apt list --installed | grep amazon-cloudwatch-agent
+
+  .. note:: The amazon-cloudwatch-agent package is normally included in
+     VyOS 1.3.3+ and 1.4+
 ```
->
-> :::{note}
-> The amazon-cloudwatch-agent package is normally included in
-> VyOS 1.3.3+ and 1.4+
-> :::
 
 4. Retrieve an existing CloudWatch Agent configuration from the
    {abbr}`SSM (Systems Manager)` Parameter Store.
 
-```none
-$ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:<your-configuration-name>
+```{eval-rst}
+
+  .. code-block:: none
+
+    $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c ssm:<your-configuration-name>
+
+  This step also enables systemd service and runs it.
+
+  .. note:: The VyOS platform-specific scripts feature is under development.
+     Thus, this step should be repeated manually after changing system image
+     (:doc:`/installation/update`)
 ```
->
-> This step also enables systemd service and runs it.
->
-> :::{note}
-> The VyOS platform-specific scripts feature is under development.
-> Thus, this step should be repeated manually after changing system image
-> ({doc}`/installation/update`)
-> :::
 
 (configuration_creation)=
 
@@ -111,18 +124,22 @@ Creating the Amazon Cloudwatch Agent Configuration in Amazon
    least two policies: `CloudWatchAgentAdminPolicy` and
    `AmazonSSMManagedInstanceCore`.
 
-> :::{note}
-> CloudWatchAgentServerRole is too permissive and should be used only
-> for
-> creating and deploying a single configuration. After step 3, we recommend
-> replacing the `CloudWatchAgentAdminRole` with the
-> `CloudWatchAgentServerRole`.
-> :::
+```{eval-rst}
+
+  .. note:: CloudWatchAgentServerRole is too permissive and should be used only
+     for
+     creating and deploying a single configuration. After step 3, we recommend
+     replacing the ``CloudWatchAgentAdminRole`` with the
+     ``CloudWatchAgentServerRole``.
+```
 
 2. Run the CloudWatch configuration wizard.
 
-```none
-$ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+```{eval-rst}
+
+  .. code-block:: none
+
+    $ sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
 ```
 
 3. When prompted, enter "yes" to the question "Do you want to store the

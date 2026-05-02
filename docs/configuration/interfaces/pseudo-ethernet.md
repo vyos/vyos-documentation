@@ -18,14 +18,15 @@ DHCPv6, and are mapped to a physical Ethernet port. They inherit
 characteristics such as speed and duplex from their parent interface and can
 be referenced like standard Ethernet interfaces once created.
 
+```{eval-rst}
 Pseudo-Ethernet interfaces may not work in environments that require a
+   :abbr:`NIC (Network Interface Card)` to have only one MAC address.
+   This includes:
 
-: {abbr}`NIC (Network Interface Card)` to have only one MAC address.
-  This includes:
-
-  - VMware machines with default settings.
-  - Network switches that permit only a single MAC address.
-  - xDSL modems that learn the NIC's MAC address.
+   * VMware machines with default settings.
+   * Network switches that permit only a single MAC address.
+   * xDSL modems that learn the NIC's MAC address.
+```
 
 ## Configuration
 

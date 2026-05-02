@@ -125,6 +125,7 @@ In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
 ```{cfgcmd} set interfaces wireless \<interface\> physical-device \<device\>
 
 Wireless hardware device used as underlay radio.
+
 This defaults to phy0.
 ```
 
@@ -170,7 +171,7 @@ Wireless device type for this interface
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities require-he
 ```
 
-### HT (High Throughput) capabilities (802.11n)
+##### HT (High Throughput) capabilities (802.11n)
 
 > Configuring HT mode options is required when using 802.11n or
 > 802.11ax at 2.4GHz.
@@ -204,7 +205,9 @@ table lists channels permitted for HT40- and HT40+ according to IEEE
  2.4 GHz           5-13            1-7 (1-9 in Europe/Japan)
  5 GHz             40,48,56,64     36,44,52,60
  ::::
+:::
 
+:::{note}
 40 MHz channels may switch their primary and secondary channels if
 needed or creation of 40 MHz channel may be rejected based on overlapping
 BSSes. These changes are done automatically when hostapd is setting up the
@@ -262,7 +265,7 @@ Enable receiving PPDU using STBC (Space Time Block Coding)
 Enable sending PPDU using STBC (Space Time Block Coding)
 ```
 
-### VHT (Very High Throughput) capabilities (802.11ac)
+##### VHT (Very High Throughput) capabilities (802.11ac)
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht antenna-count \<count\>
 ```
@@ -353,7 +356,7 @@ Enable VHT TXOP Power Save Mode
 Station supports receiving VHT variant HT Control field
 ```
 
-### HE (High Efficiency) capabilities (802.11ax)
+##### HE (High Efficiency) capabilities (802.11ax)
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities he antenna-pattern-fixed
 

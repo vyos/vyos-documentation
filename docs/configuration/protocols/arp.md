@@ -1,11 +1,11 @@
-(routing-static-arp)=
-
 ```{eval-rst}
 .. meta::
    :description: The Address Resolution Protocol (ARP) resolves
                  network-layer addresses to link-layer MAC addresses.
    :keywords: arp, network, protocol, mac, address, ipv4, static
 ```
+
+(routing_static_arp)=
 
 # ARP
 

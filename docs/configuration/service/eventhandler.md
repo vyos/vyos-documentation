@@ -10,15 +10,17 @@ can pass variables, arguments, and a full matching string to the script.
 
 ## How to configure Event Handler
 
-[1. Create an event handler](#1-create-an-event-handler)
-
-[2. Add regex to the script](#2-add-regex-to-the-script)
-
-[3. Add a full path to the script](#3-add-a-full-path-to-the-script)
-
-[4. Add optional parameters](#4-add-optional-parameters)
+> [1. Create an event handler](#create-an-event-handler)
+>
+> [2. Add regex to the script](#add-regex-to-the-script)
+>
+> [3. Add a full path to the script](#add-a-full-path-to-the-script)
+>
+> [4. Add optional parameters](#add-optional-parameters)
 
 ## Event Handler Configuration Steps
+
+(create-an-event-handler)=
 
 ### 1. Create an event handler
 
@@ -28,6 +30,8 @@ This is an optional command because the event handler will be
 automatically created after any of the next commands.
 ```
 
+
+(add-regex-to-the-script)=
 
 ### 2. Add regex to the script
 
@@ -43,6 +47,8 @@ string matches the pattern.
 ```
 
 
+(add-a-full-path-to-the-script)=
+
 ### 3. Add a full path to the script
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> script path \<path to script\>
@@ -51,6 +57,8 @@ This is a mandatory command. Sets the full path to the script.
 The script file must be executable.
 ```
 
+
+(add-optional-parameters)=
 
 ### 4. Add optional parameters
 
@@ -84,7 +92,7 @@ is more preferable.
 
 ## Example
 
-Event handler that monitors the state of interface eth0.
+> Event handler that monitors the state of interface eth0.
 
 ```none
 set service event-handler event INTERFACE_STATE_DOWN filter pattern '.*eth0.*,RUNNING,.*->.*'

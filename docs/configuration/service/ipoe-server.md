@@ -2,7 +2,7 @@
 
 # IPoE Server
 
-VyOS utilizes accel-ppp to provide {abbr}`IPoE (Internet Protocol over
+VyOS utilizes [accel-ppp] to provide {abbr}`IPoE (Internet Protocol over
 Ethernet)` server functionality. It can be used with local authentication
 (mac-address) or a connected RADIUS server.
 
@@ -166,7 +166,7 @@ Source IPv4 address used in all RADIUS server queires.
 ```
 
 :::{note}
-The `source-address` must be configured on one of VyOS interface.
+The ``source-address`` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
 :::
 
@@ -251,7 +251,7 @@ Source IPv4 address used in all RADIUS server queires.
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute \<attribute\>
 
 Specifies which RADIUS server attribute contains the rate limit information.
-The default attribute is `Filter-Id`.
+The default attribute is *Filter-Id*.
 ```
 
 :::{note}
@@ -278,32 +278,32 @@ the CLI configuration, refer to the explanation below.
 ### Allocation clients ip addresses by RADIUS
 
 
-If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
+If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
+address will be allocated to the client and the option ``default-pool`` within the CLI
 config is being ignored.
 
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
+If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
 from a predefined IP pool whose name equals the attribute value.
 
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
+will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
 
 
-If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
-delegation pefix will be allocated from a predefined IPv6 pool `delegate`
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
+delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
 whose name equals the attribute value.
 
 
 :::{note}
-`Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
+``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
 
 User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
+it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom [ACCEL-PPP attribute].
 Define it in your RADIUS server.
 
 
@@ -399,7 +399,7 @@ Use this command to define the next address pool name.
 ```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
-If you need more customization use `client-ip-pool`
+If you need more customization use *client-ip-pool*
 ```
 
 
@@ -507,5 +507,6 @@ Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: session started
 Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Ack xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Ack> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
 ```
 
+[accel-ppp]: https://accel-ppp.org/
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911

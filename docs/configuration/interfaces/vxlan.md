@@ -138,6 +138,7 @@ remote IPv4 or IPv6 address.
 ```{cfgcmd} set interfaces vxlan \<interface\> source-interface \<interface\>
 
 **Configure the source interface for the VXLAN underlay.**
+
 All VXLAN traffic is sent and received through the specified interface.
 This setting is mandatory when deploying VXLAN over a multicast network.
 ```
@@ -145,6 +146,7 @@ This setting is mandatory when deploying VXLAN over a multicast network.
 ```{cfgcmd} set interfaces vxlan \<interface\> group \<address\>
 
 **Configure the IPv4 or IPv6 multicast group address for the VXLAN interface.**
+
 VXLAN tunnels can be built using either multicast group or unicast IP addresses.
 ```
 
@@ -209,7 +211,7 @@ The following example demonstrates a multicast VXLAN deployment.
 The setup includes three routers: Spine1, a Cisco IOS router, and Leaf2 and
 Leaf3, which are VyOS routers.
 
-**Topology:** Leaf2 - Spine1 - Leaf3.
+**Topology:**  Leaf2 - Spine1 - Leaf3.
 
 The topology is built using GNS3.
 

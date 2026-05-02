@@ -182,17 +182,21 @@ The available modes are:
 
 ```{cfgcmd} set interfaces bonding \<interface\> min-links \<0-16\>
 
-**Configure how many member interfaces must be active (in the link-up state) to
-mark the bonding interface UP (carrier asserted).**
-This command applies only when the bonding interface is configured in 802.3ad
-mode and functions like the Cisco EtherChannel min-links feature. It ensures
-that a bonding interface is marked UP (carrier asserted) only when a specified
-number of member interfaces are active (in the link-up state). This helps
-guarantee a minimum level of bandwidth for higher-level services (such as
-clustering) relying on the bonding interface.
-The default value is 0. This marks the bonding interface UP (carrier asserted)
-whenever an active LACP aggregator exists, regardless of the number of member
-interfaces in that aggregator.
+**Configure how many member interfaces must be active (in the
+link-up state) to mark the bonding interface UP (carrier
+asserted).**
+
+This command applies only when the bonding interface is configured
+in 802.3ad mode and functions like the Cisco EtherChannel min-links
+feature. It ensures that a bonding interface is marked UP (carrier
+asserted) only when a specified number of member interfaces are
+active (in the link-up state). This helps guarantee a minimum level
+of bandwidth for higher-level services (such as clustering) relying
+on the bonding interface.
+
+The default value is 0. This marks the bonding interface UP
+(carrier asserted) whenever an active LACP aggregator exists,
+regardless of the number of member interfaces in that aggregator.
 
 :::{note}
 In 802.3ad mode, a bond cannot be active without at least one active
@@ -206,10 +210,15 @@ the bonding interface is marked UP (carrier asserted).
 **Configure the rate at which the bonding interface requests its link
 partner to send** {abbr}`LACPDUs (Link Aggregation Control Protocol Data
 Units)` **in 802.3ad mode.**
+
 This command applies only when the bonding interface is configured in
 802.3ad mode.
+
 The following options are available:
+
 * **slow (default):** Requests the link partner to transmit LACPDUs every 30 seconds.
+
+* **fast:** Requests the link partner to transmit LACPDUs every 1 second.
 ```
 ```{cfgcmd} set interfaces bonding \<interface\> system-mac \<mac address\>
 
@@ -450,28 +459,26 @@ subinterface.
 
 ```none
 # Create the bonding interface bond0 with 802.3ad LACP
-
 set interfaces bonding bond0 hash-policy 'layer2'
-
 set interfaces bonding bond0 mode '802.3ad'
 
-
 # Add the required VLANs and IPv4 addresses on them
-
 set interfaces bonding bond0 vif 10 address 192.168.0.1/24
-
 set interfaces bonding bond0 vif 100 address 10.10.10.1/24
 
-
 # Add the member interfaces to the bonding interface
-
 set interfaces bonding bond0 member interface eth1
-
 set interfaces bonding bond0 member interface eth2
-
 ```
 :::{note}
-Not all transmit hash policies comply with 802.3ad, particularly
+If you are running this configuration in a virtual environment like
+EVE-NG, ensure the e1000 driver is chosen for your VyOS NIC. The default
+drivers, such as ``virtio-net-pci`` or ``vmxnet3``, are incompatible with
+this configuration. Specifically, ICMP messages will not be processed
+correctly.
+
+To check your NIC driver, use the following command:
+``show interfaces ethernet eth0 physical | grep -i driver``
 :::
 
 
@@ -486,21 +493,13 @@ Assign member interfaces to PortChannel:
 
 ```none
 interface GigabitEthernet1/0/23
-
  description VyOS eth1
-
  channel-group 1 mode active
-
 !
-
 interface GigabitEthernet1/0/24
-
  description VyOS eth2
-
  channel-group 1 mode active
-
 !
-
 ```
 
 A new interface, `Port-channel1`, becomes available; all configuration,
@@ -508,19 +507,12 @@ such as allowed VLAN interfaces and STP, is applied here.
 
 ```none
 interface Port-channel1
-
  description LACP Channel for VyOS
-
  switchport trunk encapsulation dot1q
-
  switchport trunk allowed vlan 10,100
-
  switchport mode trunk
-
  spanning-tree portfast trunk
-
 !
-
 ```
 
 ### Juniper EX Switch configuration
@@ -531,41 +523,25 @@ interface.
 
 ```none
 # Create aggregated ethernet device with 802.3ad LACP and port speeds of 10gbit/s
-
 set interfaces ae0 aggregated-ether-options link-speed 10g
-
 set interfaces ae0 aggregated-ether-options lacp active
 
-
 # Create layer 2 on the aggregated ethernet device with trunking for our VLANs
-
 set interfaces ae0 unit 0 family ethernet-switching port-mode trunk
 
-
 # Add the required vlans to the device
-
 set interfaces ae0 unit 0 family ethernet-switching vlan members 10
-
 set interfaces ae0 unit 0 family ethernet-switching vlan members 100
 
-
 # Add the two interfaces to the aggregated ethernet device, in this setup both
-
 # ports are on the same switch (switch 0, module 1, port 0 and 1)
-
 set interfaces xe-0/1/0 ether-options 802.3ad ae0
-
 set interfaces xe-0/1/1 ether-options 802.3ad ae0
 
-
 # But this can also be done with multiple switches in a stack, a virtual
-
 # chassis on Juniper (switch 0 and switch 1, module 1, port 0 on both switches)
-
 set interfaces xe-0/1/0 ether-options 802.3ad ae0
-
 set interfaces xe-1/1/0 ether-options 802.3ad ae0
-
 ```
 
 ### Aruba/HP configuration
@@ -576,16 +552,11 @@ interface.
 
 ```none
 # Create trunk with 2 member interfaces (interface 1 and 2) and LACP
-
 trunk 1-2 Trk1 LACP
 
-
 # Add the required VLANs to the trunk
-
 vlan 10 tagged Trk1
-
 vlan 100 tagged Trk1
-
 ```
 
 ### Arista EOS configuration
@@ -599,43 +570,28 @@ between the two devices.
 Let's assume the following topology:
 
 
-:::{figure} /_static/images/vyos_arista_bond_lacp.png
-:alt: VyOS Arista EOS setup
-:::
+```{eval-rst}
+.. figure:: /_static/images/vyos_arista_bond_lacp.*
+   :alt: VyOS Arista EOS setup
+```
 
 
 **R1**
 
-
-> 
-
 ```none
-> interfaces {
-
->     bonding bond10 {
-
->         hash-policy layer3+4
-
->         member {
-
->             interface eth1
-
->             interface eth2
-
->         }
-
->         mode 802.3ad
-
->         vif 100 {
-
->             address 192.0.2.1/30
-
->             address 2001:db8::1/64
-
->         }
-
->     }
-
+interfaces {
+    bonding bond10 {
+        hash-policy layer3+4
+        member {
+            interface eth1
+            interface eth2
+        }
+        mode 802.3ad
+        vif 100 {
+            address 192.0.2.1/30
+            address 2001:db8::1/64
+        }
+    }
 ```
 **R2**
 
@@ -643,89 +599,48 @@ Let's assume the following topology:
 
 ```none
 interfaces {
-
     bonding bond10 {
-
         hash-policy layer3+4
-
         member {
-
             interface eth1
-
             interface eth2
-
         }
-
         mode 802.3ad
-
         vif 100 {
-
             address 192.0.2.2/30
-
             address 2001:db8::2/64
-
         }
-
     }
-
 ```
 **SW1**
 
-
-> 
 ```none
-> !
-
-> vlan 100
-
->    name FOO
-
-> !
-
-> interface Port-Channel10
-
->    switchport trunk allowed vlan 100
-
->    switchport mode trunk
-
->    spanning-tree portfast
-
-> !
-
-> interface Port-Channel20
-
->    switchport mode trunk
-
->    no spanning-tree portfast auto
-
->    spanning-tree portfast network
-
-> !
-
-> interface Ethernet1
-
->    channel-group 10 mode active
-
-> !
-
-> interface Ethernet2
-
->    channel-group 10 mode active
-
-> !
-
-> interface Ethernet3
-
->    channel-group 20 mode active
-
-> !
-
-> interface Ethernet4
-
->    channel-group 20 mode active
-
-> !
-
+!
+vlan 100
+   name FOO
+!
+interface Port-Channel10
+   switchport trunk allowed vlan 100
+   switchport mode trunk
+   spanning-tree portfast
+!
+interface Port-Channel20
+   switchport mode trunk
+   no spanning-tree portfast auto
+   spanning-tree portfast network
+!
+interface Ethernet1
+   channel-group 10 mode active
+!
+interface Ethernet2
+   channel-group 10 mode active
+!
+interface Ethernet3
+   channel-group 20 mode active
+!
+interface Ethernet4
+   channel-group 20 mode active
+!
 ```
 **SW2**
 
@@ -733,57 +648,31 @@ interfaces {
 
 ```none
 !
-
 vlan 100
-
    name FOO
-
 !
-
 interface Port-Channel10
-
    switchport trunk allowed vlan 100
-
    switchport mode trunk
-
    spanning-tree portfast
-
 !
-
 interface Port-Channel20
-
    switchport mode trunk
-
    no spanning-tree portfast auto
-
    spanning-tree portfast network
-
 !
-
 interface Ethernet1
-
    channel-group 10 mode active
-
 !
-
 interface Ethernet2
-
    channel-group 10 mode active
-
 !
-
 interface Ethernet3
-
    channel-group 20 mode active
-
 !
-
 interface Ethernet4
-
    channel-group 20 mode active
-
 !
-
 ```
 :::{note}
 When testing this environment in EVE-NG, ensure the e1000 driver
@@ -819,13 +708,14 @@ Show detailed interface information.
 :::{code-block} none
 vyos@vyos:~$ show interfaces bonding bond5
 bond5: <NO-CARRIER,BROADCAST,MULTICAST,MASTER,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
-inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
-valid_lft forever preferred_lft forever
-RX:  bytes  packets  errors  dropped  overrun       mcast
-0        0       0        0        0           0
-TX:  bytes  packets  errors  dropped  carrier  collisions
-0        0       0        0        0           0
+    link/ether 00:50:56:bf:ef:aa brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::e862:26ff:fe72:2dac/64 scope link tentative
+       valid_lft forever preferred_lft forever
+
+    RX:  bytes  packets  errors  dropped  overrun       mcast
+             0        0       0        0        0           0
+    TX:  bytes  packets  errors  dropped  carrier  collisions
+             0        0       0        0        0           0
 :::
 ```
 ```{opcmd} show interfaces bonding \<interface\> detail
