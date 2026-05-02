@@ -72,7 +72,7 @@ motherboard).
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_10ge_open_4.jpg
+:::{figure} /_static/images/1u_vyos_front_10ge_open_4.webp
 :alt: CSE-505-203B w/ 10GE Open
 :scale: 25 %
 :::
@@ -108,7 +108,7 @@ dual front cover.
 
 #### Extension Modules
 
-### WiFi
+##### WiFi
 
 Refer to {ref}`wireless-interface` for additional information, below listed
 modules have been tested successfully on this Hardware platform:
@@ -117,7 +117,7 @@ modules have been tested successfully on this Hardware platform:
 - Intel Corporation AX200 mini-PCIe WiFi module, only supported in mPCIe slot 1.
   (see {ref}`wireless-interface-intel-ax200`)
 
-### WWAN
+##### WWAN
 
 Refer to {ref}`wwan-interface` for additional information, below listed modules
 have been tested successfully on this Hardware platform using VyOS 1.3
@@ -221,7 +221,7 @@ noise.
 :scale: 25 %
 :::
 
-### VyOS custom print
+##### VyOS custom print
 
 :::{figure} /_static/images/apu4_rack_vyos_print.jpg
 :alt: APU4 custom VyOS powder coat
@@ -245,7 +245,7 @@ noise.
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_desk_4.jpg
+:::{figure} /_static/images/apu4_desk_4.webp
 :alt: APU4 desktop back
 :scale: 25 %
 :::
@@ -301,7 +301,7 @@ HDMI mode.
 
 ## Partaker i5
 
-:::{figure} ../_static/images/600px-Partaker-i5.jpg
+:::{figure} ../_static/images/600px-Partaker-i5.webp
 :::
 
 I believe this is actually the same hardware as the Protectli. I purchased it
@@ -329,7 +329,7 @@ port is eth0 and the right-most "LAN1" port is eth3.
 :::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Front.jpg
 :::
 
-:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Back.jpg
+:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Back.webp
 :::
 
 This microbox network appliance was build to create OpenVPN bridges. It can
@@ -396,16 +396,16 @@ i3-N305 CPU and 2x 25GbE!
 
 ### Pictures
 
-:::{figure} ../_static/images/gowin-01.png
+:::{figure} ../_static/images/gowin-01.webp
 :::
 
-:::{figure} ../_static/images/gowin-02.png
+:::{figure} ../_static/images/gowin-02.webp
 :::
 
-:::{figure} ../_static/images/gowin-03.png
+:::{figure} ../_static/images/gowin-03.webp
 :::
 
-:::{figure} ../_static/images/gowin-04.png
+:::{figure} ../_static/images/gowin-04.webp
 :::
 
 ### Cooling
