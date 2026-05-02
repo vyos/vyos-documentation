@@ -28,7 +28,7 @@ There are two IPsec modes:
         another IP datagram, and an IPsec header (AH or ESP) is
         inserted between the outer and inner headers.
 
-.. figure:: /_static/images/ESP_AH.*
+.. figure:: /_static/images/ESP_AH.webp
    :scale: 80 %
    :alt: AH and ESP in Transport Mode and Tunnel Mode
 ```

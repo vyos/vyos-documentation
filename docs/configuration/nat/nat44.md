@@ -668,7 +668,7 @@ The ASP requests that all connections from this company should come from
 the customer site.
 
 ```{eval-rst}
-.. figure:: /_static/images/nat_before_vpn_topology.*
+.. figure:: /_static/images/nat_before_vpn_topology.webp
    :scale: 100 %
    :alt: NAT before VPN Topology
 

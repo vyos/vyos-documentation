@@ -310,7 +310,7 @@ The following example topology was built using EVE-NG.
 
 
 ```{eval-rst}
-.. figure:: /_static/images/vrf-example-topology-01.*
+.. figure:: /_static/images/vrf-example-topology-01.webp
    :alt: VRF topology example
 
 

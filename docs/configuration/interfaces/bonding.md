@@ -571,7 +571,7 @@ Let's assume the following topology:
 
 
 ```{eval-rst}
-.. figure:: /_static/images/vyos_arista_bond_lacp.*
+.. figure:: /_static/images/vyos_arista_bond_lacp.webp
    :alt: VyOS Arista EOS setup
 ```
 

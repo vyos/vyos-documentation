@@ -16,7 +16,7 @@ inside the tunnel.
 ## Network Topology
 
 ```{eval-rst}
-.. image:: /_static/images/cisco-vpn-ipsec.*
+.. image:: /_static/images/cisco-vpn-ipsec.webp
    :align: center
    :alt: Network Topology Diagram
 ```

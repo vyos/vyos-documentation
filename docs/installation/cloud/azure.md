@@ -13,38 +13,38 @@ Deploy VyOS on Azure.
    and private images**.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-01.*
+.. figure:: /_static/images/cloud-azure-01.webp
 ```
 
 3. Search for "VyOS" in the marketplace and choose the appropriate
    subscription.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-02.*
+.. figure:: /_static/images/cloud-azure-02.webp
 ```
 
 4. Generate new SSH key pair or use existing.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-03.*
+.. figure:: /_static/images/cloud-azure-03.webp
 ```
 
 5. Configure the network, subnet, and public IP. Or use the defaults.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-04.*
+.. figure:: /_static/images/cloud-azure-04.webp
 ```
 
 6. Click **Review + create**. Your deployment completes in a few seconds.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-05.*
+.. figure:: /_static/images/cloud-azure-05.webp
 ```
 
 7. Select your new VM and note your public IP address.
 
 ```{eval-rst}
-.. figure:: /_static/images/cloud-azure-06.*
+.. figure:: /_static/images/cloud-azure-06.webp
 ```
 
 8. Connect to the instance with your SSH key.

@@ -13,7 +13,7 @@ central office.
 The topology have a central and a branch VyOS router and one client, to
 test, in each site.
 
-```{image} _include/topology.png
+```{image} _include/topology.webp
 :alt: Ansible Example topology image
 ```
 

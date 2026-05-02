@@ -11,7 +11,7 @@ on AWS and remove infrastructure when it's no longer needed.
 Additionally, you can use Ansible for provisioning.
 
 ```{eval-rst}
-.. image:: /_static/images/aws.*
+.. image:: /_static/images/aws.webp
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
@@ -33,7 +33,7 @@ Terraform, Ansible, and AWS, follow these steps:
 2. Create a key [pair] and download your `.pem` key.
 
 ```{eval-rst}
-.. image:: /_static/images/keypairs.*
+.. image:: /_static/images/keypairs.webp
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
@@ -42,14 +42,14 @@ Terraform, Ansible, and AWS, follow these steps:
 3. Create a security [group] for the new VyOS instance and open all traffic.
 
 ```{eval-rst}
-.. image:: /_static/images/sg.*
+.. image:: /_static/images/sg.webp
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
 ```
 
 ```{eval-rst}
-.. image:: /_static/images/traffic.*
+.. image:: /_static/images/traffic.webp
    :width: 50%
    :align: center
    :alt: Network Topology Diagram
