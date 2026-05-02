@@ -296,13 +296,14 @@ Show detailed information about a specific PPPoE interface.
 :::{code-block} none
 vyos@vyos:~$ show interfaces pppoe pppoe0
 pppoe0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1492 qdisc pfifo_fast state UNKNOWN group default qlen 3
-link/ppp
-inet 192.0.2.1 peer 192.0.2.255/32 scope global pppoe0
-valid_lft forever preferred_lft forever
-RX:  bytes    packets     errors    dropped    overrun      mcast
-7002658233    5064967          0          0          0          0
-TX:  bytes    packets     errors    dropped    carrier collisions
-533822843    1620173          0          0          0          0
+    link/ppp
+    inet 192.0.2.1 peer 192.0.2.255/32 scope global pppoe0
+       valid_lft forever preferred_lft forever
+
+    RX:  bytes    packets     errors    dropped    overrun      mcast
+    7002658233    5064967          0          0          0          0
+    TX:  bytes    packets     errors    dropped    carrier collisions
+     533822843    1620173          0          0          0          0
 :::
 ```
 
@@ -313,8 +314,8 @@ Show queue information for a specific PPPoE interface.
 :::{code-block} none
 vyos@vyos:~$ show interfaces pppoe pppoe0 queue
 qdisc pfifo_fast 0: root refcnt 2 bands 3 priomap  1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
-Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
-backlog 0b 0p requeues 0
+ Sent 534625359 bytes 1626761 pkt (dropped 62, overlimits 0 requeues 0)
+ backlog 0b 0p requeues 0
 :::
 ```
 
