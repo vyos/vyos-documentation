@@ -32,7 +32,7 @@ The architecture consists of VyOS routers deployed in both AWS and Azure, connec
 BGP is used for dynamic routing between the clouds, allowing for seamless communication.
 
 <figure>
-<img src="/_static/images/cloud-aws-to-azure.png" alt="VyOS Cloud-to-Cloud topology diagram" />
+<img src="/_static/images/cloud-aws-to-azure.webp" alt="VyOS Cloud-to-Cloud topology diagram" />
 </figure>
 
 # Terraform Automation

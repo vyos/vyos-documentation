@@ -20,7 +20,7 @@ To add an option, select the desired image in GRUB menu at load
 time, press **e**, edit the first line, and press **Ctrl-x** to boot when
 ready.
 
-<img src="/_static/images/boot-options.png" class="align-center" style="width:80.0%" alt="image" />
+<img src="/_static/images/boot-options.webp" class="align-center" style="width:80.0%" alt="image" />
 
 ## Specify custom config file
 

@@ -10,7 +10,7 @@ Topology consists of:
 - VyOS as a OpenVPN Server
 - VyOS as Client
 
-![OpenVPN with LDAP topology image](_include/topology.png)
+![OpenVPN with LDAP topology image](_include/topology.webp)
 
 ## Active Directory on Windows server
 

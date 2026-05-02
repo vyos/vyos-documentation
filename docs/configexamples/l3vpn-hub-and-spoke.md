@@ -46,7 +46,7 @@ General information can be found in the `configuration/vrf/index:L3VPN VRFs` cha
 
 ## Topology
 
-<img src="/_static/images/L3VPN_hub_and_spoke.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/L3VPN_hub_and_spoke.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 ## How does it work?
 

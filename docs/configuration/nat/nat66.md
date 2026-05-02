@@ -97,7 +97,7 @@ network between internal and external networks (dynamic prefix is
 not supported):
 
 <figure>
-<img src="/_static/images/vyos_1_4_nat66_simple.png" alt="VyOS NAT66 Simple Configure" />
+<img src="/_static/images/vyos_1_4_nat66_simple.webp" alt="VyOS NAT66 Simple Configure" />
 </figure>
 
 R1:
@@ -127,7 +127,7 @@ Use the following topology to translate internal user local addresses (`fc::/7`)
 to DHCPv6-PD provided prefixes from an ISP connected to a VyOS HA pair.
 
 <figure>
-<img src="/_static/images/vyos_1_5_nat66_dhcpv6_wdummy.png" alt="VyOS NAT66 DHCPv6 using a dummy interface" />
+<img src="/_static/images/vyos_1_5_nat66_dhcpv6_wdummy.webp" alt="VyOS NAT66 DHCPv6 using a dummy interface" />
 </figure>
 
 Configure both routers (a and b) for DHCPv6-PD via dummy interface:

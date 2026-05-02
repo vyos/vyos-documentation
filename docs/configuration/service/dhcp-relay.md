@@ -114,7 +114,7 @@ Four policies for reforwarding DHCP packets exist:
   server at 10.0.1.4 on `eth2`.
 
 <figure>
-<img src="/_static/images/service_dhcp-relay01.png" alt="DHCP relay example" />
+<img src="/_static/images/service_dhcp-relay01.webp" alt="DHCP relay example" />
 <figcaption aria-hidden="true">DHCP relay example</figcaption>
 </figure>
 
@@ -215,7 +215,7 @@ set automatically if more than one listening interfaces are in use.
 - External DHCPv6 server is at 2001:db8::4
 
 <figure>
-<img src="/_static/images/service_dhcpv6-relay01.png" alt="DHCPv6 relay example" />
+<img src="/_static/images/service_dhcpv6-relay01.webp" alt="DHCPv6 relay example" />
 <figcaption aria-hidden="true">DHCPv6 relay example</figcaption>
 </figure>
 

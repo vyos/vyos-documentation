@@ -200,7 +200,7 @@ set load-balancing wan disable-source-nat
 Inbound connections to a WAN interface can be improperly handled when the reply
 is sent back to the client.
 
-<img src="/_static/images/sticky-connections.jpg" class="align-center" style="width:80.0%" alt="image" />
+<img src="/_static/images/sticky-connections.webp" class="align-center" style="width:80.0%" alt="image" />
 
 Upon reception of an incoming packet, when a response is sent, it might be
 desired to ensure that it leaves from the same interface as the inbound one.

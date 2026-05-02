@@ -6,7 +6,7 @@ This example shows how to configure a VyOS router with VRFs and firewall rules.
 
 Diagram used in this example:
 
-<img src="/_static/images/firewall-and-vrf-blueprints.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/firewall-and-vrf-blueprints.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 As exposed in the diagram, there are four VRFs. These VRFs are `MGMT`,
 `WAN`, `LAN` and `PROD`, and their requirements are:

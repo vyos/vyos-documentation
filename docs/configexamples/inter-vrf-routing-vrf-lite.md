@@ -65,7 +65,7 @@ community(ies) into that prefix.
 
 ## Topology
 
-<img src="/_static/images/inter-vrf-routing-vrf-lite.png" class="align-center" style="width:70.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/inter-vrf-routing-vrf-lite.webp" class="align-center" style="width:70.0%" alt="Network Topology Diagram" />
 
 ### IP Schema
 

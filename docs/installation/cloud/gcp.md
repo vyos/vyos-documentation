@@ -45,14 +45,14 @@ This is because the default user in the VyOS image is `vyos`, and the Google Clo
     **SSH Keys**.
 
 <figure>
-<img src="/_static/images/cloud-gcp-01.png" />
+<img src="/_static/images/cloud-gcp-01.webp" />
 </figure>
 
 3.  Click **edit** and **Add item**.
 4.  Paste your public ssh key and **Save**.
 
 <figure>
-<img src="/_static/images/cloud-gcp-02.png" />
+<img src="/_static/images/cloud-gcp-02.webp" />
 </figure>
 
 For more information, please visit the official Google Cloud documentation:
@@ -68,7 +68,7 @@ Step 2: Create a Service Account (If You Don't Have One)
 2.  Select select a project.
 
 <figure>
-<img src="/_static/images/cloud-gcp-proj.png" />
+<img src="/_static/images/cloud-gcp-proj.webp" />
 </figure>
 
 3.  Click **Create Service Account**:
@@ -78,7 +78,7 @@ Step 2: Create a Service Account (If You Don't Have One)
 4.  Click **Done**.
 
 <figure>
-<img src="/_static/images/cloud-gcp-svc.png" />
+<img src="/_static/images/cloud-gcp-svc.webp" />
 </figure>
 
 For more information, please visit the official Google Cloud documentation:
@@ -94,7 +94,7 @@ Step 3: Create VPC Networks and Subnets
 2.  Select select a project.
 
 <figure>
-<img src="/_static/images/cloud-gcp-proj.png" />
+<img src="/_static/images/cloud-gcp-proj.webp" />
 </figure>
 
 3.  Click **Create VPC Network**.
@@ -109,11 +109,11 @@ Step 3: Create VPC Networks and Subnets
     - Leave all other settings at default, then click **Create**.
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-01.png" />
+<img src="/_static/images/cloud-gcp-vpc-01.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-02.png" alt="Private VPC:" />
+<img src="/_static/images/cloud-gcp-vpc-02.webp" alt="Private VPC:" />
 <figcaption><strong>Private VPC</strong>:
 <ul>
 <li>Name: <code>vyos-private-vpc</code></li>
@@ -126,25 +126,25 @@ Step 3: Create VPC Networks and Subnets
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-03.png" />
+<img src="/_static/images/cloud-gcp-vpc-03.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-04.png" />
+<img src="/_static/images/cloud-gcp-vpc-04.webp" />
 </figure>
 
 4.  Add firewall rules to allow specific network traffic from the Internet if needed. By default, all incoming traffic from outside the network is blocked. Typically, a VyOS deployment from the GCP Marketplace configures this automatically, ensuring that SSH access is enabled after deployment.
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-05.png" />
+<img src="/_static/images/cloud-gcp-vpc-05.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-06.png" />
+<img src="/_static/images/cloud-gcp-vpc-06.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vpc-07.png" />
+<img src="/_static/images/cloud-gcp-vpc-07.webp" />
 </figure>
 
 For more information, please visit the official Google Cloud documentation:
@@ -158,33 +158,33 @@ Step 4: Deploy VyOS instance from Marketplace
 2.  Choose the project where you want to deploy the VyOS instance.
 
 <figure>
-<img src="/_static/images/cloud-gcp-proj.png" />
+<img src="/_static/images/cloud-gcp-proj.webp" />
 </figure>
 
 3.  In the search bar, type `vyos` to find the VyOS image in the Marketplace.
 
 <figure>
-<img src="/_static/images/cloud-gcp-market-01.png" />
+<img src="/_static/images/cloud-gcp-market-01.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-market-02.png" />
+<img src="/_static/images/cloud-gcp-market-02.webp" />
 </figure>
 
 4.  On the next page, review details such as support, pricing, and other details.
 
 <figure>
-<img src="/_static/images/cloud-gcp-market-03.png" />
+<img src="/_static/images/cloud-gcp-market-03.webp" />
 </figure>
 
 5.  Click the `GET STARTED` button to start deployment process.
 
 <figure>
-<img src="/_static/images/cloud-gcp-market-04.png" />
+<img src="/_static/images/cloud-gcp-market-04.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-market-05.png" />
+<img src="/_static/images/cloud-gcp-market-05.webp" />
 </figure>
 
 6.  General settings.
@@ -195,11 +195,11 @@ Step 4: Deploy VyOS instance from Marketplace
     - Machine type: Choose based on performance and resource needs.
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-01.png" />
+<img src="/_static/images/cloud-gcp-vm-01.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-02.png" />
+<img src="/_static/images/cloud-gcp-vm-02.webp" />
 </figure>
 
 7.  Configure the network interfaces.
@@ -222,7 +222,7 @@ Step 4: Deploy VyOS instance from Marketplace
     > - External IP: `None`
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-03.png" />
+<img src="/_static/images/cloud-gcp-vm-03.webp" />
 </figure>
 
 8.  Deployment automation.
@@ -245,17 +245,17 @@ For more information, please visit the documentation:
 <https://docs.vyos.io/en/stable/automation/cloud-init.html#module-vyos-userdata>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-09.png" />
+<img src="/_static/images/cloud-gcp-vm-09.webp" />
 </figure>
 
 9.  Click `Deploy` button.
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-06.png" />
+<img src="/_static/images/cloud-gcp-vm-06.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-07.png" />
+<img src="/_static/images/cloud-gcp-vm-07.webp" />
 </figure>
 
 Connect to the VyOS instance
@@ -266,7 +266,7 @@ To connect to the VyOS instance, use the SSH key that was generated in the first
 To retrieve the public IP address, go to the **Google Cloud Console** and navigate to: **Compute Engine** \> **VM instances** <https://console.cloud.google.com/compute/instances?project=vyos-images>
 
 <figure>
-<img src="/_static/images/cloud-gcp-vm-08.png" />
+<img src="/_static/images/cloud-gcp-vm-08.webp" />
 </figure>
 
 Example:

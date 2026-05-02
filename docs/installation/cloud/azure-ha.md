@@ -32,7 +32,7 @@ The architecture includes:
 # HA Architecture Diagram
 
 <figure>
-<img src="/_static/images/cloud-azure-ha-architecture.png" alt="VyOS HA topology diagram" />
+<img src="/_static/images/cloud-azure-ha-architecture.webp" alt="VyOS HA topology diagram" />
 </figure>
 
 This deployment architecture simulates a real-world enterprise network scenario for testing and validation purposes.

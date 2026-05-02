@@ -41,13 +41,13 @@ Steps to Create a Key Pair Using Amazon EC2
 - In the navigation pane, under `Network & Security`, choose `Key Pairs`.
 
 <figure>
-<img src="/_static/images/cloud-aws-keypair-01.png" />
+<img src="/_static/images/cloud-aws-keypair-01.webp" />
 </figure>
 
 - Choose `Create key pair` and select `AWS region` at the top right corner of the windows where you plan to deploy the VyOS instance.
 
 <figure>
-<img src="/_static/images/cloud-aws-keypair-02.png" />
+<img src="/_static/images/cloud-aws-keypair-02.webp" />
 </figure>
 
 \- Configure Key Pair:
@@ -95,11 +95,11 @@ Steps to Create a Key Pair Using Amazon EC2
   - The file name will match the name you provided (e.g., <span class="title-ref">vyos-keypair.pem</span>), with the extension determined by the format you chose.
 
 <figure>
-<img src="/_static/images/cloud-aws-keypair-03.png" />
+<img src="/_static/images/cloud-aws-keypair-03.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-aws-keypair-04.png" alt="Important Notes" />
+<img src="/_static/images/cloud-aws-keypair-04.webp" alt="Important Notes" />
 <figcaption aria-hidden="true"><strong>Important Notes</strong></figcaption>
 </figure>
 
@@ -151,7 +151,7 @@ To create a VPC for your AWS environment:
 - Choose **Create VPC**.
 
 <figure>
-<img src="/_static/images/cloud-aws-vpc-01.png" />
+<img src="/_static/images/cloud-aws-vpc-01.webp" />
 </figure>
 
 - **Configure VPC Settings**:  
@@ -161,11 +161,11 @@ To create a VPC for your AWS environment:
 - Choose **Create VPC**.
 
 <figure>
-<img src="/_static/images/cloud-aws-vpc-02.png" />
+<img src="/_static/images/cloud-aws-vpc-02.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-aws-vpc-03.png" />
+<img src="/_static/images/cloud-aws-vpc-03.webp" />
 </figure>
 
 For more information, please visit the AWS documentation:
@@ -182,7 +182,7 @@ Subnets allow you to divide your VPC into smaller IP spaces. Follow these steps 
 - Choose **Create Subnet**.
 
 <figure>
-<img src="/_static/images/cloud-aws-subnet-01.png" />
+<img src="/_static/images/cloud-aws-subnet-01.webp" />
 </figure>
 
 \- Configure Subnet Settings:
@@ -202,11 +202,11 @@ Subnets allow you to divide your VPC into smaller IP spaces. Follow these steps 
 - Choose **Create Subnet**.
 
 <figure>
-<img src="/_static/images/cloud-aws-subnet-02.png" />
+<img src="/_static/images/cloud-aws-subnet-02.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-aws-subnet-03.png" />
+<img src="/_static/images/cloud-aws-subnet-03.webp" />
 </figure>
 
 For additional information, please visit the AWS documentation:
@@ -230,7 +230,7 @@ The **Public Security Group** is used for **outbound connectivity**. All externa
 - Choose **Create Security Group**.
 
 <figure>
-<img src="/_static/images/cloud-aws-sg-01.png" />
+<img src="/_static/images/cloud-aws-sg-01.webp" />
 </figure>
 
 - **Configure the Security Group**:
@@ -250,7 +250,7 @@ The **Public Security Group** is used for **outbound connectivity**. All externa
 > - **OpenVPN**: Allow port `1194` (UDP or TCP).
 
 <figure>
-<img src="/_static/images/cloud-aws-sg-02.png" />
+<img src="/_static/images/cloud-aws-sg-02.webp" />
 </figure>
 
 - (Optional) Add tags to identify the security group:  
@@ -259,7 +259,7 @@ The **Public Security Group** is used for **outbound connectivity**. All externa
 - Choose **Create Security Group**.
 
 <figure>
-<img src="/_static/images/cloud-aws-sg-03.png" />
+<img src="/_static/images/cloud-aws-sg-03.webp" />
 </figure>
 
 2\. Create Private Security Group
@@ -284,7 +284,7 @@ The **Private Security Group** is used for **internal connectivity** from intern
 > - Allow **All Traffic** (`0.0.0.0/0`) for internal connectivity between resources, VPCs, and other trusted networks.
 
 <figure>
-<img src="/_static/images/cloud-aws-sg-04.png" />
+<img src="/_static/images/cloud-aws-sg-04.webp" />
 </figure>
 
 - (Optional) Add tags to identify the security group:  
@@ -293,7 +293,7 @@ The **Private Security Group** is used for **internal connectivity** from intern
 - Choose **Create Security Group**.
 
 <figure>
-<img src="/_static/images/cloud-aws-sg-05.png" />
+<img src="/_static/images/cloud-aws-sg-05.webp" />
 </figure>
 
 For detailed instructions on creating a security group, refer to the official AWS documentation:
@@ -328,7 +328,7 @@ Network Interfaces (ENIs) are essential for connecting instances to subnets and 
 > - Choose **Create Network Interface**.
 >
 > <figure>
-> <img src="/_static/images/cloud-aws-eni-01.png" />
+> <img src="/_static/images/cloud-aws-eni-01.webp" />
 > </figure>
 
 Private ENI
@@ -346,7 +346,7 @@ Private ENI
 > - Choose **Create Network Interface**.
 >
 > <figure>
-> <img src="/_static/images/cloud-aws-eni-02.png" />
+> <img src="/_static/images/cloud-aws-eni-02.webp" />
 > </figure>
 
 Step 4: Configure Internet Gateway
@@ -372,7 +372,7 @@ An **Internet Gateway** allows communication between your VPC and the internet. 
 - Choose **Create Internet Gateway**.
 
 <figure>
-<img src="/_static/images/cloud-aws-igw-01.png" />
+<img src="/_static/images/cloud-aws-igw-01.webp" />
 </figure>
 
 2\. Attach the Internet Gateway to Your VPC
@@ -390,7 +390,7 @@ To enable your VPC to access the internet, attach the Internet Gateway to your V
 - Choose **Attach Internet Gateway**.
 
 <figure>
-<img src="/_static/images/cloud-aws-igw-02.png" />
+<img src="/_static/images/cloud-aws-igw-02.webp" />
 </figure>
 
 For more details, refer to the official AWS documentation:
@@ -418,7 +418,7 @@ Route tables define the paths for network traffic within your VPC. In this step,
   >   - Click **Create Route Table**.
   >
   > <figure>
-  > <img src="/_static/images/cloud-aws-route-01.png" />
+  > <img src="/_static/images/cloud-aws-route-01.webp" />
   > </figure>
 
 - **Add a Route to the Internet Gateway:**
@@ -430,7 +430,7 @@ Route tables define the paths for network traffic within your VPC. In this step,
   >   - Click **Save Routes**.
   >
   > <figure>
-  > <img src="/_static/images/cloud-aws-route-02.png" />
+  > <img src="/_static/images/cloud-aws-route-02.webp" />
   > </figure>
 
 - **Associate the Public Subnet:**
@@ -440,7 +440,7 @@ Route tables define the paths for network traffic within your VPC. In this step,
   > - Click **Save associations**.
   >
   > <figure>
-  > <img src="/_static/images/cloud-aws-route-03.png" />
+  > <img src="/_static/images/cloud-aws-route-03.webp" />
   > </figure>
 
 Step 6: Allocate and Attach Elastic IP (EIP)
@@ -476,7 +476,7 @@ Steps to Allocate and Attach Elastic IP
 - Choose **Allocate**.
 
 <figure>
-<img src="/_static/images/cloud-aws-eip-01.png" />
+<img src="/_static/images/cloud-aws-eip-01.webp" />
 </figure>
 
 2\. Attach Elastic IP to Public ENI
@@ -499,7 +499,7 @@ Steps to Allocate and Attach Elastic IP
 - Choose **Associate**.
 
 <figure>
-<img src="/_static/images/cloud-aws-eip-02.png" />
+<img src="/_static/images/cloud-aws-eip-02.webp" />
 </figure>
 
 **Why Use Elastic IP?**
@@ -528,7 +528,7 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >   - Under **Name and tags**, enter a descriptive name for your instance, e.g., `VyOS-Instance`.
   >
   >   <figure>
-  >   <img src="/_static/images/cloud-aws-vyos-01.png" />
+  >   <img src="/_static/images/cloud-aws-vyos-01.webp" />
   >   </figure>
   >
   > - **Application and OS Images (AMI)**:
@@ -538,11 +538,11 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >   - Choose the VyOS AMI that matches your requirements and click **Select**.
   >
   >   <figure>
-  >   <img src="/_static/images/cloud-aws-vyos-02.png" />
+  >   <img src="/_static/images/cloud-aws-vyos-02.webp" />
   >   </figure>
   >
   >   <figure>
-  >   <img src="/_static/images/cloud-aws-vyos-03.png" />
+  >   <img src="/_static/images/cloud-aws-vyos-03.webp" />
   >   </figure>
   >
   > - **Instance Type**:
@@ -551,7 +551,7 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >     - `c5n.large` (or larger recommended for VyOS).
   >
   >   > <figure>
-  >   > <img src="/_static/images/cloud-aws-vyos-04.png" />
+  >   > <img src="/_static/images/cloud-aws-vyos-04.webp" />
   >   > </figure>
   >
   > - **Key pair (login)**:
@@ -560,7 +560,7 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >   - If you do not have a key pair, create a new one and download the private key file.
   >
   >   <figure>
-  >   <img src="/_static/images/cloud-aws-vyos-05.png" />
+  >   <img src="/_static/images/cloud-aws-vyos-05.webp" />
   >   </figure>
   >
   > - **Network Settings**:
@@ -572,7 +572,7 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >   - **Common security groups**: Live empty (Do not select any security groups).
   >
   >   <figure>
-  >   <img src="/_static/images/cloud-aws-vyos-09.png" />
+  >   <img src="/_static/images/cloud-aws-vyos-09.webp" />
   >   </figure>
   >
   > - **Advanced network configuration**
@@ -580,20 +580,20 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
   >   > - **Network interface 1** select `VyOS-Public-ENI`
   >   >
   >   > <figure>
-  >   > <img src="/_static/images/cloud-aws-vyos-07.png" />
+  >   > <img src="/_static/images/cloud-aws-vyos-07.webp" />
   >   > </figure>
   >   >
   >   > - Click to the **Add network interface** button
   >   > - **Network interface 2** select `VyOS-Private-ENI`
   >   >
   >   > <figure>
-  >   > <img src="/_static/images/cloud-aws-vyos-08.png" />
+  >   > <img src="/_static/images/cloud-aws-vyos-08.webp" />
   >   > </figure>
   >   >
   >   > - In **Subnet** deselect subnet
   >   >
   >   > <figure>
-  >   > <img src="/_static/images/cloud-aws-vyos-10.png" />
+  >   > <img src="/_static/images/cloud-aws-vyos-10.webp" />
   >   > </figure>
 
 - Review the instance configuration in the **Summary** panel and choose **Launch Instance**.
@@ -601,7 +601,7 @@ Follow the detailed instructions below to launch a VyOS instance in your AWS env
 - Wait until the instance status changes to **Running**.
 
 <figure>
-<img src="/_static/images/cloud-aws-vyos-11.png" />
+<img src="/_static/images/cloud-aws-vyos-11.webp" />
 </figure>
 
 Connect to the VyOS instance

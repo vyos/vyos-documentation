@@ -34,7 +34,7 @@ particularly well suited for use with DMVPN.
 </div>
 
 <figure>
-<img src="/_static/images/vpn_dmvpn_topology01.png" alt="Baseline DMVPN topology" />
+<img src="/_static/images/vpn_dmvpn_topology01.webp" alt="Baseline DMVPN topology" />
 <figcaption aria-hidden="true">Baseline DMVPN topology</figcaption>
 </figure>
 
@@ -237,7 +237,7 @@ multiple spoke sites. The lab was built using `EVE-NG (Emulated Virtual
 Environment NG)`.
 
 <figure>
-<img src="/_static/images/blueprint-dmvpn.png" alt="DMVPN network" />
+<img src="/_static/images/blueprint-dmvpn.webp" alt="DMVPN network" />
 <figcaption>DMVPN example network</figcaption>
 </figure>
 

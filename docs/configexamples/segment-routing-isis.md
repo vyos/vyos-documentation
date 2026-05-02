@@ -9,7 +9,7 @@ devices.The lab was build using `EVE-NG (Emulated Virtual
 Environment NG)`.
 
 <figure>
-<img src="/_static/images/vyos-sr-isis.png" alt="ISIS-SR network" />
+<img src="/_static/images/vyos-sr-isis.webp" alt="ISIS-SR network" />
 <figcaption>ISIS-SR example network</figcaption>
 </figure>
 

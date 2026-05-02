@@ -13,7 +13,7 @@ please contact your ISP for more information.
 
 ## Network Topology
 
-<img src="/_static/images/pppoe-ipv6-pd-diagram.jpg" class="align-center" style="width:60.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/pppoe-ipv6-pd-diagram.webp" class="align-center" style="width:60.0%" alt="Network Topology Diagram" />
 
 ## Configurations
 

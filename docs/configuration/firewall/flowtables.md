@@ -43,7 +43,7 @@ The flowtable supports for the layer 3 IPv4 and IPv6 and the layer 4 TCP
 and UDP protocols.
 
 <figure>
-<img src="/_static/images/firewall-flowtable-packet-flow.png" />
+<img src="/_static/images/firewall-flowtable-packet-flow.webp" />
 </figure>
 
 Once the first packet of the flow successfully goes through the IP forwarding

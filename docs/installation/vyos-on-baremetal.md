@@ -31,39 +31,39 @@ motherboard).
 ### Pictures
 
 <figure>
-<img src="/_static/images/1u_vyos_back.jpg" alt="CSE-505-203B Back" />
+<img src="/_static/images/1u_vyos_back.webp" alt="CSE-505-203B Back" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front.jpg" alt="CSE-505-203B Front" />
+<img src="/_static/images/1u_vyos_front.webp" alt="CSE-505-203B Front" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_open_1.jpg" alt="CSE-505-203B Open 1" />
+<img src="/_static/images/1u_vyos_front_open_1.webp" alt="CSE-505-203B Open 1" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_open_2.jpg" alt="CSE-505-203B Open 2" />
+<img src="/_static/images/1u_vyos_front_open_2.webp" alt="CSE-505-203B Open 2" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_open_3.jpg" alt="CSE-505-203B Open 3" />
+<img src="/_static/images/1u_vyos_front_open_3.webp" alt="CSE-505-203B Open 3" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_10ge_open_1.jpg" alt="CSE-505-203B w/ 10GE Open 1" />
+<img src="/_static/images/1u_vyos_front_10ge_open_1.webp" alt="CSE-505-203B w/ 10GE Open 1" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_10ge_open_2.jpg" alt="CSE-505-203B w/ 10GE Open 2" />
+<img src="/_static/images/1u_vyos_front_10ge_open_2.webp" alt="CSE-505-203B w/ 10GE Open 2" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_10ge_open_3.jpg" alt="CSE-505-203B w/ 10GE Open 3" />
+<img src="/_static/images/1u_vyos_front_10ge_open_3.webp" alt="CSE-505-203B w/ 10GE Open 3" />
 </figure>
 
 <figure>
-<img src="/_static/images/1u_vyos_front_10ge_open_4.jpg" alt="CSE-505-203B w/ 10GE Open" />
+<img src="/_static/images/1u_vyos_front_10ge_open_4.webp" alt="CSE-505-203B w/ 10GE Open" />
 </figure>
 
 ## PC Engines APU4
@@ -189,47 +189,47 @@ noise.
 #### Rack Mount
 
 <figure>
-<img src="/_static/images/apu4_rack_1.jpg" alt="APU4 rack closed" />
+<img src="/_static/images/apu4_rack_1.webp" alt="APU4 rack closed" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_rack_2.jpg" alt="APU4 rack front" />
+<img src="/_static/images/apu4_rack_2.webp" alt="APU4 rack front" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_rack_3.jpg" alt="APU4 rack module #1" />
+<img src="/_static/images/apu4_rack_3.webp" alt="APU4 rack module #1" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_rack_4.jpg" alt="APU4 rack module #2" />
+<img src="/_static/images/apu4_rack_4.webp" alt="APU4 rack module #2" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_rack_5.jpg" alt="APU4 rack module #3 with PSU" />
+<img src="/_static/images/apu4_rack_5.webp" alt="APU4 rack module #3 with PSU" />
 </figure>
 
 ##### VyOS custom print
 
 <figure>
-<img src="/_static/images/apu4_rack_vyos_print.jpg" alt="APU4 custom VyOS powder coat" />
+<img src="/_static/images/apu4_rack_vyos_print.webp" alt="APU4 custom VyOS powder coat" />
 </figure>
 
 #### Desktop / Bench Top
 
 <figure>
-<img src="/_static/images/apu4_desk_1.jpg" alt="APU4 desktop closed" />
+<img src="/_static/images/apu4_desk_1.webp" alt="APU4 desktop closed" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_desk_2.jpg" alt="APU4 desktop closed" />
+<img src="/_static/images/apu4_desk_2.webp" alt="APU4 desktop closed" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_desk_3.jpg" alt="APU4 desktop back" />
+<img src="/_static/images/apu4_desk_3.webp" alt="APU4 desktop back" />
 </figure>
 
 <figure>
-<img src="/_static/images/apu4_desk_4.jpg" alt="APU4 desktop back" />
+<img src="/_static/images/apu4_desk_4.webp" alt="APU4 desktop back" />
 </figure>
 
 ## Qotom Q355G4
@@ -284,7 +284,7 @@ HDMI mode.
 ## Partaker i5
 
 <figure>
-<img src="../_static/images/600px-Partaker-i5.jpg" />
+<img src="../_static/images/600px-Partaker-i5.webp" />
 </figure>
 
 I believe this is actually the same hardware as the Protectli. I purchased it
@@ -310,11 +310,11 @@ port is eth0 and the right-most "LAN1" port is eth3.
 ## Acrosser AND-J190N1
 
 <figure>
-<img src="../_static/images/480px-Acrosser_ANDJ190N1_Front.jpg" />
+<img src="../_static/images/480px-Acrosser_ANDJ190N1_Front.webp" />
 </figure>
 
 <figure>
-<img src="../_static/images/480px-Acrosser_ANDJ190N1_Back.jpg" />
+<img src="../_static/images/480px-Acrosser_ANDJ190N1_Back.webp" />
 </figure>
 
 This microbox network appliance was build to create OpenVPN bridges. It can
@@ -380,19 +380,19 @@ i3-N305 CPU and 2x 25GbE!
 ### Pictures
 
 <figure>
-<img src="../_static/images/gowin-01.png" />
+<img src="../_static/images/gowin-01.webp" />
 </figure>
 
 <figure>
-<img src="../_static/images/gowin-02.png" />
+<img src="../_static/images/gowin-02.webp" />
 </figure>
 
 <figure>
-<img src="../_static/images/gowin-03.png" />
+<img src="../_static/images/gowin-03.webp" />
 </figure>
 
 <figure>
-<img src="../_static/images/gowin-04.png" />
+<img src="../_static/images/gowin-04.webp" />
 </figure>
 
 ### Cooling

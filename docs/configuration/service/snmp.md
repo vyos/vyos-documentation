@@ -52,7 +52,7 @@ required for network management. One or more NMSs may exist on any managed
 network.
 
 <figure>
-<img src="/_static/images/service_snmp_communication_principles_diagram.png" alt="Principle of SNMP Communication" />
+<img src="/_static/images/service_snmp_communication_principles_diagram.webp" alt="Principle of SNMP Communication" />
 <figcaption>Image thankfully borrowed from
 <a href="https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG">https://en.wikipedia.org/wiki/File:SNMP_communication_principles_diagram.PNG</a>
 which is under the GNU Free Documentation License</figcaption>

@@ -12,7 +12,7 @@ information.
 This diagram corresponds with the example site to site configuration below.
 
 <figure>
-<img src="/_static/images/wireguard_site2site_diagram.jpg" />
+<img src="/_static/images/wireguard_site2site_diagram.webp" />
 </figure>
 
 ## Keypairs
@@ -474,7 +474,7 @@ will connect to. The address parameter can be used up to two times and is used
 to assign the clients specific IPv4 (/32) or IPv6 (/128) address.
 
 <figure>
-<img src="/_static/images/wireguard_qrcode.jpg" alt="WireGuard Client QR code" />
+<img src="/_static/images/wireguard_qrcode.webp" alt="WireGuard Client QR code" />
 </figure>
 
 </div>

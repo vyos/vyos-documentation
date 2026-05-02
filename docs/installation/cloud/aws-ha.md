@@ -29,7 +29,7 @@ This architecture supports:
 # HA Architecture Diagram
 
 <figure>
-<img src="/_static/images/cloud-aws-ha-architecture.png" alt="VyOS HA topology diagram" />
+<img src="/_static/images/cloud-aws-ha-architecture.webp" alt="VyOS HA topology diagram" />
 </figure>
 
 # Terraform Automation

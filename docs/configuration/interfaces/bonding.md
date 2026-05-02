@@ -521,7 +521,7 @@ those two devices.
 Lets assume the following topology:
 
 <figure>
-<img src="/_static/images/vyos_arista_bond_lacp.png" alt="VyOS Arista EOS setup" />
+<img src="/_static/images/vyos_arista_bond_lacp.webp" alt="VyOS Arista EOS setup" />
 </figure>
 
 **R1**

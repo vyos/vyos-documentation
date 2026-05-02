@@ -12,7 +12,7 @@ inside the tunnel.
 
 ## Network Topology
 
-<img src="/_static/images/cisco-vpn-ipsec.png" class="align-center" alt="Network Topology Diagram" />
+<img src="/_static/images/cisco-vpn-ipsec.webp" class="align-center" alt="Network Topology Diagram" />
 
 ## Prerequirements
 

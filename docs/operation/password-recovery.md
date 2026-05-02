@@ -5,7 +5,7 @@ Select the relevant option from the GRUB menu and press Enter.
 The option must start with “Lost password change.”
 
 <figure>
-<img src="/_static/images/password-recovery-01.png" width="600" />
+<img src="/_static/images/password-recovery-01.webp" width="600" />
 </figure>
 
 The stand-alone user-password recovery tool starts running and prompts

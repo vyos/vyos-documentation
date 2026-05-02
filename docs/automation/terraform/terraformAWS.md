@@ -6,7 +6,7 @@ lastproofread
 With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
 
-<img src="/_static/images/aws.png" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/aws.webp" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
 
 In this case, we'll create the necessary files for Terraform and Ansible next using Terraform we'll create a single instance on the AWS cloud and make provisioning using Ansible.
 
@@ -21,13 +21,13 @@ AWS
 
 2 Create a key [pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) and download your .pem key
 
-<img src="/_static/images/keypairs.png" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/keypairs.webp" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
 
 3 Create a security [group](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-sg.html) for the new VyOS instance and open all traffic
 
-<img src="/_static/images/sg.png" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/sg.webp" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/traffic.png" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/traffic.webp" class="align-center" style="width:50.0%" alt="Network Topology Diagram" />
 
 Terraform
 

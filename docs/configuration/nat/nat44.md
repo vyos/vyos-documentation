@@ -724,7 +724,7 @@ The ASP requests that all connections from this company should come from
 the customer site.
 
 <figure>
-<img src="/_static/images/nat_before_vpn_topology.png" alt="NAT before VPN Topology" />
+<img src="/_static/images/nat_before_vpn_topology.webp" alt="NAT before VPN Topology" />
 <figcaption aria-hidden="true">NAT before VPN Topology</figcaption>
 </figure>
 

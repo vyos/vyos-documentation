@@ -12,7 +12,7 @@ The topology has 3 VyOS routers and one client. Between the DHCP Server and
 the DHCP Relay is a GRE tunnel. The <span class="title-ref">transport</span> VyOS represent a large
 Network.
 
-![Ansible Example topology image](_include/topology.png)
+![Ansible Example topology image](_include/topology.webp)
 
 ## Configuration
 

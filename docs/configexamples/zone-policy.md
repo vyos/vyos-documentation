@@ -43,7 +43,7 @@ adapted for however many NICs you have**:
 - DMZ cannot access LAN resources.
 - Inbound WAN connect to DMZ host.
 
-<img src="/_static/images/zone-policy-diagram.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/zone-policy-diagram.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 The VyOS interface is assigned the .1/:1 address of their respective
 networks. WAN is on VLAN 10, LAN on VLAN 20, and DMZ on VLAN 30.

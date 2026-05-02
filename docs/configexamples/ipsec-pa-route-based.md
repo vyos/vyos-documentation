@@ -13,7 +13,7 @@ include firewall configuration.
 
 ## Network Topology
 
-<img src="/_static/images/ipsec-vyos-pa.png" class="align-center" alt="Network Topology Diagram" />
+<img src="/_static/images/ipsec-vyos-pa.webp" class="align-center" alt="Network Topology Diagram" />
 
 ## Prerequirements
 
@@ -202,29 +202,29 @@ set vpn ipsec site-to-site peer CISCO vti bind 'vti1'
 GUI Configuration:  
 Network -\> Network Profiles -\> IKE Crypto
 
-<img src="/_static/images/PA-IKE-group.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-IKE-group.webp" class="align-center" alt="image" />
 
 Network -\> Network Profiles -\> IKE Gateways
 
-<img src="/_static/images/PA-IKE-GW-1.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-IKE-GW-1.webp" class="align-center" alt="image" />
 
-<img src="/_static/images/PA-IKE-GW-2.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-IKE-GW-2.webp" class="align-center" alt="image" />
 
 Network -\> Network Profiles -\> IPSec Crypto
 
-<img src="/_static/images/PA-ESP-group.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-ESP-group.webp" class="align-center" alt="image" />
 
 Network -\> Interfaces
 
-<img src="/_static/images/PA-tunnel-1.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-tunnel-1.webp" class="align-center" alt="image" />
 
-<img src="/_static/images/PA-tunnel-2.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-tunnel-2.webp" class="align-center" alt="image" />
 
-<img src="/_static/images/PA-tunnel-3.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-tunnel-3.webp" class="align-center" alt="image" />
 
 Network -\> IPSec Tunnels
 
-<img src="/_static/images/PA-IPsec-tunnel.png" class="align-center" alt="image" />
+<img src="/_static/images/PA-IPsec-tunnel.webp" class="align-center" alt="image" />
 
 CLI configuration with OSPF:
 

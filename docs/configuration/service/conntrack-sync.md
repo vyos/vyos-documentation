@@ -297,7 +297,7 @@ ExpectationSync       : disabled
 The next example is a simple configuration of conntrack-sync.
 
 <figure>
-<img src="/_static/images/service_conntrack_sync-schema.png" alt="Conntrack Sync Example" />
+<img src="/_static/images/service_conntrack_sync-schema.webp" alt="Conntrack Sync Example" />
 </figure>
 
 Now configure conntrack-sync service on `router1` **and** `router2`

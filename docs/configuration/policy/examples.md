@@ -94,7 +94,7 @@ Routing tables that will be used in this example are:
   participating in PBR
 
 <figure>
-<img src="/_static/images/pbr_example_1.png" alt="PBR multiple uplinks" />
+<img src="/_static/images/pbr_example_1.webp" alt="PBR multiple uplinks" />
 <figcaption>Policy-Based Routing with multiple ISP uplinks
 (source ./draw.io/pbr_example_1.drawio)</figcaption>
 </figure>

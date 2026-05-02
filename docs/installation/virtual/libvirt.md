@@ -101,37 +101,37 @@ machines through libvirt. On the linux open
 2.  Choose `Local install media` (ISO)
 
 <figure>
-<img src="/_static/images/virt-libvirt-01.png" />
+<img src="/_static/images/virt-libvirt-01.webp" />
 </figure>
 
 3.  Choose path to iso vyos.iso. Operating System can be any Debian based.
 
 <figure>
-<img src="/_static/images/virt-libvirt-02.png" />
+<img src="/_static/images/virt-libvirt-02.webp" />
 </figure>
 
 4.  Choose Memory and CPU
 
 <figure>
-<img src="/_static/images/virt-libvirt-03.png" />
+<img src="/_static/images/virt-libvirt-03.webp" />
 </figure>
 
 5.  Disk size
 
 <figure>
-<img src="/_static/images/virt-libvirt-04.png" />
+<img src="/_static/images/virt-libvirt-04.webp" />
 </figure>
 
 6.  Name of VM and network selection
 
 <figure>
-<img src="/_static/images/virt-libvirt-05.png" />
+<img src="/_static/images/virt-libvirt-05.webp" />
 </figure>
 
 7.  Then you will be taken to the console.
 
 <figure>
-<img src="/_static/images/virt-libvirt-06.png" />
+<img src="/_static/images/virt-libvirt-06.webp" />
 </figure>
 
 ### Deploy from qcow2
@@ -147,30 +147,30 @@ curl --url link_to_vyos_kvm.qcow2 --output /var/lib/libvirt/images/vyos_kvm.qcow
 2.  Choose `Import existing disk` image
 
 <figure>
-<img src="/_static/images/virt-libvirt-qc-01.png" />
+<img src="/_static/images/virt-libvirt-qc-01.webp" />
 </figure>
 
 3.  Choose the path to the image `vyos_kvm.qcow2` that was previously
     downloaded . Operation System can be any Debian based.
 
 <figure>
-<img src="/_static/images/virt-libvirt-qc-02.png" />
+<img src="/_static/images/virt-libvirt-qc-02.webp" />
 </figure>
 
 4.  Choose Memory and CPU
 
 <figure>
-<img src="/_static/images/virt-libvirt-03.png" />
+<img src="/_static/images/virt-libvirt-03.webp" />
 </figure>
 
 5.  Name of VM and network selection
 
 <figure>
-<img src="/_static/images/virt-libvirt-05.png" />
+<img src="/_static/images/virt-libvirt-05.webp" />
 </figure>
 
 6.  Then you will be taken to the console.
 
 <figure>
-<img src="/_static/images/virt-libvirt-qc-03.png" />
+<img src="/_static/images/virt-libvirt-qc-03.webp" />
 </figure>

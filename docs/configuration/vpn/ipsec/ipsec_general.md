@@ -26,7 +26,7 @@ another IP datagram, and an IPsec header (AH or ESP) is
 inserted between the outer and inner headers.
 
 <figure>
-<img src="/_static/images/ESP_AH.png" alt="AH and ESP in Transport Mode and Tunnel Mode" />
+<img src="/_static/images/ESP_AH.webp" alt="AH and ESP in Transport Mode and Tunnel Mode" />
 </figure>
 
 ## IKE (Internet Key Exchange)

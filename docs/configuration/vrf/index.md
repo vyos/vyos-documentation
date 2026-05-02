@@ -352,7 +352,7 @@ vyos@vyos(vrf:blue):~$
 The following example topology was built using EVE-NG.
 
 <figure>
-<img src="/_static/images/vrf-example-topology-01.png" alt="VRF topology example" />
+<img src="/_static/images/vrf-example-topology-01.webp" alt="VRF topology example" />
 <figcaption>VRF route leaking</figcaption>
 </figure>
 

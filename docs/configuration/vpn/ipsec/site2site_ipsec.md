@@ -204,7 +204,7 @@ Below flow-chart could be a quick reference for the close-action
 combination depending on how the peer is configured.
 
 <figure>
-<img src="/_static/images/IPSec_close_action_settings.png" />
+<img src="/_static/images/IPSec_close_action_settings.webp" />
 </figure>
 
 Similar combinations are applicable for the dead-peer-detection.

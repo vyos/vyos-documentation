@@ -42,7 +42,7 @@ Create resource groups
 - Select **Create**.
 
 <figure>
-<img src="/_static/images/cloud-azure-rg-01.png" />
+<img src="/_static/images/cloud-azure-rg-01.webp" />
 </figure>
 
 - Enter the following values:
@@ -53,7 +53,7 @@ Create resource groups
 - Select **Create**. It takes a few seconds to create a resource group.
 
 <figure>
-<img src="/_static/images/cloud-azure-rg-02.png" />
+<img src="/_static/images/cloud-azure-rg-02.webp" />
 </figure>
 
 Step 2: Create a Virtual Network (VNet) and Subnets
@@ -70,7 +70,7 @@ Sign in to the Azure portal with your Azure account <https://portal.azure.com/>
 - **Region**: e.g., `West Europe`.
 
 <figure>
-<img src="/_static/images/cloud-azure-vnet-01.png" />
+<img src="/_static/images/cloud-azure-vnet-01.webp" />
 </figure>
 
 **IP addresses**:
@@ -78,7 +78,7 @@ Sign in to the Azure portal with your Azure account <https://portal.azure.com/>
 - Address Space: `10.1.0.0/16`
 
 <figure>
-<img src="/_static/images/cloud-azure-vnet-02.png" />
+<img src="/_static/images/cloud-azure-vnet-02.webp" />
 </figure>
 
 **Add two subnets**:
@@ -96,15 +96,15 @@ Sign in to the Azure portal with your Azure account <https://portal.azure.com/>
   Size: `/24`
 
 <figure>
-<img src="/_static/images/cloud-azure-vnet-03.png" />
+<img src="/_static/images/cloud-azure-vnet-03.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-azure-vnet-04.png" />
+<img src="/_static/images/cloud-azure-vnet-04.webp" />
 </figure>
 
 <figure>
-<img src="/_static/images/cloud-azure-vnet-05.png" />
+<img src="/_static/images/cloud-azure-vnet-05.webp" />
 </figure>
 
 - Click **Review + Create** and then **Create**.
@@ -123,7 +123,7 @@ Enter the details:
 - **Region**: e.g., `West Europe`.
 
 <figure>
-<img src="/_static/images/cloud-azure-sg-01.png" />
+<img src="/_static/images/cloud-azure-sg-01.webp" />
 </figure>
 
 - Click **Review + Create** and then **Create**.
@@ -133,7 +133,7 @@ Enter the details:
 - Navigate to the **Network Security Groups** select **VyOS-SecurityGroup** go to **Inbound security rules** under **Settings**
 
 <figure>
-<img src="/_static/images/cloud-azure-sg-02.png" />
+<img src="/_static/images/cloud-azure-sg-02.webp" />
 </figure>
 
 **Add Rule Example:**
@@ -154,7 +154,7 @@ You can add inbound rules based on your specific services, such as:
 > - WireGuard, etc.
 
 <figure>
-<img src="/_static/images/cloud-azure-sg-03.png" />
+<img src="/_static/images/cloud-azure-sg-03.webp" />
 </figure>
 
 **Associate subnets**:
@@ -162,7 +162,7 @@ You can add inbound rules based on your specific services, such as:
 - Navigate to the **Network Security Groups**, select **Subnets** click **+ Associate** button. Then select your virtual network and the subnet to which you want to associate the NSG. Select **OK**:
 
 <figure>
-<img src="/_static/images/cloud-azure-sg-04.png" />
+<img src="/_static/images/cloud-azure-sg-04.webp" />
 </figure>
 
 Step 4: Create Public IP Address
@@ -176,7 +176,7 @@ Step 4: Create Public IP Address
 - **Region**: `West Europe`
 
 <figure>
-<img src="/_static/images/cloud-azure-pub-ip-01.png" />
+<img src="/_static/images/cloud-azure-pub-ip-01.webp" />
 </figure>
 
 - **Name**: `VyOS-Pub-IP`
@@ -185,14 +185,14 @@ Step 4: Create Public IP Address
 - **Availability zone**: Select Availability Zone
 
 <figure>
-<img src="/_static/images/cloud-azure-pub-ip-02.png" />
+<img src="/_static/images/cloud-azure-pub-ip-02.webp" />
 </figure>
 
 - **IP address assignment**: `Static`
 - **Idle timeout (minutes)** `30` (max)
 
 <figure>
-<img src="/_static/images/cloud-azure-pub-ip-03.png" />
+<img src="/_static/images/cloud-azure-pub-ip-03.webp" />
 </figure>
 
 - Click **Review + Create**, then **Create**.
@@ -211,13 +211,13 @@ Step 5: Deploy the VyOS Network Virtual Machine (NVA)
 - **Image**: `VyOS` (On the marketplace search `VyOS` and choose the appropriate subscription).
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-01.png" />
+<img src="/_static/images/cloud-azure-vm-01.webp" />
 </figure>
 
 - **Size**: Select a VM size to support the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-02.png" />
+<img src="/_static/images/cloud-azure-vm-02.webp" />
 </figure>
 
 - **Password/SSH Key**: Choose whether the administrator account will use username/password or SSH keys for authentication.
@@ -225,7 +225,7 @@ Step 5: Deploy the VyOS Network Virtual Machine (NVA)
 - **SSH Key**: You can use your existing SSH key pair or Azure automatically generates it for you and allows you to store it for future use.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-03.png" />
+<img src="/_static/images/cloud-azure-vm-03.webp" />
 </figure>
 
 - **Virtual network**: Select `VyOS-VirtualNetwork`.
@@ -233,26 +233,26 @@ Step 5: Deploy the VyOS Network Virtual Machine (NVA)
 - **Public IP**: Select public IP address which created before `VyOS-Pub-IP`.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-04.png" />
+<img src="/_static/images/cloud-azure-vm-04.webp" />
 </figure>
 
 - **Configure network security group**: Select existing Security Group `VyOS-SecurityGroup`.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-05.png" />
+<img src="/_static/images/cloud-azure-vm-05.webp" />
 </figure>
 
 - Click **Review + Create**, then **Create**.
 - Click **Download the private key and create resource** this will download private key to your computer and start creating Virtual Machine.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-06.png" />
+<img src="/_static/images/cloud-azure-vm-06.webp" />
 </figure>
 
 - Wait until deployment is complete. After the deployment complete navigate to **Virtual Machines** click new created Virtual Machine. Check **Public IP address**.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-07.png" />
+<img src="/_static/images/cloud-azure-vm-07.webp" />
 </figure>
 
 Step 6: Access the VyOS instance
@@ -273,13 +273,13 @@ This option allows the virtual machine on this network interface to act as a rou
 - On the **Virtual Machines** page, select `VyOS` VM, under **Networking** tab select **Network settings**, click network interface.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-12.png" />
+<img src="/_static/images/cloud-azure-vm-12.webp" />
 </figure>
 
 - Enable IP forwarding and click the **Apply** button.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-13.png" />
+<img src="/_static/images/cloud-azure-vm-13.webp" />
 </figure>
 
 Step 8: Create and attach the second network interface (optional)
@@ -309,7 +309,7 @@ Create network interface:
 - On the **Network Interfaces** page, select **+ Create**.
 
 <figure>
-<img src="/_static/images/cloud-azure-nic-01.png" />
+<img src="/_static/images/cloud-azure-nic-01.webp" />
 </figure>
 
 - **Subscription**: Select your Subscription
@@ -320,20 +320,20 @@ Create network interface:
 - Click **Review + Create**, then **Create**
 
 <figure>
-<img src="/_static/images/cloud-azure-nic-02.png" />
+<img src="/_static/images/cloud-azure-nic-02.webp" />
 </figure>
 
 - Enable **IP Forwarding**
 - Navigate to **Network Interfaces** select `VyOS-PRIV-NIC`
 
 <figure>
-<img src="/_static/images/cloud-azure-nic-03.png" />
+<img src="/_static/images/cloud-azure-nic-03.webp" />
 </figure>
 
 - Go to **Settings**, select **IP configurations**. Enable IP Forwarding and select **Apply**.
 
 <figure>
-<img src="/_static/images/cloud-azure-nic-04.png" />
+<img src="/_static/images/cloud-azure-nic-04.webp" />
 </figure>
 
 Attach reate network interface:
@@ -342,26 +342,26 @@ Attach reate network interface:
 - Navigate to **Virtual Machines**, click new created Virtual Machine and click the **Stop** button
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-08.png" />
+<img src="/_static/images/cloud-azure-vm-08.webp" />
 </figure>
 
 - Go to **Networking** select **Network settings** and then select **Attach network interface**
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-09.png" />
+<img src="/_static/images/cloud-azure-vm-09.webp" />
 </figure>
 
 - Select existing (before created) network interface `VyOS-PRIV-NIC` and click the **OK** button.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-10.png" />
+<img src="/_static/images/cloud-azure-vm-10.webp" />
 </figure>
 
 - Now you have attached second interface to your instance and you can start Virtual Machine.
 - Go to **Overview** and click the **Start** button.
 
 <figure>
-<img src="/_static/images/cloud-azure-vm-11.png" />
+<img src="/_static/images/cloud-azure-vm-11.webp" />
 </figure>
 
 Setp 8: Absorbing Routes
@@ -380,7 +380,7 @@ Provide the following details:
 > - **Region**: e.g., `West Europe`
 
 <figure>
-<img src="/_static/images/cloud-azure-route-01.png" />
+<img src="/_static/images/cloud-azure-route-01.webp" />
 </figure>
 
 - Click **Review + Create**, then **Create**.
@@ -391,7 +391,7 @@ Provide the following details:
 - Go to **Routes** and click **+ Add** button.
 
 <figure>
-<img src="/_static/images/cloud-azure-route-02.png" />
+<img src="/_static/images/cloud-azure-route-02.webp" />
 </figure>
 
 Add following parameters:
@@ -403,7 +403,7 @@ Add following parameters:
 - **Next Hop IP Address**: `10.1.11.4` (The private Network Interface Card IP Address)
 
 <figure>
-<img src="/_static/images/cloud-azure-route-03.png" />
+<img src="/_static/images/cloud-azure-route-03.webp" />
 </figure>
 
 - Click the **Add** button.
@@ -414,14 +414,14 @@ Add following parameters:
 - Go to **Subnets** and click **+ Associate** button.
 
 <figure>
-<img src="/_static/images/cloud-azure-route-04.png" />
+<img src="/_static/images/cloud-azure-route-04.webp" />
 </figure>
 
 - **Virtual network**: Select `VyOS-VirtualNetwork`.
 - **Subnet**: Select `VyOS-Public-Subnet`.
 
 <figure>
-<img src="/_static/images/cloud-azure-route-05.png" />
+<img src="/_static/images/cloud-azure-route-05.webp" />
 </figure>
 
 <div class="note">

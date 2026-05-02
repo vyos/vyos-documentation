@@ -15,7 +15,7 @@ next, in order to have a full view and understanding of how packets are
 processed, and what possible paths traffic can take.
 
 <figure>
-<img src="/_static/images/firewall-gral-packet-flow.png" />
+<img src="/_static/images/firewall-gral-packet-flow.webp" />
 </figure>
 
 The main points regarding this packet flow and terminology used in VyOS
@@ -177,5 +177,5 @@ traffic to or from the services running on the device that have open
 connections on that interface.
 
 <figure>
-<img src="/_static/images/firewall-zonebased.png" />
+<img src="/_static/images/firewall-zonebased.webp" />
 </figure>

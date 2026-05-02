@@ -118,7 +118,7 @@ access releases, pre-built VM images, as well as device specific installation
 ISOs. See this [article](https://customers.support.vyos.com/servicedesk/customer/portal/1/article/159055913) for more information on downloads.
 
 <figure>
-<img src="/_static/images/vyosnew-downloads.png" />
+<img src="/_static/images/vyosnew-downloads.webp" />
 </figure>
 
 ### Rolling Release
@@ -317,7 +317,7 @@ In order to proceed with a permanent installation:
 > 2.  Run the `install image` command and follow the wizard:
 
 <figure>
-<img src="/_static/images/permanent_install.png" alt="3. After the installation is completed, remove the live USB stick or CD." />
+<img src="/_static/images/permanent_install.webp" alt="3. After the installation is completed, remove the live USB stick or CD." />
 <figcaption>3. After the installation is completed, remove the live USB stick or
 CD.
 <ol start="4" type="1">

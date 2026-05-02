@@ -45,7 +45,7 @@ bridge is processed on the **Bridge Layer**. A simplified packet flow diagram
 for this layer is shown next:
 
 <figure>
-<img src="/_static/images/firewall-bridge-packet-flow.png" />
+<img src="/_static/images/firewall-bridge-packet-flow.webp" />
 </figure>
 
 For traffic that needs to be forwared internally by the bridge, base chain is

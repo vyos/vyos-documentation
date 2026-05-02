@@ -21,18 +21,18 @@ set service snmp community router network '0.0.0.0/0'
 
 Next, you just should follow the pictures:
 
-<img src="/_static/images/nmp1.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp1.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp2.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp2.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp3.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp3.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp4.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp4.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp5.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp5.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp6.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp6.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
-<img src="/_static/images/nmp7.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/nmp7.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 In the end, you'll get a powerful instrument for monitoring the VyOS systems.

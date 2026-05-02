@@ -31,7 +31,7 @@ interface using <span class="title-ref">set interfaces openvpn</span>.
 ## Site-to-Site
 
 <figure>
-<img src="/_static/images/openvpn_site2site_diagram.jpg" />
+<img src="/_static/images/openvpn_site2site_diagram.webp" />
 </figure>
 
 OpenVPN is popular for client-server setups, but its site-to-site mode

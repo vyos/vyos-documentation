@@ -16,7 +16,7 @@ All users with domain **vyos.io** will be tunneled to LNS via L2TP.
 
 ## Network Topology
 
-<img src="/_static/images/lac-lns-diagram.jpg" class="align-center" style="width:60.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/lac-lns-diagram.webp" class="align-center" style="width:60.0%" alt="Network Topology Diagram" />
 
 ## Configurations
 
@@ -103,7 +103,7 @@ accomplishes that.
 
 In this lab we use Windows PPPoE client.
 
-<img src="/_static/images/lac-lns-winclient.jpg" class="align-center" style="width:100.0%" alt="Window PPPoE Client Configuration" />
+<img src="/_static/images/lac-lns-winclient.webp" class="align-center" style="width:100.0%" alt="Window PPPoE Client Configuration" />
 
 ### Monitoring
 

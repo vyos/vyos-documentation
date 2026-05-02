@@ -302,7 +302,7 @@ The default value is 3.
 
 In the following example we can see a basic multicast setup:
 
-<img src="/_static/images/multicast-basic.png" class="align-center" style="width:90.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/multicast-basic.webp" class="align-center" style="width:90.0%" alt="Network Topology Diagram" />
 
 **Router 1**
 

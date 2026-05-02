@@ -10,7 +10,7 @@ We recommend you to go through the main article about [QoS](https://docs.vyos.io
 
 Using the general schema for example:
 
-<img src="/_static/images/qos1.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos1.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 We have four hosts on the local network 172.17.1.0/24. All hosts are labeled CS0 by default. We need to replace labels on all hosts except vpc8.
 We will replace the labels on the nearest router “VyOS3” using the IP addresses of the sources.
@@ -56,15 +56,15 @@ Main rules:
 
 Check the result
 
-<img src="/_static/images/qos2.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos2.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 Before the interface eth0 on router VyOS3
 
-<img src="/_static/images/qos3.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos3.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 After the interface eth0 on router VyOS3
 
-<img src="/_static/images/qos4.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos4.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 On the router, VyOS4 set all traffic as CS4. We have to configure the default class and class for changing all labels from CS0 to CS4
 
@@ -86,7 +86,7 @@ set qos policy shaper vyos4 default queue-type 'fair-queue'
 
 Next on the router VyOS2 we will change labels on all incoming traffic only from CS4-\> CS6
 
-<img src="/_static/images/qos5.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos5.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 ``` none
 set interfaces ethernet eth0 address '10.1.1.1/24'
@@ -106,19 +106,19 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
     set qos interface eth2 egress 'vyos2'
 ```
 
-<img src="/_static/images/qos6.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos6.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 - 172.17.1.2/24 CS0
 
-<img src="/_static/images/qos7.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos7.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 - 172.17.1.2/24 CS0 - \> CS4
 
-<img src="/_static/images/qos8.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos8.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 - 172.17.1.2/24 CS4 - \> CS5
 
-<img src="/_static/images/qos9.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos9.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 In the end, on the router “VyOS2” we will set outgoing bandwidth limits between the “VyOS3” and “VyOS1” routers. Let's set a limit for IP 10.1.1.100 = 5 Mbps(Tx). We will check the result of the work with the help of the “iPerf” utility.
 
@@ -139,6 +139,6 @@ match VyOS3 {
 
 Check the result.
 
-<img src="/_static/images/qos10.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/qos10.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 As we see shaper is working and the traffic will not work over 5 Mbit/s.
