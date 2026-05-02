@@ -94,13 +94,13 @@ vyos@vyos:~$ show version kernel
 
 ```{opcmd} show version frr
 
-Return the version number of FRR (Free Range Routing - https://frrouting.org/)
+Return the version number of FRR (Free Range Routing - <https://frrouting.org/>)
 used in this release. This is the routing control plane and a successor to GNU
 Zebra and Quagga.
 
 :::{code-block} none
 vyos@vyos:~$ show version frr
-FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
-Copyright 1996-2005 Kunihiro Ishiguro, et al.
+  FRRouting 7.5.1-20210625-00-gf07d935a2 (vyos).
+  Copyright 1996-2005 Kunihiro Ishiguro, et al.
 :::
 ```
