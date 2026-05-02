@@ -229,7 +229,7 @@ each and every individual spoke.
 
 #### Hub
 
-### VyOS-HUB-1
+##### VyOS-HUB-1
 
 ```none
 set interfaces ethernet eth0 address '192.168.0.2/30'
@@ -280,7 +280,7 @@ through the details pane below your EC2 instance in the AWS console).
 
 > The individual spoke configurations only differ in interface IP addresses.
 
-### VyOS-Spoke-1 and VyOS-Spoke-2
+##### VyOS-Spoke-1 and VyOS-Spoke-2
 
 ```none
 set interfaces ethernet eth0 address '192.168.1.2/30'
@@ -321,7 +321,7 @@ set vpn ipsec profile NHRPVPN ike-group 'IKE-HUB'
 ```
 
 
-### Cisco-Spoke-3
+##### Cisco-Spoke-3
 
 ```none
 crypto isakmp policy 10
@@ -371,7 +371,7 @@ ip route 0.0.0.0 0.0.0.0 192.168.3.1
 ```
 
 
-### Monitoring DMVPN Network
+##### Monitoring DMVPN Network
 
 Let send ICMP packets from VyOS-SPOKE-1 to Cisco-SPOKE-3
 
@@ -387,7 +387,7 @@ rtt min/avg/max/mdev = 3.072/3.257/3.442/0.185 ms
 ```
 
 
-### Monitoring on HUB
+##### Monitoring on HUB
 
 ```none
 vyos@vyos:~$ show ip nhrp cache
@@ -406,7 +406,7 @@ dmvpn-NHRPVPN-tun100-child  up       16m26s    1K/1K           13/12            
 ```
 
 
-### Monitoring on Spokes
+##### Monitoring on Spokes
 
 ```none
 vyos@vyos:~$ show ip nhrp cache
