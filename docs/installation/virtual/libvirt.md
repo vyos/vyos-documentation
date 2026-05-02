@@ -118,33 +118,33 @@ machines through libvirt. On Linux, open the
    {abbr}`VM (Virtual Machine)`
 2. Choose `Local install media` (ISO)
 
-:::{figure} /_static/images/virt-libvirt-01.png
+:::{figure} /_static/images/virt-libvirt-01.webp
 :::
 
 3. Choose the path to the VyOS ISO image. Select any Debian-based operating
    system.
 
-:::{figure} /_static/images/virt-libvirt-02.png
+:::{figure} /_static/images/virt-libvirt-02.webp
 :::
 
 4. Choose Memory and CPU
 
-:::{figure} /_static/images/virt-libvirt-03.png
+:::{figure} /_static/images/virt-libvirt-03.webp
 :::
 
 5. Disk size
 
-:::{figure} /_static/images/virt-libvirt-04.png
+:::{figure} /_static/images/virt-libvirt-04.webp
 :::
 
 6. Name of VM and network selection
 
-:::{figure} /_static/images/virt-libvirt-05.png
+:::{figure} /_static/images/virt-libvirt-05.webp
 :::
 
 7. Then the system will be taken to the console.
 
-:::{figure} /_static/images/virt-libvirt-06.png
+:::{figure} /_static/images/virt-libvirt-06.webp
 :::
 
 (libvirt-virt-manager-qcow2)=
@@ -161,26 +161,26 @@ curl --url link_to_vyos_kvm.qcow2 --output /var/lib/libvirt/images/vyos_kvm.qcow
    {abbr}`VM (Virtual Machine)`
 2. Choose `Import existing disk` image
 
-:::{figure} /_static/images/virt-libvirt-qc-01.png
+:::{figure} /_static/images/virt-libvirt-qc-01.webp
 :::
 
 3. Choose the path to the `vyos_kvm.qcow2` image that you downloaded.
    Select any Debian-based operating system.
 
-:::{figure} /_static/images/virt-libvirt-qc-02.png
+:::{figure} /_static/images/virt-libvirt-qc-02.webp
 :::
 
 4. Choose Memory and CPU
 
-:::{figure} /_static/images/virt-libvirt-03.png
+:::{figure} /_static/images/virt-libvirt-03.webp
 :::
 
 5. Name of VM and network selection
 
-:::{figure} /_static/images/virt-libvirt-05.png
+:::{figure} /_static/images/virt-libvirt-05.webp
 :::
 
 6. Then the system will be taken to the console.
 
-:::{figure} /_static/images/virt-libvirt-qc-03.png
+:::{figure} /_static/images/virt-libvirt-qc-03.webp
 :::

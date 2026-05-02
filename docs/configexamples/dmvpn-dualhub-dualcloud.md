@@ -14,7 +14,7 @@ as a Spoke.
 
 ## Network Topology
 
-```{image} /_static/images/dual-hub-DMVPN.png
+```{image} /_static/images/dual-hub-DMVPN.webp
 :align: center
 :alt: DMVPN Network Topology
 :width: 80%

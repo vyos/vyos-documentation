@@ -14,7 +14,7 @@ information.
 
 The following diagram illustrates a site-to-site VPN setup.
 
-:::{figure} /_static/images/wireguard_site2site_diagram.jpg
+:::{figure} /_static/images/wireguard_site2site_diagram.webp
 :::
 
 ## Keypairs
@@ -426,7 +426,7 @@ You must also specify the IP address or FQDN of the server the client connects
 to. The address parameter can be used twice to assign both an IPv4 (/32) and
 an IPv6 (/128) address to the client.
 
-:::{figure} /_static/images/wireguard_qrcode.jpg
+:::{figure} /_static/images/wireguard_qrcode.webp
 :alt: WireGuard Client QR code
 :::
 ```

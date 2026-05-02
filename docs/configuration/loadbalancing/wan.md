@@ -199,7 +199,7 @@ set load-balancing wan disable-source-nat
 Inbound connections to a WAN interface can be improperly handled when
 replies are sent back to the client.
 
-```{image} /_static/images/sticky-connections.jpg
+```{image} /_static/images/sticky-connections.webp
 :align: center
 :width: 80%
 ```

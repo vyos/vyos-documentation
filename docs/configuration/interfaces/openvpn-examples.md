@@ -23,7 +23,7 @@ In both cases, we will use the following settings:
 - The `persistent-tunnel` directive allows us to configure tunnel-related attributes, such as firewall policy, as we would on any standard network interface.
 - If known, the remote router\'s IP address can be configured using the `remote-host` directive. If unknown, it can be omitted. We assume the remote router has a dynamic IP address.
 
-![](/_static/images/openvpn_site2site_diagram.jpg)
+![](/_static/images/openvpn_site2site_diagram.webp)
 
 ## Set up site-to-site certificates
 

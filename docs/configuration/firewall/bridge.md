@@ -52,7 +52,7 @@ bridge forward filter ...`, which happens in stage 4, highlighted with red
 color.
 
 
-:::{figure} /_static/images/firewall-bridge-forward.png
+:::{figure} /_static/images/firewall-bridge-forward.webp
 :::
 
 
@@ -61,7 +61,7 @@ For traffic destined to the router itself or that needs to be routed
 base command is `set firewall bridge input filter ...` and the path is:
 
 
-:::{figure} /_static/images/firewall-bridge-input.png
+:::{figure} /_static/images/firewall-bridge-input.webp
 :::
 
 
@@ -76,7 +76,7 @@ For traffic that originates from the bridge itself, the base chain is
 ...`, and the path is:
 
 
-:::{figure} /_static/images/firewall-bridge-output.png
+:::{figure} /_static/images/firewall-bridge-output.webp
 :::
 
 

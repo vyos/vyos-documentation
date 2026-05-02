@@ -22,7 +22,7 @@ packet flow.
 This diagram provides an overview of how packets are processed and the
 possible paths traffic can take.
 
-:::{figure} /_static/images/firewall-gral-packet-flow.png
+:::{figure} /_static/images/firewall-gral-packet-flow.webp
 :::
 
 The main points regarding packet flow and terminology in VyOS firewall
@@ -274,5 +274,5 @@ As the following example image shows, you must configure rules to allow or block
 traffic to or from the services running on the device that have open
 connections on that interface.
 
-:::{figure} /_static/images/firewall-zonebased.png
+:::{figure} /_static/images/firewall-zonebased.webp
 :::

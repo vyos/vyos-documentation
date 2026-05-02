@@ -65,7 +65,7 @@ community(ies) into that prefix.
 
 ## Topology
 
-```{image} /_static/images/inter-vrf-routing-vrf-lite.png
+```{image} /_static/images/inter-vrf-routing-vrf-lite.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 70%

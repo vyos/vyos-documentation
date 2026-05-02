@@ -26,7 +26,7 @@ Terraform, Ansible, and GCP, follow these steps:
 
 1. Create an account with GCP and a new project.
 
-```{image} /_static/images/project.png
+```{image} /_static/images/project.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
@@ -34,13 +34,13 @@ Terraform, Ansible, and GCP, follow these steps:
 
 2. Create a service account and download your key (a JSON file).
 
-```{image} /_static/images/service.png
+```{image} /_static/images/service.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
 ```
 
-```{image} /_static/images/key.png
+```{image} /_static/images/key.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
@@ -49,7 +49,7 @@ Terraform, Ansible, and GCP, follow these steps:
 The .JSON file downloads automatically after you create it and looks
 like the following:
 
-```{image} /_static/images/json.png
+```{image} /_static/images/json.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%

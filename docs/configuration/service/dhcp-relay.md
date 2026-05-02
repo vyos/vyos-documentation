@@ -88,7 +88,7 @@ replaced with the router's own relay information set.
 - Router receives DHCP client requests on `eth1` and relays them to the
   server at 10.0.1.4 on `eth2`.
 
-:::{figure} /_static/images/service_dhcp-relay01.png
+:::{figure} /_static/images/service_dhcp-relay01.webp
 :alt: DHCP relay example
 :scale: 80 %
 DHCP relay example
@@ -177,7 +177,7 @@ set automatically if more than one listening interfaces are in use.
 - Requests are forwarded through `eth2` as the `upstream interface`
 - External DHCPv6 server is at 2001:db8::4
 
-:::{figure} /_static/images/service_dhcpv6-relay01.png
+:::{figure} /_static/images/service_dhcpv6-relay01.webp
 :alt: DHCPv6 relay example
 :scale: 80 %
 DHCPv6 relay example
