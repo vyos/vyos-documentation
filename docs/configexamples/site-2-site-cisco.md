@@ -147,6 +147,7 @@ cisco_hub-tunnel-1  up       44m17s    35K/31K         382/367           10.1.1.
 
 Hub#sh crypto ikev2 sa detailed
  IPv4 Crypto IKEv2  SA
+
 Tunnel-id Local                 Remote                fvrf/ivrf            Status
 5         10.1.1.6/4500         198.51.100.1/4500         none/none               READY
       Encr: AES-CBC, keysize: 256, PRF: SHA256, Hash: SHA256, DH Grp:5, Auth sign: PSK, Auth verify: PSK
