@@ -81,8 +81,8 @@ Run the following commands on your Terraform instance:
 
 ```none
 cd /<your folder>
-terraform plan  
-terraform apply  
+terraform plan
+terraform apply
 yes
 ```
 
@@ -215,7 +215,7 @@ resource "azurerm_public_ip" "vyos-pip" {
 resource "azurerm_virtual_machine" "vyos" {
   name                = "${var.hostname}-vyos"
   location            = "${var.location}"
-  resource_group_name = "${var.resource_group}" 
+  resource_group_name = "${var.resource_group}"
   vm_size             = "${var.vm_size}"
 
   network_interface_ids         = ["${azurerm_network_interface.vyos-nic.id}"]
@@ -292,25 +292,24 @@ connection {
 }
 
 resource "null_resource" "nullremote2" {
-depends_on = ["azurerm_virtual_machine.vyos"]  
+depends_on = ["azurerm_virtual_machine.vyos"]
 connection {
-	type     = "ssh"
-	user     = "root"
-	password = var.password
-    	host = var.host
+      type     = "ssh"
+      user     = "root"
+      password = var.password
+      host = var.host
 }
 
 # Run the Ansible playbook on the remote Linux OS
 
 provisioner "remote-exec" {
-    
+
     inline = [
-	"cd /root/az/",
-	"ansible-playbook instance.yml"
+      "cd /root/az/",
+      "ansible-playbook instance.yml"
 ]
 }
 }
-
 ```
 
 `var.tf`
@@ -479,7 +478,6 @@ remote_user=vyos
           - set system name-server xxx.xxx.xxx.xxx
         save:
           true
-
 ```
 
 `group_vars/all`
