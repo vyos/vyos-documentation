@@ -59,12 +59,28 @@ templates_path = ['_templates']
 # autosectionlabel
 autosectionlabel_prefix_document = True
 
+# MyST Markdown extensions
+myst_enable_extensions = [
+    "colon_fence",
+    "deflist",
+    "fieldlist",
+    "substitution",
+]
+
+# Treat these fenced blocks as directives with raw (unparsed) arguments.
+# Prevents MyST from stripping <param> angle brackets as HTML tags.
+myst_fence_as_directive = [
+    "cfgcmd",
+    "opcmd",
+    "cmdincludemd",
+]
+
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = ['.rst', '.md']
+source_suffix = ['.md', '.rst']
 
 # The master toctree document.
 master_doc = 'index'
@@ -134,7 +150,7 @@ llms_txt_file = False
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/images/vyos-logo.png'
+html_logo = '_static/images/vyos-logo.webp'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -209,12 +225,13 @@ texinfo_documents = [
 ]
 
 
-def setup(app):
-    pass
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
 
-# -- MyST Markdown support (added by scripts/infra_patch.py) -----------------
-myst_enable_extensions = [
-    'colon_fence', 'deflist', 'fieldlist', 'substitution', 'attrs_inline',
-]
-myst_fence_as_directive = ['cfgcmd', 'opcmd', 'cmdincludemd']
-myst_heading_anchors = 3
+
+def setup(app):
+    app.connect('builder-inited', _prefer_webp)

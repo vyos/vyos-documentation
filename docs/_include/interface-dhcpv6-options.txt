@@ -1,85 +1,95 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options duid <duid>
+.. stop_vyoslinter
 
-  **Configure a specific** :abbr:`DUID (DHCP Unique Identifier)` **for the 
-  DHCPv6 client on this interface.**
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options duid \<duid\>
 
-  The DUID is an identifier used by a DHCPv6 client to get an IPv6 address from 
-  a DHCPv6 server. It consists of a 2-byte type field, followed by a 
-  variable-length identifier field up to 128 bytes. The format of the identifier 
-  part depends on the DUID type:
+**Configure a specific** {abbr}`DUID (DHCP Unique Identifier)` **for the 
+DHCPv6 client on this interface.**
 
-  * **DUID-LLT:** The most common type, which includes a hardware type, a timestamp, and a MAC address.
-  * **DUID-EN:** Is based on a vendor's enterprise number and a unique identifier assigned by the vendor.
-  * **DUID-LL:** Includes only a MAC address.
+The DUID is an identifier used by a DHCPv6 client to get an IPv6 address from 
+a DHCPv6 server. It consists of a 2-byte type field, followed by a 
+variable-length identifier field up to 128 bytes. The format of the identifier 
+part depends on the DUID type:
 
-  The DHCP server matches the DUID against its database and provides 
-  configuration data (such as address, lease times, DNS servers, etc.) 
-  to the DHCP client.
+* **DUID-LLT:** The most common type, which includes a hardware type, a timestamp, and a MAC address.
+* **DUID-EN:** Is based on a vendor's enterprise number and a unique identifier assigned by the vendor.
+* **DUID-LL:** Includes only a MAC address.
 
-  Example:
+The DHCP server matches the DUID against its database and provides 
+configuration data (such as address, lease times, DNS servers, etc.) 
+to the DHCP client.
 
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} duid '0e:00:00:01:00:01:27:71:db:f0:00:50:56:bf:c5:6d'
-
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options no-release
-
-  **Configure the DHCP client not to send a release message when it stops 
-  running on this interface.**
-
-  This helps retain the assigned address or prefix. 
-
-  Example:
-
-  .. code-block:: none
-
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options no-release
+Example:
 
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options parameters-only
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} duid '0e:00:00:01:00:01:27:71:db:f0:00:50:56:bf:c5:6d'
+```
 
-  **Enable a stateless DHCPv6 client mode on this interface.**
 
-  In stateless mode, the DHCPv6 client requests only stateless configuration 
-  parameters from the DHCP server (for example, DNS server addresses). It 
-  doesn’t request a stateful configuration, such as IPv6 addresses or prefixes.
+::::
 
-  Example:
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options no-release
 
-  .. code-block:: none
+**Configure the DHCP client not to send a release message when it stops 
+running on this interface.**
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options parameters-only
+This helps retain the assigned address or prefix. 
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options rapid-commit
+Example:
 
-  **Enable DHCPv6 rapid commit on this interface.**
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options no-release
+```
 
-  When enabled, the DHCP client and server skip the negotiation steps 
-  (Advertise and Request), completing the DHCPv6 configuration process 
-  in just two messages (Solicit and final Reply).
+::::
 
-  Example:
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options parameters-only
 
-  .. code-block:: none
+**Enable a stateless DHCPv6 client mode on this interface.**
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options rapid-commit
+In stateless mode, the DHCPv6 client requests only stateless configuration 
+parameters from the DHCP server (for example, DNS server addresses). It 
+doesn’t request a stateful configuration, such as IPv6 addresses or prefixes.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-  {{ var5 }} {{ var6 }} dhcpv6-options temporary
+Example:
 
-  **Configure the DHCPv6 client to request a temporary IPv6 address on this 
-  interface.**
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options parameters-only
+```
 
-  When configured, the DHCP client doesn’t form an Identity Association for 
-  Non-temporary Addresses (IA_NA) partnership. Consequently, it only obtains 
-  a temporary IPv6 address and doesn’t obtain a permanent one.
+::::
 
-  Example:
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options rapid-commit
 
-  .. code-block:: none
+**Enable DHCPv6 rapid commit on this interface.**
 
-    set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options temporary
+When enabled, the DHCP client and server skip the negotiation steps 
+(Advertise and Request), completing the DHCPv6 configuration process 
+in just two messages (Solicit and final Reply).
+
+Example:
+
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options rapid-commit
+```
+
+::::
+
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }} {{ var5 }} {{ var6 }} dhcpv6-options temporary
+
+**Configure the DHCPv6 client to request a temporary IPv6 address on this 
+interface.**
+
+When configured, the DHCP client doesn’t form an Identity Association for 
+Non-temporary Addresses (IA_NA) partnership. Consequently, it only obtains 
+a temporary IPv6 address and doesn’t obtain a permanent one.
+
+Example:
+
+```none
+set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} dhcpv6-options temporary
+```
+
+::::
+
+.. start_vyoslinter
