@@ -6,19 +6,11 @@
 using a generic Linux instance, and attaching the bootable ISO file and
 installing from the ISO using the normal process around <span class="title-ref">install image</span>.
 
-<div class="note">
-
-<div class="title">
-
-Note
-
-</div>
-
+:::{note}
 There have been previous documented issues with GRE/IPSEC tunneling
 using the E1000 adapter on the VyOS guest, and use of the VMXNET3 has been
 advised.
-
-</div>
+:::
 
 ### Memory Contention Considerations
 

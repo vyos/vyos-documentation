@@ -68,6 +68,8 @@ interface Virtual-Template1
 
 ### LNS
 
+% stop_vyoslinter
+
 ``` none
 set interfaces ethernet eth0 address '192.168.139.100/24'
 set nat source rule 100 outbound-interface name 'eth0'
@@ -85,19 +87,13 @@ set vpn l2tp remote-access name-server '8.8.8.8'
 set vpn l2tp remote-access ppp-options disable-ccp
 ```
 
-<div class="note">
+% start_vyoslinter
 
-<div class="title">
-
-Note
-
-</div>
-
+:::{note}
 This setup requires the Compression Control Protocol (CCP)
 being disabled, the command `set vpn l2tp remote-access ppp-options disable-ccp`
 accomplishes that.
-
-</div>
+:::
 
 ### Client
 
