@@ -156,8 +156,6 @@ Constraints:
   New functionality must use the new XML/Python interface, not old-style
   templates (`node.def` files and Perl/Bash code).
 
-(coding-guidelines)=
-
 ## Coding guidelines
 
 VyOS maintains consistent coding standards to help contributors navigate the

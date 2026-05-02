@@ -236,7 +236,9 @@ The translation address must be set to one of the available
 addresses on the configured *outbound-interface* or it must be set to
 *masquerade* which will use the primary IP address of the
 *outbound-interface* as its translation address.
+:::
 
+:::{note}
 When using NAT for a large number of host systems it
 recommended that a minimum of 1 IP address is used to NAT every 256
 private host systems. This is due to the limit of 65,000 port numbers
@@ -304,11 +306,9 @@ be equal to 100. In oder words, the weight defined for the backend is the
 percentage of the connections that will receive such backend.
 
 ```{cfgcmd} set nat [source | destination] rule \<rule\> load-balance hash [source-address | destination-address | source-port | destination-port | random]
-
 ```
 
 ```{cfgcmd} set nat [source | destination] rule \<rule\> load-balance backend \<x.x.x.x\> weight \<1-100\>
-
 ```
 
 ## Configuration Examples
@@ -694,7 +694,7 @@ The required configuration can be broken down into 4 major pieces:
 - IPSec IKE and ESP Groups;
 - IPSec VPN tunnels.
 
-### Dummy interface
+##### Dummy interface
 
 The dummy interface allows us to have an equivalent of the Cisco IOS
 Loopback interface - a router-internal interface we can use for IP
@@ -708,7 +708,7 @@ set interfaces dummy dum0 address '172.29.41.89/32'
 
 ```
 
-### NAT Configuration
+##### NAT Configuration
 
 ```none
 set nat source rule 110 description 'Internal to ASP'
@@ -722,7 +722,7 @@ set nat source rule 120 translation address '172.29.41.89'
 
 ```
 
-### IPSec IKE and ESP
+##### IPSec IKE and ESP
 
 The ASP has documented their IPSec requirements:
 - IKE Phase:
@@ -753,7 +753,7 @@ set vpn ipsec interface 'eth1'
 
 ```
 
-### IPSec VPN Tunnels
+##### IPSec VPN Tunnels
 
 We'll use the IKE and ESP groups created above for this VPN. Because we
 need access to 2 different subnets on the far side, we will need two
@@ -781,7 +781,7 @@ set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
 
 ```
 
-### Testing and Validation
+##### Testing and Validation
 
 If you've completed all the above steps you no doubt want to see if it's
 all working.

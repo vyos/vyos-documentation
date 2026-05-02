@@ -60,7 +60,7 @@ Supported options for <section> include:
 
 ## Operational Commands
 
-```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
+````{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
 
 Display configuration differences between the local node and
 a config-sync secondary node.
@@ -99,11 +99,11 @@ show configuration secondary sync running interfaces dummy
 # compare candidate configuration and display as a list of commands
 show configuration secondary sync commands candidate
 :::
+````
 
 Without a built-in cross-node diff, operators may unintentionally push
 changes that conflict with the remote configuration (e.g., mismatched
 interfaces, firewall policies, or protocol settings).
-```
 
 
 ## Example

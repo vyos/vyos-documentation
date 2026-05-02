@@ -92,7 +92,7 @@ multiple such options.
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
 
-Specifies the client connectivity mode.
+> Specifies the client connectivity mode.
 
 * **l2**: It means that clients are on same network where interface
 is.\*\*(default)\*\*
@@ -134,7 +134,7 @@ set service ipoe-server authentication mode radius
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
 
-Configure RADIUS \<server\> and its required shared \<secret\> for
+Configure RADIUS *\<server\>* and its required shared *\<secret\>* for
 communicating with the RADIUS server.
 ```
 
@@ -175,13 +175,13 @@ Best practice would be a loopback or dummy interface.
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> port \<port\>
 
-Configure RADIUS \<server\> and its required port for authentication requests.
+Configure RADIUS *\<server\>* and its required port for authentication requests.
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> fail-time \<time\>
 
-Mark RADIUS server as offline for this given \<time\> in seconds.
+Mark RADIUS server as offline for this given *\<time\>* in seconds.
 ```
 
 
@@ -309,7 +309,7 @@ Define it in your RADIUS server.
 
 ## IPv6
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>  mask \<number-of-bits\>
 
 Use this comand to set the IPv6 address pool from which an IPoE client
 will get an IPv6 prefix of your defined length (mask) to terminate the
@@ -318,7 +318,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>  delegation-prefix \<number-of-bits\>
 
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 IPoE. You will have to set your IPv6 pool and the length of the
@@ -370,21 +370,21 @@ Script to run when session interface is completely configured and started
 
 ### Authentication Advanced Options
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan \<vlan-id\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan  \<vlan-id\>
 
 VLAN monitor for automatic creation of VLAN interfaces for specific user on specific \<interface\>
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit download \<bandwidth\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit  download \<bandwidth\>
 
-Download bandwidth limit in kbit/s for user on interface \<interface\>.
+Download bandwidth limit in kbit/s for user on interface *\<interface\>*.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit upload \<bandwidth\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit  upload \<bandwidth\>
 
-Upload bandwidth limit in kbit/s for for user on interface \<interface\>.
+Upload bandwidth limit in kbit/s for for user on interface *\<interface\>*.
 ```
 
 ### Client IP Pool Advanced Options
@@ -438,7 +438,7 @@ Maximum number of concurrent session start attempts
 ```
 ```{cfgcmd} set service ipoe-server name-server \<address\>
 
-Connected client should use \<address\> as their DNS server. This
+Connected client should use *\<address\>* as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```

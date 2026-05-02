@@ -1,5 +1,3 @@
-(babel)=
-
 ```{eval-rst}
 .. meta::
    :description: The Babel routing protocol provides robust and efficient
@@ -7,6 +5,8 @@
    :keywords: babel, routing, protocol, wireless, mesh, network, metric,
               ipv4, ipv6
 ```
+
+(babel)=
 
 # Babel
 
