@@ -156,7 +156,6 @@ sessions created via this interface.
 ```{cfgcmd} set protocols pim interface \<interface\> dr-priority \<n\>
 
 Set the {abbr}`DR (Designated Router)` Priority for the interface.
-
 This command is useful to allow the user to influence what node becomes
 the DR for a LAN segment.
 ```
@@ -236,7 +235,7 @@ The default value is 3.
 
 In the following example we can see a basic multicast setup:
 
-```{image} /_static/images/multicast-basic.png
+```{image} /_static/images/multicast-basic.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 90%
