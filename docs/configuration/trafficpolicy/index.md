@@ -334,11 +334,9 @@ setting allows these combinations. You will be able to use it
 in many policies.
 
 :::{note}
-The meaning of the Class ID is not the same for every type of
-policy. Normally policies just need a meaningless number to identify
-a class (Class ID), but that does not apply to every policy.
-The number of a class in a Priority Queue it does not only
-identify it, it also defines its priority.
+Some policies already include other embedded policies inside.
+That is the case of Shaper: each of its classes use fair-queue
+unless you change it.
 :::
 
 (creating_a_traffic_policy)=
@@ -349,10 +347,6 @@ VyOS lets you control traffic in many different ways, here we will cover
 every possibility. You can configure as many policies as you want, but
 you will only be able to apply one policy per interface and direction
 (inbound or outbound).
-
-Some policies already include other embedded policies inside. That is
-the case of Shaper: each of its classes use fair-queue unless you
-change it.
 
 Some policies can be combined, you will be able to embed a different
 policy that will be applied to a class of the main policy.
