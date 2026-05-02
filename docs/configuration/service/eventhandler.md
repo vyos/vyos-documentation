@@ -20,8 +20,6 @@ can pass variables, arguments, and a full matching string to the script.
 
 ## Event Handler Configuration Steps
 
-(create-an-event-handler)=
-
 ### 1. Create an event handler
 
 ```{cfgcmd} set service event-handler event \<event-handler name\>
@@ -30,8 +28,6 @@ This is an optional command because the event handler will be
 automatically created after any of the next commands.
 ```
 
-
-(add-regex-to-the-script)=
 
 ### 2. Add regex to the script
 
@@ -47,8 +43,6 @@ string matches the pattern.
 ```
 
 
-(add-a-full-path-to-the-script)=
-
 ### 3. Add a full path to the script
 
 ```{cfgcmd} set service event-handler event \<event-handler name\> script path \<path to script\>
@@ -57,8 +51,6 @@ This is a mandatory command. Sets the full path to the script.
 The script file must be executable.
 ```
 
-
-(add-optional-parameters)=
 
 ### 4. Add optional parameters
 
@@ -92,7 +84,7 @@ is more preferable.
 
 ## Example
 
-> Event handler that monitors the state of interface eth0.
+Event handler that monitors the state of interface eth0.
 
 ```none
 set service event-handler event INTERFACE_STATE_DOWN filter pattern '.*eth0.*,RUNNING,.*->.*'
