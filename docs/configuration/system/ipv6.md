@@ -91,22 +91,22 @@ Check the many parameters available for the show ipv6 route command:
 :::{code-block} none
 vyos@vyos:~$ show ipv6 route
 Possible completions:
-<Enter>       Execute the current command
-<X:X::X:X>    Show IPv6 routes of given address or prefix
-<X:X::X:X/M>
-bgp           Show IPv6 BGP routes
-cache         Show kernel IPv6 route cache
-connected     Show IPv6 connected routes
-forward       Show kernel IPv6 route table
-isis          Show IPv6 ISIS routes
-kernel        Show IPv6 kernel routes
-ospfv3        Show IPv6 OSPF6 routes
-ripng         Show IPv6 RIPNG routes
-static        Show IPv6 static routes
-summary       Show IPv6 routes summary
-table         Show IP routes in policy table
-tag           Show only routes with tag
-vrf           Show IPv6 routes in VRF
+  <Enter>       Execute the current command
+  <X:X::X:X>    Show IPv6 routes of given address or prefix
+  <X:X::X:X/M>
+  bgp           Show IPv6 BGP routes
+  cache         Show kernel IPv6 route cache
+  connected     Show IPv6 connected routes
+  forward       Show kernel IPv6 route table
+  isis          Show IPv6 ISIS routes
+  kernel        Show IPv6 kernel routes
+  ospfv3        Show IPv6 OSPF6 routes
+  ripng         Show IPv6 RIPNG routes
+  static        Show IPv6 static routes
+  summary       Show IPv6 routes summary
+  table         Show IP routes in policy table
+  tag           Show only routes with tag
+  vrf           Show IPv6 routes in VRF
 :::
 ```
 ```{opcmd} show ipv6 prefix-list
@@ -118,10 +118,10 @@ vrf           Show IPv6 routes in VRF
    :::{code-block} none
    vyos@vyos:~$ show ipv6 prefix-list
    Possible completions:
-   <Enter>       Execute the current command
-   <WORD>        Show specified IPv6 prefix-list
-   detail        Show detail of IPv6 prefix-lists
-   summary       Show summary of IPv6 prefix-lists
+     <Enter>       Execute the current command
+     <WORD>        Show specified IPv6 prefix-list
+     detail        Show detail of IPv6 prefix-lists
+     summary       Show summary of IPv6 prefix-lists
    :::
 ```
 
@@ -135,8 +135,8 @@ You can also specify which IPv6 access-list should be shown:
 :::{code-block} none
 vyos@vyos:~$ show ipv6 access-list
 Possible completions:
-<Enter>       Execute the current command
-<text>        Show specified IPv6 access-list
+  <Enter>       Execute the current command
+  <text>        Show specified IPv6 access-list
 :::
 ```
 ```{opcmd} show ipv6 ospfv3
@@ -149,16 +149,16 @@ Possible completions:
    :::{code-block} none
    vyos@vyos:~$ show ipv6 ospfv3
    Possible completions:
-   <Enter>       Execute the current command
-   area          Show OSPFv3 spf-tree information
-   border-routers
-   Show OSPFv3 border-router (ABR and ASBR) information
-   database      Show OSPFv3 Link state database information
-   interface     Show OSPFv3 interface information
-   linkstate     Show OSPFv3 linkstate routing information
-   neighbor      Show OSPFv3 neighbor information
-   redistribute  Show OSPFv3 redistribute External information
-   route         Show OSPFv3 routing table information
+     <Enter>       Execute the current command
+     area          Show OSPFv3 spf-tree information
+     border-routers
+                   Show OSPFv3 border-router (ABR and ASBR) information
+     database      Show OSPFv3 Link state database information
+     interface     Show OSPFv3 interface information
+     linkstate     Show OSPFv3 linkstate routing information
+     neighbor      Show OSPFv3 neighbor information
+     redistribute  Show OSPFv3 redistribute External information
+     route         Show OSPFv3 routing table information
    :::
 ```
 

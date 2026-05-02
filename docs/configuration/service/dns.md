@@ -414,54 +414,30 @@ The default is  300 seconds.
 
 ```none
 # Configuration commands entered:
-
 #
-
 set service dns dynamic name 'VyOS-DNS' address interface 'eth0'
-
 set service dns dynamic name 'VyOS-DNS' description 'RFC 2136 dynamic dns service'
-
 set service dns dynamic name 'VyOS-DNS' key '/config/auth/my.key'
-
 set service dns dynamic name 'VyOS-DNS' server 'ns1.vyos.io'
-
 set service dns dynamic name 'VyOS-DNS' zone 'vyos.io'
-
 set service dns dynamic name 'VyOS-DNS' host-name 'example.vyos.io'
-
 set service dns dynamic name 'VyOS-DNS' protocol 'nsupdate'
-
 set service dns dynamic name 'VyOS-DNS' ttl '300'
 
-
 # Resulting config:
-
 #
-
 vyos@vyos# show service dns dynamic
-
  name VyOS-DNS {
-
      address {
-
          interface eth0
-
      }
-
      description "RFC 2136 dynamic dns service"
-
      host-name example.vyos.io
-
      key /config/auth/my.key
-
      protocol nsupdate
-
      server ns1.vyos.io
-
      ttl 300
-
      zone vyos.io
-
  }
 ```
 
@@ -469,26 +445,16 @@ This will render the following [ddclient] configuration entry:
 
 ```none
 # ddclient configuration for interface "eth0":
-
 #
 
-
 # Web service dynamic DNS configuration for VyOS-DNS: [nsupdate, example.vyos.io]
-
 use=if, \
-
 if=eth0, \
-
 protocol=nsupdate, \
-
 server=ns1.vyos.io, \
-
 zone=vyos.io, \
-
 password='/config/auth/my.key', \
-
 ttl=300 \
-
 example.vyos.io
 ```
 
