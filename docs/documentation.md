@@ -301,35 +301,35 @@ To minimize redundancy, there is a special include directive. It includes a txt
 file and replace the `{{ var0 }}` - `{{ var9 }}` with the correct value.
 
 ```none
- .. cmdinclude:: /_include/interface-address.txt
-    :var0: ethernet
-    :var1: eth1
+.. cmdinclude:: /_include/interface-address.txt
+   :var0: ethernet
+   :var1: eth1
 ```
 
 the content of interface-address.txt looks like this
 
 ```none
- .. cfgcmd:: set interfaces {{ var0 }} <interface> address <address | dhcp |
-    dhcpv6>
+.. cfgcmd:: set interfaces {{ var0 }} <interface> address <address | dhcp |
+   dhcpv6>
 
-    Configure interface `<interface>` with one or more interface
-    addresses.
+   Configure interface `<interface>` with one or more interface
+   addresses.
 
-    * **address** can be specified multiple times as IPv4 and/or IPv6
-    address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
-    * **dhcp** interface address is received by DHCP from a DHCP server
-    on this segment.
-    * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
-    server on this segment.
+   * **address** can be specified multiple times as IPv4 and/or IPv6
+   address, e.g. 192.0.2.1/24 and/or 2001:db8::1/64
+   * **dhcp** interface address is received by DHCP from a DHCP server
+   on this segment.
+   * **dhcpv6** interface address is received by DHCPv6 from a DHCPv6
+   server on this segment.
 
-    Example:
+   Example:
 
-    .. code-block:: none
+   .. code-block:: none
 
-       set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
-       set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
-       set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
-       set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
+      set interfaces {{ var0 }} {{ var1 }} address 192.0.2.1/24
+      set interfaces {{ var0 }} {{ var1 }} address 192.0.2.2/24
+      set interfaces {{ var0 }} {{ var1 }} address 2001:db8::ffff/64
+      set interfaces {{ var0 }} {{ var1 }} address 2001:db8:100::ffff/64
 ```
 ##### vytask
 
@@ -338,10 +338,8 @@ command called `vytask` that automatically renders to a proper Phabricator
 URL. This is heavily used in the {ref}`release-notes` section.
 
 ```none
-
 * {vytask}`T1605` Fixed regression in L2TP/IPsec server
 * {vytask}`T1613` Netflow/sFlow captures IPv6 traffic correctly
-
 ```
 
 ## Forking Workflow
@@ -421,7 +419,7 @@ pull-request. This requires you already have a GitHub account.
   upstream  https://github.com/vyos/vyos-documentation.git (fetch)
   upstream  https://github.com/vyos/vyos-documentation.git (push)
 
-```
+  ```
 
   Your remote repo on Github is called `origin`, while the original repo you
   have forked is called `upstream`. Now you can locally update your forked
