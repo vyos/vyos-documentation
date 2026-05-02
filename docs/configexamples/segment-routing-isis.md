@@ -11,7 +11,7 @@ blue print as an initial setup to get MPLS ISIS-SR working between those two
 devices.The lab was build using {abbr}`EVE-NG (Emulated Virtual
 Environment NG)`.
 
-:::{figure} /_static/images/vyos-sr-isis.png
+:::{figure} /_static/images/vyos-sr-isis.webp
 :alt: ISIS-SR network
 
 ISIS-SR example network

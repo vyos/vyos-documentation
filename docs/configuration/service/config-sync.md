@@ -36,7 +36,7 @@ sections as required.
 
 ```{cfgcmd} set service config-sync mode \<load|set\>
 
-Two options are available for mode: either load and replace or set
+Two options are available for *mode*: either *load* and replace or *set*
 the configuration section.
 ```
 
@@ -60,7 +60,7 @@ Supported options for <section> include:
 
 ## Operational Commands
 
-```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
+````{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
 
 Display configuration differences between the local node and
 a config-sync secondary node.
@@ -72,10 +72,20 @@ intended changes before synchronization.
 
 **Parameters:**
 
-| Parameter | Description |
-|---|---|
-| ``commands`` (optional) | Show output as a list of configuration commands instead of raw diff. |
-| ``running\|candidate\|saved`` (optional, mutually exclusive) | Select which configuration to compare: ``running`` (current active configuration, default), ``candidate`` (uncommitted changes), or ``saved`` (last saved configuration). Only one of these may be specified at a time; if omitted, ``running`` is used. |
+```{eval-rst}
+.. list-table::
+   :widths: 30 70
+   :header-rows: 0
+
+   * - ``commands`` (optional)
+     - Show output as a list of configuration commands instead of raw diff.
+   * - ``running|candidate|saved`` (optional, mutually exclusive)
+     - Select which configuration to compare:
+       ``running`` (current active configuration, default),
+       ``candidate`` (uncommitted changes), or
+       ``saved`` (last saved configuration). Only one of these may be
+       specified at a time; if omitted, ``running`` is used.
+```
 
 **Examples:**
 
@@ -89,11 +99,11 @@ show configuration secondary sync running interfaces dummy
 # compare candidate configuration and display as a list of commands
 show configuration secondary sync commands candidate
 :::
+````
 
 Without a built-in cross-node diff, operators may unintentionally push
 changes that conflict with the remote configuration (e.g., mismatched
 interfaces, firewall policies, or protocol settings).
-```
 
 
 ## Example
@@ -150,5 +160,5 @@ set protocols ospf area 0 network '10.0.48.0/30'
 
 ## Known issues
 
-Configuration resynchronization. With the current implementation of service
-config-sync, the secondary node must be online.
+Configuration resynchronization. With the current implementation of *service
+config-sync*, the secondary node must be online.

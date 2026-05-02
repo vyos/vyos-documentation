@@ -68,7 +68,7 @@ remote servers.
 this host will be chosen for synchronization among a set of correctly
 operating hosts.
 
-* ``ptp`` enables the PTP transport for this server (see the PTP transport configuration section).
+* ``ptp`` enables the PTP transport for this server (see {ref}`ptp-transport`).
 
 * ``interleave`` enables NTP interleaved mode (see [draft-ntp-interleaved-modes]), which can improve
 synchronization accuracy and stability when supported by both parties.
@@ -165,12 +165,12 @@ disabled for the interface.
 ```
 
 The following `receive-filter` modes can be selected:
-- `all`: All received packets will be timestamped.
-- `ntp`: Only received NTP protocol packets will be timestamped.
-- `ptp`: Only received PTP protocol packets will be timestamped. Combined with
+- *all*: All received packets will be timestamped.
+- *ntp*: Only received NTP protocol packets will be timestamped.
+- *ptp*: Only received PTP protocol packets will be timestamped. Combined with
   the PTP transport for NTP packets, this can be leveraged to take advantage of
   hardware timestamping on NICs that only support the ptp filter mode.
-- `none`: No received packets will be timestamped. Hardware timestamping of
+- *none*: No received packets will be timestamped. Hardware timestamping of
   transmitted packets will still be leveraged, if supported by the NIC.
 (ptp-transport)=
 

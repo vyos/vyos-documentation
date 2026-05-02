@@ -50,14 +50,14 @@ chain is **forward**, and its base command for filtering is `set firewall
 bridge forward filter ...`, which happens in stage 4, highlighted with red
 color.
 
-:::{figure} /_static/images/firewall-bridge-forward.png
+:::{figure} /_static/images/firewall-bridge-forward.webp
 :::
 
 For traffic destined to the router itself or that needs to be routed
 (assuming a layer3 bridge is configured), the base chain is **input**, and the
 base command is `set firewall bridge input filter ...` and the path is:
 
-:::{figure} /_static/images/firewall-bridge-input.png
+:::{figure} /_static/images/firewall-bridge-input.webp
 :::
 
 If it's not dropped, then the packet is sent to **IP Layer**, and will be
@@ -69,7 +69,7 @@ For traffic that originates from the bridge itself, the base chain is
 **output**, and the base command is `set firewall bridge output filter
 ...`, and the path is:
 
-:::{figure} /_static/images/firewall-bridge-output.png
+:::{figure} /_static/images/firewall-bridge-output.webp
 :::
 
 Custom bridge firewall chains can be created with the command `set firewall

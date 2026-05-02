@@ -31,7 +31,7 @@ Flowtables let you define a fastpath through the flowtable datapath.
 Flowtables support layer 3 (IPv4 and IPv6) and layer 4 (TCP and UDP)
 protocols.
 
-:::{figure} /_static/images/firewall-flowtable-packet-flow.png
+:::{figure} /_static/images/firewall-flowtable-packet-flow.webp
 :::
 
 After the first packet successfully traverses the IP forwarding path (black

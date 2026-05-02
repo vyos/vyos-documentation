@@ -65,6 +65,7 @@ it creates a new user linked to the specified principal.
 ```{cfgcmd} set system login user \<name\> disable
 
 **Disable a system user account.**
+
 VyOS locks the account, preventing the user from logging in.
 ```
 

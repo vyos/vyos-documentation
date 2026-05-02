@@ -39,6 +39,7 @@ Webserver should only listen on specified IP address
 ```{cfgcmd} set service https port \<number\>
 
 Webserver should listen on specified port.
+
 Default: 443
 ```
 
@@ -50,6 +51,7 @@ Enable automatic redirect from http to https.
 ```{cfgcmd} set service https tls-version \<1.2 | 1.3\>
 
 Select TLS version used.
+
 This defaults to both 1.2 and 1.3.
 ```
 

@@ -16,7 +16,7 @@ first.
 
 Using the general schema for example:
 
-```{image} /_static/images/qos1.png
+```{image} /_static/images/qos1.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -74,7 +74,7 @@ Main rules:
 
 Check the result
 
-```{image} /_static/images/qos2.png
+```{image} /_static/images/qos2.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -82,7 +82,7 @@ Check the result
 
 Before the interface eth0 on router VyOS3
 
-```{image} /_static/images/qos3.png
+```{image} /_static/images/qos3.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -90,7 +90,7 @@ Before the interface eth0 on router VyOS3
 
 After the interface eth0 on router VyOS3
 
-```{image} /_static/images/qos4.png
+```{image} /_static/images/qos4.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -118,7 +118,7 @@ set qos policy shaper vyos4 default queue-type 'fair-queue'
 Next on the router VyOS2 we will change labels on all incoming
 traffic only from CS4-> CS6
 
-```{image} /_static/images/qos5.png
+```{image} /_static/images/qos5.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -142,7 +142,7 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
     set qos interface eth2 egress 'vyos2'
 ```
 
-```{image} /_static/images/qos6.png
+```{image} /_static/images/qos6.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -150,7 +150,7 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
 
 - 172.17.1.2/24 CS0
 
-```{image} /_static/images/qos7.png
+```{image} /_static/images/qos7.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -158,7 +158,7 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
 
 - 172.17.1.2/24 CS0 - > CS4
 
-```{image} /_static/images/qos8.png
+```{image} /_static/images/qos8.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -166,7 +166,7 @@ set qos policy shaper vyos2 default queue-type 'fair-queue'
 
 - 172.17.1.2/24 CS4 - > CS5
 
-```{image} /_static/images/qos9.png
+```{image} /_static/images/qos9.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -194,7 +194,7 @@ match VyOS3 {
 
 Check the result.
 
-```{image} /_static/images/qos10.png
+```{image} /_static/images/qos10.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%

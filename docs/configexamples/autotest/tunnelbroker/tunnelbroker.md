@@ -23,7 +23,7 @@ IPv6 Tunnel.
 The example topology has 2 VyOS routers. One as The WAN Router and on as a
 Client, to test a single LAN setup
 
-```{image} _include/topology.png
+```{image} _include/topology.webp
 :alt: Tunnelbroker topology image
 ```
 

@@ -143,15 +143,15 @@ Show detailed information about the specified interface.
 :::{code-block} none
 vyos@vyos:~$ show interfaces sstpc sstpc10
 sstpc10: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 3
-  link/ppp
-  inet 192.0.2.5 peer 192.0.2.254/32 scope global sstpc10
+    link/ppp
+    inet 192.0.2.5 peer 192.0.2.254/32 scope global sstpc10
        valid_lft forever preferred_lft forever
-  inet6 fe80::fd53:c7ff:fe8b:144f/64 scope link
+    inet6 fe80::fd53:c7ff:fe8b:144f/64 scope link
        valid_lft forever preferred_lft forever
 
-  RX:  bytes  packets  errors  dropped  overrun       mcast
+    RX:  bytes  packets  errors  dropped  overrun       mcast
            215        9       0        0        0           0
-  TX:  bytes  packets  errors  dropped  carrier  collisions
+    TX:  bytes  packets  errors  dropped  carrier  collisions
            539       14       0        0        0           0
 :::
 ```

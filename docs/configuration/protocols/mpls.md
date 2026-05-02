@@ -113,69 +113,63 @@ Use this command to enable, disable, or specify hop count for TTL security
 for LDP peers. By default the value is set to 255 (or max TTL).
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-interval \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-interval <seconds>
+.. cfgcmd:: set protocols mpls ldp discovery hello-ipv4-holdtime <seconds>
+.. cfgcmd:: set protocols mpls ldp discovery hello-ipv6-interval <seconds>
+.. cfgcmd:: set protocols mpls ldp discovery hello-ipv6-holdtime <seconds>
+
+  Use these commands if you would like to set the discovery hello and hold time
+  parameters.
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv4-holdtime \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp discovery session-ipv4-holdtime <seconds>
+.. cfgcmd:: set protocols mpls ldp discovery session-ipv6-holdtime <seconds>
+
+  Use this command if you would like to set the TCP session hold time intervals.
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-interval \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp import ipv4 import-filter filter-access-list
+   <access list number>
+.. cfgcmd:: set protocols mpls ldp import ipv6 import-filter filter-access-list6
+   <access list number>
+
+  Use these commands to control the importing of forwarding equivalence classes
+  (FECs) for LDP from neighbors. This would be useful for example on only
+  accepting the labeled routes that are needed and not ones that are not
+  needed, such as accepting loopback interfaces and rejecting all others.
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery hello-ipv6-holdtime \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp export ipv4 export-filter filter-access-list
+   <access list number>
+.. cfgcmd:: set protocols mpls ldp export ipv6 export-filter filter-access-list6
+   <access list number>
 
-Use these commands if you would like to set the discovery hello and hold time
-parameters.
+  Use these commands to control the exporting of forwarding equivalence classes
+  (FECs) for LDP to neighbors. This would be useful for example on only
+  announcing the labeled routes that are needed and not ones that are not
+  needed, such as announcing loopback interfaces and no others.
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery session-ipv4-holdtime \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp export ipv4 explicit-null
+.. cfgcmd:: set protocols mpls ldp export ipv6 explicit-null
+
+  Use this command if you would like for the router to advertise FECs with a
+  label of 0 for explicit null operations.
 ```
 
-```{cfgcmd} set protocols mpls ldp discovery session-ipv6-holdtime \<seconds\>
+```{eval-rst}
+.. cfgcmd:: set protocols mpls ldp allocation ipv4 access-list <access list number>
+.. cfgcmd:: set protocols mpls ldp allocation ipv6 access-list6 <access list number>
 
-Use this command if you would like to set the TCP session hold time intervals.
-```
-
-```{cfgcmd} set protocols mpls ldp import ipv4 import-filter filter-access-list <access list number>
-```
-
-```{cfgcmd} set protocols mpls ldp import ipv6 import-filter filter-access-list6 <access list number>
-
-Use these commands to control the importing of forwarding equivalence classes
-(FECs) for LDP from neighbors. This would be useful for example on only
-accepting the labeled routes that are needed and not ones that are not
-needed, such as accepting loopback interfaces and rejecting all others.
-```
-
-```{cfgcmd} set protocols mpls ldp export ipv4 export-filter filter-access-list <access list number>
-```
-
-```{cfgcmd} set protocols mpls ldp export ipv6 export-filter filter-access-list6 <access list number>
-
-Use these commands to control the exporting of forwarding equivalence classes
-(FECs) for LDP to neighbors. This would be useful for example on only
-announcing the labeled routes that are needed and not ones that are not
-needed, such as announcing loopback interfaces and no others.
-```
-
-```{cfgcmd} set protocols mpls ldp export ipv4 explicit-null
-```
-
-```{cfgcmd} set protocols mpls ldp export ipv6 explicit-null
-
-Use this command if you would like for the router to advertise FECs with a
-label of 0 for explicit null operations.
-```
-
-```{cfgcmd} set protocols mpls ldp allocation ipv4 access-list <access list number>
-```
-
-```{cfgcmd} set protocols mpls ldp allocation ipv6 access-list6 <access list number>
-
-Use this command if you would like to control the local FEC allocations for
-LDP. A good example would be for your local router to not allocate a label for
-everything. Just a label for what it's useful. A good example would be just a
-loopback label.
+  Use this command if you would like to control the local FEC allocations for
+  LDP. A good example would be for your local router to not allocate a label for
+  everything. Just a label for what it's useful. A good example would be just a
+  loopback label.
 ```
 
 ```{cfgcmd} set protocols mpls ldp parameters cisco-interop-tlv

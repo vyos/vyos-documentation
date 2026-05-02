@@ -49,7 +49,7 @@ SSH access to the PE (Provider Edge) routers.
 
 We use the following network topology in this example:
 
-```{image} _include/topology.png
+```{image} _include/topology.webp
 :alt: L3VPN EVPN with VyOS topology image
 ```
 

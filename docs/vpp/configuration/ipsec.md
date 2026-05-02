@@ -2,11 +2,10 @@
 lastproofread: '2025-09-04'
 ---
 
-(vpp-config-ipsec)=
+(vpp_config_ipsec)=
 
 ```{include} /_include/need_improvement.txt
 ```
-
 
 # VPP IPsec Configuration
 
@@ -106,7 +105,9 @@ set vpp acl ip tag-name IPSEC rule 50 protocol 'esp'
 ```
 
 Pay attention to the order of the rules, as they are processed sequentially. Make sure to place IPsec-related rules before any other rules that might deny traffic to ensure that IPsec traffic is allowed.
+
 **Simple VTI-based IPsec Tunnel**
+
 On the VPP host:
 
 ```none
@@ -157,8 +158,6 @@ Where:
 - `peerA` and `peerB` are the identifiers for the local side and remote peer, respectively.
 
 :::{note}
-VPP IPsec implementation is not as feature rich as Linux kernel IPsec. It supports only a subset of algorithms and modes.
-
 **What is important in this configuration**
 
 VPP uses only remote traffic-selector to determine what traffic should be offloaded to the IPsec tunnel.
@@ -175,7 +174,7 @@ Improper IPsec configuration can lead to various issues, including:
 
 - **Conflicting with kernel routes**
 
-  If the kernel routes synchronization option is enabled, VPP will install all the routes from kernel. If you have there routes configured via VTI interfaces to the IPsec peer, they will conflict with the policy routes created for the IPsec tunnel in VPP. Consider using policy-based IPSec configuration to avoid this or {ref}`disable the kernel routes synchronization <vpp-config-dataplane-lcp-ignore-kernel-routes>`.
+  If the kernel routes synchronization option is enabled, VPP will install all the routes from kernel. If you have there routes configured via VTI interfaces to the IPsec peer, they will conflict with the policy routes created for the IPsec tunnel in VPP. Consider using policy-based IPSec configuration to avoid this or [disable the kernel routes synchronization](lcp.md#vpp-lcp-configuration).
 
 - **Unsupported algorithms**
 

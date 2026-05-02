@@ -12,33 +12,33 @@ Deploy VyOS on Azure.
 2. Choose a VM name, resource group, and region, then click **Browse all public
    and private images**.
 
-:::{figure} /_static/images/cloud-azure-01.png
+:::{figure} /_static/images/cloud-azure-01.webp
 :::
 
 3. Search for "VyOS" in the marketplace and choose the appropriate
    subscription.
 
-:::{figure} /_static/images/cloud-azure-02.png
+:::{figure} /_static/images/cloud-azure-02.webp
 :::
 
 4. Generate new SSH key pair or use existing.
 
-:::{figure} /_static/images/cloud-azure-03.png
+:::{figure} /_static/images/cloud-azure-03.webp
 :::
 
 5. Configure the network, subnet, and public IP. Or use the defaults.
 
-:::{figure} /_static/images/cloud-azure-04.png
+:::{figure} /_static/images/cloud-azure-04.webp
 :::
 
 6. Click **Review + create**. Your deployment completes in a few seconds.
 
-:::{figure} /_static/images/cloud-azure-05.png
+:::{figure} /_static/images/cloud-azure-05.webp
 :::
 
 7. Select your new VM and note your public IP address.
 
-:::{figure} /_static/images/cloud-azure-06.png
+:::{figure} /_static/images/cloud-azure-06.webp
 :::
 
 8. Connect to the instance with your SSH key.

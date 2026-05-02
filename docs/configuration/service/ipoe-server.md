@@ -2,7 +2,7 @@
 
 # IPoE Server
 
-VyOS utilizes accel-ppp to provide {abbr}`IPoE (Internet Protocol over
+VyOS utilizes [accel-ppp] to provide {abbr}`IPoE (Internet Protocol over
 Ethernet)` server functionality. It can be used with local authentication
 (mac-address) or a connected RADIUS server.
 
@@ -92,7 +92,7 @@ multiple such options.
 
 ```{cfgcmd} set service ipoe-server interface \<interface\> mode \<l2 | l3\>
 
-Specifies the client connectivity mode.
+> Specifies the client connectivity mode.
 
 * **l2**: It means that clients are on same network where interface
 is.\*\*(default)\*\*
@@ -134,7 +134,7 @@ set service ipoe-server authentication mode radius
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> key \<secret\>
 
-Configure RADIUS \<server\> and its required shared \<secret\> for
+Configure RADIUS *\<server\>* and its required shared *\<secret\>* for
 communicating with the RADIUS server.
 ```
 
@@ -166,7 +166,7 @@ Source IPv4 address used in all RADIUS server queires.
 ```
 
 :::{note}
-The `source-address` must be configured on one of VyOS interface.
+The ``source-address`` must be configured on one of VyOS interface.
 Best practice would be a loopback or dummy interface.
 :::
 
@@ -175,13 +175,13 @@ Best practice would be a loopback or dummy interface.
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> port \<port\>
 
-Configure RADIUS \<server\> and its required port for authentication requests.
+Configure RADIUS *\<server\>* and its required port for authentication requests.
 ```
 
 
 ```{cfgcmd} set service ipoe-server authentication radius server \<server\> fail-time \<time\>
 
-Mark RADIUS server as offline for this given \<time\> in seconds.
+Mark RADIUS server as offline for this given *\<time\>* in seconds.
 ```
 
 
@@ -251,7 +251,7 @@ Source IPv4 address used in all RADIUS server queires.
 ```{cfgcmd} set service ipoe-server authentication radius rate-limit attribute \<attribute\>
 
 Specifies which RADIUS server attribute contains the rate limit information.
-The default attribute is `Filter-Id`.
+The default attribute is *Filter-Id*.
 ```
 
 :::{note}
@@ -278,38 +278,38 @@ the CLI configuration, refer to the explanation below.
 ### Allocation clients ip addresses by RADIUS
 
 
-If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
+If the RADIUS server sends the attribute ``Framed-IP-Address`` then this IP
+address will be allocated to the client and the option ``default-pool`` within the CLI
 config is being ignored.
 
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
+If the RADIUS server sends the attribute ``Framed-Pool``, IP address will be allocated
 from a predefined IP pool whose name equals the attribute value.
 
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If the RADIUS server sends the attribute ``Stateful-IPv6-Address-Pool``, IPv6 address
+will be allocated from a predefined IPv6 pool ``prefix`` whose name equals the attribute value.
 
 
-If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
-delegation pefix will be allocated from a predefined IPv6 pool `delegate`
+If the RADIUS server sends the attribute ``Delegated-IPv6-Prefix-Pool``, IPv6
+delegation pefix will be allocated from a predefined IPv6 pool ``delegate``
 whose name equals the attribute value.
 
 
 :::{note}
-`Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
+``Stateful-IPv6-Address-Pool`` and ``Delegated-IPv6-Prefix-Pool`` are defined in
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
 
 User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
+it via RADIUS CoA. ``Accel-VRF-Name`` is used from these purposes. It is custom [ACCEL-PPP attribute].
 Define it in your RADIUS server.
 
 
 ## IPv6
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>  mask \<number-of-bits\>
 
 Use this comand to set the IPv6 address pool from which an IPoE client
 will get an IPv6 prefix of your defined length (mask) to terminate the
@@ -318,7 +318,7 @@ bit long, the default value is 64.
 ```
 
 
-```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
+```{cfgcmd} set service ipoe-server client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\>  delegation-prefix \<number-of-bits\>
 
 Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on
 IPoE. You will have to set your IPv6 pool and the length of the
@@ -370,21 +370,21 @@ Script to run when session interface is completely configured and started
 
 ### Authentication Advanced Options
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan \<vlan-id\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> vlan  \<vlan-id\>
 
 VLAN monitor for automatic creation of VLAN interfaces for specific user on specific \<interface\>
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit download \<bandwidth\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit  download \<bandwidth\>
 
-Download bandwidth limit in kbit/s for user on interface \<interface\>.
+Download bandwidth limit in kbit/s for user on interface *\<interface\>*.
 ```
 
 
-```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit upload \<bandwidth\>
+```{cfgcmd} set service ipoe-server authentication interface \<interface\> mac \<MAC\> rate-limit  upload \<bandwidth\>
 
-Upload bandwidth limit in kbit/s for for user on interface \<interface\>.
+Upload bandwidth limit in kbit/s for for user on interface *\<interface\>*.
 ```
 
 ### Client IP Pool Advanced Options
@@ -399,7 +399,7 @@ Use this command to define the next address pool name.
 ```{cfgcmd} set service ipoe-server interface \<interface\> client-subnet \<x.x.x.x/x\>
 
 Specify local range of ip address to give to dhcp clients. First IP in range is router IP.
-If you need more customization use `client-ip-pool`
+If you need more customization use *client-ip-pool*
 ```
 
 
@@ -438,7 +438,7 @@ Maximum number of concurrent session start attempts
 ```
 ```{cfgcmd} set service ipoe-server name-server \<address\>
 
-Connected client should use \<address\> as their DNS server. This
+Connected client should use *\<address\>* as their DNS server. This
 command accepts both IPv4 and IPv6 addresses. Up to two nameservers
 can be configured for IPv4, up to three for IPv6.
 ```
@@ -507,5 +507,6 @@ Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: session started
 Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Ack xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Ack> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
 ```
 
+[accel-ppp]: https://accel-ppp.org/
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911

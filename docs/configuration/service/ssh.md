@@ -75,7 +75,7 @@ Require FIDO2 keys to attest that a user has been verified (e.g. via a PIN).
 ```
 
 
-```{cfgcmd} set service ssh fido touch-required
+````{cfgcmd} set service ssh fido touch-required
 
 Require FIDO2 keys to attest that a user is physically present.
 
@@ -88,10 +88,12 @@ Generic FIDO2-backed SSH key generation example:
 ssh-keygen -t ecdsa-sk -O verify-required -C "fido2-ssh-key"
 :::
 
+```{eval-rst}
 During key generation, OpenSSH will:
-: - Request user presence (for example, a physical touch or confirmation)
-- Optionally request user verification (PIN), if supported by the authenticator
-- Create a local key handle file and a corresponding public key (``.pub``)
+    * Request user presence (for example, a physical touch or confirmation)
+    * Optionally request user verification (PIN), if supported by the authenticator
+    * Create a local key handle file and a corresponding public key (``.pub``)
+```
 
 The private key material never leaves the authenticator device.
 
@@ -106,7 +108,7 @@ set service ssh fido touch-required
 :::
 
 You can now log into the system using: ``ssh -i ~/.ssh/id_fido_key vyos@192.0.2.1``
-```
+````
 
 
 ```{cfgcmd} set service ssh disable-host-validation
@@ -306,11 +308,11 @@ will be created.
 ```
 ```{opcmd} generate public-key-command user \<username\> path \<location\>
 
-Generate the configuration mode commands to add a public key for
-SSH key-based authentication.
-``<location>`` can be a local path or a URL pointing at a remote file.
-
-Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
+> Generate the configuration mode commands to add a public key for
+> {ref}`ssh_key_based_authentication`.
+> ``<location>`` can be a local path or a URL pointing at a remote file.
+>
+> Supported remote protocols are FTP, FTPS, HTTP, HTTPS, SCP/SFTP and TFTP.
 
 Example:
 
@@ -323,6 +325,7 @@ set system login user alyssa authentication public-keys alyssa@example.net type 
 commit
 save
 exit
+
 ben@vyos:~$ generate public-key-command user ben path ~/.ssh/id_rsa.pub
 # To add this key as an embedded key, run the following commands:
 configure

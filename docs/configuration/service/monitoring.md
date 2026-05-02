@@ -214,8 +214,8 @@ Remote Loki url
 
 
 ```{cfgcmd} set service monitoring telegraf loki authentication username \<username\>
-
 ```
+
 ```{cfgcmd} set service monitoring telegraf loki authentication password \<password\>
 
 HTTP basic authentication.
@@ -307,6 +307,7 @@ Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 #### Configuring modules
 
 Blackbox exporter can be configured with different modules for probing DNS or ICMP.
+
 DNS module example:
 
 ```none

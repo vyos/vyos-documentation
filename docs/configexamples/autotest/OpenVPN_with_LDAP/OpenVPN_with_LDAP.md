@@ -13,7 +13,7 @@ Topology consists of:
   - VyOS as a OpenVPN Server
   - VyOS as Client
 
-```{image} _include/topology.png
+```{image} _include/topology.webp
 :alt: OpenVPN with LDAP topology image
 ```
 

@@ -27,7 +27,7 @@ complete solution also incorporates the use of a routing protocol. BGP is
 particularly well suited for use with DMVPN.
 :::
 
-:::{figure} /_static/images/vpn_dmvpn_topology01.png
+:::{figure} /_static/images/vpn_dmvpn_topology01.webp
 :alt: Baseline DMVPN topology
 :scale: 40 %
 
@@ -228,7 +228,7 @@ always is set to 'clear'.
 This blueprint uses VyOS as the DMVPN Hub and Cisco IOSv 15.5(3)M and VyOS as
 multiple spoke sites.
 
-:::{figure} /_static/images/blueprint-dmvpn.png
+:::{figure} /_static/images/blueprint-dmvpn.webp
 :align: center
 :alt: DMVPN Network Topology Diagram
 :width: 70%

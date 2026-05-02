@@ -120,6 +120,7 @@ Multiple DNS servers can be defined.
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\> lease \<time\>
 
 Assign the IP address to this machine for `<time>` seconds.
+
 The default value is 86400 seconds which corresponds to one day.
 ```
 

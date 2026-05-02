@@ -25,6 +25,7 @@ LANs and WANs.
 ```{cfgcmd} set interfaces ethernet \<interface\> switchdev
 
 **Enable** ``switchdev`` **mode for the interface.**
+
 In ``switchdev`` mode, the interface offloads traffic switching between ports
 to the hardware, bypassing the host CPU. This increases the interface’s
 traffic-handling capacity and reduces its forwarding delay.
@@ -40,34 +41,43 @@ interfaces and requires a switchdev-compatible driver.
 ```{cfgcmd} set interfaces ethernet \<interface\> duplex \<auto | full | half\>
 
 **Configure duplex mode for the interface.**
+
 The following duplex modes are available:
+
 * ``auto``: The interface negotiates the duplex mode with the connected device.
 * ``full``: The interface sends and receives data simultaneously. The
-connected device must also be set to full-duplex to avoid a duplex mismatch.
+  connected device must also be set to full-duplex to avoid a duplex mismatch.
 * ``half``: The interface either sends or receives data, but not both at the
-same time.
+  same time.
+
 The default duplex mode is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed \<auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000\>
 
 **Configure the interface's speed, in Mbit/s.**
+
 The following options are available:
+
 * ``auto``:  The interface negotiates the speed with the connected device.
 * ``10, 100, 1000 ...``: The interface operates at the selected speed. The
-connected device must be set to the same speed to establish a connection.
+  connected device must be set to the same speed to establish a connection.
+
 The default option is ``auto``.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer rx \<value\>
 
 **Configure the receive (RX) ring buffer size for the interface.**
+
 The RX ring buffer size defines the number of incoming packets the interface
 can queue in hardware before the CPU processes them.
+
 Higher values reduce the risk of drops when the NIC receives network traffic
 faster than the CPU can process it, though latency may increase. Lower values
 reduce latency but increase the risk of packet drops during incoming traffic
 bursts.
+
 To view supported values for a specific interface, use:
 ```
 
@@ -78,11 +88,14 @@ ethtool -g <interface>
 ```{cfgcmd} set interfaces ethernet \<interface\> ring-buffer tx \<value\>
 
 **Configure the transmit (TX) ring buffer size.**
+
 The TX ring buffer size defines the number of outgoing packets the interface
 can queue in hardware before they are transmitted onto the network.
+
 Higher values reduce the risk of drops when the CPU generates traffic faster
 than the NIC can handle, though latency may increase. Lower values reduce
 latency but increase the risk of packet drops during outgoing traffic bursts.
+
 To view supported values for a specific interface, use:
 ```
 
@@ -238,6 +251,7 @@ optimizing completion handling.
 
 Control transmit packet aggregation. Packets may be buffered and sent
 together until one of the configured limits (bytes, frames, or time)
+is reached, reducing interrupt and DMA overhead.
 ```
 
 #### Offloading
@@ -245,6 +259,7 @@ together until one of the configured limits (bytes, frames, or time)
 ```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | sg\>
 
 **Configure the offloading features for the interface.**
+
 The interface offloading features define whether specific packet-processing tasks
 are performed by hardware (the NIC) or by software (the kernel). You can enable
 multiple offloading features for a single interface.
@@ -266,22 +281,28 @@ multiple offloading features for a single interface.
    :::
  * ``tso`` **(TCP Segmentation Offload):** Instructs the NIC to split large TCP
    packets into smaller ones before transmitting them to the network.
+
    **Important:** {abbr}`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
    for {abbr}`TSO (TCP Segmentation Offload)` to work. Additionally, {abbr}`GSO
    (Generic Segmentation Offload)` should be enabled as a safety fallback; it
    ensures that if traffic is rerouted to hardware without {abbr}`TSO (TCP
    Segmentation Offload)` support, the kernel can still segment the packets,
    preventing transmission failures.
+
  * ``gso`` **(Generic Segmentation Offload):** Instructs the kernel to split
    large packets into smaller ones before sending them to the NIC.
+
    {abbr}`GSO (Generic Segmentation Offload)` serves as a software fallback for
    hardware that does not support {abbr}`TSO (TCP Segmentation Offload)` or for
    protocols (like UDP) that hardware cannot offload.
+
    **Important:** {abbr}`SG (Scatter-Gather/Scatter-Gather DMA)` must be enabled
    for {abbr}`GSO (Generic Segmentation Offload)` to work.
+
  * ``gro`` **(Generic Receive Offload):** Instructs the kernel to merge multiple
    incoming packets into one larger packet before passing it to upper protocol
    layers.
+
    Unlike LRO, GRO preserves the necessary packet metadata so the merged packet
    can be correctly split back into the original packets. This makes GRO safe for
    use on routers and bridges.
@@ -294,6 +315,7 @@ Segmentation Offload)` compatibility.
  :::
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
    the processing of incoming packets across multiple CPU cores.
+
    The kernel calculates a hash from packet headers (IP addresses and ports) to
    ensure packets from the same flow are processed by the same CPU core.
 
@@ -371,13 +393,14 @@ Show detailed interface information.
 :::{code-block} none
 vyos@vyos:~$ show interfaces ethernet eth0
 eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
-inet6 fe80::250:44ff:fe00:f5c9/64 scope link
-valid_lft forever preferred_lft forever
-RX:  bytes    packets     errors    dropped    overrun      mcast
-56735451     179841          0          0          0     142380
-TX:  bytes    packets     errors    dropped    carrier collisions
-5601460      62595          0          0          0          0
+    link/ether 00:50:44:00:f5:c9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::250:44ff:fe00:f5c9/64 scope link
+       valid_lft forever preferred_lft forever
+
+    RX:  bytes    packets     errors    dropped    overrun      mcast
+      56735451     179841          0          0          0     142380
+    TX:  bytes    packets     errors    dropped    carrier collisions
+       5601460      62595          0          0          0          0
 :::
 ```
 
@@ -388,26 +411,26 @@ Show interface hardware-level and driver details.
 :::{code-block} none
 vyos@vyos:~$ show interfaces ethernet eth0 physical
 Settings for eth0:
-Supported ports: [ TP ]
-Supported link modes:   1000baseT/Full
-10000baseT/Full
-Supported pause frame use: No
-Supports auto-negotiation: No
-Supported FEC modes: Not reported
-Advertised link modes:  Not reported
-Advertised pause frame use: No
-Advertised auto-negotiation: No
-Advertised FEC modes: Not reported
-Speed: 10000Mb/s
-Duplex: Full
-Port: Twisted Pair
-PHYAD: 0
-Transceiver: internal
-Auto-negotiation: off
-MDI-X: Unknown
-Supports Wake-on: uag
-Wake-on: d
-Link detected: yes
+        Supported ports: [ TP ]
+        Supported link modes:   1000baseT/Full
+                                10000baseT/Full
+        Supported pause frame use: No
+        Supports auto-negotiation: No
+        Supported FEC modes: Not reported
+        Advertised link modes:  Not reported
+        Advertised pause frame use: No
+        Advertised auto-negotiation: No
+        Advertised FEC modes: Not reported
+        Speed: 10000Mb/s
+        Duplex: Full
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        Auto-negotiation: off
+        MDI-X: Unknown
+        Supports Wake-on: uag
+        Wake-on: d
+        Link detected: yes
 driver: vmxnet3
 version: 1.4.16.0-k-NAPI
 firmware-version:
@@ -461,32 +484,32 @@ Show information about the transceiver module plugged into the interface
 
 :::{code-block} none
 vyos@vyos:~$ show interfaces ethernet eth5 transceiver
-Identifier              : 0x03 (SFP)
-Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)
-Connector               : 0x07 (LC)
-Transceiver codes       : 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00
-Transceiver type        : Ethernet: 1000BASE-SX
-Encoding                : 0x01 (8B/10B)
-BR, Nominal             : 1300MBd
-Rate identifier         : 0x00 (unspecified)
-Length (SMF,km)         : 0km
-Length (SMF)            : 0m
-Length (50um)           : 550m
-Length (62.5um)         : 270m
-Length (Copper)         : 0m
-Length (OM3)            : 0m
-Laser wavelength        : 850nm
-Vendor name             : CISCO-FINISAR
-Vendor OUI              : 00:90:65
-Vendor PN               : FTRJ-8519-7D-CS4
-Vendor rev              : A
-Option values           : 0x00 0x1a
-Option                  : RX_LOS implemented
-Option                  : TX_FAULT implemented
-Option                  : TX_DISABLE implemented
-BR margin, max          : 0%
-BR margin, min          : 0%
-Vendor SN               : FNS092xxxxx
-Date code               : 0506xx
+   Identifier              : 0x03 (SFP)
+   Extended identifier     : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+   Connector               : 0x07 (LC)
+   Transceiver codes       : 0x00 0x00 0x00 0x01 0x00 0x00 0x00 0x00 0x00
+   Transceiver type        : Ethernet: 1000BASE-SX
+   Encoding                : 0x01 (8B/10B)
+   BR, Nominal             : 1300MBd
+   Rate identifier         : 0x00 (unspecified)
+   Length (SMF,km)         : 0km
+   Length (SMF)            : 0m
+   Length (50um)           : 550m
+   Length (62.5um)         : 270m
+   Length (Copper)         : 0m
+   Length (OM3)            : 0m
+   Laser wavelength        : 850nm
+   Vendor name             : CISCO-FINISAR
+   Vendor OUI              : 00:90:65
+   Vendor PN               : FTRJ-8519-7D-CS4
+   Vendor rev              : A
+   Option values           : 0x00 0x1a
+   Option                  : RX_LOS implemented
+   Option                  : TX_FAULT implemented
+   Option                  : TX_DISABLE implemented
+   BR margin, max          : 0%
+   BR margin, min          : 0%
+   Vendor SN               : FNS092xxxxx
+   Date code               : 0506xx
 :::
 ```

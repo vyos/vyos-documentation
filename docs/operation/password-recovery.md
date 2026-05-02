@@ -9,25 +9,25 @@ lastproofread: '2026-02-04'
 Restart VyOS from the console. The GRUB menu appears.
 Select **Boot options**.
 
-:::{figure} /_static/images/reset-password-step-1.jpg
+:::{figure} /_static/images/reset-password-step-1.webp
 :width: 600
 :::
 
 Next, select **Select boot mode**.
 
-:::{figure} /_static/images/reset-password-step-2.jpg
+:::{figure} /_static/images/reset-password-step-2.webp
 :width: 600
 :::
 
 Select **Password reset**.
 
-:::{figure} /_static/images/reset-password-step-3.jpg
+:::{figure} /_static/images/reset-password-step-3.webp
 :width: 600
 :::
 
 Boot the desired VyOS version.
 
-:::{figure} /_static/images/reset-password-step-4.jpg
+:::{figure} /_static/images/reset-password-step-4.webp
 :width: 600
 :::
 

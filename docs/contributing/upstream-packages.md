@@ -48,83 +48,79 @@ The script will:
 Each package directory contains a `package.toml` file that defines the build
 parameters. The key configuration fields are:
 
+```{eval-rst}
 **name**
-
-: The package name (e.g., `frr`)
+   The package name (e.g., ``frr``)
 
 **commit_id**
-
-: The specific commit, tag, or branch to check out from the source repository
-  (e.g., `stable/10.5`)
+   The specific commit, tag, or branch to check out from the source repository
+   (e.g., ``stable/10.5``)
 
 **scm_url**
+   The Git URL of the upstream source repository
+   (e.g., ``https://github.com/FRRouting/frr.git``)
 
-: The Git URL of the upstream source repository
-  (e.g., `https://github.com/FRRouting/frr.git`)
-
+.. stop_vyoslinter
 **build_cmd**
+   The command to execute for building the package. This replaces what was
+   previously defined in the Jenkins ``Jenkinsfile``.
 
-: The command to execute for building the package. This replaces what was
-  previously defined in the Jenkins `Jenkinsfile`.
+   Default if not specified: ``dpkg-buildpackage -uc -us -tc -F --source-option=--tar-ignore=.git --source-option=--tar-ignore=.github``
 
-  Default if not specified: `dpkg-buildpackage -uc -us -tc -F --source-option=--tar-ignore=.git --source-option=--tar-ignore=.github`
+   Example with custom build command:
 
-  Example with custom build command:
+   .. code-block:: toml
 
-  ```toml
-  build_cmd = "sudo dpkg -i ../*.deb; dpkg-buildpackage -us -uc -tc -b -Ppkg.frr.rtrlib,pkg.frr.lua"
-  ```
+      build_cmd = "sudo dpkg -i ../*.deb; dpkg-buildpackage -us -uc -tc -b -Ppkg.frr.rtrlib,pkg.frr.lua"
+.. start_vyoslinter
 
 **pre_build_hook** (Optional)
+   A shell command or script that executes after the repository is checked out
+   and before the build process begins. This allows you to perform preparatory
+   tasks such as:
 
-: A shell command or script that executes after the repository is checked out
-  and before the build process begins. This allows you to perform preparatory
-  tasks such as:
+   - Creating directories
+   - Copying files
+   - Running custom setup scripts
+   - Installing dependencies
 
-  - Creating directories
-  - Copying files
-  - Running custom setup scripts
-  - Installing dependencies
+   Single command example:
 
-  Single command example:
+   .. code-block:: toml
 
-  ```toml
-  pre_build_hook = "echo 'Preparing build environment'"
-  ```
+      pre_build_hook = "echo 'Preparing build environment'"
 
-  Multi-line commands example:
+   Multi-line commands example:
 
-  ```toml
-  pre_build_hook = """
-    mkdir -p ../hello/vyos
-    mkdir -p ../vyos
-    cp example.txt ../vyos
-  """
-  ```
+   .. code-block:: toml
 
-  Combined commands and scripts:
+      pre_build_hook = """
+        mkdir -p ../hello/vyos
+        mkdir -p ../vyos
+        cp example.txt ../vyos
+      """
 
-  ```toml
-  pre_build_hook = "ls -l; ./script.sh"
-  ```
+   Combined commands and scripts:
+
+   .. code-block:: toml
+
+      pre_build_hook = "ls -l; ./script.sh"
 
 **apply_patches** (Optional)
+   Boolean flag to control whether patches should be applied. Defaults to
+   ``True``.
 
-: Boolean flag to control whether patches should be applied. Defaults to
-  `True`.
+   .. code-block:: toml
 
-  ```toml
-  apply_patches = false
-  ```
+      apply_patches = false
 
 **prepare_package** (Optional)
-
-: Boolean flag to enable package preparation. When set to `True`, the
-  `install_data` configuration is used.
+   Boolean flag to enable package preparation. When set to ``True``, the
+   ``install_data`` configuration is used.
 
 **install_data** (Optional)
-
-: Data used for package preparation when `prepare_package` is enabled.
+   Data used for package preparation when ``prepare_package`` is enabled.
+```
 
 ## Example package.toml file
 

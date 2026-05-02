@@ -2,11 +2,10 @@
 lastproofread: '2026-02-27'
 ---
 
-(vpp-config-system)=
+(vpp_config_system)=
 
 ```{include} /_include/need_improvement.txt
 ```
-
 
 # VyOS Configuration for VPP
 
@@ -84,6 +83,7 @@ removed from the kernel scheduler and will not run regular system
 processes.
 
 **Disable NMI Watchdog**
+
 The NMI (Non-Maskable Interrupt) watchdog can interfere with VPP
 performance by generating interrupts on isolated cores and is not
 compatible with nohz-full mode:

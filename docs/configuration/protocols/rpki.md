@@ -7,7 +7,7 @@
 There are two types of Network Admins who deal with BGP, those who have
 created an international incident and/or outage, and those who are lying
 
--- tweet by EvilMog, 2020-02-21
+-- [tweet by EvilMog](https://twitter.com/Evil_Mog/status/1230924170508169216), 2020-02-21
 :::
 
 {abbr}`RPKI (Resource Public Key Infrastructure)` is a framework designed to
@@ -99,6 +99,7 @@ In a nutshell, the current implementation provides the following features:
 ```{cfgcmd} set protocols rpki polling-period \<1-86400\>
 
 Define the time interval to update the local cache
+
 The default value is 300 seconds.
 ```
 

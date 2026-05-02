@@ -39,7 +39,7 @@ In both cases, we will use the following settings:
   We assume the remote router has a dynamic IP address.
 
 <figure>
-<img src="/_static/images/openvpn_site2site_diagram.jpg" />
+<img src="/_static/images/openvpn_site2site_diagram.webp" />
 </figure>
 
 ## Set up site-to-site certificates

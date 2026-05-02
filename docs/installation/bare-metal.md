@@ -32,47 +32,47 @@ motherboard).
 
 ### Pictures
 
-:::{figure} /_static/images/1u_vyos_back.jpg
+:::{figure} /_static/images/1u_vyos_back.webp
 :alt: CSE-505-203B Back
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front.jpg
+:::{figure} /_static/images/1u_vyos_front.webp
 :alt: CSE-505-203B Front
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_open_1.jpg
+:::{figure} /_static/images/1u_vyos_front_open_1.webp
 :alt: CSE-505-203B Open 1
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_open_2.jpg
+:::{figure} /_static/images/1u_vyos_front_open_2.webp
 :alt: CSE-505-203B Open 2
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_open_3.jpg
+:::{figure} /_static/images/1u_vyos_front_open_3.webp
 :alt: CSE-505-203B Open 3
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_10ge_open_1.jpg
+:::{figure} /_static/images/1u_vyos_front_10ge_open_1.webp
 :alt: CSE-505-203B w/ 10GE Open 1
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_10ge_open_2.jpg
+:::{figure} /_static/images/1u_vyos_front_10ge_open_2.webp
 :alt: CSE-505-203B w/ 10GE Open 2
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_10ge_open_3.jpg
+:::{figure} /_static/images/1u_vyos_front_10ge_open_3.webp
 :alt: CSE-505-203B w/ 10GE Open 3
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/1u_vyos_front_10ge_open_4.jpg
+:::{figure} /_static/images/1u_vyos_front_10ge_open_4.webp
 :alt: CSE-505-203B w/ 10GE Open
 :scale: 25 %
 :::
@@ -198,56 +198,56 @@ noise.
 
 #### Rack Mount
 
-:::{figure} /_static/images/apu4_rack_1.jpg
+:::{figure} /_static/images/apu4_rack_1.webp
 :alt: APU4 rack closed
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_rack_2.jpg
+:::{figure} /_static/images/apu4_rack_2.webp
 :alt: APU4 rack front
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_rack_3.jpg
+:::{figure} /_static/images/apu4_rack_3.webp
 :alt: 'APU4 rack module #1'
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_rack_4.jpg
+:::{figure} /_static/images/apu4_rack_4.webp
 :alt: 'APU4 rack module #2'
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_rack_5.jpg
+:::{figure} /_static/images/apu4_rack_5.webp
 :alt: 'APU4 rack module #3 with PSU'
 :scale: 25 %
 :::
 
 ##### VyOS custom print
 
-:::{figure} /_static/images/apu4_rack_vyos_print.jpg
+:::{figure} /_static/images/apu4_rack_vyos_print.webp
 :alt: APU4 custom VyOS powder coat
 :scale: 25 %
 :::
 
 #### Desktop / Bench Top
 
-:::{figure} /_static/images/apu4_desk_1.jpg
+:::{figure} /_static/images/apu4_desk_1.webp
 :alt: APU4 desktop closed
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_desk_2.jpg
+:::{figure} /_static/images/apu4_desk_2.webp
 :alt: APU4 desktop closed
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_desk_3.jpg
+:::{figure} /_static/images/apu4_desk_3.webp
 :alt: APU4 desktop back
 :scale: 25 %
 :::
 
-:::{figure} /_static/images/apu4_desk_4.jpg
+:::{figure} /_static/images/apu4_desk_4.webp
 :alt: APU4 desktop back
 :scale: 25 %
 :::
@@ -303,7 +303,7 @@ HDMI mode.
 
 ## Partaker i5
 
-:::{figure} ../_static/images/600px-Partaker-i5.jpg
+:::{figure} ../_static/images/600px-Partaker-i5.webp
 :::
 
 I believe this is actually the same hardware as the Protectli. I purchased it
@@ -328,10 +328,10 @@ port is eth0 and the right-most "LAN1" port is eth3.
 
 ## Acrosser AND-J190N1
 
-:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Front.jpg
+:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Front.webp
 :::
 
-:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Back.jpg
+:::{figure} ../_static/images/480px-Acrosser_ANDJ190N1_Back.webp
 :::
 
 This microbox network appliance was build to create OpenVPN bridges. It can
@@ -398,16 +398,16 @@ i3-N305 CPU and 2x 25GbE!
 
 ### Pictures
 
-:::{figure} ../_static/images/gowin-01.png
+:::{figure} ../_static/images/gowin-01.webp
 :::
 
-:::{figure} ../_static/images/gowin-02.png
+:::{figure} ../_static/images/gowin-02.webp
 :::
 
-:::{figure} ../_static/images/gowin-03.png
+:::{figure} ../_static/images/gowin-03.webp
 :::
 
-:::{figure} ../_static/images/gowin-04.png
+:::{figure} ../_static/images/gowin-04.webp
 :::
 
 ### Cooling

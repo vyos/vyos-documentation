@@ -31,7 +31,7 @@ This configuration example and the requirements consists of:
   > - Allow all new connections from local subnets.
   > - Allow connections from LANs to LANs through the tunnel.
 
-```{image} /_static/images/policy-based-ipsec-and-firewall.png
+```{image} /_static/images/policy-based-ipsec-and-firewall.webp
 ```
 
 ## Configuration

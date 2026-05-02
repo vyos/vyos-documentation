@@ -24,7 +24,7 @@ Configure agent IP address associated with this interface.
 
 ```{cfgcmd} set system sflow interface \<interface\>
 
-Configure and enable collection of flow information for the interface identified by <interface>.
+Configure and enable collection of flow information for the interface identified by \<interface\>.
 
 You can configure multiple interfaces which would participate in sflow accounting.
 ```
@@ -42,7 +42,7 @@ Use this command to configure the sampling rate for sFlow accounting (default: 1
 
 ```{cfgcmd} set system sflow server \<address\> port \<port\>
 
-Configure address of sFlow collector. sFlow server at <address> can be both listening on an IPv4 or IPv6 address.
+Configure address of sFlow collector. sFlow server at \<address\> can be both listening on an IPv4 or IPv6 address.
 ```
 
 

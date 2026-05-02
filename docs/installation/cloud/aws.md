@@ -10,45 +10,45 @@ Deploy VyOS on Amazon {abbr}`AWS (Amazon Web Services)`.
 
 1. Click **Instances** and then click **Launch Instance**.
 
-:::{figure} /_static/images/cloud-aws-01.png
+:::{figure} /_static/images/cloud-aws-01.webp
 :::
 
 2. Search for "VyOS" in the Marketplace.
 
-:::{figure} /_static/images/cloud-aws-02.png
+:::{figure} /_static/images/cloud-aws-02.webp
 :::
 
 3. Choose the instance type. The recommended minimum is `m3.medium`.
 
-:::{figure} /_static/images/cloud-aws-03.png
+:::{figure} /_static/images/cloud-aws-03.webp
 :::
 
 4. Configure the instance for your requirements. Select the number of
    instances, network, and subnet.
 
-:::{figure} /_static/images/cloud-aws-04.png
+:::{figure} /_static/images/cloud-aws-04.webp
 :::
 
 5. Configure additional storage. You can remove the additional storage
    `/dev/sdb`. The root device will be `/dev/xvda`. You can skip this step.
 
-:::{figure} /_static/images/cloud-aws-05.png
+:::{figure} /_static/images/cloud-aws-05.webp
 :::
 
 6. Configure the security group. We recommend configuring SSH access
    only from specific sources, or you can permit any IP address (the default).
 
-:::{figure} /_static/images/cloud-aws-06.png
+:::{figure} /_static/images/cloud-aws-06.webp
 :::
 
 7. Select the SSH key pair and click **Launch Instances**.
 
-:::{figure} /_static/images/cloud-aws-07.png
+:::{figure} /_static/images/cloud-aws-07.webp
 :::
 
 8. Note your public IP address.
 
-:::{figure} /_static/images/cloud-aws-08.png
+:::{figure} /_static/images/cloud-aws-08.webp
 :::
 
 9. Connect to the instance using your SSH key.

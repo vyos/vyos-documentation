@@ -94,7 +94,7 @@ used to deploy VyOS on KVM environments. This image includes cloud-init
 support. See {ref}`cloud-init` for more information.
 :::
 
-:::{figure} /_static/images/vyosnew-downloads.png
+:::{figure} /_static/images/vyosnew-downloads.webp
 :::
 
 ### Building from source

@@ -178,7 +178,7 @@ The result of wrong value selection can be unstable work of the VPN.
 Below flow-chart could be a quick reference for the close-action
 combination depending on how the peer is configured.
 
-:::{figure} /_static/images/IPSec_close_action_settings.png
+:::{figure} /_static/images/IPSec_close_action_settings.webp
 :::
 
 Similar combinations are applicable for the dead-peer-detection.

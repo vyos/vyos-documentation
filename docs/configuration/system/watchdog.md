@@ -77,7 +77,6 @@ set system watchdog module softdog
 ```
 
 ```{cfgcmd} set system watchdog timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout for normal runtime operation in seconds.
@@ -102,7 +101,6 @@ set system watchdog timeout 30
 ```
 
 ```{cfgcmd} set system watchdog shutdown-timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout during system shutdown in seconds.
@@ -126,7 +124,6 @@ set system watchdog shutdown-timeout 180
 ```
 
 ```{cfgcmd} set system watchdog reboot-timeout \<seconds\>
-
 :defaultvalue:
 
 Set the watchdog timeout during system reboot in seconds.

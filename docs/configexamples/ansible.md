@@ -11,7 +11,7 @@ We have four pre-configured routers with this configuration:
 
 Using the general schema for example:
 
-<img src="/_static/images/ansible.png" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
+<img src="/_static/images/ansible.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
 We have four pre-configured routers with this configuration:
 

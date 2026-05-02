@@ -16,11 +16,7 @@ vyos@vyos:~$ show system acceleration qat
 01:00.0 Co-processor [0b40]: Intel Corporation Atom Processor C3000 Series QuickAssist Technology [8086:19e2] (rev 11)
 :::
 
-if there is non device the command will show \`No QAT device found\`
-
-:::{code-block} none
-`No QAT device found`
-:::
+if there is non device the command will show `` `No QAT device found` ``
 ```
 
 ```{cfgcmd} set system acceleration qat
