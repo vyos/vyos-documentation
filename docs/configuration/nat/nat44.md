@@ -258,7 +258,6 @@ Example:
 set nat source rule 20 translation address 100.64.0.1
 set nat source rule 30 translation address 'masquerade'
 set nat source rule 40 translation address 100.64.0.10-100.64.0.20
-
 ```
 
 #### Destination Address
@@ -273,7 +272,6 @@ Example:
 
 ```none
 set nat destination rule 10 translation address 192.0.2.10
-
 ```
 
 Also, in {ref}`destination-nat`, redirection to localhost is supported.
@@ -284,7 +282,6 @@ Example of redirection:
 
 ```none
 set nat destination rule 10 translation redirect port 22
-
 ```
 
 ### NAT Load Balance
@@ -438,7 +435,6 @@ set nat source rule 110 outbound-interface name 'eth0.10'
 set nat source rule 110 protocol 'tcp'
 set nat source rule 110 source address '192.0.2.0/24'
 set nat source rule 110 translation address 'masquerade'
-
 ```
 
 Which results in a configuration of:
@@ -491,7 +487,6 @@ vyos@vyos# show nat
          }
      }
  }
-
 ```
 
 ### Destination NAT
@@ -521,7 +516,6 @@ set nat destination rule 10 destination port '80'
 set nat destination rule 10 inbound-interface name 'eth0'
 set nat destination rule 10 protocol 'tcp'
 set nat destination rule 10 translation address '192.168.0.100'
-
 ```
 
 Which would generate the following NAT destination configuration:
@@ -544,7 +538,6 @@ nat {
         }
     }
 }
-
 ```
 :::{note}
 If forwarding traffic to a different port than it is arriving
@@ -571,7 +564,6 @@ rule, using `connection-status` matcher:
 set firewall ipv4 forward filter rule 10 action accept
 set firewall ipv4 forward filter rule 10 connection-status nat destination
 set firewall ipv4 forward filter rule 10 state new
-
 ```
 
 This would generate the following configuration:
@@ -590,7 +582,6 @@ ipv4 {
         }
     }
 }
-
 ```
 
 ### 1-to-1 NAT
@@ -623,7 +614,6 @@ set nat source rule 2000 description '1-to-1 NAT example'
 set nat source rule 2000 outbound-interface name 'eth1'
 set nat source rule 2000 source address '192.168.1.10'
 set nat source rule 2000 translation address '192.0.2.30'
-
 ```
 
 Firewall rules are written as normal, using the internal IP address as
@@ -655,7 +645,6 @@ set nat destination rule 10 load-balance backend 198.51.100.101 weight 30
 set nat destination rule 10 load-balance backend 198.51.100.102 weight 20
 set nat destination rule 10 load-balance backend 198.51.100.103 weight 15
 set nat destination rule 10 load-balance backend 198.51.100.104 weight 35
-
 ```
 
 Second scenario: apply source NAT for all outgoing connections from
@@ -669,7 +658,6 @@ set nat source rule 10 load-balance hash random
 set nat source rule 10 load-balance backend 192.0.2.251 weight 33
 set nat source rule 10 load-balance backend 192.0.2.252 weight 33
 set nat source rule 10 load-balance backend 192.0.2.253 weight 34
-
 ```
 
 #### Example Network
@@ -705,7 +693,6 @@ We only need a single step for this interface:
 
 ```none
 set interfaces dummy dum0 address '172.29.41.89/32'
-
 ```
 
 ##### NAT Configuration
@@ -719,7 +706,6 @@ set nat source rule 120 description 'Internal to ASP'
 set nat source rule 120 destination address '10.125.0.0/16'
 set nat source rule 120 source address '192.168.43.0/24'
 set nat source rule 120 translation address '172.29.41.89'
-
 ```
 
 ##### IPSec IKE and ESP
@@ -750,7 +736,6 @@ set vpn ipsec esp-group my-esp proposal 1 encryption 'aes256'
 set vpn ipsec esp-group my-esp proposal 1 hash 'sha256'
 
 set vpn ipsec interface 'eth1'
-
 ```
 
 ##### IPSec VPN Tunnels
@@ -778,7 +763,6 @@ set vpn ipsec site-to-site peer branch tunnel 0 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 0 remote prefix '172.27.1.0/24'
 set vpn ipsec site-to-site peer branch tunnel 1 local prefix '172.29.41.89/32'
 set vpn ipsec site-to-site peer branch tunnel 1 remote prefix '10.125.0.0/16'
-
 ```
 
 ##### Testing and Validation
@@ -799,7 +783,6 @@ Peer ID / IP                            Local ID / IP
     ------  -----  -------------  -------  ----    -----  ------  ------  -----
     0       up     0.0/0.0        aes256   sha256  no     1647    3600    all
     1       up     0.0/0.0        aes256   sha256  no     865     3600    all
-
 ```
 
 That looks good - we defined 2 tunnels and they're both up and running.
