@@ -85,6 +85,19 @@ gettext_uuid = False
 # This pattern also affects html_static_path and html_extra_path .
 exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
 
+# MyST-Parser configuration
+myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "substitution"]
+myst_fence_as_directive = ["cfgcmd", "opcmd", "cmdincludemd"]
+
+# Incremental RST→MyST swap: extend exclude_patterns with the RST paths that
+# swap_sources.py just hid behind their md-prefixed counterparts.
+import pathlib
+_build = pathlib.Path(__file__).parent / '_build'
+if (_build / '_swap_state.json').exists() and (_build / '_swap_exclude.txt').exists():
+    exclude_patterns.extend(
+        s for s in (line.strip() for line in (_build / '_swap_exclude.txt').read_text().splitlines()) if s
+    )
+
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
@@ -193,5 +206,14 @@ texinfo_documents = [
 ]
 
 
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders so MyST pages
+    can use webp without falling back to PDF/PNG fallbacks."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
+
+
 def setup(app):
-    pass
+    app.connect('builder-inited', _prefer_webp)
