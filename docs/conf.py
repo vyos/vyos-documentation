@@ -100,9 +100,9 @@ todo_include_todos = True
 #
 html_theme = "sphinx_rtd_theme"
 
-html_baseurl = 'https://docs.vyos.io/en/lts/'
+html_baseurl = 'https://docs.vyos.io/en/1.5/'
 
-# sphinx-sitemap: baseurl already includes /en/lts/, so skip lang+version
+# sphinx-sitemap: baseurl already includes /en/1.5/, so skip lang+version
 sitemap_url_scheme = '{link}'
 
 # sphinx-llms-txt: disable auto-generated llms.txt, keep curated render via setup
