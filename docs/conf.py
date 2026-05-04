@@ -48,7 +48,9 @@ extensions = ['sphinx.ext.intersphinx',
               'autosectionlabel',
               'myst_parser',
               'sphinx_design',
-              'vyos'
+              'vyos',
+              'sphinx_llms_txt',
+              'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -97,6 +99,15 @@ todo_include_todos = True
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
+
+html_baseurl = 'https://docs.vyos.io/en/sagitta/'
+
+# sphinx-sitemap: baseurl already includes /en/sagitta/, so skip lang+version
+sitemap_url_scheme = '{link}'
+
+# sphinx-llms-txt: disable auto-generated llms.txt, keep curated render via setup
+# hook; llms-full.txt is still auto-generated
+llms_txt_file = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -193,5 +204,20 @@ texinfo_documents = [
 ]
 
 
+def _write_llms_txt(app, exception):
+    if exception is not None or app.builder.name != 'html':
+        return
+    from pathlib import Path
+    from jinja2 import Template
+    tpl_path = Path(app.srcdir) / '_templates' / 'llms.txt.j2'
+    out_path = Path(app.outdir) / 'llms.txt'
+    baseurl = (app.config.html_baseurl or '').rstrip('/') + '/'
+    rendered = Template(tpl_path.read_text(encoding='utf-8')).render(
+        baseurl=baseurl,
+        release=app.config.release,
+    )
+    out_path.write_text(rendered, encoding='utf-8')
+
+
 def setup(app):
-    pass
+    app.connect('build-finished', _write_llms_txt)
