@@ -152,10 +152,10 @@ In firewall bridge rules, the action can be:
 ```{eval-rst}
 .. cfgcmd:: set firewall bridge name <name> rule <1-999999>
    jump-target <text>
-
-   If action is set to ``queue``, use next command to specify the queue
-   target. Range is also supported:
 ```
+
+If action is set to ``queue``, use next command to specify the queue
+target. Range is also supported:
 
 ```{eval-rst}
 .. cfgcmd:: set firewall bridge forward filter rule <1-999999>
@@ -640,7 +640,7 @@ described in this section:
 ### Packet Modifications
 
 Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-packets before they are sent out. This feaure provides more flexibility in
+packets before they are sent out. This feature provides more flexibility in
 packet handling.
 
 ```{eval-rst}

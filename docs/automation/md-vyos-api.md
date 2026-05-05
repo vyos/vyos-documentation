@@ -515,7 +515,7 @@ request, for example:
 
 ```none
 curl -k --location --request POST 'https://vyos/config-file' \
---form data='{"op": "merge", "string": "interfaces {\nethernet eth1 {\naddress "192.168.2.137/24"\ndescription "test"\n}\n}\n"}' \
+--form data='{"op": "merge", "string": "interfaces {\nethernet eth1 {\naddress \"192.168.2.137/24\"\ndescription \"test\"\n}\n}\n"}' \
 --form key='MY-HTTPS-API-PLAINTEXT-KEY'
 
 response:
@@ -536,7 +536,7 @@ int > 0. An example follows, in the alternative JSON format, for brevity,
 although the standard form-data format is fine:
 
 ```none
-curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "merge", "string": "interfaces {\nethernet eth1 {\naddress '192.168.137.1/24'\ndescription 'internal'\n}\n}\n", "confirm_time": 1}' https://vyos/config-file
+curl -k -X POST -d '{"key": "MY-HTTPS-API-PLAINTEXT-KEY", "op": "merge", "string": "interfaces {\nethernet eth1 {\naddress \"192.168.137.1/24\"\ndescription \"internal\"\n}\n}\n", "confirm_time": 1}' https://vyos/config-file
 
 response:
 {

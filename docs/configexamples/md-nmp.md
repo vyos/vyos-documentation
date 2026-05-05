@@ -25,7 +25,7 @@ set service snmp community router network '0.0.0.0/0'
 
 ## Configuration 'NMP'
 
-Next, you just should follow the pictures:
+Next, you should just follow the pictures:
 
 <img src="/_static/images/nmp1.webp" class="align-center" style="width:80.0%" alt="Network Topology Diagram" />
 
