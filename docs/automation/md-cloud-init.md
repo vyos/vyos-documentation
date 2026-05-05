@@ -369,14 +369,10 @@ From cli or GUI, power on VM, and after it boots, verify configuration
 
 ### References
 
-- VyOS [cloud-init-docs].
 - Cloud-init [network-config-docs].
 - Proxmox [Cloud-init-Support].
 
-
-
-[cloud-init-docs]: https://docs.vyos.io/en/equuleus/automation/cloud-init.html?highlight=cloud-init#vyos-cloud-init
-[cloud-init-support]: https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init
+[cloud-init-support]: <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init>
 [cloud-init-write_files]: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files
 [network-config-docs]: https://cloudinit.readthedocs.io/en/latest/topics/network-config.html
 [nocloud]: https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html

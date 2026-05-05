@@ -91,7 +91,7 @@ packet is processed at the **IP Layer**:
 >   **input** (for example response to an ssh login attempt to the router).
 >   This includes ipv4 and ipv6 rules, and two different sections are present:
 >
->   - **Output Prerouting**: `set firewall [ipv4 | ipv6] output filter ...`.
+>   - **Output Prerouting**: `set firewall [ipv4 | ipv6] output raw ...`.
 >     As described in **Prerouting**, rules defined in this section are
 >     processed before connection tracking subsystem.
 >   - **Output Filter**: `set firewall [ipv4 | ipv6] output filter ...`.
@@ -100,7 +100,7 @@ packet is processed at the **IP Layer**:
 >   different parts of VyOS configuration are performed in this
 >   stage. This includes:
 >
->   - **Source NAT**: rules defined under `set [nat | nat66] destination...`.
+>   - **Source NAT**: rules defined under `set [nat | nat66] source...`.
 
 If the interface where the packet was received is part of a bridge, then
 the packet is processed at the **Bridge Layer**:

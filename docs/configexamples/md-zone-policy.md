@@ -284,6 +284,7 @@ ipv6-name dmz-wan-6 {
     log enable
     state {
       invalid enable
+    }
   }
   rule 100 {
     action accept
