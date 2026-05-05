@@ -220,12 +220,17 @@ def _prefer_webp(app):
 
 
 def _copy_md_sources(app, exception):
-    """Copy .md source files verbatim into the HTML output tree."""
+    """Copy .md source files verbatim into the HTML output tree.
+
+    Skips md-*.md staging files (pre-swap originals that are not public).
+    """
     if exception is not None:
         return
     src = pathlib.Path(app.srcdir)
     out = pathlib.Path(app.outdir)
     for path in src.rglob("*.md"):
+        if path.name.startswith("md-"):
+            continue
         dest = out / path.relative_to(src)
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, dest)
