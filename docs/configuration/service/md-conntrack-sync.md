@@ -25,7 +25,7 @@ will be mandatorily defragmented.
 
 It is possible to use either Multicast or Unicast to sync conntrack traffic.
 Most examples below show Multicast, but unicast can be specified by using the
-"peer" keyword after the specificed interface, as in the following example:
+"peer" keyword after the specified interface, as in the following example:
 
 `set service conntrack-sync interface eth0 peer 192.168.0.250`
 

@@ -122,7 +122,7 @@ set protocols isis segment-routing prefix \<address\> index value
 
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
-identify it
+identifies it
 
 </div>
 
@@ -245,7 +245,7 @@ set protocols ospf segment-routing prefix \<address\> index value
 
 A segment ID that contains an IP address prefix calculated by an IGP in the
 service provider core network. Prefix SIDs are globally unique, this value
-identify it
+identifies it
 
 </div>
 
