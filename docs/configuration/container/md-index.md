@@ -4,7 +4,7 @@ lastproofread
 # Container
 
 The VyOS container implementation is based on <span class="title-ref">Podman\<https://podman.io/\></span> as
-a deamonless container engine.
+a daemonless container engine.
 
 ## Configuration
 
@@ -350,7 +350,7 @@ Both IPv4 and IPv6 can be used in parallel.
 
 <div class="cfgcmd">
 
-set container network \<name\> vrf \<nme\>
+set container network \<name\> vrf \<name\>
 
 Bind container network to a given VRF instance.
 

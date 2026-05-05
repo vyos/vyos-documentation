@@ -70,7 +70,7 @@ packetis processed at the **IP Layer**:
 >   different parts of VyOS configuration are performed in this
 >   stage. This includes:
 >
->   - **Source NAT**: rules defined under `set [nat | nat66] destination...`.
+>   - **Source NAT**: rules defined under `set [nat | nat66] source...`.
 
 If the interface where the packet was received is part of a bridge, then
 the packet is processed at the **Bridge Layer**, which contains a basic setup for
