@@ -310,7 +310,7 @@ Set the maximum number of TCP half-open connections.
 
 <div class="cfgcmd" defaultvalue="">
 
-set system conntrack tcp loose \<enabled | disable\>
+set system conntrack tcp loose \<enable | disable\>
 
 Policy to track previously established connections.
 
