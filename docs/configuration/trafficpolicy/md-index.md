@@ -1457,7 +1457,7 @@ set qos policy shaper \<policy-name\> class \<class-ID\> burst
 \<bytes\>
 
 Use this command to configure a Shaper policy, set its name, define
-a class and set the size of the [tocken bucket](https://en.wikipedia.org/wiki/Token_bucket) in bytes, which will
+a class and set the size of the [token bucket](https://en.wikipedia.org/wiki/Token_bucket) in bytes, which will
 be available to be sent at ceiling speed (default: 15Kb).
 
 </div>

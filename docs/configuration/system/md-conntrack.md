@@ -77,9 +77,9 @@ set system conntrack modules sqlnet
 set system conntrack modules tftp
 
 Configure the connection tracking protocol helper modules.
-All modules are enable by default.
+All modules are enabled by default.
 
-Use <span class="title-ref">delete system conntrack modules</span> to deactive all modules.\
+Use <span class="title-ref">delete system conntrack modules</span> to deactivate all modules.\
 Or, for example ftp, <span class="title-ref">delete system conntrack modules ftp</span>.
 
 </div>
@@ -310,7 +310,7 @@ Set the maximum number of TCP half-open connections.
 
 <div class="cfgcmd" defaultvalue="">
 
-set system conntrack tcp loose \<enable | disable\>
+set system conntrack tcp loose \<enabled | disable\>
 
 Policy to track previously established connections.
 

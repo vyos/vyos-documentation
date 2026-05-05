@@ -96,7 +96,7 @@ port.
 set service console-server device \<device\> ssh port \<port\>
 
 Accept SSH connections for the given <span class="title-ref">\<device\></span> on TCP port <span class="title-ref">\<port\></span>.
-After successfull authentication the user will be directly dropped to
+After successful authentication the user will be directly dropped to
 the connected serial device.
 
 <div class="hint">

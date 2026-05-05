@@ -25,7 +25,7 @@ Configure proxy port if it does not listen to the default port 80.
 
 set system proxy username \<username\>
 
-Some proxys require/support the "basic" HTTP authentication scheme as per
+Some proxies require/support the "basic" HTTP authentication scheme as per
 `7617`, thus a username can be configured.
 
 </div>
@@ -34,7 +34,7 @@ Some proxys require/support the "basic" HTTP authentication scheme as per
 
 set system proxy password \<password\>
 
-Some proxys require/support the "basic" HTTP authentication scheme as per
+Some proxies require/support the "basic" HTTP authentication scheme as per
 `7617`, thus a password can be configured.
 
 </div>

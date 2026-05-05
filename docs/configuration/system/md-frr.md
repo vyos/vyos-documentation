@@ -14,7 +14,7 @@ Enable `BMP (BGP Monitoring Protocol)` support
 
 <div class="cfgcmd">
 
-set system frr descriptors \<numer\>
+set system frr descriptors \<number\>
 
 This allows the operator to control the number of open file descriptors
 each daemon is allowed to start with. If the operator plans to run bgp with

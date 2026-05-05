@@ -109,7 +109,7 @@ Local IP addresses to listen on
 
 set service monitoring telegraf prometheus-client metric-version \<1 | 2\>
 
-Metris version, the default is `2`
+Metrics version, the default is `2`
 
 </div>
 
