@@ -111,11 +111,18 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
+_rtd_version_type = os.environ.get('READTHEDOCS_VERSION_TYPE', '')
+_github_version = (
+    os.environ.get('READTHEDOCS_GIT_COMMIT_HASH', 'circinus')
+    if _rtd_version_type == 'external'
+    else os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'circinus')
+)
+
 html_context = {
     'display_github': True,
     'github_user': 'vyos',
     'github_repo': 'vyos-documentation',
-    'github_version': os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'circinus'),
+    'github_version': _github_version,
     'conf_py_path': '/docs/',
 }
 
