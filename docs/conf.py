@@ -218,22 +218,27 @@ texinfo_documents = [
 def _prefer_webp(app):
     """Prepend WebP to supported image types for HTML builders so MyST pages
     can use webp without falling back to PDF/PNG fallbacks."""
-    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+    if app.builder.name in ('html', 'dirhtml'):
         types = app.builder.supported_image_types
         if 'image/webp' not in types:
             app.builder.supported_image_types = ['image/webp'] + types
 
 
 def _copy_md_sources(app, exception):
-    """Copy .md source files verbatim into the HTML output tree."""
+    """Copy .md source files verbatim into the HTML output tree.
+
+    md-prefixed staging files are excluded — they are never meant to be served.
+    """
     if exception is not None:
         return
     src = pathlib.Path(app.srcdir)
     out = pathlib.Path(app.outdir)
-    for path in src.rglob("*.md"):
-        dest = out / path.relative_to(src)
+    for md_path in src.rglob("*.md"):
+        if md_path.name.startswith("md-"):
+            continue
+        dest = out / md_path.relative_to(src)
         dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(path, dest)
+        shutil.copy2(md_path, dest)
 
 
 def setup(app):
