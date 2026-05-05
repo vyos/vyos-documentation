@@ -113,9 +113,9 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
-html_baseurl = 'https://docs.vyos.io/en/latest/'
+html_baseurl = 'https://docs.vyos.io/en/1.5/'
 
-# sphinx-sitemap: baseurl already includes /en/latest/, so skip lang+version
+# sphinx-sitemap: baseurl already includes /en/1.5/, so skip lang+version
 sitemap_url_scheme = '{link}'
 
 # sphinx-llms-txt: disable auto-generated llms.txt, keep curated one from
