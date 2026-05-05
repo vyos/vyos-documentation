@@ -1137,7 +1137,7 @@ the higher the priority.
    <bytes>
 
    Use this command to configure a Shaper policy, set its name, define
-   a class and set the size of the `tocken bucket`_ in bytes, which will
+   a class and set the size of the `token bucket`_ in bytes, which will
    be available to be sent at ceiling speed (default: 15Kb).
 ```
 
@@ -1400,4 +1400,4 @@ which can be solved with `sudo ip link delete ifb0`.
 [intermediate functional block]: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
 [tc]: https://en.wikipedia.org/wiki/Tc_(Linux)
 [that can give you a great deal of flexibility]: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
-[tocken bucket]: https://en.wikipedia.org/wiki/Token_bucket
+[token bucket]: https://en.wikipedia.org/wiki/Token_bucket

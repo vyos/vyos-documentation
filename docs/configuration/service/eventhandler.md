@@ -77,7 +77,7 @@ can pass variables, arguments, and a full matching string to the script.
 % This is an optional command. Adds arguments to the script.
 % Arguments must be separated by spaces.
 %
-% .. note:: We don't recommend to use arguments. Using environments
+% .. note:: We don't recommend using arguments. Using environments
 %    is more preferable.
 
 ## Example

@@ -131,14 +131,14 @@ perform by itself at a later point.
 Examples:
 
 - `force arp request interface eth1 address 10.3.0.2` — send a
-  gratuitious ARP request.
+  gratuitous ARP request.
 - `force root-partition-auto-resize` — grow the root filesystem to
   the size of the system partition (this is also done on startup, but
   this command can do it without a reboot).
 
 #### execute
 
-"Execute" commands are for executing various diagnostic and auxilliary
+"Execute" commands are for executing various diagnostic and auxiliary
 actions that the system would never perform by itself.
 
 Examples:
