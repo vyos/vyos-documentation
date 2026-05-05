@@ -97,7 +97,7 @@ a service name appears in journald logs. You can pass variables, arguments, and 
 >
 > </div>
 >
-> We don't recomend using arguments. Using environments is more preffereble.
+> We don't recommend using arguments. Using environments is more preferable.
 >
 > </div>
 
