@@ -111,6 +111,14 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
+html_context = {
+    'display_github': True,
+    'github_user': 'vyos',
+    'github_repo': 'vyos-documentation',
+    'github_version': os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'circinus'),
+    'conf_py_path': '/docs/',
+}
+
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #
