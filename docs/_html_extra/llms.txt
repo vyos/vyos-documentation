@@ -2,7 +2,7 @@
 
 > VyOS is a free, open-source network operating system based on Debian GNU/Linux.
 > It provides routing, firewall, and VPN functionality via a unified CLI using
-> `set`/`delete`/`show` command hierarchy. Current LTS release is 1.5.x (circinus).
+> `set`/`delete`/`show` command hierarchy. This documentation covers 1.5.x (circinus).
 
 VyOS configuration follows a tree structure. All configuration commands start with
 `set` (to add/change) or `delete` (to remove). Changes are staged and applied with
