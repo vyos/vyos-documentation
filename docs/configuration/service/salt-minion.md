@@ -54,5 +54,5 @@ URL with signature of master for auth reply verification
 
 </div>
 
-Please take a look in the Automation section to find some usefull
+Please take a look in the Automation section to find some useful
 Examples.

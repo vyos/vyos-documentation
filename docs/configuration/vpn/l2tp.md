@@ -187,7 +187,7 @@ e.g. the loopback interface.
 
 set vpn l2tp remote-access authentication radius source-address \<address\>
 
-Source IPv4 address used in all RADIUS server queires.
+Source IPv4 address used in all RADIUS server queries.
 
 </div>
 
@@ -300,7 +300,7 @@ in DM/CoA requests. Also DM/CoA server will bind to that address.
 
 set vpn l2tp remote-access authentication radius source-address \<address\>
 
-Source IPv4 address used in all RADIUS server queires.
+Source IPv4 address used in all RADIUS server queries.
 
 </div>
 
@@ -442,7 +442,7 @@ Specifies IPv6 negotiation preference.
 set vpn l2tp remote-access client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\>
 mask \<number-of-bits\>
 
-Use this comand to set the IPv6 address pool from which an l2tp client will
+Use this command to set the IPv6 address pool from which an l2tp client will
 get an IPv6 prefix of your defined length (mask) to terminate the l2tp
 endpoint at their side. The mask length can be set between 48 and 128 bits
 long, the default value is 64.
