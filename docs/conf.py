@@ -13,6 +13,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
 sys.path.append(os.path.abspath("./_ext"))
 
@@ -48,7 +49,7 @@ extensions = ['sphinx.ext.intersphinx',
               'autosectionlabel',
               'myst_parser',
               'sphinx_design',
-              'vyos'
+              'vyos',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,12 +58,14 @@ templates_path = ['_templates']
 # autosectionlabel
 autosectionlabel_prefix_document = True
 
-
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
 source_suffix = ['.rst', '.md']
+
+myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "substitution"]
+myst_fence_as_directive = ["cfgcmd", "opcmd", "cmdincludemd"]
 
 # The master toctree document.
 master_doc = 'index'
@@ -79,11 +82,20 @@ locale_dirs = ['_locale/']
 gettext_compact = True
 gettext_uuid = False
 
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
+exclude_patterns = [
+    u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x',
+    'md-*.md', '**/md-*.md',
+]
+
+import pathlib
+_build = pathlib.Path(__file__).parent / '_build'
+if (_build / '_swap_state.json').exists() and (_build / '_swap_exclude.txt').exists():
+    exclude_patterns.extend(
+        s for s in (line.strip() for line in (_build / '_swap_exclude.txt').read_text().splitlines()) if s
+    )
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -138,18 +150,22 @@ html_context = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/images/vyos-logo.png'
+html_logo = '_static/images/vyos-logo.webp'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 html_favicon = '_static/images/vyos-logo-icon.png'
 
+# The "title" for HTML documentation generated with Sphinx's own templates.
+# This is appended to the `<title>` tag of individual pages, and used
+# in the navigation bar as the "topmost" element.
+html_title = f'{project} rolling release (current)'
+
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'VyOSdoc'
-
 
 # -- Options fo_r LaTeX output ------------------------------------------------
 
@@ -195,7 +211,6 @@ man_pages = [
      [author], 1)
 ]
 
-
 # -- Options for Texinfo output ----------------------------------------------
 
 # Grouping the document tree into Texinfo files. List of tuples
@@ -207,6 +222,24 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
+
+def _copy_md_sources(app, exception):
+    """Copy .md source files verbatim into the HTML output tree."""
+    if exception is not None:
+        return
+    src = pathlib.Path(app.srcdir)
+    out = pathlib.Path(app.outdir)
+    for path in src.rglob("*.md"):
+        dest = out / path.relative_to(src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, dest)
 
 def setup(app):
-    pass
+    app.connect('builder-inited', _prefer_webp)
+    app.connect('build-finished', _copy_md_sources)
