@@ -34,7 +34,9 @@ RUN pip3 install --break-system-packages \
     sphinx-notfound-page \
     lxml \
     myst-parser \
-    sphinx_design
+    sphinx_design \
+    sphinx-llms-txt \
+    sphinx-sitemap
 
 # Cleanup
 RUN rm -rf /var/lib/apt/lists/*
