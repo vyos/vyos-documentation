@@ -8,7 +8,12 @@
             data-blockingmode="auto"
             type="text/javascript"></script>
 
-    {# Google Consent Mode v2 defaults — deny everything until Cookiebot fires the update #}
+    {# Google Consent Mode v2 defaults — deny everything until Cookiebot
+       fires the consent update. Cookiebot's uc.js with data-blockingmode="auto"
+       automatically pushes gtag('consent','update', …) into dataLayer when
+       the visitor accepts/declines categories in the CMP banner; no in-repo
+       update logic is required. Categories are mapped via the Cookiebot
+       admin UI, not here. See https://www.cookiebot.com/en/google-consent-mode/ #}
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
