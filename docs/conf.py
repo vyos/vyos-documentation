@@ -13,6 +13,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
 sys.path.append(os.path.abspath("./_ext"))
 
@@ -48,7 +49,9 @@ extensions = ['sphinx.ext.intersphinx',
               'autosectionlabel',
               'myst_parser',
               'sphinx_design',
-              'vyos'
+              'vyos',
+              'sphinx_llms_txt',
+              'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -63,6 +66,9 @@ autosectionlabel_prefix_document = True
 #
 # source_suffix = ['.rst', '.md']
 source_suffix = ['.rst', '.md']
+
+myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "substitution"]
+myst_fence_as_directive = ["cfgcmd", "opcmd", "cmdincludemd"]
 
 # The master toctree document.
 master_doc = 'index'
@@ -83,7 +89,17 @@ gettext_uuid = False
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
+exclude_patterns = [
+    u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x',
+    'md-*.md', '**/md-*.md',
+]
+
+import pathlib
+_build = pathlib.Path(__file__).parent / '_build'
+if (_build / '_swap_state.json').exists() and (_build / '_swap_exclude.txt').exists():
+    exclude_patterns.extend(
+        s for s in (line.strip() for line in (_build / '_swap_exclude.txt').read_text().splitlines()) if s
+    )
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -111,6 +127,8 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
+html_baseurl = 'https://docs.vyos.io/en/1.5/'
+
 _rtd_version_type = os.environ.get('READTHEDOCS_VERSION_TYPE', '')
 _github_version = (
     os.environ.get('READTHEDOCS_GIT_COMMIT_HASH', 'circinus')
@@ -126,6 +144,13 @@ html_context = {
     'conf_py_path': '/docs/',
 }
 
+# sphinx-sitemap: baseurl already includes /en/1.5/, so skip lang+version
+sitemap_url_scheme = '{link}'
+
+# sphinx-llms-txt: disable auto-generated llms.txt, keep curated one from
+# _html_extra; llms-full.txt is still auto-generated
+llms_txt_file = False
+
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #
@@ -138,7 +163,7 @@ html_context = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/images/vyos-logo.png'
+html_logo = '_static/images/vyos-logo.webp'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -213,5 +238,26 @@ texinfo_documents = [
 ]
 
 
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
+
+
+def _copy_md_sources(app, exception):
+    """Copy .md source files verbatim into the HTML output tree."""
+    if exception is not None:
+        return
+    src = pathlib.Path(app.srcdir)
+    out = pathlib.Path(app.outdir)
+    for path in src.rglob("*.md"):
+        dest = out / path.relative_to(src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, dest)
+
+
 def setup(app):
-    pass
+    app.connect('builder-inited', _prefer_webp)
+    app.connect('build-finished', _copy_md_sources)
