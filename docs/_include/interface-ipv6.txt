@@ -1,4 +1,7 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 address autoconf
 
   :abbr:`SLAAC (Stateless Address Autoconfiguration)` :rfc:`4862`. IPv6 hosts
@@ -9,9 +12,11 @@
   its configuration parameters; routers respond to such a request with a router
   advertisement packet that contains Internet Layer configuration parameters.
 
-  .. note:: This method automatically disables IPv6 traffic forwarding on the
-    interface in question.
+  :::{note}
+  This method automatically disables IPv6 traffic forwarding on the
 
+  interface in question.
+  :::
   Example:
 
   .. code-block:: none
@@ -19,7 +24,10 @@
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address autoconf
 
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 address eui64 <prefix>
 
   :abbr:`EUI-64 (64-Bit Extended Unique Identifier)` as specified in
@@ -31,7 +39,10 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address eui64 2001:db8:beef::/64
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 address no-default-link-local
 
   Do not assign a link-local IPv6 address to this interface.
@@ -42,7 +53,10 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 address no-default-link-local
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 disable-forwarding
 
   Configure interface-specific Host/Router behaviour. If set, the interface will
@@ -54,7 +68,10 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 disable-forwarding
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 adjust-mss <mss | clamp-mss-to-pmtu>
 
   As Internet wide PMTU discovery rarely works, we sometimes need to clamp our
@@ -62,16 +79,23 @@
   a SYN packet. By setting the MSS value, you are telling the remote side
   unequivocally 'do not try to send me packets bigger than this value'.
 
-  .. note:: This command was introduced in VyOS 1.4 - it was previously called:
-    ``set firewall options interface <name> adjust-mss6 <value>``
+  :::{note}
+  This command was introduced in VyOS 1.4 - it was previously called:
 
-  .. hint:: MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in
-    1432 bytes on a 1492 byte MTU.
+  ``set firewall options interface <name> adjust-mss6 <value>``
+  :::
+  :::{hint}
+  MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in
 
+  1432 bytes on a 1492 byte MTU.
+  :::
   Instead of a numerical MSS value `clamp-mss-to-pmtu` can be used to
   automatically set the proper value.
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 accept-dad <1-3>
 
   Whether to accept DAD (Duplicate Address Detection).
@@ -86,7 +110,10 @@
 
     set interfaces {{ var0 }} {{ var1 }} {{ var2 }} {{ var4 }} {{ var5 }} {{ var7 }} ipv6 accept-dad 2
 
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+::::
+
   {{ var5 }} {{ var6 }} ipv6 dup-addr-detect-transmits <n>
 
   The amount of Duplicate Address Detection probes to send.

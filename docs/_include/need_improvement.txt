@@ -1,21 +1,8 @@
-.. raw:: latex
-
-    \iffalse
-
-.. raw:: html
-
-   <div class="admonition error">
-   <p class="admonition-title">Call for Contributions</p>
-
+:::{error} Call for Contributions
 
 This section needs improvements, examples and explanations.
 
 Please take a look at the Contributing Guide for our :ref:`documentation`.
-
-.. raw:: html
-
-   </div>
-
-.. raw:: latex
+:::
 
     \fi
