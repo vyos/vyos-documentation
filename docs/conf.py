@@ -13,6 +13,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
 sys.path.append(os.path.abspath("./_ext"))
 
@@ -83,7 +84,23 @@ gettext_uuid = False
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
+exclude_patterns = [
+    u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x',
+    'md-*.md', '**/md-*.md',
+]
+
+# MyST-Parser configuration
+myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "substitution"]
+myst_fence_as_directive = ["cfgcmd", "opcmd", "cmdincludemd"]
+
+# Incremental RST→MyST swap: extend exclude_patterns with the RST paths that
+# swap_sources.py just hid behind their md-prefixed counterparts.
+import pathlib
+_build = pathlib.Path(__file__).parent / '_build'
+if (_build / '_swap_state.json').exists() and (_build / '_swap_exclude.txt').exists():
+    exclude_patterns.extend(
+        s for s in (line.strip() for line in (_build / '_swap_exclude.txt').read_text().splitlines()) if s
+    )
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -213,5 +230,27 @@ texinfo_documents = [
 ]
 
 
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders so MyST pages
+    can use webp without falling back to PDF/PNG fallbacks."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
+
+
+def _copy_md_sources(app, exception):
+    """Copy .md source files verbatim into the HTML output tree."""
+    if exception is not None:
+        return
+    src = pathlib.Path(app.srcdir)
+    out = pathlib.Path(app.outdir)
+    for path in src.rglob("*.md"):
+        dest = out / path.relative_to(src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, dest)
+
+
 def setup(app):
-    pass
+    app.connect('builder-inited', _prefer_webp)
+    app.connect('build-finished', _copy_md_sources)
