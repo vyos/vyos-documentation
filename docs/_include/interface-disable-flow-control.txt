@@ -1,5 +1,7 @@
-.. cfgcmd:: set interfaces {{ var0 }} <interface> {{ var2 }} {{ var3 }}
-   disable-flow-control
+::::{cfgcmd} set interfaces {{ var0 }} \<interface\> {{ var2 }} {{ var3 }}
+
+disable-flow-control
+::::
 
   Ethernet flow control is a mechanism for temporarily stopping the transmission
   of data on Ethernet family computer networks. The goal of this mechanism is to
