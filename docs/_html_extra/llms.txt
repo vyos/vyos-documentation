@@ -46,7 +46,9 @@ VyOS configuration follows a tree structure. All configuration commands start wi
 
 - [Blueprints](https://docs.vyos.io/en/1.4/configexamples/index.html): Real-world topology examples
 
-## Optional
+## Contributing
 
-- [Contributing](https://docs.vyos.io/en/1.4/contributing/index.html): Development workflow
-- [VPP](https://docs.vyos.io/en/1.4/vpp/index.html): Vector Packet Processing integration
+- [Development](https://docs.vyos.io/en/1.4/contributing/development.html): Development workflow and codebase orientation
+- [Build VyOS](https://docs.vyos.io/en/1.4/contributing/build-vyos.html): Building images from source
+- [Issues and Features](https://docs.vyos.io/en/1.4/contributing/issues-features.html): Reporting bugs and requesting features
+- [Testing](https://docs.vyos.io/en/1.4/contributing/testing.html): Test suite and validation
