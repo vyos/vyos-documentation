@@ -67,9 +67,11 @@
 {% endblock %}
 
 {% block body %}
-    {# GTM noscript fallback #}
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5VQHRT"
-                      height="0" width="0" style="display:none;visibility:hidden"
-                      title="Google Tag Manager"></iframe></noscript>
+    {# No GTM <noscript> iframe fallback. The fallback iframe loads via
+       a direct HTTP request and bypasses Cookiebot's auto-blocker and
+       Google Consent Mode v2 entirely (consent state is set via the JS
+       gtag API which a noscript request can't run). For strict
+       prior-consent compliance under GDPR, JS-disabled visitors get no
+       analytics rather than unconsented analytics. #}
     {{ super() }}
 {% endblock %}
