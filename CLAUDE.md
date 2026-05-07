@@ -101,7 +101,17 @@ For pages that have NOT been migrated:
 - Non-migrated page (RST-only): edit the `.rst`.
 - New page: write it as `.md` from the start. The `md-` prefix that earlier MyST migration commits used is gone — never add it.
 
-Running `make html` runs the swap automatically (it's a no-op when the override list is empty, which is the default state).
+The swap is **not** automatic. When `_rst_overrides.txt` is non-empty, run the
+swap script around the build manually:
+
+```bash
+python scripts/swap_sources.py --swap    # activate RST overrides
+cd docs && make html
+python scripts/swap_sources.py --restore # restore MD primaries
+```
+
+With the default empty override list no manual step is needed — `make html`
+builds entirely from MD sources as-is.
 
 ### Command directives
 
