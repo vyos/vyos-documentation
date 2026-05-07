@@ -1,6 +1,7 @@
 {% extends "!layout.html" %}
 {%- set current_version = "1.5.x circinus" %}
 {% block extrahead %}
+    {% if gtm_id %}
     {# Cookiebot CMP — must load first so its auto-blocker can scan/block other tags #}
     <script id="Cookiebot"
             src="https://consent.cookiebot.com/uc.js"
@@ -36,6 +37,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','{{ gtm_id }}');</script>
+    {% endif %}
 
     <style>#vyos-header-iframe{position:fixed;top:0;left:0;right:0;z-index:999999999;width:100%;border:none}</style>
     <style>#vyos-footer-iframe{width:100%;border:none}</style>
@@ -67,11 +69,5 @@
 {% endblock %}
 
 {% block body %}
-    {# No GTM <noscript> iframe fallback. The fallback iframe loads via
-       a direct HTTP request and bypasses Cookiebot's auto-blocker and
-       Google Consent Mode v2 entirely (consent state is set via the JS
-       gtag API which a noscript request can't run). For strict
-       prior-consent compliance under GDPR, JS-disabled visitors get no
-       analytics rather than unconsented analytics. #}
     {{ super() }}
 {% endblock %}
