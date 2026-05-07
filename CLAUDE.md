@@ -209,7 +209,7 @@ Files are shipped at the docs root for each version
 
 When adding new top-level sections to the docs, add a corresponding bullet in
 `docs/_templates/llms.txt.j2`. Branch-specific differences (e.g. sagitta has
-no `vpp/` or `contributing/index`) live in that branch's copy of the template.
+no `vpp/index.md` or `contributing/index.md`) live in that branch's copy of the template.
 
 ## Read the Docs Layout
 
