@@ -261,6 +261,12 @@ def _copy_md_sources(app, exception):
 
 
 def _write_llms_txt(app, exception):
+    """Render the curated llms.txt at build-finished time.
+
+    Reads ``_templates/llms.txt.j2``, interpolates ``html_baseurl`` and
+    ``release``, and writes ``<outdir>/llms.txt``. ``llms-full.txt`` is
+    handled separately by the ``sphinx_llms_txt`` extension.
+    """
     # Skip dirhtml: the curated template encodes `.html` URLs (e.g.
     # `quick-start.html`), which don't exist under `dirhtml` output
     # (`quick-start/index.html`). Production publishes via the html /
