@@ -148,6 +148,7 @@ html_context = {
     'github_version': _github_version,
     'conf_py_path': '/docs/',
     'gtm_id': os.environ.get('GTM_ID', ''),
+    'cookiebot_id': os.environ.get('COOKIEBOT_ID', ''),
 }
 
 # Custom sidebar templates, must be a dictionary that maps document names
