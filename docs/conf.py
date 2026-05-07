@@ -50,6 +50,8 @@ extensions = ['sphinx.ext.intersphinx',
               'myst_parser',
               'sphinx_design',
               'vyos',
+              'sphinx_llms_txt',
+              'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -109,6 +111,15 @@ todo_include_todos = True
 # a list of builtin themes.
 #
 html_theme = "sphinx_rtd_theme"
+
+html_baseurl = 'https://docs.vyos.io/en/1.4/'
+
+# sphinx-sitemap: baseurl already includes /en/1.4/, so skip lang+version
+sitemap_url_scheme = '{link}'
+
+# sphinx-llms-txt: disable auto-generated llms.txt, keep curated render via setup
+# hook; llms-full.txt is still auto-generated
+llms_txt_file = False
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -240,6 +251,52 @@ def _copy_md_sources(app, exception):
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, dest)
 
+def _write_llms_txt(app, exception):
+    # Skip dirhtml: production publishes via the `html` / `readthedocs`
+    # builders only. The `.md` links in the curated template do
+    # actually resolve under `dirhtml` (`_copy_md_sources` puts `.md`
+    # files at their source-relative paths regardless of builder), but
+    # we still don't render llms.txt for builds we don't ship — local
+    # `make dirhtml` is a developer convenience, not a publish target.
+    if exception is not None or app.builder.name not in (
+            'html', 'readthedocs'):
+        return
+    if not app.config.html_baseurl:
+        # Fail loudly rather than rendering /quick-start.md etc. as a
+        # silently-broken root-relative URL — every supported branch
+        # sets html_baseurl, so a missing value is a regression.
+        raise RuntimeError(
+            'html_baseurl must be set to render llms.txt')
+    from pathlib import Path
+    from jinja2 import Environment, FileSystemLoader, StrictUndefined
+    tpl_dir = Path(app.srcdir) / '_templates'
+    out_path = Path(app.outdir) / 'llms.txt'
+    baseurl = app.config.html_baseurl.rstrip('/') + '/'
+    # FileSystemLoader + get_template (rather than from_string) makes
+    # Jinja tracebacks reference the real template filename and line
+    # number — useful when StrictUndefined trips on a typo in
+    # llms.txt.j2. StrictUndefined: missing template variables raise
+    # rather than silently render as empty strings, so a typo in
+    # llms.txt.j2 fails the build instead of shipping a half-blank
+    # llms.txt.
+    env = Environment(
+        loader=FileSystemLoader(str(tpl_dir)),
+        undefined=StrictUndefined,
+        keep_trailing_newline=True,
+        # Plain-text template (not HTML), so HTML autoescape is not
+        # appropriate. Setting autoescape=False explicitly to silence
+        # bandit/ruff S701 and document the intent.
+        autoescape=False,
+    )
+    template = env.get_template('llms.txt.j2')
+    rendered = template.render(
+        baseurl=baseurl,
+        release=app.config.release,
+    )
+    out_path.write_text(rendered, encoding='utf-8')
+
+
 def setup(app):
     app.connect('builder-inited', _prefer_webp)
     app.connect('build-finished', _copy_md_sources)
+    app.connect('build-finished', _write_llms_txt)
