@@ -213,7 +213,9 @@ no `vpp/index.md` or `contributing/index.md`) live in that branch's copy of the 
 
 ## Read the Docs Layout
 
-RTD slugs as of 2026-05-04 (verified via API):
+RTD slugs as of 2026-05-04 (verified via API). Re-verify via the RTD
+Versions API (project `vyos`) and update the date stamp before editing this
+table.
 
 | Slug | Verbose | Branch | Role |
 |---|---|---|---|
