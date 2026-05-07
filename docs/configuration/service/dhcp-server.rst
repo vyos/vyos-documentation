@@ -76,6 +76,12 @@ Pass address of Unifi controller at ``172.16.100.1`` to all clients of ``NET1``
    a server whose only clients are reached via unicasts, such as via DHCP relay
    agents.
 
+.. cfgcmd:: set service dhcp-server log-level
+   <fatal | error | warn | info | debug>
+
+   Set the logging verbosity of the Kea DHCP server. The default level is
+   ``info``.
+
 Individual Client Subnet
 -------------------------
 
@@ -858,6 +864,12 @@ Configuration
 
    Clients receiving advertise messages from multiple servers choose the server
    with the highest preference value. The range for this value is ``0...255``.
+
+.. cfgcmd:: set service dhcpv6-server log-level
+   <fatal | error | warn | info | debug>
+
+   Set the logging verbosity of the DHCPv6 server. The default level is
+   ``info``.
 
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet <subnet>
    subnet-id <id>
