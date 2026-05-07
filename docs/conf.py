@@ -13,6 +13,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os
+import shutil
 import sys
 sys.path.append(os.path.abspath("./_ext"))
 
@@ -48,7 +49,9 @@ extensions = ['sphinx.ext.intersphinx',
               'autosectionlabel',
               'myst_parser',
               'sphinx_design',
-              'vyos'
+              'vyos',
+              'sphinx_llms_txt',
+              'sphinx_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -57,12 +60,14 @@ templates_path = ['_templates']
 # autosectionlabel
 autosectionlabel_prefix_document = True
 
-
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
 source_suffix = ['.rst', '.md']
+
+myst_enable_extensions = ["colon_fence", "deflist", "fieldlist", "substitution"]
+myst_fence_as_directive = ["cfgcmd", "opcmd", "cmdincludemd"]
 
 # The master toctree document.
 master_doc = 'index'
@@ -79,11 +84,20 @@ locale_dirs = ['_locale/']
 gettext_compact = True
 gettext_uuid = False
 
-
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path .
-exclude_patterns = [u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x']
+exclude_patterns = [
+    u'_build', 'Thumbs.db', '.DS_Store', '_include/vyos-1x',
+    'rst-*.rst', '**/rst-*.rst',
+]
+
+import pathlib
+_build = pathlib.Path(__file__).parent / '_build'
+if (_build / '_rst_override_state.json').exists() and (_build / '_md_exclude.txt').exists():
+    exclude_patterns.extend(
+        s for s in (line.strip() for line in (_build / '_md_exclude.txt').read_text().splitlines()) if s
+    )
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -98,6 +112,15 @@ todo_include_todos = True
 #
 html_theme = "sphinx_rtd_theme"
 
+html_baseurl = 'https://docs.vyos.io/en/1.4/'
+
+# sphinx-sitemap: baseurl already includes /en/1.4/, so skip lang+version
+sitemap_url_scheme = '{link}'
+
+# sphinx-llms-txt: disable auto-generated llms.txt, keep curated render via setup
+# hook; llms-full.txt is still auto-generated
+llms_txt_file = False
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -111,6 +134,21 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
+_rtd_version_type = os.environ.get('READTHEDOCS_VERSION_TYPE', '')
+_github_version = (
+    os.environ.get('READTHEDOCS_GIT_COMMIT_HASH', 'sagitta')
+    if _rtd_version_type == 'external'
+    else os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'sagitta')
+)
+
+html_context = {
+    'display_github': True,
+    'github_user': 'vyos',
+    'github_repo': 'vyos-documentation',
+    'github_version': _github_version,
+    'conf_py_path': '/docs/',
+}
+
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #
@@ -123,7 +161,7 @@ html_extra_path = ['_html_extra']
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = '_static/images/vyos-logo.png'
+html_logo = '_static/images/vyos-logo.webp'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs. This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -139,7 +177,6 @@ html_title = f'{project} {release} LTS'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'VyOSdoc'
-
 
 # -- Options fo_r LaTeX output ------------------------------------------------
 
@@ -185,7 +222,6 @@ man_pages = [
      [author], 1)
 ]
 
-
 # -- Options for Texinfo output ----------------------------------------------
 
 # Grouping the document tree into Texinfo files. List of tuples
@@ -197,6 +233,70 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+def _prefer_webp(app):
+    """Prepend WebP to supported image types for HTML builders."""
+    if app.builder.name in ('html', 'dirhtml', 'readthedocs'):
+        types = app.builder.supported_image_types
+        if 'image/webp' not in types:
+            app.builder.supported_image_types = ['image/webp'] + types
+
+def _copy_md_sources(app, exception):
+    """Copy .md source files verbatim into the HTML output tree."""
+    if exception is not None:
+        return
+    src = pathlib.Path(app.srcdir)
+    out = pathlib.Path(app.outdir)
+    for path in src.rglob("*.md"):
+        dest = out / path.relative_to(src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, dest)
+
+def _write_llms_txt(app, exception):
+    # Skip dirhtml: production publishes via the `html` / `readthedocs`
+    # builders only. The `.md` links in the curated template do
+    # actually resolve under `dirhtml` (`_copy_md_sources` puts `.md`
+    # files at their source-relative paths regardless of builder), but
+    # we still don't render llms.txt for builds we don't ship — local
+    # `make dirhtml` is a developer convenience, not a publish target.
+    if exception is not None or app.builder.name not in (
+            'html', 'readthedocs'):
+        return
+    if not app.config.html_baseurl:
+        # Fail loudly rather than rendering /quick-start.md etc. as a
+        # silently-broken root-relative URL — every supported branch
+        # sets html_baseurl, so a missing value is a regression.
+        raise RuntimeError(
+            'html_baseurl must be set to render llms.txt')
+    from pathlib import Path
+    from jinja2 import Environment, FileSystemLoader, StrictUndefined
+    tpl_dir = Path(app.srcdir) / '_templates'
+    out_path = Path(app.outdir) / 'llms.txt'
+    baseurl = app.config.html_baseurl.rstrip('/') + '/'
+    # FileSystemLoader + get_template (rather than from_string) makes
+    # Jinja tracebacks reference the real template filename and line
+    # number — useful when StrictUndefined trips on a typo in
+    # llms.txt.j2. StrictUndefined: missing template variables raise
+    # rather than silently render as empty strings, so a typo in
+    # llms.txt.j2 fails the build instead of shipping a half-blank
+    # llms.txt.
+    env = Environment(
+        loader=FileSystemLoader(str(tpl_dir)),
+        undefined=StrictUndefined,
+        keep_trailing_newline=True,
+        # Plain-text template (not HTML), so HTML autoescape is not
+        # appropriate. Setting autoescape=False explicitly to silence
+        # bandit/ruff S701 and document the intent.
+        autoescape=False,
+    )
+    template = env.get_template('llms.txt.j2')
+    rendered = template.render(
+        baseurl=baseurl,
+        release=app.config.release,
+    )
+    out_path.write_text(rendered, encoding='utf-8')
+
 
 def setup(app):
-    pass
+    app.connect('builder-inited', _prefer_webp)
+    app.connect('build-finished', _copy_md_sources)
+    app.connect('build-finished', _write_llms_txt)
