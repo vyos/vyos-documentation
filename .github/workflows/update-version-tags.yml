@@ -91,7 +91,22 @@ jobs:
           TAG: ${{ needs.check_head.outputs.tag }}
         run: |
           set -euo pipefail
+<<<<<<< HEAD
 >>>>>>> 6851aa0c (ci: keep stale reruns out of version-tag queue)
+=======
+
+          # Re-validate HEAD inside retag too: GitHub's "Re-run failed jobs"
+          # can re-execute retag in isolation without re-running check_head,
+          # and the branch HEAD may have advanced since the original run.
+          # Without this guard, a re-run of just retag would PATCH the tag
+          # to a stale github.sha.
+          HEAD_SHA="$(gh api "repos/$REPO/branches/$BRANCH" --jq '.commit.sha')"
+          if [ "$HEAD_SHA" != "$SHA" ]; then
+            echo "Skipping stale retag: event SHA=$SHA, current $BRANCH HEAD=$HEAD_SHA"
+            exit 0
+          fi
+
+>>>>>>> b74e0a69 (ci: re-validate HEAD inside retag job)
           echo "Pointing tag '$TAG' at $SHA (branch $BRANCH)"
           if gh api "repos/$REPO/git/ref/tags/$TAG" >/dev/null 2>&1; then
             gh api -X PATCH "repos/$REPO/git/refs/tags/$TAG" \
