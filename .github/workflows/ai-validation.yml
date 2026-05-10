@@ -188,97 +188,18 @@ jobs:
         with:
           name: pr-input
 
-      - name: Generate GitHub App token
-        if: steps.secrets-check.outputs.skip != 'true'
-        id: app
-        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
-        with:
-          app-id: ${{ secrets.VYOS_APP_ID }}
-          private-key: ${{ secrets.VYOS_APP_PRIVATE_KEY }}
-          owner: VyOS-Networks
-          repositories: vyos-1x,vyos-docs-opus-reviewer
-
-      - name: Sparse-checkout branches.json from reviewer
-        if: steps.secrets-check.outputs.skip != 'true'
-        uses: actions/checkout@v6
-        with:
-          repository: VyOS-Networks/vyos-docs-opus-reviewer
-          ref: ${{ env.REVIEWER_REF }}
-          token: ${{ steps.app.outputs.token }}
-          # persist-credentials:false stops actions/checkout from writing the
-          # App token into reviewer/.git/config as an http extraheader. Without
-          # this the token would be readable from the workspace by the Pass 2
-          # claude-code-action step (which has Read/Glob/Grep allowed), so a
-          # prompt-injection attempt could exfiltrate it.
-          persist-credentials: false
-          path: reviewer
-          sparse-checkout: |
-            branches.json
-
-      - name: Resolve docs-branch to vyos-1x branch
-        if: steps.secrets-check.outputs.skip != 'true'
-        id: branch
-        run: |
-          set -euo pipefail
-          TARGET="${{ github.event.pull_request.base.ref }}"
-          MAPPED=$(jq -r --arg b "$TARGET" '.[$b] // empty' reviewer/branches.json)
-          if [ -z "$MAPPED" ]; then
-            echo "::error::Docs branch '$TARGET' is not configured for AI validation. Add it to branches.json in vyos-docs-opus-reviewer (known: $(jq -c 'keys' reviewer/branches.json))."
-            exit 1
-          fi
-          echo "docs=$TARGET" >> "$GITHUB_OUTPUT"
-          echo "vyos1x=$MAPPED" >> "$GITHUB_OUTPUT"
-
-      - name: Checkout vyos-1x at mapped branch
-        if: steps.secrets-check.outputs.skip != 'true'
-        uses: actions/checkout@v6
-        with:
-          repository: vyos-networks/vyos-1x
-          ref: ${{ steps.branch.outputs.vyos1x }}
-          path: .vyos-1x
-          fetch-depth: 1
-          token: ${{ steps.app.outputs.token }}
-          # Same rationale as the reviewer sparse-checkout above: prevent the
-          # App token from being readable in .vyos-1x/.git/config by the
-          # claude-code-action Pass 2 step.
-          persist-credentials: false
-
-      - name: Download reference DB (best-effort)
-        if: steps.secrets-check.outputs.skip != 'true'
-        id: download-db
-        continue-on-error: true
-        uses: robinraju/release-downloader@28fc21f50d76778e7023361aa1f863e717d3d56f # v1.13
-        with:
-          repository: VyOS-Networks/vyos-docs-opus-reviewer
-          latest: true
-          fileName: reference-db-${{ steps.branch.outputs.vyos1x }}.tar.gz
-          out-file-path: .reference-db
-          token: ${{ steps.app.outputs.token }}
-
-      - name: Extract reference DB
-        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome == 'success'
-        run: |
-          mkdir -p .reference-db/extracted
-          tar -xzf .reference-db/reference-db-${{ steps.branch.outputs.vyos1x }}.tar.gz -C .reference-db/extracted
-
-      - name: Fail-closed gate
-        if: steps.secrets-check.outputs.skip != 'true'
-        run: |
-          set -euo pipefail
-          if [ -s changed-md.txt ] && [ ! -d .reference-db/extracted ]; then
-            echo "::error::Reference DB missing for vyos-1x branch '${{ steps.branch.outputs.vyos1x }}'. Pass 1 cannot run. Re-trigger rebuild-reference.yml in the reviewer repo and re-run."
-            exit 1
-          fi
-
-      # Skip Pass 1 / Pass 2 entirely when the PR touches no docs/ content.
-      # actions/upload-artifact@v4 silently drops empty directories from the
-      # uploaded archive, so a PR with no docs/**/*.md changes (workflow-only
-      # PR, RST-only PR, .gitignore edit, etc.) leaves the validate job
-      # without a _changed_md/ directory after download-artifact. Pass 1
-      # then fails immediately because `working-directory: _changed_md`
-      # errors with "No such file or directory" before its `run:` block can
-      # execute. Pass 2 (Claude) would otherwise produce an empty review and
-      # burn an API call. Both are gated on this step's outputs below.
+      # Compute the has_md / has_doc gates as early as possible so that
+      # workflow-only / non-doc PRs short-circuit BEFORE the privileged
+      # setup steps below (App-token mint, vyos-1x checkout, reviewer
+      # source checkout, reference-DB download, uv install). Those steps
+      # mint and use VYOS_APP_* secrets to pull private repos and would
+      # otherwise burn ~30s on every workflow-only PR for no purpose.
+      # actions/upload-artifact@v4 silently drops empty directories from
+      # the uploaded archive, so a PR with no docs/**/*.md changes
+      # (workflow-only PR, RST-only PR, .gitignore edit, etc.) leaves the
+      # validate job without a _changed_md/ directory after download —
+      # without this guard, Pass 1 fails immediately on `working-directory:
+      # _changed_md` and Pass 2 burns an API call producing an empty review.
       # This step reads only the artifact files from the trusted prepare job
       # — no fork-controlled string interpolation.
       #
@@ -305,6 +226,88 @@ jobs:
             echo "::notice::PR touches no docs/**/*.md or docs/**/*.rst files; skipping Pass 1 and Pass 2."
           fi
 
+      - name: Generate GitHub App token
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        id: app
+        uses: actions/create-github-app-token@fee1f7d63c2ff003460e3d139729b119787bc349 # v2.2.2
+        with:
+          app-id: ${{ secrets.VYOS_APP_ID }}
+          private-key: ${{ secrets.VYOS_APP_PRIVATE_KEY }}
+          owner: VyOS-Networks
+          repositories: vyos-1x,vyos-docs-opus-reviewer
+
+      - name: Sparse-checkout branches.json from reviewer
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        uses: actions/checkout@v6
+        with:
+          repository: VyOS-Networks/vyos-docs-opus-reviewer
+          ref: ${{ env.REVIEWER_REF }}
+          token: ${{ steps.app.outputs.token }}
+          # persist-credentials:false stops actions/checkout from writing the
+          # App token into reviewer/.git/config as an http extraheader. Without
+          # this the token would be readable from the workspace by the Pass 2
+          # claude-code-action step (which has Read/Glob/Grep allowed), so a
+          # prompt-injection attempt could exfiltrate it.
+          persist-credentials: false
+          path: reviewer
+          sparse-checkout: |
+            branches.json
+
+      - name: Resolve docs-branch to vyos-1x branch
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        id: branch
+        run: |
+          set -euo pipefail
+          TARGET="${{ github.event.pull_request.base.ref }}"
+          MAPPED=$(jq -r --arg b "$TARGET" '.[$b] // empty' reviewer/branches.json)
+          if [ -z "$MAPPED" ]; then
+            echo "::error::Docs branch '$TARGET' is not configured for AI validation. Add it to branches.json in vyos-docs-opus-reviewer (known: $(jq -c 'keys' reviewer/branches.json))."
+            exit 1
+          fi
+          echo "docs=$TARGET" >> "$GITHUB_OUTPUT"
+          echo "vyos1x=$MAPPED" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout vyos-1x at mapped branch
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        uses: actions/checkout@v6
+        with:
+          repository: vyos-networks/vyos-1x
+          ref: ${{ steps.branch.outputs.vyos1x }}
+          path: .vyos-1x
+          fetch-depth: 1
+          token: ${{ steps.app.outputs.token }}
+          # Same rationale as the reviewer sparse-checkout above: prevent the
+          # App token from being readable in .vyos-1x/.git/config by the
+          # claude-code-action Pass 2 step.
+          persist-credentials: false
+
+      - name: Download reference DB (best-effort)
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        id: download-db
+        continue-on-error: true
+        uses: robinraju/release-downloader@28fc21f50d76778e7023361aa1f863e717d3d56f # v1.13
+        with:
+          repository: VyOS-Networks/vyos-docs-opus-reviewer
+          latest: true
+          fileName: reference-db-${{ steps.branch.outputs.vyos1x }}.tar.gz
+          out-file-path: .reference-db
+          token: ${{ steps.app.outputs.token }}
+
+      - name: Extract reference DB
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true' && steps.download-db.outcome == 'success'
+        run: |
+          mkdir -p .reference-db/extracted
+          tar -xzf .reference-db/reference-db-${{ steps.branch.outputs.vyos1x }}.tar.gz -C .reference-db/extracted
+
+      - name: Fail-closed gate
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
+        run: |
+          set -euo pipefail
+          if [ -s changed-md.txt ] && [ ! -d .reference-db/extracted ]; then
+            echo "::error::Reference DB missing for vyos-1x branch '${{ steps.branch.outputs.vyos1x }}'. Pass 1 cannot run. Re-trigger rebuild-reference.yml in the reviewer repo and re-run."
+            exit 1
+          fi
+
       # astral-sh/setup-uv is used instead of actions/setup-python: uv
       # provisions Python interpreters from Astral's standalone builds in a
       # few seconds (no apt cache, no compile), and the same recipe works
@@ -315,7 +318,7 @@ jobs:
       # ${{ github.workspace }}/.venv and prepends its bin/ to PATH so the
       # `vyos-doc-review` CLI script is callable in subsequent steps.
       - name: Setup uv + Python 3.12
-        if: steps.secrets-check.outputs.skip != 'true'
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           python-version: '3.12'
@@ -329,7 +332,7 @@ jobs:
       # instead, and persist-credentials:false ensures it does not linger in
       # reviewer-src/.git/config where the Pass 2 LLM step could read it.
       - name: Checkout reviewer package source (pinned to REVIEWER_REF)
-        if: steps.secrets-check.outputs.skip != 'true'
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
         uses: actions/checkout@v6
         with:
           repository: VyOS-Networks/vyos-docs-opus-reviewer
@@ -339,7 +342,7 @@ jobs:
           path: reviewer-src
 
       - name: Install reviewer (from local checkout)
-        if: steps.secrets-check.outputs.skip != 'true'
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
         run: |
           uv pip install ./reviewer-src
 
