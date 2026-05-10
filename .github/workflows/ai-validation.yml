@@ -60,7 +60,7 @@ jobs:
       - name: Compute changed files and bundle .md content
         run: |
           set -euo pipefail
-          git fetch --depth=1 origin "${{ github.event.pull_request.base.ref }}"
+          git fetch --depth=1 origin "${{ github.event.pull_request.base.ref }}:refs/remotes/origin/${{ github.event.pull_request.base.ref }}"
           BASE="origin/${{ github.event.pull_request.base.ref }}"
           # --diff-filter=ACMRT excludes Deleted entries so the bundling
           # loop below (`git show HEAD:<path>`) doesn't try to extract
