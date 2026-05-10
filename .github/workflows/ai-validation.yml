@@ -268,6 +268,34 @@ jobs:
             exit 1
           fi
 
+      # Skip Pass 1 / Pass 2 entirely when the PR touches no docs/ content.
+      # actions/upload-artifact@v4 silently drops empty directories from the
+      # uploaded archive, so a PR with no docs/**/*.md changes (workflow-only
+      # PR, RST-only PR, .gitignore edit, etc.) leaves the validate job
+      # without a _changed_md/ directory after download-artifact. Pass 1
+      # then fails immediately because `working-directory: _changed_md`
+      # errors with "No such file or directory" before its `run:` block can
+      # execute. Pass 2 (Claude) would otherwise produce an empty review and
+      # burn an API call. Both are gated on this step's outputs below.
+      # This step reads only the artifact files from the trusted prepare job
+      # — no fork-controlled string interpolation.
+      - name: Compute change flags
+        if: steps.secrets-check.outputs.skip != 'true'
+        id: changes
+        run: |
+          set -euo pipefail
+          if [ -s changed-md.txt ]; then
+            echo "has_md=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_md=false" >> "$GITHUB_OUTPUT"
+          fi
+          if [ -s changed-md.txt ] || [ -s changed-rst.txt ]; then
+            echo "has_doc=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_doc=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::PR touches no docs/**/*.md or docs/**/*.rst files; skipping Pass 1 and Pass 2."
+          fi
+
       # astral-sh/setup-uv is used instead of actions/setup-python: uv
       # provisions Python interpreters from Astral's standalone builds in a
       # few seconds (no apt cache, no compile), and the same recipe works
@@ -312,7 +340,7 @@ jobs:
       # Pass 1 would emit zero findings — a silent failure mode the
       # §3.6 fail-closed gate cannot catch when the DB is present.
       - name: Pass 1 — deterministic checks
-        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome == 'success'
+        if: steps.secrets-check.outputs.skip != 'true' && steps.download-db.outcome == 'success' && steps.changes.outputs.has_md == 'true'
         working-directory: _changed_md
         run: |
           vyos-doc-review pass1 \
@@ -321,7 +349,7 @@ jobs:
             --output ../pass1-findings.json
 
       - name: Pass 2 — Claude review
-        if: steps.secrets-check.outputs.skip != 'true'
+        if: steps.secrets-check.outputs.skip != 'true' && steps.changes.outputs.has_doc == 'true'
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
