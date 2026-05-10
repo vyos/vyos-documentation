@@ -71,7 +71,8 @@ jobs:
           git diff "$BASE...HEAD" --name-only --diff-filter=ACMRT -z -- 'docs/**/*.rst' > changed-rst.z
           tr '\0' '\n' < changed-md.z  > changed-md.txt
           tr '\0' '\n' < changed-rst.z > changed-rst.txt
-          git diff "$BASE...HEAD" -- 'docs/**/*.md' > diff-md.patch
+          git diff "$BASE...HEAD" -- 'docs/**/*.md'  > diff-md.patch
+          git diff "$BASE...HEAD" -- 'docs/**/*.rst' > diff-rst.patch
           # Bundle .md files via git's blob store (NOT the filesystem).
           # The fork's merge ref can contain symlinks (mode 120000) committed
           # to docs/**/*.md that resolve to absolute paths on the runner.
@@ -130,6 +131,7 @@ jobs:
             changed-md.txt
             changed-rst.txt
             diff-md.patch
+            diff-rst.patch
             _changed_md/
 
   validate:
@@ -279,6 +281,13 @@ jobs:
       # burn an API call. Both are gated on this step's outputs below.
       # This step reads only the artifact files from the trusted prepare job
       # — no fork-controlled string interpolation.
+      #
+      # has_md  uses changed-md.txt because Pass 1 needs MD content present
+      #         in HEAD to validate (changed-md.txt is built with
+      #         --diff-filter=ACMRT, deletions excluded).
+      # has_doc uses diff-md.patch / diff-rst.patch (full diffs, deletions
+      #         included) so a delete-only PR still routes through Pass 2 —
+      #         Claude can flag accidental or unexplained removals.
       - name: Compute change flags
         if: steps.secrets-check.outputs.skip != 'true'
         id: changes
@@ -289,7 +298,7 @@ jobs:
           else
             echo "has_md=false" >> "$GITHUB_OUTPUT"
           fi
-          if [ -s changed-md.txt ] || [ -s changed-rst.txt ]; then
+          if [ -s diff-md.patch ] || [ -s diff-rst.patch ]; then
             echo "has_doc=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_doc=false" >> "$GITHUB_OUTPUT"
