@@ -23,7 +23,7 @@ vyos@vyos#
 
 ## Commit and Save
 
-After every configuration change, you need to apply the changes by using the
+After every configuration change, you need to apply the changes with the
 following command:
 
 ```none
