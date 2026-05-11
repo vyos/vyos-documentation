@@ -331,8 +331,11 @@ jobs:
           # DB assets). The reference DB schema is intentionally backwards
           # compatible across reviewer Python releases; the freshest DB is
           # the right choice. If the DB schema ever changes incompatibly,
-          # bump REVIEWER_REF in the consuming workflow and the new code
-          # will refuse to load an older-format DB at the fail-closed gate.
+          # bump REVIEWER_REF in the consuming workflow — the newer
+          # reviewer code will error at DB-load time inside `Pass 1 —
+          # deterministic checks`. The workflow's own fail-closed gate is
+          # a presence check (`[ -s diff-md.patch ] && [ ! -d
+          # .reference-db/extracted ]`); it does not inspect DB schema.
           latest: true
           fileName: reference-db-${{ steps.branch.outputs.vyos1x }}.tar.gz
           out-file-path: .reference-db
