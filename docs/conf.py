@@ -292,6 +292,24 @@ def _write_llms_txt(app, exception):
     out_path.write_text(rendered, encoding='utf-8')
 
 
+<<<<<<< HEAD
+=======
+def _copy_md_sources(app, exception):
+    """Copy .md source files verbatim into the HTML output tree."""
+    if exception is not None:
+        return
+    src = pathlib.Path(app.srcdir)
+    out = pathlib.Path(app.outdir)
+    for path in src.rglob("*.md"):
+        # Skip files in excluded directories to prevent recursive nesting
+        if any(part in {'_build', '_rst_legacy'} for part in path.parts):
+            continue
+        dest = out / path.relative_to(src)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(path, dest)
+
+
+>>>>>>> ec6f33f3 (Fix recursive _build directory nesting error)
 def setup(app):
     app.connect('builder-inited', _prefer_webp)
     app.connect('build-finished', _copy_md_sources)
