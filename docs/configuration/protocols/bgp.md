@@ -801,7 +801,7 @@ can range from 4 to 65535. The default value is 60 second.
 ##### BGP read-only mode
 
 ```{eval-rst}
-.. cfgcmd:: set protocols bgp parameters update-delay max-delay \<seconds\>
+.. cfgcmd:: set protocols bgp parameters update-delay max-delay <seconds>
 
 **Enable BGP read-only mode after a BGP process restart or clearing all BGP
 sessions, and configure the mode’s maximum delay.**
