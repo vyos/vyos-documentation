@@ -803,8 +803,7 @@ can range from 4 to 65535. The default value is 60 second.
 ```{eval-rst}
 .. cfgcmd:: set protocols bgp parameters update-delay max-delay <seconds>
 
-**Enable BGP read-only mode after a BGP process restart or clearing all BGP
-sessions, and configure the mode’s maximum delay.**
+**Enable BGP read-only mode after a BGP process restart or clearing all BGP sessions, and configure the mode’s maximum delay.**
 
 In read-only mode, BGP suspends best-path selection and does not send routing
 updates to peers. The mode ends when the router receives all expected
@@ -826,10 +825,9 @@ Example:
 ```
 
 ```{eval-rst}
-.. cfgcmd:: set protocols bgp parameters update-delay establish-wait \<seconds\>
+.. cfgcmd:: set protocols bgp parameters update-delay establish-wait <seconds>
 
-**Configure how long the router waits for BGP peers to reach the Established
-state after read-only mode begins.**
+**Configure how long the router waits for BGP peers to reach the Established state after read-only mode begins.**
 
 The router waits for EOR messages only from BGP peers that reach the
 Established state within the ``establish-wait`` window. The ``establish-wait``
