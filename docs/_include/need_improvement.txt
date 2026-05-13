@@ -1,8 +1,9 @@
-:::{error} Call for Contributions
+::::{only} not latex
+:::{admonition} Call for Contributions
+:class: error
 
-This section needs improvements, examples and explanations.
+Help improve this section with additional content, examples, and explanations.
 
-Please take a look at the Contributing Guide for our :ref:`documentation`.
+For contribution guidelines, see {ref}`documentation`.
 :::
-
-    \fi
+::::
