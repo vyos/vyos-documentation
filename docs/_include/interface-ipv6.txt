@@ -93,7 +93,8 @@
 
   - 0: Disable DAD
   - 1: Enable DAD (default)
-  - 2: Enable DAD, and disable IPv6 operation if MAC-based duplicate link-local address has been found.
+  - 2: Enable DAD, and disable IPv6 operation if MAC-based duplicate
+    link-local address has been found.
 
   Example:
 
