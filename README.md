@@ -8,6 +8,24 @@ https://docs.vyos.io.
 The earlier wiki for VyOS 1.1.x and pre-1.2.0 docs is preserved on the
 [Wayback Machine](https://web.archive.org/web/20200225171529/https://wiki.vyos.net/wiki/Main_Page).
 
+## Source format
+
+This branch (`circinus`, 1.5.x LTS) is mostly migrated to
+[MyST Markdown](https://myst-parser.readthedocs.io/) (`.md`). 11 legacy
+pages remain in RST and are picked up alongside the Markdown — the
+changelog set under `docs/changelog/*.rst` and
+`docs/automation/terraform/terraformvyos.rst`. `source_suffix` in
+`docs/conf.py` is `['.rst', '.md']` to cover both. The pre-migration
+RST shadows of converted pages are archived under `docs/_rst_legacy/`
+for reference; they are excluded from the build and must not be
+edited.
+
+VyOS-specific command directives (`cfgcmd`, `opcmd`, `cmdincludemd`)
+are written as MyST fenced blocks in `.md` pages
+(`myst_fence_as_directive` in `conf.py`) and as the RST forms
+`.. cfgcmd::` / `.. opcmd::` / `.. cmdinclude::` in the remaining
+`.rst` pages and in shared `_include/*.txt` snippets.
+
 ## Branches
 
 The documentation repository tracks the same branch convention as the VyOS
@@ -60,6 +78,6 @@ Output lands in `docs/_build/html/`.
 
 ## Contributing
 
-See [AGENTS.md](AGENTS.md) for the full contributor guide — source format
-conventions (MyST Markdown for migrated pages, RST for the rest), CLI
-directive syntax, IP-address rules, the linter, and the bot review workflow.
+See [AGENTS.md](AGENTS.md) for the full contributor guide — MyST
+conventions, CLI directive syntax, IP-address rules, linter
+suppression markers, and the Copilot / CodeRabbit bot workflow.
