@@ -4,9 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-VyOS user documentation, built with Sphinx and hosted on Read the Docs at https://docs.vyos.io. This branch (`circinus`, 1.5.x LTS) is mostly migrated to MyST Markdown (`.md`). 11 legacy pages remain as RST and are built alongside the Markdown: the changelog set under `docs/changelog/*.rst` and `docs/automation/terraform/terraformvyos.rst`. `source_suffix` in `docs/conf.py` is `['.rst', '.md']`. Both formats are first-class to Sphinx.
+VyOS user documentation, built with Sphinx and hosted on Read the Docs at
+https://docs.vyos.io. This branch (`circinus`, 1.5.x LTS) is mostly migrated
+to MyST Markdown (`.md`). 11 legacy pages remain as RST and are built
+alongside the Markdown: the changelog set under `docs/changelog/*.rst` and
+`docs/automation/terraform/terraformvyos.rst`. `source_suffix` in
+`docs/conf.py` is `['.rst', '.md']`. Both formats are first-class to Sphinx.
 
-Pre-migration RST shadows of converted pages are archived under `docs/_rst_legacy/` for reference only — they are excluded from the build, not consulted by Sphinx, and must not be edited.
+Pre-migration RST shadows of converted pages are archived under
+`docs/_rst_legacy/` for reference only — they are excluded from the build,
+not consulted by Sphinx, and must not be edited.
 
 ## Build
 
@@ -75,17 +82,26 @@ Mergify is configured at the org level (no `.mergify.yml` in the repo). The PR t
 
 ### Source files
 
-- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages (most of the tree).
+- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages (most of
+  the tree).
 - The 11 RST-only pages on this branch:
-  - `docs/changelog/index.rst` + `docs/changelog/{1.2.1,1.2.2,1.2.3,1.2.4,1.2.5,1.2.6,1.3,1.4,1.5}.rst` (the changelog set is auto-generated and stayed RST).
+  - `docs/changelog/index.rst` +
+    `docs/changelog/{1.2.1,1.2.2,1.2.3,1.2.4,1.2.5,1.2.6,1.3,1.4,1.5}.rst`
+    (the changelog set is auto-generated and stayed RST).
   - `docs/automation/terraform/terraformvyos.rst`.
-- `docs/_include/<name>.txt` — shared RST snippets included into MyST pages via `cmdincludemd`. Their content is parsed as RST so the legacy templates keep working unchanged.
-- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST shadows of converted pages. Excluded from the Sphinx build and from the Context7 index. Reference only.
+- `docs/_include/<name>.txt` — shared RST snippets included into MyST pages
+  via `cmdincludemd`. Their content is parsed as RST so the legacy templates
+  keep working unchanged.
+- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST
+  shadows of converted pages. Excluded from the Sphinx build and from the
+  Context7 index. Reference only.
 
 **Editing rules:**
-- Existing migrated page (has `<page>.md`): edit the `.md`. Do not touch the archived shadow under `_rst_legacy/`.
+- Existing migrated page (has `<page>.md`): edit the `.md`. Do not touch the
+  archived shadow under `_rst_legacy/`.
 - One of the 11 remaining RST-only pages above: edit the `.rst`.
-- New page: write it as `.md` from the start. The `md-` prefix that earlier MyST migration commits used is gone — never add it.
+- New page: write it as `.md` from the start. The `md-` prefix that earlier
+  MyST migration commits used is gone — never add it.
 
 ### Command directives
 
