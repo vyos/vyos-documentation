@@ -63,7 +63,7 @@ The available modes are:
        settings are not included in the active bond.
 
        Provides load balancing and fault tolerance. Uses the
-       :abbr:`LACP (Link Aggregation Control Protocol)` to
+       {abbr}`LACP (Link Aggregation Control Protocol)` to
        negotiate the bond with the switch.
    * - **Traffic distribution:**
      - Traffic is distributed according to the **transmit hash
@@ -175,7 +175,7 @@ The available modes are:
 * ``xor-hash``: Provides load balancing and fault tolerance
   based on a hash formula. Distributes traffic and handles
   failover identically to ``802.3ad``, but operates without
-  the :abbr:`LACP (Link Aggregation Control Protocol)`.
+  the {abbr}`LACP (Link Aggregation Control Protocol)`.
 ```
 
 ````

@@ -214,7 +214,7 @@ The following authentication modes are available:
 ```{eval-rst}
 * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
   server's identity. This mode is **not recommended**, as it is vulnerable to
-  :abbr:`MITM (Man-in-the-Middle)` attacks.
+  {abbr}`MITM (Man-in-the-Middle)` attacks.
 * ``fingerprint``: Verifies the server’s certificate fingerprint against the
   value preconfigured with:
 
@@ -223,12 +223,12 @@ The following authentication modes are available:
      set system syslog remote <address> tls permitted-peer <peer>
 
 * ``certvalid``: Verifies the server certificate is signed by a trusted
-  :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
+  {abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
 * ``name``: Verifies that:
 
-  * The server’s certificate is signed by a trusted :abbr:`CA (Certificate
+  * The server’s certificate is signed by a trusted {abbr}`CA (Certificate
     Authority)`.
-  * The :abbr:`CN (Common Name)` in the certificate matches the value
+  * The {abbr}`CN (Common Name)` in the certificate matches the value
     preconfigured with:
 
   .. code-block:: none
