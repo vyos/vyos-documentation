@@ -4,9 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-VyOS user documentation, built with Sphinx and hosted on Read the Docs at https://docs.vyos.io. Sources are MyST Markdown (`.md`) for migrated pages and RST (`.rst`) for pages that haven't been migrated yet. Both formats are first-class to Sphinx.
+VyOS user documentation, built with Sphinx and hosted on Read the Docs at
+https://docs.vyos.io. This branch (`sagitta`, 1.4.x previous LTS) is migrated
+to MyST Markdown (`.md`) except for two pages with known converter issues that
+stayed in RST: `docs/cli.rst` and `docs/installation/cloud/aws.rst`.
+`source_suffix` in `docs/conf.py` is `['.rst', '.md']`. Both formats are
+first-class to Sphinx.
 
-Pre-migration RST shadows of migrated pages are archived under `docs/_rst_legacy/` for reference only — they are excluded from the build and not consulted by Sphinx.
+Pre-migration RST shadows of converted pages are archived under
+`docs/_rst_legacy/` for reference only — they are excluded from the build,
+not consulted by Sphinx, and must not be edited.
 
 ## Build
 
@@ -32,9 +39,9 @@ Output: `docs/_build/html/`.
 ## Lint
 
 The repo doesn't ship a local lint config or pin a linter binary. CI runs
-`vyoslinter` (`doc-linter.py` from the `vyos/.github` repo, via the
-`lint-doc.yml` workflow) on changed files only — see the CI section
-below. For local checks, manually grep for the rules in
+`vyoslinter` (`scripts/doc-linter.py` in this repo, invoked from
+`.github/workflows/lint-doc.yml`) on changed files only — see the CI
+section below. For local checks, manually grep for the rules in
 [Source conventions](#source-conventions) (line length, address space,
 suppression markers).
 
@@ -74,13 +81,22 @@ Mergify is configured at the org level (no `.mergify.yml` in the repo). The PR t
 
 ### Source files
 
-- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages.
-- `docs/<page>.rst` — canonical RST source for pages that have not been migrated yet (no `rst-` prefix, no MD sibling).
-- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST shadows. Excluded from the Sphinx build and from the Context7 index. Reference only.
+- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages
+  (most of the tree).
+- The two RST-only pages on this branch: `docs/cli.rst` and
+  `docs/installation/cloud/aws.rst`. Both stayed RST due to converter issues
+  at MyST-migration time and have not been revisited since.
+- `docs/_include/<name>.txt` — shared RST snippets included into MyST
+  pages via `cmdincludemd`. Their content is parsed as RST so the
+  legacy templates keep working unchanged.
+- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST
+  shadows of converted pages. Excluded from the Sphinx build and from the
+  Context7 index. Reference only.
 
 **Editing rules:**
-- Migrated page (has `<page>.md`): edit the `.md`. Do not touch the archived shadow under `_rst_legacy/`.
-- Non-migrated page (RST-only): edit the `.rst`.
+- Existing migrated page (has `<page>.md`): edit the `.md`. Do not touch the
+  archived shadow under `_rst_legacy/`.
+- One of the two remaining RST-only pages above: edit the `.rst`.
 - New page: write it as `.md` from the start. The `md-` prefix that earlier MyST migration commits used is gone — never add it.
 
 ### Command directives
@@ -207,7 +223,9 @@ serves and crawlers skip the redirect hop.
 
 ## CI
 
-- **vyoslinter** (`doc-linter.py` from the `vyos/.github` repo, run via `lint-doc.yml`) — line length and IP rules, on changed files only.
+- **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via
+  `.github/workflows/lint-doc.yml`) — line length and IP rules, on
+  changed files only.
 - **Sphinx build** — runs on Read the Docs for every PR; preview URL appears as a check.
 - **CLA check** — contributors must sign the VyOS CLA before merge.
 - **Conflict check** — fails the PR if it doesn't merge cleanly into base.
