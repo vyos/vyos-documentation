@@ -305,8 +305,8 @@ set system syslog remote graylog.example.com tls permitted-peers 'graylog.exampl
 This section lists facilities used by syslog. Most facility names are self-
 explanatory. The local0–local7 facilities are used for custom purposes, such as
 logging from network nodes and equipment. Facility assignment is flexible and
-should be tailored to your company's needs. Consider facilities as categorization
-tools, rather than strict directives.
+should be tailored to your company's needs. Consider facilities as
+categorization tools, rather than strict directives.
 
 ```{eval-rst}
 +----------+----------+----------------------------------------------------+
