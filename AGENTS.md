@@ -81,11 +81,14 @@ Mergify is configured at the org level (no `.mergify.yml` in the repo). The PR t
 
 ### Source files
 
-- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages (most of the tree).
+- `docs/<subdir>/<page>.md` — canonical MD source for migrated pages
+  (most of the tree).
 - The two RST-only pages on this branch: `docs/cli.rst` and
   `docs/installation/cloud/aws.rst`. Both stayed RST due to converter issues
   at MyST-migration time and have not been revisited since.
-- `docs/_include/<name>.txt` — shared RST snippets included into MyST pages via `cmdincludemd`. Their content is parsed as RST so the legacy templates keep working unchanged.
+- `docs/_include/<name>.txt` — shared RST snippets included into MyST
+  pages via `cmdincludemd`. Their content is parsed as RST so the
+  legacy templates keep working unchanged.
 - `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST
   shadows of converted pages. Excluded from the Sphinx build and from the
   Context7 index. Reference only.
@@ -220,7 +223,9 @@ serves and crawlers skip the redirect hop.
 
 ## CI
 
-- **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via `.github/workflows/lint-doc.yml`) — line length and IP rules, on changed files only.
+- **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via
+  `.github/workflows/lint-doc.yml`) — line length and IP rules, on
+  changed files only.
 - **Sphinx build** — runs on Read the Docs for every PR; preview URL appears as a check.
 - **CLA check** — contributors must sign the VyOS CLA before merge.
 - **Conflict check** — fails the PR if it doesn't merge cleanly into base.
