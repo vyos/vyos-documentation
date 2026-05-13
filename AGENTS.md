@@ -4,9 +4,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-VyOS user documentation, built with Sphinx and hosted on Read the Docs at https://docs.vyos.io. This branch (`sagitta`, 1.4.x previous LTS) is migrated to MyST Markdown (`.md`) except for two pages with known converter issues that stayed in RST: `docs/cli.rst` and `docs/installation/cloud/aws.rst`. `source_suffix` in `docs/conf.py` is `['.rst', '.md']`. Both formats are first-class to Sphinx.
+VyOS user documentation, built with Sphinx and hosted on Read the Docs at
+https://docs.vyos.io. This branch (`sagitta`, 1.4.x previous LTS) is migrated
+to MyST Markdown (`.md`) except for two pages with known converter issues that
+stayed in RST: `docs/cli.rst` and `docs/installation/cloud/aws.rst`.
+`source_suffix` in `docs/conf.py` is `['.rst', '.md']`. Both formats are
+first-class to Sphinx.
 
-Pre-migration RST shadows of converted pages are archived under `docs/_rst_legacy/` for reference only — they are excluded from the build, not consulted by Sphinx, and must not be edited.
+Pre-migration RST shadows of converted pages are archived under
+`docs/_rst_legacy/` for reference only — they are excluded from the build,
+not consulted by Sphinx, and must not be edited.
 
 ## Build
 
@@ -75,12 +82,17 @@ Mergify is configured at the org level (no `.mergify.yml` in the repo). The PR t
 ### Source files
 
 - `docs/<subdir>/<page>.md` — canonical MD source for migrated pages (most of the tree).
-- The two RST-only pages on this branch: `docs/cli.rst` and `docs/installation/cloud/aws.rst`. Both stayed RST due to converter issues at MyST-migration time and have not been revisited since.
+- The two RST-only pages on this branch: `docs/cli.rst` and
+  `docs/installation/cloud/aws.rst`. Both stayed RST due to converter issues
+  at MyST-migration time and have not been revisited since.
 - `docs/_include/<name>.txt` — shared RST snippets included into MyST pages via `cmdincludemd`. Their content is parsed as RST so the legacy templates keep working unchanged.
-- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST shadows of converted pages. Excluded from the Sphinx build and from the Context7 index. Reference only.
+- `docs/_rst_legacy/<subdir>/rst-<page>.rst` — archived pre-migration RST
+  shadows of converted pages. Excluded from the Sphinx build and from the
+  Context7 index. Reference only.
 
 **Editing rules:**
-- Existing migrated page (has `<page>.md`): edit the `.md`. Do not touch the archived shadow under `_rst_legacy/`.
+- Existing migrated page (has `<page>.md`): edit the `.md`. Do not touch the
+  archived shadow under `_rst_legacy/`.
 - One of the two remaining RST-only pages above: edit the `.rst`.
 - New page: write it as `.md` from the start. The `md-` prefix that earlier MyST migration commits used is gone — never add it.
 
