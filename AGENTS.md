@@ -227,7 +227,9 @@ serves and crawlers skip the redirect hop.
 
 ## CI
 
-- **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via `.github/workflows/lint-doc.yml`) — line length and IP rules, on changed files only.
+- **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via
+  `.github/workflows/lint-doc.yml`) — line length and IP rules, on
+  changed files only.
 - **Sphinx build** — runs on Read the Docs for every PR; preview URL appears as a check.
 - **CLA check** — contributors must sign the VyOS CLA before merge.
 - **Conflict check** — fails the PR if it doesn't merge cleanly into base.
