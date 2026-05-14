@@ -41,14 +41,16 @@ remains a relatively obscure feature, and many router appliances
 still don't support it. However, it's very useful for quickly setting up
 tunnels between routers.
 
-As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys or x.509 certificates.
+As of VyOS 1.4, OpenVPN site-to-site mode can use either pre-shared keys
+or x.509 certificates.
 
-The pre-shared key mode is deprecated and will be removed from future OpenVPN versions,
-so VyOS will have to remove support for that option as well. The reason is that using pre-shared keys
-is significantly less secure than using TLS.
+The pre-shared key mode is deprecated and will be removed from future
+OpenVPN versions, so VyOS will have to remove support for that option as
+well. The reason is that using pre-shared keys is significantly less
+secure than using TLS.
 
-We'll configure OpenVPN using self-signed certificates, and then discuss the legacy
-pre-shared key mode.
+We'll configure OpenVPN using self-signed certificates, and then discuss
+the legacy pre-shared key mode.
 
 In both cases, we will use the following settings:
 
@@ -68,16 +70,20 @@ In both cases, we will use the following settings:
 
 ### Setting up certificates
 
-Setting up a full-blown PKI with a CA certificate would arguably defeat the purpose
-of site-to-site OpenVPN, since its main goal is supposed to be configuration simplicity,
-compared to server setups that need to support multiple clients.
+Setting up a full-blown PKI with a CA certificate would arguably defeat
+the purpose of site-to-site OpenVPN, since its main goal is supposed to
+be configuration simplicity, compared to server setups that need to
+support multiple clients.
 
 However, since VyOS 1.4, it is possible to verify self-signed certificates using
 certificate fingerprints.
 
-On both sides, you need to generate a self-signed certificate, preferrably using the "ec" (elliptic curve) type.
-You can generate them by executing command `run generate pki certificate self-signed install <name>` in the configuration mode.
-Once the command is complete, it will add the certificate to the configuration session, to the `pki` subtree.
+On both sides, you need to generate a self-signed certificate,
+preferrably using the "ec" (elliptic curve) type. You can generate them
+by executing command
+`run generate pki certificate self-signed install <name>` in the
+configuration mode. Once the command is complete, it will add the
+certificate to the configuration session, to the `pki` subtree.
 You can then review the proposed changes and commit them.
 
 ```none
@@ -111,15 +117,20 @@ vyos@vyos# compare
 vyos@vyos# commit
 ```
 
-You do **not** need to copy the certificate to the other router. Instead, you need to retrieve its SHA-256 fingerprint.
-OpenVPN only supports SHA-256 fingerprints at the moment, so you need to use the following command:
+You do **not** need to copy the certificate to the other router.
+Instead, you need to retrieve its SHA-256 fingerprint. OpenVPN only
+supports SHA-256 fingerprints at the moment, so you need to use the
+following command:
 
+% stop_vyoslinter
 ```none
 vyos@vyos# run show pki certificate openvpn-local fingerprint sha256
 5C:B8:09:64:8B:59:51:DC:F4:DF:2C:12:5C:B7:03:D1:68:94:D7:5B:62:C2:E1:83:79:F1:F0:68:B2:81:26:79
 ```
+% start_vyoslinter
 
-Note: certificate names don't matter, we use 'openvpn-local' and 'openvpn-remote' but they can be arbitrary.
+Note: certificate names don't matter, we use 'openvpn-local' and
+'openvpn-remote' but they can be arbitrary.
 
 Repeat the procedure on the other router.
 
@@ -161,12 +172,15 @@ set interfaces openvpn vtun1 tls peer-fingerprint <local cert fingerprint>      
 
 ### Pre-shared keys
 
-Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI was to use pre-shared keys.
-That option is still available but it is deprecated and will be removed in the future.
-However, if you need to set up a tunnel to an older VyOS version or a system with older OpenVPN,
-you need to still need to know how to use it.
+Until VyOS 1.4, the only option for site-to-site OpenVPN without PKI
+was to use pre-shared keys. That option is still available but it is
+deprecated and will be removed in the future. However, if you need to
+set up a tunnel to an older VyOS version or a system with older
+OpenVPN, you need to still need to know how to use it.
 
-First, you need to generate a key by running `run generate pki openvpn shared-secret install <name>` from configuration mode.
+First, you need to generate a key by running
+`run generate pki openvpn shared-secret install <name>`
+from configuration mode.
 You can use any name, we will use `s2s`.
 
 ```none
@@ -346,9 +360,10 @@ set interfaces openvpn vtun10 persistent-tunnel
 set interfaces openvpn vtun10 protocol udp
 ```
 
-Then we need to generate, add and specify the names of the cryptographic materials.
-Each of the install command should be applied to the configuration and commited
-before using under the openvpn interface configuration.
+Then we need to generate, add and specify the names of the cryptographic
+materials. Each of the install command should be applied to the
+configuration and commited before using under the openvpn interface
+configuration.
 
 ```none
 run generate pki ca install ca-1                                # Follow the instructions to generate CA cert.
@@ -404,12 +419,13 @@ internally, so we need to create a route to the 10.23.0.0/20 network ourselves:
 set protocols static route 10.23.0.0/20 interface vtun10
 ```
 
-Additionally, each client needs a copy of ca cert and its own client key and
-cert files. The files are plaintext so they may be copied either manually from the CLI.
-Client key and cert files should be signed with the proper ca cert and generated on the
-server side.
+Additionally, each client needs a copy of ca cert and its own client
+key and cert files. The files are plaintext so they may be copied
+either manually from the CLI. Client key and cert files should be
+signed with the proper ca cert and generated on the server side.
 
-HQ's router requires the following steps to generate crypto materials for the Branch 1:
+HQ's router requires the following steps to generate crypto materials
+for the Branch 1:
 
 ```none
 run generate pki certificate sign ca-1 install branch-1            # Follow the instructions to generate client
