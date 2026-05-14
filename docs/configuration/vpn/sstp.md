@@ -21,7 +21,8 @@ certificates or private PKI is required.
 
 ### Certificates
 
-Using our documentation chapter - {ref}`pki` generate and install CA and Server certificate
+Using our documentation chapter - {ref}`pki` generate and install CA
+and Server certificate
 
 ```none
 vyos@vyos:~$ generate pki ca install CA
@@ -598,7 +599,8 @@ Once you have setup your SSTP server there comes the time to do some basic
 testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.
 
-If you use a self-signed certificate, do not forget to install CA on the client side.
+If you use a self-signed certificate, do not forget to install CA on
+the client side.
 
 The following PPP configuration tests MSCHAP-v2:
 
@@ -758,6 +760,8 @@ Feb 28 17:03:07 vyos accel-sstp[2492]: sstp0:test: sstp: ppp: started
 ```
 
 
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
 [sstpc]: https://github.com/reliablehosting/sstp-client
+% start_vyoslinter
