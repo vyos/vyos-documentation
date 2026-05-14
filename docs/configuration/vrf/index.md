@@ -73,7 +73,7 @@ can be used to filter which routes zebra will install in the kernel.
 
 Nexthop tracking resolve nexthops via the default route by default.
 This is enabled by default for a traditional profile of FRR which we
-use. It and can be disabled if you do not wan't to e.g. allow BGP to
+use. It can be disabled if you do not want to e.g. allow BGP to
 peer across the default route.
 
 ```{eval-rst}

@@ -79,7 +79,7 @@ However, since VyOS 1.4, it is possible to verify self-signed certificates using
 certificate fingerprints.
 
 On both sides, you need to generate a self-signed certificate,
-preferrably using the "ec" (elliptic curve) type. You can generate them
+preferably using the "ec" (elliptic curve) type. You can generate them
 by executing command
 `run generate pki certificate self-signed install <name>` in the
 configuration mode. Once the command is complete, it will add the

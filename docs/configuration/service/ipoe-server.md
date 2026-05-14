@@ -297,7 +297,7 @@ RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
 User interface can be put to VRF context via RADIUS Access-Accept
-packet, or change it via RADIUS CoA. `Accel-VRF-Name` is used from
+packet, or change it via RADIUS CoA. `Accel-VRF-Name` is used for
 these purposes. It is custom [ACCEL-PPP attribute].
 Define it in your RADIUS server.
 
