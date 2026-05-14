@@ -41,6 +41,3 @@ connectivity of the display to your system. This can be any serial port
    .. note:: We can't support all displays from the beginning. If your display
       type is missing, please create a feature request via Phabricator_.
 ```
-
-```{include} /_include/common-references.txt
-```
