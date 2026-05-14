@@ -275,15 +275,17 @@ the CLI configuration, refer to the explanation below.
 
 ### Allocation clients ip addresses by RADIUS
 
-If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
-config is being ignored.
+If the RADIUS server sends the attribute `Framed-IP-Address` then this
+IP address will be allocated to the client and the option `default-pool`
+within the CLI config is being ignored.
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If the RADIUS server sends the attribute `Framed-Pool`, IP address will
+be allocated from a predefined IP pool whose name equals the attribute
+value.
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`,
+IPv6 address will be allocated from a predefined IPv6 pool `prefix`
+whose name equals the attribute value.
 
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
 delegation pefix will be allocated from a predefined IPv6 pool `delegate`
@@ -294,8 +296,9 @@ whose name equals the attribute value.
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
+User interface can be put to VRF context via RADIUS Access-Accept
+packet, or change it via RADIUS CoA. `Accel-VRF-Name` is used for
+these purposes. It is custom [ACCEL-PPP attribute].
 Define it in your RADIUS server.
 
 ## IPv6
@@ -524,8 +527,8 @@ Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: session started
 Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Ack xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Ack> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
 ```
 
-```{include} /_include/common-references.txt
-```
 
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter

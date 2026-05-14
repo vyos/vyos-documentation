@@ -155,8 +155,9 @@ as member ports.
 
 ## Config Load Tests
 
-The other part of our tests are called "config load tests". The config load tests
-will load - one after another - arbitrary configuration files to test if the
+The other part of our tests are called "config load tests". The config
+load tests will load - one after another - arbitrary configuration
+files to test if the
 configuration migration scripts work as designed and that a given set of
 functionality still can be loaded with a fresh VyOS ISO image.
 
@@ -165,8 +166,9 @@ as a testcase but also as reference if one wants to enable a certain feature.
 The configurations can be found here:
 <https://github.com/vyos/vyos-1x/tree/current/smoketest/configs>
 
-The entire test is controlled by the main wrapper script `/usr/bin/vyos-configtest`
-which behaves in the same way as the main smoketest script. It scans the folder
+The entire test is controlled by the main wrapper script
+`/usr/bin/vyos-configtest` which behaves in the same way as the main
+smoketest script. It scans the folder
 for potential configuration files and issues a `load` command one after another.
 
 ### Manual config load test
@@ -209,6 +211,3 @@ can be applied - you will get a commit error otherwise. If you are interested
 how those preconditions are fulfilled check the [vyos-build] repository and
 the `scripts/check-qemu-install` file.
 :::
-
-```{include} /_include/common-references.txt
-```

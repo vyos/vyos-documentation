@@ -99,7 +99,8 @@ It is also worth reading <https://chris.beams.io/posts/git-commit/>
 
 Limits:
 
-- We only accept bugfixes in packages other than <https://github.com/vyos/vyos-1x>
+- We only accept bugfixes in packages other than
+  <https://github.com/vyos/vyos-1x>
   as no new functionality should use the old style templates (`node.def` and
   Perl/BASH code. Use the new style XML/Python interface instead.
 
@@ -158,8 +159,8 @@ record them in your created Git commit:
 
 Follow the above steps on how to "Fork repository to submit a Patch". Instead
 of uploading "pushing" your changes to GitHub you can export the patches/
-commits and send it to <mailto:maintainers@vyos.net> or attach it directly to the bug
-(preferred over email)
+commits and send it to <mailto:maintainers@vyos.net> or attach it
+directly to the bug (preferred over email)
 
 - Export last commit to patch file: `git format-patch` or export the last two
   commits into its appropriate patch files: `git format-patch -2`
@@ -651,6 +652,7 @@ C++ backend library \[vyatta-cfg\](<https://github.com/vyos/vyatta-cfg>). This
 section is a reference of common CLI commands and the respective entry point
 in the C/C++ code.
 
+% stop_vyoslinter
 - `set`
 
   - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352>
@@ -659,6 +661,7 @@ in the C/C++ code.
 - `commit`
 
   - <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252>
+% start_vyoslinter
 
 ## Continuous Integration
 
@@ -678,17 +681,19 @@ to our Debian repository which is used during build time. It is located here:
 <http://dev.packages.vyos.net/repositories/>.
 
 
-```{include} /_include/common-references.txt
-```
-
-
 [dockerhub]: https://hub.docker.com/u/vyos/
+% stop_vyoslinter
 [ipv4, ipv6]: https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i
 [ipv4, ipv6 and dhcp(v6)]: https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i
+% start_vyoslinter
 [jenkins]: https://jenkins.io/
 [jinja2]: https://jinja.palletsprojects.com/
+% stop_vyoslinter
 [mac address]: https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/mac.xml.i
+% start_vyoslinter
 [process]: https://blog.vyos.io/vyos-development-digest-10
+% stop_vyoslinter
 [vlan (vif)]: https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/vif.xml.i
+% start_vyoslinter
 [vyconf]: https://github.com/vyos/vyconf/tree/master/data/schemata
 [vyos-1x]: https://github.com/vyos/vyos-1x/tree/current/schema

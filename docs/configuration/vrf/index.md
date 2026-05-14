@@ -71,9 +71,10 @@ can be used to filter which routes zebra will install in the kernel.
 
 ### Nexthop Tracking
 
-Nexthop tracking resolve nexthops via the default route by default. This is enabled
-by default for a traditional profile of FRR which we use. It and can be disabled if
-you do not wan't to e.g. allow BGP to peer across the default route.
+Nexthop tracking resolve nexthops via the default route by default.
+This is enabled by default for a traditional profile of FRR which we
+use. It can be disabled if you do not want to e.g. allow BGP to
+peer across the default route.
 
 ```{eval-rst}
 .. cfgcmd:: set vrf name <name> ip nht no-resolve-via-default
@@ -288,6 +289,7 @@ VRF route leaking
 
 #### Configuration
 
+% stop_vyoslinter
 > ```none
 > set interfaces bridge br10 address '10.30.0.254/24'
 > set interfaces bridge br10 member interface eth3
@@ -314,6 +316,7 @@ VRF route leaking
 > set vrf name red protocols static route 10.0.0.0/24 interface eth1 vrf 'default'
 > set vrf name red table '2000'
 > ```
+% start_vyoslinter
 
 ### VRF and NAT
 
@@ -321,6 +324,7 @@ VRF route leaking
 
 #### Configuration
 
+% stop_vyoslinter
 > ```none
 > set interfaces ethernet eth0 address '172.16.50.12/24'
 > set interfaces ethernet eth0 vrf 'red'
@@ -350,6 +354,7 @@ VRF route leaking
 > set vrf name red protocols static route 192.168.130.0/24 interface eth1 vrf 'blue'
 > set vrf name red table '2020'
 > ```
+% start_vyoslinter
 
 (vrf-example-operation)=
 
@@ -378,6 +383,7 @@ installed, and try to ICMP ping PC1 from PC3.
 
 ##### VRF default routing table
 
+% stop_vyoslinter
 > ```none
 > vyos@R1:~$ show ip route
 > Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -390,9 +396,11 @@ installed, and try to ICMP ping PC1 from PC3.
 > S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:38
 > S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 > ```
+% start_vyoslinter
 
 ##### VRF red routing table
 
+% stop_vyoslinter
 > ```none
 > vyos@R1:~$ show ip route vrf red
 > Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -406,9 +414,11 @@ installed, and try to ICMP ping PC1 from PC3.
 > S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:40
 > C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 > ```
+% start_vyoslinter
 
 ##### VRF blue routing table
 
+% stop_vyoslinter
 > ```none
 > vyos@R1:~$ show ip route vrf blue
 > Codes: K - kernel route, C - connected, S - static, R - RIP,
@@ -422,6 +432,7 @@ installed, and try to ICMP ping PC1 from PC3.
 > S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07:44
 > C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 > ```
+% start_vyoslinter
 
 # L3VPN VRFs
 
@@ -595,7 +606,4 @@ are in place.
     Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt
     10.0.0.7        4      65001      2860      2870        0    0    0 1d23h34m            2       10
 
-```
-
-```{include} /_include/common-references.txt
 ```
