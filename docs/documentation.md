@@ -45,7 +45,8 @@ The following is a quick summary of the rules:
   your text through a grammar and spell checker, such as [Grammarly].
 - Don't forget to update `index.rst` when adding a new node.
 - Try not to exceed 80 characters per line, but don't break URLs over this.
-- Properly quote commands, filenames and brief code snippets with double backticks.
+- Properly quote commands, filenames and brief code snippets with
+  double backticks.
 - Use literal blocks for longer snippets.
 - Leave a newline before and after a header.
 - Indent with two spaces.
@@ -89,8 +90,9 @@ pull-request. This requires you already have a GitHub account.
 - Make all your changes - please keep our commit rules in mind
   ({ref}`prepare_commit`). This mainly applies to proper commit messages
   describing your change (how and why). Please check out the documentation of
-  [Sphinx-doc] or [reStructuredText] if you are not familiar with it. This is used
-  for writing our docs. Additional directives how to write in RST can be
+  [Sphinx-doc] or [reStructuredText] if you are not familiar with it.
+  This is used for writing our docs. Additional directives how to
+  write in RST can be
   obtained from [reStructuredTextDirectives].
 
 - Check your changes by locally building the documentation `$ make livehtml`.
@@ -418,9 +420,13 @@ Anything else that is not a configuration or an operation command has no
 predefined structure.
 
 
+% stop_vyoslinter
 [dockerfile]: https://github.com/vyos/vyos-documentation/blob/master/docker/Dockerfile
+% start_vyoslinter
 [grammarly]: https://www.grammarly.com/
 [readme.md]: https://github.com/vyos/vyos-documentation/blob/master/README.md
+% stop_vyoslinter
 [restructuredtext]: http://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html
 [restructuredtextdirectives]: https://docutils.sourceforge.io/docs/ref/rst/directives.html
+% start_vyoslinter
 [sphinx-doc]: https://www.sphinx-doc.org
