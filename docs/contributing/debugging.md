@@ -183,5 +183,7 @@ you can use the `/opt/vyatta/sbin/priority.pl` script which lists to you
 the execution order of the scripts.
 
 
+% stop_vyoslinter
 [bootchart.conf]: https://github.com/vyos/vyos-build/blob/current/data/live-build-config/includes.chroot/etc/systemd/bootchart.conf
+% start_vyoslinter
 [vyatta-cfg]: https://github.com/vyos/vyatta-cfg
