@@ -78,7 +78,6 @@
   .. hint::
 
      MSS value = MTU - 40 (IPv6 header) - 20 (TCP header), resulting in
-
      1432 bytes on a 1492 byte MTU.
 
   Instead of a numerical MSS value ``clamp-mss-to-pmtu`` can be used to

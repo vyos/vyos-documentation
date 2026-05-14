@@ -5,7 +5,7 @@
   Use this command to direct an interface to not detect any physical state
   changes on a link, for example, when the cable is unplugged.
 
-  Default is to detects physical link state changes.
+  Default is to detect physical link state changes.
 
   Example:
 
