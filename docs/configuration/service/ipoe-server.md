@@ -524,8 +524,5 @@ Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: ipoe: session started
 Feb 27 14:29:27 vyos accel-ipoe[2262]: eth1.100:eth1.100: send [DHCPv4 Ack xid=55df9228 yiaddr=192.168.0.4 chaddr=0c:98:bd:b8:00:01 <Message-Type Ack> <Server-ID 192.168.0.1> <Lease-Time 600> <T1 300> <T2 525> <Router 192.168.0.1> <Subnet 255.255.255.0>]
 ```
 
-```{include} /_include/common-references.txt
-```
-
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
