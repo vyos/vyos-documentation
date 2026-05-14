@@ -1,6 +1,4 @@
-::::{cfgcmd} set interfaces {{ var0 }} \<interface\> evpn uplink
-
-::::
+.. cfgcmd:: set interfaces {{ var0 }} <interface> evpn uplink
 
   When all the underlay links go down the PE no longer has access
   to the VxLAN +overlay. To prevent blackholing of traffic the
