@@ -42,3 +42,5 @@ connectivity of the display to your system. This can be any serial port
       type is missing, please create a feature request via Phabricator_.
 ```
 
+```{include} /_include/common-references.txt
+```

@@ -678,6 +678,9 @@ to our Debian repository which is used during build time. It is located here:
 <http://dev.packages.vyos.net/repositories/>.
 
 
+```{include} /_include/common-references.txt
+```
+
 
 [dockerhub]: https://hub.docker.com/u/vyos/
 [ipv4, ipv6]: https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i

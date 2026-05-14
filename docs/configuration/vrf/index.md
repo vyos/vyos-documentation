@@ -597,3 +597,5 @@ are in place.
 
 ```
 
+```{include} /_include/common-references.txt
+```

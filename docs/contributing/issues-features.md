@@ -65,6 +65,9 @@ please search [Phabricator] if there is already a request pending. You can
 enhance it or if you don't find one, create a new one by use the quick link in
 the left side under the specific project.
 
+```{include} /_include/common-references.txt
+```
+
 [documentation]: https://docs.vyos.io
 [forum]: https://forum.vyos.io
 [slack]: https://slack.vyos.io
