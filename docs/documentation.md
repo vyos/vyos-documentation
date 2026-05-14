@@ -418,10 +418,6 @@ Anything else that is not a configuration or an operation command has no
 predefined structure.
 
 
-```{include} /_include/common-references.txt
-```
-
-
 [dockerfile]: https://github.com/vyos/vyos-documentation/blob/master/docker/Dockerfile
 [grammarly]: https://www.grammarly.com/
 [readme.md]: https://github.com/vyos/vyos-documentation/blob/master/README.md
