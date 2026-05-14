@@ -757,8 +757,6 @@ Feb 28 17:03:07 vyos accel-sstp[2492]: ppp0:test: rename interface to 'sstp0'
 Feb 28 17:03:07 vyos accel-sstp[2492]: sstp0:test: sstp: ppp: started
 ```
 
-```{include} /_include/common-references.txt
-```
 
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
