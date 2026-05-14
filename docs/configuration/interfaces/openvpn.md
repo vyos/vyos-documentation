@@ -862,6 +862,3 @@ The following commands let you reset OpenVPN.
 
 
 ```
-
-```{include} /_include/common-references.txt
-```
