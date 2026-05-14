@@ -15,7 +15,6 @@
   .. note::
 
      When using DHCP to retrieve IPv4 address and if local
-
      customizations are needed, they should be possible using the enter and
      exit hooks provided. The hook dirs are:
 

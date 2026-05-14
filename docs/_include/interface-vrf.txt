@@ -7,7 +7,6 @@
   .. seealso::
 
      There is an entire chapter about how to configure a :ref:`vrf`,
-
      please check this for additional information.
 
   Example:

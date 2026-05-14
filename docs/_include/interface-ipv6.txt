@@ -13,7 +13,6 @@
   .. note::
 
      This method automatically disables IPv6 traffic forwarding on the
-
      interface in question.
 
   Example:
