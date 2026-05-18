@@ -146,13 +146,13 @@ Restart the IGMP proxy process.
 ## Example
 
 In this example, the local LAN on interface eth1 operates behind NAT. To allow
-local clients to receive multicast traffic originating from the 10.0.0.0/23
+local clients to receive multicast traffic originating from the 198.51.100.0/24
 source network on the WAN interface (eth0), configure the IGMP proxy as
 follows:
 
 ```none
 set protocols igmp-proxy interface eth0 role upstream
-set protocols igmp-proxy interface eth0 alt-subnet 10.0.0.0/23
+set protocols igmp-proxy interface eth0 alt-subnet 198.51.100.0/24
 set protocols igmp-proxy interface eth1 role downstream
 ```
 
