@@ -140,7 +140,7 @@ set protocols igmp-proxy disable
 
 ```{opcmd} restart igmp-proxy
 
-**Restart the IGMP proxy process.**
+Restart the IGMP proxy process.
 ```
 
 ## Example
