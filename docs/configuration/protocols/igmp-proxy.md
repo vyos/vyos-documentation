@@ -72,7 +72,7 @@ By default, the IGMP proxy accepts requests for all multicast destination
 networks. When you define a whitelist, the IGMP proxy forwards requests only
 for the specified multicast networks.
 
-You can configure multiple whitelist entries per a **downstream** IGMP proxy
+You can configure multiple whitelist entries per **downstream** IGMP proxy
 interface.
 ```
 
