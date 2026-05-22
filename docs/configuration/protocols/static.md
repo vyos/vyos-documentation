@@ -49,7 +49,7 @@ set protocols static route 192.0.2.0/24 next-hop 10.0.0.254
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> disable
 
-**Disable the specified IPv4 unicast route.**
+**Disable the route via the specified next-hop IP address.**
 
 This command temporarily deactivates the route while preserving the
 configured subnet, next-hop, and distance parameters.
@@ -63,7 +63,8 @@ set protocols static route 192.0.2.0/24 next-hop 10.0.0.254 disable
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> distance \<distance\>
 
-**Configure the administrative distance for the specified next-hop IP address.**
+**Configure the administrative distance for the route via the specified
+next-hop IP address.**
 
 Routes with a lower administrative distance are prioritized over routes with
 a higher distance.
@@ -104,7 +105,7 @@ set protocols static route 192.0.2.0/24 interface eth0
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> disable
 
-**Disable the specified IPv4 interface route.**
+**Disable the route via the specified next-hop interface.**
 
 This command temporarily deactivates the route while preserving the
 configured subnet, interface, and distance parameters.
@@ -118,7 +119,8 @@ set protocols static route 192.0.2.0/24 interface eth0 disable
 
 ```{cfgcmd} set protocols static route \<subnet\> interface \<interface\> distance \<distance\>
 
-**Configure the administrative distance for the specified next-hop interface.**
+**Configure the administrative distance for the route via the specified
+next-hop interface.**
 
 Routes with a lower administrative distance are prioritized over routes with
 a higher distance.
@@ -134,14 +136,14 @@ set protocols static route 192.0.2.0/24 interface eth0 distance 10
 
 ### IPv4 BFD
 
-IPv4 {abbr}`BFD (Bidirectional Forwarding Detection)` monitors the reachability
+{abbr}`BFD (Bidirectional Forwarding Detection)` monitors the reachability
 of a static route's next-hop IP address. Use the following commands to
 configure {abbr}`BFD (Bidirectional Forwarding Detection)` parameters for your
 IPv4 static routes.
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd
 
-**Enable BFD monitoring for the specified next-hop IP address.**
+**Enable BFD monitoring for the route via the specified next-hop IP address.**
 
 The system uses the next-hop IP address as the BFD peer destination.
 ```
@@ -154,8 +156,8 @@ set protocols static route 192.0.2.0/24 next-hop 10.0.0.254 bfd
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-**Apply the settings from a designated BFD profile to the specified next-hop
-IP address.**
+**Apply the settings from a designated BFD profile to the BFD session that monitors
+the specified next-hop IP address.**
 ```
 
 Example:
@@ -166,7 +168,8 @@ set protocols static route 192.0.2.0/24 next-hop 10.0.0.254 bfd profile custom-p
 
 ```{cfgcmd} set protocols static route \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
-**Enable a multi-hop BFD session for the specified next-hop IP address.**
+**Enable a multi-hop BFD session to monitor the reachability of the
+specified next-hop IP address.**
 
 The system initiates the BFD session from the specified local source IPv4
 address.
@@ -186,8 +189,8 @@ following command to configure DHCP interface routes.
 
 ```{cfgcmd} set protocols static route \<subnet\> dhcp-interface \<interface\>
 
-**Configure a static route that derives its next-hop from the specified
-DHCP-enabled interface.**
+**Configure a static route that derives its next-hop IP address from
+the specified DHCP-enabled interface.**
 ```
 
 Example:
@@ -317,7 +320,7 @@ set protocols static route6 2001:db8:1::/64 next-hop 2001:db8:100::1
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> disable
 
-**Disable the specified IPv6 unicast route.**
+**Disable the route via the specified next-hop IPv6 address.**
 
 This command temporarily deactivates the route while preserving the
 configured subnet, next-hop, and distance parameters.
@@ -331,7 +334,8 @@ set protocols static route6 2001:db8:1::/64 next-hop 2001:db8:100::1 disable
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> distance \<distance\>
 
-**Configure the administrative distance for the specified next-hop IPv6 address.**
+**Configure the administrative distance for the route via the
+specified next-hop IPv6 address.**
 
 Routes with a lower administrative distance are prioritized over routes with
 a higher distance.
@@ -399,7 +403,7 @@ set protocols static route6 2001:db8:1::/64 interface eth0
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> disable
 
-**Disable the specified IPv6 interface route.**
+**Disable the route via the specified next-hop interface.**
 
 This command temporarily deactivates the route while preserving the
 configured subnet, interface, and distance parameters.
@@ -413,7 +417,8 @@ set protocols static route6 2001:db8:1::/64 interface eth0 disable
 
 ```{cfgcmd} set protocols static route6 \<subnet\> interface \<interface\> distance \<distance\>
 
-**Configure the administrative distance for the specified next-hop interface.**
+**Configure the administrative distance for the route via the
+specified next-hop interface.**
 
 Routes with a lower administrative distance are prioritized over routes with
 a higher distance.
@@ -444,14 +449,15 @@ set protocols static route6 2001:db8:1000::/36 interface eth0 segments '2001:db8
 
 ### IPv6 BFD
 
-IPv6 {abbr}`BFD (Bidirectional Forwarding Detection)` monitors the reachability
+{abbr}`BFD (Bidirectional Forwarding Detection)` monitors the reachability
 of a static route's next-hop IPv6 address. Use the following commands to
 configure {abbr}`BFD (Bidirectional Forwarding Detection)` parameters for your
 IPv6 static routes.
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd
 
-**Enable BFD monitoring for the specified next-hop IPv6 address.**
+**Enable BFD monitoring for the route via the specified next-hop IPv6
+address.**
 
 The system uses the next-hop IPv6 address as the BFD peer destination.
 ```
@@ -464,8 +470,8 @@ set protocols static route6 2001:db8:1::/64 next-hop 2001:db8:100::1 bfd
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd profile \<profile\>
 
-**Apply the settings from a designated BFD profile to the specified next-hop
-IPv6 address.**
+**Apply the settings from a designated BFD profile to the BFD session
+that monitors the specified next-hop IPv6 address.**
 ```
 
 Example:
@@ -476,7 +482,8 @@ set protocols static route6 2001:db8:1::/64 next-hop 2001:db8:100::1 bfd profile
 
 ```{cfgcmd} set protocols static route6 \<subnet\> next-hop \<address\> bfd multi-hop source-address \<source-address\>
 
-**Enable a multi-hop BFD session for the specified next-hop IPv6 address.**
+**Enable a multi-hop BFD session to monitor the reachability of the
+specified next-hop IPv6 address.**
 
 The system initiates the BFD session from the specified local source IPv6
 address.
