@@ -45,7 +45,8 @@ set protocols igmp-proxy interface eth1 role downstream
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> alt-subnet \<network\>
 
-**Configure an allowed remote subnet for incoming multicast traffic.**
+**Configure an allowed remote subnet for incoming multicast traffic
+on the specified IGMP proxy interface**
 
 By default, the IGMP proxy accepts multicast traffic only from directly
 connected subnets. If a multicast source resides on a remote network, you
@@ -66,7 +67,8 @@ set protocols igmp-proxy interface eth0 alt-subnet 10.0.0.0/8
 
 ```{cfgcmd} set protocols igmp-proxy interface \<interface\> whitelist \<network\>
 
-**Configure a permitted destination network for multicast traffic requests.**
+**Configure a permitted destination network for multicast traffic requests
+on the specified IGMP proxy interface.**
 
 By default, the IGMP proxy accepts requests for all multicast destination
 networks. When you define a whitelist, the IGMP proxy forwards requests only
