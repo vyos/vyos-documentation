@@ -9,7 +9,7 @@ myst:
       multihop, echo-mode
 ---
 
-(bfd)=
+(routing-bfd)=
 
 # BFD
 
@@ -331,7 +331,7 @@ vyos@vyos:~$ show bfd peers
 BFD Peers:
         peer 198.51.100.33 vrf default
                 ID: 4182341893
-                Remote ID: 12678929647
+                Remote ID: 3267892964
                 Active mode
                 Status: up
                 Uptime: 1 month(s), 16 hour(s), 29 minute(s), 38 second(s)
@@ -352,7 +352,7 @@ BFD Peers:
                         Echo receive interval: disabled
 
         peer 198.51.100.55 multihop local-address 198.51.100.1 vrf default
-                ID: 4618932327
+                ID: 3618932327
                 Remote ID: 3312345688
                 Active mode
                 Minimum TTL: 254
