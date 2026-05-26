@@ -184,8 +184,7 @@ set protocols bfd peer 198.51.100.33 shutdown
 control packets must have to be accepted from the peer at the specified IP
 address.**
 
-BFD discards any packet whose TTL is below this threshold, protecting the
-session against spoofed packets injected from unauthorized sources.
+BFD discards any packet whose TTL is below this threshold.
 ```
 
 ```{note}
