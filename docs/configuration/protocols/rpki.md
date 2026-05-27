@@ -21,7 +21,7 @@ check the origin of each route against the corresponding
 [RFC 6480](https://datatracker.ietf.org/doc/html/rfc6480).
 
 BGP routers can retrieve ROA information from RPKI Relying Party software,
-also known as an RPKI server or validator, using the RTR protocol. Open source
+also known as an RPKI server or validator, using the RTR protocol. Open-source
 implementations include NLnet Labs'
 [Routinator](https://www.nlnetlabs.nl/projects/routing/routinator/) (Rust),
 OpenBSD's [rpki-client](https://www.rpki-client.org/) (C), and
