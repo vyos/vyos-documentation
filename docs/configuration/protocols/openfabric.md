@@ -82,7 +82,7 @@ set protocols openfabric domain fabric1 interface eth1 address-family ipv6
 domain.**
 
 The password can be specified as either plain text or
-{abbr}`MD5 (Message-Digest Algorithm 5)`.
+an {abbr}`MD5 (Message-Digest Algorithm 5)` hash.
 ```
 
 Example:
@@ -204,11 +204,7 @@ set protocols openfabric domain fabric1 interface eth0 passive
 
 ```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> password plaintext-password \<text\>
 
-**Configure a plain-text authentication password for Hello packet
-authentication on the specified interface.**
-
-This password authenticates the Hello packets exchanged. Only neighbors
-with a matching password will form an adjacency on this interface.
+**Configure a plain-text authentication password for the specified interface.**
 ```
 
 Example:
