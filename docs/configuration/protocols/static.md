@@ -14,9 +14,7 @@ myst:
 Static routes are manually configured entries in the router's {abbr}`RIB (Routing Information Base)`
 that define how traffic should reach specific destinations. Unlike dynamic
 routing protocols, static routes are not automatically updated when the network
-topology changes. However, if a network interface fails, the router removes all
-routes that rely on that interface to reach the next hop, including static
-routes from the {abbr}`RIB (Routing Information Base)`.
+topology changes.
 
 Static routes are best suited for simple network topologies or to override
 dynamic routing protocol behavior for a limited number of routes.
