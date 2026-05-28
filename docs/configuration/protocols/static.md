@@ -24,8 +24,7 @@ dynamic routing protocol behavior for a limited number of routes.
 The {abbr}`RIB (Routing Information Base)` stores all routing information,
 including manually configured static routes and any dynamically learned routes.
 From the {abbr}`RIB (Routing Information Base)`, the router derives unicast
-routes to build the {abbr}`FIB (Forwarding Information Base)`, enabling rapid
-packet-forwarding decisions.
+routes to build the {abbr}`FIB (Forwarding Information Base)`.
 
 ## IPv4 unicast routes
 
