@@ -364,10 +364,10 @@ Node-1@vyos:~$ show mpls table
  Inbound Label  Type        Nexthop                Outbound Label
  ----------------------------------------------------------------------
  552            SR (IS-IS)  192.0.2.2              IPv4 Explicit Null     <-- Node-2 loopback learned on Node-1
- 15000          SR (IS-IS)  192.0.2.2              implicit-null          
- 15001          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null          
- 15002          SR (IS-IS)  192.0.2.2              implicit-null          
- 15003          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null          
+ 15000          SR (IS-IS)  192.0.2.2              implicit-null
+ 15001          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null
+ 15002          SR (IS-IS)  192.0.2.2              implicit-null
+ 15003          SR (IS-IS)  fe80::e87:6cff:fe09:1  implicit-null
 ```
 
 ```none
@@ -375,10 +375,10 @@ Node-2@vyos:~$ show mpls table
  Inbound Label  Type        Nexthop               Outbound Label
  ---------------------------------------------------------------------
  551            SR (IS-IS)  192.0.2.1             IPv4 Explicit Null     <-- Node-1 loopback learned on Node-2
- 15000          SR (IS-IS)  192.0.2.1             implicit-null          
- 15001          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null          
- 15002          SR (IS-IS)  192.0.2.1             implicit-null          
- 15003          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null          
+ 15000          SR (IS-IS)  192.0.2.1             implicit-null
+ 15001          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null
+ 15002          SR (IS-IS)  192.0.2.1             implicit-null
+ 15003          SR (IS-IS)  fe80::e33:2ff:fe80:1  implicit-null
 ```
 
 The following outputs show MPLS Segment Routing label assignments for IP
