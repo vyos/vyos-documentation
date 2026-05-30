@@ -174,7 +174,7 @@ Example:
 set protocols openfabric domain fabric1 interface eth0 hello-multiplier 3
 ```
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> metric \<1-16777215\>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> metric \<0-16777215\>
 
 **Configure the routing metric for the specified interface.**
 
@@ -202,9 +202,12 @@ Example:
 set protocols openfabric domain fabric1 interface eth0 passive
 ```
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> password plaintext-password \<text\>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> password \<plaintext-password|md5\> \<password\>
 
-**Configure a plain-text authentication password for the specified interface.**
+**Configure the authentication password for the specified interface.**
+
+The password can be specified as either plain text or
+an {abbr}`MD5 (Message-Digest Algorithm 5)` hash.
 ```
 
 Example:
@@ -226,7 +229,7 @@ Example:
 set protocols openfabric domain fabric1 interface eth0 csnp-interval 10
 ```
 
-```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> psnp-interval \<1-120\>
+```{cfgcmd} set protocols openfabric domain \<name\> interface \<interface\> psnp-interval \<0-120\>
 
 **Configure the interval, in seconds, at which
 {abbr}`PSNPs (Partial Sequence Number PDUs)` are sent on the specified
@@ -311,6 +314,7 @@ set interfaces ethernet eth1 address '192.0.2.1/24'
 
 set protocols openfabric domain VyOS interface eth1 address-family ipv4
 set protocols openfabric domain VyOS interface lo address-family ipv4
+set protocols openfabric domain VyOS interface lo passive
 set protocols openfabric net '49.0001.1980.5110.0001.00'
 ```
 
@@ -322,6 +326,7 @@ set interfaces ethernet eth1 address '192.0.2.2/24'
 
 set protocols openfabric domain VyOS interface eth1 address-family ipv4
 set protocols openfabric domain VyOS interface lo address-family ipv4
+set protocols openfabric domain VyOS interface lo passive
 set protocols openfabric net '49.0001.1980.5110.0002.00'
 ```
 
