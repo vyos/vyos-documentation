@@ -12,7 +12,9 @@ myst:
 
 # OpenFabric
 
+% stop_vyoslinter
 OpenFabric, specified in [draft-white-openfabric-06.txt](https://datatracker.ietf.org/doc/html/draft-white-openfabric-06),
+% start_vyoslinter
 is a routing protocol derived from IS-IS. It provides link-state routing with
 optimized flooding, making it well-suited for spine-leaf topologies.
 
