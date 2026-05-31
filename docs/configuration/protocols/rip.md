@@ -73,8 +73,9 @@ set protocols rip neighbor 192.0.2.2
 
 **Enable passive mode for the specified interface.**
 
-A passive interface receives and processes incoming RIP updates as usual,
-but sends RIP updates only to explicitly configured unicast neighbors.
+This prevents the router from sending outgoing RIP updates on the
+interface, except to explicitly configured neighbors. Incoming RIP updates
+are still accepted and processed.
 ```
 
 Example:
@@ -85,7 +86,11 @@ set protocols rip passive-interface eth0
 
 ```{cfgcmd} set protocols rip passive-interface default
 
-**Enable passive mode for all RIP-enabled interfaces.**
+**Enable passive mode for all interfaces.**
+
+This prevents the router from sending outgoing RIP updates on all
+interfaces, except to explicitly configured neighbors. The router still
+receives and processes incoming RIP updates normally.
 ```
 
 Example:
