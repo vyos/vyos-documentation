@@ -44,7 +44,7 @@ Two administrative groups cannot share the same `bit-position` value.
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols traffic-engineering admin-group primary bit-position 0
 set protocols traffic-engineering admin-group backup bit-position 1
 ```
@@ -58,8 +58,20 @@ You can configure multiple administrative groups on the same interface.
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols traffic-engineering interface eth0 admin-group primary
+```
+
+```{cfgcmd} set protocols traffic-engineering interface \<ifname\> metric \<1-4294967295\>
+
+**Configure the TE metric for the specified interface (distinct from the
+OSPF/ISIS metric).**
+```
+
+Example:
+
+```none
+set protocols traffic-engineering interface eth0 metric 100
 ```
 
 ```{cfgcmd} set protocols traffic-engineering interface \<ifname\> max-bandwidth \<1-4294967295\>
@@ -69,7 +81,7 @@ set protocols traffic-engineering interface eth0 admin-group primary
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols traffic-engineering interface eth0 max-bandwidth 1000
 ```
 
@@ -81,7 +93,7 @@ interface.**
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols traffic-engineering interface eth0 max-reservable-bandwidth 800
 ```
 
@@ -96,7 +108,7 @@ The following commands enable TE for IS-IS.
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols isis traffic-engineering enable
 ```
 
@@ -108,7 +120,7 @@ daemons.**
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols isis traffic-engineering export
 ```
 
@@ -119,6 +131,6 @@ set protocols isis traffic-engineering export
 
 Example:
 
-```none
+```{cfgcmd}
 set protocols isis traffic-engineering address 198.51.100.1
 ```
