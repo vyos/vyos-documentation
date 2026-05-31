@@ -169,6 +169,10 @@ You need to configure both `port` and `preference` for each cache server
 IP address.
 ```
 
+```{note}
+`preference` values must be unique across cache servers.
+```
+
 Example:
 
 ```none
@@ -181,21 +185,38 @@ You can connect to the RPKI cache server using the RTR protocol over plain
 TCP or over SSH. SSH provides transport integrity and confidentiality. Use
 SSH if your validation software supports this option.
 
-To enable SSH, first generate an SSH client keypair:
+To use SSH authentication, complete the following steps:
 
-```none
-generate ssh client-key /config/auth/id_rsa_rpki
+   **Step 1.** Generate an SSH client keypair:
+
+```{opcmd} generate ssh client-key /config/auth/id_rsa_rpki
 ```
 
-Then import the keypair into the PKI subsystem:
+   **Step 2.** Extract the base64 portion from both keys, plus the public
+   key's algorithm identifier:
 
-```none
-set pki openssh <name> private key '<base64-encoded-private-key>'
-set pki openssh <name> public key '<base64-encoded-public-key>'
-set pki openssh <name> public type 'ssh-rsa'
+```bash
+   grep -v "PRIVATE KEY" /config/auth/id_rsa_rpki | tr -d '\n'
+   awk '{print $2}' /config/auth/id_rsa_rpki.pub
+   awk '{print $1}' /config/auth/id_rsa_rpki.pub
 ```
 
-Set up the connection using the commands below.
+```{note}
+   The PKI subsystem accepts only the base64 portion of each key, without
+   any PEM/OpenSSH headers, footer, or line breaks. If you paste the file
+   contents directly, the commit fails.
+```
+
+   **Step 3.** Import the keypair into the PKI subsystem:
+
+```none
+   set pki openssh <name> private key <base64-encoded-private-key>
+   set pki openssh <name> public key <base64-encoded-public-key>
+   set pki openssh <name> public type <type>
+```
+
+Once the keypair is imported, set up the SSH connection using the commands
+below.
 
 ```{cfgcmd} set protocols rpki cache \<address\> ssh username \<user\>
 
