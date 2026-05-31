@@ -156,13 +156,18 @@ currently supports only static RP configuration.
 The `<address>` parameter defines the RP's IP address, and the `<group>`
 parameter defines the prefix of the multicast group range served by this
 RP.
+
+A single RP can serve multiple group ranges. Repeat the command with
+different `<group>` prefixes to map several ranges to the same RP.
 ```
 
 Example:
 
+% stop_vyoslinter
 ```none
 set protocols pim rp address 192.0.2.1 group 239.0.0.0/8
 ```
+% start_vyoslinter
 
 ```{cfgcmd} set protocols pim rp keep-alive-timer \<1-65535\>
 
@@ -206,6 +211,25 @@ Example:
 
 ```none
 set protocols pim no-v6-secondary
+```
+
+```{cfgcmd} set protocols pim spt-switchover infinity-and-beyond prefix-list \<list\>
+
+**On the {abbr}`LHR (Last-Hop Router)`, suppress the switchover from the
+shared (*,G) tree to the source-specific (S,G)
+{abbr}`SPT (Shortest-Path Tree)`.**
+
+The optional `prefix-list` controls which groups are affected: groups
+matched by a *permit* entry stay on the shared tree, groups matched by a
+*deny* entry switch over normally. Without a prefix-list, the suppression
+applies to all groups.
+```
+
+Example:
+
+```none
+set protocols pim spt-switchover infinity-and-beyond
+set protocols pim spt-switchover infinity-and-beyond prefix-list SHARED-TREE-GROUPS
 ```
 
 ```{cfgcmd} set protocols pim ssm prefix-list \<list\>
@@ -359,18 +383,35 @@ Example:
 set protocols pim interface eth0 igmp
 ```
 
-```{cfgcmd} set protocols pim interface \<interface\> igmp join \<multicast-address\> source-address \<IP-address\>
+```{cfgcmd} set protocols pim interface \<interface\> igmp disable
 
-**Configure the interface to join a specific (S,G) channel.**
-
-Specify both the multicast IP address (G) and the source IP address (S).
+**Administratively disable IGMP on the specified interface without removing
+the existing IGMP configuration.**
 ```
 
 Example:
 
 ```none
-set protocols pim interface eth0 igmp join 232.1.1.100 source-address 192.0.2.50
+set protocols pim interface eth0 igmp disable
 ```
+
+```{cfgcmd} set protocols pim interface \<interface\> igmp join \<multicast-address\> source-address \<IP-address\>
+
+**Configure the interface to join a specific (S,G) channel.**
+
+Specify both the multicast IP address (G) and the source IP address (S).
+Each command joins one (S,G) channel. To join multiple channels sharing
+the same group, repeat the command with different `source-address` values.
+```
+
+Example:
+
+% stop_vyoslinter
+```none
+set protocols pim interface eth0 igmp join 232.1.1.100 source-address 192.0.2.50
+set protocols pim interface eth0 igmp join 232.1.1.100 source-address 192.0.2.51
+```
+% start_vyoslinter
 
 ```{cfgcmd} set protocols pim interface \<interface\> igmp query-interval \<1-1800\>
 
