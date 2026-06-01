@@ -88,10 +88,6 @@ local segments, such as Adjacency-SIDs.
 The range cannot exceed 65535 labels.
 ```
 
-```{note}
-Removing either bound also removes the other.
-```
-
 Example:
 
 ```none
@@ -108,14 +104,21 @@ local segments, such as Adjacency-SIDs.
 The range cannot exceed 65535 labels.
 ```
 
-```{note}
-Removing either bound also removes the other.
-```
-
 Example:
 
 ```none
 set protocols isis segment-routing local-block low-label-value 15000
+```
+
+```{note}
+SR label blocks have the following configuration constraints:
+
+- Both bounds (`high-label-value` and `low-label-value`) must be set.
+  Removing either bound also removes the other.
+- `local-block` requires `global-block` to be configured.
+- The SRGB and SRLB ranges must not overlap.
+
+Violating any of these causes the commit to fail.
 ```
 
 ```{cfgcmd} set protocols isis segment-routing maximum-label-depth \<1-16\>
@@ -133,10 +136,10 @@ set protocols isis segment-routing maximum-label-depth 10
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index value \<0-65535\>
 
-**Configure a Prefix-SID for the specified IP prefix.**
+**Configure a Prefix-SID with an index value for the specified IP prefix.**
 
 A Prefix-SID is a Segment Identifier associated with an IP prefix and
-distributed by the IGP (IS-IS). Prefix-SIDs are unique within an SR domain.
+distributed by the IGP (IS-IS).
 ```
 
 Example:
@@ -147,8 +150,8 @@ set protocols isis segment-routing prefix 192.0.2.1/32 index value 1
 
 ```{cfgcmd} set protocols isis segment-routing prefix \<address\> index \<no-php-flag | explicit-null\>
 
-**Configure a label processing flag for the Prefix-SID associated with the
-specified IP prefix:**
+**Configure a label processing flag for the indexed Prefix-SID associated
+with the specified IP prefix:**
 
 - `no-php-flag`: Requests the upstream neighbor not to pop the Prefix-SID
   label before forwarding the packet.
@@ -160,6 +163,38 @@ Example:
 
 ```none
 set protocols isis segment-routing prefix 192.0.2.1/32 index no-php-flag
+```
+
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> absolute value \<16-1048575\>
+
+**Configure a Prefix-SID with an absolute value for the specified IP
+prefix**
+
+A Prefix-SID is a Segment Identifier associated with an IP prefix and
+distributed by the IGP (IS-IS).
+```
+
+Example:
+
+```none
+set protocols isis segment-routing prefix 192.0.2.1/32 absolute value 16001
+```
+
+```{cfgcmd} set protocols isis segment-routing prefix \<address\> absolute \<no-php-flag | explicit-null\>
+
+**Configure a label processing flag for the absolute Prefix-SID associated
+with the specified IP prefix:**
+
+* `no-php-flag`: Requests the upstream neighbor not to pop the Prefix-SID
+  label before forwarding the packet.
+* `explicit-null`: Requests that the upstream neighbor forwards the packet
+  with the Explicit-Null label.
+```
+
+Example:
+
+```none
+set protocols isis segment-routing prefix 192.0.2.1/32 absolute no-php-flag
 ```
 
 ### Operational commands
@@ -238,10 +273,6 @@ local segments, such as Adjacency-SIDs.
 The range cannot exceed 65535 labels.
 ```
 
-```{note}
-Removing either bound also removes the other.
-```
-
 Example:
 
 ```none
@@ -258,14 +289,21 @@ local segments, such as Adjacency-SIDs.
 The range cannot exceed 65535 labels.
 ```
 
-```{note}
-Removing either bound also removes the other.
-```
-
 Example:
 
 ```none
 set protocols ospf segment-routing local-block low-label-value 15000
+```
+
+```{note}
+SR label blocks have the following configuration constraints:
+
+- Both bounds (`high-label-value` and `low-label-value`) must be set.
+  Removing either bound also removes the other.
+- `local-block` requires `global-block` to be configured.
+- The SRGB and SRLB ranges must not overlap.
+
+Violating any of these causes the commit to fail.
 ```
 
 ```{cfgcmd} set protocols ospf segment-routing maximum-label-depth \<1-16\>
