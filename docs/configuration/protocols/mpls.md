@@ -213,7 +213,7 @@ Example:
 set protocols mpls ldp neighbor 192.0.2.2 session-holdtime 180
 ```
 
-```{cfgcmd} set protocols mpls ldp neighbor \<ipv4-address\> ttl-security \<disable | hop-count\>
+```{cfgcmd} set protocols mpls ldp neighbor \<ipv4-address\> ttl-security \<disable | 1-254\>
 
 **Configure TTL security ({abbr}`GTSM (Generalized TTL Security Mechanism)`)
 for the LDP session with the specified neighbor.**
@@ -750,15 +750,15 @@ addresses and router IDs. MPLS forwarding and LDP are enabled on the
 interface connecting to the network.
 
 ```none
-set protocols ospf area 0 network '192.0.2.1/32'                            <--- Routing for the loopback
-set protocols ospf area 0 network '192.0.2.4/31'                            <--- Routing for an interface connecting to the network
-set protocols ospf parameters router-id '192.0.2.1'                         <--- Router ID setting for OSPF
-set protocols mpls interface 'eth1'                                         <--- Enable MPLS for an interface connecting to the network
-set protocols mpls ldp discovery transport-ipv4-address '192.0.2.1'         <--- Transport address for LDP for TCP sessions to connect to
-set protocols mpls ldp interface 'eth1'                                     <--- Enable LDP for an interface connecting to the network
-set protocols mpls ldp interface 'lo'                                       <--- Enable LDP on loopback for future services connectivity
-set protocols mpls ldp router-id '192.0.2.1'                                <--- Router ID setting for LDP
-set interfaces ethernet eth1 address '192.0.2.5/31'                         <--- Interface IP for connecting to the network
+set protocols ospf area 0 network '192.0.2.1/32'
+set protocols ospf area 0 network '192.0.2.4/31'
+set protocols ospf parameters router-id '192.0.2.1'
+set protocols mpls interface 'eth1'
+set protocols mpls ldp discovery transport-ipv4-address '192.0.2.1'
+set protocols mpls ldp interface 'eth1'
+set protocols mpls ldp interface 'lo'
+set protocols mpls ldp router-id '192.0.2.1'
+set interfaces ethernet eth1 address '192.0.2.5/31'
 set interfaces loopback lo address '192.0.2.1/32'
 ```
 
