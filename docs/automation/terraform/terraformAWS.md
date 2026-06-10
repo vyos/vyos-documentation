@@ -9,7 +9,7 @@ lastproofread: '2024-01-11'
 With the help of Terraform, you can quickly deploy VyOS-based infrastructure in the AWS cloud. If necessary, the infrastructure can be removed using terraform.
 Also we will make provisioning using Ansible.
 
-```{image} /_static/images/aws.png
+```{image} /_static/images/aws.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
@@ -28,7 +28,7 @@ AWS
 
 2 Create a key [pair] and download your .pem key
 
-```{image} /_static/images/keypairs.png
+```{image} /_static/images/keypairs.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
@@ -36,13 +36,13 @@ AWS
 
 3 Create a security [group] for the new VyOS instance and open all traffic
 
-```{image} /_static/images/sg.png
+```{image} /_static/images/sg.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%
 ```
 
-```{image} /_static/images/traffic.png
+```{image} /_static/images/traffic.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 50%

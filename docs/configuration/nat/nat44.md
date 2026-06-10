@@ -676,7 +676,7 @@ The ASP requests that all connections from this company should come from
 172.29.41.89 - an address that is assigned by the ASP and not in use at
 the customer site.
 
-:::{figure} /_static/images/nat_before_vpn_topology.png
+:::{figure} /_static/images/nat_before_vpn_topology.webp
 :alt: NAT before VPN Topology
 :scale: 100 %
 

@@ -6,7 +6,7 @@ This example shows how to configure a VyOS router with VRFs and firewall rules.
 
 Diagram used in this example:
 
-```{image} /_static/images/firewall-and-vrf-blueprints.png
+```{image} /_static/images/firewall-and-vrf-blueprints.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%

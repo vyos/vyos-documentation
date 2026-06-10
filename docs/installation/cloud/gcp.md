@@ -32,13 +32,13 @@ This is because the default user in the VyOS image is `vyos`, and the Google Clo
 2. Open GCP console and navigate to the **Compute Engine** > **Metadata** > **SSH Keys**. Choose
    **SSH Keys**.
 
-:::{figure} /_static/images/cloud-gcp-01.png
+:::{figure} /_static/images/cloud-gcp-01.webp
 :::
 
 3. Click **edit** and **Add item**.
 4. Paste your public ssh key and **Save**.
 
-:::{figure} /_static/images/cloud-gcp-02.png
+:::{figure} /_static/images/cloud-gcp-02.webp
 :::
 
 For more information, please visit the official Google Cloud documentation:

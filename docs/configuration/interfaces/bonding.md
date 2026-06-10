@@ -473,7 +473,7 @@ those two devices.
 
 Lets assume the following topology:
 
-:::{figure} /_static/images/vyos_arista_bond_lacp.png
+:::{figure} /_static/images/vyos_arista_bond_lacp.webp
 :alt: VyOS Arista EOS setup
 :::
 

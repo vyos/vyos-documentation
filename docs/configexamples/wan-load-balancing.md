@@ -11,7 +11,7 @@ lastproofread: '2021-06-29'
 
 The setup used in this example is shown in the following diagram:
 
-```{image} /_static/images/Wan_load_balancing1.png
+```{image} /_static/images/Wan_load_balancing1.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%
@@ -151,7 +151,7 @@ set protocols static route 0.0.0.0/0 next-hop 11.22.33.1
 In this example two LAN interfaces exist in different subnets instead
 of one like in the previous examples:
 
-```{image} /_static/images/Wan_load_balancing_exclude1.png
+```{image} /_static/images/Wan_load_balancing_exclude1.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 80%

@@ -15,7 +15,7 @@ A simplified traffic flow diagram, based on Netfilter packet flow, is shown
 next, in order to have a full view and understanding of how packets are
 processed, and what possible paths traffic can take.
 
-:::{figure} /_static/images/firewall-gral-packet-flow.png
+:::{figure} /_static/images/firewall-gral-packet-flow.webp
 :::
 
 The main points regarding this packet flow and terminology used in VyOS
@@ -177,5 +177,5 @@ As the example image below shows, the device now needs rules to allow/block
 traffic to or from the services running on the device that have open
 connections on that interface.
 
-:::{figure} /_static/images/firewall-zonebased.png
+:::{figure} /_static/images/firewall-zonebased.webp
 :::
