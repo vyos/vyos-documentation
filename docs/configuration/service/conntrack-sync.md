@@ -244,7 +244,7 @@ can be restored before conntrack state is purged.
 
 The next example is a simple configuration of conntrack-sync.
 
-:::{figure} /_static/images/service_conntrack_sync-schema.png
+:::{figure} /_static/images/service_conntrack_sync-schema.webp
 :alt: Conntrack Sync Example
 :scale: 60 %
 :::

@@ -14,7 +14,7 @@ information.
 
 This diagram corresponds with the example site to site configuration below.
 
-:::{figure} /_static/images/wireguard_site2site_diagram.jpg
+:::{figure} /_static/images/wireguard_site2site_diagram.webp
 :::
 
 ## Keypairs
@@ -425,7 +425,7 @@ public key. Please keep this in mind when using this convenience feature.
   will connect to. The address parameter can be used up to two times and is used
   to assign the clients specific IPv4 (/32) or IPv6 (/128) address.
 
-  .. figure:: /_static/images/wireguard_qrcode.jpg
+  .. figure:: /_static/images/wireguard_qrcode.webp
      :alt: WireGuard Client QR code
 ```
 

@@ -16,7 +16,7 @@ include firewall configuration.
 
 ## Network Topology
 
-```{image} /_static/images/ipsec-vyos-pa.png
+```{image} /_static/images/ipsec-vyos-pa.webp
 :align: center
 :alt: Network Topology Diagram
 ```
@@ -144,43 +144,43 @@ GUI Configuration:
 
 : Network -> Network Profiles -> IKE Crypto
 
-  ```{image} /_static/images/PA-IKE-group.png
+  ```{image} /_static/images/PA-IKE-group.webp
   :align: center
   ```
 
   Network -> Network Profiles -> IKE Gateways
 
-  ```{image} /_static/images/PA-IKE-GW-1.png
+  ```{image} /_static/images/PA-IKE-GW-1.webp
   :align: center
   ```
 
-  ```{image} /_static/images/PA-IKE-GW-2.png
+  ```{image} /_static/images/PA-IKE-GW-2.webp
   :align: center
   ```
 
   Network -> Network Profiles -> IPSec Crypto
 
-  ```{image} /_static/images/PA-ESP-group.png
+  ```{image} /_static/images/PA-ESP-group.webp
   :align: center
   ```
 
   Network -> Interfaces
 
-  ```{image} /_static/images/PA-tunnel-1.png
+  ```{image} /_static/images/PA-tunnel-1.webp
   :align: center
   ```
 
-  ```{image} /_static/images/PA-tunnel-2.png
+  ```{image} /_static/images/PA-tunnel-2.webp
   :align: center
   ```
 
-  ```{image} /_static/images/PA-tunnel-3.png
+  ```{image} /_static/images/PA-tunnel-3.webp
   :align: center
   ```
 
   Network -> IPSec Tunnels
 
-  ```{image} /_static/images/PA-IPsec-tunnel.png
+  ```{image} /_static/images/PA-IPsec-tunnel.webp
   :align: center
   ```
 

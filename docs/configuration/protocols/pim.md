@@ -257,7 +257,7 @@ source-specific multicast).
 
 In the following example we can see a basic multicast setup:
 
-```{image} /_static/images/multicast-basic.png
+```{image} /_static/images/multicast-basic.webp
 :align: center
 :alt: Network Topology Diagram
 :width: 90%

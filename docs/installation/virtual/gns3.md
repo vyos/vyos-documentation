@@ -28,56 +28,56 @@ in GNS3.
 Go to the GNS3 **File** menu, click **New template** and choose select
 **Manually create a new Template**.
 
-:::{figure} /_static/images/gns3-01.png
+:::{figure} /_static/images/gns3-01.webp
 :::
 
 Select **Quemu VMs** and then click on the `New` button.
 
-:::{figure} /_static/images/gns3-02.png
+:::{figure} /_static/images/gns3-02.webp
 :::
 
 Write a name for your VM, for instance "VyOS", and click `Next`.
 
-:::{figure} /_static/images/gns3-03.png
+:::{figure} /_static/images/gns3-03.webp
 :::
 
 Select **qemu-system-x86_64** as Quemu binary, then **512MB** of RAM
 and click `Next`.
 
-:::{figure} /_static/images/gns3-04.png
+:::{figure} /_static/images/gns3-04.webp
 :::
 
 Select **telnet** as your console type and click `Next`.
 
-:::{figure} /_static/images/gns3-05.png
+:::{figure} /_static/images/gns3-05.webp
 :::
 
 Select **New image** for the base disk image of your VM and click
 `Create`.
 
-:::{figure} /_static/images/gns3-06.png
+:::{figure} /_static/images/gns3-06.webp
 :::
 
 Use the defaults in the **Binary and format** window and click
 `Next`.
 
-:::{figure} /_static/images/gns3-07.png
+:::{figure} /_static/images/gns3-07.webp
 :::
 
 Use the defaults in the **Qcow2 options** window and click `Next`.
 
-:::{figure} /_static/images/gns3-08.png
+:::{figure} /_static/images/gns3-08.webp
 :::
 
 Set the disk size to 2000 MiB, and click `Finish` to end the **Quemu
 image creator**.
 
-:::{figure} /_static/images/gns3-09.png
+:::{figure} /_static/images/gns3-09.webp
 :::
 
 Click `Finish` to end the **New QEMU VM template** wizard.
 
-:::{figure} /_static/images/gns3-10.png
+:::{figure} /_static/images/gns3-10.webp
 :::
 
 Now the VM settings have to be edited.
@@ -85,7 +85,7 @@ Now the VM settings have to be edited.
 Being again at the **Preferences** window, having **Qemu VMs**
 selected and having our new VM selected, click the `Edit` button.
 
-:::{figure} /_static/images/gns3-11.png
+:::{figure} /_static/images/gns3-11.webp
 :::
 
 In the **General settings** tab of your **QEMU VM template
@@ -96,19 +96,19 @@ configuration**, do the following:
 - In **Category** select in which group you want to find your VM.
 - Set the **Boot priority** to **CD/DVD-ROM**.
 
-:::{figure} /_static/images/gns3-12.png
+:::{figure} /_static/images/gns3-12.webp
 :::
 
 At the **HDD** tab, change the Disk interface to **sata** to speed up
 the boot process.
 
-:::{figure} /_static/images/gns3-13.png
+:::{figure} /_static/images/gns3-13.webp
 :::
 
 At the **CD/DVD** tab click on `Browse...` and locate the VyOS image
 you want to install.
 
-:::{figure} /_static/images/gns3-14.png
+:::{figure} /_static/images/gns3-14.webp
 :::
 
 :::{note}
@@ -120,19 +120,19 @@ In the **Network** tab, set **0** as the number of adapters, set the
 **Name format** to **eth\{0}** and the **Type** to **Paravirtualized
 Network I/O (virtio-net-pci)**.
 
-:::{figure} /_static/images/gns3-15.png
+:::{figure} /_static/images/gns3-15.webp
 :::
 
 In the **Advanced** tab, unmark the checkbox **Use as a linked base
 VM** and click `OK`, which will save and close the **QEMU VM template
 configuration** window.
 
-:::{figure} /_static/images/gns3-16.png
+:::{figure} /_static/images/gns3-16.webp
 :::
 
 At the general **Preferences** window, click `OK` to save and close.
 
-:::{figure} /_static/images/gns3-17.png
+:::{figure} /_static/images/gns3-17.webp
 :::
 
 (vyos-installation)=
@@ -164,24 +164,24 @@ necessary as outlined below:
 
 **General settings** tab: Set the boot priority to **HDD**
 
-:::{figure} /_static/images/gns3-20.png
+:::{figure} /_static/images/gns3-20.webp
 :::
 
 **CD/DVD** tab: Unmount the installation image file by clearing the
 **Image** entry field.
 
-:::{figure} /_static/images/gns3-21.png
+:::{figure} /_static/images/gns3-21.webp
 :::
 
 Set the number of required network adapters, for example **4**.
 
-:::{figure} /_static/images/gns3-215.png
+:::{figure} /_static/images/gns3-215.webp
 :::
 
 **Advanced** settings tab: Mark the checkbox **Use as a linked
 base VM** and click `OK` to save the changes.
 
-:::{figure} /_static/images/gns3-22.png
+:::{figure} /_static/images/gns3-22.webp
 :::
 
 The VyOS VM is now ready to be deployed.

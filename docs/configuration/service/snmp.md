@@ -53,7 +53,7 @@ managed devices. NMSs provide the bulk of the processing and memory resources
 required for network management. One or more NMSs may exist on any managed
 network.
 
-:::{figure} /_static/images/service_snmp_communication_principles_diagram.png
+:::{figure} /_static/images/service_snmp_communication_principles_diagram.webp
 :alt: Principle of SNMP Communication
 :scale: 20 %
 

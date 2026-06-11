@@ -54,7 +54,7 @@ include LTS (Long-Term Support), the associated hot-fix releases, early public
 access releases, pre-built VM images, as well as device specific installation
 ISOs. See this [article] for more information on downloads.
 
-:::{figure} /_static/images/vyosnew-downloads.png
+:::{figure} /_static/images/vyosnew-downloads.webp
 :::
 
 ### Rolling Release
