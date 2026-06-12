@@ -324,6 +324,26 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-p
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 timeout 3
 ```
 
+:::{note}
+ICMP probes require kernel-level permission to send ICMP packets.
+
+The blackbox exporter runs under the `node_exporter` system user,
+which does not have [sufficient privileges] and hence cannot
+send ICMP packets by default.
+:::
+
+To grant the necessary permission, configure the
+`net.ipv4.ping_group_range` sysctl parameter to include
+the `node_exporter` group.
+
+The following command permits any user the ability to ping:
+
+```{cfgcmd} set system sysctl parameter net.ipv4.ping_group_range value '0 2147483647'
+
+This command covers both IPv4 and IPv6 ICMP probes.
+
+```
+
 [azure-data-explorer]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
 [blackbox_exporter]: <https://github.com/prometheus/blackbox_exporter>
 [frr_exporter]: <https://github.com/tynany/frr_exporter>
@@ -332,3 +352,6 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 time
 [node_exporter]: <https://github.com/prometheus/node_exporter>
 [prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
 [splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
+% stop_vyoslinter
+[sufficient privileges]: <https://github.com/prometheus/blackbox_exporter#permissions>
+% start_vyoslinter
