@@ -903,7 +903,6 @@ Example:
 set protocols isis interface eth1 ldp-sync disable
 ```
 
-```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown \<seconds\>
 
 **Configure the time, in seconds, that IS-IS keeps the specified interface
 at max-metric while waiting for LDP-IGP synchronization to complete.**
@@ -1410,7 +1409,6 @@ Example:
 set protocols isis lsp-gen-interval 5
 ```
 
-```{cfgcmd} set protocols isis lsp-refresh-interval \<seconds\>
 
 **Configure the maximum interval, in seconds, between consecutive
 regenerations of this router's own LSP.**
@@ -1502,7 +1500,6 @@ Example:
 set protocols isis spf-delay-ietf init-delay 500
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf time-to-learn \<milliseconds\>
 
 **Configure the learning interval, in milliseconds, that begins when the
 first topology change is received.**
@@ -1521,7 +1518,6 @@ Example:
 set protocols isis spf-delay-ietf time-to-learn 5000
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf long-delay \<milliseconds\>
 
 **Configure the interval, in milliseconds, the router applies before
 running an SPF calculation when topology changes arrive after the
@@ -1534,7 +1530,6 @@ Example:
 set protocols isis spf-delay-ietf long-delay 10000
 ```
 
-```{cfgcmd} set protocols isis spf-delay-ietf short-delay \<milliseconds\>
 
 **Configure the interval, in milliseconds, the router applies before
 running subsequent SPF calculations triggered by additional topology
