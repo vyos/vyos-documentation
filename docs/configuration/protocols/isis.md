@@ -200,9 +200,11 @@ set protocols isis set-overload-bit
 
 ```{cfgcmd} set protocols isis advertise-high-metrics
 
-**Configure the router to advertise the maximum non-infinite metric value
-on all of its IS-IS interfaces, regardless of the metric configured on
-each interface.**
+**Configure the router to advertise a high metric value on all of its IS-IS
+interfaces, regardless of the metric configured on each interface.**
+
+The advertised value depends on the metric style: 63 for `narrow`, 16777215
+for `wide`, and 62 for `transition`.
 ```
 
 Example:
@@ -215,6 +217,9 @@ set protocols isis advertise-high-metrics
 
 **Configure the router to advertise in its LSPs only the IP prefixes of
 passive interfaces.**
+
+Prefixes of non-passive interfaces are not advertised, but those interfaces
+are still used to form adjacencies and participate in SPF.
 ```
 
 Example:
@@ -263,9 +268,10 @@ IS-IS supports two protocol-wide passwords:
 - **domain-password**: applied to Level-2 LSPs/SNPs (across the Level-2
   backbone).
 
-These are distinct from the per-interface `password` command
-(see [Interface configuration](#interface-configuration)), which
-authenticates Hello (IIH) PDUs on a single link only.
+These are distinct from the per-interface `password` command (see
+[Interface configuration](#interface-configuration)). That command
+authenticates only the Hello (IIH) PDUs exchanged with the neighbor on the
+interface where it is configured.
 
 ```{cfgcmd} set protocols isis area-password plaintext-password \<text\>
 
@@ -903,6 +909,7 @@ Example:
 set protocols isis interface eth1 ldp-sync disable
 ```
 
+```{cfgcmd} set protocols isis interface \<interface\> ldp-sync holddown \<0-10000\>
 
 **Configure the time, in seconds, that IS-IS keeps the specified interface
 at max-metric while waiting for LDP-IGP synchronization to complete.**
@@ -1233,6 +1240,11 @@ set protocols isis interface eth1 fast-reroute ti-lfa level-2 node-protection li
 specified route source into IS-IS Level-1.**
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1243,6 +1255,11 @@ set protocols isis redistribute ipv4 bgp level-1
 
 **Configure the IS-IS metric for IPv4 routes redistributed from the
 specified route source into IS-IS Level-1.**
+```
+
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
 ```
 
 Example:
@@ -1260,6 +1277,11 @@ Only routes permitted by the route-map are redistributed. The route-map
 can modify the metric and tag of permitted routes.
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1274,6 +1296,11 @@ set protocols isis redistribute ipv4 bgp level-1 route-map BGP-TO-ISIS
 specified route source into IS-IS Level-1.**
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1284,6 +1311,11 @@ set protocols isis redistribute ipv6 bgp level-1
 
 **Configure the IS-IS metric for IPv6 routes redistributed from the
 specified route source into IS-IS Level-1.**
+```
+
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
 ```
 
 Example:
@@ -1301,6 +1333,11 @@ Only routes permitted by the route-map are redistributed. The route-map
 can modify the metric and tag of permitted routes.
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-1` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1315,6 +1352,11 @@ set protocols isis redistribute ipv6 bgp level-1 route-map BGP-TO-ISIS
 specified route source into IS-IS Level-2.**
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1325,6 +1367,11 @@ set protocols isis redistribute ipv4 bgp level-2
 
 **Configure the IS-IS metric for IPv4 routes redistributed from the
 specified route source into IS-IS Level-2.**
+```
+
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
 ```
 
 Example:
@@ -1342,6 +1389,11 @@ Only routes permitted by the route-map are redistributed. The route-map
 can modify the metric and tag of permitted routes.
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1356,6 +1408,11 @@ set protocols isis redistribute ipv4 bgp level-2 route-map BGP-TO-ISIS
 specified route source into IS-IS Level-2.**
 ```
 
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
+```
+
 Example:
 
 ```none
@@ -1366,6 +1423,11 @@ set protocols isis redistribute ipv6 bgp level-2
 
 **Configure the IS-IS metric for IPv6 routes redistributed from the
 specified route source into IS-IS Level-2.**
+```
+
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
 ```
 
 Example:
@@ -1381,6 +1443,11 @@ source into IS-IS Level-2.**
 
 Only routes permitted by the route-map are redistributed. The route-map
 can modify the metric and tag of permitted routes.
+```
+
+```{note}
+This command requires the router's IS-IS level to be set to `level-2` or
+`level-1-2`.
 ```
 
 Example:
@@ -1409,6 +1476,7 @@ Example:
 set protocols isis lsp-gen-interval 5
 ```
 
+```{cfgcmd} set protocols isis lsp-refresh-interval \<2-65235\>
 
 **Configure the maximum interval, in seconds, between consecutive
 regenerations of this router's own LSP.**
@@ -1500,6 +1568,7 @@ Example:
 set protocols isis spf-delay-ietf init-delay 500
 ```
 
+```{cfgcmd} set protocols isis spf-delay-ietf time-to-learn \<0-60000\>
 
 **Configure the learning interval, in milliseconds, that begins when the
 first topology change is received.**
@@ -1518,6 +1587,7 @@ Example:
 set protocols isis spf-delay-ietf time-to-learn 5000
 ```
 
+```{cfgcmd} set protocols isis spf-delay-ietf long-delay \<0-60000\>
 
 **Configure the interval, in milliseconds, the router applies before
 running an SPF calculation when topology changes arrive after the
@@ -1530,6 +1600,7 @@ Example:
 set protocols isis spf-delay-ietf long-delay 10000
 ```
 
+```{cfgcmd} set protocols isis spf-delay-ietf short-delay \<0-60000\>
 
 **Configure the interval, in milliseconds, the router applies before
 running subsequent SPF calculations triggered by additional topology
@@ -1833,7 +1904,7 @@ set interfaces ethernet eth1 address '192.0.2.1/24'
 
 set protocols isis interface eth1
 set protocols isis interface lo
-set protocols isis net '49.0001.1921.6825.5255.00'
+set protocols isis net '49.0001.1980.5110.0001.00'
 ```
 
 **Node 2:**
@@ -1844,7 +1915,7 @@ set interfaces ethernet eth1 address '192.0.2.2/24'
 
 set protocols isis interface eth1
 set protocols isis interface lo
-set protocols isis net '49.0001.1921.6825.5254.00'
+set protocols isis net '49.0001.1980.5110.0002.00'
 ```
 
 This gives us the following neighborships, Level 1 and Level 2:
@@ -1947,7 +2018,7 @@ set interfaces ethernet eth0 address 192.0.2.1/24
 set protocols isis interface eth0
 set protocols isis interface lo passive
 set protocols isis ldp-sync
-set protocols isis net 49.0001.1985.1100.0001.00
+set protocols isis net 49.0001.1980.5110.0001.00
 
 set protocols mpls interface eth0
 set protocols mpls ldp discovery transport-ipv4-address 198.51.100.1
