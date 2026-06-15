@@ -1978,7 +1978,7 @@ set policy route-map EXPORT-ISIS rule 10 action 'permit'
 set policy route-map EXPORT-ISIS rule 10 match ip address prefix-list 'EXPORT-ISIS'
 
 set protocols isis interface eth1
-set protocols isis net '49.0001.2030.1130.0001.00'
+set protocols isis net '49.0001.2030.0011.3001.00'
 set protocols isis redistribute ipv4 connected level-2 route-map 'EXPORT-ISIS'
 ```
 
@@ -1988,7 +1988,7 @@ set protocols isis redistribute ipv4 connected level-2 route-map 'EXPORT-ISIS'
 set interfaces ethernet eth1 address '192.0.2.2/24'
 
 set protocols isis interface eth1
-set protocols isis net '49.0001.1920.0020.0002.00'
+set protocols isis net '49.0001.1920.0000.2002.00'
 ```
 
 Routes on Node 2:
