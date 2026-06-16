@@ -787,8 +787,6 @@ The following DHCP options can be set under
 `set service dhcp-server shared-network-name <name> option ...` or
 `set service dhcp-server shared-network-name <name> subnet <subnet> option ...`.
 
-Option numbers and Kea/ISC-DHCP option names follow the Kea DHCPv4 server
-reference and the ISC standard options list.
 
 
 :::{list-table}
@@ -798,7 +796,7 @@ reference and the ISC standard options list.
 
 * - Setting name
   - Option number
-  - Kea/ISC-DHCP option name
+  - DHCP option name
   - Option description
   - Multi
 * - bootfile-name
@@ -1414,8 +1412,6 @@ The following DHCPv6 options can be set under
 `set service dhcpv6-server shared-network-name <name> option ...` or under
 `subnet <prefix> option ...` within the same shared network.
 
-Option numbers and Kea/ISC-DHCP option names follow the Kea DHCPv6 server
-reference and the ISC standard options list.
 
 
 :::{list-table}
@@ -1425,7 +1421,7 @@ reference and the ISC standard options list.
 
 * - Setting name
   - Option number
-  - Kea/ISC-DHCP option name
+  - DHCP option name
   - Option description
   - Multi
 * - captive-portal
