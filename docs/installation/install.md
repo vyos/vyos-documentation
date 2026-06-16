@@ -141,18 +141,18 @@ To verify a downloaded LTS image, place the image and its `.minisig`
 signature file in the same directory, then run:
 
 ```none
-$ minisign -V -P RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP -m vyos-1.4.x-amd64.iso vyos-1.4.x-amd64.iso.minisig
+$ minisign -V -P RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP -m vyos-1.x.x-amd64.iso vyos-1.x.x-amd64.iso.minisig
 Signature and comment signature verified
-Trusted comment: timestamp:<unix_ts>   file:vyos-1.4.x-amd64.iso
+Trusted comment: timestamp:<unix_ts>   file:vyos-1.x.x-amd64.iso
 ```
 
 During an image upgrade, VyOS runs the equivalent check using the
 public key included with the system:
 
 ```none
-$ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.4.x-amd64.iso vyos-1.4.x-amd64.iso.minisig
+$ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.x.x-amd64.iso vyos-1.x.x-amd64.iso.minisig
 Signature and comment signature verified
-Trusted comment: timestamp:<unix_ts>   file:vyos-1.4.x-amd64.iso
+Trusted comment: timestamp:<unix_ts>   file:vyos-1.x.x-amd64.iso
 ```
 
 :::{warning}
@@ -165,8 +165,8 @@ repository.
 :::
 
 :::{note}
-Releases up to VyOS 1.4.2 were signed with both minisign (preferred)
-and GPG. Beginning with 1.4.3, only minisign signatures are used. This
+Releases up to VyOS 1.4.2 were signed with both Minisign (preferred)
+and GPG. Beginning with 1.4.3, only Minisign signatures are used. This
 change should not affect most upgrades. If you encounter a verification
 error when upgrading directly to 1.4.3 or later, upgrade to 1.4.2 first.
 :::
