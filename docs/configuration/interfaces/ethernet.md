@@ -9,6 +9,7 @@ lastproofread: '2026-01-19'
 Ethernet interfaces (e.g., `eth0`, `eth1`) represent the host's physical
 or virtual network ports.
 
+
 They are the most common interface type, serving as the base layer upon which
 IP addresses, VLANs, and tunnels are configured to carry traffic across both
 LANs and WANs.

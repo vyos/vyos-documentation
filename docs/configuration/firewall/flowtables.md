@@ -64,6 +64,7 @@ Creating a flow table:
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
 
 Specify interfaces to use in the flowtable.
+
 ```
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
@@ -95,6 +96,18 @@ Create a firewall rule in the forward chain with the action set to
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```
+
+### Interface Selection
+:::{important}
+Always configure the flowtable with the interface that Netfilter observes
+at the forward hook — which is not necessarily the physical interface.
+When traffic is received or transmitted via a logical interface, Netfilter
+tracks that logical interface, not the underlying physical device. Registering
+the wrong interface in the flowtable causes every flow lookup to miss,
+falling back to the classic forwarding path and defeating the purpose of
+fast-path offload. 
+:::
+
 
 ## Configuration Example
 
@@ -149,6 +162,72 @@ Here's what happens for a desired connection:
 >    entry in the flowtable FT01 for this connection.
 > 6. Subsequent packets skip the traditional path and use the **Fast Path**
 >    for offloading.
+
+
+### Flowtable Configuration on Logical and Sub-Interfaces
+
+When configuring flowtables it is essential to identify which interface
+Netfilter observes at the forward hook for ingress and egress traffic.
+The Netfilter framework identifies interfaces by their **iifname** and
+**oifname** — always at the highest logical level, not the underlying
+physical members.
+
+For example:
+- If `bond0` is configured, Netfilter sees `bond0` — not `eth0` or `eth1`
+- If `br0` is configured, Netfilter sees `br0` — not its member interfaces
+- The flowtable must reference the same interface name Netfilter observes
+
+The behaviour differs for sub-interfaces (VLANs):
+
+- Configuring `bond1` in the flowtable offloads traffic on the parent
+  interface **and all its sub-interfaces** (`bond1.10`, `bond1.20`, etc.)
+- Configuring `bond1.10` in the flowtable offloads **only VLAN 10** traffic
+
+```none
+# Offload bond1 and all sub-interfaces (bond1.10, bond1.20, ...)
+set firewall flowtable FT01 interface 'bond1'
+
+# Offload VLAN 10 only
+set firewall flowtable FT01 interface 'bond1.10'
+```
+
+#### Example: Mixed parent and sub-interface offload
+
+Consider a setup where:
+- Traffic ingresses on `bond1.10` (VLAN 10)
+- Traffic egresses on `bond2.20` (VLAN 20)
+
+```none
+set firewall flowtable FT01 interface 'bond1'
+set firewall flowtable FT01 interface 'bond2.20'
+set firewall ipv4 forward filter default-action 'drop'
+set firewall ipv4 forward filter rule 10 action 'offload'
+set firewall ipv4 forward filter rule 10 offload-target 'FT01'
+set firewall ipv4 forward filter rule 10 state 'established'
+set firewall ipv4 forward filter rule 10 state 'related'
+set firewall ipv4 forward filter rule 20 action 'accept'
+set firewall ipv4 forward filter rule 20 state 'established'
+set firewall ipv4 forward filter rule 20 state 'related'
+set firewall ipv4 forward filter rule 200 action 'accept'
+set firewall ipv4 forward filter rule 200 inbound-interface name 'bond*'
+```
+
+In this configuration:
+- `bond1` covers ingress from `bond1.10` and any other `bond1` sub-interfaces
+- `bond2.20` covers egress on VLAN 20 only — other `bond2` sub-interfaces
+  are not offloaded
+- Rule 200 uses a wildcard to accept new connections (TCP handshake) arriving
+  on any bond interface or sub-interface before the flow reaches established
+  state and is eligible for offload
+- Once a flow is established, rule 10 adds it to the flowtable and subsequent
+  packets bypass Netfilter entirely via the fast path
+
+:::{note}
+The interface directions in this example are from the perspective of
+client-to-server traffic. In practice each interface handles traffic in
+both directions, and the flowtable manages offload symmetrically once the
+flow is established.
+:::
 
 ### Checks
 
