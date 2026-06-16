@@ -55,7 +55,7 @@ Name)` in log messages, even if the syslog server is in the same domain.
 
 Configure which log messages to save to a local log file.
 
-```{cfgcmd} set system syslog local \<filename\> facility \<keyword\> level \<keyword\>
+```{cfgcmd} set system syslog local facility \<keyword\> level \<keyword\>
 
 **Configure syslog to save log messages for a specific facility and
 severity level to \`\`/var/log/messages\`\`.**
