@@ -165,8 +165,8 @@ repository.
 :::
 
 :::{note}
-Releases up to VyOS 1.4.2 were signed with both Minisign (preferred)
-and GPG. Beginning with 1.4.3, only Minisign signatures are used. This
+Releases up to VyOS 1.4.2 were signed with both minisign (preferred)
+and GPG. Beginning with 1.4.3, only minisign signatures are used. This
 change should not affect most upgrades. If you encounter a verification
 error when upgrading directly to 1.4.3 or later, upgrade to 1.4.2 first.
 :::
