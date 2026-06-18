@@ -99,9 +99,9 @@ to use. Only applicable if the action is ``offload``.
 
 ### Interface Selection
 :::{important}
-Always configure the flowtable with the interface that Netfilter observes
+Always configure the flowtable with the interface that VyOS observes
 at the forward hook — which is not necessarily the physical interface.
-When traffic is received or transmitted via a logical interface, Netfilter
+When traffic is received or transmitted via a logical interface, VyOS
 tracks that logical interface, not the underlying physical device. Registering
 the wrong interface in the flowtable causes every flow lookup to miss,
 falling back to the classic forwarding path and defeating the purpose of
@@ -167,15 +167,15 @@ Here's what happens for a desired connection:
 ### Flowtable Configuration on Logical and Sub-Interfaces
 
 When configuring flowtables it is essential to identify which interface
-Netfilter observes at the forward hook for ingress and egress traffic.
-The Netfilter framework identifies interfaces by their **iifname** and
+VyOS observes at the forward hook for ingress and egress traffic.
+The VyOS identifies interfaces by their **iifname** and
 **oifname** — always at the highest logical level, not the underlying
 physical members.
 
 For example:
-- If `bond0` is configured, Netfilter sees `bond0` — not `eth0` or `eth1`
-- If `br0` is configured, Netfilter sees `br0` — not its member interfaces
-- The flowtable must reference the same interface name Netfilter observes
+- If `bond0` is configured, VyOS sees `bond0` — not `eth0` or `eth1`
+- If `br0` is configured, VyOS sees `br0` — not its member interfaces
+- The flowtable must reference the same interface name VyOS observes
 
 The behaviour differs for sub-interfaces (VLANs):
 
@@ -227,6 +227,9 @@ The interface directions in this example are from the perspective of
 client-to-server traffic. In practice each interface handles traffic in
 both directions, and the flowtable manages offload symmetrically once the
 flow is established.
+To be sure what are the ingress and egress interface, you can check the firewall
+logs, by enabling the log in any rule of the forward hook. Check firewall section
+for the configuration.
 :::
 
 ### Checks
@@ -253,3 +256,10 @@ conntrack v1.4.6 (conntrack-tools): 5 flow entries have been shown.
 tcp      6 src=198.51.100.100 dst=192.0.2.100 sport=41676 dport=1122 src=192.0.2.100 dst=198.51.100.100 sport=1122 dport=41676 [OFFLOAD] mark=0 use=2
 vyos@FlowTables:~$
 ```
+Check the interfaces where traffic is being forwarded:
+
+```none
+vyos@FlowTables:~$ show log firewall
+Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=02:dd:f1:e7:3d:00:5a:a3:d1:fc:5f:cb:08:00 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
+```
+Notice the IN and OUT interface are bond1.10 and bond2.20 and not the physical interface. 
