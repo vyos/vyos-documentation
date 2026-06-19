@@ -154,7 +154,7 @@ public key included with the system:
 ```none
 $ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.x.x-amd64.iso vyos-1.x.x-amd64.iso.minisig
 Signature and comment signature verified
-Trusted comment: timestamp:<unix_ts>   file:vyos-1.x.x-amd64.iso
+Trusted comment: timestamp:<unix_ts>   file:vyos-1.x.x-amd64.iso    hashed
 ```
 
 :::{warning}
