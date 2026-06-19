@@ -162,7 +162,9 @@ VyOS rolling (nightly) images are signed with a **different key**:
 `RWSIhkR/dkM2DSaBRniv/bbbAf8hmDqdbOEmgXkf1RxRoxzodgKcDyGq`.
 Verification fails if you use the LTS key against a rolling image or
 the rolling key against an LTS image. The **rolling key** is published in
+% stop_vyoslinter
 the [vyos-nightly-build](https://github.com/vyos/vyos-nightly-build/blob/rolling/minisign.pub)
+% start_vyoslinter
 repository.
 :::
 
