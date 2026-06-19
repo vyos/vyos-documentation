@@ -128,7 +128,9 @@ and Minisign.
 
 #### Minisign verification
 
+% stop_vyoslinter
 VyOS signs its release images with [minisign](https://github.com/jedisct1/minisign),
+% start_vyoslinter
 a portable Ed25519-based signing tool available for Linux, macOS, and
 Windows. Minisign uses the same signature format as OpenBSD's signify,
 introduced in 2014.
@@ -143,7 +145,7 @@ signature file in the same directory, then run:
 ```none
 $ minisign -V -P RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP -m vyos-1.x.x-amd64.iso vyos-1.x.x-amd64.iso.minisig
 Signature and comment signature verified
-Trusted comment: timestamp:<unix_ts>   file:vyos-1.x.x-amd64.iso
+Trusted comment: timestamp:<unix_ts>    file:vyos-1.x.x-amd64.iso    hashed
 ```
 
 During an image upgrade, VyOS runs the equivalent check using the
