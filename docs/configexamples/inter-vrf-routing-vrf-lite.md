@@ -58,12 +58,12 @@ limitation:
 –called VPNs- inside the BGP Process. The RD is appended to each IPv4 Network
 that is advertised into BGP for that VPN making it a unique VPNv4 route.
 
-- Route Target (RT): This is an extended BGP community append to the VPNv4 route
-in the Import/Export process. When a route passes from the VRF routing table
-into the BGP process it will add the configured export extended community(ies)
-for that VPN. When that route needs to go from BGP into the VRF routing table
-will only pass if that given VPN import policy matches any of the appended
-community(ies) into that prefix.
+- Route Target (RT): This is an extended BGP community append to the VPNv4
+route in the Import/Export process. When a route passes from the VRF routing
+table into the BGP process it will add the configured export extended
+community(ies) for that VPN. When that route needs to go from BGP into the VRF
+routing table will only pass if that given VPN import policy matches any of the
+appended community(ies) into that prefix.
 
 ## Topology
 
