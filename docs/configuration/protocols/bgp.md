@@ -221,10 +221,7 @@ set protocols bgp neighbor 192.0.2.2 remote-as auto
 **Configure the TCP destination port used when initiating the BGP session
 with the specified peer.**
 
-By default, the local BGP speaker uses TCP port 179
-([IANA-assigned](https://www.iana.org/assignments/service-names-port-numbers/)).
-Override this when peering with a remote BGP speaker that listens on a
-non-standard port. The same option can be applied to a peer group.
+By default, BGP uses TCP port 179 (IANA-assigned).
 ```
 
 Example:
@@ -235,11 +232,13 @@ set protocols bgp neighbor 192.0.2.2 port 1179
 
 ```{cfgcmd} set protocols bgp neighbor \<interface\> interface source-interface \<interface\>
 
-**Bind the unnumbered BGP session to the specified source interface.**
+**Configure the local source interface used for the unnumbered BGP
+session.**
+```
 
+```{note}
 This command applies only when the neighbor is specified by interface
-name (unnumbered peering). The local BGP speaker uses the IPv6 link-local
-address of the source interface as the source of the TCP connection.
+name (unnumbered peering).
 ```
 
 Example:
@@ -254,11 +253,16 @@ set protocols bgp neighbor eth1 interface source-interface eth1
 interface and set the neighbor's ASN.**
 
 With `v6only`, the BGP session is established over the IPv6 link-local
-address of the interface without requiring any globally routable address
-on either side. This is the most common form of unnumbered BGP in modern
-data-center fabrics. The ASN can be configured as an explicit number
-(1-4294967294), `auto`, `external`, or `internal`, with the same semantics
-as the address-form `remote-as` command.
+address of the interface without requiring any globally routable
+address on either side.
+
+The ASN can be configured as:
+
+- An explicit number in the range 1 to 4294967294.
+- `auto`: FRR automatically detects the neighbor's ASN from the OPEN
+  message.
+- `external`: Any non-local ASN, treated as eBGP.
+- `internal`: The same ASN as the local router, treated as iBGP.
 ```
 
 Example:
@@ -272,8 +276,11 @@ set protocols bgp neighbor eth1 interface v6only remote-as external
 **Assign an IPv6-link-local-only unnumbered peering on the specified
 interface to a peer group.**
 
-The neighbor inherits all parameters configured on the peer group. The
-peer group must already exist.
+The unnumbered peering inherits all parameters from the peer group.
+```
+
+```{note}
+The peer group must already be configured.
 ```
 
 Example:
@@ -401,14 +408,12 @@ set protocols bgp neighbor 2001:db8::2 capability extended-nexthop
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> capability software-version
 
-**Advertise the Software Version capability
-([RFC 9183](https://datatracker.ietf.org/doc/html/rfc9183)) to the
+**Configure BGP to advertise the Software Version capability to the
 specified peer.**
 
-This causes the local router to include its software version string in
-the OPEN message, which the peer can display via
-`show bgp neighbors`. It is purely informational; no behavior depends on
-the value exchanged.
+This causes the local router to include the name and version of the
+software that implements BGP in the OPEN message. This information is
+purely informational and does not affect BGP behavior.
 ```
 
 Example:
@@ -565,11 +570,13 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast nexthop-self
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> nexthop-self force
 
-**Force the local BGP speaker to set itself as the NEXT_HOP even on
-routes reflected to route-reflector clients.**
+**Force the local route reflector to set itself as the NEXT_HOP on
+routes reflected to its route-reflector clients.**
 
 By default, a route reflector preserves the NEXT_HOP of reflected
-routes. This option overrides that behavior for the specified peer.
+routes. This option overrides that behavior for the specified peer,
+which must be configured as a route-reflector client for the option to
+take effect.
 ```
 
 Example:
@@ -577,33 +584,19 @@ Example:
 ```none
 set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast nexthop-self force
 ```
-
+<!--
+`nexthop-local unchanged` does not work as expected on the live VyOS 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family ipv6-unicast nexthop-local unchanged
-
-**Preserve the IPv6 link-local NEXT_HOP received from the specified peer
-when advertising the route onward, instead of rewriting it.**
-
-This command applies only to the IPv6 unicast address family. By
-default, FRR rewrites the link-local NEXT_HOP to its own. Setting
-`nexthop-local unchanged` keeps the original link-local NEXT_HOP, which
-is useful in route-server and certain transit scenarios where the
-upstream link-local address must remain visible.
-```
-
-Example:
-
-```none
-set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast nexthop-local unchanged
-```
+-->
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> remove-private-as
 
 **Configure the local BGP speaker to strip private ASNs from the AS_PATH
 of routes advertised to the specified eBGP peer.**
 
-If every ASN in the AS_PATH is private, all of them are removed. If a
-private ASN appears between public ASNs, the configuration is assumed to
-be intentional, and the private ASN is left in place.
+Private ASNs are removed only if the AS_PATH consists entirely of
+private ASNs. If any public ASN is present in the path, no private ASN
+is removed.
 ```
 
 Example:
@@ -614,11 +607,12 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast remove-private-
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> remove-private-as all
 
-**Strip every private ASN from the AS_PATH unconditionally, including
-private ASNs that appear between public ASNs.**
+**Configure the local BGP speaker to strip all private ASNs from the
+AS_PATH of routes advertised to the specified eBGP peer.**
 
-Without `all`, a private ASN between public ASNs is preserved on the
-assumption it is intentional. With `all`, no private ASN is preserved.
+Unlike `remove-private-as` without `all`, this option removes private
+ASNs unconditionally — even when public ASNs are also present in the
+path.
 ```
 
 Example:
@@ -723,21 +717,27 @@ away is unreachable unless this option is set. Accepted values are
 This command is mutually exclusive with `ttl-security hops`.
 ```
 
+Example:
+
+```none
+set protocols bgp neighbor 192.0.2.2 ebgp-multihop 5
+```
+
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> local-as \<1-4294967294\> [no-prepend [replace-as]]
 
 **Configure an alternate local ASN for the BGP session with the specified
-peer or peer group.**
+peer. This command applies only to eBGP peers.**
 
 Without modifiers, the `local-as` is prepended to the received AS_PATH
-when receiving updates from the peer, and to the outgoing AS_PATH (on top
-of the router's real ASN) when sending routes to the peer.
+when receiving updates from the peer, and to the outgoing AS_PATH (on
+top of the router's real ASN) when sending routes to the peer.
 
-When `no-prepend` is set, the `local-as` is not prepended to the AS_PATH
-of incoming updates from the peer.
+With `no-prepend`, the `local-as` is not prepended to the AS_PATH of
+incoming updates from the peer.
 
-When `replace-as` is set, only the `local-as` is prepended to outgoing
-updates to the peer; the router's real ASN is omitted. The `replace-as`
-modifier requires `no-prepend` and cannot be used on its own.
+With `replace-as`, only the `local-as` is prepended to outgoing updates
+to the peer; the router's real ASN is omitted. The `replace-as` modifier
+requires `no-prepend` and cannot be used on its own.
 ```
 
 ```{note}
@@ -800,14 +800,14 @@ set protocols bgp neighbor 192.0.2.2 ttl-security hops 1
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> bfd [profile \<name\>]
 
-**Enable {abbr}`BFD (Bidirectional Forwarding Detection)` on the session
+**Enable {abbr}BFD (Bidirectional Forwarding Detection) on the session
 with the specified peer.**
 
 When BFD declares the path to the peer down, the BGP session is reset
 immediately rather than waiting for the BGP hold timer to expire.
-Optionally, a named BFD profile (configured under `protocols bfd
-profile`) can be applied; without `profile`, BFD inherits its default
-parameters.
+Optionally, a BFD profile (configured under `set protocols bfd profile`)
+can be applied to control detection timers and other parameters. Without
+a profile, the default BFD parameters apply.
 ```
 
 Example:
@@ -818,13 +818,19 @@ set protocols bgp neighbor 192.0.2.2 bfd profile FAST-LINK
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> bfd check-control-plane-failure
 
-**Honor the BFD C-bit, allowing the local router to distinguish a BFD
-control-plane failure from a data-plane failure.**
+**Configure BGP to set and inspect the BFD C-bit (Control Plane
+Independent bit) for the session with the specified peer. This option is
+intended for use with BGP Graceful Restart.**
 
-When set, the router writes the C-bit on outgoing BFD packets and
-inspects the C-bit on incoming packets, so a BFD-down event caused by a
-control-plane restart on the peer does not tear down the BGP session if
-the peer is still forwarding.
+The local router sets the C-bit on outgoing BFD packets and checks it on
+incoming packets to distinguish between BFD failures caused by
+control-plane disruptions and those caused by data-plane failures.
+
+Consequently, a BFD-down event caused by a control-plane restart on the
+peer does not tear down the BGP session if the peer is still forwarding
+traffic.
+
+Without this option, every BFD-down event resets the BGP session.
 ```
 
 Example:
@@ -835,13 +841,14 @@ set protocols bgp neighbor 192.0.2.2 bfd check-control-plane-failure
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> bfd strict
 
-**Require BFD to be up before the BGP session is allowed to reach the
-Established state ({abbr}`SBFD (Strict-mode BFD)`,
-[draft-ietf-idr-bgp-bfd-strict-mode](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-bfd-strict-mode)).**
+**Require BFD to be up before the BGP session with the specified peer
+reaches the Established state (strict-mode BFD).**
 
-When strict mode is enabled, BGP delays session establishment until BFD
-declares the path to the peer up. This prevents the BGP session from
-coming up over a path that is later torn down by BFD.
+Without strict mode, BGP establishes the session independently, and BFD
+only monitors it once both are up. With strict mode, BGP delays session
+establishment until BFD declares the path to the peer up. This prevents
+the BGP session from being established over a path that BFD will
+subsequently report as down.
 ```
 
 Example:
@@ -852,13 +859,11 @@ set protocols bgp neighbor 192.0.2.2 bfd strict
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> bfd strict hold-time \<1-4294967295\>
 
-**Configure the maximum time, in seconds, that strict-mode BFD will hold
-the BGP session in a non-Established state while waiting for BFD to come
-up.**
+**Configure how long, in seconds, BGP waits before tearing down the
+session after BFD reports the path down.**
 
-If BFD does not signal up within this interval, the BGP session is
-allowed to proceed regardless. The default is `0`, which means no hold
-time (BGP waits indefinitely for BFD).
+This timer applies only when the BGP hold-time is `0`. Otherwise, a
+BFD-down event causes immediate BGP session teardown.
 ```
 
 Example:
@@ -872,9 +877,7 @@ set protocols bgp neighbor 192.0.2.2 bfd strict hold-time 30
 **Require that the first ASN in the AS_PATH of every UPDATE received
 from the specified eBGP peer matches that peer's ASN.**
 
-If the first ASN does not match, the UPDATE is rejected. This is the
-standard sanity check defined in
-[RFC 4271](https://datatracker.ietf.org/doc/html/rfc4271) section 6.3.
+If the first ASN does not match, the UPDATE is rejected.
 ```
 
 Example:
@@ -886,27 +889,46 @@ set protocols bgp neighbor 192.0.2.2 enforce-first-as
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> path-attribute discard \<1-255\>
 
 **Drop the specified BGP path attribute from incoming UPDATE messages
-received from this peer before processing them locally.**
+received from this peer.**
 
-The attribute number identifies the attribute type code per the IANA
-BGP Path Attributes registry. Multiple attributes can be discarded by
-issuing the command repeatedly with different numbers.
+The UPDATE is then processed without that attribute. The number
+`<1-255>` is the path attribute type code per the IANA BGP Path
+Attributes registry.
+
+Multiple attributes can be discarded by issuing the command repeatedly
+with different numbers.
 ```
 
-```{cfgcmd} set protocols bgp neighbor \<address | interface\> path-attribute treat-as-withdraw \<1-255\>
-
-**Treat any incoming UPDATE that contains the specified BGP path
-attribute as a withdrawal of the routes it carries
-([RFC 7606](https://datatracker.ietf.org/doc/html/rfc7606)).**
-
-Use this to recover gracefully when a peer advertises malformed or
-unexpected attributes that would otherwise tear down the session.
+```{note}
+The following attributes cannot be discarded: 1 (ORIGIN), 2 (AS_PATH),
+3 (NEXT_HOP), 4 (MED), 8 (COMMUNITIES), 14 (MP_REACH_NLRI),
+15 (MP_UNREACH_NLRI), and 16 (EXTENDED_COMMUNITIES).
 ```
 
 Example:
 
 ```none
 set protocols bgp neighbor 192.0.2.2 path-attribute discard 128
+```
+
+```{cfgcmd} set protocols bgp neighbor \<address | interface\> path-attribute treat-as-withdraw \<1-255\>
+
+**Treat any incoming UPDATE that contains the specified BGP path
+attribute as a withdrawal of the routes it carries.**
+
+Use this to recover gracefully when a peer advertises malformed or
+unexpected attributes that would otherwise tear down the session.
+```
+
+```{note}
+The following attributes cannot be specified: 1 (ORIGIN), 2 (AS_PATH),
+3 (NEXT_HOP), 4 (MED), 8 (COMMUNITIES), 14 (MP_REACH_NLRI),
+15 (MP_UNREACH_NLRI), and 16 (EXTENDED_COMMUNITIES).
+```
+
+Example:
+
+```none
 set protocols bgp neighbor 192.0.2.2 path-attribute treat-as-withdraw 32
 ```
 
@@ -990,13 +1012,13 @@ set protocols bgp address-family ipv4-unicast network 198.51.100.0/24
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast | ipv6-unicast\> network \<prefix\> route-map \<name\>
 
-**Apply a route-map to filter or modify attributes of the locally
-originated `network` advertisement.**
+**Apply a route-map to set attributes on, or suppress, the locally
+originated network route.**
 
-The route-map is evaluated when BGP originates the prefix. It can be used
-to set communities, MED, LOCAL_PREF, or other attributes on the
-advertised route, or to suppress the advertisement entirely with a `deny`
-clause.
+The `route-map` is evaluated when BGP originates the route and can set
+communities, MED, LOCAL_PREF, or other path attributes on the originated
+route. If the `route-map` denies the prefix, BGP does not originate the
+route.
 ```
 
 Example:
@@ -1007,12 +1029,11 @@ set protocols bgp address-family ipv4-unicast network 198.51.100.0/24 route-map 
 
 ```{cfgcmd} set protocols bgp address-family ipv6-unicast network \<prefix\> path-limit \<0-255\>
 
-**Configure the maximum AS_PATH length attached to the originated IPv6
-prefix
-([draft-ietf-idr-bgp-path-limit](https://datatracker.ietf.org/doc/html/draft-ietf-idr-bgp-path-limit)).**
+**Configure the AS_PATHLIMIT attribute on the originated IPv6 route.**
 
-This command applies only to the IPv6 unicast address family. A value of
-`0` disables the limit.
+The AS_PATHLIMIT attribute sets an upper bound on the number of ASes the
+route may traverse before being dropped. A value of `0` disables the
+limit.
 ```
 
 Example:
@@ -1053,21 +1074,8 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast default-origina
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> addpath-tx-all
 
-**Use ADD-PATH ([RFC 7911](https://datatracker.ietf.org/doc/html/rfc7911))
-to advertise every known path for each prefix to the specified peer,
-not only the best path.**
-
-ADD-PATH is useful for fast recovery from peer failure, since the peer
-already holds backup paths.
-```
-
-```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> addpath-tx-per-as
-
-**Use ADD-PATH to advertise the best path per neighboring AS to the
-specified peer.**
-
-This sends fewer paths than `addpath-tx-all` while still providing
-per-AS diversity.
+**Configure BGP to use ADD-PATH to advertise every known path for each
+prefix to the specified peer, not only the best path.**
 ```
 
 Example:
@@ -1076,32 +1084,73 @@ Example:
 set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast addpath-tx-all
 ```
 
+```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> addpath-tx-per-as
+
+**Configure BGP to use ADD-PATH to advertise the best path per
+neighboring AS to the specified peer.**
+```
+
+Example:
+
+```none
+set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast addpath-tx-per-as
+```
+
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise advertise-map \<name\>
 
-**Advertise the prefixes matched by the route-map `<name>` only when the
-condition expressed by an `exist-map` or `non-exist-map` is satisfied
-([RFC 5291](https://datatracker.ietf.org/doc/html/rfc5291)
-section 5.1.1).**
+**Configure BGP to advertise the prefixes allowed by the specified
+route-map only when the `exist-map` or `non-exist-map` condition is
+met.**
 ```
 
-```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise exist-map \<name\>
-
-**Set the condition for `advertise-map` to: at least one prefix matched
-by route-map `<name>` is present in the BGP RIB.**
-```
-
-```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise non-exist-map \<name\>
-
-**Set the condition for `advertise-map` to: no prefix matched by
-route-map `<name>` is present in the BGP RIB.**
-
-`exist-map` and `non-exist-map` are mutually exclusive.
+```{note}
+This option must be used together with either
+`conditionally-advertise exist-map` or
+`conditionally-advertise non-exist-map`, as `advertise-map` alone does
+not enable conditional advertisement.
 ```
 
 Example:
 
 ```none
 set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast conditionally-advertise advertise-map BACKUP-ROUTES
+```
+
+```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise exist-map \<name\>
+
+**Specify the route-map that defines the trigger condition for
+`advertise-map`.**
+
+The condition is met when at least one prefix allowed by the specified
+route-map is present in the BGP RIB.
+```
+
+```{note}
+`exist-map` and `non-exist-map` are mutually exclusive.
+```
+
+Example:
+
+```none
+set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast conditionally-advertise exist-map AGGREGATE-PRESENT
+```
+
+```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise non-exist-map \<name\>
+
+**Specify the route-map that defines the trigger condition for
+`advertise-map`.**
+
+The condition is met when no prefix allowed by the specified route-map
+is present in the BGP RIB.
+```
+
+```{note}
+`exist-map` and `non-exist-map` are mutually exclusive.
+```
+
+Example:
+
+```none
 set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast conditionally-advertise non-exist-map PRIMARY-UP
 ```
 
@@ -1151,13 +1200,12 @@ set protocols bgp address-family ipv4-unicast aggregate-address 198.51.100.0/22 
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast | ipv6-unicast\> aggregate-address \<prefix\> route-map \<name\>
 
-**Apply a route-map to set or modify attributes on the aggregate route
-before it is advertised.**
+**Apply a route-map to set or modify BGP path attributes on the aggregate
+route before it is advertised.**
 
-The route-map is evaluated only against the aggregate; it does not
-affect the contributing more-specific routes. Use it to set communities,
-MED, LOCAL_PREF, or other attributes carried by the summary
-advertisement.
+Attribute changes apply only to the aggregate route and do not affect more
+specific contributing routes. Use the `route-map` to set communities, MED,
+LOCAL_PREF, or other attributes carried by the summary advertisement.
 ```
 
 Example:
@@ -1180,7 +1228,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast unsuppress-map 
 
 ### Redistribution configuration
 
-```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static | table\>
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static\>
 
 **Redistribute IPv4 unicast routes from the specified source into BGP.**
 ```
@@ -1191,7 +1239,20 @@ Example:
 set protocols bgp address-family ipv4-unicast redistribute connected
 ```
 
-```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static | table\>
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute table \<id\>
+
+**Redistribute IPv4 routes from the specified non-main kernel routing
+table (identified by `<id>`, configured under
+`set protocols static table`) into the BGP IPv4 unicast address family.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv4-unicast redistribute table 100
+```
+
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static\>
 
 **Redistribute IPv6 unicast routes from the specified source into BGP.**
 ```
@@ -1202,7 +1263,20 @@ Example:
 set protocols bgp address-family ipv6-unicast redistribute connected
 ```
 
-```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static | table\> metric \<1-4294967295\>
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute table \<id\>
+
+**Redistribute IPv6 routes from the specified non-main kernel routing
+table (identified by `<id>`, configured under
+`set protocols static table`) into the BGP IPv6 unicast address family.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv6-unicast redistribute table 100
+```
+
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static\> metric \<1-4294967295\>
 
 **Redistribute IPv4 unicast routes from the specified source into BGP,
 setting the MED attribute on the redistributed routes to the specified
@@ -1215,7 +1289,20 @@ Example:
 set protocols bgp address-family ipv4-unicast redistribute static metric 100
 ```
 
-```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static | table\> metric \<1-4294967295\>
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute table \<id\> metric \<1-4294967295\>
+
+**Redistribute IPv4 routes from the specified non-main kernel routing
+table into the BGP IPv4 unicast address family, setting the MED attribute
+on the redistributed routes to the specified value.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv4-unicast redistribute table 100 metric 100
+```
+
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static\> metric \<1-4294967295\>
 
 **Redistribute IPv6 unicast routes from the specified source into BGP,
 setting the MED attribute on the redistributed routes to the specified
@@ -1228,7 +1315,20 @@ Example:
 set protocols bgp address-family ipv6-unicast redistribute static metric 100
 ```
 
-```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static | table\> route-map \<name\>
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute table \<id\> metric \<1-4294967295\>
+
+**Redistribute IPv6 routes from the specified non-main kernel routing
+table into the BGP IPv6 unicast address family, setting the MED attribute
+on the redistributed routes to the specified value.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv6-unicast redistribute table 100 metric 100
+```
+
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospf | rip | static\> route-map \<name\>
 
 **Apply a route-map to filter and modify IPv4 unicast routes
 redistributed from the specified source.**
@@ -1240,7 +1340,20 @@ Example:
 set protocols bgp address-family ipv4-unicast redistribute static route-map FILTER-STATIC
 ```
 
-```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static | table\> route-map \<name\>
+```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute table \<id\> route-map \<name\>
+
+**Apply a route-map to filter and modify IPv4 routes redistributed from
+the specified non-main kernel routing table into the BGP IPv4 unicast
+address family.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv4-unicast redistribute table 100 route-map FILTER-STATIC
+```
+
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static\> route-map \<name\>
 
 **Apply a route-map to filter and modify IPv6 unicast routes
 redistributed from the specified source.**
@@ -1250,6 +1363,19 @@ Example:
 
 ```none
 set protocols bgp address-family ipv6-unicast redistribute static route-map FILTER-STATIC
+```
+
+```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute table \<id\> route-map \<name\>
+
+**Apply a route-map to filter and modify IPv6 routes redistributed from
+the specified non-main kernel routing table into the BGP IPv6 unicast
+address family.**
+```
+
+Example:
+
+```none
+set protocols bgp address-family ipv6-unicast redistribute table 100 route-map FILTER-STATIC
 ```
 
 ### General configuration
@@ -1449,15 +1575,14 @@ Example:
 ```none
 set protocols bgp parameters labeled-unicast explicit-null
 ```
+<!-- CLI path not accepted on live VyOS
+```{cfgcmd} set protocols bgp parameters as-notation \<asdot | asdot+ | asplain\>
 
-```{cfgcmd} set protocols bgp parameters as-notation \<asdot | asdot+\>
-
-**Configure the AS-number notation used in operational output.**
-
-By default, ASNs are printed in plain decimal (`asplain`). The `asdot`
-format uses the dotted notation only for 4-byte ASNs (e.g., `65540`
-becomes `1.4`); `asdot+` uses dotted notation for every ASN, including
-2-byte values.
+- `asplain`: Print every ASN in plain decimal. This is the default.
+- `asdot`: Print ASNs greater than 65535 in dotted notation (e.g.,
+  `65540` becomes `1.4`). ASNs at or below 65535 are printed in plain
+  decimal.
+- `asdot+`: Print every ASN in dotted notation.
 ```
 
 Example:
@@ -1465,16 +1590,16 @@ Example:
 ```none
 set protocols bgp parameters as-notation asdot
 ```
+-->
 
 ```{cfgcmd} set protocols bgp parameters disable-ebgp-connected-route-check
 
-**Disable the requirement that an eBGP peer's next-hop be on a directly
-connected subnet.**
+**Allow eBGP-learned routes whose NEXT_HOP is resolvable only through
+the default route to be installed in the RIB.**
 
-By default, BGP installs an eBGP-learned route only if its NEXT_HOP is
-reachable via a directly connected interface. Setting this option
-allows the next-hop to be resolved recursively through other routes,
-which is necessary for some non-standard topologies.
+By default, BGP rejects routes whose NEXT_HOPs are reachable only
+through the default route (`0.0.0.0/0` or `::/0`). This option removes
+that restriction.
 ```
 
 Example:
@@ -1485,12 +1610,11 @@ set protocols bgp parameters disable-ebgp-connected-route-check
 
 ```{cfgcmd} set protocols bgp parameters fast-convergence
 
-**Tear down BGP sessions immediately whenever the local router detects
-that a peer has become unreachable.**
+**Configure BGP to tear down its sessions immediately whenever the
+local router detects that a peer has become unreachable.**
 
-Unlike `no-fast-external-failover`, which only triggers on direct link
-events, `fast-convergence` also reacts to next-hop reachability changes
-learned from the IGP.
+This triggers on both direct link-down events and NEXT_HOP reachability
+changes signaled by the IGP.
 ```
 
 Example:
@@ -1504,10 +1628,9 @@ set protocols bgp parameters fast-convergence
 **Disable suppression of duplicate UPDATE messages for routes whose
 attributes have not changed.**
 
-By default, BGP suppresses a repeated advertisement of the same
-route-with-same-attributes. Setting this option restores the
-unsuppressed behavior, which can help when peers expect periodic
-re-advertisements.
+By default, BGP suppresses repeated advertisements of the same route
+with unchanged attributes. Setting this option disables that
+suppression.
 ```
 
 Example:
@@ -1518,12 +1641,10 @@ set protocols bgp parameters no-suppress-duplicates
 
 ```{cfgcmd} set protocols bgp parameters reject-as-sets
 
-**Reject incoming UPDATE messages whose AS_PATH contains an AS_SET or
-AS_CONFED_SET segment.**
+**Configure BGP to reject incoming UPDATE messages whose AS_PATH
+contains an AS_SET or AS_CONFED_SET segment.**
 
-AS_SET segments are produced by some aggregation configurations and are
-deprecated for most modern deployments
-([RFC 9774](https://datatracker.ietf.org/doc/html/rfc9774)).
+AS_SET segments are deprecated for most modern deployments.
 ```
 
 Example:
@@ -1534,13 +1655,11 @@ set protocols bgp parameters reject-as-sets
 
 ```{cfgcmd} set protocols bgp parameters suppress-fib-pending
 
-**Withhold advertisement of a route to peers until the kernel
-forwarding table (FIB) has confirmed installation of the route.**
+**Configure BGP not to advertise a route to peers until the route is
+installed in the kernel forwarding table (FIB).**
 
 This prevents the local router from advertising a route it cannot yet
-forward on, which is useful during convergence on routers with very
-large RIBs where RIB-to-FIB programming may lag the BGP decision
-process.
+forward.
 ```
 
 Example:
@@ -1553,8 +1672,7 @@ set protocols bgp parameters suppress-fib-pending
 
 **Administratively shut down the entire BGP instance on this router.**
 
-All BGP sessions are torn down. To bring the BGP instance back up, use
-the `delete` form of this command.
+This terminates all BGP sessions belonging to this instance.
 ```
 
 Example:
@@ -1567,15 +1685,14 @@ set protocols bgp parameters shutdown
 
 ```{cfgcmd} set protocols bgp parameters graceful-restart stalepath-time \<1-3600\>
 
-**Configure the maximum time, in seconds, that the local router keeps
+**Configure the maximum time, in seconds, that the local router retains
 stale routes from a restarting peer.**
 
-When a BGP peer signals Graceful Restart
-([RFC 4724](https://datatracker.ietf.org/doc/html/rfc4724)), the local
-router holds the peer's routes (marked stale) instead of withdrawing
-them when the session goes down. If the peer does not reestablish the
-session and send the End-of-RIB marker within `stalepath-time`, the
-stale routes are removed.
+When a BGP peer signals Graceful Restart, the local router marks the
+peer's routes as stale and continues forwarding traffic on them while
+the session is down. If the peer does not complete the Graceful Restart
+(re-establish the session and send the End-of-RIB marker) within
+`stalepath-time`, the stale routes are removed.
 ```
 
 Example:
@@ -1586,13 +1703,14 @@ set protocols bgp parameters graceful-restart stalepath-time 360
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> graceful-restart \<enable | disable | restart-helper\>
 
-**Configure the Graceful Restart role for the specified peer.**
+**Configure the Graceful Restart role for the specified peer:**
 
-`enable` advertises the GR capability and allows both restart and
-helper roles. `disable` disables GR for this peer. `restart-helper`
-advertises only the helper role; the local router will retain the
-peer's routes across a peer restart, but does not request the same
-courtesy when it restarts itself.
+- `enable`: Advertises the GR capability and allows both restart and
+  helper roles.
+- `disable`: Disables GR for this peer.
+- `restart-helper`: Advertises only the helper role. The local router
+  retains the peer's routes across a peer restart but does not advertise
+  the restart capability for itself.
 ```
 
 Example:
@@ -1603,13 +1721,9 @@ set protocols bgp neighbor 192.0.2.2 graceful-restart restart-helper
 
 ```{cfgcmd} set protocols bgp parameters graceful-shutdown
 
-**Tag all outbound routes with the GRACEFUL_SHUTDOWN community
-([RFC 8326](https://datatracker.ietf.org/doc/html/rfc8326)), signalling
-neighbors to deprefer them.**
-
-Use this in advance of planned maintenance to drain traffic away from
-the router before the BGP sessions are torn down. Peers that honor the
-community will switch to alternative paths.
+**Configure BGP to tag all outbound routes with the GRACEFUL_SHUTDOWN
+community, signaling to neighbors that they should prefer alternative
+paths.**
 ```
 
 Example:
@@ -1663,9 +1777,11 @@ that address family.
 specified category within the selected address family.**
 
 `external` covers eBGP-learned routes, `internal` covers iBGP-learned
-routes, and `local` covers locally originated BGP routes. Per-AF values
-configured here take precedence over the process-wide
-`parameters distance global` values for that address family.
+routes, and `local` covers locally originated BGP routes.
+
+Per-address-family values configured here override the corresponding
+values set by `set protocols bgp parameters distance global` for that
+address family.
 ```
 
 Example:
@@ -1679,9 +1795,9 @@ set protocols bgp address-family ipv4-unicast distance external 20
 **Override the BGP administrative distance for routes matching the
 specified prefix within the selected address family.**
 
-This is the per-AF equivalent of `parameters distance prefix`. Where both
-are configured for the same prefix in the same address family, the per-AF
-value wins.
+Per-address-family values configured here override the corresponding
+values set by `set protocols bgp parameters distance prefix` for that
+address family.
 ```
 
 ```{note}
@@ -1728,12 +1844,8 @@ set protocols bgp timers keepalive 30
 
 ```{cfgcmd} set protocols bgp parameters minimum-holdtime \<1-65535\>
 
-**Reject incoming OPEN messages from peers that propose a hold time
-shorter than the specified value, in seconds.**
-
-This protects the local router from peers that are configured (or
-misconfigured) with very low hold times, which would otherwise force
-the local side into a high keepalive rate.
+**Configure BGP to reject incoming OPEN messages from peers that
+propose a hold time shorter than the specified value, in seconds.**
 ```
 
 Example:
@@ -1746,39 +1858,72 @@ set protocols bgp parameters minimum-holdtime 30
 
 **Configure the TCP keepalive idle time, in seconds, on BGP sessions.**
 
-TCP keepalives are sent on idle BGP sessions to detect a dead peer
-between BGP keepalives.
+Once a BGP session has been idle (no data exchanged in either
+direction) for this period, the kernel starts sending TCP keepalive
+probes.
 ```
 
-```{cfgcmd} set protocols bgp parameters tcp-keepalive interval \<1-65535\>
-
-**Configure the interval, in seconds, between TCP keepalive probes on
-BGP sessions.**
-```
-
-```{cfgcmd} set protocols bgp parameters tcp-keepalive probes \<1-30\>
-
-**Configure the maximum number of unanswered TCP keepalive probes before
-the TCP connection is dropped.**
-
-The default is 9.
+```{note}
+Must be set together with `tcp-keepalive interval` and
+`tcp-keepalive probes`.
 ```
 
 Example:
 
 ```none
 set protocols bgp parameters tcp-keepalive idle 60
+```
+
+```{cfgcmd} set protocols bgp parameters tcp-keepalive interval \<1-65535\>
+
+**Configure the interval, in seconds, between TCP keepalive probes on
+BGP sessions.**
+
+After the kernel begins sending TCP keepalive probes (see
+`tcp-keepalive idle`), subsequent probes are sent at this interval.
+```
+
+```{note}
+Must be set together with `tcp-keepalive idle` and
+`tcp-keepalive probes`.
+```
+
+Example:
+
+```none
 set protocols bgp parameters tcp-keepalive interval 10
-set protocols bgp parameters tcp-keepalive probes 3
+```
+
+```{cfgcmd} set protocols bgp parameters tcp-keepalive probes \<1-30\>
+
+**Configure the maximum number of unanswered TCP keepalive probes
+before the TCP connection is dropped.**
+```
+
+```{note}
+Must be set together with `tcp-keepalive idle` and
+`tcp-keepalive interval`.
+```
+
+Example:
+
+```none
+set protocols bgp parameters tcp-keepalive probes 5
 ```
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> timers holdtime \<0-65535\>
 
 **Override the BGP hold time for the specified peer, in seconds.**
 
-Takes precedence over the BGP-process-wide `timers holdtime` for this
-peer. Setting the value to 0 disables the hold timer and keepalive
-exchange for this peer.
+This option takes precedence over the process-wide `set protocols bgp
+timers holdtime`. Setting the value to `0` disables the hold timer and
+keepalive exchange for this peer.
+```
+
+Example:
+
+```none
+set protocols bgp neighbor 192.0.2.2 timers holdtime 30
 ```
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> timers keepalive \<1-65535\>
@@ -1786,8 +1931,14 @@ exchange for this peer.
 **Override the BGP keepalive interval for the specified peer, in
 seconds.**
 
-Takes precedence over the BGP-process-wide `timers keepalive` for this
-peer.
+This option takes precedence over the process-wide `set protocols bgp
+timers keepalive`.
+```
+
+Example:
+
+```none
+set protocols bgp neighbor 192.0.2.2 timers keepalive 10
 ```
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> timers connect \<0-65535\>
@@ -1796,15 +1947,13 @@ peer.
 seconds.**
 
 This is the interval the local BGP speaker waits between TCP connection
-attempts to a peer that is not in the Established state. Setting the
-value to 0 disables the ConnectRetry timer.
+attempts to a peer that is not yet in the Established state. Setting the
+value to `0` disables the ConnectRetry timer.
 ```
 
 Example:
 
 ```none
-set protocols bgp neighbor 192.0.2.2 timers holdtime 30
-set protocols bgp neighbor 192.0.2.2 timers keepalive 10
 set protocols bgp neighbor 192.0.2.2 timers connect 5
 ```
 
@@ -2091,15 +2240,14 @@ set protocols bgp address-family ipv4-unicast network 198.51.100.0/24 backdoor
 
 ```{cfgcmd} set protocols bgp parameters bestpath bandwidth \<default-weight-for-missing | ignore | skip-missing\>
 
-**Control how BGP uses the Link Bandwidth extended community
-([RFC 9206](https://datatracker.ietf.org/doc/html/rfc9206)) in
-weighted-ECMP load balancing.**
+**Configure how BGP uses the Link Bandwidth extended community in
+weighted-ECMP load balancing:**
 
-`default-weight-for-missing` assigns a low default weight (1) to paths
-that do not carry a link-bandwidth attribute. `ignore` disables
-weighted ECMP entirely and uses regular ECMP. `skip-missing` excludes
-paths without link bandwidth from ECMP when at least one other path
-carries it.
+- `default-weight-for-missing`: Assigns a low default weight (1) to
+  paths that do not carry a link-bandwidth attribute.
+- `ignore`: Disables weighted ECMP entirely and uses regular ECMP.
+- `skip-missing`: Excludes paths without link bandwidth from ECMP when
+  at least one other path carries it.
 ```
 
 Example:
@@ -2110,8 +2258,8 @@ set protocols bgp parameters bestpath bandwidth skip-missing
 
 ```{cfgcmd} set protocols bgp parameters bestpath peer-type multipath-relax
 
-**Allow load sharing across paths learned from different peer types
-(eBGP and iBGP) for the same destination.**
+**Configure BGP to allow load sharing across paths learned from
+different peer types (eBGP and iBGP) for the same destination.**
 
 Without this option, multipath is restricted to peers of the same type
 (eBGP-only or iBGP-only).
@@ -2128,8 +2276,7 @@ set protocols bgp parameters bestpath peer-type multipath-relax
 **Configure the interval, in seconds, at which the BGP process
 re-evaluates `conditionally-advertise` conditions.**
 
-A shorter interval makes conditional advertise/withdraw decisions more
-responsive at the cost of additional processing. The default is `60`.
+The default is 60 seconds.
 ```
 
 Example:
@@ -2216,9 +2363,8 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast filter-list imp
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> capability orf prefix-list \<receive | send\>
 
-**Enable the {abbr}`ORF (Outbound Route Filter)` capability
-([RFC 5291](https://datatracker.ietf.org/doc/html/rfc5291)) on the local
-router and advertise it to the specified peer.**
+**Enable the {abbr}`ORF (Outbound Route Filter)` capability on the
+local router and advertise it to the specified peer.**
 
 `receive` configures the router to accept ORF filters sent by the peer
 and use them to filter its own outbound updates. `send` configures the
@@ -2251,13 +2397,13 @@ set protocols bgp neighbor 192.0.2.2 solo
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> route-server-client
 
-**Treat the specified neighbor as a route-server client.**
+**Configure the specified neighbor as a route-server client.**
 
 A route server, typically deployed at internet exchange points, peers
 with many participants and redistributes their routes between them
-while leaving the AS_PATH and NEXT_HOP untouched. Configuring a peer
-as `route-server-client` skips the standard eBGP rewrites of those
-attributes and disables loop detection for that peer.
+while leaving AS_PATH, NEXT_HOP, and other BGP attributes untouched.
+Configuring a peer as `route-server-client` suppresses the standard
+eBGP outbound rewrites of these attributes for that peer.
 ```
 
 Example:
@@ -2319,12 +2465,12 @@ set protocols bgp parameters cluster-id 192.0.2.10
 ```{cfgcmd} set protocols bgp parameters route-reflector-allow-outbound-policy
 
 **Allow outbound route-maps (and other outbound policy) to apply to
-routes the local router reflects to its route-reflector clients.**
+routes the local route reflector reflects to its route-reflector
+clients.**
 
 By default, FRR does not apply outbound policy to reflected routes, to
-preserve the reflector's transparency. Enabling this option re-enables
-outbound policy on reflected routes, which can be useful for adjusting
-attributes such as MED or communities on intra-cluster updates.
+preserve the reflector's transparency. Enabling this option allows
+outbound policy to take effect on reflected routes.
 ```
 
 Example:
