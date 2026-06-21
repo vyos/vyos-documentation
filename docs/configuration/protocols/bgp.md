@@ -800,7 +800,7 @@ set protocols bgp neighbor 192.0.2.2 ttl-security hops 1
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> bfd [profile \<name\>]
 
-**Enable {abbr}BFD (Bidirectional Forwarding Detection) on the session
+**Enable {abbr}`BFD (Bidirectional Forwarding Detection)` on the session
 with the specified peer.**
 
 When BFD declares the path to the peer down, the BGP session is reset
