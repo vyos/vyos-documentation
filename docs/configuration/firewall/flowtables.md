@@ -164,20 +164,17 @@ Here's what happens for a desired connection:
 >    for offloading.
 
 
-### Flowtable Configuration on Logical and Sub-Interfaces
+## Flowtable Configuration on Logical and Sub-Interfaces
 
-When configuring flowtables it is essential to identify which interface
-VyOS observes at the forward hook for ingress and egress traffic.
-The VyOS identifies interfaces by their **iifname** and
-**oifname** — always at the highest logical level, not the underlying
-physical members.
+Configure the flowtable with the interface name you used in VyOS configuration. 
+When VLANs, bonds, or bridges are involved, that is the logical interface (bond0, br0, eth0.10) — not the underlying physical port.
 
 For example:
 - If `bond0` is configured, VyOS sees `bond0` — not `eth0` or `eth1`
 - If `br0` is configured, VyOS sees `br0` — not its member interfaces
 - The flowtable must reference the same interface name VyOS observes
 
-The behaviour differs for sub-interfaces (VLANs):
+The behavior differs for sub-interfaces (VLANs):
 
 - Configuring `bond1` in the flowtable offloads traffic on the parent
   interface **and all its sub-interfaces** (`bond1.10`, `bond1.20`, etc.)
@@ -216,11 +213,11 @@ In this configuration:
 - `bond1` covers ingress from `bond1.10` and any other `bond1` sub-interfaces
 - `bond2.20` covers egress on VLAN 20 only — other `bond2` sub-interfaces
   are not offloaded
-- Rule 200 uses a wildcard to accept new connections (TCP handshake) arriving
+- Rule 200 uses a wildcard to accept any traffic arriving
   on any bond interface or sub-interface before the flow reaches established
   state and is eligible for offload
 - Once a flow is established, rule 10 adds it to the flowtable and subsequent
-  packets bypass Netfilter entirely via the fast path
+  packets bypass entirely the forward hook via the fast path
 
 :::{note}
 The interface directions in this example are from the perspective of
@@ -260,6 +257,6 @@ Check the interfaces where traffic is being forwarded:
 
 ```none
 vyos@FlowTables:~$ show log firewall
-Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=02:dd:f1:e7:3d:00:5a:a3:d1:fc:5f:cb:08:00 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
+Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=000:53:00:00:00:01 00:53:00:00:00:02 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
 ```
 Notice the IN and OUT interface are bond1.10 and bond2.20 and not the physical interface. 
