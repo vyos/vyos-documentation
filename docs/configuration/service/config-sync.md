@@ -291,15 +291,3 @@ set system time-zone 'America/Los_Angeles'
 vyos@vyos-B:~$ show configuration commands | match ospf
 set protocols ospf area 0 network '198.51.100.0/30'
 ```
-
-## Known limitations
-
-- The secondary must be online during the triggering commit. If the
-  secondary is unreachable, the corresponding change is not re-queued
-  for later delivery.
-- Only revised sections are pushed. Sections that were not modified by
-  the triggering commit are not sent, even if they have drifted between
-  the two routers. Use `show configuration secondary sync` to detect
-  drift.
-- TLS certificate validation is disabled when the primary calls the
-  secondary's HTTPS API.
