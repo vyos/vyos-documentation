@@ -166,8 +166,10 @@ Here's what happens for a desired connection:
 
 ## Flowtable Configuration on Logical and Sub-Interfaces
 
-Configure the flowtable with the interface name you used in VyOS configuration. 
-When VLANs, bonds, or bridges are involved, that is the logical interface (bond0, br0, eth0.10) — not the underlying physical port.
+Configure the flowtable with the interface name you used in VyOS
+configuration. When VLANs, bonds, or bridges are involved, that is the
+logical interface (`bond0`, `br0`, `eth0.10`) — not the underlying physical
+port.
 
 For example:
 - If `bond0` is configured, VyOS sees `bond0` — not `eth0` or `eth1`
