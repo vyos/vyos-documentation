@@ -216,7 +216,7 @@ In this configuration:
   on any bond interface or sub-interface before the flow reaches established
   state and is eligible for offload
 - Once a flow is established, rule 10 adds it to the flowtable and subsequent
-  packets bypass entirely the forward hook via the fast path
+  packets bypass the forward hook entirely via the fast path
 
 :::{note}
 The interface directions in this example are from the perspective of
