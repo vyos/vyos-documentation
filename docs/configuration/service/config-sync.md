@@ -195,7 +195,7 @@ set service config-sync section system time-zone
 
 ## Operation
 
-```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]
+```{opcmd} show configuration secondary sync [commands] [running | candidate | saved] [\<config-node-path\>]\]
 
 **Show the difference between the local configuration on the primary
 and the running configuration on the secondary.**
