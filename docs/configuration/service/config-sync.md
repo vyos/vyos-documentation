@@ -227,8 +227,8 @@ Examples:
 # Compare the full running configuration against the secondary
 show configuration secondary sync
 
-# Compare only the dummy-interface configuration against the secondary
-show configuration secondary sync running interfaces dummy
+# Compare only the OSPF protocol configuration against the secondary
+show configuration secondary sync running protocols ospf
 
 # Compare the candidate configuration against the secondary,
 # rendered as commands
