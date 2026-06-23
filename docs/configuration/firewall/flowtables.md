@@ -257,6 +257,8 @@ Check the interfaces where traffic is being forwarded:
 
 ```none
 vyos@FlowTables:~$ show log firewall
-Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=000:53:00:00:00:01 00:53:00:00:00:02 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
+Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A] IN=bond1.10 OUT=bond2.20 \
+  MAC=00:53:00:00:00:02:00:53:00:00:00:01:08:00 SRC=192.168.10.2 \
+  DST=192.168.20.2 LEN=84 PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
 ```
 Notice the IN and OUT interface are bond1.10 and bond2.20 and not the physical interface. 
