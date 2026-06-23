@@ -62,10 +62,7 @@ To use flowtables, you need to configure the following:
 Creating a flow table:
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
-
 Specify interfaces to use in the flowtable.
-
-```
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
 ```
