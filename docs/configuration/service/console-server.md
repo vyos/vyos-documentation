@@ -8,7 +8,6 @@ myst:
       both on-board UARTs and USB-to-serial adapters.
     keywords: console-server, out-of-band, oob, serial console, ssh, usb-to-serial
 ---
----
 
 (console-server)=
 
