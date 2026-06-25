@@ -6,8 +6,8 @@ myst:
       out-of-band management device, providing SSH-based remote access
       to the serial consoles of directly attached devices. It supports
       both on-board UARTs and USB-to-serial adapters.
-    keywords: console-server, out-of-band, oob, serial console, ssh,
-	          usb-to-serial
+    keywords: console-server, out-of-band, oob, serial console, ssh, usb-to-serial
+---
 ---
 
 (console-server)=
@@ -39,7 +39,7 @@ Use `show hardware usb serial` to list the current names. The `<name>`
 portion is what you pass to `set service console-server device <name>`
 in the commands below.
 
-See {ref}`hardware-usb` for more details on the naming scheme.
+See {ref}`hardware_usb` for more details on the naming scheme.
 
 ## Configuration
 
