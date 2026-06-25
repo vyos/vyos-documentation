@@ -185,7 +185,7 @@ set service console-server device usb0b2.4p1.0 ssh port 2201
 
 ```{opcmd} show console-server ports
 
-**Show each configured console device together with its line rate.**
+Show each configured console device together with its line rate.
 ```
 
 ```none
@@ -195,8 +195,8 @@ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 
 ```{opcmd} show console-server user
 
-**Show each configured console device, its up/down state, and the
-user currently typing in the console, if any.**
+Show each configured console device, its up/down state, and the
+user currently typing in the console, if any.
 ```
 
 ```none
@@ -206,8 +206,8 @@ usb0b2.4p1.0               up   vyos@localhost
 
 ```{opcmd} connect console \<device | alias\>
 
-**Connect to the specified serial device's console from the VyOS
-CLI.**
+Connect to the specified serial device's console from the VyOS
+CLI.
 
 If an alias is configured for the device, it can be used in place of
 the device name.
@@ -236,8 +236,8 @@ vyos-r2 login:
 
 ```{opcmd} show log console-server
 
-**Show the console server log since the most recent boot, in live
-mode.**
+Show the console server log since the most recent boot, in live
+mode.
 
 Use `Ctrl+C` to exit.
 ```
