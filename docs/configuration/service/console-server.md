@@ -188,8 +188,6 @@ set service console-server device usb0b2.4p1.0 ssh port 2201
 **Show each configured console device together with its line rate.**
 ```
 
-Example:
-
 ```none
 vyos@vyos:~$ show console-server ports
 usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
@@ -200,8 +198,6 @@ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 **Show each configured console device, its up/down state, and the
 user currently typing in the console, if any.**
 ```
-
-Example:
 
 ```none
 vyos@vyos:~$ show console-server user
@@ -230,8 +226,6 @@ are interpreted by the console-server client locally and are not sent
 to the attached device.
 ```
 
-Example:
-
 ```none
 vyos@vyos-r1:~$ connect console usb0b2.4p1.0
 [Enter `^Ec?' for help]
@@ -246,10 +240,4 @@ vyos-r2 login:
 mode.**
 
 Use `Ctrl+C` to exit.
-```
-
-Example:
-
-```none
-show log console-server
 ```
