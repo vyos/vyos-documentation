@@ -175,7 +175,7 @@ For example:
 - If `br0` is configured, VyOS sees `br0` — not its member interfaces
 - The flowtable must reference the same interface name VyOS observes
 
-The behavior differs for sub-interfaces (VLANs):
+Two forms are accepted, but registering the parent is recommended::
 
 - Registering `bond1` offloads the parent interface **and all its VLAN
   sub-interfaces** (`bond1.10`, `bond1.20`, etc.) — the kernel
@@ -213,9 +213,10 @@ set firewall ipv4 forward filter rule 200 inbound-interface name 'bond*'
 ```
 
 In this configuration:
-- `bond1` covers ingress from `bond1.10` and any other `bond1` sub-interfaces
-- `bond2.20` covers egress on VLAN 20 only — other `bond2` sub-interfaces
-  are not offloaded
+- `bond1` covers ingress from `bond1.10` and any other `bond1` sub-interfaces.
+- `bond2.20` offloads VLAN 20 only — other `bond2` sub-interfaces remain on
+  the standard forwarding path. This illustrates how to selectively offload
+  a single VLAN while leaving others on the slow path. 
 - Rule 200 uses a wildcard to accept any traffic arriving
   on any bond interface or sub-interface before the flow reaches established
   state and is eligible for offload
