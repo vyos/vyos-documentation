@@ -175,7 +175,7 @@ For example:
 - If `br0` is configured, VyOS sees `br0` — not its member interfaces
 - The flowtable must reference the same interface name VyOS observes
 
-Two forms are accepted, but registering the parent is recommended::
+Two forms are accepted, but registering the parent is recommended:
 
 - Registering `bond1` offloads the parent interface **and all its VLAN
   sub-interfaces** (`bond1.10`, `bond1.20`, etc.) — the kernel
@@ -216,7 +216,7 @@ In this configuration:
 - `bond1` covers ingress from `bond1.10` and any other `bond1` sub-interfaces.
 - `bond2.20` offloads VLAN 20 only — other `bond2` sub-interfaces remain on
   the standard forwarding path. This illustrates how to selectively offload
-  a single VLAN while leaving others on the slow path. 
+  a single VLAN while leaving others on the slow path.
 - Rule 200 uses a wildcard to accept any traffic arriving
   on any bond interface or sub-interface before the flow reaches established
   state and is eligible for offload
@@ -257,7 +257,11 @@ conntrack v1.4.6 (conntrack-tools): 5 flow entries have been shown.
 tcp      6 src=198.51.100.100 dst=192.0.2.100 sport=41676 dport=1122 src=192.0.2.100 dst=198.51.100.100 sport=1122 dport=41676 [OFFLOAD] mark=0 use=2
 vyos@FlowTables:~$
 ```
-Check the interfaces where traffic is being forwarded:
+
+#### Interface identification
+
+To verify that VyOS identifies traffic by its logical sub-interface
+and not the underlying physical device, inspect the firewall log:
 
 ```none
 vyos@FlowTables:~$ show log firewall
@@ -265,5 +269,23 @@ Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A] IN=bond1.10 OUT=bond2.20 \
   MAC=00:53:00:00:00:02:00:53:00:00:00:01:08:00 SRC=192.168.10.2 \
   DST=192.168.20.2 LEN=84 PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
 ```
-Notice the IN and OUT interface are `bond1.10` and `bond2.20` and not the
-physical interface.
+
+The `IN` and `OUT` fields show `bond1.10` and `bond2.20` — the logical
+sub-interfaces — not the underlying physical or bond device.
+
+#### Flowtable offload
+
+Run the following command to verify that the connections are offloaded to
+the flowtable fast path:
+
+```none
+vyos@firewall:~$ sudo conntrack -L | grep OFFLOAD
+tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55604 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55604 [OFFLOAD] mark=0 use=5
+tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55602 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55602 [OFFLOAD] mark=0 use=2
+conntrack v1.4.6 (conntrack-tools): 2 flow entries have been shown.
+```
+
+The `[OFFLOAD]` flag confirms that post-handshake packets for these flows
+are forwarded via the flowtable fast path, bypassing the firewall entirely.
+This applies to sub-interface traffic (`bond1.10` → `bond2.20`) in the
+same way as physical interface traffic..
