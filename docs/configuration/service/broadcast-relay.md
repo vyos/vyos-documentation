@@ -30,8 +30,7 @@ defined by the following settings:
 - a single UDP port number that the instance relays
 - two or more interfaces across which the instance operates
 
-Every interface in the instance must be assigned an IPv4 address, as
-the service supports only IPv4 broadcasts.
+Every interface in the instance must be assigned an IPv4 address.
 
 ```{note}
 Multiple routers may run UDP broadcast relay on a shared subnet,
