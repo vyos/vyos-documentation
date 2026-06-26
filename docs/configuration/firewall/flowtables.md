@@ -97,6 +97,7 @@ to use. Only applicable if the action is ``offload``.
 ```
 
 ### Interface Selection
+
 :::{important}
 Always configure the flowtable with the interface that VyOS observes
 at the forward hook — which is not necessarily the physical interface.
@@ -104,7 +105,7 @@ When traffic is received or transmitted via a logical interface, VyOS
 tracks that logical interface, not the underlying physical device. Registering
 the wrong interface in the flowtable causes every flow lookup to miss,
 falling back to the classic forwarding path and defeating the purpose of
-fast-path offload. 
+fast-path offload.
 :::
 
 
@@ -176,11 +177,11 @@ For example:
 
 The behavior differs for sub-interfaces (VLANs):
 
-- Registering ``bond1`` offloads the parent interface **and all its VLAN
-  sub-interfaces** (``bond1.10``, ``bond1.20``, etc.) — the kernel
+- Registering `bond1` offloads the parent interface **and all its VLAN
+  sub-interfaces** (`bond1.10`, `bond1.20`, etc.) — the kernel
   automatically discovers them by parsing L2 headers (Linux 5.13+).
-- Registering ``bond1.10`` directly offloads **only VLAN 10** traffic.
-  But the sub-interface **must exist at commit time**; if it is not 
+- Registering `bond1.10` directly offloads **only VLAN 10** traffic.
+  But the sub-interface **must exist at commit time**; if it is not
   yet present when the ruleset is loaded, the configuration might fail.
 
 ```none
@@ -191,7 +192,7 @@ set firewall flowtable FT01 interface 'bond1'
 set firewall flowtable FT01 interface 'bond1.10'
 ```
 
-#### Example: Mixed parent and sub-interface offload
+### Example: Mixed parent and sub-interface offload
 
 Consider a setup where:
 - Traffic ingresses on `bond1.10` (VLAN 10)
@@ -226,9 +227,9 @@ The interface directions in this example are from the perspective of
 client-to-server traffic. In practice each interface handles traffic in
 both directions, and the flowtable manages offload symmetrically once the
 flow is established.
-To be sure what are the ingress and egress interface, you can check the firewall
-logs, by enabling the log in any rule of the forward hook. Check firewall section
-for the configuration.
+To confirm the ingress and egress interfaces, enable `log` on a rule in the
+forward hook and check the firewall logs — see the
+{doc}`Firewall </configuration/firewall/index>` section for configuration.
 :::
 
 ### Checks
@@ -259,8 +260,9 @@ Check the interfaces where traffic is being forwarded:
 
 ```none
 vyos@FlowTables:~$ show log firewall
-Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=00:53:00:00:00:01
-00:53:00:00:00:02 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF
-PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
+Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A] IN=bond1.10 OUT=bond2.20 \
+  MAC=00:53:00:00:00:02:00:53:00:00:00:01:08:00 SRC=192.168.10.2 \
+  DST=192.168.20.2 LEN=84 PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
 ```
-Notice the IN and OUT interface are bond1.10 and bond2.20 and not the physical interface. 
+Notice the IN and OUT interface are `bond1.10` and `bond2.20` and not the
+physical interface.
