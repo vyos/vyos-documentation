@@ -6,7 +6,8 @@ myst:
       configured directory over UDP. Uploads are disabled by default
       and can be enabled. The server can listen on multiple addresses
       and inside a non-default VRF.
-    keywords: tftp, tftp-server, trivial file transfer protocol, file transfer, network boot
+    keywords: tftp, tftp-server, trivial file transfer protocol, file
+      transfer, network boot
 ---
 
 (tftp-server)=
@@ -121,24 +122,14 @@ set service tftp-server allow-upload
 ## Example
 
 The following example configures a TFTP server that uses
-`/config/tftpboot` as its file directory, listens on both an IPv4 and
-an IPv6 address, and accepts client uploads.
+`/config/tftpboot` as its file directory, listens on both IPv4 and
+IPv6 addresses, and accepts client uploads.
 
 ```none
 set service tftp-server directory '/config/tftpboot'
 set service tftp-server listen-address '192.0.2.1'
 set service tftp-server listen-address '2001:db8::1'
 set service tftp-server allow-upload
-```
-
-The resulting configuration:
-
-```none
-vyos@vyos# show service tftp-server
- allow-upload
- directory /config/tftpboot
- listen-address 192.0.2.1
- listen-address 2001:db8::1
 ```
 
 ## Verification
