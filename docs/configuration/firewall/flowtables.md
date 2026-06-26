@@ -279,7 +279,7 @@ Run the following command to verify that the connections are offloaded to
 the flowtable fast path:
 
 ```none
-vyos@firewall:~$ sudo conntrack -L | grep OFFLOAD
+vyos@FlowTables:~$ sudo conntrack -L | grep OFFLOAD
 tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55604 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55604 [OFFLOAD] mark=0 use=5
 tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55602 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55602 [OFFLOAD] mark=0 use=2
 conntrack v1.4.6 (conntrack-tools): 2 flow entries have been shown.
@@ -288,4 +288,4 @@ conntrack v1.4.6 (conntrack-tools): 2 flow entries have been shown.
 The `[OFFLOAD]` flag confirms that post-handshake packets for these flows
 are forwarded via the flowtable fast path, bypassing the firewall entirely.
 This applies to sub-interface traffic (`bond1.10` → `bond2.20`) in the
-same way as physical interface traffic..
+same way as physical interface traffic.
