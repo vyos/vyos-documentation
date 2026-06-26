@@ -64,23 +64,23 @@ Creating a flow table:
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
 
 Specify interfaces to use in the flowtable.
-
 ```
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
-```
 
 Provide a description for the flow table.
+```
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> offload \<hardware | software\>
 
 Specify the offload type the flowtable uses: ``hardware`` or
 ``software``. The default is ``software`` offload.
 ```
+
 :::{note}
 **Hardware offload**: Make sure your network interface controller
 (NIC) supports hardware offloading and that you have the necessary drivers
-> installed before enabling this option.
+installed before enabling this option.
 :::
 
 Creating rules for using flow tables:
@@ -135,7 +135,6 @@ set firewall ipv4 forward filter default-action 'drop'
 set firewall ipv4 forward filter rule 10 action 'offload'
 set firewall ipv4 forward filter rule 10 offload-target 'FT01'
 set firewall ipv4 forward filter rule 10 state 'established'
-set firewall ipv4 forward filter rule 10 state 'related'
 set firewall ipv4 forward filter rule 20 action 'accept'
 set firewall ipv4 forward filter rule 20 state 'established'
 set firewall ipv4 forward filter rule 20 state 'related'
@@ -167,7 +166,8 @@ Here's what happens for a desired connection:
 ## Flowtable Configuration on Logical and Sub-Interfaces
 
 Configure the flowtable with the interface name you used in VyOS configuration. 
-When VLANs, bonds, or bridges are involved, that is the logical interface (bond0, br0, eth0.10) — not the underlying physical port.
+When VLANs, bonds, or bridges are involved, that is the logical interface (bond0, br0, eth0.10),
+not the underlying physical port.
 
 For example:
 - If `bond0` is configured, VyOS sees `bond0` — not `eth0` or `eth1`
@@ -176,15 +176,18 @@ For example:
 
 The behavior differs for sub-interfaces (VLANs):
 
-- Configuring `bond1` in the flowtable offloads traffic on the parent
-  interface **and all its sub-interfaces** (`bond1.10`, `bond1.20`, etc.)
-- Configuring `bond1.10` in the flowtable offloads **only VLAN 10** traffic
+- Registering ``bond1`` offloads the parent interface **and all its VLAN
+  sub-interfaces** (``bond1.10``, ``bond1.20``, etc.) — the kernel
+  automatically discovers them by parsing L2 headers (Linux 5.13+).
+- Registering ``bond1.10`` directly offloads **only VLAN 10** traffic.
+  But the sub-interface **must exist at commit time**; if it is not 
+  yet present when the ruleset is loaded, the configuration might fail.
 
 ```none
 # Offload bond1 and all sub-interfaces (bond1.10, bond1.20, ...)
 set firewall flowtable FT01 interface 'bond1'
 
-# Offload VLAN 10 only
+# Offload VLAN 10 only: register the sub-interface directly
 set firewall flowtable FT01 interface 'bond1.10'
 ```
 
@@ -201,7 +204,6 @@ set firewall ipv4 forward filter default-action 'drop'
 set firewall ipv4 forward filter rule 10 action 'offload'
 set firewall ipv4 forward filter rule 10 offload-target 'FT01'
 set firewall ipv4 forward filter rule 10 state 'established'
-set firewall ipv4 forward filter rule 10 state 'related'
 set firewall ipv4 forward filter rule 20 action 'accept'
 set firewall ipv4 forward filter rule 20 state 'established'
 set firewall ipv4 forward filter rule 20 state 'related'
@@ -257,6 +259,8 @@ Check the interfaces where traffic is being forwarded:
 
 ```none
 vyos@FlowTables:~$ show log firewall
-Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=000:53:00:00:00:01 00:53:00:00:00:02 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
+Jun 18 22:22:00 kernel: [ipv4-FWD-filter-200-A]IN=bond1.10 OUT=bond2.20 MAC=00:53:00:00:00:01
+00:53:00:00:00:02 SRC=192.168.10.2 DST=192.168.20.2 LEN=84 TOS=0x00 PREC=0x00 TTL=63 ID=56215 DF
+PROTO=ICMP TYPE=8 CODE=0 ID=3572 SEQ=1
 ```
 Notice the IN and OUT interface are bond1.10 and bond2.20 and not the physical interface. 
