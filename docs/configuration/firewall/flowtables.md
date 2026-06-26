@@ -62,7 +62,6 @@ To use flowtables, you need to configure the following:
 Creating a flow table:
 
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> interface \<iface\>
-
 Specify interfaces to use in the flowtable.
 ```
 
@@ -165,9 +164,10 @@ Here's what happens for a desired connection:
 
 ## Flowtable Configuration on Logical and Sub-Interfaces
 
-Configure the flowtable with the interface name you used in VyOS configuration. 
-When VLANs, bonds, or bridges are involved, that is the logical interface (bond0, br0, eth0.10),
-not the underlying physical port.
+Configure the flowtable with the interface name you used in VyOS
+configuration. When VLANs, bonds, or bridges are involved, that is the
+logical interface (`bond0`, `br0`, `eth0.10`) — not the underlying physical
+port.
 
 For example:
 - If `bond0` is configured, VyOS sees `bond0` — not `eth0` or `eth1`
@@ -219,7 +219,7 @@ In this configuration:
   on any bond interface or sub-interface before the flow reaches established
   state and is eligible for offload
 - Once a flow is established, rule 10 adds it to the flowtable and subsequent
-  packets bypass entirely the forward hook via the fast path
+  packets bypass the forward hook entirely via the fast path
 
 :::{note}
 The interface directions in this example are from the perspective of
