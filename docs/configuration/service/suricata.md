@@ -6,7 +6,8 @@ myst:
       integrated in VyOS as a managed service. It performs intrusion
       detection, inline intrusion prevention, and network security
       monitoring by matching live traffic against rules.
-    keywords: suricata, ids, ips, nsm, intrusion detection, intrusion prevention, network security monitoring, eve, address group, port group
+    keywords: suricata, ids, ips, nsm, intrusion detection, intrusion
+      prevention, network security monitoring, eve, address group, port group
 ---
 
 (suricata)=
