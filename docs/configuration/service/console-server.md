@@ -27,7 +27,8 @@ The following serial interfaces are supported:
   including Prolific PL2303 and FTDI FT232/FT4232 based chips.
 
 
-You can view available devices in the Tab completion of `set service console-server device`.
+You can view available devices in the Tab completion of
+`set service console-server device`.
 
 See {ref}`hardware_usb` for more details on the naming scheme.
 
