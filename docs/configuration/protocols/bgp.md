@@ -21,7 +21,6 @@ extensions to BGP, which allow it to carry routing information for address
 families beyond IPv4 unicast, are defined in
 [RFC 4760](https://datatracker.ietf.org/doc/html/rfc4760).
 
-VyOS implements BGP via the FRR `bgpd` daemon.
 
 ## Basic concepts
 
@@ -112,15 +111,15 @@ OPEN message. Capabilities cover features such as multiprotocol
 extensions, route refresh, 4-byte ASN support, graceful restart, and
 ADD-PATH.
 
-By default, FRR brings up a peering with the minimal capabilities that are
+By default, a BGP implementation brings up a peering with the minimal capabilities that are
 common to both sides. For example, if the local router supports both
 unicast and multicast and the remote router supports only unicast, the
 session is established with unicast capability only. When the two sides
-share no common capabilities, FRR sends an Unsupported Capability error
+share no common capabilities, one side sends an Unsupported Capability error
 and resets the connection.
 
 If a peer is configured exclusively as an IPv4-unicast neighbor and no
-other optional features require capability negotiation, FRR does not send
+other optional features require capability negotiation, VyOS' BGP implementation does not send
 any capability advertisements.
 
 ## Configuration
@@ -162,11 +161,11 @@ link-local address), or an interface name for unnumbered peering.
 The ASN can be configured as:
 
 - An explicit number in the range 1 to 4294967294.
-- `auto`: FRR automatically detects the neighbor's ASN from the OPEN
+- `auto`: automatically detect the neighbor's ASN from the OPEN
   message.
-- `external`: FRR rejects the connection if the peer's ASN matches the
+- `external`: reject the connection if the peer's ASN matches the
   local AS (eBGP session).
-- `internal`: FRR rejects the connection if the peer's ASN differs from
+- `internal`: reject the connection if the peer's ASN differs from
   the local AS (iBGP session).
 ```
 
@@ -259,7 +258,7 @@ address on either side.
 The ASN can be configured as:
 
 - An explicit number in the range 1 to 4294967294.
-- `auto`: FRR automatically detects the neighbor's ASN from the OPEN
+- `auto`: automatically detect the neighbor's ASN from the OPEN
   message.
 - `external`: Any non-local ASN, treated as eBGP.
 - `internal`: The same ASN as the local router, treated as iBGP.
@@ -309,7 +308,7 @@ role. If the neighbor does not include the BGP Role capability, the
 session is rejected. Enable this option when you want to be sure the
 other side is also role-configured.
 
-Once a local role is set, FRR automatically applies the
+Once the local role is set, the BGP daemon automatically applies the
 {abbr}`OTC (Only-to-Customer)` attribute to detect and prevent route
 leaks:
 
