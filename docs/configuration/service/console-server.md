@@ -13,7 +13,7 @@ myst:
 
 # Console server
 
-Beginning with VyOS 1.3 (Equuleus), VyOS can serve as an
+VyOS can serve as an
 {abbr}`OOB (Out-of-Band)` management device, providing SSH-based
 remote access to the serial consoles of directly attached devices.
 
