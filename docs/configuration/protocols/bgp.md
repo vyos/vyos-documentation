@@ -111,16 +111,16 @@ OPEN message. Capabilities cover features such as multiprotocol
 extensions, route refresh, 4-byte ASN support, graceful restart, and
 ADD-PATH.
 
-By default, a BGP implementation brings up a peering with the minimal capabilities that are
-common to both sides. For example, if the local router supports both
-unicast and multicast and the remote router supports only unicast, the
-session is established with unicast capability only. When the two sides
-share no common capabilities, one side sends an Unsupported Capability error
-and resets the connection.
+By default, a BGP implementation brings up a peering with the minimal
+capabilities that are common to both sides. For example, if the local
+router supports both unicast and multicast and the remote router
+supports only unicast, the session is established with unicast
+capability only. When the two sides share no common capabilities, one
+side sends an Unsupported Capability error and resets the connection.
 
 If a peer is configured exclusively as an IPv4-unicast neighbor and no
-other optional features require capability negotiation, VyOS' BGP implementation does not send
-any capability advertisements.
+other optional features require capability negotiation, VyOS' BGP
+implementation does not send any capability advertisements.
 
 ## Configuration
 
@@ -950,11 +950,19 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast maximum-prefix-
 
 #### Peer groups
 
-Peer groups serve two purposes. First, they simplify configuration: parameters applied to the group are inherited by all its members, so common settings have to be configured only once and in one place. Second, they improve scalability by computing outgoing update information once per group rather than for each group member.
+Peer groups serve two purposes. First, they simplify configuration:
+parameters applied to the group are inherited by all its members, so
+common settings have to be configured only once and in one place.
+Second, they improve scalability by computing outgoing update
+information once per group rather than for each group member.
 
-As a side effect, a route advertised by one group member is re-advertised to all group members, including the sender itself. The originator identifier attribute is included in such updates so that the originating peer can recognize its own routes and ignore them.
+As a side effect, a route advertised by one group member is
+re-advertised to all group members, including the sender itself. The
+originator identifier attribute is included in such updates so that the
+originating peer can recognize its own routes and ignore them.
 
-Peers not explicitly assigned to any peer group are treated as members of the default peer group and share updates with that group.
+Peers not explicitly assigned to any peer group are treated as members
+of the default peer group and share updates with that group.
 
 ```{cfgcmd} set protocols bgp peer-group \<name\>
 
@@ -1384,7 +1392,7 @@ set protocols bgp address-family ipv6-unicast redistribute table 100 route-map F
 
 ```{cfgcmd} set protocols bgp parameters allow-martian-nexthop
 
-**Configure BGP to accept UPDATE messages whose NEXT_HOP attribute is a
+**Configure BGP to accept UPDATE messages whose NEXT_HOP attribute is
 a Martian address.**
 
 A Martian address is one that cannot legitimately appear as a BGP
