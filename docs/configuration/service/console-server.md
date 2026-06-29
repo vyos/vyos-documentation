@@ -17,8 +17,6 @@ Beginning with VyOS 1.3 (Equuleus), VyOS can serve as an
 {abbr}`OOB (Out-of-Band)` management device, providing SSH-based
 remote access to the serial consoles of directly attached devices.
 
-If you previously used a Cisco NM-16A or NM-32A Async Network Module,
-VyOS offers a comparable open-source alternative.
 
 The following serial interfaces are supported:
 
@@ -28,15 +26,8 @@ The following serial interfaces are supported:
 - USB-to-serial adapters supported by the Linux USB serial driver,
   including Prolific PL2303 and FTDI FT232/FT4232 based chips.
 
-Each USB-attached adapter appears under `/dev/serial/by-bus/<name>`
-(for example, `/dev/serial/by-bus/usb0b2.4p1.0`), where `<name>`
-encodes the adapter's physical USB position and stays stable across
-reboots and hot-plug events as long as it remains in the same USB
-port.
 
-Use `show hardware usb serial` to list the current names. The `<name>`
-portion is what you pass to `set service console-server device <name>`
-in the commands below.
+You can view available devices in the Tab completion of `set service console-server device`.
 
 See {ref}`hardware_usb` for more details on the naming scheme.
 
@@ -67,15 +58,10 @@ commit is rejected.
 ```{note}
 A serial device already in use by VyOS's system console (configured
 via `set system console device <device>`) cannot be configured as a
-console-server device. Configuring the same device under both
+console server device. Configuring the same device under both
 `system console` and `console-server` causes a commit failure.
 ```
 
-```{note}
-On low-cost USB-to-serial adapters, the highest baud rates may be
-unreliable. If characters are dropped or corrupted, try a lower
-setting.
-```
 
 Example:
 
