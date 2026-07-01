@@ -91,7 +91,7 @@ Geneve Header:
 ```{eval-rst}
 .. cfgcmd:: set interfaces geneve gnv0 vni <vni>
 
-   {abbr}`VNI (Virtual Network Identifier)` is an identifier for a unique
+   :abbr:`VNI (Virtual Network Identifier)` is an identifier for a unique
    element of a virtual network.  In many situations this may represent an L2
    segment, however, the control plane defines the forwarding semantics of
    decapsulated packets. The VNI MAY be used as part of ECMP forwarding

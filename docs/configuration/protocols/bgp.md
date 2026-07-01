@@ -35,7 +35,7 @@ provides distance vector metric and loop detection to BGP.
 ```{eval-rst}
 .. cfgcmd:: set protocols bgp system-as <asn>
 
-  Set local {abbr}`ASN (Autonomous System Number)` that this router represents.
+  Set local :abbr:`ASN (Autonomous System Number)` that this router represents.
   This is a a mandatory option!
 ```
 
@@ -207,7 +207,7 @@ process. The BGP process starts when the first neighbor is configured.
 .. cfgcmd:: set protocols bgp neighbor <address|interface> local-role
    <role> [strict]
 
-   BGP roles are defined in RFC {rfc}`9234` and provide an easy way to
+   BGP roles are defined in RFC :rfc:`9234` and provide an easy way to
    add route leak prevention, detection and mitigation. The local Role
    value is negotiated with the new BGP Role capability which has a
    built-in check of the corresponding value. In case of a mismatch the
@@ -222,7 +222,7 @@ process. The BGP process starts when the first neighbor is configured.
 
    If {cfgcmd}`strict` is set the BGP session won’t become established
    until the BGP neighbor sets local Role on its side. This
-   configuration parameter is defined in RFC {rfc}`9234` and is used to
+   configuration parameter is defined in RFC :rfc:`9234` and is used to
    enforce the corresponding configuration at your counter-parts side.
 
    Routes that are sent from provider, rs-server, or the peer local-role
@@ -509,7 +509,7 @@ process. The BGP process starts when the first neighbor is configured.
    hops <number>
 
    This command enforces Generalized TTL Security Mechanism (GTSM),
-   as specified in {rfc}`5082`. With this command, only neighbors
+   as specified in :rfc:`5082`. With this command, only neighbors
    that are specified number of hops away will be allowed to
    become neighbors. The number of hops range is 1 to 254. This
    command is mutually exclusive with {cfgcmd}`ebgp-multihop`.
@@ -738,12 +738,12 @@ are treated as belonging to a default peer group, and will share updates.
 .. cfgcmd:: set protocols bgp parameters ebgp-requires-policy
 
    This command changes the eBGP behavior of FRR. By default FRR enables
-   {rfc}`8212` functionality which affects how eBGP routes are advertised,
+   :rfc:`8212` functionality which affects how eBGP routes are advertised,
    namely no routes are advertised across eBGP sessions without some
    sort of egress route-map/policy in place. In VyOS however we have this
    RFC functionality disabled by default so that we can preserve backwards
    compatibility with older versions of VyOS. With this option one can
-   enable {rfc}`8212` functionality to operate.
+   enable :rfc:`8212` functionality to operate.
 ```
 
 ```{eval-rst}
@@ -1029,7 +1029,7 @@ For outbound updates the order of preference is:
 .. cfgcmd:: set protocols bgp neighbor <address|interface> address-family
    <ipv4-unicast|ipv6-unicast> capability orf <receive|send>
 
-   This command enables the ORF capability (described in {rfc}`5291`) on the
+   This command enables the ORF capability (described in :rfc:`5291`) on the
    local router, and enables ORF capability advertisement to the specified BGP
    peer. The {cfgcmd}`receive` keyword configures a router to advertise ORF
    receive capabilities. The {cfgcmd}`send` keyword configures a router to

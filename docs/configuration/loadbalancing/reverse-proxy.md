@@ -62,7 +62,7 @@ to be applied and specifies the real servers to be utilized.
   <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on {ref}`syslog_facilities` and {ref}`syslog_severity_level`
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
   see tables in syslog configuration section.
 
 ```
@@ -210,7 +210,7 @@ perform action accordingly.
   <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on {ref}`syslog_facilities` and {ref}`syslog_severity_level`
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
   see tables in syslog configuration section.
 
 ```
@@ -245,7 +245,7 @@ Global parameters
   facility <facility> level <level>
 
   Specify facility and level for logging.
-  For an explanation on {ref}`syslog_facilities` and {ref}`syslog_severity_level`
+  For an explanation on :ref:`syslog_facilities` and :ref:`syslog_severity_level`
   see tables in syslog configuration section.
 ```
 

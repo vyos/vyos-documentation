@@ -113,7 +113,7 @@ exported them to a collection server.
 
    * **5** - Most common version, but restricted to IPv4 flows only
    * **9** - NetFlow version 9 (default)
-   * **10** - {abbr}`IPFIX (IP Flow Information Export)` as per {rfc}`3917`
+   * **10** - :abbr:`IPFIX (IP Flow Information Export)` as per :rfc:`3917`
 ```
 
 ```{eval-rst}

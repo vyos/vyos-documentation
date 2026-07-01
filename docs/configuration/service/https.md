@@ -31,7 +31,7 @@ Please take a look at the {ref}`vyosapi` page for an detailed how-to.
 ```{eval-rst}
 .. cfgcmd:: set service https certificates dh-params <name>
 
-   Use {abbr}`DH (Diffie–Hellman)` parameters from PKI subsystem.
+   Use :abbr:`DH (Diffie–Hellman)` parameters from PKI subsystem.
    Must be at least 2048 bits in length.
 ```
 

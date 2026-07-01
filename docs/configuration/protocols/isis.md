@@ -36,7 +36,7 @@ occur within IS-IS when it comes to said duplication.
 
   This commad sets network entity title (NET) provided in ISO format.
 
-  Here is an example {abbr}`NET (Network Entity Title)` value:
+  Here is an example :abbr:`NET (Network Entity Title)` value:
 
   .. code-block:: none
 
@@ -44,7 +44,7 @@ occur within IS-IS when it comes to said duplication.
 
   The CLNS address consists of the following parts:
 
-  * {abbr}`AFI (Address family authority identifier)` - ``49`` The AFI value
+  * :abbr:`AFI (Address family authority identifier)` - ``49`` The AFI value
     49 is what IS-IS uses for private addressing.
 
   * Area identifier: ``0001`` IS-IS area number (numberical area ``1``)
@@ -57,7 +57,7 @@ occur within IS-IS when it comes to said duplication.
     into ``192.168.001.002``. Then all one has to do is move the dots to have
     four numbers instead of three. This gives us ``1921.6800.1002``.
 
-  * {abbr}`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
+  * :abbr:`NET (Network Entity Title)` selector: ``00`` Must always be 00. This
     setting indicates "this system" or "local system."
 ```
 
@@ -75,7 +75,7 @@ occur within IS-IS when it comes to said duplication.
 .. cfgcmd:: set protocols isis dynamic-hostname
 
   This command enables support for dynamic hostname TLV. Dynamic hostname
-  mapping determined as described in {rfc}`2763`, Dynamic Hostname
+  mapping determined as described in :rfc:`2763`, Dynamic Hostname
   Exchange Mechanism for IS-IS.
 ```
 
@@ -93,7 +93,7 @@ occur within IS-IS when it comes to said duplication.
 .. cfgcmd:: set protocols isis lsp-mtu <size>
 
   This command configures the maximum size of generated
-  {abbr}`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
+  :abbr:`LSPs (Link State PDUs)`, in bytes. The size range is 128 to 4352.
 ```
 
 ```{eval-rst}
@@ -109,7 +109,7 @@ occur within IS-IS when it comes to said duplication.
 ```{eval-rst}
 .. cfgcmd:: set protocols isis purge-originator
 
-  This command enables {rfc}`6232` purge originator identification. Enable
+  This command enables :rfc:`6232` purge originator identification. Enable
   purge originator identification (POI) by adding the type, length and value
   (TLV) with the Intermediate System (IS) identification to the LSPs that do
   not contain POI information. If an IS generates a purge, VyOS adds this TLV
@@ -119,14 +119,14 @@ occur within IS-IS when it comes to said duplication.
 ```{eval-rst}
 .. cfgcmd:: set protocols isis set-attached-bit
 
-  This command sets ATT bit to 1 in Level1 LSPs. It is described in {rfc}`3787`.
+  This command sets ATT bit to 1 in Level1 LSPs. It is described in :rfc:`3787`.
 ```
 
 ```{eval-rst}
 .. cfgcmd:: set protocols isis set-overload-bit
 
   This command sets overload bit to avoid any transit traffic through this
-  router. It is described in {rfc}`3787`.
+  router. It is described in :rfc:`3787`.
 ```
 
 ```{eval-rst}
@@ -148,7 +148,7 @@ occur within IS-IS when it comes to said duplication.
 .. cfgcmd:: set protocols isis ldp-sync
 
   This command will enable IGP-LDP synchronization globally for ISIS. This
-  requires for LDP to be functional. This is described in {rfc}`5443`. By
+  requires for LDP to be functional. This is described in :rfc:`5443`. By
   default all interfaces operational in IS-IS are enabled for synchronization.
   Loopbacks are exempt.
 ```
@@ -195,7 +195,7 @@ occur within IS-IS when it comes to said duplication.
 
   This command configures padding on hello packets to accommodate asymmetrical
   maximum transfer units (MTUs) from different hosts as described in
-  {rfc}`3719`. This helps to prevent a premature adjacency Up state when one
+  :rfc:`3719`. This helps to prevent a premature adjacency Up state when one
   routing devices MTU does not meet the requirements to establish the adjacency.
 ```
 
@@ -233,7 +233,7 @@ occur within IS-IS when it comes to said duplication.
 .. cfgcmd:: set protocols isis interface <interface> priority <number>
 
   This command sets priority for the interface for
-  {abbr}`DIS (Designated Intermediate System)` election. The priority
+  :abbr:`DIS (Designated Intermediate System)` election. The priority
   range is 0 to 127.
 ```
 
@@ -250,7 +250,7 @@ occur within IS-IS when it comes to said duplication.
   no-three-way-handshake
 
   This command disables Three-Way Handshake for P2P adjacencies which
-  described in {rfc}`5303`. Three-Way Handshake is enabled by default.
+  described in :rfc:`5303`. Three-Way Handshake is enabled by default.
 ```
 
 ```{eval-rst}
@@ -367,7 +367,7 @@ occur within IS-IS when it comes to said duplication.
 
   This commands specifies the Finite State Machine (FSM) intended to
   control the timing of the execution of SPF calculations in response
-  to IGP events. The process described in {rfc}`8405`.
+  to IGP events. The process described in :rfc:`8405`.
 
 ```
 

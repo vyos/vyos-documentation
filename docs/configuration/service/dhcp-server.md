@@ -702,7 +702,7 @@ section.
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
    <prefix> nis-domain <domain-name>
 
-   A {abbr}`NIS (Network Information Service)` domain can be set to be used for
+   A :abbr:`NIS (Network Information Service)` domain can be set to be used for
    DHCPv6 clients.
 ```
 
@@ -710,7 +710,7 @@ section.
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
    <prefix> nisplus-domain <domain-name>
 
-   The procedure to specify a {abbr}`NIS+ (Network Information Service Plus)`
+   The procedure to specify a :abbr:`NIS+ (Network Information Service Plus)`
    domain is similar to the NIS domain one:
 ```
 
@@ -732,7 +732,7 @@ section.
 .. cfgcmd:: set service dhcpv6-server shared-network-name <name> subnet
    <prefix> sip-server <address | fqdn>
 
-   Specify a {abbr}`SIP (Session Initiation Protocol)` server by IPv6
+   Specify a :abbr:`SIP (Session Initiation Protocol)` server by IPv6
    address of Fully Qualified Domain Name for all DHCPv6 clients.
 ```
 

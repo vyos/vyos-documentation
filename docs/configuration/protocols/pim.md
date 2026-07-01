@@ -32,7 +32,7 @@ source-specific multicast).
 .. cfgcmd:: set protocols pim ecmp
 
    If PIM has the a choice of ECMP nexthops for a particular
-   {abbr}`RPF (Reverse Path Forwarding)`, PIM will cause S,G flows to be
+   :abbr:`RPF (Reverse Path Forwarding)`, PIM will cause S,G flows to be
    spread out amongst the nexthops. If this command is not specified then
    the first nexthop found will be used.
 ```
@@ -97,7 +97,7 @@ source-specific multicast).
 ```{eval-rst}
 .. cfgcmd:: set protocols pim rp <address> group <group>
 
-   In order to use PIM, it is necessary to configure a {abbr}`RP (Rendezvous Point)`
+   In order to use PIM, it is necessary to configure a :abbr:`RP (Rendezvous Point)`
    for join messages to be sent to. Currently the only methodology to do this is
    via static rendezvous point commands.
 
@@ -111,8 +111,8 @@ source-specific multicast).
 .. cfgcmd:: set protocols pim rp keep-alive-timer <n>
 
    Modify the time out value for a S,G flow from 1-65535 seconds at
-   {abbr}`RP (Rendezvous Point)`. The normal keepalive period for the KAT(S,G)
-   defaults to 210 seconds. However, at the {abbr}`RP (Rendezvous Point)`, the
+   :abbr:`RP (Rendezvous Point)`. The normal keepalive period for the KAT(S,G)
+   defaults to 210 seconds. However, at the :abbr:`RP (Rendezvous Point)`, the
    keepalive period must be at least the Register_Suppression_Time, or the RP
    may time out the (S,G) state before the next Null-Register arrives.
    Thus, the KAT(S,G) is set to max(Keepalive_Period, RP_Keepalive_Period)
@@ -121,7 +121,7 @@ source-specific multicast).
    If choosing a value below 31 seconds be aware that some hardware platforms
    cannot see data flowing in better than 30 second chunks.
 
-   See {rfc}`7761#section-4.1` for details.
+   See :rfc:`7761#section-4.1` for details.
 ```
 
 ```{eval-rst}
@@ -129,7 +129,7 @@ source-specific multicast).
 
    When sending PIM hello packets tell PIM to not send any v6 secondary
    addresses on the interface. This information is used to allow PIM to use v6
-   nexthops in it's decision for {abbr}`RPF (Reverse Path Forwarding)` lookup
+   nexthops in it's decision for :abbr:`RPF (Reverse Path Forwarding)` lookup
    if this option is not set (default).
 ```
 
@@ -148,7 +148,7 @@ source-specific multicast).
 .. cfgcmd:: set protocols pim ssm prefix-list <list>
 
    Specify a range of group addresses via a prefix-list that forces PIM to never
-   do {abbr}`SSM (Source-Specific Multicast)` over.
+   do :abbr:`SSM (Source-Specific Multicast)` over.
 ```
 
 ### Interface specific commands
@@ -168,7 +168,7 @@ source-specific multicast).
 ```{eval-rst}
 .. cfgcmd:: set protocols pim interface <interface> dr-priority <n>
 
-   Set the {abbr}`DR (Designated Router)` Priority for the interface.
+   Set the :abbr:`DR (Designated Router)` Priority for the interface.
    This command is useful to allow the user to influence what node becomes
    the DR for a LAN segment.
 ```
@@ -241,7 +241,7 @@ source-specific multicast).
    Use this command to configure in the selected interface the IGMP
    query response timeout value (10-250) in deciseconds. If a report is
    not returned in the specified time, it will be assumed the (S,G) or
-   (\*,G) state {rfc}`7761#section-4.1` has timed out.
+   (\*,G) state :rfc:`7761#section-4.1` has timed out.
 ```
 
 ```{eval-rst}

@@ -51,9 +51,9 @@ Supported interface types:
 ```{eval-rst}
 .. cfgcmd:: set service router-advert interface <interface> prefix <prefix/mask>
 
-   .. note:: You can also opt for using `::/64` as prefix for your {abbr}`RAs (Router
-    Advertisements)`. This will take the IPv6 GUA prefix assigned to the interface,
-    which comes in handy when using DHCPv6-PD.
+   .. note:: You can also opt for using `::/64` as prefix for your
+      :abbr:`RAs (Router Advertisements)`. This will take the IPv6 GUA prefix
+      assigned to the interface, which comes in handy when using DHCPv6-PD.
 ```
 
 
@@ -75,7 +75,7 @@ Supported interface types:
 ```{eval-rst}
 .. cfgcmd:: set service router-advert interface <interface> nat64prefix <prefix/mask>
 
-   Enable PREF64 option as outlined in {rfc}`8781`.
+   Enable PREF64 option as outlined in :rfc:`8781`.
 
    NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 

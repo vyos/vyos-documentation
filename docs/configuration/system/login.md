@@ -65,7 +65,7 @@ lines. Be attentive when you paste it that it only pastes as a single line.
 The third part is simply an identifier, and is for your own reference.
 
 ```{eval-rst}
-.. seealso:: SSH {ref}`ssh_operation`
+.. seealso:: SSH :ref:`ssh_operation`
 ```
 
 ```{eval-rst}
