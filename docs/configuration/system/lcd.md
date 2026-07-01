@@ -20,7 +20,7 @@ connectivity of the display to your system. This can be any serial port
    display. Tab completion is supported and it will list you all available
    serial interface.
 
-   For serial via USB port information please refor to: :ref:`hardware_usb`.
+   For serial via USB port information please refer to: :ref:`hardware_usb`.
 ```
 
 ```{eval-rst}
