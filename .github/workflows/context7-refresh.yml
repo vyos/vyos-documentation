@@ -60,6 +60,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           REF_NAME: ${{ github.ref_name }}
           DISPATCH_VARIANT: ${{ inputs.variant }}
+          REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
           if [[ -z "${CONTEXT7_API_KEY:-}" ]]; then
@@ -80,10 +81,10 @@ jobs:
           echo "Refreshing Context7 variant: $VARIANT"
           # rolling = default variant (no field). circinus/sagitta = branch-backed.
           if [[ "$VARIANT" == "rolling" ]]; then
-            PAYLOAD="$(jq -nc --arg lib "/${{ github.repository }}" \
+            PAYLOAD="$(jq -nc --arg lib "/$REPO" \
               '{libraryName: $lib}')"
           else
-            PAYLOAD="$(jq -nc --arg lib "/${{ github.repository }}" --arg br "$VARIANT" \
+            PAYLOAD="$(jq -nc --arg lib "/$REPO" --arg br "$VARIANT" \
               '{libraryName: $lib, branch: $br}')"
           fi
           curl -fsSL \
