@@ -43,7 +43,7 @@ wrap it as `.*eth0.*`. Matching is case-sensitive.
 Example:
 
 ```none
-set service event-handler event LINK-DOWN filter pattern .*eth0.*,RUNNING,.*->.*
+set service event-handler event LINK-DOWN filter pattern '.*eth0.*,RUNNING,.*->.*'
 ```
 
 ```{cfgcmd} set service event-handler event \<name\> script path \<path\>
