@@ -21,9 +21,7 @@ parameters for
 settings. Routers send RAs periodically and in response to Router
 Solicitations from hosts.
  
-RAs are supported on the following interface types: bonding, bridge,
-ethernet, geneve, l2tpv3, openvpn, pseudo-ethernet, tunnel, vxlan,
-wireguard, wireless, and wwan.
+RAs can be enabled on any IPv6-capable interface.
  
 RAs are defined in
 [RFC 4861, §4.2](https://datatracker.ietf.org/doc/html/rfc4861#section-4.2).
@@ -275,7 +273,7 @@ set service router-advert interface eth0 name-server 2001:db8::1
 **Advertise the {abbr}`RDNSS (Recursive DNS Server)` Lifetime, in
 seconds, in RAs on the specified interface.**
 
-The value must be at least `interval max`. Otherwise, the commit
+If non-zero, the value must be at least `interval max`. Otherwise, the commit
 fails.
 ```
 
@@ -479,7 +477,7 @@ Example:
 set service router-advert interface eth0 route 2001:db8:200::/48
 ```
 
-```{cfgcmd} set service router-advert interface \<interface\> route \<ipv6net\> valid-lifetime \<0-4294967295 | infinity\>
+```{cfgcmd} set service router-advert interface \<interface\> route \<ipv6net\> valid-lifetime \<1-4294967295 | infinity\>
 
 **Configure the Valid Lifetime, in seconds, advertised in RAs for the
 specified route.**
