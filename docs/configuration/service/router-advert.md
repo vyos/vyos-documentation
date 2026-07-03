@@ -197,7 +197,7 @@ Repeat the command to configure multiple source addresses.
 Example:
 
 ```none
-set service router-advert interface eth0 source-address 2001:db8:100::1
+set service router-advert interface eth0 source-address fe80::1
 ```
 
 ```{cfgcmd} set service router-advert interface \<interface\> captive-portal \<url\>
