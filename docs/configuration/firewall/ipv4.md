@@ -591,7 +591,7 @@ that the router is able to resolve this dns query.
 
 Match IP addresses based on its geolocation. More info: geoip matching.
 Use country-code or asn to match based on geography or origin network.
-Use inverse-match to match anything except the given country-codes or ASNs.
+Use inverse-match to match anything except the given country code or ASN.
 ```
 
 Data is provided by DB-IP.com under CC-BY-4.0 license. Attribution required,
