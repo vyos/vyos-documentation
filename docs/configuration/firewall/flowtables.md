@@ -252,10 +252,10 @@ Rule     Action    Protocol      Packets    Bytes  Conditions
 110      accept    tcp                 2      120  ip daddr 192.0.2.100 tcp dport 1122 iifname "eth0"  accept
 default  drop      all                 7      420
 
-vyos@FlowTables:~$ sudo conntrack -L | grep tcp
-conntrack v1.4.6 (conntrack-tools): 5 flow entries have been shown.
-tcp      6 src=198.51.100.100 dst=192.0.2.100 sport=41676 dport=1122 src=192.0.2.100 dst=198.51.100.100 sport=1122 dport=41676 [OFFLOAD] mark=0 use=2
-vyos@FlowTables:~$
+vyos@FlowTables:~$ show conntrack table ipv4
+Original src        Original dst    Reply src        Reply dst           Protocol    State    Timeout    Mark    Zone
+------------------  --------------  ---------------  ------------------  ----------  -------  ---------  ------  ------
+198.51.100.100:41676  192.0.2.100:1122  192.0.2.100:1122  198.51.100.100:41676  tcp                  n/a        0
 ```
 
 #### Interface identification
@@ -279,14 +279,20 @@ Run the following command to verify that the connections are offloaded to
 the flowtable fast path:
 
 ```none
-vyos@firewall:~$ show conntrack table ipv4
-Id          Original src        Original dst       Reply src          Reply dst           Protocol    State    Timeout    Mark    Zone
-----------  ------------------  -----------------  -----------------  ------------------  ----------  -------  ---------  ------  ------
-167046433   192.168.10.2:45140  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45140  tcp                  n/a        0
-4162237083  192.168.10.2:45124  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45124  tcp                  n/a        0
+vyos@FlowTables:~$ show conntrack table ipv4
+Original src        Original dst       Reply src          Reply dst           Protocol    State    Timeout    Mark    Zone
+------------------  -----------------  -----------------  ------------------  ----------  -------  ---------  ------  ------
+192.168.10.2:45140  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45140  tcp                  n/a        0
+192.168.10.2:45124  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45124  tcp                  n/a        0
+
+
+vyos@FlowTables:~$ show conntrack table ipv4
+Original src        Original dst       Reply src          Reply dst           Protocol    State      Timeout    Mark    Zone
+------------------  -----------------  -----------------  ------------------  ----------  ---------  ---------  ------  ------
+192.168.10.2:45124  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45124  tcp         TIME_WAIT  105        0
 ```
 
-The `[OFFLOAD]` flag confirms that post-handshake packets for these flows
-are forwarded via the flowtable fast path, bypassing the firewall entirely.
-This applies to sub-interface traffic (`bond1.10` → `bond2.20`) in the
-same way as physical interface traffic.
+Entries with `Timeout` shown as `n/a` and a blank `State` confirm that
+the flows are offloaded to the flowtable fast path — subsequent packets
+bypass the firewall entirely. Once the TCP session closes, the entry
+transitions to `TIME_WAIT` and the timeout counter resumes.
