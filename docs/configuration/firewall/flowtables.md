@@ -279,10 +279,11 @@ Run the following command to verify that the connections are offloaded to
 the flowtable fast path:
 
 ```none
-vyos@FlowTables:~$ sudo conntrack -L | grep OFFLOAD
-tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55604 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55604 [OFFLOAD] mark=0 use=5
-tcp      6 src=192.168.10.2 dst=192.168.20.2 sport=55602 dport=5201 src=192.168.20.2 dst=192.168.10.2 sport=5201 dport=55602 [OFFLOAD] mark=0 use=2
-conntrack v1.4.6 (conntrack-tools): 2 flow entries have been shown.
+vyos@firewall:~$ show conntrack table ipv4
+Id          Original src        Original dst       Reply src          Reply dst           Protocol    State    Timeout    Mark    Zone
+----------  ------------------  -----------------  -----------------  ------------------  ----------  -------  ---------  ------  ------
+167046433   192.168.10.2:45140  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45140  tcp                  n/a        0
+4162237083  192.168.10.2:45124  192.168.20.2:5201  192.168.20.2:5201  192.168.10.2:45124  tcp                  n/a        0
 ```
 
 The `[OFFLOAD]` flag confirms that post-handshake packets for these flows
