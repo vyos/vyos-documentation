@@ -82,6 +82,8 @@ host bits. This option is only allowed together with the wildcard prefix
 
 ### Advertising a NAT64 Prefix
 
+% stop_vyoslinter
+
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in {rfc}`8781`.
@@ -92,6 +94,8 @@ NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 The well known NAT64 prefix is ``64:ff9b::/96``
 :::
 ```
+
+% start_vyoslinter
 ```{eval-rst}
 .. csv-table::
     :header: "VyOS Field", "Description"
