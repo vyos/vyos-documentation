@@ -119,6 +119,32 @@ The following sysctl parameter will be changed:
 * ``net.ipv4.tcp_rfc1337``
 ```
 
+## GeoIP
+
+```{cfgcmd} set firewall global-options geoip provider <db-ip | maxmind>
+
+Select the GeoIP database provider used to resolve country codes
+for firewall GeoIP matching. `db-ip` uses the DB-IP.com database and requires
+no credentials; `maxmind` uses the MaxMind database and requires a MaxMind
+account ID and license key. The default is `db-ip`.
+```
+
+```{cfgcmd} set firewall global-options geoip maxmind-account-id <id>
+
+Account ID for the MaxMind GeoIP database.
+```
+
+```{cfgcmd} set firewall global-options geoip maxmind-license-key <key>
+
+License key for the MaxMind GeoIP database.
+```
+
+```{cfgcmd} set firewall global-options geoip maxmind-lite
+
+Use the free MaxMind GeoLite2 database instead of the paid
+GeoIP2 database.
+```
+
 ```{cfgcmd} set firewall global-options state-policy established action [accept | drop | reject]
 ```
 

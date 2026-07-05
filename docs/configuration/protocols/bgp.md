@@ -2558,6 +2558,31 @@ set protocols bgp parameters confederation peers 65002
 set protocols bgp parameters confederation peers 65003
 ```
 
+### BGP Monitoring Protocol (BMP) configuration
+
+{abbr}`BMP (BGP Monitoring Protocol)` sends BGP route information to a
+monitoring station. BMP support must first be enabled in the routing
+daemon with `set system frr bmp`.
+
+```{cfgcmd} set protocols bgp bmp target \<name\> monitor \<ipv4-unicast | ipv6-unicast\> \<pre-policy | post-policy | local-rib\>
+
+**Configure which route views are sent to the BMP target for the
+specified address family.**
+
+- `pre-policy`: Send state before policy and filter processing.
+- `post-policy`: Send state with policy and filters applied.
+- `local-rib`: Send routes from the local RIB.
+
+Each view is configured separately. Issue the command once per view to
+send more than one.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector monitor ipv4-unicast post-policy
+```
+
 ## Operation
 
 ### Show
