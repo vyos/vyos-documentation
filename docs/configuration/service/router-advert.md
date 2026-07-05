@@ -62,9 +62,10 @@ from DHCPv6-PD.
 ```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix\> base-interface \<interface\>
 
 The advertised prefix is combined with the IPv6 address of the specified
-interface (for example, a WAN interface) to derive the advertised prefix's
-host bits. This option is only allowed together with the wildcard prefix
-`::/64`.
+interface (for example, a WAN interface) so that the network portion of
+the RA prefix follows that interface's current IPv6 address. This option
+is only allowed together with the wildcard prefix `::/64`, and is the
+typical way to re-advertise a DHCPv6-PD-assigned prefix.
 ```
 
 ```{eval-rst}

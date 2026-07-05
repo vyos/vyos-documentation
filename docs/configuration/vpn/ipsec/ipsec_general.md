@@ -383,7 +383,8 @@ Options
 
 ### IKEv2 Retransmission
 
-If the peer does not respond on DPD packet, the router starts retransmission procedure.
+If the peer does not respond on DPD packet, the router starts retransmission
+procedure.
 
 The following formula is used to calculate the timeout:
 
