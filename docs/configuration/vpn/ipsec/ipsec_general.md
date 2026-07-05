@@ -149,6 +149,27 @@ Possible values of the `configured` field are `none` if not
 configured, `opt` if configured but optional, and `req` is
 configured and required. The in use will show yes
 
+## Childless IKE SA
+
+```{cfgcmd} set vpn ipsec site-to-site peer <name> childless <allow | prefer | force | never>
+
+Control childless IKEv2 SA initiation ({rfc}`6023` — an IKE SA established
+without a Child SA). This option applies to IKEv2 only:
+
+- `allow`: accept childless IKE SA in responder mode; create a regular IKE SA
+  in initiator mode.
+- `prefer`: accept and create childless IKE SA in both responder and
+  initiator modes.
+- `force`: require the use of childless IKE SA in both responder and
+  initiator modes.
+- `never`: disable support for childless IKE SA when acting as a responder.
+```
+
+```{cfgcmd} set vpn ipsec remote-access connection <name> childless <allow | prefer | force | never>
+
+The same option for IKEv2 remote-access connections.
+```
+
 ## Configuration IKE
 
 ```{eval-rst}

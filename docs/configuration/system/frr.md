@@ -43,3 +43,9 @@ Supported daemons:
 - ripd
 - zebra
 ```
+
+```{cfgcmd} set system frr watchfrr-timeout \<60-600\>
+
+Set the timeout in seconds used by the watchfrr daemon to consider an
+unresponsive routing daemon as failed. The default is 90 seconds.
+```

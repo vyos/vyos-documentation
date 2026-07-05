@@ -356,6 +356,59 @@ set protocols ospf segment-routing prefix 192.0.2.1/32 index no-php-flag
 For more information, see {ref}`ospf`.
 ```
 
+## SR-TE configuration
+
+{abbr}`SR-TE (Segment Routing Traffic Engineering)` steers traffic along an
+explicit segment-routed path instead of the IGP shortest path. The initial
+SR-TE implementation in VyOS lets you select the IGP that feeds the
+{abbr}`TED (Traffic Engineering Database)` and define named segment lists —
+ordered label or {abbr}`NAI (Node or Adjacency Identifier)` stacks describing
+the path.
+
+```{cfgcmd} set protocols segment-routing traffic-engineering database-import-protocol \<isis | ospf\>
+
+Select the IGP whose originated Traffic Engineering (TE) database is imported
+into the TED.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\>
+
+Define a named segment list. Each entry of the list is addressed by an index
+and describes one segment of the path.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> mpls label \<16-1048575\>
+
+Set an MPLS label value for the given segment list index.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai adjacency \<ipv4 | ipv6\> source-identifier \<address\>
+
+Set the adjacency source address identifier (IPv4 or IPv6) for the given
+segment list index.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai adjacency \<ipv4 | ipv6\> destination-identifier \<address\>
+
+Set the adjacency destination address identifier (IPv4 or IPv6) for the given
+segment list index.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai prefix \<ipv4 | ipv6\> prefix-identifier \<prefix\>
+
+Set an IGP prefix identifier (IPv4 or IPv6 prefix) for the given segment list
+index.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai prefix \<ipv4 | ipv6\> prefix-identifier \<prefix\> algorithm \<spf | strict-spf\>
+
+Select the IGP prefix algorithm style for the prefix identifier:
+
+- `spf`: Shortest Path First (SPF).
+- `strict-spf`: Strict SPF - ignore any possible local policy overriding the
+  SPF along the path.
+```
+
 ## Examples
 
 ### Enable SR on IS-IS (experimental)
