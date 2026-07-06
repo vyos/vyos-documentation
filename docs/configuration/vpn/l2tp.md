@@ -631,9 +631,11 @@ l2tp:
 ```
 
 [accel-ppp]: https://accel-ppp.org/
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [cloudflare]: https://blog.cloudflare.com/announcing-1111
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter
 [freeradius]: https://freeradius.org
 [google public dns]: https://developers.google.com/speed/public-dns
 [network policy server]: <https://en.wikipedia.org/wiki/Network_Policy_Server>

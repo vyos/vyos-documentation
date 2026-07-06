@@ -6,8 +6,9 @@ lastproofread: '2022-09-17'
 
 # PPPoE Server
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide PPPoE server functionality. It can
-be used with local authentication or a connected RADIUS server.
+VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide PPPoE server
+functionality. It can be used with local authentication or a connected
+RADIUS server.
 
 :::{note}
 Please be aware, due to an upstream bug, config
@@ -767,5 +768,7 @@ vyos@pppoe-server:~$ sh pppoe-server sessions
  ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 00:53:00:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 ```
 
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter

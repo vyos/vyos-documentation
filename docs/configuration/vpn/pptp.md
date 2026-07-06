@@ -194,14 +194,15 @@ the CLI configuration, refer to the explanation below.
 ### Allocation clients ip addresses by RADIUS
 
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
-config is being ignored.
+address will be allocated to the client and the option `default-pool`
+within the CLI config is being ignored.
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If the RADIUS server sends the attribute `Framed-Pool`, IP address will be
+allocated from a predefined IP pool whose name equals the attribute value.
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`,
+IPv6 address will be allocated from a predefined IPv6 pool `prefix`
+whose name equals the attribute value.
 
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
 delegation prefix will be allocated from a predefined IPv6 pool `delegate`
@@ -212,9 +213,10 @@ whose name equals the attribute value.
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
-Define it in your RADIUS server.
+User interface can be put to VRF context via RADIUS Access-Accept packet,
+or change it via RADIUS CoA. `Accel-VRF-Name` is used from these
+purposes. It is custom [ACCEL-PPP attribute]. Define it in your RADIUS
+server.
 
 ### Renaming clients interfaces by RADIUS
 
@@ -608,5 +610,7 @@ Feb 29 14:59:00 vyos accel-pptp[4629]: pptp0:test: pptp: ppp started
 ```
 
 [accel-ppp]: https://accel-ppp.org/
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter
