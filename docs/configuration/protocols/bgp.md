@@ -1694,6 +1694,34 @@ Example:
 set protocols bgp parameters shutdown
 ```
 
+```{cfgcmd} set protocols bgp parameters input-queue-limit \<messages\>
+
+**Set the BGP input queue limit for all peers during message parsing.**
+
+Increase this only if you have the memory to handle large queues of
+messages at once. The default is 10000.
+```
+
+Example:
+
+```none
+set protocols bgp parameters input-queue-limit 10000
+```
+
+```{cfgcmd} set protocols bgp parameters output-queue-limit \<messages\>
+
+**Set the BGP output queue limit for all peers during message parsing.**
+
+Increase this only if you have the memory to handle large queues of
+messages at once. The default is 10000.
+```
+
+Example:
+
+```none
+set protocols bgp parameters output-queue-limit 10000
+```
+
 #### Graceful restart and shutdown
 
 ```{cfgcmd} set protocols bgp parameters graceful-restart stalepath-time \<1-3600\>
