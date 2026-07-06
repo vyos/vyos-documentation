@@ -276,19 +276,37 @@ Accept peer interface identifier. By default is not defined.
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
-Specifies fixed or random interface identifier for IPv6.
-By default is fixed.
+Specifies Fixed or Random interface identifier for IPv6.
+By default, a Fixed (deterministic) interface identifier is used.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
-```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id \<random | x:x:x:x | ipv4-addr | calling-sid\>
 
-Specifies peer interface identifier for IPv6. By default is fixed.
-* **random** - Random interface identifier for IPv6
-* **x:x:x:x** - Specify interface identifier for IPv6
+Specifies peer interface identifier for IPv6. By default, a Fixed
+(deterministic) peer interface identifier is used.
+* **random** - Random interface identifier for IPv6.
+* **x:x:x:x** - Specify a Fixed peer interface identifier for IPv6.
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
+```
+
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id-secret \<secret-key\>
+
+Secret key used to generate the IPv6 peer interface identifier (IID) when
+``ipv6-peer-interface-id`` is set to ``calling-sid``. This key is combined
+with the calling-station-id to derive a stable, non-predictable IID.
+
+* Required when ``ipv6-peer-interface-id`` is set to ``calling-sid``.
+* Must be 16 to 128 printable non-whitespace ASCII characters.
+
+For example:
+
+~~~none
+set vpn pptp remote-access ppp-options ipv6-peer-interface-id calling-sid
+set vpn pptp remote-access ppp-options ipv6-peer-interface-id-secret 'exampleSecret123!'
+~~~
 ```
 
 
