@@ -135,9 +135,7 @@ set service suricata address-group external-net group !home-net
 Use the following commands to configure port groups.
 
 ```{note}
-Group names must be lowercase letters, digits, or hyphens. VyOS
-converts them to Suricata's uppercase form in the generated
-`suricata.yaml`.
+Group names must be lowercase letters, digits, or hyphens. 
 ```
 
 ```{note}
