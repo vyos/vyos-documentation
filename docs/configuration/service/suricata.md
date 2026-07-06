@@ -24,20 +24,17 @@ Each event is recorded in the {abbr}`EVE (Extensible Event Format)`
 event log in {abbr}`JSON (JavaScript Object Notation)` format.
 
 VyOS integrates Suricata as a managed service, configurable under
-`service suricata`. When the configuration is committed, VyOS
-generates `suricata.yaml` from these settings and starts the service.
+`service suricata`. When the configuration is committed, VyOS generates
+Suricata configuration from these settings and starts the service.
 
 Under `service suricata`, you can configure the following:
 
 - **Monitored interfaces**: One or more interfaces on which Suricata
   captures traffic.
 - **Address groups**: Named lists of IPv4/IPv6 addresses or prefixes,
-  used in place of literal IP addresses in Suricata rules. These
-  groups map to the `vars: address-groups:` section of
-  `suricata.yaml`.
+  used in place of literal IP addresses in Suricata rules. 
 - **Port groups**: Named lists of ports or port ranges, used in place
-  of literal ports in Suricata rules. These groups map to the
-  `vars: port-groups:` section of `suricata.yaml`.
+  of literal ports in Suricata rules. 
 - **EVE log**: Destination (regular file or syslog), file name or
   path, and the event types to log.
 
@@ -78,19 +75,20 @@ set service suricata interface eth1
 Use the following commands to configure address groups.
 
 ```{note}
-Group names must be lowercase letters, digits, or hyphens. VyOS
-converts them to Suricata's uppercase form in the generated
-`suricata.yaml`.
+Group names must be lowercase letters, digits, or hyphens. 
 ```
 
 ```{note}
 Suricata rules reference a conventional set of group names, such as
-`home-net`, `external-net`, `http-servers`, `http-ports`, and others.
-Defining a group with a non-standard name is allowed, but no shipped
-rules will reference it. For the canonical list of names, see
-% stop_vyoslinter
-[Suricata's Rule-vars documentation](https://docs.suricata.io/en/latest/configuration/suricata-yaml.html#rule-vars).
-% start_vyoslinter
+`home-net`, `external-net`, `http-servers`, and others. Defining a
+group with a non-standard name is allowed, but no shipped rules will
+reference it. Typical address groups include:
+
+- `home-net`: the networks Suricata should treat as internal (for
+  example, `192.0.2.0/24` and `2001:db8::/32`).
+- `external-net`: everything not in `home-net`.
+- `http-servers`, `sql-servers`, `dns-servers`: hosts running the
+  corresponding services.
 ```
 
 ```{cfgcmd} set service suricata address-group \<name\> address \<address\>
@@ -146,11 +144,12 @@ converts them to Suricata's uppercase form in the generated
 Suricata rules reference a conventional set of port-group names, such
 as `http-ports`, `ssh-ports`, `oracle-ports`, `shellcode-ports`, and
 others. Defining a port group with a non-standard name is allowed,
-but no shipped rules will reference it. For the canonical list of
-names, see
-% stop_vyoslinter
-[Suricata's Rule-vars documentation](https://docs.suricata.io/en/latest/configuration/suricata-yaml.html#rule-vars).
-% start_vyoslinter
+but no shipped rules will reference it. Typical port groups include:
+
+- `http-ports`: ports where HTTP services run.
+- `ssh-ports`: ports where SSH services listen.
+- `oracle-ports`: ports used by Oracle database services.
+- `shellcode-ports`: ports inspected by shellcode-detection rules.
 ```
 
 ```{cfgcmd} set service suricata port-group \<name\> port \<port\>
@@ -237,10 +236,13 @@ set service suricata log eve filetype syslog
 
 **Configure which EVE event types are logged.**
 
-Accepted values: `alert`, `anomaly`, `drop`, `files`, `flow`,
-`netflow`, and the per-protocol records `http`, `http2`, `dns`,
-`tls`, `smtp`, `ftp`, `smb`, `ssh`, `dhcp`, `tftp`, `nfs`, `rdp`,
-`sip`, `snmp`, `ikev2`, `krb5`, `dcerpc`, `dnp3`, `rfb`, `mqtt`.
+Accepted values:
+
+- General event types: `alert`, `anomaly`, `drop`, `files`, `flow`,
+  `netflow`.
+- Per-protocol event types: `http`, `http2`, `dns`, `tls`, `smtp`,
+  `ftp`, `smb`, `ssh`, `dhcp`, `tftp`, `nfs`, `rdp`, `sip`, `snmp`,
+  `ikev2`, `krb5`, `dcerpc`, `dnp3`, `rfb`, `mqtt`.
 
 Repeat the command to log multiple event types.
 ```
@@ -260,8 +262,8 @@ set service suricata log eve type http
 **Fetch the current rule set with `suricata-update` and restart the
 Suricata service to load it.**
 
-If `/run/suricata/suricata.yaml` does not exist (the service is not
-configured), the command outputs an error message and exits.
+If `service suricata` is not configured, the command outputs an error
+message and exits.
 ```
 
 Example:
