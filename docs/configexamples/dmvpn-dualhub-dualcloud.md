@@ -380,6 +380,26 @@ SPOKE-1
      tunnel protection ipsec profile gre_protection shared
 ```
 
+Because GRE forwarding in DMVPN is independent of IPSec, there can be conditions
+when traffic is routed over the tunnel but there is no active IPsec SA for a peer
+that would get that packets encrypted at that moment.
+That may result in unencrypted GRE leaving the router.
+
+To prevent this, drop any GRE that is not protected by an outbound IPSec policy.
+Add the following rule on the VyOS nodes (HUB-1, HUB-2, SPOKE-2 and SPOKE-3),
+and make sure it comes before any rule that permits GRE.
+
+Note that this disables unencrypted GRE on the node entirely,
+so any plain GRE tunnels without IPSec will stop working.
+If your setup requires unencrypted GRE tunnels together with DMVPN,
+you have to find a way to exempt their traffic from that filter.
+See {ref}`vpn-dmvpn` for the full explanation.
+
+```none
+set firewall ipv4 output filter rule 10 action 'drop'
+set firewall ipv4 output filter rule 10 protocol 'gre'
+set firewall ipv4 output filter rule 10 ipsec match-none-out
+```
 
 ## Monitoring
 

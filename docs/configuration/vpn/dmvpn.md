@@ -188,6 +188,58 @@ Map IKE group to IPSEC profile
 ```
 
 
+### Protecting against unencrypted traffic leaks
+
+In DMVPN, the mGRE tunnel and the IPSec SA that protects it are handled
+independently: GRE forwarding follows the DMVPN/NHRP routing decisions on its
+own and does not depend on IPSec SAs being established.
+
+Because peers are discovered and IPSec SAs are negotiated on demand,
+there are conditions when traffic is routed over the tunnel while there is no active IPSec
+security association for a given peer—for example, while the SA for a newly discovered spoke is still
+being negotiated, or after an existing SA has expired.
+
+Such conditions can be short-lived, but they can also persist for a long time
+depending on the state of IPSec.
+Whenever they occur, the affected packets may leave the router as
+unencrypted GRE. This is an inherent property of running GRE and IPSec
+independently and is common to DMVPN implementations in general.
+
+To close this gap you can add a firewall rule that drops any GRE traffic that is
+not protected by an outbound IPSec policy. The `match-none-out` matcher matches
+packets leaving the router that did not match any outbound IPSec policy, so
+combined with `protocol gre` and `action drop` it discards GRE that would
+otherwise leave the router in cleartext:
+
+```none
+set firewall ipv4 output filter rule 10 action 'drop'
+set firewall ipv4 output filter rule 10 protocol 'gre'
+set firewall ipv4 output filter rule 10 ipsec match-none-out
+```
+
+:::{note}
+This rule must be evaluated before any rule that permits GRE. Give it a low rule
+number (here `rule 10`) so that it is placed ahead of any GRE-permitting rules
+in the `output` filter. Only GRE that is already protected by IPSec
+(i.e., matches an outbound IPSec policy) will then be allowed out.
+:::
+
+:::{note}
+Because this rule drops all GRE that is not protected by IPSec, it disables
+In that case, refine the rule so that it only matches the DMVPN traffic you want
+to protect (for example, by also matching on the tunnel source).
+Alternatively, you can explicitly allow traffic of known unencrypted tunnels
+by their source or destination addresses, or other criteria.
+to protect (for example, by also matching on the tunnel source).
+Alternatively, you can explicitly allow traffic of known unencrypted tunnels
+by their source or destination addresses, or other criteria.
+:::
+
+- Please refer to the {ref}`firewall-ipv4-configuration` documentation for
+details on the `set firewall ipv4 output filter rule <N> ipsec match-none-out`
+matcher and other firewall options.
+
+
 ## Monitoring
 
 ```{opcmd} show ip nhrp cache
