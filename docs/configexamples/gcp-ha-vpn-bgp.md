@@ -110,6 +110,12 @@ set vpn ipsec ike-group GCP-IKE proposal 10 prf 'prfsha256'
 set vpn ipsec interface 'eth0'
 ```
 
+- Disable IPsec route autoinstall because routing is handled by VTI and BGP:
+
+```none
+set vpn ipsec options disable-route-autoinstall
+```
+
 - Configure the VTI:
 
 ```none
@@ -194,6 +200,12 @@ set vpn ipsec ike-group GCP-IKE proposal 10 prf 'prfsha256'
 
 ```none
 set vpn ipsec interface 'eth0'
+```
+
+- Disable IPsec route autoinstall because routing is handled by VTI and BGP:
+
+```none
+set vpn ipsec options disable-route-autoinstall
 ```
 
 - Configure the VTI:
