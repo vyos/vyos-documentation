@@ -44,8 +44,8 @@ Proxmox is an open-source platform for virtualization.
    Proxmox host:
 
    ```bash
-   $ qm set 200 --ciuser vyos
-   $ qm set 200 --sshkeys ~/.ssh/id_ed25519.pub
+   qm set 200 --ciuser vyos
+   qm set 200 --sshkeys ~/.ssh/id_ed25519.pub
    ```
 
    The `--sshkeys` argument expects a file containing one or more OpenSSH
