@@ -33,6 +33,13 @@
     return '/' + loc.lang + '/' + targetSlug + '/' + loc.rest;
   }
 
+  /* Full navigation URL for a version switch: same path on the target version
+   * with the current query string + fragment re-attached, so deep links
+   * (?highlight=…, #section) survive the switch (§4 URL-stability contract). */
+  function navUrlFor(loc, targetSlug, search, hash) {
+    return targetUrlFor(loc, targetSlug) + (search || '') + (hash || '');
+  }
+
   /* ---- DOM layer (no execution at import time) ---- */
   function bannerText(b, manifest) {
     if (b.kind === 'dev') return 'You are reading the development (rolling) docs.';
@@ -68,12 +75,14 @@
       sel.appendChild(o);
     });
     sel.addEventListener('change', function () {
-      var target = targetUrlFor(loc, sel.value);
-      fetch(target, { method: 'HEAD' })
+      var search = window.location.search, hash = window.location.hash;
+      var target = navUrlFor(loc, sel.value, search, hash);
+      var fallback = '/' + loc.lang + '/' + sel.value + '/' + (search || '') + (hash || '');
+      fetch(targetUrlFor(loc, sel.value), { method: 'HEAD' })
         .then(function (r) {
-          window.location.href = (r.status === 404) ? '/' + loc.lang + '/' + sel.value + '/' : target;
+          window.location.href = (r.status === 404) ? fallback : target;
         })
-        .catch(function () { window.location.href = '/' + loc.lang + '/' + sel.value + '/'; });
+        .catch(function () { window.location.href = fallback; });
     });
     anchor.appendChild(label);
     anchor.appendChild(sel);
@@ -132,7 +141,7 @@
 
   window.VyOSVersionPicker = {
     parseLocation: parseLocation, bannerFor: bannerFor,
-    targetUrlFor: targetUrlFor, init: init,
+    targetUrlFor: targetUrlFor, navUrlFor: navUrlFor, init: init,
   };
   if (typeof document !== 'undefined' && document.addEventListener)
     document.addEventListener('DOMContentLoaded', init);

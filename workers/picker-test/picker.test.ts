@@ -43,3 +43,22 @@ describe("targetUrlFor", () => {
       .toBe("/en/1.4/cli/index.html");
   });
 });
+
+describe("navUrlFor (query + fragment preserved across version switch)", () => {
+  const loc = { lang: "en", slug: "1.4", rest: "quick-start.html" };
+  it("neither → bare target path", () => {
+    expect(P.navUrlFor(loc, "1.5", "", "")).toBe("/en/1.5/quick-start.html");
+  });
+  it("query-only", () => {
+    expect(P.navUrlFor(loc, "1.5", "?ref=x", ""))
+      .toBe("/en/1.5/quick-start.html?ref=x");
+  });
+  it("hash-only", () => {
+    expect(P.navUrlFor(loc, "1.5", "", "#section-3"))
+      .toBe("/en/1.5/quick-start.html#section-3");
+  });
+  it("both, in query-then-hash order", () => {
+    expect(P.navUrlFor(loc, "1.5", "?ref=x", "#section-3"))
+      .toBe("/en/1.5/quick-start.html?ref=x#section-3");
+  });
+});

@@ -1,3 +1,4 @@
+.vyos-version-picker-item { list-style: none; }
 #vyos-version-picker { display: flex; align-items: center; gap: .5em; padding: .4em 0; font-size: .9em; }
 #vyos-version-picker select { max-width: 14em; padding: .15em .3em; }
 #vyos-version-picker select:focus { outline: 2px solid #ffae12; outline-offset: 1px; }
