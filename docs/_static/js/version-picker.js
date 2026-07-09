@@ -4,12 +4,16 @@
 (function (window) {
   'use strict';
 
+  // Deliberately does not match /pr-<n>/ preview prefixes — previews are single-version,
+  // so the picker has nothing to switch between and stays hidden there by design.
   function parseLocation(pathname) {
     var m = pathname.match(/^\/([a-z]{2}(?:_[A-Z]{2})?)\/([^/]+)\/(.*)$/);
     if (!m) return null;
     return { lang: m[1], slug: m[2], rest: m[3] };
   }
 
+  // Contract: versions.json lists versions newest-first, so the first 'lts' entry found
+  // here is the newest LTS — callers rely on that ordering rather than comparing versions.
   function newestLts(manifest) {
     for (var i = 0; i < manifest.versions.length; i++)
       if (manifest.versions[i].status === 'lts') return manifest.versions[i].slug;

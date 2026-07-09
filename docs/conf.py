@@ -127,10 +127,18 @@ html_extra_path = ['_html_extra']
 
 # Version picker + status banner + language scaffold (docs/_static/js/version-picker.js,
 # docs/_static/css/version-picker.css). Appended rather than assigned in case a later
-# addition to this file defines these lists first.
+# addition to this file defines these lists first. Registered unconditionally: it degrades
+# silently on ReadTheDocs (fetch of /versions.json fails there, so nothing renders).
 html_js_files = [*html_js_files, 'js/version-picker.js'] if 'html_js_files' in dir() else ['js/version-picker.js']
-html_js_files = [*html_js_files, 'js/pagefind-wrapper.js']
 html_css_files = [*html_css_files, 'css/version-picker.css'] if 'html_css_files' in dir() else ['css/version-picker.css']
+
+# CF-Workers builds inject DOCS_VERSION_SLUG (docs-build.yml); ReadTheDocs builds
+# (until sunset) run plain Sphinx with no Pagefind step, so the Pagefind wrapper
+# script + the searchbox.html override (docs/_templates/searchbox.html) must only
+# activate for CF builds — otherwise RTD visitors hit a 404ing search mount.
+_vyos_cf_build = bool(os.environ.get('DOCS_VERSION_SLUG'))
+if _vyos_cf_build:
+    html_js_files = [*html_js_files, 'js/pagefind-wrapper.js']
 
 # Version slug: CF-Workers builds inject DOCS_VERSION_SLUG (docs-build.yml);
 # ReadTheDocs builds (until sunset) fall back to the RTD env vars; local builds
@@ -162,6 +170,7 @@ html_context = {
     'conf_py_path': '/docs/',
     'gtm_id': os.environ.get('GTM_ID', ''),
     'cookiebot_id': os.environ.get('COOKIEBOT_ID', ''),
+    'vyos_cf_build': _vyos_cf_build,
 }
 
 # sphinx-sitemap: baseurl already includes /en/rolling/, so skip lang+version
