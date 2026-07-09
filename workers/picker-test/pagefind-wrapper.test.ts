@@ -25,3 +25,18 @@ describe("basePathFor (§9)", () => {
     expect(W.prefixResultUrl("/en/1.5/cli/index.html", "")).toBe("/en/1.5/cli/index.html");
   });
 });
+
+describe("assetUrlsFor (css + js pair under the version base)", () => {
+  it("production/canary base", () => {
+    expect(W.assetUrlsFor("/en/rolling/")).toEqual({
+      css: "/en/rolling/pagefind/pagefind-ui.css",
+      js: "/en/rolling/pagefind/pagefind-ui.js",
+    });
+  });
+  it("PR preview base keeps the /pr-<n>/ prefix", () => {
+    expect(W.assetUrlsFor("/pr-42/en/1.5/")).toEqual({
+      css: "/pr-42/en/1.5/pagefind/pagefind-ui.css",
+      js: "/pr-42/en/1.5/pagefind/pagefind-ui.js",
+    });
+  });
+});
