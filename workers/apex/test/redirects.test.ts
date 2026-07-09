@@ -25,6 +25,14 @@ describe("alias + codename 301s (§3.2.4)", () => {
     expect(loc("https://docs.vyos.io/_/downloads/en/latest/pdf/"))
       .toEqual({ status: 301, location: "/en/rolling/vyos-documentation.pdf" });
   });
+  it("RTD PDF URLs for a pdf:null version → no redirect (no dead-end 301)", () => {
+    expect(loc("https://docs.vyos.io/_/downloads/en/crux/pdf/")).toBeNull();
+    expect(loc("https://docs.vyos.io/_/downloads/en/1.2/pdf/")).toBeNull();
+  });
+  it("RTD PDF URLs preserve the query string", () => {
+    expect(loc("https://docs.vyos.io/_/downloads/en/sagitta/pdf/?x=1"))
+      .toEqual({ status: 301, location: "/en/1.4/vyos-documentation.pdf?x=1" });
+  });
   it("trailing-slash normalization on bare version roots (§3.2.3)", () => {
     expect(loc("https://docs.vyos.io/en/1.5")).toEqual({ status: 301, location: "/en/1.5/" });
     expect(loc("https://docs.vyos.io/en/rolling?q=1")).toEqual({ status: 301, location: "/en/rolling/?q=1" });

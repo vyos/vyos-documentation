@@ -17,7 +17,9 @@ export function redirectFor(url: URL, m: Manifest): Response | null {
   const pdf = pathname.match(/^\/_\/downloads\/en\/([^/]+)\/pdf\/?/);
   if (pdf) {
     const slug = aliasMap(m).get(pdf[1]) ?? pdf[1];
-    if (m.versions.some((v) => v.slug === slug)) return r301(`/en/${slug}/vyos-documentation.pdf`);
+    const entry = m.versions.find((v) => v.slug === slug);
+    // pdf: null means no PDF artifact exists for this version — don't 301 into a dead-end 404
+    if (entry && entry.pdf !== null) return r301(`/en/${slug}/vyos-documentation.pdf${search}`);
   }
 
   // Alias / codename prefixes: /en/<alias>/*  →  /en/<slug>/*
