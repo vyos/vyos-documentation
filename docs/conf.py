@@ -125,13 +125,26 @@ html_static_path = ['_static']
 
 html_extra_path = ['_html_extra']
 
-html_baseurl = 'https://docs.vyos.io/en/rolling/'
+# Version slug: CF-Workers builds inject DOCS_VERSION_SLUG (docs-build.yml);
+# ReadTheDocs builds (until sunset) fall back to the RTD env vars; local builds
+# default to 'rolling'.
+_docs_slug = os.environ.get('DOCS_VERSION_SLUG')
+if not _docs_slug and os.environ.get('READTHEDOCS_VERSION'):
+    _docs_slug = os.environ['READTHEDOCS_VERSION']
+    if _docs_slug == 'latest':
+        _docs_slug = 'rolling'
+if not _docs_slug:
+    _docs_slug = 'rolling'
+
+html_baseurl = f'https://docs.vyos.io/en/{_docs_slug}/'
 
 _rtd_version_type = os.environ.get('READTHEDOCS_VERSION_TYPE', '')
 _github_version = (
     os.environ.get('READTHEDOCS_GIT_COMMIT_HASH', 'rolling')
     if _rtd_version_type == 'external'
-    else os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'rolling')
+    else os.environ.get(
+        'DOCS_VERSION_BRANCH', os.environ.get('READTHEDOCS_GIT_IDENTIFIER', 'rolling')
+    )
 )
 
 html_context = {
