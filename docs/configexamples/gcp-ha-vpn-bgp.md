@@ -72,6 +72,8 @@ adjust the export policy for the other peer.
 On the Google Cloud side, create an HA VPN gateway, a Cloud Router, an
 external peer VPN gateway resource, and two VPN tunnels:
 
+- This example follows the topology for two separate peer VPN gateways,
+  each with one interface and one public IP address.
 - Tunnel 0 connects HA VPN interface 0 to VyOS edge 1.
 - Tunnel 1 connects HA VPN interface 1 to VyOS edge 2.
 - The Cloud Router interface for tunnel 0 uses `169.254.10.2/30` and peers
@@ -94,7 +96,6 @@ set vpn ipsec esp-group GCP-ESP proposal 10 hash 'sha256'
 
 set vpn ipsec ike-group GCP-IKE dead-peer-detection action 'restart'
 set vpn ipsec ike-group GCP-IKE dead-peer-detection interval '30'
-set vpn ipsec ike-group GCP-IKE dead-peer-detection timeout '120'
 set vpn ipsec ike-group GCP-IKE key-exchange 'ikev2'
 set vpn ipsec ike-group GCP-IKE lifetime '36000'
 set vpn ipsec ike-group GCP-IKE proposal 10 dh-group '14'
@@ -181,7 +182,6 @@ set vpn ipsec esp-group GCP-ESP proposal 10 hash 'sha256'
 
 set vpn ipsec ike-group GCP-IKE dead-peer-detection action 'restart'
 set vpn ipsec ike-group GCP-IKE dead-peer-detection interval '30'
-set vpn ipsec ike-group GCP-IKE dead-peer-detection timeout '120'
 set vpn ipsec ike-group GCP-IKE key-exchange 'ikev2'
 set vpn ipsec ike-group GCP-IKE lifetime '36000'
 set vpn ipsec ike-group GCP-IKE proposal 10 dh-group '14'
@@ -272,9 +272,11 @@ show ip route bgp
 % stop_vyoslinter
 
 - [Google Cloud: create an HA VPN gateway to a peer VPN gateway]
+- [Google Cloud: HA VPN topologies]
 - [Google Cloud: supported IKE ciphers]
 
 [Google Cloud: create an HA VPN gateway to a peer VPN gateway]: https://docs.cloud.google.com/network-connectivity/docs/vpn/how-to/creating-ha-vpn
+[Google Cloud: HA VPN topologies]: https://docs.cloud.google.com/network-connectivity/docs/vpn/concepts/topologies
 [Google Cloud: supported IKE ciphers]: https://docs.cloud.google.com/network-connectivity/docs/vpn/concepts/supported-ike-ciphers
 
 % start_vyoslinter
