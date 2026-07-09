@@ -18,8 +18,10 @@ export function redirectFor(url: URL, m: Manifest): Response | null {
   if (pdf) {
     const slug = aliasMap(m).get(pdf[1]) ?? pdf[1];
     const entry = m.versions.find((v) => v.slug === slug);
-    // pdf: null means no PDF artifact exists for this version — don't 301 into a dead-end 404
-    if (entry && entry.pdf !== null) return r301(`/en/${slug}/vyos-documentation.pdf${search}`);
+    // pdf: null means no PDF artifact exists for this version — don't 301 into a dead-end 404.
+    // The manifest's pdf value is the source of truth (not a hardcoded filename) so a future
+    // R2-fallback path for 1.3 (or any other version) can move the target without a code change.
+    if (entry && entry.pdf !== null) return r301(`${entry.pdf}${search}`);
   }
 
   // Alias / codename prefixes: /en/<alias>/*  →  /en/<slug>/*

@@ -19,19 +19,22 @@ describe("alias + codename 301s (§3.2.4)", () => {
     expect(loc("https://docs.vyos.io/en/equuleus/a")).toEqual({ status: 301, location: "/en/1.3/a" });
     expect(loc("https://docs.vyos.io/en/crux/a")).toEqual({ status: 301, location: "/en/1.2/a" });
   });
-  it("RTD PDF URLs → new stable PDF path", () => {
+  it("RTD PDF URLs → PDF path taken from the manifest (source of truth, §3.4)", () => {
+    const v15pdf = m.versions.find((v) => v.slug === "1.5")!.pdf;
+    const rollingPdf = m.versions.find((v) => v.slug === "rolling")!.pdf;
     expect(loc("https://docs.vyos.io/_/downloads/en/1.5/pdf/"))
-      .toEqual({ status: 301, location: "/en/1.5/vyos-documentation.pdf" });
+      .toEqual({ status: 301, location: v15pdf });
     expect(loc("https://docs.vyos.io/_/downloads/en/latest/pdf/"))
-      .toEqual({ status: 301, location: "/en/rolling/vyos-documentation.pdf" });
+      .toEqual({ status: 301, location: rollingPdf });
   });
   it("RTD PDF URLs for a pdf:null version → no redirect (no dead-end 301)", () => {
     expect(loc("https://docs.vyos.io/_/downloads/en/crux/pdf/")).toBeNull();
     expect(loc("https://docs.vyos.io/_/downloads/en/1.2/pdf/")).toBeNull();
   });
-  it("RTD PDF URLs preserve the query string", () => {
+  it("RTD PDF URLs preserve the query string, appended to the manifest's pdf value", () => {
+    const v14pdf = m.versions.find((v) => v.slug === "1.4")!.pdf;
     expect(loc("https://docs.vyos.io/_/downloads/en/sagitta/pdf/?x=1"))
-      .toEqual({ status: 301, location: "/en/1.4/vyos-documentation.pdf?x=1" });
+      .toEqual({ status: 301, location: `${v14pdf}?x=1` });
   });
   it("trailing-slash normalization on bare version roots (§3.2.3)", () => {
     expect(loc("https://docs.vyos.io/en/1.5")).toEqual({ status: 301, location: "/en/1.5/" });
