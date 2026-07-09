@@ -14,8 +14,8 @@ interfaces and BGP over link-local `/30` address ranges for dynamic routing.
 
 - A Google Cloud HA VPN gateway with tunnels on both gateway interfaces.
 - A Cloud Router with BGP enabled.
-- An external peer VPN gateway resource with two interfaces representing
-  the two VyOS edge peers.
+- An external VPN gateway resource in Google Cloud with two interfaces,
+  where each interface represents one VyOS edge peer.
 - Manual BGP IPv4 next-hop addresses from unique `/30` ranges inside
   `169.254.0.0/16`.
 - Firewall policy that permits UDP 500, UDP 4500, and ESP from the two
@@ -70,10 +70,13 @@ adjust the export policy for the other peer.
 ## Google Cloud configuration
 
 On the Google Cloud side, create an HA VPN gateway, a Cloud Router, an
-external peer VPN gateway resource, and two VPN tunnels:
+external VPN gateway resource that represents the two VyOS edge peers, and
+two VPN tunnels:
 
 - This example follows the topology for two separate peer VPN gateways,
   each with one interface and one public IP address.
+- In Google Cloud, model those two peer gateways as one external VPN gateway
+  resource with two interfaces.
 - Tunnel 0 connects HA VPN interface 0 to VyOS edge 1.
 - Tunnel 1 connects HA VPN interface 1 to VyOS edge 2.
 - The Cloud Router interface for tunnel 0 uses `169.254.10.2/30` and peers
