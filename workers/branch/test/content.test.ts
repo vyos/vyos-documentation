@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { classifyPath, cacheHeaderFor, withDocsHeaders } from "../src/index";
+import worker, { classifyPath, cacheHeaderFor, withDocsHeaders, type Env } from "../src/index";
 
 describe("cache classes (§3.3)", () => {
   it("HTML + config class → max-age=0, s-maxage=300", () => {
@@ -27,5 +27,38 @@ describe("response headers", () => {
     const canary = withDocsHeaders(base, "/en/rolling/index.html",
       { DOCS_BUILD_SHA: "abc123", DOCS_ENV: "canary" });
     expect(canary.headers.get("Cache-Control")).toBe("no-store");
+  });
+});
+
+describe("default fetch entrypoint", () => {
+  const makeEnv = (docsEnv: Env["DOCS_ENV"], seen: string[]): Env => ({
+    ASSETS: {
+      fetch: async (req: Request) => {
+        seen.push(req.url);
+        return new Response("<html>", { headers: { "content-type": "text/html" } });
+      },
+    } as unknown as Fetcher,
+    DOCS_BUILD_SHA: "testsha",
+    DOCS_ENV: docsEnv,
+  });
+
+  it("serves assets verbatim with docs headers; path is byte-stable", async () => {
+    const seen: string[] = [];
+    const url = "https://docs.vyos.io/en/rolling/index.html";
+    const resp = await worker.fetch(new Request(url), makeEnv("production", seen));
+    expect(resp.headers.get("X-Docs-Build")).toBe("testsha");
+    expect(resp.headers.get("Cache-Control"))
+      .toBe("public, max-age=0, s-maxage=300, must-revalidate");
+    expect(seen).toEqual([url]); // original request URL reached ASSETS unmodified
+  });
+
+  it("canary env forces no-store on the fetch path too", async () => {
+    const seen: string[] = [];
+    const resp = await worker.fetch(
+      new Request("https://docs.vyos.io/en/rolling/index.html"),
+      makeEnv("canary", seen),
+    );
+    expect(resp.headers.get("Cache-Control")).toBe("no-store");
+    expect(resp.headers.get("X-Docs-Build")).toBe("testsha");
   });
 });
