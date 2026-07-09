@@ -89,4 +89,12 @@ describe("apex router (§3.2 order)", () => {
     const env = makeEnv({ DOCS_ROLLING: undefined });
     expect((await get("/llms.txt", env)).status).toBe(503);
   });
+  it("UA gate in production tolerates a missing User-Agent header (no crash, fail-open)", async () => {
+    const prodEnv = makeEnv({ DOCS_ENV: "production" });
+    const r = await worker.fetch(
+      new Request("https://docs-next.vyos.io/en/rolling/", { headers: {} }),
+      prodEnv,
+    );
+    expect(r.status).toBe(200);
+  });
 });
