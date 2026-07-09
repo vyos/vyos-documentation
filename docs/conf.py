@@ -129,6 +129,7 @@ html_extra_path = ['_html_extra']
 # docs/_static/css/version-picker.css). Appended rather than assigned in case a later
 # addition to this file defines these lists first.
 html_js_files = [*html_js_files, 'js/version-picker.js'] if 'html_js_files' in dir() else ['js/version-picker.js']
+html_js_files = [*html_js_files, 'js/pagefind-wrapper.js']
 html_css_files = [*html_css_files, 'css/version-picker.css'] if 'html_css_files' in dir() else ['css/version-picker.css']
 
 # Version slug: CF-Workers builds inject DOCS_VERSION_SLUG (docs-build.yml);

@@ -1,0 +1,7 @@
+{#- Full override (sphinx_rtd_theme/layout.html does a plain {% include "searchbox.html" %},
+   not a named block, so there is nothing to {% extends %} + {% block %} here). Mounts the
+   Pagefind UI div; the theme's original search form is pulled in via Sphinx's "!" bang-prefix
+   (forces resolution from the theme, bypassing this override, per sphinx/jinja2glue.py) as a
+   no-JS fallback inside <noscript>. #}
+<div id="vyos-search" role="search"></div>
+<noscript>{% include "!searchbox.html" %}</noscript>
