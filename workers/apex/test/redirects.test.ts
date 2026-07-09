@@ -1,0 +1,40 @@
+import { describe, it, expect } from "vitest";
+import { loadManifest } from "../src/manifest";
+import { redirectFor } from "../src/redirects";
+
+const m = loadManifest();
+const loc = (u: string) => {
+  const r = redirectFor(new URL(u), m);
+  return r ? { status: r.status, location: r.headers.get("Location") } : null;
+};
+
+describe("alias + codename 301s (§3.2.4)", () => {
+  it("maps every alias, preserving path + query", () => {
+    expect(loc("https://docs.vyos.io/en/latest/cli/index.html?x=1"))
+      .toEqual({ status: 301, location: "/en/rolling/cli/index.html?x=1" });
+    expect(loc("https://docs.vyos.io/en/stable/")).toEqual({ status: 301, location: "/en/1.5/" });
+    expect(loc("https://docs.vyos.io/en/lts/a")).toEqual({ status: 301, location: "/en/1.5/a" });
+    expect(loc("https://docs.vyos.io/en/circinus/a")).toEqual({ status: 301, location: "/en/1.5/a" });
+    expect(loc("https://docs.vyos.io/en/sagitta/a")).toEqual({ status: 301, location: "/en/1.4/a" });
+    expect(loc("https://docs.vyos.io/en/equuleus/a")).toEqual({ status: 301, location: "/en/1.3/a" });
+    expect(loc("https://docs.vyos.io/en/crux/a")).toEqual({ status: 301, location: "/en/1.2/a" });
+  });
+  it("RTD PDF URLs → new stable PDF path", () => {
+    expect(loc("https://docs.vyos.io/_/downloads/en/1.5/pdf/"))
+      .toEqual({ status: 301, location: "/en/1.5/vyos-documentation.pdf" });
+    expect(loc("https://docs.vyos.io/_/downloads/en/latest/pdf/"))
+      .toEqual({ status: 301, location: "/en/rolling/vyos-documentation.pdf" });
+  });
+  it("trailing-slash normalization on bare version roots (§3.2.3)", () => {
+    expect(loc("https://docs.vyos.io/en/1.5")).toEqual({ status: 301, location: "/en/1.5/" });
+    expect(loc("https://docs.vyos.io/en/rolling?q=1")).toEqual({ status: 301, location: "/en/rolling/?q=1" });
+  });
+  it("never emits a fragment in Location (§3.2.6)", () => {
+    const r = loc("https://docs.vyos.io/en/latest/page.html");
+    expect(r!.location).not.toContain("#");
+  });
+  it("returns null for canonical paths (no redirect loop)", () => {
+    expect(loc("https://docs.vyos.io/en/rolling/")).toBeNull();
+    expect(loc("https://docs.vyos.io/en/1.5/cli/")).toBeNull();
+  });
+});
