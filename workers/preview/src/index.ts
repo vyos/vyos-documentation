@@ -22,7 +22,13 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const key = keyFor(new URL(request.url).pathname);
     const obj = await env.PREVIEWS.get(key);
-    if (!obj) return new Response("preview not found", { status: 404, headers: { "X-Robots-Tag": "noindex" } });
+    if (!obj) {
+      return new Response("preview not found", {
+        status: 404,
+        // no-store on the 404 too — a cached 404 would persist past the preview upload
+        headers: { "X-Robots-Tag": "noindex", "Cache-Control": "no-store" },
+      });
+    }
     return new Response(obj.body, {
       headers: {
         "content-type": obj.httpMetadata?.contentType ?? mimeFor(key),
