@@ -218,6 +218,10 @@ sudo grep vyos /var/log/cloud-init.log
 Before you begin, review the `cloud-init` [network-config-docs] to
 understand how to import user and network configuration data.
 
+Proxmox is used here only as the VM hypervisor. The NoCloud seed ISO shown
+below is not a Proxmox-generated Cloud-Init drive; the same approach can be
+used with other hypervisors or a physical machine.
+
 Key considerations:
 
 - Define VyOS configuration commands in the `user-data` file.
@@ -354,10 +358,10 @@ qm importdisk 555 vyos-1.5.0-cloud-init-10G-qemu.qcow2 local
 qm set 555 --virtio0 local:555/vm-555-disk-0.raw
 qm set 555 --boot order=virtio0
 
-## Import seed.iso for cloud init
-qm set 555 --ide2 media=cdrom,file=local:iso/seed.iso
+## Attach the NoCloud seed ISO as a CD-ROM
+qm set 555 --ide2 local:iso/seed.iso,media=cdrom
 
-## Since this server has 1 nic, lets add network intefaces (vlan 25 and 26)
+## Since this server has one NIC, add network interfaces (VLAN 25 and 26)
 qm set 555 --net1 virtio,bridge=vmbr0,firewall=1,tag=25
 qm set 555 --net2 virtio,bridge=vmbr0,firewall=1,tag=26
 ```
@@ -371,8 +375,13 @@ Power on the VM using the CLI or GUI. After it boots, verify the configuration.
 
 - Cloud-init [network-config-docs].
 - Proxmox [Cloud-init-Support].
+
+% stop_vyoslinter
+
 [cloud-init-support]: <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_cloud_init>
 [cloud-init-write_files]: https://cloudinit.readthedocs.io/en/latest/topics/examples.html#writing-out-arbitrary-files
 [network-config-docs]: https://cloudinit.readthedocs.io/en/latest/topics/network-config.html
 [nocloud]: https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html
 [vyos-vm-images]: https://github.com/vyos/vyos-vm-images
+
+% start_vyoslinter
