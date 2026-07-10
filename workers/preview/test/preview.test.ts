@@ -72,6 +72,15 @@ describe("preview worker fetch entrypoint (§10)", () => {
     expect(await r.text()).toBe("<h1>cli</h1>");
     expect(r.headers.get("content-type")).toBe("text/html; charset=utf-8");
   });
+  it("extensionless directory URL with a dotted version segment earlier in the path still probes index.html (dot-check is last-segment-only)", async () => {
+    const env = makeEnv({
+      "pr-42/en/1.4/cli/index.html": { body: "<h1>cli 1.4</h1>", contentType: "text/html; charset=utf-8" },
+    });
+    const r = await get("/pr-42/en/1.4/cli", env);
+    expect(r.status).toBe(200);
+    expect(await r.text()).toBe("<h1>cli 1.4</h1>");
+    expect(r.headers.get("content-type")).toBe("text/html; charset=utf-8");
+  });
   it("a transient R2/binding error on either probe degrades to a controlled 503 (never an unhandled exception)", async () => {
     const throwingEnv: Env = {
       PREVIEWS: { get: async () => { throw new Error("R2 unavailable"); } } as unknown as R2Bucket,

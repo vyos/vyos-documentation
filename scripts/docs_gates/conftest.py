@@ -51,4 +51,5 @@ def redirect_http_server() -> Iterator[str]:
         yield f"127.0.0.1:{server.server_address[1]}"
     finally:
         server.shutdown()
+        server.server_close()
         thread.join(timeout=5)

@@ -33,10 +33,28 @@ jobs:
           event_sha='${{ github.event.workflow_run.head_sha }}'
           art_sha=$(cat out/HEAD_SHA)
           [ "$art_sha" = "$event_sha" ] || { echo "::error::artifact SHA ($art_sha) != workflow_run head_sha ($event_sha)"; exit 1; }
-          # Resolve the PR by trusted head SHA — never trust out/PR_NUMBER for authorization:
-          pr=$(gh api "repos/${{ github.repository }}/commits/$event_sha/pulls" --jq '.[0].number')
-          [ -n "$pr" ] && [ "$pr" != "null" ] || { echo "no open PR for $event_sha"; exit 78; }
-          [ "$pr" = "$(cat out/PR_NUMBER)" ] || { echo "::error::artifact PR number mismatch"; exit 1; }
+          # Validate the artifact's claimed PR number BEFORE it's used anywhere — it comes
+          # from the unprivileged run and must be a bare digit string.
+          art_pr=$(cat out/PR_NUMBER)
+          case "$art_pr" in
+            ''|*[!0-9]*) echo "::error::artifact PR_NUMBER is not a bare digit string: '$art_pr'"; exit 1 ;;
+          esac
+          # Resolve EVERY PR associated with the trusted head SHA — a single commit can be
+          # the head of more than one open PR, so picking just .[0].number is not reliable.
+          # Never trust out/PR_NUMBER for authorization on its own: require it to be a
+          # MEMBER of this trusted list. The membership check happens in bash (below), not
+          # inside a jq filter, so the untrusted artifact value is never interpolated into
+          # jq code.
+          pr_list=$(gh api "repos/${{ github.repository }}/commits/$event_sha/pulls" --jq '.[].number')
+          [ -n "$pr_list" ] || { echo "no open PR for $event_sha"; exit 78; }
+          pr=""
+          while IFS= read -r candidate; do
+            if [ "$candidate" = "$art_pr" ]; then
+              pr="$candidate"
+              break
+            fi
+          done <<< "$pr_list"
+          [ -n "$pr" ] || { echo "::error::artifact PR number ($art_pr) is not among the trusted PRs for $event_sha ($pr_list)"; exit 1; }
           state=$(gh pr view "$pr" --repo '${{ github.repository }}' --json state,labels)
           echo "$state" | jq -e '.state == "OPEN"' >/dev/null || { echo "PR closed"; exit 78; }
           echo "$state" | jq -e '.labels[].name | select(. == "preview")' >/dev/null || { echo "no preview label"; exit 78; }

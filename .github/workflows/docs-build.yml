@@ -106,6 +106,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
+          set -eo pipefail
           set -u
           slug='${{ steps.matrix.outputs.slug }}'
           cd workers
@@ -288,7 +289,20 @@ jobs:
             exit 0
           fi
           slug='${{ steps.matrix.outputs.slug }}'
-          got=$(curl -sI "https://docs.vyos.io/en/$slug/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-docs-build"{print $2}')
+          # Retry loop: the purge above is asynchronous, so an immediate probe can still
+          # observe a stale edge response and trigger a false rollback. Poll up to 6 times
+          # (60s budget) before concluding the promote genuinely failed.
+          got=""
+          for attempt in 1 2 3 4 5 6; do
+            got=$(curl -sI "https://docs.vyos.io/en/$slug/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-docs-build"{print $2}')
+            if [ "$got" = '${{ github.sha }}' ]; then
+              break
+            fi
+            if [ "$attempt" -lt 6 ]; then
+              echo "::notice::post-promote probe attempt $attempt/6 saw stale edge (got $got) — retrying in 10s"
+              sleep 10
+            fi
+          done
           if [ "$got" != '${{ github.sha }}' ]; then
             if [ -z '${{ steps.promote.outputs.rollback_id }}' ]; then
               echo "::error::post-promote probe failed (got $got) on FIRST deploy — no prior version to roll back to; investigate manually"

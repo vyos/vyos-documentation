@@ -28,10 +28,15 @@ function securityHeaders(resp: Response): Response {
 function apexHeaders(resp: Response, env: ApexEnv): Response {
   const out = securityHeaders(resp);
   out.headers.set("X-Apex-Build", env.APEX_BUILD_SHA);
-  // §3.3 cache contract applies to apex-owned responses too:
+  // §3.3 cache contract applies to apex-owned responses too. Error responses (4xx/5xx)
+  // must never carry the s-maxage cache class — the cache key excludes User-Agent, so a
+  // cached UA-gate 403 or themed 404/503 would poison the edge for every visitor for the
+  // full s-maxage window. Mirrors the branch worker's withDocsHeaders() precedence.
   out.headers.set(
     "Cache-Control",
-    env.DOCS_ENV === "canary" ? "no-store" : "public, max-age=0, s-maxage=300, must-revalidate",
+    env.DOCS_ENV === "canary" || out.status >= 400
+      ? "no-store"
+      : "public, max-age=0, s-maxage=300, must-revalidate",
   );
   return out;
 }

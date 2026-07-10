@@ -25,10 +25,12 @@ export default {
     let resolvedKey = key;
     try {
       obj = await env.PREVIEWS.get(key);
-      if (!obj && !key.includes(".")) {
+      if (!obj && !key.split("/").pop()?.includes(".")) {
         // Extensionless directory URL with no trailing slash (e.g. /en/rolling/cli) —
         // keyFor() only appends index.html for trailing-slash/empty paths, so probe the
-        // directory's index.html before 404ing.
+        // directory's index.html before 404ing. Check the LAST path segment only — a dot
+        // anywhere earlier (e.g. version segment "1.4" in /pr-42/en/1.4/cli) must not skip
+        // the probe for an otherwise-extensionless final segment.
         resolvedKey = `${key}/index.html`;
         obj = await env.PREVIEWS.get(resolvedKey);
       }

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import worker from "../src/index";
 
 function makeEnv(overrides: Record<string, unknown> = {}) {
@@ -93,6 +93,38 @@ describe("apex router (§3.2 order)", () => {
     expect((await get("/versions.json")).headers.get("Cache-Control")).toBe("no-store");
     const prod = await get("/versions.json", makeEnv({ DOCS_ENV: "production" }));
     expect(prod.headers.get("Cache-Control")).toBe("public, max-age=0, s-maxage=300, must-revalidate");
+  });
+  it("error responses stay no-store in production — cache key excludes UA, so a cached 4xx/5xx would poison the edge for everyone", async () => {
+    const prodEnv = makeEnv({ DOCS_ENV: "production" });
+
+    // themed 404 (unknown path)
+    const notFound = await get("/nope", prodEnv);
+    expect(notFound.status).toBe(404);
+    expect(notFound.headers.get("Cache-Control")).toBe("no-store");
+
+    // themed 503 (missing runtime binding)
+    const svcUnavailable = await get("/en/rolling/", makeEnv({ DOCS_ENV: "production", DOCS_ROLLING: undefined }));
+    expect(svcUnavailable.status).toBe(503);
+    expect(svcUnavailable.headers.get("Cache-Control")).toBe("no-store");
+
+    // UA-block 403 — force a block entry via a policy override, since the shipped
+    // ua-policy.json block list is empty at launch.
+    vi.resetModules();
+    vi.doMock("../ua-policy.json", () => ({
+      default: { allow: [], log: [], block: ["EvilScraper"] },
+    }));
+    try {
+      const { default: freshWorker } = await import("../src/index");
+      const blocked = await freshWorker.fetch(
+        new Request("https://docs-next.vyos.io/en/rolling/", { headers: { "user-agent": "EvilScraper/1.0" } }),
+        prodEnv,
+      );
+      expect(blocked.status).toBe(403);
+      expect(blocked.headers.get("Cache-Control")).toBe("no-store");
+    } finally {
+      vi.doUnmock("../ua-policy.json");
+      vi.resetModules();
+    }
   });
   it("/llms.txt with missing default binding → 503, never 404", async () => {
     const env = makeEnv({ DOCS_ROLLING: undefined });
