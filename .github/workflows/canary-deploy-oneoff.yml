@@ -1,0 +1,64 @@
+name: Canary deploy one-off — apex canary + preview route targets
+
+# ONE-OFF workflow (Task 3.6 Step 2 of the Cloudflare Workers migration plan).
+# Fires exactly once, on the push that adds this file to this branch, to deploy
+# the apex Worker (env canary ONLY — never production) and the preview Worker
+# so both exist as route targets before the operator creates the dashboard
+# routes (Task 3.6 step 2c). The CF token exists ONLY as a repo Actions secret,
+# never locally. Delete this file once the deploy + verification below have
+# succeeded.
+
+on:
+  push:
+    branches: [claude/cloudflare-migration-71cb79]
+    paths: [".github/workflows/canary-deploy-oneoff.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  canary-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+
+      - name: npm ci
+        working-directory: workers
+        run: npm ci
+
+      - name: Deploy apex (canary env only — never production here)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: workers
+        run: npx wrangler deploy --config apex/wrangler.jsonc --env canary
+
+      - name: Deploy preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: workers
+        run: npx wrangler deploy --config preview/wrangler.jsonc
+
+      - name: Verify both route targets exist
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: workers
+        run: |
+          set -eu
+          count=0
+          failed=0
+          for name in vyos-docs-apex-canary vyos-docs-preview; do
+            if npx wrangler deployments list --name "$name" >/dev/null 2>&1; then
+              echo "OK: $name"
+              count=$((count+1))
+            else
+              echo "::error::route target $name failed deployments list"
+              failed=1
+            fi
+          done
+          echo "PASS: $count/2 route targets verified"
+          exit $failed
