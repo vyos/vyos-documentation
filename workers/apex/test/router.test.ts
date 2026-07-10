@@ -184,19 +184,48 @@ describe("apex router (§3.2 order)", () => {
 
   describe("legacy PDF R2 fallback (spec §5) — runs before version dispatch", () => {
     // Fake R2Bucket mock following the preview-worker precedent (apex/preview/test/preview.test.ts).
-    function r2Env(objects: Record<string, { body: string }>, overrides: Record<string, unknown> = {}) {
+    // Simulates R2's onlyIf (If-None-Match → body-less R2Object) + range (echoes the
+    // satisfied byte range on `.range`) behavior closely enough to exercise index.ts's
+    // handling of both without needing the real R2 binding.
+    const ETAG = '"pdf-etag-1"';
+    function r2Env(
+      objects: Record<string, { body: string; etag?: string }>,
+      overrides: Record<string, unknown> = {},
+    ) {
       return makeEnv({
         DOCS_PDFS: {
-          get: async (key: string) => {
+          get: async (key: string, options?: { onlyIf?: Headers; range?: Headers }) => {
             const hit = objects[key];
-            return hit ? { body: hit.body } : null;
+            if (!hit) return null;
+            const etag = hit.etag ?? ETAG;
+            const size = hit.body.length;
+
+            const ifNoneMatch = options?.onlyIf?.get?.("if-none-match");
+            if (ifNoneMatch && ifNoneMatch === etag) {
+              return { httpEtag: etag, size }; // R2Object, no `body` — precondition matched
+            }
+
+            const rangeHeader = options?.range?.get?.("range");
+            const m = rangeHeader ? /^bytes=(\d+)-(\d+)$/.exec(rangeHeader) : null;
+            if (m) {
+              const offset = Number(m[1]);
+              const length = Number(m[2]) - offset + 1;
+              return {
+                httpEtag: etag,
+                size,
+                body: hit.body.slice(offset, offset + length),
+                range: { offset, length },
+              };
+            }
+
+            return { httpEtag: etag, size, body: hit.body };
           },
         } as unknown as R2Bucket,
         ...overrides,
       });
     }
 
-    it("served-from-R2 200: content-type application/pdf, PDF cache class, X-Apex-Build present", async () => {
+    it("served-from-R2 200: content-type application/pdf, PDF cache class, X-Apex-Build present, etag + accept-ranges", async () => {
       const env = r2Env(
         { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
         { DOCS_ENV: "production" },
@@ -207,6 +236,46 @@ describe("apex router (§3.2 order)", () => {
       expect(r.headers.get("content-type")).toBe("application/pdf");
       expect(r.headers.get("Cache-Control")).toBe("public, max-age=300, s-maxage=600, must-revalidate");
       expect(r.headers.get("X-Apex-Build")).toBe("apex-sha");
+      expect(r.headers.get("etag")).toBe(ETAG);
+      expect(r.headers.get("accept-ranges")).toBe("bytes");
+      expect(r.headers.get("content-length")).toBe("9");
+    });
+
+    it("If-None-Match matching R2's etag → 304, no body, etag present, PDF cache class", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", "if-none-match": ETAG },
+        }),
+        env,
+      );
+      expect(r.status).toBe(304);
+      expect(await r.text()).toBe("");
+      expect(r.headers.get("etag")).toBe(ETAG);
+      expect(r.headers.get("Cache-Control")).toBe("public, max-age=300, s-maxage=600, must-revalidate");
+      expect(r.headers.get("content-type")).toBeNull();
+    });
+
+    it("Range: bytes=0-3 → 206 + Content-Range + partial body, PDF cache class", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } }, // length 9
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=0-3" },
+        }),
+        env,
+      );
+      expect(r.status).toBe(206);
+      expect(await r.text()).toBe("PDF-");
+      expect(r.headers.get("content-range")).toBe("bytes 0-3/9");
+      expect(r.headers.get("content-length")).toBe("4");
+      expect(r.headers.get("etag")).toBe(ETAG);
+      expect(r.headers.get("Cache-Control")).toBe("public, max-age=300, s-maxage=600, must-revalidate");
     });
 
     it("canary env still forces no-store on the PDF response (canary rule wins)", async () => {

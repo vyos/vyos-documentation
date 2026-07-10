@@ -78,18 +78,51 @@ export default {
         console.log(JSON.stringify({ event: "binding-missing", binding: "DOCS_PDFS" }));
         return themed(env, 503);
       }
-      let obj: R2ObjectBody | null;
+      let raw: R2ObjectBody | R2Object | null;
       try {
-        obj = await bucket.get(pdfVersion.pdf_r2_key!);
+        // Forward Range + conditional (If-None-Match/If-Match/If-Modified-Since) headers
+        // straight through to R2 so a resumed download or a client with a fresh cached
+        // copy doesn't have to re-pull the full 29.2 MiB object.
+        raw = await bucket.get(pdfVersion.pdf_r2_key!, {
+          range: request.headers,
+          onlyIf: request.headers,
+        });
       } catch (e) {
         console.log(JSON.stringify({ event: "binding-error", binding: "DOCS_PDFS", error: String(e) }));
         return themed(env, 503);
       }
-      if (!obj) return themed(env, 404);
-      const pdfResp = new Response(obj.body, { headers: { "content-type": "application/pdf" } });
+      if (!raw) return themed(env, 404);
+
       // Distinct (longer) cache class from apex's default control-response class — this
       // is effectively content, just not content the legacy content Worker can serve.
-      return apexHeaders(pdfResp, env, "public, max-age=300, s-maxage=600, must-revalidate");
+      // 304/206 are both <400 so apexHeaders() still applies this class, not "no-store".
+      const pdfCacheClass = "public, max-age=300, s-maxage=600, must-revalidate";
+      const pdfHeaders: Record<string, string> = {
+        etag: raw.httpEtag,
+        "accept-ranges": "bytes",
+      };
+
+      // A satisfied onlyIf precondition (e.g. If-None-Match matched the R2 object's current
+      // ETag) makes R2 hand back a body-less R2Object — just the validators, no content.
+      if (!("body" in raw) || !raw.body) {
+        return apexHeaders(new Response(null, { status: 304, headers: pdfHeaders }), env, pdfCacheClass);
+      }
+      const obj = raw as R2ObjectBody;
+      pdfHeaders["content-type"] = "application/pdf";
+
+      // A satisfied Range request — R2 echoes the actually-served byte range on `obj.range`;
+      // its absence means either no Range header was sent or R2 served the full object.
+      const range = obj.range;
+      if (range && "offset" in range) {
+        const start = range.offset ?? 0;
+        const length = range.length ?? obj.size - start;
+        pdfHeaders["content-range"] = `bytes ${start}-${start + length - 1}/${obj.size}`;
+        pdfHeaders["content-length"] = String(length);
+        return apexHeaders(new Response(obj.body, { status: 206, headers: pdfHeaders }), env, pdfCacheClass);
+      }
+
+      pdfHeaders["content-length"] = String(obj.size);
+      return apexHeaders(new Response(obj.body, { status: 200, headers: pdfHeaders }), env, pdfCacheClass);
     }
 
     // 3+4. Trailing-slash + alias/codename/PDF 301s (§3.2.3-4)
