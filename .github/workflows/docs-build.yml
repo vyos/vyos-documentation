@@ -18,8 +18,6 @@ permissions:
   contents: read
 
 env:
-  # Image digest from Phase-0 item 0.4 — replace before first run:
-  BUILD_IMAGE: "ghcr.io/vyos/vyos-documentation@sha256:REPLACE_ME_PHASE0_ITEM_0_4"
   REGISTRY_BUCKET: vyos-docs-artifacts
 
 jobs:
@@ -39,13 +37,28 @@ jobs:
           echo "pdf=$(jq -r --arg s "$(echo "$entry" | jq -r .slug)" \
             '.versions[] | select(.slug==$s) | .pdf // empty' workers/versions.json)" >> "$GITHUB_OUTPUT"
 
-      - name: Build HTML + PDF in pinned container
+      # Build image in-workflow from docker/Dockerfile (plan v4.1: digest pin dropped —
+      # no published ghcr.io image exists; the checked-out commit IS the pin, and the
+      # buildx GHA cache makes repeat builds cheap).
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build docs image (buildx GHA cache)
+        uses: docker/build-push-action@v6
+        with:
+          context: docker/
+          load: true
+          tags: docs-build:local
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Build HTML + PDF in in-workflow-built container
         run: |
           set -eu
           docker run --rm -v "$PWD:/src" -w /src \
             -e DOCS_VERSION_SLUG="${{ steps.matrix.outputs.slug }}" \
             -e DOCS_VERSION_BRANCH="${{ github.ref_name }}" \
-            "$BUILD_IMAGE" bash -c '
+            docs-build:local bash -c '
               cd docs && make html
               if [ "${{ inputs.skip_pdf }}" != "true" ]; then
                 make latexpdf || make latexpdf   # retry once (§14 LaTeX flakiness)
