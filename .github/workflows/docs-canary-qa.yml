@@ -1,0 +1,37 @@
+name: Docs canary QA (nightly per-entry sweep + parity)
+on:
+  schedule:
+    - cron: "45 2 * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Per-entry sweep (one page + PDF per versions.json entry, §3.4 gate c)
+        run: |
+          set -eu
+          fail=0
+          while read -r v; do
+            slug=$(echo "$v" | jq -r .slug); pdf=$(echo "$v" | jq -r '.pdf // empty')
+            if ! python -m scripts.docs_gates.smoke --host docs-next.vyos.io --slug "$slug" \
+              --expect-sha SKIP --access-id '${{ secrets.CF_ACCESS_CLIENT_ID }}' \
+              --access-secret '${{ secrets.CF_ACCESS_CLIENT_SECRET }}' \
+              ${pdf:+--pdf "$pdf"}; then
+              echo "sweep-fail=$slug" | tee -a "$GITHUB_STEP_SUMMARY"
+              fail=1
+            fi
+          done < <(jq -c '.versions[]' workers/versions.json)
+          exit $fail   # a broken advertised version MUST fail nightly QA (§3.4 gate c)
+        # --expect-sha SKIP = presence-only assert; implemented in smoke.docs_build_ok (Task 3.2).
+      - name: URL parity vs RTD (pre-cutover truth)
+        run: |
+          python -m scripts.docs_gates.parity \
+            --sitemap-host docs.vyos.io --probe-host docs-next.vyos.io \
+            --access-id '${{ secrets.CF_ACCESS_CLIENT_ID }}' \
+            --access-secret '${{ secrets.CF_ACCESS_CLIENT_SECRET }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: parity-report, path: parity-report.json }
