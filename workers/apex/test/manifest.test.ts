@@ -36,6 +36,16 @@ describe("versions.json v2 manifest (§3.4)", () => {
       }
     }
   });
+  it("only 1.3 carries pdf_r2_key (§5 apex PDF R2 fallback)", () => {
+    const m = loadManifest();
+    const withKey = m.versions.filter((v) => v.pdf_r2_key);
+    expect(withKey).toHaveLength(1);
+    expect(withKey[0]).toMatchObject({
+      slug: "1.3",
+      pdf: "/en/1.3/vyos-documentation.pdf",
+      pdf_r2_key: "legacy/1.3/vyos-documentation.pdf",
+    });
+  });
 });
 
 function baseManifest(): Manifest {
@@ -77,6 +87,19 @@ describe("validateManifest — duplicate/ambiguous slug + alias rejection", () =
     const snapshot = structuredClone(m);
     expect(validateManifest(m)).toBe(m);
     expect(m).toEqual(snapshot); // validation must not mutate the manifest
+  });
+
+  it("accepts pdf_r2_key when pdf is set", () => {
+    const m = baseManifest();
+    m.versions[1].pdf = "/en/1.5/vyos-documentation.pdf";
+    m.versions[1].pdf_r2_key = "legacy/1.5/vyos-documentation.pdf";
+    expect(validateManifest(m)).toBe(m);
+  });
+
+  it("rejects pdf_r2_key set on a version whose pdf is null (no URL for the fallback to be reached at)", () => {
+    const m = baseManifest();
+    m.versions[0].pdf_r2_key = "legacy/rolling/vyos-documentation.pdf"; // pdf stays null
+    expect(() => validateManifest(m)).toThrow(/pdf_r2_key set but pdf is null for rolling/);
   });
 });
 

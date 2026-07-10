@@ -10,6 +10,10 @@ export interface ApexEnv extends Record<string, unknown> {
   APEX_BUILD_SHA: string;
   DOCS_ENV: "production" | "canary";
   DOCS_KB?: Fetcher;
+  // §5 apex PDF fallback — R2 bucket holding oversized legacy PDFs excluded from the
+  // content Worker's own asset tree (currently just the 1.3 PDF). Optional so the
+  // binding-guard path (503, not a crash) exercises on envs that omit it.
+  DOCS_PDFS?: R2Bucket;
 }
 
 const manifest = loadManifest();
@@ -25,18 +29,20 @@ function securityHeaders(resp: Response): Response {
   return out;
 }
 
-function apexHeaders(resp: Response, env: ApexEnv): Response {
+const DEFAULT_CACHE_CLASS = "public, max-age=0, s-maxage=300, must-revalidate";
+
+function apexHeaders(resp: Response, env: ApexEnv, cacheClass: string = DEFAULT_CACHE_CLASS): Response {
   const out = securityHeaders(resp);
   out.headers.set("X-Apex-Build", env.APEX_BUILD_SHA);
   // §3.3 cache contract applies to apex-owned responses too. Error responses (4xx/5xx)
   // must never carry the s-maxage cache class — the cache key excludes User-Agent, so a
   // cached UA-gate 403 or themed 404/503 would poison the edge for every visitor for the
   // full s-maxage window. Mirrors the branch worker's withDocsHeaders() precedence.
+  // `cacheClass` lets a specific caller (e.g. the §5 PDF R2 fallback) apply a
+  // differently-classed success cache-control; canary/error still always win.
   out.headers.set(
     "Cache-Control",
-    env.DOCS_ENV === "canary" || out.status >= 400
-      ? "no-store"
-      : "public, max-age=0, s-maxage=300, must-revalidate",
+    env.DOCS_ENV === "canary" || out.status >= 400 ? "no-store" : cacheClass,
   );
   return out;
 }
@@ -60,6 +66,31 @@ export default {
     // 2. Special paths (§3.2.2)
     const special = await specialPathFor(request, manifest, env as never);
     if (special) return apexHeaders(special, env);
+
+    // 2b. Legacy PDF R2 fallback (spec §5) — the 1.3 PDF (29.2 MiB) exceeds the 25 MiB
+    // static-asset cap and is excluded from the content Worker's own build. MUST run
+    // before version dispatch (step 6): the legacy Worker's asset tree lacks this file,
+    // so unconditional dispatch would 404 on the exact path the PDF 301 (§3.2.4) targets.
+    const pdfVersion = manifest.versions.find((v) => v.pdf_r2_key && v.pdf === url.pathname);
+    if (pdfVersion) {
+      const bucket = env.DOCS_PDFS;
+      if (!bucket) {
+        console.log(JSON.stringify({ event: "binding-missing", binding: "DOCS_PDFS" }));
+        return themed(env, 503);
+      }
+      let obj: R2ObjectBody | null;
+      try {
+        obj = await bucket.get(pdfVersion.pdf_r2_key!);
+      } catch (e) {
+        console.log(JSON.stringify({ event: "binding-error", binding: "DOCS_PDFS", error: String(e) }));
+        return themed(env, 503);
+      }
+      if (!obj) return themed(env, 404);
+      const pdfResp = new Response(obj.body, { headers: { "content-type": "application/pdf" } });
+      // Distinct (longer) cache class from apex's default control-response class — this
+      // is effectively content, just not content the legacy content Worker can serve.
+      return apexHeaders(pdfResp, env, "public, max-age=300, s-maxage=600, must-revalidate");
+    }
 
     // 3+4. Trailing-slash + alias/codename/PDF 301s (§3.2.3-4)
     const redir = redirectFor(url, manifest);

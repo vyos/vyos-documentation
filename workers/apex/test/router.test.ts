@@ -181,4 +181,85 @@ describe("apex router (§3.2 order)", () => {
     );
     expect(r.status).toBe(200);
   });
+
+  describe("legacy PDF R2 fallback (spec §5) — runs before version dispatch", () => {
+    // Fake R2Bucket mock following the preview-worker precedent (apex/preview/test/preview.test.ts).
+    function r2Env(objects: Record<string, { body: string }>, overrides: Record<string, unknown> = {}) {
+      return makeEnv({
+        DOCS_PDFS: {
+          get: async (key: string) => {
+            const hit = objects[key];
+            return hit ? { body: hit.body } : null;
+          },
+        } as unknown as R2Bucket,
+        ...overrides,
+      });
+    }
+
+    it("served-from-R2 200: content-type application/pdf, PDF cache class, X-Apex-Build present", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+      expect(r.headers.get("content-type")).toBe("application/pdf");
+      expect(r.headers.get("Cache-Control")).toBe("public, max-age=300, s-maxage=600, must-revalidate");
+      expect(r.headers.get("X-Apex-Build")).toBe("apex-sha");
+    });
+
+    it("canary env still forces no-store on the PDF response (canary rule wins)", async () => {
+      const env = r2Env({ "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } }); // default DOCS_ENV: canary
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(200);
+      expect(r.headers.get("Cache-Control")).toBe("no-store");
+    });
+
+    it("R2 miss → themed 404, no-store, never falls through to DOCS_LEGACY dispatch", async () => {
+      const env = r2Env({}, { DOCS_ENV: "production" }); // bucket present but empty
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(404);
+      expect(r.headers.get("Cache-Control")).toBe("no-store");
+      expect(await r.text()).not.toContain("legacy:"); // not the DOCS_LEGACY fetcher's echoed tag
+    });
+
+    it("R2 get() throwing → themed 503, no-store", async () => {
+      const env = makeEnv({
+        DOCS_ENV: "production",
+        DOCS_PDFS: { get: async () => { throw new Error("R2 unavailable"); } } as unknown as R2Bucket,
+      });
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(503);
+      expect(r.headers.get("Cache-Control")).toBe("no-store");
+    });
+
+    it("DOCS_PDFS binding missing → themed 503, not a crash", async () => {
+      const env = makeEnv({ DOCS_ENV: "production" }); // no DOCS_PDFS at all
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(503);
+    });
+
+    it("other versions' PDF paths never touch DOCS_PDFS — fall through to normal dispatch", async () => {
+      // env carries a DOCS_PDFS bucket that would 500 if queried at all, proving the
+      // rolling/1.5/1.4 PDF paths (no pdf_r2_key on those manifest entries) skip it entirely.
+      const env = r2Env(
+        {},
+        {
+          DOCS_ENV: "production",
+          DOCS_PDFS: { get: async () => { throw new Error("must not be called for non-1.3 PDFs"); } } as unknown as R2Bucket,
+        },
+      );
+      const r = await get("/en/rolling/vyos-documentation.pdf", env);
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("rolling:/en/rolling/vyos-documentation.pdf");
+    });
+
+    it("1.2 (pdf: null, no pdf_r2_key) falls through to normal dispatch unaffected", async () => {
+      const env = r2Env({}, { DOCS_ENV: "production" });
+      const r = await get("/en/1.2/vyos-documentation.pdf", env);
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("legacy:/en/1.2/vyos-documentation.pdf");
+    });
+  });
 });

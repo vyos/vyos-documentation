@@ -5,6 +5,10 @@ export interface VersionEntry {
   status: "dev" | "lts" | "eol";
   binding: string; aliases: string[];
   pdf: string | null;
+  // R2 object key for the apex PDF fallback (spec §5) — set only on versions whose PDF
+  // exceeds the 25 MiB static-asset cap and is therefore absent from the content
+  // Worker's own asset tree (currently just 1.3). Optional; most versions omit it.
+  pdf_r2_key?: string;
 }
 export interface Manifest {
   schema_version: number;
@@ -22,6 +26,9 @@ export function validateManifest(m: Manifest): Manifest {
     if (!/^DOCS_[A-Z0-9_]+$/.test(v.binding)) throw new Error(`bad binding for ${v.slug}`);
     if (!["dev", "lts", "eol"].includes(v.status)) throw new Error(`bad status for ${v.slug}`);
     if (slugs.has(v.slug)) throw new Error(`duplicate slug: ${v.slug}`);
+    // pdf_r2_key names an R2 fallback for the exact `pdf` URL — a null pdf has no URL
+    // for the fallback to ever be reached at, so the pairing is nonsensical.
+    if (v.pdf_r2_key && v.pdf === null) throw new Error(`pdf_r2_key set but pdf is null for ${v.slug}`);
     slugs.add(v.slug);
   }
   // Separate pass: an alias must not collide with ANY canonical slug (not just an
