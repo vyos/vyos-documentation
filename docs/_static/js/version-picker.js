@@ -110,7 +110,8 @@
       sel.appendChild(o);
     });
     sel.addEventListener('change', function () {
-      window.location.href = '/' + sel.value + '/' + loc.slug + '/' + loc.rest;
+      window.location.href = '/' + sel.value + '/' + loc.slug + '/' + loc.rest +
+        window.location.search + window.location.hash;
     });
     anchor.appendChild(sel);
   }

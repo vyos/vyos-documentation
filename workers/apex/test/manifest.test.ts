@@ -5,6 +5,8 @@ import { loadManifest, buildDispatch, validateManifest, type Manifest } from "..
 // config as a Vite `?raw` asset instead so the file content is inlined at bundle time.
 // eslint-disable-next-line import/no-unresolved
 import wranglerJsonc from "../wrangler.jsonc?raw";
+// eslint-disable-next-line import/no-unresolved
+import rootHtml from "../assets/root.html?raw";
 
 describe("versions.json v2 manifest (§3.4)", () => {
   it("loads and validates schema_version 2 with 5 versions", () => {
@@ -86,4 +88,19 @@ it("every versions.json binding exists in BOTH apex wrangler envs (§3.4 gate a)
     const services = new Set((cfg.env[envName].services as { binding: string }[]).map((s) => s.binding));
     for (const b of bindings) expect(services, `${envName} missing ${b}`).toContain(b);
   }
+});
+
+it("root.html's hardcoded default-version references stay congruent with the manifest", () => {
+  // root.html is a static fallback shell (never templated at build time — see the
+  // comment in the file) so its `/en/<slug>/` references must be hand-kept in sync
+  // with the manifest's default_version. This is the drift guard: it fails loudly if
+  // someone bumps default_version without also updating the static asset.
+  const expected = `/en/${loadManifest().default_version}/`;
+  // Strip HTML comments first — the explanatory comment in root.html mentions the
+  // literal placeholder text "/en/<default_version>/", which is documentation, not
+  // a real markup reference, and must not be asserted against the manifest.
+  const withoutComments = rootHtml.replace(/<!--[\s\S]*?-->/g, "");
+  const refs = withoutComments.match(/\/en\/[^/"'\s]+\//g) ?? [];
+  expect(refs.length).toBeGreaterThan(0);
+  for (const ref of refs) expect(ref).toBe(expected);
 });

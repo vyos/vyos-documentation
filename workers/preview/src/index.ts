@@ -21,7 +21,25 @@ export function keyFor(pathname: string): string {
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const key = keyFor(new URL(request.url).pathname);
-    const obj = await env.PREVIEWS.get(key);
+    let obj: R2ObjectBody | null = null;
+    let resolvedKey = key;
+    try {
+      obj = await env.PREVIEWS.get(key);
+      if (!obj && !key.includes(".")) {
+        // Extensionless directory URL with no trailing slash (e.g. /en/rolling/cli) —
+        // keyFor() only appends index.html for trailing-slash/empty paths, so probe the
+        // directory's index.html before 404ing.
+        resolvedKey = `${key}/index.html`;
+        obj = await env.PREVIEWS.get(resolvedKey);
+      }
+    } catch {
+      // Transient R2/binding error on either probe — fail closed with a controlled 503
+      // instead of letting an unhandled exception surface as a raw worker error.
+      return new Response("preview temporarily unavailable", {
+        status: 503,
+        headers: { "X-Robots-Tag": "noindex", "Cache-Control": "no-store" },
+      });
+    }
     if (!obj) {
       return new Response("preview not found", {
         status: 404,
@@ -31,7 +49,7 @@ export default {
     }
     return new Response(obj.body, {
       headers: {
-        "content-type": obj.httpMetadata?.contentType ?? mimeFor(key),
+        "content-type": obj.httpMetadata?.contentType ?? mimeFor(resolvedKey),
         "X-Robots-Tag": "noindex",
         "Cache-Control": "no-store",
         "X-Content-Type-Options": "nosniff",

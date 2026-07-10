@@ -36,12 +36,15 @@ describe("alias + codename 301s (§3.2.4)", () => {
     expect(loc("https://docs.vyos.io/_/downloads/en/sagitta/pdf/?x=1"))
       .toEqual({ status: 301, location: `${v14pdf}?x=1` });
   });
+  it("does not match /pdf-notes (only an exact /pdf segment)", () => {
+    expect(loc("https://docs.vyos.io/_/downloads/en/rolling/pdf-notes")).toBeNull();
+  });
   it("trailing-slash normalization on bare version roots (§3.2.3)", () => {
     expect(loc("https://docs.vyos.io/en/1.5")).toEqual({ status: 301, location: "/en/1.5/" });
     expect(loc("https://docs.vyos.io/en/rolling?q=1")).toEqual({ status: 301, location: "/en/rolling/?q=1" });
   });
   it("never emits a fragment in Location (§3.2.6)", () => {
-    const r = loc("https://docs.vyos.io/en/latest/page.html");
+    const r = loc("https://docs.vyos.io/en/latest/page.html#section");
     expect(r!.location).not.toContain("#");
   });
   it("returns null for canonical paths (no redirect loop)", () => {

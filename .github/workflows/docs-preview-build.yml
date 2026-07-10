@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # untrusted PR code runs in this job; token is read-only but no reason to leave it on disk
       - name: Build HTML (no PDF in previews, §10)
         run: |
           pip install -r requirements.txt

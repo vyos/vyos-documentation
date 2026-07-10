@@ -29,6 +29,11 @@ describe("apex router (§3.2 order)", () => {
     expect(r.headers.get("Location")).toBe("/en/rolling/");
     expect(r.headers.get("X-Apex-Build")).toBe("apex-sha");
   });
+  it("/ redirect preserves the query string (like alias redirects)", async () => {
+    const r = await get("/?ref=email");
+    expect(r.status).toBe(301);
+    expect(r.headers.get("Location")).toBe("/en/rolling/?ref=email");
+  });
   it("/versions.json served from manifest with X-Apex-Build", async () => {
     const r = await get("/versions.json");
     expect(r.status).toBe(200);
@@ -92,6 +97,29 @@ describe("apex router (§3.2 order)", () => {
   it("/llms.txt with missing default binding → 503, never 404", async () => {
     const env = makeEnv({ DOCS_ROLLING: undefined });
     expect((await get("/llms.txt", env)).status).toBe(503);
+  });
+  it("/llms.txt forwards the ORIGINAL request (method + conditional-GET headers preserved)", async () => {
+    let seenMethod: string | null = null;
+    let seenIfNoneMatch: string | null = null;
+    const env = makeEnv({
+      DOCS_ROLLING: {
+        fetch: async (req: Request) => {
+          seenMethod = req.method;
+          seenIfNoneMatch = req.headers.get("if-none-match");
+          return new Response("llms body", { headers: { "content-type": "text/plain" } });
+        },
+      },
+    });
+    const r = await worker.fetch(
+      new Request("https://docs-next.vyos.io/llms.txt", {
+        method: "HEAD",
+        headers: { "user-agent": "vitest", "if-none-match": '"xyz"' },
+      }),
+      env,
+    );
+    expect(r.status).toBe(200);
+    expect(seenMethod).toBe("HEAD");
+    expect(seenIfNoneMatch).toBe('"xyz"');
   });
   it("robots.txt passthrough forwards the ORIGINAL request (conditional-GET headers preserved)", async () => {
     let seenIfNoneMatch: string | null = null;

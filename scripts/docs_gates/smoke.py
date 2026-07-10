@@ -22,6 +22,19 @@ APEX_PATHS = ["/versions.json", "/healthz", "/robots.txt", "/sitemap.xml"]
 SEARCH_MOUNT_MARKER = 'id="vyos-search"'
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Probes assert an EXACT status per-path (200 or 404) — following a 3xx would
+    silently swap the probed status for whatever the redirect target returns,
+    masking an accidental redirect where a direct 200/404 was expected. Mirrors
+    parity.py's _NoRedirect/_OPENER pattern."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: D401
+        return None
+
+
+_OPENER = urllib.request.build_opener(_NoRedirect)
+
+
 @dataclasses.dataclass
 class Probe:
     path: str
@@ -61,7 +74,7 @@ def run(host: str, slug: str, expect_sha: str, access_id: str, access_secret: st
         req.add_header("CF-Access-Client-Id", access_id)
         req.add_header("CF-Access-Client-Secret", access_secret)
         try:
-            with urllib.request.urlopen(req, timeout=30) as resp:
+            with _OPENER.open(req, timeout=30) as resp:
                 status, headers, body = resp.status, resp.headers, resp.read()
         except urllib.error.HTTPError as e:  # non-2xx still carries headers
             status, headers, body = e.code, e.headers, e.read()

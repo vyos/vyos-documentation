@@ -63,4 +63,22 @@ describe("preview worker fetch entrypoint (§10)", () => {
     expect(r.status).toBe(200);
     expect(r.headers.get("content-type")).toBe("text/css");
   });
+  it("extensionless directory URL with no trailing slash serves the directory's index.html", async () => {
+    const env = makeEnv({
+      "pr-42/en/rolling/cli/index.html": { body: "<h1>cli</h1>", contentType: "text/html; charset=utf-8" },
+    });
+    const r = await get("/pr-42/en/rolling/cli", env);
+    expect(r.status).toBe(200);
+    expect(await r.text()).toBe("<h1>cli</h1>");
+    expect(r.headers.get("content-type")).toBe("text/html; charset=utf-8");
+  });
+  it("a transient R2/binding error on either probe degrades to a controlled 503 (never an unhandled exception)", async () => {
+    const throwingEnv: Env = {
+      PREVIEWS: { get: async () => { throw new Error("R2 unavailable"); } } as unknown as R2Bucket,
+    };
+    const r = await get("/pr-42/en/rolling/cli", throwingEnv);
+    expect(r.status).toBe(503);
+    expect(r.headers.get("X-Robots-Tag")).toBe("noindex");
+    expect(r.headers.get("Cache-Control")).toBe("no-store");
+  });
 });

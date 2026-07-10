@@ -3,6 +3,7 @@ import sys
 import urllib.error
 
 from scripts.docs_gates import parity
+from scripts.docs_gates.conftest import REDIRECT_LOCATION, REDIRECT_PATH
 
 
 def test_sitemap_url_extraction():
@@ -18,11 +19,21 @@ def test_alias_corpus_includes_pdf_and_alias_rows():
     assert ("/_/downloads/en/1.5/pdf/", 301, "/en/1.5/vyos-documentation.pdf") in rows
 
 
-def test_fetch_never_follows_redirects():
-    # the opener's redirect handler must refuse to build a follow-up request,
-    # so a 301 surfaces as (301, Location) instead of the post-redirect 200
+def test_fetch_never_follows_redirects_unit():
+    # unit-level sanity check on the handler class in isolation (kept alongside the
+    # end-to-end test below, which is what actually proves the opener is wired up)
     handler = parity._NoRedirect()
     assert handler.redirect_request(None, None, 301, "Moved", {}, "https://x/") is None
+
+
+def test_fetch_never_follows_redirects(redirect_http_server, monkeypatch):
+    # End-to-end: real local HTTP server returns a 301, exercised through the PUBLIC
+    # fetch() entrypoint (not just the handler class) — proves _OPENER is actually
+    # wired into fetch() and surfaces (301, Location) instead of following it.
+    monkeypatch.setattr(parity, "_SCHEME", "http")
+    status, location = parity.fetch(redirect_http_server, REDIRECT_PATH, None, "GET")
+    assert status == 301
+    assert location == REDIRECT_LOCATION
 
 
 def test_default_slugs_scoped_to_cf_built_versions():

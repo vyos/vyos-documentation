@@ -8,7 +8,9 @@ on:
 
 concurrency:
   group: apex-deploy-${{ github.ref_name }}
-  cancel-in-progress: true
+  # false (not true): a mid-job cancel can leave the apex/preview worker pair
+  # half-updated; queuing subsequent runs is safe.
+  cancel-in-progress: false
 
 permissions:
   contents: read

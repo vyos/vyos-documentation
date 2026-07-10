@@ -14,7 +14,7 @@ export function redirectFor(url: URL, m: Manifest): Response | null {
   const { pathname, search } = url; // never touch url.hash — fragments don't reach the server
 
   // RTD PDF URLs: /_/downloads/en/<ver>/pdf/*  →  /en/<slug>/vyos-documentation.pdf
-  const pdf = pathname.match(/^\/_\/downloads\/en\/([^/]+)\/pdf\/?/);
+  const pdf = pathname.match(/^\/_\/downloads\/en\/([^/]+)\/pdf(?:\/|$)/);
   if (pdf) {
     const slug = aliasMap(m).get(pdf[1]) ?? pdf[1];
     const entry = m.versions.find((v) => v.slug === slug);

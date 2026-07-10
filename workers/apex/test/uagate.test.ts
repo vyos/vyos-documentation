@@ -17,4 +17,8 @@ describe("UA gate (§3.2.1) — ships log-only for AI crawlers", () => {
   it("unknown UA → allow (fail-open for humans)", () => {
     expect(uaVerdict("Mozilla/5.0 (X11; Linux x86_64) Firefox/128.0", policy)).toBe("allow");
   });
+  it("block takes precedence over allow on a UA matching both lists", () => {
+    const dualMatch = { ...policy, allow: ["Googlebot"], block: ["Googlebot EvilScraper"] };
+    expect(uaVerdict("Mozilla/5.0 (compatible; Googlebot EvilScraper/1.0)", dualMatch)).toBe("block");
+  });
 });

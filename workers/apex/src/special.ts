@@ -12,8 +12,8 @@ export async function specialPathFor(
   const url = new URL(request.url);
   const p = url.pathname;
 
-  if (p === "/") // default-version redirect (§3.2.2)
-    return new Response(null, { status: 301, headers: { Location: `/en/${m.default_version}/` } });
+  if (p === "/") // default-version redirect (§3.2.2) — query preserved, like alias redirects
+    return new Response(null, { status: 301, headers: { Location: `/en/${m.default_version}/${url.search}` } });
 
   if (p === "/versions.json")
     return new Response(JSON.stringify(m), {
@@ -40,7 +40,10 @@ export async function specialPathFor(
     const b = bindingGuard(env, def.binding);
     if (!b) // do NOT fall through — /llms.txt with a missing binding is a 503, not a 404
       return new Response("service unavailable", { status: 503, headers: { "content-type": "text/plain" } });
-    return b.fetch(new Request(`https://docs.vyos.io/en/${def.slug}/llms.txt`));
+    // Forward the ORIGINAL request (method + conditional-GET headers), just retargeted
+    // to the versioned path — mirrors the robots.txt/favicon pass-through below.
+    const target = new URL(`/en/${def.slug}/llms.txt`, url);
+    return b.fetch(new Request(target, request));
   }
 
   if (p === "/robots.txt" || p === "/favicon.ico" || /^\/apple-touch-icon.*\.png$/.test(p))

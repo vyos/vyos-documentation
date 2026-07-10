@@ -1,4 +1,8 @@
+import urllib.error
+import urllib.request
+
 from scripts.docs_gates import smoke
+from scripts.docs_gates.conftest import REDIRECT_LOCATION, REDIRECT_PATH
 
 
 def test_probe_plan_scoped_to_slug():
@@ -42,6 +46,23 @@ def test_probe_plan_asserts_search_mount_on_index_only():
     assert index.assert_search_mount is True
     other_content = [p for p in plan if p.path != "/en/1.5/index.html" and p.assert_docs_build]
     assert other_content and all(p.assert_search_mount is False for p in other_content)
+
+
+# --- CodeRabbit finding: smoke's probe requests must mirror parity.py's _NoRedirect
+# opener — an exact-status probe (200/404) that silently followed a 3xx would report
+# whatever the redirect target returns instead of the redirect itself. ---
+
+def test_opener_observes_redirect_directly_not_followed(redirect_http_server):
+    # End-to-end: a real local HTTP server returns a 301, opened through smoke.py's
+    # module-level _OPENER (the exact object `run()` uses) — proves it's actually
+    # wired to refuse the redirect, matching run()'s HTTPError-catch handling of 3xx.
+    req = urllib.request.Request(f"http://{redirect_http_server}{REDIRECT_PATH}", method="GET")
+    try:
+        smoke._OPENER.open(req, timeout=5)
+        raise AssertionError("expected HTTPError for a 301 with the no-redirect opener")
+    except urllib.error.HTTPError as e:
+        assert e.code == 301
+        assert e.headers.get("Location") == REDIRECT_LOCATION
 
 
 def test_search_mount_present():

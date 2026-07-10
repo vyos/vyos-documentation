@@ -53,9 +53,13 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
 
 _OPENER = urllib.request.build_opener(_NoRedirect)
 
+# Overridable in tests (monkeypatched to "http") so fetch() can be exercised end-to-end
+# against a real local http.server instead of requiring TLS for a unit test.
+_SCHEME = "https"
+
 
 def fetch(host: str, path: str, access: tuple[str, str] | None, method: str = "HEAD"):
-    req = urllib.request.Request(f"https://{host}{path}", method=method)
+    req = urllib.request.Request(f"{_SCHEME}://{host}{path}", method=method)
     if access:
         req.add_header("CF-Access-Client-Id", access[0])
         req.add_header("CF-Access-Client-Secret", access[1])

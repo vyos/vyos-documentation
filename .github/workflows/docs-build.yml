@@ -12,7 +12,10 @@ on:
 
 concurrency:
   group: docs-build-${{ github.ref_name }}
-  cancel-in-progress: true
+  # false (not true): a cancel mid-promote would leave production unverified and the
+  # registry pointer stale — queued runs are safe because the check_head guard (§7.1)
+  # skips any run whose SHA is no longer the branch tip.
+  cancel-in-progress: false
 
 permissions:
   contents: read
@@ -247,12 +250,15 @@ jobs:
           else
             echo "DOCS_CF_LIVE=false — pre-cutover: skipping production hostname purge"
           fi
-          # registry upload — atomic via SHA-scoped immutable objects + a pointer written
-          # LAST (§7.1.4). Uploading straight to $slug/last-good.* let a concurrent reader
-          # observe a half-written generation (e.g. new tar.zst, still-old meta.json) mid
-          # upload. Uploading under $slug/<sha>/* first — a key no prior generation ever
-          # reused — and only then repointing $slug/latest.json means readers always see
-          # either the OLD generation in full or the NEW one in full, never a mix.
+          # registry generation upload — SHA-scoped immutable objects (§7.1.4). The
+          # $slug/latest.json POINTER is deliberately NOT published here: it moves to a
+          # dedicated step AFTER the post-promote probe/auto-rollback below, so a probe
+          # failure (and the rollback it triggers) leaves the pointer on the previous
+          # good generation instead of advancing it to a generation that just got rolled
+          # back. Uploading straight to $slug/last-good.* let a concurrent reader observe
+          # a half-written generation (e.g. new tar.zst, still-old meta.json) mid upload.
+          # Uploading under $slug/<sha>/* first — a key no prior generation ever reused —
+          # keeps readers of the OLD pointer seeing a full, untouched old generation.
           cd .. && tar --zstd -cf lastgood.tar.zst -C dist/assets .
           page_count=$(find "dist/assets/en/$slug" -name '*.html' | wc -l | tr -d ' ')
           sha='${{ github.sha }}'
@@ -264,15 +270,8 @@ jobs:
             npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/pdf" --file "../dist/assets/en/$slug/vyos-documentation.pdf" --remote &&
             npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/meta.json" --file ../lastgood.meta.json --remote
           }
-          publish_pointer() {
-            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/latest.json" --file ../latest.json --remote
-          }
           if ! (upload_generation || upload_generation); then
             echo "::error::registry generation upload failed twice — REGISTRY STALE (see spec §7.1.4)"
-            exit 1
-          fi
-          if ! (publish_pointer || publish_pointer); then
-            echo "::error::registry pointer publish failed twice — sha-scoped objects landed under $slug/$sha/ but latest.json still points at the previous generation (see spec §7.1.4)"
             exit 1
           fi
 
@@ -301,5 +300,27 @@ jobs:
             curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
               --data '{"hosts":["docs.vyos.io"]}'
+            exit 1
+          fi
+
+      - name: Publish registry pointer (§7.1.4)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -eu
+          slug='${{ steps.matrix.outputs.slug }}'
+          sha='${{ github.sha }}'
+          cd workers
+          # Runs only after the post-promote probe/auto-rollback step above has passed (or
+          # was a pre-cutover no-op). Repointing $slug/latest.json is the sole remaining
+          # step of the §7.1.4 atomic-publish sequence — the sha-scoped generation objects
+          # were already uploaded in PROMOTE. If this fails, the sha-scoped objects landed
+          # under $slug/$sha/ but latest.json still points at the previous generation.
+          publish_pointer() {
+            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/latest.json" --file ../latest.json --remote
+          }
+          if ! (publish_pointer || publish_pointer); then
+            echo "::error::registry pointer publish failed twice — sha-scoped objects landed under $slug/$sha/ but latest.json still points at the previous generation (see spec §7.1.4)"
             exit 1
           fi
