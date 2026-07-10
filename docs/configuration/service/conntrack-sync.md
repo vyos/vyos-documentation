@@ -476,6 +476,17 @@ current active connections:                0
 connections created:                       0    failed:            0
 connections updated:                       0    failed:            0
 connections destroyed:                     0    failed:            0
+
+traffic processed:
+                   0 Bytes                         0 Pckts
+
+multicast traffic (active device=eth0):
+              868780 Bytes sent               224136 Bytes recv
+               20595 Pckts sent                14034 Pckts recv
+                   0 Error send                    0 Error recv
+
+message tracking:
+                   0 Malformed msgs                    0 Lost msgs
 ```
 
 On the Backup router:
@@ -496,4 +507,15 @@ current active connections:               10
 connections created:                     888    failed:            0
 connections updated:                     134    failed:            0
 connections destroyed:                   878    failed:            0
+
+traffic processed:
+                   0 Bytes                         0 Pckts
+
+multicast traffic (active device=eth0):
+              234184 Bytes sent               907504 Bytes recv
+               14663 Pckts sent                21495 Pckts recv
+                   0 Error send                    0 Error recv
+
+message tracking:
+                   0 Malformed msgs                    0 Lost msgs
 ```
