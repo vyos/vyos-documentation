@@ -235,8 +235,8 @@ set service conntrack-sync sync-queue-size 4
 
 ```{cfgcmd} set service conntrack-sync purge-timeout \<1-2147483647\>
 
-**Configure the time, in seconds, that a synchronized entry may
-remain unrefreshed before it is removed.**
+**Configure the delay, in seconds, before synchronized entries are
+purged after a handover.**
 
 The default is 60.
 ```
