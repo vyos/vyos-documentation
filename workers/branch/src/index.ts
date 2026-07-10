@@ -26,7 +26,11 @@ export function withDocsHeaders(
   out.headers.set("X-Docs-Build", env.DOCS_BUILD_SHA);
   out.headers.set(
     "Cache-Control",
-    env.DOCS_ENV === "canary" ? "no-store" : cacheHeaderFor(classifyPath(path)),
+    // Error responses (4xx/5xx) must never carry the page/asset cache class — a
+    // cached 404 would poison the edge for the full s-maxage window.
+    env.DOCS_ENV === "canary" || out.status >= 400
+      ? "no-store"
+      : cacheHeaderFor(classifyPath(path)),
   );
   return out;
 }

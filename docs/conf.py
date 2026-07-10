@@ -129,8 +129,11 @@ html_extra_path = ['_html_extra']
 # docs/_static/css/version-picker.css). Appended rather than assigned in case a later
 # addition to this file defines these lists first. Registered unconditionally: it degrades
 # silently on ReadTheDocs (fetch of /versions.json fails there, so nothing renders).
-html_js_files = [*html_js_files, 'js/version-picker.js'] if 'html_js_files' in dir() else ['js/version-picker.js']
-html_css_files = [*html_css_files, 'css/version-picker.css'] if 'html_css_files' in dir() else ['css/version-picker.css']
+# globals().get(...) (not a bare `html_js_files` reference guarded by `'html_js_files' in
+# dir()`) avoids a static-analysis F821 (possibly-undefined name) while keeping the same
+# runtime behavior: append to an existing list if one was already defined, else start fresh.
+html_js_files = [*globals().get('html_js_files', []), 'js/version-picker.js']
+html_css_files = [*globals().get('html_css_files', []), 'css/version-picker.css']
 
 # CF-Workers builds inject DOCS_VERSION_SLUG (docs-build.yml); ReadTheDocs builds
 # (until sunset) run plain Sphinx with no Pagefind step, so the Pagefind wrapper

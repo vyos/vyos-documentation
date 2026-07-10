@@ -65,7 +65,10 @@ def run(artifact: Path, slug: str, versions: Path, previous_meta: Path | None,
     want = f"https://docs.vyos.io/en/{slug}/"
     for p in pages:
         m = CANONICAL_RE.search(p.read_text(errors="ignore"))
-        if m and not m.group(1).startswith(want):
+        if m is None:
+            _fail(fails, f"missing canonical link in en/{slug}/{p.relative_to(root)}")
+            break  # one example is enough to block
+        if not m.group(1).startswith(want):
             _fail(fails, f"bad canonical in en/{slug}/{p.relative_to(root)}: {m.group(1)}")
             break  # one example is enough to block
 
@@ -81,8 +84,8 @@ def main() -> int:
     ap.add_argument("--critical-list", type=Path,
                     default=Path("scripts/docs_gates/critical-pages.txt"))
     a = ap.parse_args()
-    critical = [l.strip() for l in a.critical_list.read_text().splitlines()
-                if l.strip() and not l.startswith("#")]
+    critical = [line.strip() for line in a.critical_list.read_text().splitlines()
+                if line.strip() and not line.startswith("#")]
     return run(a.artifact, a.slug, a.versions, a.previous_meta, critical)
 
 

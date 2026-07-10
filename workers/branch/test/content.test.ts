@@ -61,4 +61,20 @@ describe("default fetch entrypoint", () => {
     expect(resp.headers.get("Cache-Control")).toBe("no-store");
     expect(resp.headers.get("X-Docs-Build")).toBe("testsha");
   });
+
+  it("4xx/5xx responses are never cached, even in production", async () => {
+    const env: Env = {
+      ASSETS: {
+        fetch: async () => new Response("nope", { status: 404, headers: { "content-type": "text/html" } }),
+      } as unknown as Fetcher,
+      DOCS_BUILD_SHA: "testsha",
+      DOCS_ENV: "production",
+    };
+    const resp = await worker.fetch(
+      new Request("https://docs.vyos.io/en/rolling/missing.html"),
+      env,
+    );
+    expect(resp.status).toBe(404);
+    expect(resp.headers.get("Cache-Control")).toBe("no-store");
+  });
 });

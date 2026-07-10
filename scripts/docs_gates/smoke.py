@@ -95,8 +95,8 @@ def main() -> int:
     ap.add_argument("--pdf", default=None)
     ap.add_argument("--critical-list", default="scripts/docs_gates/critical-pages.txt")
     a = ap.parse_args()
-    critical = [l.strip() for l in open(a.critical_list).read().splitlines()
-                if l.strip() and not l.startswith("#")]
+    critical = [line.strip() for line in open(a.critical_list).read().splitlines()
+                if line.strip() and not line.startswith("#")]
     return run(a.host, a.slug, a.expect_sha, a.access_id, a.access_secret, a.pdf, critical)
 
 

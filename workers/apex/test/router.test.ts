@@ -66,7 +66,11 @@ describe("apex router (§3.2 order)", () => {
   it("/kb/* → themed 404 while seam unbound; dispatches when DOCS_KB present", async () => {
     expect((await get("/kb/article")).status).toBe(404);
     const env = makeEnv({ DOCS_KB: { fetch: async () => new Response("kb!") } });
-    expect(await (await get("/kb/article", env)).text()).toBe("kb!");
+    const r = await get("/kb/article", env);
+    expect(await r.text()).toBe("kb!");
+    // /kb passthrough gets the same security headers as any other content response.
+    expect(r.headers.get("X-Content-Type-Options")).toBe("nosniff");
+    expect(r.headers.get("Referrer-Policy")).toBe("strict-origin-when-cross-origin");
   });
   it("unknown path → themed 404 + security headers", async () => {
     const r = await get("/nope");
@@ -89,6 +93,26 @@ describe("apex router (§3.2 order)", () => {
     const env = makeEnv({ DOCS_ROLLING: undefined });
     expect((await get("/llms.txt", env)).status).toBe(503);
   });
+  it("robots.txt passthrough forwards the ORIGINAL request (conditional-GET headers preserved)", async () => {
+    let seenIfNoneMatch: string | null = null;
+    const env = makeEnv({
+      ASSETS: {
+        fetch: async (req: Request) => {
+          seenIfNoneMatch = req.headers.get("if-none-match");
+          return new Response("User-agent: *", { headers: { "content-type": "text/plain" } });
+        },
+      },
+    });
+    const r = await worker.fetch(
+      new Request("https://docs-next.vyos.io/robots.txt", {
+        headers: { "user-agent": "vitest", "if-none-match": '"abc123"' },
+      }),
+      env,
+    );
+    expect(r.status).toBe(200);
+    expect(seenIfNoneMatch).toBe('"abc123"');
+  });
+
   it("UA gate in production tolerates a missing User-Agent header (no crash, fail-open)", async () => {
     const prodEnv = makeEnv({ DOCS_ENV: "production" });
     const r = await worker.fetch(

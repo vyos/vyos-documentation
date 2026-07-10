@@ -73,7 +73,8 @@ def main() -> int:
     ap.add_argument("--sitemap-host", required=True)
     ap.add_argument("--probe-host", required=True)
     ap.add_argument("--slugs", default=DEFAULT_SLUGS)
-    ap.add_argument("--access-id"); ap.add_argument("--access-secret")
+    ap.add_argument("--access-id")
+    ap.add_argument("--access-secret")
     ap.add_argument("--report", type=Path, default=Path("parity-report.json"))
     a = ap.parse_args()
     access = (a.access_id, a.access_secret) if a.access_id else None

@@ -13,16 +13,34 @@ export interface Manifest {
   versions: VersionEntry[];
 }
 
-export function loadManifest(): Manifest {
-  const m = raw as Manifest;
+// Split out from loadManifest() so tests can validate synthetic manifests without
+// touching the real ../../versions.json import (which loadManifest() is hardwired to).
+export function validateManifest(m: Manifest): Manifest {
   if (m.schema_version !== 2) throw new Error(`versions.json schema_version ${m.schema_version} != 2`);
+  const slugs = new Set<string>();
   for (const v of m.versions) {
     if (!/^DOCS_[A-Z0-9_]+$/.test(v.binding)) throw new Error(`bad binding for ${v.slug}`);
     if (!["dev", "lts", "eol"].includes(v.status)) throw new Error(`bad status for ${v.slug}`);
+    if (slugs.has(v.slug)) throw new Error(`duplicate slug: ${v.slug}`);
+    slugs.add(v.slug);
+  }
+  // Separate pass: an alias must not collide with ANY canonical slug (not just an
+  // earlier one), so `slugs` must be fully populated before this check runs.
+  const aliases = new Set<string>();
+  for (const v of m.versions) {
+    for (const alias of v.aliases) {
+      if (slugs.has(alias)) throw new Error(`alias ${alias} (on ${v.slug}) collides with a canonical slug`);
+      if (aliases.has(alias)) throw new Error(`duplicate alias: ${alias}`);
+      aliases.add(alias);
+    }
   }
   if (!m.versions.some((v) => v.slug === m.default_version))
     throw new Error(`default_version ${m.default_version} not in versions[]`);
   return m;
+}
+
+export function loadManifest(): Manifest {
+  return validateManifest(raw as Manifest);
 }
 
 export function buildDispatch(m: Manifest): Map<string, string> {

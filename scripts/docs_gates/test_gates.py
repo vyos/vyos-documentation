@@ -80,6 +80,15 @@ def test_fail_on_alias_canonical(artifact: Path, versions: Path):
     assert rc == 1
 
 
+def test_fail_on_missing_canonical(artifact: Path, versions: Path):
+    (artifact / "en/rolling/nocanon.html").write_text(
+        '<html><head></head><body>no canonical link at all</body></html>'
+    )
+    rc = gates.run(artifact=artifact, slug="rolling", versions=versions,
+                   previous_meta=None, critical=["index.html"])
+    assert rc == 1
+
+
 def test_fail_on_oversize_file(artifact: Path, versions: Path):
     big = artifact / "en/rolling/huge.bin"
     big.write_bytes(b"\0" * (26 * 1024 * 1024))  # > 25 MiB

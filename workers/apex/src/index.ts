@@ -53,7 +53,7 @@ export default {
     }
 
     // 2. Special paths (§3.2.2)
-    const special = await specialPathFor(url, manifest, env as never);
+    const special = await specialPathFor(request, manifest, env as never);
     if (special) return apexHeaders(special, env);
 
     // 3+4. Trailing-slash + alias/codename/PDF 301s (§3.2.3-4)
@@ -62,7 +62,7 @@ export default {
 
     // 5. /kb seam (§3.2.5)
     if (url.pathname.startsWith("/kb/") || url.pathname === "/kb") {
-      if (env.DOCS_KB) return env.DOCS_KB.fetch(request);
+      if (env.DOCS_KB) return securityHeaders(await env.DOCS_KB.fetch(request));
       return themed(env, 404);
     }
 

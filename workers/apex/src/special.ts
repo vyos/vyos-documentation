@@ -5,10 +5,11 @@ import { bindingGuard } from "./dispatch";
 // ASSETS binding; versions.json is served from the imported manifest so the body
 // always matches the dispatch map.
 export async function specialPathFor(
-  url: URL,
+  request: Request,
   m: Manifest,
   env: Record<string, unknown> & { ASSETS: Fetcher },
 ): Promise<Response | null> {
+  const url = new URL(request.url);
   const p = url.pathname;
 
   if (p === "/") // default-version redirect (§3.2.2)
@@ -43,7 +44,9 @@ export async function specialPathFor(
   }
 
   if (p === "/robots.txt" || p === "/favicon.ico" || /^\/apple-touch-icon.*\.png$/.test(p))
-    return env.ASSETS.fetch(new Request(url));
+    // Pass the ORIGINAL request through (not a re-synthesized `new Request(url)`) so
+    // conditional-GET headers (If-None-Match / If-Modified-Since) reach ASSETS intact.
+    return env.ASSETS.fetch(request);
 
   return null;
 }
