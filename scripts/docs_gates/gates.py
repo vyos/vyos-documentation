@@ -1,8 +1,9 @@
 """Deploy-blocking sanity gates (spec §7.1).
 
 Gates: file-count vs plan cap (<= 80% of 100k), per-file < 25 MiB, index.html +
-critical-page presence, page-count delta vs previous deploy, canonical URLs equal
-https://docs.vyos.io/en/<slug>/ exactly, declared PDF present, Pagefind non-empty.
+critical-page presence, page-count delta vs previous deploy, canonical URLs must
+start with the https://docs.vyos.io/en/<slug>/ prefix, declared PDF present,
+Pagefind non-empty.
 Exit 0 = deployable; exit 1 = blocked (one line per failed gate on stderr).
 """
 from __future__ import annotations
