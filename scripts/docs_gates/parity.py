@@ -17,6 +17,11 @@ from pathlib import Path
 
 SITEMAP_LOC = re.compile(r"<loc>([^<]+)</loc>")
 
+# Sitemap sweep covers only the versions THIS repo builds on CF (rolling/1.5/1.4).
+# 1.3/1.2 have NO RTD sitemaps (spec §15a.5) — their parity is the legacy snapshot
+# repo's crawl-inventory job. Their alias/PDF redirect rows below stay in scope.
+DEFAULT_SLUGS = "rolling,1.5,1.4"
+
 ALIASES = [("latest", "rolling"), ("stable", "1.5"), ("lts", "1.5"),
            ("circinus", "1.5"), ("sagitta", "1.4"), ("equuleus", "1.3"), ("crux", "1.2")]
 
@@ -59,13 +64,15 @@ def fetch(host: str, path: str, access: tuple[str, str] | None, method: str = "H
             return r.status, r.headers.get("Location")
     except urllib.error.HTTPError as e:  # 3xx land here with the no-redirect handler
         return e.code, e.headers.get("Location")
+    except Exception:  # noqa: BLE001 — DNS blip/timeout fails THIS probe, not the run
+        return 0, None
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--sitemap-host", required=True)
     ap.add_argument("--probe-host", required=True)
-    ap.add_argument("--slugs", default="rolling,1.5,1.4,1.3,1.2")
+    ap.add_argument("--slugs", default=DEFAULT_SLUGS)
     ap.add_argument("--access-id"); ap.add_argument("--access-secret")
     ap.add_argument("--report", type=Path, default=Path("parity-report.json"))
     a = ap.parse_args()
@@ -78,8 +85,14 @@ def main() -> int:
         if status != 200:
             failures.append({"path": f"/en/{slug}/sitemap.xml", "reason": f"sitemap {status}"})
             continue
-        with urllib.request.urlopen(f"https://{a.sitemap_host}/en/{slug}/sitemap.xml", timeout=30) as r:
-            urls = urls_from_sitemap(r.read().decode())
+        try:
+            with urllib.request.urlopen(f"https://{a.sitemap_host}/en/{slug}/sitemap.xml",
+                                        timeout=30) as r:
+                urls = urls_from_sitemap(r.read().decode())
+        except Exception as e:  # noqa: BLE001 — record per-slug, keep sweeping; report ALWAYS written
+            failures.append({"path": f"/en/{slug}/sitemap.xml",
+                             "reason": f"sitemap fetch error: {e}"})
+            continue
         for path in urls:
             checked += 1
             st, _ = fetch(a.probe_host, path, access)

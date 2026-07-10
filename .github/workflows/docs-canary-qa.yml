@@ -28,8 +28,12 @@ jobs:
         # --expect-sha SKIP = presence-only assert; implemented in smoke.docs_build_ok (Task 3.2).
       - name: URL parity vs RTD (pre-cutover truth)
         run: |
+          # --slugs pinned to CF-built versions: 1.3/1.2 have no RTD sitemaps (§15a.5);
+          # legacy parity is the snapshot repo's crawl-inventory job (defense in depth
+          # alongside the matching parity.py DEFAULT_SLUGS)
           python -m scripts.docs_gates.parity \
             --sitemap-host docs.vyos.io --probe-host docs-next.vyos.io \
+            --slugs rolling,1.5,1.4 \
             --access-id '${{ secrets.CF_ACCESS_CLIENT_ID }}' \
             --access-secret '${{ secrets.CF_ACCESS_CLIENT_SECRET }}'
       - uses: actions/upload-artifact@v4
