@@ -1,0 +1,54 @@
+name: Bootstrap one-off — binding targets
+
+# ONE-OFF workflow (Task 3.6 Step 2 of the Cloudflare Workers migration plan).
+# Fires exactly once, on the push that adds this file to this branch, to run
+# workers/bootstrap.sh against the real Cloudflare account — the API token
+# exists ONLY as a repo Actions secret, never locally. Delete this file once
+# the bootstrap + verification below have succeeded.
+
+on:
+  push:
+    branches: [claude/cloudflare-migration-71cb79]
+    paths: [".github/workflows/bootstrap-oneoff.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+
+      - name: Run bootstrap.sh
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: bash workers/bootstrap.sh
+
+      - name: Verify all 8 binding targets exist
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: workers
+        run: |
+          set -eu
+          npm ci
+          count=0
+          failed=0
+          for w in vyos-docs-rolling-en vyos-docs-v15-en vyos-docs-v14-en vyos-docs-legacy; do
+            for suffix in "" "-candidate"; do
+              name="$w$suffix"
+              if npx wrangler deployments list --name "$name" >/dev/null 2>&1; then
+                echo "OK: $name"
+                count=$((count+1))
+              else
+                echo "::error::binding target $name failed deployments list"
+                failed=1
+              fi
+            done
+          done
+          echo "PASS: $count/8 binding targets verified"
+          exit $failed
