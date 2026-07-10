@@ -20,11 +20,19 @@ describe("versions.json v2 manifest (§3.4)", () => {
       expect(["dev", "lts", "eol"]).toContain(v.status);
     }
   });
-  it("dispatch map: slugs + shared legacy binding", () => {
-    const d = buildDispatch(loadManifest());
-    expect(d.get("rolling")).toBe("DOCS_ROLLING");
-    expect(d.get("1.3")).toBe("DOCS_LEGACY");
-    expect(d.get("1.2")).toBe("DOCS_LEGACY");
+  it("dispatch map: every version slug maps to its binding (shared legacy included)", () => {
+    const m = loadManifest();
+    const d = buildDispatch(m);
+    expect(d.size).toBe(m.versions.length);
+    for (const v of m.versions) {
+      expect(d.get(v.slug)).toBe(v.binding);
+    }
+    // aliases are redirect-layer concerns, never dispatch keys
+    for (const v of m.versions) {
+      for (const a of v.aliases) {
+        expect(d.has(a)).toBe(false);
+      }
+    }
   });
 });
 
@@ -64,7 +72,9 @@ describe("validateManifest — duplicate/ambiguous slug + alias rejection", () =
 
   it("accepts a well-formed manifest unchanged", () => {
     const m = baseManifest();
+    const snapshot = structuredClone(m);
     expect(validateManifest(m)).toBe(m);
+    expect(m).toEqual(snapshot); // validation must not mutate the manifest
   });
 });
 
