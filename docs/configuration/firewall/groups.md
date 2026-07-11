@@ -54,6 +54,24 @@ Specify a remote list of IPv4 and/or IPv6 addresses, ranges, and CIDRs
 to fetch.
 ```
 
+::::{note}
+Quote URLs that contain a query string, otherwise an unquoted `&` silently
+truncates the value. On releases where the `?` key always triggers
+completion help, enter the literal `?` by pressing `Ctrl-V` followed by
+`?`:
+
+``` none
+set firewall group remote-group AbuseIPDB url 'https://api.abuseipdb.com/api/v2/blacklist?key=YOUR_KEY&plaintext'
+```
+::::
+
+::::{note}
+When a download fails, `vyos-domain-resolver` logs a redacted URL with the
+query string removed, keeping API keys out of the system log. A logged URL
+without its query parameters does not mean the configured value is wrong —
+verify it with `show firewall group remote-group <name> url` instead.
+::::
+
 ```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
 
 Set the update interval for this remote group, from 60 seconds to 4 weeks.
