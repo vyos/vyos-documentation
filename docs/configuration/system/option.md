@@ -97,6 +97,91 @@ embedded serial console interfaces to speed up the boot process.
 ```
 
 
+### Kernel crash dump (kdump)
+
+kdump is a kernel crash dumping mechanism that captures the contents of
+system memory when a kernel panic occurs. The capture is performed by a
+second, minimal kernel (the capture kernel) that is loaded into a reserved
+memory region at boot time. When the main kernel panics, the capture kernel
+runs and saves the memory image (vmcore) to disk for later analysis.
+
+:::{note}
+kdump requires VyOS to be installed to disk. It is not available in
+live-boot mode.
+:::
+
+:::{note}
+Changes to kdump settings take effect only after a system reboot.
+:::
+
+#### Configuration
+
+```{cfgcmd} set system option kdump memory \<size | auto\>
+
+**Reserve memory for the kdump capture kernel in megabytes.**
+
+The size can be specified in the next format:
+a single amount (e.g., `512`).
+
+Setting this option to `auto` (default) applies
+the following reservations:
+
+:::{list-table}
+:header-rows: 1
+
+* - **System RAM**
+  - **Reserved memory**
+  - **Notes**
+* - less than 1 GB
+  - 0 MB
+  - On systems with less than 1 GB of RAM, `auto` reserves no memory
+    and kdump is not active. Set an explicit size to enable kdump on
+    such systems.
+* - 1 GB – 8 GB
+  - 512 MB
+  -
+* - 8 GB – 64 GB
+  - 768 MB
+  -
+* - 64 GB and above
+  - 1 GB
+  -
+:::
+```
+Example:
+```none
+set system option kdump memory 512
+set system option kdump memory auto
+```
+
+```{cfgcmd} set system option kdump dump-path \<path\>
+
+**Configure the directory where crash dumps (vmcore files) are saved
+after a panic.**
+The path must be absolute (begin with `/`).
+
+Defaults to `/var/crash`.
+```
+Example:
+```none
+set system option kdump dump-path /var/log/kdump
+```
+
+#### Operation
+
+```{opcmd} show system kdump
+
+Display the kdump service operational status and configuration summary.
+```
+
+```{opcmd} show system kdump dumps
+
+List all recorded kernel crash dumps under the configured dump path.
+Each entry shows the dump directory, combined size (vmcore + dmesg) and
+capture timestamp.
+```
+
+
 ## HTTP client
 
 ```{cfgcmd} set system option http-client source-address \<address\>
