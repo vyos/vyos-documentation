@@ -188,6 +188,13 @@ Use SSL encryption for backend requests without validating the server
 certificate.
 ```
 
+```{cfgcmd} set load-balancing haproxy backend \<name\> ssl checks-only
+
+Use SSL for health checks only, forwarded traffic is passed through
+unchanged. Requires ``no-verify`` or ``ca-certificate``, and ``check``
+on at least one server.
+```
+
 ```{cfgcmd} set load-balancing haproxy backend \<name\> http-response-headers \<header-name\> value \<header-value\>
 
 Set custom HTTP headers to include in all responses from the backend.
