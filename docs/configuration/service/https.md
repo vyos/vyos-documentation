@@ -178,7 +178,7 @@ set service https certificates ca-certificate my-internal-ca
 
 ```{cfgcmd} set service https certificates dh-params \<name\>
 
-**Bind Diffie-Hellman parameters from the PKI subsystem to the HTTPS
+**Choose Diffie-Hellman parameters from the PKI subsystem for the HTTPS
 listener.**
 
 The parameters must already be defined under `set pki dh <name>` with
