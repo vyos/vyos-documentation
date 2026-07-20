@@ -20,9 +20,8 @@ For REST API request examples, endpoints, and authentication details,
 see {ref}`vyosapi`.
 
 ```{note}
-If no PKI certificate is configured for the service, VyOS falls back to
-an auto-generated self-signed certificate. Do not use the self-signed
-certificate in production.
+If no PKI certificate is configured for the service, VyOS automatically generates
+a self-signed certificate. This is not recommended for production use.
 ```
 
 ## Configuration
