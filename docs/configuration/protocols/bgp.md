@@ -35,7 +35,7 @@ Every AS is identified by an {abbr}`ASN (Autonomous System Number)`. ASNs
 were originally 2-byte values (1-65535), with the range 64512-65534
 reserved for private use
 ([RFC 6996](https://datatracker.ietf.org/doc/html/rfc6996)) and prohibited
-on the global internet. The 2-byte pool has since been exhausted, so
+on the global Internet. The 2-byte pool has since been exhausted, so
 regional internet registries now allocate 4-byte ASNs (1-4,294,967,295) by
 default, as defined in
 [RFC 6793](https://datatracker.ietf.org/doc/html/rfc6793).
@@ -81,7 +81,7 @@ criteria, in order from top to bottom, until one is applicable.
    peer over routes received from other types of peers.
 8. **IGP cost check:** Prefer the route with the lower IGP cost to the
    next hop.
-9. **Multi-path check:** If multi-pathing is enabled, check whether the
+9. **Multi-path check:** If multi-path routing is enabled, check whether the
    routes not yet distinguished in preference may be considered equal. If
    `bestpath as-path multipath-relax` is set, all such routes are
    considered equal; otherwise, routes received via iBGP with identical
@@ -116,7 +116,7 @@ capabilities that are common to both sides. For example, if the local
 router supports both unicast and multicast and the remote router
 supports only unicast, the session is established with unicast
 capability only. When the two sides share no common capabilities, one
-side sends an Unsupported Capability error and resets the connection.
+side sends an Unsupported Capability error and terminates the session.
 
 If a peer is configured exclusively as an IPv4-unicast neighbor and no
 other optional features require capability negotiation, VyOS' BGP
@@ -127,9 +127,7 @@ implementation does not send any capability advertisements.
 ### Local BGP router configuration
 
 Configure the local BGP router with its ASN. The BGP process uses the ASN
-to determine if a session is internal (iBGP) or external (eBGP). In VyOS,
-the BGP process starts automatically when the first neighbor is
-configured; no separate start command is required.
+to determine if a session is internal (iBGP) or external (eBGP).
 
 ```{cfgcmd} set protocols bgp system-as \<1-4294967294\>
 
@@ -411,8 +409,8 @@ set protocols bgp neighbor 2001:db8::2 capability extended-nexthop
 specified peer.**
 
 This causes the local router to include the name and version of the
-software that implements BGP in the OPEN message. This information is
-purely informational and does not affect BGP behavior.
+software that implements BGP in the OPEN message. It is sent for
+purely informational purposes and does not affect BGP behavior.
 ```
 
 Example:
@@ -649,10 +647,9 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast soft-reconfigur
 **Configure the default weight applied to routes received from the
 specified peer.**
 
-Weight is a Cisco-originated, FRR-supported attribute that exists only on
-the local router. It is never carried in BGP messages and is not
+Weight is a purely local attribute. It is never carried in BGP messages and is not
 advertised to other peers. Among the best-path decision criteria, it is
-considered first, with the higher weight winning.
+considered before everything else, and the highest weight wins.
 ```
 
 Example:
@@ -675,11 +672,11 @@ set protocols bgp neighbor 192.0.2.2 advertisement-interval 5
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> disable-connected-check
 
-**Allow eBGP sessions sourced from loopback IP addresses between directly
-connected peers without requiring an adjusted TTL.**
+**Allow eBGP sessions to establish regardless of the number of hops
+between peers.**
 
 By default, eBGP packets are sent with a TTL of 1, which precludes
-sourcing from a non-connected address, such as a loopback address. This
+sourcing from a non-connected address. This
 option bypasses the check.
 ```
 
@@ -951,7 +948,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast maximum-prefix-
 #### Peer groups
 
 Peer groups serve two purposes. First, they simplify configuration:
-parameters applied to the group are inherited by all its members, so
+parameters applied to a group are inherited by all its members, so
 common settings have to be configured only once and in one place.
 Second, they improve scalability by computing outgoing update
 information once per group rather than for each group member.
@@ -1900,7 +1897,7 @@ set protocols bgp parameters minimum-holdtime 30
 **Configure the TCP keepalive idle time, in seconds, on BGP sessions.**
 
 Once no TCP packets have been exchanged in either direction on the BGP
-session for this period, the kernel starts sending TCP keepalive
+session for this period, the BGP process starts sending TCP keepalive
 probes.
 ```
 
@@ -1920,7 +1917,7 @@ set protocols bgp parameters tcp-keepalive idle 60
 **Configure the interval, in seconds, between TCP keepalive probes on
 BGP sessions.**
 
-After the kernel begins sending TCP keepalive probes (see
+After the BGP process begins sending TCP keepalive probes (see
 `tcp-keepalive idle`), subsequent probes are sent at this interval.
 ```
 
