@@ -76,8 +76,9 @@ verify it with `show firewall group remote-group <name> url` instead.
 
 Set the update interval for this remote group, from 60 seconds to 4 weeks.
 The interval can be given in seconds (e.g. `300`) or with the time unit
-suffixes `s`, `m`, `h`, `d` or `w` (e.g. `4h`). If not set, the group
-follows the global `firewall global-options resolver-interval`.
+suffixes `s`, `m`, `h`, `d` or `w` (e.g. `4h`). Multiple suffixes may be
+combined (e.g. `1h30m`). If not set, the group follows the global
+`firewall global-options resolver-interval`.
 ```
 
 ```{cfgcmd} set firewall group remote-group \<name\> description \<text\>
