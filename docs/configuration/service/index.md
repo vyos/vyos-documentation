@@ -23,7 +23,8 @@ router-advert
 salt-minion
 snmp
 ssh
+stunnel
+suricata
 tftp-server
 webproxy
-suricata
 ```
