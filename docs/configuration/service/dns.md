@@ -245,8 +245,15 @@ set service dns forwarding negative-ttl 60
 applied to cached records regardless of the TTL received from the
 authoritative server.**
 
-Records with a TTL below this value are cached for this duration
-instead of their advertised TTL. The default is 1.
+Records with a TTL below this value are cached with this minimum
+TTL. The default is `1`.
+```
+
+```{note}
+Change this only if you have a specific reason to raise short TTLs,
+as higher values extend caching beyond the authoritative TTL. If the
+record changes upstream, clients receive the outdated cached value
+until the override expires.
 ```
 
 Example:
@@ -287,7 +294,7 @@ set service dns forwarding ttl-percent 10
 ```{cfgcmd} set service dns forwarding serve-stale-extension \<0-65535\>
 
 **Configure how many times an expired record's TTL can be extended by
-30 seconds so the record is served during a refresh.**
+30 seconds when the record cannot be refreshed.**
 
 The default is 0, which disables serving stale records.
 ```
@@ -369,13 +376,19 @@ set service dns forwarding dns64-prefix 2001:db8:64::/96
 
 ```{cfgcmd} set service dns forwarding options ecs-add-for \<prefix\>
 
-**Use the client's source address as the {abbr}`ECS (EDNS Client
-Subnet)` value in outgoing queries only when the client's source
-address matches the specified prefix.**
+**Configure which client source address is sent as the
+{abbr}`ECS (EDNS Client Subnet)` value in outgoing queries.**
 
-For non-matching clients, a placeholder address is sent instead of the
-client's real one. Prepend `!` to exclude a prefix. Repeat the command
-for multiple entries.
+For clients whose source address matches the specified prefix, the
+client's real address is sent. For non-matching clients, a
+placeholder address is sent instead so no client-specific subnet is
+exposed.
+
+ECS is only sent for queries matching `edns-subnet-allow-list`. This
+option controls only the value, not whether ECS is sent.
+
+Prepend `!` to exclude a prefix. Repeat the command for multiple
+entries.
 ```
 
 Example:
@@ -389,6 +402,9 @@ set service dns forwarding options ecs-add-for !192.0.2.128/25
 
 **Configure the number of bits of the client's IPv4 address included
 in the ECS option sent to authoritative servers.**
+
+Applies only to queries where ECS is sent (those matching
+`edns-subnet-allow-list`).
 ```
 
 Example:
