@@ -158,9 +158,6 @@ The default is `ipv4`.
 `both` is supported only for protocols `cloudflare`, `digitalocean`,
 `dnsexit2`, `duckdns`, `dyndns2`, `easydns`, `freedns`, `hetzner`,
 `infomaniak`, and `njalla`.
-
-With `dyndns2`, if `server` is configured, it must be
-`members.dyndns.org` or `dynv6.com`.
 ```
 
 Example:
