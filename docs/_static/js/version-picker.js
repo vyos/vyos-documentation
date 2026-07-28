@@ -35,21 +35,33 @@
     return null;
   }
 
+  /* Normalize one path segment: each well-formed %HH run is decoded and re-encoded on its
+   * own — per run, not per segment, so one malformed escape cannot double-encode the valid
+   * ones beside it (location.pathname hands escapes back verbatim, and blind re-encoding
+   * would turn %2E into %252E and miss on the HEAD probe). Literal spans, including a bare
+   * '%', always go through encodeURIComponent, so taint neutralization holds unconditionally;
+   * a run decoding to invalid UTF-8 is kept verbatim, being already pure %HH text.
+   * Decoding cannot resurrect a dot-segment: the URL parser resolves '.' / '..' and their
+   * percent-encoded forms during navigation, so pathname never presents them. */
+  function encodeSegment(seg) {
+    var out = '';
+    var re = /(?:%[0-9A-Fa-f]{2})+/g;
+    var last = 0;
+    var m;
+    while ((m = re.exec(seg))) {
+      out += encodeURIComponent(seg.slice(last, m.index));
+      try { out += encodeURIComponent(decodeURIComponent(m[0])); } catch (e) { out += m[0]; }
+      last = m.index + m[0].length;
+    }
+    return out + encodeURIComponent(seg.slice(last));
+  }
+
   /* Percent-encode a multi-segment path one segment at a time, so the '/' separators
    * survive. Real docs paths are plain ASCII sphinx slugs (letters/digits/-/_/./html),
    * where this is a no-op — it exists to keep DOM-derived text (location.pathname,
-   * select.value) from reaching a location.href sink unescaped. Each segment is decoded
-   * first, because location.pathname hands back well-formed escapes verbatim: without it
-   * a deep link like /index%2Ehtml would re-encode to %252E and miss on the HEAD probe.
-   * A malformed escape ('%zz') throws, and the raw segment is encoded defensively.
-   * Decoding cannot resurrect a dot-segment: the URL parser resolves '.' / '..' and their
-   * percent-encoded forms during navigation, so pathname never presents them. */
+   * select.value) from reaching a location.href sink unescaped. */
   function encodePath(rest) {
-    return rest.split('/').map(function (seg) {
-      var decoded;
-      try { decoded = decodeURIComponent(seg); } catch (e) { decoded = seg; }
-      return encodeURIComponent(decoded);
-    }).join('/');
+    return rest.split('/').map(function (seg) { return encodeSegment(seg); }).join('/');
   }
 
   function targetUrlFor(loc, targetSlug) {

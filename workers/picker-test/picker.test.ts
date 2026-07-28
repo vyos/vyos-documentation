@@ -117,6 +117,20 @@ describe("URL construction percent-encodes hostile path components", () => {
     for (const c of HOSTILE) expect(url).not.toContain(c);
   });
 
+  // Normalization runs per %HH run, not per segment: a whole-segment decode throws on the
+  // malformed escape and then double-encodes the valid one beside it (a%2520b%25zz).
+  it("encodePath normalizes each escape run independently in a mixed-validity segment", () => {
+    const url = P.encodePath("a%20b%zz/x");
+    expect(url).toBe("a%20b%25zz/x");
+    for (const c of HOSTILE) expect(url).not.toContain(c);
+  });
+
+  it("encodePath keeps an invalid-UTF-8 escape run verbatim (already pure %HH text)", () => {
+    const url = P.encodePath("x%E0%A4y.html");
+    expect(url).toBe("x%E0%A4y.html");
+    for (const c of HOSTILE) expect(url).not.toContain(c);
+  });
+
   it("targetUrlFor encodes a markup-injecting target slug", () => {
     const url = P.targetUrlFor(loc, '"><img src=x>');
     expect(url).toBe("/en/%22%3E%3Cimg%20src%3Dx%3E/cli/index.html");
