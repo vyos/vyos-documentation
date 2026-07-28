@@ -56,8 +56,7 @@
 #coverage button.dt-paging-button.current:hover,
 #coverage button.dt-paging-button.next:hover,
 #coverage button.dt-paging-button.previous:hover {
-  background-color: #E1E4E5 !important;
-  background: none;
+  background: #E1E4E5 !important;
   border: unset;
   color: #121010 !important;
 }
