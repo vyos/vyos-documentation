@@ -38,9 +38,18 @@
   /* Percent-encode a multi-segment path one segment at a time, so the '/' separators
    * survive. Real docs paths are plain ASCII sphinx slugs (letters/digits/-/_/./html),
    * where this is a no-op — it exists to keep DOM-derived text (location.pathname,
-   * select.value) from reaching a location.href sink unescaped. */
+   * select.value) from reaching a location.href sink unescaped. Each segment is decoded
+   * first, because location.pathname hands back well-formed escapes verbatim: without it
+   * a deep link like /index%2Ehtml would re-encode to %252E and miss on the HEAD probe.
+   * A malformed escape ('%zz') throws, and the raw segment is encoded defensively.
+   * Decoding cannot resurrect a dot-segment: the URL parser resolves '.' / '..' and their
+   * percent-encoded forms during navigation, so pathname never presents them. */
   function encodePath(rest) {
-    return rest.split('/').map(function (seg) { return encodeURIComponent(seg); }).join('/');
+    return rest.split('/').map(function (seg) {
+      var decoded;
+      try { decoded = decodeURIComponent(seg); } catch (e) { decoded = seg; }
+      return encodeURIComponent(decoded);
+    }).join('/');
   }
 
   function targetUrlFor(loc, targetSlug) {

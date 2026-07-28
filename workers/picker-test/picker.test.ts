@@ -103,6 +103,20 @@ describe("URL construction percent-encodes hostile path components", () => {
     expect(P.encodePath('a b/c"d/e.html')).toBe("a%20b/c%22d/e.html");
   });
 
+  // location.pathname returns well-formed escapes verbatim, so encoding blindly would
+  // double-encode them (%2E -> %252E) and break the deep link on the HEAD probe.
+  it("encodePath normalizes pre-existing escapes instead of double-encoding", () => {
+    expect(P.encodePath("index%2Ehtml")).toBe("index.html");
+    expect(P.encodePath("a%20b/c.html")).toBe("a%20b/c.html");
+    expect(P.encodePath("a%2Fb/c")).toBe("a%2Fb/c"); // encoded slash stays in its segment
+  });
+
+  it("encodePath degrades safely on a malformed escape (no throw)", () => {
+    const url = P.encodePath("100%zz/x");
+    expect(url).toBe("100%25zz/x");
+    for (const c of HOSTILE) expect(url).not.toContain(c);
+  });
+
   it("targetUrlFor encodes a markup-injecting target slug", () => {
     const url = P.targetUrlFor(loc, '"><img src=x>');
     expect(url).toBe("/en/%22%3E%3Cimg%20src%3Dx%3E/cli/index.html");
