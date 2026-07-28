@@ -125,10 +125,8 @@
 @media screen and (max-width: 575px) {
   #table-cfgcmd_wrapper,
   #table-opcmd_wrapper {
-    & label {
-      & input {
-        margin-top: 10px
-      }
+    & .dt-search input {
+      margin-top: 10px;
     }
   }
 }
