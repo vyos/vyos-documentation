@@ -9,12 +9,6 @@ Flows can be exported via protocol NetFlow (versions 5, 9 and
 10/IPFIX). Additionally, you may save flows to an in-memory table
 internally in a router.
 
-:::{warning}
-You need to disable the in-memory table in production environments!
-Using {abbr}`IMT (In-Memory Table)` may lead to heavy CPU overloading and
-unstable flow-accounting behavior.
-:::
-
 ## NetFlow / IPFIX
 
 NetFlow is a feature that was introduced on Cisco routers around 1996 that
@@ -44,56 +38,18 @@ exported.
 Using NetFlow on routers with high traffic levels may lead to
 high CPU usage and may affect the router's performance. In such cases,
 consider using sFlow instead.
-:::
 
-In order for flow accounting information to be collected and displayed for an
-interface, the interface must be configured for flow accounting.
-
-```{cfgcmd} set system flow-accounting interface \<interface\>
-
-Configure and enable collection of flow information for the interface
-identified by \<interface\>.
-
-You can configure multiple interfaces which would participate in flow
-accounting.
-```
-
-:::{note}
-Will be recorded only packets/flows on **incoming** direction in
-configured interfaces by default.
-:::
-
-By default, recorded flows will be saved internally and can be listed with the
-CLI command. You may disable using the local in-memory table with the command:
-
-```{cfgcmd} set system flow-accounting disable-imt
-
-If you need to sample also egress traffic, you may want to
-configure egress flow-accounting:
-```
 
 ```{cfgcmd} set system flow-accounting enable-egress
 
-Internally, in flow-accounting processes exist a buffer for data exchanging
-between core process and plugins (each export target is a separated plugin).
-If you have high traffic levels or noted some problems with missed records
-or stopping exporting, you may try to increase a default buffer size (10
-MiB) with the next command:
+If you need to sample also egress traffic, you may want to configure egress
+flow-accounting.
 ```
 
-```{cfgcmd} set system flow-accounting buffer-size \<buffer size\>
+```{cfgcmd} set system flow-accounting vrf <name>
 
-In case, if you need to catch some logs from flow-accounting daemon, you may
-configure logging facility:
+Configure the VRF instance for sending flow-data
 ```
-
-```{cfgcmd} set system flow-accounting syslog-facility \<facility\>
-
-Set the syslog facility for flow-accounting log messages. Supported values
-include ``daemon``, ``local0`` through ``local7``, and other standard syslog
-facilities.
-```
-
 
 ### Flow Export
 
@@ -112,16 +68,30 @@ versions are supported:
 * **10** - {abbr}`IPFIX (IP Flow Information Export)` as per {rfc}`3917`
 ```
 
+In order for flow accounting information to be collected and displayed for an
+interface, the interface must be configured for flow accounting.
+
+```{cfgcmd} set system flow-accounting netflow interface \<interface\>
+
+Configure and enable collection of flow information for the interface
+identified by \<interface\>.
+
+You can configure multiple interfaces which would participate in flow
+accounting.
+```
+
+:::{note}
+Will be recorded only packets/flows on **incoming** direction in
+configured interfaces by default.
+:::
+
+
 ```{cfgcmd} set system flow-accounting netflow server \<address\>
 
 Configure address of NetFlow collector. NetFlow server at \<address\> can
 be both listening on an IPv4 or IPv6 address.
 ```
 
-```{cfgcmd} set system flow-accounting netflow source-ip \<address\>
-
-IPv4 or IPv6 source address of NetFlow packets
-```
 
 ```{cfgcmd} set system flow-accounting netflow engine-id \<id\>
 
@@ -141,13 +111,16 @@ flows.
 Per default every packet is sampled (that is, the sampling rate is 1).
 ```
 
-```{cfgcmd} set system flow-accounting netflow timeout expiry-interval \<interval\>
+```{cfgcmd} set system flow-accounting netflow active-timeout \<value\>
 
-Specifies the interval at which Netflow data will be sent to a collector. As
-per default, Netflow data will be sent every 60 seconds.
+Specifies the duration, in seconds, that an active flow is maintained before it is exported.
+By default, active flows are exported after 1800 seconds (30 minutes).
+```
 
-You may also additionally configure timeouts for different types of
-connections.
+```{cfgcmd} set system flow-accounting netflow inactive-timeout \<value\>
+
+Specifies the duration, in seconds, that an inactive flow is retained before it is exported. A flow is considered inactive if no new packets are observed for the configured interval. 
+By default, inactive flows are exported after 15 seconds. This parameter defaults to a value of 15.
 ```
 
 ```{cfgcmd} set system flow-accounting netflow max-flows \<n\>
