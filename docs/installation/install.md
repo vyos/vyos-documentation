@@ -449,7 +449,6 @@ option, and type CTRL-X to boot.
 
 Installation can then continue as outlined above.
 
-[article]: https://customers.support.vyos.com/servicedesk/customer/portal/1/article/159055913
 [balenaetcher]: https://www.balena.io/etcher/
 [configuration]: https://wiki.syslinux.org/wiki/index.php?title=Config
 [default]: https://wiki.syslinux.org/wiki/index.php?title=PXELINUX#Configuration
