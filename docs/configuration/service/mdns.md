@@ -37,11 +37,11 @@ interface's IP address.
 Never run more than one mDNS repeater between the same networks, for
 example on both routers of a VRRP pair, because the repeaters reflect
 each other's packets and cause an mDNS packet storm.
-```
 
 In VRRP setups, configure `set service mdns repeater vrrp-disable` so a
 router repeats mDNS only while its VRRP interfaces are in the MASTER
 state.
+```
 
 ## Configuration
 
