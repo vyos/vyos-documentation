@@ -885,8 +885,8 @@ set service dns forwarding authoritative-domain example.com records naptr @ rule
 
 DNS forwarding can load a zone directly into its cache via
 AXFR or from a zone file at a URL.
-Zone caching is configured under `service dns forwarding zone-cache
-<domain-name>`.
+Zone caching is configured under
+`service dns forwarding zone-cache <domain-name>`.
 
 ```{cfgcmd} set service dns forwarding zone-cache \<domain-name\> source axfr \<address\>
 
