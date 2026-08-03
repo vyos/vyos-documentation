@@ -492,6 +492,47 @@ set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:f
 :::
 ```
 
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 input filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+
+Match based on the result of a Forwarding Information Base (FIB) lookup for
+the source/destination address instead of its literal value. ``type`` is one
+of ``local``, ``unicast``, ``broadcast``, ``multicast``, ``anycast``,
+``blackhole``, ``unreachable`` or ``prohibited``. The ``!`` character
+negates the match.
+
+This is particularly useful in ``prerouting raw`` to distinguish traffic
+destined to the router itself from traffic being forwarded through it,
+without needing to enumerate every locally configured address in a
+network-group by hand:
+
+:::{code-block} none
+set firewall ipv6 prerouting raw rule 1 destination fib-type local
+set firewall ipv6 prerouting raw rule 1 action accept
+set firewall ipv6 prerouting raw rule 2 action notrack
+:::
+```
+
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> source fqdn \<fqdn\>
 ```
 
