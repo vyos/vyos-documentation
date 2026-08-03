@@ -219,6 +219,13 @@ Match RPKI validation result.
 ```
 
 
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match source-peer \<value\>
+
+BGP source peer to match. The value can be a peer IPv4 address, a peer IPv6
+address, an interface name of a peer, or a BGP peer-group name.
+```
+
+
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match source-vrf \<text\>
 
 Source VRF to match.
@@ -426,14 +433,18 @@ Set BGP weight attribute
 > - `local-as` - Well-known communities value NO_EXPORT_SUBCONFED 0xFFFFFF03
 > - `no-advertise` - Well-known communities value NO_ADVERTISE 0xFFFFFF02
 > - `no-export` - Well-known communities value NO_EXPORT 0xFFFFFF01
-> - `graceful-shutdown` - Well-known communities value GRACEFUL_SHUTDOWN 0xFFFF0000
+> - `graceful-shutdown` - Well-known communities value GRACEFUL_SHUTDOWN
+>   0xFFFF0000
 > - `accept-own` - Well-known communities value ACCEPT_OWN 0xFFFF0001
-> - `route-filter-translated-v4` - Well-known communities value ROUTE_FILTER_TRANSLATED_v4 0xFFFF0002
+> - `route-filter-translated-v4` - Well-known communities value
+>   ROUTE_FILTER_TRANSLATED_v4 0xFFFF0002
 > - `route-filter-v4` - Well-known communities value ROUTE_FILTER_v4 0xFFFF0003
-> - `route-filter-translated-v6` - Well-known communities value ROUTE_FILTER_TRANSLATED_v6 0xFFFF0004
+> - `route-filter-translated-v6` - Well-known communities value
+>   ROUTE_FILTER_TRANSLATED_v6 0xFFFF0004
 > - `route-filter-v6` - Well-known communities value ROUTE_FILTER_v6 0xFFFF0005
 > - `llgr-stale` - Well-known communities value LLGR_STALE 0xFFFF0006
 > - `no-llgr` - Well-known communities value NO_LLGR 0xFFFF0007
-> - `accept-own-nexthop` - Well-known communities value accept-own-nexthop 0xFFFF0008
+> - `accept-own-nexthop` - Well-known communities value accept-own-nexthop
+>   0xFFFF0008
 > - `blackhole` - Well-known communities value BLACKHOLE 0xFFFF029A
 > - `no-peer` - Well-known communities value NOPEER 0xFFFFFF04

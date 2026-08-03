@@ -661,6 +661,17 @@ ospf, rip, static, table.
 ```
 
 
+```{cfgcmd} set protocols bgp parameters as-notation \<asdot | asdot+\>
+
+This command changes the AS-notation output format:
+
+- `asdot`: use asdot notation only for 4 byte AS numbers.
+- `asdot+`: use asdot notation for all AS numbers.
+
+If unset, plain notation (the FRR default) is used.
+```
+
+
 ```{cfgcmd} set protocols bgp parameters router-id \<id\>
 
 This command specifies the router-ID. If router ID is not specified it will
@@ -1153,6 +1164,22 @@ systems (a confederation).
 
 This command sets other confederations \<nsubasn\> as members of autonomous
 system specified by {cfgcmd}`confederation identifier <asn>`.
+```
+
+#### BGP Monitoring Protocol (BMP)
+
+The {abbr}`BMP (BGP Monitoring Protocol)` sends BGP route information to a
+monitoring station. BMP support must first be enabled in the routing daemon
+with {cfgcmd}`set system frr bmp`.
+
+```{cfgcmd} set protocols bgp bmp target \<name\> monitor \<ipv4-unicast|ipv6-unicast\> \<pre-policy | post-policy | local-rib\>
+
+This command selects which route views are sent to the BMP target for the
+given address family:
+
+- `pre-policy`: send state before policy and filter processing.
+- `post-policy`: send state with policy and filters applied.
+- `local-rib`: send routes from the local RIB.
 ```
 
 ## Operational Mode Commands

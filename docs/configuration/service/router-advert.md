@@ -52,10 +52,22 @@ Supported interface types:
 
 :::{note}
 You can also opt for using ::/64 as prefix for your {abbr}`RAs (Router
-Advertisements)`. This is a special wildcard prefix that will emit {abbr}`RAs (Router Advertisements)` for every prefix assigned to the interface.
-This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
+Advertisements)`. This is a special wildcard prefix that will emit
+{abbr}`RAs (Router Advertisements)` for every prefix assigned to the
+interface. This comes in handy when using dynamically obtained prefixes
+from DHCPv6-PD.
 :::
 ```
+
+```{cfgcmd} set service router-advert interface \<interface\> prefix \<prefix\> base-interface \<interface\>
+
+The advertised prefix is combined with the IPv6 address of the specified
+interface (for example, a WAN interface) so that the network portion of
+the RA prefix follows that interface's current IPv6 address. This option
+is only allowed together with the wildcard prefix `::/64`, and is the
+typical way to re-advertise a DHCPv6-PD-assigned prefix.
+```
+
 ```{eval-rst}
 .. csv-table::
     :header: "VyOS Field", "Description"
@@ -71,6 +83,8 @@ This comes in handy when using dynamically obtained prefixes from DHCPv6-PD.
 
 ### Advertising a NAT64 Prefix
 
+% stop_vyoslinter
+
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<prefix/mask\>
 
 Enable PREF64 option as outlined in {rfc}`8781`.
@@ -81,6 +95,8 @@ NAT64 prefix mask must be one of: /32, /40, /48, /56, /64 or 96.
 The well known NAT64 prefix is ``64:ff9b::/96``
 :::
 ```
+
+% start_vyoslinter
 ```{eval-rst}
 .. csv-table::
     :header: "VyOS Field", "Description"
