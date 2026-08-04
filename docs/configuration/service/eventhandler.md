@@ -52,13 +52,13 @@ set service event-handler event LINK-DOWN filter pattern '.*eth0.*,RUNNING,.*->.
 ```
 
 ```{note}
-Event-handler scripts must be executable (see
+Event handler scripts must be executable (see
 {ref}`command-scripting`). Storing them under `/config/scripts/`
 ensures they are preserved across image upgrades.
 ```
 
 ```{warning}
-Event-handler scripts run with root privileges. Review them carefully
+Event handler scripts run with root privileges. Review them carefully
 before use.
 ```
 
@@ -122,7 +122,7 @@ set service event-handler event LINK-DOWN script arguments '--notify admin@examp
 ## Example
 
 The following example configures an event handler that reacts to
-link-state messages emitted by `netplugd` for `eth0` and runs a Python
+link state change messages for `eth0` and runs a Python
 script. When triggered, the script writes a line containing the
 original log entry and the configured `interface_name` value to
 `/tmp/link-state.log`.
