@@ -491,33 +491,33 @@ set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
 :::
 ```
 
-```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> source fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> source fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> source fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> source fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination fib-type [\<type\> | !\<type\>]
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
 
 Match based on the result of a Forwarding Information Base (FIB) lookup for
 the source/destination address instead of its literal value. ``type`` is one
 of ``local``, ``unicast``, ``broadcast``, ``multicast``, ``anycast``,
-``blackhole``, ``unreachable`` or ``prohibited``. The ``!`` character
+``blackhole``, ``unreachable`` or ``prohibit``. The ``!`` character
 negates the match.
 
 This is particularly useful in ``prerouting raw`` to distinguish traffic
@@ -526,7 +526,7 @@ without needing to enumerate every locally configured address in a
 network-group by hand:
 
 :::{code-block} none
-set firewall ipv4 prerouting raw rule 1 destination fib-type local
+set firewall ipv4 prerouting raw rule 1 destination fib type local
 set firewall ipv4 prerouting raw rule 1 action accept
 set firewall ipv4 prerouting raw rule 2 action notrack
 :::
