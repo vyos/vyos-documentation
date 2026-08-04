@@ -513,14 +513,20 @@ set firewall ipv4 name FOO rule 100 destination address-mask 0.255.0.255
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> source fib type [\<type\> | !\<type\>]
+```
+
+```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> destination fib type [\<type\> | !\<type\>]
 
 Match based on the result of a Forwarding Information Base (FIB) lookup for
-the source/destination address instead of its literal value. ``type`` is one
-of ``local``, ``unicast``, ``broadcast``, ``multicast``, ``anycast``,
-``blackhole``, ``unreachable`` or ``prohibit``. The ``!`` character
+the source/destination address instead of its literal value. `type` is one
+of `local`, `unicast`, `broadcast`, `multicast`, `anycast`,
+`blackhole`, `unreachable` or `prohibit`. The `!` character
 negates the match.
 
-This is particularly useful in ``prerouting raw`` to distinguish traffic
+This is particularly useful in `prerouting raw` to distinguish traffic
 destined to the router itself from traffic being forwarded through it,
 without needing to enumerate every locally configured address in a
 network-group by hand:
