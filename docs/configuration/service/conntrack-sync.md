@@ -2,8 +2,8 @@
 myst:
   html_meta:
     description: |
-      Conntrack Sync preserves active sessions during failover between
-      Master and Backup routers in a VyOS high-availability pair by
+      Conntrack sync preserves active sessions during failover between
+      active and backup routers in a VyOS high-availability pair by
       continuously syncing conntrack entries between them.
     keywords: conntrack-sync, connection-tracking, ha, high-availability, vrrp
 ---
@@ -13,24 +13,24 @@ myst:
 # Conntrack sync
 
 Conntrack Sync (Connection Tracking Synchronization) is used to
-preserve active sessions during a failover between the Master and
-Backup routers in a high-availability
+preserve active sessions during a failover between the active and
+backup routers in a high-availability
 ({abbr}`HA (High Availability)`) pair.
 
-Each active session on the Master is tracked as a local conntrack
+Each active session on the active router is tracked as a local conntrack
 entry, and for some protocols, expect entries are also created for
 anticipated follow-up connections (for example, the FTP data channel
-or SIP media streams). Conntrack Sync continuously copies these
-entries to the Backup over one or more dedicated interfaces, so it
+or SIP media streams). Conntrack sync continuously copies these
+entries to backup routers over one or more dedicated interfaces, so it
 holds a current picture of every active session in near real time.
 This traffic is carried over IPv4, either as multicast (the default)
 or unicast to a configured peer address.
 
-When a failover occurs, the Backup router takes over all active
+When a failover occurs, a backup router takes over all active
 sessions and maintains them in their current state, without dropping
 or resetting them. A takeover is triggered by VRRP (Virtual Router
-Redundancy Protocol), which detects when the Master becomes
-unavailable and transitions the Backup to Master.
+Redundancy Protocol), which detects when the current active becomes
+unavailable and transitions one of the backup routers to active.
 
 ## Configuration
 
@@ -131,7 +131,7 @@ set service conntrack-sync listen-address 192.0.2.1
 to exchange sync traffic.**
 
 The command applies only when conntrack sync operates in multicast
-mode. Both routers must be configured with the same group.
+mode. All routers must be configured with the same group.
 
 The default is 225.0.0.50.
 ```
@@ -201,8 +201,7 @@ set service conntrack-sync expect-sync sip
 
 ```{cfgcmd} set service conntrack-sync event-listen-queue-size \<0-4294967295\>
 
-**Configure the maximum size, in MB, to which the receive buffer for
-conntrack events may grow.**
+**Configure the maximum size of the conntrack event buffer (in megabytes).**
 
 The buffer starts at 2 MB and grows up to the specified value if
 events arrive faster than they can be processed.
@@ -218,8 +217,7 @@ set service conntrack-sync event-listen-queue-size 16
 
 ```{cfgcmd} set service conntrack-sync sync-queue-size \<0-4294967295\>
 
-**Configure the size, in MB, of the send and receive buffers that
-queue sync messages to and from the HA peer.**
+**Configure the size of the queue that holds sync messages sent between peers (in megabytes)**
 
 The same value is applied to both directions, in either multicast or
 unicast mode.
@@ -242,9 +240,9 @@ The default is 60.
 ```
 
 ```{note}
-If your setup allows a recovered router to reclaim the Master role,
+If your setup allows a recovered router to reclaim the active role,
 set the VRRP `preempt-delay` to at least this value on the VRRP
-sync-group bound to the conntrack-sync service. This gives the
+`sync-group` bound to the conntrack sync service. This gives the
 recovered router time to receive the current conntrack entries before
 taking over.
 ```
@@ -259,7 +257,7 @@ set service conntrack-sync purge-timeout 60
 
 ```{cfgcmd} set service conntrack-sync disable-external-cache
 
-**Inject conntrack entries directly to the Backup's kernel connection
+**Inject conntrack entries directly to backup routers' kernel connection
 tracking table as they arrive, rather than holding them in the
 external cache used by default.**
 ```
@@ -284,7 +282,7 @@ set service conntrack-sync disable-syslog
 ```{cfgcmd} set service conntrack-sync startup-resync
 
 **Request a full copy of conntrack entries from the HA peer when the
-conntrack-sync service starts.**
+conntrack sync service starts.**
 ```
 
 Example:
@@ -348,7 +346,7 @@ The `main` keyword is optional and produces the same output.
 
 ```{opcmd} show conntrack-sync statistics
 
-**Show operational statistics for the conntrack-sync service.**
+**Show operational statistics for the conntrack sync service.**
 ```
 
 Example output:
@@ -389,7 +387,7 @@ subsystem.**
 
 ```{opcmd} show conntrack-sync status
 
-**Show the current operational status of the conntrack-sync
+**Show the current operational status of the conntrack sync
 service.**
 ```
 
@@ -407,7 +405,7 @@ ExpectationSync       : disabled
 
 ```{opcmd} restart conntrack-sync
 
-**Restart the conntrack-sync service. On restart, the local cache is
+**Restart the conntrack sync service. On restart, the local cache is
 cleared.**
 ```
 
@@ -426,7 +424,7 @@ entries from the HA peer.**
 ## Example
 
 The following shows how to configure a two-node HA pair with
-conntrack-sync.
+conntrack sync.
 
 :::{figure} /_static/images/service_conntrack_sync-schema.webp
 :alt: Conntrack sync example
@@ -436,8 +434,8 @@ Conntrack sync example
 
 Apply the following configuration on both `router1` and `router2`. The
 only difference between the two nodes is the VRRP priority: use `200`
-on `router1` (which becomes Master) and `100` on `router2` (which
-becomes Backup).
+on `router1` (which becomes VRRP master, i.e., active) and `100` on `router2` (which
+becomes backup).
 
 ```none
 set high-availability vrrp group internal interface 'eth1'
@@ -453,12 +451,12 @@ set service conntrack-sync interface 'eth0'
 set service conntrack-sync mcast-group '225.0.0.50'
 ```
 
-After commit, the Master router populates its internal cache with
-local conntrack entries and sends them to the Backup, which stores
+After commit, the active router populates its internal cache with
+local conntrack entries and sends them to the backup, which stores
 them in its external cache. Running `show conntrack-sync statistics`
 on each peer reflects this asymmetry.
 
-On the Master router:
+On the active router:
 
 ```none
 $ show conntrack-sync statistics
@@ -489,7 +487,7 @@ message tracking:
                    0 Malformed msgs                    0 Lost msgs
 ```
 
-On the Backup router:
+On the backup router:
 
 ```none
 $ show conntrack-sync statistics
