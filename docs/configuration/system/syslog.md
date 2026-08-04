@@ -20,7 +20,7 @@ server which is reached via {abbr}`IP (Internet Protocol)` UDP/TCP.
 .. cfgcmd:: set system syslog console facility <keyword> level <keyword>
 
    Log syslog messages to ``/dev/console``, for an explanation on
-   {ref}`syslog_facilities` keywords and {ref}`syslog_severity_level` keywords
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 ```
 
@@ -32,7 +32,7 @@ server which is reached via {abbr}`IP (Internet Protocol)` UDP/TCP.
 .. cfgcmd:: set system syslog file <filename> facility <keyword> level <keyword>
 
    Log syslog messages to file specified via `<filename>`, for an explanation on
-   {ref}`syslog_facilities` keywords and {ref}`syslog_severity_level` keywords
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 ```
 
@@ -65,7 +65,7 @@ sending the messages via port 514/UDP.
 
    Log syslog messages to remote host specified by `<address>`. The address
    can be specified by either FQDN or IP address. For an explanation on
-   {ref}`syslog_facilities` keywords and {ref}`syslog_severity_level`
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level`
    keywords see tables below.
 
 ```
@@ -82,7 +82,7 @@ sending the messages via port 514/UDP.
 ```{eval-rst}
 .. cfgcmd:: set system syslog vrf <name>
 
-  Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
+  Specify name of the :abbr:`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
 #### {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
@@ -90,8 +90,9 @@ sending the messages via port 514/UDP.
 VyOS supports {abbr}`TLS (Transport Layer Security)`-encrypted remote logging
 over TCP to ensure secure transmission of syslog data to remote syslog servers.
 
-**Prerequisites**: Before configuring {abbr}`TLS (Transport Layer
-Security)`-encrypted remote logging, ensure you have:
+**Prerequisites**: Before configuring
+{abbr}`TLS (Transport Layer Security)`-encrypted remote logging,
+ensure you have:
 
 - A valid remote syslog server address.
 
@@ -118,12 +119,12 @@ Security)`-encrypted remote logging, ensure you have:
 ```{eval-rst}
 .. cfgcmd:: set system syslog remote <address> tls ca-certificate <ca_name>
 
-   **Configure the** {abbr}`CA (Certificate Authority)` **certificate.**
+   **Configure the** :abbr:`CA (Certificate Authority)` **certificate.**
 
-   The syslog client uses the {abbr}`CA (Certificate Authority)` certificate to
+   The syslog client uses the :abbr:`CA (Certificate Authority)` certificate to
    verify the identity of the remote syslog server.
 
-   The {abbr}`CA (Certificate Authority)` certificate is required for **all**
+   The :abbr:`CA (Certificate Authority)` certificate is required for **all**
    authentication modes except ``anon``.
 ```
 
@@ -152,7 +153,7 @@ Security)`-encrypted remote logging, ensure you have:
 
    * ``anon`` **(default)**: Allows encrypted connections without verifying the syslog
      server's identity. This mode is **not recommended**, as it is vulnerable to
-     {abbr}`MITM (Man-in-the-Middle)` attacks.
+     :abbr:`MITM (Man-in-the-Middle)` attacks.
    * ``fingerprint``: Verifies the server’s certificate fingerprint against the
      value preconfigured with:
 
@@ -161,12 +162,12 @@ Security)`-encrypted remote logging, ensure you have:
         set system syslog remote <address> tls permitted-peer <peer>
 
    * ``certvalid``: Verifies the server certificate is signed by a trusted
-     {abbr}`CA (Certificate Authority)`, skipping {abbr}`CN (Common Name)` check.
+     :abbr:`CA (Certificate Authority)`, skipping :abbr:`CN (Common Name)` check.
    * ``name``: Verifies that:
 
-     * The server’s certificate is signed by a trusted {abbr}`CA (Certificate
-       Authority)`.
-     * The {abbr}`CN (Common Name)` in the certificate matches the value
+     * The server’s certificate is signed by a trusted
+       :abbr:`CA (Certificate Authority)`.
+     * The :abbr:`CN (Common Name)` in the certificate matches the value
        preconfigured with:
 
      .. code-block:: none
@@ -185,7 +186,7 @@ Security)`-encrypted remote logging, ensure you have:
 
    * ``fingerprint``: Enter the expected certificate fingerprints (SHA-1 or
      SHA-256).
-   * ``name``: Enter the expected certificate {abbr}`CNs (Common Names)`.
+   * ``name``: Enter the expected certificate :abbr:`CNs (Common Names)`.
 
    For ``anon`` and ``certvalid`` authentication modes, certificate identifiers
    are not required.
@@ -243,7 +244,7 @@ set system syslog host graylog.example.com tls permitted-peer 'graylog.example.c
    If logging to a local user account is configured, all defined log messages
    are display on the console if the local user is logged in, if the user is not
    logged in, no messages are being displayed. For an explanation on
-   {ref}`syslog_facilities` keywords and {ref}`syslog_severity_level` keywords
+   :ref:`syslog_facilities` keywords and :ref:`syslog_severity_level` keywords
    see tables below.
 ```
 

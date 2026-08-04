@@ -117,7 +117,7 @@ VyOS also comes with a build in SSTP server, see {ref}`sstp`.
 .. cfgcmd:: set interfaces sstpc <interface> ip source-validation <strict | loose | disable>
 
   Enable policy for source validation by reversed path, as specified in
-  {rfc}`3704`. Current recommended practice in {rfc}`3704` is to enable strict
+  :rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict
   mode to prevent IP spoofing from DDos attacks. If using asymmetric routing
   or other complicated routing, then loose mode is recommended.
 

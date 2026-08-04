@@ -109,7 +109,7 @@ starts when the first ospf enabled interface is configured.
 .. cfgcmd:: set protocols ospf max-metric router-lsa
    <administrative|on-shutdown <seconds>|on-startup <seconds>>
 
-   This enables {rfc}`3137` support, where the OSPF process describes its
+   This enables :rfc:`3137` support, where the OSPF process describes its
    transit links in its router-LSA as having infinite distance so that other
    routers will avoid calculating transit paths through the router while
    still being able to reach networks through the router.
@@ -139,7 +139,7 @@ starts when the first ospf enabled interface is configured.
    area for inter-area connections.
 
    Detailed information about "cisco" and "ibm" models differences can be
-   found in {rfc}`3509`. A "shortcut" model allows ABR to create routes
+   found in :rfc:`3509`. A "shortcut" model allows ABR to create routes
    between areas based on the topology of the areas connected to this router
    but not using a backbone area in case if non-backbone route will be
    cheaper. For more information about "shortcut" model,
@@ -149,7 +149,7 @@ starts when the first ospf enabled interface is configured.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospf parameters rfc1583-compatibility
 
-   {rfc}`2328`, the successor to {rfc}`1583`, suggests according to section
+   :rfc:`2328`, the successor to :rfc:`1583`, suggests according to section
    G.2 (changes) in section 16.4.1 a change to the path preference algorithm
    that prevents possible routing loops that were possible in the old version
    of OSPFv2. More specifically it demands that inter-area paths and
@@ -217,7 +217,7 @@ starts when the first ospf enabled interface is configured.
 .. cfgcmd:: set protocols ospf ldp-sync
 
   This command will enable IGP-LDP synchronization globally for OSPF. This
-  requires for LDP to be functional. This is described in {rfc}`5443`. By
+  requires for LDP to be functional. This is described in :rfc:`5443`. By
   default all interfaces operational in OSPF are enabled for synchronization.
   Loopbacks are exempt.
 ```
@@ -232,7 +232,7 @@ starts when the first ospf enabled interface is configured.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospf capability opaque
 
-   ospfd supports Opaque LSA {rfc}`2370` as partial support for MPLS Traffic
+   ospfd supports Opaque LSA :rfc:`2370` as partial support for MPLS Traffic
    Engineering LSAs. The opaque-lsa capability must be enabled in the
    configuration.
 
@@ -494,7 +494,7 @@ starts when the first ospf enabled interface is configured.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospf interface <interface> bfd
 
-   This command enables {abbr}`BFD (Bidirectional Forwarding Detection)` on
+   This command enables :abbr:`BFD (Bidirectional Forwarding Detection)` on
    this OSPF link interface.
 ```
 
@@ -595,7 +595,7 @@ Route will be originated on-behalf of all matched external LSAs.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospf graceful-restart [grace-period (1-1800)]
 
-   Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
+   Configure Graceful Restart :rfc:`3623` restarting support. When enabled,
    the default grace period is 120 seconds.
 
    To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
@@ -606,7 +606,7 @@ Route will be originated on-behalf of all matched external LSAs.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospf graceful-restart helper enable [router-id A.B.C.D]
 
-   Configure Graceful Restart {rfc}`3623` helper support. By default, helper support
+   Configure Graceful Restart :rfc:`3623` helper support. By default, helper support
    is disabled for all neighbours. This config enables/disables helper support
    on this router for all neighbours.
 
@@ -1351,7 +1351,7 @@ process starts when the first ospf enabled interface is configured.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospfv3 graceful-restart [grace-period (1-1800)]
 
-   Configure Graceful Restart {rfc}`3623` restarting support. When enabled,
+   Configure Graceful Restart :rfc:`3623` restarting support. When enabled,
    the default grace period is 120 seconds.
 
    To perform a graceful shutdown, the FRR ``graceful-restart prepare ip
@@ -1362,7 +1362,7 @@ process starts when the first ospf enabled interface is configured.
 ```{eval-rst}
 .. cfgcmd:: set protocols ospfv3 graceful-restart helper enable [router-id A.B.C.D]
 
-   Configure Graceful Restart {rfc}`3623` helper support. By default, helper support
+   Configure Graceful Restart :rfc:`3623` helper support. By default, helper support
    is disabled for all neighbours. This config enables/disables helper support
    on this router for all neighbours.
 

@@ -39,14 +39,14 @@ keypairs from an easy to access operational level command.
 ```{eval-rst}
 .. opcmd:: generate pki ca
 
-  Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
+  Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
   private key on the console.
 ```
 
 ```{eval-rst}
 .. opcmd:: generate pki ca install <name>
 
-  Create a new {abbr}`CA (Certificate Authority)` and output the CAs public and
+  Create a new :abbr:`CA (Certificate Authority)` and output the CAs public and
   private key on the console.
 
   .. include:: pki_cli_import_help.txt
@@ -55,14 +55,14 @@ keypairs from an easy to access operational level command.
 ```{eval-rst}
 .. opcmd:: generate pki ca sign <ca-name>
 
-  Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
+  Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
   the private key referenced by `ca-name`.
 ```
 
 ```{eval-rst}
 .. opcmd:: generate pki ca sign <ca-name> install <name>
 
-  Create a new subordinate {abbr}`CA (Certificate Authority)` and sign it using
+  Create a new subordinate :abbr:`CA (Certificate Authority)` and sign it using
   the private key referenced by `name`.
 
   .. include:: pki_cli_import_help.txt
@@ -121,7 +121,7 @@ keypairs from an easy to access operational level command.
 ```{eval-rst}
 .. opcmd:: generate pki dh
 
-  Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
+  Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
   is requested by the CLI and defaults to 2048 bit.
 
   The generated parameters are then output to the console.
@@ -130,7 +130,7 @@ keypairs from an easy to access operational level command.
 ```{eval-rst}
 .. opcmd:: generate pki dh install <name>
 
-  Generate a new set of {abbr}`DH (Diffie-Hellman)` parameters. The key size
+  Generate a new set of :abbr:`DH (Diffie-Hellman)` parameters. The key size
   is requested by the CLI and defaults to 2048 bit.
 
   .. include:: pki_cli_import_help.txt
@@ -355,7 +355,7 @@ also to display them.
 ```{eval-rst}
 .. opcmd:: show pki ca
 
-  Show a list of installed {abbr}`CA (Certificate Authority)` certificates.
+  Show a list of installed :abbr:`CA (Certificate Authority)` certificates.
 
   .. code-block:: none
 
@@ -398,7 +398,7 @@ also to display them.
 ```{eval-rst}
 .. opcmd:: show pki crl
 
-  Show a list of installed {abbr}`CRLs (Certificate Revocation List)`.
+  Show a list of installed :abbr:`CRLs (Certificate Revocation List)`.
 ```
 
 ```{eval-rst}

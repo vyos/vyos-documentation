@@ -88,7 +88,7 @@ VyOS uses the `interfaces wwan` subsystem for configuration.
 ```{eval-rst}
 .. cfgcmd:: set interfaces wwan <interface> apn <apn>
 
-  Every WWAN connection requires an {abbr}`APN (Access Point Name)` which is
+  Every WWAN connection requires an :abbr:`APN (Access Point Name)` which is
   used by the client to dial into the ISPs network. This is a mandatory
   parameter. Contact your Service Provider for correct APN.
 

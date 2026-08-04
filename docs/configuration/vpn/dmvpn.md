@@ -54,7 +54,7 @@ Baseline DMVPN topology
 .. cfgcmd:: set protocols nhrp tunnel <tunnel> dynamic-map <address>
   nbma-domain-name <fqdn>
 
-  Specifies that the {abbr}`NBMA (Non-broadcast multiple-access network)`
+  Specifies that the :abbr:`NBMA (Non-broadcast multiple-access network)`
   addresses of the next hop servers are defined in the domain name
   nbma-domain-name. For each A record opennhrp creates a dynamic NHS entry.
 
@@ -87,8 +87,8 @@ Baseline DMVPN topology
 ```{eval-rst}
 .. cfgcmd:: set protocols nhrp tunnel <tunnel> map nbma-address <address>
 
-  Creates static peer mapping of protocol-address to {abbr}`NBMA (Non-broadcast
-  multiple-access network)` address.
+  Creates static peer mapping of protocol-address to
+  :abbr:`NBMA (Non-broadcast multiple-access network)` address.
 
   If the IP prefix mask is present, it directs opennhrp to use this peer as a
   next hop server when sending Resolution Requests matching this subnet.

@@ -158,7 +158,7 @@ vDSL/aDSL understands.
 ```{eval-rst}
 .. cfgcmd:: set interfaces pppoe <interface> mru <mru>
 
-   Set the {abbr}`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to
+   Set the :abbr:`MRU (Maximum Receive Unit)` to `mru`. PPPd will ask the peer to
    send packets of no more than `mru` bytes. The value of `mru` must be between 128
    and 16384.
 
@@ -259,7 +259,7 @@ vDSL/aDSL understands.
 .. cfgcmd:: set interfaces pppoe <interface> ip source-validation <strict | loose | disable>
 
   Enable policy for source validation by reversed path, as specified in
-  {rfc}`3704`. Current recommended practice in {rfc}`3704` is to enable strict
+  :rfc:`3704`. Current recommended practice in :rfc:`3704` is to enable strict
   mode to prevent IP spoofing from DDos attacks. If using asymmetric routing
   or other complicated routing, then loose mode is recommended.
 

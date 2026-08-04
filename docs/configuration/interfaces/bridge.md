@@ -35,10 +35,10 @@ Spanning Tree Protocol is not enabled by default in VyOS.
 
    Assign `<member>` interface to bridge `<interface>`. A completion
    helper will help you with all allowed interfaces which can be
-   bridged. This includes {ref}`ethernet-interface`,
-   {ref}`bond-interface`, {ref}`l2tpv3-interface`, {ref}`openvpn`,
-   {ref}`vxlan-interface`, {ref}`wireless-interface`,
-   {ref}`tunnel-interface` and {ref}`geneve-interface`.
+   bridged. This includes :ref:`ethernet-interface`,
+   :ref:`bond-interface`, :ref:`l2tpv3-interface`, :ref:`openvpn`,
+   :ref:`vxlan-interface`, :ref:`wireless-interface`,
+   :ref:`tunnel-interface` and :ref:`geneve-interface`.
 
 ```
 

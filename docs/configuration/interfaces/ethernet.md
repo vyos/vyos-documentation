@@ -76,7 +76,7 @@ real world.
 
   Enable different types of hardware offloading on the given NIC.
 
-  {abbr}`LRO (Large Receive Offload)` is a technique designed to boost the
+  :abbr:`LRO (Large Receive Offload)` is a technique designed to boost the
   efficiency of how your computer's network interface card (NIC) processes
   incoming network traffic. Typically, network data arrives in smaller chunks
   called packets. Processing each packet individually consumes CPU (central
@@ -92,7 +92,7 @@ real world.
      (Generic Receive Offload) where possible. More information on the
      limitations of LRO can be found here: https://lwn.net/Articles/358910/
 
-  {abbr}`GSO (Generic Segmentation Offload)` is a pure software offload that is
+  :abbr:`GSO (Generic Segmentation Offload)` is a pure software offload that is
   meant to deal with cases where device drivers cannot perform the offloads
   described above. What occurs in GSO is that a given skbuff will have its data
   broken out over multiple skbuffs that have been resized to match the MSS
@@ -102,7 +102,7 @@ real world.
   offload is required in GSO. Otherwise it becomes possible for a frame to be
   re-routed between devices and end up being unable to be transmitted.
 
-  {abbr}`GRO (Generic receive offload)` is the complement to GSO. Ideally any
+  :abbr:`GRO (Generic receive offload)` is the complement to GSO. Ideally any
   frame assembled by GRO should be segmented to create an identical sequence of
   frames using GSO, and any sequence of frames segmented by GSO should be able
   to be reassembled back to the original by GRO. The only exception to this is
@@ -110,8 +110,8 @@ real world.
   value of the IPv4 ID is not sequentially incrementing it will be altered so
   that it is when a frame assembled via GRO is segmented via GSO.
 
-  {abbr}`RPS (Receive Packet Steering)` is logically a software implementation
-  of {abbr}`RSS (Receive Side Scaling)`. Being in software, it is necessarily
+  :abbr:`RPS (Receive Packet Steering)` is logically a software implementation
+  of :abbr:`RSS (Receive Side Scaling)`. Being in software, it is necessarily
   called later in the datapath. Whereas RSS selects the queue and hence CPU that
   will run the hardware interrupt handler, RPS selects the CPU to perform
   protocol processing above the interrupt handler. This is accomplished by

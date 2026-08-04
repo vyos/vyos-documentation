@@ -461,7 +461,7 @@ set vpn pptp remote-access default-ipv6-pool IPv6-POOL
 ```{eval-rst}
 .. cfgcmd:: set vpn pptp remote-access ppp-options mppe <require | prefer | deny>
 
-  Specifies {abbr}`MPPE (Microsoft Point-to-Point Encryption)` negotiation
+  Specifies :abbr:`MPPE (Microsoft Point-to-Point Encryption)` negotiation
   preference.
 
   * **require** - ask client for mppe, if it rejects drop connection
