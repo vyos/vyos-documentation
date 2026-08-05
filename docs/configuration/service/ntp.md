@@ -104,6 +104,18 @@ commands for each.
 ```
 
 
+```{cfgcmd} set service ntp source-interface \<interface\>
+
+Network device used for outgoing NTP client requests, binding the socket to
+this interface (Linux `SO_BINDTODEVICE`) rather than to a source address.
+This is useful in multi-VRF setups or when address ranges overlap between
+routing instances, where a source address alone cannot unambiguously select
+the egress path. Can be combined with `source-address`; only one interface
+can be configured. If `vrf` is also set, the interface must belong to that
+VRF.
+```
+
+
 ```{cfgcmd} set service ntp vrf \<name\>
 
 Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
