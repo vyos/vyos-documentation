@@ -30,12 +30,6 @@ following ways: locally, via a
 {abbr}`RADIUS (Remote Authentication Dial-In User Service)` server, or
 not at all.
 
-IPv4 addresses are assigned to clients from named local pools, from a
-per-interface client subnet, by an external DHCP server through the
-built-in relay, or by RADIUS. IPv6 addresses and delegated prefixes
-are assigned from named IPv6 pools using router advertisements and
-DHCPv6, including DHCPv6 prefix delegation.
-
 ```{note}
 Most configuration changes cannot be applied at runtime. Every commit
 that changes the `service ipoe-server` configuration restarts the
