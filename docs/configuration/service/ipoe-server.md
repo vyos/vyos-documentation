@@ -22,11 +22,12 @@ the network, obtains an IP address from the server via DHCP, and the
 server manages the connection from there.
 
 The IPoE server is configured under `service ipoe-server`. It listens
-on the configured interfaces and, per the interface's `start-session`
-setting, starts a session upon receiving a DHCPv4 Discover message or
-an IP packet from an unknown source address, also known as an
-unclassified packet. Sessions are authenticated in one of the
-following ways: locally, via a
+on the configured interfaces and starts sessions according to the
+interface's `start-session` setting: upon receiving a DHCPv4 Discover
+message, upon receiving an IP packet from an unknown source address,
+also known as an unclassified packet, or automatically when the
+interface comes up. Sessions are authenticated in one of the following
+ways: locally, via a
 {abbr}`RADIUS (Remote Authentication Dial-In User Service)` server, or
 not at all.
 
@@ -702,6 +703,7 @@ configuration applies.
 The following table outlines the allocation behaviors for different
 RADIUS attributes:
 % stop_vyoslinter
+
 | RADIUS attribute | Allocation behavior with the RADIUS attribute | Allocation behavior without the RADIUS attribute |
 |---|---|---|
 | `Framed-IP-Address` | The IPv4 address carried in the attribute is assigned directly to the client. Example: `192.0.2.50` | IPv4 address assigned from the pool set as `default-pool`. Example: `192.0.2.15` from `IPOE-POOL` |
