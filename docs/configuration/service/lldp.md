@@ -52,7 +52,7 @@ via `set service lldp legacy-protocols`.
 **Enable the LLDP service.**
 
 With no further configuration, the service sends and processes LLDP
-frames on every physical interface present on the system.
+frames on every available local interface.
 
 Configure `service lldp interface` to restrict it to selected
 interfaces.
@@ -69,12 +69,12 @@ set service lldp
 **Enable LLDP on the specified interface.**
 
 Repeat the command to enable LLDP on multiple interfaces. The special
-value `all` enables LLDP on every physical interface.
+value `all` enables LLDP on every available local interface.
 
-Once LLDP is enabled with `set service lldp`, it runs on all physical
-interfaces by default. Configuring one or more interfaces here limits
-LLDP strictly to those configured, disabling LLDP on all remaining
-physical interfaces.
+Once LLDP is enabled with `set service lldp`, it runs on all available
+local interfaces by default. Configuring one or more interfaces here
+limits LLDP strictly to those configured, disabling LLDP on all
+remaining interfaces.
 ```
 
 Example:
