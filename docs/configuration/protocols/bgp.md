@@ -14,7 +14,7 @@ myst:
 
 Border Gateway Protocol (BGP) is the path-vector exterior gateway protocol
 used to exchange routing and reachability information between
-{abbr}`ASs (Autonomous Systems)` on the internet. BGP-4, the current
+{abbr}`ASs (Autonomous Systems)` on the Internet. BGP-4, the current
 version, is specified in
 [RFC 4271](https://datatracker.ietf.org/doc/html/rfc4271). Multiprotocol
 extensions to BGP, which allow it to carry routing information for address
@@ -32,17 +32,17 @@ routing policy
 ([RFC 1930](https://datatracker.ietf.org/doc/html/rfc1930)).
 
 Every AS is identified by an {abbr}`ASN (Autonomous System Number)`. ASNs
-were originally 2-byte values (1-65535), with the range 64512-65534
+were originally two-byte values (1-65535), with the range 64512-65534
 reserved for private use
 ([RFC 6996](https://datatracker.ietf.org/doc/html/rfc6996)) and prohibited
-on the global Internet. The 2-byte pool has since been exhausted, so
-regional internet registries now allocate 4-byte ASNs (1-4,294,967,295) by
+on the global Internet. The two-byte pool has since been exhausted, so
+regional Internet registries now allocate four-byte ASNs (1-4,294,967,295) by
 default, as defined in
 [RFC 6793](https://datatracker.ietf.org/doc/html/rfc6793).
 
 ASNs are essential elements of BGP. As a path-vector protocol, BGP records
 the chain of ASNs a route has crossed in the AS_PATH attribute and uses
-that chain both as a metric in best-path selection (shorter AS_PATH wins,
+that chain both as a metric in best path selection (shorter AS_PATH wins,
 other criteria being equal) and as a loop-detection mechanism.
 
 ### Address families
@@ -54,7 +54,7 @@ multiple network-layer protocols. Each address family is identified by an
 pair: the AFI names the network-layer protocol (IPv4, IPv6, etc.), and the
 SAFI names the route type (unicast, multicast, MPLS-labeled, VPN, etc.).
 
-VyOS supports IPv4 and IPv6 unicast, multicast, labeled-unicast, VPN
+VyOS supports IPv4 and IPv6 unicast, multicast, labeled unicast, VPN
 (MPLS L3VPN), and flowspec address families, plus the L2VPN-EVPN and
 BGP Link-State families. This document covers configuration of the IPv4
 and IPv6 unicast address families, which are the most common in
@@ -91,12 +91,12 @@ criteria, in order from top to bottom, until one is applicable.
     from eBGP peers, prefer the route that was already selected. This
     check is skipped if `bestpath compare-routerid` is configured. It can
     prevent some cases of route oscillation.
-11. **Router-ID check:** Prefer the route with the lowest router-ID. If
+11. **Router ID check:** Prefer the route with the lowest router ID. If
     the route has an ORIGINATOR_ID attribute (set during iBGP
-    reflection), that value is used; otherwise, the router-ID of the peer
+    reflection), that value is used; otherwise, the router ID of the peer
     the route was received from is used.
-12. **Cluster-list length check:** Prefer the route with the shortest
-    CLUSTER_LIST length. The cluster-list reflects the iBGP reflection
+12. **Cluster list length check:** Prefer the route with the shortest
+    CLUSTER_LIST length. The cluster list reflects the iBGP reflection
     path the route has taken.
 13. **Peer address:** Prefer the route received from the peer with the
     lowest transport-layer IP address, as a last-resort tie-breaker.
@@ -118,7 +118,7 @@ supports only unicast, the session is established with unicast
 capability only. When the two sides share no common capabilities, one
 side sends an Unsupported Capability error and terminates the session.
 
-If a peer is configured exclusively as an IPv4-unicast neighbor and no
+If a peer is configured exclusively as an IPv4 unicast neighbor and no
 other optional features require capability negotiation, VyOS' BGP
 implementation does not send any capability advertisements.
 
@@ -246,7 +246,7 @@ set protocols bgp neighbor eth1 interface source-interface eth1
 
 ```{cfgcmd} set protocols bgp neighbor \<interface\> interface v6only remote-as \<1-4294967294 | auto | external | internal\>
 
-**Configure an IPv6-link-local-only unnumbered peering on the specified
+**Configure an IPv6 link-local-only unnumbered peering on the specified
 interface and set the neighbor's ASN.**
 
 With `v6only`, the BGP session is established over the IPv6 link-local
@@ -648,7 +648,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast soft-reconfigur
 specified peer.**
 
 Weight is a purely local attribute. It is never carried in BGP messages and is not
-advertised to other peers. Among the best-path decision criteria, it is
+advertised to other peers. Among the best path decision criteria, it is
 considered before everything else, and the highest weight wins.
 ```
 
@@ -820,9 +820,9 @@ intended for use with BGP Graceful Restart.**
 
 The local router sets the C-bit on outgoing BFD packets and checks it on
 incoming packets to distinguish between BFD failures caused by
-control-plane disruptions and those caused by data-plane failures.
+control plane disruptions and those caused by data plane failures.
 
-Consequently, a BFD-down event caused by a control-plane restart on the
+Consequently, a BFD-down event caused by a control plane restart on the
 peer does not tear down the BGP session if the peer is still forwarding
 traffic.
 
@@ -1067,8 +1067,8 @@ the specified peer.**
 By default, VyOS does not advertise a default route even if one is
 present in the routing table.
 
-When a route-map is used, the default route is only advertised if the
-conditions specified in the route-map are met.
+When a `route-map` is used, the default route is only advertised if the
+conditions specified in the `route-map` are met.
 ```
 
 Example:
@@ -1104,7 +1104,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast addpath-tx-per-
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> conditionally-advertise advertise-map \<name\>
 
 **Configure BGP to advertise the prefixes allowed by the specified
-route-map only when the `exist-map` or `non-exist-map` condition is
+`route-map` only when the `exist-map` or `non-exist-map` condition is
 met.**
 ```
 
@@ -1127,7 +1127,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast conditionally-a
 `advertise-map`.**
 
 The condition is met when at least one prefix allowed by the specified
-route-map is present in the BGP RIB.
+`route-map` is present in the BGP RIB.
 ```
 
 ```{note}
@@ -1145,7 +1145,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast conditionally-a
 **Specify the route-map that defines the trigger condition for
 `advertise-map`.**
 
-The condition is met when no prefix allowed by the specified route-map
+The condition is met when no prefix allowed by the specified `route-map`
 is present in the BGP RIB.
 ```
 
@@ -1182,7 +1182,7 @@ set protocols bgp address-family ipv4-unicast aggregate-address 198.51.100.0/22
 in its AS_PATH for the specified IPv4 or IPv6 prefix.**
 
 The AS_SET contains the AS numbers from the AS_PATHs of all contributing
-more-specific routes.
+more specific routes.
 ```
 
 Example:
@@ -1205,7 +1205,7 @@ set protocols bgp address-family ipv4-unicast aggregate-address 198.51.100.0/22 
 
 ```{cfgcmd} set protocols bgp address-family \<ipv4-unicast | ipv6-unicast\> aggregate-address \<prefix\> route-map \<name\>
 
-**Apply a route-map to set or modify BGP path attributes on the aggregate
+**Apply a `route-map` to set or modify BGP path attributes on the aggregate
 route before it is advertised.**
 
 Attribute changes apply only to the aggregate route and do not affect more
@@ -1222,7 +1222,7 @@ set protocols bgp address-family ipv4-unicast aggregate-address 198.51.100.0/22 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> unsuppress-map \<name\>
 
 **Apply a route-map to selectively advertise to the specified peer
-more-specific routes that were suppressed by the `summary-only` option.**
+more specific routes that were suppressed by the `summary-only` option.**
 ```
 
 Example:
@@ -1347,7 +1347,7 @@ set protocols bgp address-family ipv4-unicast redistribute static route-map FILT
 
 ```{cfgcmd} set protocols bgp address-family ipv4-unicast redistribute table \<id\> route-map \<name\>
 
-**Apply a route-map to filter and modify IPv4 routes redistributed from
+**Apply a `route-map` to filter and modify IPv4 routes redistributed from
 the specified non-main kernel routing table into the BGP IPv4 unicast
 address family.**
 ```
@@ -1360,7 +1360,7 @@ set protocols bgp address-family ipv4-unicast redistribute table 100 route-map F
 
 ```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute \<babel | connected | isis | kernel | nhrp | ospfv3 | ripng | static\> route-map \<name\>
 
-**Apply a route-map to filter and modify IPv6 unicast routes
+**Apply a `route-map` to filter and modify IPv6 unicast routes
 redistributed from the specified source.**
 ```
 
@@ -1372,7 +1372,7 @@ set protocols bgp address-family ipv6-unicast redistribute static route-map FILT
 
 ```{cfgcmd} set protocols bgp address-family ipv6-unicast redistribute table \<id\> route-map \<name\>
 
-**Apply a route-map to filter and modify IPv6 routes redistributed from
+**Apply a `route-map` to filter and modify IPv6 routes redistributed from
 the specified non-main kernel routing table into the BGP IPv6 unicast
 address family.**
 ```
@@ -1393,7 +1393,7 @@ set protocols bgp address-family ipv6-unicast redistribute table 100 route-map F
 a Martian address.**
 
 A Martian address is one that cannot legitimately appear as a BGP
-next-hop, such as an all-zero or unspecified address (e.g., `0.0.0.0/8`
+next hop, such as an all-zero or unspecified address (e.g., `0.0.0.0/8`
 or `::`), a loopback address (e.g., `127.0.0.0/8` or `::1`), a
 multicast address, or an address of the local router itself.
 
@@ -1411,8 +1411,8 @@ set protocols bgp parameters allow-martian-nexthop
 **Configure the BGP router-ID as a 32-bit identifier in IPv4 address
 notation.**
 
-If no router-ID is configured, FRR uses the highest IPv4 address on the
-loopback interface. If no loopback address is configured, FRR uses the
+If no router ID is configured, VyOS uses the highest IPv4 address on the
+loopback interface. If no loopback address is configured, VyOS uses the
 highest IPv4 address on any other interface.
 ```
 
@@ -1430,7 +1430,7 @@ installed for the same destination
 
 For paths to be considered equal for multipath purposes, the following
 must match: weight, local preference, AS_PATH content and length, origin
-code, MED, and IGP metric. Each path must also have a distinct next-hop
+code, MED, and IGP metric. Each path must also have a distinct next hop
 IP address.
 ```
 
@@ -1607,7 +1607,7 @@ set protocols bgp parameters as-notation asdot
 **Allow eBGP-learned routes whose NEXT_HOP is not directly connected to
 be installed in the RIB.**
 
-By default, BGP requires the next-hop of an eBGP-learned route to be
+By default, BGP requires the next hop of an eBGP-learned route to be
 reachable through a directly connected route. This option removes
 that restriction.
 ```
@@ -2184,7 +2184,7 @@ set protocols bgp parameters bestpath as-path ignore
 
 ```{cfgcmd} set protocols bgp parameters bestpath compare-routerid
 
-**Configure BGP to use the lowest router-ID as the tiebreaker between
+**Configure BGP to use the lowest router ID as the tie-breaker between
 otherwise-equal eBGP routes, instead of the already-selected check.**
 
 When this option is enabled, the already-selected check is skipped. If a
@@ -2282,11 +2282,10 @@ set protocols bgp address-family ipv4-unicast network 198.51.100.0/24 backdoor
 weighted-ECMP load balancing:**
 
 - `default-weight-for-missing`: Assigns a low default weight (1) to
-  paths that do not carry a link-bandwidth attribute.
+  paths that do not carry a link bandwidth attribute.
 - `ignore`: Disables weighted ECMP entirely and uses regular ECMP.
 - `skip-missing`: Excludes paths without link bandwidth from ECMP when
   at least one other path carries it.
-```
 
 Example:
 
@@ -2341,7 +2340,7 @@ particular neighbor.
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> distribute-list \<export | import\> \<1-65535\>
 
-**Apply the specified access-list to filter routing information received
+**Apply the specified `access-list` to filter routing information received
 from or advertised to the specified peer.**
 
 `export` applies the filter to outbound advertisements, and `import`
@@ -2356,7 +2355,7 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast distribute-list
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> prefix-list \<export | import\> \<name\>
 
-**Apply the specified prefix-list to filter routing information received
+**Apply the specified `prefix-list` to filter routing information received
 from or advertised to the specified peer.**
 
 `export` applies the filter to outbound advertisements, and `import`
@@ -2371,10 +2370,10 @@ set protocols bgp neighbor 192.0.2.2 address-family ipv4-unicast prefix-list imp
 
 ```{cfgcmd} set protocols bgp neighbor \<address | interface\> address-family \<ipv4-unicast | ipv6-unicast\> route-map \<export | import\> \<name\>
 
-**Apply the specified route-map to control and modify routing
+**Apply the specified `route-map` to control and modify routing
 information received from or advertised to the specified peer.**
 
-`export` applies the route-map to outbound advertisements, and `import`
+`export` applies the `route-map` to outbound advertisements, and `import`
 applies it to inbound updates.
 ```
 
@@ -2503,7 +2502,7 @@ set protocols bgp parameters cluster-id 192.0.2.10
 ```{cfgcmd} set protocols bgp parameters route-reflector-allow-outbound-policy
 
 **Allow outbound route-maps (and other outbound policy) to apply to
-routes the local route reflector reflects to its route-reflector
+routes the local route reflector reflects to its route reflector
 clients.**
 
 By default, FRR does not apply outbound policy to reflected routes, to
