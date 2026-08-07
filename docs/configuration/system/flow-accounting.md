@@ -114,13 +114,43 @@ versions are supported:
 
 ```{cfgcmd} set system flow-accounting netflow server \<address\>
 
-Configure address of NetFlow collector. NetFlow server at \<address\> can
-be both listening on an IPv4 or IPv6 address.
+Configure the address of a NetFlow collector. The collector at \<address\>
+can listen on either an IPv4 or IPv6 address. Multiple collectors may be
+configured, and flows are exported to each of them independently.
 ```
 
-```{cfgcmd} set system flow-accounting netflow source-ip \<address\>
+```{cfgcmd} set system flow-accounting netflow server \<address\> port \<port\>
 
-IPv4 or IPv6 source address of NetFlow packets
+Configure the UDP port of the NetFlow collector \<address\>. The default
+port is 2055.
+```
+
+```{cfgcmd} set system flow-accounting netflow server \<address\> source-address \<source\>
+
+Source IPv4 or IPv6 address of the NetFlow packets exported to collector
+\<address\>. The address must be present on the system and, when a VRF is
+configured (see below), must belong to that VRF.
+```
+
+```{cfgcmd} set system flow-accounting netflow server \<address\> source-interface \<interface\>
+
+Export the NetFlow packets for collector \<address\> from \<interface\>.
+The export is bound to that interface, which selects the egress routing
+path. This option is mutually exclusive with ``source-address``. When a
+VRF is configured, \<interface\> must be a member of that VRF. A VRF
+name cannot be used as \<interface\>; use the ``vrf`` command instead.
+```
+
+```{cfgcmd} set system flow-accounting vrf \<name\>
+
+Export all NetFlow data through VRF \<name\>. The export packets are then
+routed using that VRF's routing table, which is required when the
+collector is only reachable inside the VRF, such as on an out-of-band
+management network.
+
+When a collector uses ``source-interface``, that interface must be a
+member of \<name\> and is used to source the packets. Otherwise the VRF
+device itself is used, and any ``source-address`` must belong to the VRF.
 ```
 
 ```{cfgcmd} set system flow-accounting netflow engine-id \<id\>
@@ -165,6 +195,14 @@ NetFlow v5 example:
 set system flow-accounting netflow engine-id 100
 set system flow-accounting netflow version 5
 set system flow-accounting netflow server 192.168.2.10 port 2055
+```
+
+NetFlow export via a management VRF:
+
+```none
+set system flow-accounting netflow interface eth1
+set system flow-accounting netflow server 192.0.2.10 source-address 198.51.100.1
+set system flow-accounting vrf MGMT
 ```
 
 
