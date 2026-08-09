@@ -489,6 +489,19 @@ Example:
 set service dns forwarding domain example.com recursion-desired
 ```
 
+
+```{cfgcmd} set service dns forwarding options security-poll-suffix \<domain-suffix\>
+
+The PowerDNS recursor can periodically poll a domain to check whether the
+running version has any known security issues. This is disabled by default,
+as VyOS ships its own patched/backported package which is not updated
+in-place, making the check result meaningless.
+
+Set this to ``secpoll.powerdns.com`` to use PowerDNS' own security status
+poll domain, or point it at a custom domain suffix operated by your own
+organization.
+```
+
 ### Authoritative zones
 
 DNS forwarding can host authoritative records for a domain, answering
