@@ -136,9 +136,9 @@ configured (see below), must belong to that VRF.
 
 Export the NetFlow packets for collector \<address\> from \<interface\>.
 The export is bound to that interface, which selects the egress routing
-path. This option is mutually exclusive with ``source-address``. When a
+path. This option is mutually exclusive with `source-address`. When a
 VRF is configured, \<interface\> must be a member of that VRF. A VRF
-name cannot be used as \<interface\>; use the ``vrf`` command instead.
+name cannot be used as \<interface\>; use the `vrf` command instead.
 ```
 
 ```{cfgcmd} set system flow-accounting vrf \<name\>
@@ -148,9 +148,9 @@ routed using that VRF's routing table, which is required when the
 collector is only reachable inside the VRF, such as on an out-of-band
 management network.
 
-When a collector uses ``source-interface``, that interface must be a
+When a collector uses `source-interface`, that interface must be a
 member of \<name\> and is used to source the packets. Otherwise the VRF
-device itself is used, and any ``source-address`` must belong to the VRF.
+device itself is used, and any `source-address` must belong to the VRF.
 ```
 
 ```{cfgcmd} set system flow-accounting netflow engine-id \<id\>
