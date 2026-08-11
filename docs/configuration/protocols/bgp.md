@@ -1513,8 +1513,10 @@ This only prevents router advertisements from starting on sessions
 established *after* the setting takes effect. It does not stop router
 advertisements already active on an established session - neither a soft
 nor a hard `clear`/`reset bgp` on the neighbor will stop them. To silence
-an already-active session, remove and re-add `remote-as` on that
-neighbor, or restart the `bgpd`/`frr` process.
+one already-active neighbor, remove and re-add `remote-as` on that
+neighbor. Restarting the `bgpd`/`frr` process also clears it, but drops
+every BGP session on the router, not just the affected one - reserve
+that for a planned maintenance window rather than a routine fix.
 :::
 ```
 
