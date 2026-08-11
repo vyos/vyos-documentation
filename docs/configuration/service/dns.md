@@ -429,6 +429,33 @@ set service dns forwarding options edns-subnet-allow-list example.com
 set service dns forwarding options edns-subnet-allow-list 192.0.2.0/24
 ```
 
+```{cfgcmd} set service dns forwarding options security-poll-suffix \<domain-suffix\>
+
+**Configure the domain suffix used by the PowerDNS recursor to
+periodically poll for known security issues in the running version.**
+
+Disabled by default, since VyOS ships its own patched/backported
+package that is not updated in-place, making the poll result
+meaningless. Only takes effect once a non-empty suffix is configured;
+delete the option to disable polling again.
+
+`secpoll.powerdns.com` is PowerDNS' own security-status poll domain,
+not a VyOS default - set it explicitly to use it, or point this at a
+custom domain suffix operated by your own organization.
+```
+
+Example:
+
+```none
+set service dns forwarding options security-poll-suffix secpoll.powerdns.com
+```
+
+To disable polling again:
+
+```none
+delete service dns forwarding options security-poll-suffix
+```
+
 ### Per-domain forwarding
 
 ```{cfgcmd} set service dns forwarding domain \<domain-name\> name-server \<address\>
@@ -487,19 +514,6 @@ Example:
 
 ```none
 set service dns forwarding domain example.com recursion-desired
-```
-
-
-```{cfgcmd} set service dns forwarding options security-poll-suffix \<domain-suffix\>
-
-The PowerDNS recursor can periodically poll a domain to check whether the
-running version has any known security issues. This is disabled by default,
-as VyOS ships its own patched/backported package which is not updated
-in-place, making the check result meaningless.
-
-Set this to ``secpoll.powerdns.com`` to use PowerDNS' own security status
-poll domain, or point it at a custom domain suffix operated by your own
-organization.
 ```
 
 ### Authoritative zones
