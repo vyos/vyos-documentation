@@ -108,11 +108,12 @@ commands for each.
 
 Network device used for outgoing NTP client requests, binding the socket to
 this interface (Linux `SO_BINDTODEVICE`) rather than to a source address.
-This is useful in multi-VRF setups or when address ranges overlap between
-routing instances, where a source address alone cannot unambiguously select
-the egress path. Can be combined with `source-address`; only one interface
-can be configured. If `vrf` is also set, the interface must belong to that
-VRF.
+Useful when a source address alone cannot unambiguously select the egress
+path, for example when address ranges overlap between routing instances.
+Since `vrf` binds the NTP client to a single VRF, `source-interface` only
+selects the egress device within that VRF, not across multiple VRFs at
+once. Can be combined with `source-address`; only one interface can be
+configured. If `vrf` is also set, the interface must belong to that VRF.
 ```
 
 
