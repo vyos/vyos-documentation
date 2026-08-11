@@ -2286,6 +2286,7 @@ weighted-ECMP load balancing:**
 - `ignore`: Disables weighted ECMP entirely and uses regular ECMP.
 - `skip-missing`: Excludes paths without link bandwidth from ECMP when
   at least one other path carries it.
+```
 
 Example:
 
