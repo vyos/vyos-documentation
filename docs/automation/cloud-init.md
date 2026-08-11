@@ -215,12 +215,12 @@ sudo grep vyos /var/log/cloud-init.log
 
 ## Cloud-init on Proxmox
 
-Before you begin, review the `cloud-init` [network-config-docs] to
-understand how to import user and network configuration data.
-
 Proxmox is used here only as the VM hypervisor. The NoCloud seed ISO shown
 below is not a Proxmox-generated Cloud-Init drive; the same approach can be
 used with other hypervisors or a physical machine.
+
+Before you begin, review the `cloud-init` [network-config-docs] to
+understand how to import user and network configuration data.
 
 Key considerations:
 
