@@ -45,8 +45,8 @@ Provide an IPv4 or IPv6 address group description.
 ```{cfgcmd} set firewall group ipv6-address-group \<name\> apply-path \<path\>
 
 Derive additional group members from another part of the configuration,
-instead of (or in addition to) entering them manually. ``path`` is a
-space-separated configuration path; a ``*`` segment expands every
+instead of (or in addition to) entering them manually. `path` is a
+space-separated configuration path; a `*` segment expands every
 instance of the tag node at that position. The resolved values are
 merged with any manually configured members.
 
