@@ -488,7 +488,6 @@ set nat destination rule 101 translation port 8080
 Another example, for [Adguard Home](https://adguard.com/en/adguard-home/overview.html)
 % start_vyoslinter
 
-First you need to add the container image and create the necessary directories in opmode
 First, add the container image, then create the necessary directories from a shell:
 ```{opcmd} add container image adguard/adguardhome:latest
 
