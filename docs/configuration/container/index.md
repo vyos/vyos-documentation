@@ -494,8 +494,9 @@ First you need to add the container image and create the necessary directories i
 Then you can configure the container and network in config mode
 
 :::{note}
-This example forwards TCP and UDP ports 553 to 53 in the container, you can use 
-port 53 if you don't want to use the built in dns forwarder
+This example forwards TCP and UDP port 553 to port 53 in
+the container. Use external port 53 if you do not want to
+use the built-in DNS forwarder.
 :::
 ```none
 set container name adguardhome image 'adguard/adguardhome:latest'
