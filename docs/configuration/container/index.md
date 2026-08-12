@@ -271,7 +271,7 @@ Override the default health-check interval. For example: `60`
 Override the default health-check timeout. For example: `10`
 ```
 
-```{cfgcmd} set container name \<name\> health-check retries \<retries\>
+```{cfgcmd} set container name \<name\> health-check retry \<retries\>
 
 Number of health check retries before container is considered unhealthy. For example: `1`
 ```
