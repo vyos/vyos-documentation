@@ -339,7 +339,7 @@ Disable a given container registry
 ```
 ```{cfgcmd} set container registry \<name\> authentication password
 
-Some container registries require credentials to be used. Post inline comments for any newly confirmed issues
+Some container registries require credentials to be used.
 
 Credentials can be defined here and will only be used when adding a
 container image to the system.
