@@ -113,9 +113,9 @@ set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
 ```
 
 ```{cfgcmd} set container name \<name\> port \<portname\> source \<portnumber\>
-
+```
 ```{cfgcmd} set container name \<name\> port \<portname\> destination \<portnumber\>
-
+```
 ```{cfgcmd} set container name \<name\> port \<portname\> protocol \<tcp | udp\>
 
 Publish a port for the container.
@@ -135,11 +135,12 @@ using destination NAT and static IP assignment for the container is available.
 ```
 
 ```{cfgcmd} set container name \<name\> volume \<volumename\> source \<path\>
-
+```
 ```{cfgcmd} set container name \<name\> volume \<volumename\> destination \<path\>
 
 Mount a volume into the container.
-- **source**: Path on the host, place it inside `/config` to preserve during upgrades
+- **source**: Path on the host, place it inside `/config` to preserve during
+upgrades
 - **destination**: Path inside the container
 
 :::{code-block} none
@@ -165,7 +166,7 @@ systems total available memory.
 ```
 
 ```{cfgcmd} set container name \<name\> uid \<number\>
-
+```
 ```{cfgcmd} set container name \<name\> gid \<number\>
 
 Set the User ID or Group ID of the container
@@ -201,7 +202,7 @@ Default is 512 MB. Use 0 MB for unlimited memory.
 ```
 
 ```{cfgcmd} set container name \<name\> device \<devicename\> source \<path\>
-
+```
 ```{cfgcmd} set container name \<name\> device \<devicename\> destination \<path\>
 
 Add a host device to the container.
@@ -335,10 +336,10 @@ Disable a given container registry
 ```
 
 ```{cfgcmd} set container registry \<name\> authentication username
-
+```
 ```{cfgcmd} set container registry \<name\> authentication password
 
-Some container registries require credentials to be used.
+Some container registries require credentials to be used. Post inline comments for any newly confirmed issues
 
 Credentials can be defined here and will only be used when adding a
 container image to the system.
@@ -351,13 +352,13 @@ untrusted certificates.
 ```
 
 ```{cfgcmd} set container registry \<name\> mirror address \<address\>
-
+```
 ```{cfgcmd} set container registry \<name\> mirror host-name \<host-name\>
-
+```
 ```{cfgcmd} set container registry \<name\> mirror port \<port\>
-
+```
 ```{cfgcmd} set container registry \<name\> mirror path \<path\>
-
+```
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
 If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
@@ -372,7 +373,6 @@ If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/
 :::{code-block} none
 set container registry 192.168.1.1:8080 insecure
 :::
-```
 
 ### Log Configuration
 
