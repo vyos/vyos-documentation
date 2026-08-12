@@ -484,12 +484,8 @@ set nat destination rule 101 translation port 8080
 Another example, for [Adguard Home](https://adguard.com/en/adguard-home/overview.html)
 
 First you need to add the container image and create the necessary directories in opmode
+First, add the container image, then create the necessary directories from a shell:
 ```{opcmd} add container image adguard/adguardhome:latest
-```
-```{opcmd} mkdir /config/adguardhome/conf
-```
-```{opcmd} mkdir /config/adguardhome/work
-```
 
 Then you can configure the container and network in config mode
 
