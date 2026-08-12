@@ -279,9 +279,10 @@ Number of health check retries before container is considered unhealthy. For exa
 ### Container Networks
 
 :::{note}
-If you use **Global State Policies** in your {ref}`quick-start:firewall` combined with 
-container networks, you need to make an exception to the ARP traffic on bridge 
-interfaces, otherwise ARP will fail and the container will not be reachable.
+If you use **Global State Policies** in your
+{ref}`quick-start:firewall` with container networks, you need
+an exception for ARP traffic on bridge interfaces.
+Otherwise, ARP will fail and the container will not be reachable.
 
 ```{cfgcmd} set firewall global-options apply-to-bridged-traffic accept-invalid ethernet-type 'arp'
 ```
@@ -408,7 +409,7 @@ Show logs from a given container
 
 ```{opcmd} show container network
 
-Show a list available container networks
+Show a list of available container networks.
 ```
 
 ```{opcmd} restart container \<containername\>
@@ -433,8 +434,10 @@ the container image to also remove those images.
 
 ## Example Configurations
 
+% stop_vyoslinter
 For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
 to the declarative VyOS CLI syntax for Zabbix.
+% start_vyoslinter
 
 ```none
 set container network zabbix prefix 172.20.0.0/16
@@ -481,7 +484,9 @@ set nat destination rule 101 translation address 172.20.0.13
 set nat destination rule 101 translation port 8080
 ```
 
+% stop_vyoslinter
 Another example, for [Adguard Home](https://adguard.com/en/adguard-home/overview.html)
+% start_vyoslinter
 
 First you need to add the container image and create the necessary directories in opmode
 First, add the container image, then create the necessary directories from a shell:
