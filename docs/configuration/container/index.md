@@ -488,10 +488,16 @@ set nat destination rule 101 translation port 8080
 Another example, for [Adguard Home](https://adguard.com/en/adguard-home/overview.html)
 % start_vyoslinter
 
-First, add the container image, then create the necessary directories from a shell:
+First, add the container image:
 ```{opcmd} add container image adguard/adguardhome:latest
+```
 
-Then you can configure the container and network in config mode
+Then you can configure the container and network in config mode:
+
+:::{note}
+The directories used in the container volumes must exist
+before configuring the container.
+:::
 
 :::{note}
 This example forwards TCP and UDP port 553 to port 53 in
