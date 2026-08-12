@@ -205,7 +205,7 @@ Default is 512 MB. Use 0 MB for unlimited memory.
 ```{cfgcmd} set container name \<name\> device \<devicename\> destination \<path\>
 
 Add a host device to the container.
-- **source**: Device on the router iself
+- **source**: Device on the router itself
 - **destination**: Device inside the container
 ```
 
