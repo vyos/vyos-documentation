@@ -436,7 +436,7 @@ the container image to also remove those images.
 
 % stop_vyoslinter
 For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
-to the declarative VyOS CLI syntax for Zabbix.
+is adapted to the declarative VyOS CLI syntax for Zabbix.
 % start_vyoslinter
 
 ```none
