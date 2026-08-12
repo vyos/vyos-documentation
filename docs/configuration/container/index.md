@@ -477,7 +477,7 @@ set container name zabbix-web-nginx-mysql environment 'MYSQL_ROOT_PASSWORD' valu
 
 set nat destination rule 101 destination port 80
 set nat destination rule 101 protocol tcp
-set nat destination rule 101 translation address 172.20.0.12
+set nat destination rule 101 translation address 172.20.0.13
 set nat destination rule 101 translation port 8080
 ```
 
