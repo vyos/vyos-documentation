@@ -36,6 +36,7 @@
     "Routing protocols (BGP, OSPF, IS-IS, RIP) are FRR-backed, but not every FRR knob is exposed through the VyOS CLI. Confirm a command exists in the VyOS docs before suggesting it — synthesizing from FRR documentation produces invalid VyOS commands."
   ],
   "previousVersions": [
+    { "branch": "scutum" },
     { "branch": "circinus" },
     { "branch": "sagitta" }
   ]
