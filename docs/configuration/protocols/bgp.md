@@ -191,13 +191,8 @@ set protocols bgp neighbor 192.0.2.2 remote-as internal
 
 **Configure the specified neighbor as an eBGP peer.**
 
-<<<<<<< HEAD
-This command disable the peer or peer group. To reenable the peer use
-the delete form of this command.
-=======
 The peer's AS number must differ from the locally configured `system-as`.
 If it matches, the BGP peering session with this neighbor is rejected.
->>>>>>> 57c7a5ad ( docs: Update BGP page to VyOS 1.5 standards (#2111))
 ```
 
 Example:
@@ -2053,21 +2048,11 @@ When a route fails, a withdrawal update is sent across the network. When
 the route returns, an advertisement is sent. A route that repeatedly
 fails and returns (flaps) generates substantial protocol traffic.
 
-<<<<<<< HEAD
-Route dampening wich described in {rfc}`2439` enables you to identify routes
-that repeatedly fail and return. If route dampening is enabled, an unstable
-route accumulates penalties each time the route fails and returns. If the
-accumulated penalties exceed a threshold, the route is no longer advertised.
-This is route suppression. Routes that have been suppressed are re-entered
-into the routing table only when the amount of their penalty falls below a
-threshold.
-=======
 Route dampening, described in
 [RFC 2439](https://datatracker.ietf.org/doc/html/rfc2439), identifies
 unstable routes and suppresses them. Each time a route flaps, it incurs a
 penalty (1000 per flap). When the accumulated penalty exceeds the
 suppress threshold, the router stops advertising the route.
->>>>>>> 57c7a5ad ( docs: Update BGP page to VyOS 1.5 standards (#2111))
 
 The penalty decays exponentially over time (halving every half-life
 interval). When it drops below the reuse threshold, the route is
@@ -2320,20 +2305,8 @@ Without this option, multipath is restricted to peers of the same type
 
 Example:
 
-<<<<<<< HEAD
-```{cfgcmd} set protocols bgp neighbor \<address|interface\> address-family \<ipv4-unicast|ipv6-unicast\> capability orf \<receive|send\>
-
-This command enables the ORF capability (described in {rfc}`5291`) on the
-local router, and enables ORF capability advertisement to the specified BGP
-peer. The {cfgcmd}`receive` keyword configures a router to advertise ORF
-receive capabilities. The {cfgcmd}`send` keyword configures a router to
-advertise ORF send capabilities. To advertise a filter from a sender, you
-must create an IP prefix list for the specified BGP peer applied in inbound
-derection.
-=======
 ```none
 set protocols bgp parameters bestpath peer-type multipath-relax
->>>>>>> 57c7a5ad ( docs: Update BGP page to VyOS 1.5 standards (#2111))
 ```
 
 ```{cfgcmd} set protocols bgp parameters conditional-advertisement timer \<5-240\>
