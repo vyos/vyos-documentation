@@ -11,8 +11,8 @@ and proxy servers except for authenticated web proxies.
 
 SSTP is available for Linux, BSD, and Windows.
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide SSTP server functionality. We support both
-local and RADIUS authentication.
+VyOS utilizes [accel-ppp-ng](https://accel-ppp.org/) to provide SSTP server
+functionality. We support both local and RADIUS authentication.
 
 As SSTP provides PPP via a SSL/TLS channel the use of either publicly signed
 certificates or private PKI is required.
@@ -21,7 +21,8 @@ certificates or private PKI is required.
 
 ### Certificates
 
-Using our documentation chapter - {ref}`pki` generate and install CA and Server certificate
+Using our documentation chapter - {ref}`pki` generate and install CA and
+Server certificate
 
 ```none
 vyos@vyos:~$ generate pki ca install CA
@@ -315,19 +316,37 @@ Accept peer interface identifier. By default this is not defined.
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
-Specifies if a fixed or random interface identifier is used for IPv6. The
-default is fixed.
+Specifies if a Fixed or Random interface identifier is used for IPv6. The
+default is a Fixed (deterministic) interface identifier.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
-```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set vpn sstp ppp-options ipv6-peer-interface-id \<random | x:x:x:x | ipv4-addr | calling-sid\>
 
-Specifies the peer interface identifier for IPv6. The default is fixed.
-* **random** - Random interface identifier for IPv6
-* **x:x:x:x** - Specify interface identifier for IPv6
+Specifies the peer interface identifier for IPv6. The default is a Fixed
+(deterministic) peer interface identifier.
+* **random** - Random interface identifier for IPv6.
+* **x:x:x:x** - Specify a Fixed peer interface identifier for IPv6.
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
+```
+
+```{cfgcmd} set vpn sstp ppp-options ipv6-peer-interface-id-secret \<secret-key\>
+
+Secret key used to generate the IPv6 peer interface identifier (IID) when
+``ipv6-peer-interface-id`` is set to ``calling-sid``. This key is combined
+with the calling-station-id to derive a stable, non-predictable IID.
+
+* Required when ``ipv6-peer-interface-id`` is set to ``calling-sid``.
+* Must be 16 to 128 printable non-whitespace ASCII characters.
+
+For example:
+
+~~~none
+set vpn sstp ppp-options ipv6-peer-interface-id calling-sid
+set vpn sstp ppp-options ipv6-peer-interface-id-secret 'exampleSecret123!'
+~~~
 ```
 
 
@@ -533,7 +552,8 @@ Once you have setup your SSTP server there comes the time to do some basic
 testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.
 
-If you use a self-signed certificate, do not forget to install CA on the client side.
+If you use a self-signed certificate, do not forget to install CA on the
+client side.
 
 The following PPP configuration tests MSCHAP-v2:
 
@@ -693,6 +713,8 @@ Feb 28 17:03:07 vyos accel-sstp[2492]: ppp0:test: rename interface to 'sstp0'
 Feb 28 17:03:07 vyos accel-sstp[2492]: sstp0:test: sstp: ppp: started
 ```
 
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter
 [sstpc]: https://github.com/reliablehosting/sstp-client

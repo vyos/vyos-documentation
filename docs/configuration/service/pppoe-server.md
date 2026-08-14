@@ -6,8 +6,9 @@ lastproofread: '2022-09-17'
 
 # PPPoE Server
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide PPPoE server functionality. It can
-be used with local authentication or a connected RADIUS server.
+VyOS utilizes [accel-ppp-ng](https://accel-ppp.org/) to provide PPPoE server
+functionality. It can be used with local authentication or a connected
+RADIUS server.
 
 :::{note}
 Please be aware, due to an upstream bug, config
@@ -441,28 +442,46 @@ set service pppoe-server default-ipv6-pool IPv6-POOL
 
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-accept-peer-interface-id
 
-Accept peer interface identifier. By default is not defined.
+Accept peer interface identifier. By default this is not defined.
 ```
 
 
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
-Specifies fixed or random interface identifier for IPv6.
-By default is fixed.
+Specifies Fixed or Random interface identifier for IPv6.
+By default, a Fixed (deterministic) interface identifier is used.
 
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
 
-```{cfgcmd} set service pppoe-server ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set service pppoe-server ppp-options ipv6-peer-interface-id \<random | x:x:x:x | ipv4-addr | calling-sid\>
 
-Specifies peer interface identifier for IPv6. By default is fixed.
+Specifies peer interface identifier for IPv6. By default, a Fixed
+(deterministic) peer interface identifier is used.
 
-* **random** - Random interface identifier for IPv6
-* **x:x:x:x** - Specify interface identifier for IPv6
+* **random** - Random interface identifier for IPv6.
+* **x:x:x:x** - Specify a Fixed peer interface identifier for IPv6.
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
+```
+
+```{cfgcmd} set service pppoe-server ppp-options ipv6-peer-interface-id-secret \<secret-key\>
+
+Secret key used to generate the IPv6 peer interface identifier (IID) when
+``ipv6-peer-interface-id`` is set to ``calling-sid``. This key is combined
+with the calling-station-id to derive a stable, non-predictable IID.
+
+* Required when ``ipv6-peer-interface-id`` is set to ``calling-sid``.
+* Must be 16 to 128 printable non-whitespace ASCII characters.
+
+For example:
+
+~~~none
+set service pppoe-server ppp-options ipv6-peer-interface-id calling-sid
+set service pppoe-server ppp-options ipv6-peer-interface-id-secret 'exampleSecret123!'
+~~~
 ```
 
 ## Scripting
@@ -749,5 +768,7 @@ vyos@pppoe-server:~$ sh pppoe-server sessions
  ppp0   | test     | 192.168.0.1 | 2001:db8:8002:0:200::/64 | 2001:db8:8003::1/56 | 00:53:00:12:42:eb |            | active | 00:00:49 | 875 B    | 2.1 KiB
 ```
 
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter

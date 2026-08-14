@@ -194,14 +194,15 @@ the CLI configuration, refer to the explanation below.
 ### Allocation clients ip addresses by RADIUS
 
 If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
-config is being ignored.
+address will be allocated to the client and the option `default-pool`
+within the CLI config is being ignored.
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If the RADIUS server sends the attribute `Framed-Pool`, IP address will be
+allocated from a predefined IP pool whose name equals the attribute value.
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`,
+IPv6 address will be allocated from a predefined IPv6 pool `prefix`
+whose name equals the attribute value.
 
 If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
 delegation prefix will be allocated from a predefined IPv6 pool `delegate`
@@ -212,9 +213,10 @@ whose name equals the attribute value.
 RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
 :::
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
-Define it in your RADIUS server.
+User interface can be put to VRF context via RADIUS Access-Accept packet,
+or change it via RADIUS CoA. `Accel-VRF-Name` is used from these
+purposes. It is custom [ACCEL-PPP attribute]. Define it in your RADIUS
+server.
 
 ### Renaming clients interfaces by RADIUS
 
@@ -276,19 +278,37 @@ Accept peer interface identifier. By default is not defined.
 
 ```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
-Specifies fixed or random interface identifier for IPv6.
-By default is fixed.
+Specifies Fixed or Random interface identifier for IPv6.
+By default, a Fixed (deterministic) interface identifier is used.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
-```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id \<random | x:x:x:x | ipv4-addr | calling-sid\>
 
-Specifies peer interface identifier for IPv6. By default is fixed.
-* **random** - Random interface identifier for IPv6
-* **x:x:x:x** - Specify interface identifier for IPv6
+Specifies peer interface identifier for IPv6. By default, a Fixed
+(deterministic) peer interface identifier is used.
+* **random** - Random interface identifier for IPv6.
+* **x:x:x:x** - Specify a Fixed peer interface identifier for IPv6.
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
+```
+
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id-secret \<secret-key\>
+
+Secret key used to generate the IPv6 peer interface identifier (IID) when
+``ipv6-peer-interface-id`` is set to ``calling-sid``. This key is combined
+with the calling-station-id to derive a stable, non-predictable IID.
+
+* Required when ``ipv6-peer-interface-id`` is set to ``calling-sid``.
+* Must be 16 to 128 printable non-whitespace ASCII characters.
+
+For example:
+
+~~~none
+set vpn pptp remote-access ppp-options ipv6-peer-interface-id calling-sid
+set vpn pptp remote-access ppp-options ipv6-peer-interface-id-secret 'exampleSecret123!'
+~~~
 ```
 
 
@@ -590,5 +610,7 @@ Feb 29 14:59:00 vyos accel-pptp[4629]: pptp0:test: pptp: ppp started
 ```
 
 [accel-ppp]: https://accel-ppp.org/
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
 [dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+% start_vyoslinter
