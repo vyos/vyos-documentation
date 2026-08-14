@@ -31,12 +31,14 @@ its syslog input plugin.
 The collected data is written to output plugins. Each plugin delivers it
 to a different backend in that backend's format and protocol:
 
-- Azure Data Explorer: Writes metrics to an Azure Data Explorer cluster.
-- Prometheus client: Exposes metrics on a `/metrics` HTTP endpoint that
-  a Prometheus server periodically pulls.
-- Splunk: Sends metrics to the Splunk HTTP Event Collector.
-- InfluxDB: Writes metrics to a bucket on an InfluxDB v2 server.
-- Loki: Sends the VyOS system log to a Grafana Loki server.
+- [Azure Data Explorer][azure-data-explorer]: Writes metrics to an
+  Azure Data Explorer cluster.
+- [Prometheus client][prometheus-client]: Exposes metrics on a
+  `/metrics` HTTP endpoint that a Prometheus server periodically
+  pulls.
+- [Splunk][splunk]: Sends metrics to the Splunk HTTP Event Collector.
+- [InfluxDB][influxdb]: Writes metrics to a bucket on an InfluxDB v2 server.
+- [Loki][loki]: Sends the VyOS system log to a Grafana Loki server.
 
 ## Configuration
 
@@ -126,7 +128,7 @@ set service monitoring telegraf azure-data-explorer authentication client-secret
 Example:
 
 ```none
-set service monitoring telegraf azure-data-explorer authentication tenant-id 1-22-333-4444-55555
+set service monitoring telegraf azure-data-explorer authentication tenant-id b1c2d3e4-f5a6-7890-1234-56789abcdef0
 ```
 
 ```{cfgcmd} set service monitoring telegraf azure-data-explorer database \<name\>
@@ -352,7 +354,7 @@ configured.
 ```{cfgcmd} set service monitoring telegraf influxdb authentication organization \<organization\>
 
 **Configure the name of the organization that owns the bucket on the
-remote InfluxDB server.**
+remote InfluxDB v2 server.**
 ```
 
 Example:
@@ -466,7 +468,7 @@ set service monitoring telegraf loki url 'http://192.0.2.20'
 
 ```{cfgcmd} set service monitoring telegraf loki authentication username \<username\>
 
-**Configure the username for HTTP basic authentication to the Loki
+**Configure the username for HTTP Basic authentication to the Loki
 server.**
 ```
 
@@ -478,7 +480,7 @@ set service monitoring telegraf loki authentication username loki
 
 ```{cfgcmd} set service monitoring telegraf loki authentication password \<password\>
 
-**Configure the password for HTTP basic authentication to the Loki
+**Configure the password for HTTP Basic authentication to the Loki
 server.**
 
 If either `username` or `password` is configured, both are required.
@@ -580,7 +582,7 @@ set service monitoring prometheus node-exporter collectors textfile
 
 ### FRR Exporter
 
-The Prometheus frr_exporter exposes routing protocol metrics from
+The Prometheus [frr_exporter] exposes routing protocol metrics from
 FRRouting (FRR). By default, the exporter collects metrics for BGP
 (IPv4 and IPv6), OSPF, BFD, and the routing table. Use the options
 below to enable additional metric collection or add extra labels to the
