@@ -6,7 +6,7 @@ lastproofread: '2022-09-17'
 
 # PPPoE Server
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide PPPoE server
+VyOS utilizes [accel-ppp-ng](https://accel-ppp.org/) to provide PPPoE server
 functionality. It can be used with local authentication or a connected
 RADIUS server.
 

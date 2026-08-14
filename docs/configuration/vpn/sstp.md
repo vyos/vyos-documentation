@@ -11,7 +11,7 @@ and proxy servers except for authenticated web proxies.
 
 SSTP is available for Linux, BSD, and Windows.
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide SSTP server
+VyOS utilizes [accel-ppp-ng](https://accel-ppp.org/) to provide SSTP server
 functionality. We support both local and RADIUS authentication.
 
 As SSTP provides PPP via a SSL/TLS channel the use of either publicly signed
