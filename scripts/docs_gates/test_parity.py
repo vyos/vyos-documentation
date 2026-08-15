@@ -61,7 +61,7 @@ def test_main_always_writes_report_on_transport_errors(tmp_path, monkeypatch):
     def _boom(*a, **k):
         raise urllib.error.URLError("timed out")
 
-    monkeypatch.setattr(parity.urllib.request, "urlopen", _boom)
+    monkeypatch.setattr(parity._OPENER, "open", _boom)
     monkeypatch.setattr(sys, "argv", ["parity", "--sitemap-host", "sitemap.invalid",
                                       "--probe-host", "probe.invalid",
                                       "--report", str(report)])
@@ -70,3 +70,77 @@ def test_main_always_writes_report_on_transport_errors(tmp_path, monkeypatch):
     data = json.loads(report.read_text())
     assert data["failures"]  # report written despite transport errors
     assert any("sitemap" in f["reason"] for f in data["failures"])
+
+
+# --- CF Access credentials: env by default (argv publishes secrets to the process table),
+# flags as a manual fallback. Access stays OPTIONAL here — the sitemap host may be public —
+# but HALF a service token is never usable, so an id/secret mismatch is rejected outright. ---
+
+def _parity_argv(monkeypatch, tmp_path, *extra):
+    monkeypatch.setattr(sys, "argv", ["parity", "--sitemap-host", "s.invalid",
+                                      "--probe-host", "p.invalid", "--slugs", "rolling",
+                                      "--report", str(tmp_path / "r.json"), *extra])
+
+
+def test_access_credentials_default_from_environment(monkeypatch, tmp_path):
+    _parity_argv(monkeypatch, tmp_path)
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+    seen: list[tuple[str, str] | None] = []
+
+    def _probe(host, path, access, method="HEAD"):
+        seen.append(access)
+        return 200, None
+
+    monkeypatch.setattr(parity, "fetch", _probe)
+    monkeypatch.setattr(parity._OPENER, "open",
+                        lambda *a, **k: _sitemap_response("<urlset></urlset>"))
+    parity.main()
+    assert ("env-id", "env-secret") in seen
+
+
+def test_half_a_service_token_is_rejected(monkeypatch, tmp_path, capsys):
+    _parity_argv(monkeypatch, tmp_path, "--access-id", "only-an-id")
+    monkeypatch.delenv("CF_ACCESS_CLIENT_SECRET", raising=False)
+    monkeypatch.setattr(parity, "fetch", lambda *a, **k: (_ for _ in ()).throw(
+        AssertionError("must not probe with half a token")))
+    assert parity.main() == 2
+    assert "CF_ACCESS_CLIENT_SECRET" in capsys.readouterr().err
+
+
+# --- The sitemap used to be fetched TWICE per slug (a status probe via fetch(), then the
+# body via a second GET) and the body fetch hard-coded "https://", ignoring _SCHEME. ---
+
+class _CountingSitemap:
+    def __init__(self) -> None:
+        self.urls: list[str] = []
+
+    def __call__(self, url, *a, **k):
+        self.urls.append(url)
+        return _sitemap_response(
+            '<urlset><url><loc>http://h/en/rolling/a.html</loc></url></urlset>')
+
+
+def _sitemap_response(body: str):
+    class _R:
+        def read(self):
+            return body.encode()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+    return _R()
+
+
+def test_sitemap_fetched_once_per_slug_and_honours_the_scheme_override(monkeypatch, tmp_path):
+    _parity_argv(monkeypatch, tmp_path)
+    monkeypatch.delenv("CF_ACCESS_CLIENT_ID", raising=False)
+    monkeypatch.delenv("CF_ACCESS_CLIENT_SECRET", raising=False)
+    monkeypatch.setattr(parity, "_SCHEME", "http")
+    counter = _CountingSitemap()
+    monkeypatch.setattr(parity._OPENER, "open", counter)
+    monkeypatch.setattr(parity, "fetch", lambda *a, **k: (200, None))
+    parity.main()
+    assert counter.urls == ["http://s.invalid/en/rolling/sitemap.xml"]  # once, and NOT https

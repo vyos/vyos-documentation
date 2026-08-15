@@ -26,8 +26,13 @@ export async function specialPathFor(
     });
 
   if (p === "/sitemap.xml") {
+    // Origin comes from the REQUEST, never a hard-coded production hostname: this same Worker
+    // also serves the canary origin (docs-next.vyos.io, DOCS_ENV=canary), and a canary sitemap
+    // index whose entries pointed at docs.vyos.io would send any checker that follows it
+    // straight to production — a candidate tree with broken or missing per-version sitemaps
+    // would then pass its own sitemap check by silently grading production instead of itself.
     const entries = m.versions
-      .map((v) => `<sitemap><loc>https://docs.vyos.io/en/${v.slug}/sitemap.xml</loc></sitemap>`)
+      .map((v) => `<sitemap><loc>${url.origin}/en/${v.slug}/sitemap.xml</loc></sitemap>`)
       .join("");
     return new Response(
       `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${entries}</sitemapindex>`,

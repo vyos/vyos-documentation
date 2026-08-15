@@ -47,6 +47,26 @@ function apexHeaders(resp: Response, env: ApexEnv, cacheClass: string = DEFAULT_
   return out;
 }
 
+// R2's `R2Range` is a three-shape union — `{offset, length?}`, `{length}` (offset implicitly 0)
+// and `{suffix}` (the trailing N bytes) — so `"offset" in range` is NOT a safe way to read it:
+// the two offset-less shapes would fall through to the full-object 200 branch and be served
+// with a Content-Length claiming the whole object while the body held only a slice. workerd is
+// observed to normalize every shape to `{offset, length}` before it reaches us, but the type
+// admits the others, so resolve all three to concrete byte bounds, clamped to the object size.
+// Exported for direct unit testing.
+export function resolveRange(
+  range: { offset?: number; length?: number; suffix?: number },
+  size: number,
+): { start: number; length: number } {
+  if (typeof range.suffix === "number") {
+    const suffix = Math.min(Math.max(range.suffix, 0), size); // a suffix past the start is the whole object
+    return { start: size - suffix, length: suffix };
+  }
+  const start = Math.min(Math.max(range.offset ?? 0, 0), size);
+  const length = Math.min(range.length ?? size - start, size - start);
+  return { start, length };
+}
+
 async function themed(env: ApexEnv, status: 404 | 503): Promise<Response> {
   const page = await env.ASSETS.fetch(new Request(`https://apex.internal/${status}.html`));
   return apexHeaders(new Response(page.body, { status, headers: { "content-type": "text/html; charset=utf-8" } }), env);
@@ -102,20 +122,33 @@ export default {
         "accept-ranges": "bytes",
       };
 
-      // A satisfied onlyIf precondition (e.g. If-None-Match matched the R2 object's current
-      // ETag) makes R2 hand back a body-less R2Object — just the validators, no content.
+      // A FAILED onlyIf precondition makes R2 hand back a body-less R2Object — just the
+      // validators, no content. R2 reports THAT a precondition failed, never WHICH one, so
+      // map back from the request's own conditional headers per RFC 9110: the "not modified"
+      // family (If-None-Match / If-Modified-Since) is a 304, while a failed If-Match or
+      // If-Unmodified-Since is a 412 Precondition Failed (§13.1, §15.5.13) — 304 there would
+      // tell the client its stale copy is still current. With no conditional header at all R2
+      // always returns a body, so this branch is only ever reached with one of them present.
       if (!("body" in raw) || !raw.body) {
-        return apexHeaders(new Response(null, { status: 304, headers: pdfHeaders }), env, pdfCacheClass);
+        const notModifiedFamily =
+          request.headers.has("if-none-match") || request.headers.has("if-modified-since");
+        const status = notModifiedFamily ? 304 : 412;
+        return apexHeaders(new Response(null, { status, headers: pdfHeaders }), env, pdfCacheClass);
       }
       const obj = raw as R2ObjectBody;
       pdfHeaders["content-type"] = "application/pdf";
 
-      // A satisfied Range request — R2 echoes the actually-served byte range on `obj.range`;
-      // its absence means either no Range header was sent or R2 served the full object.
+      // A satisfied Range request. R2 echoes the actually-served byte range on `obj.range` —
+      // but it does so for FULL gets too: against a real R2 binding under workerd, a get()
+      // whose forwarded Headers carry NO Range header still comes back with
+      // `range = {offset: 0, length: obj.size}`. Keying the 206 off `obj.range` alone therefore
+      // turned every plain GET of the 1.3 PDF into a 206 — which is exactly what the nightly
+      // canary sweep observed (`/en/1.3/vyos-documentation.pdf: status=206`) — and RFC 9110
+      // §15.3.7 only permits a 206 in answer to a request that actually carried a Range header.
+      // So: gate on the REQUEST first, then normalize whatever shape R2 handed back.
       const range = obj.range;
-      if (range && "offset" in range) {
-        const start = range.offset ?? 0;
-        const length = range.length ?? obj.size - start;
+      if (range && request.headers.has("range")) {
+        const { start, length } = resolveRange(range, obj.size);
         pdfHeaders["content-range"] = `bytes ${start}-${start + length - 1}/${obj.size}`;
         pdfHeaders["content-length"] = String(length);
         return apexHeaders(new Response(obj.body, { status: 206, headers: pdfHeaders }), env, pdfCacheClass);

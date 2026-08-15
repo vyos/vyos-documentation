@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import worker from "../src/index";
+import worker, { resolveRange } from "../src/index";
 
 function makeEnv(overrides: Record<string, unknown> = {}) {
   const html = (body: string, status = 200) =>
@@ -126,6 +126,21 @@ describe("apex router (§3.2 order)", () => {
       vi.resetModules();
     }
   });
+  it("/sitemap.xml index entries use the REQUEST origin, not a hard-coded docs.vyos.io", async () => {
+    // This Worker serves the canary origin too. A canary sitemap index pointing at production
+    // would send any checker that follows it to docs.vyos.io, so a candidate tree with broken
+    // per-version sitemaps would pass by silently grading production instead of itself.
+    const canary = await get("/sitemap.xml");
+    const canaryBody = await canary.text();
+    expect(canaryBody).toContain("<loc>https://docs-next.vyos.io/en/rolling/sitemap.xml</loc>");
+    expect(canaryBody).not.toContain("docs.vyos.io");
+
+    const prod = await worker.fetch(
+      new Request("https://docs.vyos.io/sitemap.xml", { headers: { "user-agent": "vitest" } }),
+      makeEnv({ DOCS_ENV: "production" }),
+    );
+    expect(await prod.text()).toContain("<loc>https://docs.vyos.io/en/1.5/sitemap.xml</loc>");
+  });
   it("/llms.txt with missing default binding → 503, never 404", async () => {
     const env = makeEnv({ DOCS_ROLLING: undefined });
     expect((await get("/llms.txt", env)).status).toBe(503);
@@ -200,16 +215,23 @@ describe("apex router (§3.2 order)", () => {
             const etag = hit.etag ?? ETAG;
             const size = hit.body.length;
 
+            // R2 returns a body-less R2Object whenever an onlyIf precondition FAILS, and it
+            // never says which one did — that ambiguity is exactly what index.ts has to
+            // resolve from the request's own headers (304 family vs 412 family).
             const ifNoneMatch = options?.onlyIf?.get?.("if-none-match");
             if (ifNoneMatch && ifNoneMatch === etag) {
-              return { httpEtag: etag, size }; // R2Object, no `body` — precondition matched
+              return { httpEtag: etag, size }; // If-None-Match matched → "not modified"
+            }
+            const ifMatch = options?.onlyIf?.get?.("if-match");
+            if (ifMatch && ifMatch !== etag) {
+              return { httpEtag: etag, size }; // If-Match failed → precondition failed
             }
 
             const rangeHeader = options?.range?.get?.("range");
-            const m = rangeHeader ? /^bytes=(\d+)-(\d+)$/.exec(rangeHeader) : null;
-            if (m) {
-              const offset = Number(m[1]);
-              const length = Number(m[2]) - offset + 1;
+            const closed = rangeHeader ? /^bytes=(\d+)-(\d+)$/.exec(rangeHeader) : null;
+            if (closed) {
+              const offset = Number(closed[1]);
+              const length = Number(closed[2]) - offset + 1;
               return {
                 httpEtag: etag,
                 size,
@@ -217,8 +239,21 @@ describe("apex router (§3.2 order)", () => {
                 range: { offset, length },
               };
             }
+            // Suffix form. R2Range is a three-shape union and this arm deliberately returns
+            // the RAW `{suffix}` shape rather than pre-normalizing to `{offset, length}` —
+            // that is what exercises index.ts's resolveRange(). (workerd itself normalizes,
+            // but the type admits this shape, so the Worker must cope with it.)
+            const suffix = rangeHeader ? /^bytes=-(\d+)$/.exec(rangeHeader) : null;
+            if (suffix) {
+              const n = Math.min(Number(suffix[1]), size);
+              return { httpEtag: etag, size, body: hit.body.slice(size - n), range: { suffix: n } };
+            }
 
-            return { httpEtag: etag, size, body: hit.body };
+            // NO Range header. Mirrors workerd's real R2 binding, which still reports a
+            // whole-object `range` on a plain get (verified locally against a real R2
+            // binding under @cloudflare/vitest-pool-workers: `{offset: 0, length: size}`).
+            // This is what made the apex PDF path answer 206 to un-ranged GETs.
+            return { httpEtag: etag, size, body: hit.body, range: { offset: 0, length: size } };
           },
         } as unknown as R2Bucket,
         ...overrides,
@@ -329,6 +364,71 @@ describe("apex router (§3.2 order)", () => {
       const r = await get("/en/1.2/vyos-documentation.pdf", env);
       expect(r.status).toBe(200);
       expect(await r.text()).toBe("legacy:/en/1.2/vyos-documentation.pdf");
+    });
+
+    // --- Regression: a plain GET must never answer 206. R2 reports a whole-object `range`
+    // on un-ranged gets, so keying the 206 off `obj.range` alone made EVERY plain GET of the
+    // 1.3 PDF a 206 with a Content-Range — which is what the nightly canary sweep observed
+    // ("/en/1.3/vyos-documentation.pdf: status=206") and what RFC 9110 §15.3.7 forbids. ---
+
+    it("plain GET (no Range header) → 200, never 206, even though R2 echoes a whole-object range", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await get("/en/1.3/vyos-documentation.pdf", env);
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-range")).toBeNull();
+      expect(r.headers.get("content-length")).toBe("9");
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("suffix Range (bytes=-4) → 206 with the last 4 bytes and a matching Content-Range/Length", async () => {
+      // The `{suffix}` R2Range shape used to miss the `"offset" in range` guard entirely and
+      // fall through to the 200 branch, where content-length claimed the WHOLE object size
+      // while the body held only the tail — a corrupt download for any resumed fetch.
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } }, // length 9
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=-4" },
+        }),
+        env,
+      );
+      expect(r.status).toBe(206);
+      expect(await r.text()).toBe("YTES");
+      expect(r.headers.get("content-range")).toBe("bytes 5-8/9");
+      expect(r.headers.get("content-length")).toBe("4");
+    });
+
+    it("failed If-Match → 412, not 304 (a 304 would tell the client its stale copy is current)", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", "if-match": '"some-other-etag"' },
+        }),
+        env,
+      );
+      expect(r.status).toBe(412);
+      expect(await r.text()).toBe("");
+      // 412 is an error response, so the §3.3 precedence forces no-store over the PDF class.
+      expect(r.headers.get("Cache-Control")).toBe("no-store");
+    });
+  });
+
+  describe("resolveRange (R2Range is a three-shape union)", () => {
+    it("resolves offset+length, length-only, and suffix forms, clamped to the object size", () => {
+      expect(resolveRange({ offset: 2, length: 3 }, 10)).toEqual({ start: 2, length: 3 });
+      expect(resolveRange({ offset: 4 }, 10)).toEqual({ start: 4, length: 6 });   // to end of object
+      expect(resolveRange({ length: 4 }, 10)).toEqual({ start: 0, length: 4 });   // offset defaults to 0
+      expect(resolveRange({ suffix: 3 }, 10)).toEqual({ start: 7, length: 3 });   // trailing bytes
+      expect(resolveRange({ suffix: 99 }, 10)).toEqual({ start: 0, length: 10 }); // suffix past start clamps
+      expect(resolveRange({ offset: 8, length: 99 }, 10)).toEqual({ start: 8, length: 2 }); // length clamps
     });
   });
 });

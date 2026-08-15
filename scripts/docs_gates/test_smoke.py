@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import io
+import sys
 import urllib.error
 import urllib.request
 from email.message import Message
 from urllib.parse import urlsplit
+
+import pytest
 
 from scripts.docs_gates import smoke
 from scripts.docs_gates.conftest import REDIRECT_LOCATION, REDIRECT_PATH
@@ -364,3 +367,89 @@ def test_inter_round_sleep_capped_to_remaining_budget(monkeypatch):
     assert len(sleeps) == 1
     assert 0 < sleeps[0] <= smoke.DEADLINE_SECONDS  # capped to the ~10s remaining budget
     assert sleeps[0] < smoke.RETRY_SLEEP_SECONDS     # NOT the full 30s sleep
+
+
+# --- The PDF probe was structurally unpassable: it asserted X-Docs-Build, but 1.3's PDF is
+# served by the APEX Worker straight from R2 (spec §5, 29.2 MiB > the 25 MiB asset cap) and
+# that path sets only etag / accept-ranges / content-type / content-length. Observed nightly:
+# "/en/1.3/vyos-documentation.pdf: status=206 docs-build=None detail=status+docs-build". ---
+
+def test_pdf_probe_does_not_assert_docs_build():
+    plan = smoke.probe_plan("1.3", pdf="/en/1.3/vyos-documentation.pdf", critical=["index.html"])
+    pdf = next(p for p in plan if p.path.endswith(".pdf"))
+    assert pdf.assert_docs_build is False   # apex's R2 path legitimately never sets it
+    assert pdf.assert_apex_build is False   # nor does the content Worker set X-Apex-Build
+    # ...but the build SHA is still gated for this version, via the HTML probes:
+    assert next(p for p in plan if p.path.endswith("/index.html")).assert_docs_build is True
+
+
+def test_pdf_probe_still_demands_an_exact_200():
+    # The 206 seen alongside the docs-build failure was an apex defect (a 206 answered to a
+    # request carrying no Range header), fixed in workers/apex/src/index.ts — NOT something
+    # this gate should learn to tolerate.
+    plan = smoke.probe_plan("1.3", pdf="/en/1.3/vyos-documentation.pdf", critical=[])
+    assert next(p for p in plan if p.path.endswith(".pdf")).expect_status == 200
+
+
+# --- CF Access credentials: env by default (argv publishes secrets to the process table),
+# flags as a manual fallback, and an empty value is rejected rather than sent as a blank
+# header (every probe would then 403 and the report would blame the wrong thing). ---
+
+def _argv(monkeypatch, tmp_path, *extra):
+    crit = tmp_path / "critical.txt"
+    crit.write_text("index.html\n")
+    monkeypatch.setattr(sys, "argv", ["smoke", "--host", "h", "--slug", "rolling",
+                                      "--expect-sha", "SKIP",
+                                      "--critical-list", str(crit), *extra])
+    return crit
+
+
+def test_access_credentials_default_from_environment(monkeypatch, tmp_path):
+    _argv(monkeypatch, tmp_path)
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+    seen: dict[str, str] = {}
+    monkeypatch.setattr(smoke, "run",
+                        lambda host, slug, sha, aid, asec, pdf, critical:
+                        seen.update(id=aid, secret=asec) or 0)
+    assert smoke.main() == 0
+    assert seen == {"id": "env-id", "secret": "env-secret"}
+
+
+def test_access_flags_still_override_the_environment(monkeypatch, tmp_path):
+    _argv(monkeypatch, tmp_path, "--access-id", "flag-id", "--access-secret", "flag-secret")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+    seen: dict[str, str] = {}
+    monkeypatch.setattr(smoke, "run",
+                        lambda host, slug, sha, aid, asec, pdf, critical:
+                        seen.update(id=aid, secret=asec) or 0)
+    assert smoke.main() == 0
+    assert seen == {"id": "flag-id", "secret": "flag-secret"}
+
+
+def test_missing_access_credentials_fail_loudly_without_probing(monkeypatch, tmp_path, capsys):
+    _argv(monkeypatch, tmp_path)
+    monkeypatch.delenv("CF_ACCESS_CLIENT_ID", raising=False)
+    monkeypatch.delenv("CF_ACCESS_CLIENT_SECRET", raising=False)
+    monkeypatch.setattr(smoke, "run", lambda *a, **k: pytest.fail("must not probe"))
+    assert smoke.main() == 2
+    err = capsys.readouterr().err
+    assert "CF_ACCESS_CLIENT_ID" in err and "CF_ACCESS_CLIENT_SECRET" in err
+
+
+def test_critical_list_strips_before_testing_for_comments(monkeypatch, tmp_path):
+    # An INDENTED comment used to survive the `line.startswith("#")` test (applied to the
+    # unstripped line) and become a live critical page — which can never exist as a file.
+    crit = tmp_path / "critical.txt"
+    crit.write_text("# leading comment\n   # indented comment\n\n  cli.html  \n")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "sec")
+    monkeypatch.setattr(sys, "argv", ["smoke", "--host", "h", "--slug", "rolling",
+                                      "--expect-sha", "SKIP", "--critical-list", str(crit)])
+    seen: list[str] = []
+    monkeypatch.setattr(smoke, "run",
+                        lambda host, slug, sha, aid, asec, pdf, critical:
+                        seen.extend(critical) or 0)
+    assert smoke.main() == 0
+    assert seen == ["cli.html"]

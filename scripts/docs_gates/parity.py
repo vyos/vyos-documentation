@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -77,22 +78,36 @@ def main() -> int:
     ap.add_argument("--sitemap-host", required=True)
     ap.add_argument("--probe-host", required=True)
     ap.add_argument("--slugs", default=DEFAULT_SLUGS)
-    ap.add_argument("--access-id")
-    ap.add_argument("--access-secret")
+    # CF Access service-token credentials come from the ENVIRONMENT by default — a secret
+    # passed as an argv flag is readable from the process table and is captured verbatim by
+    # `set -x` traces and crash dumps. The flags stay as a manual/local fallback. Access
+    # itself stays OPTIONAL here: the sitemap host may be a public origin needing no token.
+    ap.add_argument("--access-id", default=os.environ.get("CF_ACCESS_CLIENT_ID", ""))
+    ap.add_argument("--access-secret", default=os.environ.get("CF_ACCESS_CLIENT_SECRET", ""))
     ap.add_argument("--report", type=Path, default=Path("parity-report.json"))
     a = ap.parse_args()
+    if bool(a.access_id) != bool(a.access_secret):
+        # Half a service token is never usable — every probe would 403 and the run would
+        # report a wholly misleading "parity broken". Names only, never the values.
+        print("CF Access needs BOTH an id and a secret, or neither "
+              "(--access-id / CF_ACCESS_CLIENT_ID, --access-secret / CF_ACCESS_CLIENT_SECRET)",
+              file=sys.stderr)
+        return 2
     access = (a.access_id, a.access_secret) if a.access_id else None
     failures: list[dict] = []
     checked = 0
 
     for slug in a.slugs.split(","):
-        status, _ = fetch(a.sitemap_host, f"/en/{slug}/sitemap.xml", None, "GET")
-        if status != 200:
-            failures.append({"path": f"/en/{slug}/sitemap.xml", "reason": f"sitemap {status}"})
-            continue
+        # ONE request per sitemap. This used to probe the status with fetch() and then fetch
+        # the whole document a second time — two full GETs of a multi-thousand-URL sitemap per
+        # slug — and the body fetch hard-coded "https://", so the _SCHEME override (the hook
+        # the tests use to drive this path against a local plain-HTTP server) was ignored.
+        # _OPENER raises HTTPError for anything non-2xx, INCLUDING a 3xx (it refuses to follow
+        # redirects), so this single call preserves the discarded pre-check's strictness — the
+        # sitemap URL itself must answer 200 — while also yielding the body.
         try:
-            with urllib.request.urlopen(f"https://{a.sitemap_host}/en/{slug}/sitemap.xml",
-                                        timeout=30) as r:
+            with _OPENER.open(f"{_SCHEME}://{a.sitemap_host}/en/{slug}/sitemap.xml",
+                              timeout=30) as r:
                 urls = urls_from_sitemap(r.read().decode())
         except Exception as e:  # noqa: BLE001 — record per-slug, keep sweeping; report ALWAYS written
             failures.append({"path": f"/en/{slug}/sitemap.xml",
