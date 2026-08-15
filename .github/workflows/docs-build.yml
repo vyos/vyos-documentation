@@ -199,14 +199,22 @@ jobs:
       # deploy/promote/registry step on it, so a superseded run ends green-and-skipped.
       - name: check_head guard (§7.1)
         id: check_head
+        env:
+          REF_NAME: ${{ github.ref_name }}
+          BUILT_SHA: ${{ github.sha }}
         run: |
-          set -eu
-          remote=$(git ls-remote origin "refs/heads/${{ github.ref_name }}" | cut -f1)
-          if [ "$remote" = "${{ github.sha }}" ]; then
+          set -euo pipefail
+          remote=$(git ls-remote origin "refs/heads/$REF_NAME" | cut -f1)
+          # pipefail AND the emptiness check are both needed: `cut` exits 0 on empty input, so
+          # a failed ls-remote would otherwise leave $remote empty and be misread as "branch
+          # moved" — silently skipping a deploy that should have run. An unresolvable tip is
+          # an infrastructure failure, not a skip signal, so it fails the job loudly.
+          [ -n "$remote" ] || { echo "::error::could not resolve the remote tip of $REF_NAME"; exit 1; }
+          if [ "$remote" = "$BUILT_SHA" ]; then
             echo "current=true" >> "$GITHUB_OUTPUT"
           else
             echo "current=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::branch moved (tip is now $remote, this run built ${{ github.sha }}) — skipping deploy, promote and registry steps"
+            echo "::notice::branch moved (tip is now $remote, this run built $BUILT_SHA) — skipping deploy, promote and registry steps"
           fi
 
       - name: Install workers deps
