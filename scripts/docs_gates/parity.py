@@ -61,10 +61,40 @@ _OPENER = urllib.request.build_opener(_NoRedirect)
 _SCHEME = "https"
 
 
+# The port each scheme already implies, so `host` and `host:443` are not two origins.
+_DEFAULT_PORTS = {"https": 443, "http": 80}
+
+
 def _authority(value: str) -> tuple[str | None, int | None]:
-    """(lowercased hostname, port) for a full URL or a bare `host[:port]` argument."""
+    """The normalized ORIGIN of a full URL or of a bare `host[:port]` argument.
+
+    Two spellings of one origin have to compare equal, because the two sides of this
+    comparison come from different places: one is a URL this module built, the other is
+    whatever an operator typed after --probe-host. Comparing (hostname, port) verbatim made
+    `p.invalid` and `p.invalid:443` distinct, so spelling the default port out cost the
+    credential its own scope — post-cutover, where --sitemap-host and --probe-host name the
+    same Access-gated host, that silently 403'd every sitemap fetch and the sweep then
+    reported an empty corpus as a pass. Normalized here:
+
+      * case — `hostname` is already lowercased by urlsplit; kept explicit for the reader.
+      * the root label's trailing dot — `p.invalid.` names the same host as `p.invalid`.
+      * the scheme's default port → None, so `:443` under https (or `:80` under http) is not
+        a separate authority. A bare argument carries no scheme, so it is read under
+        _SCHEME — the scheme every URL in this module is built with.
+
+    Deliberately NOT normalized: IDN/punycode equivalence (`ünïcode.example` against its
+    `xn--` form). Both hosts here are ASCII literals passed by CI, idna encoding carries its
+    own failure modes, and the safe direction for a credential-scoping test is to leave a
+    Unicode spelling not matching its punycode one rather than to guess an equivalence.
+    """
     parts = urllib.parse.urlsplit(value if "://" in value else f"//{value}")
-    return (parts.hostname.lower() if parts.hostname else None), parts.port
+    host = parts.hostname.lower() if parts.hostname else None
+    if host and host.endswith("."):
+        host = host[:-1]
+    port = parts.port
+    if port is not None and port == _DEFAULT_PORTS.get(parts.scheme or _SCHEME):
+        port = None
+    return host, port
 
 
 @dataclasses.dataclass(frozen=True)
@@ -85,7 +115,7 @@ class Access:
     client_secret: str
 
     def applies_to(self, url: str) -> bool:
-        """True only for a URL whose authority is exactly this credential's host."""
+        """True only for a URL whose ORIGIN is this credential's host (see _authority)."""
         return _authority(url) == _authority(self.host)
 
 

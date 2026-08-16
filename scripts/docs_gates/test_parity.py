@@ -235,6 +235,68 @@ def test_build_request_attaches_the_token_to_its_own_host_and_to_nothing_else():
         assert parity.build_request("https://p.invalid/", None).get_header(header) is None
 
 
+# --- The scoping test compares ORIGINS, not spellings. `p.invalid` and `p.invalid:443` are
+# the same HTTPS origin, and so is the trailing-dot FQDN form; comparing (hostname, port)
+# verbatim made all three distinct. The case that matters is post-cutover, where BOTH flags
+# name the same host: write either one with an explicit `:443` and the sitemap fetch silently
+# lost its token and 403'd — reverting the keeper case two tests up. ---
+
+def test_equivalent_spellings_of_one_origin_all_get_the_token():
+    for host, url in (("p.invalid", "https://p.invalid:443/en/rolling/"),   # default port explicit
+                      ("p.invalid:443", "https://p.invalid/en/rolling/"),   # ...and the reverse
+                      ("p.invalid:443", "https://p.invalid:443/en/"),       # explicit on both
+                      ("p.invalid.", "https://p.invalid/en/rolling/"),      # trailing-dot FQDN
+                      ("p.invalid", "https://p.invalid./en/rolling/"),      # ...and the reverse
+                      ("P.INVALID.:443", "https://p.invalid/en/")):         # every axis at once
+        req = parity.build_request(url, parity.Access(host, "an-id", "a-secret"))
+        assert req.get_header("Cf-access-client-id") == "an-id", f"{host} vs {url}"
+        assert req.get_header("Cf-access-client-secret") == "a-secret", f"{host} vs {url}"
+
+
+def test_normalization_does_not_widen_the_scope_to_a_different_origin():
+    # The inverse pin: normalizing the default port and the trailing dot must not smear the
+    # comparison into matching anything else. A non-default port stays a distinct origin in
+    # BOTH directions, and a trailing dot on a lookalike is still a lookalike.
+    for host, url in (("p.invalid", "https://s.invalid:443/en/"),        # different host, :443
+                      ("p.invalid:8443", "https://p.invalid/en/"),      # non-default on the cred
+                      ("p.invalid", "https://p.invalid:8443/en/"),      # non-default on the URL
+                      ("p.invalid.", "https://p.invalid.evil.example./en/")):  # dotted lookalike
+        for header in _ACCESS_HEADERS:
+            req = parity.build_request(url, parity.Access(host, "an-id", "a-secret"))
+            assert req.get_header(header) is None, f"{host} vs {url}"
+
+
+def test_the_default_port_that_normalizes_is_the_one_for_the_scheme_in_use(monkeypatch):
+    # A bare `host[:port]` argument carries no scheme, so the default it is compared against
+    # is the scheme every URL in this module is built with (_SCHEME) — not a hard-coded 443.
+    # Under the http override the tests use, 80 is the default and 443 is a real distinct port.
+    monkeypatch.setattr(parity, "_SCHEME", "http")
+    token = parity.Access("p.invalid:80", "an-id", "a-secret")
+    assert parity.build_request("http://p.invalid/en/", token).get_header(
+        "Cf-access-client-id") == "an-id"
+    assert parity.build_request("http://p.invalid:443/en/", token).get_header(
+        "Cf-access-client-id") is None
+
+
+def test_probe_host_written_with_an_explicit_port_still_credentials_its_own_sitemap(
+        monkeypatch, tmp_path):
+    # The end-to-end shape of the bug: post-cutover both flags name the same host, but one
+    # of them spells the default port out. Before origin normalization the sitemap request
+    # went out bare, 403'd behind Access, and the sweep reported an empty corpus as a pass.
+    monkeypatch.setattr(sys, "argv", ["parity", "--sitemap-host", "p.invalid",
+                                      "--probe-host", "p.invalid:443", "--slugs", "rolling",
+                                      "--report", str(tmp_path / "r.json")])
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+    counter = _CountingSitemap()
+    monkeypatch.setattr(parity._OPENER, "open", counter)
+    monkeypatch.setattr(parity, "fetch", lambda *a, **k: (200, None))
+    parity.main()
+    req = counter.requests[0]
+    assert req.get_header("Cf-access-client-id") == "env-id"
+    assert req.get_header("Cf-access-client-secret") == "env-secret"
+
+
 def test_non_200_sitemap_is_a_failure_not_an_empty_corpus(monkeypatch, tmp_path):
     # _OPENER only raises for non-2xx. A sitemap answering 204 (or any other 2xx) returned
     # normally with an empty/irrelevant body, so the corpus came back empty and the parity

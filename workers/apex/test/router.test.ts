@@ -727,6 +727,29 @@ describe("apex router (§3.2 order)", () => {
       expect(r.headers.get("content-range")).toBeNull();
     });
 
+    // --- §13.2.1: "a server MUST ignore the conditional request header fields defined by
+    // this specification when received with a request method that does not involve the
+    // selection or modification of a selected representation, such as CONNECT, OPTIONS, or
+    // TRACE." Only OPTIONS is testable through worker.fetch() — TRACE and CONNECT are
+    // forbidden methods in the fetch spec and `new Request` refuses to construct them. ---
+
+    it("OPTIONS ignores conditionals entirely: neither a failing nor a matching one is judged", async () => {
+      // A stale If-Match reached R2 as an onlyIf, came back body-less, and this Worker had
+      // no reading of that but 412 — so an OPTIONS carrying a conditional a client had left
+      // lying around was refused where the same request without it succeeded.
+      const options = (headers: Record<string, string>) => worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          method: "OPTIONS",
+          headers: { "user-agent": "vitest", ...headers },
+        }),
+        r2Env({ "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+              { DOCS_ENV: "production" }),
+      );
+      expect((await options({ "if-match": '"stale-etag"' })).status).toBe(200);           // not 412
+      expect((await options({ "if-unmodified-since": BEFORE_UPLOAD })).status).toBe(200); // not 412
+      expect((await options({ "if-none-match": ETAG })).status).toBe(200);                // not 304/412
+    });
+
     // --- RFC 9110 §13.1.5 If-Range. R2's R2Conditional carries only etagMatches /
     // etagDoesNotMatch / uploadedBefore / uploadedAfter, so an If-Range in the forwarded
     // Headers is silently DROPPED and the range applied unconditionally. ---
@@ -837,6 +860,50 @@ describe("apex router (§3.2 order)", () => {
       const r = await withIfRange(AFTER_UPLOAD, "bytes=4-");
       expect(r.status).toBe(200);
       expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("an object rewritten between the two If-Range reads is still judged against the request's preconditions", async () => {
+      // §13.2.1 requires preconditions to hold for the representation ULTIMATELY SELECTED.
+      // The re-read after a stale If-Range was a BARE get(), dropping every other
+      // precondition the request carried, so: If-Match passes on read 1, the key is
+      // rewritten, and the bare read 2 then answered 200 with the very representation the
+      // client's If-Match excluded. The key does get rewritten — `force_pdf_refresh: true`
+      // in the legacy snapshot repo's deploy workflow re-uploads it.
+      const KEY = "legacy/1.3/vyos-documentation.pdf";
+      const objects: Record<string, { body: string; etag?: string }> = {
+        [KEY]: { body: "PDF-BYTES", etag: ETAG },
+      };
+      // Borrow the shared mock, then wrap it so the object changes BETWEEN the two reads.
+      type Bucket = { get: (key: string, options?: unknown) => Promise<unknown> };
+      const inner = (r2Env(objects) as unknown as { DOCS_PDFS: Bucket }).DOCS_PDFS;
+      let reads = 0;
+      const env = r2Env(objects, {
+        DOCS_ENV: "production",
+        DOCS_PDFS: {
+          get: async (key: string, options?: unknown) => {
+            const result = await inner.get(key, options);
+            if (++reads === 1) objects[key].etag = '"pdf-etag-2"'; // rewritten mid-flight
+            return result;
+          },
+        },
+      });
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: {
+            "user-agent": "vitest",
+            range: "bytes=4-",
+            "if-range": '"stale-etag"', // fails → forces the whole-object re-read
+            "if-match": ETAG,           // satisfied on read 1, violated by read 2's object
+          },
+        }),
+        env,
+      );
+      expect(reads).toBe(2);
+      expect(r.status).toBe(412);
+      expect(await r.text()).toBe("");
+      // The validator reported is the one belonging to the object the verdict was reached on.
+      expect(r.headers.get("etag")).toBe('"pdf-etag-2"');
+      expect(r.headers.get("content-type")).not.toBe("application/pdf");
     });
 
     // --- §13.2.2 preconditions, decided by EVALUATING the validators rather than by

@@ -197,9 +197,21 @@ function uploadedAtOrBefore(uploaded: Date | undefined, httpDate: string): boole
  * evaluate, but which R2 evaluated anyway and answered with a body-less object that this
  * Worker could only turn into a 412. Filtering at the source means a body-less result now
  * always corresponds to a precondition that genuinely applies.
+ *
+ * The METHOD decides this before any header does. §13.2.1: "a server MUST ignore the
+ * conditional request header fields defined by this specification when received with a
+ * request method that does not involve the selection or modification of a selected
+ * representation, such as CONNECT, OPTIONS, or TRACE." Filtering by validator applicability
+ * alone still handed those methods' conditionals to R2, so an OPTIONS carrying a stale
+ * `If-Match` a client had left lying around was refused 412 where the same request without
+ * it succeeded. Returning an empty set here is what "ignore" means at this layer: R2 is
+ * given nothing to evaluate, so it cannot answer body-less, so preconditionStatus() — which
+ * is only ever reached from a body-less result — is unreachable for these methods too.
  */
-function applicablePreconditions(h: Headers, isGetOrHead: boolean): Headers {
+function applicablePreconditions(h: Headers, method: string): Headers {
   const out = new Headers();
+  if (method === "OPTIONS" || method === "TRACE" || method === "CONNECT") return out;
+  const isGetOrHead = method === "GET" || method === "HEAD";
   const ifMatch = h.get("if-match");
   const ifNoneMatch = h.get("if-none-match");
   if (ifMatch !== null) out.set("if-match", ifMatch);
@@ -332,7 +344,7 @@ export default {
       // response side still seeing a Range header and answering a HEAD or a POST with a
       // 416 or a Content-Range.
       const rangeHeader = method === "GET" ? request.headers.get("range") : null;
-      const onlyIf = applicablePreconditions(request.headers, isGetOrHead);
+      const onlyIf = applicablePreconditions(request.headers, method);
 
       let raw: R2ObjectBody | R2Object | null;
       try {
@@ -377,17 +389,27 @@ export default {
       // unsatisfiable, since the 416 branch below must not fire on a range we have decided
       // not to honour. R2 has already applied the range at this point, so the whole object
       // has to be re-read; that costs one extra R2 read on the rare stale-resume path and
-      // nothing at all on the common one. The re-get is deliberately bare: the preconditions
-      // passed on the first call, and re-sending them would only add a body-less outcome
-      // that this path has no sensible answer for.
+      // nothing at all on the common one.
+      //
+      // The re-read carries the SAME `onlyIf`. §13.2.1 requires preconditions to hold for the
+      // representation ultimately selected, and the two reads need not see one object: a bare
+      // re-get answered `Range` + stale `If-Range` + `If-Match: "A"` with a 200 carrying
+      // object B, whose ETag the client had explicitly excluded, whenever the key was
+      // rewritten in between. That rewrite is not hypothetical — the legacy snapshot repo's
+      // deploy workflow re-uploads this exact key on its `force_pdf_refresh` input. Re-sending
+      // the conditionals ties the verdict to the bytes actually served, because R2 evaluates
+      // `onlyIf` against the very object it returns; the body-less outcome that produces is
+      // not a gap in this path but the correct answer, resolved by preconditionStatus()
+      // exactly as on the first read. When no conditionals were sent, `onlyIf` is empty and a
+      // body-less result cannot occur, so the common path is untouched.
       //
       // A head() before the get() would also expose the validators, and would avoid opening
       // this slice stream at all — but it would put a second round-trip on the path where
       // If-Range MATCHES, which is the normal resumed download, in exchange for tidying the
-      // rare one where it does not. It would also open a TOCTOU window that this shape does
-      // not have: here the object whose validator we checked is the very response we go on
-      // to serve. So the get-then-re-read stays, and the slice we are abandoning is
-      // cancelled rather than left to GC.
+      // rare one where it does not. It would also widen the window this shape keeps narrow:
+      // the object whose validators decide the verdict is the one R2 returns from the same
+      // call. So the get-then-re-read stays, and the slice we are abandoning is cancelled
+      // rather than left to GC.
       const ifRange = rangeHeader !== null ? request.headers.get("if-range") : null;
       let rangeApplies = rangeHeader !== null;
       if (ifRange !== null && !ifRangeMatches(ifRange, obj.httpEtag)) {
@@ -395,13 +417,23 @@ export default {
         await discardBody(obj.body);
         let full: R2ObjectBody | R2Object | null;
         try {
-          full = await bucket.get(pdfVersion.pdf_r2_key!);
+          full = await bucket.get(pdfVersion.pdf_r2_key!, { onlyIf });
         } catch (e) {
           console.log(JSON.stringify({ event: "binding-error", binding: "DOCS_PDFS", error: String(e) }));
           return themed(env, 503);
         }
         if (!full) return themed(env, 404); // deleted between the two reads
-        if (!("body" in full) || !full.body) return themed(env, 503); // no onlyIf was sent
+        if (!("body" in full) || !full.body) {
+          // The key was rewritten between the two reads and the request's preconditions do
+          // not hold for the new representation. Same treatment as a first-read failure, on
+          // the new object's validators — never the old ones, which describe a representation
+          // this response is not about.
+          const status = preconditionStatus(
+            request.headers, isGetOrHead, full.httpEtag, full.uploaded);
+          return apexHeaders(new Response(null, {
+            status, headers: { etag: full.httpEtag, "accept-ranges": "bytes" },
+          }), env, pdfCacheClass);
+        }
         obj = full as R2ObjectBody;
         pdfHeaders.etag = obj.httpEtag;
       }
