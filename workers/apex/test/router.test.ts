@@ -203,8 +203,11 @@ describe("apex router (§3.2 order)", () => {
     // satisfied byte range on `.range`) behavior closely enough to exercise index.ts's
     // handling of both without needing the real R2 binding.
     const ETAG = '"pdf-etag-1"';
+    const UPLOADED = new Date("2026-01-15T10:00:00Z");
+    const BEFORE_UPLOAD = "Wed, 14 Jan 2026 10:00:00 GMT";
+    const AFTER_UPLOAD = "Fri, 16 Jan 2026 10:00:00 GMT";
     function r2Env(
-      objects: Record<string, { body: string; etag?: string }>,
+      objects: Record<string, { body: string; etag?: string; uploaded?: Date }>,
       overrides: Record<string, unknown> = {},
     ) {
       return makeEnv({
@@ -215,32 +218,63 @@ describe("apex router (§3.2 order)", () => {
             const etag = hit.etag ?? ETAG;
             const size = hit.body.length;
 
+            const uploaded = hit.uploaded ?? UPLOADED;
+            const secs = (d: number) => Math.floor(d / 1000); // R2 compares at seconds granularity
+
             // R2 returns a body-less R2Object whenever an onlyIf precondition FAILS, and it
             // never says which one did — that ambiguity is exactly what index.ts has to
-            // resolve from the request's own headers (304 family vs 412 family).
+            // resolve by re-evaluating the request's conditionals against these validators.
+            // R2 ANDs every validator it is handed and knows nothing about the request
+            // METHOD; index.ts is what filters the set down to the ones RFC 9110 §13.2.2
+            // says apply, so this mock deliberately evaluates whatever it is given.
+            const bodyless = { httpEtag: etag, size, uploaded };
             const ifNoneMatch = options?.onlyIf?.get?.("if-none-match");
-            if (ifNoneMatch && ifNoneMatch === etag) {
-              return { httpEtag: etag, size }; // If-None-Match matched → "not modified"
+            if (ifNoneMatch && (ifNoneMatch === "*" || ifNoneMatch.split(",").some(
+              (t) => t.trim().replace(/^W\//, "") === etag.replace(/^W\//, "")))) {
+              return bodyless; // If-None-Match matched → "not modified"
             }
             const ifMatch = options?.onlyIf?.get?.("if-match");
-            if (ifMatch && ifMatch !== etag) {
-              return { httpEtag: etag, size }; // If-Match failed → precondition failed
+            if (ifMatch && ifMatch !== "*" && !ifMatch.split(",").some(
+              (t) => t.trim() === etag)) {
+              return bodyless; // If-Match failed → precondition failed
+            }
+            const ifUnmodifiedSince = options?.onlyIf?.get?.("if-unmodified-since");
+            if (ifUnmodifiedSince && secs(uploaded.getTime()) > secs(Date.parse(ifUnmodifiedSince))) {
+              return bodyless; // object is newer than the client's copy
+            }
+            const ifModifiedSince = options?.onlyIf?.get?.("if-modified-since");
+            if (ifModifiedSince && secs(uploaded.getTime()) <= secs(Date.parse(ifModifiedSince))) {
+              return bodyless; // not modified since the client's copy
             }
 
             // The whole-object result. R2 returns this shape for a plain un-ranged get AND
             // — critically — for every Range header it declines to honour. Both verified
             // against a real R2 binding under @cloudflare/vitest-pool-workers.
             const whole = {
-              httpEtag: etag, size, body: hit.body, range: { offset: 0, length: size },
+              httpEtag: etag, size, uploaded, body: hit.body,
+              range: { offset: 0, length: size },
             };
 
             const rangeHeader = options?.range?.get?.("range");
             if (!rangeHeader) return whole;
 
-            const closed = /^bytes=(\d+)-(\d+)$/.exec(rangeHeader);
-            if (closed) {
-              const offset = Number(closed[1]);
-              const last = Number(closed[2]);
+            // Range parsing mirrors R2's OWN grammar rather than being merely "strict":
+            // miniflare src/workers/shared/range.ts uses /^ *bytes *=/i for the prefix and
+            // /^ *(\d+)? *- *(\d+)? *$/ per comma-separated spec — ASCII SPACE ONLY, never
+            // \s. index.ts's classifier accepts \s, so the two grammars genuinely disagree
+            // on a tab. Reproducing R2's grammar here is what makes the tab-separated-Range
+            // test a real divergence rather than an artefact of a lazily-strict mock.
+            const prefix = / *bytes *=/i.exec(rangeHeader);
+            if (!prefix || prefix.index !== 0) return whole; // unknown unit → ignored
+            const specs = rangeHeader.substring(prefix[0].length).split(",");
+            if (specs.length !== 1) return whole; // multi-range → ignored
+            const m = /^ *(\d+)? *- *(\d+)? *$/.exec(specs[0]);
+            if (!m) return whole; // unparseable (a tab lands here, exactly as in R2)
+            const [, startRaw, endRaw] = m;
+
+            if (startRaw !== undefined && endRaw !== undefined) {
+              const offset = Number(startRaw);
+              const last = Number(endRaw);
               // Observed R2: an int-range with first-pos >= size, or an invalid spec with
               // last < first, is IGNORED — R2 hands back the complete object rather than
               // throwing or returning a zero-length range. (`bytes=10-20` and `bytes=5-2`
@@ -248,37 +282,35 @@ describe("apex router (§3.2 order)", () => {
               if (offset >= size || last < offset) return whole;
               const length = Math.min(last, size - 1) - offset + 1; // last-pos clamps to EOF
               return {
-                httpEtag: etag,
-                size,
+                httpEtag: etag, size, uploaded,
                 body: hit.body.slice(offset, offset + length),
                 range: { offset, length },
               };
             }
-            // Suffix form. R2Range is a three-shape union and this arm deliberately returns
-            // the RAW `{suffix}` shape rather than pre-normalizing to `{offset, length}` —
-            // that is what exercises index.ts's resolveRange(). (workerd itself normalizes,
-            // but the type admits this shape, so the Worker must cope with it.)
-            const suffix = /^bytes=-(\d+)$/.exec(rangeHeader);
-            if (suffix) {
-              const n = Math.min(Number(suffix[1]), size);
-              if (n === 0) return whole; // observed R2: `bytes=-0` is ignored, not rejected
-              return { httpEtag: etag, size, body: hit.body.slice(size - n), range: { suffix: n } };
-            }
-
-            // Open-ended (`bytes=5-`), multi-range, malformed or unknown-unit. Observed R2
-            // ignores every one of these that it cannot satisfy and returns the whole object.
-            const open = /^bytes=(\d+)-$/.exec(rangeHeader);
-            if (open) {
-              const offset = Number(open[1]);
+            if (startRaw !== undefined) { // open-ended `bytes=5-`
+              const offset = Number(startRaw);
               if (offset >= size) return whole; // unsatisfiable → ignored
               return {
-                httpEtag: etag,
-                size,
+                httpEtag: etag, size, uploaded,
                 body: hit.body.slice(offset),
                 range: { offset, length: size - offset },
               };
             }
-            return whole;
+            if (endRaw !== undefined) {
+              // Suffix form. R2Range is a three-shape union and this arm deliberately
+              // returns the RAW `{suffix}` shape rather than pre-normalizing to
+              // `{offset, length}` — that is what exercises index.ts's resolveRange().
+              // (workerd itself normalizes, but the type admits this shape.)
+              const n = Number(endRaw);
+              // miniflare: a suffix >= length yields no ranges, and `bytes=-0` is skipped —
+              // both leave R2 serving the complete object rather than rejecting.
+              if (n === 0 || n >= size) return whole;
+              return {
+                httpEtag: etag, size, uploaded,
+                body: hit.body.slice(size - n), range: { suffix: n },
+              };
+            }
+            return whole; // bare `bytes=-`
           },
         } as unknown as R2Bucket,
         ...overrides,
@@ -571,6 +603,223 @@ describe("apex router (§3.2 order)", () => {
       expect(r.headers.get("content-range")).toBe("bytes 0-8/9");
       expect(await r.text()).toBe("PDF-BYTES");
     });
+
+    // --- The classifier's grammar and R2's grammar are NOT the same grammar, and the
+    // Worker no longer assumes they are: it checks the bounds it derived against the bytes
+    // R2 actually returned before promising a 206. ---
+
+    it("tab-separated Range → 200 with the whole body, never a 206 for bytes nobody sliced", async () => {
+      // R2 parses ranges with ASCII space only (/^ *bytes *=/i + /^ *(\d+)? *- *(\d+)? *$/);
+      // the classifier's \s also accepts a tab. So this header says "single, bytes 2-4"
+      // here and "unparseable, serve everything" to R2 — and trusting the classifier alone
+      // shipped `206 Content-Range: bytes 0-8/9` carrying all 9 bytes in answer to a
+      // request for 3. Same lying-206 class as the unsatisfiable case above.
+      const r = await ranged("bytes=2\t-\t4");
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-range")).toBeNull();
+      expect(r.headers.get("content-length")).toBe("9");
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("LEADING whitespace is stripped before either parser sees it, so only INNER whitespace diverges", async () => {
+      // Worth pinning because it bounds the divergence surface. `Headers` strips the
+      // optional whitespace around a field value (RFC 9110 §5.5), so "\tbytes=2-4" arrives
+      // as "bytes=2-4" and both grammars accept it — the 206 here is correct, not a
+      // regression. Only whitespace INSIDE the value (the test above) can reach the two
+      // parsers intact and be read differently by them.
+      const r = await ranged("\tbytes=2-4");
+      expect(r.status).toBe(206);
+      expect(r.headers.get("content-range")).toBe("bytes 2-4/9");
+    });
+
+    it("space-separated Range stays a 206 — R2 accepts spaces, so the bounds still agree", async () => {
+      // The degrade must be driven by actual disagreement, not by giving up on whitespace.
+      const r = await ranged("bytes = 2-4");
+      expect(r.status).toBe(206);
+      expect(r.headers.get("content-range")).toBe("bytes 2-4/9");
+      expect(await r.text()).toBe("F-B");
+    });
+
+    it("positions above 2^53: an invalid spec is ignored (200), not read as unsatisfiable (416)", async () => {
+      // Number() rounds 9007199254740993 down to ...992, so `last < first` read as false and
+      // this invalid spec was promoted to "unsatisfiable" → 416. §14.1.2 says ignore it.
+      const r = await ranged("bytes=9007199254740993-9007199254740992");
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("a partial body the Worker did not ask for gets an HONEST 206, never a 200 that misstates its length", async () => {
+      // Belt and braces for a future R2 whose grammar accepts something this classifier
+      // calls "ignored": the body in hand is a slice, so a 200 would ship
+      // Content-Length: 9 over 3 bytes. The fallback describes what is actually there.
+      const env = makeEnv({
+        DOCS_ENV: "production",
+        DOCS_PDFS: {
+          get: async () => ({
+            httpEtag: ETAG, size: 9, uploaded: UPLOADED,
+            body: "F-B", range: { offset: 2, length: 3 },
+          }),
+        } as unknown as R2Bucket,
+      });
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=0-1,4-5" }, // classifier: ignored
+        }),
+        env,
+      );
+      expect(r.status).toBe(206);
+      expect(r.headers.get("content-range")).toBe("bytes 2-4/9");
+      expect(r.headers.get("content-length")).toBe("3");
+    });
+
+    // --- §14.2: "GET is the only method for which range handling is defined." ---
+
+    it("HEAD + Range → 200, no Content-Range: Range is ignored on every method but GET", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          method: "HEAD",
+          headers: { "user-agent": "vitest", range: "bytes=0-3" },
+        }),
+        env,
+      );
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-range")).toBeNull();
+      expect(r.headers.get("content-length")).toBe("9");
+    });
+
+    it("POST + an unsatisfiable Range → 200, not 416: the header is ignored, not judged", async () => {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          method: "POST",
+          headers: { "user-agent": "vitest", range: "bytes=99-" },
+        }),
+        env,
+      );
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-range")).toBeNull();
+    });
+
+    // --- RFC 9110 §13.1.5 If-Range. R2's R2Conditional carries only etagMatches /
+    // etagDoesNotMatch / uploadedBefore / uploadedAfter, so an If-Range in the forwarded
+    // Headers is silently DROPPED and the range applied unconditionally. ---
+
+    async function withIfRange(ifRange: string, rangeHeader: string) {
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" },
+      );
+      return worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: rangeHeader, "if-range": ifRange },
+        }),
+        env,
+      );
+    }
+
+    it("If-Range matching the current ETag → the range is honoured, 206", async () => {
+      const r = await withIfRange(ETAG, "bytes=4-");
+      expect(r.status).toBe(206);
+      expect(r.headers.get("content-range")).toBe("bytes 4-8/9");
+      expect(await r.text()).toBe("BYTES");
+    });
+
+    it("If-Range naming a STALE ETag → 200 with the complete new representation", async () => {
+      // The corruption case. R2 cannot evaluate If-Range, so it applied the range anyway and
+      // this returned bytes 4+ of the NEW object under a 206 — a resuming downloader then
+      // appends the new tail to its old prefix and silently produces a broken PDF. §13.1.5
+      // requires the failed validator to yield the complete representation instead.
+      const r = await withIfRange('"stale-etag"', "bytes=4-");
+      expect(r.status).toBe(200);
+      expect(r.headers.get("content-range")).toBeNull();
+      expect(r.headers.get("content-length")).toBe("9");
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("a stale If-Range wins over an unsatisfiable spec → 200, not 416", async () => {
+      // Ordering matters: a Range being ignored entirely (§13.1.5) is decided before
+      // satisfiability (§14.1.2) is ever judged, so no 416 may escape here.
+      const r = await withIfRange('"stale-etag"', "bytes=99-");
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("a WEAK If-Range validator never matches (§13.1.5 requires a strong one)", async () => {
+      const r = await withIfRange('W/"pdf-etag-1"', "bytes=4-");
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("an HTTP-date If-Range never matches — this Worker emits no Last-Modified to compare against", async () => {
+      const r = await withIfRange(AFTER_UPLOAD, "bytes=4-");
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    // --- §13.2.2 preconditions, decided by EVALUATING the validators rather than by
+    // guessing from which headers are present. ---
+
+    it("If-Match satisfied + If-None-Match satisfied on a GET → 304, not 412", async () => {
+      // The inverse of the If-Match-fails case above, and the one presence-inference got
+      // wrong: If-Match matches (so step 1 passes) while If-None-Match also matches (so
+      // step 3 FAILS) — §13.1.2 owes a 304. Seeing an If-Match header at all returned 412.
+      const r = await conditional({
+        "if-match": '"pdf-etag-1"',
+        "if-none-match": '"pdf-etag-1"',
+      });
+      expect(r.status).toBe(304);
+      expect(await r.text()).toBe("");
+    });
+
+    it("If-Modified-Since alone on a non-GET/HEAD → 200: §13.2.2 step 4 never evaluates it", async () => {
+      // R2 ANDs every validator it is handed and knows nothing about the method, so
+      // forwarding the raw headers made it fail the request on a validator the RFC says to
+      // ignore — and the only answer left was a 412. Filtering the conditionals down to the
+      // applicable set means the request simply proceeds.
+      const r = await conditional({ "if-modified-since": AFTER_UPLOAD }, "POST");
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+    });
+
+    it("If-Modified-Since alone on a GET IS evaluated → 304", async () => {
+      // The other side of the filter: dropping the header for non-GET must not drop it here.
+      expect((await conditional({ "if-modified-since": AFTER_UPLOAD })).status).toBe(304);
+    });
+
+    it("a satisfied If-Unmodified-Since serves the object; a failed one is 412", async () => {
+      expect((await conditional({ "if-unmodified-since": AFTER_UPLOAD })).status).toBe(200);
+      expect((await conditional({ "if-unmodified-since": BEFORE_UPLOAD })).status).toBe(412);
+    });
+
+    it("If-Match: * matches any existing representation (§13.1.1)", async () => {
+      expect((await conditional({ "if-match": "*" })).status).toBe(200);
+    });
+
+    it("If-None-Match: * on an existing representation fails → 304 on a GET", async () => {
+      expect((await conditional({ "if-none-match": "*" })).status).toBe(304);
+    });
+
+    it("If-None-Match matches WEAKLY (§13.1.2 mandates the weak comparison)", async () => {
+      // A weak tag from the client must still match a strong stored tag, or every
+      // revalidation from a cache that weakened the tag re-downloads 29.2 MiB.
+      expect((await conditional({ "if-none-match": 'W/"pdf-etag-1"' })).status).toBe(304);
+    });
+
+    it("If-None-Match honours a comma-separated tag list", async () => {
+      const r = await conditional({ "if-none-match": '"other", "pdf-etag-1"' });
+      expect(r.status).toBe(304);
+    });
+
+    it("If-Match compares STRONGLY: a weak tag from the client never satisfies it", async () => {
+      expect((await conditional({ "if-match": 'W/"pdf-etag-1"' })).status).toBe(412);
+    });
   });
 
   describe("resolveRange (R2Range is a three-shape union)", () => {
@@ -599,38 +848,73 @@ describe("apex router (§3.2 order)", () => {
     // R2 cannot tell us: it answers unsatisfiable, malformed, multi-range and unknown-unit
     // Range headers identically — with the complete object — which is also exactly what a
     // satisfied whole-object range looks like. Verified against a real R2 binding.
-    it("single satisfiable byte ranges → single", () => {
-      for (const h of ["bytes=0-", "bytes=5-", "bytes=0-0", "bytes=-3", "bytes=0-9",
-                       "bytes=5-99", "bytes=9-"]) {
-        expect(classifyRangeHeader(h, 10), h).toBe("single");
+    it("single satisfiable byte ranges → single, with the concrete bounds they select", () => {
+      // The bounds are the point: they are what the Worker compares against the bytes R2
+      // actually returned before it will promise a 206.
+      const cases: Array<[string, number, number]> = [
+        ["bytes=0-", 0, 10], ["bytes=5-", 5, 5], ["bytes=0-0", 0, 1],
+        ["bytes=-3", 7, 3], ["bytes=0-9", 0, 10],
+        ["bytes=5-99", 5, 5],   // last-pos clamps to EOF
+        ["bytes=9-", 9, 1],
+        ["bytes=-99", 0, 10],   // suffix past the start is the whole object
+      ];
+      for (const [h, start, length] of cases) {
+        expect(classifyRangeHeader(h, 10), h).toEqual({ kind: "single", start, length });
       }
     });
 
     it("unsatisfiable ranges → unsatisfiable", () => {
-      expect(classifyRangeHeader("bytes=10-", 10)).toBe("unsatisfiable"); // first-pos == length
-      expect(classifyRangeHeader("bytes=99-", 10)).toBe("unsatisfiable");
-      expect(classifyRangeHeader("bytes=10-20", 10)).toBe("unsatisfiable");
-      expect(classifyRangeHeader("bytes=-0", 10)).toBe("unsatisfiable"); // suffix-length 0
+      for (const h of ["bytes=10-", "bytes=99-", "bytes=10-20", "bytes=-0"]) {
+        // first-pos >= length, or suffix-length 0
+        expect(classifyRangeHeader(h, 10), h).toEqual({ kind: "unsatisfiable" });
+      }
     });
 
     it("multi-range, malformed and unknown-unit → ignored (§14.1.2: an invalid spec is ignored)", () => {
       for (const h of ["bytes=0-1,4-5", "bytes=abc", "bytes=-", "items=0-5", "bytes=5-2", ""]) {
-        expect(classifyRangeHeader(h, 10), h).toBe("ignored");
+        expect(classifyRangeHeader(h, 10), h).toEqual({ kind: "ignored" });
       }
     });
 
     it("tolerates the case and whitespace variation R2 itself accepts", () => {
       // R2 honours all three of these, so misreading them as "ignored" would downgrade a
       // legitimate 206 to a 200.
-      expect(classifyRangeHeader("BYTES=0-5", 10)).toBe("single");
-      expect(classifyRangeHeader("bytes = 0-5", 10)).toBe("single");
-      expect(classifyRangeHeader("bytes=0-5 ", 10)).toBe("single");
+      expect(classifyRangeHeader("BYTES=0-5", 10)).toEqual({ kind: "single", start: 0, length: 6 });
+      expect(classifyRangeHeader("bytes = 0-5", 10)).toEqual({ kind: "single", start: 0, length: 6 });
+      expect(classifyRangeHeader("bytes=0-5 ", 10)).toEqual({ kind: "single", start: 0, length: 6 });
     });
 
     it("zero-length representation: only a non-zero suffix-range is satisfiable", () => {
       // §14.1.2 states this case explicitly. `bytes=0-` fails first-pos < length (0 < 0).
-      expect(classifyRangeHeader("bytes=0-", 0)).toBe("unsatisfiable");
-      expect(classifyRangeHeader("bytes=-5", 0)).toBe("single");
+      expect(classifyRangeHeader("bytes=0-", 0)).toEqual({ kind: "unsatisfiable" });
+      // Satisfiable, but it selects zero bytes — no Content-Range can describe an empty
+      // selection (§14.4), so the caller's `length > 0` guard sends it to a 200.
+      expect(classifyRangeHeader("bytes=-5", 0)).toEqual({ kind: "single", start: 0, length: 0 });
+    });
+
+    it("positions above 2^53 compare exactly — an invalid spec stays ignored, not 416", () => {
+      // Number() rounds both of these to 9007199254740992, so `last < first` read as false
+      // and the spec was promoted from "invalid, ignore it" (§14.1.2 → 200) to
+      // "unsatisfiable" (→ 416). Digit-string comparison is exact at any magnitude.
+      expect(classifyRangeHeader("bytes=9007199254740993-9007199254740992", 10))
+        .toEqual({ kind: "ignored" });
+      // ...while a genuinely huge first-pos is still unsatisfiable.
+      expect(classifyRangeHeader("bytes=9007199254740993-", 10)).toEqual({ kind: "unsatisfiable" });
+      // Leading zeros normalise rather than inflating the digit count.
+      expect(classifyRangeHeader("bytes=00000005-00000002", 10)).toEqual({ kind: "ignored" });
+      expect(classifyRangeHeader("bytes=0000000002-0000000005", 10))
+        .toEqual({ kind: "single", start: 2, length: 4 });
+    });
+
+    it("accepts whitespace R2's own parser rejects — the divergence the bounds check absorbs", () => {
+      // R2 parses ranges with `/^ *bytes *=/i` + `/^ *(\d+)? *- *(\d+)? *$/` (ASCII space
+      // only; miniflare src/workers/shared/range.ts). This classifier's `\s` accepts a tab
+      // too, so the two grammars genuinely disagree here. That is tolerated by design: the
+      // Worker checks these bounds against the bytes R2 returned, so a spec R2 declined
+      // degrades to a 200 rather than to a 206 describing a body nobody asked for. The
+      // end-to-end proof is the "tab-separated Range" test below.
+      expect(classifyRangeHeader("bytes=2\t-\t4", 10)).toEqual({ kind: "single", start: 2, length: 3 });
+      expect(classifyRangeHeader("\tbytes=2-4", 10)).toEqual({ kind: "single", start: 2, length: 3 });
     });
   });
 });

@@ -90,7 +90,7 @@ def test_access_credentials_default_from_environment(monkeypatch, tmp_path):
     _parity_argv(monkeypatch, tmp_path)
     monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
     monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
-    seen: list[tuple[str, str] | None] = []
+    seen: list[parity.Access | None] = []
 
     def _probe(host, path, access, method="HEAD"):
         seen.append(access)
@@ -100,7 +100,8 @@ def test_access_credentials_default_from_environment(monkeypatch, tmp_path):
     monkeypatch.setattr(parity._OPENER, "open",
                         lambda *a, **k: _sitemap_response("<urlset></urlset>"))
     parity.main()
-    assert ("env-id", "env-secret") in seen
+    # scoped to --probe-host, which is the only host the token may ever be presented to
+    assert parity.Access("p.invalid", "env-id", "env-secret") in seen
 
 
 def test_half_a_service_token_is_rejected(monkeypatch, tmp_path, capsys):
@@ -176,10 +177,15 @@ def test_sitemap_fetched_once_per_slug_and_honours_the_scheme_override(monkeypat
     assert counter.urls == ["http://s.invalid/en/rolling/sitemap.xml"]  # once, and NOT https
 
 
-def test_sitemap_request_carries_cf_access_headers(monkeypatch, tmp_path):
-    # The rewritten single-call fetch built a BARE Request, dropping the Access headers that
-    # fetch() sends — so --sitemap-host pointed at the Access-gated canary 403'd on every
-    # sitemap and the sweep reported an empty corpus. Both requests must be credentialed.
+_ACCESS_HEADERS = ("Cf-access-client-id", "Cf-access-client-secret")  # urllib capitalises
+
+
+def test_sitemap_host_that_is_not_the_probe_host_gets_NO_access_headers(monkeypatch, tmp_path):
+    # THE credential-scoping assertion, and the inverse of what this test used to demand.
+    # Pre-cutover the two flags name different parties: --sitemap-host is docs.vyos.io,
+    # still served by ReadTheDocs, while --probe-host is our Access-gated canary. Crediting
+    # every outbound request "because the run holds a token" handed our CF Access service
+    # token to a host we do not control, once every night.
     _parity_argv(monkeypatch, tmp_path)
     monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
     monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
@@ -189,9 +195,44 @@ def test_sitemap_request_carries_cf_access_headers(monkeypatch, tmp_path):
     parity.main()
     assert len(counter.requests) == 1
     req = counter.requests[0]
-    # urllib normalises added header names to capitalised form
+    assert req.full_url.startswith("https://s.invalid/")      # the third-party host
+    for header in _ACCESS_HEADERS:
+        assert req.get_header(header) is None
+
+
+def test_sitemap_host_equal_to_the_probe_host_IS_credentialed(monkeypatch, tmp_path):
+    # The other direction, and the reason the scoping lives inside build_request() rather
+    # than at each call site: post-cutover both flags name the same Access-gated host and
+    # that sitemap fetch must still carry the token. A bare Request here (the shape before
+    # round 2) 403'd every sitemap, and the sweep then reported an empty corpus as a pass.
+    monkeypatch.setattr(sys, "argv", ["parity", "--sitemap-host", "p.invalid",
+                                      "--probe-host", "p.invalid", "--slugs", "rolling",
+                                      "--report", str(tmp_path / "r.json")])
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+    counter = _CountingSitemap()
+    monkeypatch.setattr(parity._OPENER, "open", counter)
+    monkeypatch.setattr(parity, "fetch", lambda *a, **k: (200, None))
+    parity.main()
+    req = counter.requests[0]
     assert req.get_header("Cf-access-client-id") == "env-id"
     assert req.get_header("Cf-access-client-secret") == "env-secret"
+
+
+def test_build_request_attaches_the_token_to_its_own_host_and_to_nothing_else():
+    # build_request() in isolation: one Access object, many destinations.
+    access = parity.Access("p.invalid", "an-id", "a-secret")
+    own = parity.build_request("https://P.Invalid/en/rolling/", access)   # case-insensitive
+    assert own.get_header("Cf-access-client-id") == "an-id"
+    assert own.get_header("Cf-access-client-secret") == "a-secret"
+    for other in ("https://s.invalid/en/rolling/",          # a different host entirely
+                  "https://p.invalid.evil.example/en/",     # suffix-extended lookalike
+                  "https://notp.invalid/en/",               # prefix-extended lookalike
+                  "https://p.invalid:8443/en/rolling/"):    # same name, different authority
+        for header in _ACCESS_HEADERS:
+            assert parity.build_request(other, access).get_header(header) is None
+    for header in _ACCESS_HEADERS:                          # no token configured at all
+        assert parity.build_request("https://p.invalid/", None).get_header(header) is None
 
 
 def test_non_200_sitemap_is_a_failure_not_an_empty_corpus(monkeypatch, tmp_path):

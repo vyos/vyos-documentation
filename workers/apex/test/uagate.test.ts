@@ -60,14 +60,32 @@ describe("UA gate (§3.2.1) — ships log-only for AI crawlers", () => {
     expect(uaVerdict("Mozilla/5.0 (compatible; Googlebot/2.1)", policy)).toBe("allow");
   });
 
-  it("an allow entry that STRICTLY CONTAINS the matched log entry is a deliberate exception", () => {
-    // The mirror image of the Applebot case: a vendor shipping a broad token that is logged
-    // plus a narrower variant that is allowed. No pair in the shipped ua-policy.json takes
-    // this branch today — it keeps both directions of the vendor-variant pattern
-    // expressible, since the shipped policy already relies on one of them.
+  it("a narrow allow entry no longer overrides a matched log entry — log wins outright", () => {
+    // This branch used to return "allow" when the matched allow entry strictly CONTAINED
+    // the matched log entry, so a policy could carve a narrow allow out of a broad log
+    // entry. Removed as spoofable (see the next test). Both rows are now "log", which is
+    // the safe verdict — the request is still served either way; only telemetry differs.
     const carveOut = { allow: ["Bytespider-Search"], log: ["Bytespider"], block: [] };
-    expect(uaVerdict("Bytespider-Search/1.0", carveOut)).toBe("allow");
+    expect(uaVerdict("Bytespider-Search/1.0", carveOut)).toBe("log");
     expect(uaVerdict("Bytespider/1.0", carveOut)).toBe("log");
+  });
+
+  it("the removed carve-out was spoofable by quoting both tokens independently", () => {
+    // The concrete bypass. Containment was tested between the two matched ENTRIES, never
+    // against the UA's own token structure, so a request-controlled string naming both
+    // tokens separately matched allow "Bytespider-Search" and log "Bytespider", satisfied
+    // the containment test, and bought the AI crawler an `allow`. It must be logged.
+    const carveOut = { allow: ["Bytespider-Search"], log: ["Bytespider"], block: [] };
+    expect(uaVerdict("Bytespider/2.0 Bytespider-Search/1.0", carveOut)).toBe("log");
+  });
+
+  it("dropping the carve-out leaves every SHIPPED-policy verdict unchanged", () => {
+    // The vendor pair the shipped policy actually depends on runs the other way round: log
+    // "Applebot-Extended" is LONGER than allow "Applebot", so the allow entry never
+    // contained the log entry and log already won. No pair in ua-policy.json took the
+    // removed branch, so its removal is behaviour-preserving for what we ship.
+    expect(uaVerdict("Mozilla/5.0 (compatible; Applebot/0.1)", policy)).toBe("allow");
+    expect(uaVerdict("Mozilla/5.0 (compatible; Applebot-Extended/0.1)", policy)).toBe("log");
   });
 
   it("an entry present in BOTH lists resolves to log, not allow", () => {

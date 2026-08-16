@@ -9,10 +9,12 @@ Location for alias rows).
 from __future__ import annotations
 
 import argparse
+import dataclasses
 import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -59,24 +61,59 @@ _OPENER = urllib.request.build_opener(_NoRedirect)
 _SCHEME = "https"
 
 
-def build_request(url: str, access: tuple[str, str] | None,
+def _authority(value: str) -> tuple[str | None, int | None]:
+    """(lowercased hostname, port) for a full URL or a bare `host[:port]` argument."""
+    parts = urllib.parse.urlsplit(value if "://" in value else f"//{value}")
+    return (parts.hostname.lower() if parts.hostname else None), parts.port
+
+
+@dataclasses.dataclass(frozen=True)
+class Access:
+    """A CF Access service token BOUND TO THE ONE HOST it may be presented to.
+
+    The binding is the point. This run talks to two hosts that are not the same party:
+    --probe-host is our Access-gated canary, while --sitemap-host is (pre-cutover)
+    docs.vyos.io, still served by ReadTheDocs. Credentials modelled as a bare
+    (id, secret) tuple carry no notion of destination, so a single `if access:` test in
+    the request builder sent our service token to BOTH — handing it to a third party on
+    every nightly sitemap fetch. Pairing the secret with its host makes the destination
+    check part of the credential rather than a rule each call site has to remember.
+    """
+
+    host: str
+    client_id: str
+    client_secret: str
+
+    def applies_to(self, url: str) -> bool:
+        """True only for a URL whose authority is exactly this credential's host."""
+        return _authority(url) == _authority(self.host)
+
+
+def build_request(url: str, access: Access | None,
                   method: str = "HEAD") -> urllib.request.Request:
     """The ONE place that attaches CF Access credentials to a request.
 
-    Every outbound request in this module goes through here. The sitemap fetch used to
-    build its own bare Request, so pointing --sitemap-host at the Access-gated canary host
-    made every sitemap 403 while the probe requests (which did send the headers) worked —
-    a split-brain that is easy to reintroduce and hard to read off the code. Funnelling
-    both callers through a single constructor makes that drift structurally impossible.
+    Every outbound request in this module goes through here, and the attach decision is
+    made PER DESTINATION, never per run. Two failure modes meet at this function and only
+    a host-scoped single choke point closes both:
+
+      * Credential leak. The sitemap host and the probe host are different parties
+        pre-cutover; an unscoped `if access:` mailed our service token to ReadTheDocs
+        once a night. `Access.applies_to()` makes that structurally impossible.
+      * Split-brain. The sitemap fetch used to build its own bare Request, so pointing
+        --sitemap-host at the Access-gated canary 403'd every sitemap while the probe
+        requests worked. Post-cutover both flags name the same host, and because the
+        scoping test is on the URL rather than on which caller asked, that configuration
+        still gets credentialed sitemap fetches with no extra wiring.
     """
     req = urllib.request.Request(url, method=method)
-    if access:
-        req.add_header("CF-Access-Client-Id", access[0])
-        req.add_header("CF-Access-Client-Secret", access[1])
+    if access is not None and access.applies_to(url):
+        req.add_header("CF-Access-Client-Id", access.client_id)
+        req.add_header("CF-Access-Client-Secret", access.client_secret)
     return req
 
 
-def fetch(host: str, path: str, access: tuple[str, str] | None, method: str = "HEAD"):
+def fetch(host: str, path: str, access: Access | None, method: str = "HEAD"):
     req = build_request(f"{_SCHEME}://{host}{path}", access, method)
     try:
         with _OPENER.open(req, timeout=30) as r:
@@ -109,7 +146,12 @@ def main() -> int:
         print("CF Access needs BOTH an id and a secret, or neither "
               "(CF_ACCESS_CLIENT_ID, CF_ACCESS_CLIENT_SECRET)", file=sys.stderr)
         return 2
-    access = (access_id, access_secret) if access_id else None
+    # Bound to the PROBE host, and to nothing else. --probe-host is the host we own and
+    # gate with Access; --sitemap-host is whatever currently publishes the truth sitemaps,
+    # which pre-cutover is ReadTheDocs. Should the two flags name the same host — the
+    # post-cutover configuration — build_request() credentials the sitemap fetch too,
+    # because the test is on the destination and not on the call site.
+    access = Access(a.probe_host, access_id, access_secret) if access_id else None
     failures: list[dict] = []
     checked = 0
 
@@ -124,9 +166,10 @@ def main() -> int:
         #      RETURNS normally for any other 2xx, so a sitemap answering 204/206 would yield
         #      an empty corpus and the gate would pass having probed nothing. The explicit
         #      status check below restores that strictness.
-        #   2. CF Access credentials. Building a bare Request here skipped them, so a
-        #      --sitemap-host pointed at the Access-gated canary 403s on every sitemap;
-        #      build_request() is now the single credential-attaching path.
+        #   2. CF Access credentials WHEN — and only when — the sitemap host is the host the
+        #      token belongs to. A bare Request here 403'd a --sitemap-host pointed at the
+        #      Access-gated canary; an unconditionally credentialed one posted the token to
+        #      ReadTheDocs. build_request() decides per destination and settles both.
         try:
             with _OPENER.open(build_request(
                     f"{_SCHEME}://{a.sitemap_host}/en/{slug}/sitemap.xml", access, "GET"),
