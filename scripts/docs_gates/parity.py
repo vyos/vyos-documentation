@@ -65,10 +65,18 @@ _SCHEME = "https"
 _DEFAULT_PORTS = {"https": 443, "http": 80}
 
 
-def _authority(value: str) -> tuple[str | None, int | None]:
+def _authority(value: str) -> tuple[str, str | None, int | None]:
     """The normalized ORIGIN of a full URL or of a bare `host[:port]` argument.
 
-    Two spellings of one origin have to compare equal, because the two sides of this
+    An origin is scheme + host + port, and all three are returned: a credential scoped to an
+    https host must not match a plaintext http URL. Dropping the scheme made
+    `Access("p.invalid", ...)` apply to `http://p.invalid/`, so the ONE choke point that
+    decides whether to attach the service token would have attached it to a cleartext
+    request. Nothing constructs such a URL today — every URL in this module is built from
+    _SCHEME, so a single run is single-scheme — but the scope of a credential should not
+    depend on that staying true.
+
+    Two spellings of one origin still have to compare equal, because the two sides of this
     comparison come from different places: one is a URL this module built, the other is
     whatever an operator typed after --probe-host. Comparing (hostname, port) verbatim made
     `p.invalid` and `p.invalid:443` distinct, so spelling the default port out cost the
@@ -76,11 +84,14 @@ def _authority(value: str) -> tuple[str | None, int | None]:
     same Access-gated host, that silently 403'd every sitemap fetch and the sweep then
     reported an empty corpus as a pass. Normalized here:
 
-      * case — `hostname` is already lowercased by urlsplit; kept explicit for the reader.
+      * case — `scheme` and `hostname` are already lowercased by urlsplit; kept explicit for
+        the reader.
       * the root label's trailing dot — `p.invalid.` names the same host as `p.invalid`.
       * the scheme's default port → None, so `:443` under https (or `:80` under http) is not
-        a separate authority. A bare argument carries no scheme, so it is read under
-        _SCHEME — the scheme every URL in this module is built with.
+        a separate authority. Folded against the origin's OWN scheme, so http `:80` and
+        https `:443` stay the distinct origins they are.
+      * a bare argument carries no scheme, so it is read under _SCHEME — the scheme every
+        URL in this module is built with.
 
     Deliberately NOT normalized: IDN/punycode equivalence (`ünïcode.example` against its
     `xn--` form). Both hosts here are ASCII literals passed by CI, idna encoding carries its
@@ -88,13 +99,14 @@ def _authority(value: str) -> tuple[str | None, int | None]:
     Unicode spelling not matching its punycode one rather than to guess an equivalence.
     """
     parts = urllib.parse.urlsplit(value if "://" in value else f"//{value}")
+    scheme = (parts.scheme or _SCHEME).lower()
     host = parts.hostname.lower() if parts.hostname else None
     if host and host.endswith("."):
         host = host[:-1]
     port = parts.port
-    if port is not None and port == _DEFAULT_PORTS.get(parts.scheme or _SCHEME):
+    if port is not None and port == _DEFAULT_PORTS.get(scheme):
         port = None
-    return host, port
+    return scheme, host, port
 
 
 @dataclasses.dataclass(frozen=True)
@@ -112,7 +124,12 @@ class Access:
 
     host: str
     client_id: str
-    client_secret: str
+    # repr=False: the default dataclass repr renders every field, so a failed assertion, a
+    # debug print or any exception that interpolates an Access would put the service token
+    # verbatim into CI logs — which are durable and, for this repo, world-readable. The id
+    # stays: it names WHICH token without being the credential, and losing it would make a
+    # scoping failure much harder to read. Secret is fetched via the attribute, never shown.
+    client_secret: str = dataclasses.field(repr=False)
 
     def applies_to(self, url: str) -> bool:
         """True only for a URL whose ORIGIN is this credential's host (see _authority)."""

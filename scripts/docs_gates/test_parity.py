@@ -297,6 +297,33 @@ def test_probe_host_written_with_an_explicit_port_still_credentials_its_own_site
     assert req.get_header("Cf-access-client-secret") == "env-secret"
 
 
+def test_a_plaintext_http_url_never_gets_an_https_scoped_token():
+    # An ORIGIN is scheme + host + port. Comparing only (host, port) left the transport out
+    # of the credential's scope, so a token bound to an https host also applied to the
+    # cleartext http URL of the same name — the choke point would have attached the service
+    # token to a request that puts it on the wire in plaintext. `http://p.invalid:80/` is the
+    # sharp case: 80 folds to None under http, so the authority-only comparison matched the
+    # https-scoped ("p.invalid", None) exactly.
+    access = parity.Access("p.invalid", "an-id", "a-secret")   # bare host → _SCHEME (https)
+    for url in ("http://p.invalid/en/rolling/", "http://p.invalid:80/en/rolling/"):
+        for header in _ACCESS_HEADERS:
+            assert parity.build_request(url, access).get_header(header) is None, url
+    # control, same test: its own scheme still gets the token
+    assert parity.build_request("https://p.invalid/en/rolling/", access).get_header(
+        "Cf-access-client-id") == "an-id"
+
+
+def test_the_service_token_is_not_rendered_by_repr():
+    # The default dataclass repr renders every field. A failed assertion, a debug print or an
+    # exception that interpolates an Access would then put the token into CI output, which is
+    # durable. str() delegates to __repr__, so it covers f-string interpolation too.
+    access = parity.Access("p.invalid", "an-id", "sekrit-must-not-be-rendered")
+    for rendered in (repr(access), str(access), f"{access}"):
+        assert "sekrit-must-not-be-rendered" not in rendered
+    assert access.client_secret == "sekrit-must-not-be-rendered"   # still readable as a field
+    assert "an-id" in repr(access)   # the id is NOT the credential; keep it for diagnosis
+
+
 def test_non_200_sitemap_is_a_failure_not_an_empty_corpus(monkeypatch, tmp_path):
     # _OPENER only raises for non-2xx. A sitemap answering 204 (or any other 2xx) returned
     # normally with an empty/irrelevant body, so the corpus came back empty and the parity
