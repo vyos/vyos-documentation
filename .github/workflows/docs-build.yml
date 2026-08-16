@@ -240,7 +240,9 @@ jobs:
           # CF Access service token goes through the environment, NEVER through argv: a
           # secret on the command line is readable from the process table for the life of
           # the process and is captured verbatim by `set -x` traces and crash dumps.
-          # smoke.py reads these by default and keeps --access-* only as a manual fallback.
+          # These environment variables are the ONLY supported way to pass the token: the
+          # --access-id / --access-secret flags were removed, and argparse now rejects them
+          # outright rather than ignoring them and leaving every probe to 403.
           CF_ACCESS_CLIENT_ID: ${{ secrets.CF_ACCESS_CLIENT_ID }}
           CF_ACCESS_CLIENT_SECRET: ${{ secrets.CF_ACCESS_CLIENT_SECRET }}
         run: |

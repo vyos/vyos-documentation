@@ -273,6 +273,25 @@ function ifRangeMatches(value: string, etag: string): boolean {
   return etagListMatches(v, etag, "strong");
 }
 
+/**
+ * Abandon a body stream this Worker has decided not to send.
+ *
+ * R2 hands back a body on paths whose response carries none. An unsatisfiable Range gets
+ * the COMPLETE object (29.2 MiB for the 1.3 PDF) and is answered 416 with a null body; a
+ * stale `If-Range` gets the sliced range and is answered from a re-read. Dropping the
+ * reference leaves the stream open until GC collects it, holding the connection; cancelling
+ * releases it now and aborts the transfer rather than draining it. Failures are swallowed —
+ * this is cleanup on a path whose response is already decided, and a stream that is already
+ * closed or errored is exactly the state we wanted.
+ */
+async function discardBody(body: ReadableStream | null | undefined): Promise<void> {
+  try {
+    await body?.cancel();
+  } catch {
+    /* already closed or errored — nothing left to release */
+  }
+}
+
 async function themed(env: ApexEnv, status: 404 | 503): Promise<Response> {
   const page = await env.ASSETS.fetch(new Request(`https://apex.internal/${status}.html`));
   return apexHeaders(new Response(page.body, { status, headers: { "content-type": "text/html; charset=utf-8" } }), env);
@@ -361,10 +380,19 @@ export default {
       // nothing at all on the common one. The re-get is deliberately bare: the preconditions
       // passed on the first call, and re-sending them would only add a body-less outcome
       // that this path has no sensible answer for.
+      //
+      // A head() before the get() would also expose the validators, and would avoid opening
+      // this slice stream at all — but it would put a second round-trip on the path where
+      // If-Range MATCHES, which is the normal resumed download, in exchange for tidying the
+      // rare one where it does not. It would also open a TOCTOU window that this shape does
+      // not have: here the object whose validator we checked is the very response we go on
+      // to serve. So the get-then-re-read stays, and the slice we are abandoning is
+      // cancelled rather than left to GC.
       const ifRange = rangeHeader !== null ? request.headers.get("if-range") : null;
       let rangeApplies = rangeHeader !== null;
       if (ifRange !== null && !ifRangeMatches(ifRange, obj.httpEtag)) {
         rangeApplies = false;
+        await discardBody(obj.body);
         let full: R2ObjectBody | R2Object | null;
         try {
           full = await bucket.get(pdfVersion.pdf_r2_key!);
@@ -404,6 +432,10 @@ export default {
           // content-type — there is no PDF payload on this response. 416 is >= 400 so
           // apexHeaders() forces no-store, which is right: the verdict depends on the
           // request's Range header and the cache key does not include it.
+          // R2 answers an unsatisfiable Range with the COMPLETE object, so the body being
+          // dropped here is the whole 29.2 MiB one — the largest abandoned stream on any
+          // path through this handler.
+          await discardBody(obj.body);
           return apexHeaders(
             new Response(null, {
               status: 416,

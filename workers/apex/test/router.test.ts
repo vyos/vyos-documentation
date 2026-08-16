@@ -206,9 +206,28 @@ describe("apex router (§3.2 order)", () => {
     const UPLOADED = new Date("2026-01-15T10:00:00Z");
     const BEFORE_UPLOAD = "Wed, 14 Jan 2026 10:00:00 GMT";
     const AFTER_UPLOAD = "Fri, 16 Jan 2026 10:00:00 GMT";
+    // R2 hands back a ReadableStream, not a string, and the difference is exactly what makes
+    // an abandoned body observable: a stream the Worker neither sends nor cancels stays open
+    // holding its connection. A string-bodied mock cannot see that class of bug at all, so
+    // bodies here are real streams that record their own cancellation. `highWaterMark: 0`
+    // keeps `pull` from running until something actually reads, so a stream cancelled before
+    // any read still reaches its `cancel()` algorithm rather than being already closed.
+    function bodyStream(text: string, sink?: { cancelled: string[] }) {
+      return new ReadableStream({
+        pull(c) {
+          c.enqueue(new TextEncoder().encode(text));
+          c.close();
+        },
+        cancel() {
+          sink?.cancelled.push(text);
+        },
+      }, { highWaterMark: 0 });
+    }
+
     function r2Env(
       objects: Record<string, { body: string; etag?: string; uploaded?: Date }>,
       overrides: Record<string, unknown> = {},
+      sink?: { cancelled: string[] },
     ) {
       return makeEnv({
         DOCS_PDFS: {
@@ -251,7 +270,7 @@ describe("apex router (§3.2 order)", () => {
             // — critically — for every Range header it declines to honour. Both verified
             // against a real R2 binding under @cloudflare/vitest-pool-workers.
             const whole = {
-              httpEtag: etag, size, uploaded, body: hit.body,
+              httpEtag: etag, size, uploaded, body: bodyStream(hit.body, sink),
               range: { offset: 0, length: size },
             };
 
@@ -283,7 +302,7 @@ describe("apex router (§3.2 order)", () => {
               const length = Math.min(last, size - 1) - offset + 1; // last-pos clamps to EOF
               return {
                 httpEtag: etag, size, uploaded,
-                body: hit.body.slice(offset, offset + length),
+                body: bodyStream(hit.body.slice(offset, offset + length), sink),
                 range: { offset, length },
               };
             }
@@ -292,7 +311,7 @@ describe("apex router (§3.2 order)", () => {
               if (offset >= size) return whole; // unsatisfiable → ignored
               return {
                 httpEtag: etag, size, uploaded,
-                body: hit.body.slice(offset),
+                body: bodyStream(hit.body.slice(offset), sink),
                 range: { offset, length: size - offset },
               };
             }
@@ -307,7 +326,8 @@ describe("apex router (§3.2 order)", () => {
               if (n === 0 || n >= size) return whole;
               return {
                 httpEtag: etag, size, uploaded,
-                body: hit.body.slice(size - n), range: { suffix: n },
+                body: bodyStream(hit.body.slice(size - n), sink),
+                range: { suffix: n },
               };
             }
             return whole; // bare `bytes=-`
@@ -723,6 +743,62 @@ describe("apex router (§3.2 order)", () => {
         env,
       );
     }
+
+    // --- Abandoned body streams. R2 hands back a body on paths whose response carries
+    // none; a stream that is neither sent nor cancelled holds its connection until GC. ---
+
+    it("an unsatisfiable Range cancels the whole-object body it answers 416 without", async () => {
+      // The largest abandoned stream on any path here: R2 answers an unsatisfiable Range
+      // with the COMPLETE object, which for the 1.3 PDF is 29.2 MiB, and the 416 sends none
+      // of it. Cancelling aborts the transfer rather than draining or leaking it.
+      const sink = { cancelled: [] as string[] };
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" }, sink,
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=99-" },
+        }),
+        env,
+      );
+      expect(r.status).toBe(416);
+      expect(sink.cancelled).toEqual(["PDF-BYTES"]);
+    });
+
+    it("a stale If-Range cancels the sliced body it discards before re-reading", async () => {
+      const sink = { cancelled: [] as string[] };
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" }, sink,
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=4-", "if-range": '"stale-etag"' },
+        }),
+        env,
+      );
+      expect(r.status).toBe(200);
+      expect(await r.text()).toBe("PDF-BYTES");
+      expect(sink.cancelled).toEqual(["BYTES"]); // the abandoned slice, not the served body
+    });
+
+    it("a served body is NEVER cancelled — the cleanup must not reach the response path", async () => {
+      const sink = { cancelled: [] as string[] };
+      const env = r2Env(
+        { "legacy/1.3/vyos-documentation.pdf": { body: "PDF-BYTES" } },
+        { DOCS_ENV: "production" }, sink,
+      );
+      const r = await worker.fetch(
+        new Request("https://docs-next.vyos.io/en/1.3/vyos-documentation.pdf", {
+          headers: { "user-agent": "vitest", range: "bytes=4-" }, // satisfiable, honoured
+        }),
+        env,
+      );
+      expect(r.status).toBe(206);
+      expect(await r.text()).toBe("BYTES");
+      expect(sink.cancelled).toEqual([]);
+    });
 
     it("If-Range matching the current ETag → the range is honoured, 206", async () => {
       const r = await withIfRange(ETAG, "bytes=4-");
