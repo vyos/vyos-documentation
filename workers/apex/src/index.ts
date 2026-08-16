@@ -63,8 +63,64 @@ export function resolveRange(
     return { start: size - suffix, length: suffix };
   }
   const start = Math.min(Math.max(range.offset ?? 0, 0), size);
-  const length = Math.min(range.length ?? size - start, size - start);
+  // The trailing Math.max(_, 0) keeps the documented "clamped to the object size" contract
+  // total: without it a negative `range.length` would pass straight through Math.min and
+  // yield a negative length (and so a negative Content-Length). A real R2 binding cannot
+  // produce that — see classifyRangeHeader's note on observed R2 behaviour — but this
+  // function is exported and unit-tested as a standalone utility over the R2Range union, so
+  // it should not have a documented invariant its own signature can violate. Deliberately
+  // NOT guarding non-finite inputs: NaN bounds are unreachable from the binding and the
+  // guard would be untestable-in-anger dead weight.
+  const length = Math.max(Math.min(range.length ?? size - start, size - start), 0);
   return { start, length };
+}
+
+// A single `bytes=` range-spec, tolerating the case/whitespace variation R2 itself tolerates
+// (verified: "BYTES=0-5" and "bytes = 0-5" are both honoured). Anything with a comma is a
+// multi-range and deliberately fails to match.
+const SINGLE_BYTE_RANGE = /^\s*bytes\s*=\s*(\d*)\s*-\s*(\d*)\s*$/i;
+
+export type RangeIntent = "unsatisfiable" | "single" | "ignored";
+
+/**
+ * What the client's Range header ASKS FOR, judged against the representation length.
+ *
+ * This exists because R2 does not tell us. Probed against a real R2 binding under
+ * vitest-pool-workers, `get(key, {range: <Headers>})` signals "I ignored your Range" by
+ * returning the WHOLE object with `range = {offset: 0, length: size}` — the byte-for-byte
+ * same shape it returns for a legitimately-satisfied whole-object range like `bytes=0-`.
+ * It does this for every unsatisfiable spec (`bytes=10-` / `bytes=99-` / `bytes=-0` on a
+ * 10-byte object), every malformed one (`bytes=abc`, `bytes=-`, `bytes=5-2`), multi-ranges
+ * (`bytes=0-1,4-5`) and unknown units (`items=0-5`). It does NOT throw for any of them and
+ * it never returns a zero/negative length except for a genuinely zero-length object.
+ * (The object-literal form `get(key, {range: {offset: 99}})` DOES throw
+ * "The requested range is not satisfiable (10039)" — but this Worker passes Headers, so
+ * that path is unreachable here.)
+ *
+ * Trusting `obj.range` alone therefore answered `Range: bytes=99-` with
+ * `206 + Content-Range: bytes 0-9/10` and the FULL body — a 206 that does not correspond to
+ * the request (RFC 9110 §15.3.7). That is actively dangerous for the resuming downloader
+ * this range forwarding exists to serve: a client resuming at byte 99 would append bytes
+ * 0-9 to its partial file and silently corrupt it. Re-deriving intent from the client's own
+ * header is the only way to separate the three cases.
+ *
+ * Satisfiability follows RFC 9110 §14.1.2 verbatim: an int-range is satisfiable iff
+ * first-pos < length; a suffix-range iff suffix-length is non-zero (so on a zero-length
+ * representation, a non-zero suffix-range is the ONLY satisfiable form). An invalid spec
+ * (last-pos < first-pos) MUST be ignored rather than rejected, hence "ignored", not
+ * "unsatisfiable".
+ */
+export function classifyRangeHeader(header: string, size: number): RangeIntent {
+  const m = SINGLE_BYTE_RANGE.exec(header);
+  if (!m) return "ignored"; // multi-range, unknown unit, or unparseable — R2 ignored it
+  const [, firstRaw, lastRaw] = m;
+  if (firstRaw === "") {
+    if (lastRaw === "") return "ignored"; // bare "bytes=-" is malformed, not a suffix-range
+    return Number(lastRaw) > 0 ? "single" : "unsatisfiable"; // §14.1.2: suffix-length 0 is unsatisfiable
+  }
+  const first = Number(firstRaw);
+  if (lastRaw !== "" && Number(lastRaw) < first) return "ignored"; // §14.1.2: invalid spec → ignore Range
+  return first < size ? "single" : "unsatisfiable";
 }
 
 async function themed(env: ApexEnv, status: 404 | 503): Promise<Response> {
@@ -124,15 +180,32 @@ export default {
 
       // A FAILED onlyIf precondition makes R2 hand back a body-less R2Object — just the
       // validators, no content. R2 reports THAT a precondition failed, never WHICH one, so
-      // map back from the request's own conditional headers per RFC 9110: the "not modified"
-      // family (If-None-Match / If-Modified-Since) is a 304, while a failed If-Match or
-      // If-Unmodified-Since is a 412 Precondition Failed (§13.1, §15.5.13) — 304 there would
-      // tell the client its stale copy is still current. With no conditional header at all R2
-      // always returns a body, so this branch is only ever reached with one of them present.
+      // map back from the request's own conditional headers, following RFC 9110 §13.2.2's
+      // MUST-ordered precedence exactly: If-Match, then If-Unmodified-Since, then
+      // If-None-Match, then If-Modified-Since. Order is load-bearing, not cosmetic — testing
+      // the not-modified family first answered `If-Match: "old"` + `If-None-Match: "new"`
+      // with a 304, telling the client its stale copy was still current when the
+      // higher-precedence If-Match had in fact failed and owed it a 412.
       if (!("body" in raw) || !raw.body) {
-        const notModifiedFamily =
-          request.headers.has("if-none-match") || request.headers.has("if-modified-since");
-        const status = notModifiedFamily ? 304 : 412;
+        // §13.2.2 steps 3/4 make 304 conditional on the METHOD: a failed If-None-Match is
+        // "304 if the request method is GET or HEAD or 412 for all other request methods"
+        // (§13.1.2), and If-Modified-Since is only evaluated for GET/HEAD at all. Nothing
+        // upstream restricts the method, so a POST/PUT to this path with a conditional
+        // header reaches here and must never be answered 304.
+        const method = request.method.toUpperCase();
+        const isGetOrHead = method === "GET" || method === "HEAD";
+        let status: 304 | 412;
+        if (request.headers.has("if-match") || request.headers.has("if-unmodified-since")) {
+          status = 412; // §13.2.2 steps 1-2 — strict precedence over the not-modified family
+        } else if (
+          request.headers.has("if-none-match") || request.headers.has("if-modified-since")
+        ) {
+          status = isGetOrHead ? 304 : 412; // §13.2.2 steps 3-4
+        } else {
+          // Unreachable in practice: with no conditional header R2 always returns a body.
+          // 412 is the safe answer — a 304 asserts a cache validity we never established.
+          status = 412;
+        }
         return apexHeaders(new Response(null, { status, headers: pdfHeaders }), env, pdfCacheClass);
       }
       const obj = raw as R2ObjectBody;
@@ -147,11 +220,40 @@ export default {
       // §15.3.7 only permits a 206 in answer to a request that actually carried a Range header.
       // So: gate on the REQUEST first, then normalize whatever shape R2 handed back.
       const range = obj.range;
-      if (range && request.headers.has("range")) {
+      const rangeHeader = request.headers.get("range");
+      if (range && rangeHeader !== null) {
+        const intent = classifyRangeHeader(rangeHeader, obj.size);
+        if (intent === "unsatisfiable") {
+          // §14.2: "the server SHOULD send a 416"; §15.5.17: a 416 to a byte-range request
+          // SHOULD carry `Content-Range: bytes */<complete-length>`. Deliberately no
+          // content-type — there is no PDF payload on this response. 416 is >= 400 so
+          // apexHeaders() forces no-store, which is right: the verdict depends on the
+          // request's Range header and the cache key does not include it.
+          return apexHeaders(
+            new Response(null, {
+              status: 416,
+              headers: { etag: pdfHeaders.etag, "accept-ranges": "bytes",
+                         "content-range": `bytes */${obj.size}` },
+            }),
+            env,
+            pdfCacheClass,
+          );
+        }
         const { start, length } = resolveRange(range, obj.size);
-        pdfHeaders["content-range"] = `bytes ${start}-${start + length - 1}/${obj.size}`;
-        pdfHeaders["content-length"] = String(length);
-        return apexHeaders(new Response(obj.body, { status: 206, headers: pdfHeaders }), env, pdfCacheClass);
+        // `length === 0` means a zero-length representation (the only way R2 yields it) —
+        // e.g. a non-zero suffix-range, which §14.1.2 calls satisfiable, against an empty
+        // object. No valid Content-Range exists for an empty selection (§14.4 forbids a
+        // last-pos below the first-pos), so a 206 is unrepresentable. Fall through to the
+        // 200: §15.5.17's own note records that servers are free to ignore Range and answer
+        // with the complete representation, which for an empty object is exactly this body.
+        if (intent === "single" && length > 0) {
+          pdfHeaders["content-range"] = `bytes ${start}-${start + length - 1}/${obj.size}`;
+          pdfHeaders["content-length"] = String(length);
+          return apexHeaders(new Response(obj.body, { status: 206, headers: pdfHeaders }), env, pdfCacheClass);
+        }
+        // intent === "ignored" (multi-range / malformed / unknown unit): R2 handed back the
+        // complete object, so answer 200 with it rather than stamping a single-range 206
+        // Content-Range onto a body that does not match the request.
       }
 
       pdfHeaders["content-length"] = String(obj.size);

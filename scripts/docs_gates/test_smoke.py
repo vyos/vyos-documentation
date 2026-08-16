@@ -416,16 +416,44 @@ def test_access_credentials_default_from_environment(monkeypatch, tmp_path):
     assert seen == {"id": "env-id", "secret": "env-secret"}
 
 
-def test_access_flags_still_override_the_environment(monkeypatch, tmp_path):
-    _argv(monkeypatch, tmp_path, "--access-id", "flag-id", "--access-secret", "flag-secret")
-    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
-    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
-    seen: dict[str, str] = {}
+def test_secret_bearing_flags_are_rejected_not_silently_ignored(monkeypatch, tmp_path):
+    # --access-id/--access-secret are GONE, not deprecated: an argv-passed secret is readable
+    # from the process table and captured verbatim by `set -x` traces. argparse must reject
+    # them so the old muscle-memory invocation errors out instead of silently ignoring the
+    # credential the operator passed and then 403ing on every probe.
+    for flag, value in (("--access-id", "an-id"), ("--access-secret", "a-secret")):
+        _argv(monkeypatch, tmp_path, flag, value)
+        monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "env-id")
+        monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "env-secret")
+        monkeypatch.setattr(smoke, "run", lambda *a, **k: pytest.fail("must not probe"))
+        with pytest.raises(SystemExit) as exc:
+            smoke.main()
+        assert exc.value.code == 2
+
+
+def test_critical_list_is_read_through_a_path_without_resource_warnings(monkeypatch, tmp_path):
+    # `open(a.critical_list).read()` left the descriptor to be closed by GC; --critical-list
+    # is now `type=Path` and read via Path.read_text(), which closes deterministically.
+    # HONEST SCOPE: this is not a strict regression test for the close itself — CPython's
+    # refcounting also closes the bare-open form immediately, so no ResourceWarning fires
+    # either way and this test passes against the pre-fix source (verified). What it DOES
+    # pin is the argparse `type=Path` change (a str would have no .read_text()) plus
+    # warning-free reading on interpreters without refcounting, e.g. PyPy, where the
+    # bare-open form genuinely leaks until GC.
+    import warnings
+
+    crit = _argv(monkeypatch, tmp_path)
+    monkeypatch.setenv("CF_ACCESS_CLIENT_ID", "id")
+    monkeypatch.setenv("CF_ACCESS_CLIENT_SECRET", "sec")
+    seen: list[str] = []
     monkeypatch.setattr(smoke, "run",
                         lambda host, slug, sha, aid, asec, pdf, critical:
-                        seen.update(id=aid, secret=asec) or 0)
-    assert smoke.main() == 0
-    assert seen == {"id": "flag-id", "secret": "flag-secret"}
+                        seen.extend(critical) or 0)
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", ResourceWarning)
+        assert smoke.main() == 0
+    assert seen == ["index.html"]
+    assert crit.exists()
 
 
 def test_missing_access_credentials_fail_loudly_without_probing(monkeypatch, tmp_path, capsys):

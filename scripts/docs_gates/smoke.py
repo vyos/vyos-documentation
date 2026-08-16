@@ -19,6 +19,7 @@ import os
 import sys
 import time
 import urllib.request
+from pathlib import Path
 
 APEX_PATHS = ["/versions.json", "/healthz", "/robots.txt", "/sitemap.xml"]
 SEARCH_MOUNT_MARKER = 'id="vyos-search"'
@@ -200,19 +201,22 @@ def main() -> int:
     ap.add_argument("--host", required=True)
     ap.add_argument("--slug", required=True)
     ap.add_argument("--expect-sha", required=True)
-    # CF Access service-token credentials come from the ENVIRONMENT by default. Passing a
-    # secret as an argv flag publishes it in the process command line — readable from the
-    # process table for the lifetime of the process, and captured verbatim by `set -x` shell
-    # traces, crash dumps and process-listing tooling. The flags stay as a fallback for
-    # manual/local runs; neither the value nor its length is ever echoed.
-    ap.add_argument("--access-id", default=os.environ.get("CF_ACCESS_CLIENT_ID", ""))
-    ap.add_argument("--access-secret", default=os.environ.get("CF_ACCESS_CLIENT_SECRET", ""))
     ap.add_argument("--pdf", default=None)
-    ap.add_argument("--critical-list", default="scripts/docs_gates/critical-pages.txt")
+    ap.add_argument("--critical-list", type=Path,
+                    default=Path("scripts/docs_gates/critical-pages.txt"))
     a = ap.parse_args()
+    # CF Access service-token credentials are read ONLY from the environment. They were also
+    # accepted as --access-id/--access-secret flags; that is removed rather than merely
+    # discouraged, because a value passed in argv publishes it in the process command line —
+    # readable from the process table for the lifetime of the process, and captured verbatim
+    # by `set -x` shell traces, crash dumps and process-listing tooling. No call site used
+    # the flags (docs-build.yml and docs-canary-qa.yml both export the env vars), so there is
+    # nothing to migrate. Neither value nor its length is ever echoed.
+    access_id = os.environ.get("CF_ACCESS_CLIENT_ID", "")
+    access_secret = os.environ.get("CF_ACCESS_CLIENT_SECRET", "")
     missing = [name for name, value in (
-        ("--access-id / CF_ACCESS_CLIENT_ID", a.access_id),
-        ("--access-secret / CF_ACCESS_CLIENT_SECRET", a.access_secret)) if not value]
+        ("CF_ACCESS_CLIENT_ID", access_id),
+        ("CF_ACCESS_CLIENT_SECRET", access_secret)) if not value]
     if missing:
         # The canary host is Access-gated, so an empty credential would turn every probe into
         # an indistinguishable 403 — fail loudly on the cause instead. Names only, no values.
@@ -220,9 +224,12 @@ def main() -> int:
         return 2
     # Strip BEFORE the comment test: an indented "  # note" line is a comment, not a page that
     # every deployable build must contain (it would fail the probe as a missing critical page).
-    lines = (line.strip() for line in open(a.critical_list).read().splitlines())
+    # read_text() (rather than a bare open().read()) closes the handle deterministically,
+    # matching gates.py; the bare form leaked the descriptor until GC on any interpreter
+    # without CPython's refcounting.
+    lines = (line.strip() for line in a.critical_list.read_text().splitlines())
     critical = [line for line in lines if line and not line.startswith("#")]
-    return run(a.host, a.slug, a.expect_sha, a.access_id, a.access_secret, a.pdf, critical)
+    return run(a.host, a.slug, a.expect_sha, access_id, access_secret, a.pdf, critical)
 
 
 if __name__ == "__main__":

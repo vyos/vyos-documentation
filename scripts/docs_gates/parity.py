@@ -59,11 +59,25 @@ _OPENER = urllib.request.build_opener(_NoRedirect)
 _SCHEME = "https"
 
 
-def fetch(host: str, path: str, access: tuple[str, str] | None, method: str = "HEAD"):
-    req = urllib.request.Request(f"{_SCHEME}://{host}{path}", method=method)
+def build_request(url: str, access: tuple[str, str] | None,
+                  method: str = "HEAD") -> urllib.request.Request:
+    """The ONE place that attaches CF Access credentials to a request.
+
+    Every outbound request in this module goes through here. The sitemap fetch used to
+    build its own bare Request, so pointing --sitemap-host at the Access-gated canary host
+    made every sitemap 403 while the probe requests (which did send the headers) worked —
+    a split-brain that is easy to reintroduce and hard to read off the code. Funnelling
+    both callers through a single constructor makes that drift structurally impossible.
+    """
+    req = urllib.request.Request(url, method=method)
     if access:
         req.add_header("CF-Access-Client-Id", access[0])
         req.add_header("CF-Access-Client-Secret", access[1])
+    return req
+
+
+def fetch(host: str, path: str, access: tuple[str, str] | None, method: str = "HEAD"):
+    req = build_request(f"{_SCHEME}://{host}{path}", access, method)
     try:
         with _OPENER.open(req, timeout=30) as r:
             return r.status, r.headers.get("Location")
@@ -78,22 +92,24 @@ def main() -> int:
     ap.add_argument("--sitemap-host", required=True)
     ap.add_argument("--probe-host", required=True)
     ap.add_argument("--slugs", default=DEFAULT_SLUGS)
-    # CF Access service-token credentials come from the ENVIRONMENT by default — a secret
-    # passed as an argv flag is readable from the process table and is captured verbatim by
-    # `set -x` traces and crash dumps. The flags stay as a manual/local fallback. Access
-    # itself stays OPTIONAL here: the sitemap host may be a public origin needing no token.
-    ap.add_argument("--access-id", default=os.environ.get("CF_ACCESS_CLIENT_ID", ""))
-    ap.add_argument("--access-secret", default=os.environ.get("CF_ACCESS_CLIENT_SECRET", ""))
     ap.add_argument("--report", type=Path, default=Path("parity-report.json"))
     a = ap.parse_args()
-    if bool(a.access_id) != bool(a.access_secret):
+    # CF Access service-token credentials are read ONLY from the environment. They were
+    # also accepted as --access-id/--access-secret flags; that is removed rather than
+    # merely discouraged, because a value passed in argv is readable from the process table
+    # for the lifetime of the process and is captured verbatim by `set -x` traces, crash
+    # dumps and CI process listings. No call site used the flags (both workflows export the
+    # env vars), so there is nothing to migrate and no ergonomic loss worth the exposure.
+    # Access itself stays OPTIONAL: the sitemap host may be a public origin needing no token.
+    access_id = os.environ.get("CF_ACCESS_CLIENT_ID", "")
+    access_secret = os.environ.get("CF_ACCESS_CLIENT_SECRET", "")
+    if bool(access_id) != bool(access_secret):
         # Half a service token is never usable — every probe would 403 and the run would
         # report a wholly misleading "parity broken". Names only, never the values.
         print("CF Access needs BOTH an id and a secret, or neither "
-              "(--access-id / CF_ACCESS_CLIENT_ID, --access-secret / CF_ACCESS_CLIENT_SECRET)",
-              file=sys.stderr)
+              "(CF_ACCESS_CLIENT_ID, CF_ACCESS_CLIENT_SECRET)", file=sys.stderr)
         return 2
-    access = (a.access_id, a.access_secret) if a.access_id else None
+    access = (access_id, access_secret) if access_id else None
     failures: list[dict] = []
     checked = 0
 
@@ -102,12 +118,23 @@ def main() -> int:
         # the whole document a second time — two full GETs of a multi-thousand-URL sitemap per
         # slug — and the body fetch hard-coded "https://", so the _SCHEME override (the hook
         # the tests use to drive this path against a local plain-HTTP server) was ignored.
-        # _OPENER raises HTTPError for anything non-2xx, INCLUDING a 3xx (it refuses to follow
-        # redirects), so this single call preserves the discarded pre-check's strictness — the
-        # sitemap URL itself must answer 200 — while also yielding the body.
+        # Two things the single-call rewrite must NOT lose:
+        #   1. The discarded pre-check asserted status == 200 exactly. _OPENER raises
+        #      HTTPError for non-2xx (3xx included — it refuses to follow redirects), but it
+        #      RETURNS normally for any other 2xx, so a sitemap answering 204/206 would yield
+        #      an empty corpus and the gate would pass having probed nothing. The explicit
+        #      status check below restores that strictness.
+        #   2. CF Access credentials. Building a bare Request here skipped them, so a
+        #      --sitemap-host pointed at the Access-gated canary 403s on every sitemap;
+        #      build_request() is now the single credential-attaching path.
         try:
-            with _OPENER.open(f"{_SCHEME}://{a.sitemap_host}/en/{slug}/sitemap.xml",
-                              timeout=30) as r:
+            with _OPENER.open(build_request(
+                    f"{_SCHEME}://{a.sitemap_host}/en/{slug}/sitemap.xml", access, "GET"),
+                    timeout=30) as r:
+                if r.status != 200:
+                    failures.append({"path": f"/en/{slug}/sitemap.xml",
+                                     "reason": f"sitemap status {r.status}"})
+                    continue
                 urls = urls_from_sitemap(r.read().decode())
         except Exception as e:  # noqa: BLE001 — record per-slug, keep sweeping; report ALWAYS written
             failures.append({"path": f"/en/{slug}/sitemap.xml",

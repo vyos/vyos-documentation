@@ -34,4 +34,45 @@ describe("UA gate (§3.2.1) — ships log-only for AI crawlers", () => {
     const dualMatch = { ...policy, allow: ["Googlebot"], block: ["Googlebot EvilScraper"] };
     expect(uaVerdict("Mozilla/5.0 (compatible; Googlebot EvilScraper/1.0)", dualMatch)).toBe("block");
   });
+
+  // --- allow-vs-log contests. Pinned verdicts for the four UAs that distinguish every
+  // candidate rule, so a future tweak to the precedence cannot silently drop telemetry. ---
+
+  it("a UA carrying BOTH a log token and a longer allow token is logged, not allowed", () => {
+    // "GPTBot/1.0 DuckDuckBot" matches allow "DuckDuckBot" (11 chars) and log "GPTBot" (6).
+    // Under the longest-match rule the longer ALLOW needle won and the ua-log event never
+    // fired; under the original allow-before-log rule it also won. A UA presenting two
+    // different crawlers' tokens is precisely the shape worth recording, and `log` costs
+    // nothing but a log line — the request is served either way.
+    expect(uaVerdict("GPTBot/1.0 DuckDuckBot", policy)).toBe("log");
+  });
+
+  it("pinned verdicts for the four discriminating UAs", () => {
+    expect(uaVerdict("Mozilla/5.0 (compatible; Applebot/0.1)", policy)).toBe("allow");
+    expect(uaVerdict("Mozilla/5.0 (compatible; Applebot-Extended/0.1)", policy)).toBe("log");
+    expect(uaVerdict("GPTBot/1.0 DuckDuckBot", policy)).toBe("log");
+    expect(uaVerdict("Mozilla/5.0 (compatible; Googlebot/2.1)", policy)).toBe("allow");
+  });
+
+  it("an allow entry that STRICTLY CONTAINS the matched log entry is a deliberate exception", () => {
+    // The mirror image of the Applebot case: a vendor shipping a broad token that is logged
+    // plus a narrower variant that is allowed. No pair in the shipped ua-policy.json takes
+    // this branch today — it keeps both directions of the vendor-variant pattern
+    // expressible, since the shipped policy already relies on one of them.
+    const carveOut = { allow: ["Bytespider-Search"], log: ["Bytespider"], block: [] };
+    expect(uaVerdict("Bytespider-Search/1.0", carveOut)).toBe("allow");
+    expect(uaVerdict("Bytespider/1.0", carveOut)).toBe("log");
+  });
+
+  it("an entry present in BOTH lists resolves to log, not allow", () => {
+    // Equality is not containment. Listing the same token twice is an authoring error, and
+    // `log` is the resolution that cannot lose data.
+    const contradictory = { allow: ["CCBot"], log: ["CCBot"], block: [] };
+    expect(uaVerdict("CCBot/2.0", contradictory)).toBe("log");
+  });
+
+  it("block still short-circuits ahead of the allow-vs-log contest", () => {
+    const all3 = { allow: ["DuckDuckBot"], log: ["GPTBot"], block: ["EvilScraper"] };
+    expect(uaVerdict("GPTBot/1.0 DuckDuckBot EvilScraper", all3)).toBe("block");
+  });
 });
