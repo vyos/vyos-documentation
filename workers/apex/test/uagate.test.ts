@@ -28,7 +28,13 @@ describe("UA gate (§3.2.1) — ships log-only for AI crawlers", () => {
   it("Google-Extended is not a UA token — it must not sit in the UA policy at all", () => {
     // Google-Extended is a robots.txt user-agent control token; it never appears in a
     // User-Agent header, so an entry for it could only ever be dead weight.
-    expect([...policy.allow, ...policy.log, ...policy.block]).not.toContain("Google-Extended");
+    // Compared case-INSENSITIVELY on both sides: bestMatch() lowercases every policy entry
+    // before matching, so "google-extended" would be functionally identical to the token
+    // this guard exists to keep out — but toContain() compares primitives by strict
+    // equality, so a lowercase variant would sail past a case-sensitive assertion and
+    // quietly restore the entry. Match the matcher's own case semantics.
+    const entries = [...policy.allow, ...policy.log, ...policy.block].map((e) => e.toLowerCase());
+    expect(entries).not.toContain("google-extended");
   });
   it("block takes precedence over allow on a UA matching both lists", () => {
     const dualMatch = { ...policy, allow: ["Googlebot"], block: ["Googlebot EvilScraper"] };
