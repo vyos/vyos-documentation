@@ -27,7 +27,27 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: cd workers && npm ci && npx vitest run
+      - run: >-
+          cd workers && npm ci && npx vitest run
+          --reporter=default --reporter=junit
+          --outputFile=test-results/junit-apex-deploy-test-vitest-s0.xml
+      - name: Upload test results to Codecov
+        if: >-
+          ${{ !cancelled() &&
+              (github.event_name != 'pull_request' ||
+               github.event.pull_request.head.repo.full_name == github.repository) &&
+              github.actor != 'dependabot[bot]' }}
+        uses: codecov/codecov-action@0fb7174895f61a3b6b78fc075e0cd60383518dac # v5.5.5
+        timeout-minutes: 5
+        continue-on-error: true
+        with:
+          report_type: test_results
+          files: workers/test-results/junit-apex-deploy-test-vitest-s0.xml
+          disable_search: true
+          fail_ci_if_error: false
+          flags: unit-vitest-s0
+          name: unit-vitest-s0
+          version: v11.3.1
 
   deploy-canary:
     needs: test
