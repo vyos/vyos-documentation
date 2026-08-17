@@ -668,10 +668,15 @@ describe("apex router (§3.2 order)", () => {
       expect(await r.text()).toBe("PDF-BYTES");
     });
 
-    it("a partial body the Worker did not ask for gets an HONEST 206, never a 200 that misstates its length", async () => {
+    it("a partial body the Worker did not ask for is a 503, never a 206 for bytes nobody requested", async () => {
       // Belt and braces for a future R2 whose grammar accepts something this classifier
-      // calls "ignored": the body in hand is a slice, so a 200 would ship
-      // Content-Length: 9 over 3 bytes. The fallback describes what is actually there.
+      // calls "ignored". The body in hand is a slice of bounds the request never named:
+      // a 200 would ship Content-Length: 9 over 3 bytes, and a 206 would carry
+      // `Content-Range: bytes 2-4/9` in answer to `bytes=0-1,4-5` — a selected range the
+      // client did not select, which §14.4 does not permit. Neither is honest, so the
+      // divergence is surfaced as a failure (plus the r2-range-divergence log line) rather
+      // than dressed up as a success. Unreachable under today's workerd, which ignores
+      // multi-range and returns the whole object.
       const env = makeEnv({
         DOCS_ENV: "production",
         DOCS_PDFS: {
@@ -687,9 +692,8 @@ describe("apex router (§3.2 order)", () => {
         }),
         env,
       );
-      expect(r.status).toBe(206);
-      expect(r.headers.get("content-range")).toBe("bytes 2-4/9");
-      expect(r.headers.get("content-length")).toBe("3");
+      expect(r.status).toBe(503);
+      expect(r.headers.get("content-range")).toBeNull();
     });
 
     // --- §14.2: "GET is the only method for which range handling is defined." ---

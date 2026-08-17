@@ -300,8 +300,11 @@ jobs:
       # publishing a registry pointer naming it. `cancel-in-progress: false` does not help:
       # it makes the SECOND run queue and skip, while the run already past the first check
       # sails on. Re-resolve the tip now that smoke has passed, immediately before the
-      # first step that touches production, and gate PROMOTE + the post-promote probe +
-      # the registry pointer publish on THIS output instead of the first one.
+      # first step that touches production, and gate PROMOTE on THIS output instead of the
+      # first one. The steps downstream of PROMOTE chain off PROMOTE's own `outcome`
+      # rather than reading this output again — a strictly stronger predicate, since
+      # `outcome` is 'skipped' exactly when this check says the branch moved AND is
+      # 'success' only once the production deploy has actually completed.
       # The probe in particular must move with PROMOTE: gated on the first check it would
       # still run after a skipped promote, see production serving the (correct) previous
       # SHA, read that as a promote failure and roll back a production nobody touched.
@@ -337,7 +340,20 @@ jobs:
             echo "::notice::branch moved during build/smoke (tip is now $remote, this run built $BUILT_SHA) — skipping promote, post-promote probe and registry pointer publish"
           fi
 
-      - name: PROMOTE (capture rollback id → deploy → purge → registry, §7.1.4)
+      # This step ENDS at `wrangler deploy`. Everything that used to follow it in the same
+      # step — the hostname purge, the tarball, the three registry uploads — moved to the
+      # next step, because a failure in any of them failed THIS step, and the post-promote
+      # probe carried an implicit success() (its `if:` named no status function), so it was
+      # skipped. A transient purge 5xx or one failed upload therefore left the new version
+      # LIVE on the production Worker, never probed and never rolled back.
+      # The split is preferred over flagging `deployed=true` from inside the shell: the
+      # invariant then lives in the `if:` conditions where it is auditable statically, and
+      # nothing depends on outputs written by a step that went on to fail.
+      # Residual window it does NOT close: if `wrangler deploy` itself errors AFTER the
+      # deployment has taken effect, this step fails, the probe is skipped and production
+      # is unverified. Cloudflare offers no way to distinguish that from a deploy that
+      # never landed; the run is red either way, so it is an operator-visible state.
+      - name: PROMOTE (capture rollback id → deploy, §7.1.4)
         id: promote
         if: steps.check_head_2.outputs.current == 'true'
         env:
@@ -359,12 +375,12 @@ jobs:
           # `wrangler rollback` takes a VERSION id (it resolves its positional through
           # fetchVersion() and redeploys that version at 100%), never a deployment id, so
           # we extract versions[].version_id — not the deployment's own `id`.
-          # SPLIT TRAFFIC: a deployment may spread traffic over several versions. One with
-          # no single 100% version is not a safe rollback target, so we walk newest→oldest
-          # and take the first deployment that has one. That mirrors wrangler's own
-          # fetchDefaultRollbackVersionId(), minus its .shift(): wrangler picks AFTER
-          # deploying so it must skip the current deployment, whereas we capture BEFORE,
-          # so for us the newest entry is the good one we want back.
+          # SPLIT TRAFFIC: a deployment may spread traffic over several versions, and one
+          # with no single 100% version is not a safe rollback target. That is a state to
+          # REPORT, not to route around — see the extraction below. The reference point is
+          # wrangler's own fetchDefaultRollbackVersionId() minus its .shift(): wrangler
+          # picks AFTER deploying so it must skip the current deployment, whereas we
+          # capture BEFORE, so for us the newest entry is the good one we want back.
           # FIRST-DEPLOY BOOTSTRAP: the production Worker does not exist before the very
           # first promote, so `deployments list` fails. That is a valid state: rollback_id
           # stays empty, the deploy CREATES the Worker, and the post-promote step knows an
@@ -396,22 +412,84 @@ jobs:
               echo "::error::wrangler deployments list --json for $worker did not return a JSON array — refusing to promote with the rollback target undetermined"
               exit 1
             fi
-            rollback_id=$(printf '%s' "$deps" | jq -r '
-              sort_by(.created_on) | reverse
-              | map(.versions[]? | select(.percentage == 100) | .version_id)
-              | .[0] // empty
-            ')
-            if [ -n "$rollback_id" ]; then
-              echo "rollback target for $worker: version $rollback_id"
-            elif [ "$(printf '%s' "$deps" | jq -r 'length')" -eq 0 ]; then
-              echo "::notice::$worker has no deployments yet — nothing to roll back to; rollback disabled for this run"
-            else
-              # Determinate state, not a swallowed failure: `wrangler rollback` takes one
-              # version id, so a split-traffic deployment has no single-version target to
-              # offer it. Warn loudly and promote unprotected rather than block a promote
-              # on a traffic split someone set deliberately.
-              echo "::warning::$worker has deployments but none with a single 100%-traffic version (split traffic) — no safe rollback target; rollback disabled for this run"
-            fi
+            # ONLY THE CURRENT (newest) DEPLOYMENT is a legitimate rollback target. An
+            # earlier spelling of this expression flattened `versions[]` across ALL
+            # deployments and took the first 100%-traffic id found scanning newest→oldest,
+            # so it reached BACKWARDS: a current deployment deliberately serving A/B at
+            # 90/10 resolved to some older deployment's 100% version, and a probe failure
+            # would then "roll back" to it and destroy the split that was set on purpose.
+            # Take the current deployment's single 100%-traffic version, or refuse.
+            #
+            # The verdict is discriminated inside jq and reported out here so that a
+            # MALFORMED record fails the step instead of masquerading as a determinate
+            # state. It used to masquerade: `select(.percentage == 100) | .version_id` on
+            # `{"percentage":100}` yields null, `null // empty` yields empty, and empty was
+            # read as "split traffic" — i.e. an unparseable API response promoted with the
+            # auto-rollback silently disarmed. The three good states stay distinguishable:
+            # no deployments at all → notice; a real traffic split on the CURRENT
+            # deployment → loud warning + promote unprotected; anything unparseable → red.
+            #
+            # `percentage` is required to be NUMERIC for the same reason: the API returns
+            # numbers, and a missing field or a string "100" slips past a `== 100` test, so
+            # a deployment that is actually at 100% would be reported as split and promote
+            # with the rollback disarmed. A percentage this step cannot read leaves it
+            # unable to tell "100%" from "a split", and guessing wrong destroys live
+            # traffic — so it fails red rather than guess.
+            #
+            # Validation scope: `created_on` is checked on EVERY record because it decides
+            # which record is "current", so one unusable value corrupts the selection.
+            # `versions` / `version_id` are checked on the current record only — it is the
+            # only record this step reads, and failing on an older record's shape would
+            # block promotes over data with no bearing on the rollback target.
+            verdict=$(printf '%s' "$deps" | jq -r '
+              def bad($why): "malformed:" + $why;
+              if length == 0 then "empty:"
+              elif any(.[]; type != "object") then
+                bad("a deployment entry is not an object")
+              elif any(.[]; (.created_on | type) != "string") then
+                bad("a deployment entry has no string created_on to order by")
+              else
+                (sort_by(.created_on) | last) as $cur
+                | if ($cur.versions | type) != "array" then
+                    bad("the current deployment has no versions array")
+                  elif ($cur.versions | length) == 0 then
+                    bad("the current deployment has an empty versions array")
+                  elif any($cur.versions[]; type != "object") then
+                    bad("the current deployment has a non-object versions entry")
+                  elif any($cur.versions[]; (.percentage | type) != "number") then
+                    bad("the current deployment has a versions entry with a non-numeric percentage")
+                  else
+                    [$cur.versions[] | select(.percentage == 100)] as $full
+                    | if ($full | length) == 0 then "split:"
+                      elif ($full | length) > 1 then
+                        bad("the current deployment reports more than one 100%-traffic version")
+                      elif (($full[0].version_id | type) != "string") or ($full[0].version_id == "") then
+                        bad("the current deployment 100%-traffic version has no usable version_id")
+                      else "ok:" + $full[0].version_id
+                      end
+                  end
+              end
+            ') || { echo "::error::could not evaluate the deployments payload for $worker — refusing to promote with the rollback target undetermined"; exit 1; }
+            case "${verdict%%:*}" in
+              ok)
+                rollback_id=${verdict#*:}
+                echo "rollback target for $worker: version $rollback_id"
+                ;;
+              empty)
+                echo "::notice::$worker has no deployments yet — nothing to roll back to; rollback disabled for this run"
+                ;;
+              split)
+                # Determinate state, not a swallowed failure: `wrangler rollback` takes one
+                # version id, so a split-traffic deployment has no single-version target to
+                # offer it. Warn loudly and promote unprotected rather than block a promote
+                # on a traffic split someone set deliberately.
+                echo "::warning::$worker's current deployment has no single 100%-traffic version (split traffic) — no safe rollback target; rollback disabled for this run"
+                ;;
+              *)
+                echo "::error::wrangler deployments list --json for $worker returned a record this step cannot trust (${verdict#*:}) — refusing to promote with the rollback target undetermined"
+                exit 1
+                ;;
+            esac
           else
             cat "$list_err" >&2
             esc=$(printf '\033')
@@ -427,11 +505,38 @@ jobs:
           echo "rollback_id=$rollback_id" >> "$GITHUB_OUTPUT"
           npx wrangler deploy --config branch/wrangler.$(case "$slug" in rolling) echo rolling;; 1.5) echo v15;; 1.4) echo v14;; esac).jsonc \
             --name "$worker" --var DOCS_BUILD_SHA:'${{ github.sha }}' --var DOCS_ENV:production
-          if [ "${{ vars.DOCS_CF_LIVE }}" = "true" ]; then
-            # hostname-scoped purge (§3.3; all-plans since 2025-04)
+
+      # Gated on PROMOTE's OUTCOME, not on check_head_2 directly: `outcome` is 'skipped'
+      # exactly when the branch moved (PROMOTE carries the check_head_2 condition and its
+      # own implicit success()), and 'success' only once the production deploy completed.
+      # A failure in this step no longer suppresses the probe below — that is the whole
+      # point of the split.
+      - name: Purge + registry generation upload (§7.1.4)
+        id: promote_publish
+        if: steps.promote.outcome == 'success'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_ZONE_ID: ${{ vars.CF_ZONE_ID_VYOS_IO }}
+        run: |
+          set -eu
+          slug='${{ steps.matrix.outputs.slug }}'
+          sha='${{ github.sha }}'
+          # hostname-scoped purge (§3.3; all-plans since 2025-04), retried once for the same
+          # reason the registry uploads below are. This purge is the one post-deploy failure
+          # whose knock-on effect is asymmetric: the probe measures the EDGE, so a purge that
+          # never lands leaves the edge serving the previous generation and the probe reads
+          # that as a failed promote — rolling back a deploy that was in fact fine. One retry
+          # removes the transient-5xx bulk of that class at no cost. What remains (a purge
+          # API that is genuinely down) still ends in a rollback, deliberately: see the probe
+          # step's note.
+          purge_hostname() {
             curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
               --data '{"hosts":["docs.vyos.io"]}'
+          }
+          if [ "${{ vars.DOCS_CF_LIVE }}" = "true" ]; then
+            purge_hostname || { sleep 5; purge_hostname; }
           else
             echo "DOCS_CF_LIVE=false — pre-cutover: skipping production hostname purge"
           fi
@@ -444,9 +549,8 @@ jobs:
           # a half-written generation (e.g. new tar.zst, still-old meta.json) mid upload.
           # Uploading under $slug/<sha>/* first — a key no prior generation ever reused —
           # keeps readers of the OLD pointer seeing a full, untouched old generation.
-          cd .. && tar --zstd -cf lastgood.tar.zst -C dist/assets .
+          tar --zstd -cf lastgood.tar.zst -C dist/assets .
           page_count=$(find "dist/assets/en/$slug" -name '*.html' | wc -l | tr -d ' ')
-          sha='${{ github.sha }}'
           printf '{"sha":"%s","page_count":%s}' "$sha" "$page_count" > lastgood.meta.json
           printf '{"sha":"%s"}' "$sha" > latest.json
           cd workers
@@ -460,11 +564,33 @@ jobs:
             exit 1
           fi
 
-      # Gated on check_head_2, the same output as PROMOTE: if promote was skipped nothing
-      # downstream may act as though it ran (this step is the only consumer of
-      # steps.promote.*, and on a skipped promote its rollback_id would read empty).
+      # THE VERIFICATION FINALIZER. Once `wrangler deploy` has succeeded, production has
+      # changed and this step must run whatever happens afterwards — so the condition is
+      # deliberately NOT the bare `steps.check_head_2...` form, which would pick up an
+      # implicit success() and be skipped by a failed purge or a failed registry upload,
+      # leaving production live and unverified.
+      # `!cancelled()` and not `always()`: on a cancelled run the deploy may not even have
+      # finished, and firing an auto-rollback while the operator is tearing the run down is
+      # the wrong reflex. `!cancelled()` counts as a status function, so it also suppresses
+      # the implicit success() — which is exactly what lets this run after a failed
+      # promote_publish.
+      # `steps.promote.outcome == 'success'` keeps both older guarantees intact: 'skipped'
+      # on the moved-branch path (so the probe cannot see production serving the correct
+      # previous SHA and read it as a promote failure), and never 'success' unless the
+      # rollback_id below was captured by a step that ran to completion.
+      #
+      # DELIBERATE: reaching here after a FAILED purge can roll back a deploy that was
+      # itself fine — the Worker took the new version, the edge kept serving the old one,
+      # and this probe measures the edge. That is the intended trade. The alternative,
+      # exiting without a rollback whenever the purge failed, leaves an UNVERIFIED version
+      # live on production, which is precisely the state this whole gate exists to prevent;
+      # a rollback instead returns production to the last version known to serve correctly,
+      # which is also what the stale edge is already serving, and the run is red either way
+      # so an operator looks at it. The transient half of that class is retried away in the
+      # purge step; what is left is a purge API that is down, and a known-good production
+      # is the right place to be sitting while it is.
       - name: Post-promote probe + auto-rollback (§7.1.5)
-        if: steps.check_head_2.outputs.current == 'true'
+        if: ${{ !cancelled() && steps.promote.outcome == 'success' }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -508,6 +634,11 @@ jobs:
             exit 1
           fi
 
+      # The IMPLICIT success() on this condition is load-bearing and must stay implicit:
+      # naming no status function is what makes this step skip whenever ANY earlier step
+      # failed — the probe (so a rolled-back generation never becomes the pointer target)
+      # and the purge/upload step (so a pointer never names a generation that was not
+      # fully uploaded). Adding always()/!cancelled() here would publish over a rollback.
       - name: Publish registry pointer (§7.1.4)
         if: steps.check_head_2.outputs.current == 'true'
         env:

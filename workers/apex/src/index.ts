@@ -500,20 +500,28 @@ export default {
 
       // Serve what R2 actually handed back, described truthfully. `servedWhole` is the
       // normal case and the only one a 200 can describe; a partial body under a 200 would
-      // ship a Content-Length that contradicts it. A partial body reaching here at all
-      // would mean R2 honoured a range this Worker did not ask it to, so it gets a 206
-      // carrying the bounds R2 reported — a Content-Range that matches the bytes present,
-      // never one invented from the request — plus a log line, since it would indicate the
-      // binding's range semantics had moved.
+      // ship a Content-Length that contradicts it. A partial body reaching HERE — past the
+      // agreement check above — means R2 sliced to bounds the request did not ask for, and
+      // there is no honest success response left: a 200 would misstate the length, and a
+      // 206 would answer with a range the client never requested, which §14.4 does not
+      // permit (Content-Range on a 206 describes the selected range, and no range was
+      // selected). This used to ship that illegal 206.
+      //
+      // So: drop the slice and fail. Re-reading the object for a clean 200 is the other
+      // option Codex offered, but it means a second conditional read with its own
+      // object-rewritten-between-reads handling — a copy of the If-Range block above, or a
+      // refactor of that live and currently-correct path — bought for a branch that cannot
+      // execute under today's workerd (round 3 established empirically that the Headers
+      // form ignores multi-range and returns the whole object). The log line is the part
+      // that earns its keep: it is the alarm that R2's range semantics have moved, and it
+      // is what would justify writing that re-read for real.
       if (!servedWhole) {
         console.log(JSON.stringify({
           event: "r2-range-divergence", path: url.pathname, size: obj.size,
           served: `${actual.start}+${actual.length}`, requested: rangeHeader ?? null,
         }));
-        pdfHeaders["content-range"] =
-          `bytes ${actual.start}-${actual.start + actual.length - 1}/${obj.size}`;
-        pdfHeaders["content-length"] = String(actual.length);
-        return apexHeaders(new Response(obj.body, { status: 206, headers: pdfHeaders }), env, pdfCacheClass);
+        await discardBody(obj.body);
+        return themed(env, 503);
       }
       pdfHeaders["content-length"] = String(obj.size);
       return apexHeaders(new Response(obj.body, { status: 200, headers: pdfHeaders }), env, pdfCacheClass);
