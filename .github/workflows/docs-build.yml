@@ -299,19 +299,41 @@ jobs:
           slug='${{ steps.matrix.outputs.slug }}'
           worker='${{ steps.matrix.outputs.worker }}'
           cd workers
-          # Rollback target: verify this JSON shape on the FIRST real deploy —
-          # `npx wrangler deployments list --name "$worker" --json | jq .` — and adjust
-          # the jq path if wrangler's output differs (their JSON shape has churned across
-          # majors; the ID needed is the CURRENT deployment's, i.e. the newest entry).
+          # Rollback target, captured BEFORE the deploy below replaces production.
+          # `wrangler deployments list --json` (verified against wrangler 4.123.0's
+          # versionsDeploymentsListHandler) dumps the raw deployment objects sorted
+          # ASCENDING by created_on, so the CURRENT deployment is the LAST entry — NOT
+          # `.[0]`. Each entry looks like:
+          #   {"id":"<deployment-id>","created_on":"<iso8601>","author_email":…,
+          #    "versions":[{"version_id":"<version-id>","percentage":100}, …]}
+          # `wrangler rollback` takes a VERSION id (it resolves its positional through
+          # fetchVersion() and redeploys that version at 100%), never a deployment id, so
+          # we extract versions[].version_id — not the deployment's own `id`.
+          # SPLIT TRAFFIC: a deployment may spread traffic over several versions. One with
+          # no single 100% version is not a safe rollback target, so we walk newest→oldest
+          # and take the first deployment that has one. That mirrors wrangler's own
+          # fetchDefaultRollbackVersionId(), minus its .shift(): wrangler picks AFTER
+          # deploying so it must skip the current deployment, whereas we capture BEFORE,
+          # so for us the newest entry is the good one we want back.
           # FIRST-DEPLOY BOOTSTRAP: the production Worker does not exist before the very
           # first promote — `deployments list` fails/returns empty. That is a valid state:
           # rollback_id stays empty, the deploy CREATES the Worker, and the post-promote
-          # step knows an empty id means "nothing to roll back to".
+          # step knows an empty id means "nothing to roll back to". A list that exists but
+          # yields no 100%-traffic version (or unparseable output) fails safe the same way,
+          # rather than handing the rollback a wrong id.
+          rollback_id=""
           if deps=$(npx wrangler deployments list --name "$worker" --json 2>/dev/null); then
-            rollback_id=$(echo "$deps" | jq -r '.[0].id // empty')
+            rollback_id=$(printf '%s' "$deps" | jq -r '
+              (if type == "array" then . else [] end)
+              | sort_by(.created_on) | reverse
+              | map(.versions[]? | select(.percentage == 100) | .version_id)
+              | .[0] // empty
+            ' 2>/dev/null) || rollback_id=""
+          fi
+          if [ -n "$rollback_id" ]; then
+            echo "rollback target for $worker: version $rollback_id"
           else
-            rollback_id=""
-            echo "first deploy for $worker — no prior deployment; rollback disabled for this run"
+            echo "no rollback target for $worker (first deploy, or no 100%-traffic version) — rollback disabled for this run"
           fi
           echo "rollback_id=$rollback_id" >> "$GITHUB_OUTPUT"
           npx wrangler deploy --config branch/wrangler.$(case "$slug" in rolling) echo rolling;; 1.5) echo v15;; 1.4) echo v14;; esac).jsonc \
@@ -379,12 +401,15 @@ jobs:
           done
           if [ "$got" != '${{ github.sha }}' ]; then
             if [ -z '${{ steps.promote.outputs.rollback_id }}' ]; then
-              echo "::error::post-promote probe failed (got $got) on FIRST deploy — no prior version to roll back to; investigate manually"
+              echo "::error::post-promote probe failed (got $got) but PROMOTE captured no rollback target (first deploy, or no 100%-traffic version) — investigate manually"
               exit 1
             fi
-            echo "::error::post-promote probe failed (got $got) — rolling back"
+            # rollback_id is a Worker VERSION id (see the PROMOTE capture above);
+            # `wrangler rollback <version-id>` redeploys that version at 100% traffic.
+            echo "::error::post-promote probe failed (got $got) — rolling back to version ${{ steps.promote.outputs.rollback_id }}"
             cd workers && npx wrangler rollback '${{ steps.promote.outputs.rollback_id }}' \
-              --name '${{ steps.matrix.outputs.worker }}' --yes
+              --name '${{ steps.matrix.outputs.worker }}' \
+              --message 'auto-rollback: docs-build post-promote probe failed' --yes
             curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
               --data '{"hosts":["docs.vyos.io"]}'
