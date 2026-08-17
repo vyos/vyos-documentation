@@ -13,8 +13,12 @@ on:
 concurrency:
   group: docs-build-${{ github.ref_name }}
   # false (not true): a cancel mid-promote would leave production unverified and the
-  # registry pointer stale — queued runs are safe because the check_head guard (§7.1)
-  # skips any run whose SHA is no longer the branch tip.
+  # registry pointer stale. Queueing instead is safe because BOTH check_head guards
+  # (§7.1) skip a run whose SHA is no longer the branch tip — the first before the
+  # candidate deploy, the second after the smoke gate and immediately before promote.
+  # A single up-front check was NOT enough: it says nothing about the run that is
+  # already past it, and the candidate deploy plus the smoke gate (480s deadline) give
+  # a push minutes of room to land in between.
   cancel-in-progress: false
 
 permissions:
@@ -195,8 +199,11 @@ jobs:
       # current runtime any non-zero exit fails the step and the job, so this guard's own
       # "skipping deploy" message was a lie: every legitimate branch-moved race — the exact
       # situation `cancel-in-progress: false` deliberately creates — surfaced as a red run.
-      # That erodes the guard's value as an alarm. Publish an output instead and gate each
-      # deploy/promote/registry step on it, so a superseded run ends green-and-skipped.
+      # That erodes the guard's value as an alarm. Publish an output instead and gate the
+      # deploy steps on it, so a superseded run ends green-and-skipped. This is the FIRST
+      # of two checkpoints: it covers the candidate deploy and the smoke gate, which touch
+      # nothing production-facing. PROMOTE, the post-promote probe and the registry pointer
+      # publish gate on the post-smoke re-check further down, NOT on this output.
       - name: check_head guard (§7.1)
         id: check_head
         env:
@@ -287,9 +294,52 @@ jobs:
             --name '${{ steps.matrix.outputs.worker }}-candidate' \
             --var DOCS_BUILD_SHA:"$reg_sha" --var DOCS_ENV:canary
 
+      # TOCTOU re-check. The guard above evaluated the tip ONCE, before the candidate
+      # deploy and before the smoke gate (which alone budgets a 480s deadline), so a push
+      # landing in that window left this run promoting a superseded SHA to production and
+      # publishing a registry pointer naming it. `cancel-in-progress: false` does not help:
+      # it makes the SECOND run queue and skip, while the run already past the first check
+      # sails on. Re-resolve the tip now that smoke has passed, immediately before the
+      # first step that touches production, and gate PROMOTE + the post-promote probe +
+      # the registry pointer publish on THIS output instead of the first one.
+      # The probe in particular must move with PROMOTE: gated on the first check it would
+      # still run after a skipped promote, see production serving the (correct) previous
+      # SHA, read that as a promote failure and roll back a production nobody touched.
+      # Residual window: this check → `wrangler deploy` is a single step boundary, seconds
+      # rather than minutes. It is not zero — Cloudflare offers no compare-and-swap on
+      # deploy — so the guard narrows the race, it does not eliminate it.
+      # The candidate deployed above needs no cleanup on the moved-branch path: candidate
+      # Workers carry no route, and the queued run for the new tip overwrites the candidate
+      # with its own deploy.
+      # Moved branch ends the run GREEN-and-skipped, matching the convention the first
+      # guard's redesign established (see the exit-78 note above): a legitimate branch race
+      # is not an operator-actionable failure, production and the registry pointer are
+      # untouched, and the queued run promotes the new tip. Failing red here would
+      # reintroduce exactly the false alarm that redesign removed.
+      - name: check_head re-guard after smoke (§7.1)
+        id: check_head_2
+        if: steps.check_head.outputs.current == 'true'
+        env:
+          REF_NAME: ${{ github.ref_name }}
+          BUILT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          remote=$(git ls-remote origin "refs/heads/$REF_NAME" | cut -f1)
+          # Same hardening as the first guard, and for the same reason: `cut` exits 0 on
+          # empty input, so pipefail AND the emptiness check are both needed — otherwise a
+          # failed ls-remote leaves $remote empty and is misread as "branch moved", turning
+          # an infrastructure failure into a silent skip of a promote that should have run.
+          [ -n "$remote" ] || { echo "::error::could not resolve the remote tip of $REF_NAME"; exit 1; }
+          if [ "$remote" = "$BUILT_SHA" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::branch moved during build/smoke (tip is now $remote, this run built $BUILT_SHA) — skipping promote, post-promote probe and registry pointer publish"
+          fi
+
       - name: PROMOTE (capture rollback id → deploy → purge → registry, §7.1.4)
         id: promote
-        if: steps.check_head.outputs.current == 'true'
+        if: steps.check_head_2.outputs.current == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -316,25 +366,64 @@ jobs:
           # deploying so it must skip the current deployment, whereas we capture BEFORE,
           # so for us the newest entry is the good one we want back.
           # FIRST-DEPLOY BOOTSTRAP: the production Worker does not exist before the very
-          # first promote — `deployments list` fails/returns empty. That is a valid state:
-          # rollback_id stays empty, the deploy CREATES the Worker, and the post-promote
-          # step knows an empty id means "nothing to roll back to". A list that exists but
-          # yields no 100%-traffic version (or unparseable output) fails safe the same way,
-          # rather than handing the rollback a wrong id.
+          # first promote, so `deployments list` fails. That is a valid state: rollback_id
+          # stays empty, the deploy CREATES the Worker, and the post-promote step knows an
+          # empty id means "nothing to roll back to". EVERY OTHER failure of that command —
+          # auth, network, an unparseable payload — must fail the step LOUDLY: an empty
+          # rollback_id promotes with the auto-rollback silently disarmed while the run
+          # still looks healthy, which is strictly worse than a red build.
+          #
+          # Telling the two apart cannot use the exit status: in wrangler 4.123.0 every
+          # error path ends in a single uncaught throw, so the process exits 1 regardless of
+          # cause, and a failed command writes nothing machine-readable to stdout. The only
+          # discriminator is the Cloudflare API error code wrangler renders into its stderr
+          # note as `... [code: NNNNN]`. Codes 10007 (script not found) and 10090 (legacy
+          # environment not found) are exactly the pair wrangler's own isWorkerNotFoundError()
+          # treats as "this Worker does not exist"; authentication failures carry 9106/10000
+          # (its AUTHENTICATION_ERROR_CODES) and connectivity failures never reach the API
+          # so they carry no code at all — neither can be mistaken for the bootstrap case.
+          # The code was read out of the shipped 4.123.0 bundle, NOT observed against a live
+          # missing Worker, so re-verify this signature whenever wrangler is bumped; an
+          # unrecognised future spelling costs one loud red run, never a silent disarm.
+          # The note is esbuild-formatted (ANSI colour, wrapped to the terminal width), so
+          # strip escapes and collapse whitespace before matching.
           rollback_id=""
-          if deps=$(npx wrangler deployments list --name "$worker" --json 2>/dev/null); then
+          list_err=$(mktemp)
+          if deps=$(npx wrangler deployments list --name "$worker" --json 2>"$list_err"); then
+            # Validate the shape up front and fail on anything else, rather than coercing a
+            # non-array to [] and reporting "no rollback target" for malformed output.
+            if ! printf '%s' "$deps" | jq -e 'type == "array"' >/dev/null 2>&1; then
+              echo "::error::wrangler deployments list --json for $worker did not return a JSON array — refusing to promote with the rollback target undetermined"
+              exit 1
+            fi
             rollback_id=$(printf '%s' "$deps" | jq -r '
-              (if type == "array" then . else [] end)
-              | sort_by(.created_on) | reverse
+              sort_by(.created_on) | reverse
               | map(.versions[]? | select(.percentage == 100) | .version_id)
               | .[0] // empty
-            ' 2>/dev/null) || rollback_id=""
-          fi
-          if [ -n "$rollback_id" ]; then
-            echo "rollback target for $worker: version $rollback_id"
+            ')
+            if [ -n "$rollback_id" ]; then
+              echo "rollback target for $worker: version $rollback_id"
+            elif [ "$(printf '%s' "$deps" | jq -r 'length')" -eq 0 ]; then
+              echo "::notice::$worker has no deployments yet — nothing to roll back to; rollback disabled for this run"
+            else
+              # Determinate state, not a swallowed failure: `wrangler rollback` takes one
+              # version id, so a split-traffic deployment has no single-version target to
+              # offer it. Warn loudly and promote unprotected rather than block a promote
+              # on a traffic split someone set deliberately.
+              echo "::warning::$worker has deployments but none with a single 100%-traffic version (split traffic) — no safe rollback target; rollback disabled for this run"
+            fi
           else
-            echo "no rollback target for $worker (first deploy, or no 100%-traffic version) — rollback disabled for this run"
+            cat "$list_err" >&2
+            esc=$(printf '\033')
+            if sed "s/${esc}\\[[0-9;]*m//g" "$list_err" | tr -s '[:space:]' ' ' \
+                 | grep -qE '\[code: (10007|10090)\]'; then
+              echo "::notice::production Worker $worker does not exist yet (API code 10007/10090) — first-deploy bootstrap; rollback disabled for this run"
+            else
+              echo "::error::wrangler deployments list --name $worker failed for a reason other than 'Worker does not exist' (see stderr above) — refusing to promote with the auto-rollback disarmed"
+              exit 1
+            fi
           fi
+          rm -f "$list_err"
           echo "rollback_id=$rollback_id" >> "$GITHUB_OUTPUT"
           npx wrangler deploy --config branch/wrangler.$(case "$slug" in rolling) echo rolling;; 1.5) echo v15;; 1.4) echo v14;; esac).jsonc \
             --name "$worker" --var DOCS_BUILD_SHA:'${{ github.sha }}' --var DOCS_ENV:production
@@ -371,8 +460,11 @@ jobs:
             exit 1
           fi
 
+      # Gated on check_head_2, the same output as PROMOTE: if promote was skipped nothing
+      # downstream may act as though it ran (this step is the only consumer of
+      # steps.promote.*, and on a skipped promote its rollback_id would read empty).
       - name: Post-promote probe + auto-rollback (§7.1.5)
-        if: steps.check_head.outputs.current == 'true'
+        if: steps.check_head_2.outputs.current == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -417,7 +509,7 @@ jobs:
           fi
 
       - name: Publish registry pointer (§7.1.4)
-        if: steps.check_head.outputs.current == 'true'
+        if: steps.check_head_2.outputs.current == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
