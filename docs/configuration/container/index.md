@@ -234,6 +234,7 @@ Set container capabilities or permissions.
 setdomainname)
 - **sys-module**: Load, unload and delete kernel modules
 - **sys-nice**: Permission to set process nice value
+- **sys-rawio**: Permission to perform raw I/O operations
 - **sys-time**: Permission to set system clock
 ```
 
