@@ -518,6 +518,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CF_ZONE_ID: ${{ vars.CF_ZONE_ID_VYOS_IO }}
+          DOCS_CF_LIVE: ${{ vars.DOCS_CF_LIVE }}
         run: |
           set -eu
           slug='${{ steps.matrix.outputs.slug }}'
@@ -535,7 +536,7 @@ jobs:
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
               --data '{"hosts":["docs.vyos.io"]}'
           }
-          if [ "${{ vars.DOCS_CF_LIVE }}" = "true" ]; then
+          if [ "$DOCS_CF_LIVE" = "true" ]; then
             purge_hostname || { sleep 5; purge_hostname; }
           else
             echo "DOCS_CF_LIVE=false — pre-cutover: skipping production hostname purge"
