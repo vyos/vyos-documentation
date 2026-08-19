@@ -545,6 +545,42 @@ jobs:
             fi
           fi
           rm -f "$list_err"
+          # rollback_id came out of Cloudflare's API (`wrangler deployments list --json`),
+          # so it is untrusted text, and this is the last point before it becomes a step
+          # output. Two distinct exposures, only one of which careful quoting can close:
+          #   * a NEWLINE in the value injects arbitrary ADDITIONAL step outputs into
+          #     $GITHUB_OUTPUT. No shell is involved, so no amount of care at the consumer
+          #     end helps; this check is the only place that can stop it.
+          #   * shell metacharacters at the consumers, handled separately by passing the
+          #     value through `env:` instead of a template expansion (see the finalizer).
+          # The accepted character class is deliberately WIDER than the observed format.
+          # wrangler 4.123.0 performs no client-side validation of a version id — it
+          # interpolates the string straight into the API URL path — so the canonical
+          # UUID shape below is what Cloudflare's own bundled SDK documents, not something
+          # the CLI enforces. Hard-failing on anything but a UUID would turn a Cloudflare
+          # format change into a blocked promote; hard-failing on anything outside
+          # [A-Za-z0-9._-] cannot, and still certainly excludes newlines, quotes,
+          # whitespace and every shell metacharacter. A non-UUID that is within the safe
+          # set is therefore a warning, not an error.
+          # EMPTY STAYS LEGITIMATE: it is the no-target state of all three benign paths
+          # above (first deploy, no deployments, split traffic) and the finalizer's -z
+          # branch depends on it. The malformed value is never echoed back.
+          if [ -n "$rollback_id" ]; then
+            case "$rollback_id" in
+              *[!A-Za-z0-9._-]*)
+                echo "::error::wrangler deployments list --json for $worker returned a version_id containing characters no Worker version id may contain — refusing to promote with an untrustworthy rollback target"
+                exit 1
+                ;;
+            esac
+            if [ "${#rollback_id}" -gt 128 ]; then
+              echo "::error::wrangler deployments list --json for $worker returned a ${#rollback_id}-character version_id (max 128) — refusing to promote with an untrustworthy rollback target"
+              exit 1
+            fi
+            if ! printf '%s' "$rollback_id" \
+                 | grep -qE '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'; then
+              echo "::warning::$worker's rollback target '$rollback_id' is within the safe character set but is not the canonical UUID shape Cloudflare documents for version_id — accepted, but worth a look"
+            fi
+          fi
           echo "rollback_id=$rollback_id" >> "$GITHUB_OUTPUT"
           npx wrangler deploy --config branch/wrangler.$(case "$slug" in rolling) echo rolling;; 1.5) echo v15;; 1.4) echo v14;; esac).jsonc \
             --name "$worker" --var DOCS_BUILD_SHA:'${{ github.sha }}' --var DOCS_ENV:production
@@ -636,6 +672,10 @@ jobs:
       - name: Post-promote probe + auto-rollback (§7.1.5)
         if: ${{ !cancelled() && steps.promote.outcome == 'success' }}
         env:
+          # API-derived (Cloudflare `deployments list`), so it is bound here rather than
+          # expanded into the script text below: a template expansion is textual
+          # substitution into the shell source, an env var is not. Validated at capture.
+          ROLLBACK_ID: ${{ steps.promote.outputs.rollback_id }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CF_ZONE_ID: ${{ vars.CF_ZONE_ID_VYOS_IO }}
@@ -662,14 +702,14 @@ jobs:
             fi
           done
           if [ "$got" != '${{ github.sha }}' ]; then
-            if [ -z '${{ steps.promote.outputs.rollback_id }}' ]; then
+            if [ -z "$ROLLBACK_ID" ]; then
               echo "::error::post-promote probe failed (got $got) but PROMOTE captured no rollback target (first deploy, or no 100%-traffic version) — investigate manually"
               exit 1
             fi
             # rollback_id is a Worker VERSION id (see the PROMOTE capture above);
             # `wrangler rollback <version-id>` redeploys that version at 100% traffic.
-            echo "::error::post-promote probe failed (got $got) — rolling back to version ${{ steps.promote.outputs.rollback_id }}"
-            cd workers && npx wrangler rollback '${{ steps.promote.outputs.rollback_id }}' \
+            echo "::error::post-promote probe failed (got $got) — rolling back to version $ROLLBACK_ID"
+            cd workers && npx wrangler rollback "$ROLLBACK_ID" \
               --name '${{ steps.matrix.outputs.worker }}' \
               --message 'auto-rollback: docs-build post-promote probe failed' --yes
             curl -sf -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
