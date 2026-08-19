@@ -229,7 +229,8 @@ Set container capabilities or permissions.
 - **net-raw**: Permission to create raw network sockets
 - **setpcap**: Capability sets (from bounded or inherited set)
 - **sys-admin**: Administration operations (quotactl, mount, sethostname,
-setdomainame)
+setdomainname)
+- **sys-rawio**: Permission to perform raw I/O operations
 - **sys-time**: Permission to set system clock
 ```
 
