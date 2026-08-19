@@ -44,6 +44,37 @@ jobs:
           echo "pdf=$(jq -r --arg s "$(echo "$entry" | jq -r .slug)" \
             '.versions[] | select(.slug==$s) | .pdf // empty' workers/versions.json)" >> "$GITHUB_OUTPUT"
 
+      # DOCS_CF_LIVE is the pre/post-cutover switch, and four later steps in this job
+      # branch on it: the SKIP_PDF carry-forward staleness check, the candidate-reset
+      # staleness check, the production hostname purge, and the post-promote probe.
+      # Every one of those comparisons is written against the literal string "true", so
+      # ANY other value — an unset variable, "True", "yes", a typo — silently takes the
+      # branch that skips the check, skips the purge and skips the probe, after which the
+      # registry pointer publishes an unpurged, never-verified deployment on a green run.
+      # Validate the value ONCE, here, at the top of the only job that reads it: the four
+      # comparisons downstream are then safe by construction rather than each re-deriving
+      # the same three-line guard. Placed before the docker build so a misconfigured
+      # variable costs seconds, not a full build. A future job that reads this variable
+      # needs its own gate — this one covers build-deploy only.
+      - name: Validate DOCS_CF_LIVE
+        env:
+          DOCS_CF_LIVE: ${{ vars.DOCS_CF_LIVE }}
+        run: |
+          set -eu
+          case "$DOCS_CF_LIVE" in
+            true|false)
+              echo "DOCS_CF_LIVE=$DOCS_CF_LIVE"
+              ;;
+            "")
+              echo "::error::repository variable DOCS_CF_LIVE is unset or empty — it must be set to exactly 'true' or 'false'"
+              exit 1
+              ;;
+            *)
+              echo "::error::repository variable DOCS_CF_LIVE is '$DOCS_CF_LIVE' — it must be exactly 'true' or 'false' (lowercase, no quotes)"
+              exit 1
+              ;;
+          esac
+
       # Build image in-workflow from docker/Dockerfile (plan v4.1: digest pin dropped —
       # no published ghcr.io image exists; the checked-out commit IS the pin, and the
       # buildx GHA cache makes repeat builds cheap).
@@ -121,6 +152,16 @@ jobs:
           cp -r docs/_build/html/. "dist/assets/en/$slug/"
           npx --yes pagefind@1.5.2 --site "dist/assets/en/$slug"
 
+      # Must precede the FIRST `npx wrangler` invocation in this job. Without
+      # workers/node_modules, `npx` silently downloads whatever wrangler the registry
+      # serves today, so the SKIP_PDF carry-forward and the previous-build metadata fetch
+      # below would run on an unpinned version while every later step — including the
+      # rollback path — runs the lockfile-pinned one. Unconditional on purpose: the
+      # metadata fetch below runs on every build, long before the check_head guard that
+      # used to gate this install.
+      - name: Install workers deps
+        run: cd workers && npm ci
+
       - name: PDF into artifact (build or registry carry-forward)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
@@ -134,7 +175,7 @@ jobs:
             # §5 + §7.1.4: SKIP_PDF refuses to run when registry is stale vs production.
             # Registry layout is pointer-indirected (§7.1.4 atomicity): resolve
             # $slug/latest.json → sha, then read the sha-scoped generation.
-            cd workers && npm ci && npx wrangler r2 object get "$REGISTRY_BUCKET/$slug/latest.json" --file /tmp/latest.json --remote && cd ..
+            cd workers && npx wrangler r2 object get "$REGISTRY_BUCKET/$slug/latest.json" --file /tmp/latest.json --remote && cd ..
             reg_sha=$(jq -r .sha /tmp/latest.json)
             if [ "$DOCS_CF_LIVE" = "true" ]; then
               prod_sha=$(curl -sI "https://docs.vyos.io/en/$slug/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-docs-build"{print $2}')
@@ -223,10 +264,6 @@ jobs:
             echo "current=false" >> "$GITHUB_OUTPUT"
             echo "::notice::branch moved (tip is now $remote, this run built $BUILT_SHA) — skipping deploy, promote and registry steps"
           fi
-
-      - name: Install workers deps
-        if: steps.check_head.outputs.current == 'true'
-        run: cd workers && npm ci
 
       - name: Deploy CANDIDATE
         if: steps.check_head.outputs.current == 'true'
@@ -434,7 +471,11 @@ jobs:
             # a deployment that is actually at 100% would be reported as split and promote
             # with the rollback disarmed. A percentage this step cannot read leaves it
             # unable to tell "100%" from "a split", and guessing wrong destroys live
-            # traffic — so it fails red rather than guess.
+            # traffic — so it fails red rather than guess. It must also be IN RANGE: a
+            # current deployment reporting both 100 and 101 yields exactly one
+            # 100%-traffic match, so the numeric check alone would classify plainly
+            # impossible data as a determinate "ok" and arm a rollback selected from it.
+            # Out-of-range therefore routes to the malformed path, never to "split:".
             #
             # Validation scope: `created_on` is checked on EVERY record because it decides
             # which record is "current", so one unusable value corrupts the selection.
@@ -458,6 +499,8 @@ jobs:
                     bad("the current deployment has a non-object versions entry")
                   elif any($cur.versions[]; (.percentage | type) != "number") then
                     bad("the current deployment has a versions entry with a non-numeric percentage")
+                  elif any($cur.versions[]; .percentage < 0 or .percentage > 100) then
+                    bad("the current deployment has a versions entry with an out-of-range percentage")
                   else
                     [$cur.versions[] | select(.percentage == 100)] as $full
                     | if ($full | length) == 0 then "split:"
