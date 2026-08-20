@@ -217,6 +217,11 @@ logged and do not fail the boot. This is the same idea as
 image upgrade. Prefer a drop-in under `post-config.d/` over editing the bootup
 script itself.
 
+This runner ships in **vyos-1x** ([T9232](https://vyos.dev/T9232),
+[vyos-1x#5421](https://github.com/vyos/vyos-1x/pull/5421)). Older images have a
+comments-only bootup script; until you upgrade, install a runner yourself or
+`post-config.d/` will not run.
+
 The default script contains the following:
 
 ```none
