@@ -210,16 +210,40 @@ the system configuration is applied.
 Use this script to apply **post-configuration** workarounds for unresolved bugs
 or enhancements not yet available in VyOS.
 
+The default script also runs executable files in
+`/config/scripts/post-config.d/` (regular files, in name order). Failures are
+logged and do not fail the boot. This is the same idea as
+`/config/scripts/post-upgrade.d/`, which is executed via `run-parts` after an
+image upgrade. Prefer a drop-in under `post-config.d/` over editing the bootup
+script itself.
+
 The default script contains the following:
 
 ```none
 #!/bin/sh
 # This script is executed at boot time after VyOS configuration is fully
-# applied. Any modifications required to work around unfixed bugs or use
-# services not available through the VyOS CLI system can be placed here.
+# applied. Any modifications required to work around unfixed bugs
+# or use services not available through the VyOS CLI system can be placed here.
+#
+# Executable files in /config/scripts/post-config.d/ are run in name order
+# (same idea as post-upgrade.d). Failures are logged; boot continues.
+
+DIR=/config/scripts/post-config.d
+[ -d "$DIR" ] || exit 0
+for script in "$DIR"/*; do
+    [ -f "$script" ] && [ -x "$script" ] || continue
+    "$script" || logger -t vyos-postconfig "post-config.d/$(basename "$script") failed (exit $?)"
+done
 ```
 
 :::{warning}
 For configuration or upgrade management issues, modify this script
 only as a last resort. Always try CLI-based solutions first.
+:::
+
+:::{note}
+`post-config.d/` is **not** executed by `vyos-router` itself. Only this
+bootup script (or a replacement you install) iterates it. If you replace
+`vyos-postconfig-bootup.script` entirely, keep a runner for `post-config.d/`
+or your drop-ins will stop running.
 :::
