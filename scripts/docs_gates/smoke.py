@@ -15,9 +15,11 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import json
+import os
 import sys
 import time
 import urllib.request
+from pathlib import Path
 
 APEX_PATHS = ["/versions.json", "/healthz", "/robots.txt", "/sitemap.xml"]
 SEARCH_MOUNT_MARKER = 'id="vyos-search"'
@@ -73,7 +75,14 @@ def probe_plan(slug: str, pdf: str | None, critical: list[str]) -> list[Probe]:
     plan = [Probe(f"/en/{slug}/{rel}", 200, True, False) for rel in ["index.html", *critical]]
     plan.append(Probe(f"/en/{slug}/pagefind/pagefind.js", 200, True, False))
     if pdf:
-        plan.append(Probe(pdf, 200, True, False))
+        # assert_docs_build=False: the PDF is the ONE content path that can legitimately be
+        # answered by the apex Worker instead of a branch content Worker. 1.3's PDF (29.2 MiB)
+        # exceeds the 25 MiB static-asset cap, so apex serves it straight from R2 (spec §5) and
+        # that response carries only etag / accept-ranges / content-type / content-length —
+        # X-Docs-Build is a content-Worker header apex never sets on it. Asserting it made the
+        # probe structurally unpassable for 1.3 (observed nightly: "detail=status+docs-build").
+        # The build SHA is still gated for this version: every HTML probe above asserts it.
+        plan.append(Probe(pdf, 200, False, False))
     plan.append(Probe(f"/en/{slug}/definitely-missing-page-xyz.html", 404, False, False))
     plan += [Probe(p, 200, False, True) for p in APEX_PATHS]
     plan[0].assert_search_mount = True  # plan[0] is always /en/<slug>/index.html
@@ -192,14 +201,35 @@ def main() -> int:
     ap.add_argument("--host", required=True)
     ap.add_argument("--slug", required=True)
     ap.add_argument("--expect-sha", required=True)
-    ap.add_argument("--access-id", required=True)
-    ap.add_argument("--access-secret", required=True)
     ap.add_argument("--pdf", default=None)
-    ap.add_argument("--critical-list", default="scripts/docs_gates/critical-pages.txt")
+    ap.add_argument("--critical-list", type=Path,
+                    default=Path("scripts/docs_gates/critical-pages.txt"))
     a = ap.parse_args()
-    critical = [line.strip() for line in open(a.critical_list).read().splitlines()
-                if line.strip() and not line.startswith("#")]
-    return run(a.host, a.slug, a.expect_sha, a.access_id, a.access_secret, a.pdf, critical)
+    # CF Access service-token credentials are read ONLY from the environment. They were also
+    # accepted as --access-id/--access-secret flags; that is removed rather than merely
+    # discouraged, because a value passed in argv publishes it in the process command line —
+    # readable from the process table for the lifetime of the process, and captured verbatim
+    # by `set -x` shell traces, crash dumps and process-listing tooling. No call site used
+    # the flags (docs-build.yml and docs-canary-qa.yml both export the env vars), so there is
+    # nothing to migrate. Neither value nor its length is ever echoed.
+    access_id = os.environ.get("CF_ACCESS_CLIENT_ID", "")
+    access_secret = os.environ.get("CF_ACCESS_CLIENT_SECRET", "")
+    missing = [name for name, value in (
+        ("CF_ACCESS_CLIENT_ID", access_id),
+        ("CF_ACCESS_CLIENT_SECRET", access_secret)) if not value]
+    if missing:
+        # The canary host is Access-gated, so an empty credential would turn every probe into
+        # an indistinguishable 403 — fail loudly on the cause instead. Names only, no values.
+        print(f"missing CF Access credentials: {', '.join(missing)}", file=sys.stderr)
+        return 2
+    # Strip BEFORE the comment test: an indented "  # note" line is a comment, not a page that
+    # every deployable build must contain (it would fail the probe as a missing critical page).
+    # read_text() (rather than a bare open().read()) closes the handle deterministically,
+    # matching gates.py; the bare form leaked the descriptor until GC on any interpreter
+    # without CPython's refcounting.
+    lines = (line.strip() for line in a.critical_list.read_text().splitlines())
+    critical = [line for line in lines if line and not line.startswith("#")]
+    return run(a.host, a.slug, a.expect_sha, access_id, access_secret, a.pdf, critical)
 
 
 if __name__ == "__main__":
