@@ -84,8 +84,11 @@ def main() -> int:
     ap.add_argument("--critical-list", type=Path,
                     default=Path("scripts/docs_gates/critical-pages.txt"))
     a = ap.parse_args()
-    critical = [line.strip() for line in a.critical_list.read_text().splitlines()
-                if line.strip() and not line.startswith("#")]
+    # Strip BEFORE the comment test: an indented "  # note" line is a comment, not a page
+    # every deployable build must contain — the unstripped test turned it into a live entry,
+    # and a comment can never exist as a file, so it would block the deploy as a missing page.
+    lines = (line.strip() for line in a.critical_list.read_text().splitlines())
+    critical = [line for line in lines if line and not line.startswith("#")]
     return run(a.artifact, a.slug, a.versions, a.previous_meta, critical)
 
 

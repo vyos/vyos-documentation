@@ -1,5 +1,7 @@
 import json
+import sys
 from pathlib import Path
+
 import pytest
 from scripts.docs_gates import gates
 
@@ -102,3 +104,19 @@ def test_fail_when_declared_pdf_missing(artifact: Path, versions: Path):
     rc = gates.run(artifact=artifact, slug="rolling", versions=versions,
                    previous_meta=None, critical=["index.html"])
     assert rc == 1
+
+
+def test_critical_list_strips_before_testing_for_comments(monkeypatch, tmp_path, artifact):
+    # An INDENTED comment used to survive the `line.startswith("#")` test (applied to the
+    # UNSTRIPPED line) and become a live critical-page entry. A comment can never exist as a
+    # file, so it would block every deploy with "critical page missing: en/rolling/  # ...".
+    crit = tmp_path / "critical.txt"
+    crit.write_text("# leading comment\n   # indented comment\n\n  index.html  \n")
+    seen: list[str] = []
+    monkeypatch.setattr(gates, "run",
+                        lambda art, slug, versions, prev, critical: seen.extend(critical) or 0)
+    monkeypatch.setattr(sys, "argv", [
+        "gates", "--artifact", str(artifact), "--slug", "rolling",
+        "--versions", str(versions_arg(tmp_path)), "--critical-list", str(crit)])
+    assert gates.main() == 0
+    assert seen == ["index.html"]
