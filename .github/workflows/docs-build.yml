@@ -44,10 +44,9 @@ jobs:
           echo "pdf=$(jq -r --arg s "$(echo "$entry" | jq -r .slug)" \
             '.versions[] | select(.slug==$s) | .pdf // empty' workers/versions.json)" >> "$GITHUB_OUTPUT"
 
-      # DOCS_CF_LIVE is the pre/post-cutover switch, and five later steps in this job
+      # DOCS_CF_LIVE is the pre/post-cutover switch, and four later steps in this job
       # branch on it: the SKIP_PDF carry-forward staleness check, the candidate-reset
-      # staleness check, the production hostname purge, the post-promote probe, and the
-      # registry-pointer reconciliation.
+      # staleness check, the production hostname purge, and the post-promote probe.
       # Every one of those comparisons is written against the literal string "true", so
       # ANY other value — an unset variable, "True", "yes", a typo — silently takes the
       # branch that skips the check, skips the purge and skips the probe, after which the
@@ -783,6 +782,12 @@ jobs:
       # failed — the probe (so a rolled-back generation never becomes the pointer target)
       # and the purge/upload step (so a pointer never names a generation that was not
       # fully uploaded). Adding always()/!cancelled() here would publish over a rollback.
+      #
+      # KNOWN GAP: because that success() is implicit, a failed `promote_publish` skips
+      # this step even when the probe went on to verify production serving this SHA — and
+      # a terminal failure here has the same effect. Either way production and
+      # $slug/latest.json disagree, and nothing in this job reconciles them. Tracked in
+      # https://vyos.dev/T9237.
       - name: Publish registry pointer (§7.1.4)
         id: publish_pointer
         if: steps.check_head_2.outputs.current == 'true'
@@ -806,71 +811,3 @@ jobs:
             echo "::error::registry pointer publish failed twice — sha-scoped objects landed under $slug/$sha/ but latest.json still points at the previous generation (see spec §7.1.4)"
             exit 1
           fi
-
-      # RECONCILIATION for the window the round-8 promote/publish split opened. Before that
-      # split a publish failure failed the whole step and suppressed the probe; splitting them
-      # correctly decoupled the two but left no convergence action for the case where the probe
-      # now SUCCEEDS after a publish failure.
-      #
-      # `promote` succeeding means production changed. `probe` succeeding means production is
-      # verified serving THIS run's SHA (or was the documented pre-cutover no-op). If the
-      # pointer step nonetheless did not publish — skipped by its load-bearing implicit
-      # success() after a failed `promote_publish`, or failed terminally itself — production
-      # and the registry disagree and nothing else reconciles them. That matters because
-      # latest.json is the source of truth for the candidate-reset staleness check and the
-      # SKIP_PDF carry-forward: both would later restore a generation that is not what
-      # production serves.
-      #
-      # `steps.probe.outcome == 'success'` is what keeps this step from EVER publishing a
-      # pointer over a rollback — a rollback always exits the probe non-zero — and equally
-      # keeps it off the rollback-SUCCEEDED path, where production is back on the previous
-      # version and latest.json already names it. Those two agree; there is nothing to fix.
-      #
-      # Convergence is FORWARD, never backward. Rolling production back to whatever latest.json
-      # names would regress a production the probe just verified as healthy in order to fix a
-      # bookkeeping failure with no user-visible effect, and it would assume ROLLBACK_ID names
-      # the same generation as latest.json — precisely the invariant this failure mode breaks,
-      # so it can manufacture a third state. Forward repair mutates only R2, idempotently.
-      # The pointer is published ONLY if all three sha-scoped objects upload successfully IN
-      # THIS STEP, so it can never come to name an incomplete generation. If the repair fails,
-      # the pointer is left exactly where it is and the divergence is reported by name.
-      - name: Reconcile registry pointer after a failed publish (§7.1.4)
-        id: reconcile
-        if: ${{ !cancelled() && steps.promote.outcome == 'success' && steps.probe.outcome == 'success' && steps.publish_pointer.outcome != 'success' }}
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          DOCS_CF_LIVE: ${{ vars.DOCS_CF_LIVE }}
-        run: |
-          set -eu
-          slug='${{ steps.matrix.outputs.slug }}'
-          sha='${{ github.sha }}'
-          if [ "$DOCS_CF_LIVE" = "true" ]; then
-            where="production is serving $sha (the post-promote probe verified it)"
-          else
-            where="the pre-cutover deploy of $sha completed (docs.vyos.io still serves RTD, so nothing user-facing diverged)"
-          fi
-          # Rebuild the generation artifacts rather than assume they survive: promote_publish
-          # can fail at the hostname purge, which runs BEFORE it writes any of them.
-          tar --zstd -cf lastgood.tar.zst -C dist/assets .
-          page_count=$(find "dist/assets/en/$slug" -name '*.html' | wc -l | tr -d ' ')
-          printf '{"sha":"%s","page_count":%s}' "$sha" "$page_count" > lastgood.meta.json
-          printf '{"sha":"%s"}' "$sha" > latest.json
-          cd workers
-          repair_generation() {
-            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/tar.zst" --file ../lastgood.tar.zst --remote &&
-            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/pdf" --file "../dist/assets/en/$slug/vyos-documentation.pdf" --remote &&
-            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/meta.json" --file ../lastgood.meta.json --remote
-          }
-          if (repair_generation || repair_generation) &&
-             npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/latest.json" --file ../latest.json --remote; then
-            echo "::warning::registry converged forward after the publish failure above — $where and $slug/latest.json now names $sha. The run stays red for the original failure; the registry does not need manual repair."
-            exit 0
-          fi
-          reg_sha='<unreadable>'
-          if npx wrangler r2 object get "$REGISTRY_BUCKET/$slug/latest.json" --file /tmp/diverged-latest.json --remote; then
-            reg_sha=$(jq -r '.sha // "<malformed>"' /tmp/diverged-latest.json)
-          fi
-          repair_cmd="cd workers && printf '{\"sha\":\"%s\"}' $sha > /tmp/latest.json && npx wrangler r2 object put $REGISTRY_BUCKET/$slug/latest.json --file /tmp/latest.json --remote"
-          echo "::error::REGISTRY/PRODUCTION DIVERGENCE — $where, but the registry pointer $slug/latest.json still names $reg_sha and the forward repair failed. latest.json is what the candidate-reset staleness check and the SKIP_PDF carry-forward read, so both would restore $reg_sha, not $sha. Repair by re-running this job on $sha, or by hand once R2 is reachable: $repair_cmd"
-          exit 1
