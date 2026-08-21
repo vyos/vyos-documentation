@@ -44,9 +44,10 @@ jobs:
           echo "pdf=$(jq -r --arg s "$(echo "$entry" | jq -r .slug)" \
             '.versions[] | select(.slug==$s) | .pdf // empty' workers/versions.json)" >> "$GITHUB_OUTPUT"
 
-      # DOCS_CF_LIVE is the pre/post-cutover switch, and four later steps in this job
+      # DOCS_CF_LIVE is the pre/post-cutover switch, and five later steps in this job
       # branch on it: the SKIP_PDF carry-forward staleness check, the candidate-reset
-      # staleness check, the production hostname purge, and the post-promote probe.
+      # staleness check, the production hostname purge, the post-promote probe, and the
+      # registry-pointer reconciliation.
       # Every one of those comparisons is written against the literal string "true", so
       # ANY other value — an unset variable, "True", "yes", a typo — silently takes the
       # branch that skips the check, skips the purge and skips the probe, after which the
@@ -670,6 +671,7 @@ jobs:
       # purge step; what is left is a purge API that is down, and a known-good production
       # is the right place to be sitting while it is.
       - name: Post-promote probe + auto-rollback (§7.1.5)
+        id: probe
         if: ${{ !cancelled() && steps.promote.outcome == 'success' }}
         env:
           # API-derived (Cloudflare `deployments list`), so it is bound here rather than
@@ -682,33 +684,91 @@ jobs:
           DOCS_CF_LIVE: ${{ vars.DOCS_CF_LIVE }}
         run: |
           set -eu
+          # pipefail: probe_once below is a pipeline whose FIRST command is the curl that can
+          # fail. Without it the pipeline's status is awk's, and a transport failure would be
+          # indistinguishable from a missing header.
+          set -o pipefail
           if [ "$DOCS_CF_LIVE" != "true" ]; then
             echo "DOCS_CF_LIVE=false — pre-cutover: docs.vyos.io still serves RTD; skipping production probe"
             exit 0
           fi
           slug='${{ steps.matrix.outputs.slug }}'
+          # VERIFICATION REQUIRES BOTH A SUCCESSFUL STATUS AND THE BUILT SHA. `withDocsHeaders`
+          # (workers/branch/src/index.ts) sets X-Docs-Build UNCONDITIONALLY — error responses
+          # carry it too, which that function itself acknowledges by special-casing
+          # `status >= 400` for Cache-Control. Matching the header alone therefore accepted a
+          # production answering 500 with the new SHA as a verified promote, after which the
+          # registry pointer published for a generation that was serving errors.
+          #
+          # `--fail` is deliberately NOT used: it collapses every 4xx/5xx into curl exit 22 and
+          # discards the status line — the one value needed to tell a broken new version (500)
+          # apart from a transport failure. Parsing the status explicitly supersedes it.
+          #
+          # probe_once prints "<status> <sha>" for the FINAL response block. Resetting on every
+          # status line means 1xx interim responses (e.g. Cloudflare Early Hints) contribute
+          # nothing — only the last block's headers are read. Duplicate X-Docs-Build headers
+          # with IDENTICAL values state the same fact and are accepted; CONFLICTING values are
+          # untrustworthy and surface as "<conflicting>", which can never equal the built SHA.
+          probe_once() {
+            curl -sSI --max-time 20 "https://docs.vyos.io/en/$slug/" \
+              | tr -d '\r' \
+              | awk '
+                  /^HTTP\// { code = $2; n = 0; v = ""; next }
+                  tolower($0) ~ /^x-docs-build:/ {
+                    val = $0
+                    sub(/^[^:]*:[ \t]*/, "", val)
+                    sub(/[ \t]+$/, "", val)
+                    n++
+                    if (n == 1) { v = val } else if (val != v) { v = "<conflicting>" }
+                  }
+                  END { printf "%s %s\n", (code == "" ? "<no-status>" : code), (n == 0 ? "<absent>" : v) }
+                '
+          }
           # Retry loop: the purge above is asynchronous, so an immediate probe can still
           # observe a stale edge response and trigger a false rollback. Poll up to 6 times
-          # (60s budget) before concluding the promote genuinely failed.
-          got=""
+          # (60s budget) before concluding the promote genuinely failed. A non-200 or a
+          # transport failure on an EARLY attempt is retried for the same reason a stale SHA
+          # is — only the FINAL attempt's verdict decides.
+          code="<no-status>"
+          got="<absent>"
+          verified=false
           for attempt in 1 2 3 4 5 6; do
-            got=$(curl -sI "https://docs.vyos.io/en/$slug/" | tr -d '\r' | awk -F': ' 'tolower($1)=="x-docs-build"{print $2}')
-            if [ "$got" = '${{ github.sha }}' ]; then
+            if out=$(probe_once); then
+              code=${out%% *}
+              got=${out#* }
+            else
+              # curl itself failed (DNS, TLS, connection refused, --max-time exceeded).
+              code="<transport-error>"
+              got="<none>"
+            fi
+            if [ "$code" = "200" ] && [ "$got" = '${{ github.sha }}' ]; then
+              verified=true
               break
             fi
             if [ "$attempt" -lt 6 ]; then
-              echo "::notice::post-promote probe attempt $attempt/6 saw stale edge (got $got) — retrying in 10s"
+              echo "::notice::post-promote probe attempt $attempt/6 unverified (status $code, X-Docs-Build $got) — retrying in 10s"
               sleep 10
             fi
           done
-          if [ "$got" != '${{ github.sha }}' ]; then
+          if [ "$verified" != "true" ]; then
+            # Same action for every unverified outcome — a rollback to the last version known
+            # to serve correctly — but distinguishable diagnoses, because "200 with the wrong
+            # SHA" (stale edge / promote never took) and "500 with the right SHA" (the new
+            # version is live and broken) point an operator at completely different causes.
+            if [ "$code" = "200" ]; then
+              reason="production answered 200 but served X-Docs-Build $got, not ${{ github.sha }}"
+            elif [ "$code" = "<transport-error>" ]; then
+              reason="production could not be reached at all after 6 attempts (see curl stderr above)"
+            else
+              reason="production answered status $code carrying X-Docs-Build $got — the deployed version is live but not serving successfully"
+            fi
             if [ -z "$ROLLBACK_ID" ]; then
-              echo "::error::post-promote probe failed (got $got) but PROMOTE captured no rollback target (first deploy, or no 100%-traffic version) — investigate manually"
+              echo "::error::post-promote probe failed ($reason) but PROMOTE captured no rollback target (first deploy, or no 100%-traffic version) — investigate manually"
               exit 1
             fi
             # rollback_id is a Worker VERSION id (see the PROMOTE capture above);
             # `wrangler rollback <version-id>` redeploys that version at 100% traffic.
-            echo "::error::post-promote probe failed (got $got) — rolling back to version $ROLLBACK_ID"
+            echo "::error::post-promote probe failed ($reason) — rolling back to version $ROLLBACK_ID"
             cd workers && npx wrangler rollback "$ROLLBACK_ID" \
               --name '${{ steps.matrix.outputs.worker }}' \
               --message 'auto-rollback: docs-build post-promote probe failed' --yes
@@ -724,6 +784,7 @@ jobs:
       # and the purge/upload step (so a pointer never names a generation that was not
       # fully uploaded). Adding always()/!cancelled() here would publish over a rollback.
       - name: Publish registry pointer (§7.1.4)
+        id: publish_pointer
         if: steps.check_head_2.outputs.current == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
@@ -745,3 +806,71 @@ jobs:
             echo "::error::registry pointer publish failed twice — sha-scoped objects landed under $slug/$sha/ but latest.json still points at the previous generation (see spec §7.1.4)"
             exit 1
           fi
+
+      # RECONCILIATION for the window the round-8 promote/publish split opened. Before that
+      # split a publish failure failed the whole step and suppressed the probe; splitting them
+      # correctly decoupled the two but left no convergence action for the case where the probe
+      # now SUCCEEDS after a publish failure.
+      #
+      # `promote` succeeding means production changed. `probe` succeeding means production is
+      # verified serving THIS run's SHA (or was the documented pre-cutover no-op). If the
+      # pointer step nonetheless did not publish — skipped by its load-bearing implicit
+      # success() after a failed `promote_publish`, or failed terminally itself — production
+      # and the registry disagree and nothing else reconciles them. That matters because
+      # latest.json is the source of truth for the candidate-reset staleness check and the
+      # SKIP_PDF carry-forward: both would later restore a generation that is not what
+      # production serves.
+      #
+      # `steps.probe.outcome == 'success'` is what keeps this step from EVER publishing a
+      # pointer over a rollback — a rollback always exits the probe non-zero — and equally
+      # keeps it off the rollback-SUCCEEDED path, where production is back on the previous
+      # version and latest.json already names it. Those two agree; there is nothing to fix.
+      #
+      # Convergence is FORWARD, never backward. Rolling production back to whatever latest.json
+      # names would regress a production the probe just verified as healthy in order to fix a
+      # bookkeeping failure with no user-visible effect, and it would assume ROLLBACK_ID names
+      # the same generation as latest.json — precisely the invariant this failure mode breaks,
+      # so it can manufacture a third state. Forward repair mutates only R2, idempotently.
+      # The pointer is published ONLY if all three sha-scoped objects upload successfully IN
+      # THIS STEP, so it can never come to name an incomplete generation. If the repair fails,
+      # the pointer is left exactly where it is and the divergence is reported by name.
+      - name: Reconcile registry pointer after a failed publish (§7.1.4)
+        id: reconcile
+        if: ${{ !cancelled() && steps.promote.outcome == 'success' && steps.probe.outcome == 'success' && steps.publish_pointer.outcome != 'success' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN_DOCS }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          DOCS_CF_LIVE: ${{ vars.DOCS_CF_LIVE }}
+        run: |
+          set -eu
+          slug='${{ steps.matrix.outputs.slug }}'
+          sha='${{ github.sha }}'
+          if [ "$DOCS_CF_LIVE" = "true" ]; then
+            where="production is serving $sha (the post-promote probe verified it)"
+          else
+            where="the pre-cutover deploy of $sha completed (docs.vyos.io still serves RTD, so nothing user-facing diverged)"
+          fi
+          # Rebuild the generation artifacts rather than assume they survive: promote_publish
+          # can fail at the hostname purge, which runs BEFORE it writes any of them.
+          tar --zstd -cf lastgood.tar.zst -C dist/assets .
+          page_count=$(find "dist/assets/en/$slug" -name '*.html' | wc -l | tr -d ' ')
+          printf '{"sha":"%s","page_count":%s}' "$sha" "$page_count" > lastgood.meta.json
+          printf '{"sha":"%s"}' "$sha" > latest.json
+          cd workers
+          repair_generation() {
+            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/tar.zst" --file ../lastgood.tar.zst --remote &&
+            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/pdf" --file "../dist/assets/en/$slug/vyos-documentation.pdf" --remote &&
+            npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/$sha/meta.json" --file ../lastgood.meta.json --remote
+          }
+          if (repair_generation || repair_generation) &&
+             npx wrangler r2 object put "$REGISTRY_BUCKET/$slug/latest.json" --file ../latest.json --remote; then
+            echo "::warning::registry converged forward after the publish failure above — $where and $slug/latest.json now names $sha. The run stays red for the original failure; the registry does not need manual repair."
+            exit 0
+          fi
+          reg_sha='<unreadable>'
+          if npx wrangler r2 object get "$REGISTRY_BUCKET/$slug/latest.json" --file /tmp/diverged-latest.json --remote; then
+            reg_sha=$(jq -r '.sha // "<malformed>"' /tmp/diverged-latest.json)
+          fi
+          repair_cmd="cd workers && printf '{\"sha\":\"%s\"}' $sha > /tmp/latest.json && npx wrangler r2 object put $REGISTRY_BUCKET/$slug/latest.json --file /tmp/latest.json --remote"
+          echo "::error::REGISTRY/PRODUCTION DIVERGENCE — $where, but the registry pointer $slug/latest.json still names $reg_sha and the forward repair failed. latest.json is what the candidate-reset staleness check and the SKIP_PDF carry-forward read, so both would restore $reg_sha, not $sha. Repair by re-running this job on $sha, or by hand once R2 is reachable: $repair_cmd"
+          exit 1
