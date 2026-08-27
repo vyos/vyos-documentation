@@ -406,6 +406,11 @@ Configure the authentication protocol used by the specified user:
 HMAC-MD5-96 (md5) or HMAC-SHA-96 (sha).
 
 The default is `md5`.
+
+VyOS derives both the authentication key and the privacy key of the
+user using this protocol. Changing it after the keys are derived leaves
+them tied to the previous protocol. Set the authentication and privacy
+passwords again under `service snmp v3 user`.
 ```
 
 Example:
@@ -511,15 +516,16 @@ Example:
 set service snmp v3 view default oid 1 exclude 1.3.6.1.2.1.4
 ```
 
-% The command below is intentionally left undocumented. The CLI accepts
-% and stores the value, but the generated agent configuration omits it,
-% so the mask never reaches the running service. Verified on VyOS 1.5.0.
-%
-% ```{cfgcmd} set service snmp v3 view \<name\> oid \<oid\> mask \<hex-octets\>
-%
-% **Define a bitmask indicating which numbers of the OID an object's OID
-% must match, instead of all of them, for the object to be in the view.**
-% ```
+<!-- The command below is intentionally left undocumented. The CLI accepts
+and stores the value, but the generated agent configuration omits it,
+so the mask never reaches the running service. Verified on VyOS 1.5.0.
+
+```{cfgcmd} set service snmp v3 view \<name\> oid \<oid\> mask \<hex-octets\>
+
+**Define a bitmask indicating which numbers of the OID an object's OID
+must match, instead of all of them, for the object to be in the view.**
+```
+-->
 
 ```{cfgcmd} set service snmp v3 trap-target \<address\>
 
@@ -613,7 +619,10 @@ A plaintext password must be at least 8 characters long. A key must use
 lowercase hexadecimal characters (`0` to `9`, `a` to `f`).
 
 VyOS stores the value as entered and passes it to the SNMP agent
-unchanged.
+unchanged. A plaintext password therefore stays readable in the
+configuration and in configuration backups. An encrypted password keeps
+the password itself out of the configuration, but it is a working key.
+Anyone who obtains it can send notifications in the router's name.
 
 Exactly one of `plaintext-password` or `encrypted-password` must be
 configured. Otherwise, the commit fails.
@@ -650,7 +659,10 @@ A plaintext password must be at least 8 characters long. A key must use
 lowercase hexadecimal characters (`0` to `9`, `a` to `f`).
 
 VyOS stores the value as entered and passes it to the SNMP agent
-unchanged.
+unchanged. A plaintext password therefore stays readable in the
+configuration and in configuration backups. An encrypted password keeps
+the password itself out of the configuration, but it is a working key.
+Anyone who obtains it can decrypt captured notifications.
 
 Exactly one of `plaintext-password` or `encrypted-password` must be
 configured. Otherwise, the commit fails.
