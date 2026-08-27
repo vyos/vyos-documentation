@@ -174,7 +174,9 @@ type         WLB test type
   address or hostname.
 - `test-script`: A user-defined script must return 0 to succeed and
   non-zero to fail. Scripts reside in `/config/scripts`. For other locations,
-  provide the full path.
+  provide the full path. When the script runs, VyOS sets
+  `WLB_INTERFACE_NAME` to the interface under test. The same value is available
+  as `WLB_SCRIPT_IFACE` for backward compatibility.
 - `ttl-limit`: For the UDP TTL limit test, specify the hop count limit.
   The limit must be shorter than the path length. The test succeeds when an
   ICMP time-expired message is returned. Default `1`.
