@@ -323,6 +323,11 @@ Repeat the command to enable timestamping on multiple interfaces.
 The special value `all` enables timestamping on all interfaces that support
 it.
 
+The NIC must support hardware timestamping. Run `ethtool -T <interface>` to
+check: the reported capabilities should include `hardware-raw-clock`,
+`hardware-transmit`, and `hardware-receive`. If the NIC cannot timestamp
+received packets, the router falls back to kernel timestamps for them.
+
 The interface must either be configured in VyOS or detected by the kernel.
 Otherwise, the commit fails.
 ```
