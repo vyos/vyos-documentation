@@ -238,6 +238,8 @@ between multiple metrics.
 The following Prometheus exporters are configurable to export metrics:
 : - Node Exporter
   - FRR Exporter
+  - VPP Exporter
+  - Blackbox Exporter
 
 
 ### Node Exporter
@@ -286,6 +288,102 @@ Configure the port number frr_exporter is listening on.
 Configure name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
 ```
 
+### VPP Exporter
+
+Prometheus [vpp_exporter] is the `vpp_prometheus_export` utility shipped with
+upstream {abbr}`VPP (Vector Packet Processing)`. Unlike the other exporters
+in this section it is not a standalone project — it is built from the FD.io
+VPP source tree. It connects to VPP's shared-memory stats segment via the
+socket at `/run/vpp/stats.sock` and re-exposes the selected counters as a
+Prometheus `/metrics` HTTP endpoint, using the v2 metric format.
+
+The exporter runs as a systemd service that is bound to the `vpp.service`
+unit (`BindsTo` / `PartOf`): it cannot start until VPP is running, restarts
+automatically when VPP restarts, and stops when VPP is stopped. It coexists
+with `node-exporter`, which scrapes kernel/host metrics independently.
+
+The exporter listens on the IPv6 wildcard address (`::`, accepting v4-mapped
+connections) on the configured port — there is no separate `listen-address`
+option.
+
+The set of exported counters is controlled by two complementary mechanisms
+that are **combined additively** — a counter is exported if its
+stats-segment path is matched by any configured group or pattern:
+
+- {cfgcmd}`stat-group` selects an entire top-level namespace in the VPP
+  stats segment. Each group corresponds to a fixed `^/<name>` regex.
+- {cfgcmd}`stat-pattern` selects a custom subset by regex against the
+  stats-segment path.
+
+If neither is configured, VyOS exports a default set covering
+`interfaces`, `err`, `buffer-pools`, `sys`, `workers` and `mem` (the
+`nodes` group is excluded from the default — see the per-node-counters
+note below).
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter port \<port\>
+
+Configure the TCP port that the VPP exporter listens on for Prometheus
+scrape requests. Upstream's default is `9482`.
+```
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter stat-group \<interfaces | err | buffer-pools | sys | workers | nodes | mem\>
+
+Export an entire predefined VPP stat group. Each group maps to a single
+top-level prefix in the stats segment:
+
+| Group          | Maps to regex     |
+| -------------- | ----------------- |
+| `interfaces`   | `^/interfaces`    |
+| `err`          | `^/err`           |
+| `buffer-pools` | `^/buffer-pools`  |
+| `sys`          | `^/sys`           |
+| `workers`      | `^/workers`       |
+| `nodes`        | `^/nodes`         |
+| `mem`          | `^/mem`           |
+
+The exact set of counters under each prefix is determined by VPP itself
+and depends on the running plugins, configured features and (for `nodes`)
+on whether per-node counters are enabled. Use VPP's `show statistics`
+CLI on the live system to enumerate what is actually published.
+
+This option may be specified multiple times to combine groups.
+```
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter stat-pattern \<pattern\>
+
+Export a custom subset of stats by regex match against the VPP
+stats-segment path. The pattern must begin with `^/`. Examples:
+`^/interfaces` (all interface counters), `^/interfaces/.*/rx` (RX
+counters across all interfaces), `^/sys/.*` (all system counters).
+
+This option may be specified multiple times.
+```
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter vrf \<name\>
+
+Run the exporter inside the named {abbr}`VRF (Virtual Routing and Forwarding)`
+instance, so that scrape traffic is routed via the VRF's routing table.
+The service is started under `ip vrf exec <name>`.
+```
+
+If `nodes` stats are selected via `stat-group nodes` or via a
+`stat-pattern` matching `^/nodes`, enable per-node counters in VPP —
+without this, VPP does not maintain node-level counters and the scrape
+will return empty values for that namespace:
+
+```{cfgcmd} set vpp settings resource-allocation memory stats per-node-counters
+```
+
+Example — export buffer-pool and system counters plus per-interface RX
+stats on port `9482`:
+
+```none
+set service monitoring prometheus vpp-exporter port 9482
+set service monitoring prometheus vpp-exporter stat-group buffer-pools
+set service monitoring prometheus vpp-exporter stat-group sys
+set service monitoring prometheus vpp-exporter stat-pattern '^/interfaces/.*/rx'
+```
+
 ### Blackbox Exporter
 
 Prometheus [blackbox_exporter] which allows probing of endpoints over
@@ -332,3 +430,4 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 time
 [node_exporter]: <https://github.com/prometheus/node_exporter>
 [prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
 [splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
+[vpp_exporter]: <https://github.com/FDio/vpp/blob/master/src/vpp/app/vpp_prometheus_export.c>
