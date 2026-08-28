@@ -1,227 +1,407 @@
+---
+myst:
+  html_meta:
+    description: |
+      NTP is a protocol that synchronizes a computer's clock to
+      Coordinated Universal Time by obtaining the time from time sources
+      over a network. A VyOS router can function as both an NTP client
+      and an NTP server.
+    keywords: ntp, utc, time synchronization, leap second, hardware timestamping
+---
+
 (ntp)=
 
 # NTP
 
-{abbr}`NTP (Network Time Protocol`) is a networking protocol for clock
-synchronization between computer systems over packet-switched, variable-latency
-data networks. In operation since before 1985, NTP is one of the oldest Internet
-protocols in current use.
+{abbr}`NTP (Network Time Protocol)` synchronizes a computer's clock to
+Coordinated Universal Time (UTC) by obtaining the time from time sources
+over a network.
 
-NTP is intended to synchronize all participating computers to within a few
-milliseconds of {abbr}`UTC (Coordinated Universal Time)`. It uses the
-intersection algorithm, a modified version of Marzullo's algorithm, to select
-accurate time servers and is designed to mitigate the effects of variable
-network latency. NTP can usually maintain time to within tens of milliseconds
-over the public Internet, and can achieve better than one millisecond accuracy
-in local area networks under ideal conditions. Asymmetric routes and network
-congestion can cause errors of 100 ms or more.
+NTP arranges time sources in a hierarchy. Top servers obtain time directly
+from highly accurate hardware reference clocks, such as GPS receivers.
+Lower-level servers synchronize with those above, and clients reside at the
+bottom of the hierarchy.
 
-The protocol is usually described in terms of a client-server model, but can as
-easily be used in peer-to-peer relationships where both peers consider the other
-to be a potential time source. Implementations send and receive timestamps using
-{abbr}`UDP (User Datagram Protocol)` on port number 123.
+A client usually synchronizes with multiple servers, regularly exchanging
+time messages over {abbr}`UDP (User Datagram Protocol)` on port 123. Both
+sides timestamp each exchange, allowing the client to distinguish network
+delay from the actual clock difference. Typical accuracy is within a few
+milliseconds over the Internet and tens of microseconds on a LAN.
 
-NTP supplies a warning of any impending leap second adjustment, but no
-information about local time zones or daylight saving time is transmitted.
+A VyOS router can function as both an NTP client, synchronizing its clock
+with upstream servers, and an NTP server, providing time synchronization to
+clients.
 
-The current protocol is version 4 (NTPv4), which is a proposed standard as
-documented in {rfc}`5905`. It is backward compatible with version 3, specified
-in {rfc}`1305`.
-
-:::{note}
-VyOS 1.4 uses chrony instead of ntpd (see {vytask}`T3008`) which will
-no longer accept anonymous NTP requests as in VyOS 1.3. All configurations
-will be migrated to keep the anonymous functionality. For new setups if you
-have clients using your VyOS installation as NTP server, you must specify
-the `allow-client` directive.
-:::
+```{note}
+Since VyOS 1.4, the router responds to NTP client requests only from
+addresses explicitly permitted with the `allow-client` directive.
+Configurations upgraded from earlier releases continue accepting requests
+from any client and operate as before. For new setups, if clients use a
+VyOS installation as an NTP server, configure `allow-client`.
+```
 
 ## Configuration
 
 ```{cfgcmd} set service ntp server \<address\>
 
-   Configure one or more servers for synchronisation. Server name can be either
-   an IP address or {abbr}`FQDN (Fully Qualified Domain Name)`.
+**Configure an NTP server to use as a time source.**
 
-   There are 3 default NTP server set. You are able to change them.
+The address can be specified as an IPv4 or IPv6 address, or as an
+{abbr}`FQDN (Fully Qualified Domain Name)`.
 
-   * ``time1.vyos.net``
-   * ``time2.vyos.net``
-   * ``time3.vyos.net``
+Repeat the command to configure multiple servers.
+
+By default, the system is preconfigured with three upstream NTP servers,
+`time1.vyos.net`, `time2.vyos.net`, and `time3.vyos.net`, which can be
+deleted and replaced with your own.
 ```
 
+Example:
+
+```none
+set service ntp server time1.vyos.net
+set service ntp server 192.0.2.1
+```
 
 ```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave\>
 
-Configure one or more attributes to the given NTP server.
+**Configure per-server options for the specified NTP server:**
 
-* ``noselect`` marks the server as unused, except for display purposes. The
-server is discarded by the selection algorithm.
-
-* ``nts`` enables Network Time Security (NTS) for the server as specified
-in {rfc}`8915`
-
-* ``pool`` mobilizes persistent client mode association with a number of
-remote servers.
-
-* ``prefer`` marks the server as preferred. All other things being equal,
-this host will be chosen for synchronization among a set of correctly
-operating hosts.
-
-* ``ptp`` enables the PTP transport for this server (see {ref}`ptp-transport`).
-
-* ``interleave`` enables NTP interleaved mode (see [draft-ntp-interleaved-modes]), which can improve
-synchronization accuracy and stability when supported by both parties.
+- `noselect`: Marks the server as unused. It is never selected for
+  synchronization.
+- `nts`: Authenticates time messages from the server using
+  {abbr}`NTS (Network Time Security)` ({rfc}`8915`), so the router can
+  detect replies that were forged or altered in transit. The keys are
+  established automatically over TLS, so no shared key file is needed, and
+  the server must support NTS.
+- `pool`: Treats the configured name as a pool of NTP servers rather than
+  a single server, using four of them as time sources, or fewer if fewer
+  respond.
+- `prefer`: Prefers this server over other selectable servers configured
+  without the `prefer` option.
+- `ptp`: Exchanges NTP packets encapsulated in
+  {abbr}`PTP (Precision Time Protocol)` packets with this server (see
+  {ref}`ptp-transport`). NTP over PTP must also be enabled for the NTP
+  service on the router. Otherwise, the commit fails.
+- `interleave`: Enables the NTP interleaved mode ({rfc}`9769`) for the
+  server, which lets the server respond with more accurate transmit
+  timestamps and can improve synchronization accuracy and stability when
+  supported by both parties.
 ```
 
+```{note}
+Use an FQDN with the `pool` option. Resolving the name returns the
+addresses of several servers, and the set behind the name may differ each
+time it is resolved, as operators add and remove machines. An IP address
+is also accepted, but it yields a single server, making the option
+pointless.
+```
+
+Example:
+
+```none
+set service ntp server ntp.example.com nts
+set service ntp server pool.example.com pool
+```
 
 ```{cfgcmd} set service ntp listen-address \<address\>
 
-NTP process will only listen on the specified IP address. You must specify
-the `<address>` and optionally the permitted clients. Multiple listen
-addresses for same IP family is no longer supported. Only one IPv4 and one
-IPv6 address can be configured, using separate commands for each.
+**Configure a local IPv4 or IPv6 address on which the router listens for
+incoming NTP requests.**
+
+You can configure at most one IPv4 and one IPv6 address, using a separate
+command for each. Configuring more than one address per address family
+causes the commit to fail.
+
+When unset, the router accepts incoming NTP requests on any local IP
+address.
 ```
 
+Example:
+
+```none
+set service ntp listen-address 192.0.2.1
+set service ntp listen-address 2001:db8::1
+```
+
+```{cfgcmd} set service ntp interface \<interface\>
+
+**Configure the interface on which the router listens for incoming NTP
+requests.**
+
+Only one interface can be configured. The router then accepts NTP requests
+only on that interface, regardless of which local address they are sent to,
+and this can be combined with `listen-address`.
+
+The interface must either be configured in VyOS or detected by the kernel.
+If a VRF is configured, the interface must belong to that VRF. Otherwise,
+the commit fails.
+
+When unset, the router accepts incoming NTP requests on any interface.
+```
+
+Example:
+
+```none
+set service ntp interface eth0
+```
 
 ```{cfgcmd} set service ntp allow-client address \<address\>
 
-List of networks or client addresses permitted to contact this NTP server.
+**Permit the specified IPv4 or IPv6 address or prefix to use this router as
+an NTP server.**
 
-Multiple networks/client IP addresses can be configured.
+Repeat the command to permit multiple addresses or prefixes.
+
+NTP requests from any address that is not permitted are not answered. When
+no addresses are permitted, the router does not serve time to anyone and
+acts purely as an NTP client.
+
+The default configuration permits clients from the loopback, link-local,
+and private (RFC 1918 and IPv6 unique-local) ranges, so devices on directly
+attached private networks can use the router as their NTP server out of the
+box. To serve clients outside these ranges, permit them explicitly.
 ```
 
+Example:
+
+```none
+set service ntp allow-client address 192.0.2.0/24
+set service ntp allow-client address 2001:db8::/32
+```
 
 ```{cfgcmd} set service ntp source-address \<address\>
 
-Source IP address used for outgoing NTP client requests to the configured
-servers, instead of relying on the kernel's default source-address selection
-for whichever route is chosen at query time. Useful on routers with more
-than one usable egress path to a given server, where the interface that
-ends up being selected may not always carry a globally reachable address.
-Only one IPv4 and one IPv6 address can be configured, using separate
-commands for each.
+**Configure the local IPv4 or IPv6 address used as the source for outgoing
+NTP requests.**
+
+You can configure at most one IPv4 and one IPv6 address, using a separate
+command for each. Configuring more than one address per address family
+causes the commit to fail.
+
+The address must already be assigned to an interface, otherwise the commit
+fails. If a VRF is configured, the address must be assigned within that
+VRF.
+
+When unset, the source address is chosen by the routing table for each
+request.
 ```
 
+Example:
+
+```none
+set service ntp source-address 192.0.2.1
+set service ntp source-address 2001:db8::1
+```
 
 ```{cfgcmd} set service ntp source-interface \<interface\>
 
-Network device used for outgoing NTP client requests, binding the socket to
-this interface (Linux `SO_BINDTODEVICE`) rather than to a source address.
-Useful when a source address alone cannot unambiguously select the egress
-path, for example when address ranges overlap between routing instances.
-Since `vrf` binds the NTP client to a single VRF, `source-interface` only
-selects the egress device within that VRF, not across multiple VRFs at
-once. Can be combined with `source-address`; only one interface can be
-configured. If `vrf` is also set, the interface must belong to that VRF.
+**Configure the interface used to send outgoing NTP requests.**
+
+Only one interface can be configured. This binds the outgoing requests to
+the interface itself rather than to an address.
+
+The interface must either be configured in VyOS or detected by the kernel.
+If a VRF is configured, the interface must belong to that VRF. Otherwise,
+the commit fails.
 ```
 
+Example:
+
+```none
+set service ntp source-interface eth1
+```
 
 ```{cfgcmd} set service ntp vrf \<name\>
 
-Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance.
+**Bind the NTP service to the specified
+{abbr}`VRF (Virtual Routing and Forwarding)` instance.**
+
+All NTP traffic (both synchronization with upstream servers and replies to
+clients) is then sent and received within that VRF, so the upstream servers
+must be reachable inside it.
+
+The VRF must already be configured under `set vrf name <name>`.
 ```
 
+Example:
 
-```{cfgcmd} set service ntp leap-second [ignore|smear|system|timezone]
-
-Define how to handle leap-seconds.
-
-* `ignore`: No correction is applied to the clock for the leap second. The
-clock will be corrected later in normal operation when new measurements are
-made and the estimated offset includes the one second error.
-
-* `smear`: When smearing a leap second, the leap status is suppressed on the
-server and the served time is corrected slowly by slewing instead of
-stepping. The clients do not need any special configuration as they do not
-know there is any leap second and they follow the server time which
-eventually brings them back to UTC. Care must be taken to ensure they use
-only NTP servers which smear the leap second in exactly the same way for
-synchronisation.
-
-* `system`: When inserting a leap second, the kernel steps the system clock
-backwards by one second when the clock gets to 00:00:00 UTC. When deleting
-a leap second, it steps forward by one second when the clock gets to
-23:59:59 UTC.
-
-* `timezone`: This directive specifies a timezone in the system timezone
-database which chronyd can use to determine when will the next leap second
-occur and what is the current offset between TAI and UTC. It will
-periodically check if 23:59:59 and 23:59:60 are valid times in the
-timezone. This normally works with the right/UTC timezone which is the
-default
+```none
+set service ntp vrf mgmt
 ```
 
-## Hardware Timestamping of NTP Packets
+```{cfgcmd} set service ntp leap-second \<ignore | smear | system | timezone\>
 
+**Configure how the router handles leap seconds.**
 
-The chrony daemon on VyOS can leverage NIC hardware capabilities to record the
-exact time packets are received on the interface, as well as when packets were
-actually transmitted. This provides improved accuracy and stability when the
-system is under load, as queuing and OS context switching can introduce a
-variable delay between when the packet is received on the network and when it
-is actually processed by the NTP daemon.
+A leap second is a one-second adjustment occasionally applied to UTC to
+keep it close to mean solar time. Because a computer clock counts seconds
+without a slot for the extra 23:59:60, it skips the leap second and is then
+one second ahead of UTC. This setting determines how the router corrects
+that one-second difference:
 
+- `ignore`: No correction is applied when the leap second occurs. The clock
+  is left one second ahead and corrected afterward through normal
+  measurements.
+- `smear`: The served time deliberately deviates from UTC while the
+  one-second change is spread over approximately 17 hours. At any moment,
+  the deviation shrinks too slowly for clients to notice a jump, and when
+  the adjustment finishes, the served time matches UTC again. The router's
+  own clock is also corrected gradually. If clients use multiple servers,
+  all must smear the leap second identically, or their times disagree.
+- `system`: The correction is applied at once, stepping the clock one
+  second back at 00:00:00 UTC when a leap second is inserted, or one second
+  forward at 23:59:59 UTC when one is deleted.
+- `timezone`: The router obtains leap-second information from the system
+  timezone database rather than relying solely on upstream servers. This
+  provides correct leap information even when servers announce leap seconds
+  late or not at all. The clock is corrected as in `system` mode. Do not
+  use this mode with upstream servers that smear leap seconds.
 
-Hardware timestamping depends on NIC support. Some NICs can be configured to
-apply timestamps to any incoming packet, while others only support applying
-timestamps to specific protocols (e.g. PTP).
+The default is `timezone`.
+```
 
+Example:
 
-When timestamping is enabled on an interface, chrony's default behavior is to
-try to configure the interface to only timestamp NTP packets. If this mode is
-not supported, chrony will attempt to set it to timestamp all packets. If
-neither option is supported (e.g. the NIC can only timestamp received PTP
-packets), chrony will leverage timestamping on transmitted packets only, which
-still provides some benefit.
+```none
+set service ntp leap-second smear
+```
+
+```{cfgcmd} set service ntp local-stratum \<1-15\>
+
+**Enable local reference mode.**
+
+In this mode, the router appears synchronized to its clients even when it
+has never synchronized with an upstream server or has lost contact with all
+its upstream servers.
+
+The value is the stratum the router reports while the mode is active. The
+stratum is the number of steps down the hierarchy from a reference clock,
+so a higher value means a greater distance from real time. Set it higher
+than the highest stratum expected in the network, so that clients prefer a
+real time source whenever one is available.
+
+When unset, the router reports itself as unsynchronized until it
+synchronizes with an upstream server.
+```
+
+Example:
+
+```none
+set service ntp local-stratum 12
+```
+
+## Hardware timestamping of NTP packets
+
+The router can leverage {abbr}`NIC (Network Interface Card)` capabilities
+to timestamp packets as they are sent and received. This avoids the
+packet-processing and queuing delays that affect software timestamps,
+especially under heavy load.
+
+When timestamping is enabled on an interface, the router by default
+attempts the following options in the order they are specified and uses the
+first one that the NIC supports:
+
+- Timestamps only received NTP packets: supported by NICs that can
+  timestamp NTP packets specifically.
+- Timestamps all received packets: supported by NICs that can timestamp all
+  packets but cannot filter NTP packets specifically.
+- Timestamps only transmitted packets: supported by NICs that cannot
+  timestamp received NTP packets or all received packets, including NICs
+  that can timestamp only PTP packets.
+
+You can override this default with the `receive-filter` option described
+below.
 
 ```{cfgcmd} set service ntp timestamp interface \<interface\>
 
-Configures hardware timestamping on the interface \<interface\>. The special
-value `all` can also be specified to enable timestamping on all interfaces
-that support it.
+**Enable hardware timestamping of NTP packets on the specified
+interface.**
 
-Configure the timestamping behavior with the following option:
+Repeat the command to enable timestamping on multiple interfaces.
 
-* ``receive-filter [all|ntp|ptp|none]`` selects the receive filter mode,
-which controls which inbound packets the NIC applies timestamps to. The
-selected mode must be supported by the NIC, or timestamping will be
-disabled for the interface.
+The special value `all` enables timestamping on all interfaces that support
+it.
+
+The interface must either be configured in VyOS or detected by the kernel.
+Otherwise, the commit fails.
 ```
 
-The following `receive-filter` modes can be selected:
-- *all*: All received packets will be timestamped.
-- *ntp*: Only received NTP protocol packets will be timestamped.
-- *ptp*: Only received PTP protocol packets will be timestamped. Combined with
-  the PTP transport for NTP packets, this can be leveraged to take advantage of
-  hardware timestamping on NICs that only support the ptp filter mode.
-- *none*: No received packets will be timestamped. Hardware timestamping of
-  transmitted packets will still be leveraged, if supported by the NIC.
+Example:
+
+```none
+set service ntp timestamp interface eth0
+```
+
+```{cfgcmd} set service ntp timestamp interface \<interface\> receive-filter \<all | ntp | ptp | none\>
+
+**Configure which incoming packets the NIC timestamps on the specified
+interface:**
+
+- `all`: All received packets are timestamped.
+- `ntp`: Only received NTP packets are timestamped.
+- `ptp`: Only received PTP packets and NTP packets encapsulated in PTP
+  packets are timestamped. This lets NICs that support only the `ptp`
+  filter timestamp NTP traffic when NTP over PTP is used.
+- `none`: No received packets are timestamped. Transmitted packets are
+  still timestamped if the NIC supports it.
+
+Except for `none`, the selected filter must be supported by the NIC.
+Otherwise, the commit fails.
+
+With interface `all`, at least one interface must support the selected
+filter.
+```
+
+Example:
+
+```none
+set service ntp timestamp interface eth0 receive-filter all
+```
+
 (ptp-transport)=
 
-## PTP Transport of NTP Packets
+## NTP over PTP
 
-The Precision Time Protocol (IEEE 1588) is a local network time synchronization
-protocol that provides high precision time synchronization by leveraging
-hardware clocks in NICs and other network elements. VyOS does not currently
-support standards-based PTP, which can be deployed independently of
-NTP.
+The Precision Time Protocol (PTP, IEEE 1588) enables high-precision time
+synchronization on local networks using hardware clocks in NICs and other
+network elements.
 
-For networks consisting of VyOS and other Linux systems running relatively
-recent versions of the chrony daemon, NTP packets can be "tunneled" over
-PTP. NTP over PTP provides the best of both worlds, leveraging hardware support
-for timestamping PTP packets while retaining the configuration flexibility and
-fault tolerance of NTP.
+VyOS does not currently support PTP. To timestamp NTP traffic on NICs that
+timestamp only PTP packets, NTP packets can be encapsulated in PTP packets,
+a technique known as NTP over PTP. It combines the hardware timestamping
+accuracy of such NICs with the configuration flexibility and fault
+tolerance of NTP.
+
+For NTP over PTP to work, both ends of an NTP exchange must be configured
+for it.
 
 ```{cfgcmd} set service ntp ptp
 
-Enables the NTP daemon PTP transport. The NTP daemon will listen on the
-configured PTP port. Note that one or more servers must be individually
-enabled for PTP before the daemon will synchronize over the transport.
-```
-```{cfgcmd} set service ntp ptp port \<port\>
+**Enable sending and receiving NTP packets encapsulated in PTP packets (NTP
+over PTP).**
 
-Configures the PTP port. By default, the standard port 319 is used.
+The router sends and receives encapsulated NTP packets on the configured
+UDP port. Enabling the `ptp` option on an upstream server requires this
+option to be set first. Otherwise, the commit fails.
 ```
 
-[draft-ntp-interleaved-modes]: https://datatracker.ietf.org/doc/draft-ietf-ntp-interleaved-modes/07/
+Example:
+
+```none
+set service ntp ptp
+```
+
+```{cfgcmd} set service ntp ptp port \<1-65535\>
+
+**Configure the UDP port used for sending and receiving encapsulated NTP
+packets.**
+
+The default is 319, the port NICs use to recognize PTP traffic.
+```
+
+Example:
+
+```none
+set service ntp ptp port 10319
+```
