@@ -29,7 +29,6 @@ as defined in
 all.
 
 ```{note}
-```{note}
 Commits that change `interface`, `client-ip-pool`,
 `client-ipv6-pool`, `authentication mode`, `authentication
 protocols`, any option under `authentication radius`,
@@ -38,8 +37,7 @@ protocols`, any option under `authentication radius`,
 and terminate all active sessions. Adding or removing an interface
 under `vpp settings interface` or `interfaces vpp bonding` has the
 same effect when the PPPoE server listens on that interface or on
-one of its VLANs. All other changes are applied at runtime and keep
-active sessions.
+one of its VLANs. All other changes keep active sessions.
 ```
 
 ## Configuration
@@ -609,8 +607,8 @@ If the RADIUS server sends the `NAS-Port-Id` attribute, the router
 renames the client's session interface to the attribute value.
 
 The value of the `NAS-Port-Id` attribute must be shorter than 16
-characters. If it is longer, the router cannot rename the interface
-and terminates the session.
+characters. If it is 16 characters or longer, the router cannot
+rename the interface and terminates the session.
 
 ## Automatic VLAN creation
 
@@ -661,6 +659,7 @@ commit fails.
 Example:
 
 ```none
+set service pppoe-server interface eth3 vlan 100
 set service pppoe-server interface eth3 vlan-mon
 ```
 
