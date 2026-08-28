@@ -1449,6 +1449,8 @@ set service pppoe-server snmp master-agent
 - `half`: One thread per two CPU cores.
 - `1-512`: The given number of threads.
 
+A change to this option takes effect when the PPPoE server restarts.
+
 The default is `all`.
 ```
 
