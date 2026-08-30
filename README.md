@@ -45,12 +45,16 @@ contributor guide.
 
 ## Build
 
-The recommended build path is the bundled Docker image — it pins Sphinx and
-the MyST/RTD plugin set to the same versions Read the Docs uses, so local
-builds match production.
+The recommended build path is the bundled Docker image — it installs Sphinx
+and the MyST/RTD plugin set from `requirements.txt`, the same pins Read the
+Docs uses, so local builds match production.
+
+Rebuild the image after pulling changes that touch `requirements.txt` or
+`docker/Dockerfile`; a stale image fails with `Could not import extension ...`
+for any newly added plugin.
 
 ```bash
-docker build -t vyos/vyos-documentation docker
+docker build -t vyos/vyos-documentation -f docker/Dockerfile .
 
 # One-shot HTML build
 docker run --rm -it -v "$(pwd)":/vyos -w /vyos/docs \
