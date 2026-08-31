@@ -1,0 +1,7 @@
+# The docs image builds from the repository root (so it can COPY
+# requirements.txt), but only needs three files. Excluding everything else
+# keeps the build context small — the docs/ tree alone is ~70 MB.
+*
+!requirements.txt
+!docker/entrypoint.sh
+!docker/im-convert.sh
