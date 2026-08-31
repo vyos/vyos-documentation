@@ -871,6 +871,11 @@ evaluates every defined client class against each request and merges in the
 options of every class that matches, regardless of which pool the lease
 comes from.
 
+Client classes are evaluated in alphabetical order by class name, like other
+VyOS tag nodes. If a client matches more than one class and those classes
+hand out the same option with different values, the value from the
+alphabetically first matching class wins.
+
 (dhcp-server-v4-options)=
 
 ### Options
