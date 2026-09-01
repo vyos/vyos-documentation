@@ -23,7 +23,8 @@ pppoe-server
 router-advert
 snmp
 ssh
+stunnel
+suricata
 tftp-server
 webproxy
-suricata
 ```
