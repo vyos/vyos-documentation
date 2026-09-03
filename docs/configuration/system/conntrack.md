@@ -481,7 +481,7 @@ Example:
 set system conntrack log timestamp
 ```
 
-```{cfgcmd} set system conntrack log queue-size \<1-2147483647\>
+```{cfgcmd} set system conntrack log queue-size \<100-2147483647\>
 
 **Configure how many connection tracking events the router holds in
 memory before writing them to the log.**
