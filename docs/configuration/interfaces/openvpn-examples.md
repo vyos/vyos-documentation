@@ -82,6 +82,7 @@ Local configuration:
 ``` none
 Configure the tunnel:
 
+set interfaces openvpn vtun1 encryption data-ciphers-fallback aes256
 set interfaces openvpn vtun1 mode site-to-site
 set interfaces openvpn vtun1 protocol udp
 set interfaces openvpn vtun1 persistent-tunnel
@@ -98,6 +99,7 @@ set interfaces openvpn vtun1 tls role active
 Remote configuration:
 
 ``` none
+set interfaces openvpn vtun1 encryption data-ciphers-fallback aes256
 set interfaces openvpn vtun1 mode site-to-site
 set interfaces openvpn vtun1 protocol udp
 set interfaces openvpn vtun1 persistent-tunnel
