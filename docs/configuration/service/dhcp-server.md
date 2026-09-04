@@ -795,18 +795,18 @@ starting with 0x is interpreted as raw hex, any other value as ASCII text.
 ```{cfgcmd} set service dhcp-server client-class \<name\> hostname substring value \<value\>
 
 Match a portion of the hostname instead of its exact contents. `value`
-follows the same hex/text convention as above. Optionally, `hostname
-substring offset <offset>` sets the byte offset into the hostname where the
-comparison starts (default: 0), and `hostname substring length <length>`
-sets the number of bytes compared (default: the length of `value`).
+follows the same hex/text convention as above. The number of bytes compared
+is always the length of `value`. Optionally, `hostname substring offset
+<offset>` sets the byte offset into the hostname where the comparison starts
+(default: 0).
 ```
 
 ```{cfgcmd} set service dhcp-server client-class \<name\> vendor-class-id value \<value\>
 
 Same as `hostname` above, but matches on the vendor class identifier
 (Option 60) instead. `vendor-class-id substring value <value>`, together
-with the optional `offset` and `length`, matches on part of the vendor
-class identifier the same way as for `hostname`.
+with the optional `offset`, matches on part of the vendor class identifier
+the same way as for `hostname`.
 ```
 
 `value` and `substring` are mutually exclusive for a given match type.
