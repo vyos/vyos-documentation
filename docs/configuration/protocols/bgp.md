@@ -1507,6 +1507,17 @@ for BGP.**
 By default, FRR sends RAs on an interface when its BGP session has
 negotiated the Extended Next Hop capability, or when a BGP neighbor is
 configured by interface name (Unnumbered BGP).
+
+:::{note}
+This only prevents router advertisements from starting on sessions
+established *after* the setting takes effect. It does not stop router
+advertisements already active on an established session - neither a soft
+nor a hard `clear`/`reset bgp` on the neighbor will stop them. To silence
+one already-active neighbor, remove and re-add `remote-as` on that
+neighbor. Restarting the `bgpd`/`frr` process also clears it, but drops
+every BGP session on the router, not just the affected one - reserve
+that for a planned maintenance window rather than a routine fix.
+:::
 ```
 
 ```{note}
