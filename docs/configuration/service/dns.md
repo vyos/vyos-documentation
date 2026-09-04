@@ -180,6 +180,28 @@ set service dns forwarding source-address 192.0.2.1
 set service dns forwarding source-address 2001:db8::1
 ```
 
+```{cfgcmd} set service dns forwarding dont-query \<address | prefix\>
+
+**Add an IPv4 or IPv6 address or prefix to the recursor's exclusion list
+of servers to query.**
+
+Prefix a value with `!` to make it an exception to that list.
+
+The recursor selects the most specific matching prefix. When positive and
+negative entries use the same prefix, the entry configured last takes
+precedence.
+
+The list applies to addresses discovered during recursive resolution
+(e.g. NS records).
+The recursor still sends queries to explicitly configured upstream DNS servers.
+```
+
+Example:
+
+```none
+set service dns forwarding dont-query !127.0.0.0/8
+```
+
 ```{cfgcmd} set service dns forwarding no-serve-rfc1918
 
 **Disable authoritative answering of queries for `10.in-addr.arpa`,
