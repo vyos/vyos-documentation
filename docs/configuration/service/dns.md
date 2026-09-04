@@ -429,6 +429,33 @@ set service dns forwarding options edns-subnet-allow-list example.com
 set service dns forwarding options edns-subnet-allow-list 192.0.2.0/24
 ```
 
+```{cfgcmd} set service dns forwarding options security-status-poll-domain \<domain-name\>
+
+**Configure the domain used by the PowerDNS recursor to periodically
+poll for known vulnerabilities in the running version.**
+
+Disabled by default, since VyOS ships its own patched/backported
+package that is not updated in-place, making the poll result
+meaningless. Only takes effect once a domain is configured; delete
+the option to disable polling again.
+
+`secpoll.powerdns.com` is PowerDNS' own security-status poll domain,
+not a VyOS default - set it explicitly to use it, or point this at a
+custom domain operated by your own organization.
+```
+
+Example:
+
+```none
+set service dns forwarding options security-status-poll-domain secpoll.powerdns.com
+```
+
+To disable polling again:
+
+```none
+delete service dns forwarding options security-status-poll-domain
+```
+
 ### Per-domain forwarding
 
 ```{cfgcmd} set service dns forwarding domain \<domain-name\> name-server \<address\>
