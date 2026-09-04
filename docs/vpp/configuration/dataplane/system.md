@@ -258,6 +258,8 @@ available`, both of which point back at `set system option kernel ...`. That
 means the reboot from step 1 has not happened yet.
 
 Note that such a commit is *partial*: the `system option kernel` part is still
-applied even though the commit is reported as failed, while the `set vpp ...`
-statements are discarded and have to be entered again after the reboot.
+applied even though the commit is reported as failed. The `set vpp ...`
+statements stay in the configuration session, but they are neither applied nor
+written by `save`, which writes the *running* configuration. They are lost on
+the reboot and have to be entered again.
 :::

@@ -47,10 +47,13 @@ To isolate CPUs please use command
 "set system option kernel cpu isolate-cpus ..." save and reboot!
 ```
 
+This applies even when `cpu-cores` is left at its default of `1`. VPP always
+takes its main core from the isolated set, so at least one CPU has to be
+isolated before the dataplane can be enabled at all.
+
 CPU isolation is a kernel option, so it has to be committed, saved and applied
-with a reboot **before** `cpu-cores` is configured — the two cannot be set in
-the same commit. See
-{ref}`Optimal Configuration Example <vpp-config-setup-order>`.
+with a reboot **before** VPP is configured — the two cannot be set in the same
+commit. See {ref}`Optimal Configuration Example <vpp-config-setup-order>`.
 :::
 
 The system automatically assigns cores using the following rules:
