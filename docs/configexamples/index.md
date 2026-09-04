@@ -12,6 +12,7 @@ bgp-ipv6-unnumbered
 ospf-unnumbered
 azure-vpn-bgp
 azure-vpn-dual-bgp
+gcp-ha-vpn-bgp
 ha
 wan-load-balancing
 pppoe-ipv6-basic
