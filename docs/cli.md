@@ -15,6 +15,41 @@ The CLI provides a built-in help system. In the CLI the `?` key may be used to
 display available commands. The `TAB` key can be used to auto-complete commands
 and will present the help system upon a conflict or unknown value.
 
+### Typing a literal question mark
+
+Because `?` is the help key, a literal question mark needs special handling
+when it is part of a value, such as a URL with a query string. Press
+`Ctrl-V` followed by `?` to insert a literal question mark; this works on
+all VyOS releases.
+
+On current rolling releases a `?` typed **inside a quoted string** is
+inserted literally, and only triggers the help system outside of quotes:
+
+``` none
+set firewall group remote-group EXAMPLE url 'https://example.com/list?key=abc'
+```
+
+On LTS and older releases the `?` key always triggers help, even inside
+quotes — use `Ctrl-V` `?` there.
+
+```{opcmd} set terminal key query-help <enable | disable>
+
+Enable or disable getting help using the question mark key. When disabled,
+`?` always inserts a literal question mark. The setting is stored in the
+user's `~/.bashrc` and persists across sessions. Default: enabled.
+```
+
+### Quoting values
+
+Always quote a value that contains spaces or shell special characters such
+as `&`, `;`, `#` or quotes. The configuration shell is based on bash: an
+unquoted `&` does not cause an error — it is interpreted as a command
+separator and the value is **silently truncated** at the `&`:
+
+``` none
+set firewall group remote-group EXAMPLE url 'https://example.com/list?key=abc&ipVersion=4'
+```
+
 For example typing `sh` followed by the `TAB` key will complete to `show`.
 Pressing `TAB` a second time will display the possible sub-commands of the
 `show` command.
