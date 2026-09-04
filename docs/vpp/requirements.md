@@ -52,6 +52,23 @@ prerequisites before enabling VPP:
   - Recommended: 16 GB or more (especially for high throughput, many interfaces,
     or large routing tables).
 
+- **Kernel Configuration**
+
+  Besides the hardware itself, VPP needs hugepages and isolated CPU cores.
+  Both are configured under `system option kernel` and only take effect after
+  a reboot, while VPP validates them against the *running* kernel.
+
+  :::{important}
+  The kernel options and the VPP configuration cannot be applied in the same
+  commit. Configure them under `system option kernel` first, `commit`, `save`
+  and reboot, and only then configure VPP.
+  :::
+
+  :::{seealso}
+  {ref}`VyOS Configuration for VPP <vpp_config_system>` — hugepages, CPU
+  isolation and kernel tuning, with a worked example of both steps.
+  :::
+
 - **Network Interface Cards (NICs)**
 
   :::{warning}
@@ -102,6 +119,13 @@ prerequisites before enabling VPP:
   * - PCI ID
     - 1af4:1000
     - Red Hat, Inc. Virtio network device
+      (legacy ID)
+    - KVM-based hypervisors, including with
+      Open vSwitch; Google Cloud
+  * - PCI ID
+    - 1af4:1041
+    - Red Hat, Inc. Virtio network device
+      (modern ID)
     - KVM-based hypervisors, including with
       Open vSwitch; Google Cloud
   * - PCI ID
@@ -125,7 +149,9 @@ prerequisites before enabling VPP:
   ```
 
   :::{note}
-  This option bypasses the hardware validation checks for the specified
-  devices. Stability and performance are not guaranteed when using
-  unsupported NICs or drivers.
+  This option is a single global switch, not a per-device one: it bypasses
+  the hardware validation check for every interface attached to VPP, not
+  only for the one that needed it, and for interfaces attached later as
+  well. Stability and performance are not guaranteed when using unsupported
+  NICs or drivers.
   :::

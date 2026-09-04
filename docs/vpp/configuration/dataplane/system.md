@@ -190,9 +190,24 @@ Disables all optional CPU mitigations for security vulnerabilities
 platforms.
 ```
 
+(vpp-config-setup-order)=
+
 ### Optimal Configuration Example
 
-For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP:
+For a system with 4 CPU cores (0-3) where cores 2-3 are dedicated to VPP.
+
+:::{important}
+Kernel options and VPP settings **cannot be applied in the same commit**.
+
+Everything under `system option kernel` only takes effect after a reboot,
+while the VPP configuration is validated against the *running* kernel. VPP is
+also committed before `system option`, so within a single commit the kernel
+options are never in place yet and the VPP part is rejected.
+
+Configure the kernel options first, save, reboot, and only then configure VPP.
+:::
+
+**Step 1 — kernel options**
 
 ```none
 # Kernel CPU optimizations
@@ -201,12 +216,48 @@ set system option kernel cpu isolate-cpus '2-3'
 set system option kernel cpu nohz-full '2-3'
 set system option kernel cpu rcu-no-cbs '2-3'
 
+# Hugepages
+set system option kernel memory hugepage-size 2M hugepage-count '2048'
+
 # System optimizations
 set system option kernel disable-hpet
 set system option kernel disable-mce
 set system option kernel disable-power-saving
 set system option kernel disable-softlockup
+```
 
+Commit, save and reboot:
+
+```none
+commit
+save
+exit
+reboot
+```
+
+**Step 2 — VPP configuration, after the reboot**
+
+```none
 # VPP CPU assignment
 set vpp settings resource-allocation cpu-cores '2'
+
+# Interfaces to attach to the dataplane
+set vpp settings interface eth0
+set vpp settings interface eth1
 ```
+
+```none
+commit
+save
+```
+
+:::{note}
+If the VPP part is committed too early, the commit fails with a message such
+as `Not enough free memory to start VPP!` or `Not enough isolated CPU cores
+available`, both of which point back at `set system option kernel ...`. That
+means the reboot from step 1 has not happened yet.
+
+Note that such a commit is *partial*: the `system option kernel` part is still
+applied even though the commit is reported as failed, while the `set vpp ...`
+statements are discarded and have to be entered again after the reboot.
+:::

@@ -35,6 +35,24 @@ This parameter defines the total number of CPU cores allocated to VPP.
 ```{cfgcmd} set vpp settings resource-allocation cpu-cores \<core-number\>
 ```
 
+:::{important}
+`cpu-cores` requires at least the same number of CPUs to be isolated from the
+kernel scheduler with `set system option kernel cpu isolate-cpus`. VPP takes
+its main core and its worker cores from the isolated set, and the commit is
+rejected when fewer CPUs are isolated than requested:
+
+```none
+Not enough isolated CPU cores available: 2 requested, but only 0 isolated.
+To isolate CPUs please use command
+"set system option kernel cpu isolate-cpus ..." save and reboot!
+```
+
+CPU isolation is a kernel option, so it has to be committed, saved and applied
+with a reboot **before** `cpu-cores` is configured — the two cannot be set in
+the same commit. See
+{ref}`Optimal Configuration Example <vpp-config-setup-order>`.
+:::
+
 The system automatically assigns cores using the following rules:
 
 > - The first two CPU cores are always reserved for the operating system and
