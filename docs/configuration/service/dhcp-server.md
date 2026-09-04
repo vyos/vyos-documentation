@@ -794,19 +794,16 @@ starting with 0x is interpreted as raw hex, any other value as ASCII text.
 
 ```{cfgcmd} set service dhcp-server client-class \<name\> hostname substring value \<value\>
 
-Match a portion of the hostname instead of its exact contents. `value`
-follows the same hex/text convention as above. The number of bytes compared
-is always the length of `value`. Optionally, `hostname substring offset
-<offset>` sets the byte offset into the hostname where the comparison starts
-(default: 0).
+Match if `value` appears anywhere in the hostname, case-insensitively. Unlike
+the exact `value` match above, `value` here must be plain ASCII text (not
+raw hex) and must not contain a single quote (`'`).
 ```
 
 ```{cfgcmd} set service dhcp-server client-class \<name\> vendor-class-id value \<value\>
 
 Same as `hostname` above, but matches on the vendor class identifier
-(Option 60) instead. `vendor-class-id substring value <value>`, together
-with the optional `offset`, matches on part of the vendor class identifier
-the same way as for `hostname`.
+(Option 60) instead. `vendor-class-id substring value <value>` matches on
+part of the vendor class identifier the same way as for `hostname`.
 ```
 
 `value` and `substring` are mutually exclusive for a given match type.
@@ -825,8 +822,8 @@ Deliver `<option>` with `<value>` to every client matching this client class.
 **Example:**
 
 The following configuration hands out a model-specific provisioning URL to
-two Yealink phone models sharing the same subnet, identified by the start of
-their DHCP hostname, without splitting the subnet into per-model pools:
+two Yealink phone models sharing the same subnet, identified by a substring
+of their DHCP hostname, without splitting the subnet into per-model pools:
 
 ```none
 service {
@@ -834,8 +831,7 @@ service {
         client-class YEALINK-T42S {
             hostname {
                 substring {
-                    offset 0
-                    value SEP0
+                    value T42S
                 }
             }
             option {
@@ -845,8 +841,7 @@ service {
         client-class YEALINK-T54W {
             hostname {
                 substring {
-                    offset 0
-                    value SEP1
+                    value T54W
                 }
             }
             option {
