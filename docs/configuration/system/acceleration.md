@@ -168,10 +168,9 @@ set vpn ipsec authentication psk left id '192.0.2.1'
 set vpn ipsec authentication psk left secret 'REPLACE_WITH_RANDOM_SECRET'
 set vpn ipsec esp-group MyESPGroup proposal 1 encryption 'aes256'
 set vpn ipsec esp-group MyESPGroup proposal 1 hash 'sha256'
-set vpn ipsec ike-group MyIKEGroup dead-peer-detection action 'restart'
-set vpn ipsec ike-group MyIKEGroup proposal 1 dh-group '14'
-set vpn ipsec ike-group MyIKEGroup proposal 1 encryption 'aes256'
-set vpn ipsec ike-group MyIKEGroup proposal 1 hash 'sha256'
+set vpn ipsec ike-group MyIKEGroupPassive proposal 1 dh-group '14'
+set vpn ipsec ike-group MyIKEGroupPassive proposal 1 encryption 'aes256'
+set vpn ipsec ike-group MyIKEGroupPassive proposal 1 hash 'sha256'
 set vpn ipsec interface 'eth0'
 set vpn ipsec options disable-route-autoinstall
 set vpn ipsec site-to-site peer left authentication local-id '192.0.2.1'
@@ -179,19 +178,18 @@ set vpn ipsec site-to-site peer left authentication mode 'pre-shared-secret'
 set vpn ipsec site-to-site peer left authentication remote-id '192.0.2.2'
 set vpn ipsec site-to-site peer left connection-type 'trap'
 set vpn ipsec site-to-site peer left default-esp-group 'MyESPGroup'
-set vpn ipsec site-to-site peer left ike-group 'MyIKEGroup'
+set vpn ipsec site-to-site peer left ike-group 'MyIKEGroupPassive'
 set vpn ipsec site-to-site peer left local-address '192.0.2.1'
 set vpn ipsec site-to-site peer left remote-address '192.0.2.2'
 set vpn ipsec site-to-site peer left vti bind 'vti1'
 ```
 
-Router A initiates the tunnel. Router B uses `trap`, which raises the
-tunnel when matching traffic appears rather than initiating in
-parallel with Router A. Dead peer detection on both routers restarts
-the tunnel if it drops, including after the acceleration commit
-restarts the IPsec service. Both routers disable automatic route
-installation, because routing over the tunnel is managed through the
-`vti1` interface.
+Router A initiates the tunnel and re-establishes it after the
+acceleration commit restarts the IPsec service. Router B uses `trap`,
+raising the tunnel on matching traffic. Dead peer detection on Router
+A attempts to renegotiate if Router B stops responding. Both routers
+disable automatic route installation, because routing is managed
+through the `vti1` interface.
 
 Without acceleration, a bandwidth test between the tunnel addresses
 (`203.0.113.1` to `203.0.113.2`) shows the following results:
