@@ -282,8 +282,8 @@ exits without starting it.
 ## Example
 
 The following example enables flow accounting on `eth0` and `eth1`, and exports
-version 10 (IPFIX) records to the collector at 192.0.2.10 on port 4739, using
-192.0.2.1 as the source address.
+version 10 (IPFIX) records to the collector at `192.0.2.10` on port `4739`,
+using `192.0.2.1` as the source address.
 
 ```none
 set system flow-accounting netflow interface eth0
