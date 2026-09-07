@@ -165,12 +165,14 @@ set system flow-accounting netflow engine-id 100
 
 ```{cfgcmd} set system flow-accounting netflow sampling-rate \<0-4294967295\>
 
-**Sample one packet in every N for accounting instead of every packet.**
+**Export one flow in every N instead of every flow.**
 
-Packets are selected at random. Sampling reduces the number of packets
-accounted for, so the exported counts become estimates of the actual traffic.
+Flows are selected at random. Each exported flow carries the full packet and
+byte counts collected for it. Sampling reduces the number of flows sent to
+collectors. The router reports `N` to collectors so they can estimate the
+total.
 
-By default, sampling is disabled, and every packet is accounted for.
+By default, no sampling is applied, and every flow is exported.
 ```
 
 Example:
