@@ -1,209 +1,294 @@
+---
+myst:
+  html_meta:
+    description: |
+      VyOS can group IPv4 and IPv6 traffic into flows and export a record
+      of each flow to one or more external collectors, using the NetFlow or
+      IPFIX protocol.
+    keywords: flow-accounting, netflow, ipfix, ipt_netflow, exporter, collector
+---
+
 (flow-accounting)=
 
-# Flow Accounting
+# Flow accounting
 
-VyOS supports flow-accounting for both IPv4 and IPv6 traffic. The system acts
-as a flow exporter, and you are free to use it with any compatible collector.
+A flow is a stream of packets that share key header fields, such as source and
+destination IP addresses, ports, and protocol.
 
-Flows can be exported via protocol NetFlow (versions 5, 9 and
-10/IPFIX). Additionally, you may save flows to an in-memory table
-internally in a router.
+Flow accounting groups IPv4 and IPv6 traffic into flows and records how many
+packets and bytes each flow carries. These records are then exported to one or
+more external collectors, using the {abbr}`NetFlow (Cisco NetFlow)` or
+{abbr}`IPFIX (IP Flow Information Export)` protocol.
 
-:::{warning}
-You need to disable the in-memory table in production environments!
-Using {abbr}`IMT (In-Memory Table)` may lead to heavy CPU overloading and
-unstable flow-accounting behavior.
-:::
+Flow accounting is applied per interface. By default, only traffic entering an
+interface (ingress) is accounted for. Traffic leaving an interface (egress) is
+added with `enable-egress`.
 
-## NetFlow / IPFIX
-
-NetFlow is a feature that was introduced on Cisco routers around 1996 that
-provides the ability to collect IP network traffic as it enters or exits an
-interface. By analyzing the data provided by NetFlow, a network administrator
-can determine things such as the source and destination of traffic, class of
-service, and the causes of congestion. A typical flow monitoring setup (using
-NetFlow) consists of three main components:
-
-- **exporter**: aggregates packets into flows and exports flow records towards
-  one or more flow collectors
-- **collector**: responsible for reception, storage and pre-processing of flow
-  data received from a flow exporter
-- **application**: analyzes received flow data in the context of intrusion
-  detection or traffic profiling, for example
-
-For connectionless protocols as like ICMP and UDP, a flow is considered
-complete once no more packets for this flow appear after configurable timeout.
-
-NetFlow is usually enabled on a per-interface basis to limit load on the router
-components involved in NetFlow, or to limit the amount of NetFlow records
-exported.
+The router also supports sFlow, a separate monitoring protocol. Instead of
+grouping packets into flows, sFlow sends packet samples taken at a configurable
+rate to a collector (see {ref}`sflow`).
 
 ## Configuration
 
-:::{warning}
-Using NetFlow on routers with high traffic levels may lead to
-high CPU usage and may affect the router's performance. In such cases,
-consider using sFlow instead.
-:::
+### Monitored interfaces
 
-In order for flow accounting information to be collected and displayed for an
-interface, the interface must be configured for flow accounting.
+```{cfgcmd} set system flow-accounting netflow interface \<interface\>
 
-```{cfgcmd} set system flow-accounting interface \<interface\>
+**Enable flow accounting on the specified interface.**
 
-Configure and enable collection of flow information for the interface
-identified by \<interface\>.
+Repeat the command to enable flow accounting on multiple interfaces.
 
-You can configure multiple interfaces which would participate in flow
-accounting.
+Enable flow accounting on at least one interface. Otherwise, the commit fails.
 ```
 
-:::{note}
-Will be recorded only packets/flows on **incoming** direction in
-configured interfaces by default.
-:::
+Example:
 
-By default, recorded flows will be saved internally and can be listed with the
-CLI command. You may disable using the local in-memory table with the command:
-
-```{cfgcmd} set system flow-accounting disable-imt
-
-If you need to sample also egress traffic, you may want to
-configure egress flow-accounting:
+```none
+set system flow-accounting netflow interface eth0
 ```
 
 ```{cfgcmd} set system flow-accounting enable-egress
 
-Internally, in flow-accounting processes exist a buffer for data exchanging
-between core process and plugins (each export target is a separated plugin).
-If you have high traffic levels or noted some problems with missed records
-or stopping exporting, you may try to increase a default buffer size (10
-MiB) with the next command:
+**Enable flow accounting for traffic leaving the monitored interfaces.**
+
+By default, only traffic entering the interfaces is accounted for.
 ```
 
-```{cfgcmd} set system flow-accounting buffer-size \<buffer size\>
+Example:
 
-In case, if you need to catch some logs from flow-accounting daemon, you may
-configure logging facility:
+```none
+set system flow-accounting enable-egress
 ```
 
-```{cfgcmd} set system flow-accounting syslog-facility \<facility\>
-
-Set the syslog facility for flow-accounting log messages. Supported values
-include ``daemon``, ``local0`` through ``local7``, and other standard syslog
-facilities.
-```
-
-
-### Flow Export
-
-In addition to displaying flow accounting information locally, one can also
-exported them to a collection server.
-
-#### NetFlow
-
-```{cfgcmd} set system flow-accounting netflow version \<version\>
-
-There are multiple versions available for the NetFlow data. The \<version\>
-used in the exported flow data can be configured here. The following
-versions are supported:
-* **5** - Most common version, but restricted to IPv4 flows only
-* **9** - NetFlow version 9 (default)
-* **10** - {abbr}`IPFIX (IP Flow Information Export)` as per {rfc}`3917`
-```
+### Flow export
 
 ```{cfgcmd} set system flow-accounting netflow server \<address\>
 
-Configure address of NetFlow collector. NetFlow server at \<address\> can
-be both listening on an IPv4 or IPv6 address.
+**Configure the address of a collector that receives the exported records.**
+
+Accepts an IPv4 or IPv6 address.
+
+Repeat the command to export records to multiple collectors.
+
+At least one collector must be configured. Otherwise, the commit fails.
 ```
 
-```{cfgcmd} set system flow-accounting netflow source-ip \<address\>
+Example:
 
-IPv4 or IPv6 source address of NetFlow packets
+```none
+set system flow-accounting netflow server 192.0.2.10
+set system flow-accounting netflow server 2001:db8::10
+```
+
+```{cfgcmd} set system flow-accounting netflow server \<address\> port \<1025-65535\>
+
+**Configure the destination port on the collector.**
+
+The default is 2055.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow server 192.0.2.10 port 4739
+```
+
+```{cfgcmd} set system flow-accounting netflow server \<address\> source-address \<address\>
+
+**Configure the source address the router uses to reach the collector.**
+
+The address must already be assigned to a local interface. If flow accounting
+is bound to a VRF, the address must be assigned within that VRF.
+
+The source address must be IPv4 for an IPv4 collector and IPv6 for an IPv6
+collector.
+
+Set either source-address or source-interface for a collector, not both.
+Configuring both for the same collector fails the commit.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow server 192.0.2.10 source-address 192.0.2.1
+```
+
+```{cfgcmd} set system flow-accounting netflow server \<address\> source-interface \<interface\>
+
+**Configure the interface the router uses to reach the collector.**
+
+When flow accounting is bound to a VRF, the interface must belong to that VRF.
+
+Set either source-address or source-interface for a collector, not both.
+Configuring both for the same collector fails the commit.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow server 192.0.2.10 source-interface eth0
+```
+
+```{cfgcmd} set system flow-accounting netflow version \<5 | 9 | 10\>
+
+**Configure the export protocol version.**
+
+Version 5 exports IPv4 flows only. Version 9 and version 10 (IPFIX) also
+export IPv6 flows.
+
+The default is 9.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow version 10
 ```
 
 ```{cfgcmd} set system flow-accounting netflow engine-id \<id\>
 
-NetFlow engine-id which will appear in NetFlow data. The range is 0 to 255.
+**Configure the identifier the router places in the exported records to
+distinguish this exporter's flow streams.**
+
+For version 5, use two values in the form `<0-255>:<0-255>`. For versions 9
+and 10, use a single value from 0 to 4294967295.
+
+The value must be valid for the configured version. Otherwise, the commit
+fails.
 ```
 
-```{cfgcmd} set system flow-accounting netflow sampling-rate \<rate\>
-
-Use this command to configure the  sampling rate for flow accounting. The
-system samples one in every \<rate\> packets, where \<rate\> is the value
-configured for the sampling-rate option. The advantage of sampling every n
-packets, where n > 1, allows you to decrease the amount of processing
-resources required for flow accounting. The disadvantage of not sampling
-every packet is that the statistics produced are estimates of actual data
-flows.
-
-Per default every packet is sampled (that is, the sampling rate is 1).
-```
-
-```{cfgcmd} set system flow-accounting netflow timeout expiry-interval \<interval\>
-
-Specifies the interval at which Netflow data will be sent to a collector. As
-per default, Netflow data will be sent every 60 seconds.
-
-You may also additionally configure timeouts for different types of
-connections.
-```
-
-```{cfgcmd} set system flow-accounting netflow max-flows \<n\>
-
-If you want to change the maximum number of flows, which are tracking
-simultaneously, you may do this with this command (default 8192).
-```
-
-
-### Example:
-
-NetFlow v5 example:
+Example:
 
 ```none
 set system flow-accounting netflow engine-id 100
-set system flow-accounting netflow version 5
-set system flow-accounting netflow server 192.168.2.10 port 2055
 ```
 
+```{cfgcmd} set system flow-accounting netflow sampling-rate \<0-4294967295\>
+
+**Sample one packet in every N for accounting instead of every packet.**
+
+Packets are selected at random. Sampling reduces the number of packets
+accounted for, so the exported counts become estimates of the actual traffic.
+
+By default, sampling is disabled, and every packet is accounted for.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow sampling-rate 1000
+```
+
+```{cfgcmd} set system flow-accounting netflow max-flows \<0-4294967295\>
+
+**Configure the maximum number of flows accounted for at the same time.**
+
+By default, no explicit maximum is set.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow max-flows 2000000
+```
+
+```{cfgcmd} set system flow-accounting netflow inactive-timeout \<0-2147483647\>
+
+**Configure the number of seconds without new packets after which a flow is
+considered finished and exported.**
+
+The default is 15.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow inactive-timeout 15
+```
+
+```{cfgcmd} set system flow-accounting netflow active-timeout \<0-2147483647\>
+
+**Configure the maximum number of seconds an active flow is accounted for
+before it is exported.**
+
+A flow still receiving packets is exported once this time is reached.
+
+The default is 1800.
+```
+
+Example:
+
+```none
+set system flow-accounting netflow active-timeout 1800
+```
+
+```{cfgcmd} set system flow-accounting vrf \<name\>
+
+**Export flow records within the specified
+{abbr}`VRF (Virtual Routing and Forwarding)` instance.**
+
+The router reaches collectors through that VRF.
+
+A collector configured with source-interface is reached through that
+interface, not through the VRF.
+
+The VRF must already be configured with `set vrf name <name>`.
+```
+
+Example:
+
+```none
+set system flow-accounting vrf mgmt
+```
 
 ## Operation
 
-Once flow accounting is configured on an interfaces it provides the ability to
-display captured network traffic information for all configured interfaces.
+```{opcmd} show flow-accounting
+
+Show all flows the router is currently accounting for.
+```
 
 ```{opcmd} show flow-accounting interface \<interface\>
 
-Show flow accounting information for given \<interface\>.
-
-
-:::{code-block} none
-vyos@vyos:~$ show flow-accounting interface eth0
-IN_IFACE    SRC_MAC            DST_MAC            SRC_IP                     DST_IP             SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
-----------  -----------------  -----------------  ------------------------  ---------------  ----------  ----------  ----------  -----  ---------  -------  -------
-eth0        00:53:01:a8:28:ac  ff:ff:ff:ff:ff:ff  192.0.2.2                 255.255.255.255        5678        5678  udp             0          1        1      178
-eth0        00:53:01:b2:2f:34  33:33:ff:00:00:00  fe80::253:01ff:feb2:2f34  ff02::1:ff00:0            0           0  ipv6-icmp       0          2        1      144
-eth0        00:53:01:1a:b4:53  33:33:ff:00:00:00  fe80::253:01ff:fe1a:b453  ff02::1:ff00:0            0           0  ipv6-icmp       0          1        1       72
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40152          22  tcp            16         39        1     2064
-eth0        00:53:01:c8:33:af  ff:ff:ff:ff:ff:ff  192.0.2.3                 255.255.255.255        5678        5678  udp             0          1        1      154
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14            40006          22  tcp            16        146        1     9444
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100               192.0.2.14                0           0  icmp          192         27        1     4455
-:::
+Show accounted flows on the specified interface.
 ```
 
 ```{opcmd} show flow-accounting interface \<interface\> host \<address\>
 
-Show flow accounting information for given \<interface\> for a specific host
-only.
+Show accounted flows on the specified interface whose source or destination
+address is the given IPv4 or IPv6 address.
+```
 
+```{opcmd} show flow-accounting interface \<interface\> port \<1-65535\>
 
-:::{code-block} none
-vyos@vyos:~$ show flow-accounting interface eth0 host 192.0.2.14
-IN_IFACE    SRC_MAC            DST_MAC            SRC_IP       DST_IP        SRC_PORT    DST_PORT  PROTOCOL      TOS    PACKETS    FLOWS    BYTES
-----------  -----------------  -----------------  -----------  ----------  ----------  ----------  ----------  -----  ---------  -------  -------
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40006          22  tcp            16        197        2    12940
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14       40152          22  tcp            16         94        1     4924
-eth0        00:53:01:b2:22:48  00:53:02:58:a2:92  192.0.2.100  192.0.2.14           0           0  icmp          192         36        1     5877
-:::
+Show accounted flows on the specified interface whose source or destination
+port is the given port.
+```
+
+```{opcmd} show flow-accounting interface \<interface\> top \<1-100\>
+
+Show accounted flows on the specified interface, limited to the first N
+entries.
+```
+
+```{opcmd} restart flow-accounting
+
+Restart flow accounting and reattach it to monitored interfaces.
+
+If flow accounting is not configured and running, the command reports this and
+exits without starting it.
+```
+
+## Example
+
+The following example enables flow accounting on eth0 and eth1, and exports
+version 10 (IPFIX) records to the collector at 192.0.2.10 on port 4739, using
+192.0.2.1 as the source address.
+
+```none
+set system flow-accounting netflow interface eth0
+set system flow-accounting netflow interface eth1
+set system flow-accounting netflow version 10
+set system flow-accounting netflow server 192.0.2.10 port 4739
+set system flow-accounting netflow server 192.0.2.10 source-address 192.0.2.1
 ```
