@@ -2,8 +2,8 @@
 myst:
   html_meta:
     description: |
-      sFlow is a monitoring protocol that samples one out of every N
-      packets per interface and periodically records total packet and byte
+      sFlow is a monitoring protocol that samples, on average, one out of every
+      N packets per interface and periodically records total packet and byte
       counts, exporting the collected data to one or more external
       collectors.
     keywords: sflow, monitoring, sampling, collector, agent
@@ -13,11 +13,11 @@ myst:
 
 # sFlow
 
-sFlow is a network monitoring protocol that samples one out of every N
-packets and, at fixed intervals, records the total number of packets and
-bytes passed. The router then exports the collected data to one or more
-external collectors, identifying itself as the sFlow agent. Sampling
-applies to both IPv4 and IPv6 traffic.
+sFlow is a network monitoring protocol that samples, on average, one out of
+every N packets and, at fixed intervals, records the total number of packets
+and bytes passed. The router then exports the collected data to one or more
+external collectors, identifying itself as the sFlow agent. Sampling applies
+to both IPv4 and IPv6 traffic.
 
 sFlow is configured per interface. By default, the router samples only the
 packets entering an interface (ingress). The `enable-egress` command extends
@@ -96,11 +96,13 @@ set system sflow interface eth0
 
 ```{cfgcmd} set system sflow vpp
 
-**Enable sFlow sampling of traffic forwarded by VPP.**
+**Enable sFlow sampling for the interfaces configured under `vpp sflow`.**
 
-Configure this together with the sFlow settings under `vpp sflow`. While
-`vpp sflow` is configured, this command must remain set. Otherwise, the commit
-fails.
+This option must remain set while `vpp sflow` is configured. Otherwise, the
+commit fails.
+
+On VPP interfaces, the router samples only traffic entering the interface. The
+`enable-egress` command does not apply here.
 ```
 
 Example:
@@ -125,7 +127,7 @@ set system sflow polling 30
 
 ```{cfgcmd} set system sflow sampling-rate \<1-65535\>
 
-**Configure N so the router samples one out of every N packets.**
+**Configure N so the router samples, on average, one out of every N packets.**
 
 A higher value samples fewer packets.
 
