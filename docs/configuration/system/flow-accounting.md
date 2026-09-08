@@ -5,7 +5,7 @@ myst:
       VyOS can group IPv4 and IPv6 traffic into flows and export a record
       of each flow to one or more external collectors, using the NetFlow or
       IPFIX protocol.
-    keywords: flow-accounting, netflow, ipfix, ipt_netflow, exporter, collector
+    keywords: flow-accounting, netflow, ipfix, exporter, collector
 ---
 
 (flow-accounting)=
@@ -103,7 +103,7 @@ is bound to a VRF, the address must be assigned within that VRF.
 The source address must be IPv4 for an IPv4 collector and IPv6 for an IPv6
 collector.
 
-Set either source-address or source-interface for a collector, not both.
+Set either `source-address` or `source-interface` for a collector, not both.
 Configuring both for the same collector fails the commit.
 ```
 
@@ -231,7 +231,7 @@ set system flow-accounting netflow active-timeout 1800
 
 The router reaches collectors through that VRF.
 
-A collector configured with source-interface is reached through that
+A collector configured with `source-interface` is reached through that
 interface, not through the VRF.
 
 The VRF must already be configured with `set vrf name <name>`.
