@@ -368,8 +368,7 @@ set service monitoring telegraf influxdb authentication organization vyos
 **Configure the API token used to authenticate to the remote InfluxDB
 v2 server.**
 
-The token must be in the standard InfluxDB v2 format: 88 characters
-ending with `==`.
+The token must be in the standard InfluxDB v2 Base64-encoded format.
 ```
 
 Example:
