@@ -100,8 +100,6 @@ set system flow-accounting netflow server 192.0.2.10 port 4739
 The address must already be assigned to a local interface. If flow accounting
 is bound to a VRF, the address must be assigned within that VRF.
 
-The source address must be IPv4 for an IPv4 collector and IPv6 for an IPv6
-collector.
 
 Set either `source-address` or `source-interface` for a collector, not both.
 Configuring both for the same collector fails the commit.
