@@ -13,7 +13,7 @@ myst:
 # SNMP
 
 {abbr}`SNMP (Simple Network Management Protocol)` is an Internet
-Standard protocol for collecting and organizing information about
+standard protocol for collecting and organizing information about
 managed devices on IP networks and for modifying that information to
 change device behavior. Devices that support SNMP typically include
 routers, switches, servers, workstations, and printers.
