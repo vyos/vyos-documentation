@@ -66,7 +66,7 @@ set service pppoe-server access-concentrator PPPoE-AC-01
   usernames and passwords.
 - `radius`: Clients are authenticated by the configured RADIUS
   servers.
-- `noauth`: Authentication is disabled.
+- `noauth`: Authentication is not required to connect.
 
 The default is `local`.
 
