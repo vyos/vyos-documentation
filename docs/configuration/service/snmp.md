@@ -24,7 +24,7 @@ describes the managed system's status and configuration. Managed
 devices run a software component called an agent, which has local
 knowledge of management information and translates it to and from an
 SNMP-specific form. One or more administrative computers, running
-{abbr}`NMS (Network Management Station)` software, remotely query (and,
+{abbr}`NMS (Network Management System)` software, remotely query (and,
 in some circumstances, manipulate) these variables.
 
 Three significant versions of SNMP have been developed and deployed.
