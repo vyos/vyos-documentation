@@ -2,7 +2,7 @@
 myst:
   html_meta:
     description: |
-      SNMP is an Internet Standard protocol for collecting and
+      SNMP is an Internet standard protocol for collecting and
       organizing information about managed devices on IP networks and
       for modifying that information to change device behavior.
     keywords: snmp, snmpv2c, snmpv3, mib, community, trap, usm, vacm, engineid
