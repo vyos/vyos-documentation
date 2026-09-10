@@ -904,8 +904,11 @@ set service ipoe-server lease-time 3600
 
 ```{cfgcmd} set service ipoe-server max-lease-time \<1-2147483647\>
 
-**Configure the maximum DHCP lease time, in seconds, that can be
-requested by an IPoE client.**
+**Configure the server-side session expiry timer, in seconds, applied
+if a client does not renew its DHCP lease in time.**
+
+This value is internal to the server; it is not sent to the client
+and does not limit the lease time the client can request.
 
 The default is `lease-time` plus 10%.
 ```
