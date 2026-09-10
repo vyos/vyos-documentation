@@ -908,7 +908,9 @@ set service ipoe-server lease-time 3600
 if a client does not renew its DHCP lease in time.**
 
 This value is internal to the server; it is not sent to the client
-and does not limit the lease time the client can request.
+and does not limit the lease time the client can request. The
+effective timer is the larger of this value and `lease-time`, so a
+value smaller than `lease-time` has no effect.
 
 The default is `lease-time` plus 10%.
 ```
@@ -925,7 +927,8 @@ set service ipoe-server max-lease-time 4000
 client attempts to renew its lease with the server that issued it.**
 
 If unset, or greater than `lease-time`, the server derives the value
-from `lease-time`.
+from `lease-time`. If it is also greater than `rebind-time`, the
+server instead recalculates it as `rebind-time` multiplied by 4/7.
 ```
 
 Example:
