@@ -73,10 +73,12 @@ Set a description for a remote group.
 ```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
 
 Override the global **resolver-interval** for this remote group.
-Accepts a plain number of seconds (60-2419200) or a number with a
-time-unit suffix: ``s``, ``m``, ``h``, ``d``, ``w`` (e.g. ``4h``). If
-not set, the remote group falls back to
-**firewall global-options resolver-interval**.
+Accepts a plain number of seconds or a number with a time-unit
+suffix: ``s``, ``m``, ``h``, ``d``, ``w`` (e.g. ``4h``). The value is
+converted to seconds and must be between 60 and 2419200 (4 weeks)
+after conversion, so a suffixed value like ``30s`` is rejected the
+same as the plain number ``30``. If not set, the remote group falls
+back to **firewall global-options resolver-interval**.
 ```
 
 The remote list format is flexible. VyOS attempts to parse the first word of
