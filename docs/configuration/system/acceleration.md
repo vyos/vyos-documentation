@@ -3,10 +3,10 @@ myst:
   html_meta:
     description: |
       Hardware acceleration reduces the CPU workload of the router by
-      offloading it to a supported cryptographic accelerator on the PCI
-      bus. It is configured under system acceleration, is disabled by
-      default, and applies system-wide once enabled. Intel QAT is
-      currently the only supported accelerator.
+      offloading it to a supported cryptographic accelerator. It is
+      configured under system acceleration, is disabled by default,
+      and applies system-wide once enabled. Intel QAT is currently the
+      only supported accelerator.
     keywords: cryptographic acceleration, intel qat, pci passthrough
 ---
 
