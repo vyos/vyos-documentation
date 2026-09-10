@@ -888,7 +888,7 @@ set service ipoe-server name-server 2001:db8::53
 
 ### DHCP lease
 
-```{cfgcmd} set service ipoe-server lease-time \<1-4294967295\>
+```{cfgcmd} set service ipoe-server lease-time \<1-2147483647\>
 
 **Configure the DHCP lease time, in seconds, offered to IPoE
 clients.**
@@ -902,7 +902,7 @@ Example:
 set service ipoe-server lease-time 3600
 ```
 
-```{cfgcmd} set service ipoe-server max-lease-time \<1-4294967295\>
+```{cfgcmd} set service ipoe-server max-lease-time \<1-2147483647\>
 
 **Configure the maximum DHCP lease time, in seconds, that can be
 requested by an IPoE client.**
@@ -916,7 +916,7 @@ Example:
 set service ipoe-server max-lease-time 4000
 ```
 
-```{cfgcmd} set service ipoe-server renew-time \<1-4294967295\>
+```{cfgcmd} set service ipoe-server renew-time \<1-2147483647\>
 
 **Configure the DHCP renewal (T1) time, in seconds, after which the
 client attempts to renew its lease with the server that issued it.**
@@ -928,10 +928,11 @@ from `lease-time`.
 Example:
 
 ```none
+set service ipoe-server lease-time 3600
 set service ipoe-server renew-time 1800
 ```
 
-```{cfgcmd} set service ipoe-server rebind-time \<1-4294967295\>
+```{cfgcmd} set service ipoe-server rebind-time \<1-2147483647\>
 
 **Configure the DHCP rebinding (T2) time, in seconds, after which the
 client attempts to rebind its lease with any available server.**
@@ -943,6 +944,7 @@ from `lease-time`.
 Example:
 
 ```none
+set service ipoe-server lease-time 3600
 set service ipoe-server rebind-time 3150
 ```
 
