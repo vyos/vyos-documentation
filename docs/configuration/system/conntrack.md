@@ -14,7 +14,6 @@ myst:
 
 # Conntrack
 
-VyOS tracks connections with its connection tracking subsystem.
 Connection tracking becomes operational for one or both address families
 once a dependent feature is configured:
 
