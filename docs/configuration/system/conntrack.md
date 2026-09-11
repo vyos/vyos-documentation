@@ -62,8 +62,11 @@ set system conntrack expect-table-size 4096
 
 ```{cfgcmd} set system conntrack hash-size \<1024-50000000\>
 
-**Configure the size of the hash table that indexes the connection
+**Configure the number of buckets in the hash table that indexes the connection
 tracking table.**
+
+This value is not a limit on the number of hash entries and does not have to match
+or exceed `system conntrack table-size`.
 
 A larger hash table makes looking up entries in the connection tracking
 table faster.
