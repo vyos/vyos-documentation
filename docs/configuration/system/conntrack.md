@@ -7,7 +7,7 @@ myst:
       activates for IPv4 or IPv6 once a dependent feature such as NAT or a
       stateful firewall rule is configured. Table sizes, helper modules,
       custom timeouts, ignore rules, and logging can all be tuned.
-    keywords: conntrack, connection tracking, helper modules, timeout, ignore
+    keywords: conntrack, connection tracking, helper modules, timeout
 ---
 
 (conntrack)=
