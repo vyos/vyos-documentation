@@ -39,6 +39,24 @@ set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
 Provide an IPv4 or IPv6 address group description.
 ```
 
+```{cfgcmd} set firewall group address-group \<name\> apply-path \<path\>
+```
+
+```{cfgcmd} set firewall group ipv6-address-group \<name\> apply-path \<path\>
+
+Derive additional group members from another part of the configuration,
+instead of (or in addition to) entering them manually. `path` is a
+space-separated configuration path; a `*` segment expands every
+instance of the tag node at that position. The resolved values are
+merged with any manually configured members.
+
+:::{code-block} none
+# Every configured BGP neighbor address, across all VRFs
+set firewall group address-group EBGP-HOSTS apply-path 'protocols bgp neighbor'
+set firewall group address-group EBGP-HOSTS apply-path 'vrf name * protocols bgp neighbor'
+:::
+```
+
 ### Remote Groups
 
 A **remote-group** uses a URL that hosts a newline-delimited list of IPv4
@@ -99,6 +117,27 @@ set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
 ```{cfgcmd} set firewall group ipv6-network-group \<name\> description \<text\>
 
 Provide an IPv4 or IPv6 network group description.
+```
+
+```{cfgcmd} set firewall group network-group \<name\> apply-path \<path\>
+```
+
+```{cfgcmd} set firewall group ipv6-network-group \<name\> apply-path \<path\>
+
+Derive additional group members from another part of the configuration,
+instead of (or in addition to) entering them manually. `path` is a
+space-separated configuration path; a `*` segment expands every
+instance of the tag node at that position. The resolved values are
+merged with any manually configured members. Unlike `address-group`,
+`network-group` requires every resolved value to already be a CIDR
+prefix - a source path whose tag values are bare host addresses, such
+as a BGP neighbor, fails at commit time.
+
+:::{code-block} none
+# Every configured static route prefix, across all VRFs
+set firewall group network-group STATIC-ROUTES apply-path 'protocols static route'
+set firewall group network-group STATIC-ROUTES apply-path 'vrf name * protocols static route'
+:::
 ```
 
 ### Interface Groups
