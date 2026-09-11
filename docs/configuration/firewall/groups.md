@@ -43,14 +43,42 @@ Provide an IPv4 or IPv6 address group description.
 
 A **remote-group** uses a URL that hosts a newline-delimited list of IPv4
 and/or IPv6 addresses, CIDRs, and ranges. VyOS pulls this list periodically
-according to the frequency you define in the firewall **resolver-interval**
-and loads matching entries into the group for use in rules. The list is cached
-in persistent storage, so rules continue to function if updates fail.
+according to the frequency you define in the group **interval** (or, if not
+set, the firewall **resolver-interval**) and loads matching entries into the
+group for use in rules. The list is cached in persistent storage, so rules
+continue to function if updates fail.
 
 ```{cfgcmd} set firewall group remote-group \<name\> url \<http(s) url\>
 
 Specify a remote list of IPv4 and/or IPv6 addresses, ranges, and CIDRs
 to fetch.
+```
+
+::::{note}
+Quote URLs that contain a query string, otherwise an unquoted `&` silently
+truncates the value. On releases where the `?` key always triggers
+completion help, enter the literal `?` by pressing `Ctrl-V` followed by
+`?`:
+
+``` none
+set firewall group remote-group AbuseIPDB url 'https://api.abuseipdb.com/api/v2/blacklist?key=YOUR_KEY&plaintext'
+```
+::::
+
+::::{note}
+When a download fails, `vyos-domain-resolver` logs a redacted URL with the
+query string removed, keeping API keys out of the system log. A logged URL
+without its query parameters does not mean the configured value is wrong —
+verify it with `show firewall group remote-group <name> url` instead.
+::::
+
+```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
+
+Set the update interval for this remote group, from 60 seconds to 4 weeks.
+The interval can be given in seconds (e.g. `300`) or with the time unit
+suffixes `s`, `m`, `h`, `d` or `w` (e.g. `4h`). Multiple suffixes may be
+combined (e.g. `1h30m`). If not set, the group follows the global
+`firewall global-options resolver-interval`.
 ```
 
 ```{cfgcmd} set firewall group remote-group \<name\> description \<text\>
