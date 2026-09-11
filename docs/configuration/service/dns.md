@@ -192,7 +192,7 @@ negative entries use the same prefix, the entry configured last takes
 precedence.
 
 The list applies to addresses discovered during recursive resolution
-(e.g. NS records).
+(e.g., NS records).
 The recursor still sends queries to explicitly configured upstream DNS servers.
 ```
 
