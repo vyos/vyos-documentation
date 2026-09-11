@@ -14,8 +14,8 @@ myst:
 
 # Conntrack
 
-Connection tracking becomes operational for one or both address families
-once a dependent feature is configured:
+Connection tracking is activated for one or both address families
+when any of the following features is configured:
 
 - IPv4: NAT, WAN load balancing, or an IPv4 firewall rule that matches
   connection state or connection status, or enables flow offload.
