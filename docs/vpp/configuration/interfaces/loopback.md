@@ -68,6 +68,13 @@ set interfaces vpp loopback vpplo1 address 192.168.1.10/24
 set interfaces vpp loopback vpplo1 address 2001:db8::10/64
 ```
 
+## MAC Address Configuration
+
+```{cfgcmd} set interfaces vpp loopback \<vpploN\> mac \<xx:xx:xx:xx:xx:xx\>
+
+Configure a custom MAC address on the interface.
+```
+
 ## MTU Configuration
 
 ```{cfgcmd} set interfaces vpp loopback \<vpploN\> mtu \<size\>
