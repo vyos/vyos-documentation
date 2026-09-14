@@ -34,7 +34,6 @@ IPsec tunnels.
 Enabling this option allows VPP to handle IPsec traffic more efficiently by
 offloading processing from the kernel.
 
-
 ## Potential Issues and Troubleshooting
 
 Improper IPsec configuration can lead to various issues, including:

@@ -24,7 +24,7 @@ To make IPSec offloading work, following requirements must be met:
 - VPP dataplane must be configured.
 - VPP {doc}`IPsec settings </vpp/configuration/dataplane/ipsec>` should be
   configured as needed.
-- IPSec option can be configured in the VPP configuration section, see
+- IPSec should be configured in the VPN configuration section, see
   {doc}`/configuration/vpn/ipsec/index`.
 - Both source and destination of the IPSec traffic must be reachable via VPP
   interfaces, so it can perform both encryption and decryption of the traffic.
@@ -210,7 +210,7 @@ Improper IPsec configuration can lead to various issues, including:
   interfaces to the IPsec peer, they will conflict with the policy routes
   created for the IPsec tunnel in VPP. Consider using policy-based IPSec
   configuration to avoid this or
-  [disable the kernel routes synchronization](lcp.md#vpp-lcp-configuration).
+  [disable the kernel routes synchronization](lcp.md#vpp_config_dataplane_lcp_ignore_kernel_routes).
 
 - **Unsupported algorithms**
 
