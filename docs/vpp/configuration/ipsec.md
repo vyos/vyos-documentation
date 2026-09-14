@@ -24,7 +24,7 @@ To make IPSec offloading work, following requirements must be met:
 - VPP dataplane must be configured.
 - VPP {doc}`IPsec settings </vpp/configuration/dataplane/ipsec>` should be
   configured as needed.
-- IPSec should be configured in the VPN configuration section, see
+- IPSec option can be configured in the VPP configuration section, see
   {doc}`/configuration/vpn/ipsec/index`.
 - Both source and destination of the IPSec traffic must be reachable via VPP
   interfaces, so it can perform both encryption and decryption of the traffic.
@@ -166,8 +166,6 @@ set vpn ipsec site-to-site peer peerB vti traffic-selector remote prefix '192.16
 
 set vpp settings interface eth1
 set vpp settings interface eth2
-set vpp settings ipsec netlink rx-buffer-size '32000'
-set vpp settings lcp ignore-kernel-routes
 ```
 
 Where:
