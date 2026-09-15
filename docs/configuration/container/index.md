@@ -188,20 +188,24 @@ Volume is either mounted as rw (read-write - default) or ro (read-only)
 
 ```{cfgcmd} set container name \<name\> volume \<volumename\> propagation \<mode\>
 
-Control how mount events propagate between the volume on the host and
-the mount inside the container. Default is **rprivate**.
+Control how `mount` and `unmount` events propagate between the volume on
+the host and the mount inside the container. Default is **rprivate**.
 
-- **shared**: Sub-mounts of the original mount are exposed to replica
-  mounts
-- **slave**: Allow the replica mount to see sub-mounts of the original
-  mount, but not vice versa
-- **private**: Sub-mounts within a mount are not visible to replica
-  mounts or the original mount
-- **rshared**: Like **shared**, but recursively, including nested mount
-  points
-- **rslave**: Like **slave**, but recursively, including nested mount
-  points
-- **rprivate**: No mount points propagate in either direction
+- **shared**: Events propagate in both directions. A mount made below
+  the volume on the host shows up inside the container, and one made
+  inside the container shows up on the host
+- **slave**: Events propagate one way only, from the host into the
+  container but not back
+- **private**: No events propagate into or out of the mount
+- **rshared**, **rslave**, **rprivate**: The same, applied recursively
+  to nested mount points as well
+
+:::{note}
+The propagation of the host source mount limits what takes effect here:
+**shared** requires the source mount to be shared, and **slave**
+requires it to be shared or slave. Check it on the host with
+`findmnt -o TARGET,PROPAGATION \<directory\>`.
+:::
 ```
 
 ```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> destination \<path\>
