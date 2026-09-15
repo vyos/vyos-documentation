@@ -56,7 +56,6 @@ container, and processes inside the container are visible on the host.
 The command translates to "--pid host" when the container is created.
 ```
 
-
 ```{cfgcmd} set container name \<name\> allow-host-cgroups
 
 The container and the host share the same cgroup namespace. The
@@ -66,7 +65,6 @@ of its own.
 The command translates to "--cgroupns host" when the container is
 created.
 ```
-
 
 ```{cfgcmd} set container name \<name\> allow-host-networks
 
@@ -97,7 +95,6 @@ engine and cannot be used
 :::
 ```
 
-
 ```{cfgcmd} set container name \<name\> network \<networkname\> mac \<address\>
 
 Set a specific {abbr}`MAC (Media Access Control)` address for the
@@ -109,7 +106,6 @@ Defaults to `auto`, which generates a random address for the container.
 set container name coredns network NET01 mac '00:53:00:12:34:56'
 :::
 ```
-
 
 ```{cfgcmd} set container name \<name\> name-server \<address\>
 
@@ -182,20 +178,24 @@ Volume is either mounted as rw (read-write - default) or ro (read-only)
 
 ```{cfgcmd} set container name \<name\> volume \<volumename\> propagation \<mode\>
 
-Control how mount events propagate between the volume on the host and
-the mount inside the container. Default is **rprivate**.
+Control how `mount` and `unmount` events propagate between the volume on
+the host and the mount inside the container. Default is **rprivate**.
 
-- **shared**: Sub-mounts of the original mount are exposed to replica
-  mounts
-- **slave**: Allow the replica mount to see sub-mounts of the original
-  mount, but not vice versa
-- **private**: Sub-mounts within a mount are not visible to replica
-  mounts or the original mount
-- **rshared**: Like **shared**, but recursively, including nested mount
-  points
-- **rslave**: Like **slave**, but recursively, including nested mount
-  points
-- **rprivate**: No mount points propagate in either direction
+- **shared**: Events propagate in both directions. A mount made below
+  the volume on the host shows up inside the container, and one made
+  inside the container shows up on the host
+- **slave**: Events propagate one way only, from the host into the
+  container but not back
+- **private**: No events propagate into or out of the mount
+- **rshared**, **rslave**, **rprivate**: The same, applied recursively
+  to nested mount points as well
+
+:::{note}
+The propagation of the host source mount limits what takes effect here:
+**shared** requires the source mount to be shared, and **slave**
+requires it to be shared or slave. Check it on the host with
+`findmnt -o TARGET,PROPAGATION \<directory\>`.
+:::
 ```
 
 ```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> destination \<path\>
@@ -367,7 +367,6 @@ A brief description what this network is all about.
 Define IPv4 and/or IPv6 prefix for a given network name.
 Both IPv4 and IPv6 can be used in parallel.
 ```
-
 
 ```{cfgcmd} set container network \<name\> type bridge
 
