@@ -27,30 +27,25 @@ set container name mysql-server image quay.io/mysql:8.0
 :::
 ```
 
-
 ```{cfgcmd} set container name \<name\> entrypoint \<entrypoint\>
 
 Override the default entrypoint from the image for a container.
 ```
-
 
 ```{cfgcmd} set container name \<name\> command \<command\>
 
 Override the default command from the image for a container.
 ```
 
-
 ```{cfgcmd} set container name \<name\> arguments \<arguments\>
 
 Set the command arguments for a container.
 ```
 
-
 ```{cfgcmd} set container name \<name\> host-name \<hostname\>
 
 Set the host name for a container.
 ```
-
 
 ```{cfgcmd} set container name \<name\> allow-host-pid
 
@@ -60,7 +55,6 @@ container, and processes inside the container are visible on the host.
 
 The command translates to "--pid host" when the container is created.
 ```
-
 
 ```{cfgcmd} set container name \<name\> allow-host-networks
 
@@ -74,13 +68,11 @@ The command translates to "--net host" when the container is created.
 :::
 ```
 
-
 ```{cfgcmd} set container name \<name\> network \<networkname\>
 
-Attaches user-defined network to a container.
+Attaches a user-defined network to a container.
 Only one network must be specified and must already exist.
 ```
-
 
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
@@ -93,7 +85,6 @@ engine and cannot be used
 :::
 ```
 
-
 ```{cfgcmd} set container name \<name\> name-server \<address\>
 
 Optionally set a custom name server.
@@ -101,12 +92,10 @@ If a container network is used with DNS enabled,
 this setting will not have any effect.
 ```
 
-
 ```{cfgcmd} set container name \<name\> description \<text\>
 
 Set a container description
 ```
-
 
 ```{cfgcmd} set container name \<name\> environment \<key\> value \<value\>
 
@@ -123,33 +112,36 @@ set container name mysql-server environment MYSQL_ROOT_PASSWORD value 'root_pwd'
 :::
 ```
 
-
 ```{cfgcmd} set container name \<name\> port \<portname\> source \<portnumber\>
-
 ```
 ```{cfgcmd} set container name \<name\> port \<portname\> destination \<portnumber\>
 ```
-
 ```{cfgcmd} set container name \<name\> port \<portname\> protocol \<tcp | udp\>
 
 Publish a port for the container.
+- **source**: Port on the host
+- **destination**: Port on the container
 
 :::{code-block} none
 set container name zabbix-web-nginx-mysql port http source 80
 set container name zabbix-web-nginx-mysql port http destination 8080
 set container name zabbix-web-nginx-mysql port http protocol tcp
 :::
-```
+
 :::{note}
 Port publishing cannot be used with **network**. For this purpose, a workaround
 using destination NAT and static IP assignment for the container is available.
 :::
-```{cfgcmd} set container name \<name\> volume \<volumename\> source \<path\>
 ```
 
+```{cfgcmd} set container name \<name\> volume \<volumename\> source \<path\>
+```
 ```{cfgcmd} set container name \<name\> volume \<volumename\> destination \<path\>
 
-Mount a volume into the container
+Mount a volume into the container.
+- **source**: Path on the host, place it inside `/config` to preserve during
+upgrades
+- **destination**: Path inside the container
 
 :::{code-block} none
 set container name coredns volume 'corefile' source /config/coredns/Corefile
@@ -175,7 +167,6 @@ systems total available memory.
 
 ```{cfgcmd} set container name \<name\> uid \<number\>
 ```
-
 ```{cfgcmd} set container name \<name\> gid \<number\>
 
 Set the User ID or Group ID of the container
@@ -184,7 +175,6 @@ Set the User ID or Group ID of the container
 ```{cfgcmd} set container name \<name\> restart [no | on-failure | always]
 
 Set the restart behavior of the container.
-
 - **no**: Do not restart containers on exit
 - **on-failure**: Restart containers when they exit with a non-zero
 exit code, retrying indefinitely (default)
@@ -213,16 +203,16 @@ Default is 512 MB. Use 0 MB for unlimited memory.
 
 ```{cfgcmd} set container name \<name\> device \<devicename\> source \<path\>
 ```
-
 ```{cfgcmd} set container name \<name\> device \<devicename\> destination \<path\>
 
 Add a host device to the container.
+- **source**: Device on the router itself
+- **destination**: Device inside the container
 ```
 
 ```{cfgcmd} set container name \<name\> capability \<text\>
 
 Set container capabilities or permissions.
-
 - **net-admin**: Network operations (interface, firewall, routing tables)
 - **net-bind-service**: Bind a socket to privileged ports
 (port numbers less than 1024)
@@ -243,7 +233,6 @@ setdomainname)
 Set container sysctl values.
 
 The subset of possible parameters are:
-
 - Kernel Parameters: kernel.msgmax, kernel.msgmnb, kernel.msgmni, kernel.sem,
 kernel.shmall, kernel.shmmax, kernel.shmmni, kernel.shm_rmid_forced
 - Parameters beginning with fs.mqueue.*
@@ -261,7 +250,6 @@ Disable a container.
 ```
 
 ### Container Health checks
-
 
 By default, no health checks are run, even when defined by the image.
 
@@ -285,12 +273,22 @@ Override the default health-check interval. For example: `60`
 Override the default health-check timeout. For example: `10`
 ```
 
-```{cfgcmd} set container name \<name\> health-check retries \<retries\>
+```{cfgcmd} set container name \<name\> health-check retry \<retries\>
 
 Number of health check retries before container is considered unhealthy. For example: `1`
 ```
 
 ### Container Networks
+
+:::{note}
+If you use **Global State Policies** in your
+{ref}`quick-start:firewall` with container networks, you need
+an exception for ARP traffic on bridge interfaces.
+Otherwise, ARP will fail and the container will not be reachable.
+
+```{cfgcmd} set firewall global-options apply-to-bridged-traffic accept-invalid ethernet-type 'arp'
+```
+:::
 
 ```{cfgcmd} set container network \<name\>
 
@@ -340,7 +338,6 @@ Disable a given container registry
 
 ```{cfgcmd} set container registry \<name\> authentication username
 ```
-
 ```{cfgcmd} set container registry \<name\> authentication password
 
 Some container registries require credentials to be used.
@@ -357,15 +354,12 @@ untrusted certificates.
 
 ```{cfgcmd} set container registry \<name\> mirror address \<address\>
 ```
-
 ```{cfgcmd} set container registry \<name\> mirror host-name \<host-name\>
 ```
-
 ```{cfgcmd} set container registry \<name\> mirror port \<port\>
 ```
-
 ```{cfgcmd} set container registry \<name\> mirror path \<path\>
-
+```
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
 If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
@@ -380,7 +374,6 @@ If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/
 :::{code-block} none
 set container registry 192.168.1.1:8080 insecure
 :::
-```
 
 ### Log Configuration
 
@@ -389,11 +382,8 @@ set container registry 192.168.1.1:8080 insecure
 Set the default log driver for containers.
 
 - **k8s-file**: Log to a plain text file in Kubernetes-style format.
-- **journald**: Log to the system journal
+- **journald**: Log to the system journal (default)
 - **none**: Disable logging for the container
-
-Current default is journald.
-
 ```
 
 ## Operation Commands
@@ -402,30 +392,37 @@ Current default is journald.
 
 Pull a new image for container
 ```
+
 ```{opcmd} show container
 
 Show the list of all active containers.
 ```
+
 ```{opcmd} show container image
 
 Show the local container images.
 ```
+
 ```{opcmd} show container log \<containername\>
 
 Show logs from a given container
 ```
+
 ```{opcmd} show container network
 
-Show a list available container networks
+Show a list of available container networks.
 ```
+
 ```{opcmd} restart container \<containername\>
 
 Restart a given container
 ```
+
 ```{opcmd} update container image \<containername\>
 
 Update container image
 ```
+
 ```{opcmd} delete container image \<image id|all\> [force]
 
 Delete a particular container image based on it's image ID.
@@ -436,17 +433,19 @@ assigned, this is why there is a `force` option to pass down to
 the container image to also remove those images.
 ```
 
-## Example Configuration
+## Example Configurations
 
+% stop_vyoslinter
 For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
-to the declarative VyOS CLI syntax.
+is adapted to the declarative VyOS CLI syntax for Zabbix.
+% start_vyoslinter
 
 ```none
 set container network zabbix prefix 172.20.0.0/16
 set container network zabbix description 'Network for Zabbix component containers'
 
 set container name mysql-server image mysql:8.0
-set container name mysql-server network zabbix
+set container name mysql-server network zabbix address 172.20.0.10
 
 set container name mysql-server environment 'MYSQL_DATABASE' value 'zabbix'
 set container name mysql-server environment 'MYSQL_USER' value 'zabbix'
@@ -454,10 +453,10 @@ set container name mysql-server environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
 set container name mysql-server environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
 
 set container name zabbix-java-gateway image zabbix/zabbix-java-gateway:alpine-5.2-latest
-set container name zabbix-java-gateway network zabbix
+set container name zabbix-java-gateway network zabbix address 172.20.0.11
 
 set container name zabbix-server-mysql image zabbix/zabbix-server-mysql:alpine-5.2-latest
-set container name zabbix-server-mysql network zabbix
+set container name zabbix-server-mysql network zabbix address 172.20.0.12
 
 set container name zabbix-server-mysql environment 'DB_SERVER_HOST' value 'mysql-server'
 set container name zabbix-server-mysql environment 'MYSQL_DATABASE' value 'zabbix'
@@ -466,11 +465,12 @@ set container name zabbix-server-mysql environment 'MYSQL_PASSWORD' value 'zabbi
 set container name zabbix-server-mysql environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
 set container name zabbix-server-mysql environment 'ZBX_JAVAGATEWAY' value 'zabbix-java-gateway'
 
-set container name zabbix-server-mysql port zabbix source 10051
-set container name zabbix-server-mysql port zabbix destination 10051
+set nat destination rule 100 destination port 10051
+set nat destination rule 100 protocol tcp
+set nat destination rule 100 translation address 172.20.0.12
 
 set container name zabbix-web-nginx-mysql image zabbix/zabbix-web-nginx-mysql:alpine-5.2-latest
-set container name zabbix-web-nginx-mysql network zabbix
+set container name zabbix-web-nginx-mysql network zabbix address 172.20.0.13
 
 set container name zabbix-web-nginx-mysql environment 'MYSQL_DATABASE' value 'zabbix'
 set container name zabbix-web-nginx-mysql environment 'ZBX_SERVER_HOST' value 'zabbix-server-mysql'
@@ -479,6 +479,55 @@ set container name zabbix-web-nginx-mysql environment 'MYSQL_USER' value 'zabbix
 set container name zabbix-web-nginx-mysql environment 'MYSQL_PASSWORD' value 'zabbix_pwd'
 set container name zabbix-web-nginx-mysql environment 'MYSQL_ROOT_PASSWORD' value 'root_pwd'
 
-set container name zabbix-web-nginx-mysql port http source 80
-set container name zabbix-web-nginx-mysql port http destination 8080
+set nat destination rule 101 destination port 80
+set nat destination rule 101 protocol tcp
+set nat destination rule 101 translation address 172.20.0.13
+set nat destination rule 101 translation port 8080
+```
+
+% stop_vyoslinter
+Another example, for [Adguard Home](https://adguard.com/en/adguard-home/overview.html)
+% start_vyoslinter
+
+First, add the container image:
+```{opcmd} add container image adguard/adguardhome:latest
+```
+
+Then you can configure the container and network in config mode:
+
+:::{note}
+The directories used in the container volumes must exist
+before configuring the container.
+:::
+
+:::{note}
+This example forwards TCP and UDP port 553 to port 53 in
+the container. Use external port 53 if you do not want to
+use the built-in DNS forwarder.
+:::
+```none
+set container name adguardhome image 'adguard/adguardhome:latest'
+
+set container name adguardhome network adguardhome address '10.0.1.100'
+
+set container name adguardhome volume conf destination '/opt/adguardhome/conf'
+set container name adguardhome volume conf source '/config/adguardhome/conf'
+set container name adguardhome volume work destination '/opt/adguardhome/work'
+set container name adguardhome volume work source '/config/adguardhome/work'
+
+set container network adguardhome prefix '10.0.1.0/24'
+
+set nat destination rule 100 destination port '3000'
+set nat destination rule 100 protocol 'tcp'
+set nat destination rule 100 translation address '10.0.1.100'
+
+set nat destination rule 102 destination port '553'
+set nat destination rule 102 protocol 'tcp'
+set nat destination rule 102 translation address '10.0.1.100'
+set nat destination rule 102 translation port '53'
+
+set nat destination rule 103 destination port '553'
+set nat destination rule 103 protocol 'udp'
+set nat destination rule 103 translation address '10.0.1.100'
+set nat destination rule 103 translation port '53'
 ```
