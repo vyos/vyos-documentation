@@ -210,7 +210,7 @@ Improper IPsec configuration can lead to various issues, including:
   interfaces to the IPsec peer, they will conflict with the policy routes
   created for the IPsec tunnel in VPP. Consider using policy-based IPSec
   configuration to avoid this or
-  [disable the kernel routes synchronization](lcp.md#vpp_config_dataplane_lcp_ignore_kernel_routes).
+  [disable the kernel routes synchronization].
 
 - **Unsupported algorithms**
 
@@ -232,3 +232,7 @@ Improper IPsec configuration can lead to various issues, including:
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
 ```
+
+% stop_vyoslinter
+[disable the kernel routes synchronization]: dataplane/lcp.md#vpp_config_dataplane_lcp_ignore_kernel_routes
+% start_vyoslinter
