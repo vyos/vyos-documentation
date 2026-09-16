@@ -72,8 +72,8 @@ and match interfaces and VRFs. In case where an interface is assigned to a
 non-default VRF, if we want to use inbound-interface or outbound-interface in
 firewall rules, we need to:
 
-- For **inbound-interface**: use the interface name with the VRF name, like
-  `MGMT` or `LAN`.
+- For **inbound-interface**: use the VRF name rather than the underlying
+  interface name, for example `MGMT` or `LAN`.
 - For **outbound-interface**: use the interface name, like `eth0`, `vtun0`,
   `eth2*` or similar.
 
@@ -87,9 +87,10 @@ set firewall ipv4 forward filter rule 10 action 'accept'
 set firewall ipv4 forward filter rule 10 description 'MGMT - Allow to LAN and PROD'
 set firewall ipv4 forward filter rule 10 inbound-interface name 'MGMT'
 set firewall ipv4 forward filter rule 10 outbound-interface name 'eth2*'
-set firewall ipv4 forward filter rule 99 action 'drop'
-set firewall ipv4 forward filter rule 99 description 'MGMT - Drop all going to mgmt'
-set firewall ipv4 forward filter rule 99 outbound-interface name 'eth1'
+set firewall ipv4 forward filter rule 15 action 'drop'
+set firewall ipv4 forward filter rule 15 description 'MGMT - Deny internet'
+set firewall ipv4 forward filter rule 15 inbound-interface name 'MGMT'
+set firewall ipv4 forward filter rule 15 outbound-interface name 'pppoe0'
 set firewall ipv4 forward filter rule 120 action 'accept'
 set firewall ipv4 forward filter rule 120 description 'LAN - Allow to PROD'
 set firewall ipv4 forward filter rule 120 inbound-interface name 'LAN'
@@ -98,6 +99,10 @@ set firewall ipv4 forward filter rule 130 action 'accept'
 set firewall ipv4 forward filter rule 130 description 'LAN - Allow internet'
 set firewall ipv4 forward filter rule 130 inbound-interface name 'LAN'
 set firewall ipv4 forward filter rule 130 outbound-interface name 'pppoe0'
+set firewall ipv4 forward filter rule 140 action 'accept'
+set firewall ipv4 forward filter rule 140 description 'WAN - Allow to PROD'
+set firewall ipv4 forward filter rule 140 inbound-interface name 'WAN'
+set firewall ipv4 forward filter rule 140 outbound-interface name 'eth2.3500'
 ```
 
 Also, we are adding global state policies, in order to allow established and

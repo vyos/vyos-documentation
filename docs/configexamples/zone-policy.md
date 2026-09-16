@@ -4,7 +4,7 @@ lastproofread: '2024-06-14'
 
 (examples-zone-policy)=
 
-# Zone-Policy example
+# Zone-Based Firewall Example
 
 :::{note}
 In {vytask}`T2199` the syntax of the zone configuration was changed.
@@ -85,14 +85,14 @@ the same.
 Traffic flows from zone A to zone B. That flow is what I refer to as a
 zone-pair-direction. eg. A->B and B->A are two zone-pair-destinations.
 
-Ruleset are created per zone-pair-direction.
+Rulesets are created per zone-pair direction.
 
 I name rule sets to indicate which zone-pair-direction they represent.
 eg. ZoneA-ZoneB or ZoneB-ZoneA. LAN-DMZ, DMZ-LAN.
 
-In VyOS, you have to have unique Ruleset names. In the event of overlap,
-I add a "-6" to the end of v6 rulesets. eg. LAN-DMZ, LAN-DMZ-6. This
-allows for each auto-completion and uniqueness.
+IPv4 and IPv6 rulesets can use the same name. This example adds ``-6`` to
+IPv6 ruleset names, such as ``LAN-DMZ`` and ``LAN-DMZ-6``, only to make
+their address family clear.
 
 In this example we have 4 zones. LAN, WAN, DMZ, Local. The local zone is
 the firewall itself.
@@ -107,8 +107,6 @@ rules you have grows, the more consistency you have, the easier your
 life will be.
 
 ```none
-Rule 1 - State Established, Related
-Rule 2 - State Invalid
 Rule 100 - ICMP
 Rule 200 - Web
 Rule 300 - FTP
@@ -120,12 +118,9 @@ Rule 800 - SSH
 Rule 900 - IMAPS
 ```
 
-The first two rules are to deal with the idiosyncrasies of VyOS and
-iptables.
-
-Zones and Rulesets both have a default action statement. When using
-Zone-Policies, the default action is set by the zone-policy statement
-and is represented by rule 10000.
+Zones and rulesets both have a default action. Configure the zone default
+with ``set firewall zone <name> default-action`` and each custom chain
+default with ``set firewall ipv4 name`` or ``set firewall ipv6 name``.
 
 It is good practice to log both accepted and denied traffic. It can save
 you significant headaches when trying to troubleshoot a connectivity
@@ -134,39 +129,35 @@ issue.
 To add logging to the default rule, do:
 
 ```none
-set firewall name <ruleSet> default-log
+set firewall ipv4 name <ruleSet> default-log
 ```
 
-By default, iptables does not allow traffic for established sessions to
-return, so you must explicitly allow this. I do this by adding two rules
-to every ruleset. 1 allows established and related state packets through
-and rule 2 drops and logs invalid state packets. We place the
-established/related rule at the top because the vast majority of traffic
-on a network is established and the invalid rule to prevent invalid
-state packets from mistakenly being matched against other rules. Having
-the most matched rule listed first reduces CPU load in high volume
-environments. Note: I have filed a bug to have this added as a default
-action as well.
+Instead of repeating state rules in every IPv4 and IPv6 ruleset, configure
+global state policies once:
 
-''It is important to note, that you do not want to add logging to the
-established state rule as you will be logging both the inbound and
-outbound packets for each session instead of just the initiation of the
-session. Your logs will be massive in a very short period of time.''
+```none
+set firewall global-options state-policy established action 'accept'
+set firewall global-options state-policy related action 'accept'
+set firewall global-options state-policy invalid action 'drop'
+set firewall global-options state-policy invalid log
+```
 
-In VyOS you must have the interfaces created before you can apply it to
-the zone and the rulesets must be created prior to applying it to a
-zone-policy.
+These policies allow return and related traffic and drop invalid packets
+before traffic reaches the zone-pair rulesets. Avoid logging established or
+related traffic because doing so can produce a large volume of logs.
 
-I create/configure the interfaces first. Build out the rulesets for each
-zone-pair-direction which includes at least the three state rules. Then
-I setup the zone-policies.
+In VyOS, interfaces must exist before they can be added to a zone, and
+rulesets must exist before they can be applied to a zone.
+
+I configure the interfaces first, then the global state policies and
+zone-pair rulesets. Finally, I configure the zones.
 
 Zones do not allow for a default action of accept; either drop or
-reject. It is important to remember this because if you apply an
-interface to a zone and commit, any active connections will be dropped.
-Specifically, if you are SSH’d into VyOS and add local or the interface
-you are connecting through to a zone and do not have rulesets in place
-to allow SSH and established sessions, you will not be able to connect.
+reject. Configure the global state policies and applicable zone rules before
+adding interfaces to zones. If you are configuring VyOS over SSH, the global
+established policy preserves the current tracked session, while an explicit
+zone rule allowing SSH is required for new sessions. Omitting either can
+lock you out.
 
 The following are the rules that were created for this example (may not
 be complete), both in IPv4 and IPv6. If there is no IP specified, then
@@ -244,128 +235,93 @@ create the zone-pair-direction rulesets and set default-log. This
 will allow you to log attempts to access the networks. Without it, you
 will never see the connection attempts.
 
-This is an example of the three base rules.
+Because the global state policies handle established, related, and invalid
+traffic, custom chains need only the rules specific to each zone pair. Here
+is an example of an IPv6 DMZ-WAN ruleset.
 
 ```none
-name wan-lan {
-  default-action drop
-  default-log
-  rule 1 {
-    action accept
-    state {
-      established enable
-      related enable
-    }
-  }
-  rule 2 {
-    action drop
-    log enable
-    state {
-      invalid enable
+firewall {
+  ipv6 {
+    name dmz-wan-6 {
+      default-action drop
+      default-log
+      rule 100 {
+        action accept
+        log
+        protocol ipv6-icmp
+      }
+      rule 200 {
+        action accept
+        destination {
+          port 80,443
+        }
+        log
+        protocol tcp
+      }
+      rule 300 {
+        action accept
+        destination {
+          port 20,21
+        }
+        log
+        protocol tcp
+      }
+      rule 500 {
+        action accept
+        destination {
+          port 25
+        }
+        log
+        protocol tcp
+        source {
+          address 2001:db8:0:BBBB::200
+        }
+      }
+      rule 600 {
+        action accept
+        destination {
+          port 53
+        }
+        log
+        protocol tcp_udp
+        source {
+          address 2001:db8:0:BBBB::200
+        }
+      }
+      rule 800 {
+        action accept
+        destination {
+          port 22
+        }
+        log
+        protocol tcp
+      }
     }
   }
 }
 ```
 
-Here is an example of an IPv6 DMZ-WAN ruleset.
-
-```none
-ipv6-name dmz-wan-6 {
-  default-action drop
-  default-log
-  rule 1 {
-    action accept
-    state {
-      established enable
-      related enable
-    }
-  }
-  rule 2 {
-    action drop
-    log enable
-    state {
-      invalid enable
-    }
-  }
-  rule 100 {
-    action accept
-    log enable
-    protocol ipv6-icmp
-  }
-  rule 200 {
-    action accept
-    destination {
-      port 80,443
-    }
-    log enable
-    protocol tcp
-  }
-  rule 300 {
-    action accept
-    destination {
-      port 20,21
-    }
-    log enable
-    protocol tcp
-  }
-  rule 500 {
-    action accept
-    destination {
-      port 25
-    }
-    log enable
-    protocol tcp
-    source {
-      address 2001:db8:0:BBBB::200
-    }
-  }
-  rule 600 {
-    action accept
-    destination {
-      port 53
-    }
-    log enable
-    protocol tcp_udp
-    source {
-      address 2001:db8:0:BBBB::200
-    }
-  }
-  rule 800 {
-    action accept
-    destination {
-    port 22
-    }
-    log enable
-    protocol tcp
-  }
-}
-```
-
-Once you have all of your rulesets built, then you need to create your
-zone-policy.
+Once you have built all rulesets, configure the zones.
 
 Start by setting the interface and default action for each zone.
 
 ```none
 set firewall zone dmz default-action drop
-set firewall zone dmz interface eth0.30
+set firewall zone dmz member interface eth0.30
+set firewall zone local local-zone
 ```
 
 In this case, we are setting the v6 ruleset that represents traffic
-sourced from the LAN, destined for the DMZ. Because the zone-policy
-firewall syntax is a little awkward, I keep it straight by thinking of
-it backwards.
+sourced from the LAN and destined for the DMZ. Zone rules are configured
+under the destination zone and its source-zone ``from`` node.
 
 ```none
+set firewall zone dmz from lan firewall name lan-dmz
 set firewall zone dmz from lan firewall ipv6-name lan-dmz-6
 ```
 
 DMZ-LAN policy is LAN-DMZ. You can get a rhythm to it when you build out
 a bunch at one time.
-
-In the end, you will end up with something like this config. I took out
-everything but the Firewall, Interfaces, and zone-policy sections. It is
-long enough as is.
 
 ## IPv6 Tunnel
 
@@ -403,15 +359,9 @@ allow protocol 41 in.
 Something like:
 
 ```none
-rule 400 {
-  action accept
-  destination {
-    address 172.16.10.1
-  }
-  log enable
-  protocol 41
-  source {
-    address ip.of.tunnel.broker
-  }
-}
+set firewall ipv4 name wan-local rule 400 action accept
+set firewall ipv4 name wan-local rule 400 destination address 172.16.10.1
+set firewall ipv4 name wan-local rule 400 log
+set firewall ipv4 name wan-local rule 400 protocol 41
+set firewall ipv4 name wan-local rule 400 source address 198.51.100.2
 ```
