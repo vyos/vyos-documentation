@@ -166,6 +166,7 @@ set vpn ipsec site-to-site peer peerB vti traffic-selector remote prefix '192.16
 
 set vpp settings interface eth1
 set vpp settings interface eth2
+set vpp settings ignore-kernel-routes
 ```
 
 Where:
