@@ -89,24 +89,14 @@ verify it with `show firewall group remote-group <name> url` instead.
 Set the update interval for this remote group, from 60 seconds to 4 weeks.
 The interval can be given in seconds (e.g. `300`) or with the time unit
 suffixes `s`, `m`, `h`, `d` or `w` (e.g. `4h`). Multiple suffixes may be
-combined (e.g. `1h30m`). If not set, the group follows the global
-`firewall global-options resolver-interval`.
+combined (e.g. `1h30m`). The converted value must be between 60 and
+2419200 seconds, so a value such as `30s` is rejected. If not set, the
+group follows the global `firewall global-options resolver-interval`.
 ```
 
 ```{cfgcmd} set firewall group remote-group \<name\> description \<text\>
 
 Set a description for a remote group.
-```
-
-```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
-
-Override the global **resolver-interval** for this remote group.
-Accepts a plain number of seconds or a number with a time-unit
-suffix: ``s``, ``m``, ``h``, ``d``, ``w`` (e.g. ``4h``). The value is
-converted to seconds and must be between 60 and 2419200 (4 weeks)
-after conversion, so a suffixed value like ``30s`` is rejected the
-same as the plain number ``30``. If not set, the remote group falls
-back to **firewall global-options resolver-interval**.
 ```
 
 The remote list format is flexible. VyOS attempts to parse the first word of
@@ -123,6 +113,30 @@ acceptable formats that VyOS parses correctly:
 2001:db8:cafe::/48
 2001:db8:cafe::1-2001:db8:cafe::ffff
 ```
+
+:::{note}
+Remote groups can be used as IPv4 or IPv6 source and destination matchers
+in filter rules and custom chains. They are not available in raw chains or
+bridge rules.
+:::
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> [source | destination] group remote-group \<name\>
+```
+
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group remote-group \<name\>
+```
+
+```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> [source | destination] group remote-group \<name\>
+```
+
+```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> [source | destination] group remote-group \<name\>
+```
+
+:::{important}
+Prefix the group name with ``!`` to invert the match. A remote group cannot
+be combined on the same source or destination with an address, FQDN, GeoIP
+match, address group, network group, or domain group.
+:::
 
 ### Network Groups
 
@@ -170,14 +184,17 @@ An **interface group** represents a collection of interfaces.
 
 ```{cfgcmd} set firewall group interface-group \<name\> interface \<text\>
 
-Define an interface group.
-Wildcard ``*`` is supported. For example: ``eth3*``.
-Prepend the character ``!`` to invert the criteria. For example: ``!eth2``.
+Add an existing interface to an interface group. Group members and group
+references must not contain wildcards. When referencing the group in a
+firewall rule, prefix the group name with ``!`` to invert the entire group
+match. Wildcards are supported only by a rule's direct interface-name
+matcher.
 ```
 
 ```none
 set firewall group interface-group LAN interface bond1001
-set firewall group interface-group LAN interface eth3*
+set firewall group interface-group LAN interface eth30
+set firewall group interface-group LAN interface eth31
 ```
 
 ```{cfgcmd} set firewall group interface-group \<name\> description \<text\>
@@ -345,13 +362,11 @@ changes.
 Timeout can be defined using seconds, minutes, hours or days:
 
 ```none
-set firewall ipv6 name FOO rule 10 add-address-to-group source-address timeout
-Possible completions:
-<number>s            Timeout value in seconds
-<number>m            Timeout value in minutes
-<number>h            Timeout value in hours
-<number>d            Timeout value in days
+set firewall ipv6 name FOO rule 10 add-address-to-group source-address timeout 2m
 ```
+
+Use the suffix ``s`` for seconds, ``m`` for minutes, ``h`` for hours, or
+``d`` for days.
 
 #### Using Dynamic Firewall Groups
 
@@ -380,7 +395,7 @@ groups:
       set firewall group network-group TRUSTEDv4 network 203.0.113.128/25
       set firewall group ipv6-network-group TRUSTEDv6 network 2001:db8::/64
       set firewall group interface-group LAN interface eth2.2001
-      set firewall group interface-group LAN interface bon0
+      set firewall group interface-group LAN interface bond0
       set firewall group port-group PORT-SERVERS port http
       set firewall group port-group PORT-SERVERS port 443
       set firewall group port-group PORT-SERVERS port 5000-5010
@@ -532,6 +547,25 @@ type, references (where the group is used), members, timeout, and
 expiration (the last two only apply to dynamic firewall groups).
 ```
 
+```{opcmd} show firewall group detail
+```
+
+```{opcmd} show firewall group \<name\> detail
+
+Display the list view for all groups or for the selected group.
+
+:::{code-block} none
+vyos@vyos:~$ show firewall group DOC-OUTPUT detail
+Firewall Groups
+
+ Name        | DOC-OUTPUT
+ Description | Documentation example
+ Type        | address_group
+ References  | N/D
+ Members     | 192.0.2.1
+:::
+```
+
 Here is an example of such command:
 
 ```none
@@ -546,7 +580,7 @@ ALLOWED       address_group(dynamic)  ipv4-input-filter-30    192.168.77.39     
 PN_01         address_group(dynamic)  ipv4-input-filter-10    192.168.0.245           120        112
                                                               192.168.77.39           120         85
 PN_02         address_group(dynamic)  ipv4-input-filter-20    192.168.77.39           180        151
-LAN           interface_group         ipv4-output-filter-10   bon0
+LAN           interface_group         ipv4-output-filter-10   bond0
                                       nat-destination-101     eth2.2001
 TRUSTEDv6     ipv6_network_group      ipv6-input-filter-10    2001:db8::/64
 TRUSTEDv4     network_group           ipv4-forward-filter-20  192.0.2.0/30

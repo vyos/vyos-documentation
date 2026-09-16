@@ -147,6 +147,7 @@ The following is the overall structure of the VyOS firewall CLI:
          + ...
     * group
          - address-group
+         - remote-group
          - ipv6-address-group
          - network-group
          - ipv6-network-group
@@ -154,6 +155,7 @@ The following is the overall structure of the VyOS firewall CLI:
          - mac-group
          - port-group
          - domain-group
+         - dynamic-group
     * ipv4
          - forward
             + filter
@@ -176,7 +178,7 @@ The following is the overall structure of the VyOS firewall CLI:
             + raw
          - prerouting
             + raw
-         - ipv6-name
+         - name
             + custom_name
     * zone
          - custom_zone_name
@@ -185,6 +187,12 @@ The following is the overall structure of the VyOS firewall CLI:
 
 Here is a list of VyOS firewall CLI subcommands and their
 corresponding pages in the documentation:
+
+The IP families provide ``input``, ``forward``, and ``output`` filter
+hooks. The ``prerouting raw`` and ``output raw`` hooks run before connection
+tracking and support a smaller rule surface, including the ``notrack``
+action. Bridge firewall hooks operate at layer 2. Custom chains are created
+under ``firewall <family> name`` for all three families.
 
 ```{cfgcmd} set firewall bridge ...
 

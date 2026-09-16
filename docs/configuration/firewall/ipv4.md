@@ -88,8 +88,47 @@ do not define a default action, the system sets the default-action to
 
 You can create custom firewall chains using the following commands:
 `set firewall ipv4 name <name> ...`. To use a custom chain, you must define
-a rule with the **action jump** and the appropriate **target** in a base
-chain.
+a rule with the **action jump** and the appropriate **jump-target** in a
+base chain.
+
+### Raw chains
+
+The ``prerouting raw`` and ``output raw`` chains run before connection
+tracking. Use them for early matching, packet marking, or to exempt traffic
+from connection tracking. Raw rules support most stateless IPv4 matchers,
+but not connection state, connection status, helpers, SYN proxy, or flow
+offload.
+
+```{cfgcmd} set firewall ipv4 [prerouting | output] raw default-action [accept | drop]
+```
+
+```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
+```
+
+```{cfgcmd} set firewall ipv4 output raw rule \<1-999999\> action [accept | continue | drop | notrack | queue | reject | return]
+
+:::{warning}
+The ``notrack`` action is available only in raw chains. Rules that use it
+must match both directions of a connection when neither direction should
+be tracked.
+:::
+```
+
+```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> jump-target \<name\>
+
+Specify an existing IPv4 custom chain when the prerouting raw action is
+``jump``.
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter disable-conntrack
+
+:::{warning}
+Disable connection tracking for an entire IP filter chain. Do not use state,
+connection-status, helper, SYN proxy, or flow-offload features on traffic
+whose tracking is disabled. A configured global state policy produces a
+warning when one of these chains disables connection tracking.
+:::
+```
 
 ## Firewall - IPv4 Rules
 
@@ -113,21 +152,33 @@ The action can be:
 - `return`: Return from the current chain and continue at the next rule
   of the last chain.
 - `queue`: Enqueue packet to userspace.
+- `offload`: Add the flow to a configured flowtable. This action is
+  available in forward rules and custom chains and requires
+  ``offload-target``.
 - `synproxy`: Synproxy the packet.
 
-```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return | synproxy]
+```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> action [accept | continue | drop | jump | offload | queue | reject | return | synproxy]
 ```
 
 ```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return | synproxy]
 ```
 
-```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return]
+```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return | synproxy]
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | reject | return]
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | offload | queue | reject | return | synproxy]
 
 This required setting defines the action of the current rule. If you set
 the action to jump, you must also specify a jump-target.
+```
+
+```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> offload-target \<flowtable\>
+```
+
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> offload-target \<flowtable\>
+
+Specify an existing flowtable when the action is ``offload``. See
+{doc}`Flowtables </configuration/firewall/flowtables>`.
 ```
 
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> jump-target \<text\>
@@ -204,7 +255,7 @@ match any rule in its chain. For base chains, possible options for
 ```{cfgcmd} set firewall ipv4 output filter default-action [accept | drop]
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> default-action [accept | drop | jump | queue | reject | return]
+```{cfgcmd} set firewall ipv4 name \<name\> default-action [accept | continue | drop | jump | reject | return]
 
 This command sets the default action of the rule-set if a packet does not
 match the criteria of any rule. If you set the default-action to ``jump``,
@@ -364,6 +415,20 @@ to disable the rule rather than removing it.
 Command for disabling a rule but keeping it in the configuration.
 ```
 
+### Rule Hit Tracking
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> last-used
+```
+
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> last-used
+```
+
+```{cfgcmd} set firewall ipv4 [prerouting | output] raw rule \<1-999999\> last-used
+
+Add a marker to the rule that records when it was last hit. The timestamp is
+shown as ``Last Used`` in detailed firewall output.
+```
+
 ### Matching criteria
 
 There are a lot of matching criteria against which the packet can be tested.
@@ -382,16 +447,16 @@ There are a lot of matching criteria against which the packet can be tested.
 Match based on nat connection status.
 ```
 
-```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> connection-mark \<1-2147483647\>
+```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> connection-mark \<0-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> connection-mark \<1-2147483647\>
+```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> connection-mark \<0-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> connection-mark \<1-2147483647\>
+```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> connection-mark \<0-2147483647\>
 ```
 
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-mark \<1-2147483647\>
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-mark \<0-2147483647\>
 
 Match based on connection mark.
 ```
@@ -416,10 +481,20 @@ ftp                  Related traffic from FTP helper
 h323                 Related traffic from H.323 helper
 pptp                 Related traffic from PPTP helper
 nfs                  Related traffic from NFS helper
+rtsp                 Related traffic from RTSP helper
 sip                  Related traffic from SIP helper
 tftp                 Related traffic from TFTP helper
 sqlnet               Related traffic from SQLNet helper
 :::
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> fib lookup [source-address | destination-address]
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> fib match route-type [local | unicast | broadcast | multicast | anycast | blackhole | unreachable | prohibit]
+
+Match the result of a Forwarding Information Base lookup. Configure one
+lookup key and a route type; prefix the route type with ``!`` to invert it.
 ```
 
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source address [address | addressrange | CIDR]
@@ -618,6 +693,12 @@ set firewall ipv4 input filter rule 101 source mac-address !00:53:00:aa:12:34
 :::
 ```
 
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> [source | destination] mac-address-mask \<mac-address\>
+
+Apply a mask to the MAC address matcher. A ``mac-address`` must also be
+configured on the same source or destination.
+```
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source port [1-65535 | portname | start-end]
 ```
 
@@ -649,7 +730,12 @@ set firewall ipv4 forward filter rule 11 source port '!http'
 set firewall ipv4 forward filter rule 12 source port 'https'
 :::
 Multiple source ports can be specified as a comma-separated list.
-The whole list can also be "negated" using ``!``. For example:
+The whole list can also be negated using ``!``. For example:
+
+:::{code-block} none
+set firewall ipv4 forward filter rule 20 destination port '80,443,8080'
+set firewall ipv4 forward filter rule 30 destination port '!22,23'
+:::
 ```
 
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source group address-group \<name | !name\>
@@ -785,6 +871,23 @@ criteria to match is also supported.
 
 Use a specific domain-group. Prepending the character ``!`` to invert the
 criteria to match is also supported.
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> [source | destination] group remote-group \<name\>
+```
+
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group remote-group \<name\>
+
+Match the source or destination address against a remote group. Prefix the
+group name with ``!`` to invert the match.
+
+:::{code-block} none
+set firewall ipv4 input filter rule 100 source group remote-group 'threat-feed'
+set firewall ipv4 output filter rule 100 destination group remote-group '!trusted-hosts'
+:::
+
+See {doc}`Firewall groups </configuration/firewall/groups>` for information
+about defining and updating remote groups.
 ```
 
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> source group mac-group \<name | !name\>
@@ -981,7 +1084,7 @@ Match based on the maximum number of packets to allow in excess of rate.
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> limit rate \<text\>
 
 Specify the maximum average rate as **integer/unit**. For example:
-**5/minutes**
+**5/minute**
 ```
 
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> packet-length \<text\>
@@ -1046,6 +1149,35 @@ set firewall ipv4 forward filter rule 11 protocol !tcp_udp
 :::
 ```
 
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> gre version [gre | pptp]
+
+Match the GRE header version. ``gre`` matches standard GRE version 0, while
+``pptp`` matches Enhanced GRE version 1 used by PPTP. GRE field matchers
+require the rule protocol to be ``gre``.
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> gre inner-proto [ip | ip6 | arp | 802.1q | 802.1ad | gretap | \<0-65535 | 0x0-0xffff\>]
+
+Match the GRE Protocol Type field, which identifies the encapsulated
+protocol. Specify a listed protocol name or an EtherType as a decimal or
+hexadecimal value.
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> gre key \<0-4294967295\>
+
+Match the 32-bit GRE Key field. GRE tunnel keys are not available with
+``pptp``.
+```
+
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> gre flags [checksum | key | sequence]
+
+Match whether the GRE checksum, key, or sequence-number field is present.
+Add ``unset`` after a flag to match its absence. Matching a GRE key value
+also requires either ``gre flags checksum`` or ``gre flags checksum unset``
+because the location of the key depends on whether the checksum field is
+present.
+```
+
 ```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> recent count \<1-255\>
 ```
 
@@ -1072,25 +1204,20 @@ set firewall ipv4 forward filter rule 11 protocol !tcp_udp
 Match based on recently seen sources.
 ```
 
-```{cfgcmd} set firewall ipv4 forward filter rule \<1-999999\> tcp flags [not] \<text\>
+```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> tcp flags [not] \<ack | cwr | ecn | fin | psh | rst | syn | urg\>
 ```
 
-```{cfgcmd} set firewall ipv4 input filter rule \<1-999999\> tcp flags [not] \<text\>
-```
-
-```{cfgcmd} set firewall ipv4 output filter rule \<1-999999\> tcp flags [not] \<text\>
-```
-
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp flags [not] \<text\>
+```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp flags [not] \<ack | cwr | ecn | fin | psh | rst | syn | urg\>
 
 Specify TCP flags. Allowed values are ``ack``, ``cwr``, ``ecn``, ``fin``,
-``psh``, ``rst``, ``syn``, and ``urg``. Specify multiple values, and use
-``not`` for inverted selection, as shown in the example.
+``psh``, ``rst``, ``syn``, and ``urg``. To match multiple flags, issue one
+command for each flag. Use ``not`` for inverted selection, as shown in the
+example.
 
 :::{code-block} none
-set firewall ipv4 input filter rule 10 tcp flags 'ack'
-set firewall ipv4 input filter rule 12 tcp flags 'syn'
-set firewall ipv4 input filter rule 13 tcp flags not 'fin'
+set firewall ipv4 input filter rule 10 tcp flags ack
+set firewall ipv4 input filter rule 10 tcp flags syn
+set firewall ipv4 input filter rule 10 tcp flags not fin
 :::
 ```
 
@@ -1419,6 +1546,22 @@ IPV6-WAN_IN-20
 ```{opcmd} show firewall ipv4 [forward | input | output] filter
 ```
 
+```{opcmd} show firewall ipv4 prerouting raw
+
+:::{code-block} none
+vyos@vyos:~$ show firewall ipv4 prerouting raw
+Ruleset Information
+
+---------------------------------
+ipv4 Firewall "prerouting raw"
+
+Rule     Action    Protocol      Packets    Bytes  Conditions
+-------  --------  ----------  ---------  -------  ----------------------------------------------
+10       accept    icmp               19     1140  meta l4proto icmp  accept
+default  accept    all                35     3567  accept comment "PRE-raw default-action accept"
+:::
+```
+
 ```{opcmd} show firewall ipv4 name \<name\>
 
 This command will give an overview of a single rule-set.
@@ -1443,24 +1586,85 @@ default  accept    all
 This command gives an overview of a rule in a single rule-set, plus
 information for default action.
 ```
-```none
-vyos@vyos:~$show firewall ipv4 output filter rule 20
+
+Append ``detail`` to a ruleset, custom-chain, or rule command to
+display its list view. For example:
+
+```{opcmd} show firewall ipv4 input filter detail
+
+:::{code-block} none
+vyos@vyos:~$ show firewall ipv4 input filter detail
+Ruleset Information
+
+---------------------------------
+ipv4 Firewall "input filter"
+
+ Rule        | 10
+ Description | Documentation example
+ Action      | accept
+ Protocol    | icmp
+ Packets     | 21
+ Bytes       | 1260
+ Last Used   | N/A
+ Conditions  | meta l4proto icmp  accept
+
+ Rule        | default
+ Description |
+ Action      | accept
+ Protocol    | all
+ Packets     | 39
+ Bytes       | 3823
+ Last Used   | N/A
+ Conditions  | accept comment "INP-filter default-action accept"
+:::
+```
+
+```{opcmd} show firewall ipv4 name \<name\> rule \<1-999999\> detail
+
+:::{code-block} none
+vyos@vyos:~$ show firewall ipv4 name DOC-V4 rule 10 detail
 Rule Information
 
 ---------------------------------
-ipv4 Firewall "output filter"
+ipv4 Firewall "name DOC-V4"
 
-Rule     Action    Protocol      Packets    Bytes  Conditions
--------  --------  ----------  ---------  -------  ----------------------------------------
-20       accept    icmp                2      168  meta l4proto icmp oifname "eth0"  accept
-default  accept    all               286    47614
-
-vyos@vyos:~$
+ Rule        | 10
+ Description | Documentation example
+ Action      | return
+ Protocol    | all
+ Packets     | 0
+ Bytes       | 0
+ Last Used   | N/A
+ Conditions  |
+:::
 ```
 
 ```{opcmd} show firewall statistics
 
 This will show you statistics of all rule-sets since the last boot.
+```
+
+```{opcmd} show firewall statistics detail
+
+Display firewall statistics in list view.
+
+:::{code-block} none
+vyos@vyos:~$ show firewall statistics detail
+Rulesets Statistics
+
+---------------------------------
+ipv4 Firewall "input filter"
+
+ Rule               | 10
+ Description        | Documentation example
+ Packets            | 32
+ Bytes              | 1920
+ Action             | accept
+ Source             | any
+ Destination        | any
+ Inbound-Interface  | any
+ Outbound-interface | any
+:::
 ```
 
 ### Show Firewall log
