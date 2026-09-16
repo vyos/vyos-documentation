@@ -803,7 +803,6 @@ interfaces {
         }
         channel 11
         description "802.11ax 2.4GHz"
-        hw-id [...]
         mode ax
         physical-device phy0
         security {
@@ -884,7 +883,6 @@ interfaces {
         channel 5
         description "802.11ax 6GHz"
         enable-bf-protection
-        hw-id [...]
         mgmt-frame-protection required
         mode ax
         physical-device phy0
