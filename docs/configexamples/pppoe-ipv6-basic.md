@@ -88,16 +88,16 @@ To have basic protection while keeping IPv6 network functional, we need to:
 ```none
 set firewall ipv6 name WAN_IN default-action 'drop'
 set firewall ipv6 name WAN_IN rule 10 action 'accept'
-set firewall ipv6 name WAN_IN rule 10 state established 'enable'
-set firewall ipv6 name WAN_IN rule 10 state related 'enable'
+set firewall ipv6 name WAN_IN rule 10 state established
+set firewall ipv6 name WAN_IN rule 10 state related
 set firewall ipv6 name WAN_IN rule 20 action 'accept'
-set firewall ipv6 name WAN_IN rule 20 protocol 'icmpv6'
+set firewall ipv6 name WAN_IN rule 20 protocol 'ipv6-icmp'
 set firewall ipv6 name WAN_LOCAL default-action 'drop'
 set firewall ipv6 name WAN_LOCAL rule 10 action 'accept'
-set firewall ipv6 name WAN_LOCAL rule 10 state established 'enable'
-set firewall ipv6 name WAN_LOCAL rule 10 state related 'enable'
+set firewall ipv6 name WAN_LOCAL rule 10 state established
+set firewall ipv6 name WAN_LOCAL rule 10 state related
 set firewall ipv6 name WAN_LOCAL rule 20 action 'accept'
-set firewall ipv6 name WAN_LOCAL rule 20 protocol 'icmpv6'
+set firewall ipv6 name WAN_LOCAL rule 20 protocol 'ipv6-icmp'
 set firewall ipv6 name WAN_LOCAL rule 30 action 'accept'
 set firewall ipv6 name WAN_LOCAL rule 30 destination port '546'
 set firewall ipv6 name WAN_LOCAL rule 30 protocol 'udp'
