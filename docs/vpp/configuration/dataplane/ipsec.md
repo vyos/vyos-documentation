@@ -34,41 +34,9 @@ IPsec tunnels.
 Enabling this option allows VPP to handle IPsec traffic more efficiently by
 offloading processing from the kernel.
 
-### netlink
-
-VPP uses netlink to receive IPsec event messages from the kernel. Proper
-settings of the following parameters are crucial for ensuring that VPP can
-process all such messages:
-
-```{cfgcmd} set vpp settings lcp netlink batch-delay-ms \<milliseconds\>
-```
-
-This parameter specifies the delay in milliseconds between processing
-batch netlink messages.
-
-```{cfgcmd} set vpp settings lcp netlink batch-size \<number\>
-```
-
-This parameter specifies the maximum number of netlink messages to
-process in a single batch.
-
-```{cfgcmd} set vpp settings lcp netlink rx-buffer-size \<number\>
-```
-
-This parameter specifies the size of the receive buffer for netlink
-socket. If you expect to offload many IPsec tunnels or get frequent and
-intensive rekeying, you may need to increase this value.
-
-:::{note}
-IPsec uses the same netlink parameters as LCP, so tuning them
-affects both LCP and IPsec processing.
-:::
-
 ## Potential Issues and Troubleshooting
 
 Improper IPsec configuration can lead to various issues, including:
 
 - Failure to offload IPsec tunnels to VPP
-- Lost IPsec event messages due to insufficient netlink buffer size or
-  batch settings
 - IPsec states or SAs are not synchronized between kernel and VPP

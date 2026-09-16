@@ -166,8 +166,7 @@ set vpn ipsec site-to-site peer peerB vti traffic-selector remote prefix '192.16
 
 set vpp settings interface eth1
 set vpp settings interface eth2
-set vpp settings ipsec netlink rx-buffer-size '32000'
-set vpp settings lcp ignore-kernel-routes
+set vpp settings ignore-kernel-routes
 ```
 
 Where:
@@ -212,7 +211,7 @@ Improper IPsec configuration can lead to various issues, including:
   interfaces to the IPsec peer, they will conflict with the policy routes
   created for the IPsec tunnel in VPP. Consider using policy-based IPSec
   configuration to avoid this or
-  [disable the kernel routes synchronization](lcp.md#vpp-lcp-configuration).
+  [disable the kernel routes synchronization].
 
 - **Unsupported algorithms**
 
@@ -234,3 +233,7 @@ Improper IPsec configuration can lead to various issues, including:
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<peer-name\> force-udp-encapsulation
 ```
+
+% stop_vyoslinter
+[disable the kernel routes synchronization]: dataplane/lcp.md#vpp_config_dataplane_lcp_ignore_kernel_routes
+% start_vyoslinter
