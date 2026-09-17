@@ -72,7 +72,8 @@ set interfaces vpp loopback vpplo1 address 2001:db8::10/64
 
 ```{cfgcmd} set interfaces vpp loopback \<vpploN\> mac \<xx:xx:xx:xx:xx:xx\>
 
-Configure a custom MAC address on the interface.
+Configure a custom MAC address for the VPP loopback interface.
+If unset, a host-unique MAC is generated automatically.
 ```
 
 ## MTU Configuration
