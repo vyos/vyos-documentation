@@ -133,7 +133,6 @@ Repeat the command to enable SNMP for more than one process.
 Example:
 
 ```none
-set service snmp community routers
 set system frr snmp bgpd
 set system frr snmp ospfd
 ```
