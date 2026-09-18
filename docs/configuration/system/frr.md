@@ -30,7 +30,8 @@ reboot the router (preferred) or restart FRR.
 
 BMP ([RFC 7854](https://datatracker.ietf.org/doc/html/rfc7854)) lets the
 router send the BGP routes it learns and periodic BGP statistics to an
-external monitoring station.
+external monitoring station. This command only enables BMP. Configure the
+monitoring station separately under `set protocols bgp bmp`.
 ```
 
 Example:
