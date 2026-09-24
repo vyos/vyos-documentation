@@ -2828,21 +2828,23 @@ IPv4 and IPv6 BGP sessions using route-maps that reference prefix-lists.
 ```none
 set policy prefix-list AS64513-IN rule 10 action 'permit'
 set policy prefix-list AS64513-IN rule 10 prefix '203.0.113.0/24'
-set policy prefix-list AS64513-OUT rule 10 action 'deny'
+set policy prefix-list AS64513-OUT rule 10 action 'permit'
 set policy prefix-list AS64513-OUT rule 10 prefix '198.51.100.0/24'
 set policy prefix-list6 AS64513-IN rule 10 action 'permit'
 set policy prefix-list6 AS64513-IN rule 10 prefix '2001:db8:2::/48'
-set policy prefix-list6 AS64513-OUT rule 10 action 'deny'
+set policy prefix-list6 AS64513-OUT rule 10 action 'permit'
 set policy prefix-list6 AS64513-OUT rule 10 prefix '2001:db8:1::/48'
 
 set policy route-map AS64513-IN rule 10 action 'permit'
 set policy route-map AS64513-IN rule 10 match ip address prefix-list 'AS64513-IN'
-set policy route-map AS64513-IN rule 10 match ipv6 address prefix-list 'AS64513-IN'
-set policy route-map AS64513-IN rule 20 action 'deny'
-set policy route-map AS64513-OUT rule 10 action 'deny'
+set policy route-map AS64513-IN rule 20 action 'permit'
+set policy route-map AS64513-IN rule 20 match ipv6 address prefix-list 'AS64513-IN'
+set policy route-map AS64513-IN rule 30 action 'deny'
+set policy route-map AS64513-OUT rule 10 action 'permit'
 set policy route-map AS64513-OUT rule 10 match ip address prefix-list 'AS64513-OUT'
-set policy route-map AS64513-OUT rule 10 match ipv6 address prefix-list 'AS64513-OUT'
 set policy route-map AS64513-OUT rule 20 action 'permit'
+set policy route-map AS64513-OUT rule 20 match ipv6 address prefix-list 'AS64513-OUT'
+set policy route-map AS64513-OUT rule 30 action 'deny'
 
 set protocols bgp system-as 64512
 set protocols bgp neighbor 2001:db8::2 address-family ipv4-unicast route-map export 'AS64513-OUT'
@@ -2856,21 +2858,23 @@ set protocols bgp neighbor 2001:db8::2 address-family ipv6-unicast route-map imp
 ```none
 set policy prefix-list AS64512-IN rule 10 action 'permit'
 set policy prefix-list AS64512-IN rule 10 prefix '198.51.100.0/24'
-set policy prefix-list AS64512-OUT rule 10 action 'deny'
+set policy prefix-list AS64512-OUT rule 10 action 'permit'
 set policy prefix-list AS64512-OUT rule 10 prefix '203.0.113.0/24'
 set policy prefix-list6 AS64512-IN rule 10 action 'permit'
 set policy prefix-list6 AS64512-IN rule 10 prefix '2001:db8:1::/48'
-set policy prefix-list6 AS64512-OUT rule 10 action 'deny'
+set policy prefix-list6 AS64512-OUT rule 10 action 'permit'
 set policy prefix-list6 AS64512-OUT rule 10 prefix '2001:db8:2::/48'
 
 set policy route-map AS64512-IN rule 10 action 'permit'
 set policy route-map AS64512-IN rule 10 match ip address prefix-list 'AS64512-IN'
-set policy route-map AS64512-IN rule 10 match ipv6 address prefix-list 'AS64512-IN'
-set policy route-map AS64512-IN rule 20 action 'deny'
-set policy route-map AS64512-OUT rule 10 action 'deny'
+set policy route-map AS64512-IN rule 20 action 'permit'
+set policy route-map AS64512-IN rule 20 match ipv6 address prefix-list 'AS64512-IN'
+set policy route-map AS64512-IN rule 30 action 'deny'
+set policy route-map AS64512-OUT rule 10 action 'permit'
 set policy route-map AS64512-OUT rule 10 match ip address prefix-list 'AS64512-OUT'
-set policy route-map AS64512-OUT rule 10 match ipv6 address prefix-list 'AS64512-OUT'
 set policy route-map AS64512-OUT rule 20 action 'permit'
+set policy route-map AS64512-OUT rule 20 match ipv6 address prefix-list 'AS64512-OUT'
+set policy route-map AS64512-OUT rule 30 action 'deny'
 
 set protocols bgp system-as 64513
 set protocols bgp neighbor 2001:db8::1 address-family ipv4-unicast route-map export 'AS64512-OUT'
@@ -2879,5 +2883,5 @@ set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast route-map exp
 set protocols bgp neighbor 2001:db8::1 address-family ipv6-unicast route-map import 'AS64512-IN'
 ```
 
-This pattern can be extended in the `rule 20` deny clauses to also
+This pattern can be extended in the `rule 30` deny clauses to also
 filter link-local and multicast prefixes.
