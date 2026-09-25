@@ -156,11 +156,16 @@ verification section in the LTS installation documentation for the
 correct key and example.
 ```
 
-When you upgrade with `add system image`, VyOS verifies the image's
-minisign signature automatically before installing it. The running
-system trusts several signing keys at once, including both the LTS and
-rolling keys, so `add system image` verifies LTS and rolling images
-alike. You do not need to choose a key yourself.
+When you upgrade using `add system image`, VyOS verifies the downloaded
+image's minisign signature before installation, using the **signing keys**
+installed on the system. The **release signing key**, which signs LTS images,
+is present on every system, but the **rolling signing key**, which signs
+rolling images, was added only in VyOS 1.4. A pre-1.4 system therefore
+cannot verify a rolling image.
+
+To add the **rolling signing key** to such systems, upgrade them to LTS
+version 1.4 or later, and then proceed with installing a recent rolling
+image.
 
 (live_installation)=
 
