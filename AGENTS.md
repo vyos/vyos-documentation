@@ -229,15 +229,33 @@ serves and crawlers skip the redirect hop.
 
 - **vyoslinter** (`scripts/doc-linter.py` in this repo, invoked via
   `.github/workflows/lint-doc.yml`) — line length and IP rules, on
+<<<<<<< HEAD
   changed files only.
 - **Sphinx build** — runs on Read the Docs for every PR; preview URL appears as a check.
+=======
+  changed files under `docs/` only. Repo-root meta files
+  (README.md, AGENTS.md, `.github/copilot-instructions.md`) are out
+  of scope.
+- **AI Validation** (`.github/workflows/ai-validation.yml`) —
+  cross-checks the changed `docs/**/*.md` against the VyOS CLI
+  definitions in the `vyos-1x` source tree for the corresponding
+  branch, and posts findings as inline review comments plus a summary
+  comment on the PR. Only runs when a PR touches Markdown under
+  `docs/`. Skips — with a notice — when the required repository
+  secrets aren't configured, and on Mergify-authored backport PRs.
+- **Sphinx build** — runs on Read the Docs for every PR; preview URL
+  appears as a check.
+>>>>>>> c9fb0c0b (docs: update AGENTS.md bot-review section to current CodeRabbit reality (#2188))
 - **CLA check** — contributors must sign the VyOS CLA before merge.
 - **Conflict check** — fails the PR if it doesn't merge cleanly into base.
 
 ### Bot review workflow
 
-Two bots run at separate stages — do not mix them:
+CodeRabbit is the automated reviewer on this repo. It runs on its own —
+in the normal case there is nothing to invoke by hand. Iterate in draft
+while the work is in flux, then flip to ready when you want review.
 
+<<<<<<< HEAD
 | Bot | When to trigger | How |
 |-----|-----------------|-----|
 | **Copilot** | **Draft PRs only** | Comment `@copilot review` |
@@ -251,3 +269,20 @@ Workflow:
 5. Address CodeRabbit threads the same way.
 
 Never trigger `@copilot review` on a ready-for-review PR.
+=======
+- **Drafts are skipped.** CodeRabbit ignores draft PRs entirely.
+- **Review fires automatically** when a PR is flipped to ready
+  (`gh pr ready <num>`), and again on every subsequent push.
+- **The walkthrough comment is edited in place.** CodeRabbit usually
+  updates its existing comment rather than posting a new one — for
+  example to "no actionable comments". No new comment does not mean no
+  new review; re-read the existing one.
+- **Rate limits silently drop a review.** If CodeRabbit is rate-limited
+  when an event fires, that review is skipped with no error. Comment
+  `@coderabbitai review` once the limit window resets. This is the only
+  case where triggering it by hand is appropriate.
+
+Copilot is not part of this workflow — do not invoke `@copilot review`.
+If Copilot threads do appear because someone invoked it manually,
+address them like any other reviewer feedback.
+>>>>>>> c9fb0c0b (docs: update AGENTS.md bot-review section to current CodeRabbit reality (#2188))
