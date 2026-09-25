@@ -121,39 +121,45 @@ and Minisign.
 
 #### Minisign verification
 
-VyOS uses [Minisign](https://github.com/jedisct1/minisign) for release
-signing. Minisign is a tool for signing files and verifying signatures.
+% stop_vyoslinter
+VyOS signs its release images with [minisign](https://github.com/jedisct1/minisign),
+% start_vyoslinter
+a portable Ed25519-based signing tool available for Linux, macOS, and
+Windows. Minisign uses the same signature format as OpenBSD's signify,
+introduced in 2014.
 
-OpenBSD introduced signify in 2015. Minisign is an alternative
-implementation of the same protocol, available for Windows, macOS, and
-most GNU/Linux distributions. Minisign is portable, lightweight, and
-uses the Ed25519 public-key signature system.
-
-{vytask}`T2108` switched the validation system to prefer Minisign over GPG keys.
-
-To verify a VyOS image starting with VyOS `1.3.0-rc6`, run:
+All **VyOS {abbr}`LTS (Long-Term Support)` images** are signed with the
+following key:
 
 ```none
-$ minisign -V -P RWSIhkR/dkM2DSaBRniv/bbbAf8hmDqdbOEmgXkf1RxRoxzodgKcDyGq -m vyos-1.5-rolling-202409250007-generic-amd64.iso vyos-1.5-rolling-202409250007-generic-amd64.iso.minisig
-
-Signature and comment signature verified
-Trusted comment: timestamp:1727223408 file:vyos-1.5-rolling-202409250007-generic-amd64.iso    hashed
+RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP
 ```
 
-During an image upgrade, VyOS runs the following command:
+To verify a downloaded LTS image, place the image and its `.minisig`
+signature file in the same directory, and run:
 
 ```none
-$ minisign -V -p /usr/share/vyos/keys/vyos-release.minisign.pub -m vyos-1.3.0-rc6-amd64.iso vyos-1.3.0-rc6-amd64.iso.minisig
+$ minisign -V -P RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP -m vyos-1.x.x-amd64.iso
 Signature and comment signature verified
-Trusted comment: timestamp:1629997936   file:vyos-1.3.0-rc6-amd64.iso
+Trusted comment: timestamp:<unix_ts>    file:vyos-1.x.x-amd64.iso    hashed
 ```
 
-:::{note}
-Starting with version `1.4.3`, VyOS uses Minisign exclusively.
-If you see an unexpected verification error, update your system to version
-`1.4.2` first. Support for GnuPG signatures has been
-removed ({vytask}`T7301`).
-:::
+```{note}
+Rolling (nightly) release images are signed with a **different key**. If
+you are verifying a rolling image, see the Minisign verification section
+in the rolling installation documentation for the correct key and example.
+```
+
+When you upgrade using `add system image`, VyOS verifies the downloaded
+image's minisign signature before installation, using the **signing keys**
+installed on the system. The **release signing key**, which signs LTS
+images, is present on every VyOS system, so LTS images can be verified on
+any release.
+
+Releases up to VyOS 1.4.2 were signed with both minisign (preferred) and
+GPG. Beginning with 1.4.3, only minisign signatures are used. This change
+should not affect most upgrades. If you encounter a verification error
+when upgrading directly to 1.4.3 or later, upgrade to 1.4.2 first.
 
 (live_installation)=
 
