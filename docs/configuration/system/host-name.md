@@ -1,70 +1,110 @@
+---
+myst:
+  html_meta:
+    description: |
+      Host information sets the router's system name and controls how it
+      resolves host names to IP addresses. It covers the host name, the
+      domain name, and static host mappings kept in the local hosts file.
+    keywords: host information, host name, domain name, static host mapping
+---
+
 (host-information)=
 
-# Host Information
+# Host information
 
-This section describes the system's host information and how to configure them,
-it covers the following topics:
+Host information sets the router's system name and controls how it
+resolves host names to IP addresses.
 
-- Host name
-- Domain
-- IP address
-- Aliases
+## Configuration
 
-## Hostname
+### Host name
 
-A hostname is the label (name) assigned to a network device (a host) on a
-network and is used to distinguish one device from another on specific networks
-or over the internet. On the other hand this will be the name which appears on
-the command line prompt.
+A host name is the label that distinguishes the router from other
+devices on the network. It appears in the router's command-line prompt
+and log messages.
 
 ```{cfgcmd} set system host-name \<hostname\>
 
-   The hostname can be up to 63 characters. A hostname
-   must start and end with a letter or digit, and have as interior characters
-   only letters, digits, or a hyphen.
+**Configure the router's host name.**
 
-   The default hostname used is `vyos`.
+The host name must start and end with a letter or digit, may contain
+letters, digits, hyphens, and periods in between, and must not exceed 63
+characters. Otherwise, the commit fails.
+
+By default, the router uses `vyos`.
 ```
 
-## Domain Name
+Example:
 
+```none
+set system host-name router-east
+```
 
-A domain name is the label (name) assigned to a computer network and is thus
-unique. VyOS appends the domain name as a suffix to any unqualified name. For
-example, if you set the domain name `example.com`, and you would ping the
-unqualified name of `crux`, then VyOS qualifies the name to `crux.example.com`.
+### Domain name
+
+A domain name identifies the network the router belongs to. Setting it
+allows hosts in that network to be reached by a short name. When the
+router looks up a name with no domain, such as `crux`, it appends the
+domain name and looks up `crux.example.com`.
 
 ```{cfgcmd} set system domain-name \<domain\>
 
-Configure system domain name. A domain name must start and end with a letter
-or digit, and have as interior characters only letters, digits, or a hyphen.
+**Configure the router's domain name.**
+
+The domain name must begin with a letter or digit and may contain
+letters, digits, hyphens, and periods. Otherwise, the commit fails.
 ```
 
-## Static Hostname Mapping
+Example:
 
+```none
+set system domain-name example.com
+```
 
-How an IP address is assigned to an interface in {ref}`ethernet-interface`.
-This section shows how to statically map an IP address to a hostname for local
-(meaning on this VyOS instance) name resolution. This is the VyOS equivalent to
-`/etc/hosts` file entries.
+### Static host mapping
 
+A static host mapping ties a host name to one or more IP addresses. The
+router keeps it in the `/etc/hosts` file and resolves that name from
+there.
 
-:::{note}
-Do *not* manually edit `/etc/hosts`. This file will automatically be
-regenerated on boot based on the settings in this section, which means you'll
-lose all your manual edits. Instead, configure static host mappings as follows.
-:::
+```{note}
+Do not manually edit `/etc/hosts`. The router regenerates this file
+whenever the configuration is applied (at boot and on every commit that
+changes these settings), so any manual edits are lost. Instead,
+configure static host mappings as follows.
+```
 
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> inet \<address\>
 
-Create a static hostname mapping which will always resolve the name
-`<hostname>` to IP address `<address>`.
+**Map a host name to an IP address for local name resolution.**
+
+The address can be IPv4 or IPv6, and the same host name can map to more
+than one address.
+
+Each `host-name` mapping requires at least one `inet` address.
+Otherwise, the commit fails.
 ```
+
+Example:
+
+```none
+set system static-host-mapping host-name server1 inet 192.0.2.10
+```
+
 ```{cfgcmd} set system static-host-mapping host-name \<hostname\> alias \<alias\>
 
-Create named `<alias>` for the configured static mapping for `<hostname>`.
-Thus the address configured as {cfgcmd}`set system static-host-mapping
-host-name <hostname> inet <address>` can be reached via multiple names.
+**Configure an alias for a static host mapping.**
 
-Multiple aliases can be specified per host-name.
+The alias points to the same address as its host name, and a mapping
+can have more than one alias.
+
+Each alias must start and end with a letter or digit, may contain
+letters, digits, hyphens, and periods in between, and must not exceed 63
+characters. Otherwise, the commit fails.
+```
+
+Example:
+
+```none
+set system static-host-mapping host-name server1 alias mail
 ```
