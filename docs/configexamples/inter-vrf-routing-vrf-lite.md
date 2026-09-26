@@ -670,7 +670,6 @@ set protocols static route6 ::/0 next-hop 2001:db8::1
 ```none
 set interfaces dummy dum0 address '172.16.0.1/24'
 set interfaces dummy dum0 address '2001:db8:0:2::1/64'
-set interfaces ethernet eth0 hw-id '50:00:00:03:00:00'
 set interfaces ethernet eth1 address '172.16.2.2/30'
 set interfaces ethernet eth1 address '2001:db8::3/127'
 set protocols static route 0.0.0.0/0 next-hop 172.16.2.1
