@@ -32,7 +32,7 @@ set firewall group remote-group EXAMPLE url 'https://example.com/list?key=abc'
 On LTS and older releases the `?` key always triggers help, even inside
 quotes — use `Ctrl-V` `?` there.
 
-```{opcmd} set terminal key query-help <enable | disable>
+```{opcmd} set terminal key query-help \<enable | disable\>
 
 Enable or disable getting help using the question mark key. When disabled,
 `?` always inserts a literal question mark. The setting is stored in the
