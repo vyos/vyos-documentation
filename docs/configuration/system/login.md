@@ -367,7 +367,7 @@ connect to another configured server or falls back to local authentication.
 
 ```{cfgcmd} set system login radius source-address \<address\>
 
-**Configure the source IP address the router uses for** {abbr}`RADIUS (Remote
+**Configure the source IPv4 address the router uses for** {abbr}`RADIUS (Remote
 Authentication Dial-In User Service)` **authentication requests.**
 
 A consistent source IP address is recommended as RADIUS servers typically
@@ -376,6 +376,23 @@ accept requests only from known, trusted IP addresses.
 If not explicitly defined, the router uses the current egress interface
 address, which may change (e.g., due to a link outage), causing authentication
 failures.
+
+:::{note}
+This command accepts an IPv4 address only. Use `source-address6` for IPv6.
+Configurations created before the two commands were separated are migrated
+automatically.
+:::
+```
+
+```{cfgcmd} set system login radius source-address6 \<address\>
+
+**Configure the source IPv6 address the router uses for** {abbr}`RADIUS (Remote
+Authentication Dial-In User Service)` **authentication requests.**
+
+Each address family has its own command, so an IPv4 and an IPv6 source address
+can be configured at the same time. Requests sent to an IPv4 server are sourced
+from the address set with `source-address`, and requests sent to an IPv6 server
+from the address set with `source-address6`.
 ```
 
 ```{cfgcmd} set system login radius vrf \<name\>
@@ -507,9 +524,10 @@ authentication.
 ## Login banners
 
 VyOS allows you to configure **pre-login** and **post-login** banners.
-Pre-login banners are typically used for system identification, legal disclaimers, or security warnings
-displayed before authentication, while post-login banners provide system
-information or operational notices to users after login.
+Pre-login banners are typically used for system identification, legal
+disclaimers, or security warnings displayed before authentication, while
+post-login banners provide system information or operational notices to users
+after login.
 
 ```{cfgcmd} set system login banner pre-login \<message\>
 
@@ -566,8 +584,8 @@ set system login user vyos authentication otp key OHZ3OJ7U2N25BK4G7SOFFJTZDTCFUU
 set system login user vyos authentication plaintext-password vyos
 ```
 
-Example 2: Containerized {abbr}`TACACS+ (Terminal Access Controller Access Control System)`
-deployment with redundancy.
+Example 2: Containerized {abbr}`TACACS+ (Terminal Access Controller Access
+Control System)` deployment with redundancy.
 
 In this configuration, the VyOS router hosts its own authentication
 infrastructure using two containerized {abbr}`TACACS+ (Terminal Access
