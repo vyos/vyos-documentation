@@ -26,7 +26,7 @@ This configuration example and the requirements consists of:
   > - Protect the router on 'WAN' interface, allowing only IPSec connections
   >   and SSH access from trusted IPs.
   > - Allow access to the router only from trusted networks.
-  > - Allow DNS requests only only for local networks.
+  > - Allow DNS requests only for local networks.
   > - Allow ICMP on all interfaces.
   > - Allow all new connections from local subnets.
   > - Allow connections from LANs to LANs through the tunnel.
@@ -128,10 +128,10 @@ set firewall ipv4 forward filter default-action 'drop'
 
 # Forward traffic: global state policies
 set firewall ipv4 forward filter rule 1 action 'accept'
-set firewall ipv4 forward filter rule 1 state established 'enable'
-set firewall ipv4 forward filter rule 1 state related 'enable'
+set firewall ipv4 forward filter rule 1 state established
+set firewall ipv4 forward filter rule 1 state related
 set firewall ipv4 forward filter rule 2 action 'drop'
-set firewall ipv4 forward filter rule 2 state invalid 'enable'
+set firewall ipv4 forward filter rule 2 state invalid
 
 # Forward traffic: Accept all connections from local networks
 set firewall ipv4 forward filter rule 10 action 'accept'
@@ -147,10 +147,10 @@ set firewall ipv4 input filter default-action 'drop'
 
 # Input traffic: global state policies
 set firewall ipv4 input filter rule 1 action 'accept'
-set firewall ipv4 input filter rule 1 state established 'enable'
-set firewall ipv4 input filter rule 1 state related 'enable'
+set firewall ipv4 input filter rule 1 state established
+set firewall ipv4 input filter rule 1 state related
 set firewall ipv4 input filter rule 2 action 'drop'
-set firewall ipv4 input filter rule 2 state invalid 'enable'
+set firewall ipv4 input filter rule 2 state invalid
 
 # Input traffic: add rules needed for ipsec connection
 set firewall ipv4 input filter rule 10 action 'accept'
