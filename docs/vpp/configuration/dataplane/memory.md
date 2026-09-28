@@ -80,10 +80,10 @@ buffers, main heap is for routing tables.
 
 ```none
 # Reduce for memory-constrained systems
-set vpp settings physmem max-size 4G
+set vpp settings resource-allocation memory physmem-max-size 4G
 
 # Increase for high-throughput environments
-set vpp settings physmem max-size 32G
+set vpp settings resource-allocation memory physmem-max-size 32G
 ```
 
 ## Stats Memory Configuration
