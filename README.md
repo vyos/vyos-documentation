@@ -78,6 +78,13 @@ Output lands in `docs/_build/html/`.
 
 ## Contributing
 
+<<<<<<< HEAD
 See [AGENTS.md](AGENTS.md) for the full contributor guide — MyST
 conventions, CLI directive syntax, IP-address rules, linter
 suppression markers, and the Copilot / CodeRabbit bot workflow.
+=======
+See [AGENTS.md](AGENTS.md) for the full contributor guide — MyST source
+conventions, the VyOS command directives (`cfgcmd` / `opcmd` /
+`cmdincludemd`), IP-address rules, the linter and its suppression markers,
+and the CodeRabbit bot review workflow.
+>>>>>>> c9fb0c0b (docs: update AGENTS.md bot-review section to current CodeRabbit reality (#2188))
