@@ -229,8 +229,8 @@ set system flow-accounting netflow active-timeout 1800
 
 The router reaches collectors through that VRF.
 
-A collector configured with `source-interface` is reached through that
-interface, not through the VRF.
+A collector configured with `source-interface` receives export packets
+from that interface, which must belong to the VRF.
 
 The VRF must already be configured with `set vrf name <name>`.
 ```
