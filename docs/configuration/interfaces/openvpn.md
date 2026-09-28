@@ -189,6 +189,31 @@ designated monitor interface.
 * ``server``: Operates as a server in server-client mode.
 ```
 
+
+```{cfgcmd} set interfaces openvpn \<interface\> mtu \<mtu\>
+
+**Configure the MTU of the tunnel interface.**
+
+If not set, OpenVPN uses its own default of 1500 bytes. With
+{abbr}`DCO (Data Channel Offload)` enabled the default is 1420 bytes, because
+the kernel data path does not adjust the TCP MSS and full-sized packets would
+otherwise be fragmented on the underlying link.
+
+The value must be at least 100, and at least 1280 when IPv6 is used inside the
+tunnel. It cannot be combined with an `openvpn-option` that sets
+`tun-mtu`, `link-mtu` or `udp-mtu`. When such an option is present, the
+1420 bytes default is not applied either. A `tun-mtu` pushed by the server
+takes precedence on a client.
+
+Changing the MTU restarts the OpenVPN process.
+
+Example:
+
+:::{code-block} none
+set interfaces openvpn vtun0 mtu 1400
+:::
+```
+
 ### OpenVPN Data Channel Offload (DCO)
 
 OpenVPN {abbr}`DCO (Data Channel Offload)` improves the performance of
@@ -225,7 +250,8 @@ enabled to avoid compatibility issues with existing clients.
    set interfaces openvpn vtun0 offload dco
    :::
    This command enables {abbr}`DCO (Data Channel Offload)` and loads the required
-   kernel module.
+   kernel module. Unless configured otherwise, it also lowers the interface
+   MTU to 1420 bytes (see `mtu` above).
 ```
 
 
