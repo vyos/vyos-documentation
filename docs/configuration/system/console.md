@@ -16,11 +16,7 @@ A serial console is a text-based interface that provides access to the
 router's command line via a serial device.
 
 For routine local access, a serial console offers no advantage over a
-directly attached keyboard and screen. Serial consoles are much slower,
-taking up to a second to fill an 80-column by 24-line screen, and
-generally only support non-proportional
-{abbr}`ASCII (American Standard Code for Information Interchange)` text,
-with limited support for languages other than English.
+directly attached keyboard and screen.
 
 There are some scenarios where serial consoles are useful. Remote
 systems are usually administered over {ref}`ssh`, but sometimes console
