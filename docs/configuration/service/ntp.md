@@ -63,7 +63,7 @@ set service ntp server time1.vyos.net
 set service ntp server 192.0.2.1
 ```
 
-```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave\>
+```{cfgcmd} set service ntp server \<address\> \<noselect | nts | pool | prefer | ptp | interleave | minpoll N | maxpoll N | presend N | extfield-f323 \>
 
 **Configure per-server options for the specified NTP server:**
 
@@ -87,6 +87,15 @@ set service ntp server 192.0.2.1
   server, which lets the server respond with more accurate transmit
   timestamps and can improve synchronization accuracy and stability when
   supported by both parties.
+- ``minpoll N`` sets the minimum delay between NTP polls of this server.
+  The configured delay is 2^N seconds; the default of 6 is 2^6 or 64 seconds.
+- ``maxpoll N`` sets the maximum delay between NTP polls of this server.
+  The configured delay is 2^N seconds; the default of 10 is 2^10 or 1024 seconds.
+- ``presend N`` enables pre-sending additional NTP packets if more than 2^N
+  seconds have passed since the last NTP request was sent to this server.
+  This can help warm up ARP caches and reduce variability.
+- ``extfield-f323`` enables the F323 NTP extension field, which may
+  slightly increase accuracy when talking to Chrony servers.
 ```
 
 ```{note}
