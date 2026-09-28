@@ -83,6 +83,52 @@ Example:
 set service monitoring telegraf vrf mgmt
 ```
 
+### Agent Configuration
+
+This section covers configuration commands which affect the overall agent behaviour.
+
+```{cfgcmd} set service monitoring telegraf agent collection-jitter \<interval\>
+
+   Set the collection jitter to jitter the collection by a random interval.
+   Each plugin will sleep for a random time within jitter before collecting.
+   This can be used to avoid many plugins querying things like sysfs at the same time,
+   which can have a measurable effect on the system.
+   
+   By default vyos sets it to 5s.
+```
+
+```{cfgcmd} set service monitoring telegraf agent debug
+
+   Enable logging at debug level.
+   
+   Delete this node to disable logging at debug level.
+```
+
+```{cfgcmd} set service monitoring telegraf agent flush-interval \<interval\>
+
+   Set the default flushing interval for all outputs. Maximum flush-interval will
+   be flush-interval + flush-jitter.
+   
+   By default vyos sets it to 15s.
+```
+
+```{cfgcmd} set service monitoring telegraf agent flush-jitter \<interval\>
+
+   Set the default flush jitter for all outputs. This jitters the flush interval by
+   a random amount. This is primarily to avoid large write spikes for users running
+   a large number of telegraf instances. ie, a jitter of 5s and interval 10s means
+   flushes will happen every 10-15s.
+   
+   By default vyos sets it to 0s.
+```
+
+```{cfgcmd} set service monitoring telegraf agent interval \<interval\>
+
+   Set the default data collection interval for all inputs.
+   
+   By default vyos sets it to 15s.
+```
+
 ### Azure Data Explorer
 
 A configuration for this plugin is committable only when
