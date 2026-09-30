@@ -40,9 +40,9 @@ repository-root `README.md` to build the image and render the HTML
 documentation. The generated site is in `docs/_build/html/`.
 
 CI runs `scripts/doc-linter.py` on changed documentation files under `docs/`.
-It checks line length and example addresses. Build the docs locally and
-review the rendered page and build output before submitting your pull
-request.
+The linter checks line length and rejects disallowed IP addresses anywhere
+in eligible changed files. Build the docs locally and review the rendered
+page and build output before submitting your pull request.
 
 ## Writing conventions
 
