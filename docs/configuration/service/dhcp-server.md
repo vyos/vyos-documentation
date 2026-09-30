@@ -16,7 +16,8 @@ address.
 
 :::{warning}
 A shared network groups subnets that can serve the same logical link. Kea may
-assign a client an address from any subnet in that shared network. Without
+assign a client an address from any eligible candidate subnet in that shared
+network. Without
 client classification restricting each subnet to the intended clients, a
 client may receive an address from a different subnet than expected. If
 subnets belong to separate VLANs or require different gateways, that address
