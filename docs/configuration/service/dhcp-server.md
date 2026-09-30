@@ -23,7 +23,7 @@ address.
 ```
 
 
-#### Shared network options
+#### IPv4 shared network options
 
 
 The following DHCP options apply to an entire shared network. All subnets
@@ -232,7 +232,7 @@ Set the logging verbosity of the Kea DHCP server. The default level is
 `info`.
 ```
 
-#### Individual Client Subnet
+#### IPv4 individual client subnet
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> authoritative
 
@@ -336,10 +336,10 @@ set service dhcp-server shared-network-name 'NET1' subnet
 #### Dynamic DNS Update (RFC 2136)
 
 
-VyOS DHCP service supports RFC-2136 DDNS protocol. Based on DHCP lease change
-events, DHCP server generates DDNS update requests (defines as NameChangeRequests
-or NCRs) and posts them to a compliant DNS server, that will update its name
-database accordingly.
+VyOS DHCP service supports the RFC 2136 DDNS protocol. Based on DHCP lease
+change events, the DHCP server generates DDNS update requests (called
+NameChangeRequests or NCRs) and posts them to a compliant DNS server, which
+updates its name database.
 
 
 VyOS built-in DNS Forwarder does not support DDNS, you will need an external DNS
@@ -449,8 +449,8 @@ Replacement string for the invalid characters defined by ``hostname-char-set``.
 **TSIG keys definition**
 
 
-This is the global list of TSIG keys for DDNS updates. They need to be specified by
-the name in the DNS domain definitions.
+This is the global list of TSIG keys for DDNS updates. Specify them by name in
+the DNS domain definitions.
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update tsig-key \<key-name\> algorithm \<algorithm\>
 
@@ -467,8 +467,8 @@ base64-encoded TSIG key secret value
 **DNS domains definition**
 
 
-This is global configuration of DNS servers for the updatable forward and reverse
-DNS domains. For every domain multiple DNS servers can be specified.
+This is the global configuration of DNS servers for the updatable forward and
+reverse DNS domains. You can specify multiple DNS servers for each domain.
 
 ```{cfgcmd} set service dhcp-server dynamic-dns-update [forward|reverse]-domain \<domain-name\> key-name \<tsig-key-name\>
 
@@ -607,9 +607,10 @@ to ensure that the HA partnership is immune to disruption
 #### Static mappings
 
 
-You can specify a static DHCP assignment on a per-host basis (DHCP Reservations).
-You will need the MAC address of the station and your desired IP address. The
-address must be inside the subnet definition but can be outside the range statement.
+You can specify a static DHCP assignment on a per-host basis (DHCP
+reservations). You need the station's MAC address and the desired IP address.
+The address must be inside the subnet definition, but it can be outside the
+range statement.
 
 ```{cfgcmd} set service dhcp-server shared-network-name \<name\> subnet \<subnet\> static-mapping \<hostname\> mac \<address\>
 
@@ -644,7 +645,8 @@ isc-dhcpd.
 **Example:**
 
 
-- IP address `192.168.1.100` shall be statically mapped to client named `client1`
+- IP address `192.168.1.100` shall be statically mapped to client named
+  `client1`.
 
 ```none
 set service dhcp-server shared-network-name 'NET1' subnet 192.168.1.0/24 subnet-id 1
@@ -668,8 +670,8 @@ show service dhcp-server shared-network-name NET1
 #### Relay agent information (Option 82)
 
 
-Some DHCP relays support the injection of information into a DHCP request, depending on
-where the request originated from. This is commonly used to determine the
+Some DHCP relays support injecting information into a DHCP request, depending
+on where the request originated. This is commonly used to determine the
 behaviour of the DHCP server, based on the port/switch combination where the
 request was first detected. I.e. the device plugged into a particular port (or
 set of ports) always gets the same IP address (or range of IP addresses). This
@@ -932,7 +934,7 @@ The following DHCP options can be set under
 Multi: can be specified multiple times.
 
 
-### Example
+### IPv4 example
 
 
 Please see the {ref}`dhcp-dns-quick-start` configuration.
@@ -951,7 +953,8 @@ Configuration of a DHCP HA pair:
 - Use active-active HA mode.
 - Default gateway and DNS server is at `192.0.2.254`
 - The primary DHCP server named dhcp-primary uses address `192.168.189.252`
-- The secondary DHCP server with named dhcp-secondary uses address `192.168.189.253`
+- The secondary DHCP server named dhcp-secondary uses address
+  `192.168.189.253`.
 - DHCP range spans from `192.168.189.10` - `192.168.189.250`
 
 
@@ -1128,7 +1131,7 @@ Set the logging verbosity of the Kea DHCPv6 server. The default level is
 ```
 
 
-#### Shared network options
+#### IPv6 shared network options
 
 
 The following DHCPv6 options apply to an entire shared network. All subnets
@@ -1226,7 +1229,7 @@ Option 17). This option can be specified multiple times.
 ```
 
 
-#### Individual Client Subnet
+#### IPv6 individual client subnet
 
 ```{cfgcmd} set service dhcpv6-server shared-network-name \<name\> interface \<interface\>
 
@@ -1384,14 +1387,17 @@ dynamic lease from the DHCPv6 server, its DUID can be found with `show
 service dhcpv6 server leases`. The DUID begins at the 5th octet (after the
 4th colon) of IAID_DUID.
 :::
+% stop_vyoslinter
 ```none
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-prefix 2001:db8:0:101::/64
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 duid 00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
+% start_vyoslinter
 
 The configuration will look as follows:
 
+% stop_vyoslinter
 ```none
 show service dhcpv6-server shared-network-name NET1
  subnet 2001:db8::/64 {
@@ -1402,6 +1408,7 @@ show service dhcpv6-server shared-network-name NET1
      }
  }
 ```
+% start_vyoslinter
 
 (dhcp-server-v6-options)=
 
@@ -1496,7 +1503,7 @@ The following DHCPv6 options can be set under
 Multi: can be specified multiple times.
 
 
-### Example
+### IPv6 example
 
 
 DHCPv6 address pools must be configured for the system to act as a DHCPv6
@@ -1558,6 +1565,7 @@ To restart the DHCPv6 server
 
 Shows status of all assigned leases:
 ```
+% stop_vyoslinter
 ```none
 vyos@vyos:~$ show dhcpv6 server leases
 IPv6 address      State    Last communication    Lease expiration     Remaining    Type   Pool      DUID
@@ -1566,6 +1574,7 @@ IPv6 address      State    Last communication    Lease expiration     Remaining 
 2001:db8::102     active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      IA_NA  NET1      87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
 2001:db8:10::/64  active   2019/12/05 23:20:10   2019/12/06 11:40:10  11:45:21     IA_PD  PD-NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
+% start_vyoslinter
 
 :::{hint}
 Static mappings aren't shown. To show all states, use `show dhcp
