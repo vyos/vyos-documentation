@@ -46,7 +46,9 @@ page and build output before submitting your pull request.
 
 ## Writing conventions
 
-- Use American English and keep lines to 80 characters where practical.
+- Use American English and keep lines to 80 characters. Code fences are
+  exempt; use paired linter suppression markers for approved long lines,
+  such as URLs or certificate fingerprints.
 - Indent with two spaces and leave blank lines around headings.
 - Use single backticks for inline code in MyST Markdown.
 - Follow the style of nearby pages and keep examples readable.
