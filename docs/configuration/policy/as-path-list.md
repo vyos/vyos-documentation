@@ -43,7 +43,7 @@ Common operators include:
 | `?` | Zero or one occurrence of the preceding character or group. |
 | `[0-9]` | Any one digit from 0 through 9. |
 | `(...)` | Group expressions. |
-| `|` | Alternation between expressions. |
+| `\|` | Alternation between expressions. |
 | `^` / `$` | Beginning / end of the path text. |
 
 The underscore (`_`) is a special AS-path boundary marker. It matches the
