@@ -338,8 +338,8 @@ set service dhcp-server shared-network-name 'NET1' subnet
 
 VyOS DHCP service supports the RFC 2136 DDNS protocol. Based on DHCP lease
 change events, the DHCP server generates DDNS update requests (called
-NameChangeRequests or NCRs) and posts them to a compliant DNS server, which
-updates its name database.
+NameChangeRequests or NCRs) and sends them to the DHCP-DDNS service (D2).
+D2 sends DNS updates to the DNS servers configured for the matching domain.
 
 
 VyOS built-in DNS Forwarder does not support DDNS, you will need an external DNS
