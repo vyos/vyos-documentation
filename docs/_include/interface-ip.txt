@@ -45,11 +45,11 @@
   only if the traffic would be routed back to the ARP sender through that 
   specific interface. 
 
-  **If configured:** The kernel responds to ARP requests on this interface for any 
-  IP address configured on the local host, regardless of which specific interface 
-  that IP address is assigned to, and regardless of the routing table. This 
-  reflects the Linux concept that IP addresses belong to the host, not individual 
-  interfaces.  
+  **If configured:** The kernel responds to ARP requests on this interface for
+  any IP address configured on the local host, regardless of which specific
+  interface that IP address is assigned to, and regardless of the routing
+  table. This reflects the Linux concept that IP addresses belong to the host,
+  not individual interfaces.
 
   Example:
 
@@ -173,8 +173,9 @@
   allowed to communicate directly with each other at Layer 2, but they can 
   communicate with the upstream router. 
 
-  By replying to inter-host ARP requests with its own :abbr:`MAC (Media Access Control)` 
-  address, the router (kernel) directs inter-host traffic through itself instead of 
+  By replying to inter-host ARP requests with its own
+  :abbr:`MAC (Media Access Control)` address, the router (kernel) directs
+  inter-host traffic through itself instead of
   directly between hosts.
 
   .. note:: This command works independently and does not require enabling 
@@ -202,9 +203,9 @@
     Forwarding Information Base (FIB). If the interface is not the best route 
     back to that source, validation fails, and the packet is dropped.
 
-  - **loose:** Each incoming packet’s source IP address is checked against the 
-    FIB. If the source IP address is unreachable through any interface, validation 
-    fails.
+  - **loose:** Each incoming packet’s source IP address is checked against the
+    FIB. If the source IP address is unreachable through any interface,
+    validation fails.
 
   - **disable:** No source IP address validation is performed. All incoming 
     packets are accepted.
