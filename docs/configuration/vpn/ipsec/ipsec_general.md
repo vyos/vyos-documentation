@@ -109,14 +109,14 @@ tunnels when a post-quantum key exchange algorithm such as ML-KEM is not
 available. The use of PPKs in IKEv2 is described in {rfc}`8784`.
 
 ```{eval-rst}
-.. cfgmod:: edit vpn authentication ppk <name>
+.. cfgcmd:: edit vpn authentication ppk <name>
 ```
 
 PPKs can be configured within VyOS under the `vpn ipsec authentication ppk`
 config.
 
 ```{eval-rst}
-.. cfgmod:: set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
+.. cfgcmd:: set vpn authentication ppk <name> secret-type <plaintext|hex|base64>
 ```
 
 PPKs need an id and a secret value. The ID and the secret must match if PPKs are
@@ -125,20 +125,20 @@ hex value, or a Base64 value. The default is plain text. If using another
 type of value, you must define the secret type.
 
 ```{eval-rst}
-.. cfgmod:: set vpn ipsec site-to-site <name> ppk id <id>
+.. cfgcmd:: set vpn ipsec site-to-site <name> ppk id <id>
 ```
 
 To use a PPK within a site-to-site or remote access connection, define the PPK
 id under the connection.
 
 ```{eval-rst}
-.. cfgmod:: set vpn ipsec site-to-site <name> ppk required
+.. cfgcmd:: set vpn ipsec site-to-site <name> ppk required
 ```
 
 Optionally, you can require the use of PPK to have a successful connection.
 
 ```{eval-rst}
-.. cfgmod:: show vpn ipsec connections
+.. opcmd:: show vpn ipsec connections
 ```
 
 You can view the PPK column for information on if PPK is configured, and
@@ -360,9 +360,12 @@ Options
   Allows the installation of virtual-ip addresses.
 ```
 
+(ikev2-retransmission)=
+
 ### IKEv2 Retransmission
 
-If the peer does not respond on DPD packet, the router starts retransmission procedure.
+If the peer does not respond to a DPD packet, the router starts the
+retransmission procedure.
 
 The following formula is used to calculate the timeout:
 
