@@ -22,10 +22,12 @@ IPv6-only clients to contact IPv4 servers using unicast UDP, TCP, or ICMP.
 {abbr}`SNAT64 (IPv6-to-IPv4 Source Address Translation)` is a stateful
 translation mechanism that translates IPv6 addresses to IPv4 addresses.
 
+% stop_vyoslinter
 `64:ff9b::/96` is the well-known prefix for IPv4-embedded IPv6 addresses.
 The prefix is used to represent IPv4 addresses in an IPv6 address format.
 The IPv4 address is encoded in the low-order 32 bits of the IPv6 address.
 The high-order 32 bits are set to the well-known prefix 64:ff9b::/96.
+% start_vyoslinter
 
 ## Configuration Examples
 
@@ -34,6 +36,7 @@ The 192.0.2.10 address is used as the IPv4 address for the translation pool.
 
 NAT64 server configuration:
 
+% stop_vyoslinter
 ```none
 set interfaces ethernet eth0 address '192.0.2.1/24'
 set interfaces ethernet eth0 address '192.0.2.10/24'
@@ -49,17 +52,21 @@ set nat64 source rule 100 source prefix '64:ff9b::/96'
 set nat64 source rule 100 translation pool 10 address '192.0.2.10'
 set nat64 source rule 100 translation pool 10 port '1-65535'
 ```
+% start_vyoslinter
 
 NAT64 client configuration:
 
+% stop_vyoslinter
 ```none
 set interfaces ethernet eth1 address '2001:db8::2/64'
 set protocols static route6 64:ff9b::/96 next-hop 2001:db8::1
 set system name-server '2001:db8::1'
 ```
+% start_vyoslinter
 
 Test from the IPv6 only client:
 
+% stop_vyoslinter
 ```none
 vyos@r1:~$ ping 64:ff9b::192.0.2.1 count 2
 PING 64:ff9b::192.0.2.1(64:ff9b::c000:201) 56 data bytes
@@ -70,4 +77,5 @@ PING 64:ff9b::192.0.2.1(64:ff9b::c000:201) 56 data bytes
 2 packets transmitted, 2 received, 0% packet loss, time 1023ms
 rtt min/avg/max/mdev = 0.351/0.362/0.373/0.011 ms
 ```
+% start_vyoslinter
 
