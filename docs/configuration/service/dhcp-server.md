@@ -14,6 +14,20 @@ addresses. Multiple ranges can be defined and can contain holes. Static
 mappings can be set to assign "static" addresses to clients based on their MAC
 address.
 
+:::{warning}
+A shared network groups subnets that can serve the same logical link. Kea may
+assign a client an address from any subnet in that shared network. Without
+client classification restricting each subnet to the intended clients, a
+client may receive an address from a different subnet than expected. If
+subnets belong to separate VLANs or require different gateways, that address
+may not work on the client's current network. Use separate shared networks
+for separate links, or classify clients and restrict every subnet that should
+not serve them. See the
+[Kea DHCPv4 manual][kea-dhcp4] for details.
+:::
+
+[kea-dhcp4]: https://kea.readthedocs.io/en/latest/arm/dhcp4-srv.html
+
 ### Configuration
 
 ```{cfgcmd} set service dhcp-server hostfile-update
@@ -686,6 +700,11 @@ defined. If it does then that part of the configuration will override the others
 
 Client classes can be applied at either the subnet or range level, depending on
 how you want the server to behave.
+
+Within a shared network, a subnet without a client class remains available to
+all clients. Adding a class to only some subnets does not prevent clients from
+using other, unrestricted subnets. Apply class restrictions to each subnet
+that must be limited to specific clients.
 
 
 **Client Class definition**
@@ -1384,6 +1403,7 @@ dynamic lease from the DHCPv6 server, its DUID can be found with `show
 service dhcpv6 server leases`. The DUID begins at the 5th octet (after the
 4th colon) of IAID_DUID.
 :::
+% stop_vyoslinter
 ```none
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-address 2001:db8::101
 set service dhcpv6-server shared-network-name 'NET1' subnet 2001:db8::/64 static-mapping client1 ipv6-prefix 2001:db8:0:101::/64
@@ -1402,6 +1422,7 @@ show service dhcpv6-server shared-network-name NET1
      }
  }
 ```
+% start_vyoslinter
 
 (dhcp-server-v6-options)=
 
@@ -1558,6 +1579,7 @@ To restart the DHCPv6 server
 
 Shows status of all assigned leases:
 ```
+% stop_vyoslinter
 ```none
 vyos@vyos:~$ show dhcpv6 server leases
 IPv6 address      State    Last communication    Lease expiration     Remaining    Type   Pool      DUID
@@ -1566,6 +1588,7 @@ IPv6 address      State    Last communication    Lease expiration     Remaining 
 2001:db8::102     active   2019/12/05 14:01:23   2019/12/06 02:01:23  6:06:34      IA_NA  NET1      87:65:43:21:00:01:00:01:11:22:33:44:fa:fb:fc:fd:fe:ff
 2001:db8:10::/64  active   2019/12/05 23:20:10   2019/12/06 11:40:10  11:45:21     IA_PD  PD-NET1   98:76:54:32:00:01:00:01:12:34:56:78:aa:bb:cc:dd:ee:ff
 ```
+% start_vyoslinter
 
 :::{hint}
 Static mappings aren't shown. To show all states, use `show dhcp
