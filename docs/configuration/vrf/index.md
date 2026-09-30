@@ -76,9 +76,9 @@ are sending routes to zebra.
 ### Nexthop Tracking
 
 
-Nexthop tracking resolve nexthops via the default route by default. This is enabled
-by default for a traditional profile of FRR which we use. It and can be disabled if
-you do not want to e.g. allow BGP to peer across the default route.
+Nexthop tracking uses the default route to resolve next hops by default. This
+is enabled for the traditional FRR profile used by VyOS. Disable it if you do
+not want BGP to peer across the default route.
 
 ```{cfgcmd} set vrf name \<name\> ip nht no-resolve-via-default
 
@@ -117,8 +117,8 @@ VyOS 1.4 (sagitta) introduced dynamic routing support for VRFs.
 Currently dynamic routing is supported for the following protocols:
 
 
-- {ref}`routing-bgp`
-- {ref}`routing-isis`
+- {ref}`bgp`
+- {ref}`isis`
 - {ref}`routing-ospf`
 - {ref}`routing-ospfv3`
 - {ref}`routing-static`
@@ -129,15 +129,15 @@ difference is, that each routing protocol used, must be prefixed with the `vrf
 name <name>` command.
 
 
-#### Example
+#### Routing example
 
 
 The following commands would be required to set options for a given dynamic
 routing protocol inside a given vrf:
 
 
-- {ref}`routing-bgp`: `set vrf name <name> protocols bgp ...`
-- {ref}`routing-isis`: `set vrf name <name> protocols isis ...`
+- {ref}`bgp`: `set vrf name <name> protocols bgp ...`
+- {ref}`isis`: `set vrf name <name> protocols isis ...`
 - {ref}`routing-ospf`: `set vrf name <name> protocols ospf ...`
 - {ref}`routing-ospfv3`: `set vrf name <name> protocols ospfv3 ...`
 - {ref}`routing-static`: `set vrf name <name> protocols static ...`
@@ -157,7 +157,7 @@ difference is, that each service used, must be prefixed with the `vrf
 name <name>` command.
 
 
-#### Example
+#### Services example
 
 
 The following commands would be required to set options for a given service
@@ -300,7 +300,7 @@ vyos@vyos(vrf:blue):~$
 (vrf-example)=
 
 
-## Example
+## VRF route leaking example
 
 
 ### VRF route leaking
@@ -424,7 +424,7 @@ DNS         :
 MAC         : 00:50:79:66:68:0f
 ```
 
-###### VRF default routing table
+##### VRF default routing table
 
 
 ```none
@@ -440,7 +440,7 @@ S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:3
 S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 ```
 
-###### VRF red routing table
+##### VRF red routing table
 
 
 ```none
@@ -457,7 +457,7 @@ S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07
 C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 ```
 
-###### VRF blue routing table
+##### VRF blue routing table
 
 
 ```none
