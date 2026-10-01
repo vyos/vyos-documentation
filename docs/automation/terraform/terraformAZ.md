@@ -18,8 +18,10 @@ variables before deploying it.
   selected example.
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
   and [Terraform](https://developer.hashicorp.com/terraform/install).
-- An SSH key pair for accessing the VyOS instance. Follow the selected
-  example's instructions for the key path and administrator username.
+- Authentication depends on the selected example: BGP, BGP-FW, and WireGuard
+  use `admin_password`; HA requires an SSH public key supplied through
+  `public_key`. Follow the selected example's instructions for the required
+  variables and administrator username.
 
 Sign in to Azure and select the subscription in which you want to deploy:
 
