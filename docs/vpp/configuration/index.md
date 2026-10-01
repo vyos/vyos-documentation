@@ -1,5 +1,5 @@
 ---
-lastproofread: '2025-09-04'
+lastproofread: '2026-09-30'
 ---
 
 (vpp-dconfig-index)=
@@ -7,12 +7,12 @@ lastproofread: '2025-09-04'
 ```{include} /_include/need_improvement.txt
 ```
 
-
 # VPP Configuration
 
-VPP settings consist of several main sections.
+VPP configuration in VyOS is organized into dataplane settings, VPP
+interfaces, and features that run on the VPP dataplane.
 
-Main Dataplane settings and internal VPP interfaces:
+The core dataplane settings and internal VPP interfaces are documented here:
 
 ```{toctree}
 :includehidden: true
@@ -22,7 +22,7 @@ dataplane/index
 interfaces/index
 ```
 
-Features that can be enabled on VPP Dataplane:
+The following features can also be configured on the VPP dataplane:
 
 ```{toctree}
 :includehidden: true
@@ -35,13 +35,19 @@ nat/index
 sflow
 ```
 
+## VPP initialization
 
-## VPP Initialization
+When a configuration commit changes VPP settings or interfaces, VyOS
+validates the VPP requirements and prepares the startup configuration. If
+validation succeeds, VyOS restarts the VPP service and applies the
+configuration. The interface setup process includes these steps:
 
-When VPP Dataplane is configured and the configuration is committed, VyOS will attempt to start VPP and initialize all interfaces assigned to it. During this process the following steps occur:
-
-1. VyOS checks that the system meets all requirements for VPP operation. If any requirement is not met, VPP will not start and an error message will be displayed.
-2. VPP is started and its initial configuration is applied.
-3. All interfaces assigned to VPP are initialized and brought up.
-4. A special virtual interfaces are reinstalled to the kernel with the same names as interfaces that were attached to VPP to maintain compatibility with the configuration.
-5. VyOS configuration initializes those virtual interfaces, so that features that exist only in kernel dataplane continue to operate.
+1. VyOS checks system resources, interface availability, and supported NIC
+   requirements. A failed check rejects the VPP portion of the commit; other
+   configuration changes may still apply.
+2. VyOS restarts the VPP service with the generated startup configuration.
+3. VyOS adds configured interfaces to VPP using the selected driver.
+4. For interfaces integrated with Linux, VPP's Linux Control Plane (LCP)
+   plugin creates matching interfaces in the Linux kernel.
+5. VyOS synchronizes routes between the kernel and VPP and reruns dependent
+   configuration so kernel-based services can use the Linux interfaces.
