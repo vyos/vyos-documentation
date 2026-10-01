@@ -1,5 +1,5 @@
 ---
-lastproofread: '2026-01-19'
+lastproofread: '2026-09-30'
 ---
 
 (ethernet-interface)=
@@ -51,6 +51,8 @@ The following duplex modes are available:
   same time.
 
 The default duplex mode is ``auto``.
+
+Speed and duplex must both use ``auto`` or both be manually configured.
 ```
 
 ```{cfgcmd} set interfaces ethernet \<interface\> speed \<auto | 10 | 100 | 1000 | 2500 | 5000 | 10000 | 25000 | 40000 | 50000 | 100000\>
@@ -256,7 +258,7 @@ is reached, reducing interrupt and DMA overhead.
 
 #### Offloading
 
-```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | sg\>
+```{cfgcmd} set interfaces ethernet \<interface\> offload \<lro | tso | gso | gro | rps | rfs | rx | sg | hw-tc-offload\>
 
 **Configure the offloading features for the interface.**
 
@@ -307,12 +309,20 @@ multiple offloading features for a single interface.
    can be correctly split back into the original packets. This makes GRO safe for
    use on routers and bridges.
 
- :::{note}
-The exception is for IPv4 IDs. If the "Don't Fragment" (DF) bit is
-set and IDs are not sequential, {abbr}`GSO (Generic Segmentation Offload)`
-alters them to maintain a consistent sequence for {abbr}`GSO (Generic
-Segmentation Offload)` compatibility.
- :::
+   :::{note}
+   When GSO segments a packet assembled by GRO, an IPv4 packet with the DF bit
+   set may have its ID adjusted if it was not sequential. This allows the
+   segmented packets to use sequential IDs.
+   :::
+
+ * ``hw-tc-offload``: Enable hardware offload for supported traffic-control
+   filters and actions.
+
+ * ``rx``: Enable receive checksum offload.
+
+ * ``rfs`` **(Receive Flow Steering):** Steer flow processing toward the CPU
+   running the application that consumes the flow, improving cache locality.
+
  * ``rps`` **(Receive Packet Steering):** Instructs the kernel to distribute
    the processing of incoming packets across multiple CPU cores.
 
@@ -432,7 +442,6 @@ Settings for eth0:
         Wake-on: d
         Link detected: yes
 driver: vmxnet3
-version: 1.4.16.0-k-NAPI
 firmware-version:
 expansion-rom-version:
 bus-info: 0000:0b:00.0
