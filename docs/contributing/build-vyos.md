@@ -302,7 +302,9 @@ the image build; substituting only a kernel `.deb` can leave required modules
 incompatible. Do not use the old `packages/linux-kernel/Jenkinsfile` or the
 removed `build-intel-drivers.sh` instructions.
 
+% stop_vyoslinter
 [kernel-build-readme]: https://github.com/vyos/vyos-build/tree/current/scripts/package-build/linux-kernel
+% start_vyoslinter
 
 ### Packages
 
