@@ -19,7 +19,7 @@ own requirements.
   other LANs.
 * **br2:** Accepts DHCPv4 Discover, DHCP offers arriving on the trusted
   `eth6` port, ARP, and bridged IPv4 traffic. It drops IPv6 traffic and denies
-  IPv4 access to the router. Routed IPv4 traffic may reach the Internet and
+  new IPv4 access to the router. Routed IPv4 traffic may reach the Internet and
   br1.
 
 The Internet access examples assume that routing and any required source NAT
