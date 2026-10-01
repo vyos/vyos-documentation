@@ -1,24 +1,21 @@
 ---
-lastproofread: '2026-03-23'
+lastproofread: '2026-09-30'
 ---
 
 (wireless-interface)=
 
 # Wireless LAN / Wi-Fi
 
-{abbr}`WLAN (Wireless LAN)` interfaces provide 802.11 (a/b/g/n/ac) wireless
-connectivity, referred to as Wi-Fi, and operate in one of the following
-modes:
+{abbr}`WLAN (Wireless LAN)` interfaces provide 802.11 (a/b/g/n/ac/ax) wireless
+connectivity, referred to as Wi-Fi. A wireless interface can act as an access
+point for connecting stations, as a station (Wi-Fi client) connecting to an
+access point, or in monitor mode to capture wireless frames that the device and
+driver expose on the tuned channel. Available modes depend on the wireless
+device and driver.
 
-- {abbr}`WAP (Wireless Access-Point)` mode provides network access to connecting
-  stations if the physical hardware supports acting as a WAP
-- Station mode acts as a Wi-Fi client accessing the network through an available
-  WAP
-- Monitor mode lets the system passively monitor wireless traffic
-
-If the system detects an unconfigured wireless device, it will be automatically
-added to the configuration tree, specifying any detected settings (for example,
-its MAC address) and configured to run in monitor mode.
+When VyOS creates a configured wireless interface, it initially creates the
+Linux interface in monitor mode. Set the interface type to `access-point` or
+`station` to use it in either of those modes.
 
 ## Configuration
 
@@ -49,17 +46,21 @@ This option is mandatory in ``access-point`` mode.
 ```{cfgcmd} set interfaces wireless \<interface\> channel \<number\>
 
 Configure the IEEE 802.11 wireless radio channel for the interface.
-Channel allocation depends on the frequency band:
+Channel numbers depend on the frequency band and regulatory domain:
 * **2.4 GHz** (802.11b/g/n/ax): Channels range from 1 to 14.
-* **5 GHz** (802.11a/h/j/n/ac/ax): Channels range from 34 to 177.
+* **5 GHz** (802.11a/h/j/n/ac): Channels range from 34 to 177.
 * **6 GHz** (802.11ax): Channels range from 1 to 233.
 * **Automatic channel selection:** 0.
+
+The device, driver, and regulatory domain determine which channels are
+available for use.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> disable-broadcast-ssid
 
 Send empty SSID in beacons and ignore probe request frames that do not specify
-full SSID, i.e., require stations to know the SSID.
+the full SSID, so stations must know the SSID to connect. Hiding the SSID does
+not provide authentication or encryption.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> expunge-failing-stations
@@ -110,15 +111,17 @@ to be enabled.
 ```{cfgcmd} set interfaces wireless \<interface\> mode \<a | b | g | n | ac | ax\>
 
 Operation mode of wireless radio.
-* ``a`` - 802.11a - 54 Mbits/sec
-* ``b`` - 802.11b - 11 Mbits/sec
-* ``g`` - 802.11g - 54 Mbits/sec (default)
-* ``n`` - 802.11n - 600 Mbits/sec
-* ``ac`` - 802.11ac - 1300 Mbits/sec
-* ``ax`` - 802.11ax - exceeds 1GBit/sec
+* ``a`` - 802.11a
+* ``b`` - 802.11b
+* ``g`` - 802.11g (default)
+* ``n`` - 802.11n
+* ``ac`` - 802.11ac
+* ``ax`` - 802.11ax
+
+Supported rates depend on the wireless device, channel width, and connection.
 
 :::{note}
-In VyOS, 802.11ax is only implemented for 2.4GHz and 6GHz.
+VyOS supports 802.11ax operation on 2.4 GHz and 6 GHz channels.
 :::
 ```
 
@@ -299,7 +302,7 @@ VHT operating channel center frequency - center freq 1
 VHT operating channel center frequency - center freq 2
 (for use with the 80+80 mode)
 
-\<number\> must be from 34 - 173. For 80 MHz channels it should be channel + 6.
+\<number\> must be from 34 to 177. For 80 MHz channels it should be channel + 6.
 ```
 
 ```{cfgcmd} set interfaces wireless \<interface\> capabilities vht channel-set-width \<0 | 1 | 2 | 3\>
@@ -461,24 +464,17 @@ interfaces {
 
 ### Security
 
-{abbr}`WPA (Wi-Fi Protected Access)`, WPA2 Enterprise and WPA3 Enterprise in
-combination with 802.1X based authentication can be used to authenticate
-users or computers in a domain.
+WPA2 Enterprise and WPA3 Enterprise use 802.1X authentication with a RADIUS
+server. The wireless client (supplicant) authenticates with the RADIUS server
+using an {abbr}`EAP (Extensible Authentication Protocol)` method. The access
+point (authenticator) relays the authentication messages between them.
 
-The wireless client (supplicant) authenticates against the RADIUS server
-(authentication server) using an {abbr}`EAP (Extensible Authentication
-Protocol)` method configured on the RADIUS server. The WAP (also referred
-to as authenticator) role is to send all authentication messages between the
-supplicant and the configured authentication server, thus the RADIUS server
-is responsible for authenticating the users.
-
-The WAP in this example has the following characteristics:
+The access point in this example has the following characteristics:
 - IP address `192.168.2.1/24`
 - Network ID (SSID) `Enterprise-TEST`
-- WPA passphrase `12345678`
 - Use 802.11n protocol
 - Wireless channel `1`
-- RADIUS server at `192.168.3.10` with shared-secret `VyOSPassword`
+- RADIUS server at `192.168.3.10` with shared secret `VyOSPassword`
 
 ```none
 set system wireless country-code de
@@ -576,7 +572,7 @@ wlan0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group d
 
 wlan1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
     link/ether XX:XX:XX:XX:XX:c3 brd XX:XX:XX:XX:XX:ff
-    inet xxx.xxx.100.254/24 scope global wlan0
+       inet xxx.xxx.100.254/24 scope global wlan1
        valid_lft forever preferred_lft forever
     inet6 fe80::xxxx:xxxx:ffff:2ed3/64 scope link
        valid_lft forever preferred_lft forever
@@ -638,9 +634,8 @@ qdisc pfifo_fast 0: root bands 3 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
 ```{opcmd} show interfaces wireless \<wlanX\> scan
 ```
 
-This command is used to retrieve information about WAP within the range of your
-wireless interface. This command is useful on wireless interfaces configured
-in station mode.
+This command retrieves information about access points within range of the
+wireless interface. It is useful on interfaces configured in station mode.
 
 :::{note}
 Scanning is not supported on all wireless drivers and wireless
@@ -734,7 +729,8 @@ The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 
 #### Example configuration: Wi-Fi 6 at 2.4 GHz
 
-You may expect real throughput around 10 MB/s or higher in crowded areas.
+Actual throughput depends on the device, client, signal quality, channel width,
+interference, and other network conditions.
 
 ```none
 set system wireless country-code de
@@ -824,10 +820,9 @@ interfaces {
 
 #### Example configuration: Wi-Fi 6E at 6 GHz
 
-You may expect real throughput between 50 MB/s and 150 MB/s, depending on
-obstructions from walls, water, metal, or other materials
-with high electromagnetic damping at 6 GHz. Best results are achieved
-with the AP being in the same room and in line-of-sight.
+Actual throughput depends on the device, client, signal quality, channel width,
+interference, and other network conditions. Obstructions between the access
+point and client can also reduce signal strength.
 
 ```none
 set system wireless country-code de
@@ -909,8 +904,12 @@ interfaces {
 
 ### Intel AX200
 
-The Intel AX200 card does not work out of the box in AP mode. You can
-still put this card into AP mode using the following configuration:
+The [Linux Wireless iwlwifi documentation](
+https://wireless.docs.kernel.org/en/latest/en/users/drivers/iwlwifi.html)
+lists 2.4 GHz access-point support for `iwlmvm` devices and notes that 5 GHz
+access-point mode is not supported.
+Available modes also depend on the device, firmware, and regulatory domain.
+This example uses a 2.4 GHz channel:
 
 ```none
 set system wireless country-code 'us'
