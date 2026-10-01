@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-09-30'
 myst:
   html_meta:
     description: |
@@ -836,7 +837,7 @@ Example:
 set service pppoe-server default-ipv6-pool IPV6-POOL
 ```
 
-### Advanced options
+### IPv6 options
 
 ```{cfgcmd} set service pppoe-server ppp-options ipv6-accept-peer-interface-id
 
@@ -973,7 +974,7 @@ Example:
 set service pppoe-server extended-scripts on-up /config/scripts/pppoe-up.sh
 ```
 
-## Advanced options
+## Additional options
 
 ### Authentication
 
@@ -1572,7 +1573,7 @@ set service pppoe-server name-server '10.100.100.1'
 set service pppoe-server name-server '10.100.200.1'
 ```
 
-### Automatic VLAN creation
+### Configure automatic VLAN creation
 
 ```none
 set service pppoe-server interface eth3 vlan 100
@@ -1627,7 +1628,7 @@ set service pppoe-server pado-delay 100 sessions '1000'
 set service pppoe-server pado-delay 300 sessions '3000'
 ```
 
-### IPv6 address assignment
+### Configure IPv6 address assignment
 
 The following example enables IPv6 for client sessions and configures
 a pool that assigns each client a /64 network and delegates a /56
