@@ -349,7 +349,7 @@ set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-mask '00:00:00:00:00:00
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 prefix '0.0.0.0/0'
 ```
 
-#### Example 2: MAC Prefix Filtering
+#### Example 2: IPv4 MAC Prefix Filtering
 
 ```none
 # Create a MAC ACL that matches a MAC address prefix
@@ -360,6 +360,7 @@ set vpp acl mac tag-name 'MAC-PREFIX-FILTER' description 'Filter by MAC prefix'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 action deny
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 mac-address '02:00:01:00:00:00'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 mac-mask 'ff:ff:ff:00:00:00'
+set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 prefix '0.0.0.0/0'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 description 'Block selected prefix'
 
 # Allow all other devices
@@ -369,6 +370,9 @@ set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 mac-mask '00:00:00:00:00:0
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 prefix '0.0.0.0/0'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 description 'Allow other addresses'
 ```
+
+This example matches IPv4 traffic only. IPv6 traffic is not permitted by
+these rules; add IPv6-prefix rules if the ACL must allow IPv6 traffic.
 
 #### Example 3: Network Segmentation by MAC
 
