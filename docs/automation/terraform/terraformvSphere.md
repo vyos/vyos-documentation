@@ -21,17 +21,23 @@ The examples assume that:
 
 The Terraform provider's `default_ip_address` depends on VMware Tools or
 `open-vm-tools` reporting guest networking information. If the image does not
-report an address, use the address assigned by your DHCP server or configured
-through your image's supported customization mechanism.
+report an address, set `wait_for_guest_net_timeout = 0` to disable the network
+waiter, then use the DHCP address or the address configured through your
+image's supported customization mechanism in the Ansible inventory.
 
 ## Prepare the deployment
 
-Install Terraform and Ansible on a Linux, macOS, or Windows control machine.
-Install the VyOS Ansible collection and its network connection dependency:
+Install Terraform and Ansible on a Linux or macOS control machine. Install
+the SSH backend for Ansible's `network_cli`, then install the VyOS collection:
 
 ```shell
+python -m pip install ansible-pylibssh
 ansible-galaxy collection install vyos.vyos ansible.netcommon
 ```
+
+The `network_cli` plugin uses `ansible-pylibssh` when available and otherwise
+falls back to Paramiko. If you use Paramiko instead, install it in the same
+Python environment as Ansible.
 
 Create a project directory with these files:
 
@@ -99,7 +105,8 @@ resource "vsphere_virtual_machine" "vyos" {
     network_id = data.vsphere_network.network.id
   }
 
-  wait_for_guest_net_timeout = 5
+  # Disable the guest-network waiter if VMware Tools does not report an IP.
+  wait_for_guest_net_timeout = 0
 
   ovf_deploy {
     remote_ovf_url       = var.ovf_url
