@@ -279,8 +279,8 @@ set vpp acl mac tag-name <tag-name> rule <rule-number>
 
 #### Basic MAC ACL Rule Configuration
 
-Each rule requires an action. The source MAC address, MAC mask, and IP
-prefix are optional match fields.
+Each rule requires an action, source MAC address, and source IP prefix.
+The MAC mask is optional and defaults to `ff:ff:ff:ff:ff:ff`.
 
 ```none
 set vpp acl mac tag-name <tag-name> rule <rule-number> action <permit|deny>
@@ -346,6 +346,7 @@ set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 20 description 'Web server'
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 action deny
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-address '00:00:00:00:00:00'
 set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 mac-mask '00:00:00:00:00:00'
+set vpp acl mac tag-name 'DEVICE-WHITELIST' rule 999 prefix '0.0.0.0/0'
 ```
 
 #### Example 2: MAC Prefix Filtering
@@ -365,6 +366,7 @@ set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 10 description 'Block selected
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 action permit
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 mac-address '00:00:00:00:00:00'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 mac-mask '00:00:00:00:00:00'
+set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 prefix '0.0.0.0/0'
 set vpp acl mac tag-name 'MAC-PREFIX-FILTER' rule 100 description 'Allow other addresses'
 ```
 
@@ -540,7 +542,7 @@ MACIP ACL "tag-name MAC-PREFIX-FILTER" acl_index 0
 
   Rule  Action    IP prefix    MAC address        MAC mask
 ------  --------  -----------  -----------------  -----------------
-    10  deny      0.0.0.0/0    00:e0:4c:00:00:00  ff:ff:ff:00:00:00
+    10  deny      0.0.0.0/0    02:00:01:00:00:00  ff:ff:ff:00:00:00
    100  permit    0.0.0.0/0    00:00:00:00:00:00  00:00:00:00:00:00
 ```
 
