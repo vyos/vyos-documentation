@@ -227,9 +227,14 @@ Set container capabilities or permissions.
 - **net-bind-service**: Bind a socket to privileged ports
 (port numbers less than 1024)
 - **net-raw**: Permission to create raw network sockets
+- **chown**: Permission to set file UIDs and GIDs
+- **mknod**: Permission to create special files
 - **setpcap**: Capability sets (from bounded or inherited set)
 - **sys-admin**: Administration operations (quotactl, mount, sethostname,
-setdomainame)
+setdomainname)
+- **sys-module**: Load, unload and delete kernel modules
+- **sys-nice**: Permission to set process nice value
+- **sys-rawio**: Permission to perform raw I/O operations
 - **sys-time**: Permission to set system clock
 ```
 
