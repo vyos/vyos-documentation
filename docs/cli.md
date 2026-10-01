@@ -1,3 +1,7 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (cli)=
 
 # Command Line Interface
@@ -18,9 +22,8 @@ and will present the help system upon a conflict or unknown value.
 ### Typing a literal question mark
 
 Because `?` is the help key, a literal question mark needs special handling
-when it is part of a value, such as a URL with a query string. Press
-`Ctrl-V` followed by `?` to insert a literal question mark; this works on
-all VyOS releases.
+when it is part of a value, such as a URL with a query string. On older
+releases, press `Ctrl-V` followed by `?` to insert it literally.
 
 On current rolling releases a `?` typed **inside a quoted string** is
 inserted literally, and only triggers the help system outside of quotes:
@@ -116,8 +119,9 @@ command help and documentation if you are not sure what exactly it does.
 
 #### clear
 
-\"Clear\" commands are completely non-disruptive to any system operations.
-Generally, they can be used freely without hesitation.
+\"Clear\" commands generally clear counters or diagnostic state. Their impact
+depends on the command, so check its help before using it on a production
+system.
 
 Most often their purpose is to remove or reset various debug and diagnostic
 information such as system logs and packet counters.
@@ -335,7 +339,8 @@ not work directly in configuration mode. There is a special way on how to
 
 ::::{hint}
 
-Use the `show configuration commands | strip-private` command when you want to hide private data. You may want to do so if you want to share your configuration on the [forum](https://forum.vyos.io).
+Use `show configuration commands | strip-private` to remove private data
+before sharing configuration on the [forum](https://forum.vyos.io).
 ::::
 
 ```{opcmd} show configuration json
@@ -665,7 +670,7 @@ Note that \'reload\' loads the most recent completed configuration and does not 
 What if you are doing something dangerous? Suppose you want to setup a firewall, and you are not sure there are no mistakes that will lock you out of your system. You can use confirmed commit. If you issue the `commit-confirm` command, your changes will be committed, and if you don\'t issue the `confirm` command in 10 minutes, your system will reboot into previous config revision.
 
 :::{code-block} none
-vyos@router# set firewall interface eth0 local name FromWorld
+vyos@router# set system host-name router-new
 vyos@router# commit-confirm
 commit confirm will be automatically reboot in 10 minutes unless confirmed
 Proceed? [confirm]y
@@ -677,12 +682,15 @@ vyos@router# confirm
 
 ```{cfgcmd} copy
 
-Copy a configuration element.
+Copy a configuration element or subtree.
 
-You can copy and remove configuration subtrees. Suppose you set up a firewall ruleset `FromWorld` with one rule that allows traffic from specific subnet. Now you want to setup a similar rule, but for different subnet. Change your edit level to `firewall name FromWorld` and use `copy rule 10 to rule 20`, then modify rule 20.
+Suppose you set up an IPv4 firewall ruleset `FromWorld` with one rule that
+allows traffic from a specific subnet. To create a similar rule for a different
+subnet, enter the ruleset hierarchy, copy rule 10 to rule 20, then modify rule
+20.
 
 :::{code-block} none
-vyos@router# show firewall name FromWorld
+vyos@router# show firewall ipv4 name FromWorld
  default-action drop
  rule 10 {
      action accept
@@ -691,14 +699,14 @@ vyos@router# show firewall name FromWorld
      }
  }
 [edit]
-vyos@router# edit firewall name FromWorld
-[edit firewall name FromWorld]
+vyos@router# edit firewall ipv4 name FromWorld
+[edit firewall ipv4 name FromWorld]
 vyos@router# copy rule 10 to rule 20
-[edit firewall name FromWorld]
+[edit firewall ipv4 name FromWorld]
 vyos@router# set rule 20 source address 198.51.100.0/24
-[edit firewall name FromWorld]
+[edit firewall ipv4 name FromWorld]
 vyos@router# commit
-[edit firewall name FromWorld]
+[edit firewall ipv4 name FromWorld]
 :::
 ```
 
@@ -710,9 +718,9 @@ You can also rename config subtrees:
 
 :::{code-block} none
 vyos@router# rename rule 10 to rule 5
-[edit firewall name FromWorld]
+[edit firewall ipv4 name FromWorld]
 vyos@router# commit
-[edit firewall name FromWorld]
+[edit firewall ipv4 name FromWorld]
 :::
 Note that `show` command respects your edit level and from this level you can view the modified firewall ruleset with just `show` with no parameters.
 
@@ -745,18 +753,23 @@ To remove an existing comment from your current configuration, specify an empty 
 Example:
 
 :::{code-block} none
-vyos@vyos# comment firewall all-ping "Yes I know this VyOS is cool"
+vyos@vyos# comment firewall ipv4 name FromWorld "Example IPv4 ruleset"
 vyos@vyos# commit
 vyos@vyos# show
  firewall {
-     /* Yes I know this VyOS is cool */
-     all-ping enable
-     broadcast-ping disable
+     ipv4 {
+         /* Example IPv4 ruleset */
+         name FromWorld {
+             default-action drop
+         }
+     }
      ...
  }
 :::
 :::{note}
-An important thing to note is that since the comment is added on top of the section, it will not appear if the `show <section>` command is used. With the above example, the ``show firewall`` command would return starting after the `firewall {` line, hiding the comment.
+Comments are attached above the configuration section. A command such as
+`show firewall ipv4 name FromWorld` starts inside that node, so it does not
+display the comment attached to `firewall ipv4 name FromWorld`.
 :::
 ```
 
@@ -814,7 +827,9 @@ vyos@vyos:~$ show system commit
 
 ```{cfgcmd} set system config-management commit-revisions \<N\>
 
-You can specify the number of revisions stored on disk. N can be in the range of 0 - 65535. When the number of revisions exceeds the configured value, the oldest revision is removed. The default setting for this value is to store 100 revisions locally.
+You can specify the number of revisions stored on disk. N can be in the range
+of 1 to 65535. When the number of revisions exceeds the configured value, the
+oldest revision is removed. The default is 100 revisions.
 ```
 
 ### Compare configurations
@@ -913,7 +928,8 @@ filename used on the remote host will be `config.boot-hostname.YYYYMMDD_HHMMSS`.
 
 ```{cfgcmd} set system config-management commit-archive location \<URI\>
 
-Specify remote location of commit archive as any of the below {abbr}`URI (Uniform Resource Identifier)`
+Specify the remote location of the commit archive as one of these
+{abbr}`URI (Uniform Resource Identifier)` values:
 - `http://<user>:<passwd>@<host>:/<dir>`
 - `https://<user>:<passwd>@<host>:/<dir>`
 - `ftp://<user>:<passwd>@<host>/<dir>`
@@ -922,14 +938,16 @@ Specify remote location of commit archive as any of the below {abbr}`URI (Unifor
 - `tftp://<host>/<dir>`
 - `git+https://<user>:<passwd>@<host>/<path>`
 
-Since username and password are part of the URI, they need to be properly url encoded if containing special characters.
+URL-encode the username and password if they contain special characters.
 
 :::{note}
-The number of revisions don\'t affect the commit-archive.
+The number of local revisions does not affect the commit archive.
 
-When using Git as destination for the commit archive the `source-address` CLI option has no effect.
+When Git is the commit-archive destination, the `source-address` option has
+no effect.
 
-You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
+If SSH cannot verify the remote host, verify its fingerprint through a trusted
+channel before adding it to `~/.ssh/known_hosts`:
 :::
 :::{code-block} none
 vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
@@ -952,7 +970,10 @@ with the `load` command:
 
 ```{cfgcmd} load \<URI\>
 
-Use this command to load a configuration which will replace the running configuration. Define the location of the configuration file to be loaded. You can use a path to a local file, an SCP address, an SFTP address, an FTP address, an HTTP address, an HTTPS address or a TFTP address.
+Use this command to load a configuration file into the working configuration.
+Define the location of the file to load. You can use a local path, or an SCP,
+SFTP, FTP, HTTP, HTTPS, or TFTP address. Review the resulting changes and use
+{cfgcmd}`commit` to apply them.
 
 :::{code-block} none
 vyos@vyos# load
