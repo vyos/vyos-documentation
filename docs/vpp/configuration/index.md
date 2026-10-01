@@ -43,10 +43,11 @@ validation succeeds, VyOS restarts the VPP service and applies the
 configuration. The interface setup process includes these steps:
 
 1. VyOS checks system resources, interface availability, and supported NIC
-   requirements. A failed check rejects the configuration commit.
+   requirements. A failed check rejects the VPP portion of the commit; other
+   configuration changes may still apply.
 2. VyOS restarts the VPP service with the generated startup configuration.
 3. VyOS adds configured interfaces to VPP using the selected driver.
 4. For interfaces integrated with Linux, VPP's Linux Control Plane (LCP)
    plugin creates matching interfaces in the Linux kernel.
 5. VyOS synchronizes routes between the kernel and VPP and reruns dependent
-   configuration so kernel-based services can use the Linux interfaces.\n
+   configuration so kernel-based services can use the Linux interfaces.
