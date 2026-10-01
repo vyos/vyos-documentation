@@ -88,8 +88,9 @@ resource "google_compute_instance" "vyos" {
   }
 
   metadata = {
-    enable-oslogin = "FALSE"
-    ssh-keys       = "vyos:${trimspace(file(var.ssh_public_key_file))}"
+    enable-oslogin         = "FALSE"
+    ssh-keys               = "vyos:${trimspace(file(pathexpand(var.ssh_public_key_file)))}"
+    block-project-ssh-keys = "TRUE"
   }
 }
 
@@ -120,10 +121,12 @@ applies to this instance. The rule only allows SSH from the administrator
 address range you provide; do not replace it with `0.0.0.0/0` for a public
 router.
 
-The `ssh-keys` metadata value uses the public key only. The explicit
-`enable-oslogin` setting selects metadata-based SSH keys for this example. If
-an organization policy requires OS Login, follow that policy and verify the
-selected VyOS image supports the required access method.
+The `ssh-keys` metadata value uses the public key only, and
+`block-project-ssh-keys` prevents project-wide keys from also granting access
+to this instance. The explicit `enable-oslogin` setting selects metadata-based
+SSH keys for this example. If an organization policy requires OS Login, follow
+that policy and verify the selected VyOS image supports the required access
+method.
 
 The firewall rule only permits management SSH. Add separate firewall rules
 for the traffic your router must handle, with source ranges and protocols
@@ -195,7 +198,7 @@ zone                = "us-west1-a"
 network             = "default"
 image               = "projects/IMAGE_PROJECT/global/images/IMAGE_NAME"
 admin_source_range  = "198.51.100.10/32"
-ssh_public_key_file = pathexpand("~/.ssh/vyos_gcp.pub")
+ssh_public_key_file = "~/.ssh/vyos_gcp.pub"
 ```
 
 The `198.51.100.10/32` value is reserved for documentation and will not allow
