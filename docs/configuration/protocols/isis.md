@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-09-30'
 myst:
   html_meta:
     description: |
@@ -1232,7 +1233,7 @@ set protocols isis interface eth1 fast-reroute ti-lfa level-2 node-protection li
 
 ### Route redistribution
 
-#### Level-1 IPv4
+#### Level-1 IPv4 route redistribution
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<bgp | connected | kernel | nhrp | ospf | rip | babel | static\> level-1
 
@@ -1288,7 +1289,7 @@ Example:
 set protocols isis redistribute ipv4 bgp level-1 route-map BGP-TO-ISIS
 ```
 
-#### Level-1 IPv6
+#### Level-1 IPv6 route redistribution
 
 ```{cfgcmd} set protocols isis redistribute ipv6 \<bgp | connected | kernel | ospf6 | ripng | babel | static\> level-1
 
@@ -1344,7 +1345,7 @@ Example:
 set protocols isis redistribute ipv6 bgp level-1 route-map BGP-TO-ISIS
 ```
 
-#### Level-2 IPv4
+#### Level-2 IPv4 route redistribution
 
 ```{cfgcmd} set protocols isis redistribute ipv4 \<bgp | connected | kernel | nhrp | ospf | rip | babel | static\> level-2
 
@@ -1400,7 +1401,7 @@ Example:
 set protocols isis redistribute ipv4 bgp level-2 route-map BGP-TO-ISIS
 ```
 
-#### Level-2 IPv6
+#### Level-2 IPv6 route redistribution
 
 ```{cfgcmd} set protocols isis redistribute ipv6 \<bgp | connected | kernel | ospf6 | ripng | babel | static\> level-2
 
@@ -1486,8 +1487,9 @@ event has triggered a regeneration.
 ```
 
 ```{note}
-The value must be less than the configured `max-lsp-lifetime` so that the
-LSP is refreshed before its remaining lifetime expires.
+The value must be at least 300 seconds less than the configured
+`max-lsp-lifetime`. VyOS rejects configurations that do not leave this
+margin.
 ```
 
 Example:
@@ -1504,8 +1506,9 @@ The default is 1200 seconds.
 ```
 
 ```{note}
-This value must be greater than `lsp-refresh-interval` so that LSPs are
-refreshed before their lifetime expires.
+This value must be at least 300 seconds greater than
+`lsp-refresh-interval`. VyOS rejects configurations that do not leave this
+margin.
 ```
 
 Example:
