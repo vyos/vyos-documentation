@@ -73,9 +73,10 @@ builds use the same Debian build command.
 
 ## Build artifacts
 
-The package source checkout and source tarball are kept in the package's
-directory under `scripts/package-build/`. Generated `.deb` files are copied
-to the parent `scripts/package-build/` directory. The script removes its
-temporary build-dependency packages after the build.
+The package source checkout and source tarball are kept under the package's
+build directory in `scripts/package-build/`. Generated `.deb` files are copied
+to that package build directory. For example, the FRR package build uses
+`scripts/package-build/frr`. The script removes its temporary build-dependency
+packages after the build.
 
 [package-build]: https://github.com/vyos/vyos-build/tree/rolling
