@@ -1,5 +1,5 @@
 ---
-lastproofread: '2024-09-11'
+lastproofread: '2026-09-30'
 ---
 
 # Bridge and firewall example
@@ -12,27 +12,19 @@ firewall rules.
 Three non VLAN-aware bridges are going to be configured, and each one has its
 own requirements.
 
-- Bridge br0:
-  : - Isolated layer 2 bridge.
-    - Accept only IPv6 communication within the bridge.
-- Bridge br1:
-  : - Drop all DHCP discover packets.
-    - Accept all ARP packets.
-    - Within the bridge, accept only new IPv4 connections from host 10.1.1.102
-    - Drop all other IPv4 connections.
-    - Drop all IPv6 connections.
-    - Accept access to router itself.
-    - Allow connections to internet
-    - Drop connections to other LANs.
-- Bridge br2:
-  : - Accept all DHCP discover packets.
-    - Accept only DHCP offers from valid server and|or trusted bridge port.
-    - Accept all ARP packets.
-    - Accept all IPv4 connections.
-    - Drop all IPv6 connections.
-    - Deny access to the router.
-    - Allow connections to internet.
-    - Allow connections to bridge br1.
+* **br0:** An isolated Layer 2 bridge that accepts only IPv6 traffic.
+* **br1:** Drops DHCPv4 Discover and IPv6 traffic, accepts ARP, and permits
+  new IPv4 traffic within the bridge only from `10.1.1.102`. It also permits
+  IPv4 access to the router and Internet, while blocking routed access to
+  other LANs.
+* **br2:** Accepts DHCPv4 Discover, DHCP offers arriving on the trusted
+  `eth6` port, ARP, and bridged IPv4 traffic. It drops IPv6 traffic and denies
+  new IPv4 access to the router. Routed IPv4 traffic may reach the Internet and
+  br1.
+
+The Internet access examples assume that routing and any required source NAT
+are configured separately. The bridge rules filter switched traffic; the IPv4
+rules below filter traffic routed by the VyOS router.
 
 ## Configuration
 
@@ -223,7 +215,7 @@ set firewall bridge name br2-fwd rule 10 protocol 'udp'
 set firewall bridge name br2-fwd rule 10 source port '68'
 set firewall bridge name br2-fwd rule 10 destination port '67'
 set firewall bridge name br2-fwd rule 10 destination mac-address 'ff:ff:ff:ff:ff:ff'
-  # Requirement: Accept only DHCP offers from valid server on port eth6
+  # Requirement: Accept DHCP offers only from the trusted port eth6
 set firewall bridge name br2-fwd rule 20 description 'Accept DHCP offers from trusted interface'
 set firewall bridge name br2-fwd rule 20 action 'accept'
 set firewall bridge name br2-fwd rule 20 protocol 'udp'
@@ -343,15 +335,15 @@ set firewall ipv4 name ip-br2-fwd default-action 'drop'
 While testing the configuration, we can check logs in order to ensure that
 we are accepting and/or blocking the correct traffic.
 
-For example, while a host tries to get an IP address from a DHCP server in
-br1 all DHCP discover are dropped, and in br2, we can see that DHCP offers from
-untrusted servers are dropped:
+For example, DHCPv4 Discover packets in br1 are dropped, and DHCP offers
+arriving on br2 from ports other than the trusted `eth6` port are dropped.
+The MAC header is omitted from these sample log lines:
 
 ```none
 vyos@bridge:~$ show log firewall bridge
-Sep 17 14:22:35 kernel: [bri-NAM-br2-fwd-22-D]IN=eth7 OUT=eth5 MAC=50:00:00:09:00:00:50:00:00:04:00:00:08:00 SRC=10.2.2.199 DST=10.2.2.92 LEN=322 TOS=0x10 PREC=0x00 TTL=128 ID=0 DF PROTO=UDP SPT=67 DPT=68 LEN=302
-Sep 17 14:28:18 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
-Sep 17 14:28:19 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= MAC=ff:ff:ff:ff:ff:ff:00:50:79:66:68:0c:08:00 SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
+Sep 17 14:22:35 kernel: [bri-NAM-br2-fwd-22-D]IN=eth7 OUT=eth5 SRC=10.2.2.199 DST=10.2.2.92 LEN=322 TOS=0x10 PREC=0x00 TTL=128 ID=0 DF PROTO=UDP SPT=67 DPT=68 LEN=302
+Sep 17 14:28:18 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
+Sep 17 14:28:19 kernel: [bri-NAM-br1-pre-10-D]IN=eth3 OUT= SRC=0.0.0.0 DST=255.255.255.255 LEN=392 TOS=0x10 PREC=0x00 TTL=16 ID=0 PROTO=UDP SPT=68 DPT=67 LEN=372
 ```
 
 And with operational mode commands, we can check rules matchers, actions, and
