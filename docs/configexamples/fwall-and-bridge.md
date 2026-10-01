@@ -284,7 +284,7 @@ set firewall ipv4 input filter rule 120 action 'drop'
 set firewall ipv4 input filter rule 120 inbound-interface group 'br2-ifaces'
 ```
 
-And for traffic that is going to other local networks, and to he Internet, we
+And for traffic that is going to other local networks and to the Internet, we
 need to use the base chain `forward`. As in the bridge firewall, we are
 going to use custom rulesets for each bridge, that would be used in the
 `forward` chain. Those rulesets are `ip-br1-fwd` and `ip-br2-fwd`:

@@ -65,6 +65,12 @@ Creating a flow table:
 Specify interfaces to use in the flowtable.
 ```
 
+:::{note}
+A flowtable must contain at least one existing interface. Its name must
+begin with an alphanumeric character and can contain alphanumeric
+characters, underscores, hyphens, and dots.
+:::
+
 ```{cfgcmd} set firewall flowtable \<flow_table_name\> description \<text\>
 
 Provide a description for the flow table.
@@ -95,6 +101,34 @@ Create a firewall rule in the forward chain with the action set to
 Create a firewall rule in the forward chain and specify which flowtable
 to use. Only applicable if the action is ``offload``.
 ```
+
+:::{important}
+The ``action offload`` and ``offload-target`` commands must be configured
+together, and the target must name an existing flowtable.
+:::
+
+Offload is also available in IPv4 and IPv6 custom chains reached from the
+forward path:
+
+```{cfgcmd} set firewall [ipv4 | ipv6] name \<name\> rule \<1-999999\> action offload
+```
+
+```{cfgcmd} set firewall [ipv4 | ipv6] name \<name\> rule \<1-999999\> offload-target \<flowtable\>
+```
+
+To offload stateful forwarding traffic handled by the global state-policy
+forward chain without repeating an offload rule in each forward ruleset,
+use:
+
+```{cfgcmd} set firewall global-options state-policy offload offload-target \<flowtable\>
+```
+
+:::{warning}
+Flowtable operation depends on connection tracking. Do not combine state or
+offload rules with ``disable-conntrack`` on the affected IP filter chains.
+Custom chains that contain offload rules cannot be used for local-zone
+traffic.
+:::
 
 ### Interface Selection
 
