@@ -1,36 +1,29 @@
 # Interface Names
 
-If you find the names of your interfaces have changed, this could be because
-your MAC addresses have changed.
+Interface names no longer follow the MAC address of a network card. A name is
+bound to the slot the hardware sits in, so the situations which used to rename
+interfaces do not any more:
 
-- For example, you have a VyOS VM with 4 Ethernet interfaces named
-  eth0, eth1, eth2 and eth3. Then, you migrate your VyOS VM to a different
-  host and find your interfaces now are eth4, eth5, eth6 and eth7.
+- Migrating a VM to a different host, where the hypervisor hands out new MAC
+  addresses, keeps the interface names.
+- Cloning a VM, for example in GNS3, keeps the interface names.
+- Replacing a failed network card with a new one in the same slot keeps the
+  name and the configuration of that interface.
 
-  One way to fix this issue **taking control of the MAC addresses** is:
+An interface whose card is removed keeps its name reserved, so a card added
+later can never take over the name — and with it the addresses — of the
+interface which went away.
 
-  Log into VyOS and run this command to display your interface settings.
+See {ref}`interface-naming` for how names are assigned, and for the procedure
+to rename an interface.
 
-  ```none
-  show interfaces detail
-  ```
+If an interface really is missing after a reboot, check which names were
+resolved for this boot:
 
-  Take note of MAC addresses.
+```none
+cat /run/vyos-net-name-resolve.json
+```
 
-  Now, in order to update a MAC address in the configuration, run this command
-  specifying the interface name and MAC address you want.
-
-  ```none
-  set interfaces ethernet eth0 hw-id 00:0c:29:da:a4:fe
-  ```
-
-  If it is a VM, go into the settings of the host and set the MAC address to
-  the settings found in the config.boot file. You can also set the MAC to
-  static if the host allows so.
-
-- Another example could be when cloning VyOS VMs in GNS3 and you get into the
-  same issue: interface names have changed.
-
-  And **a more generic way to fix it** is just deleting every MAC address at
-  the configuration file of the cloned machine. They will be correctly
-  regenerated automatically.
+An interface listed under `missing` has a name reserved in the mapping file,
+but its hardware did not appear. That points at the card, its driver or the
+slot it is plugged into, rather than at the naming.

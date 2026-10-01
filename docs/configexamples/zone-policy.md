@@ -54,7 +54,6 @@ It will look something like this:
 interfaces {
     ethernet eth0 {
         duplex auto
-        hw-id 00:53:ed:6e:2a:92
         smp_affinity auto
         speed auto
         vif 10 {

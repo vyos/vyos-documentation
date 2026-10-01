@@ -253,7 +253,6 @@ vyos@vyos:~$ show configuration
 interfaces {
   ethernet eth0 {
         address dhcp
-        hw-id 00:53:00:00:aa:01
   }
   loopback lo {
   }
@@ -314,7 +313,6 @@ Get a collection of all the set commands required which led to the running confi
 :::{code-block} none
 vyos@vyos:~$ show configuration commands
 set interfaces ethernet eth0 address 'dhcp'
-set interfaces ethernet eth0 hw-id '00:53:dd:44:3b:0f'
 set interfaces loopback 'lo'
 set service ssh port '22'
 set system config-management commit-revisions '20'
@@ -343,7 +341,7 @@ Use the `show configuration commands | strip-private` command when you want to h
 View the current active configuration in JSON format.
 
 :::{code-block} none
-{"interfaces": {"ethernet": {"eth0": {"address": ["192.0.2.11/24", "192.0.2.35/24"], "hw-id": "52:54:00:48:a0:c6"}, "eth1": {"address": ["203.0.113.1/24"], "hw-id": "52:54:00:fc:50:0b"}}, "loopback": {"lo": {}}}, "protocols": {"static": {"route": {"0.0.0.0/0": {"next-hop": {"192.0.2.254": {}}}}}}, "service": {"ssh": {"disable-host-validation": {}}}, "system": {"config-management": {"commit-revisions": "100"}, "console": {"device": {"ttyS0": {"speed": "115200"}}}, "host-name": "r11-vyos", "login": {"user": {"vyos": {"authentication": {"encrypted-password": "$6$Vt68...F0", "plaintext-password": "", "public-keys": {"vyos@vyos": {"key": "AAAAxxx=", "type": "ssh-rsa"}}}}}}, "name-server": ["203.0.113.254"], "ntp": {"server": {"time1.vyos.net": {}, "time2.vyos.net": {}, "time3.vyos.net": {}}}, "syslog": {"global": {"facility": {"all": {"level": "info"}, "protocols": {"level": "debug"}}}}, "time-zone": "America/New_York"}}
+{"interfaces": {"ethernet": {"eth0": {"address": ["192.0.2.11/24", "192.0.2.35/24"]}, "eth1": {"address": ["203.0.113.1/24"]}}, "loopback": {"lo": {}}}, "protocols": {"static": {"route": {"0.0.0.0/0": {"next-hop": {"192.0.2.254": {}}}}}}, "service": {"ssh": {"disable-host-validation": {}}}, "system": {"config-management": {"commit-revisions": "100"}, "console": {"device": {"ttyS0": {"speed": "115200"}}}, "host-name": "r11-vyos", "login": {"user": {"vyos": {"authentication": {"encrypted-password": "$6$Vt68...F0", "plaintext-password": "", "public-keys": {"vyos@vyos": {"key": "AAAAxxx=", "type": "ssh-rsa"}}}}}}, "name-server": ["203.0.113.254"], "ntp": {"server": {"time1.vyos.net": {}, "time2.vyos.net": {}, "time3.vyos.net": {}}}, "syslog": {"global": {"facility": {"all": {"level": "info"}, "protocols": {"level": "debug"}}}}, "time-zone": "America/New_York"}}
 :::
 ```
 
@@ -359,14 +357,12 @@ View the current active configuration in readable JSON format.
                 "address": [
                     "192.0.2.11/24",
                     "192.0.2.35/24"
-                ],
-                "hw-id": "52:54:00:48:a0:c6"
+                ]
             },
             "eth1": {
                 "address": [
                     "203.0.113.1/24"
-                ],
-                "hw-id": "52:54:00:fc:50:0b"
+                ]
             }
         },
         "loopback": {
@@ -496,7 +492,6 @@ vyos@vyos# show interfaces
  ethernet eth0 {
      description MY_OLD_DESCRIPTION
      disable
-     hw-id 00:53:dd:44:3b:03
  }
  loopback lo {
  }
@@ -512,7 +507,6 @@ vyos@vyos# show interfaces
 +    address dhcp
 >    description MY_NEW_DESCRIPTION
 -    disable
-     hw-id 00:53:dd:44:3b:03
  }
  loopback lo {
  }
@@ -524,7 +518,6 @@ mode using {cfgcmd}`show | commands`
 ``` none
 vyos@vyos# show interfaces ethernet eth0 | commands
 set address dhcp
-set hw-id 00:53:ad:44:3b:03
 ```
 
 These commands are also relative to the level you are inside and only relevant
@@ -534,7 +527,6 @@ configuration blocks will be displayed when entering a sub-level.
 [edit interfaces ethernet eth0]
 vyos@vyos# show
  address dhcp
- hw-id 00:53:ad:44:3b:03
 ```
 
 Exiting from the configuration mode is done via the {cfgcmd}`exit` command from
