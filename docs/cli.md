@@ -939,6 +939,8 @@ Specify the remote location of the commit archive as one of these
 - `git+https://<user>:<passwd>@<host>/<path>`
 
 URL-encode the username and password if they contain special characters.
+HTTP and FTP do not encrypt credentials or configuration archives in transit.
+Use HTTPS, SFTP, SCP, or Git over HTTPS for commit archives.
 
 :::{note}
 The number of local revisions does not affect the commit archive.
@@ -946,12 +948,16 @@ The number of local revisions does not affect the commit archive.
 When Git is the commit-archive destination, the `source-address` option has
 no effect.
 
-If SSH cannot verify the remote host, verify its fingerprint through a trusted
-channel before adding it to `~/.ssh/known_hosts`:
+If SSH cannot verify the remote host, obtain its expected fingerprint through
+a trusted channel. Scan the host key and compare its fingerprint before adding
+it to `~/.ssh/known_hosts`:
 :::
 :::{code-block} none
-vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
+vyos@vyos# ssh-keyscan -t ed25519 <host> > /tmp/host-key
+vyos@vyos# ssh-keygen -lf /tmp/host-key
 :::
+After confirming the fingerprint matches, add the verified key to
+`~/.ssh/known_hosts`. Do not trust or install an unverified scan result.
 ```
 
 ```{cfgcmd} set system config-management commit-archive vrf \<name\>
