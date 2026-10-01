@@ -1,10 +1,14 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (system-dns)=
 
 # System DNS
 
 :::{warning}
-If you are configuring a VRF for management purposes, there is
-currently no way to force system DNS traffic via a specific VRF.
+The `system name-server` command cannot assign DNS traffic to a specific VRF.
+DNS requests follow the system's routing configuration.
 :::
 
 This section describes configuring DNS on the system, namely:
@@ -14,49 +18,55 @@ This section describes configuring DNS on the system, namely:
 
 ## DNS name servers
 
-```{cfgcmd} set system name-server \<address\>
+```{cfgcmd} set system name-server \<address | interface\>
 
-Use this command to specify a DNS server for the system to be used
-for DNS lookups. More than one DNS server can be added, configuring
-one at a time. Both IPv4 and IPv6 addresses are supported.
+Use this command to specify a DNS server for the system to use for DNS
+lookups. Add multiple values by running the command once for each server.
+IPv4 and IPv6 addresses are supported. You can also specify an interface
+to use name servers received through DHCP or DHCPv6 on that interface.
 ```
-
 
 ### Example
 
-In this example, some *OpenNIC* servers are used, two IPv4 addresses
-and two IPv6 addresses:
+This example configures IPv4 and IPv6 name servers. The addresses are
+reserved for documentation and are not public DNS servers:
 
 ```none
-set system name-server 176.9.37.132
-set system name-server 195.10.195.195
-set system name-server 2a01:4f8:161:3441::1
-set system name-server 2a00:f826:8:2::195
+set system name-server 192.0.2.53
+set system name-server 198.51.100.53
+set system name-server 2001:db8::53
+set system name-server 2001:db8:1::53
 ```
 
+To use DNS servers received through DHCP on an interface, specify its name:
+
+```none
+set system name-server eth0
+```
 
 ## Domain search order
 
-In order for the system to use and complete unqualified host names, a
-list can be defined which will be used for domain searches.
+To complete unqualified host names, configure one or more search domains.
+The system writes these domains to the resolver configuration in the order
+configured.
 
 ```{cfgcmd} set system domain-search \<domain\>
 
-Use this command to define domains, one at a time, so that the system
-uses them to complete unqualified host names. Maximum: 6 entries.
+Use this command to add a domain to the system DNS search list. Add multiple
+domains by running the command once for each domain.
 ```
 
 :::{note}
-Domain names can include letters, numbers, hyphens and periods
-with a maximum length of 253 characters.
+Domain names may contain letters, numbers, hyphens, and periods, and may be
+up to 253 characters long.
 :::
 
 (name-server-domain-search-order-example)=
 
 ### Example
 
-The system is configured to attempt domain completion in the following
-order: vyos.io (first), vyos.net (second) and vyos.network (last):
+This example configures the system to try `vyos.io`, `vyos.net`, and then
+`vyos.network` when completing unqualified host names:
 
 ```none
 set system domain-search vyos.io
