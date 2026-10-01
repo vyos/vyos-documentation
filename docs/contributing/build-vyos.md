@@ -8,11 +8,10 @@ lastproofread: '2026-09-30'
 
 ## Prerequisites
 
-There are different ways you can build VyOS. Building using a
-{ref}`build_docker`
-container is the easiest way because all dependencies are managed for you.
-Alternatively, you can set up your own build machine and run a
-{ref}`build_native` build.
+The supported build environment is the `vyos/vyos-build` container. It manages
+the required dependencies for you. The image builder can check for missing
+host dependencies, but use the container for the expected dependency versions
+and system setup. See {ref}`build_docker` for the build instructions.
 
 :::{note}
 Starting with VyOS 1.4, only source code and Debian package
@@ -33,10 +32,9 @@ This process has been tested on clean installs of Debian Bookworm.
 
 ### Native Build
 
-The supported build environment is the `vyos/vyos-build` container. Although
-the image builder can check for missing host dependencies, use the container
-to get the dependency versions and system setup expected by the build. See
-{ref}`build_docker` for instructions.
+The image builder can check a host for missing dependencies, but building
+directly on the host is not the supported path. Use the container described in
+{ref}`build_docker` for a reproducible build environment.
 
 (build_docker)=
 
@@ -304,7 +302,7 @@ the image build; substituting only a kernel `.deb` can leave required modules
 incompatible. Do not use the old `packages/linux-kernel/Jenkinsfile` or the
 removed `build-intel-drivers.sh` instructions.
 
-[kernel-build-readme]: https://github.com/vyos/vyos-build
+[kernel-build-readme]: https://github.com/vyos/vyos-build/tree/current/scripts/package-build/linux-kernel
 
 ### Packages
 
