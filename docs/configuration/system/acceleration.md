@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-10-01'
 myst:
   html_meta:
     description: |
@@ -14,11 +15,12 @@ myst:
 
 # Acceleration
 
-Hardware acceleration speeds up the router's own workload. It is
-configured under `system acceleration` and is disabled by default. Once
-enabled, it applies system-wide, with no per-interface or per-tunnel
-control. Acceleration requires a cryptographic accelerator that the router
-supports, present on its {abbr}`PCI (Peripheral Component Interconnect)` bus.
+Intel QAT can offload supported cryptographic operations from the router's
+CPU. It is configured under `system acceleration` and is disabled by default.
+Enabling it starts the QAT service system-wide; there is no per-interface or
+per-tunnel control. Only software that supports QAT can use the accelerator.
+The router must have a supported cryptographic accelerator on its
+{abbr}`PCI (Peripheral Component Interconnect)` bus.
 
 When the router runs on a virtual machine, it detects a supported
 accelerator only when the hypervisor assigns the accelerator to the
@@ -29,7 +31,7 @@ cryptographic acceleration is supported.
 
 ## Configuration
 
-### Intel® QAT
+### Intel® QAT configuration
 
 ```{cfgcmd} set system acceleration qat
 
@@ -53,7 +55,7 @@ set system acceleration qat
 
 ## Operation
 
-### Intel® QAT
+### Intel® QAT status and diagnostics
 
 ```{opcmd} show system acceleration qat
 
@@ -61,6 +63,11 @@ set system acceleration qat
 
 If the system has no such device, the command shows
 `No QAT device found`.
+
+The configuration check recognizes QAT 200xx devices (`8086:18ee`), but the
+`show system acceleration qat` and `show system acceleration qat status`
+commands do not. These commands can report no device for QAT 200xx hardware
+even though the configuration check accepts it.
 ```
 
 Example:
@@ -125,11 +132,12 @@ show system acceleration qat interrupts
 
 ## Example
 
-### Intel® QAT
+### Intel® QAT performance test
 
 The following example configures an IPsec VPN between two routers with
-Intel® QAT devices and compares the bandwidth with and without
-acceleration.
+Intel® QAT devices and compares the bandwidth with and without acceleration.
+These are results from one test setup; actual throughput depends on the
+hardware, software, algorithms, and network configuration.
 
 Side A:
 
