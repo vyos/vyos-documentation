@@ -278,8 +278,8 @@ Route tag to match.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> on-match goto \<1-65535\>
 
-On a match, continue at the first rule whose sequence number is greater than or
-equal to the specified number.
+On a match, continue at the first later rule whose sequence number is greater
+than or equal to the specified number. `goto` only moves forward.
 ```
 
 
@@ -311,7 +311,7 @@ Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path prepend-last-as \<n\>
 
-Prepend the last AS number in the AS_PATH the specified number of times
+Prepend the leftmost AS number in the AS_PATH the specified number of times
 (1 to 10).
 ```
 
