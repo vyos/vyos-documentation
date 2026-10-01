@@ -608,9 +608,10 @@ blocks everything for its clients.
 :::{note}
 The following rule options are accepted by the CLI, but are currently not
 evaluated for the clients of a rule: `allow-ipaddr-url`, `enable-safe-search`,
-`redirect-url`, `log` and `time-period`. Use the global `redirect-url`, `log`
-and `enable-safe-search` instead. The `time-period` nodes below are not used
-either.
+`redirect-url`, `log` and `time-period`. Use the global `redirect-url` and
+`log` instead, they apply to the clients of a rule as well. Safe search is not
+available for those clients, and they are not checked for IP address URLs.
+The `time-period` nodes below are not used either.
 :::
 
 ```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> allow-ipaddr-url
