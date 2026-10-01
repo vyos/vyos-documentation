@@ -142,6 +142,15 @@ In configuration mode, generate a key with
 `run generate pki openvpn shared-secret install <name>`. This example uses
 the name `s2s`.
 
+:::{warning} Known issue on rolling build `2026.07.31-0036`
+The generated key value on this build includes the `BEGIN OpenVPN Static key`
+header. VyOS adds that header when it writes the key file, so installing the
+generated value unchanged creates a malformed file and prevents OpenVPN from
+starting. Do not use this procedure on that build. Check
+[T9149](https://vyos.dev/T9149) for the fix status before using it on another
+rolling build.
+:::
+
 ``` none
 vyos@local# run generate pki openvpn shared-secret install s2s
 2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
