@@ -1,5 +1,5 @@
 ---
-lastproofread: '2025-12-05'
+lastproofread: '2026-09-30'
 ---
 
 (build)=
@@ -33,19 +33,10 @@ This process has been tested on clean installs of Debian Bookworm.
 
 ### Native Build
 
-To build VyOS natively, you need a properly configured build host with
-Debian Bookworm installed.
-
-To get started, clone the repository to your local machine:
-
-```none
-$ sudo make clean
-$ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
-```
-
-For required packages, refer to the `docker/Dockerfile` file in the
-[repository]. The `./build-vyos-image` script will also warn you if any
-dependencies are missing.
+The supported build environment is the `vyos/vyos-build` container. Although
+the image builder can check for missing host dependencies, use the container
+to get the dependency versions and system setup expected by the build. See
+{ref}`build_docker` for instructions.
 
 (build_docker)=
 
@@ -293,158 +284,27 @@ package installation succeeds again!
 
 ### Linux Kernel
 
-The Linux kernel used by VyOS is heavily tied to the ISO build process. The
-file `data/defaults.json` hosts a JSON definition of the kernel version used
-`kernel_version` and the `kernel_flavor` of the kernel which represents the
-kernel's LOCAL_VERSION. Both together form the kernel version variable in the
-system:
+The kernel version and flavor used for an ISO build are configured in
+`data/defaults.toml` in the `vyos-build` repository. Check that file in the
+branch you are building instead of relying on a version copied into this guide.
 
-```none
-vyos@vyos:~$ uname -r
-6.1.52-amd64-vyos
-```
+The kernel and its out-of-tree modules are built by the package build scripts
+under `scripts/package-build/linux-kernel/`. That directory contains
+`package.toml`, `build.py`, the kernel configuration fragments, and helper
+scripts for packages such as Accel-PPP, Intel NIC drivers, QAT, and firmware.
+The package manifest records source revisions for the kernel modules, while
+the build process obtains the kernel version and flavor from
+`data/defaults.toml`.
 
-- Accel-PPP
-- Intel NIC drivers
-- Intel QAT
+For kernel or driver development, read
+the [`README.md` in the kernel build directory][kernel-build-readme] and use
+the build instructions and manifest from the same `vyos-build` branch you are
+working with. These packages are tied to the kernel version and flavor used by
+the image build; substituting only a kernel `.deb` can leave required modules
+incompatible. Do not use the old `packages/linux-kernel/Jenkinsfile` or the
+removed `build-intel-drivers.sh` instructions.
 
-Each of those modules holds a dependency on the kernel version and if you are
-lucky enough to receive an ISO build error which sounds like:
-
-```none
-I: Create initramfs if it does not exist.
-Extra argument '6.1.52-amd64-vyos'
-...
-E: config/hooks/live/17-gen_initramfs.chroot failed (exit non-zero). You should check for errors.
-```
-
-The most obvious reasons could be:
-
-- `vyos-build` repo is outdated, please `git pull` to update to the latest
-  release kernel version from us.
-- You have your own custom kernel `*.deb` packages in the `packages` folder but
-  neglected to create all required out-of tree modules like Accel-PPP, Intel
-  QAT or Intel NIC drivers
-
-#### Building The Kernel
-
-The kernel build is quite easy, most of the required steps can be found in the
-`vyos-build/packages/linux-kernel/Jenkinsfile` but we will walk you through
-it.
-
-Clone the kernel source to `vyos-build/packages/linux-kernel/`:
-
-```none
-$ cd vyos-build/packages/linux-kernel/
-$ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-```
-
-Check out the required kernel version - see `vyos-build/data/defaults.json`
-file (example uses kernel 4.19.146):
-
-```none
-$ cd vyos-build/packages/linux-kernel/linux
-$ git checkout v4.19.146
-```
-
-Now you can use the helper script `build-kernel.sh`, which completes all
-the necessary steps: applying required patches from the
-`vyos-build/packages/linux-kernel/patches` folder, copying the kernel
-configuration `x86_64_vyos_defconfig` to the correct location, and building
-the Debian packages.
-
-:::{note}
-Building the kernel will take some time depending on the speed and
-quantity of your CPU/cores and disk speed. Expect 20 minutes
-(or even longer) on lower end hardware.
-:::
-
-```none
-(18:59) vyos_bld 412374ca36b8:/vyos/vyos-build/packages/linux-kernel [rolling] # ./build-kernel.sh
-```
-
-When complete, you will have kernel binary packages to use in your custom ISO
-build. Place all `*.deb` files in the `vyos-build/packages` folder, where
-the build process will use them automatically.
-
-##### Firmware
-
-If you upgrade your kernel or include new drivers you may need new firmware.
-This builds a new `vyos-linux-firmware` package using the included helper
-scripts.
-
-```none
-$ cd vyos-build/packages/linux-kernel
-$ git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-$ ./build-linux-firmware.sh
-$ cp vyos-linux-firmware_*.deb ../
-```
-
-The script automatically detects which firmware blobs are needed based on the
-built drivers. If detection fails, you can manually add files to
-`vyos-build/packages/linux-kernel/build-linux-firmware.sh`:
-
-```bash
-ADD_FW_FILES="iwlwifi* ath11k/QCA6390/*/*.bin"
-```
-
-
-#### Building Out-Of-Tree Modules
-
-Building the kernel is one step. You must also build required out-of-tree
-modules so the ABIs match.
-Refer to `vyos-build/packages/linux-kernel/Jenkinsfile`
-for all required modules and their versions. We show you how to build the
-currently required modules.
-
-##### Accel-PPP
-
-First, clone the source code and check out the appropriate version:
-
-```none
-$ cd vyos-build/packages/linux-kernel
-$ git clone https://github.com/accel-ppp/accel-ppp.git
-```
-
-Use the helper script and patches to build the package. Run the following
-command:
-
-```none
-$ ./build-accel-ppp.sh
-```
-
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in `vyos-build/packages/linux-kernel` from which you can copy them
-to the `vyos-build/packages` folder for inclusion during the ISO build.
-
-##### Intel NIC
-
-The Intel NIC drivers do not come from a Git repository. VyOS fetches the
-tarballs from a mirror and compiles them. Use the following wrapper script
-to build all driver modules:
-
-```none
-./build-intel-drivers.sh
-```
-
-After compilation, find the generated `*.deb` binaries in
-`vyos-build/packages/linux-kernel`. Copy them to the `vyos-build/packages`
-folder for inclusion in the ISO build.
-
-##### Intel QAT
-
-The Intel QAT (Quick Assist Technology) drivers do not come from a Git
-repository. VyOS fetches the tarballs from `01.org`, Intel's open-source
-website.
-Use the following wrapper script to build all driver modules:
-
-```none
-$ ./build-intel-qat.sh
-```
-
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in `vyos-build/packages/linux-kernel` from which you can copy them
-to the `vyos-build/packages` folder for inclusion during the ISO build.
+[kernel-build-readme]: https://github.com/vyos/vyos-build
 
 ### Packages
 
