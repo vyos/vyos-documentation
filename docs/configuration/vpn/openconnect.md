@@ -233,9 +233,10 @@ be under `/config/auth`.
 Set the fallback file path. It must be under `/config/auth`.
 ```
 
-Create a file named for each username in the configured directory. Use the
-default file when a matching per-user or per-group file is not present. User
-and group names are matched case-sensitively.
+Create a file named for each username or group name, as appropriate for the
+selected mode, in the configured directory. Use the default file when no
+matching per-user or per-group file is present. User and group names are
+matched case-sensitively.
 
 ## Verification
 
