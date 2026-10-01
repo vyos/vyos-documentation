@@ -1,7 +1,18 @@
+---
+lastproofread: '2026-09-30'
+---
+
 # Route Map Policy
 
-Route map is a powerful command, that gives network administrators a very
-useful and flexible tool for traffic manipulation.
+Route maps are ordered rules used to filter routes and change route attributes.
+Each rule has a sequence number and a `permit` or `deny` action. A rule without
+match conditions matches every route. If no rule matches, the route map denies
+the route by default. A matching `permit` rule applies its `set` actions and
+ends processing unless its exit action continues to another rule. A matching
+`deny` rule rejects the route. The optional `call` action invokes another
+route map; a deny result from that map rejects the route. See the
+[FRR Route Maps manual](https://docs.frrouting.org/en/stable-10.6/routemap.html)
+for route-map evaluation semantics.
 
 ## Configuration
 
@@ -9,7 +20,7 @@ useful and flexible tool for traffic manipulation.
 
 ```{cfgcmd} set policy route-map \<text\>
 
-   This command creates a new route-map policy, identified by \<text\>.
+Create a route-map policy identified by its name.
 ```
 
 
@@ -27,7 +38,8 @@ Set action for the route-map policy.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> call \<text\>
 
-Call another route-map policy on match.
+Call another route map after this rule matches. If the called route map denies
+the route, processing ends and the route is denied.
 ```
 
 
@@ -67,15 +79,33 @@ BGP extended community to match.
 ```
 
 
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match evpn default-route
+
+Match an EVPN type-5 default route.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match evpn rd \<ASN:NN_OR_IP-ADDRESS:NN\>
+
+Match the EVPN route distinguisher.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match evpn route-type \<1|2|3|4|5|ead|macip|multicast|es|prefix\>
+
+Match the EVPN route type.
+```
+
+
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match interface \<text\>
 
 First hop interface of a route to match.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip address access-list \<1-2699\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip address access-list \<1-99|100-199|1300-1999|2000-2699\>
 
-IP address of route to match, based on access-list.
+Match the route prefix against an IPv4 access list.
 ```
 
 
@@ -87,16 +117,14 @@ IP address of route to match, based on prefix-list.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip address prefix-len \<0-32\>
 
-IP address of route to match, based on specified prefix-length.
-Note that this can be used for kernel routes only.
-Do not apply to the routes of dynamic routing protocols (e.g. BGP,
-RIP, OSFP), as this can lead to unexpected results..
+Match the prefix length of a kernel route. Do not use this match for routes
+learned from dynamic routing protocols.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip nexthop access-list \<1-2699\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip nexthop access-list \<1-99|100-199|1300-1999|2000-2699\>
 
-IP next-hop of route to match, based on access-list.
+Match the IPv4 next hop against an access list.
 ```
 
 
@@ -124,9 +152,9 @@ IP next-hop of route to match, based on type.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip route-source access-list \<1-2699\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ip route-source access-list \<1-99|100-199|1300-1999|2000-2699\>
 
-IP route source of route to match, based on access-list.
+Match the route's advertising source address against an IPv4 access list.
 ```
 
 
@@ -150,16 +178,32 @@ IPv6 address of route to match, based on IPv6 prefix-list.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 address prefix-len \<0-128\>
 
-IPv6 address of route to match, based on specified prefix-length.
-Note that this can be used for kernel routes only.
-Do not apply to the routes of dynamic routing protocols (e.g. BGP,
-RIP, OSFP), as this can lead to unexpected results..
+Match the prefix length of a kernel route. Do not use this match for routes
+learned from dynamic routing protocols.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 nexthop \<h:h:h:h:h:h:h:h\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 nexthop address \<h:h:h:h:h:h:h:h\>
 
-Nexthop IPv6 address to match.
+Match the IPv6 next hop by address.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 nexthop access-list \<text\>
+
+Match the IPv6 next hop against an IPv6 access list.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 nexthop prefix-list \<text\>
+
+Match the IPv6 next hop against an IPv6 prefix list.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match ipv6 nexthop type \<blackhole\>
+
+Match an IPv6 blackhole next hop.
 ```
 
 
@@ -183,39 +227,40 @@ Match route metric.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match origin \<egp|igp|incomplete\>
 
-Boarder Gateway Protocol (BGP) origin code to match.
+Border Gateway Protocol (BGP) origin code to match.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match peer \<x.x.x.x\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match peer \<ipv4|ipv6\>
 
-Peer IP address to match.
+Match the peer's IPv4 or IPv6 address.
 ```
 
 
-````{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match protocol \<protocol\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match source-peer \<peer\>
 
-```{eval-rst}
-Source protocol to match.
- * ``babel`` - Babel routing protocol (Babel)
- * ``bgp`` - Border Gateway Protocol (BGP)
- * ``connected`` - Connected routes (directly attached subnet or host)
- * ``isis`` - Intermediate System to Intermediate System (IS-IS)
- * ``kernel`` - Kernel routes
- * ``ospf`` - Open Shortest Path First (OSPFv2)
- * ``ospfv3`` - Open Shortest Path First (IPv6) (OSPFv3)
- * ``rip`` - Routing Information Protocol (RIP)
- * ``ripng`` - Routing Information Protocol next-generation (IPv6) (RIPng)
- * ``static`` - Statically configured routes
- * ``table`` - Non-main Kernel Routing Table
- * ``vnc`` - Virtual Network Control (VNC)
+Match the BGP source peer by address, interface name, or peer-group name.
 ```
-````
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match protocol \<protocol\>
+
+Match the protocol through which the route was learned. Supported values are
+`babel`, `bgp`, `connected`, `isis`, `kernel`, `ospf`, `ospfv3`, `rip`,
+`ripng`, `static`, `table`, and `vnc`.
+```
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match rpki \<invalid|notfound|valid\>
 
 Match RPKI validation result.
+```
+
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match rpki-extcommunity \<invalid|notfound|valid\>
+
+Match the RPKI origin-validation state carried in the route's extended
+community.
 ```
 
 
@@ -233,13 +278,14 @@ Route tag to match.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> on-match goto \<1-65535\>
 
-Exit policy on match: go to rule <1-65535>
+On a match, continue at the first later rule whose sequence number is greater
+than or equal to the specified number. `goto` only moves forward.
 ```
 
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> on-match next
 
-Exit policy on match: go to next sequence number.
+On a match, continue at the next rule in sequence.
 ```
 
 
@@ -251,10 +297,9 @@ BGP aggregator attribute: AS number or IP address of an aggregation.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path exclude \<1-4294967295 | all\>
 
-Drop AS-NUMBER from the BGP AS path.
+Remove the specified AS number from the BGP AS path.
 
-If ``all`` is specified, remove all AS numbers from the AS_PATH of the BGP
-path's NLRI.
+Use `all` to remove every AS number from the AS path.
 ```
 
 
@@ -266,7 +311,8 @@ Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path prepend-last-as \<n\>
 
-Prepend the existing last AS number (the leftmost ASN) to the AS_PATH.
+Prepend the leftmost AS number in the AS_PATH the specified number of times
+(1 to 10).
 ```
 
 
@@ -295,10 +341,10 @@ Delete BGP communities matching the community-list.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set large-community \<add|replace\> \<GA:LDP1:LDP2\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set large-community \<add|replace\> \<GA:LD1:LD2\>
 
-Add or replace BGP large-community attribute in format
-``<0-4294967295:0-4294967295:0-4294967295>``
+Add or replace BGP large-community values in `GA:LD1:LD2` format, with each
+field ranging from 0 to 4294967295.
 ```
 
 
@@ -310,7 +356,7 @@ Delete all BGP large-communities
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set large-community delete \<text\>
 
-Delete BGP communities matching the large-community-list.
+Delete BGP large communities that match the large-community list.
 ```
 
 
@@ -348,6 +394,11 @@ Clear all BGP extcommunities.
 
 Locally significant administrative distance.
 ```
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set evpn gateway \<ipv4|ipv6\> \<address\>
+
+Set the gateway address for an EVPN prefix advertisement route.
+```
+
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ip-next-hop \<x.x.x.x\>
 
 Nexthop IP address.
@@ -377,9 +428,8 @@ establish the peering with our neighbor.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set ipv6-next-hop prefer-global
 
-For Incoming and Import Route-maps if we receive a v6 global and v6 LL
-address for the route, then prefer to use the global address as the
-nexthop.
+For incoming or import route maps, prefer the global IPv6 address when a route
+has both a global and a link-local next hop.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set local-preference \<0-4294967295\>
 
@@ -408,9 +458,14 @@ Set BGP originator ID attribute.
 
 Set source IP/IPv6 address for route.
 ```
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set table \<1-200\>
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set table \<1-4294967295\>
 
-Set prefixes to table.
+Set the routing table for the matched routes.
+```
+
+```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set l3vpn-nexthop encapsulation gre
+
+Accept L3VPN traffic over GRE encapsulation. This option is for BGP route maps.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set tag \<1-65535\>
 
@@ -418,22 +473,22 @@ Set tag value for routing protocol.
 ```
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set weight \<0-4294967295\>
 
-Set BGP weight attribute
+Set the BGP weight attribute.
 ```
 
 ### List of well-known communities
 
-> - `local-as` - Well-known communities value NO_EXPORT_SUBCONFED 0xFFFFFF03
-> - `no-advertise` - Well-known communities value NO_ADVERTISE 0xFFFFFF02
-> - `no-export` - Well-known communities value NO_EXPORT 0xFFFFFF01
-> - `graceful-shutdown` - Well-known communities value GRACEFUL_SHUTDOWN 0xFFFF0000
-> - `accept-own` - Well-known communities value ACCEPT_OWN 0xFFFF0001
-> - `route-filter-translated-v4` - Well-known communities value ROUTE_FILTER_TRANSLATED_v4 0xFFFF0002
-> - `route-filter-v4` - Well-known communities value ROUTE_FILTER_v4 0xFFFF0003
-> - `route-filter-translated-v6` - Well-known communities value ROUTE_FILTER_TRANSLATED_v6 0xFFFF0004
-> - `route-filter-v6` - Well-known communities value ROUTE_FILTER_v6 0xFFFF0005
-> - `llgr-stale` - Well-known communities value LLGR_STALE 0xFFFF0006
-> - `no-llgr` - Well-known communities value NO_LLGR 0xFFFF0007
-> - `accept-own-nexthop` - Well-known communities value accept-own-nexthop 0xFFFF0008
-> - `blackhole` - Well-known communities value BLACKHOLE 0xFFFF029A
-> - `no-peer` - Well-known communities value NOPEER 0xFFFFFF04
+- `local-as`: `NO_EXPORT_SUBCONFED` (`0xFFFFFF03`)
+- `no-advertise`: `NO_ADVERTISE` (`0xFFFFFF02`)
+- `no-export`: `NO_EXPORT` (`0xFFFFFF01`)
+- `graceful-shutdown`: `GRACEFUL_SHUTDOWN` (`0xFFFF0000`)
+- `accept-own`: `ACCEPT_OWN` (`0xFFFF0001`)
+- `route-filter-translated-v4`: `ROUTE_FILTER_TRANSLATED_v4` (`0xFFFF0002`)
+- `route-filter-v4`: `ROUTE_FILTER_v4` (`0xFFFF0003`)
+- `route-filter-translated-v6`: `ROUTE_FILTER_TRANSLATED_v6` (`0xFFFF0004`)
+- `route-filter-v6`: `ROUTE_FILTER_v6` (`0xFFFF0005`)
+- `llgr-stale`: `LLGR_STALE` (`0xFFFF0006`)
+- `no-llgr`: `NO_LLGR` (`0xFFFF0007`)
+- `accept-own-nexthop`: `accept-own-nexthop` (`0xFFFF0008`)
+- `blackhole`: `BLACKHOLE` (`0xFFFF029A`)
+- `no-peer`: `NOPEER` (`0xFFFFFF04`)
