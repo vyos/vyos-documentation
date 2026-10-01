@@ -208,5 +208,81 @@ vyos8                      : ok=1    changed=0    unreachable=0    failed=0    s
 vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
 
-In the next chapter of the example, we'll use Ansible with jinja2
-templates and variables.
+## Example for backup of the device configuration
+
+```none
+---
+# Playbook: Backup VyOS router configuration
+- name: BackUp lab router's config
+  hosts: all
+
+  tasks:
+  # Gather device facts before backing up
+  - name: Collect facts
+    vyos.vyos.vyos_facts:
+      gather_subset: all
+
+  # Create a per-host backup folder on the Ansible control node
+  - name: Create backup dir
+    file:
+      path: "/home/debian/ansible_quickstart/inventory/backup/{{ inventory_hostname }}"
+      state: directory
+      recurse: yes
+    delegate_to: localhost
+
+  # Save a timestamped copy of the running config to the control node
+  - name: Backup
+    vyos.vyos.vyos_config:
+      backup: yes
+      backup_options:
+        dir_path: "/home/debian/ansible_quickstart/inventory/backup/{{ inventory_hostname }}"
+```
+
+## Example for upgrading devices
+
+```none
+---
+# Playbook: Upgrade VyOS system image
+- name: Testing all the modules
+  hosts: all
+  gather_facts: false
+  tasks:
+
+    # List currently installed system images on the device
+    - name: Grab system images
+      vyos.vyos.vyos_command:
+        commands:
+          - command: "show system image"
+      register: system_images
+      vars:
+        ansible_command_timeout: 60
+        ansible_connection: ansible.netcommon.network_cli
+
+    # Remove any leftover mount/install directory from a previous attempt
+    - name: Clean up stale VyOS image install dirs
+      vyos.vyos.vyos_command:
+        commands:
+          - command: |
+              TERM=dumb && \
+              umount /mnt/installation/iso_src 2>/dev/null || true
+              rm -rf /mnt/installation/iso_src
+      vars:
+        ansible_command_timeout: 30
+
+    # Download the new VyOS ISO directly onto the device (requires internet access)
+    - name: Download VyOS image install dirs
+      vyos.vyos.vyos_command:
+        commands:
+          - command: |
+              cd /tmp && \
+              wget https://releases.io/downloads/1.5.0/vyos-1.5.0-kvm-amd64.qcow2
+      vars:
+        ansible_command_timeout: 300
+
+    # Install the downloaded image; "yes ''" auto-answers any interactive prompts
+    - name: Install the downloaded VyOS image (non-interactive)
+      vyos.vyos.vyos_command:
+        commands:
+          - "yes '' | add system image /tmp/vyos-1.5.0-kvm-amd64.iso"
+      register: install_result
+```
