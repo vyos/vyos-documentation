@@ -1,703 +1,316 @@
 ---
-lastproofread: '2026-03-23'
+lastproofread: '2026-09-30'
 ---
 
 (terraformgoogle)=
 
 # Deploy VyOS on Google Cloud with Terraform and Ansible
 
-Using Terraform, you can quickly deploy VyOS-based infrastructure on
-Google Cloud Platform (GCP) and remove the
-infrastructure when it's no longer needed.
-Additionally, you can use Ansible for provisioning.
+Terraform can create a Google Cloud Compute Engine instance from a VyOS
+Marketplace image. Ansible can then configure the running VyOS router over SSH.
+This guide shows a single-instance example; adapt its network and firewall rules
+to your deployment before applying it.
 
-On this page you'll learn how to:
+## Prerequisites
 
-- Create the necessary files for Terraform and Ansible.
-- Use Terraform to create a single instance on GCP and use Ansible for
-  provisioning.
+- A Google Cloud project with billing enabled and the Compute Engine API
+  enabled.
+- Permissions to create Compute Engine instances and VPC firewall rules.
+- Terraform and the Google Cloud CLI installed on the Terraform control machine.
+- Ansible installed on a Linux, macOS, or WSL control machine. Install the
+  required collections with:
 
-## Prepare to deploy VyOS with Terraform on GCP
+  ```shell
+  ansible-galaxy collection install vyos.vyos ansible.netcommon
+  ```
 
-To create a single instance and install your configuration using
-Terraform, Ansible, and GCP, follow these steps:
+- A VyOS image in Google Cloud Marketplace and its full image reference. Select
+  the current image in Marketplace and use its image project and image name;
+  do not copy an old versioned image name from an example.
+- An SSH key pair for accessing the router. The public key comment must begin
+  with `vyos@`, as described in the [VyOS GCP deployment guide]. Never put the
+  private key in this project or in Terraform configuration.
 
-### GCP
+This example uses Google Application Default Credentials (ADC) for Terraform.
+On a workstation, authenticate with:
 
-1. Create an account with GCP and a new project.
-
-```{image} /_static/images/project.webp
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
+```shell
+gcloud auth application-default login
 ```
 
-2. Create a service account and download your key (a JSON file).
+In an automated environment, use the platform's workload identity or an
+appropriately scoped service account. Avoid downloading long-lived service
+account keys when another authentication method is available.
 
-```{image} /_static/images/service.webp
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+## Create the Terraform configuration
 
-```{image} /_static/images/key.webp
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
+Create a project directory with `main.tf`, `variables.tf`, and
+`terraform.tfvars`. Keep the Terraform state file private; it can contain
+sensitive values and infrastructure details.
 
-The .JSON file downloads automatically after you create it and looks
-like the following:
+### `main.tf`
 
-```{image} /_static/images/json.webp
-:align: center
-:alt: Network Topology Diagram
-:width: 50%
-```
-
-### Terraform
-
-1. Create an UNIX or Windows instance.
-
-2. Download and install
-   [Terraform](https://developer.hashicorp.com/terraform/install).
-
-3. Create the folder. For example, `/root/google`.
-
-```none
-mkdir /root/google
-```
-
-4. Copy all files into your Terraform project `/root/google`
-   (`vyos.tf`, `var.tf`, `terraform.tfvars`, `mykey.json`).
-   For more details,
-   see [Structure of files Terraform for Google Cloud](#structure-of-files-in-terraform-for-google-cloud)
-
-<!-- -->
-
-5. Run the following commands:
-
-```none
-cd /<your folder> 
-terraform init
-```
-
-### Ansible
-
-1. Create an UNIX instance either locally or in the cloud.
-
-2. Download and install Ansible
-
-3. Create the folder for example /root/google/
-
-4. Copy all files into your Ansible project `/root/google/`
-   (`ansible.cfg`, `instance.yml`, `mykey.json`, and `all`). For more
-   details, see [Structure of files in Ansible for Google Cloud](#structure-of-files-in-ansible-for-google-cloud)
-
-You obtain `mykey.json` when you create a service account in GCP
-and download the key (a JSON file).
-
-### Deploy with Terraform
-
-Run the following commands on your Terraform instance:
-
-```none
-cd /<your folder>
-terraform plan  
-terraform apply  
-yes
-```
-
-## Create a GCP instance and check its configuration
-
-```none
-# terraform apply
-
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
-  + create
-
-Terraform will perform the following actions:
-
-  # google_compute_firewall.tcp_22[0] will be created
-  + resource "google_compute_firewall" "tcp_22" {
-      + creation_timestamp = (known after apply)
-      + destination_ranges = (known after apply)
-      + direction          = (known after apply)
-      + enable_logging     = (known after apply)
-      + id                 = (known after apply)
-      + name               = "vyos-tcp-22"
-      + network            = "default"
-      + priority           = 1000
-      + project            = "vyosproject"
-      + self_link          = (known after apply)
-      + source_ranges      = [
-          + "0.0.0.0/0",
-        ]
-      + target_tags        = [
-          + "vyos-deployment",
-        ]
-
-      + allow {
-          + ports    = [
-              + "22",
-            ]
-          + protocol = "tcp"
-        }
-    }
-
-  # google_compute_firewall.udp_500_4500[0] will be created
-  + resource "google_compute_firewall" "udp_500_4500" {
-      + creation_timestamp = (known after apply)
-      + destination_ranges = (known after apply)
-      + direction          = (known after apply)
-      + enable_logging     = (known after apply)
-      + id                 = (known after apply)
-     + name               = "vyos-udp-500-4500"
-      + network            = "default"
-      + priority           = 1000
-      + project            = "vyosproject"
-      + self_link          = (known after apply)
-      + source_ranges      = [
-         + "0.0.0.0/0",
-        ]
-      + target_tags        = [
-          + "vyos-deployment",
-        ]
-
-      + allow {
-          + ports    = [
-              + "500",
-              + "4500",
-            ]
-          + protocol = "udp"
-        }
-    }
-
-  # google_compute_instance.default will be created
-  + resource "google_compute_instance" "default" {
-      + can_ip_forward       = true
-      + cpu_platform         = (known after apply)
-      + current_status       = (known after apply)
-      + deletion_protection  = false
-      + effective_labels     = (known after apply)
-      + guest_accelerator    = (known after apply)
-      + id                   = (known after apply)
-      + instance_id          = (known after apply)
-      + label_fingerprint    = (known after apply)
-      + machine_type         = "n2-highcpu-4"
-      + metadata             = {
-          + "enable-oslogin"     = "FALSE"
-          + "serial-port-enable" = "TRUE"
-          + "user-data"          = ""
-        }
-      + metadata_fingerprint = (known after apply)
-      + min_cpu_platform     = (known after apply)
-      + name                 = "vyos"
-      + project              = "vyosproject"
-      + self_link            = (known after apply)
-      + tags_fingerprint     = (known after apply)
-      + terraform_labels     = (known after apply)
-      + zone                 = "us-west1-a"
-
-      + boot_disk {
-          + auto_delete                = true
-          + device_name                = (known after apply)
-          + disk_encryption_key_sha256 = (known after apply)
-          + kms_key_self_link          = (known after apply)
-          + mode                       = "READ_WRITE"
-          + source                     = (known after apply)
-
-          + initialize_params {
-              + image                  = "projects/sentrium-public/global/images/vyos-1-3-5-20231222143039"
-              + labels                 = (known after apply)
-              + provisioned_iops       = (known after apply)
-              + provisioned_throughput = (known after apply)
-              + size                   = (known after apply)
-              + type                   = (known after apply)
-            }
-        }
-
-      + network_interface {
-          + internal_ipv6_prefix_length = (known after apply)
-          + ipv6_access_type            = (known after apply)
-          + ipv6_address                = (known after apply)
-          + name                        = (known after apply)
-          + network                     = "default"
-          + network_ip                  = (known after apply)
-          + nic_type                    = "GVNIC"
-          + stack_type                  = (known after apply)
-          + subnetwork                  = "default"
-          + subnetwork_project          = (known after apply)
-
-          + access_config {
-              + nat_ip       = (known after apply)
-              + network_tier = (known after apply)
-            }
-        }
-    }
-
-  # local_file.ip will be created
-  + resource "local_file" "ip" {
-      + content              = (known after apply)
-      + content_base64sha256 = (known after apply)
-      + content_base64sha512 = (known after apply)
-      + content_md5          = (known after apply)
-      + content_sha1         = (known after apply)
-      + content_sha256       = (known after apply)
-      + content_sha512       = (known after apply)
-      + directory_permission = "0777"
-      + file_permission      = "0777"
-      + filename             = "ip.txt"
-      + id                   = (known after apply)
-    }
-
-  # null_resource.SSHconnection1 will be created
-  + resource "null_resource" "SSHconnection1" {
-      + id = (known after apply)
-    }
-
-  # null_resource.SSHconnection2 will be created
-  + resource "null_resource" "SSHconnection2" {
-      + id = (known after apply)
-    }
-
-Plan: 6 to add, 0 to change, 0 to destroy.
-
-Changes to Outputs:
-  + public_ip_address = (known after apply)
-╷
-│ Warning: Quoted references are deprecated
-│
-│   on vyos.tf line 126, in resource "null_resource" "SSHconnection1":
-│  126:   depends_on = ["google_compute_instance.default"]
-│
-│ In this context, references are expected literally rather than in quotes. Terraform 0.11 and earlier required quotes, but quoted references are now deprecated and will be removed in a
-│ future version of Terraform. Remove the quotes surrounding this reference to silence this warning.
-│
-│ (and one more similar warning elsewhere)
-╵
-
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
-
-  Enter a value: yes
-
-google_compute_firewall.udp_500_4500[0]: Creating...
-google_compute_firewall.tcp_22[0]: Creating...
-google_compute_instance.default: Creating...
-google_compute_firewall.udp_500_4500[0]: Still creating... [10s elapsed]
-google_compute_firewall.tcp_22[0]: Still creating... [10s elapsed]
-google_compute_instance.default: Still creating... [10s elapsed]
-google_compute_firewall.tcp_22[0]: Creation complete after 16s [id=projects/vyosproject/global/firewalls/vyos-tcp-22]
-google_compute_firewall.udp_500_4500[0]: Creation complete after 16s [id=projects/vyosproject/global/firewalls/vyos-udp-500-4500]
-google_compute_instance.default: Creation complete after 20s [id=projects/vyosproject/zones/us-west1-a/instances/vyos]
-null_resource.SSHconnection1: Creating...
-null_resource.SSHconnection2: Creating...
-null_resource.SSHconnection1: Provisioning with 'file'...
-null_resource.SSHconnection2: Provisioning with 'remote-exec'...
-null_resource.SSHconnection2 (remote-exec): Connecting to remote host via SSH...
-null_resource.SSHconnection2 (remote-exec):   Host: 10.***.***.104
-null_resource.SSHconnection2 (remote-exec):   User: root
-null_resource.SSHconnection2 (remote-exec):   Password: true
-null_resource.SSHconnection2 (remote-exec):   Private key: false
-null_resource.SSHconnection2 (remote-exec):   Certificate: false
-null_resource.SSHconnection2 (remote-exec):   SSH Agent: false
-null_resource.SSHconnection2 (remote-exec):   Checking Host Key: false
-null_resource.SSHconnection2 (remote-exec):   Target Platform: unix
-local_file.ip: Creating...
-local_file.ip: Creation complete after 0s [id=7d568c3b994a018c942a3cdb952ccbf3c729d0ca]
-null_resource.SSHconnection2 (remote-exec): Connected!
-null_resource.SSHconnection1: Creation complete after 4s [id=5175298735911137161]
-
-null_resource.SSHconnection2 (remote-exec): PLAY [integration of terraform and ansible] ************************************
-
-null_resource.SSHconnection2 (remote-exec): TASK [Wait 300 seconds, but only start checking after 60 seconds] **************
-null_resource.SSHconnection2: Still creating... [10s elapsed]
-null_resource.SSHconnection2: Still creating... [20s elapsed]
-null_resource.SSHconnection2: Still creating... [30s elapsed]
-null_resource.SSHconnection2: Still creating... [40s elapsed]
-null_resource.SSHconnection2: Still creating... [50s elapsed]
-null_resource.SSHconnection2: Still creating... [1m0s elapsed]
-null_resource.SSHconnection2: Still creating... [1m10s elapsed]
-null_resource.SSHconnection2 (remote-exec): ok: [104.***.***.158]
-
-null_resource.SSHconnection2 (remote-exec): TASK [Configure general settings for the vyos hosts group] *********************
-null_resource.SSHconnection2: Still creating... [1m20s elapsed]
-null_resource.SSHconnection2 (remote-exec): changed: [104.***.***.158]
-
-null_resource.SSHconnection2 (remote-exec): PLAY RECAP *********************************************************************
-null_resource.SSHconnection2 (remote-exec): 104.***.***.158            : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
-null_resource.SSHconnection2: Creation complete after 1m22s [id=3355727070503709742]
-
-Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
-
-Outputs:
-
-public_ip_address = "104.***.***.158"
-```
-
-After running all the commands, your VyOS instance is deployed on
-GCP with your specified configuration.
-To delete the instance, type the following command:
-
-```none
-terraform destroy
-```
-
-## Troubleshooting
-
-- Increase the timeout value in `instance.yml` from 300 seconds to
-  500 seconds or more (depends on your location). Ensure that the
-  security group allows access to the instance.
-- If Terraform doesn't connect via SSH to your Ansible instance:
-  Check the correct login and password in the `VyOS.tf` file.
-
-```none
-connection {
- type     = "ssh"
- user     = "root"              # open root access using login and password on your Ansible
- password = var.password        # check password in the file terraform.tfvars isn't empty
-     host = var.host            # check the correct IP address of your Ansible host
-}
-```
-
-Verify that Ansible can ping from Terraform.
-
-## Structure of files in Terraform for Google Cloud
-
-```none
-.
-├── vyos.tf                            # The main script
-├── ***.JSON               # The credential file from GCP
-├── var.tf                                     # The file of all variables in "vyos.tf"
-└── terraform.tfvars           # The value of all variables (passwords, login, IP addresses and so on)
-```
-
-## File contents of Terraform for Google Cloud
-
-`vyos.tf`
-
-```none
-##############################################################################
-# Build a VyOS VM from the Marketplace
-#
-# After deploying the GCP instance and getting an IP address, the IP address is copied into the file
-#"ip.txt" and copied to the Ansible node for provisioning.
-##############################################################################
-
+```terraform
 terraform {
+  required_version = ">= 1.5.0"
+
   required_providers {
     google = {
-      source = "hashicorp/google"
+      source  = "hashicorp/google"
+      version = "~> 7.0"
     }
   }
 }
 
 provider "google" {
-  project         = var.project_id
-  request_timeout = "60s"
-  credentials = file(var.gcp_auth_file)
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
 }
 
-locals {
-  network_interfaces = [for i, n in var.networks : {
-    network     = n,
-    subnetwork  = length(var.sub_networks) > i ? element(var.sub_networks, i) : null
-    external_ip = length(var.external_ips) > i ? element(var.external_ips, i) : "NONE"
-    }
-  ]
-}
+resource "google_compute_instance" "vyos" {
+  name           = var.instance_name
+  machine_type   = var.machine_type
+  zone           = var.zone
+  can_ip_forward = true
+  tags           = ["vyos-router"]
 
-resource "google_compute_instance" "default" {
-  name         = var.goog_cm_deployment_name
-  machine_type = var.machine_type
-  zone         = var.zone
-
-  metadata = {
-    enable-oslogin     = "FALSE"
-    serial-port-enable = "TRUE"
-    user-data          = var.vyos_user_data
-  }
   boot_disk {
     initialize_params {
       image = var.image
     }
   }
 
-  can_ip_forward = true
+  network_interface {
+    network = var.network
 
-  dynamic "network_interface" {
-    for_each = local.network_interfaces
-    content {
-      network    = network_interface.value.network
-      subnetwork = network_interface.value.subnetwork
-      nic_type   = "GVNIC"
-      dynamic "access_config" {
-        for_each = network_interface.value.external_ip == "NONE" ? [] : [1]
-        content {
-          nat_ip = network_interface.value.external_ip == "EPHEMERAL" ? null : network_interface.value.external_ip
-        }
-      }
-    }
+    access_config {}
+  }
+
+  metadata = {
+    enable-oslogin = "FALSE"
+    ssh-keys       = "vyos:${trimspace(file(var.ssh_public_key_file))}"
   }
 }
 
-resource "google_compute_firewall" "tcp_22" {
-  count = var.enable_tcp_22 ? 1 : 0
+resource "google_compute_firewall" "ssh" {
+  name    = "${var.instance_name}-ssh"
+  network = var.network
 
-  name    = "${var.goog_cm_deployment_name}-tcp-22"
-  network = element(var.networks, 0)
+  direction     = "INGRESS"
+  source_ranges = [var.admin_source_range]
+  target_tags   = ["vyos-router"]
 
   allow {
-    ports    = ["22"]
     protocol = "tcp"
+    ports    = ["22"]
   }
-
-  source_ranges = ["0.0.0.0/0"]
-
-  target_tags = ["${var.goog_cm_deployment_name}-deployment"]
-}
-
-resource "google_compute_firewall" "udp_500_4500" {
-  count = var.enable_udp_500_4500 ? 1 : 0
-
-  name    = "${var.goog_cm_deployment_name}-udp-500-4500"
-  network = element(var.networks, 0)
-
-  allow {
-    ports    = ["500", "4500"]
-    protocol = "udp"
-  }
-
-  source_ranges = ["0.0.0.0/0"]
-
-  target_tags = ["${var.goog_cm_deployment_name}-deployment"]
 }
 
 output "public_ip_address" {
-  value = google_compute_instance.default.network_interface[0].access_config[0].nat_ip
-}
-
-##############################################################################
-#
-# IP of google instance copied to a file ip.txt in local system Terraform
-# ip.txt looks like:
-# cat ./ip.txt
-# ххх.ххх.ххх.ххх
-##############################################################################
-
-resource "local_file" "ip" {
-    content  = google_compute_instance.default.network_interface[0].access_config[0].nat_ip
-    filename = "ip.txt"
-}
-
-#connecting to the Ansible control node using SSH connection
-
-##############################################################################
-# Steps "SSHconnection1" and "SSHconnection2" need to get file ip.txt from the terraform node and start remotely the playbook of Ansible.
-##############################################################################
-
-resource "null_resource" "SSHconnection1" {
-depends_on = ["google_compute_instance.default"]
-connection {
-   type     = "ssh"
-   user     = "root"
-   password = var.password
-   host     = var.host
-}
-
-#copying the ip.txt file to the Ansible control node from local system
-
- provisioner "file" {
-    source      = "ip.txt"
-    destination = "/root/google/ip.txt"                             # The folder of your Ansible project
-       }
-}
-
-resource "null_resource" "SSHconnection2" {
-depends_on = ["google_compute_instance.default"]
-connection {
-    type     = "ssh"
-    user     = "root"
-        password = var.password
-    host     = var.host
-}
-
-#command to run Ansible playbook on remote Linux OS
-
-provisioner "remote-exec" {
-    inline = [
-    "cd /root/google/",
-    "ansible-playbook instance.yml"                               # more detailed in "File contents of Ansible for Google Cloud"
-]
-}
+  description = "External IPv4 address assigned to the VyOS instance"
+  value       = google_compute_instance.vyos.network_interface[0].access_config[0].nat_ip
 }
 ```
 
-`var.tf`
+`can_ip_forward` allows the VM to forward packets with source or destination
+addresses other than its own, as required when the instance acts as a router.
+The instance and firewall share the `vyos-router` network tag so the SSH rule
+applies to this instance. The rule only allows SSH from the administrator
+address range you provide; do not replace it with `0.0.0.0/0` for a public
+router.
 
-```none
-variable "image" {
-  type    = string
-  default = "projects/sentrium-public/global/images/vyos-1-3-5-20231222143039"
+The `ssh-keys` metadata value uses the public key only. The explicit
+`enable-oslogin` setting selects metadata-based SSH keys for this example. If
+an organization policy requires OS Login, follow that policy and verify the
+selected VyOS image supports the required access method.
+
+The firewall rule only permits management SSH. Add separate firewall rules
+for the traffic your router must handle, with source ranges and protocols
+limited to your deployment. For example, IPsec may require ESP in addition to
+UDP ports 500 and 4500; allowing those UDP ports alone does not permit ESP.
+
+### `variables.tf`
+
+```terraform
+variable "project_id" {
+  description = "Google Cloud project ID"
+  type        = string
 }
 
-variable "project_id" {
-  type = string
+variable "region" {
+  description = "Region containing the selected zone"
+  type        = string
 }
 
 variable "zone" {
-  type = string
+  description = "Compute Engine zone"
+  type        = string
 }
 
-##############################################################################
-# You can choose a lower cost machine type than n2-highcpu-4
-##############################################################################
+variable "network" {
+  description = "VPC network name or self-link"
+  type        = string
+}
+
+variable "image" {
+  description = "Full image reference for the selected VyOS Marketplace image"
+  type        = string
+}
+
+variable "instance_name" {
+  description = "Name of the VyOS instance"
+  type        = string
+  default     = "vyos-router"
+}
 
 variable "machine_type" {
-  type    = string
-  default = "n2-highcpu-4"
-}
-
-variable "networks" {
-  description = "The network name to attach the VM instance."
-  type        = list(string)
-  default     = ["default"]
-}
-
-variable "sub_networks" {
-  description = "The sub network name to attach the VM instance."
-  type        = list(string)
-  default     = ["default"]
-}
-
-variable "external_ips" {
-  description = "The external IPs assigned to the VM for public access."
-  type        = list(string)
-  default     = ["EPHEMERAL"]
-}
-
-variable "enable_tcp_22" {
-  description = "Allow SSH traffic from the Internet"
-  type        = bool
-  default     = true
-}
-
-variable "enable_udp_500_4500" {
-  description = "Allow IKE/IPSec traffic from the Internet"
-  type        = bool
-  default     = true
-}
-
-variable "vyos_user_data" {
-  type    = string
-  default = ""
-}
-
-// Marketplace requires this variable name to be declared
-variable "goog_cm_deployment_name" {
-  description = "VyOS Universal Router Deployment"
+  description = "Compute Engine machine type"
   type        = string
-  default     = "vyos"
+  default     = "n2-highcpu-4"
 }
 
-# GCP authentication file
-variable "gcp_auth_file" {
+variable "admin_source_range" {
+  description = "Administrator IPv4 address or CIDR allowed to connect over SSH"
   type        = string
-  description = "GCP authentication file"
 }
 
-variable "password" {
-   description = "pass for Ansible"
-   type = string
-   sensitive = true
-}
-variable "host"{
-  description = "The IP of my Ansible"
-  type = string
+variable "ssh_public_key_file" {
+  description = "Path to the public SSH key for the VyOS user"
+  type        = string
 }
 ```
 
-`terraform.tfvars`
+### `terraform.tfvars`
 
-```none
-##############################################################################
-# Must be filled in
-##############################################################################
+Set these values for your project. Replace the example documentation address
+with the administrator's real public IPv4 address and `/32` mask before using
+the configuration. Use the image reference supplied by the current Marketplace
+listing.
 
-zone = "us-west1-a"
-gcp_auth_file = "/root/***/***.json"   # path of your .json file
-project_id    = ""                     # the google project
-password      = ""                     # password for Ansible SSH
-host          = ""                     # IP of my Ansible
+```terraform
+project_id          = "your-project-id"
+region              = "us-west1"
+zone                = "us-west1-a"
+network             = "default"
+image               = "projects/IMAGE_PROJECT/global/images/IMAGE_NAME"
+admin_source_range  = "198.51.100.10/32"
+ssh_public_key_file = pathexpand("~/.ssh/vyos_gcp.pub")
 ```
 
-## Structure of files in Ansible for Google Cloud
+The `198.51.100.10/32` value is reserved for documentation and will not allow
+real access. Replace it before applying. Add `terraform.tfvars`, `.terraform/`,
+and Terraform state files to `.gitignore` when the directory is versioned.
 
-```none
-.
-├── group_vars
-    └── all
-├── ansible.cfg
-└── instance.yml
+Initialize, format, validate, inspect the plan, and apply the configuration:
+
+```shell
+terraform init
+terraform fmt -check
+terraform validate
+terraform plan
+terraform apply
 ```
 
-## File contents of Ansible for Google Cloud
+Review the plan and confirm the apply when prompted. The external address is
+available with:
 
-`ansible.cfg`
-
-```none
-[defaults]
-inventory = /root/google/ip.txt
-host_key_checking= False
-remote_user=vyos
+```shell
+terraform output -raw public_ip_address
 ```
 
-`instance.yml`
+## Configure the router with Ansible
 
-```none
-##############################################################################
-# About tasks:
-# "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-# "Configure general settings for the VyOS hosts group" - make provisioning into Google Cloud VyOS node
-# Add all necessary VyOS commands under the "lines:" block
-##############################################################################
+Ansible's network connection plugin uses the router's SSH interface; it does
+not run on the Google Cloud VM. Add the VyOS public address from the Terraform
+output to an inventory file named `inventory.yml`:
 
+```yaml
+all:
+  hosts:
+    vyos:
+      ansible_host: 203.0.113.20
+      ansible_user: vyos
+      ansible_connection: ansible.netcommon.network_cli
+      ansible_network_os: vyos.vyos.vyos
+      ansible_ssh_private_key_file: ~/.ssh/vyos_gcp
+```
 
-- name: integration of terraform and ansible
-  hosts: all
-  gather_facts: 'no'
+Replace `203.0.113.20` with the `public_ip_address` Terraform output. Ensure
+the control machine can reach that address on TCP port 22 and has the matching
+private key available.
+
+Create `configure.yml` with the configuration changes to apply:
+
+```yaml
+---
+- name: Configure the VyOS router
+  hosts: vyos
+  gather_facts: false
 
   tasks:
-
-    - name: "Wait 300 seconds, but only start checking after 60 seconds"
-      wait_for_connection:
-        delay: 60
-        timeout: 300
-
-    - name: "Configure general settings for the VyOS hosts group"
-      vyos_config:
+    - name: Set the router host name
+      vyos.vyos.vyos_config:
         lines:
-          - set system name-server xxx.xxx.xxx.xxx
-        save:
-          true
+          - set system host-name vyos-gcp
+
+    - name: Save the configuration
+      vyos.vyos.vyos_command:
+        commands:
+          - save
 ```
 
-`group_vars/all`
+Run the playbook from the project directory:
 
-```none
-ansible_connection: ansible.netcommon.network_cli
-ansible_network_os: vyos.vyos.vyos
-ansible_user: vyos
-ansible_ssh_pass: vyos
+```shell
+ansible-playbook -i inventory.yml configure.yml
 ```
 
+The `vyos.vyos.vyos_config` module uses the `ansible.netcommon.network_cli`
+connection. Configuration commands are committed by the module; the separate
+`save` command writes the committed configuration to the boot configuration.
 
-## Source files on GitHub
+## Destroy the instance
 
-All files related to deploying VyOS on Google Cloud Platform with
-Terraform and Ansible can be found in the [vyos-automation] repository.
+When the instance is no longer needed, remove the resources managed by this
+configuration:
 
-[vyos-automation]: <https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main>
+```shell
+terraform destroy
+```
+
+Review the resources in the plan and confirm the destroy when prompted. Back up
+any router configuration you need before deleting the instance.
+
+## References
+
+- [VyOS GCP deployment guide]
+- [Google Cloud Compute Engine instances]
+- [Google Cloud network tags and firewall rules]
+- [Terraform Google provider: compute instance]
+- [Terraform Google provider: compute firewall]
+- [Terraform and Google Cloud authentication]
+- [Ansible VyOS platform options]
+- [Ansible VyOS configuration module]
+- [vyos-automation Google Cloud Terraform example]
+
+% stop_vyoslinter
+[VyOS GCP deployment guide]:
+  https://docs.vyos.io/en/rolling/installation/cloud/gcp.html
+[Google Cloud Compute Engine instances]:
+  https://docs.cloud.google.com/compute/docs/instances
+[Google Cloud network tags and firewall rules]:
+  https://docs.cloud.google.com/compute/docs/tag-resources
+[Terraform Google provider: compute instance]:
+  https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance
+[Terraform Google provider: compute firewall]:
+  https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall
+[Terraform and Google Cloud authentication]:
+  https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build
+[Ansible VyOS platform options]:
+  https://docs.ansible.com/projects/ansible/latest/network/user_guide/platform_vyos.html
+[Ansible VyOS configuration module]:
+  https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/vyos_config_module.html
+[vyos-automation Google Cloud Terraform example]:
+  https://github.com/vyos/vyos-automation/tree/production/TerraformCloud/Google_terraform_ansible_single_vyos_instance-main
+% start_vyoslinter
