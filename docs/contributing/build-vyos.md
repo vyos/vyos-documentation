@@ -286,24 +286,25 @@ The kernel version and flavor used for an ISO build are configured in
 `data/defaults.toml` in the `vyos-build` repository. Check that file in the
 branch you are building instead of relying on a version copied into this guide.
 
-The kernel and its out-of-tree modules are built by the package build scripts
-under `scripts/package-build/linux-kernel/`. That directory contains
-`package.toml`, `build.py`, the kernel configuration fragments, and helper
-scripts for packages such as Accel-PPP, Intel NIC drivers, QAT, and firmware.
-The package manifest records source revisions for the kernel modules, while
-the build process obtains the kernel version and flavor from
+For rolling builds, the kernel and its out-of-tree modules use the package
+build files under [`scripts/package-build/linux-kernel/`][rolling-kernel-build].
+That directory contains `package.toml`, `build.py`, kernel configuration
+fragments, and helper scripts for packages such as Accel-PPP, Intel NIC drivers,
+QAT, and firmware. The package manifest records source revisions for the kernel
+modules, while the build process obtains the kernel version and flavor from
 `data/defaults.toml`.
 
-For kernel or driver development, read
-the [`README.md` in the kernel build directory][kernel-build-readme] and use
-the build instructions and manifest from the same `vyos-build` branch you are
-working with. These packages are tied to the kernel version and flavor used by
-the image build; substituting only a kernel `.deb` can leave required modules
-incompatible. Do not use the old `packages/linux-kernel/Jenkinsfile` or the
-removed `build-intel-drivers.sh` instructions.
+For Sagitta 1.4 builds, use the archived `sagitta-public-unmaintained` branch
+and its older [`packages/linux-kernel/` workflow][sagitta-kernel-build]. Follow
+the instructions from the same `vyos-build` branch as the image you are
+building; do not mix the rolling and Sagitta workflows. The rolling package
+build no longer uses the Sagitta `packages/linux-kernel/Jenkinsfile` workflow.
+Kernel packages and out-of-tree modules must match the kernel version and flavor
+used by the image build.
 
 % stop_vyoslinter
-[kernel-build-readme]: https://github.com/vyos/vyos-build/tree/current/scripts/package-build/linux-kernel
+[rolling-kernel-build]: https://github.com/vyos/vyos-build/tree/rolling/scripts/package-build/linux-kernel
+[sagitta-kernel-build]: https://github.com/vyos/vyos-build/tree/sagitta-public-unmaintained/packages/linux-kernel
 % start_vyoslinter
 
 ### Packages
