@@ -306,6 +306,25 @@ response:
 ```
 
 
+### /reconnect
+
+The `/reconnect` endpoint runs the `reconnect` command, which brings a
+connection-oriented interface such as PPPoE or WWAN down and up again.
+
+```none
+curl --location --request POST 'https://vyos/reconnect' \
+--form data='{"op": "reconnect", "path": ["interface", "pppoe0"]}' \
+--form key='MY-HTTPS-API-PLAINTEXT-KEY'
+
+response:
+{
+  "success": true,
+  "data": "",
+  "error": null
+}
+```
+
+
 ### /reboot
 
 To initiate a reboot, use the `/reboot` endpoint.
