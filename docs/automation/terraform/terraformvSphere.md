@@ -1,388 +1,293 @@
 ---
-lastproofread: '2026-03-23'
+lastproofread: '2026-09-30'
 ---
 
 (terraformvSphere)=
 
 # Deploy VyOS on VMware vSphere with Terraform and Ansible
 
-You can use Terraform to quickly deploy VyOS-based infrastructure
-on VMware vSphere (hereafter referred to as *vSphere*) and remove
-infrastructure when it's no longer needed.
-Additionally, you can use Ansible for provisioning.
+Terraform can deploy a VyOS virtual machine from an OVF or OVA on VMware
+vSphere. Ansible can then connect to the deployed router and apply its
+configuration. This guide uses vCenter because the vSphere Terraform provider
+requires vCenter for OVF/OVA deployment.
 
-On this page you'll learn how to:
+The examples assume that:
 
-- Create the necessary files for Terraform and Ansible.
-- Use Terraform to create a single instance on vSphere and use Ansible for
-  provisioning.
+- You have a vCenter account with permission to deploy virtual machines.
+- The OVF/OVA is reachable from the machine running Terraform.
+- The vSphere network provides the guest with an address Terraform can read.
+- The machine running Ansible can reach the VyOS management address over SSH.
+- You know the login credentials configured for the selected VyOS image.
 
-## Prepare to deploy VyOS with Terraform on vSphere
+The Terraform provider's `default_ip_address` depends on VMware Tools or
+`open-vm-tools` reporting guest networking information. If the image does not
+report an address, use the address assigned by your DHCP server or configured
+through your image's supported customization mechanism.
 
-To create a single instance and install your configuration using
-Terraform, Ansible, and vSphere, follow these steps:
+## Prepare the deployment
 
-### vSphere
+Install Terraform and Ansible on a Linux, macOS, or Windows control machine.
+Install the VyOS Ansible collection and its network connection dependency:
 
-- Add all necessary data to the `terraform.tfvars`
-  [file](<https://github.com/vyos/vyos-automation/blob/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main/terraform.tfvars>)
-  and create resources.
-
-### Terraform
-
-- Create an UNIX or Windows instance.
-- Download and install
-  [Terraform](https://developer.hashicorp.com/terraform/install).
-- Create the folder for example `/root/vsphereterraform`.
-
-```none
-mkdir /root/vsphereterraform
+```shell
+ansible-galaxy collection install vyos.vyos ansible.netcommon
 ```
 
-- Copy all files into your Terraform project `/root/vsphereterraform`
-  (`vyos.tf`, `var.tf`, `terraform.tfvars`, `version.tf`).
-  For more details,
-  see [Structure of files in Terraform for vSphere](#structure-of-files-in-terraform-for-vsphere)
-- Run the following commands:
+Create a project directory with these files:
 
-```none
-cd /<your folder>
-terraform init
-```
-
-
-### Ansible
-
-- Create an UNIX instance either locally or in the cloud.
-- Download and install Ansible.
-- Create the folder. For example, `/root/vsphereterraform/`.
-- Copy all files into your Ansible project `/root/vsphereterraform/`
-  (`ansible.cfg`, `instance.yml`, `all`). For more details, see
-  [Structure of files in Ansible for vSphere](#structure-of-files-in-ansible-for-vsphere)
-
-### Deploy with Terraform
-
-Run the following commands on your Terraform instance:
-
-```none
-cd /<your folder>
-terraform plan  
-terraform apply  
-yes
-```
-
-After executing these commands, your VyOS instance is deployed to
-vSphere with your configuration.
-If you need to delete the instance, run the following command:
-
-```none
-terraform destroy
-```
-
-## Structure of files in Terraform for vSphere
-
-```none
+```text
 .
-├── vyos.tf                                # The main script.
-├── versions.tf                          # File for Terraform version.
-├── var.tf                                   # File for Terraform version.
-└── terraform.tfvars           # Values for all variables (passwords,
-                       # login, IP addresses, etc.).
+├── main.tf
+├── variables.tf
+├── terraform.tfvars
+├── inventory.yml
+├── ansible.cfg
+└── configure.yml
 ```
 
-## File contents of Terraform for vSphere
+Use your environment's vCenter names and the OVF network names from the
+appliance descriptor. The values shown below are examples; names and network
+mapping keys must match your vSphere inventory and OVF/OVA.
 
-`vyos.tf`
+## Terraform configuration
 
-```none
-provider "vsphere" {
-  user           = var.vsphere_user
-  password       = var.vsphere_password
-  vsphere_server = var.vsphere_server
-  allow_unverified_ssl = true
+`main.tf`:
+
+```terraform
+terraform {
+  required_providers {
+    vsphere = {
+      source  = "hashicorp/vsphere"
+      version = "~> 2.12"
+    }
+  }
 }
 
-data "vsphere_datacenter" "datacenter" {
+provider "vsphere" {
+  user                 = var.vsphere_user
+  password             = var.vsphere_password
+  vsphere_server       = var.vsphere_server
+  allow_unverified_ssl = false
+}
+
+data "vsphere_datacenter" "dc" {
   name = var.datacenter
 }
 
 data "vsphere_datastore" "datastore" {
   name          = var.datastore
-  datacenter_id = data.vsphere_datacenter.datacenter.id
+  datacenter_id = data.vsphere_datacenter.dc.id
 }
 
 data "vsphere_compute_cluster" "cluster" {
   name          = var.cluster
-  datacenter_id = data.vsphere_datacenter.datacenter.id
-}
-
-data "vsphere_resource_pool" "default" {
-  name          = format("%s%s", data.vsphere_compute_cluster.cluster.name, "/Resources/terraform")  # set as you need
-  datacenter_id = data.vsphere_datacenter.datacenter.id
-}
-
-data "vsphere_host" "host" {
-  name          = var.host
-  datacenter_id = data.vsphere_datacenter.datacenter.id
+  datacenter_id = data.vsphere_datacenter.dc.id
 }
 
 data "vsphere_network" "network" {
-  name          = var.network_name
-  datacenter_id = data.vsphere_datacenter.datacenter.id
+  name          = var.network
+  datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-# Deployment of VM from Remote OVF
-resource "vsphere_virtual_machine" "vmFromRemoteOvf" {
-  name                 = var.remotename
-  datacenter_id        = data.vsphere_datacenter.datacenter.id
-  datastore_id         = data.vsphere_datastore.datastore.id
-  host_system_id       = data.vsphere_host.host.id
-  resource_pool_id     = data.vsphere_resource_pool.default.id
+resource "vsphere_virtual_machine" "vyos" {
+  name             = var.vm_name
+  datacenter_id    = data.vsphere_datacenter.dc.id
+  datastore_id     = data.vsphere_datastore.datastore.id
+  resource_pool_id = data.vsphere_compute_cluster.cluster.resource_pool_id
+
   network_interface {
     network_id = data.vsphere_network.network.id
   }
-  wait_for_guest_net_timeout = 2
-  wait_for_guest_ip_timeout  = 2
+
+  wait_for_guest_net_timeout = 5
 
   ovf_deploy {
-    allow_unverified_ssl_cert = true
-    remote_ovf_url            = var.url_ova
-    disk_provisioning         = "thin"
-    ip_protocol               = "IPv4"
+    remote_ovf_url       = var.ovf_url
+    disk_provisioning    = "thin"
+    ip_protocol          = "IPv4"
     ip_allocation_policy = "dhcpPolicy"
     ovf_network_map = {
       "Network 1" = data.vsphere_network.network.id
-      "Network 2" = data.vsphere_network.network.id
-    }
-  }
-  vapp {
-    properties = {
-       "password"          = "12345678",
-       "local-hostname"    = "terraform_vyos"
     }
   }
 }
 
-output "ip" {
-  description = "default ip address of the deployed VM"
-  value       = vsphere_virtual_machine.vmFromRemoteOvf.default_ip_address
-}
-
-# IP of vSphere instance copied to a file ip.txt in local system
-
-resource "local_file" "ip" {
-    content  = vsphere_virtual_machine.vmFromRemoteOvf.default_ip_address
-    filename = "ip.txt"
-}
-
-#Connecting to the Ansible control node using SSH connection
-
-resource "null_resource" "nullremote1" {
-depends_on = ["vsphere_virtual_machine.vmFromRemoteOvf"]
-connection {
- type     = "ssh"
- user     = "root"
- password = var.ansiblepassword
- host = var.ansiblehost
-
-}
-
-# Copying the ip.txt file to the Ansible control node from local system
-
- provisioner "file" {
-    source      = "ip.txt"
-    destination = "/root/vsphere/ip.txt"
-       }
-}
-
-resource "null_resource" "nullremote2" {
-depends_on = ["vsphere_virtual_machine.vmFromRemoteOvf"]
-connection {
-        type     = "ssh"
-        user     = "root"
-        password = var.ansiblepassword
-        host = var.ansiblehost
-}
-
-# Command to run ansible playbook on remote Linux OS
-
-provisioner "remote-exec" {
-
-    inline = [
-        "cd /root/vsphere/",
-        "ansible-playbook instance.yml"
-]
-}
+output "vyos_ip_address" {
+  description = "Guest IP reported by VMware Tools, when available"
+  value       = vsphere_virtual_machine.vyos.default_ip_address
 }
 ```
 
-`versions.tf`
+Set `"Network 1"` to the network identifier declared by the OVF descriptor.
+If the appliance declares multiple networks, map each one to the intended
+vSphere network. The `network_interface` block also supplies the virtual NIC
+configuration expected by the Terraform provider. The cluster's root resource
+pool lets vSphere place the VM on an available host.
 
-```none
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
+`variables.tf`:
 
-terraform {
-  required_providers {
-    vsphere = {
-      source  = "hashicorp/vsphere"
-      version = "2.4.0"
-    }
-  }
-}
-```
-
-`var.tf`
-
-```none
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
+```terraform
 variable "vsphere_server" {
-  description = "vSphere server"
+  description = "vCenter server name or address"
   type        = string
 }
 
 variable "vsphere_user" {
-  description = "vSphere username"
+  description = "vCenter username"
   type        = string
 }
 
 variable "vsphere_password" {
-  description = "vSphere password"
+  description = "vCenter password"
   type        = string
   sensitive   = true
 }
 
 variable "datacenter" {
-  description = "vSphere data center"
+  description = "vSphere datacenter name"
   type        = string
 }
 
 variable "cluster" {
-  description = "vSphere cluster"
+  description = "vSphere compute cluster name"
   type        = string
 }
 
 variable "datastore" {
-  description = "vSphere datastore"
+  description = "Datastore for the VM disks"
   type        = string
 }
 
-variable "network_name" {
-  description = "vSphere network name"
+variable "network" {
+  description = "vSphere network to map to the OVF network"
   type        = string
 }
 
-variable "host" {
-  description = "Name of your host"
+variable "vm_name" {
+  description = "Name for the deployed VyOS VM"
   type        = string
 }
 
-variable "remotename" {
-  description = "The name of your VM"
-  type        = string
-}
-
-variable "url_ova" {
-  description = "The URL to the .OVA file or cloud storage"
-  type        = string
-}
-
-variable "ansiblepassword" {
-  description = "Ansible password"
-  type        = string
-}
-
-variable "ansiblehost" {
-  description = "Ansible host name or IP"
+variable "ovf_url" {
+  description = "URL of the OVF or OVA appliance"
   type        = string
 }
 ```
 
-`terraform.tfvars`
+`terraform.tfvars` contains environment-specific values. Do not commit this
+file if it contains credentials; add it to `.gitignore` or use environment
+variables or a secrets manager instead. The `sensitive` variable setting
+redacts a value from normal CLI output, but Terraform still stores it in state.
+Restrict access to the state file and use a protected remote backend for shared
+workflows.
 
-```none
-vsphere_user       = ""
-vsphere_password   = ""
-vsphere_server     = ""
-datacenter         = ""
-datastore          = ""
-cluster            = ""
-network_name       = ""
-host               = ""
-url_ova            = ""
-ansiblepassword    = ""
-ansiblehost        = ""
-remotename         = ""
+```terraform
+vsphere_server   = "vcenter.example.net"
+vsphere_user     = "terraform-user@vsphere.local"
+vsphere_password = "replace-with-a-secret"
+datacenter       = "Datacenter"
+cluster          = "Cluster"
+datastore        = "Datastore"
+network          = "VM Network"
+vm_name          = "vyos-router"
+ovf_url          = "https://example.net/path/to/vyos.ova"
 ```
 
-## Structure of files in Ansible for vSphere
+Initialize Terraform, review the proposed changes, and apply them:
 
-```none
-.
-├── group_vars
-    └── all
-├── ansible.cfg
-└── instance.yml
+```shell
+terraform init
+terraform plan
+terraform apply
 ```
 
-## File contents of Ansible for vSphere
+Terraform prompts for confirmation before creating the VM. Type `yes` at the
+prompt only after reviewing the plan. To remove the VM later, run
+`terraform destroy` and review its plan before confirming.
 
-`ansible.cfg`
+## Configure VyOS with Ansible
 
-```none
+Run Ansible from a machine that can reach the deployed router. Do not use a
+Terraform provisioner to log in to a separate Ansible host: Terraform should
+manage the VM, while Ansible should run from its own control node.
+
+`inventory.yml`:
+
+```yaml
+all:
+  children:
+    vyos:
+      hosts:
+        router:
+          ansible_host: 192.0.2.10
+      vars:
+        ansible_connection: ansible.netcommon.network_cli
+        ansible_network_os: vyos.vyos.vyos
+        ansible_user: vyos
+        # Supply the password securely, for example with Ansible Vault.
+        ansible_password: "{{ vault_vyos_password }}"
+```
+
+Replace `192.0.2.10` with the deployed VM's reachable address. The inventory
+uses a placeholder vault variable; define `vault_vyos_password` in an encrypted
+`group_vars/vyos/vault.yml` file and load it using Ansible Vault, or use another
+approved secrets method. Do not store plaintext passwords in source control.
+
+`ansible.cfg`:
+
+```ini
 [defaults]
-inventory = /root/vsphere/ip.txt
-host_key_checking= False
-remote_user=vyos
+inventory = inventory.yml
+host_key_checking = True
 ```
 
-`instance.yml`
+`configure.yml`:
 
-```none
-##############################################################################
-# About tasks:
-# "Wait 300 seconds, but only start checking after 60 seconds" - try to make ssh connection every 60 seconds until 300 seconds
-# "Configure general settings for the VyOS hosts group" - make provisioning into vSphere VyOS node
-# You have to add all necessary commands of VyOS under the block "lines:"
-##############################################################################
-
-
-- name: integration of terraform and ansible
-  hosts: all
-  gather_facts: 'no'
+```yaml
+---
+- name: Configure VyOS routers
+  hosts: vyos
+  gather_facts: false
 
   tasks:
-
-    - name: "Wait 300 seconds, but only start checking after 60 seconds"
-      wait_for_connection:
-        delay: 60
+    - name: Wait for VyOS to accept SSH connections
+      ansible.builtin.wait_for:
+        host: "{{ ansible_host }}"
+        port: 22
+        state: started
         timeout: 300
-    - name: "Configure general settings for the VyOS hosts group"
-      vyos_config:
+      delegate_to: localhost
+
+    - name: Set the system name server
+      vyos.vyos.vyos_config:
         lines:
           - set system name-server 192.0.2.1
-        save:
-          true
+        save: true
 ```
 
-`group_vars/all`
+Replace the example configuration command with commands appropriate to your
+network. `vyos.vyos.vyos_config` uses `lines` for `set` or `delete` commands and
+`save: true` saves changes after they are committed. The collection uses the
+`ansible.netcommon.network_cli` connection plugin.
 
-```none
-ansible_connection: ansible.netcommon.network_cli
-ansible_network_os: vyos.vyos.vyos
+Run the playbook after Terraform has deployed the VM and you have set the
+inventory address and Ansible credentials:
 
-# user and password gets from terraform variables "admin_username" and "admin_password"
-ansible_user: vyos
-# get from vyos.tf "vapp"
-ansible_ssh_pass: 12345678
+```shell
+ansible-playbook configure.yml
 ```
 
+For a quick way to inspect the Terraform output, run
+`terraform output vyos_ip_address` and copy the returned address into
+`inventory.yml`. If Terraform returns an empty value, confirm that the guest
+obtains an address and that VMware Tools reports it to vCenter.
 
-## Source files on GitHub
+## Further information
 
-All files related to deploying VyOS on vSphere with Terraform and Ansible
-can be found in the [vyos-automation] repository.
-
-[vyos-automation]: <https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main>
+% stop_vyoslinter
+- [Terraform vSphere provider: virtual machine resource](https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs/resources/virtual_machine)
+- [Terraform vSphere provider: compute cluster data source](https://registry.terraform.io/providers/hashicorp/vsphere/latest/docs/data-sources/compute_cluster)
+- [Ansible inventory guide](https://docs.ansible.com/projects/ansible/latest/inventory_guide/intro_inventory.html)
+- [VyOS `vyos_config` Ansible module](https://docs.ansible.com/projects/ansible/latest/collections/vyos/vyos/vyos_config_module.html)
+- [vyos-automation examples](https://github.com/vyos/vyos-automation/tree/main/TerraformCloud/Vsphere_terraform_ansible_single_vyos_instance-main)
+% start_vyoslinter
