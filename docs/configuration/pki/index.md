@@ -12,8 +12,9 @@ a file. Moving a configuration to another system also required copying those
 files and preserving their permissions.
 
 {vytask}`T3642` describes the PKI subsystem that provides certificates and
-keys to VyOS services. Certificates use X.509 PEM format; private keys use
-PKCS#8 format. They are managed in the VyOS configuration with the usual
+keys to VyOS services. Certificates use X.509 PEM format; CA and certificate
+private keys use PKCS#8 format. Other key types use their protocol-specific
+formats. They are managed in the VyOS configuration with the usual
 `set`, `edit`, and `delete` commands. Since configuration backups contain
 private key values, protect them and limit access to them.
 
@@ -170,12 +171,14 @@ Generate a WireGuard public/private key pair and print it to the console.
 
 ```{opcmd} generate pki wireguard key-pair install interface \<interface\>
 
-Generate a WireGuard key pair and add the private key to the selected
-interface's configuration.
+Generate a WireGuard key pair and print the private-key assignment command
+for the selected interface. Prefix the command with `run` in configuration
+mode to install the key directly.
 
 :::{note}
-The install variant writes the private key directly to the selected
-WireGuard interface.
+From operational mode, this command prints an assignment command and does not
+change the configuration. From configuration mode, use `run` before the
+command to install the generated key on the selected interface.
 :::
 ```
 
@@ -186,11 +189,14 @@ Generate a WireGuard pre-shared secret used for peers to communicate.
 
 ```{opcmd} generate pki wireguard preshared-key install interface \<interface\> peer \<peer\>
 
-Generate a WireGuard pre-shared key and add it to the selected peer's
-configuration.
+Generate a WireGuard pre-shared key and print the assignment command for the
+selected peer. Prefix the command with `run` in configuration mode to install
+the key directly.
 
 :::{note}
-The install variant writes the key directly to the selected WireGuard peer.
+From operational mode, this command prints an assignment command and does not
+change the configuration. From configuration mode, use `run` before the
+command to install the key on the selected peer.
 :::
 ```
 
