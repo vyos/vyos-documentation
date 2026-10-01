@@ -50,6 +50,9 @@ set vpn sstp ssl certificate 'Server'
 Replace the example password with a strong secret. The server listens on
 TCP port 443 by default; configure `set vpn sstp port <1-65535>` to use a
 different port. Ensure the firewall and clients allow the selected TCP port.
+If `service https` already uses TCP 443 on the same listen address, the
+services cannot share that address and port. Check port availability or
+configure a different SSTP port.
 
 ```{cfgcmd} set vpn sstp authentication mode \<local | radius\>
 
