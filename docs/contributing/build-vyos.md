@@ -465,6 +465,8 @@ Debian APT does not provide verbose error messages. If your ISO build fails and
 you suspect an APT dependencies or installation issue, you can apply this patch
 to increase APT verbosity during the ISO build.
 
+% stop_vyoslinter
+
 ```diff
 diff --git i/scripts/live-build-config w/scripts/live-build-config
 index 1b3b454..3696e4e 100755
@@ -481,6 +483,8 @@ index 1b3b454..3696e4e 100755
          "${@}"
  """
 ```
+
+% start_vyoslinter
 
 (build-packages)=
 
