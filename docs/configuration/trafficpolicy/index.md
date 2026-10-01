@@ -375,10 +375,10 @@ This provides a fair share of transmission opportunities across flows.
 
 SFQ hashes flows into a limited number of buckets, so multiple flows
 can share a bucket. The optional `hash-interval` setting periodically
-perturbs the hash, which can change bucket assignments and may reorder
-packets. Its default is `0`, which disables perturbation; the kernel
-documentation advises using an interval such as 10 seconds when
-perturbation is desired.
+perturbs the hash, which can change bucket assignments and may cause packet
+reordering or loss. Its default is `0`, which disables perturbation. The
+`tc-sfq(8)` manual advises an interval of 60 seconds; VyOS CLI help currently
+labels 10 seconds as advised. Avoid very short intervals.
 
 ```{cfgcmd} set qos policy fair-queue \<policy-name\> hash-interval \<seconds\>
 
@@ -733,9 +733,9 @@ configuring and what the size of its average-packet should be
 (in bytes, default: 1024).
 ```
 :::{note}
-GRED maps IP precedence value `p` to traffic class priority `8 - p`.
-Therefore, a lower IP precedence value receives a higher scheduling
-priority.
+GRED maps IP precedence value `p` to a virtual-queue `prio` value of
+`8 - p`. This value affects RED accounting and mark/drop precedence; it does
+not schedule packets for transmission.
 :::
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> mark-probability \<value\>
 
