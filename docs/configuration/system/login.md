@@ -321,8 +321,8 @@ Configure how long, in seconds, the router waits for a response from the
 default is 2 seconds; valid values are 1 to 240.
 
 If the server does not respond within this timeframe, VyOS tries another
-configured server. Optional mode can continue to the next PAM method after
-all configured servers fail; mandatory mode denies access.
+configured server. If all configured servers are unavailable, PAM continues
+to the next authentication method in the login stack.
 ```
 
 ```{cfgcmd} set system login radius security-mode \<optional | mandatory\>
@@ -330,8 +330,10 @@ all configured servers fail; mandatory mode denies access.
 **Choose how a RADIUS rejection affects other authentication methods.**
 
 The default is ``optional``: a rejected or unavailable RADIUS server allows
-the next PAM authentication method to run. ``mandatory`` denies access when
-RADIUS rejects the request or cannot authenticate it.
+the next PAM authentication method to run. In ``mandatory`` mode, an explicit
+RADIUS `Access-Reject` denies access. If the server is unavailable or returns
+another error, PAM skips RADIUS and continues to the next authentication
+method.
 ```
 
 ```{cfgcmd} set system login radius source-address \<address\>
@@ -366,8 +368,10 @@ set system login radius source-address '192.168.0.1'
 
 With the default ``optional`` security mode, authentication can continue to
 local users if RADIUS is unavailable or rejects a request. In ``mandatory``
-mode, RADIUS failure or rejection denies access. A timeout can delay login;
-the delay depends on the configured server timeout and server list.
+mode, an explicit RADIUS `Access-Reject` denies access. If RADIUS is unavailable
+or returns another error, PAM continues to the next authentication method,
+which may authenticate the user. A timeout can delay login; the delay depends
+on the configured server timeout and server list.
 
 :::{hint}
 To grant administrative privileges to {abbr}`RADIUS (Remote
@@ -436,8 +440,10 @@ configured server. The default timeout is 2 seconds; valid values are 1 to 240.
 **Choose how a TACACS+ rejection affects other authentication methods.**
 
 The default is ``optional``: a rejected or unavailable TACACS+ server allows
-the next PAM authentication method to run. ``mandatory`` denies access when
-TACACS+ rejects the request or cannot authenticate it.
+the next PAM authentication method to run. In ``mandatory`` mode, an explicit
+TACACS+ `REJECT` denies access. If the server is unavailable or returns
+another error, PAM skips TACACS+ and continues to the next authentication
+method.
 ```
 
 ```{cfgcmd} set system login tacacs source-address \<address\>
@@ -475,7 +481,9 @@ set system login tacacs source-address '192.168.0.1'
 
 With the default ``optional`` security mode, authentication can continue to
 local users if TACACS+ is unavailable or rejects a request. In ``mandatory``
-mode, a failure or rejection denies access.
+mode, an explicit TACACS+ `REJECT` denies access. If the server is unavailable
+or returns another error, PAM continues to the next authentication method,
+which may authenticate the user.
 
 ## Login banners
 
