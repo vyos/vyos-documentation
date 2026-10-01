@@ -257,18 +257,6 @@ Match RPKI validation result.
 ```
 
 
-```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match source-peer \<value\>
-
-**Match BGP routes by the peer they were received from.**
-
-The rule then applies only to routes received from the specified peer.
-
-The value is the peer's IPv4 or IPv6 address, the name of the interface
-on which the peer is configured, or the name of a BGP peer-group. A
-peer-group name matches a route received from any peer in that
-peer-group.
-
-
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match rpki-extcommunity \<invalid|notfound|valid\>
 
 Match the RPKI origin-validation state carried in the route's extended
@@ -290,8 +278,8 @@ Route tag to match.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> on-match goto \<1-65535\>
 
-On a match, continue at the first rule whose sequence number is greater than or
-equal to the specified number.
+On a match, continue at the first later rule whose sequence number is greater
+than or equal to the specified number. `goto` only moves forward.
 ```
 
 
@@ -323,7 +311,7 @@ Prepend the given string of AS numbers to the AS_PATH of the BGP path's NLRI.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> set as-path prepend-last-as \<n\>
 
-Prepend the last AS number in the AS_PATH the specified number of times
+Prepend the leftmost AS number in the AS_PATH the specified number of times
 (1 to 10).
 ```
 
