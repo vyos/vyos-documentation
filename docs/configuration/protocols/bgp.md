@@ -1507,6 +1507,16 @@ for BGP.**
 By default, FRR sends RAs on an interface when its BGP session has
 negotiated the Extended Next Hop capability, or when a BGP neighbor is
 configured by interface name (Unnumbered BGP).
+
+:::{note}
+In current VyOS versions, this only prevents router advertisements
+from starting on sessions
+established *after* the setting takes effect. It does not stop router
+advertisements already active on an established session.
+
+To stop advertisements on a already established sessions,
+you can remove and re-add `remote-as`, or restart the BGP process.
+:::
 ```
 
 ```{note}
