@@ -1,14 +1,16 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (qos)=
 
 # Traffic Policy
 
 ## QoS
 
-The generic name of Quality of Service or Traffic Control involves
-things like shaping traffic, scheduling or dropping packets, which
-are the kind of things you may want to play with when you have, for
-instance, a bandwidth bottleneck in a link and you want to somehow
-prioritize some type of traffic over another.
+Quality of Service (QoS), also called traffic control, covers tasks such
+as shaping, scheduling, and dropping packets. It can help prioritize
+some traffic over other traffic when a link is congested.
 
 [tc] is a powerful tool for Traffic Control found at the Linux kernel.
 However, its configuration is often considered a cumbersome task.
@@ -30,68 +32,28 @@ them.
 
 ### Units
 
-When configuring your traffic policy, you will have to set data rate
-values, watch out the units you are managing, it is easy to get confused
-with the different prefixes and suffixes you can use. VyOS will always
-show you the different units you can use.
+Rate fields accept decimal bit-rate suffixes. Some fields also accept
+`auto` or a percentage of the interface speed. Check the CLI completion
+for the values supported by each field.
 
 #### Prefixes
 
-They can be **decimal** prefixes.
+Use these decimal bit-rate suffixes:
 
 ```{eval-rst}
    .. code-block:: none
 
+    bit   (1)       bit per second
     kbit  (10^3)    kilobit per second
     mbit  (10^6)    megabit per second
     gbit  (10^9)    gigabit per second
     tbit  (10^12)   terabit per second
-
-    kbps  (8*10^3)  kilobyte per second
-    mbps  (8*10^6)  megabyte per second
-    gbps  (8*10^9)  gigabyte per second
-    tbps  (8*10^12) terabyte per second
-```
-
-Or **binary** prefixes.
-
-```{eval-rst}
-   .. code-block:: none
-
-    kibit (2^10 = 1024)    kibibit per second
-    mibit (2^20 = 1024^2)  mebibit per second
-    gibit (2^30 = 1024^3)  gibibit per second
-    tbit  (2^40 = 1024^4)  tebibit per second
-
-    kibps (1024*8)         kibibyte (KiB) per second
-    mibps (1024^2*8)       mebibyte (MiB) per second
-    gibps (1024^3*8)       gibibyte (GiB) per second
-    tibps (1024^4*8)       tebibyte (TiB) per second
 ```
 
 
-#### Suffixes
-
-A *bit* is written as **bit**,
-
-```{eval-rst}
-   .. code-block:: none
-
-        kbit (kilobits per second)
-        mbit (megabits per second)
-        gbit (gigabits per second)
-        tbit (terabits per second)
-```
-
-while a *byte* is written as a single **b**.
-
-```{eval-rst}
-   .. code-block:: none
-
-        kbps (kilobytes per second)
-        mbps (megabytes per second)
-        gbps (gigabytes per second)
-```
+Byte-size fields such as `burst` use bytes and may accept scaling suffixes
+such as `k` (for example, the default shaper burst is `15k`). A lowercase
+`b` in a rate suffix means bits, not bytes.
 
 (classes)=
 
@@ -119,8 +81,8 @@ configuring it.
 The meaning of the Class ID is not the same for every type of
 policy. Normally policies just need a meaningless number to identify
 a class (Class ID), but that does not apply to every policy.
-The number of a class in a Priority Queue it does not only
-identify it, it also defines its priority.
+In a Priority Queue policy, the class number identifies the queue and
+sets its priority.
 :::
 ```none
 set qos policy <policy> <policy-name> class <class-ID> match <class-matching-rule-name>
@@ -335,8 +297,8 @@ in many policies.
 
 :::{note}
 Some policies already include other embedded policies inside.
-That is the case of Shaper: each of its classes use fair-queue
-unless you change it.
+Shaper classes use FQ-CoDel by default; you can select another supported
+queue type for a class.
 :::
 
 (creating_a_traffic_policy)=
@@ -399,11 +361,9 @@ number of packets it can contain (maximum 4294967295).
 | **Applies to:** Outbound traffic.
 ```
 
-Fair Queue is a work-conserving scheduler which schedules the
-transmission of packets based on flows, that is, it balances traffic
-distributing it through different sub-queues in order to ensure
-fairness so that each flow is able to send data in turn, preventing any
-single one from drowning out the rest.
+Fair Queue uses Stochastic Fairness Queueing (SFQ), a work-conserving
+scheduler that hashes packets into subqueues and services them in turn.
+This provides a fair share of transmission opportunities across flows.
 
 ```{cfgcmd} set qos policy fair-queue \<policy-name\>
 
@@ -413,42 +373,33 @@ single one from drowning out the rest.
 
 ```
 
-In order to separate traffic, Fair Queue uses a classifier based on
-source address, destination address and source port. The algorithm
-enqueues packets to hash buckets based on those tree parameters.
-Each of these buckets should represent a unique flow. Because multiple
-flows may get hashed to the same bucket, the hashing algorithm is
-perturbed at configurable intervals so that the unfairness lasts only
-for a short while. Perturbation may however cause some inadvertent
-packet reordering to occur. An advisable value could be 10 seconds.
-
-
-One of the uses of Fair Queue might be the mitigation of Denial of
-Service attacks.
+SFQ hashes flows into a limited number of buckets, so multiple flows
+can share a bucket. The optional `hash-interval` setting periodically
+perturbs the hash, which can change bucket assignments and may reorder
+packets. Its default is `0`, which disables perturbation; the kernel
+documentation advises using an interval such as 10 seconds when
+perturbation is desired.
 
 ```{cfgcmd} set qos policy fair-queue \<policy-name\> hash-interval \<seconds\>
 
-Use this command to define a Fair-Queue policy, based on the
-Stochastic Fairness Queueing, and set the number of seconds at which
-a new queue algorithm perturbation will occur (maximum 4294967295).
+Use this command to set the SFQ hash perturbation interval in seconds
+(0-2147483647; default: 0).
 ```
 
-When dequeuing, each hash-bucket with data is queried in a round robin
-fashion. You can configure the length of the queue.
+When dequeuing, SFQ services active hash buckets in turn. You can also
+set a per-bucket queue limit.
 
 ```{cfgcmd} set qos policy fair-queue \<policy-name\> queue-limit \<limit\>
 
-Use this command to define a Fair-Queue policy, based on the
-Stochastic Fairness Queueing, and set the number of maximum packets
-allowed to wait in the queue. Any other packet will be dropped.
+Use this command to set the maximum number of packets in the SFQ queue
+(range: 1-127; default: 127). Packets arriving when the queue is full
+are dropped.
 ```
 :::{note}
-Fair Queue is a non-shaping (work-conserving) policy, so it
-will only be useful if your outgoing interface is really full. If it
-is not, VyOS will not own the queue and Fair Queue will have no
-effect. If there is bandwidth available on the physical link, you can
-embed Fair-Queue into a classful shaping policy to make sure it owns
-the queue.
+Fair Queue does not limit the link rate. It schedules packets when a
+queue builds; when traffic is below link capacity, there may be no
+backlog for it to manage. To create a controlled bottleneck, embed it
+in a classful shaping policy.
 :::
 
 
@@ -464,68 +415,29 @@ the queue.
 ```
 
 
-The FQ-CoDel policy distributes the traffic into 1024 FIFO queues and
-tries to provide good service between all of them. It also tries to keep
-the length of all the queues short.
+FQ-CoDel hashes traffic into flow queues and combines fair queuing with
+the CoDel active queue management (AQM) algorithm. VyOS defaults to
+1024 flows, a 1514-byte quantum, a 100 ms interval, a 5 ms target, and
+a 10240-packet hard queue limit.
 
 
-FQ-CoDel fights bufferbloat and reduces latency without the need of
-complex configurations. It has become the new default Queueing
-Discipline for the interfaces of some GNU/Linux distributions.
-
-
-It uses a stochastic model to classify incoming packets into
-different flows and is used to provide a fair share of the bandwidth to
-all the flows using the queue. Each flow is managed by the CoDel
-queuing discipline. Reordering within a flow is avoided since Codel
-internally uses a FIFO queue.
-
-
-FQ-CoDel is based on a modified Deficit Round Robin (DRR) queue
-scheduler with the CoDel Active Queue Management (AQM) algorithm
-operating on each queue.
+It aims to reduce persistent queue delay while sharing service among
+flows. Each flow queue uses CoDel; packets within a flow remain in FIFO
+order.
 
 
 :::{note}
-FQ-Codel is a non-shaping (work-conserving) policy, so it
-will only be useful if your outgoing interface is really full. If it
-is not, VyOS will not own the queue and FQ-Codel will have no
-effect. If there is bandwidth available on the physical link, you can
-embed FQ-Codel into a classful shaping policy to make sure it owns
-the queue. If you are not sure if you need to embed your FQ-CoDel
-policy into a Shaper, do it.
+FQ-CoDel does not limit the link rate. It manages queueing delay when
+traffic builds a queue; when traffic is below link capacity, there may
+be no backlog for it to manage. To create a controlled bottleneck, embed
+it in a classful shaping policy.
 :::
 
 
-FQ-CoDel is tuned to run ok with its default parameters at 10Gbit
-speeds. It might work ok too at other speeds without configuring
-anything, but here we will explain some cases when you might want to
-tune its parameters.
-
-
-When running it at 1Gbit and lower, you may want to reduce the
-`queue-limit` to 1000 packets or less. In rates like 10Mbit, you may
-want to set it to 600 packets.
-
-
-If you are using FQ-CoDel embedded into Shaper and you have large rates
-(100Mbit and above), you may consider increasing `quantum` to 8000 or
-higher so that the scheduler saves CPU.
-
-
-On low rates (below 40Mbit) you may want to tune `quantum` down to
-something like 300 bytes.
-
-
-At very low rates (below 3Mbit), besides tuning `quantum` (300 keeps
-being ok) you may also want to increase `target` to something like 15ms
-and increase `interval` to something around 150 ms.
-
 ```{cfgcmd} set qos policy fq-codel \<policy name\> codel-quantum \<bytes\>
 
-Use this command to configure an fq-codel policy, set its name and
-the maximum number of bytes (default: 1514) to be dequeued from a
-queue at once.
+Use this command to set the per-flow byte quantum used by the fair
+queuing scheduler (default: 1514 bytes).
 ```
 
 ```{cfgcmd} set qos policy fq-codel \<policy name\> flows \<number-of-flows\>
@@ -585,7 +497,7 @@ internally, it does not have the capability to delay a packet as a
 shaping mechanism does. Traffic exceeding the defined bandwidth limits
 is directly dropped. A maximum allowed burst can be configured too.
 
-You can configure classes (up to 4090) with different settings and a
+You can configure classes (IDs 1-4090) with different settings and a
 default policy which will be applied to any traffic not matching any of
 the configured classes.
 
@@ -595,9 +507,8 @@ In the case you want to apply some kind of **shaping** to your
 :::
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> match \<match-name\> description \<description\>
 
-Use this command to configure an Ingress Policer, defining its name,
-a class identifier (1-4090), a class matching rule name and its
-description.
+Use this command to configure an ingress policer class, its matching
+rule, and an optional description. Class IDs range from 1 to 4090.
 
 ```
 
@@ -606,82 +517,63 @@ how you want matching traffic to behave.
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> bandwidth \<rate\>
 
-Use this command to configure an Ingress Policer, defining its name,
-a class identifier (1-4090) and the maximum allowed bandwidth for
-this class.
+Use this command to set the maximum allowed rate for the class.
 
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class-ID\> burst \<burst-size\>
 
-Use this command to configure an Ingress Policer, defining its name,
-a class identifier (1-4090) and the burst size in bytes for this
-class (default: 15).
+Use this command to set the class burst size in bytes (default: 15).
 
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> default bandwidth \<rate\>
 
-Use this command to configure an Ingress Policer, defining its name
-and the maximum allowed bandwidth for its default policy.
+Use this command to set the maximum allowed rate for unmatched traffic.
 
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> default burst \<burst-size\>
 
-Use this command to configure an Ingress Policer, defining its name
-and the burst size in bytes (default: 15) for its default policy.
+Use this command to set the burst size for unmatched traffic, in bytes
+(default: 15).
 
 ```
 
 ```{cfgcmd} set qos policy limiter \<policy-name\> class \<class ID\> priority \<value\>
 
-Use this command to configure an Ingress Policer, defining its name,
-a class identifier (1-4090), and the priority (0-20, default 20) in
-which the rule is evaluated (the lower the number, the higher the
-priority).
+Use this command to set the class filter evaluation priority (0-20).
+Lower numbers are evaluated first.
 
 ```
 
 #### Network Emulator
 
 ```{eval-rst}
-| **Queueing discipline:** netem (Network Emulator) + TBF (Token Bucket Filter).
+| **Queueing discipline:** netem (Network Emulator).
 | **Applies to:** Outbound traffic.
 ```
 
-VyOS Network Emulator policy emulates the conditions you can suffer in a
-real network. You will be able to configure things like rate, burst,
-delay, packet loss, packet corruption or packet reordering.
+The Network Emulator policy applies selected network impairments to
+outbound traffic. It supports a rate, queue limit, delay, packet loss,
+corruption, duplication, and reordering. Its rate setting is provided
+by netem; this policy does not configure a separate TBF qdisc or a
+burst setting.
 
-This could be helpful if you want to test how an application behaves
-under certain network conditions.
+This policy is useful for testing how an application behaves under
+selected network conditions.
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> bandwidth \<rate\>
 
-   Use this command to configure the maximum rate at which traffic will
-   be shaped in a Network Emulator policy. Define the name of the policy
-   and the rate.
+Use this command to set the netem rate for the policy.
 
-```
-
-```{cfgcmd} set qos policy network-emulator \<policy-name\> burst \<burst-size\>
-
-Use this command to configure the burst size of the traffic in a
-Network Emulator policy. Define the name of the Network Emulator
-policy and its traffic burst size (it will be configured through the
-Token Bucket Filter qdisc). Default:15kb. It will only take effect if
-you have configured its bandwidth too.
 ```
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> delay \<delay\>
 
-Use this command to configure a Network Emulator policy defining its
-name and the fixed amount of time you want to add to all packet going
-out of the interface. The latency will be added through the
-Token Bucket Filter qdisc. It will only take effect if you have
-configured its bandwidth too. You can use secs, ms and us. Default:
-50ms.
+Use this command to add a fixed delay to outgoing packets. The value is
+in milliseconds (0-65535); delay works independently of the optional
+rate setting.
 ```
 
 ```{cfgcmd} set qos policy network-emulator \<policy-name\> corruption \<percent\>
@@ -699,18 +591,22 @@ Emulator policy. Set the policy name and the percentage of loss
 packets your traffic will suffer.
 ```
 
-```{cfgcmd} set traffic-policy network-emulator \<policy-name\> reordering \<percent\>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> reordering \<percent\>
 
-Use this command to emulate packet-reordering conditions in a Network
-Emulator policy. Set the policy name and the percentage of reordered
-packets your traffic will suffer.
+Use this command to set the percentage of packets affected by
+reordering (0-100).
 ```
 
-```{cfgcmd} set traffic-policy network-emulator \<policy-name\> queue-limit \<limit\>
+```{cfgcmd} set qos policy network-emulator \<policy-name\> duplicate \<percent\>
 
-Use this command to define the length of the queue of your Network
-Emulator policy. Set the policy name and the maximum number of
-packets (1-4294967295) the queue may hold queued at a time.
+Use this command to set the percentage of packets that netem duplicates
+(0-100).
+```
+
+```{cfgcmd} set qos policy network-emulator \<policy-name\> queue-limit \<limit\>
+
+Use this command to set the maximum number of packets held by the
+queue (1-4294967295).
 ```
 
 #### Priority Queue
@@ -725,20 +621,15 @@ packets (Priority Queue is not a shaping policy), it simply dequeues
 packets according to their priority.
 
 :::{note}
-Priority Queue, as other non-shaping policies, is only useful
-if your outgoing interface is really full. If it is not, VyOS will
-not own the queue and Priority Queue will have no effect. If there is
-bandwidth available on the physical link, you can embed Priority
-Queue into a classful shaping policy to make sure it owns the queue.
-In that case packets can be prioritized based on DSCP.
+Priority Queue does not limit the link rate. It schedules packets when
+a queue builds; when traffic is below link capacity, there may be no
+backlog for it to manage. Embed it in a classful shaping policy to
+create a controlled bottleneck.
 :::
 
-Up to seven queues -defined as classes with different priorities- can
-be configured. Packets are placed into queues based on associated match
-criteria. Packets are transmitted from the queues in priority order. If
-classes with a higher priority are being filled with packets
-continuously, packets from lower priority classes will only be
-transmitted after traffic volume from higher priority classes decreases.
+Up to seven queues can be configured. Packets are assigned to queues by
+their match criteria and transmitted in strict priority order. Sustained
+traffic in higher-priority queues can starve lower-priority queues.
 
 :::{note}
 In Priority Queue we do not define classes with a meaningless
@@ -820,9 +711,9 @@ IP precedence as defined in {rfc}`791`:
 > | 2          | Immediate            |
 > | 1          | Priority             |
 > | 0          | Routine              |
-Random-Detect could be useful for heavy traffic. One use of this
-algorithm might be to prevent a backbone overload. But only for TCP
-(because dropped packets could be retransmitted), not for UDP.
+Random-Detect uses generalized RED (GRED) with eight virtual queues,
+one for each IP precedence value. It can mark or drop packets as the
+average queue size grows, before the hard queue limit is reached.
 
 ```{cfgcmd} set qos policy random-detect \<policy-name\> bandwidth \<bandwidth\>
 
@@ -842,8 +733,9 @@ configuring and what the size of its average-packet should be
 (in bytes, default: 1024).
 ```
 :::{note}
-When configuring a Random-Detect policy: **the higher the
-precedence number, the higher the priority**.
+GRED maps IP precedence value `p` to traffic class priority `8 - p`.
+Therefore, a lower IP precedence value receives a higher scheduling
+priority.
 :::
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> mark-probability \<value\>
 
@@ -872,7 +764,9 @@ be (from 0 to 4096 packets).  If this value is exceeded, packets
 start being eligible for being dropped.
 ```
 
-The default values for the minimum-threshold depend on IP precedence:
+With the default maximum threshold of 18 packets, the minimum-threshold
+defaults are calculated from the IP precedence as shown below. Changing
+the maximum threshold also changes these defaults.
 > | Precedence | default min-threshold |
 > | ---------- | --------------------- |
 > | 7          | 16                    |
@@ -887,9 +781,9 @@ The default values for the minimum-threshold depend on IP precedence:
 ```{cfgcmd} set qos policy random-detect \<policy-name\> precedence \<IP-precedence-value\> queue-limit \<packets\>
 
 Use this command to configure a Random-Detect policy and set its
-name, then name the IP Precedence for the virtual queue you are
+name, then specify the IP precedence for the virtual queue you are
 configuring and what the maximum size of its queue will be (from 1 to
-1-4294967295 packets). Packets are dropped when the current queue
+4294967295 packets). Packets are dropped when the current queue
 length reaches this value.
 
 ```
@@ -905,8 +799,9 @@ If the current queue size is larger than **queue-limit**,
 then packets will be dropped. The average queue size depends on its
 former average size and its current one.
 
-If **max-threshold** is set but **min-threshold is not, then
-\*\*min-threshold** is scaled to 50% of **max-threshold**.
+If **minimum-threshold** is not configured, VyOS derives it from the
+maximum threshold and IP precedence. The default formula is
+`((9 + precedence) * maximum-threshold) // 18` (integer division).
 
 In principle, values must be
 {code}`min-threshold` < {code}`max-threshold` < {code}`queue-limit`.
@@ -947,16 +842,15 @@ buffer if you want to reach your configured rate.
 
 A very small buffer will soon start dropping packets.
 
-```{cfgcmd} set qos policy rate-control \<policy-name\> latency
+```{cfgcmd} set qos policy rate-control \<policy-name\> latency \<milliseconds\>
 
-Use this command to configure a Rate-Control policy, set its name
-and the maximum amount of time a packet can be queued (default: 50
-ms).
+Use this command to set the maximum queueing latency in milliseconds
+(0-4096, default: 50).
 
 ```
 
-Rate-Control is a CPU-friendly policy. You might consider using it when
-you just simply want to slow traffic down.
+Rate-Control limits outbound traffic without classifying it into
+multiple classes.
 (drr)=
 
 #### Round Robin
@@ -966,31 +860,22 @@ you just simply want to slow traffic down.
 **Applies to:**
  Outbound traffic.
 
-The round-robin policy is a classful scheduler that divides traffic in
-different classes you can configure (up to 4096). You can embed a
+The round-robin policy is a classful scheduler that divides traffic into
+classes with IDs from 1 to 4095. You can embed a
 new policy into each of those classes (default included).
 
-Each class is assigned a deficit counter (the number of bytes that a
-flow is allowed to transmit when it is its turn) initialized to quantum.
-Quantum is a parameter you configure which acts like a credit of fix
-bytes the counter receives on each round. Then the Round-Robin policy
-starts moving its Round Robin pointer through the queues. If the deficit
-counter is greater than the packet's size at the head of the queue, this
-packet will be sent and the value of the counter will be decremented by
-the packet size. Then, the size of the next packet will be compared to
-the counter value again, repeating the process. Once the queue is empty
-or the value of the counter is insufficient, the Round-Robin pointer
-will move to the next queue. If the queue is empty, the value of the
-deficit counter is reset to 0.
+Deficit Round Robin (DRR) visits each class in turn. Each class has a
+deficit counter measured in bytes. On a visit, the class quantum is
+added to its counter, and packets are sent while the counter covers the
+next packet's size. The packet size is then deducted. If the next packet
+is too large for the remaining deficit, DRR moves to the next class and
+adds another quantum on the next round. This lets classes with larger
+packets receive a fair share over time.
 
-At every round, the deficit counter adds the quantum so that even large
-packets will have their opportunity to be dequeued.
-
-```{cfgcmd} set qos policy round-robin \<policy name\> class \<class-ID\> quantum \<packets\>
+```{cfgcmd} set qos policy round-robin \<policy name\> class \<class-ID\> quantum \<bytes\>
 
 Use this command to configure a Round-Robin policy, set its name, set
-a class ID, and the quantum for that class. The deficit counter will
-add that value each round.
+a class ID, and the scheduling quantum for that class, in bytes.
 
 ```
 
@@ -1041,7 +926,7 @@ traffic, the ceiling parameter can be used to set how much more
 bandwidth could be used. If guaranteed traffic is met and there are
 several classes willing to use their ceilings, the priority parameter
 will establish the order in which that additional traffic will be
-allocated. Priority can be any number from 0 to 7. The lower the number,
+allocated. Priority can be any number from 0 to 20. The lower the number,
 the higher the priority.
 
 ```{cfgcmd} set qos policy shaper \<policy-name\> bandwidth \<rate\>
@@ -1072,12 +957,14 @@ a class and set the maximum speed possible for this class. The
 default ceiling value is the bandwidth value.
 ```
 
-```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority \<0-7\>
+```{cfgcmd} set qos policy shaper \<policy-name\> class \<class-ID\> priority \<0-20\>
 
 Use this command to configure a Shaper policy, set its name, define
 a class and set the priority for usage of available bandwidth once
 guarantees have been met. The lower the priority number, the higher
-the priority. The default priority value is 0, the highest priority.
+the priority. The class priority range is 0-20; lower values have higher
+priority. An unspecified class priority defaults to 0; the `default`
+class priority defaults to 20.
 ```
 
 As with other policies, Shaper can embed other policies into its
@@ -1147,6 +1034,27 @@ set qos policy shaper MY-HTB default priority '7'
 set qos policy shaper MY-HTB default queue-type 'fair-queue'
 ```
 
+#### HFSC Shaper
+
+Hierarchical Fair Service Curve (HFSC) is another classful egress
+shaper. It supports link sharing and service curves that can express
+bandwidth and delay goals. The policy bandwidth sets the root rate;
+each class and the default class must define at least one `m2` rate
+under `linkshare`, `realtime`, or `upperlimit`.
+
+An `m1` rate requires both a `d` duration and an `m2` rate. An
+`upperlimit` curve can only be used when the same class also has a
+`linkshare` `m2` rate.
+
+```none
+set qos policy shaper-hfsc WAN bandwidth 100mbit
+set qos policy shaper-hfsc WAN class 10 linkshare m2 20mbit
+set qos policy shaper-hfsc WAN default linkshare m2 80mbit
+set qos interface eth0 egress WAN
+```
+
+For details about HFSC service curves, see the [HFSC manual][hfsc].
+
 (cake)=
 
 #### CAKE
@@ -1169,7 +1077,7 @@ edge.
 
 ```
 
-```{cfgcmd} set qos policy cake \<text\> description
+```{cfgcmd} set qos policy cake \<policy-name\> description \<text\>
 
 Set a description for the shaper.
 ```
@@ -1207,7 +1115,7 @@ destination IP address, destination port, transport protocol).
 Flows are defined by source-destination host pairs.
 ```
 
-```{cfgcmd} set qos policy cake \<text\> flow-isolation nat
+```{cfgcmd} set qos policy cake \<policy-name\> flow-isolation-nat
 
 Perform NAT lookup before applying flow-isolation rules.
 ```
@@ -1223,10 +1131,25 @@ Flows are defined only by source address.
 over source and destination addresses and also over individual flows.
 ```
 
-```{cfgcmd} set qos policy cake \<text\> rtt
+```{cfgcmd} set qos policy cake \<policy-name\> rtt \<milliseconds\>
 
 Defines the round-trip time used for active queue management (AQM) in
-milliseconds. The default value is 100.
+milliseconds (range: 1-1000000000; default: 100).
+```
+
+```{cfgcmd} set qos policy cake \<policy-name\> ack-filter
+
+Enables filtering of TCP ACK packets that do not carry new information.
+```
+
+```{cfgcmd} set qos policy cake \<policy-name\> ack-filter aggressive
+
+Enables the more aggressive TCP ACK filtering mode.
+```
+
+```{cfgcmd} set qos policy cake \<policy-name\> no-split-gso
+
+Disables splitting of GSO super-packets into on-the-wire packets.
 ```
 
 ### Applying a traffic policy
@@ -1291,9 +1214,11 @@ Otherwise you might get the `RTNETLINK answer: File exists` error,
 which can be solved with `sudo ip link delete ifb0`.
 :::
 
-[common applications kept enhanced]: https://www.bufferbloat.net/projects/codel/wiki/Cake/
-[hfsc]: <https://en.wikipedia.org/wiki/Hierarchical_fair-service_curve>
+% stop_vyoslinter
+[common applications kept enhanced]: https://man7.org/linux/man-pages/man8/tc-cake.8.html
+[hfsc]: https://man7.org/linux/man-pages/man8/tc-hfsc.8.html
 [intermediate functional block]: https://www.linuxfoundation.org/collaborate/workgroups/networking/ifb
-[tc]: <https://en.wikipedia.org/wiki/Tc_(Linux)>
+[tc]: https://man7.org/linux/man-pages/man8/tc.8.html
 [that can give you a great deal of flexibility]: https://blog.vyos.io/using-the-policy-route-and-packet-marking-for-custom-qos-matches
 [token bucket]: <https://en.wikipedia.org/wiki/Token_bucket>
+% start_vyoslinter
