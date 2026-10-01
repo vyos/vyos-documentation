@@ -1,193 +1,128 @@
+---
+lastproofread: '2026-10-01'
+---
+
 # IPv6
 
 ## System configuration commands
 
 ```{cfgcmd} set system ipv6 disable-forwarding
 
-   Use this command to disable IPv6 forwarding on all interfaces.
+Disable IPv6 forwarding on all interfaces.
 ```
 
+```{cfgcmd} set system ipv6 neighbor table-size <number>
 
-```{cfgcmd} set system ipv6 neighbor table-size \<number\>
-
-Use this command to define the maximum number of entries to keep in
-the Neighbor cache (1024, 2048, 4096, 8192, 16384, 32768).
+Set the maximum number of entries in the IPv6 neighbor cache. Supported
+values are 1024, 2048, 4096, 8192, 16384, and 32768. The default is 8192.
 ```
-
 
 ```{cfgcmd} set system ipv6 strict-dad
 
-Use this command to disable IPv6 operation on interface when
-Duplicate Address Detection fails on Link-Local address.
+Enable strict Duplicate Address Detection (DAD). If DAD detects a duplicate
+link-local address, IPv6 is disabled on that interface.
 ```
-
 
 ```{cfgcmd} set system ipv6 multipath layer4-hashing
 
-Use this command to user Layer 4 information for ECMP hashing.
+Include Layer 4 information in the hash used to select a path for IPv6
+equal-cost multipath (ECMP) routes.
 ```
 
-### Zebra/Kernel route filtering
+### Zebra and kernel route filtering
 
+Zebra can apply a route map to routes it receives from routing protocols.
+The route map can filter which routes Zebra installs in the kernel.
 
-Zebra supports prefix-lists and Route Maps to match routes received from
-other FRR components. The permit/deny facilities provided by these commands
-can be used to filter which routes zebra will install in the kernel.
+```{cfgcmd} set system ipv6 protocol <protocol> route-map <route-map>
 
-```{cfgcmd} set system ipv6 protocol \<protocol\> route-map \<route-map\>
-
-Apply a route-map filter to routes for the specified protocol. The following
-protocols can be used: any, babel, bgp, isis, ospfv3, ripng, static
-
-:::{note}
-If you choose any as the option that will cause all protocols that
-are sending routes to zebra.
-:::
+Apply a route map to routes received from the specified protocol. Supported
+protocols are `any`, `babel`, `bgp`, `isis`, `ospfv3`, `ripng`, and `static`.
+Use `any` to apply the route map to routes from all protocols.
 ```
 
-### Nexthop Tracking
+### Nexthop tracking
 
-
-Nexthop tracking resolve nexthops via the default route by default. This is enabled
-by default for a traditional profile of FRR which we use. It and can be disabled if
-you do not want to e.g. allow BGP to peer across the default route.
+By default, FRR nexthop tracking does not resolve nexthops through the default
+route. Enabling resolution through the default route can allow, for example,
+BGP peers to be reached through that route.
 
 ```{cfgcmd} set system ipv6 nht no-resolve-via-default
 
-Do not allow IPv6 nexthop tracking to resolve via the default route. This
-parameter is configured per-VRF, so the command is also available in the VRF
-subnode.
+Explicitly prevent IPv6 nexthop tracking from resolving nexthops through the
+default route. This setting is per VRF and is also available under the VRF
+configuration node.
 ```
 
 ## Operational commands
-
 
 ### Show commands
 
 ```{opcmd} show ipv6 neighbors
 
-Use this command to show IPv6 Neighbor Discovery Protocol information.
+Show the IPv6 neighbor table.
 ```
-
 
 ```{opcmd} show ipv6 groups
 
-Use this command to show IPv6 multicast group membership.
+Show IPv6 multicast group membership.
 ```
-
 
 ```{opcmd} show ipv6 forwarding
 
-Use this command to show IPv6 forwarding status.
+Show IPv6 forwarding status.
 ```
-
 
 ```{opcmd} show ipv6 route
 
-Use this command to show IPv6 routes.
-
-Check the many parameters available for the show ipv6 route command:
-
-:::{code-block} none
-vyos@vyos:~$ show ipv6 route
-Possible completions:
-  <Enter>       Execute the current command
-  <X:X::X:X>    Show IPv6 routes of given address or prefix
-  <X:X::X:X/M>
-  bgp           Show IPv6 BGP routes
-  cache         Show kernel IPv6 route cache
-  connected     Show IPv6 connected routes
-  forward       Show kernel IPv6 route table
-  isis          Show IPv6 ISIS routes
-  kernel        Show IPv6 kernel routes
-  ospfv3        Show IPv6 OSPF6 routes
-  ripng         Show IPv6 RIPNG routes
-  static        Show IPv6 static routes
-  summary       Show IPv6 routes summary
-  table         Show IP routes in policy table
-  tag           Show only routes with tag
-  vrf           Show IPv6 routes in VRF
-:::
+Show IPv6 routes. The command accepts a prefix or address and supports
+protocol, table, tag, summary, and VRF filters. Use CLI completion to see the
+available options.
 ```
+
 ```{opcmd} show ipv6 prefix-list
 
-   Use this command to show all IPv6 prefix lists
-
-   There are different parameters for getting prefix-list information:
-
-   :::{code-block} none
-   vyos@vyos:~$ show ipv6 prefix-list
-   Possible completions:
-     <Enter>       Execute the current command
-     <WORD>        Show specified IPv6 prefix-list
-     detail        Show detail of IPv6 prefix-lists
-     summary       Show summary of IPv6 prefix-lists
-   :::
+Show IPv6 prefix lists. Specify a list name to show one list, or use the
+`detail` or `summary` options for additional information.
 ```
-
 
 ```{opcmd} show ipv6 access-list
 
-Use this command to show all IPv6 access lists
-
-You can also specify which IPv6 access-list should be shown:
-
-:::{code-block} none
-vyos@vyos:~$ show ipv6 access-list
-Possible completions:
-  <Enter>       Execute the current command
-  <text>        Show specified IPv6 access-list
-:::
+Show IPv6 access lists. Specify a list name to show one list.
 ```
+
 ```{opcmd} show ipv6 ospfv3
 
-   Use this command to get information about OSPFv3.
-
-   You can get more specific OSPFv3 information by using the parameters
-   shown below:
-
-   :::{code-block} none
-   vyos@vyos:~$ show ipv6 ospfv3
-   Possible completions:
-     <Enter>       Execute the current command
-     area          Show OSPFv3 spf-tree information
-     border-routers
-                   Show OSPFv3 border-router (ABR and ASBR) information
-     database      Show OSPFv3 Link state database information
-     interface     Show OSPFv3 interface information
-     linkstate     Show OSPFv3 linkstate routing information
-     neighbor      Show OSPFv3 neighbor information
-     redistribute  Show OSPFv3 redistribute External information
-     route         Show OSPFv3 routing table information
-   :::
+Show OSPFv3 information, including areas, border routers, the link-state
+database, interfaces, neighbors, redistributed routes, and routes.
 ```
-
 
 ```{opcmd} show ipv6 ripng
 
-Use this command to get information about the RIPNG protocol
+Show information about the RIPng protocol.
 ```
-
 
 ```{opcmd} show ipv6 ripng status
 
-Use this command to show the status of the RIPNG protocol
+Show RIPng protocol status.
 ```
 
 ### Reset commands
 
-```{opcmd} reset bgp ipv6 \<address\>
+```{opcmd} reset bgp ipv6 <address>
 
-Use this command to clear Border Gateway Protocol statistics or
-status.
+Use the neighbor address to select a BGP peer in the IPv6 address family.
+Options include clearing all peers, external peers, or peers by AS number,
+and resetting inbound or outbound routes or message statistics.
 ```
-```{opcmd} reset ipv6 neighbors \<address | interface\>
 
-Use this command to reset IPv6 Neighbor Discovery Protocol cache for
-an address or interface.
+```{opcmd} reset ipv6 neighbors <address | interface>
+
+Flush IPv6 neighbor entries for the specified address or interface.
 ```
+
 ```{opcmd} reset ipv6 route cache
 
-Use this command to flush the kernel IPv6 route cache.
-An address can be added to flush it only for that route.
+Flush the kernel IPv6 route cache. You can specify an address or prefix to
+flush the cache for that route.
 ```
