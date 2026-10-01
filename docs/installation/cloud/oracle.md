@@ -1,17 +1,19 @@
 ---
-lastproofread: '2026-02-09'
+lastproofread: '2026-10-01'
 ---
 
-# Oracle
+# Oracle Cloud Infrastructure
 
 :::{note}
-This page is a stub and needs expansion. Contributions
-welcome via the [VyOS documentation repository](https://github.com/vyos/vyos-documentation).
+This page does not yet describe a validated procedure for deploying VyOS on
+Oracle Cloud Infrastructure (OCI). Contributions are welcome in the
+[VyOS documentation repository](https://github.com/vyos/vyos-documentation).
 :::
 
 ## References
 
-<https://www.oracle.com/cloud/>
-
-<https://docs.oracle.com/en/cloud/paas/developer-cloud-classic/csdcc/deploy-application.html>
-
+- [Oracle Cloud Infrastructure](https://www.oracle.com/cloud/)
+% stop_vyoslinter
+- [Importing custom Linux images into OCI](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/importingcustomimagelinux.htm)
+- [Importing custom images into OCI](https://docs.oracle.com/en-us/iaas/Content/Compute/Tasks/custom-images-import.htm)
+% start_vyoslinter
