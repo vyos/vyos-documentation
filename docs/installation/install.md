@@ -121,15 +121,12 @@ and Minisign.
 
 #### Minisign verification
 
-% stop_vyoslinter
-VyOS signs its release images with [minisign](https://github.com/jedisct1/minisign),
-% start_vyoslinter
-a portable Ed25519-based signing tool available for Linux, macOS, and
-Windows. Minisign uses the same signature format as OpenBSD's signify,
-introduced in 2014.
+Beginning with version 1.2.5, VyOS signs its
+{abbr}`LTS (Long-Term Support)` release images with
+[minisign](https://github.com/jedisct1/minisign), a portable
+Ed25519-based signing tool available for Linux, macOS, and Windows. 
 
-All **VyOS {abbr}`LTS (Long-Term Support)` images** are signed with the
-following key:
+The LTS release signing key is the following:
 
 ```none
 RWTR1ty93Oyontk6caB9WqmiQC4fgeyd/ejgRxCRGd2MQej7nqebHneP
@@ -156,10 +153,13 @@ installed on the system. The **release signing key**, which signs LTS
 images, is present on every VyOS system, so LTS images can be verified on
 any release.
 
-Releases up to VyOS 1.4.2 were signed with both minisign (preferred) and
-GPG. Beginning with 1.4.3, only minisign signatures are used. This change
-should not affect most upgrades. If you encounter a verification error
-when upgrading directly to 1.4.3 or later, upgrade to 1.4.2 first.
+Releases from VyOS 1.2.5 through 1.4.2 were signed with both minisign
+(preferred) and {abbr}`GPG (GNU Privacy Guard)`. Beginning with 1.4.3,
+only minisign signatures are used.
+
+This change should not affect most upgrades. If you encounter a
+verification error when upgrading directly to 1.4.3 or later, upgrade to
+1.4.2 first.
 
 (live_installation)=
 
