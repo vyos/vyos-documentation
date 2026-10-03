@@ -2561,8 +2561,41 @@ set protocols bgp parameters confederation peers 65003
 ### BGP Monitoring Protocol (BMP) configuration
 
 {abbr}`BMP (BGP Monitoring Protocol)` sends BGP route information to a
-monitoring station. BMP support must first be enabled in the routing
-daemon with `set system frr bmp`.
+monitoring station.
+
+BMP support must be loaded into the BGP daemon before any BMP target can
+be committed. Enable it with `set system frr bmp`, commit, and then
+reboot the router (preferred) or restart FRR so the BGP daemon starts
+with the BMP module. Until then, committing configuration under
+`protocols bgp bmp` fails with an error that the `bmp` flag is not found
+in bgpd.
+
+```{cfgcmd} set protocols bgp bmp target \<name\> address \<x.x.x.x | h:h:h:h:h:h:h:h\>
+
+**Configure the IPv4 or IPv6 address of the BMP monitoring station.**
+
+The address is mandatory for every BMP target. Otherwise, the commit
+fails.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector address 192.0.2.10
+```
+
+```{cfgcmd} set protocols bgp bmp target \<name\> port \<1-65535\>
+
+**Configure the TCP port of the BMP monitoring station.**
+
+The default is 5000.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector port 5000
+```
 
 ```{cfgcmd} set protocols bgp bmp target \<name\> monitor \<ipv4-unicast | ipv6-unicast\> \<pre-policy | post-policy | local-rib\>
 
@@ -2580,6 +2613,7 @@ send more than one.
 Example:
 
 ```none
+set protocols bgp bmp target collector address 192.0.2.10
 set protocols bgp bmp target collector monitor ipv4-unicast post-policy
 ```
 
