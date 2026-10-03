@@ -151,7 +151,7 @@ configured and required. The in use will show yes
 
 ## Childless IKE SA
 
-```{cfgcmd} set vpn ipsec site-to-site peer <name> childless <allow | prefer | force | never>
+```{cfgcmd} set vpn ipsec site-to-site peer \<name\> childless \<allow | prefer | force | never\>
 
 Control childless IKEv2 SA initiation ({rfc}`6023` — an IKE SA established
 without a Child SA). This option applies to IKEv2 only:
@@ -165,7 +165,7 @@ without a Child SA). This option applies to IKEv2 only:
 - `never`: disable support for childless IKE SA when acting as a responder.
 ```
 
-```{cfgcmd} set vpn ipsec remote-access connection <name> childless <allow | prefer | force | never>
+```{cfgcmd} set vpn ipsec remote-access connection \<name\> childless \<allow | prefer | force | never\>
 
 The same option for IKEv2 remote-access connections.
 ```
