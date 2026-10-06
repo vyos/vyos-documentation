@@ -194,6 +194,23 @@ peer, use the following command:
 {opcmd}`show interfaces wireguard wg01 public-key`.
 ```
 
+```{cfgcmd} set interfaces wireguard \<interface\> peer \<name\> host-name \<hostname\>
+
+Set the FQDN of the remote peer's endpoint instead of an IP `address`. Together
+with `port` it forms the endpoint of the peer.
+
+`host-name` and `address` are mutually exclusive.
+```
+
+```{cfgcmd} set interfaces wireguard \<interface\> max-dns-retry \<1-15\>
+
+Set how often the DNS resolution of a peer endpoint configured with
+`host-name` is retried when it fails. The delay between retries increases with
+each attempt.
+
+The default is 3 retries. The `wg` tool on its own would retry 15 times.
+```
+
 
 ```{cmdincludemd} /_include/interface-per-client-thread.txt
 :var0: wireguard
