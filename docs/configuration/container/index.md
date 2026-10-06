@@ -231,7 +231,7 @@ retrying indefinitely
 Time to wait for the container to shut down on its own before it is
 killed.
 
-Default is 10 seconds, the maximum is 60 seconds.
+Valid values are 1 to 60 seconds, the default is 10 seconds.
 ```
 
 ```{cfgcmd} set container name \<name\> cpu-quota \<num\>
@@ -396,7 +396,8 @@ MACVLAN networks cannot be assigned to a VRF.
 ```{cfgcmd} set container network \<name\> type macvlan mode \<mode\>
 
 - **bridge**: Containers act as separate hosts on the parent network
-- **private**: Containers are isolated from the host and each other
+- **private**: Containers on the same parent interface cannot communicate
+  with each other, even if the external switch supports hairpin forwarding
 - **vepa**: Containers send all traffic through the parent switch for
   forwarding
 
