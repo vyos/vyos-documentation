@@ -79,7 +79,7 @@ and should be used only in compatibility scenarios.
 ```
 
 
-```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
+```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | chacha20poly1305 | none \>
 
 **Configure a prioritized list of negotiated ciphers for OpenVPN in**
 ``client`` **or** ``server`` **mode.**
@@ -89,13 +89,16 @@ algorithms. It corresponds to OpenVPN’s ``--data-ciphers`` directive and
 enables cipher negotiation, where both peers automatically agree on a mutually
 supported cipher during session startup.
 
+`chacha20poly1305` selects ChaCha20-Poly1305, which DCO offloads just like
+the AES-GCM ciphers.
+
 :::{note}
 This option is not compatible with ``site-to-site`` mode.
 :::
 ```
 
 
-```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers-fallback \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | none \>
+```{cfgcmd} set interfaces openvpn \<interface\> encryption data-ciphers-fallback \< 3des | aes128 | aes128gcm | aes192 | aes192gcm | aes256 | aes256gcm | chacha20poly1305 | none \>
 
 **Configure the fallback cipher for** ``site-to-site`` **mode.**
 
