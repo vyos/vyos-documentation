@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-10-01'
 myst:
   html_meta:
     description: |
@@ -39,7 +40,7 @@ Hosts receiving the RA use this value as the default Hop Limit for
 packets they send. A value of 0 means unspecified by the router,
 leaving hosts to use their own default.
 
-The default is 64, matching the IANA-recommended value.
+The VyOS default is 64.
 ```
 
 Example:
@@ -57,9 +58,9 @@ This value controls how long hosts keep this router in their default
 router list.
 
 A value of 0 indicates that the router is not to be used as a default
-router by receiving hosts. A non-zero value must be greater than or
-equal to the maximum unsolicited RA interval (`interval max`, default
-600). Otherwise, RAs will not be sent on the interface.
+router by receiving hosts. A non-zero value must be greater than or equal to
+the maximum unsolicited RA interval (`interval max`, default 600), as required
+by RFC 4861.
 
 If unset, the value is set as three times the maximum unsolicited RA
 interval.
@@ -93,10 +94,9 @@ set service router-advert interface eth0 default-preference high
 **Set the Managed Address Configuration (M) flag in RAs on the
 specified interface.**
 
-When set, the flag indicates to hosts that IPv6 addresses are
-available via DHCPv6, in addition to any addresses configured via
-SLAAC (which is driven independently by the A flag on advertised
-prefixes).
+When set, the flag indicates that hosts can obtain IPv6 addresses through
+DHCPv6. Hosts can also configure addresses using SLAAC when the A flag is set
+on an advertised prefix.
 ```
 
 Example:
@@ -114,8 +114,9 @@ When set, the flag indicates to hosts that non-address configuration
 information, such as DNS servers or other network parameters, is
 available via DHCPv6.
 
-If `managed-flag` is also set, the O flag is redundant, as DHCPv6
-provides all available configuration information regardless.
+When the M flag is set, hosts are expected to use DHCPv6 for other
+configuration information as well, so setting the O flag adds no further
+indication.
 ```
 
 Example:
@@ -241,8 +242,8 @@ multicast RAs on the specified interface.**
 Each successive unsolicited RA is sent after a random delay between
 `interval min` and `interval max`.
 
-Must be at most 0.75 × `interval max`. Otherwise, RAs will not be
-sent on the interface.
+This value must be no greater than 0.75 × `interval max`, as required by
+RFC 4861.
 ```
 
 Example:
@@ -273,8 +274,9 @@ set service router-advert interface eth0 name-server 2001:db8::1
 **Advertise the {abbr}`RDNSS (Recursive DNS Server)` Lifetime, in
 seconds, in RAs on the specified interface.**
 
-If non-zero, the value must be at least `interval max`. Otherwise, the commit
-fails.
+If non-zero, the value must be at least `interval max`; otherwise, the commit
+fails. VyOS warns if the value exceeds twice `interval max`, because stale DNS
+information may take longer to expire on receiving hosts.
 ```
 
 Example:
@@ -304,8 +306,10 @@ set service router-advert interface eth0 dnssl example.com
 **Configure an IPv6 prefix advertised in RAs on the specified
 interface.**
 
-Hosts use this prefix for SLAAC and treat destinations within it as
-directly reachable. The prefix length must be `/64` for SLAAC.
+When the A flag is set, hosts can use this prefix for SLAAC; SLAAC requires a
+`/64` prefix. When the L flag is set, hosts treat destinations within the
+prefix as directly reachable on the link. Both flags are set by default and
+can be cleared with the options below.
 
 Repeat the command to advertise multiple prefixes.
 ```
@@ -350,11 +354,11 @@ set service router-advert interface eth0 prefix 2001:db8:100::/64 valid-lifetime
 **Configure the Preferred Lifetime, in seconds, advertised in RAs for
 the specified prefix.**
 
-Hosts treat addresses configured from this prefix via SLAAC as
-preferred for this duration (used for new and existing connections).
-After it expires, the addresses are deprecated (still used for
-existing connections, but not chosen for new ones). The `infinity`
-value disables the transition to deprecated.
+Hosts treat addresses configured from this prefix via SLAAC as preferred for
+new communications during this period. After it expires, the addresses are
+deprecated; hosts generally avoid selecting deprecated addresses for new
+communications when a preferred address is available. The `infinity` value
+disables the transition to deprecated.
 
 Must be less than or equal to `valid-lifetime`. Otherwise, the commit
 fails.
@@ -386,8 +390,8 @@ set service router-advert interface eth0 prefix 2001:db8:100::/64 no-autonomous-
 
 **Clear the On-Link (L) flag in RAs for the specified prefix.**
 
-Hosts do not treat destinations within this prefix as directly
-reachable and route them through the default router instead.
+The RA does not mark destinations within this prefix as on-link. Hosts may
+still have on-link information from another source.
 ```
 
 Example:
@@ -545,9 +549,11 @@ Repeat the command to advertise multiple NAT64 prefixes.
 
 Example:
 
+% stop_vyoslinter
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96
 ```
+% start_vyoslinter
 
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<ipv6net\> valid-lifetime \<4-65528\>
 
@@ -565,9 +571,11 @@ The default is 65528.
 
 Example:
 
+% stop_vyoslinter
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96 valid-lifetime 65528
 ```
+% start_vyoslinter
 
 ### Disabling advertisements
 
