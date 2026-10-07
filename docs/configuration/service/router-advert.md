@@ -600,9 +600,13 @@ Repeat the command to advertise multiple NAT64 prefixes.
 
 Example:
 
+% stop_vyoslinter
+
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96
 ```
+
+% start_vyoslinter
 
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<ipv6net\> valid-lifetime \<4-65528\>
 
@@ -620,9 +624,13 @@ The default is 65528.
 
 Example:
 
+% stop_vyoslinter
+
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96 valid-lifetime 65528
 ```
+
+% start_vyoslinter
 
 ### Disabling advertisements
 
