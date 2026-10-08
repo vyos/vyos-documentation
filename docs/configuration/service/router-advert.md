@@ -200,6 +200,27 @@ Example:
 set service router-advert interface eth0 source-address fe80::1
 ```
 
+```{cfgcmd} set service router-advert interface \<interface\> no-remove-on-exit
+
+**On service shutdown, do not send a final RA with a Router Lifetime
+of 0 on the specified interface.**
+
+By default, a final RA with a zero Router Lifetime is sent on shutdown
+so that receiving hosts remove the router from their default router
+lists immediately.
+
+When routers in a VRRP group send RAs from a shared `source-address`,
+that final RA makes hosts drop their default route until the router
+taking over sends its next RA. Set this option on every router in the
+group to avoid the gap. See {ref}`router-advert-vrrp`.
+```
+
+Example:
+
+```none
+set service router-advert interface eth0 no-remove-on-exit
+```
+
 ```{cfgcmd} set service router-advert interface \<interface\> captive-portal \<url\>
 
 **Advertise the captive-portal API URL in RAs on the specified
@@ -283,6 +304,23 @@ Example:
 set service router-advert interface eth0 name-server-lifetime 1200
 ```
 
+```{cfgcmd} set service router-advert interface \<interface\> no-flush-name-server
+
+**On service shutdown, do not advertise the configured name servers
+with an RDNSS Lifetime of 0 on the specified interface.**
+
+By default, the name servers are advertised with a zero lifetime on
+shutdown so that receiving hosts remove them from their resolver
+lists. As with `no-remove-on-exit`, this is useful when routers in a
+VRRP group share a `source-address`.
+```
+
+Example:
+
+```none
+set service router-advert interface eth0 no-flush-name-server
+```
+
 ```{cfgcmd} set service router-advert interface \<interface\> dnssl \<domain\>
 
 **Advertise a {abbr}`DNSSL (DNS Search List)` domain in RAs on the
@@ -295,6 +333,23 @@ Example:
 
 ```none
 set service router-advert interface eth0 dnssl example.com
+```
+
+```{cfgcmd} set service router-advert interface \<interface\> no-flush-dnssl
+
+**On service shutdown, do not advertise the configured DNSSL domains
+with a lifetime of 0 on the specified interface.**
+
+By default, the domains are advertised with a zero lifetime on
+shutdown so that receiving hosts remove them from their DNS search
+lists. As with `no-remove-on-exit`, this is useful when routers in a
+VRRP group share a `source-address`.
+```
+
+Example:
+
+```none
+set service router-advert interface eth0 no-flush-dnssl
 ```
 
 ### Advertising a prefix
@@ -545,9 +600,13 @@ Repeat the command to advertise multiple NAT64 prefixes.
 
 Example:
 
+% stop_vyoslinter
+
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96
 ```
+
+% start_vyoslinter
 
 ```{cfgcmd} set service router-advert interface \<interface\> nat64prefix \<ipv6net\> valid-lifetime \<4-65528\>
 
@@ -565,9 +624,13 @@ The default is 65528.
 
 Example:
 
+% stop_vyoslinter
+
 ```none
 set service router-advert interface eth0 nat64prefix 64:ff9b::/96 valid-lifetime 65528
 ```
+
+% start_vyoslinter
 
 ### Disabling advertisements
 
@@ -614,3 +677,38 @@ set service router-advert interface eth0 name-server '2001:db8::1'
 set service router-advert interface eth0 name-server '2001:db8::2'
 set service router-advert interface eth0 other-config-flag
 ```
+
+(router-advert-vrrp)=
+
+### Redundant routers with VRRP
+
+Two routers share the LAN attached to `eth0`. A VRRP group moves the
+gateway address `2001:db8:100::1` and the link-local address `fe80::1`
+between them, and both routers send RAs from `fe80::1`. RAs are only
+sent while the router holds that address, so hosts see one default
+router that stays the same across a failover.
+
+`no-remove-on-exit` and `no-flush-name-server` stop the router that is
+shutting down from telling hosts to drop that default router and its
+name server while the other router takes over.
+
+Configuration of the primary router:
+
+```none
+set interfaces ethernet eth0 address '2001:db8:100::2/64'
+
+set high-availability vrrp group LANv6 interface 'eth0'
+set high-availability vrrp group LANv6 vrid '10'
+set high-availability vrrp group LANv6 priority '200'
+set high-availability vrrp group LANv6 address '2001:db8:100::1/64'
+set high-availability vrrp group LANv6 address 'fe80::1/64'
+
+set service router-advert interface eth0 prefix '2001:db8:100::/64'
+set service router-advert interface eth0 name-server '2001:db8::1'
+set service router-advert interface eth0 source-address 'fe80::1'
+set service router-advert interface eth0 no-remove-on-exit
+set service router-advert interface eth0 no-flush-name-server
+```
+
+The backup router uses the same configuration with its own interface
+address, for example `2001:db8:100::3/64`, and a lower `priority`.
