@@ -83,8 +83,9 @@ points, as outlined in the following table:
     `ipv6-source-validation ...`.
 
     **Policy route**: Rules that match packets received on the interfaces you
-    specify and assign the matching packets to a routing table or 
-	{abbr}`VRF (Virtual Routing and Forwarding)`, or modify packet properties.\
+    **Policy route**: Rules that match packets received on the interfaces you
+    specify and assign the matching packets to a routing table or
+    {abbr}`VRF (Virtual Routing and Forwarding)`, or modify packet properties.\
     You define the rules under `set policy [route | route6] ...`.
 
     **Destination {abbr}`NAT (Network Address Translation)`**: Rules that match
