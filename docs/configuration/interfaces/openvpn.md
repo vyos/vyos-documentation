@@ -512,9 +512,12 @@ Configure the route to be pushed to all clients.
 ```
 
 
-```{cfgcmd} set interfaces openvpn \<interface\> server reject-unconfigured-client
+```{cfgcmd} set interfaces openvpn \<interface\> server reject-unconfigured-clients
 
 Reject connections from clients that are not explicitly configured.
+
+A client is only accepted if it has a matching `server client <name>`
+entry. The name must be the common name of the client certificate.
 ```
 
 
