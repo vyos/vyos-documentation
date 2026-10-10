@@ -886,6 +886,74 @@ set service ipoe-server name-server 192.0.2.53
 set service ipoe-server name-server 2001:db8::53
 ```
 
+### DHCP lease
+
+```{cfgcmd} set service ipoe-server lease-time \<1-2147483647\>
+
+**Configure the DHCP lease time, in seconds, offered to IPoE
+clients.**
+
+The default is 600.
+```
+
+Example:
+
+```none
+set service ipoe-server lease-time 3600
+```
+
+```{cfgcmd} set service ipoe-server max-lease-time \<1-2147483647\>
+
+**Configure the server-side session expiry timer, in seconds, applied
+if a client does not renew its DHCP lease in time.**
+
+This value is internal to the server; it is not sent to the client
+and does not limit the lease time the client can request. The
+effective timer is the larger of this value and `lease-time`, so a
+value smaller than `lease-time` has no effect.
+
+The default is `lease-time` plus 10%.
+```
+
+Example:
+
+```none
+set service ipoe-server max-lease-time 4000
+```
+
+```{cfgcmd} set service ipoe-server renew-time \<1-2147483647\>
+
+**Configure the DHCP renewal (T1) time, in seconds, after which the
+client attempts to renew its lease with the server that issued it.**
+
+If unset, or greater than `lease-time`, the server derives the value
+from `lease-time`. If it is also greater than `rebind-time`, the
+server instead recalculates it as `rebind-time` multiplied by 4/7.
+```
+
+Example:
+
+```none
+set service ipoe-server lease-time 3600
+set service ipoe-server renew-time 1800
+```
+
+```{cfgcmd} set service ipoe-server rebind-time \<1-2147483647\>
+
+**Configure the DHCP rebinding (T2) time, in seconds, after which the
+client attempts to rebind its lease with any available server.**
+
+If unset, or greater than `lease-time`, the server derives the value
+from `lease-time`.
+```
+
+Example:
+
+```none
+set service ipoe-server lease-time 3600
+set service ipoe-server rebind-time 3150
+```
+
 ### Session and connection limits
 
 ```{cfgcmd} set service ipoe-server idle-timeout \<0-86400\>
