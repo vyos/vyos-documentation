@@ -75,6 +75,35 @@ This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 :::
 ```
 
+```{cfgcmd} set interfaces vxlan \<interface\> gbp
+
+Enable the VXLAN Group Policy extension (GBP).
+
+Without `parameters external`, GBP carries the packet mark's low 16 bits
+as a group policy ID to the receiving VTEP. The receiver restores the ID
+and GBP flags into the packet mark, where firewall rules can match them.
+Enable GBP on both VTEPs and configure the policy separately; enabling
+GBP does not create firewall rules.
+
+GBP and GPE cannot be enabled on the same interface. Adding or removing
+`gbp` recreates the interface and can interrupt traffic.
+
+With `parameters external`, GBP uses tunnel metadata instead of the
+ordinary packet-mark path. VyOS warns that firewall mark matching will
+not see the received group policy ID in this mode.
+
+VXLAN interfaces with conflicting GBP settings cannot share a receive
+socket. Use matching GBP settings or different UDP ports when the
+interfaces use the same address family and overlapping underlay socket
+bindings. This includes interfaces using the default port, 4789.
+
+Separate IPv4 and IPv6 sockets, or sockets bound to two distinct underlay
+VRFs, can use the same port with different GBP settings. An unbound socket
+can still conflict with a socket bound to a VRF. Changing only the local
+source address or the overlay interface's VRF does not establish an
+independent underlay socket.
+```
+
 ```{cfgcmd} set interfaces vxlan \<interface\> gpe
 
 **Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
@@ -371,3 +400,51 @@ set interfaces vxlan vxlan241 remote 10.1.2.2
 
 The default UDP port is 8472. To configure a different port, use `set
 interfaces vxlan <vxlanN> port <port>`.
+
+## Group policy operation
+
+GBP is described in the expired
+[VXLAN Group Policy Option Internet-Draft][gbp-draft]; it is not an IETF
+standard. It allows an ingress VTEP to assign a policy ID that a receiving
+VTEP uses to select locally configured policy.
+
+For complete router configurations and traffic checks, see
+{ref}`examples-vxlan-gbp`. The example assigns policy ID 50000 at ingress
+and selects a receive-side policy that permits ICMP and HTTP.
+
+### Packet marks and trust
+
+Only these packet-mark bits are transported by GBP:
+
+| Mask | Meaning |
+| --- | --- |
+| `0x0000ffff` | 16-bit group policy ID |
+| `0x00400000` | D: Do not learn |
+| `0x00080000` | A: Policy applied |
+
+Other packet-mark bits are not carried by these fields. The exact match
+on mark `50000` in the linked example assumes that the D and A bits are clear.
+Coordinate mark usage with policy routing, QoS, and connection-mark
+restore rules so they do not overwrite the received policy information.
+
+The policy ID is an unauthenticated label, not proof of sender identity.
+Restrict overlay traffic to trusted VTEPs and control who can assign
+labels. The A flag should not bypass local firewall policy unless that
+behavior is explicitly part of the configured trust model.
+
+### Verify GBP
+
+From operational mode, inspect the kernel interface:
+
+```none
+sudo ip -d link show dev vxlan100
+```
+
+The output should include `gbp`. This confirms the interface setting,
+not end-to-end policy enforcement. Capture traffic on the underlay and
+verify that the GBP policy ID is 50000 for the marked test traffic. Check
+receive-side firewall counters and test both allowed and denied traffic,
+including traffic with an unknown policy ID. Use new flows when checking
+rules that interact with connection tracking.
+
+[gbp-draft]: https://datatracker.ietf.org/doc/draft-smith-vxlan-group-policy/
