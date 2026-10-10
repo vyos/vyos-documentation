@@ -110,6 +110,9 @@ supported**.
 This option ensures consistent encryption between two static peers
 without cipher negotiation capability.
 :::
+
+With `shared-secret-key`, AEAD ciphers (`aes128gcm`, `aes192gcm`, `aes256gcm`,
+`chacha20poly1305`) are rejected: only the CBC ciphers and `none` can be used.
 ```
 
 
