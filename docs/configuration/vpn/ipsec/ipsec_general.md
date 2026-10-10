@@ -169,6 +169,14 @@ VyOS IKE group has the next options:
    required IKE/IPsec SAs.
  * **start** - Tries to immediately re-create the CHILD_SA.
 
+.. cfgcmd:: set vpn ipsec ike-group <name> disable-mobike
+
+  Disable MOBIKE (IKEv2 Mobility and Multihoming, :rfc:`4555`) for
+  connections that use this IKE group. MOBIKE is enabled by default and
+  allows a peer to move an IKE SA to a new IP address without
+  re-establishing the tunnel. Disable it if the remote peer does not
+  handle MOBIKE correctly. It has no effect on IKEv1.
+
 .. cfgcmd:: set vpn ipsec ike-group <name> ikev2-reauth
 
   Whether rekeying of an IKE_SA should also reauthenticate
@@ -313,6 +321,19 @@ VyOS ESP group has the next options:
 
 Global IPsec Settings
 =====================
+
+.. cfgcmd:: set vpn ipsec disable-uniqreqids
+
+  Do not enforce unique IKE identities. By default a new IKE_SA replaces an
+  existing one that uses the same remote identity, and the existing one is
+  closed. With this option set, several IKE_SAs with the same identity can
+  exist at the same time, for example when multiple clients or sites
+  authenticate with the same identity.
+
+  The option applies to site-to-site peers, profiles and L2TP/IPsec. A
+  ``unique`` setting on an individual site-to-site peer takes precedence.
+  It is not used for ``remote-access`` connections, which use their own
+  ``unique`` setting.
 
 .. cfgcmd:: set vpn ipsec interface <name>
 
