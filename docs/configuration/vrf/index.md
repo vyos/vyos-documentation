@@ -1,16 +1,15 @@
 ---
-lastproofread: '2021-07-07'
+lastproofread: '2026-09-30'
 ---
 
 (vrf)=
 
 # VRF
 
-{abbr}`VRF (Virtual Routing and Forwarding)` devices combined with ip rules
-provides the ability to create virtual routing and forwarding domains (aka
-VRFs, VRF-lite to be specific) in the Linux network stack. One use case is the
-multi-tenancy problem where each tenant has their own unique routing tables and
-in the very least need different default gateways.
+{abbr}`VRF (Virtual Routing and Forwarding)` devices, combined with IP rules,
+provide virtual routing and forwarding domains (VRF-lite) in the Linux network
+stack. One use case is multi-tenancy, where each tenant has its own routing
+table and, at minimum, a separate default gateway.
 
 ## Configuration
 
@@ -23,7 +22,7 @@ Create a new VRF instance with `<name>` and `<id>`. The name is used when placin
 individual interfaces into the VRF.
 
 :::{note}
-A routing table ID can not be modified once it is assigned. It can
+A routing table ID cannot be modified once it is assigned. It can
 only be changed by deleting and re-adding the VRF instance.
 :::
 ```
@@ -35,18 +34,18 @@ the default VRF. That is, it will not be matched by packets arriving on
 interfaces enslaved to a VRF and processes may bind to the same port if
 they bind to a VRF.
 
-TCP & UDP services running in the default VRF context (ie., not bound to any
+TCP and UDP services running in the default VRF context (i.e., not bound to any
 VRF device) can work across all VRF domains by enabling this option.
 ```
 
-### Zebra/Kernel route filtering
+### Zebra and kernel route filtering
 
 
-Zebra supports prefix-lists and Route Maps to match routes received from
-other FRR components. The permit/deny facilities provided by these commands
-can be used to filter which routes zebra will install in the kernel.
+Zebra supports prefix lists and route maps to match routes received from other
+FRR components. These permit and deny rules can filter which routes Zebra
+installs in the kernel.
 
-```{cfgcmd} set vrf \<name\> ip protocol \<protocol\> route-map \<route-map\>
+```{cfgcmd} set vrf name \<name\> ip protocol \<protocol\> route-map \<route-map\>
 
 Apply a route-map filter to routes for the specified protocol.
 
@@ -54,13 +53,13 @@ The following protocols can be used: any, babel, bgp, eigrp,
 isis, ospf, rip, static
 
 :::{note}
-If you choose any as the option that will cause all protocols that
-are sending routes to zebra.
+Selecting `any` applies the route map to all protocols that send routes to
+Zebra.
 :::
 ```
 
 
-```{cfgcmd} set vrf \<name\> ipv6 protocol \<protocol\> route-map \<route-map\>
+```{cfgcmd} set vrf name \<name\> ipv6 protocol \<protocol\> route-map \<route-map\>
 
 Apply a route-map filter to routes for the specified protocol.
 
@@ -68,17 +67,17 @@ The following protocols can be used: any, babel, bgp, isis,
 ospfv3, ripng, static
 
 :::{note}
-If you choose any as the option that will cause all protocols that
-are sending routes to zebra.
+Selecting `any` applies the route map to all protocols that send routes to
+Zebra.
 :::
 ```
 
-### Nexthop Tracking
+### Nexthop tracking
 
 
-Nexthop tracking resolve nexthops via the default route by default. This is enabled
-by default for a traditional profile of FRR which we use. It and can be disabled if
-you do not want to e.g. allow BGP to peer across the default route.
+Nexthop tracking uses the default route to resolve next hops by default. This
+is enabled for the traditional FRR profile used by VyOS. Disable it if you do
+not want BGP to peer across the default route.
 
 ```{cfgcmd} set vrf name \<name\> ip nht no-resolve-via-default
 
@@ -98,10 +97,9 @@ subnode.
 ### Interfaces
 
 
-When VRFs are used it is not only mandatory to create a VRF but also the VRF
-itself needs to be assigned to an interface.
+When using VRFs, you must create a VRF and assign it to an interface.
 
-```{cfgcmd} set interfaces \<dummy | ethernet | bonding | bridge | pppoe\> \<interface\> vrf \<name\>
+```{cfgcmd} set interfaces \<interface-type\> \<interface\> vrf \<name\>
 
 Assign interface identified by `<interface>` to VRF named `<name>`.
 ```
@@ -114,30 +112,30 @@ VyOS 1.4 (sagitta) introduced dynamic routing support for VRFs.
 :::
 
 
-Currently dynamic routing is supported for the following protocols:
+VRF-scoped routing configuration is available for the following protocols:
 
 
-- {ref}`routing-bgp`
-- {ref}`routing-isis`
+- {ref}`bgp`
+- EIGRP
+- {ref}`isis`
 - {ref}`routing-ospf`
 - {ref}`routing-ospfv3`
 - {ref}`routing-static`
 
 
-The CLI configuration is same as mentioned in above articles. The only
-difference is, that each routing protocol used, must be prefixed with the `vrf
-name <name>` command.
+The CLI configuration is the same as described in the articles above. Configure
+each routing protocol under `vrf name <name>`.
 
 
-#### Example
+#### Routing example
 
 
 The following commands would be required to set options for a given dynamic
 routing protocol inside a given vrf:
 
 
-- {ref}`routing-bgp`: `set vrf name <name> protocols bgp ...`
-- {ref}`routing-isis`: `set vrf name <name> protocols isis ...`
+- {ref}`bgp`: `set vrf name <name> protocols bgp ...`
+- {ref}`isis`: `set vrf name <name> protocols isis ...`
 - {ref}`routing-ospf`: `set vrf name <name> protocols ospf ...`
 - {ref}`routing-ospfv3`: `set vrf name <name> protocols ospfv3 ...`
 - {ref}`routing-static`: `set vrf name <name> protocols static ...`
@@ -146,22 +144,20 @@ routing protocol inside a given vrf:
 ### Services
 
 
-Currently the following services can be created isolated in VRFs
+The following services can run in VRFs:
 
 
 - {ref}`dhcp-server`
 
 
-The CLI configuration is same as mentioned in above articles. The only
-difference is, that each service used, must be prefixed with the `vrf
-name <name>` command.
+The CLI configuration is the same as described in the articles above. Configure
+each service under `vrf name <name>`.
 
 
-#### Example
+#### Services example
 
 
-The following commands would be required to set options for a given service
-inside a given vrf:
+Use the following commands to configure a service inside a VRF:
 
 
 - {ref}`dhcp-server`: `set vrf name <name> service dhcp-server ...`
@@ -176,7 +172,7 @@ For VRF maintenance the following operational commands are in place.
 
 ```{opcmd} show vrf
 
-Lists VRFs that have been created
+List the created VRFs.
 
 :::{code-block} none
 vyos@vyos:~$ show vrf
@@ -185,17 +181,13 @@ VRF name          state     mac address        flags                     interfa
 blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
 red               up        00:53:de:02:df:aa  noarp,master,up,lower_up  dum100,eth0.300,bond0.100,peth0
 :::
-:::{note}
-Command should probably be extended to list also the real
-interfaces assigned to this one VRF to get a better overview.
-:::
 ```
 
 
 ```{opcmd} show vrf \<name\>
 
 :::{code-block} none
-vyos@vyos:~$ show vrf name blue
+vyos@vyos:~$ show vrf blue
 VRF name          state     mac address        flags                     interfaces
 --------          -----     -----------        -----                     ----------
 blue              up        00:53:12:d8:74:24  noarp,master,up,lower_up  dum200,eth0.302
@@ -242,9 +234,9 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 ```
 ```{opcmd} ping \<host\> vrf \<name\>
 
-   The ping command is used to test whether a network host is reachable or not.
+   Use the `ping` command to test whether a network host is reachable.
 
-   Ping uses ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
+   Ping uses the ICMP protocol's mandatory ECHO_REQUEST datagram to elicit an
    ICMP ECHO_RESPONSE from a host or gateway. ECHO_REQUEST datagrams (pings)
    will have an IP and ICMP header, followed by "struct timeval" and an
    arbitrary number of pad bytes used to fill out the packet.
@@ -278,10 +270,10 @@ K>* ff00::/8 [0/256] is directly connected, dum1, 00:43:19
 
 ```{opcmd} traceroute vrf \<name\> [ipv4 | ipv6] \<host\>
 
-Displays the route packets taken to a network host utilizing VRF instance
-identified by `<name>`. When using the IPv4 or IPv6 option, displays the
-route packets taken to the given hosts IP address family. This option is
-useful when the host is specified as a hostname rather than an IP address.
+Display the route taken by packets to a network host through the VRF identified
+by `<name>`. The `ipv4` and `ipv6` options select the address family. These
+options are useful when the host is specified as a hostname rather than an IP
+address.
 ```
 
 
@@ -300,13 +292,13 @@ vyos@vyos(vrf:blue):~$
 (vrf-example)=
 
 
-## Example
+## VRF route leaking example
 
 
 ### VRF route leaking
 
 
-The following example topology was built using EVE-NG.
+The following example topology was built with EVE-NG.
 
 
 ```{eval-rst}
@@ -403,8 +395,8 @@ set vrf name red table '2020'
 #### Operation
 
 
-After committing the configuration we can verify all leaked routes are
-installed, and try to ICMP ping PC1 from PC3.
+After committing the configuration, verify that all leaked routes are
+installed, then try to ping PC1 from PC3.
 
 
 ```none
@@ -424,7 +416,7 @@ DNS         :
 MAC         : 00:50:79:66:68:0f
 ```
 
-###### VRF default routing table
+##### VRF default routing table
 
 
 ```none
@@ -440,7 +432,7 @@ S>* 10.20.0.0/24 [1/0] is directly connected, eth2 (vrf blue), weight 1, 00:07:3
 S>* 10.30.0.0/24 [1/0] is directly connected, br10 (vrf red), weight 1, 00:07:38
 ```
 
-###### VRF red routing table
+##### VRF red routing table
 
 
 ```none
@@ -457,7 +449,7 @@ S>* 10.0.0.0/24 [1/0] is directly connected, eth1 (vrf default), weight 1, 00:07
 C>* 10.30.0.0/24 is directly connected, br10, 00:07:54
 ```
 
-###### VRF blue routing table
+##### VRF blue routing table
 
 
 ```none
@@ -477,12 +469,11 @@ C>* 10.20.0.0/24 is directly connected, eth2, 00:07:53
 # L3VPN VRFs
 
 
-{abbr}`L3VPN VRFs ( Layer 3 Virtual Private Networks )` bgpd supports for
-IPv4 RFC 4364 and IPv6 RFC 4659. L3VPN routes, and their associated VRF
-MPLS labels, can be distributed to VPN SAFI neighbors in the default, i.e.,
-non VRF, BGP instance. VRF MPLS labels are reached using core MPLS labels
-which are distributed using LDP or BGP labeled unicast.
-bgpd also supports inter-VRF route leaking.
+{abbr}`L3VPN (Layer 3 Virtual Private Network)` VRFs are supported by `bgpd` for
+IPv4 (RFC 4364) and IPv6 (RFC 4659). L3VPN routes and their associated VRF MPLS
+labels can be distributed to VPN SAFI neighbors in the default (non-VRF) BGP
+instance. VRF MPLS labels are reached using core MPLS labels distributed by
+LDP or BGP labeled unicast. `bgpd` also supports inter-VRF route leaking.
 
 
 (l3vpn-vrf-route-leaking)=
@@ -491,28 +482,21 @@ bgpd also supports inter-VRF route leaking.
 ## VRF Route Leaking
 
 
-BGP routes may be leaked (i.e. copied) between a unicast VRF RIB and the VPN
+BGP routes may be leaked (that is, copied) between a unicast VRF RIB and the VPN
 SAFI RIB of the default VRF for use in MPLS-based L3VPNs. Unicast routes may
 also be leaked between any VRFs (including the unicast RIB of the default BGP
-instance). A shortcut syntax is also available for specifying leaking from
-one VRF to another VRF using the default instance’s VPN RIB as the intermediary.
+instance). A shortcut syntax is also available for leaking routes from one VRF
+to another through the default instance’s VPN RIB.
 A common application of the VRF-VRF feature is to connect a customer’s private
-routing domain to a provider’s VPN service. Leaking is configured from
-the point of view of an individual VRF: import refers to routes leaked from VPN
-to a unicast VRF, whereas export refers to routes leaked from a unicast VRF to
-VPN.
+routing domain to a provider’s VPN service. Leaking is configured from the point
+of view of an individual VRF: `import` refers to routes leaked from VPN to a
+unicast VRF, while `export` refers to routes leaked from a unicast VRF to VPN.
 
 
 :::{note}
-Routes exported from a unicast VRF to the VPN RIB must be augmented
-by two parameters:
-
-
-> an RD / RTLIST
-
-
-Configuration for these exported routes must, at a minimum, specify
-these two parameters.
+Routes exported from a unicast VRF to the VPN RIB require a route distinguisher.
+Add route-target communities with `route-target vpn export` or an export
+route map.
 :::
 
 
@@ -535,11 +519,10 @@ current unicast VRF to VPN.
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> route-target vpn \<import|export|both\> [RTLIST]
 
-Specifies the route-target list to be attached to a route (export) or the
-route-target list to match against (import) when exporting/importing
-between the current unicast VRF and VPN.The RTLIST is a space-separated
-list of route-targets, which are BGP extended community values as
-described in Extended Communities Attribute.
+Specifies the route-target list to attach to a route (export) or match against
+(import) when exchanging routes between the current unicast VRF and VPN.
+`RTLIST` is a space-separated list of route targets, which are BGP extended
+community values described in Extended Communities Attribute.
 ```
 
 
@@ -575,10 +558,9 @@ Enables import or export of routes between the current unicast VRF and VPN.
 
 ```{cfgcmd} set vrf name \<name\> protocols bgp address-family \<ipv4-unicast|ipv6-unicast\> import vrf \<name\>
 
-Shortcut syntax for specifying automatic leaking from vrf VRFNAME to the
-current VRF using the VPN RIB as intermediary. The RD and RT are auto
-derived and should not be specified explicitly for either the source or
-destination VRF’s.
+Shortcut syntax for automatically leaking routes from VRF `VRFNAME` to the
+current VRF through the VPN RIB. The RD and RT are derived automatically; do
+not configure them explicitly on either the source or destination VRF.
 ```
 
 
@@ -601,13 +583,12 @@ and with the next-hop directly connected.
 ## Operation
 
 
-It is not sufficient to only configure a L3VPN VRFs but L3VPN VRFs must be
-maintained, too.For L3VPN VRF maintenance the following operational commands
-are in place.
+After configuring an L3VPN VRF, use the following operational commands to
+monitor it.
 
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn
 
- Print active IPV4 or IPV6 routes advertised via the VPN SAFI.
+Display active IPv4 or IPv6 routes advertised through the VPN SAFI.
 
 :::{code-block} none
 BGP table version is 2, local router ID is 10.0.1.1, vrf id 0
@@ -630,7 +611,7 @@ UN=10.0.0.10  EC{65035:1011} label=80 type=bgp, subtype=0
 
 ```{opcmd} show bgp \<ipv4|ipv6\> vpn summary
 
-Print a summary of neighbor connections for the specified AFI/SAFI
+Display a summary of neighbor connections for the specified AFI/SAFI
 combination.
 
 :::{code-block} none
