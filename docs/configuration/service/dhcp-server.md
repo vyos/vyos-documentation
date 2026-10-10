@@ -778,6 +778,99 @@ service {
 }
 ```
 
+#### Matching on hostname or vendor class ID (Option 12 / Option 60)
+
+In addition to relay agent information, a client class can match on the
+contents of the hostname (Option 12) or vendor class identifier (Option 60)
+sent by the client itself. This is commonly used to tell different device
+models apart within the same subnet, e.g. to hand out a model-specific
+provisioning URL to VoIP phones.
+
+```{cfgcmd} set service dhcp-server client-class \<name\> hostname value \<value\>
+
+Match the exact hostname sent by the client. As with Option 82 above, a value
+starting with 0x is interpreted as raw hex, any other value as ASCII text.
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> hostname substring value \<value\>
+
+Match if `value` appears anywhere in the hostname, case-insensitively. Unlike
+the exact `value` match above, `value` here must be plain ASCII text (not
+raw hex) and must not contain a single quote (`'`).
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> vendor-class-id value \<value\>
+
+Same as `hostname` above, but matches on the vendor class identifier
+(Option 60) instead. `vendor-class-id substring value <value>` matches on
+part of the vendor class identifier the same way as for `hostname`.
+```
+
+`value` and `substring` are mutually exclusive for a given match type.
+
+#### Client class options
+
+A client class can hand out its own DHCP options to every client it matches,
+independent of which subnet or pool the client's lease is drawn from, using
+the same option syntax as the {ref}`dhcp-server-v4-options` described below.
+
+```{cfgcmd} set service dhcp-server client-class \<name\> option \<option\> \<value\>
+
+Deliver `<option>` with `<value>` to every client matching this client class.
+```
+
+**Example:**
+
+The following configuration hands out a model-specific provisioning URL to
+two Yealink phone models sharing the same subnet, identified by a substring
+of their DHCP hostname, without splitting the subnet into per-model pools:
+
+```none
+service {
+    dhcp-server {
+        client-class YEALINK-T42S {
+            hostname {
+                substring {
+                    value T42S
+                }
+            }
+            option {
+                bootfile-name https://provisioning.example.com/t42s/
+            }
+        }
+        client-class YEALINK-T54W {
+            hostname {
+                substring {
+                    value T54W
+                }
+            }
+            option {
+                bootfile-name https://provisioning.example.com/t54w/
+            }
+        }
+        shared-network-name phones {
+            subnet 192.0.2.0/24 {
+                range 0 {
+                    start 192.0.2.10
+                    stop 192.0.2.200
+                }
+                subnet-id 1
+            }
+        }
+    }
+}
+```
+
+Neither client class needs to be applied to the subnet or a range - Kea
+evaluates every defined client class against each request and merges in the
+options of every class that matches, regardless of which pool the lease
+comes from.
+
+Client classes are evaluated in alphabetical order by class name, like other
+VyOS tag nodes. If a client matches more than one class and those classes
+hand out the same option with different values, the value from the
+alphabetically first matching class wins.
+
 (dhcp-server-v4-options)=
 
 ### Options
