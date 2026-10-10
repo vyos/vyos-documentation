@@ -209,6 +209,18 @@ Size in MB for tmpfs filesystem, maximum size is 64GB or 50% of the
 systems total available memory.
 ```
 
+```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> chown
+
+Change the ownership of the tmpfs to the user the container runs as
+(the image `USER`, or `uid`/`gid` when set).
+
+A tmpfs mounted over a directory that already exists in the image, such
+as `/run/<service>`, is owned by `root:root` with mode `0755`. A container
+running as a non-root user cannot write to it, and a service that keeps
+its pid file or socket there fails to start. Use this option for such
+mounts.
+```
+
 ```{cfgcmd} set container name \<name\> uid \<number\>
 ```
 ```{cfgcmd} set container name \<name\> gid \<number\>
