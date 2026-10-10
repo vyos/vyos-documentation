@@ -1,238 +1,267 @@
 ---
-lastproofread: '2026-03-30'
+myst:
+  html_meta:
+    description: |
+      The VyOS firewall filters the traffic that the router receives,
+      forwards, or generates. It matches packets by their properties,
+      provides groups for reuse in rules, and includes a zone-based
+      firewall. It operates at an IP layer and a Bridge layer, and
+      processes packets at the processing points of each layer.
+    keywords: firewall, zone-based firewall, ip layer, bridge layer
 ---
+
+(firewall)=
 
 # Firewall
 
-:::{warning}
-Due to a boot-time race condition, all interfaces initialize
-before the firewall. This temporarily leaves the system open to all traffic
-and poses a security risk.
-:::
+The VyOS firewall filters traffic that the router **receives**, **forwards**,
+or **generates**. It matches packets by their addresses, ports, protocols,
+connection state, and other properties; groups addresses, networks,
+interfaces, and ports for reuse in rules; divides interfaces into zones;
+and offloads forwarded connections to a flowtable.
 
-VyOS uses Netfilter. The Netfilter
-project developed `iptables` and its successor `nftables` for the Linux
-kernel to process packet data flows directly. This extends the concept of
-zone-based security to let you manipulate data at multiple stages after the
-network interface and driver accept it, and before sending it to its
-destination (for example, a web server or another device).
+The firewall operates at two processing layers. The layer at which the
+firewall begins processing a packet depends on the interface that
+received it:
 
-The following is a simplified traffic flow diagram based on Netfilter
-packet flow.
-This diagram provides an overview of how packets are processed and the
-possible paths traffic can take.
+- **IP layer**: Processes packets received on interfaces that are not bridge
+  member interfaces.
+- **Bridge layer**: Processes packets received on bridge member interfaces.
 
-:::{figure} /_static/images/firewall-gral-packet-flow.webp
-:::
+Packets that the router generates have no receiving interface. The
+firewall begins processing them at the IP layer. The firewall can
+continue processing a packet at another layer, for example, when the
+router sends the packet out through a bridge.
 
-The main points regarding packet flow and terminology in VyOS firewall
-are:
+At each layer, the firewall processes packets at specific processing
+points. The points at which a packet is processed depend on its source
+and destination. By default, firewall rules apply to matching packets on
+any interface of their processing layer.
 
-- **Bridge Port?**: Choose the appropriate path based on whether the
-  interface where the packet was received is part of a bridge.
-
-If the interface where the packet was received is not part of a bridge, the
-packet is processed at the **IP Layer**:
-
-```{eval-rst}
-   * **Prerouting**: The router processes all packets in this stage,
-     regardless of the destination. You can perform several actions in
-     this stage, and these actions are also defined in different parts of the
-     VyOS configuration. Order is important. The relevant configuration that
-     applies in this stage includes:
-
-      * **Firewall prerouting**: Rules you define under ``set firewall
-        [ipv4 | ipv6] prerouting raw...``. The system processes all rules in
-        this section before the connection tracking subsystem.
-
-      * **Conntrack Ignore**: Rules you define under ``set system conntrack
-        ignore [ipv4 | ipv6] ...``. You can configure this section with
-        ``firewall [ipv4 | ipv6] prerouting ...``. For compatibility reasons,
-        this feature is supported, but will be deprecated in the future.
-
-      * **Policy Route**: Rules you define under ``set policy [route |
-        route6] ...``.
-
-      * **Destination NAT**: Rules you define under ``set [nat | nat66]
-        destination...``.
-
-   * **Destination is the router?**: Choose the appropriate path based on the
-     destination IP address. Transit traffic continues to **forward**, while
-     traffic destined for the router continues to **input**.
-
-   * **Input**: The stage where you filter and control traffic destined for
-     the router itself. This is where you enforce all rules for securing the
-     router. This includes IPv4 and IPv6 filtering rules, defined in:
-
-     * ``set firewall ipv4 input filter ...``.
-
-     * ``set firewall ipv6 input filter ...``.
-
-   * **Forward**: The stage where you filter and control transit traffic.
-     This includes IPv4 and IPv6 filtering rules, defined in:
-
-     * ``set firewall ipv4 forward filter ...``.
-
-     * ``set firewall ipv6 forward filter ...``.
-
-   * **Output**: The stage where you filter and control traffic that the
-     router originates. Note that this traffic comes from either a new
-     connection that an internal process on the VyOS router (such as NTP)
-     originates or a response to traffic the router receives externally through
-     **input** (for example, a response to an SSH login attempt). This includes
-     IPv4 and IPv6 rules, and two different sections apply:
-
-     * **Output Prerouting**: ``set firewall [ipv4 | ipv6] output
-       raw ...``. As described in **Prerouting**, the system processes
-       rules in this section before the connection tracking subsystem.
-
-     * **Output Filter**: ``set firewall [ipv4 | ipv6] output filter ...``.
-
-   * **Postrouting**: As in **Prerouting**, you can perform several actions
-     defined in different parts of VyOS configuration in this stage. This
-     includes:
-
-     * **Source NAT**: Rules you define under ``set [nat | nat66]
-       source...``.
+```{warning}
+During boot, the router configures interfaces before it applies the
+firewall rules. Until then, the firewall does not filter traffic that
+arrives on interfaces, which poses a security risk.
 ```
 
-If the interface where the packet was received is part of a bridge, the
-packet is processed at the **Bridge Layer**:
+## Packet flow
 
-```{eval-rst}
-   * **Prerouting (Bridge)**: The bridge processes all packets it receives in
-     this stage, regardless of the destination. First, you can apply filters
-     here, or you can configure rules that ignore the connection tracking
-     system. The relevant configuration that applies:
+The following diagram shows how the router processes packets and the
+paths that traffic can take.
 
-     * ``set firewall bridge prerouting filter ...``.
-
-   * **Forward (Bridge)**: The stage where you filter and control traffic
-     that passes through the bridge:
-
-     * ``set firewall bridge forward filter ...``.
-
-   * **Input (Bridge)**: The stage where you filter and control traffic
-     destined for the bridge itself:
-
-     * ``set firewall bridge input filter ...``.
-
-   * **Output (Bridge)**: The stage where you filter and control traffic that
-     the bridge originates:
-
-     * ``set firewall bridge output filter ...``.
+```{figure} /_static/images/firewall-gral-packet-flow.webp
 ```
 
-The following is the overall structure of the VyOS firewall CLI:
+### IP layer
 
-```none
-- set firewall
-    * bridge
-         - forward
-            + filter
-         - input
-            + filter
-         - output
-            + filter
-         - prerouting
-            + filter
-         - name
-            + custom_name
-    * flowtable
-         - custom_flow_table
-            + ...
-    * global-options
-         + all-ping
-         + broadcast-ping
-         + ...
-    * group
-         - address-group
-         - ipv6-address-group
-         - network-group
-         - ipv6-network-group
-         - interface-group
-         - mac-group
-         - port-group
-         - domain-group
-    * ipv4
-         - forward
-            + filter
-         - input
-            + filter
-         - output
-            + filter
-            + raw
-         - prerouting
-            + raw
-         - name
-            + custom_name
-    * ipv6
-         - forward
-            + filter
-         - input
-            + filter
-         - output
-            + filter
-            + raw
-         - prerouting
-            + raw
-         - ipv6-name
-            + custom_name
-    * zone
-         - custom_zone_name
-            + ...
+The IP layer processes packets received on interfaces that are not
+**bridge member interfaces**, packets that the router generates, and packets
+that the Bridge layer passes on. Depending on its source and
+destination, the firewall processes a packet at different processing
+points, as outlined in the following table:
+
+```{list-table}
+:header-rows: 1
+:widths: 12 18 22 48
+
+* - Processing point (hook)
+  - Processing order
+  - Packet source or destination
+  - Configuration applied
+* - prerouting
+  - First processing point at the IP layer for received packets.
+  - Received packets, regardless of their destination.
+  - **Firewall prerouting raw**: Rules that match received packets and apply an
+    action to them before connection tracking, such as dropping them or
+    exempting\* them from connection tracking.\
+    You define the rules under `set firewall [ipv4 | ipv6] prerouting raw ...`.
+
+    **Source validation**: Drops received packets whose source address fails the
+    reverse path check.\
+    You set the check mode under
+    `set firewall global-options source-validation ...` and
+    `ipv6-source-validation ...`.
+
+    **Policy route**: Rules that match packets received on the interfaces you
+    specify and assign the matching packets to a routing table or
+    {abbr}`VRF (Virtual Routing and Forwarding)`, or modify packet properties.\
+    You define the rules under `set policy [route | route6] ...`.
+
+    **Destination {abbr}`NAT (Network Address Translation)`**: Rules that match
+    received packets and translate their destination address and port, or, for
+    IPv4, redirect them to the router itself.\
+    You define the rules under `set [nat | nat66] destination ...`.
+* - input
+  - After the prerouting processing point.
+  - Packets whose destination is the router.
+  - **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the input rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Firewall input**: Rules that match received packets and apply an action to
+    them, such as accepting or dropping them.\
+    You define the rules under `set firewall [ipv4 | ipv6] input filter ...`.
+
+    **Zone policy**: Rules that match packets according to the zone of the
+    receiving interface and apply an action to them, such as accepting or
+    dropping them, after the input rules.\
+    You define the rules under `set firewall zone ...`.
+* - forward
+  - After the prerouting processing point.
+  - Packets that the router routes through to another destination.
+  - **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the forward rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Firewall forward**: Rules that match received packets and apply an action
+    to them, such as accepting or dropping them.\
+    You define the rules under `set firewall [ipv4 | ipv6] forward filter ...`.
+
+    **Zone policy**: Rules that match packets according to the zones of the
+    receiving and outgoing interfaces and apply an action to them, such as
+    accepting or dropping them, after the forward rules.\
+    You define the rules under `set firewall zone ...`.
+* - output
+  - First processing point at the IP layer for packets that the router
+    generates.
+  - Packets that the router generates.
+  - **Firewall output raw**: Rules that match generated packets and apply an
+    action to them before connection tracking, such as dropping them or
+    exempting\* them from connection tracking.\
+    You define the rules under `set firewall [ipv4 | ipv6] output raw ...`.
+
+    **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the output filter rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Firewall output filter**: Rules that match generated packets and apply an
+    action to them, such as accepting or dropping them.\
+    You define the rules under `set firewall [ipv4 | ipv6] output filter ...`.
+
+    **Zone policy**: Rules that match packets according to the zone of the
+    outgoing interface and apply an action to them, such as accepting or
+    dropping them, after the output filter rules.\
+    You define the rules under `set firewall zone ...`.
+* - \-
+  - After the forward or output processing point.
+  - Packets that the router sends out, both transit packets and packets
+    that the router generates.
+  - **Source NAT**: Rules that match packets and translate their source address
+    and port.\
+    You define the rules under `set [nat | nat66] source ...`.
 ```
 
-Here is a list of VyOS firewall CLI subcommands and their
-corresponding pages in the documentation:
+\* To exempt packets from connection tracking, you can also define rules
+under `set system conntrack ignore [ipv4 | ipv6] ...`. These rules apply
+to both received and generated packets and are maintained for
+compatibility. VyOS recommends rules with the `notrack` action under
+`set firewall [ipv4 | ipv6] prerouting raw` and `set firewall [ipv4 |
+ipv6] output raw` instead, as `conntrack ignore` rules are expected to
+be removed in the future.
 
-```{cfgcmd} set firewall bridge ...
+At the IP layer, the firewall has no processing point after the forward
+or output processing point. Source NAT applies after these points and is
+configured separately under `set nat source` and `set nat66 source`.
 
-Configure bridge firewall rules for traffic at the bridge layer.
-See the Bridge Firewall Configuration page for detailed information.
+After source NAT, a packet that the router sends out through a bridge is
+passed to the Bridge layer, which processes it at its output processing
+point.
+
+After the router offloads a connection to a flowtable, the firewall does
+not process the subsequent packets of that connection at any processing
+point of the IP layer.
+
+### Bridge layer
+
+The Bridge layer processes packets received on **bridge member interfaces**
+and packets that the IP layer passes on to send out through a bridge.
+Depending on its source and destination, the firewall processes a packet
+at different processing points, as outlined in the following table:
+
+```{list-table}
+:header-rows: 1
+:widths: 12 18 22 48
+
+* - Processing point (hook)
+  - Processing order
+  - Packet source or destination
+  - Configuration applied
+* - prerouting
+  - First processing point at the Bridge layer for received packets.
+  - Received packets, regardless of their destination.
+  - **Bridge firewall prerouting**: Rules that match received packets and apply
+    an action to them, such as accepting or dropping them, or exempting them
+    from connection tracking.\
+    You define the rules under `set firewall bridge prerouting filter ...`.
+* - input
+  - After the prerouting processing point.
+  - Packets whose destination is the bridge.
+  - **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the input rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Bridge firewall input**: Rules that match received packets and apply an
+    action to them, such as accepting or dropping them.\
+    You define the rules under `set firewall bridge input filter ...`.
+* - forward
+  - After the prerouting processing point.
+  - Packets that the bridge forwards between its member interfaces.
+  - **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the forward rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Bridge firewall forward**: Rules that match received packets and apply an
+    action to them, such as accepting or dropping them.\
+    You define the rules under `set firewall bridge forward filter ...`.
+* - output
+  - First processing point at the Bridge layer for packets that the
+    router sends out through a bridge.
+  - Packets that the router sends out through a bridge, both routed
+    packets and packets that the router generates.
+  - **Global state policy**: Accepts, drops, or rejects packets according to the
+    state of their connection, before the output rules.\
+    You define the policy under `set firewall global-options state-policy ...`.
+
+    **Bridge firewall output**: Rules that match outgoing packets and apply an
+    action to them, such as accepting or dropping them.\
+    You define the rules under `set firewall bridge output filter ...`.
 ```
 
-```{cfgcmd} set firewall flowtable ...
+After the bridge input processing point, the packets are passed to the
+IP layer, which processes them starting at the prerouting processing
+point.
 
-Configure firewall flowtables for stateful connection tracking and rules.
-See the Flowtables Firewall Configuration page for detailed information.
+## Zone-based firewall
+
+The zone-based firewall is not a separate service. It is part of the
+same firewall, and you can use it together with the other firewall
+rules. It lets you group interfaces into zones and assign rules to
+control traffic between them. The local zone represents the router
+itself.
+
+The zone-based firewall processes packets at the following processing
+points of the IP layer:
+
+```{list-table}
+:header-rows: 1
+:widths: 55 45
+
+* - Traffic
+  - Processing point
+* - From one zone to another zone
+  - forward
+* - From a zone to the local zone
+  - input
+* - From the local zone to a zone
+  - output
 ```
 
-```{cfgcmd} set firewall global-options ...
+At each point, the firewall applies zone rules after the input, forward,
+or output filter rules.
 
-Configure global firewall options such as ``all-ping``, ``broadcast-ping``,
-``syn-cookies``, and other system-wide firewall settings.
-See the Global Firewall Options page for detailed information.
-```
+## Firewall configuration
 
-```{cfgcmd} set firewall group ...
-
-Organize firewall rules by creating reusable address, network, interface,
-MAC, port, and domain groups. Use groups in multiple rules to simplify
-configuration and maintenance.
-See the Firewall Groups page for detailed information.
-```
-
-```{cfgcmd} set firewall ipv4 ...
-
-Configure IPv4-specific firewall rules.
-See the IPv4 Firewall Configuration page for detailed information.
-```
-
-```{cfgcmd} set firewall ipv6 ...
-
-Configure IPv6-specific firewall rules.
-See the IPv6 Firewall Configuration page for detailed information.
-```
-
-```{cfgcmd} set firewall zone ...
-
-Configure zone-based firewall policies for controlling traffic between
-different network zones.
-See the Zone-Based Firewall Configuration page for detailed information.
-```
-
-For more information on firewall configuration, see the following pages:
+For information on firewall configuration, see the following pages:
 
 ```{toctree}
 :includehidden: true
@@ -244,35 +273,5 @@ bridge
 ipv4
 ipv6
 flowtables
-```
-
-:::{note}
-For more information on Netfilter hooks and Linux networking packet flows,
-see the [Netfilter-Hooks](<https://wiki.nftables.org/wiki-nftables/index.php/Netfilter_hooks>)
-documentation.
-:::
-
-## Zone-Based firewall
-
-```{toctree}
-:includehidden: true
-:maxdepth: 1
-
 zone
 ```
-
-With zone-based firewalls, a new concept applies. In addition to the standard
-in and out traffic flows, a local flow enables traffic originating from and
-destined to the router itself. This means you must configure additional rules to
-secure the firewall from the network, in addition to the existing inbound and
-outbound rules.
-
-To configure VyOS with zone-based firewall, see
-{doc}`Zone-Based Firewall Configuration </configuration/firewall/zone>`.
-
-As the following example image shows, you must configure rules to allow or block
-traffic to or from the services running on the device that have open
-connections on that interface.
-
-:::{figure} /_static/images/firewall-zonebased.webp
-:::
