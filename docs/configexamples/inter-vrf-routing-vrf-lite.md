@@ -14,7 +14,8 @@ where you might need that some network can access other in a different VRF.
 The scope of this document is to cover such cases in a dynamic way without the
 use of MPLS-LDP.
 
-General information about L3VPNs can be found in the {ref}`configuration/vrf/index:L3VPN VRFs` chapter.
+General information about L3VPNs is available in the
+{ref}`configuration/vrf/index:L3VPN VRFs` chapter.
 
 ## Overview
 
@@ -53,15 +54,13 @@ need for MPLS.
 
 MP-BGP or MultiProtocol BGP introduces two main concepts to solve this
 limitation:
-\- Route Distinguisher (RD): Is used to distinguish between different VRFs
-–called VPNs- inside the BGP Process. The RD is appended to each IPv4 Network
-that is advertised into BGP for that VPN making it a unique VPNv4 route.
-\- Route Target (RT): This is an extended BGP community append to the VPNv4 route
-in the Import/Export process. When a route passes from the VRF routing table
-into the BGP process it will add the configured export extended community(ies)
-for that VPN. When that route needs to go from BGP into the VRF routing table
-will only pass if that given VPN import policy matches any of the appended
-community(ies) into that prefix.
+\- Route Distinguisher (RD): Distinguishes routes from different VRFs (VPNs)
+inside the BGP process. The RD is included in each IPv4 or IPv6 route advertised
+for a VPN, making it a unique VPNv4 or VPNv6 route.
+\- Route Target (RT): An extended BGP community attached to a VPNv4 or VPNv6
+route. When a route moves from the VRF routing table into BGP, the configured
+export route target is attached. A route is imported into a VRF only when its
+route target matches that VRF's import policy.
 
 ## Topology
 
@@ -119,7 +118,7 @@ in our topology.
 
 ```none
 # Interface Configuration
-set interface eth eth<N> address <IP ADDRESS/CIDR>
+set interfaces ethernet <INTERFACE> address '<IP ADDRESS/CIDR>'
 
 # Static default route back to Core
 set protocols static route 0.0.0.0/0 next-hop <CORE IP ADDRESS>
@@ -140,10 +139,10 @@ Last add the static route to the remote network.
 set vrf name <VRF> table <ID>
 
 # Interface Configuration
-set interface eth eth<N> address <IP ADDRESS/CIDR>
+set interfaces ethernet <INTERFACE> address '<IP ADDRESS/CIDR>'
 
 # Assign interface to VRF
-set interface eth eth<N> vrf <VRF>
+set interfaces ethernet <INTERFACE> vrf '<VRF>'
 
 # Static route to remote Network
 set vrf name <VRF> protocols static route <NETWORK/CIDR> next-hop <REMOTE IP ADDRESS>
@@ -460,13 +459,13 @@ From 192.168.3.1 icmp_seq=2 Destination Net Unreachable
 --- 192.0.2.1 ping statistics ---
 2 packets transmitted, 0 received, +2 errors, 100% packet loss, time 1002ms
 
-vyos@Management:~$ ping 195.51.100.1
-PING 195.51.100.1 (195.51.100.1) 56(84) bytes of data.
+vyos@Management:~$ ping 198.51.100.1
+PING 198.51.100.1 (198.51.100.1) 56(84) bytes of data.
 From 192.168.3.1 icmp_seq=1 Destination Net Unreachable
 From 192.168.3.1 icmp_seq=2 Destination Net Unreachable
 From 192.168.3.1 icmp_seq=3 Destination Net Unreachable
 ^C
---- 195.51.100.1 ping statistics ---
+--- 198.51.100.1 ping statistics ---
 3 packets transmitted, 0 received, +3 errors, 100% packet loss, time 2003ms
 
 vyos@Management:~$ ping 2001:db8:1::1
@@ -727,7 +726,7 @@ We create a prefix-list first and add all the routes we need to.
 
 set policy prefix-list LAN2-Internet rule 1 action 'permit'
 set policy prefix-list LAN2-Internet rule 1 le '24'
-set policy prefix-list LAN2-Internet rule 1 prefix '198.51.0.0/16'
+set policy prefix-list LAN2-Internet rule 1 prefix '198.51.100.0/24'
 set policy prefix-list LAN2-Internet rule 2 action 'permit'
 set policy prefix-list LAN2-Internet rule 2 prefix '192.0.2.0/24'
 set policy prefix-list LAN2-Internet rule 3 action 'permit'
