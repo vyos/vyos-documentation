@@ -95,13 +95,9 @@ Now reboot and re-enable UEFI Secure Boot.
 :alt: Disable UEFI secure boot
 :::
 
-VyOS will now launch in UEFI Secure Boot mode. You can verify this by running
-one of the following commands:
-
-```none
-vyos@vyos:~$ show secure-boot
-SecureBoot enabled
-```
+VyOS will now launch in UEFI Secure Boot mode. You can verify this with
+{opcmd}`show secure-boot` (see [Operation](#secure-boot-operation)) or by
+running one of the following commands:
 
 ```none
 vyos@vyos:~$ show log kernel | match Secure
@@ -178,6 +174,32 @@ service`
 
 This prevents loading any malicious code after the image is assembled into the
 Kernel as a module. You can disable this behavior on custom builds if needed.
+
+(secure-boot-operation)=
+
+## Operation
+
+```{opcmd} show secure-boot
+
+Show whether the system was booted with UEFI Secure Boot enabled.
+
+:::{code-block} none
+vyos@vyos:~$ show secure-boot
+SecureBoot enabled
+:::
+```
+
+```{opcmd} show secure-boot detail
+
+Show the issuer and subject of the certificate used to sign the running
+Linux Kernel.
+
+:::{code-block} none
+vyos@vyos:~$ show secure-boot detail
+Issuer:  /CN=VyOS Networks Secure Boot CA
+Subject: /CN=VyOS Networks Secure Boot Signer 2025 - linux
+:::
+```
 
 ## Troubleshoot
 
