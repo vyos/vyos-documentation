@@ -80,7 +80,7 @@ points, as outlined in the following table:
     reverse path check.\
     You set the check mode under
     `set firewall global-options source-validation ...` and
-    `ipv6-source-validation ...`.
+    `set firewall global-options ipv6-source-validation ...`.
 
     **Policy route**: Rules that match packets received on the interfaces you
     specify and assign the matching packets to a routing table or
@@ -227,9 +227,9 @@ at different processing points, as outlined in the following table:
     You define the rules under `set firewall bridge output filter ...`.
 ```
 
-After the bridge input processing point, the packets are passed to the
-IP layer, which processes them starting at the prerouting processing
-point.
+After the bridge input processing point, accepted IPv4 and IPv6 packets
+are passed to the IP layer, which processes them starting at IP
+prerouting.
 
 ## Zone-based firewall
 
