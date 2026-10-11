@@ -431,7 +431,78 @@ assigned, this is why there is a `force` option to pass down to
 the container image to also remove those images.
 ```
 
-## Example Configuration
+## Container Storage
+
+Container images and the writable layers of all containers are stored on
+the persistence partition below
+`/usr/lib/live/mount/persistence/container/storage`. This storage is
+shared by all installed VyOS images, so containers survive a system
+upgrade.
+
+Podman uses the overlay storage driver. On an installed system, VyOS
+uses the in-kernel overlayfs. `fuse-overlayfs`, a userspace
+implementation that runs one helper process per container and is
+noticeably slower for I/O-heavy workloads such as databases, is used
+only if the storage sits on an overlayfs itself, which is the case on a
+live-booted system.
+
+Older VyOS releases used `fuse-overlayfs` on every system. Container
+storage created by those releases keeps using `fuse-overlayfs` after an
+upgrade, because its image layers store file deletions in a format the
+in-kernel overlayfs does not understand. Podman detects this
+automatically, so no action is required.
+
+To check which implementation is in use, look for `fuse-overlayfs`
+processes while containers are running:
+
+:::{code-block} none
+vyos@vyos:~$ pgrep -a fuse-overlayfs
+:::
+
+No output means the in-kernel overlayfs is used.
+
+### Migrate to In-Kernel Overlayfs
+
+Existing container storage can be moved to the in-kernel overlayfs by
+resetting it and pulling all images again.
+
+:::{warning}
+Resetting the storage deletes all container images, containers and
+volumes managed by Podman. Data in volumes mapped to a host path using
+`set container name <name> volume` is not affected. Make sure all images
+can be pulled again, or export them first using `podman image save`.
+:::
+
+1. Note the images in use:
+
+   :::{code-block} none
+   vyos@vyos:~$ show container image
+   :::
+
+2. Stop all containers. Repeat for every configured container:
+
+   :::{code-block} none
+   vyos@vyos:~$ sudo systemctl stop vyos-container-<name>
+   :::
+
+3. Reset the container storage:
+
+   :::{code-block} none
+   vyos@vyos:~$ sudo podman system reset --force
+   :::
+
+4. Pull every image again:
+
+   :::{code-block} none
+   vyos@vyos:~$ add container image <image>
+   :::
+
+5. Reboot the system. This recreates the container networks and starts
+   all containers on the new storage.
+
+Afterwards, `pgrep -a fuse-overlayfs` should not return any process.
+
+## Example Configurations
 
 For the sake of demonstration, [example #1 in the official documentation](https://www.zabbix.com/documentation/current/manual/installation/containers)
 to the declarative VyOS CLI syntax.
