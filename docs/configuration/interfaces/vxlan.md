@@ -107,6 +107,13 @@ Disable {abbr}`SLLA (Source Link-Layer Address)` and IP address learning on
 the VXLAN interface.
 ```
 
+```{cfgcmd} set interfaces vxlan \<interface\> parameters noudpcsum
+
+Disable UDP checksums on the VXLAN interface.  Some devices include
+hardware-accelerated VXLAN offloading and require that VyOS's checksums be
+disabled.
+```
+
 ```{cfgcmd} set interfaces vxlan \<interface\> parameters vni-filter
 
 **Enable** {abbr}`VNI (VXLAN Network Identifier)` **filtering on the VXLAN
