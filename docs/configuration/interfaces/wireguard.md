@@ -205,8 +205,9 @@ with `port` it forms the endpoint of the peer.
 ```{cfgcmd} set interfaces wireguard \<interface\> max-dns-retry \<1-15\>
 
 Set how often the DNS resolution of a peer endpoint configured with
-`host-name` is retried when it fails. The delay between retries increases with
-each attempt.
+`host-name` is retried on temporary errors. Permanent errors such as an
+unknown name are not retried. The delay between retries increases with each
+attempt.
 
 The default is 3 retries. The `wg` tool on its own would retry 15 times.
 ```
