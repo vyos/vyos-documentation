@@ -31,6 +31,18 @@ This will enable sFlow on the specified interface. You can repeat
 this command for each interface you want to monitor.
 
 :::{note}
+sFlow can only be enabled on physical interfaces that are bound to
+VPP with `set vpp settings interface <ethN>`. VPP samples traffic on
+the physical port, so logical interfaces, such as bonding, loopback
+and tunnels (GRE, VXLAN, IPIP), are not supported and produce no
+samples.
+
+To monitor traffic on a bonding interface, enable sFlow on its
+physical member interfaces instead. A physical interface can be a
+bonding member and an sFlow target at the same time.
+:::
+
+:::{note}
 sFlow collects statistics only for traffic *received* on the
 interface. If you want to monitor traffic *sent* on the interface,
 you need to enable sFlow on the corresponding interface in the
