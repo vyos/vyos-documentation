@@ -199,7 +199,6 @@ vyos@vyos:~$ show secure-boot detail
 Issuer:  /CN=VyOS Networks Secure Boot CA
 Subject: /CN=VyOS Networks Secure Boot Signer 2025 - linux
 :::
-```
 
 ## Troubleshoot
 
