@@ -153,8 +153,8 @@ configured and required. The in use will show yes
 
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> childless \<allow | prefer | force | never\>
 
-Control childless IKEv2 SA initiation ({rfc}`6023` — an IKE SA established
-without a Child SA). This option applies to IKEv2 only:
+**Control childless IKEv2 SA initiation ({rfc}`6023` — an IKE SA established
+without a Child SA).**
 
 - `allow`: accept childless IKE SA in responder mode; create a regular IKE SA
   in initiator mode.
@@ -163,7 +163,9 @@ without a Child SA). This option applies to IKEv2 only:
 - `force`: require the use of childless IKE SA in both responder and
   initiator modes.
 - `never`: disable support for childless IKE SA when acting as a responder.
-```
+
+Childless IKE SAs require the connection's `ike-group` to use
+`key-exchange ikev2`. Otherwise, the commit fails.
 
 ```{cfgcmd} set vpn ipsec remote-access connection \<name\> childless \<allow | prefer | force | never\>
 

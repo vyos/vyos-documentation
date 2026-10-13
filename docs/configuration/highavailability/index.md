@@ -319,11 +319,6 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
 
 ## SNMP traps
 
-```{eval-rst}
-.. cfgcmd:: set high-availability vrrp snmp trap
-
-   Enable sending SNMP traps from keepalived on VRRP state changes.
-```
 
 ## Scripting
 

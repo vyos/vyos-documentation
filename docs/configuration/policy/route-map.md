@@ -221,8 +221,14 @@ Match RPKI validation result.
 
 ```{cfgcmd} set policy route-map \<text\> rule \<1-65535\> match source-peer \<value\>
 
-BGP source peer to match. The value can be a peer IPv4 address, a peer IPv6
-address, an interface name of a peer, or a BGP peer-group name.
+**Match BGP routes by the peer they were received from.**
+
+The rule then applies only to routes received from the specified peer.
+
+The value is the peer's IPv4 or IPv6 address, the name of the interface
+on which the peer is configured, or the name of a BGP peer-group. A
+peer-group name matches a route received from any peer in that
+peer-group.
 ```
 
 

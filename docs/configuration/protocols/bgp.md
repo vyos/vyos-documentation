@@ -2560,15 +2560,14 @@ set protocols bgp parameters confederation peers 65003
 
 ### BGP Monitoring Protocol (BMP) configuration
 
-{abbr}`BMP (BGP Monitoring Protocol)` sends BGP route information to a
-monitoring station.
+{abbr}`BMP (BGP Monitoring Protocol)` lets the router send BGP route
+information to a monitoring station.
 
-BMP support must be loaded into the BGP daemon before any BMP target can
-be committed. Enable it with `set system frr bmp`, commit, and then
-reboot the router (preferred) or restart FRR so the BGP daemon starts
-with the BMP module. Until then, committing configuration under
-`protocols bgp bmp` fails with an error that the `bmp` flag is not found
-in bgpd.
+Before configuring any BMP target under `protocols bgp bmp`, first
+enable BMP with `set system frr bmp` and commit, then reboot the router
+(preferred) or restart its FRR service. BGP then restarts with BMP
+support. Otherwise, committing configuration under `protocols bgp bmp`
+fails with the error `"bmp" flag is not found in bgpd`.
 
 ```{cfgcmd} set protocols bgp bmp target \<name\> address \<x.x.x.x | h:h:h:h:h:h:h:h\>
 
@@ -2602,18 +2601,20 @@ set protocols bgp bmp target collector port 5000
 **Configure which route views are sent to the BMP target for the
 specified address family.**
 
-- `pre-policy`: Send state before policy and filter processing.
-- `post-policy`: Send state with policy and filters applied.
-- `local-rib`: Send routes from the local RIB.
+- `pre-policy`: Sends routes as received from the peer, before inbound
+  policy and filters are applied (the pre-policy Adj-RIB-In).
+- `post-policy`: Sends routes after inbound policy and filters are
+  applied (the post-policy Adj-RIB-In).
+- `local-rib`: Sends the routes the router installed in its local RIB
+  (Loc-RIB).
 
-Each view is configured separately. Issue the command once per view to
-send more than one.
+Each view is configured separately. Repeat the command for each view you
+want to send.
 ```
 
 Example:
 
 ```none
-set protocols bgp bmp target collector address 192.0.2.10
 set protocols bgp bmp target collector monitor ipv4-unicast post-policy
 ```
 

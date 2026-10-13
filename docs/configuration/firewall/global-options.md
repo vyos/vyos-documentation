@@ -123,26 +123,43 @@ The following sysctl parameter will be changed:
 
 ```{cfgcmd} set firewall global-options geoip provider \<db-ip | maxmind\>
 
-Select the GeoIP database provider used to resolve country codes
-for firewall GeoIP matching. `db-ip` uses the DB-IP.com database and requires
-no credentials; `maxmind` uses the MaxMind database and requires a MaxMind
-account ID and license key. The default is `db-ip`.
+**Configure the GeoIP database provider that supplies the IP address ranges used for firewall GeoIP country-code and {abbr}`ASN (Autonomous System Number)` matching.**
+
+- `db-ip`: Uses the DB-IP Lite databases and requires no credentials.
+- `maxmind`: Uses the MaxMind databases and requires both `maxmind-account-id` and `maxmind-license-key`. Otherwise, the commit fails.
+
+The default is `db-ip`.
 ```
 
 ```{cfgcmd} set firewall global-options geoip maxmind-account-id \<id\>
 
-Account ID for the MaxMind GeoIP database.
+**Configure the MaxMind account ID the router uses to authenticate when
+downloading the MaxMind databases.**
+
+Required when `provider` is `maxmind`. You must configure both
+`maxmind-account-id` and `maxmind-license-key`. Otherwise, the commit
+fails.
 ```
 
 ```{cfgcmd} set firewall global-options geoip maxmind-license-key \<key\>
 
-License key for the MaxMind GeoIP database.
+**Configure the MaxMind license key used to authenticate when
+downloading the MaxMind databases.**
+
+Required when `provider` is `maxmind`. You must configure both
+`maxmind-account-id` and `maxmind-license-key`. Otherwise, the commit
+fails.
 ```
 
 ```{cfgcmd} set firewall global-options geoip maxmind-lite
 
-Use the free MaxMind GeoLite2 database instead of the paid
-GeoIP2 database.
+**Select the MaxMind GeoLite2 databases instead of the GeoIP2 databases
+as the GeoIP data source.**
+
+By default, the router downloads the GeoIP2 databases.
+
+The command applies only when `provider` is `maxmind`. GeoLite2 still
+requires `maxmind-account-id` and `maxmind-license-key`.
 ```
 
 ```{cfgcmd} set firewall global-options state-policy established action [accept | drop | reject]
