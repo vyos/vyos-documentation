@@ -2568,6 +2568,66 @@ set protocols bgp parameters confederation peers 65002
 set protocols bgp parameters confederation peers 65003
 ```
 
+### BGP Monitoring Protocol (BMP) configuration
+
+{abbr}`BMP (BGP Monitoring Protocol)` lets the router send BGP route
+information to a monitoring station.
+
+Before configuring any BMP target under `protocols bgp bmp`, first
+enable BMP with `set system frr bmp` and commit, then reboot the router
+(preferred) or restart its FRR service. BGP then restarts with BMP
+support. Otherwise, committing configuration under `protocols bgp bmp`
+fails with the error `"bmp" flag is not found in bgpd`.
+
+```{cfgcmd} set protocols bgp bmp target \<name\> address \<x.x.x.x | h:h:h:h:h:h:h:h\>
+
+**Configure the IPv4 or IPv6 address of the BMP monitoring station.**
+
+The address is mandatory for every BMP target. Otherwise, the commit
+fails.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector address 192.0.2.10
+```
+
+```{cfgcmd} set protocols bgp bmp target \<name\> port \<1-65535\>
+
+**Configure the TCP port of the BMP monitoring station.**
+
+The default is 5000.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector port 5000
+```
+
+```{cfgcmd} set protocols bgp bmp target \<name\> monitor \<ipv4-unicast | ipv6-unicast\> \<pre-policy | post-policy | local-rib\>
+
+**Configure which route views are sent to the BMP target for the
+specified address family.**
+
+- `pre-policy`: Sends routes as received from the peer, before inbound
+  policy and filters are applied (the pre-policy Adj-RIB-In).
+- `post-policy`: Sends routes after inbound policy and filters are
+  applied (the post-policy Adj-RIB-In).
+- `local-rib`: Sends the routes the router installed in its local RIB
+  (Loc-RIB).
+
+Each view is configured separately. Repeat the command for each view you
+want to send.
+```
+
+Example:
+
+```none
+set protocols bgp bmp target collector monitor ipv4-unicast post-policy
+```
+
 ## Operation
 
 ### Show

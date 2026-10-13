@@ -317,6 +317,9 @@ need to configure it. But if necessary, Gratuitous ARP can be configured in
    will always use version 3.
 ```
 
+## SNMP traps
+
+
 ## Scripting
 
 VRRP functionality can be extended with scripts. VyOS supports two kinds of

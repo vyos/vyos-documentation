@@ -356,6 +356,79 @@ set protocols ospf segment-routing prefix 192.0.2.1/32 index no-php-flag
 For more information, see {ref}`ospf`.
 ```
 
+## SR-TE configuration
+
+{abbr}`SR-TE (Segment Routing Traffic Engineering)` steers traffic along
+an explicit segment-routed path instead of the IGP shortest path. The
+current SR-TE implementation in VyOS only lets you:
+
+- Choose which IGP, IS-IS or OSPFv2, the router loads TE data from into
+  the {abbr}`TED (Traffic Engineering Database)`. The TED is used to
+  translate segments given as a
+  {abbr}`NAI (Node or Adjacency Identifier)` to MPLS labels.
+- Define named segment lists that describe such a path. Each list orders
+  its segments using a numbered index. Each segment is an MPLS label, a
+  NAI, or both.
+
+VyOS does not provide the SR policy that binds a segment list to traffic,
+so these definitions alone do not steer traffic.
+
+```{cfgcmd} set protocols segment-routing traffic-engineering database-import-protocol \<isis | ospf\>
+
+**Select the IGP, IS-IS or OSPFv2, whose originated Traffic Engineering
+(TE) database the router imports into the TED.**
+
+IS-IS and OSPF are mutually exclusive.
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\>
+
+**Configure a named segment list, an ordered set of segments that
+describes an explicit path.**
+
+The name may contain letters, digits, hyphens, and underscores.
+
+Add segments under `index`, where each index orders one segment given as
+an MPLS label, a NAI, or both.
+
+A segment list must contain at least one `index`. Otherwise, the commit
+fails.
+```
+
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai adjacency \<ipv4 | ipv6\> source-identifier \<address\>
+
+**Configure the adjacency source address identifier (IPv4 or IPv6) for
+the given segment list index.**
+
+An adjacency NAI requires both `source-identifier` and
+`destination-identifier`. A NAI is either an adjacency or a prefix, not
+both, and uses either IPv4 or IPv6, not both. Otherwise, the commit
+fails.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai adjacency \<ipv4 | ipv6\> destination-identifier \<address\>
+
+**Configure the adjacency destination address identifier (IPv4 or IPv6)
+for the given segment list index.**
+
+An adjacency NAI requires both `source-identifier` and
+`destination-identifier`. A NAI is either an adjacency or a prefix, not
+both, and uses either IPv4 or IPv6, not both. Otherwise, the commit
+fails.
+```
+
+```{cfgcmd} set protocols segment-routing traffic-engineering segment-list \<name\> index \<index\> nai prefix \<ipv4 | ipv6\> prefix-identifier \<prefix\>
+
+**Configure the IGP prefix (IPv4 or IPv6) of a prefix NAI at the given
+segment list index.**
+
+A prefix NAI requires an `algorithm` (`spf` or `strict-spf`). A NAI is
+either an adjacency or a prefix, not both, and uses either IPv4 or IPv6,
+not both. Otherwise, the commit fails.
+```
+
+
+
 ## Examples
 
 ### Enable SR on IS-IS (experimental)
@@ -531,4 +604,3 @@ Codes: K - kernel route, C - connected, S - static, R - RIP,
 O>* 198.51.100.1/32 [110/1] via 192.0.2.1, eth0, label IPv4 Explicit Null, weight 1, 00:03:36
 O   198.51.100.2/32 [110/0] is directly connected, lo, weight 1, 00:03:51
 O   192.0.2.0/24 [110/1] is directly connected, eth0, weight 1, 00:03:51
-```
