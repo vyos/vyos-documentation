@@ -168,3 +168,11 @@ Disconnect the specified interface.
 
 Initiate a session on the specified interface.
 ```
+
+```{opcmd} reconnect interface \<interface\>
+
+Reconnect the specified interface. The interface is disconnected and
+connected again in a single operation which runs detached from the current
+CLI session, so the command can safely be issued over the very interface
+being reconnected. Progress is logged to the journal.
+```
