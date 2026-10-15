@@ -905,41 +905,91 @@ The system is going down for reboot NOW!
 
 ### Remote Archive
 
-VyOS can upload the configuration to a remote location after each call to
-{cfgcmd}`commit`. You will have to set the commit-archive location. TFTP, FTP,
-SCP and SFTP servers are supported. Every time a {cfgcmd}`commit` is successful
-the `config.boot` file will be copied to the defined destination(s). The
-filename used on the remote host will be `config.boot-hostname.YYYYMMDD_HHMMSS`.
+VyOS can upload the configuration to one or more remote locations after each
+{cfgcmd}`commit`. On every commit the `config.boot` file is copied to each
+configured destination, named
+`config.boot-<hostname>.<YYYYMMDD_HHMMSS>` (a `git` destination keeps the
+history in the repository itself instead).
 
-```{cfgcmd} set system config-management commit-archive location \<URI\>
+A destination is a named *location* carrying exactly one transport protocol:
+`scp`, `sftp`, `ssh`, `ftp`, `ftps`, `http`, `https`, `tftp` or `git`.
 
-Specify remote location of commit archive as any of the below {abbr}`URI (Uniform Resource Identifier)`
-- `http://<user>:<passwd>@<host>:/<dir>`
-- `https://<user>:<passwd>@<host>:/<dir>`
-- `ftp://<user>:<passwd>@<host>/<dir>`
-- `sftp://<user>:<passwd>@<host>/<dir>`
-- `scp://<user>:<passwd>@<host>:/<dir>`
-- `tftp://<host>/<dir>`
-- `git+https://<user>:<passwd>@<host>/<path>`
+```{cfgcmd} set system config-management commit-archive location \<name\> \<protocol\> server \<address\>
 
-Since username and password are part of the URI, they need to be properly url encoded if containing special characters.
+Remote server to upload to - an IPv4 address, an IPv6 address or a hostname.
+Required for every protocol except a local `git` repository.
+```
 
-:::{note}
-The number of revisions don\'t affect the commit-archive.
+```{cfgcmd} set system config-management commit-archive location \<name\> \<protocol\> port \<port\>
 
-When using Git as destination for the commit archive the `source-address` CLI option has no effect.
+Remote port. Defaults to the protocol's standard port when omitted.
+```
 
-You may find VyOS not allowing the secure connection because it cannot verify the legitimacy of the remote server. You can use the workaround below to quickly add the remote host\'s SSH fingerprint to your `~/.ssh/known_hosts` file:
-:::
-:::{code-block} none
-vyos@vyos# ssh-keyscan <host> >> ~/.ssh/known_hosts
-:::
+```{cfgcmd} set system config-management commit-archive location \<name\> \<protocol\> path \<path\>
+
+Remote path the configuration is stored under, or - for `git` - the path to
+the repository. Defaults to the server root when omitted.
+```
+
+```{cfgcmd} set system config-management commit-archive location \<name\> \<protocol\> authentication username \<user\>
+
+User name for protocols that authenticate. Not used by `tftp` or a local
+`git` repository.
+```
+
+```{cfgcmd} set system config-management commit-archive location \<name\> \<protocol\> authentication password \<password\>
+
+Password or token for the user above. For `ftp`/`ftps` a password may be set
+without a user name - the connection then uses the anonymous user. For every
+other protocol a password requires a user name.
+```
+
+```{cfgcmd} set system config-management commit-archive location \<name\> git transport \<https | http | ssh | file\>
+
+Transport used to reach a `git` repository:
+- `https` - push over HTTPS (the default when unset).
+- `http` - push over plain HTTP.
+- `ssh` - push over SSH, authenticated by the router user's SSH key; the
+  `username` is the SSH user (`git` on most hosted services).
+- `file` - a **local** repository on the router itself; only `path` applies,
+  there is no server, port or authentication.
+```
+
+```{cfgcmd} set system config-management commit-archive source-address \<address\>
+
+Source address used for the outbound connection to each location. A `git`
+destination ignores this option.
 ```
 
 ```{cfgcmd} set system config-management commit-archive vrf \<name\>
 
-Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used to upload the configuration to the remote system.
+Specify name of the {abbr}`VRF (Virtual Routing and Forwarding)` instance used
+to upload the configuration to the remote system.
 ```
+
+:::{note}
+The number of commit revisions does not affect the commit-archive.
+
+The SSH-based transports (`scp`, `sftp`, `ssh`, and `git` over `ssh`) require
+the remote host key to be trusted first, or the connection fails. Add it to the
+router user's `~/.ssh/known_hosts` once - use `-p <port>` for a non-default SSH
+port, and verify the key fingerprint against a trusted source before relying
+on it:
+``ssh-keyscan <server> >> ~/.ssh/known_hosts``
+:::
+
+Example - an SCP destination and a git destination over SSH:
+
+:::{code-block} none
+set system config-management commit-archive location backup1 scp server '192.0.2.1'
+set system config-management commit-archive location backup1 scp authentication username 'bob'
+set system config-management commit-archive location backup1 scp authentication password 's3cr3t'
+set system config-management commit-archive location backup1 scp path '/backups'
+set system config-management commit-archive location github git transport 'ssh'
+set system config-management commit-archive location github git server 'github.com'
+set system config-management commit-archive location github git path '/example/configs.git'
+set system config-management commit-archive location github git authentication username 'git'
+:::
 
 ### Saving and loading manually
 
