@@ -437,9 +437,8 @@ the rules of those processing points. A packet that matches a state with
 an `accept`, `drop`, or `reject` action is not evaluated by the rules of
 that processing point.
 
-If connection tracking is disabled with `disable-conntrack` in the IPv4 or
-IPv6 `input`, `forward`, or `output` filter rules while a global state policy
-exists, the commit prints a warning.
+If connection tracking is disabled with `disable-conntrack` while a global
+state policy exists, the commit prints a warning.
 
 ```{cfgcmd} set firewall global-options state-policy \<established | invalid | related\> action \<accept | drop | reject\>
 
