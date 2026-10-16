@@ -157,7 +157,7 @@ set system name-server '192.0.2.1'
 ```
 
 
-## The simple way without configuration of the hostname (one task for all routers):
+## The simple way without configuring the hostname (one task for all routers):
 
 ```none
 # nano /root/hosts_v2
@@ -206,6 +206,103 @@ vyos10                     : ok=1    changed=0    unreachable=0    failed=0    s
 vyos7                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos8                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 vyos9                      : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+## Backups with the vyos.blueprints collection
+
+Regular configuration backups of many routers are a common task. Instead of
+writing the playbook yourself, you can use the ready-made, tested roles of the
+[vyos.blueprints](https://github.com/vyos/vyos.blueprints) collection. They
+work with the inventory and variables created above.
+
+```{note}
+vyos.blueprints and the vyos.vyos collection it builds on need **ansible-core
+2.16 or newer**. The Ansible packages of older Debian releases are too old;
+install a current version with pip, for example in a virtual environment,
+together with `ansible-pylibssh`, the SSH library Ansible uses for network
+devices:
+
+    python3 -m venv /root/ansible-venv
+    . /root/ansible-venv/bin/activate
+    pip install ansible-core ansible-pylibssh
+```
+
+Install the collection on the Ansible control node. Until its first release is
+published on Ansible Galaxy, install it from GitHub:
+
+```none
+# ansible-galaxy collection install git+https://github.com/vyos/vyos.blueprints.git
+```
+
+Back up every router of the inventory with one command, run from `/root`:
+
+```none
+# ansible-playbook vyos.blueprints.backup -i hosts
+```
+
+For each router, this creates three files with the same timestamp in
+`/root/backups/<router>/`:
+
+- `<router>_<timestamp>.cfg`: the configuration as shown by `show
+  configuration`; this is the file to restore from
+- `<router>_<timestamp>.set`: the same configuration as `set` commands, for
+  reading and comparing
+- `<router>_<timestamp>.json`: the VyOS version, model and serial number of
+  the router
+
+The newest 10 backups per router are kept; older ones are removed. To change
+the location or the number of backups kept:
+
+```none
+# ansible-playbook vyos.blueprints.backup -i hosts -e backup_root=/srv/vyos-backups -e backup_keep=30
+```
+
+To back up only some routers, name a group or a host of the inventory:
+
+```none
+# ansible-playbook vyos.blueprints.backup -i hosts -e vyos_backup_hosts=vyos9
+```
+
+```{note}
+Backups contain password hashes and keys. The files are created readable only
+by their owner; keep the backup directory protected as well.
+```
+
+## Upgrades with the vyos.blueprints collection
+
+The same collection upgrades routers to a new VyOS image, one router at a
+time:
+
+```none
+# ansible-playbook vyos.blueprints.upgrade -i hosts \
+    -e upgrade_image_url=https://example.com/vyos-1.5.1-generic-amd64.iso \
+    -e upgrade_expected_version=1.5.1
+```
+
+Replace the URL with the location of your VyOS ISO image, and keep the image's
+signature file (`.minisig`) next to it: VyOS checks the signature before
+installing, and the upgrade stops if it is missing or not valid. To install an
+image without a signature anyway, add `-e upgrade_allow_unsigned=true`.
+
+For each router, one at a time, the playbook:
+
+1. skips the router if it already runs the expected version
+2. backs up its configuration, as described above
+3. installs the new image and makes it the default boot image
+4. reboots the router and waits until it is back
+5. checks that it runs the new version
+
+If a router fails at any step, the upgrade stops before the next router is
+touched, so a bad image never reaches the whole network. Because routers that
+are already upgraded are skipped, run the same command again after fixing the
+problem.
+
+To upgrade only some routers, add `-e vyos_upgrade_hosts=<group or host>`.
+
+```{note}
+Try the upgrade on a lab router, or a single router of the network, before
+running it on many: a new VyOS image can change behaviour, and the playbook
+upgrades one router after the other.
 ```
 
 In the next chapter of the example, we'll use Ansible with jinja2
