@@ -157,7 +157,7 @@ set system name-server '192.0.2.1'
 ```
 
 
-## The simple way without configuration of the hostname (one task for all routers):
+## The simple way without configuring the hostname (one task for all routers):
 
 ```none
 # nano /root/hosts_v2
@@ -210,16 +210,17 @@ vyos9                      : ok=1    changed=0    unreachable=0    failed=0    s
 
 ## Backups with the vyos.blueprints collection
 
-Regular configuration backups of many routers are a common task. Instead of writing
-the playbook yourself, you can use the ready-made, tested roles of the
-[vyos.blueprints](https://github.com/vyos/vyos.blueprints) collection. They work with
-the inventory and variables created above.
+Regular configuration backups of many routers are a common task. Instead of
+writing the playbook yourself, you can use the ready-made, tested roles of the
+[vyos.blueprints](https://github.com/vyos/vyos.blueprints) collection. They
+work with the inventory and variables created above.
 
 ```{note}
-vyos.blueprints and the vyos.vyos collection it builds on need **ansible-core 2.16 or
-newer**. The Ansible packages of older Debian releases are too old; install a current
-version with pip, for example in a virtual environment, together with
-`ansible-pylibssh`, the SSH library Ansible uses for network devices:
+vyos.blueprints and the vyos.vyos collection it builds on need **ansible-core
+2.16 or newer**. The Ansible packages of older Debian releases are too old;
+install a current version with pip, for example in a virtual environment,
+together with `ansible-pylibssh`, the SSH library Ansible uses for network
+devices:
 
     python3 -m venv /root/ansible-venv
     . /root/ansible-venv/bin/activate
@@ -242,14 +243,15 @@ Back up every router of the inventory with one command, run from `/root`:
 For each router, this creates three files with the same timestamp in
 `/root/backups/<router>/`:
 
-- `<router>_<timestamp>.cfg`: the configuration as shown by `show configuration`;
-  this is the file to restore from
-- `<router>_<timestamp>.set`: the same configuration as `set` commands, for reading
-  and comparing
-- `<router>_<timestamp>.json`: the VyOS version, model and serial number of the router
+- `<router>_<timestamp>.cfg`: the configuration as shown by `show
+  configuration`; this is the file to restore from
+- `<router>_<timestamp>.set`: the same configuration as `set` commands, for
+  reading and comparing
+- `<router>_<timestamp>.json`: the VyOS version, model and serial number of
+  the router
 
-The newest 10 backups per router are kept; older ones are removed. To change the
-location or the number of backups kept:
+The newest 10 backups per router are kept; older ones are removed. To change
+the location or the number of backups kept:
 
 ```none
 # ansible-playbook vyos.blueprints.backup -i hosts -e backup_root=/srv/vyos-backups -e backup_keep=30
@@ -262,8 +264,8 @@ To back up only some routers, name a group or a host of the inventory:
 ```
 
 ```{note}
-Backups contain password hashes and keys. The files are created readable only by
-their owner; keep the backup directory protected as well.
+Backups contain password hashes and keys. The files are created readable only
+by their owner; keep the backup directory protected as well.
 ```
 
 In the next chapter of the example, we'll use Ansible with jinja2
