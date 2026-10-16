@@ -145,6 +145,19 @@ Balance algorithms:
 Configure backend *<name>* mode TCP or HTTP.
 ```
 
+```{cfgcmd} set load-balancing haproxy backend \<name\> http-server-close
+
+Close the connection to the backend servers after each response, while
+keeping HTTP keep-alive and pipelining on the client side. This gives the
+lowest latency for clients on slow networks and reuses server resources
+quickly.
+
+Some servers do not handle the `Connection: close` request header correctly.
+Keep-alive is then never used for them.
+
+The backend must be in `http` mode, otherwise the commit fails.
+```
+
 ```{cfgcmd} set load-balancing haproxy backend \<name\> server \<name\> address \<x.x.x.x\>
 
 Set the address of the backend server that receives incoming traffic.
