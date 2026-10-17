@@ -73,7 +73,8 @@ Tunnel information:
 ```
 
 :::{note}
-We do not recommend using policy-based vpn and route-based vpn configurations to the same peer.
+We do not recommend using policy-based and route-based VPN configurations
+with the same peer.
 :::
 
 **1. Configure ike-group (IKE Phase 1)**
@@ -104,7 +105,7 @@ set vpn ipsec esp-group ESP proposal 10 hash 'sha256'
 set vpn ipsec interface eth0
 ```
 
-**4. Configure PSK keys and authentication ids for this key if authentication type is PSK**
+**4. Configure the PSK and authentication IDs if using PSK authentication.**
 
 ```none
 set vpn ipsec authentication psk PSK-KEY id '192.168.0.2'
@@ -139,29 +140,31 @@ set vpn ipsec site-to-site peer PEER1 remote-address '192.168.5.2'
 Peer selects the key from step 4 according to local-id/remote-id pair.
 ```
 
-**6. Depends to vpn type (route-based vpn or policy-based vpn).**
+**6. Choose the configuration for your VPN type (policy-based or route-based).**
 
-> **6.1 For Policy-based VPN configure SAs using tunnel command specifying remote and local networks.**
->
-> > ```none
-> > set vpn ipsec site-to-site peer PEER1 tunnel 1 local prefix '192.168.10.0/24'
-> > set vpn ipsec site-to-site peer PEER1 tunnel 1 remote prefix '192.168.50.0/24'
-> > ```
->
-> **6.2 For Route-based VPN create VTI interface, set IP address to this interface and bind this interface to the vpn peer.**
->
-> > ```none
-> > set interfaces vti vti1 address 10.0.0.1/30
-> > set vpn ipsec site-to-site peer PEER1 vti bind vti1
-> > set vpn ipsec options disable-route-autoinstall
-> > ```
-> >
-> > Create routing between local networks via VTI interface using dynamic or
-> > static routing.
-> >
-> > ```none
-> > set protocol static route 192.168.50.0/24 next-hop 10.0.0.2
-> > ```
+**6.1 For a policy-based VPN, configure the local and remote networks for each
+tunnel.**
+
+```none
+set vpn ipsec site-to-site peer PEER1 tunnel 1 local prefix '192.168.10.0/24'
+set vpn ipsec site-to-site peer PEER1 tunnel 1 remote prefix '192.168.50.0/24'
+```
+
+**6.2 For a route-based VPN, create a VTI, assign it an IP address, and bind it
+to the IPsec peer.**
+
+```none
+set interfaces vti vti1 address 10.0.0.1/30
+set vpn ipsec site-to-site peer PEER1 vti bind vti1
+set vpn ipsec options disable-route-autoinstall
+```
+
+Add a route to the remote network through the VTI using static or dynamic
+routing. For example:
+
+```none
+set protocols static route 192.168.50.0/24 next-hop 10.0.0.2
+```
 
 ### Initiator and Responder Connection Types
 
