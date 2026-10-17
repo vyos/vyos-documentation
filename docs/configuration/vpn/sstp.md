@@ -1,27 +1,30 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (sstp)=
 
 # SSTP Server
 
-{abbr}`SSTP (Secure Socket Tunneling Protocol)` is a form of {abbr}`VPN
-(Virtual Private Network)` tunnel that provides a mechanism to transport PPP
-traffic through an SSL/TLS channel. SSL/TLS provides transport-level security
-with key negotiation, encryption and traffic integrity checking. The use of
-SSL/TLS over TCP port 443 allows SSTP to pass through virtually all firewalls
-and proxy servers except for authenticated web proxies.
+{abbr}`SSTP (Secure Socket Tunneling Protocol)` is a form of
+{abbr}`VPN (Virtual Private Network)` that transports
+{abbr}`PPP (Point-to-Point Protocol)` traffic through a TLS channel.
+SSTP uses TCP port 443 by default, but firewalls and proxy servers can
+still block or inspect this traffic.
 
-SSTP is available for Linux, BSD, and Windows.
+VyOS uses [Accel-PPP](https://accel-ppp.org/) to provide SSTP server
+functionality, with local-user or RADIUS authentication.
 
-VyOS utilizes [accel-ppp](https://accel-ppp.org/) to provide SSTP server functionality. We support both
-local and RADIUS authentication.
-
-As SSTP provides PPP via a SSL/TLS channel the use of either publicly signed
-certificates or private PKI is required.
+The server requires a TLS certificate and its issuing CA certificate.
+Use a certificate trusted by clients, either from a public CA or your
+private PKI.
 
 ## Configuring SSTP Server
 
 ### Certificates
 
-Using our documentation chapter - {ref}`pki` generate and install CA and Server certificate
+Use the {ref}`pki` commands to install a CA and issue a server
+certificate:
 
 ```none
 vyos@vyos:~$ generate pki ca install CA
@@ -35,14 +38,21 @@ vyos@vyos:~$ generate pki certificate sign CA install Server
 ### Configuration
 
 ```none
-set vpn sstp authentication local-users username test password 'test'
+set vpn sstp authentication local-users username test password '<strong-password>'
 set vpn sstp authentication mode 'local'
 set vpn sstp client-ip-pool SSTP-POOL range '10.0.0.2-10.0.0.100'
 set vpn sstp default-pool 'SSTP-POOL'
 set vpn sstp gateway-address '10.0.0.1'
-set vpn sstp ssl ca-certificate 'CA1'
+set vpn sstp ssl ca-certificate 'CA'
 set vpn sstp ssl certificate 'Server'
 ```
+
+Replace the example password with a strong secret. The server listens on
+TCP port 443 by default; configure `set vpn sstp port <1-65535>` to use a
+different port. Ensure the firewall and clients allow the selected TCP port.
+If `service https` already uses TCP 443 on the same listen address, the
+services cannot share that address and port. Check port availability or
+configure a different SSTP port.
 
 ```{cfgcmd} set vpn sstp authentication mode \<local | radius\>
 
@@ -55,27 +65,27 @@ server.
 
 ```{cfgcmd} set vpn sstp authentication local-users username \<user\> password \<pass\>
 
-Create `<user>` for local authentication on this system. The users password
-will be set to `<pass>`.
+Create `<user>` for local authentication on this system and set its
+password to `<pass>`.
 ```
 
 ```{cfgcmd} set vpn sstp client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
 
-Use this command to define the first IP address of a pool of
-addresses to be given to SSTP clients. If notation ``x.x.x.x-x.x.x.x``,
-it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
-used there is possibility to set host/netmask.
+Configure an IPv4 range in a named client pool. Specify either an IPv4
+prefix or an address range whose endpoints are in the same /24 network.
+Repeat the command to add ranges to the same pool.
 ```
 
 ```{cfgcmd} set vpn sstp default-pool \<POOL-NAME\>
 
-Use this command to define default address pool name.
+Configure the named pool from which the server assigns IPv4 addresses
+when RADIUS does not return an address or pool.
 ```
 
 ```{cfgcmd} set vpn sstp gateway-address \<gateway\>
 
-Specifies single `<gateway>` IP address to be used as local address of PPP
-interfaces.
+Configure the local IPv4 address used on each PPP interface. This is
+also the peer's gateway address.
 ```
 
 ```{cfgcmd} set vpn sstp ssl ca-certificate \<file\>
@@ -91,11 +101,9 @@ Name of installed server certificate.
 
 ## Configuring RADIUS authentication
 
-To enable RADIUS based authentication, the authentication mode needs to be
-changed within the configuration. Previous settings like the local users still
-exist within the configuration, however they are not used if the mode has been
-changed from local to radius. Once changed back to local, it will use all local
-accounts again.
+To use RADIUS, set the authentication mode to `radius`. Local-user
+settings remain in the configuration but are not used in this mode. If
+you switch back to `local`, the server uses the local accounts again.
 
 ```none
 set vpn sstp authentication mode radius
@@ -107,29 +115,30 @@ Configure RADIUS `<server>` and its required shared `<secret>` for
 communicating with the RADIUS server.
 ```
 
-Since the RADIUS server would be a single point of failure, multiple RADIUS
-servers can be setup and will be used subsequentially.
-For example:
+Configure more than one RADIUS server for redundancy. The server
+priority and optional backup settings control how Accel-PPP uses them.
+Use distinct shared secrets for each server where possible:
 
 ```none
-set vpn sstp authentication radius server 10.0.0.1 key 'foo'
-set vpn sstp authentication radius server 10.0.0.2 key 'foo'
+set vpn sstp authentication radius server 192.0.2.10 key '<radius-secret-1>'
+set vpn sstp authentication radius server 192.0.2.11 key '<radius-secret-2>'
 ```
 
 :::{note}
-Some RADIUS severs use an access control list which allows or denies
-queries, make sure to add your VyOS router to the allowed client list.
+Some RADIUS servers use an access control list to allow or deny
+queries. Add the VyOS router to the allowed-client list.
 :::
 
 ### RADIUS source address
 
-If you are using OSPF as your IGP, use the interface connected closest to the
-RADIUS server. You can bind all outgoing RADIUS requests to a single source IP
-e.g. the loopback interface.
+By default, the router selects the source address according to its
+route to each RADIUS server. You can bind all outgoing RADIUS requests
+to one IPv4 address, such as an address on a loopback or dummy interface.
 
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
 
-Source IPv4 address used in all RADIUS server queries.
+Configure the source IPv4 address used in RADIUS queries. The address
+must be configured on a VyOS interface.
 ```
 
 :::{note}
@@ -141,76 +150,92 @@ Best practice would be a loopback or dummy interface.
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> port \<port\>
 
-Configure RADIUS `<server>` and its required port for authentication requests.
+Configure the UDP destination port for authentication requests to
+RADIUS `<server>`. The default is 1812.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> fail-time \<time\>
 
-Mark RADIUS server as offline for this given `<time>` in seconds.
+After a server fails to respond, mark it unavailable for `<time>`
+seconds. The default is 0.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius server \<server\> disable
 
-Temporary disable this RADIUS server.
+Temporarily disable this RADIUS server without removing it from the
+configuration.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius acct-timeout \<timeout\>
 
-Timeout to wait reply for Interim-Update packets. (default 3 seconds)
+Set how long to wait for a reply to Interim-Update accounting packets
+before terminating the session. A value of 0 keeps the session active
+regardless of accounting replies. The default is 3 seconds.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author server \<address\>
 
-Specifies IP address for Dynamic Authorization Extension server (DM/CoA).
-This IP must exist on any VyOS interface or it can be ``0.0.0.0``.
+Configure the local IPv4 address on which the router accepts Dynamic
+Authorization Extension (Disconnect and CoA) requests. The address
+must be configured on a VyOS interface; `0.0.0.0` can be used to
+listen on all IPv4 interfaces.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author port \<port\>
 
-UDP port for Dynamic Authorization Extension server (DM/CoA)
+Configure the UDP port on which the router accepts Dynamic
+Authorization Extension requests. The default is 1700.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius dynamic-author key \<secret\>
 
-Secret for Dynamic Authorization Extension server (DM/CoA)
+Configure the shared secret used to authenticate Dynamic
+Authorization Extension requests.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius max-try \<number\>
 
-Maximum number of tries to send Access-Request/Accounting-Request queries
+Set the maximum number of attempts to send Access-Request and
+Accounting-Request packets to a RADIUS server. The default is 3.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius timeout \<timeout\>
 
-Timeout to wait response from server (seconds)
+Set how long to wait for a response from a RADIUS server, in seconds.
+The default is 3.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius nas-identifier \<identifier\>
 
-Value to send to RADIUS server in NAS-Identifier attribute and to be matched
-in DM/CoA requests.
+Configure the value sent in the RADIUS NAS-Identifier attribute and
+matched in Disconnect and CoA requests.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius nas-ip-address \<address\>
 
-Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
-in DM/CoA requests. Also DM/CoA server will bind to that address.
+Configure the IPv4 address sent in the RADIUS NAS-IP-Address attribute
+and matched in Disconnect and CoA requests. When Dynamic Authorization
+is configured, Accel-PPP also binds its listener to this address.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius source-address \<address\>
 
-Source IPv4 address used in all RADIUS server queries.
+Configure the source IPv4 address used in RADIUS queries. The address
+must be configured on a VyOS interface.
 ```
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit attribute \<attribute\>
 
-Specifies which RADIUS server attribute contains the rate limit information.
-The default attribute is `Filter-Id`.
+Configure the RADIUS attribute that carries rate information. The
+default is `Filter-Id`. For example, a `Filter-Id` value of `1000`
+specifies 1000 kbit/s in both directions; `2000/3000` specifies
+2000 kbit/s downstream and 3000 kbit/s upstream.
 ```
 
 :::{note}
-If you set a custom RADIUS attribute you must define it on both
-dictionaries on the RADIUS server and client.
+Define a custom attribute in the dictionaries used by both the RADIUS
+server and Accel-PPP. If it is vendor-specific, configure the vendor
+dictionary as well.
 :::
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit enable
@@ -220,49 +245,48 @@ Enables bandwidth shaping via RADIUS.
 
 ```{cfgcmd} set vpn sstp authentication radius rate-limit vendor
 
-Specifies the vendor dictionary, This dictionary needs to be present in
-/usr/share/accel-ppp/radius.
+Configure the vendor dictionary for a vendor-specific rate attribute.
+The dictionary must be present in `/usr/share/accel-ppp/radius`.
 ```
 
-Received RADIUS attributes have a higher priority than parameters defined within
-the CLI configuration, refer to the explanation below.
+RADIUS address and pool attributes take precedence over the matching
+default pool configuration, as described below.
 
-### Allocation clients ip addresses by RADIUS
+### RADIUS address assignment
 
-If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within
-the CLI config will being ignored.
+For IPv4, `Framed-IP-Address` assigns the address carried in the
+attribute and takes precedence over `default-pool`.
 
-If the RADIUS server sends the attribute `Framed-Pool`, then the IP address
-will be allocated from a predefined IP pool whose name equals the attribute
-value.
+`Framed-Pool` assigns an address from the configured IPv4 pool whose
+name matches the attribute value.
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, the
-IPv6 address will be allocated from a predefined IPv6 pool `prefix` whose
-name equals the attribute value.
+For IPv6, `Stateful-IPv6-Address-Pool` selects the configured
+`client-ipv6-pool` prefix pool whose name matches the attribute value.
 
-If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, an
-IPv6 delegation prefix will be allocated from a predefined IPv6 pool `delegate`
-whose name equals the attribute value.
+`Delegated-IPv6-Prefix-Pool` selects the configured IPv6 delegation
+pool whose name matches the attribute value. Without either IPv6 pool
+attribute, the `default-ipv6-pool` is used.
 
 :::{note}
-`Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
-RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
+`Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are
+defined in [RFC 6911](https://datatracker.ietf.org/doc/html/rfc6911).
+If your RADIUS server does not define these attributes, add them using
+the [Accel-PPP RFC 6911 dictionary].
 :::
 
-The client's interface can be put into a VRF context via a RADIUS Access-Accept
-packet, or changed via RADIUS CoA. `Accel-VRF-Name` is used for these
-purposes. This is a custom [ACCEL-PPP attribute]. Define it in your RADIUS
-server.
+A client session can be placed into a VRF by the RADIUS Access-Accept
+packet or moved to another VRF by a CoA request. Use the vendor-specific
+`Accel-VRF-Name` attribute and define it in your RADIUS server's
+dictionary. The target VRF must already exist on VyOS.
 
 ### Renaming clients interfaces by RADIUS
 
-If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
-renamed.
+If the RADIUS server sends the `NAS-Port-Id` attribute, VyOS renames
+the client session interface to that value.
 
 :::{note}
-The value of the attribute `NAS-Port-Id` must be less than 16
-characters, otherwise the interface won't be renamed.
+The value must be shorter than 16 characters. A value of 16 characters
+or longer prevents the session from being established.
 :::
 
 ## IPv6
@@ -278,19 +302,16 @@ Specifies IPv6 negotiation preference.
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> prefix \<address\> mask \<number-of-bits\>
 
-Use this command to set the IPv6 address pool from which an SSTP client will
-get an IPv6 prefix of your defined length (mask) to terminate the SSTP
-endpoint at their side. The mask length can be set between 48 and 128 bits
-long, the default value is 64.
+Define a named IPv6 address pool. The configured prefix is divided into
+client prefixes of the specified `mask` length, from 48 to 128 bits.
+The default mask length is 64.
 ```
 
 ```{cfgcmd} set vpn sstp client-ipv6-pool \<IPv6-POOL-NAME\> delegate \<address\> delegation-prefix \<number-of-bits\>
 
-Use this command to configure DHCPv6 Prefix Delegation (RFC3633) on SSTP. You
-will have to set your IPv6 pool and the length of the delegation prefix. From
-the defined IPv6 pool you will be handing out networks of the defined length
-(delegation-prefix). The length of the delegation prefix can be set between
-32 and 64 bits long.
+Define an IPv6 prefix pool for DHCPv6 Prefix Delegation (RFC 3633).
+The configured prefix is divided into delegated prefixes of the
+specified `delegation-prefix` length, from 32 to 64 bits.
 ```
 
 ```{cfgcmd} set vpn sstp default-ipv6-pool \<IPv6-POOL-NAME\>
@@ -315,19 +336,29 @@ Accept peer interface identifier. By default this is not defined.
 
 ```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
 
-Specifies if a fixed or random interface identifier is used for IPv6. The
-default is fixed.
+Configure the server-side IPv6 interface identifier. It can be a fixed
+identifier or generated randomly. The default is fixed.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
-```{cfgcmd} set vpn sstp ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set vpn sstp ppp-options ipv6-peer-interface-id \<random | ipv4-addr | calling-sid | x:x:x:x\>
 
-Specifies the peer interface identifier for IPv6. The default is fixed.
+Configure the peer-side IPv6 interface identifier. The default is
+fixed.
 * **random** - Random interface identifier for IPv6
-* **x:x:x:x** - Specify interface identifier for IPv6
-* **ipv4-addr** - Calculate interface identifier from IPv4 address.
-* **calling-sid** - Calculate interface identifier from calling-station-id.
+* **ipv4-addr** - Derive the identifier from the IPv4 address
+* **calling-sid** - Derive the identifier from the RADIUS Calling-Station-Id
+* **x:x:x:x** - Specify the interface identifier
+```
+
+When using `calling-sid`, configure a secret of 16 to 128 printable,
+non-whitespace ASCII characters:
+
+```{cfgcmd} set vpn sstp ppp-options ipv6-peer-interface-id-secret \<secret\>
+
+Secret used to generate the peer interface identifier when
+`ipv6-peer-interface-id` is `calling-sid`.
 ```
 
 
@@ -380,8 +411,8 @@ Rate limit the upload bandwidth for `<user>` to `<bandwidth>` kbit/s.
 
 ```{cfgcmd} set vpn sstp authentication protocols \<pap | chap | mschap | mschap-v2\>
 
-Require the peer to authenticate itself using one of the following protocols:
-pap, chap, mschap, mschap-v2.
+Select the protocols the server accepts for peer authentication. The
+default is to accept PAP, CHAP, MS-CHAP, and MS-CHAPv2.
 ```
 
 
@@ -434,9 +465,10 @@ Default value is **30**.
 
 ```{cfgcmd} set vpn sstp ppp-options lcp-echo-timeout
 
-Specifies timeout in seconds to wait for any peer activity. If this option is
-specified it turns on adaptive lcp echo functionality and "lcp-echo-failure"
-is not used. Default value is **0**.
+Set the number of seconds to wait for peer activity before disconnecting.
+A value greater than 0 enables adaptive LCP echo behavior, and
+`lcp-echo-failure` is then ignored. `lcp-echo-interval` must be enabled
+for echo requests to be sent. The default is 0 (disabled).
 ```
 
 ```{cfgcmd} set vpn sstp ppp-options min-mtu \<number\>
@@ -455,8 +487,7 @@ preference.
 * **prefer** - ask client for mppe, if it rejects don't fail. (Default value)
 * **deny** - deny mppe
 
-Default behavior - don't ask the client for mppe, but allow it if the client
-wants. Please note that RADIUS may override this option by MS-MPPE-Encryption-Policy
+RADIUS may override this option with the `MS-MPPE-Encryption-Policy`
 attribute.
 ```
 
@@ -533,12 +564,14 @@ Once you have setup your SSTP server there comes the time to do some basic
 testing. The Linux client used for testing is called [sstpc]. [sstpc] requires a
 PPP configuration/peer file.
 
-If you use a self-signed certificate, do not forget to install CA on the client side.
+For a private CA, install its certificate in the client's trust store or
+pass it to `sstpc` with `--ca-cert`.
 
 The following PPP configuration tests MSCHAP-v2:
 
 ```none
 $ cat /etc/ppp/peers/vyos
+name vyos-user
 usepeerdns
 #require-mppe
 #require-pap
@@ -555,35 +588,31 @@ nodeflate
 debug
 ```
 
-You can now "dial" the peer with the following command: `sstpc --log-level 4
---log-stderr --user vyos --password vyos vpn.example.com -- call vyos`.
-
-A connection attempt will be shown as:
+Store the client credentials in `/etc/ppp/chap-secrets` and restrict the
+file permissions to the root user. For example, add an entry in the
+format `client server secret allowed-IP`:
 
 ```none
-$ sstpc --log-level 4 --log-stderr --user vyos --password vyos vpn.example.com -- call vyos
+vyos-user * <client-password> *
+```
 
-Mar 22 13:29:12 sstpc[12344]: Resolved vpn.example.com to 192.0.2.1
-Mar 22 13:29:12 sstpc[12344]: Connected to vpn.example.com
-Mar 22 13:29:12 sstpc[12344]: Sending Connect-Request Message
-Mar 22 13:29:12 sstpc[12344]: SEND SSTP CRTL PKT(14)
-Mar 22 13:29:12 sstpc[12344]:   TYPE(1): CONNECT REQUEST, ATTR(1):
-Mar 22 13:29:12 sstpc[12344]:     ENCAP PROTO(1): 6
-Mar 22 13:29:12 sstpc[12344]: RECV SSTP CRTL PKT(48)
-Mar 22 13:29:12 sstpc[12344]:   TYPE(2): CONNECT ACK, ATTR(1):
-Mar 22 13:29:12 sstpc[12344]:     CRYPTO BIND REQ(4): 40
-Mar 22 13:29:12 sstpc[12344]: Started PPP Link Negotiation
-Mar 22 13:29:15 sstpc[12344]: Sending Connected Message
-Mar 22 13:29:15 sstpc[12344]: SEND SSTP CRTL PKT(112)
-Mar 22 13:29:15 sstpc[12344]:   TYPE(4): CONNECTED, ATTR(1):
-Mar 22 13:29:15 sstpc[12344]:     CRYPTO BIND(3): 104
-Mar 22 13:29:15 sstpc[12344]: Connection Established
+The client command can then use the peer configuration without placing
+the password in its process arguments:
 
+```none
+$ sudo chmod 600 /etc/ppp/chap-secrets
+$ sstpc --log-level 4 --log-stderr vpn.example.com -- call vyos
+```
+
+The hostname should match the server certificate. After connecting,
+the client interface should show an address from the configured pool
+and the configured gateway as its peer:
+
+```none
 $ ip addr show ppp0
-164: ppp0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1452 qdisc fq_codel state UNKNOWN group default qlen 3
+ppp0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1452
      link/ppp  promiscuity 0
-     inet 100.64.2.2 peer 100.64.1.1/32 scope global ppp0
-        valid_lft forever preferred_lft forever
+     inet 10.0.0.2 peer 10.0.0.1/32 scope global ppp0
 ```
 
 
@@ -632,7 +661,7 @@ sstp:
 ## Troubleshooting
 
 ```none
-vyos@vyos:~$sudo journalctl -u accel-ppp@sstp -b 0
+vyos@vyos:~$ sudo journalctl -u accel-ppp@sstp.service -b
 
 Feb 28 17:03:04 vyos accel-sstp[2492]: sstp: new connection from 192.168.10.100:49852
 Feb 28 17:03:04 vyos accel-sstp[2492]: sstp: starting
@@ -693,6 +722,8 @@ Feb 28 17:03:07 vyos accel-sstp[2492]: ppp0:test: rename interface to 'sstp0'
 Feb 28 17:03:07 vyos accel-sstp[2492]: sstp0:test: sstp: ppp: started
 ```
 
-[accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
-[dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+[accel-ppp attribute]:
+  https://github.com/accel-ppp/accel-ppp/tree/master/accel-pppd/radius/dict
+[Accel-PPP RFC 6911 dictionary]:
+  https://github.com/accel-ppp/accel-ppp/tree/master/accel-pppd/radius/dict
 [sstpc]: https://github.com/reliablehosting/sstp-client
