@@ -1,5 +1,5 @@
 ---
-lastproofread: '2025-12-12'
+lastproofread: '2026-09-30'
 ---
 
 (development)=
@@ -43,9 +43,11 @@ All submissions must adhere to these guidelines:
 - Each commit addresses a single issue or feature.
 - Each commit message references a [Phabricator](https://vyos.dev/) task ID
   (for example, `T1234`).
-- Each commit is associated with a username and email address
-  to identify the author (see [Configure your Git identity](configure-your-git-identity)).
-- Only submit bugfixes in packages other than <https://github.com/vyos/vyos-1x>.
+- Each commit is associated with a username and email address to identify
+  the author (see [Configure your Git identity](configure-your-git-identity)).
+- Implement new functionality in
+  [vyos-1x](https://github.com/vyos/vyos-1x). For other packages, limit
+  contributions to bug fixes.
 - Commits follow the [coding guidelines](coding-guidelines) outlined below.
 
 ### Determining package ownership
@@ -82,7 +84,8 @@ To fork a VyOS repository:
    - Single file: `git add myfile`
    - Directory: `git add somedir/*`
 
-5. Commit your changes with a meaningful headline and [Phabricator](https://vyos.dev/) reference:
+5. Commit your changes with a meaningful headline and a
+   [Phabricator](https://vyos.dev/) reference:
 
    `git commit`
 
@@ -91,7 +94,8 @@ To fork a VyOS repository:
    `git push`
 
 Alternatively, you can export commits as patches and send them to
-[maintainers@vyos.net](mailto:maintainers@vyos.net) or attach them directly to the [Phabricator](https://vyos.dev/) task:
+[maintainers@vyos.net](mailto:maintainers@vyos.net) or attach them directly
+to the [Phabricator](https://vyos.dev/) task:
 
 - Export last commit: `git format-patch`
 - Export last two commits: `git format-patch -2`
@@ -103,13 +107,14 @@ with `git log path/to/file.txt`.
 
 Every change must be associated with a task number (prefixed with **T**) and
 a component. If no bug report or feature request exists for your changes,
-create a [Phabricator](https://vyos.dev/) task first. Reference the task ID in your commit message:
+create a [Phabricator](https://vyos.dev/) task first. Reference the task ID
+in your commit message:
 
 - `ddclient: T1030: auto create runtime directories`
 - `Jenkins: add current Git commit ID to build description`
 
-If your pull request lacks a [Phabricator](https://vyos.dev/) reference, maintainers will request
-that you amend the commit message.
+If your pull request lacks a [Phabricator](https://vyos.dev/) reference,
+maintainers will request that you amend the commit message.
 
 ### Writing good commit messages
 
@@ -120,10 +125,9 @@ and [Chris Beams' guide](https://chris.beams.io/posts/git-commit/).
 Commit message format:
 
 1. **Summary line** (50 characters recommended, 80 maximum): Include the
-   component
-   prefix and [Phabricator](https://vyos.dev/) reference (for example, `snmp: T1111:` or
-   `ethernet: T2222:`). Concatenate multiple components with colons
-   (for example, `snmp: ethernet: T3333`).
+   component prefix and [Phabricator](https://vyos.dev/) reference (for
+   example, `snmp: T1111:` or `ethernet: T2222:`). Concatenate multiple
+   components with colons (for example, `snmp: ethernet: T3333`).
 2. **Blank line**: Separate the summary from the body.
    This blank line is critical.
 
@@ -155,6 +159,8 @@ Constraints:
   <https://github.com/vyos/vyos-1x>.
   New functionality must use the new XML/Python interface, not old-style
   templates (`node.def` files and Perl/Bash code).
+
+(coding-guidelines)=
 
 ## Coding guidelines
 
@@ -301,7 +307,7 @@ tag nodes) in the [vyos-1x](https://github.com/vyos/vyos-1x) repository.
 
 ### Other considerations: `vyos-configd`
 
-All scripts now run under the config daemon and must conform to these
+Configuration scripts that run under `vyos-configd` must conform to these
 requirements:
 
 1. The signature and first four lines of `get_config(...)` **must** be as
@@ -332,12 +338,11 @@ Schemas provide two benefits:
 - Complete grammar verification
 - Automatic validation against the schema
 
-The [build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
-script converts XML definitions to
-old-style templates and verifies them against the schema. A bad definition
-causes the package build to fail. While the XML format is verbose, no other
-format provides this level of verification. Specialized XML editors can help
-manage verbosity.
+The `build-command-templates` script converts XML definitions to old-style
+templates and verifies them against the schema. A bad definition causes the
+package build to fail. While the XML format is verbose, no other format
+provides this level of verification. Specialized XML editors can help manage
+verbosity.
 
 Example XML interface definition:
 
@@ -417,15 +422,14 @@ Example XML interface definition:
 </interfaceDefinition>
 ```
 
-XML definitions are purely declarative and contain no logic. All logic for
-generating config files, restarting services, and related tasks is implemented
-in configuration scripts.
+XML definitions declare the CLI structure; they do not contain configuration
+logic. Configuration scripts handle tasks such as generating service
+configuration and applying changes.
 
 ### Template Processors
 
-XML interface definition files use the `.xml.in` file extension (implemented
-in {vytask}`T1843`). These files use the GCC preprocessor to reduce code
-duplication in common areas:
+XML interface definition templates use the `.xml.in` file extension and the
+GCC preprocessor to reduce duplication in common areas:
 
 - VIF (including VIF-S and VIF-C)
 - Address configuration
@@ -434,18 +438,17 @@ duplication in common areas:
 
 Instead of repeating XML nodes, use include files with predefined features:
 
-- [IPv4, IPv6, and DHCP(v6)](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i)
-  address assignment.
-- [IPv4 and IPv6](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/interface/address-ipv4-ipv6.xml.i)
-  address assignment.
-- [VLAN (VIF)](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/accel-ppp/vlan.xml.i)
-  definition.
-- [MAC address](https://github.com/vyos/vyos-1x/blob/current/interface-definitions/include/firewall/mac-address.xml.i)
-  assignment.
+- Address assignment for IPv4, IPv6, and DHCPv6 in
+  `interface-definitions/include/interface/address-ipv4-ipv6-dhcp.xml.i`.
+- Address assignment for IPv4 and IPv6 in
+  `interface-definitions/include/interface/address-ipv4-ipv6.xml.i`.
+- VLAN definitions in `interface-definitions/include/accel-ppp/vlan.xml.i`.
+- MAC address definitions in
+  `interface-definitions/include/firewall/mac-address.xml.i`.
 
-The `.in` files are preprocessed and stored in the [interface-definitions](https://github.com/vyos/vyos-1x/tree/current/interface-definitions)
-folder. The [scripts/build-command-templates](https://github.com/vyos/vyos-1x/blob/current/scripts/build-command-templates)
-script then operates on this folder to generate all required CLI nodes.
+The `.xml.in` files are preprocessed into `build/interface-definitions`.
+The `scripts/build-command-templates` script then processes those files to
+generate the CLI nodes.
 
 Example preprocessor output:
 
@@ -533,17 +536,16 @@ Examples:
 
 ## C++ Backend Code
 
-The VyOS CLI parser combines bash, bash-completion helpers, and the C++ backend
-library [vyatta-cfg](https://github.com/vyos/vyatta-cfg). This section
-references common CLI commands and their C/C++ entry points:
+The VyOS CLI uses Bash completion helpers and the C++ configuration backend
+[`vyatta-cfg`](https://github.com/vyos/vyatta-cfg). Its source includes the
+configuration store and commit implementation:
 
 `set`:
 
-- <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L352>
-- <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/cstore/cstore.cpp#L2549>
+- `src/cstore/cstore.cpp`
 
 `commit`:
 
-- <https://github.com/vyos/vyatta-cfg/blob/0f42786a0b3/src/commit/commit-algorithm.cpp#L1252>
+- `src/commit/commit-algorithm.cpp`
 
 
