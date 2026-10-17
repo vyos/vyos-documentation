@@ -369,6 +369,141 @@ Uplink/core tracking.
 :var2: eth3
 ```
 
+(interface-naming)=
+
+## Interface naming
+
+VyOS owns the `ethN` and `wlanN` namespace: the kernel command line carries
+`net.ifnames=0`, which turns off the naming policy systemd would otherwise
+apply. Which physical port gets which name is therefore decided by VyOS, and
+that decision has to survive a reboot.
+
+### How names are assigned
+
+A name is bound to the **slot** the hardware sits in, not to its MAC address.
+The bindings live in `/config/interface-mapping.json`:
+
+```{code-block} none
+{
+  "version": 1,
+  "interfaces": {
+    "eth0": "ID_NET_NAME_SLOT=ens18",
+    "eth1": "ID_PATH=pci-0000:00:13.0"
+  }
+}
+```
+
+Each value is a single udev property. The most stable one the device can
+offer is used, in this order:
+
+1. `ID_NET_NAME_ONBOARD`
+2. `ID_NET_NAME_SLOT`
+3. `ID_NET_NAME_PATH`
+4. `ID_PATH`
+5. `ID_NET_NAME_MAC`
+
+A firmware slot index survives PCI renumbering, a bus path does not — adding a
+card can shift `pci-0000:00:13.0` but not the slot the firmware reports. The
+last entry is a fallback for paravirtual buses which offer no usable topology.
+
+The store is rendered into one file per interface under
+`/etc/systemd/network/`, named `10-vyos-<interface>.link`, so udev applies the
+name as the device appears and nothing ever observes a probe-order name.
+
+:::{note}
+The `.link` files are generated from the mapping file. Do not edit them,
+they are regenerated on every boot.
+:::
+
+A name stays reserved while its hardware is absent, so a NIC which appears
+later can never inherit the name — and with it the addresses — of an
+interface which is merely unplugged. Hardware the system has not seen before
+is named at boot in canonical hardware order and then recorded.
+
+What a boot decided can be inspected in `/run/vyos-net-name-resolve.json`.
+
+### Replacing a network card
+
+Nothing needs to be done. The slot is the identity, so a replacement card in
+the same slot is the same interface and keeps its configuration. This is the
+case which used to require updating a `hw-id` value by hand.
+
+### Adding a network card
+
+A card which the system has not seen before is given the next free name, and
+that name is appended after the ones already in use. Where the card sits has
+no say in it: a card in a slot between two existing ones does **not** take a
+name in the middle and push the others along, because every name already
+recorded is reserved. Renumbering would move interfaces onto cables they were
+never configured for.
+
+So on a system with `eth0` to `eth7`, a card added in any free slot becomes
+`eth8`, and keeps that name once it is recorded.
+
+This applies to a card plugged into a running system as well. It is named as
+soon as it appears, and a configuration node for it is added on the next
+boot, after which it can be configured like any other interface.
+
+### Renaming an interface
+
+Renaming an interface means changing both the configuration and the mapping
+file. Changing only one of them leaves the old name's settings orphaned and
+the new name unconfigured.
+
+To rename `eth1` to `eth23`:
+
+```{code-block} none
+vyos@vyos:~$ configure
+vyos@vyos# rename interfaces ethernet eth1 to interfaces ethernet eth23
+vyos@vyos# commit
+vyos@vyos# save
+vyos@vyos# exit
+```
+
+Then change the key in the mapping file, leaving its value untouched:
+
+```{code-block} none
+vyos@vyos:~$ sudo vi /config/interface-mapping.json
+```
+
+```{code-block} none
+{
+  "version": 1,
+  "interfaces": {
+    "eth0": "ID_NET_NAME_SLOT=ens18",
+    "eth23": "ID_PATH=pci-0000:00:13.0"
+  }
+}
+```
+
+The new name is applied on the next boot:
+
+```{code-block} none
+vyos@vyos:~$ reboot
+```
+
+:::{note}
+The mapping file belongs to the `vyattacfg` group and is edited with
+`sudo`. It lives on the config volume and therefore survives an image
+upgrade.
+:::
+
+### Migrating from hw-id
+
+`interfaces ethernet <interface> hw-id` and
+`interfaces wireless <interface> hw-id` no longer exist. A name is a property
+of the hardware, not of the configuration.
+
+Upgrading converts the existing bindings automatically: every `hw-id` is
+matched against the permanent address of the hardware actually present and
+the slot that card sits in is recorded. No interface changes its name across
+the upgrade, including systems whose names never followed slot order. A
+`hw-id` whose hardware is absent is skipped, as the configuration may well
+originate from another machine.
+
+Setting a MAC address is unrelated to naming and is still done with
+`set interfaces ethernet <interface> mac <address>`.
+
 ## Operation
 
 ```{opcmd} show interfaces ethernet
