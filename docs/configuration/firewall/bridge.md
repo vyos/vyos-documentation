@@ -1,5 +1,5 @@
 ---
-lastproofread: '2026-03-28'
+lastproofread: '2026-10-01'
 ---
 
 (firewall-configuration)=
@@ -8,8 +8,8 @@ lastproofread: '2026-03-28'
 
 ## Overview
 
-Learn more about bridge firewall configuration
-and related op-mode commands.
+This section describes bridge firewall configuration and related operational
+mode commands.
 
 The following commands are covered in this section:
 
@@ -36,44 +36,41 @@ of the general structure:
             + custom_name
 ```
 
-Traffic that is received by the router on an interface that is a member of a
-bridge is processed on the **Bridge Layer**. Before the bridge decision is
-made, all packets are analyzed at **Prerouting**. First filters can be applied
-here, and also rules for ignoring connection tracking system can be configured.
-The relevant configuration that acts in **prerouting** is:
+Traffic received on an interface that is a member of a bridge is processed at
+the bridge layer. Before the bridge makes a forwarding decision, packets pass
+through the **prerouting** chain. You can filter packets there and configure
+rules to bypass connection tracking. Configure this chain with:
 
 
 - `set firewall bridge prerouting filter ...`.
 
 
-For traffic that needs to be switched internally by the bridge, the base
-chain is **forward**, and its base command for filtering is `set firewall
-bridge forward filter ...`, which happens in stage 4, highlighted with red
-color.
+Traffic that the bridge forwards between its ports passes through the
+**forward** chain. Configure its filter with `set firewall bridge forward
+filter ...`.
 
 
 :::{figure} /_static/images/firewall-bridge-forward.webp
 :::
 
 
-For traffic destined to the router itself or that needs to be routed
-(assuming a layer3 bridge is configured), the base chain is **input**, and the
-base command is `set firewall bridge input filter ...` and the path is:
+Frames addressed to the bridge device pass through the bridge **input** chain.
+If the frame contains IP traffic destined for the router, it then continues
+through the IP firewall. Configure bridge input filtering with `set firewall
+bridge input filter ...`:
 
 
 :::{figure} /_static/images/firewall-bridge-input.webp
 :::
 
 
-If it's not dropped, then the packet is sent to **IP Layer**, and will be
-processed by the **IP Layer** firewall: IPv4 or IPv6 ruleset. Check once again
-the {doc}`general packet flow diagram</configuration/firewall/index>` if
-needed.
+See the {doc}`general packet flow diagram</configuration/firewall/index> for
+the complete packet path.
 
 
-For traffic that originates from the bridge itself, the base chain is
-**output**, and the base command is `set firewall bridge output filter
-...`, and the path is:
+Traffic originating from the router through a bridge device passes through the
+bridge **output** chain. Configure its filter with `set firewall bridge output
+filter ...`:
 
 
 :::{figure} /_static/images/firewall-bridge-output.webp
@@ -88,11 +85,11 @@ and the appropriate target must be defined in a base chain.
 ## Bridge Rules
 
 
-For firewall filtering, firewall rules need to be created. Each rule is
-numbered, has an action to apply if the rule is matched, and the ability
-to specify multiple matching criteria. Data packets go through the rules
-from 1 - 999999, so order is crucial. At the first match the action of the
-rule will be executed.
+Each firewall rule has a number, an action, and zero or more match criteria.
+Rules are evaluated in ascending numerical order. When a rule matches, its
+action determines what happens next: for example, `accept` and `drop` end
+processing, `continue` evaluates the next rule, and `jump` enters a custom
+chain.
 
 
 ### Actions
@@ -102,18 +99,20 @@ If a rule is defined, an action must also be defined for it. This tells the
 firewall what to do if all matching criteria in the rule are met.
 
 
-In firewall bridge rules, the action can be:
+Bridge firewall rules support the following actions; the available actions
+depend on the chain:
 
 
 - `accept`: accept the packet.
 - `continue`: continue parsing next rule.
 - `drop`: drop the packet.
 - `jump`: jump to another custom chain.
-- `return`: Return from the current chain and continue at the next rule
-  of the last chain.
-- `queue`: Enqueue packet to userspace.
-- `notrack`: ignore connection tracking system. This action is only
-  available in prerouting chain.
+- `return`: Return from the current chain and continue at the next rule in the
+  calling chain.
+- `queue`: Enqueue the packet to userspace.
+- `reject`: Reject the packet. This action is available only in prerouting.
+- `notrack`: Bypass connection tracking. This action is available only in
+  prerouting.
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
@@ -124,7 +123,7 @@ In firewall bridge rules, the action can be:
 ```{cfgcmd} set firewall bridge output filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | return]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
 ```
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
@@ -148,8 +147,8 @@ set to jump, then jump-target is also needed.
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> jump-target \<text\>
 ```
 
-If action is set to ``queue``, use next command to specify the queue
-target. Range is also supported:
+If action is set to `queue`, use the following command to specify the queue
+target. A range is also supported:
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> queue \<0-65535\>
 ```
@@ -165,8 +164,8 @@ target. Range is also supported:
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> queue \<0-65535\>
 
-Also, if action is set to ``queue``, use next command to specify the queue
-options. Possible options are ``bypass`` and ``fanout``:
+If action is set to `queue`, use the following commands to specify queue
+options. The available options are `bypass` and `fanout`:
 ```
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> queue-options bypass
@@ -217,23 +216,21 @@ not match any rule in its chain. For base chains, possible options for
 
 ```{cfgcmd} set firewall bridge name \<name\> default-action [accept | continue | drop | jump | reject | return]
 
-This sets the default action of the rule-set if a packet does not match
-any of the rules in that chain. If default-action is set to ``jump``, then
-``default-jump-target`` is also needed. Note that for base chains, default
-action can only be set to ``accept`` or ``drop``, while on custom chains
-more actions are available.
+This sets the default action when a packet does not match any rule in the
+custom chain. If `default-action` is set to `jump`, configure
+`default-jump-target`. Base chains support only `accept` and `drop`; custom
+chains also support `continue`, `jump`, `reject`, and `return`.
 ```
 
 ```{cfgcmd} set firewall bridge name \<name\> default-jump-target \<text\>
 
-To be used only when ``default-action`` is set to ``jump``. Use this
-command to specify jump target for default rule.
+Use this only when `default-action` is set to `jump`. It specifies the jump
+target for the default rule.
 ```
 :::{note}
 **Important note about default-actions:**
-If the default action for any base chain is not defined, then the default
-action is set to **accept** for that chain. For custom chains, if the
-default action is not defined, then the default-action is set to **drop**.
+If you do not configure a default action, base chains default to **accept**
+and custom chains default to **drop**.
 :::
 
 
@@ -293,7 +290,8 @@ the specified chain.
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options level [emerg | alert | crit | err | warn | notice | info | debug]
 
-Define log-level. Only applicable if rule log is enabled.
+Define the log level. This option applies only when logging is enabled for the
+rule.
 ```
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options group \<0-65535\>
@@ -310,8 +308,8 @@ Define log-level. Only applicable if rule log is enabled.
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options group \<0-65535\>
 
-Define the log group to send messages to. Only applicable if rule log is
-enabled.
+Define the log group to which messages are sent. This option applies only
+when logging is enabled for the rule.
 ```
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options snapshot-length \<0-9000\>
@@ -328,8 +326,9 @@ enabled.
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options snapshot-length \<0-9000\>
 
-Define length of packet payload to include in netlink message. Only
-applicable if rule log is enabled and the log group is defined.
+Define the number of packet payload bytes to include in the netlink message.
+This option applies only when rule logging is enabled and a log group is
+configured.
 ```
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> log-options queue-threshold \<0-65535\>
@@ -346,9 +345,9 @@ applicable if rule log is enabled and the log group is defined.
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> log-options queue-threshold \<0-65535\>
 
-Define the number of packets to queue inside the kernel before sending them
-to userspace. Only applicable if rule log is enabled and the log group is
-defined.
+Define the number of packets queued in the kernel before they are sent to
+userspace. This option applies only when rule logging is enabled and a log
+group is configured.
 ```
 
 ### Firewall Description
@@ -409,8 +408,9 @@ to {doc}`IPv4</configuration/firewall/ipv4>` and
 {doc}`IPv6</configuration/firewall/ipv6>` matching criteria for more details.
 
 
-Since bridges operate at layer 2, both matchers for IPv4 and IPv6 are
-supported in bridge firewall configuration. Same applies to firewall groups.
+Although bridges operate at layer 2, bridge firewall rules can match IPv4 and
+IPv6 packet fields. Firewall groups can also be used where supported by the
+rule's match criteria.
 
 
 Same specific matching criteria that can be used in bridge firewall are
@@ -488,9 +488,8 @@ supported.
 ### Packet Modifications
 
 
-Starting from **VyOS-1.5-rolling-202410060007**, the firewall can modify
-packets before they are sent out. This feature provides more flexibility in
-packet handling.
+Bridge firewall rules can modify packet fields in the supported chains, as
+shown in the following commands.
 
 ```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule \<1-999999\> set dscp \<0-63\>
 
@@ -504,7 +503,7 @@ Set a specific packet mark value.
 
 ```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule \<1-999999\> set tcp-mss \<500-1460\>
 
-Set the TCP-MSS (TCP maximum segment size) for the connection.
+Set the TCP maximum segment size (MSS) on matching packets.
 ```
 
 ```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule \<1-999999\> set ttl \<0-255\>
@@ -514,7 +513,7 @@ Set the TTL (Time to Live) value.
 
 ```{cfgcmd} set firewall bridge [prerouting | forward | output] filter rule \<1-999999\> set hop-limit \<0-255\>
 
-Set hop limit value.
+Set the hop limit value.
 ```
 
 ```{cfgcmd} set firewall bridge [forward | output] filter rule \<1-999999\> set connection-mark \<0-2147483647\>
@@ -524,30 +523,25 @@ Set connection mark value.
 
 ### Use IP firewall
 
-By default, for switched traffic, only the rules defined under `set firewall
-bridge` are applied. There are two global-options that can be configured in
-order to force deeper analysis of the packet on the IP layer. These options
-are:
+By default, switched traffic is filtered by the bridge firewall. To also apply
+the IPv4 or IPv6 firewall to bridged traffic, configure the corresponding
+global option:
 
 ```{cfgcmd} set firewall global-options apply-to-bridged-traffic ipv4
 
-This command enables the IPv4 firewall for bridged traffic. If this option
-is used, packets are also parsed by rules defined in ``set firewall ipv4
-...``
+Apply IPv4 firewall rules to bridged traffic.
 ```
 
 ```{cfgcmd} set firewall global-options apply-to-bridged-traffic ipv6
 
-This command enables the IPv6 firewall for bridged traffic. If this option
-is used, packets are also parsed by rules defined in ``set firewall ipv6
-...``
+Apply IPv6 firewall rules to bridged traffic.
 ```
 
 ## Operation-mode Firewall
 ### Rule-set overview
 
-In this section you can find all useful firewall op-mode commands.
-General commands for firewall configuration, counter and statistics:
+Use the following operational mode commands to inspect firewall rules,
+counters, and statistics:
 
 ```{opcmd} show firewall
 ```
@@ -597,9 +591,8 @@ And, to print only bridge firewall information:
 
 ```{opcmd} show log firewall bridge name \<name\> rule \<rule\>
 
-Show the logs of all firewall; show all bridge firewall logs; show all logs
-for forward hook; show all logs for forward hook and priority filter; show
-all logs for particular custom chain; show logs for specific Rule-Set.
+These commands show firewall logs, including all bridge firewall logs, logs
+for the forward chain, logs for a custom chain, or logs for a specific rule.
 ```
 
 ### Example
@@ -673,6 +666,7 @@ vyos@BRI:~$
 
 Inspect logs:
 
+% stop_vyoslinter
 ```none
 vyos@BRI:~$ show log firewall bridge
 Dec 05 14:37:47 kernel: [bri-NAM-TEST-10-C]IN=eth1 OUT=eth2 ARP HTYPE=1 PTYPE=0x0800 OPCODE=1 MACSRC=50:00:00:04:00:00 IPSRC=10.11.11.101 MACDST=00:00:00:00:00:00 IPDST=10.11.11.102
@@ -683,3 +677,4 @@ vyos@BRI:~$ show log firewall bridge forward filter
 Dec 05 14:42:22 kernel: [bri-FWD-filter-default-D]IN=eth2 OUT=eth1 MAC=33:33:00:00:00:16:50:00:00:06:00:00:86:dd SRC=0000:0000:0000:0000:0000:0000:0000:0000 DST=ff02:0000:0000:0000:0000:0000:0000:0016 LEN=96 TC=0 HOPLIMIT=1 FLOWLBL=0 PROTO=ICMPv6 TYPE=143 CODE=0
 Dec 05 14:42:22 kernel: [bri-FWD-filter-default-D]IN=eth2 OUT=eth1 MAC=33:33:00:00:00:16:50:00:00:06:00:00:86:dd SRC=0000:0000:0000:0000:0000:0000:0000:0000 DST=ff02:0000:0000:0000:0000:0000:0000:0016 LEN=96 TC=0 HOPLIMIT=1 FLOWLBL=0 PROTO=ICMPv6 TYPE=143 CODE=0
 ```
+% start_vyoslinter
