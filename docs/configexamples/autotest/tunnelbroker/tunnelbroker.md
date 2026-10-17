@@ -63,6 +63,7 @@ Setup the IPv6 default route to the tunnel interface
 
 Now you should be able to ping a public IPv6 Address
 
+% stop_vyoslinter
 ```none
 vyos@vyos-wan:~$ ping 2001:470:20::2 count 4
 PING 2001:470:20::2(2001:470:20::2) 56 data bytes
@@ -75,6 +76,7 @@ PING 2001:470:20::2(2001:470:20::2) 56 data bytes
 4 packets transmitted, 4 received, 0% packet loss, time 2999ms
 rtt min/avg/max/mdev = 33.802/40.920/43.924/4.139 ms
 ```
+% start_vyoslinter
 
 Assuming the pings are successful, you need to add some DNS servers.
 Some options:
@@ -86,6 +88,7 @@ Some options:
 
 You should now be able to ping something by IPv6 DNS name:
 
+% stop_vyoslinter
 ```none
 vyos@vyos-wan:~$ ping tunnelbroker.net count 4
 PING tunnelbroker.net(tunnelbroker.net (2001:470:0:63::2)) 56 data bytes
@@ -98,6 +101,7 @@ PING tunnelbroker.net(tunnelbroker.net (2001:470:0:63::2)) 56 data bytes
 4 packets transmitted, 4 received, 0% packet loss, time 3002ms
 rtt min/avg/max/mdev = 176.707/206.638/285.128/45.457 ms
 ```
+% start_vyoslinter
 
 
 ### LAN Configuration
@@ -144,6 +148,7 @@ This accomplishes a few things:
 
 Now the Client is able to ping a public IPv6 address
 
+% stop_vyoslinter
 ```none
 vyos@client:~$ ping 2001:470:20::2 count 4
 PING 2001:470:20::2(2001:470:20::2) 56 data bytes
@@ -156,6 +161,7 @@ PING 2001:470:20::2(2001:470:20::2) 56 data bytes
 4 packets transmitted, 4 received, 0% packet loss, time 3005ms
 rtt min/avg/max/mdev = 32.128/40.688/47.107/5.403 ms
 ```
+% start_vyoslinter
 
 
 ## Multiple LAN/DMZ Setup
@@ -165,17 +171,20 @@ Use the `Routed /48` information. This allows you to assign a
 different /64 to every interface, LAN, or even device. Or you could break your
 network into smaller chunks like /56 or /60.
 
+% stop_vyoslinter
 The format of these addresses:
 - `2001:470:xxxx::/48`: The whole subnet. xxxx should come from Tunnelbroker.
 - `2001:470:xxxx:1::/64`: A subnet suitable for a LAN
 - `2001:470:xxxx:2::/64`: Another subnet
 - `2001:470:xxxx:ffff::/64`: The last usable /64 subnet.
+% start_vyoslinter
 
 In the above examples, 1,2,ffff are all chosen by you. You can use 1-ffff
 (1-65535).
 
 So, when your LAN is eth1, your DMZ is eth2, your cameras are on eth3, etc:
 
+% stop_vyoslinter
 ```none
 set interfaces ethernet eth1 address '2001:470:xxxx:1::1/64'
 set service router-advert interface eth1 name-server '2001:470:20::2'
@@ -189,6 +198,7 @@ set interfaces ethernet eth3 address '2001:470:xxxx:3::1/64'
 set service router-advert interface eth3 name-server '2001:470:20::2'
 set service router-advert interface eth3 prefix 2001:470:xxxx:3::/64
 ```
+% start_vyoslinter
 
 Please note, 'autonomous-flag' and 'on-link-flag' are enabled by default,
 'valid-lifetime' and 'preferred-lifetime' are set to default values of
