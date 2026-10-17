@@ -108,7 +108,7 @@ set protocols ospf area 0 network '192.168.1.0/24'
 set protocols ospf interface eth1 passive
 set protocols ospf interface eth2 passive
 set protocols ospf interface vti1 network 'point-to-point'
-set protocols ospf parameters router-id '2.2.2.2'
+set protocols ospf parameters router-id '192.0.2.2'
 set protocols static route 0.0.0.0/0 next-hop 10.0.1.1
 set vpn ipsec authentication psk AUTH-PSK id '10.0.1.2'
 set vpn ipsec authentication psk AUTH-PSK id '10.0.2.2'
@@ -229,7 +229,7 @@ set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet
 set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet1/3 enable yes
 set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet1/3 passive yes
 set network virtual-router default protocol ospf area 0.0.0.0 interface ethernet1/3 link-type broadcast
-set network virtual-router default protocol ospf router-id 1.1.1.1
+set network virtual-router default protocol ospf router-id 192.0.2.1
 set network virtual-router default interface [ ethernet1/1 ethernet1/2 ethernet1/3 tunnel.1 ]
 ```
 
@@ -264,7 +264,7 @@ OSPF Neighbor Status:
 vyos@vyos:~$ show ip ospf neighbor
 
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
-1.1.1.1           1 Full/-          23m56s            37.948s 10.100.100.2    vti1:10.100.100.1                    0     0     0
+192.0.2.1         1 Full/-          23m56s            37.948s 10.100.100.2    vti1:10.100.100.1                    0     0     0
 ```
 
 Routing Table:
@@ -345,7 +345,7 @@ admin@PA-VM> show routing protocol ospf neighbor
   local address binding:         0.0.0.0
   type:                          dynamic
   status:                        full
-  neighbor router ID:            2.2.2.2
+  neighbor router ID:            192.0.2.2
   area id:                       0.0.0.0
   neighbor priority:             1
   lifetime remain:               32
