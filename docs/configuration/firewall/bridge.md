@@ -114,6 +114,15 @@ In firewall bridge rules, the action can be:
 - `queue`: Enqueue packet to userspace.
 - `notrack`: ignore connection tracking system. This action is only
   available in prerouting chain.
+- `reject`: reject the packet. This action is only available in the
+  prerouting chain.
+
+:::{note}
+Bridge forward, input, output, and custom-chain rules do not support
+``reject``. No bridge rule supports ``offload`` or ``synproxy``.
+The ``notrack`` and ``reject`` rule actions are limited to bridge
+prerouting. A custom chain can use ``reject`` as its default action.
+:::
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
@@ -124,7 +133,7 @@ In firewall bridge rules, the action can be:
 ```{cfgcmd} set firewall bridge output filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | return]
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
 ```
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
@@ -354,11 +363,15 @@ defined.
 ### Firewall Description
 
 
-You can define a description for reference for every custom chain.
+You can define a description for reference for base filter chains and
+custom chains.
+
+```{cfgcmd} set firewall bridge [forward | input | output | prerouting] filter description \<text\>
+```
 
 ```{cfgcmd} set firewall bridge name \<name\> description \<text\>
 
-Provide a rule-set description to a custom firewall chain.
+Provide a description for a base filter chain or custom firewall chain.
 ```
 
 ```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> description \<text\>
@@ -399,6 +412,17 @@ useful to disable the rule instead of removing it.
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> disable
 
 Command for disabling a rule but keep it in the configuration.
+```
+
+### Rule Hit Tracking
+
+```{cfgcmd} set firewall bridge [forward | input | output | prerouting] filter rule \<1-999999\> last-used
+```
+
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> last-used
+
+Add a marker to the rule that records when it was last hit. The timestamp is
+shown as ``Last Used`` in detailed firewall output.
 ```
 
 ### Matching criteria
@@ -450,19 +474,19 @@ Match based on the Ethernet type of the packet.
 Match based on the Ethernet type of the packet when it is VLAN tagged.
 ```
 
-```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan id \<0-4096\>
+```{cfgcmd} set firewall bridge forward filter rule \<1-999999\> vlan id \<0-4095\>
 ```
 
-```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan id \<0-4096\>
+```{cfgcmd} set firewall bridge input filter rule \<1-999999\> vlan id \<0-4095\>
 ```
 
-```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan id \<0-4096\>
+```{cfgcmd} set firewall bridge output filter rule \<1-999999\> vlan id \<0-4095\>
 ```
 
-```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan id \<0-4096\>
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> vlan id \<0-4095\>
 ```
 
-```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan id \<0-4096\>
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan id \<0-4095\>
 
 Match based on VLAN identifier. Range is also supported.
 ```
@@ -484,6 +508,35 @@ Match based on VLAN identifier. Range is also supported.
 Match based on VLAN priority (Priority Code Point - PCP). Range is also
 supported.
 ```
+
+```{cfgcmd} set firewall bridge [forward | input | output | prerouting] filter rule \<1-999999\> [source | destination] mac-address \<mac-address\>
+```
+
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] mac-address \<mac-address\>
+
+Match the source or destination MAC address. Prefix the value with ``!`` to
+invert the match.
+```
+
+```{cfgcmd} set firewall bridge [forward | input | output | prerouting] filter rule \<1-999999\> [source | destination] mac-address-mask \<mac-address\>
+
+Apply a mask to the MAC address matcher.
+```
+
+```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] mac-address-mask \<mac-address\>
+```
+
+Bridge rules can also match IPv4 and IPv6 addresses, networks, ports, IP
+protocols, packet marks, interfaces, and the corresponding firewall groups.
+Connection state and connection-mark matching are available on forward,
+input, output, and custom-chain rules, but not on prerouting rules.
+
+Forward and custom-chain rules can match inbound and outbound interfaces.
+Input and prerouting rules support only inbound-interface matching, while
+output rules support only outbound-interface matching. The available group
+keys are ``ipv4-address-group``, ``ipv6-address-group``,
+``ipv4-network-group``, ``ipv6-network-group``, ``mac-group``, and
+``port-group``.
 
 ### Packet Modifications
 
@@ -563,16 +616,68 @@ And, to print only bridge firewall information:
 ```{opcmd} show firewall bridge
 ```
 
-```{opcmd} show firewall bridge forward filter
+```{opcmd} show firewall bridge [forward | input | output | prerouting] filter
 ```
 
-```{opcmd} show firewall bridge forward filter rule \<rule\>
+```{opcmd} show firewall bridge [forward | input | output | prerouting] filter rule \<rule\>
 ```
 
 ```{opcmd} show firewall bridge name \<name\>
 ```
 
 ```{opcmd} show firewall bridge name \<name\> rule \<rule\>
+```
+
+Append ``detail`` to a bridge ruleset, custom-chain, or rule command to
+display its list view. For example:
+
+```{opcmd} show firewall bridge prerouting filter detail
+
+:::{code-block} none
+vyos@vyos:~$ show firewall bridge prerouting filter detail
+Ruleset Information
+
+---------------------------------
+bridge Firewall "prerouting filter"
+
+ Rule        | 10
+ Description | Documentation example
+ Action      | accept
+ Protocol    | all
+ Packets     | 0
+ Bytes       | 0
+ Last Used   | N/A
+ Conditions  | ether type arp  accept
+
+ Rule        | default
+ Description |
+ Action      | accept
+ Protocol    | all
+ Packets     | 0
+ Bytes       | 0
+ Last Used   | N/A
+ Conditions  | accept comment "PRE-filter default-action accept"
+:::
+```
+
+```{opcmd} show firewall bridge name \<name\> rule \<rule\> detail
+
+:::{code-block} none
+vyos@vyos:~$ show firewall bridge name DOC-BRIDGE rule 10 detail
+Rule Information
+
+---------------------------------
+bridge Firewall "name DOC-BRIDGE"
+
+ Rule        | 10
+ Description | Documentation example
+ Action      | return
+ Protocol    | all
+ Packets     | 0
+ Bytes       | 0
+ Last Used   | N/A
+ Conditions  |
+:::
 ```
 
 ### Show Firewall log
