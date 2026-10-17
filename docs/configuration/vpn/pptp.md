@@ -1,23 +1,33 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (pptp)=
 
-# PPTP-Server
+# PPTP server
 
-The Point-to-Point Tunneling Protocol (PPTP) has been implemented in VyOS only
-for backwards compatibility. PPTP has many well known security issues and you
-should use one of the many other new VPN implementations.
+VyOS implements the Point-to-Point Tunneling Protocol (PPTP) through
+[Accel-PPP]. PPTP is retained for backward compatibility. Microsoft cautions
+that PPTP using unencapsulated MS-CHAPv2 is potentially nonsecure
+([security guidance][pptp-security]). Avoid deploying PPTP for new services or
+relying on it to protect sensitive traffic. Use a modern VPN such as WireGuard,
+IPsec, or OpenVPN instead.
 
 ## Configuring PPTP Server
 
 ```none
 set vpn pptp remote-access authentication mode local
-set vpn pptp remote-access authentication local-users username test password 'test'
+set vpn pptp remote-access authentication local-users username <user> password '<strong-password>'
 set vpn pptp remote-access client-ip-pool PPTP-POOL range 192.168.255.2-192.168.255.254
 set vpn pptp remote-access default-pool 'PPTP-POOL'
 set vpn pptp remote-access outside-address 192.0.2.2
 set vpn pptp remote-access gateway-address 192.168.255.1
 ```
 
-```{cfgcmd} set vpn pptp remote-access authentication mode \<local | radius\>
+Replace `<user>` with the login name and `<strong-password>` with a unique
+password before using the example.
+
+```{cfgcmd} set vpn pptp remote-access authentication mode \<local | radius | noauth\>
 
 Set authentication backend. The configured authentication backend is used
 for all queries.
@@ -29,16 +39,14 @@ server.
 
 ```{cfgcmd} set vpn pptp remote-access authentication local-users username \<user\> password \<pass\>
 
-Create `<user>` for local authentication on this system. The users password
-will be set to `<pass>`.
+Create `<user>` for local authentication on this system. The user's password
+is set to `<pass>`.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access client-ip-pool \<POOL-NAME\> range \<x.x.x.x-x.x.x.x | x.x.x.x/x\>
 
-Use this command to define the first IP address of a pool of
-addresses to be given to PPTP clients. If notation ``x.x.x.x-x.x.x.x``,
-it must be within a /24 subnet. If notation ``x.x.x.x/x`` is
-used there is possibility to set host/netmask.
+Define addresses assigned to PPTP clients. An address range must be within a
+single /24 subnet; a prefix can be used instead.
 ```
 
 ```{cfgcmd} set vpn pptp remote-access default-pool \<POOL-NAME\>
@@ -52,14 +60,18 @@ Specifies single `<gateway>` IP address to be used as local address of PPP
 interfaces.
 ```
 
+```{cfgcmd} set vpn pptp remote-access outside-address \<address\>
+
+Set the local IPv4 address on which the PPTP server listens for clients.
+The address must be configured on the VyOS router.
+```
+
 
 ## Configuring RADIUS authentication
 
-To enable RADIUS based authentication, the authentication mode needs to be
-changed within the configuration. Previous settings like the local users, still
-exists within the configuration, however they are not used if the mode has been
-changed from local to radius. Once changed back to local, it will use all local
-accounts again.
+To use RADIUS, set the authentication mode to `radius`. Local user settings
+remain in the configuration, but are not used in this mode. Switching back to
+`local` enables local authentication again.
 
 ```none
 set vpn pptp remote-access authentication mode radius
@@ -71,9 +83,7 @@ Configure RADIUS `<server>` and its required shared `<secret>` for
 communicating with the RADIUS server.
 ```
 
-Since the RADIUS server would be a single point of failure, multiple RADIUS
-servers can be setup and will be used subsequentially.
-For example:
+Configure more than one RADIUS server for redundancy. For example:
 
 ```none
 set vpn pptp remote-access authentication radius server 10.0.0.1 key 'foo'
@@ -81,15 +91,15 @@ set vpn pptp remote-access authentication radius server 10.0.0.2 key 'foo'
 ```
 
 :::{note}
-Some RADIUS severs use an access control list which allows or denies
-queries, make sure to add your VyOS router to the allowed client list.
+Some RADIUS servers use an access control list to allow or deny queries.
+Add the VyOS router to the allowed client list.
 :::
 
 ### RADIUS source address
 
-If you are using OSPF as IGP, always the closest interface connected to the
-RADIUS server is used. You can bind all outgoing RADIUS requests
-to a single source IP e.g. the loopback interface.
+Without this option, the system selects a source address according to the
+route to the RADIUS server. Set this option to bind outgoing requests to a
+specific local IPv4 address, such as a loopback address.
 
 ```{cfgcmd} set vpn pptp remote-access authentication radius source-address \<address\>
 
@@ -97,8 +107,8 @@ Source IPv4 address used in all RADIUS server queries.
 ```
 
 :::{note}
-Some RADIUS severs use an access control list which allows or denies
-queries, make sure to add your VyOS router to the allowed client list.
+Some RADIUS servers use an access control list to allow or deny queries.
+Add the VyOS router to the allowed client list.
 :::
 
 ### RADIUS advanced options
@@ -188,38 +198,36 @@ Specifies the vendor dictionary, dictionary needs to be in
 /usr/share/accel-ppp/radius.
 ```
 
-Received RADIUS attributes have a higher priority than parameters defined within
-the CLI configuration, refer to the explanation below.
+RADIUS can override local IP address or pool selection when a response includes
+one of the address attributes described below.
 
-### Allocation clients ip addresses by RADIUS
+### Allocate client IP addresses with RADIUS
 
-If the RADIUS server sends the attribute `Framed-IP-Address` then this IP
-address will be allocated to the client and the option `default-pool` within the CLI
-config is being ignored.
+If RADIUS returns `Framed-IP-Address`, VyOS assigns that address to the
+client and ignores the configured `default-pool`.
 
-If the RADIUS server sends the attribute `Framed-Pool`, IP address will be allocated
-from a predefined IP pool whose name equals the attribute value.
+If RADIUS returns `Framed-Pool`, VyOS assigns an address from the configured
+client pool with the matching name.
 
-If the RADIUS server sends the attribute `Stateful-IPv6-Address-Pool`, IPv6 address
-will be allocated from a predefined IPv6 pool `prefix` whose name equals the attribute value.
+If RADIUS returns `Stateful-IPv6-Address-Pool`, VyOS assigns an IPv6 address
+from the matching configured `prefix` pool.
 
-If the RADIUS server sends the attribute `Delegated-IPv6-Prefix-Pool`, IPv6
-delegation prefix will be allocated from a predefined IPv6 pool `delegate`
-whose name equals the attribute value.
+If RADIUS returns `Delegated-IPv6-Prefix-Pool`, VyOS delegates a prefix from
+the matching configured `delegate` pool.
 
 :::{note}
 `Stateful-IPv6-Address-Pool` and `Delegated-IPv6-Prefix-Pool` are defined in
-RFC6911. If they are not defined in your RADIUS server, add new [dictionary].
+{rfc}`6911`. Add these attributes to the RADIUS server dictionary if needed.
 :::
 
-User interface can be put to VRF context via RADIUS Access-Accept packet, or change
-it via RADIUS CoA. `Accel-VRF-Name` is used from these purposes. It is custom [ACCEL-PPP attribute].
-Define it in your RADIUS server.
+RADIUS can place the client interface in a VRF using the custom
+[`Accel-VRF-Name` attribute][ACCEL-PPP attribute] in an Access-Accept packet.
+The same attribute can change the VRF through RADIUS CoA. Define it in the
+RADIUS server dictionary.
 
-### Renaming clients interfaces by RADIUS
+### Rename client interfaces with RADIUS
 
-If the RADIUS server uses the attribute `NAS-Port-Id`, ppp tunnels will be
-renamed.
+If RADIUS returns `NAS-Port-Id`, the PPP tunnel can be renamed to that value.
 
 :::{note}
 The value of the attribute `NAS-Port-Id` must be less than 16
@@ -282,15 +290,20 @@ By default is fixed.
 * **x:x:x:x** - Specify interface identifier for IPv6
 ```
 
-```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-interface-id \<random | x:x:x:x\>
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id \<random | calling-sid | ipv4-addr | x:x:x:x\>
 
-Specifies peer interface identifier for IPv6. By default is fixed.
+Specifies the peer interface identifier for IPv6. The default is fixed.
 * **random** - Random interface identifier for IPv6
 * **x:x:x:x** - Specify interface identifier for IPv6
 * **ipv4-addr** - Calculate interface identifier from IPv4 address.
 * **calling-sid** - Calculate interface identifier from calling-station-id.
 ```
 
+```{cfgcmd} set vpn pptp remote-access ppp-options ipv6-peer-interface-id-secret \<secret\>
+
+Set the secret used when `ipv6-peer-interface-id` is `calling-sid`. It must
+contain 16 to 128 printable ASCII characters, with no whitespace.
+```
 
 ## Scripting
 
@@ -448,12 +461,12 @@ Acceptable rate of connections (e.g. 1/min, 60/sec)
 Timeout in seconds
 ```
 
-```{cfgcmd} set vpn pptp remote-access mtu
+```{cfgcmd} set vpn pptp remote-access mtu \<128-16384\>
 
 Maximum Transmission Unit (MTU) (default: **1436**)
 ```
 
-```{cfgcmd} set vpn pptp remote-access max-concurrent-sessions
+```{cfgcmd} set vpn pptp remote-access max-concurrent-sessions \<0-65535\>
 
 Maximum number of concurrent session start attempts
 ```
@@ -496,6 +509,11 @@ vyos@vyos:~$ show pptp-server sessions
  pptp0  | test     | 10.0.0.2 |     |        | 192.168.10.100 |            | active | 00:01:26 | 6.9 KiB  | 220 B
 ```
 
+```{opcmd} show pptp-server statistics
+
+Show PPTP server resource use and session counts.
+```
+
 ```none
 vyos@vyos:~$ show pptp-server statistics
  uptime: 0.00:04:52
@@ -526,7 +544,7 @@ pptp:
 ## Troubleshooting
 
 ```none
-vyos@vyos:~$sudo journalctl -u accel-ppp@pptp -b 0
+vyos@vyos:~$ sudo journalctl -u accel-ppp@pptp.service -b
 
 Feb 29 14:58:57 vyos accel-pptp[4629]: pptp: new connection from 192.168.10.100
 Feb 29 14:58:57 vyos accel-pptp[4629]: :: recv [PPTP Start-Ctrl-Conn-Request <Version 1> <Framing 1> <Bearer 1> <Max-Chan 0>]
@@ -590,5 +608,7 @@ Feb 29 14:59:00 vyos accel-pptp[4629]: pptp0:test: pptp: ppp started
 ```
 
 [accel-ppp]: https://accel-ppp.org/
+% stop_vyoslinter
 [accel-ppp attribute]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.accel
-[dictionary]: https://github.com/accel-ppp/accel-ppp/blob/master/accel-pppd/radius/dict/dictionary.rfc6911
+[pptp-security]: https://support.microsoft.com/en-us/servicing/os/windows/2017/01/implementing-peap-ms-chap-v2-authentication-for-microsoft-pptp-vpns
+% start_vyoslinter
