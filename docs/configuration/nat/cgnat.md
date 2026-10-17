@@ -1,123 +1,90 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (cgnat)=
 
 # CGNAT
 
-{abbr}`CGNAT (Carrier-Grade Network Address Translation)` , also known as
-Large-Scale NAT (LSN), is a type of network address translation used by
-Internet Service Providers (ISPs) to enable multiple private IP addresses to
-share a single public IP address. This technique helps to conserve the limited
-IPv4 address space.
-The 100.64.0.0/10 address block is reserved for use in carrier-grade NAT
+{abbr}`CGNAT (Carrier-Grade Network Address Translation)`, also known as
+Large-Scale NAT (LSN), lets an Internet service provider share a pool of
+public IPv4 addresses among many subscribers. The shared address block
+`100.64.0.0/10` is reserved for this purpose by {rfc}`6598`.
 
 ## Overview
 
-CGNAT works by placing a NAT device within the ISP's network. This device
-translates private IP addresses from customer networks to a limited pool of
-public IP addresses assigned to the ISP. This allows many customers to share a
-smaller number of public IP addresses.
+VyOS CGNAT uses deterministic source NAT mappings. Each internal IPv4 address
+is assigned an external IPv4 address and a port range. That mapping is shared
+across TCP, UDP, and ICMP. Other IP protocols use the address mapping without
+a port range. The configured per-user port limit determines the size of each
+subscriber's port block.
 
-Not all {rfc}`6888` requirements are implemented in CGNAT.
+VyOS supports several {rfc}`6888` requirements, including paired address
+mapping, multiple external address ranges, and a per-subscriber port limit.
+The implementation does not support every RFC requirement; Port Control
+Protocol (PCP), for example, is not implemented.
 
-Implemented the following {rfc}`6888` requirements:
+External and internal pools accept IPv4 addresses, prefixes, or address
+ranges. External pools can contain multiple ranges, optionally ordered with
+sequence numbers. VyOS expands pool addresses while building mappings, so
+very large ranges can require substantial memory and configuration time.
 
-- REQ 2: A CGN must have a default "IP address pooling" behavior of "Paired".
-  CGN must use the same external IP address mapping for all sessions associated
-  with the same internal IP address, be they TCP, UDP, ICMP, something else,
-  or a mix of different protocols.
-- REQ 3: The CGN function should not have any limitations on the size or the
-  contiguity of the external address pool.
-- REQ 4: A CGN must support limiting the number of external ports (or,
-  equivalently, "identifiers" for ICMP) that are assigned per subscriber
+## Port allocation
 
-### Advantages of CGNAT
-
-- **IPv4 Address Conservation**: CGNAT helps mitigate the exhaustion of IPv4 addresses by allowing multiple customers to share a single public IP address.
-- **Scalability**: ISPs can support more customers without needing a proportional increase in public IP addresses.
-- **Cost-Effective**: Reduces the cost associated with acquiring additional public IPv4 addresses.
-
-### Considerations
-
-- **Traceability Issues**: Since multiple users share the same public IP address, tracking individual users for security and legal purposes can be challenging.
-- **Performance Overheads**: The translation process can introduce latency and potential performance bottlenecks, especially under high load.
-- **Application Compatibility**: Some applications and protocols may not work well with CGNAT due to their reliance on unique public IP addresses.
-- **Port Allocation Limits**: Each public IP address has a limited number of ports, which can be exhausted, affecting the ability to establish new connections.
-- **Port Control Protocol**: PCP is not implemented.
-
-## Port calculation
-
-When implementing CGNAT, ensuring that there are enough ports allocated per subscriber is critical. Below is a summary based on RFC 6888.
-
-1. **Total Ports Available**:
-
-   - Total Ports: 65536 (0 to 65535)
-   - Reserved Ports: Assume 1024 ports are reserved for well-known services and administrative purposes.
-   - Usable Ports: 65536 - 1024 = 64512
-
-2. **Estimate Ports Needed per Subscriber**:
-
-   - Example: A household might need 1000 ports to ensure smooth operation for multiple devices and applications.
-
-3. **Calculate the Number of Subscribers per Public IP**:
-
-   - Usable Ports / Ports per Subscriber
-   - 64512 / 1000 ≈ 64 subscribers per public IP
+The default external port range is `1024-65535`, which contains 64,512 ports.
+The default per-user limit is 2,000 ports, allowing up to 32 subscriber
+addresses to share one external address (`64,512 / 2,000`, rounded down).
+With a configured limit of 1,000 ports, up to 64 subscriber addresses can
+share one external address. Actual capacity depends on the configured port
+range and per-user limit.
 
 ## Configuration
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> external-port-range \<port-range\>
 
-Set an external port-range for the external pool, the default range is
-1024-65535. Multiple entries can be added to the same pool.
+Set the external port range for this pool. The default is 1024-65535.
 ```
-
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> per-user-limit port \<num\>
 
-Set external source port limits that will be allocated to each subscriber
-individually. The default value is 2000.
+Set the number of external ports assigned to each subscriber. The default
+is 2000.
 ```
-
 
 ```{cfgcmd} set nat cgnat pool external \<pool-name\> range [address | address range | network] [seq]
 
-Set the range of external IP addresses for the CGNAT pool.
-The sequence is optional; if set, a lower value means higher priority.
+Set an external IPv4 address, address range, or prefix. Multiple entries can
+be added to the same pool. The optional sequence orders ranges; lower values
+have higher priority.
 ```
-
 
 ```{cfgcmd} set nat cgnat pool internal \<pool-name\> range [address range | network]
 
-Set the range of internal IP addresses for the CGNAT pool.
+Set an internal IPv4 address, address range, or prefix. Multiple entries can
+be added to the same pool.
 ```
-
 
 ```{cfgcmd} set nat cgnat rule \<num\> source pool \<internal-pool-name\>
 
-Set the rule for the source pool.
+Set the internal pool used by this rule.
 ```
-
 
 ```{cfgcmd} set nat cgnat rule \<num\> translation pool \<external-pool-name\>
 
-Set the rule for the translation pool.
+Set the external pool used by this rule.
 ```
-
 
 ```{cfgcmd} set nat cgnat log-allocation
 
-Enable logging of IP address and ports allocations.
+Log the internal address, external address, and allocated port range.
 ```
 
-
-## Configuration Examples
+## Configuration examples
 
 ### Single external address
 
-Example of setting up a basic CGNAT configuration:
-In the following example, we define an external pool named `ext-1` with one
-external IP address.
-
-Each subscriber will be allocated a maximum of 2000 ports from the external pool.
+This example maps the internal `100.64.0.0/28` range to one external address.
+Each subscriber receives up to 2,000 ports.
 
 ```none
 set nat cgnat pool external ext1 external-port-range '1024-65535'
@@ -128,8 +95,11 @@ set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
 
-
 ### Multiple external addresses
+
+This example defines two discontiguous external address ranges. The four
+external addresses and an 8,000-port limit provide capacity for up to 32
+internal addresses.
 
 ```none
 set nat cgnat pool external ext1 external-port-range '1024-65535'
@@ -141,8 +111,10 @@ set nat cgnat rule 10 source pool 'int1'
 set nat cgnat rule 10 translation pool 'ext1'
 ```
 
+### External address sequence
 
-### External address sequences
+Lower sequence values are assigned first. This example maps the first four
+internal addresses to `203.0.113.1` and the next four to `192.0.2.1`.
 
 ```none
 set nat cgnat pool external ext-01 per-user-limit port '16000'
@@ -153,24 +125,22 @@ set nat cgnat rule 10 source pool 'int-01'
 set nat cgnat rule 10 translation pool 'ext-01'
 ```
 
-
-## Operation commands
+## Operational commands
 
 ```{opcmd} show nat cgnat allocation
 
-Show address and port allocations
+Show address and port allocations.
 ```
 
 ```{opcmd} show nat cgnat allocation external-address \<address\>
 
-Show all allocations for an external IP address
+Show allocations that use the specified external address.
 ```
 
 ```{opcmd} show nat cgnat allocation internal-address \<address\>
 
-Show all allocations for an internal IP address
+Show the allocation for the specified internal address.
 ```
-
 
 ### Show CGNAT allocations
 
@@ -193,8 +163,7 @@ Internal IP    External IP    Port range
 100.64.0.4     192.0.2.1      1024-17023
 ```
 
-
-## Further Reading
+## Further reading
 
 - {rfc}`6598` - IANA-Reserved IPv4 Prefix for Shared Address Space
 - {rfc}`6888` - Requirements for CGNAT
