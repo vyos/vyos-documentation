@@ -112,7 +112,7 @@ set protocols ospf area 0 network '192.168.1.0/24'
 set protocols ospf interface eth1 passive
 set protocols ospf interface eth2 passive
 set protocols ospf interface vti1 network 'point-to-point'
-set protocols ospf parameters router-id '2.2.2.2'
+set protocols ospf parameters router-id '192.0.2.2'
 set protocols static route 0.0.0.0/0 next-hop 10.0.1.1
 set vpn ipsec authentication psk AUTH-PSK id '10.0.1.2'
 set vpn ipsec authentication psk AUTH-PSK id '10.0.2.2'
@@ -168,7 +168,7 @@ crypto ipsec profile IPsec-profile
 !
 !
 interface Loopback0
- ip address 1.1.1.1 255.255.255.255
+ ip address 192.0.2.1 255.255.255.255
 !
 interface Tunnel10
  ip address 10.100.100.2 255.255.255.252
@@ -197,7 +197,7 @@ interface GigabitEthernet0/2
  media-type rj45
 !
 router ospf 1
- router-id 1.1.1.1
+ router-id 192.0.2.1
  passive-interface GigabitEthernet0/1
  passive-interface GigabitEthernet0/2
  network 10.100.100.0 0.0.0.3 area 0
@@ -240,7 +240,7 @@ OSPF Neighbor Status:
 vyos@vyos:~$ show ip ospf neighbor
 
 Neighbor ID     Pri State           Up Time         Dead Time Address         Interface                        RXmtL RqstL DBsmL
-1.1.1.1           1 Full/-          1h29m37s          39.317s 10.100.100.2    vti1:10.100.100.1                    0     0     0
+192.0.2.1         1 Full/-          1h29m37s          39.317s 10.100.100.2    vti1:10.100.100.1                    0     0     0
 ```
 
 Routing Table:
@@ -343,7 +343,7 @@ OSPF Neighbor Status:
 Cisco# show ip ospf neighbor
 
 Neighbor ID     Pri   State           Dead Time   Address         Interface
-2.2.2.2           0   FULL/  -        00:00:35    10.100.100.1    Tunnel10
+192.0.2.2         0   FULL/  -        00:00:35    10.100.100.1    Tunnel10
 ```
 
 Routing Table:
@@ -363,8 +363,8 @@ Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
 Gateway of last resort is 10.0.2.1 to network 0.0.0.0
 
 S*    0.0.0.0/0 [1/0] via 10.0.2.1
-      1.0.0.0/32 is subnetted, 1 subnets
-C        1.1.1.1 is directly connected, Loopback0
+      192.0.2.0/24 is subnetted, 1 subnets
+C        192.0.2.1 is directly connected, Loopback0
       10.0.0.0/8 is variably subnetted, 4 subnets, 2 masks
 C        10.0.2.0/30 is directly connected, GigabitEthernet0/0
 L        10.0.2.2/32 is directly connected, GigabitEthernet0/0
