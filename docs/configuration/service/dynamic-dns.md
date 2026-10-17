@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-10-01'
 myst:
   html_meta:
     description: |
@@ -118,8 +119,8 @@ set service dns dynamic name VyOS-DNS server ns1.example.com
 
 The value must be an FQDN. Required for protocols `cloudflare`,
 `digitalocean`, `godaddy`, `hetzner`, `gandi`, `nfsn`, and `nsupdate`.
-Also accepted for `dnsexit2` and `zoneedit1`. Not supported for any
-other protocol.
+Also accepted for `dnsexit2`, `porkbun`, and `zoneedit1`. Not supported
+for any other protocol.
 ```
 
 Example:
@@ -135,8 +136,8 @@ DNS records.**
 
 The TTL sets how long DNS resolvers may cache the record before it must
 be re-fetched. Supported only for protocols `cloudflare`, `dnsexit2`,
-`gandi`, `godaddy`, `hetzner`, `nfsn`, and `nsupdate`. When unset, no
-TTL is included in the update.
+`gandi`, `godaddy`, `hetzner`, `nfsn`, `nsupdate`, and `porkbun`. When
+unset, ddclient or the provider uses its default TTL.
 ```
 
 Example:
@@ -155,9 +156,13 @@ set service dns dynamic name VyOS-DNS ttl 300
 
 The default is `ipv4`.
 
-`both` is supported only for protocols `cloudflare`, `digitalocean`,
-`dnsexit2`, `duckdns`, `dyndns2`, `easydns`, `freedns`, `hetzner`,
-`infomaniak`, and `njalla`.
+`both` is supported only for protocols `cloudflare`, `ddns.fm`,
+`digitalocean`, `dnsexit2`, `domeneshop`, `duckdns`, `dyndns2`,
+`easydns`, `freedns`, `gandi`, `godaddy`, `he.net`, `hetzner`,
+`infomaniak`, `inwx`, `mythicdyn`, `njalla`, `noip`, `nsupdate`,
+`porkbun`, and `regfishde`. For `dyndns2`, support for `both` is
+limited to the server endpoints `app.luadns.com`, `dynv6.com`,
+`members.dyndns.org`, and `update.dedyn.io`.
 ```
 
 Example:
@@ -221,7 +226,7 @@ Example:
 set service dns dynamic name VyOS-DNS address web skip 'Current IP Address:'
 ```
 
-### Direct DNS update (RFC 2136)
+### Direct DNS update key configuration
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> key \<filename\>
 
@@ -238,7 +243,7 @@ Example:
 set service dns dynamic name VyOS-DNS key /config/auth/my.key
 ```
 
-### Hosted (provider-based) DNS update
+### Hosted (provider-based) DNS update example
 
 ```{cfgcmd} set service dns dynamic name \<service-name\> username \<username\>
 
@@ -246,8 +251,9 @@ set service dns dynamic name VyOS-DNS key /config/auth/my.key
 dynamic DNS provider.**
 
 Required for most protocols. Not required for `1984`, `cloudflare`,
-`cloudns`, `digitalocean`, `dnsexit2`, `duckdns`, `freemyip`, `hetzner`,
-`keysystems`, `njalla`, `nsupdate`, and `regfishde`.
+`cloudns`, `ddns.fm`, `digitalocean`, `dnsexit2`, `duckdns`,
+`freemyip`, `gandi`, `he.net`, `hetzner`, `keysystems`, `njalla`,
+`nsupdate`, and `regfishde`.
 ```
 
 Example:
@@ -272,7 +278,7 @@ set service dns dynamic name dedyn password mypassword
 
 ## Examples
 
-### Direct DNS update ([RFC 2136](https://datatracker.ietf.org/doc/html/rfc2136))
+### Direct DNS update example (RFC 2136)
 
 The following example registers the DNS record `example.vyos.io` on the
 DNS server `ns1.vyos.io`, keeps it updated with the current IP address
