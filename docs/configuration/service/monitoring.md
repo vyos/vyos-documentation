@@ -85,7 +85,8 @@ set service monitoring telegraf vrf mgmt
 
 ### Agent Configuration
 
-This section covers configuration commands which affect the overall agent behaviour.
+This section covers configuration commands that affect the overall
+agent behaviour.
 
 ```{cfgcmd} set service monitoring telegraf agent collection-jitter \<interval\>
 
@@ -956,12 +957,19 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-p
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 timeout 3
 ```
 
-[azure-data-explorer]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
 [blackbox_exporter]: <https://github.com/prometheus/blackbox_exporter>
 [frr_exporter]: <https://github.com/tynany/frr_exporter>
-[influxdb]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2>
-[loki]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/loki>
 [node_exporter]: <https://github.com/prometheus/node_exporter>
-[prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
-[splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
 [telegraf]: <https://github.com/influxdata/telegraf>
+% stop_vyoslinter
+[azure-data-explorer]:
+  <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
+[influxdb]:
+  <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2>
+[loki]:
+  <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/loki>
+[prometheus-client]:
+  <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
+[splunk]:
+  <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
+% start_vyoslinter
