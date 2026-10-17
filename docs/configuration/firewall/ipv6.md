@@ -1,5 +1,5 @@
 ---
-lastproofread: '2026-04-01'
+lastproofread: '2026-09-30'
 ---
 
 (firewall-ipv6-configuration)=
@@ -16,7 +16,8 @@ This section describes the following configuration commands:
 ```{cfgcmd} set firewall ipv6 ...
 ```
 
-To learn about the general traffic flow in VyOS firewalls, see {doc}`Firewall </configuration/firewall/index>`.
+To learn about the general traffic flow in VyOS firewalls, see
+{doc}`Firewall </configuration/firewall/index>`.
 
 ```none
 - set firewall
@@ -470,6 +471,7 @@ set firewall ipv6 name FOO rule 100 source address 2001:db8::202
 ```{cfgcmd} set firewall ipv6 output filter rule \<1-999999\> destination address-mask [address]
 ```
 
+% stop_vyoslinter
 ```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> destination address-mask [address]
 
 Apply an arbitrary netmask to mask addresses and match only a specific
@@ -491,6 +493,7 @@ set firewall ipv6 forward filter rule 200 source group address-group WEBSERVERS
 set firewall ipv6 forward filter rule 200 source address-mask ::ffff:ffff:ffff:ffff
 :::
 ```
+% start_vyoslinter
 
 ```{cfgcmd} set firewall ipv6 forward filter rule \<1-999999\> fib lookup [source-address | destination-address]
 ```
@@ -1518,7 +1521,7 @@ IPV6-WAN_IN-20
 ```{opcmd} show firewall ipv6 [forward | input | output] filter
 ```
 
-```{opcmd} show firewall ipv6 ipv6-name \<name\>
+```{opcmd} show firewall ipv6 name \<name\>
 
 This command will give an overview of a single rule-set.
 
@@ -1545,7 +1548,7 @@ vyos@vyos:~$
 ```{opcmd} show firewall ipv6 name \<name\> rule \<1-999999\>
 ```
 
-```{opcmd} show firewall ipv6 ipv6-name \<name\> rule \<1-999999\>
+```{opcmd} show firewall ipv6 name \<name\> rule \<1-999999\>
 
 This command will give an overview of a rule in a single rule-set
 ```
