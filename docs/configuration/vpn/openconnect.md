@@ -1,330 +1,255 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (vpn-openconnect)=
 
 # OpenConnect
 
-```{todo}
-Convert raw command blocks in this file to cfgcmd/opcmd
-directives for command coverage tracking.
-```
-
-OpenConnect-compatible server feature has been available since Equuleus (1.3).
-Openconnect VPN supports SSL connection and offers full network access. SSL VPN
-network extension connects the end-user system to the corporate network with
-access controls based only on network layer information, such as destination IP
-address and port number. So, it provides safe communication for all types of
-device traffic across public networks and private networks, also encrypts the
-traffic with SSL protocol.
-
-The remote user will use the openconnect client to connect to the router and
-will receive an IP address from a VPN pool, allowing full access to the
-network.
+VyOS provides an OpenConnect-compatible VPN server based on ocserv. It accepts
+connections from OpenConnect and compatible Cisco AnyConnect clients over TLS;
+ocserv can also use DTLS over UDP for the data channel. The VPN assigns client
+addresses from a configured pool and can push routes and DNS settings. Routes,
+firewall rules, and any required routing or NAT determine which networks
+clients can reach. VyOS pushes a default route when no `push-route` is
+configured.
 
 ## Configuration
 
-### SSL Certificates
+### Server certificate
 
-We need to generate the certificate which authenticates users who attempt to
-access the network resource through the SSL VPN tunnels. The following commands
-will create a self signed certificates and will be stored in configuration:
+The server certificate authenticates the VPN server to clients. Create a CA
+and sign a server certificate in configuration mode:
 
-```none
-run generate pki ca install <CA name>
-run generate pki certificate sign <CA name> install <Server name>
+```{opcmd} generate pki ca install \<name\>
+
+Create a CA and store it in the VyOS PKI configuration.
 ```
 
-We can also create the certificates using Certbot which is an easy-to-use
-client that fetches a certificate from Let's Encrypt an open certificate
-authority launched by the EFF, Mozilla, and others and deploys it to a web
-server.
+```{opcmd} generate pki certificate sign \<ca-name\> install \<certificate-name\>
 
-```none
-sudo certbot certonly --standalone --preferred-challenges http -d <domain name>
+Create and sign the OpenConnect server certificate with the CA.
 ```
 
+Follow the prompts. Use a DNS name clients will connect to as the certificate
+common name and include it as a Subject Alternative Name when prompted. Commit
+the generated certificates before referencing them in the OpenConnect
+configuration. For a publicly trusted certificate, see the ACME guidance in
+{doc}`the PKI documentation </configuration/pki/index>`.
 
-### Server Configuration
+### Password authentication
 
-```none
-set vpn openconnect authentication local-users username <user> password <pass>
-set vpn openconnect authentication mode <local password|radius|certificate>
-set vpn openconnect network-settings client-ip-settings subnet <subnet>
-set vpn openconnect network-settings name-server <address>
-set vpn openconnect network-settings name-server <address>
-set vpn openconnect ssl ca-certificate <pki-ca-name>
-set vpn openconnect ssl certificate <pki-cert-name>
-set vpn openconnect ssl passphrase <pki-password>
+Configure at least one local user, select local password authentication, set
+the client IPv4 pool, and reference the server certificate:
+
+```{cfgcmd} set vpn openconnect authentication local-users username \<user\> password \<password\>
+
+Create a local user and set its password.
 ```
 
+```{cfgcmd} set vpn openconnect authentication mode local \<password | password-otp | otp\>
 
-### 2FA OTP support
-
-Instead of password only authentication, 2FA password
-authentication + OTP key can be used. Alternatively, OTP authentication only,
-without a password, can be used.
-To do this, an OTP configuration must be added to the configuration above:
-
-```none
-set vpn openconnect authentication mode local <password-otp|otp>
-set vpn openconnect authentication local-users username <user> otp <key>
-set vpn openconnect authentication local-users username <user> interval <interval (optional)>
-set vpn openconnect authentication local-users username <user> otp-length <otp-length (optional)>
-set vpn openconnect authentication local-users username <user> token-type <token-type (optional)>
+Select local password, password-plus-OTP, or OTP-only authentication.
 ```
 
-For generating an OTP key in VyOS, you can use the CLI command
-(operational mode):
+```{cfgcmd} set vpn openconnect network-settings client-ip-settings subnet \<ipv4-prefix\>
 
-```none
-generate openconnect username <user> otp-key hotp-time
+Set the IPv4 subnet used to assign addresses to VPN clients.
 ```
 
+```{cfgcmd} set vpn openconnect ssl certificate \<certificate-name\>
 
-### User Certificate Authentication
-
-You can configure users to be authenticated by certificate by setting
-the authentication mode to certificate, and defining what field (by OID)
-in the certificate will be used to identify the username. Two pre-defined
-
-shortcuts for Common Name (OID 2.5.4.3) and User ID
-(OID 0.9.2342.19200300.100.1.1) have been provided as cn or uid.
-
-Otherwise a specific OID value must be provided.
-
-The user's certificate must be signed by the certificate authority
-defined in the configuration for it to be validated for authentication.
-
-```none
-set vpn openconnect authentication mode certificate
-set vpn openconnect authentication mode certificate user-identifier-field cn
-set vpn openconnect ssl ca-certificate <cert>
+Select the server certificate from the VyOS PKI configuration.
 ```
 
+The `network-settings` node is required. You can also configure one or more
+DNS servers and routes to push to clients:
+
+```{cfgcmd} set vpn openconnect network-settings name-server \<address\>
+
+Set one DNS server address to provide to clients. Repeat this command to add
+multiple servers.
+```
+
+```{cfgcmd} set vpn openconnect network-settings push-route \<prefix\>
+
+Add a route to push to clients. Repeat this command to add multiple routes.
+Use `0.0.0.0/0` to direct all client traffic through the VPN.
+```
+
+To use a CA-signed client certificate for authentication, also configure the
+trusted CA under `vpn openconnect ssl ca-certificate`. This setting validates
+client certificates; it is not needed merely to configure the server
+certificate.
+
+### OTP authentication
+
+Local users can authenticate with an OTP alone or with a password followed by
+an OTP. Generate a key for a user with:
+
+```{opcmd} generate openconnect username \<user\> otp-key hotp-time
+```
+
+The command prints a secret key, an `otpauth` URI, and a QR code. Treat these
+values as credentials and deliver them to the user securely. The command also
+prints the configuration command; the OTP key is stored in hexadecimal:
+
+```{cfgcmd} set vpn openconnect authentication local-users username \<user\> otp key \<hex-key\>
+
+Store the user's OTP key in hexadecimal.
+```
+
+For password plus OTP, set the authentication mode to `password-otp`; for OTP
+only, use `otp`:
+
+```{cfgcmd} set vpn openconnect authentication mode local password-otp
+
+Select password plus OTP authentication.
+```
+
+```{cfgcmd} set vpn openconnect authentication mode local otp
+
+Select OTP-only authentication.
+```
+
+Optional per-user settings are under the `otp` node. The defaults are a
+30-second interval, six digits, and time-based OTP (`hotp-time`). The
+alternative `hotp-event` token type is event-based.
+
+```{cfgcmd} set vpn openconnect authentication local-users username \<user\> otp interval \<seconds\>
+
+Set the time interval for time-based tokens.
+```
+
+```{cfgcmd} set vpn openconnect authentication local-users username \<user\> otp otp-length \<6-8\>
+
+Set the number of digits in each token.
+```
+
+```{cfgcmd} set vpn openconnect authentication local-users username \<user\> otp token-type \<hotp-time | hotp-event\>
+
+Select time-based or event-based OTP.
+```
+
+For time-based tokens, keep the router and authenticator clocks synchronized.
+Use the following command to view configured token information. The `full`,
+`key-b32`, `key-hex`,
+`qrcode`, and `uri` options expose the OTP secret; restrict access to this
+command accordingly.
+
+```{opcmd} show openconnect-server user \<user\> otp \<full | key-b32 | key-hex | qrcode | uri\>
+```
+
+### Client certificate authentication
+
+Certificate authentication requires a CA certificate in the server
+configuration. The client certificate must be signed by that CA and contain a
+user identifier in its subject. VyOS recognizes Common Name (`cn`), User ID
+(`uid`), or a custom object identifier (OID):
+
+```{cfgcmd} set vpn openconnect authentication mode certificate user-identifier-field \<cn | uid | x.x.xx.xxx\>
+
+Select the certificate field used to identify the user.
+```
+
+```{cfgcmd} set vpn openconnect ssl ca-certificate \<ca-name\>
+
+Select a CA that will validate client certificates. Repeat to add CA
+certificates to the trusted chain.
+```
+
+The `cn` shortcut selects Common Name; `uid` selects User ID. A custom OID can
+be set in dotted-decimal form.
+
+% stop_vyoslinter
+Common Name uses OID `2.5.4.3`; User ID uses OID
+`0.9.2342.19200300.100.1.1`.
+% start_vyoslinter
+
+```{cfgcmd} set vpn openconnect http-security-headers
+
+Enable HTTP security headers in server responses.
+```
+
+### RADIUS authentication and accounting
+
+RADIUS accounting requires RADIUS authentication and at least one RADIUS
+server. Configure authentication and accounting server details as needed:
+
+```{cfgcmd} set vpn openconnect authentication mode radius
+
+Select RADIUS authentication.
+```
+
+```{cfgcmd} set vpn openconnect authentication radius server \<address\> key \<shared-secret\>
+
+Add a RADIUS authentication server.
+```
+
+```{cfgcmd} set vpn openconnect accounting mode radius
+
+Enable RADIUS accounting. VyOS requires RADIUS authentication when accounting
+is enabled.
+```
+
+```{cfgcmd} set vpn openconnect accounting radius server \<address\> key \<shared-secret\>
+
+Add a RADIUS accounting server.
+```
+
+The accounting port defaults to UDP 1813. The server address and shared secret
+must match the RADIUS server configuration.
+
+### Identity-based configuration
+
+ocserv can apply a limited set of INI-format options per user or group. VyOS
+exposes this third-party ocserv feature as identity-based configuration and
+warns that it may affect daemon operation. Keep the directory and default file
+under `/config/auth` so they persist across image upgrades. Group-based
+configuration requires RADIUS authentication. See the [ocserv manual](
+https://ocserv.gitlab.io/www/manual.html#per-user-and-per-group-configuration)
+for the options supported in per-user and per-group files.
+
+For example, prepare persistent paths and configure per-user files:
+
+```bash
+sudo mkdir -p /config/auth/ocserv/config-per-user
+sudo touch /config/auth/ocserv/default-user.conf
+```
+
+```{cfgcmd} set vpn openconnect authentication identity-based-config mode \<user | group\>
+
+Choose username-based or RADIUS group-based configuration.
+```
+
+```{cfgcmd} set vpn openconnect authentication identity-based-config directory \<path\>
+
+Set the directory for per-user or per-group configuration files. The path must
+be under `/config/auth`.
+```
+
+```{cfgcmd} set vpn openconnect authentication identity-based-config default-config \<path\>
+
+Set the fallback file path. It must be under `/config/auth`.
+```
+
+Create a file named for each username or group name, as appropriate for the
+selected mode, in the configured directory. Use the default file when no
+matching per-user or per-group file is present. User and group names are
+matched case-sensitively.
 
 ## Verification
 
+View active sessions with:
+
+```{opcmd} show openconnect-server sessions
+```
+
+Example output:
+
 ```none
-vyos@vyos:~$ sh openconnect-server sessions
 interface    username    ip             remote IP    RX       TX         state      uptime
------------  ----------  -------------  -----------  -------  ---------  ---------  --------
-sslvpn0      tst         172.20.20.198  192.168.6.1  0 bytes  152 bytes  connected  3s
-```
-
-:::{note}
-It is compatible with Cisco (R) AnyConnect (R) clients.
-:::
-
-## Example
-
-### SSL Certificates generation
-
-Follow the instructions to generate CA cert (in configuration mode):
-
-```none
-vyos@vyos# run generate pki ca install ca-ocserv
-Enter private key type: [rsa, dsa, ec] (Default: rsa)
-Enter private key bits: (Default: 2048)
-Enter country code: (Default: GB) US
-Enter state: (Default: Some-State) Delaware
-Enter locality: (Default: Some-City) Mycity
-Enter organization name: (Default: VyOS) MyORG
-Enter common name: (Default: vyos.io) oc-ca
-Enter how many days certificate will be valid: (Default: 1825) 3650
-Note: If you plan to use the generated key on this router, do not encrypt the private key.
-Do you want to encrypt the private key with a passphrase? [y/N] N
-2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
-[edit]
-```
-
-Follow the instructions to generate server cert (in configuration mode):
-
-```none
-vyos@vyos# run generate pki certificate sign ca-ocserv install srv-ocserv
-Do you already have a certificate request? [y/N] N
-Enter private key type: [rsa, dsa, ec] (Default: rsa)
-Enter private key bits: (Default: 2048)
-Enter country code: (Default: GB) US
-Enter state: (Default: Some-State) Delaware
-Enter locality: (Default: Some-City) Mycity
-Enter organization name: (Default: VyOS) MyORG
-Enter common name: (Default: vyos.io) oc-srv
-Do you want to configure Subject Alternative Names? [y/N] N
-Enter how many days certificate will be valid: (Default: 365) 1830
-Enter certificate type: (client, server) (Default: server)
-Note: If you plan to use the generated key on this router, do not encrypt the private key.
-Do you want to encrypt the private key with a passphrase? [y/N] N
-2 value(s) installed. Use "compare" to see the pending changes, and "commit" to apply.
-[edit]
-```
-
-Each of the install commands should be applied to the configuration and committed
-before using under the openconnect configuration:
-
-```none
-vyos@vyos# commit
-[edit]
-vyos@vyos# save
-Saving configuration to '/config/config.boot'...
-Done
-[edit]
-```
-
-
-### Openconnect Configuration
-
-Simple setup with one user added and password authentication:
-
-```none
-set vpn openconnect authentication local-users username tst password 'OC_bad_Secret'
-set vpn openconnect authentication mode local password
-set vpn openconnect network-settings client-ip-settings subnet '172.20.20.0/24'
-set vpn openconnect network-settings name-server '10.1.1.1'
-set vpn openconnect network-settings name-server '10.1.1.2'
-set vpn openconnect ssl ca-certificate 'ca-ocserv'
-set vpn openconnect ssl certificate 'srv-ocserv'
-```
-
-To enable the HTTP security headers in the configuration file, use the command:
-
-```none
-set vpn openconnect http-security-headers
-```
-
-
-### Adding a 2FA with an OTP-key
-
-First the OTP keys must be generated and sent to the user and to the
-configuration:
-
-```none
-vyos@vyos:~$ generate openconnect username tst otp-key hotp-time
-# You can share it with the user, he just needs to scan the QR in his OTP app
-# username:  tst
-# OTP KEY:  5PA4SGYTQSGOBO3H3EQSSNCUNZAYAPH2
-# OTP URL:  otpauth://totp/tst@vyos?secret=5PA4SGYTQSGOBO3H3EQSSNCUNZAYAPH2&digits=6&period=30
-█████████████████████████████████████████
-█████████████████████████████████████████
-████ ▄▄▄▄▄ █▀ ██▄▀ ▄█▄▀▀▄▄▄▄██ ▄▄▄▄▄ ████
-████ █   █ █▀ █▄▄▀▀▀▄█  ▄▄▀▄ █ █   █ ████
-████ █▄▄▄█ █▀█▀▄▄▀  ▄▀ █▀ ▀▄██ █▄▄▄█ ████
-████▄▄▄▄▄▄▄█▄█▄▀ ▀▄█ ▀ ▀ ▀ █▄█▄▄▄▄▄▄▄████
-████  ▄▄▄▀▄▄  ▄███▀▄▀█▄██▀ ▀▄ ▀▄█ ▀ ▀████
-████ ▀▀ ▀ ▄█▄ ▀ ▀▄ ▄█▀ ▄█ ▄▀▀▄██    █████
-████▄ █▄▀▀▄█▀ ▀█▄█▄▄▄▄ ▄▀█▀▀█ ▀ ▄ ▀█▀████
-█████  ▀█▀▄▄ █ ▀▄▄  ▄█▄    ▀█▀▀ █▀ ▄█████
-████▀██▀█▄▄ ▀▀▀▀█▄▀ ▀█▄▄▀▀▀ ▀ ▀█▄██▀▀████
-████▄ ▄ ▄▀▄██▀█ ▄ ▀▄██ ▄▄  ▀▀▄█▄██ ▄█████
-████▀▀ ▄▀ ▄ ▀█▀█▀█  █▀█▄▄▀█▀█▄██▄▄█ ▀████
-████ █ ▀█▄▄█▄ ▀ ▄▄▀▀  ▀ █▄█▀████ █▀ ▀████
-████▄██▄██▄█▀ ▄▀ ▄▄▀▄  ▄▀█ ▄ ▄▄▄ ▀█▄ ████
-████ ▄▄▄▄▄ █▄  ▀█▄█ ▄ ▀ ▄ ▄  █▄█ ▄▀▄█████
-████ █   █ █ ▀▄██▄▄▀█▄▀▄██▄▀  ▄  ▀██▀████
-████ █▄▄▄█ █ ██▀▄▄  ▀▄▄▀█▀ ▀█ ▄▀█ ▀██████
-████▄▄▄▄▄▄▄█▄███▄███▄█▄▄▄▄█▄▄█▄██▄█▄█████
-█████████████████████████████████████████
-█████████████████████████████████████████
-# To add this OTP key to configuration, run the following commands:
-set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
-```
-
-Next it is necessary to configure 2FA for OpenConnect:
-
-```none
-set vpn openconnect authentication mode local password-otp
-set vpn openconnect authentication local-users username tst otp key 'ebc1c91b13848ce0bb67d9212934546e41803cfa'
-```
-
-Now when connecting the user will first be asked for the password
-and then the OTP key.
-
-:::{warning}
-When using Time-based one-time password (TOTP) (OTP HOTP-time),
-be sure that the time on the server and the
-OTP token generator are synchronized by NTP
-:::
-
-To display the configured OTP user settings, use the command:
-
-```none
-show openconnect-server user <username> otp <full|key-b32|key-hex|qrcode|uri>
-```
-
-
-### Identity Based Configuration
-
-OpenConnect supports a subset of it's configuration options to be applied on a
-per user/group basis, for configuration purposes we refer to this functionality
-as "Identity based config". The following [OpenConnect Server Manual](https://ocserv.gitlab.io/www/manual.html#:~:text=Configuration%20files%20that%20will%20be%20applied%20per%20user%20connection%20or%0A%23%20per%20group)
-outlines the set of configuration options that are allowed. This can be
-leveraged to apply different sets of configs to different users or groups of
-users.
-
-```none
-sudo mkdir -p /config/auth/ocserv/config-per-user
-sudo touch /config/auth/ocserv/default-user.conf
-
-set vpn openconnect authentication identity-based-config mode user
-set vpn openconnect authentication identity-based-config directory /config/auth/ocserv/config-per-user
-set vpn openconnect authentication identity-based-config default-config /config/auth/ocserv/default-user.conf
-```
-
-:::{warning}
-The above directory and default-config must be a child directory
-of /config/auth, since files outside this directory are not persisted after an
-image upgrade.
-:::
-
-Once you commit the above changes you can create a config file in the
-/config/auth/ocserv/config-per-user directory that matches a username of a
-user you have created e.g. "tst". Now when logging in with the "tst" user the
-config options you set in this file will be loaded.
-
-Be sure to set a sane default config in the default config file, this will be
-loaded in the case that a user is authenticated and no file is found in the
-configured directory matching the users username/group.
-
-```none
-sudo nano /config/auth/ocserv/config-per-user/tst
-```
-
-The same configuration options apply when Identity based config is configured
-in group mode except that group mode can only be used with RADIUS
-authentication.
-
-:::{warning}
-OpenConnect server matches the filename in a case sensitive
-manner, make sure the username/group name you configure matches the
-filename exactly.
-:::
-
-### Configuring RADIUS accounting
-
-OpenConnect can be configured to send accounting information to a
-RADIUS server to capture user session data such as time of
-connect/disconnect, data transferred, and so on.
-
-Configure an accounting server and enable accounting with:
-
-```none
-set vpn openconnect accounting mode radius
-set vpn openconnect accounting radius server 172.20.20.10
-set vpn openconnect accounting radius server 172.20.20.10 port 1813
-set vpn openconnect accounting radius server 172.20.20.10 key your_radius_secret
-```
-
-:::{warning}
-The RADIUS accounting feature must be used with the OpenConnect
-authentication mode RADIUS. It cannot be used with local authentication.
-You must configure the OpenConnect authentication mode to "radius".
-:::
-
-An example of the data captured by a FREERADIUS server with sql accounting:
-
-```none
-mysql> SELECT username, nasipaddress, acctstarttime, acctstoptime, acctinputoctets, acctoutputoctets, callingstationid, framedipaddress, connectinfo_start FROM radacct;
-+----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
-| username | nasipaddress  | acctstarttime       | acctstoptime        | acctinputoctets | acctoutputoctets | callingstationid  | framedipaddress | connectinfo_start                 |
-+----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
-| test     | 198.51.100.15 | 2023-01-13 00:59:15 | 2023-01-13 00:59:21 |           10606 |              152 | 192.168.6.1       | 172.20.20.198   | Open AnyConnect VPN Agent v8.05-1 |
-+----------+---------------+---------------------+---------------------+-----------------+------------------+-------------------+-----------------+-----------------------------------+
+-----------  ----------  -------------  -----------  -------  ---------  --------
+sslvpn0      tst         172.20.20.198  192.0.2.1    0 bytes  152 bytes  connected  3s
 ```
 
