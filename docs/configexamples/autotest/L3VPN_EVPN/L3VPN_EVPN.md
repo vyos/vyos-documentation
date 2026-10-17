@@ -1,14 +1,16 @@
+---
+lastproofread: '2026-09-30'
+---
+
 # L3VPN EVPN with VyOS
 
-```{eval-rst}
-| Testdate: 2023-05-11
-| Version: 1.4-rolling-202305100734
-```
+:::{note}
+The configuration and command-output examples were captured in a VyOS 1.4
+rolling lab on 2023-05-11. Output may differ between releases.
+:::
 
-I spun up a new lab in EVE-NG, which represents this as the
-"Foo Bar - Service Provider Inc." that has 3 points of presence (PoP) in random
-datacenters/sites named PE1, PE2, and PE3. Each PoP aggregates at least two
-customers.
+This example uses a three-router provider edge (PE) topology. PE1, PE2, and PE3
+represent points of presence (PoPs), each serving at least two customers.
 
 I named the customers blue, red and green which is common practice in
 VRF (Virtual Routing and Forwarding) documentation scenarios.
@@ -22,22 +24,12 @@ VRF (Virtual Routing and Forwarding) documentation scenarios.
 
 ## Management VRF
 
-A brief excursion into VRFs: This has been one of the longest-standing feature
-requests of VyOS (dating back to 2016) which can be described as
-"a VLAN for layer 2 is what a VRF is for layer 3".
-With VRFs, a router/system can hold multiple, isolated routing tables on the
-same system. If you wonder what's the difference between multiple tables that
-people used for policy-based routing since forever, it's that a VRF also
-isolates connected routes rather than just static and dynamically learned
-routes, so it allows NICs in different VRFs to use conflicting network
-ranges without issues.
+A VRF associates interfaces and routes with a separate routing table. This lets
+one router keep management and customer routing separate and use overlapping
+address ranges in different VRFs.
 
-VyOS 1.3 added initial support for VRFs (including IPv4/IPv6 static routing)
-and VyOS 1.4 now enables full dynamic routing protocol support for
-OSPF, IS-IS, and BGP for individual VRFs.
-
-The lab I built is using a VRF (called **mgmt**) to provide out-of-band
-SSH access to the PE (Provider Edge) routers.
+The example uses a VRF named **mgmt** for out-of-band SSH access to the PE
+routers.
 
 ```{literalinclude} _include/PE1.conf
 :language: none
@@ -57,22 +49,18 @@ We use the following network topology in this example:
 ## Core network
 
 I chose to run OSPF as the IGP (Interior Gateway Protocol).
-All required BGP sessions are established via a dummy interfaces
-(similar to the loopback, but in Linux you can have only one loopback,
-while there can be many dummy interfaces) on the PE routers. In case of a link
-failure, traffic is diverted in the other direction in this triangle setup and
-BGP sessions will not go down. One could even enable
+All BGP sessions use dummy interfaces as stable update-source addresses on the
+PE routers. Linux has one loopback interface (`lo`) but supports multiple dummy
+interfaces. If a core link fails, traffic can use the other path in this
+triangle, so the BGP sessions can remain established. One could enable
 BFD (Bidirectional Forwarding Detection) on the links for a faster
 failover and resilience in the network.
 
-Regular VyOS users will notice that the BGP syntax has changed in VyOS 1.4 from
-even the prior post about this subject. This is due to T1711, where it was
-finally decided to get rid of the redundant BGP ASN (Autonomous System Number)
-specification on the CLI and move it to a single leaf node
-(set protocols bgp local-as).
-
-It's important to note that all your existing configurations will be migrated
-automatically on image upgrade. Nothing to do on your side.
+The configuration sets the BGP autonomous system number once per BGP instance
+with `set protocols bgp system-as`. Older configurations that used
+the top-level `protocols bgp local-as` setting are converted to
+`protocols bgp system-as` by the corresponding configuration migration during
+upgrade.
 
 PE1
 
@@ -98,12 +86,12 @@ PE3
 
 ## Tenant networks (VRFs)
 
-Once all routers can be safely remotely managed and the core network is
-operational, we can now setup the tenant networks.
+Once all routers can be managed and the core network is operational, set up the
+tenant networks.
 
-Every tenant is assigned an individual VRF that would support overlapping
-address ranges for customers blue, red and green. In our example,
-we do not use overlapping ranges to make it easier when showing debug commands.
+Each tenant has an individual VRF, which can support overlapping address
+ranges. This example uses non-overlapping ranges to make the debug output easier
+to follow.
 
 Thus you can easily match it to one of the devices/networks below.
 
@@ -120,21 +108,21 @@ PE1
 
 ```{literalinclude} _include/PE1.conf
 :language: none
-:lines: 40-96
+:lines: 40-93
 ```
 
 PE2
 
 ```{literalinclude} _include/PE2.conf
 :language: none
-:lines: 40-89
+:lines: 40-86
 ```
 
 PE3
 
 ```{literalinclude} _include/PE3.conf
 :language: none
-:lines: 40-89
+:lines: 40-86
 ```
 
 
