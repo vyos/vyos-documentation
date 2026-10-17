@@ -268,5 +268,42 @@ Backups contain password hashes and keys. The files are created readable only
 by their owner; keep the backup directory protected as well.
 ```
 
+## Upgrades with the vyos.blueprints collection
+
+The same collection upgrades routers to a new VyOS image, one router at a
+time:
+
+```none
+# ansible-playbook vyos.blueprints.upgrade -i hosts \
+    -e upgrade_image_url=https://example.com/vyos-1.5.1-generic-amd64.iso \
+    -e upgrade_expected_version=1.5.1
+```
+
+Replace the URL with the location of your VyOS ISO image, and keep the image's
+signature file (`.minisig`) next to it: VyOS checks the signature before
+installing, and the upgrade stops if it is missing or not valid. To install an
+image without a signature anyway, add `-e upgrade_allow_unsigned=true`.
+
+For each router, one at a time, the playbook:
+
+1. skips the router if it already runs the expected version
+2. backs up its configuration, as described above
+3. installs the new image and makes it the default boot image
+4. reboots the router and waits until it is back
+5. checks that it runs the new version
+
+If a router fails at any step, the upgrade stops before the next router is
+touched, so a bad image never reaches the whole network. Because routers that
+are already upgraded are skipped, run the same command again after fixing the
+problem.
+
+To upgrade only some routers, add `-e vyos_upgrade_hosts=<group or host>`.
+
+```{note}
+Try the upgrade on a lab router, or a single router of the network, before
+running it on many: a new VyOS image can change behaviour, and the playbook
+upgrades one router after the other.
+```
+
 In the next chapter of the example, we'll use Ansible with jinja2
 templates and variables.
