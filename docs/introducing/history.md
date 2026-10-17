@@ -6,6 +6,7 @@ description: |-
 keywords: |-
   vyos history, vyatta fork, lts release, scutum, circinus, sagitta,
   equuleus, crux, debian
+lastproofread: '2026-10-01'
 ---
 
 (history)=
@@ -15,8 +16,8 @@ keywords: |-
 ## In the beginning...
 
 There was a network operating system based on Debian GNU/Linux, called
-Vyatta. [^footnote-1] Introduced in 2006, it served as a great free-software alternative
-to proprietary products. Vyatta came in two editions: Vyatta Core
+Vyatta. [^footnote-1] Introduced in 2006, it served as a free-software
+alternative to proprietary products. Vyatta came in two editions: Vyatta Core
 (formerly known as Vyatta Community Edition), which was free software, and
 Vyatta Subscription Edition, which included proprietary features and was
 available only to paying customers.
@@ -42,7 +43,7 @@ originally named Sentrium and was later reorganized under the VyOS brand.
 VyOS originally named its major versions after elements by atomic number.
 Beginning with version 1.2, this naming scheme was changed. It now uses the
 Latin names of constellations recognized by the International Astronomical
-Union ([IAU](https://en.wikipedia.org/wiki/IAU_designated_constellations_by_area)),
+Union ([IAU](https://www.iau.org/public/themes/constellations/)),
 ordered by their solid angle area, beginning with the smallest.
 
 ### Hydrogen (1.0)
@@ -64,11 +65,11 @@ reliance on a proprietary NHRP implementation.
 ### Crux (1.2)
 
 Crux (the Southern Cross) was released on 28 January 2019 and marked a
-departure from legacy Vyatta codebase and the start of the migration from
+departure from the legacy Vyatta codebase and the start of the migration from
 Perl to Python as the primary language. The underlying base system was
 upgraded from Debian 6 (Squeeze) to Debian 8 (Jessie).
 
-Crux introduced many new features, some of the most noteworthy are:
+Crux introduced many new features. Some of the most noteworthy were:
 an mDNS repeater, a broadcast relay, a high-performance PPPoE server,
 an HFSC scheduler, and support for Wireguard, unicast VRRP, RPKI for BGP,
 and fully 802.1ad-compliant QinQ ethertype. The telnet server and support
@@ -97,7 +98,7 @@ Equuleus reached the end of support in 2025.
 
 ### Sagitta (1.4)
 
-Sagitta (the Arrow), the current LTS release, became generally available on
+Sagitta (the Arrow), the previous LTS release, became generally available on
 4 June 2024. Its development began in late 2021 and focused on eliminating
 remaining legacy components and reworking core subsystems.
 
@@ -121,7 +122,7 @@ Circinus (the Drawing Compass) became generally available as an LTS release on
 31 March 2026. Its development began in 2024 and focused on major performance
 upgrades and modernizing core subsystems.
 
-Circinus introduces several major architectural improvements, most notably an
+Circinus introduced several major architectural improvements, most notably an
 optional VPP-based accelerated dataplane. Using the DPDK driver, this dataplane
 can offer performance up to 15x faster than the Linux kernel dataplane and
 allows administrators to selectively enable hardware acceleration on a
@@ -151,7 +152,7 @@ Like Sagitta (1.4), the underlying base system for Circinus remains Debian 12
 ### Scutum (1.6)
 
 Scutum (the Shield) is the codename for the upcoming development
-branch. VyOS 1.6 Scutum has not been released yet.
+branch. VyOS 1.6 (Scutum) has not been released yet.
 
 ## A note on copyright
 
@@ -161,7 +162,8 @@ graphics and the trademark "VyOS". [^footnote-2]
 
 Note that we do not provide support for images distributed by a third party.
 See the
-[artwork license](https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork)
+[artwork license](
+https://github.com/vyos/vyos-build/blob/current/LICENSE.artwork)
 and the end-user license agreement at `/usr/share/vyos/EULA` in
 any pre-built image for more information.
 
