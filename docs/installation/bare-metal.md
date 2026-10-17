@@ -1,6 +1,15 @@
+---
+lastproofread: '2026-09-30'
+---
+
 (vyosonbaremetal)=
 
 # Bare Metal Deployment
+
+This page collects hardware details and installation notes reported by
+contributors. Hardware revisions, firmware, and image versions can change;
+these reports are not a current hardware compatibility list. For the general
+installation procedure, see {ref}`installation`.
 
 ## Supermicro A2SDi (Atom C3000)
 
@@ -25,12 +34,11 @@ the following optional parts will be required:
 - 1x Supermicro RSC-RR1U-E8 (Riser Card)
 - 1x Supermicro MCP-120-00063-0N (Riser Card Bracket)
 
-Latest VyOS rolling releases boot without any problem on this board. You also
-receive a nice IPMI interface realized with an ASPEED AST2400 BMC (no
-information about [OpenBMC](https://www.openbmc.org/) so far on this
-motherboard).
+The contributor reported successful VyOS rolling-image boots on the tested
+board. Results may vary with board revisions, firmware, and image versions.
+The board also provides an IPMI interface through its ASPEED AST2400 BMC.
 
-### Pictures
+### Supermicro Pictures
 
 :::{figure} /_static/images/1u_vyos_back.webp
 :alt: CSE-505-203B Back
@@ -139,6 +147,8 @@ Create a bootable USB pendrive using e.g. [Rufus] on a Windows machine.
 Connect serial port to a PC through null modem cable (RXD / TXD crossed over).
 Set terminal emulator to 115200 8N1.
 
+% stop_vyoslinter
+
 ```none
 PC Engines apu4
 coreboot build 20171130
@@ -155,6 +165,8 @@ Select boot device:
 3. Payload [memtest]
 4. Payload [setup]
 ```
+
+% start_vyoslinter
 
 Now boot from the `USB MSC Drive Generic Flash Disk 8.07` media by pressing
 `2`, the VyOS boot menu will appear, just wait 10 seconds or press `Enter`
@@ -187,7 +199,7 @@ You can now proceed with a regular image installation as described in
 
 (vyos-on-baremetal-apu4-pictures)=
 
-### Pictures
+### APU4 Pictures
 
 :::{note}
 Both device types operate without any moving parts and emit zero
@@ -262,7 +274,7 @@ boot type, console type) you might want to adjust them. This Qotom company
 seems to be the real OEM/ODM for many other relabelling companies like
 Protectli.
 
-### Hardware
+### Qotom Hardware
 
 There are a number of other options, but they all seem to be close to Intel
 reference designs, with added features like more serial ports, more network
@@ -309,7 +321,7 @@ in June 2018. It came pre-loaded with pfSense.
 
 [Manufacturer product page](http://www.inctel.com.cn/product/detail/338.html).
 
-### Installation
+### Partaker Installation
 
 - Write VyOS ISO to USB drive of some sort
 - Plug in VGA, power, USB keyboard, and USB drive
@@ -394,7 +406,7 @@ i3-N305 CPU and 2x 25GbE!
   a Kernel crash)
 - 1x HP LT4120 Snapdragon X5 LTE WWAN module
 
-### Pictures
+### Gowin Pictures
 
 :::{figure} ../_static/images/gowin-01.webp
 :::
@@ -410,7 +422,8 @@ i3-N305 CPU and 2x 25GbE!
 
 ### Cooling
 
-The device itself is passively cooled, whereas the power supply has an active fan.
+The device itself is passively cooled, while the power supply has an active
+fan.
 Even if the main processor is powered off, the power supply fan is operating and
 the entire chassis draws 7.5W. During operation the chassis drew around 38W.
 
@@ -418,7 +431,7 @@ the entire chassis draws 7.5W. During operation the chassis drew around 38W.
 
 No settings needed to be altered, everything worked out of the box!
 
-### Installation
+### Gowin Installation
 
 The system provides a regular RS232 console port using 115200,8n1 setting which
 is sufficient to install VyOS from a USB pendrive.
@@ -449,7 +462,7 @@ wwan0        -               d2:39:76:8e:05:12  default   1500  A/D
 ```
 
 
-#### VyOS 1.4 (sagitta)
+#### VyOS 1.4 (sagitta) installation
 
 Connect serial port to a PC through a USB \<-> RJ45 console cable. Set terminal
 emulator to 115200 8N1. You can also perform the installation using VGA or HDMI
@@ -551,7 +564,7 @@ The image installed successfully; please reboot now.
 ```
 
 
-### Hardware
+### Gowin Hardware
 
 ```none
 vyos@vyos:~$ lspci
@@ -608,17 +621,14 @@ Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
 
 
-#### WWAN
+#### Gowin WWAN
 
-The LTE module can be enabled as simple as this config snippet:
+Configure the WWAN interface with the access point name (APN) supplied by
+your mobile provider. The example below requests an address through DHCP:
 
 ```none
-interfaces {
-   wwan wwan0 {
-      address "dhcp"
-      apn "YOUR-APN-GOES-HERE"
-   }
-}
+set interfaces wwan wwan0 apn 'YOUR-APN-GOES-HERE'
+set interfaces wwan wwan0 address 'dhcp'
 ```
 
 For more information please refer to chapter: {ref}`wwan-interface`
