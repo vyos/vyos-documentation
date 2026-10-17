@@ -1,4 +1,5 @@
 ---
+lastproofread: '2026-10-01'
 myst:
   html_meta:
     description: |
@@ -6,7 +7,8 @@ myst:
       out-of-band management device, providing SSH-based remote access
       to the serial consoles of directly attached devices. It supports
       both on-board UARTs and USB-to-serial adapters.
-    keywords: console-server, out-of-band, oob, serial console, ssh, usb-to-serial
+    keywords: >-
+      console-server, out-of-band, oob, serial console, ssh, usb-to-serial
 ---
 
 (console-server)=
@@ -27,7 +29,8 @@ The following serial interfaces are supported:
   including Prolific PL2303 and FTDI FT232/FT4232 based chips.
 
 
-You can view available devices in the Tab completion of `set service console-server device`.
+Use CLI tab completion for `set service console-server device` to view
+available devices.
 
 See {ref}`hardware_usb` for more details on the naming scheme.
 
@@ -74,7 +77,9 @@ set service console-server device usb0b2.4p1.0 speed 9600
 **Configure the number of data bits per character for the specified
 serial device.**
 
-The default is 8.
+The default is 8. The current VyOS Conserver configuration does not apply
+this setting, so do not rely on `data-bits 7` to configure 7-bit serial
+framing.
 ```
 
 Example:
@@ -166,6 +171,9 @@ Example:
 set service console-server device usb0b2.4p1.0 ssh port 2201
 ```
 
+Choose a port that is not already in use by another service, and allow
+connections to it through any firewall in the path.
+
 ## Operation
 
 ```{opcmd} show console-server ports
@@ -180,8 +188,9 @@ usb0b2.4p1.0             on /dev/serial/by-bus/usb0b2.4p1.0@ at   9600n
 
 ```{opcmd} show console-server user
 
-Show each configured console device, its up/down state, and the
-user currently typing in the console, if any.
+Show each configured console device, its up/down state, and attached
+users. A user shown as `user@host` has read-write access; read-only
+connections are shown as spies.
 ```
 
 ```none
