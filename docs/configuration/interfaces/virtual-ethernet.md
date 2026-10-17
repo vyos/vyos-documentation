@@ -1,22 +1,22 @@
 ---
-lastproofread: '2026-01-26'
+lastproofread: '2026-09-30'
 ---
 
 (virtual-ethernet)=
 
 # Virtual Ethernet
 
-Virtual Ethernet (veth) interfaces are software-based interfaces that operate
-in pairs, creating a tunnel between each other. Traffic transmitted into one
-interface of the pair (e.g., `veth0`) is delivered directly to its peer
-interface (e.g., `veth1`).
+Virtual Ethernet (veth) interfaces are software-based interfaces created in
+pairs. Traffic transmitted into one interface (for example, `veth0`) is
+received by its peer interface (for example, `veth1`). VyOS requires both
+interfaces to be configured, with each interface naming the other as its peer.
 
 Veth interfaces are commonly used to connect network namespaces or VRFs, but
 they can also function as standalone virtual network interfaces.
 
 :::{note}
-Veth interfaces must be created in pairs, where each interface acts
-as the peer of the other.
+Veth interfaces must be configured in pairs, and each interface must name the
+other as its peer.
 :::
 
 ## Configuration
@@ -101,7 +101,7 @@ TX:  bytes    packets     errors    dropped    carrier collisions
 
 ## Example
 
-The following example shows how to connect the global VRF to VRF ‘red ‘ using
+The following example shows how to connect the global VRF to VRF `red` using
 the `veth10` and `veth11` veth pair.
 
 ```none
