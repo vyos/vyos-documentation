@@ -300,7 +300,7 @@ Example:
 set service snmp trap-source 192.0.2.1
 ```
 
-### SNMPv3
+### SNMPv3 configuration
 
 Access to the MIB over SNMPv3 is configured in three parts: views,
 groups, and users. A view is a named list of MIB subtrees. A subtree is
@@ -512,9 +512,11 @@ Repeat the command to exclude multiple subtrees.
 
 Example:
 
+% stop_vyoslinter
 ```none
 set service snmp v3 view default oid 1 exclude 1.3.6.1.2.1.4
 ```
+% start_vyoslinter
 
 <!-- The command below is intentionally left undocumented. The CLI accepts
 and stores the value, but the generated agent configuration omits it,
@@ -727,6 +729,7 @@ set service snmp mib interface eth
 set service snmp mib interface bond
 ```
 
+% stop_vyoslinter
 ```{cfgcmd} set service snmp oid-enable \<ip-forward | ip-route-table | ip-net-to-media-table | ip-net-to-physical-phys-address\>
 
 Enable OID subtrees that community-based access excludes by default.
@@ -742,6 +745,7 @@ Enabling these subtrees may lead to system instability and high
 resource consumption, for example, on systems with large routing
 tables. VyOS prints a corresponding warning at commit time.
 ```
+% start_vyoslinter
 
 Example:
 
@@ -766,9 +770,11 @@ Repeat the command to register multiple subtrees.
 
 Example:
 
+% stop_vyoslinter
 ```none
 set service snmp smux-peer 1.3.6.1.4.1.3317.1.2.2
 ```
+% start_vyoslinter
 
 ### Script extensions
 
@@ -911,6 +917,7 @@ and runs commands on it. Since every system has its own commands, Orion
 needs a device template that maps its actions, such as retrieving the
 configuration or rebooting, to that system's commands.
 
+% stop_vyoslinter
 Orion selects the template by the system object identifier that a device
 reports in the SNMPv2-MIB `sysObjectID` object. A VyOS router always
 reports `1.3.6.1.4.1.44641`, so a template with this value applies to
@@ -935,10 +942,11 @@ and then import it in Orion using Device Templates Management:
     </Commands>
 </Configuration-Management>
 ```
+% start_vyoslinter
 
 ## Examples
 
-### SNMPv2c
+### SNMPv2c example
 
 ```none
 # Define a community
