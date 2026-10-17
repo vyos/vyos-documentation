@@ -1,5 +1,5 @@
 ---
-lastproofread: '2026-03-02'
+lastproofread: '2026-10-01'
 ---
 
 (wireguard)=
@@ -19,9 +19,10 @@ The following diagram illustrates a site-to-site VPN setup.
 
 ## Keypairs
 
-WireGuard requires a keypair, which includes a **private** key
-to decrypt incoming traffic, and a **public** key for peer(s) to encrypt
-outgoing traffic.
+Each WireGuard interface has a **private** key and a corresponding
+**public** key. The private key stays on the local interface; configure
+its public key on remote peers so they can authenticate and encrypt
+traffic to it.
 
 ### Generate keypair
 
@@ -134,7 +135,8 @@ networks you want to tunnel (`allowed-ips`).
 If your system only initiates connections, specifying the listen port is
 optional. If your system accepts incoming connections, you must define a port
 for peers to connect to. Otherwise, WireGuard selects a random port at each
-reboot, and that may break your peers' ability to connect if that port is not enabled in your firewall rules.
+reboot, which may prevent peers from connecting if the port is not allowed
+by your firewall rules.
 
 To configure a WireGuard tunnel, you also need your peer's public key.
 
@@ -166,14 +168,15 @@ set protocols static route 192.168.2.0/24 interface wg01
 ```
 
 To send traffic destined for `192.168.2.0/24` through the WireGuard interface
-(`wg01`), configure a static route. Multiple IP addresses or networks can be
-defined and routed. The final check is performed against `allowed-ips`, which
-either permits or drops the traffic.
+(`wg01`), configure a static route. The peer's `allowed-ips` must also include
+the destination prefix so WireGuard can select that peer for outgoing traffic.
+The peer's `allowed-ips` also validates the source address of decrypted
+incoming traffic.
 
-:::{warning}
-You cannot assign the same `allowed-ips` to multiple WireGuard
-peers. This is a strict design restriction. For more information, check the
-[WireGuard mailing list].
+:::{note}
+WireGuard's cryptokey-routing table maps an exact prefix to one peer at a
+time. Avoid assigning the same prefix to multiple peers. Overlapping
+prefixes can coexist; the more-specific match takes precedence.
 :::
 
 ```{cfgcmd} set interfaces wireguard \<interface\> private-key \<private-key\>
@@ -276,8 +279,11 @@ wg02# set interfaces wireguard wg01 peer to-wg01 preshared-key 'rvVDOoc2IYEnV+k5
 ## Remote access (road warrior)
 
 
-With WireGuard, a road warrior VPN configuration is similar to a site-to-site
-VPN. It just omits the `address` and `port` statements.
+With WireGuard, a road-warrior VPN configuration is similar to a
+site-to-site VPN. On the server, the peer entry for a roaming client omits
+the peer endpoint `address` and `port`, because the client can connect from
+changing addresses and ports. The server interface still needs its tunnel
+`address` and, when accepting incoming connections, a listening `port`.
 
 
 In the following example, the IP addresses for remote clients are defined
@@ -285,7 +291,7 @@ within each peer configuration. This allows peers to communicate with each
 other.
 
 
-Additionally, this setup uses a `persistent-keepalive` flag set to 15 seconds
+Additionally, this setup uses a `persistent-keepalive` flag set to 25 seconds
 to keep the connection alive. This setting is mainly relevant if a peer is
 behind NAT and cannot be reached if the connection is lost. For effectiveness,
 the value should be lower than the UDP timeout.
@@ -298,13 +304,13 @@ wireguard wg01 {
     peer MacBook {
         allowed-ips 10.172.24.30/32
         allowed-ips 2001:db8:470:22::30/128
-        persistent-keepalive 15
+        persistent-keepalive 25
         pubkey F5MbW7ye7DsoxdOaixjdrudshjjxN5UdNV+pGFHqehc=
     }
     peer iPhone {
         allowed-ips 10.172.24.20/32
         allowed-ips 2001:db8:470:22::20/128
-        persistent-keepalive 15
+        persistent-keepalive 25
         pubkey BknHcLFo8nOo8Dwq2CjaC/TedchKQ0ebxC7GYn7Al00=
     }
     port 2224
@@ -328,9 +334,9 @@ Endpoint = 192.0.2.1:2224
 PersistentKeepalive = 15
 ```
 
-To enable split tunneling, specify the remote subnets. This ensures that only
-traffic destined for the remote site is sent through the tunnel, while all
-other traffic remains unaffected.
+To enable split tunneling, specify the remote site subnets in the client's
+`AllowedIPs`. This sends only traffic for those subnets through the tunnel,
+while other traffic continues to use the client's regular routes.
 
 ```none
 [Interface]
@@ -339,7 +345,7 @@ Address = 10.172.24.30/24, 2001:db8:470:22::30/64
 
 [Peer]
 PublicKey = RIbtUTCfgzNjnLNPQ/ulkGnnB2vMWHm7l2H/xUfbyjc=
-AllowedIPs = 10.172.24.30/24, 2001:db8:470:22::/64
+AllowedIPs = 192.168.1.0/24, 2001:db8:471:22::/64
 Endpoint = 192.0.2.1:2224
 PersistentKeepalive = 15
 ```
@@ -416,7 +422,9 @@ create the private portion yourself and hand out only the public key.
 specified interface.**
 
 The public key from the specified interface is automatically included in the
-configuration file.
+configuration file. `AllowedIPs` in that file controls which destinations
+the client sends through the tunnel; the client operating system also needs
+to install routes for those destinations.
 
 The command also generates a configuration snippet that can be copied into the
 VyOS CLI. The ``<name>`` you provide will be used as the peer name in the
@@ -430,5 +438,3 @@ an IPv6 (/128) address to the client.
 :alt: WireGuard Client QR code
 :::
 ```
-
-[wireguard mailing list]: https://lists.zx2c4.com/pipermail/wireguard/2018-December/003704.html
