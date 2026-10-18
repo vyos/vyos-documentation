@@ -888,6 +888,15 @@ set service ipoe-server name-server 2001:db8::53
 
 ### DHCP lease
 
+:::{note}
+If an interface forwards DHCP requests with `external-dhcp dhcp-relay`,
+the lease timings sent by the external DHCP server take precedence over
+`lease-time`, `renew-time` and `rebind-time`. The configured values only
+apply as a fallback for options the reply of the external server does not
+carry. The commit prints a warning if one of them is configured on such a
+setup.
+:::
+
 ```{cfgcmd} set service ipoe-server lease-time \<1-2147483647\>
 
 **Configure the DHCP lease time, in seconds, offered to IPoE
@@ -945,6 +954,10 @@ client attempts to rebind its lease with any available server.**
 
 If unset, or greater than `lease-time`, the server derives the value
 from `lease-time`.
+
+If this value is below the renewal time, the server lowers the renewal
+time to `rebind-time` multiplied by 4/7, even if `renew-time` is not
+configured. The commit prints a warning in that case.
 ```
 
 Example:
