@@ -6,15 +6,18 @@ lastproofread: '2026-01-26'
 
 # Secure Boot
 
-Initial UEFI Secure Boot support is available ({vytask}`T861`). VyOS uses
-`shim` from Debian 12 (Bookworm), which is properly signed by the UEFI
-Secure Boot key from Microsoft.
+VyOS uses `shim` from Debian 13 (trixie), which is properly signed by the
+UEFI Secure Boot key from Microsoft.
 
-:::{note}
-There is yet no signed version of `shim` for VyOS, thus we
-provide no signed image for secure boot yet. If you are interested in
-secure boot you can build an image on your own.
+:::{important}
+Enrolling a {abbr}`MOK (Machine Owner Key)` is only required for development
+purposes, when testing UEFI Secure Boot with a custom image that is not signed
+by VyOS Networks. Official LTS images contain officially signed binaries and
+run out of the box, without any key enrollment.
 :::
+
+For more information see [Microsoft UEFI Signing Requirements](
+https://techcommunity.microsoft.com/blog/hardware-dev-center/updated-microsoft-uefi-signing-requirements/1062916).
 
 To generate a custom ISO with your own secure boot keys, run the following
 commands prior to your ISO image build:
@@ -22,25 +25,26 @@ commands prior to your ISO image build:
 ```bash
 cd vyos-build
 CA_DIR="data/certificates"
-SHIM_CERT_NAME="vyos-dev-2025-shim"
-VYOS_KERNEL_CERT_NAME="vyos-dev-2025-linux"
+CA_YEAR="$(date +%Y)"
+SHIM_CERT_NAME="vyos-dev-${CA_YEAR}-shim"
+VYOS_KERNEL_CERT_NAME="vyos-dev-${CA_YEAR}-linux"
 
 openssl req -new -x509 -newkey rsa:4096 -keyout ${CA_DIR}/${SHIM_CERT_NAME}.key -out ${CA_DIR}/${SHIM_CERT_NAME}.der \
-  -outform DER -days 36500 -subj "/CN=VyOS Networks Secure Boot CA/" -nodes
+  -outform DER -days 36500 -subj "/CN=VyOS Networks - DEVELOPMENT - Secure Boot CA/" -nodes
 openssl x509 -inform der -in ${CA_DIR}/${SHIM_CERT_NAME}.der -out ${CA_DIR}/${SHIM_CERT_NAME}.pem
 
 openssl req -newkey rsa:4096 -sha256 -nodes -keyout ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.key \
   -out ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.csr -outform PEM -days 3650 \
-  -subj "/CN=VyOS Networks Secure Boot Signer 2025 - linux/"
+  -subj "/CN=VyOS Networks - DEVELOPMENT - Secure Boot Signer - linux/"
 openssl x509 -req -in ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.csr -CA ${CA_DIR}/${SHIM_CERT_NAME}.pem \
   -CAkey ${CA_DIR}/${SHIM_CERT_NAME}.key -CAcreateserial -out ${CA_DIR}/${VYOS_KERNEL_CERT_NAME}.pem -days 3650 -sha256
 ```
 
-
 ## Installation
 
-As our version of `shim` is not signed by Microsoft we need to enroll the
-previously generated {abbr}`MOK (Machine Owner Key)` to the system.
+As VyOS development builds have no access to the HSM stored signing key, you
+need to enroll the previously generated {abbr}`MOK (Machine Owner Key)` to
+the system.
 
 First, disable UEFI Secure Boot for the installation.
 
@@ -50,10 +54,13 @@ First, disable UEFI Secure Boot for the installation.
 
 Proceed with the standard VyOS {ref}`installation <permanent_installation>` on
 your system. Instead of the final `reboot` command, enroll the
-{abbr}`MOK (Machine Owner Key)`.
+{abbr}`MOK (Machine Owner Key)` using `mokutil`. The shim certificate generated
+above is part of the image and available as
+`/var/lib/shim-signed/mok/vyos-dev-<year>-shim.der`, where `<year>` is the year
+the certificate was generated.
 
 ```none
-vyos@vyos:~$ install mok
+vyos@vyos:~$ sudo mokutil --ignore-keyring --import /var/lib/shim-signed/mok/vyos-dev-2026-shim.der
 input password:
 input password again:
 ```
@@ -95,13 +102,9 @@ Now reboot and re-enable UEFI Secure Boot.
 :alt: Disable UEFI secure boot
 :::
 
-VyOS will now launch in UEFI Secure Boot mode. You can verify this by running
-one of the following commands:
-
-```none
-vyos@vyos:~$ show secure-boot
-SecureBoot enabled
-```
+VyOS will now launch in UEFI Secure Boot mode. You can verify this with
+{opcmd}`show secure-boot` (see [Operation](#secure-boot-operation)) or by
+running one of the following commands:
 
 ```none
 vyos@vyos:~$ show log kernel | match Secure
@@ -179,6 +182,31 @@ service`
 This prevents loading any malicious code after the image is assembled into the
 Kernel as a module. You can disable this behavior on custom builds if needed.
 
+(secure-boot-operation)=
+
+## Operation
+
+```{opcmd} show secure-boot
+
+Show whether the system was booted with UEFI Secure Boot enabled.
+
+:::{code-block} none
+vyos@vyos:~$ show secure-boot
+SecureBoot enabled
+:::
+```
+
+```{opcmd} show secure-boot detail
+
+Show the issuer and subject of the certificate used to sign the running
+Linux Kernel.
+
+:::{code-block} none
+vyos@vyos:~$ show secure-boot detail
+Issuer:  /CN=VyOS Networks Secure Boot CA
+Subject: /CN=VyOS Networks Secure Boot Signer 2025 - linux
+:::
+
 ## Troubleshoot
 
 In most cases, if something goes wrong during system boot, you'll see this
@@ -190,5 +218,5 @@ error: you need to load the kernel first
 ```
 
 This error means the Machine Owner Key used to sign the Kernel is not trusted
-by your UEFI. Install the MOK using the `install mok` command as described
+by your UEFI. Enroll the MOK using the `mokutil` command as described
 above.
