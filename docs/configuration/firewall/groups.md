@@ -176,8 +176,7 @@ The URL must use the `http` or `https` scheme.
 
 Enclose a URL that contains a query string in single quotes. The shell treats an
 unquoted `&` as a command separator, so it cuts the URL at `&` and runs the rest
-as a separate command. Inside quotes, the CLI accepts `?` as a character of the
-URL.
+as a separate command. To enter a literal `?`, press `Ctrl-V` before `?`.
 
 You must configure `url` for every remote group. Otherwise, the commit fails.
 ```
