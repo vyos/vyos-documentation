@@ -1,558 +1,876 @@
 ---
-lastproofread: '2026-03-30'
+myst:
+  html_meta:
+    description: |
+      Firewall groups are named collections of addresses, networks,
+      ports, MAC addresses, interfaces, and domain names that you
+      reference in rules. They cover address, network, interface, port,
+      MAC, domain, remote, and dynamic groups, and nested groups.
+    keywords: firewall, groups, address group, remote group, dynamic group
 ---
 
 (firewall-groups-configuration)=
 
 # Firewall groups
 
+Firewall groups are named collections of IP addresses, networks, ports, MAC
+addresses, domain names, or interfaces. You can reference a group in firewall,
+NAT, and policy route rules as a source or destination match, and an interface
+group as an inbound or outbound interface match. Remote and dynamic
+groups are available in firewall rules only.
+
+Address, IPv6 address, network, IPv6 network, MAC, port, and interface groups
+can include other groups of the same type. A rule that references a group
+matches the members of that group and the members of the groups that it
+includes.
+
 ## Configuration
 
-Firewall groups represent collections of IP addresses, networks, ports,
-MAC addresses, domains, or interfaces. You can reference a group in firewall,
-NAT, and policy route rules as either a source or destination matcher, and/or
-as inbound or outbound in the case of interface groups.
+### Address groups
 
-### Address Groups
+An **address group** is a named collection of IPv4 addresses and IPv4 address
+ranges. An **IPv6 address group** is the IPv6 equivalent.
 
-An **address group** contains a single IP address or IP address range.
+```{cfgcmd} set firewall group address-group \<name\> address \<ipv4-address | ipv4-range\>
 
-```{cfgcmd} set firewall group address-group \<name\> address [address | address range]
+**Add an IPv4 address or address range to the specified address group.**
 
+Repeat the command to add more addresses or ranges to the same group.
 ```
-```{cfgcmd} set firewall group ipv6-address-group \<name\> address \<address\>
 
-Define an IPv4 or IPv6 address group.
+Example:
 
-:::{code-block} none
-set firewall group address-group ADR-INSIDE-v4 address 192.168.0.1
-set firewall group address-group ADR-INSIDE-v4 address 10.0.0.1-10.0.0.8
+```none
+set firewall group address-group ADR-INSIDE-v4 address 192.0.2.1
+set firewall group address-group ADR-INSIDE-v4 address 198.51.100.1-198.51.100.8
+```
+
+```{cfgcmd} set firewall group ipv6-address-group \<name\> address \<ipv6-address | ipv6-range\>
+
+**Add an IPv6 address or address range to the specified IPv6 address group.**
+
+Repeat the command to add more addresses or ranges to the same group.
+```
+
+Example:
+
+```none
 set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::1
-:::
-```
-
-```{cfgcmd} set firewall group address-group \<name\> description \<text\>
-```
-
-```{cfgcmd} set firewall group ipv6-address-group \<name\> description \<text\>
-
-Provide an IPv4 or IPv6 address group description.
+set firewall group ipv6-address-group ADR-INSIDE-v6 address 2001:db8::10-2001:db8::1f
 ```
 
 ```{cfgcmd} set firewall group address-group \<name\> include \<name\>
 
-Include another address-group as a member of this group. The
-referenced group must already exist and be of the same type.
+**Include another address group in the specified address group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other address groups. The included group
+must exist, and address groups must not include each other in a circle.
+Otherwise, the commit fails.
+```
+
+Example:
+
+```none
+set firewall group address-group ADR-ALL-v4 include ADR-INSIDE-v4
 ```
 
 ```{cfgcmd} set firewall group ipv6-address-group \<name\> include \<name\>
 
-Include another ipv6-address-group as a member of this group. The
-referenced group must already exist and be of the same type.
+**Include another IPv6 address group in the specified IPv6 address group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other IPv6 address groups. The included
+group must exist, and IPv6 address groups must not include each other in a
+circle. Otherwise, the commit fails.
 ```
 
-### Remote Groups
-
-A **remote-group** uses a URL that hosts a newline-delimited list of IPv4
-and/or IPv6 addresses, CIDRs, and ranges. VyOS pulls this list periodically
-according to the frequency you define in the group **interval** (or, if not
-set, the firewall **resolver-interval**) and loads matching entries into the
-group for use in rules. The list is cached in persistent storage, so rules
-continue to function if updates fail.
-
-```{cfgcmd} set firewall group remote-group \<name\> url \<http(s) url\>
-
-Specify a remote list of IPv4 and/or IPv6 addresses, ranges, and CIDRs
-to fetch.
-```
-
-::::{note}
-Quote URLs that contain a query string, otherwise an unquoted `&` silently
-truncates the value. On releases where the `?` key always triggers
-completion help, enter the literal `?` by pressing `Ctrl-V` followed by
-`?`:
-
-``` none
-set firewall group remote-group AbuseIPDB url 'https://api.abuseipdb.com/api/v2/blacklist?key=YOUR_KEY&plaintext'
-```
-::::
-
-::::{note}
-When a download fails, `vyos-domain-resolver` logs a redacted URL with the
-query string removed, keeping API keys out of the system log. A logged URL
-without its query parameters does not mean the configured value is wrong —
-verify it with `show firewall group remote-group <name> url` instead.
-::::
-
-```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
-
-Set the update interval for this remote group, from 60 seconds to 4 weeks.
-The interval can be given in seconds (e.g. `300`) or with the time unit
-suffixes `s`, `m`, `h`, `d` or `w` (e.g. `4h`). Multiple suffixes may be
-combined (e.g. `1h30m`). If not set, the group follows the global
-`firewall global-options resolver-interval`.
-```
-
-```{cfgcmd} set firewall group remote-group \<name\> description \<text\>
-
-Set a description for a remote group.
-```
-
-```{cfgcmd} set firewall group remote-group \<name\> interval \<interval\>
-
-Override the global **resolver-interval** for this remote group.
-Accepts a plain number of seconds or a number with a time-unit
-suffix: ``s``, ``m``, ``h``, ``d``, ``w`` (e.g. ``4h``). The value is
-converted to seconds and must be between 60 and 2419200 (4 weeks)
-after conversion, so a suffixed value like ``30s`` is rejected the
-same as the plain number ``30``. If not set, the remote group falls
-back to **firewall global-options resolver-interval**.
-```
-
-The remote list format is flexible. VyOS attempts to parse the first word of
-each line as an entry and skips lines it cannot match. Lines that begin with
-an alphanumeric character but do not match valid IPv4 or IPv6 addresses,
-ranges, or CIDRs are logged to the system log. The following examples show
-acceptable formats that VyOS parses correctly:
+Example:
 
 ```none
-127.0.0.1
-127.0.0.0/24
-127.0.0.1-127.0.0.254
+set firewall group ipv6-address-group ADR-ALL-v6 include ADR-INSIDE-v6
+```
+
+```{cfgcmd} set firewall group address-group \<name\> description \<text\>
+
+**Configure a description for the specified address group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group address-group ADR-INSIDE-v4 description 'Inside hosts'
+```
+
+```{cfgcmd} set firewall group ipv6-address-group \<name\> description \<text\>
+
+**Configure a description for the specified IPv6 address group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group ipv6-address-group ADR-INSIDE-v6 description 'Inside hosts'
+```
+
+### Remote groups
+
+A **remote group** is a named collection of IPv4 and IPv6 addresses, address
+ranges, and networks. The router downloads them from the HTTP or HTTPS URL that
+you configure with the `url` option of the remote group.
+
+The file at the URL is a plain text file. Each line holds one entry: an IPv4 or
+IPv6 address, an address range, or a network in CIDR notation. A network must be
+in canonical form, with no host bits set. For example, `192.0.2.0/24` is valid
+and `192.0.2.1/24` is not. The file can contain IPv4 and IPv6 entries together.
+
+The router reads the first word of each line, up to the first space. Separate
+an entry from any following text, such as a comment, with a space. The router
+ignores:
+
+- Empty lines.
+- Lines whose first word is not a valid IPv4 or IPv6 address, range, or network.
+
+The router logs the first word of an ignored line when the word begins with a
+letter or a digit. An ignored line whose first word begins with another
+character, such as `#`, produces no log message.
+
+The following example shows valid lines:
+
+```none
+192.0.2.1
+192.0.2.1 # office
+198.51.100.0/24
+192.0.2.1-192.0.2.254
 2001:db8::1
 2001:db8:cafe::/48
 2001:db8:cafe::1-2001:db8:cafe::ffff
 ```
 
-### Network Groups
+The router downloads the file when it applies the firewall configuration and
+then at the `interval` of the group or, when no `interval` is configured, at
+`resolver-interval` (see `set firewall global-options resolver-interval`).
 
-**Network groups** accept IP networks in CIDR notation. You can add specific
-IP addresses as a 32-bit prefix. If you need to add a mix of addresses and
-networks, use a network group.
+If a download fails, the router writes a message to the system log and uses the
+last downloaded file, which it keeps in persistent storage. The router retries
+the download after `resolver-interval`, or after the `interval` of the group, if
+configured, whichever is shorter. If the router has not downloaded the file
+before, the group has no addresses.
 
-```{cfgcmd} set firewall group network-group \<name\> network \<CIDR\>
+```{cfgcmd} set firewall group remote-group \<name\> url \<url\>
+
+**Configure the URL from which the router downloads the file of the specified
+remote group.**
+
+The URL must use the `http` or `https` scheme.
+
+Enclose a URL that contains a query string in single quotes. The shell treats an
+unquoted `&` as a command separator, so it cuts the URL at `&` and runs the rest
+as a separate command. Inside quotes, the CLI accepts `?` as a character of the
+URL.
+
+You must configure `url` for every remote group. Otherwise, the commit fails.
 ```
 
-```{cfgcmd} set firewall group ipv6-network-group \<name\> network \<CIDR\>
+Example:
 
-Define an IPv4 or IPv6 network group.
+```none
+set firewall group remote-group RMT url 'https://api.example.com/list?key=YOUR_KEY&plaintext'
+```
 
-:::{code-block} none
-set firewall group network-group NET-INSIDE-v4 network 192.168.0.0/24
-set firewall group network-group NET-INSIDE-v4 network 192.168.1.0/24
+```{cfgcmd} set firewall group remote-group \<name\> interval \<60-2419200 | number+suffix\>
+
+**Configure the interval at which the router downloads the file of the
+specified remote group.**
+
+Enter a number of seconds, or a number followed by the suffix `s`, `m`, `h`,
+`d`, or `w`, for example `4h`. You can combine units, for example `1h30m`. The
+interval must be between 60 seconds and 4 weeks. Otherwise, the configuration
+is rejected.
+
+When no `interval` is configured, the router uses `resolver-interval` (see
+`set firewall global-options resolver-interval`).
+```
+
+Example:
+
+```none
+set firewall group remote-group RMT interval 4h
+```
+
+```{cfgcmd} set firewall group remote-group \<name\> description \<text\>
+
+**Configure a description for the specified remote group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group remote-group RMT description 'Blocklist'
+```
+
+### Network groups
+
+A **network group** is a named collection of IPv4 networks in CIDR notation. An
+**IPv6 network group** is the IPv6 equivalent. Both group types can also contain
+single hosts. You add a host to a network group with a prefix length of 32 and
+to an IPv6 network group with a prefix length of 128.
+
+```{cfgcmd} set firewall group network-group \<name\> network \<ipv4-network\>
+
+**Add an IPv4 network to the specified network group.**
+
+Repeat the command to add more networks to the same group.
+
+A network must be in canonical form, with no host bits set. For example,
+`192.0.2.0/24` is valid and `192.0.2.1/24` is not.
+```
+
+Example:
+
+```none
+set firewall group network-group NET-INSIDE-v4 network 192.0.2.0/24
+set firewall group network-group NET-INSIDE-v4 network 198.51.100.0/24
+set firewall group network-group NET-INSIDE-v4 network 203.0.113.10/32
+```
+
+```{cfgcmd} set firewall group ipv6-network-group \<name\> network \<ipv6-network\>
+
+**Add an IPv6 network to the specified IPv6 network group.**
+
+Repeat the command to add more networks to the same group.
+
+A network must be in canonical form, with no host bits set. For example,
+`2001:db8::/64` is valid and `2001:db8::1/64` is not.
+```
+
+Example:
+
+```none
 set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8::/64
-:::
-```
-
-```{cfgcmd} set firewall group network-group \<name\> description \<text\>
-```
-
-```{cfgcmd} set firewall group ipv6-network-group \<name\> description \<text\>
-
-Provide an IPv4 or IPv6 network group description.
+set firewall group ipv6-network-group NET-INSIDE-v6 network 2001:db8:1::10/128
 ```
 
 ```{cfgcmd} set firewall group network-group \<name\> include \<name\>
 
-Include another network-group as a member of this group. The
-referenced group must already exist and be of the same type.
+**Include another network group in the specified network group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other network groups. The included group
+must exist, and network groups must not include each other in a circle.
+Otherwise, the commit fails.
+```
+
+Example:
+
+```none
+set firewall group network-group NET-ALL-v4 include NET-INSIDE-v4
 ```
 
 ```{cfgcmd} set firewall group ipv6-network-group \<name\> include \<name\>
 
-Include another ipv6-network-group as a member of this group. The
-referenced group must already exist and be of the same type.
+**Include another IPv6 network group in the specified IPv6 network group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other IPv6 network groups. The included
+group must exist, and IPv6 network groups must not include each other in a
+circle. Otherwise, the commit fails.
 ```
 
-### Interface Groups
-
-An **interface group** represents a collection of interfaces.
-
-```{cfgcmd} set firewall group interface-group \<name\> interface \<text\>
-
-Define an interface group.
-Wildcard ``*`` is supported. For example: ``eth3*``.
-Prepend the character ``!`` to invert the criteria. For example: ``!eth2``.
-```
+Example:
 
 ```none
-set firewall group interface-group LAN interface bond1001
-set firewall group interface-group LAN interface eth3*
+set firewall group ipv6-network-group NET-ALL-v6 include NET-INSIDE-v6
 ```
 
-```{cfgcmd} set firewall group interface-group \<name\> description \<text\>
+```{cfgcmd} set firewall group network-group \<name\> description \<text\>
 
-Provide an interface group description.
+**Configure a description for the specified network group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group network-group NET-INSIDE-v4 description 'Inside networks'
+```
+
+```{cfgcmd} set firewall group ipv6-network-group \<name\> description \<text\>
+
+**Configure a description for the specified IPv6 network group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group ipv6-network-group NET-INSIDE-v6 description 'Inside networks'
+```
+
+### Interface groups
+
+An **interface group** is a named collection of interfaces. You reference an
+interface group in the inbound interface match or the outbound interface match
+of a rule. The rule then matches packets by the receiving interface or the
+outgoing interface, and the packet matches if that interface is a member of the
+group. To match all other interfaces, prepend `!` to the group name in the rule,
+for example `outbound-interface group !LAN`.
+
+```{cfgcmd} set firewall group interface-group \<name\> interface \<interface\>
+
+**Add an interface to the specified interface group.**
+
+Repeat the command to add more interfaces to the same group.
+```
+
+Example:
+
+```none
+set firewall group interface-group LAN interface eth1
 ```
 
 ```{cfgcmd} set firewall group interface-group \<name\> include \<name\>
 
-Include another interface-group as a member of this group. The
-referenced group must already exist and be of the same type.
+**Include another interface group in the specified interface group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other interface groups. The included
+group must exist, and interface groups must not include each other in a circle.
 ```
 
-### Port Groups
+Example:
 
-A **port group** represents only port numbers, not the protocol. You can
-reference port groups for either TCP or UDP. Create TCP and UDP groups
-separately to avoid accidentally filtering unnecessary ports. Specify port
-ranges by using `-`.
+```none
+set firewall group interface-group LAN-ALL include LAN
+```
 
-```{cfgcmd} set firewall group port-group \<name\> port [portname | portnumber | startport-endport]
+```{cfgcmd} set firewall group interface-group \<name\> description \<text\>
 
-Define a port group. A port name can be any name defined in
-/etc/services. For example, ``http``.
+**Configure a description for the specified interface group.**
 
-:::{code-block} none
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group interface-group LAN description 'Inside interfaces'
+```
+
+### Port groups
+
+A **port group** is a named collection of ports and port ranges. A rule that
+references a port group must set `protocol` to `tcp`, `udp`, or `tcp_udp`.
+Otherwise, the commit fails. To match different ports for TCP and UDP, create a
+port group and a rule for each protocol.
+
+```{cfgcmd} set firewall group port-group \<name\> port \<port-number | port-range | service-name\>
+
+**Add a port or a port range to the specified port group.**
+
+Enter a port number from 1 to 65535, a port range such as `5000-5010`, or a
+service name defined in `/etc/services`, such as `http`.
+
+The first port of a range must be less than or equal to the last port.
+
+Repeat the command to add more ports or ranges to the same group.
+```
+
+Example:
+
+```none
 set firewall group port-group PORT-TCP-SERVER1 port http
 set firewall group port-group PORT-TCP-SERVER1 port 443
 set firewall group port-group PORT-TCP-SERVER1 port 5000-5010
-:::
-```
-
-```{cfgcmd} set firewall group port-group \<name\> description \<text\>
-
-Provide a port group description.
 ```
 
 ```{cfgcmd} set firewall group port-group \<name\> include \<name\>
 
-Include another port-group as a member of this group. The referenced
-group must already exist and be of the same type.
+**Include another port group in the specified port group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other port groups. The included group
+must exist, and port groups must not include each other in a circle. Otherwise,
+the commit fails.
 ```
 
-### MAC Groups
+Example:
 
-A **mac group** represents a collection of mac addresses.
+```none
+set firewall group port-group PORT-ALL include PORT-TCP-SERVER1
+```
+
+```{cfgcmd} set firewall group port-group \<name\> description \<text\>
+
+**Configure a description for the specified port group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group port-group PORT-TCP-SERVER1 description 'Server 1 ports'
+```
+
+### MAC groups
+
+A **MAC group** is a named collection of MAC addresses. A rule that references a
+MAC group matches packets whose source or destination MAC address is a member of
+the group.
 
 ```{cfgcmd} set firewall group mac-group \<name\> mac-address \<mac-address\>
 
-Define a mac group.
+**Add a MAC address to the specified MAC group.**
+
+Repeat the command to add more MAC addresses to the same group.
 ```
+
+Example:
 
 ```none
-set firewall group mac-group MAC-G01 mac-address 88:a4:c2:15:b6:4f
-set firewall group mac-group MAC-G01 mac-address 4c:d5:77:c0:19:81
-```
-
-```{cfgcmd} set firewall group mac-group \<name\> description \<text\>
-
-Provide a MAC group description.
+set firewall group mac-group MAC-G01 mac-address 00:00:5e:00:53:02
 ```
 
 ```{cfgcmd} set firewall group mac-group \<name\> include \<name\>
 
-Include another mac-group as a member of this group. The referenced
-group must already exist and be of the same type.
+**Include another MAC group in the specified MAC group.**
+
+A rule that references the specified group matches the members of the specified
+group and the members of the included group. The included group remains a
+separate group that rules can reference separately.
+
+The included group can itself include other MAC groups. The included group must
+exist, and MAC groups must not include each other in a circle. Otherwise, the
+commit fails.
 ```
 
-### Domain Groups
+Example:
 
-A **domain group** represents a collection of domains.
+```none
+set firewall group mac-group MAC-ALL include MAC-G01
+```
+
+```{cfgcmd} set firewall group mac-group \<name\> description \<text\>
+
+**Configure a description for the specified MAC group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group mac-group MAC-G01 description 'Office devices'
+```
+
+### Domain groups
+
+A **domain group** is a named collection of domain names. The router resolves
+the domain names to IPv4 and IPv6 addresses at `resolver-interval` (see
+`set firewall global-options resolver-interval`). A rule that references a
+domain group matches packets whose source or destination address is an address
+of a domain name in that group. A domain group name must begin with a letter or
+an underscore.
 
 ```{cfgcmd} set firewall group domain-group \<name\> address \<domain\>
 
-Define a domain group.
+**Add a domain name to the specified domain group.**
+
+A domain name can contain letters, digits, hyphens, and dots, and must start
+with a letter or a digit.
+
+Repeat the command to add more domain names to the same group.
 ```
+
+Example:
 
 ```none
 set firewall group domain-group DOM address example.com
+set firewall group domain-group DOM address www.example.net
 ```
 
 ```{cfgcmd} set firewall group domain-group \<name\> description \<text\>
 
-Provide a domain group description.
+**Configure a description for the specified domain group.**
+
+The description can contain up to 255 characters.
 ```
 
-### Dynamic Groups
+Example:
 
-Firewall dynamic groups differ from other groups because you can use them as
-source/destination in firewall rules, and members are not defined statically
-in VyOS configuration. Instead, firewall rules dynamically add members to
-these groups.
+```none
+set firewall group domain-group DOM description 'Update servers'
+```
 
-#### Defining Dynamic Address Groups
+### Dynamic address groups
 
-Dynamic address groups support both IPv4 and IPv6 families. Use these
-commands to define dynamic IPv4 and IPv6 address groups:
+A **dynamic address group** is a named collection of the source or destination
+IP addresses of packets that rules match. A rule adds these addresses to the
+group when you configure `add-address-to-group` in the rule and name the group.
+Several rules can add addresses to the same group.
+
+You can reference the group as a source or destination match in firewall rules.
+The router removes all addresses from dynamic address groups whenever it
+applies the firewall configuration.
+
+#### Define a dynamic address group
+
+Dynamic address groups support both IPv4 and IPv6 families.
 
 ```{cfgcmd} set firewall group dynamic-group address-group \<name\>
+
+**Define a dynamic IPv4 address group.**
+```
+
+Example:
+
+```none
+set firewall group dynamic-group address-group ALLOWED
 ```
 
 ```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\>
+
+**Define a dynamic IPv6 address group.**
+
+The name must begin with a letter or a digit.
 ```
 
-Add description to firewall groups:
+Example:
+
+```none
+set firewall group dynamic-group ipv6-address-group ALLOWED-v6
+```
 
 ```{cfgcmd} set firewall group dynamic-group address-group \<name\> description \<text\>
+
+**Configure a description for the specified dynamic address group.**
+
+The description can contain up to 255 characters.
+```
+
+Example:
+
+```none
+set firewall group dynamic-group address-group ALLOWED description 'Hosts that completed knocking'
 ```
 
 ```{cfgcmd} set firewall group dynamic-group ipv6-address-group \<name\> description \<text\>
+
+**Configure a description for the specified dynamic IPv6 address group.**
+
+The description can contain up to 255 characters.
 ```
 
-#### Adding elements to Dynamic Firewall Groups
-
-After you define dynamic firewall groups, use them in firewall rules to
-dynamically add elements to them.
-
-Commands used for this task are:
-- Add destination IP address of the connection to a dynamic address group:
-
-```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
-```
-
-- Add source IP address of the connection to a dynamic address group:
-
-```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group source-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group source-address address-group \<name\>
-```
-
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group source-address address-group \<name\>
-```
-
-You can define specific timeouts per rule. When a rule matches, the source or
-destination address is added to the group, and the element remains in the group
-until the timeout expires. If you do not define a timeout, the element remains
-in the group until the next reboot or until you commit firewall configuration
-changes.
-
-```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
-```
-
-```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
-```
-
-```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
-```
-
-```{cfgcmd} set firewall ipv6 name \<name\> rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<timeout\>
-```
-
-Timeout can be defined using seconds, minutes, hours or days:
+Example:
 
 ```none
-set firewall ipv6 name FOO rule 10 add-address-to-group source-address timeout
-Possible completions:
-<number>s            Timeout value in seconds
-<number>m            Timeout value in minutes
-<number>h            Timeout value in hours
-<number>d            Timeout value in days
+set firewall group dynamic-group ipv6-address-group ALLOWED-v6 description 'Hosts that completed knocking'
 ```
 
-#### Using Dynamic Firewall Groups
+#### Add addresses to a dynamic address group
 
-Like other firewall groups, you can use dynamic firewall groups in firewall
-rules as matching options. For example:
+After you define dynamic address groups, reference them with
+`add-address-to-group` in firewall rules to add addresses to them. A rule can
+add the source address, the destination address, or both. The rule must
+reference an existing dynamic address group of the matching family: IPv4 rules
+use `dynamic-group address-group`, and IPv6 rules use
+`dynamic-group ipv6-address-group`. Otherwise, the commit fails.
+
+```{cfgcmd} set firewall [ipv4 | ipv6] [forward | input | output] filter rule \<1-999999\> add-address-to-group source-address address-group \<name\>
+```
+
+```{cfgcmd} set firewall [ipv4 | ipv6] name \<name\> rule \<1-999999\> add-address-to-group source-address address-group \<name\>
+```
+
+```{cfgcmd} set firewall [ipv4 | ipv6] [prerouting | output] raw rule \<1-999999\> add-address-to-group source-address address-group \<name\>
+
+**Add the source address of the packets that the rule matches to the
+specified dynamic address group.**
+```
+
+Example:
 
 ```none
-set firewall ipv4 input filter rule 10 source group dynamic-address-group FOO
-set firewall ipv4 input filter rule 10 destination group dynamic-address-group BAR
+set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group ALLOWED
+set firewall ipv4 name KNOCK rule 10 add-address-to-group source-address address-group ALLOWED
+set firewall ipv4 prerouting raw rule 10 add-address-to-group source-address address-group ALLOWED
+set firewall ipv6 input filter rule 10 add-address-to-group source-address address-group ALLOWED-v6
+set firewall ipv6 name KNOCK6 rule 10 add-address-to-group source-address address-group ALLOWED-v6
+set firewall ipv6 prerouting raw rule 10 add-address-to-group source-address address-group ALLOWED-v6
 ```
 
-## Examples
-
-### General example
-
-After you create firewall groups, you can reference them in firewall, NAT,
-NAT66, and/or policy-route rules. The following example creates multiple
-groups:
-
-```{eval-rst}
-   .. code-block:: none
-
-      set firewall group address-group SERVERS address 198.51.100.101
-      set firewall group address-group SERVERS address 198.51.100.102
-      set firewall group network-group TRUSTEDv4 network 192.0.2.0/30
-      set firewall group network-group TRUSTEDv4 network 203.0.113.128/25
-      set firewall group ipv6-network-group TRUSTEDv6 network 2001:db8::/64
-      set firewall group interface-group LAN interface eth2.2001
-      set firewall group interface-group LAN interface bon0
-      set firewall group port-group PORT-SERVERS port http
-      set firewall group port-group PORT-SERVERS port 443
-      set firewall group port-group PORT-SERVERS port 5000-5010
+```{cfgcmd} set firewall [ipv4 | ipv6] [forward | input | output] filter rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
-And next, some configuration example where groups are used:
-
-```{eval-rst}
-   .. code-block:: none
-
-      set firewall ipv4 output filter rule 10 action accept
-      set firewall ipv4 output filter rule 10 outbound-interface group !LAN
-      set firewall ipv4 forward filter rule 20 action accept
-      set firewall ipv4 forward filter rule 20 source group network-group TRUSTEDv4
-      set firewall ipv6 input filter rule 10 action accept
-      set firewall ipv6 input filter rule 10 source group network-group TRUSTEDv6
-      set nat destination rule 101 inbound-interface group LAN
-      set nat destination rule 101 destination group address-group SERVERS
-      set nat destination rule 101 protocol tcp
-      set nat destination rule 101 destination group port-group PORT-SERVERS
-      set nat destination rule 101 translation address 203.0.113.250
-      set policy route PBR rule 201 destination group port-group PORT-SERVERS
-      set policy route PBR rule 201 protocol tcp
-      set policy route PBR rule 201 set table 15
+```{cfgcmd} set firewall [ipv4 | ipv6] name \<name\> rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 ```
 
-### Port knocking example
+```{cfgcmd} set firewall [ipv4 | ipv6] [prerouting | output] raw rule \<1-999999\> add-address-to-group destination-address address-group \<name\>
 
-You can use dynamic firewall groups with port knocking to secure access to
-the router or any other device. The following example shows a 4-step port
-knocking configuration:
-
-```{eval-rst}
-   .. code-block:: none
-
-      set firewall global-options state-policy established action 'accept'
-      set firewall global-options state-policy invalid action 'drop'
-      set firewall global-options state-policy related action 'accept'
-      set firewall group dynamic-group address-group ALLOWED
-      set firewall group dynamic-group address-group PN_01
-      set firewall group dynamic-group address-group PN_02
-      set firewall ipv4 input filter default-action 'drop'
-      set firewall ipv4 input filter rule 5 action 'accept'
-      set firewall ipv4 input filter rule 5 protocol 'icmp'
-      set firewall ipv4 input filter rule 10 action 'drop'
-      set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group 'PN_01'
-      set firewall ipv4 input filter rule 10 add-address-to-group source-address timeout '2m'
-      set firewall ipv4 input filter rule 10 description 'Port_nock 01'
-      set firewall ipv4 input filter rule 10 destination port '9990'
-      set firewall ipv4 input filter rule 10 protocol 'tcp'
-      set firewall ipv4 input filter rule 20 action 'drop'
-      set firewall ipv4 input filter rule 20 add-address-to-group source-address address-group 'PN_02'
-      set firewall ipv4 input filter rule 20 add-address-to-group source-address timeout '3m'
-      set firewall ipv4 input filter rule 20 description 'Port_nock 02'
-      set firewall ipv4 input filter rule 20 destination port '9991'
-      set firewall ipv4 input filter rule 20 protocol 'tcp'
-      set firewall ipv4 input filter rule 20 source group dynamic-address-group 'PN_01'
-      set firewall ipv4 input filter rule 30 action 'drop'
-      set firewall ipv4 input filter rule 30 add-address-to-group source-address address-group 'ALLOWED'
-      set firewall ipv4 input filter rule 30 add-address-to-group source-address timeout '2h'
-      set firewall ipv4 input filter rule 30 description 'Port_nock 03'
-      set firewall ipv4 input filter rule 30 destination port '9992'
-      set firewall ipv4 input filter rule 30 protocol 'tcp'
-      set firewall ipv4 input filter rule 30 source group dynamic-address-group 'PN_02'
-      set firewall ipv4 input filter rule 99 action 'accept'
-      set firewall ipv4 input filter rule 99 description 'Port_nock 04 - Allow ssh'
-      set firewall ipv4 input filter rule 99 destination port '22'
-      set firewall ipv4 input filter rule 99 protocol 'tcp'
-      set firewall ipv4 input filter rule 99 source group dynamic-address-group 'ALLOWED'
+**Add the destination address of the packets that the rule matches to the
+specified dynamic address group.**
 ```
 
-Before testing, we can check the members of firewall groups:
+Example:
 
 ```none
-vyos@vyos# run show firewall group
-Firewall Groups
-
-Name     Type                    References            Members        Timeout    Expires
--------  ----------------------  --------------------  -------------  ---------  ---------
-ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
-PN_01    address_group(dynamic)  ipv4-input-filter-10  N/D            N/D        N/D
-PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D            N/D        N/D
-[edit]
-vyos@vyos#
+set firewall ipv4 forward filter rule 10 add-address-to-group destination-address address-group SEEN-SERVERS
+set firewall ipv4 name KNOCK rule 20 add-address-to-group destination-address address-group SEEN-SERVERS
+set firewall ipv4 prerouting raw rule 10 add-address-to-group destination-address address-group SEEN-SERVERS
+set firewall ipv6 forward filter rule 10 add-address-to-group destination-address address-group SEEN-SERVERS-v6
+set firewall ipv6 name KNOCK6 rule 20 add-address-to-group destination-address address-group SEEN-SERVERS-v6
+set firewall ipv6 prerouting raw rule 10 add-address-to-group destination-address address-group SEEN-SERVERS-v6
 ```
 
-With this configuration, to gain SSH access to the router, the user must:
+#### Set a timeout for added addresses
 
-1. Create a new TCP connection to destination port 9990. A new entry is added
-   to dynamic firewall group `PN_01`.
+You can set a timeout for the addresses that a rule adds to a dynamic address
+group. The router removes an address with a timeout from the group when the
+timeout expires. An address that has no timeout remains in the group until the
+router removes all addresses from dynamic address groups.
 
-   ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+```{cfgcmd} set firewall [ipv4 | ipv6] [forward | input | output] filter rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<number+suffix\>
+```
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        119
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D            N/D        N/D
-   [edit]
-   vyos@vyos#
-   ```
+```{cfgcmd} set firewall [ipv4 | ipv6] name \<name\> rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<number+suffix\>
+```
 
-2. Create a new TCP connection to destination port 9991. A new entry is added
-   to dynamic firewall group `PN_02`.
+```{cfgcmd} set firewall [ipv4 | ipv6] [prerouting | output] raw rule \<1-999999\> add-address-to-group [destination-address | source-address] timeout \<number+suffix\>
 
-   ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+**Configure how long an address that the rule adds remains in the dynamic
+address group.**
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D            N/D        N/D
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31  120        106
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31  180        179
-   [edit]
-   vyos@vyos#
-   ```
+Specify the timeout as a number followed by `s` (seconds), `m` (minutes),
+`h` (hours), or `d` (days).
 
-3. Create a new TCP connection to destination port 9992. A new entry is added
-   to dynamic firewall group `ALLOWED`.
+Set a timeout for the source address together with the command that adds the
+source address to a dynamic address group. Set a timeout for the destination
+address together with the command that adds the destination address to a
+dynamic address group. Otherwise, the commit fails.
+```
 
-   ```none
-   vyos@vyos# run show firewall group
-   Firewall Groups
+In the following example, the rule adds the source address to group `A` for two
+minutes and the destination address to group `B` for one hour:
 
-   Name     Type                    References            Members        Timeout    Expires
-   -------  ----------------------  --------------------  -------------  ---------  ---------
-   ALLOWED  address_group(dynamic)  ipv4-input-filter-30  192.168.89.31       7200       7199
-   PN_01    address_group(dynamic)  ipv4-input-filter-10  192.168.89.31        120         89
-   PN_02    address_group(dynamic)  ipv4-input-filter-20  192.168.89.31        180        170
-   [edit]
-   vyos@vyos#
-   ```
+```none
+set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group A
+set firewall ipv4 input filter rule 10 add-address-to-group source-address timeout 2m
+set firewall ipv4 input filter rule 10 add-address-to-group destination-address address-group B
+set firewall ipv4 input filter rule 10 add-address-to-group destination-address timeout 1h
+```
 
-4. Now you can connect via SSH to the router (assuming SSH is
-   configured).
+#### Reference a dynamic address group in a rule
 
-## Operation-mode
+You reference a dynamic address group in the source or destination of IPv4 and
+IPv6 firewall rules, like other groups. A rule matches packets whose source or
+destination IP address is in a dynamic address group.
+
+Example:
+
+```none
+set firewall ipv4 input filter rule 10 source group dynamic-address-group ALLOWED
+set firewall ipv6 input filter rule 10 destination group dynamic-address-group BLOCKED
+```
+
+## Operation
 
 ```{opcmd} show firewall group
+
+**Show all firewall groups.**
 ```
 
 ```{opcmd} show firewall group \<name\>
 
-Display an overview of defined groups, including the firewall group name,
-type, references (where the group is used), members, timeout, and
-expiration (the last two only apply to dynamic firewall groups).
+**Show the firewall groups with the specified name.**
+
+The `<name>` must match the name of the group exactly. Groups of different types
+can have the same name, and the command shows all of them.
 ```
 
-Here is an example of such command:
+```{opcmd} show firewall group detail
+
+**Show all firewall groups with the description of each group.**
+```
+
+```{opcmd} show firewall group \<name\> detail
+
+**Show the firewall groups with the specified name and the description of each
+group.**
+
+The `<name>` must match the name of the group exactly. Groups of different types
+can have the same name, and the command shows all of them.
+```
+
+## Examples
+
+### Create and use firewall groups
+
+The following commands create an address group, two network groups, an interface
+group, and a port group:
+
+```none
+set firewall group address-group SERVERS address 198.51.100.101
+set firewall group address-group SERVERS address 198.51.100.102
+set firewall group network-group TRUSTEDv4 network 192.0.2.0/30
+set firewall group network-group TRUSTEDv4 network 203.0.113.128/25
+set firewall group ipv6-network-group TRUSTEDv6 network 2001:db8::/64
+set firewall group interface-group LAN interface eth2.2001
+set firewall group interface-group LAN interface bond0
+set firewall group port-group PORT-SERVERS port http
+set firewall group port-group PORT-SERVERS port 443
+set firewall group port-group PORT-SERVERS port 5000-5010
+```
+
+The following commands reference the groups in firewall, NAT, and policy route
+rules:
+
+```none
+set firewall ipv4 output filter rule 10 action accept
+set firewall ipv4 output filter rule 10 outbound-interface group !LAN
+set firewall ipv4 forward filter rule 20 action accept
+set firewall ipv4 forward filter rule 20 source group network-group TRUSTEDv4
+set firewall ipv6 input filter rule 10 action accept
+set firewall ipv6 input filter rule 10 source group network-group TRUSTEDv6
+set nat destination rule 101 inbound-interface group LAN
+set nat destination rule 101 destination group address-group SERVERS
+set nat destination rule 101 protocol tcp
+set nat destination rule 101 destination group port-group PORT-SERVERS
+set nat destination rule 101 translation address 203.0.113.250
+set policy route PBR rule 201 destination group port-group PORT-SERVERS
+set policy route PBR rule 201 protocol tcp
+set policy route PBR rule 201 set table 15
+```
+
+### Restrict SSH access with port knocking
+
+You can use dynamic address groups to implement port knocking: the router
+accepts SSH connections from a client only after the client sends TCP packets to
+a sequence of ports in the correct order. The following configuration uses the
+ports 9990, 9991, and 9992:
+
+```none
+set firewall global-options state-policy established action 'accept'
+set firewall global-options state-policy invalid action 'drop'
+set firewall global-options state-policy related action 'accept'
+set firewall group dynamic-group address-group ALLOWED
+set firewall group dynamic-group address-group PN_01
+set firewall group dynamic-group address-group PN_02
+set firewall ipv4 input filter default-action 'drop'
+set firewall ipv4 input filter rule 5 action 'accept'
+set firewall ipv4 input filter rule 5 protocol 'icmp'
+set firewall ipv4 input filter rule 10 action 'drop'
+set firewall ipv4 input filter rule 10 add-address-to-group source-address address-group 'PN_01'
+set firewall ipv4 input filter rule 10 add-address-to-group source-address timeout '2m'
+set firewall ipv4 input filter rule 10 description 'Port_knock 01'
+set firewall ipv4 input filter rule 10 destination port '9990'
+set firewall ipv4 input filter rule 10 protocol 'tcp'
+set firewall ipv4 input filter rule 20 action 'drop'
+set firewall ipv4 input filter rule 20 add-address-to-group source-address address-group 'PN_02'
+set firewall ipv4 input filter rule 20 add-address-to-group source-address timeout '3m'
+set firewall ipv4 input filter rule 20 description 'Port_knock 02'
+set firewall ipv4 input filter rule 20 destination port '9991'
+set firewall ipv4 input filter rule 20 protocol 'tcp'
+set firewall ipv4 input filter rule 20 source group dynamic-address-group 'PN_01'
+set firewall ipv4 input filter rule 30 action 'drop'
+set firewall ipv4 input filter rule 30 add-address-to-group source-address address-group 'ALLOWED'
+set firewall ipv4 input filter rule 30 add-address-to-group source-address timeout '2h'
+set firewall ipv4 input filter rule 30 description 'Port_knock 03'
+set firewall ipv4 input filter rule 30 destination port '9992'
+set firewall ipv4 input filter rule 30 protocol 'tcp'
+set firewall ipv4 input filter rule 30 source group dynamic-address-group 'PN_02'
+set firewall ipv4 input filter rule 99 action 'accept'
+set firewall ipv4 input filter rule 99 description 'Port_knock 04 - Allow ssh'
+set firewall ipv4 input filter rule 99 destination port '22'
+set firewall ipv4 input filter rule 99 protocol 'tcp'
+set firewall ipv4 input filter rule 99 source group dynamic-address-group 'ALLOWED'
+```
+
+Before a client sends the first knocking packet, the dynamic address groups
+contain no addresses:
 
 ```none
 vyos@vyos:~$ show firewall group
 Firewall Groups
 
-Name          Type                    References              Members             Timeout    Expires
-------------  ----------------------  ----------------------  ----------------  ---------  ---------
-SERVERS       address_group           nat-destination-101     198.51.100.101
-                                                              198.51.100.102
-ALLOWED       address_group(dynamic)  ipv4-input-filter-30    192.168.77.39          7200       7174
-PN_01         address_group(dynamic)  ipv4-input-filter-10    192.168.0.245           120        112
-                                                              192.168.77.39           120         85
-PN_02         address_group(dynamic)  ipv4-input-filter-20    192.168.77.39           180        151
-LAN           interface_group         ipv4-output-filter-10   bon0
-                                      nat-destination-101     eth2.2001
-TRUSTEDv6     ipv6_network_group      ipv6-input-filter-10    2001:db8::/64
-TRUSTEDv4     network_group           ipv4-forward-filter-20  192.0.2.0/30
-                                                              203.0.113.128/25
-PORT-SERVERS  port_group              route-PBR-201           443
-                                      route-PBR-201           5000-5010
-                                      nat-destination-101     http
-vyos@vyos:~$
+Name     Type                    References            Members    Timeout    Expires
+-------  ----------------------  --------------------  ---------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D        N/D        N/D
+PN_01    address_group(dynamic)  ipv4-input-filter-10  N/D        N/D        N/D
+PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D        N/D        N/D
 ```
+
+With this configuration, a client must complete the following steps to connect
+to the router with SSH.
+
+1. Send TCP packets to destination port 9990. The router adds the source address
+   of the client to dynamic address group `PN_01` for two minutes.
+
+```none
+vyos@vyos:~$ show firewall group
+Firewall Groups
+
+Name     Type                    References            Members       Timeout    Expires
+-------  ----------------------  --------------------  ------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D           N/D        N/D
+PN_01    address_group(dynamic)  ipv4-input-filter-10  203.0.113.10  120        119
+PN_02    address_group(dynamic)  ipv4-input-filter-20  N/D           N/D        N/D
+```
+
+2. Within two minutes, send TCP packets to destination port 9991. The router
+   adds the source address to dynamic address group `PN_02` for three minutes.
+
+```none
+vyos@vyos:~$ show firewall group
+Firewall Groups
+
+Name     Type                    References            Members       Timeout    Expires
+-------  ----------------------  --------------------  ------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  N/D           N/D        N/D
+PN_01    address_group(dynamic)  ipv4-input-filter-10  203.0.113.10  120        106
+PN_02    address_group(dynamic)  ipv4-input-filter-20  203.0.113.10  180        179
+```
+
+3. Within three minutes, send TCP packets to destination port 9992. The router
+   adds the source address to dynamic address group `ALLOWED` for two hours.
+
+```none
+vyos@vyos:~$ show firewall group
+Firewall Groups
+
+Name     Type                    References            Members         Timeout    Expires
+-------  ----------------------  --------------------  ------------  ---------  ---------
+ALLOWED  address_group(dynamic)  ipv4-input-filter-30  203.0.113.10       7200       7199
+PN_01    address_group(dynamic)  ipv4-input-filter-10  203.0.113.10        120         89
+PN_02    address_group(dynamic)  ipv4-input-filter-20  203.0.113.10        180        162
+```
+
+4. Within two hours, connect to the router with SSH. Rule 99 accepts the SSH
+   packets because the source address is in the dynamic address group
+   `ALLOWED`.
