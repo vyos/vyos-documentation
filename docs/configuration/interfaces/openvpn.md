@@ -116,7 +116,7 @@ With `shared-secret-key`, AEAD ciphers (`aes128gcm`, `aes192gcm`, `aes256gcm`,
 ```
 
 
-```{cfgcmd} set interfaces openvpn \<interface\> hash \<md5 | sha1 | sha256 | ...\>
+```{cfgcmd} set interfaces openvpn \<interface\> hash \<md5 | sha1 | sha256 | sha384 | sha512\>
 
 Configure the hashing algorithm for the OpenVPN interface.
 ```
@@ -432,7 +432,7 @@ allocated to connecting clients.
 ```
 
 
-```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool subnet \<netmask\>
+```{cfgcmd} set interfaces openvpn \<interface\> server client-ip-pool subnet-mask \<netmask\>
 
 **Configure the subnet mask pushed to dynamic clients.**
 
