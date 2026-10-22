@@ -40,7 +40,8 @@ restrictions as it crosses to another region of a network.
 Key Points:
 - A zone must be configured before you assign an interface to it, and you
   can assign an interface to only a single zone.
-- All traffic to and from an interface within a zone flows freely.
+- Traffic between members of the same zone is accepted by default unless
+  ``intra-zone-filtering`` is configured.
 - Existing policies affect all traffic between zones.
 - Traffic cannot flow between a zone member interface and any interface that
   is not a zone member.
@@ -73,16 +74,23 @@ The following steps are required to create a zone-based firewall:
 
 To define a zone, set up either one with interfaces or as the local zone.
 
-```{cfgcmd} set firewall zone \<name\> interface \<interface\>
+```{cfgcmd} set firewall zone \<name\> member interface \<interface\>
 
 Assign interfaces as a member of a zone.
 
 :::{note}
 * An interface can only be a member of one zone.
-* You can have multiple interfaces in a zone. Traffic between
-interfaces in the same zone follows the intra-zone-filtering
-policy (allowed by default).
+* You can have multiple interfaces in a zone and use interface-name
+  wildcards.
+* An interface in a non-default VRF should normally be assigned by adding
+  that VRF as a zone member.
 :::
+```
+
+```{cfgcmd} set firewall zone \<name\> member vrf \<vrf\>
+
+Assign all interfaces in a VRF to the zone. A VRF can belong to only one
+zone and must contain at least one interface.
 ```
 
 ```{cfgcmd} set firewall zone \<name\> local-zone
@@ -108,10 +116,36 @@ Enable logging of packets that match this zone's default-action (disabled
 by default).
 ```
 
-```{cfgcmd} set firewall zone \<name\> description
+```{cfgcmd} set firewall zone \<name\> description \<text\>
 
 Add a meaningful description.
 ```
+
+:::{important}
+Every non-local zone must have at least one interface or VRF member. Only
+one local zone can exist. A local zone cannot have members or use
+intra-zone filtering.
+:::
+
+### Intra-zone Filtering
+
+By default, traffic between members of the same zone is accepted. Configure
+either a simple action or custom IPv4 and IPv6 rule-sets to filter it.
+
+```{cfgcmd} set firewall zone \<name\> intra-zone-filtering action [accept | drop]
+```
+
+```{cfgcmd} set firewall zone \<name\> intra-zone-filtering firewall name \<ipv4-rule-set-name\>
+```
+
+```{cfgcmd} set firewall zone \<name\> intra-zone-filtering firewall ipv6-name \<ipv6-rule-set-name\>
+```
+
+:::{important}
+The ``action`` form and the ``firewall`` form are mutually exclusive.
+Referenced rule-sets must already exist. Intra-zone filtering cannot be
+configured on the local zone.
+:::
 
 ### Defining a Rule-Set
 
@@ -149,6 +183,16 @@ set firewall zone DMZ from LAN firewall name LAN-DMZ-v4
 set firewall zone LAN from DMZ firewall name DMZ-LAN-v4
 ```
 
+:::{important}
+The source zone must exist, and every referenced IPv4 or IPv6 custom chain
+must already be configured.
+:::
+
+:::{warning}
+A custom chain containing flow offload cannot be attached to a path to or
+from the local zone.
+:::
+
 ### Applying a Default Rule-Set to a Zone
 
 When a destination zone shares a common rule-set for multiple source zones,
@@ -162,6 +206,10 @@ not have a rule-set configured as defined in
 
 ```{cfgcmd} set firewall zone \<Destination Zone\> default-firewall ipv6-name \<ipv6-rule-set-name\>
 ```
+
+The default firewall is used only when no explicit ``from`` rule-set
+applies. If neither an explicit nor default rule-set applies, the zone
+``default-action`` is used; its default is ``drop``.
 
 ## Operation-mode
 
