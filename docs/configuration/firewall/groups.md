@@ -174,9 +174,9 @@ remote group.**
 
 The URL must use the `http` or `https` scheme.
 
-Enclose a URL that contains a query string in single quotes. The shell treats an
-unquoted `&` as a command separator, so it cuts the URL at `&` and runs the rest
-as a separate command. To enter a literal `?`, press `Ctrl-V` before `?`.
+To safely type or past a URL without worrying about having to escape
+`?` and `&` characters in a query strings, enter an opening quote (`'`)
+before typing or pasting, then close the quote.
 
 You must configure `url` for every remote group. Otherwise, the commit fails.
 ```
