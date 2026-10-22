@@ -13,6 +13,28 @@ library; `resolve_vyos_xml.sh` needs bash and `curl`.
 The scripts make no decisions about the module design. They produce drafts
 and checks for you to review; see "Review the draft" in the guide.
 
+## Known limitations
+
+The scripts are published as they were used to build `vyos_vpn_ipsec` and
+`vyos_vpn_ipsec_s2s`. Known limitations:
+
+- `resolve_vyos_xml.sh` does not detect circular includes, and does not
+  notice a failed include fetch: the output can then be incomplete while the
+  script still exits with status 0. `fetch_vyos_xml_definition.py` stops with
+  an error in both cases, so prefer it when in doubt.
+- `parse_xml_definitions.py` and `parse_node_defs.py` write descriptions
+  without escaping. Help text containing `"` or `\` gives invalid YAML, which
+  `wrap_docstring.py` then fails to load; fix the line in the draft by hand.
+- `parse_node_defs.py` writes `choices` unquoted, so values such as `yes`,
+  `no`, `on` or `off` become booleans when the draft is loaded.
+  `parse_xml_definitions.py` quotes them. When a tag node's own `node.def` and
+  its `node.tag/node.def` both set metadata, the later one wins, which can
+  turn a list of dictionaries into a dictionary in the draft.
+- `check_parsers_against_fixture.py` expects compiled `getval` patterns, as
+  the collection's `rm_templates` use. It prints fixture lines that match no
+  parser or several; do not run it on fixtures with real secrets where its
+  output is logged.
+
 ## fetch_vyos_xml_definition.py
 
 Fetches a VyOS XML interface definition from the vyos-1x repository on GitHub
@@ -31,7 +53,8 @@ $ python3 fetch_vyos_xml_definition.py vpn_ipsec --branch rolling > vpn_ipsec.xm
 
 ## resolve_vyos_xml.sh
 
-The same as `fetch_vyos_xml_definition.py`, with bash and `curl` only.
+An equivalent of `fetch_vyos_xml_definition.py` with bash and `curl` only,
+without its circular-include detection (see the limitations below).
 
 ```none
 $ bash resolve_vyos_xml.sh vpn_ipsec > vpn_ipsec.xml

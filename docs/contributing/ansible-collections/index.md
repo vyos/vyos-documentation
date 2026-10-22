@@ -2,7 +2,7 @@
 
 # Ansible collections
 
-VyOS is automated with Ansible through three collections. Each has its own
+VyOS is automated with Ansible through two collections. Each has its own
 repository, issue tracker label and release cycle; this section explains how to
 contribute to them.
 
