@@ -3,7 +3,7 @@ myst:
   html_meta:
     description: |
       Firewall groups are named collections of addresses, networks,
-      ports, MAC addresses, interfaces, and domain names that you
+      ports, MAC addresses, interfaces, and domain names that you can
       reference in rules. They cover address, network, interface, port,
       MAC, domain, remote, and dynamic groups, and nested groups.
     keywords: firewall, groups, address group, remote group, dynamic group
