@@ -61,6 +61,18 @@ container, and processes inside the container are visible on the host.
 The command translates to "--pid host" when the container is created.
 ```
 
+<<<<<<< HEAD
+=======
+```{cfgcmd} set container name \<name\> allow-host-cgroups
+
+The container and the host share the same cgroup namespace. The
+container sees the host's cgroup hierarchy instead of a namespaced view
+of its own.
+
+The command translates to "--cgroupns host" when the container is
+created.
+```
+>>>>>>> de45e02 (container: document remaining per-container options and network types (#2244))
 
 ```{cfgcmd} set container name \<name\> allow-host-networks
 
@@ -93,6 +105,20 @@ engine and cannot be used
 :::
 ```
 
+<<<<<<< HEAD
+=======
+```{cfgcmd} set container name \<name\> network \<networkname\> mac \<address\>
+
+Set a specific {abbr}`MAC (Media Access Control)` address for the
+container interface.
+
+Defaults to `auto`, which generates a random address for the container.
+
+:::{code-block} none
+set container name coredns network NET01 mac '00:53:00:12:34:56'
+:::
+```
+>>>>>>> de45e02 (container: document remaining per-container options and network types (#2244))
 
 ```{cfgcmd} set container name \<name\> name-server \<address\>
 
@@ -162,6 +188,28 @@ set container name coredns volume 'corefile' destination /etc/Corefile
 Volume is either mounted as rw (read-write - default) or ro (read-only)
 ```
 
+```{cfgcmd} set container name \<name\> volume \<volumename\> propagation \<mode\>
+
+Control how `mount` and `unmount` events propagate between the volume on
+the host and the mount inside the container. Default is **rprivate**.
+
+- **shared**: Events propagate in both directions. A mount made below
+  the volume on the host shows up inside the container, and one made
+  inside the container shows up on the host
+- **slave**: Events propagate one way only, from the host into the
+  container but not back
+- **private**: No events propagate into or out of the mount
+- **rshared**, **rslave**, **rprivate**: The same, applied recursively
+  to nested mount points as well
+
+:::{note}
+The propagation of the host source mount limits what takes effect here:
+**shared** requires the source mount to be shared, and **slave**
+requires it to be shared or slave. Check it on the host with
+`findmnt -o TARGET,PROPAGATION \<directory\>`.
+:::
+```
+
 ```{cfgcmd} set container name \<name\> tmpfs \<tmpfsname\> destination \<path\>
 
 Mount a tmpfs *(ramdisk)* filesystem to the given path within the container.
@@ -192,6 +240,14 @@ exit code, retrying indefinitely (default)
 retrying indefinitely
 ```
 
+```{cfgcmd} set container name \<name\> stop-timeout \<seconds\>
+
+Time to wait for the container to shut down on its own before it is
+killed.
+
+Valid values are 1 to 60 seconds, the default is 10 seconds.
+```
+
 ```{cfgcmd} set container name \<name\> cpu-quota \<num\>
 
 This specifies the number of CPU resources the container can use.
@@ -209,6 +265,16 @@ The command translates to "--cpus=\<num\>" when the container is created.
 Constrain the memory available to the container.
 
 Default is 512 MB. Use 0 MB for unlimited memory.
+```
+
+```{cfgcmd} set container name \<name\> shared-memory \<MB\>
+
+Size of the shared memory mounted at `/dev/shm` inside the container.
+Databases and browsers are typical workloads that need more than the
+default.
+
+Default is 64 MB, the maximum is 8192 MB. Use 0 MB for unlimited
+shared memory.
 ```
 
 ```{cfgcmd} set container name \<name\> device \<devicename\> source \<path\>
@@ -301,6 +367,48 @@ A brief description what this network is all about.
 
 Define IPv4 and/or IPv6 prefix for a given network name.
 Both IPv4 and IPv6 can be used in parallel.
+```
+
+```{cfgcmd} set container network \<name\> type bridge
+
+Attach containers on this network to an internal bridge on the host.
+They reach the outside through {abbr}`NAT (Network Address
+Translation)`, so they are not directly reachable from the parent
+network without port mapping.
+
+This is the default when no network type is configured.
+```
+
+```{cfgcmd} set container network \<name\> type macvlan parent \<interface\>
+
+Attach this network directly to the given parent interface using the
+MACVLAN driver. Containers appear on the parent network with their own
+MAC address and are directly reachable, rather than being placed behind
+a host bridge and NAT.
+
+The parent interface must already exist. It can be an ethernet, bonding
+or bridge interface, optionally a VLAN sub-interface of one.
+
+:::{note}
+MACVLAN networks cannot be assigned to a VRF.
+:::
+```
+
+```{cfgcmd} set container network \<name\> type macvlan mode \<mode\>
+
+- **bridge**: Containers act as separate hosts on the parent network
+- **private**: Containers on the same parent interface cannot communicate
+  with each other, even if the external switch supports hairpin forwarding
+- **vepa**: Containers send all traffic through the parent switch for
+  forwarding
+
+Both `parent` and `mode` are required for a MACVLAN network.
+
+:::{code-block} none
+set container network NET01 prefix '192.0.2.0/24'
+set container network NET01 type macvlan parent 'eth1'
+set container network NET01 type macvlan mode 'bridge'
+:::
 ```
 
 ```{cfgcmd} set container network \<name\> mtu \<number\>
