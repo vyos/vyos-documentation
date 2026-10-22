@@ -2,7 +2,7 @@
 
 # Ansible collections
 
-VyOS is automated with Ansible through two collections. Each has its own
+VyOS is automated with Ansible through three collections. Each has its own
 repository, issue tracker label and release cycle; this section explains how to
 contribute to them.
 
@@ -10,6 +10,8 @@ contribute to them.
   the CLI (`network_cli`). It provides resource modules such as
   `vyos_interfaces`, `vyos_bgp_global` or `vyos_vpn_ipsec`, plus generic
   modules such as `vyos_config` and `vyos_command`.
+- [vyos.rest](https://github.com/vyos/rest.vyos) manages VyOS through its
+  REST API (`httpapi`), with resource modules that mirror those of vyos.vyos.
 - [vyos.blueprints](https://github.com/vyos/vyos.blueprints) builds on
   vyos.vyos: Ansible roles that implement the configuration blueprints of this
   documentation, plus operational roles for backups and upgrades.
@@ -22,6 +24,7 @@ contributors.
 
 vyos-vyos-modules
 tools
+vyos-rest-modules
 ```
 
 ## Where to start

@@ -1,6 +1,6 @@
 (contributing-ansible-collections-tools)=
 
-# Helper scripts
+# Helper scripts for vyos.vyos modules
 
 These scripts automate the mechanical parts of building a vyos.vyos resource
 module, as described in {ref}`contributing-vyos-vyos-modules`. Download them
