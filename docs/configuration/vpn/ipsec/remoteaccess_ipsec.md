@@ -143,6 +143,17 @@ requested.
 set vpn ipsec remote-access connection rw authentication always-send-cert
 ```
 
+With the `eap-tls`, `eap-mschapv2` and `eap-radius` client modes the server
+asks the client for its EAP identity. By default any identity is accepted.
+To accept only a specific identity, set it explicitly:
+
+```{cfgcmd} set vpn ipsec remote-access connection \<name\> authentication eap-id \<id | any\>
+
+EAP identity the client must present. The identity is a string of up to 64
+ASCII characters, the default `any` accepts every identity. The option has no
+effect with the `x509` client mode.
+```
+
 
 ## Client Configuration
 

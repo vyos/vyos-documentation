@@ -82,6 +82,38 @@ Set mode for IPsec authentication between VyOS and L2TP clients.
 Set predefined shared secret phrase.
 ```
 
+
+```{cfgcmd} set vpn l2tp remote-access ipsec-settings ike-group \<name\>
+
+Use the settings of an existing `vpn ipsec ike-group` for the IKE
+negotiation, instead of the built-in defaults. The group must exist, the
+commit fails otherwise.
+```
+
+
+```{cfgcmd} set vpn l2tp remote-access ipsec-settings esp-group \<name\>
+
+Use the settings of an existing `vpn ipsec esp-group` for the ESP
+negotiation, instead of the built-in defaults. The group must exist, the
+commit fails otherwise.
+```
+
+
+```{cfgcmd} set vpn l2tp remote-access ipsec-settings ike-lifetime \<seconds\>
+
+IKE lifetime in seconds, from 30 to 86400. The default is 3600 seconds. The
+value is only used when no `ike-group` is configured, otherwise the `lifetime`
+of the IKE group applies.
+```
+
+
+```{cfgcmd} set vpn l2tp remote-access ipsec-settings lifetime \<seconds\>
+
+ESP lifetime in seconds, from 30 to 86400. The default is 3600 seconds. The
+value is only used when no `esp-group` is configured, otherwise the `lifetime`
+of the ESP group applies.
+```
+
 If a local firewall policy is in place on your external interface you will need
 to allow the ports below:
 - UDP port 500 (IKE)
