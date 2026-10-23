@@ -69,6 +69,29 @@ Deploy VyOS on Amazon {abbr}`AWS (Amazon Web Services)`.
     vyos@ip-192-0-2-10:~$
 ```
 
+## Use VyOS as a router or firewall
+
+EC2 enables source/destination checks on network interfaces by default. When
+VyOS acts as a router, NAT instance, or firewall, it must send and receive
+traffic for which it is not the source or destination. Disable the check on
+every network interface that will carry forwarded traffic.
+
+1. In the EC2 console, open **Network Interfaces**.
+2. Select each VyOS network interface, choose **Actions** and then
+   **Change source/dest. check**, clear **Enable**, and save the change.
+
+Alternatively, use the AWS CLI for each network interface:
+
+```none
+aws ec2 modify-network-interface-attribute \
+  --network-interface-id <eni-id> \
+  --no-source-dest-check
+```
+
+Update the VPC route table associated with each workload subnet to use the
+VyOS instance or network interface as the target for the required prefixes.
+Ensure that the security groups and network ACLs permit the forwarded traffic.
+
 
 ## Amazon CloudWatch Agent Usage
 
@@ -191,7 +214,8 @@ set service aws glb threads udp-affinity '0-3'
 - <https://console.aws.amazon.com/>
 - <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html>
 - <https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance-fleet.html>
+- <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/infrastructure-security.html>
+- <https://docs.aws.amazon.com/vpc/latest/userguide/work-with-nat-instances.html>
 - <https://aws.amazon.com/blogs/networking-and-content-delivery/how-to-integrate-linux-instances-with-aws-gateway-load-balancer/>
 
 % start_vyoslinter
-
