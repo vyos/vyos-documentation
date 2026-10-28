@@ -30,6 +30,13 @@ For example: /tmp/vyos-1.2.3-amd64.iso.
 If there isn't enough free disk space, the installation will be canceled.
 To delete images, use the {opcmd}`delete system image` command.
 
+:::{note}
+If the running system has UEFI Secure Boot enabled, the Linux Kernel of the
+new image must be signed by an enrolled Machine Owner Key. Otherwise the
+installation is canceled, because the new image would not boot. See
+{ref}`secure-boot` for details.
+:::
+
 
 VyOS associates configuration with each image, and each image has its own
 unique configuration copy. This differs from traditional network routers where

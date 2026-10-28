@@ -157,6 +157,28 @@ error: bad shim signature
 error: you need to load the kernel first
 ```
 
+To prevent this, {opcmd}`add system image` verifies the Linux Kernel of the
+new image when the running system has Secure Boot enabled. The Kernel must be
+signed by one of the {abbr}`MOK (Machine Owner Key)` keys enrolled in UEFI.
+If it is not, the installation is aborted before any files are copied:
+
+% stop_vyoslinter
+
+```none
+vyos@vyos:~$ add system image /tmp/vyos-unsigned-amd64.iso
+Validating image compatibility
+Validating image checksums
+Validating Secure Boot signature
+Secure Boot is enabled, but the Linux Kernel "vmlinuz" of the new image is not signed by an enrolled key. The new image would not boot.
+Exiting from VyOS installation
+```
+
+% start_vyoslinter
+
+Enroll the key the new image is signed with before you add the image. On
+systems with Secure Boot disabled, or booted in legacy BIOS mode, the check is
+skipped.
+
 
 ## Linux Kernel
 
