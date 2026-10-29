@@ -382,7 +382,10 @@ which the firewall applies the rule set. The `notrack` action is the exception:
 it marks the packet as untracked, and connection tracking ignores the packet at
 the following processing points as well.
 
-```{cfgcmd} set firewall bridge [forward | input | output | prerouting] filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
+```{cfgcmd} set firewall bridge [forward | input | output] filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
+```
+
+```{cfgcmd} set firewall bridge prerouting filter rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
 ```
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
