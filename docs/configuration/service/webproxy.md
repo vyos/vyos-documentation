@@ -339,8 +339,17 @@ set service webproxy authentication ldap version 2
 
 ### URL filtering
 
-```{include} /_include/need_improvement.txt
-```
+URL filtering is provided by [SquidGuard]. Squid hands every request to
+SquidGuard, which either lets it through or answers with a redirect to a
+block page. Category based filtering needs the blacklist databases described
+in the Update part of the Operation section below.
+
+SquidGuard filters HTTP. Squid does not intercept TLS, and in transparent mode
+only traffic on port 80 is redirected to the proxy, so HTTPS traffic of a
+transparent client does not reach SquidGuard and is not filtered. A client that
+uses the proxy explicitly sends HTTPS as a `CONNECT` request, SquidGuard then
+sees the host name but not the path or the query, which are encrypted.
+
 ```{cfgcmd} set service webproxy url-filtering disable
 
 Disables web filtering without discarding configuration.
@@ -349,6 +358,333 @@ Disables web filtering without discarding configuration.
 set service webproxy url-filtering disable
 :::
 ```
+
+#### How a request is decided
+
+Clients are split in two groups. A client whose address is part of a
+source group that is referenced by a rule is handled by that rule. Every other
+client is handled by the global `url-filtering squidguard` settings. If a
+client is part of several source groups, the group whose name comes first in
+alphabetical order decides. When that group has no rule, the client is handled
+by the global settings.
+
+For one client the checks run from left to right and the first match decides:
+
+1. Global settings only: URLs that use an IP address instead of a host name
+   are blocked, unless `allow-ipaddr-url` is set.
+2. `local-ok` and `local-ok-url`: allowed.
+3. `local-block`, `local-block-url` and `local-block-keyword`: blocked.
+4. `block-category`: blocked.
+5. `allow-category`: allowed.
+6. If nothing matched, `default-action` decides. The default is `allow`.
+
+Blocked requests are answered with an HTTP 302 redirect to `redirect-url`.
+
+:::{note}
+Not every option can be used in every place. The descriptions below name the
+options that are only evaluated in the global settings, and the options the
+CLI accepts but that are currently not used when the SquidGuard configuration
+is generated.
+:::
+
+#### Global settings
+
+```{cfgcmd} set service webproxy url-filtering squidguard block-category \<category\>
+
+Block a blacklist category, for example `ads` or `malware`. Can be given
+multiple times. Use tab completion to list the categories that are installed.
+
+The category database has to exist. If it does not, the commit still
+succeeds, but only prints a warning and the category has no effect. The
+SquidGuard configuration lists the database files that exist when it is
+rendered at commit. Install the database with
+{opcmd}`update webproxy blacklists` before you commit the category, or change
+the webproxy configuration and commit again afterwards, a commit without a
+change does not render it again.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard block-category ads
+set service webproxy url-filtering squidguard block-category malware
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard allow-category \<category\>
+
+Allow a blacklist category. Can be given multiple times. This is useful
+together with `default-action block`, where only the listed categories are
+let through.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard allow-category news
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard default-action \<allow | block\>
+
+Action for every request that no other setting matched. Defaults to `allow`.
+With `block` only explicitly allowed sites and categories are let through.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard default-action block
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard allow-ipaddr-url
+
+By default SquidGuard blocks URLs that use an IP address instead of a host
+name, such as `http://203.0.113.9/`. This option allows them.
+
+Only the global setting is evaluated, clients that are handled by a rule are
+not checked for IP address URLs.
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard redirect-url \<url\>
+
+Blocked requests are redirected (HTTP 302) to this URL. Defaults to
+`block.vyos.net`. Write the host name and the path without a scheme, `http://`
+is added automatically. A value such as `https://blocked.example.net` results
+in the invalid destination `http://https://blocked.example.net`.
+
+Only the global setting is evaluated. Blocked requests of clients that are
+handled by a rule are redirected to the global URL as well.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard redirect-url blocked.example.net
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard enable-safe-search
+
+Rewrites search queries on popular search engines (Google, Bing, Yahoo,
+Yandex, Live and MSN) so that their safe search mode is used.
+
+This works for HTTP only. HTTPS searches are not rewritten, see the note at the
+start of this section for what SquidGuard sees of HTTPS.
+
+The setting applies to the clients of a rule as well, SquidGuard uses the
+rewrite of the default ACL for them. The `enable-safe-search` of a rule has no
+effect.
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard log \<category\>
+
+Log matches to `/var/log/squid/blacklist.log`.
+
+The command takes a category name, but the value is currently not evaluated.
+As soon as `log` is configured once, requests that a `block-category` blocks
+are logged, in the global settings and in the rules. Requests blocked by a
+local list and requests that are let through are not logged. The generated
+configuration has a log line for the `allow-category` lists as well, but
+SquidGuard only writes a request that a list blocks. Only the global `log` is
+evaluated, the `log` of a rule has no effect.
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard auto-update update-hour \<0-23\>
+
+Hour of the day for the update of the blacklist databases. Defaults to `0`.
+
+The setting is accepted, but it does not schedule updates at the moment. Update
+the databases by hand with {opcmd}`update webproxy blacklists`.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard auto-update update-hour 23
+:::
+```
+
+#### Local lists
+
+Local lists add your own sites to the filter. They are available globally and
+per rule, and are compiled into SquidGuard databases when the configuration
+is committed. They do not need the blacklist download.
+
+```{cfgcmd} set service webproxy url-filtering squidguard local-block \<address | fqdn\>
+
+Block a site by IPv4 address or host name. Can be given multiple times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard local-block blocked.example.com
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard local-block-url \<url\>
+
+Block a URL. Write it without the leading `http://`. Can be given multiple
+times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard local-block-url example.org/private
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard local-block-keyword \<keyword\>
+
+Block every URL that contains the keyword. The value is a regular
+expression. Can be given multiple times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard local-block-keyword casino
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard local-ok \<address | fqdn\>
+
+Always allow a site, by IPv4 address or host name. Allowed sites are checked
+before any blocking setting, so they win over `local-block` and over the
+blocked categories. The only check before them is the one for IP address URLs
+of the global settings: a site given by IPv4 address is only allowed if
+`allow-ipaddr-url` is set. Can be given multiple times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard local-ok good.example.com
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard local-ok-url \<url\>
+
+Always allow a URL. Write it without the leading `http://`. A URL with an IP
+address is only allowed in the global settings if `allow-ipaddr-url` is set,
+because that check comes first. Can be given multiple times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard local-ok-url example.org/public
+:::
+```
+
+#### Source groups
+
+A source group names the clients a rule applies to.
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> address \<address | prefix | range\>
+
+IPv4 address, prefix or range (`192.0.2.10-192.0.2.20`) of the clients in the
+group. Can be given multiple times.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard source-group kids address 192.0.2.0/24
+set service webproxy url-filtering squidguard source-group kids address 198.51.100.5
+:::
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> description \<text\>
+
+Description of the source group.
+```
+
+:::{note}
+The following source group options are accepted by the CLI, but are currently
+not used when the SquidGuard configuration is generated, so they do not
+select any client: `domain`, `user`, `ldap-ip-search` and `ldap-user-search`.
+:::
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> domain \<domain\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> user \<user\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> ldap-ip-search \<expression\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard source-group \<name\> ldap-user-search \<expression\>
+```
+
+#### Rules
+
+A rule applies its own filter settings to the clients of one source group.
+Clients of a source group that has a rule are *only* handled by the rule, the
+global filter settings do not apply to them. Only the global `redirect-url`,
+`log` and `enable-safe-search` still apply, see the note below.
+
+If a client is part of several source groups, the group whose name comes first
+in alphabetical order decides, not the rule with the lowest number. A group
+without a rule counts as well: its clients are handled by the global settings,
+even if a later group has a rule for them. SquidGuard checks the source groups
+in this order, the order of the rules does not matter.
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> source-group \<name\>
+
+Source group the rule applies to.
+
+:::{code-block} none
+set service webproxy url-filtering squidguard rule 10 source-group kids
+:::
+```
+
+These settings work like their global counterparts, described above:
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> block-category \<category\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> allow-category \<category\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> default-action \<allow | block\>
+
+With `block` the clients of the source group can only reach what the rule
+explicitly allows. A rule with `default-action block` and nothing allowed
+blocks everything for its clients.
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> local-block \<address | fqdn\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> local-block-url \<url\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> local-block-keyword \<keyword\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> local-ok \<address | fqdn\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> local-ok-url \<url\>
+```
+
+:::{note}
+The following rule options are accepted by the CLI, but are currently not
+evaluated for the clients of a rule: `allow-ipaddr-url`, `enable-safe-search`,
+`redirect-url`, `log` and `time-period`. Use the global `redirect-url`, `log`
+and `enable-safe-search` instead, they apply to the clients of a rule as well.
+The clients of a rule are not checked for IP address URLs.
+The `time-period` nodes below are not used either.
+:::
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> allow-ipaddr-url
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> enable-safe-search
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> redirect-url \<url\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> log \<category\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard rule \<1-1024\> time-period \<name\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard time-period \<name\> description \<text\>
+```
+
+```{cfgcmd} set service webproxy url-filtering squidguard time-period \<name\> days \<Sun | Mon | Tue | Wed | Thu | Fri | Sat | weekdays | weekend | all\> time \<hh:mm-hh:mm\>
+```
+
+#### Example
+
+Block ads and malware for all clients without a rule, but let the clients in
+`192.0.2.0/24` only reach the `news` category and one local site:
+
+:::{code-block} none
+set service webproxy url-filtering squidguard block-category ads
+set service webproxy url-filtering squidguard block-category malware
+set service webproxy url-filtering squidguard redirect-url blocked.example.net
+set service webproxy url-filtering squidguard source-group kids address 192.0.2.0/24
+set service webproxy url-filtering squidguard rule 10 source-group kids
+set service webproxy url-filtering squidguard rule 10 default-action block
+set service webproxy url-filtering squidguard rule 10 allow-category news
+set service webproxy url-filtering squidguard rule 10 local-ok school.example.org
+:::
 
 ## Operation
 
@@ -359,7 +695,13 @@ set service webproxy url-filtering disable
 #### Update
 
 If you want to use existing blacklists you have to create/download a database
-first. Otherwise you will not be able to commit the config changes.
+first. A category without a database does not stop the commit, but prints a
+warning and has no effect:
+
+:::{code-block} none
+WARNING: DB of category ads does not exist.
+ Use [update webproxy blacklists] or delete undefined category!
+:::
 
 ```{opcmd} update webproxy blacklists
 
@@ -388,6 +730,10 @@ Would you like to restart it now? [confirm][y]
 [ ok ] Restarting squid (via systemctl): squid.service.
 vyos@vyos:~$
 :::
+
+The restart only restarts squid, it does not render the configuration again.
+The categories use the new database after a configuration change and commit,
+see below.
 ```
 ```{opcmd} update webproxy blacklists category \<category\>
 
@@ -396,9 +742,19 @@ Download/Update partial blacklist.
 Use tab completion to get a list of categories.
 ```
 
-- To auto update the blacklist files
+- To update the blacklist files, run {opcmd}`update webproxy blacklists` by
+  hand. The `auto-update update-hour` setting does not schedule updates at the
+  moment.
 
-  `set service webproxy url-filtering squidguard auto-update update-hour 23`
+  The configuration lists the database files that exist when it is rendered
+  at commit. After the first download of a database, change the webproxy
+  configuration and commit, so that the categories use it.
+
+  The update does not restart the webproxy. SquidGuard reads the databases
+  when it starts, so a running proxy keeps using the old entries (tested: an
+  entry added to a database is not matched by the running SquidGuard process).
+  After an update of databases that were already in use, run
+  {opcmd}`restart webproxy`.
 
 - To configure blocking add the following to the configuration
 
