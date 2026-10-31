@@ -178,16 +178,10 @@ Loading configuration from '/usr/libexec/vyos/tests/config/ospf-small'
 Load complete. Use 'commit' to make changes effective.
 [edit]
 vyos@vyos# compare
-[edit interfaces ethernet eth0]
--hw-id 00:50:56:bf:c5:6d
 [edit interfaces ethernet eth1]
 +duplex auto
--hw-id 00:50:56:b3:38:c5
 +speed auto
 [edit interfaces]
--ethernet eth2 {
--    hw-id 00:50:56:b3:9c:1d
--}
 -vti vti1 {
 -    address 192.0.2.1/30
 -}
