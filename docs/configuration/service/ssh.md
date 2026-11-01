@@ -364,3 +364,21 @@ Show SSH server public key fingerprints.
 
 Show SSH server public key fingerprints, including a visual ASCII art representation.
 ```
+## E2E validation fixture (temporary)
+
+> ```{cfgcmd} set service ssh port-number \<port\>
+>
+> Blockquote-nested directive with a path that does not exist.
+> ```
+
+- List item with a nested directive:
+
+  ```{cfgcmd} set service ssh listen-adress \<address\>
+
+  List-nested directive with a misspelled path.
+  ```
+
+<!--
+```{cfgcmd} set service ssh commented-out-path \<value\>
+```
+-->
