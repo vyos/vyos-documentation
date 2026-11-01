@@ -545,7 +545,7 @@ jobs:
 
       - name: Pass 2 — Claude review
         if: steps.secrets-check.outputs.skip != 'true'
-        uses: anthropics/claude-code-action@476e359e6203e73dad705c8b322e333fabbd7416 # v1.0.119
+        uses: anthropics/claude-code-action@d535f5172dec02b204866b393d6b20b9b2aaf98d # v1.0.266
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Pass the workflow's default GITHUB_TOKEN explicitly. Without
