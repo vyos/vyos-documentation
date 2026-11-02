@@ -72,13 +72,27 @@ running.
 
 ## Absorbing Routes
 
-If you're using the VM as a router, you can use a route table to absorb some or
-all traffic from your virtual network (VNET) with your LAN interface.
+If you're using the VM as a router, you can use a route table to send some or
+all traffic from your virtual network (VNET) through your LAN interface.
 
-1. Create a route table and navigate to **Configuration**.
-2. Add one or more routes for the networks you want to route through the VyOS
+1. Enable IP forwarding on every Azure network interface that will forward
+   traffic. In the Azure portal, open the network interface, select
+   **IP configurations**, and enable **IP forwarding**. Alternatively, use the
+   Azure CLI:
+
+   ```none
+   az network nic update \
+     --resource-group <resource-group> \
+     --name <network-interface> \
+     --ip-forwarding true
+   ```
+
+2. Create a route table and navigate to **Configuration**.
+3. Add one or more routes for the networks you want to route through the VyOS
    VM. For **Next hop type**, select **Virtual Appliance** and set the **Next
-   Hop Address** to the VyOS `LAN` interface.
+   Hop Address** to the private IP address of the VyOS `LAN` interface.
+4. Associate the route table with each workload subnet whose traffic should
+   pass through VyOS.
 
 :::{note}
 To create a default route for VMs on the subnet, use
@@ -95,4 +109,10 @@ VyOS includes serial console support by default. However, if you replace the
 
 ## References
 
-<https://azure.microsoft.com>
+% stop_vyoslinter
+
+- <https://azure.microsoft.com>
+- <https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface#enable-or-disable-ip-forwarding>
+- <https://learn.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal>
+
+% start_vyoslinter
