@@ -120,7 +120,7 @@ in the command with `bridge`. For example,
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 
-**Apply the rule to the packets with the specified Ethernet type.**
+**Apply the rule's action to the packets with the specified Ethernet type.**
 
 - `802.1q`: Packets with a customer VLAN tag.
 - `802.1ad`: Packets with a service VLAN tag.
@@ -143,8 +143,8 @@ set firewall bridge forward filter rule 10 ethernet-type arp
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan ethernet-type [802.1q | 802.1ad | arp | ipv4 | ipv6]
 
-**Apply the rule to the VLAN-tagged packets whose VLAN tag carries the specified
-Ethernet type.**
+**Apply the rule's action to the VLAN-tagged packets whose VLAN tag carries
+the specified Ethernet type.**
 
 The values are the same as for `ethernet-type`. Prepend `!` to the value to
 apply the rule to all other Ethernet types.
@@ -161,7 +161,7 @@ set firewall bridge forward filter rule 10 vlan ethernet-type ipv4
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan id \<0-4095\>
 
-**Apply the rule to the packets with the specified VLAN ID.**
+**Apply the rule's action to the packets with the specified VLAN ID.**
 
 Enter a VLAN ID from 0 to 4095, or a range such as `100-200`.
 ```
@@ -177,8 +177,8 @@ set firewall bridge forward filter rule 10 vlan id 22
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> vlan priority \<0-7\>
 
-**Apply the rule to the packets with the specified VLAN priority, which is the
-{abbr}`PCP (Priority Code Point)` of the VLAN tag.**
+**Apply the rule's action to the packets with the specified VLAN priority,
+which is the {abbr}`PCP (Priority Code Point)` of the VLAN tag.**
 
 Enter a priority from 0 to 7, or a range such as `4-7`.
 ```
@@ -203,8 +203,8 @@ Otherwise, the commit fails.
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group ipv4-address-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination IPv4 address is a
-member of the specified group.**
+**Apply the rule's action to the packets whose source or destination IPv4
+address is a member of the specified group.**
 
 Define the group with `set firewall group address-group`. Prepend `!` to the
 group name to apply the rule to the packets whose IPv4 address is not a member
@@ -224,8 +224,8 @@ set firewall bridge forward filter rule 10 source group ipv4-address-group SERVE
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group ipv6-address-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination IPv6 address is a
-member of the specified group.**
+**Apply the rule's action to the packets whose source or destination IPv6
+address is a member of the specified group.**
 
 Define the group with `set firewall group ipv6-address-group`. Prepend `!` to
 the group name to apply the rule to the packets whose IPv6 address is not a
@@ -245,8 +245,8 @@ set firewall bridge forward filter rule 10 destination group ipv6-address-group 
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group ipv4-network-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination IPv4 address belongs
-to a network of the specified group.**
+**Apply the rule's action to the packets whose source or destination IPv4
+address belongs to a network of the specified group.**
 
 Define the group with `set firewall group network-group`. Prepend `!` to the
 group name to apply the rule to the packets whose IPv4 address does not belong
@@ -266,8 +266,8 @@ set firewall bridge forward filter rule 10 source group ipv4-network-group LAN4
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group ipv6-network-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination IPv6 address belongs
-to a network of the specified group.**
+**Apply the rule's action to the packets whose source or destination IPv6
+address belongs to a network of the specified group.**
 
 Define the group with `set firewall group ipv6-network-group`. Prepend `!` to
 the group name to apply the rule to the packets whose IPv6 address does not
@@ -287,8 +287,8 @@ set firewall bridge forward filter rule 10 source group ipv6-network-group LAN6
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group mac-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination MAC address is a
-member of the specified group.**
+**Apply the rule's action to the packets whose source or destination MAC
+address is a member of the specified group.**
 
 Define the group with `set firewall group mac-group`. Prepend `!` to the group
 name to apply the rule to the packets whose MAC address is not a member of the
@@ -308,8 +308,8 @@ set firewall bridge forward filter rule 10 source group mac-group OFFICE
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> [source | destination] group port-group \<name | !name\>
 
-**Apply the rule to the packets whose source or destination port is a member of
-the specified group.**
+**Apply the rule's action to the packets whose source or destination port is
+a member of the specified group.**
 
 Define the group with `set firewall group port-group`. Prepend `!` to the group
 name to apply the rule to the packets whose port is not a member of the group.
@@ -333,8 +333,8 @@ set firewall bridge forward filter rule 10 destination group port-group WEB
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> inbound-interface group \<name | !name\>
 
-**Apply the rule to the packets that the router receives on an interface that is
-a member of the specified group.**
+**Apply the rule's action to the packets that the router receives on an
+interface that is a member of the specified group.**
 
 Define the group with `set firewall group interface-group`. Prepend `!` to the
 group name to apply the rule to the packets that the router receives on an
@@ -357,8 +357,8 @@ set firewall bridge forward filter rule 10 inbound-interface group LAN
 
 ```{cfgcmd} set firewall bridge name \<name\> rule \<1-999999\> outbound-interface group \<name | !name\>
 
-**Apply the rule to the packets that the router sends out through an interface
-that is a member of the specified group.**
+**Apply the rule's action to the packets that the router sends out through
+an interface that is a member of the specified group.**
 
 Define the group with `set firewall group interface-group`. Prepend `!` to the
 group name to apply the rule to the packets that the router sends out through an
@@ -376,7 +376,7 @@ set firewall bridge forward filter rule 10 outbound-interface group WAN
 
 ### Actions
 
-A rule's action applies to a packet that reaches the rule and meets all of its
+When a packet reaches a rule, the action applies if the packet meets all of its
 criteria, if the rule has any. An action takes effect at the processing point at
 which the firewall applies the rule set. The `notrack` action is the exception:
 it marks the packet as untracked, and connection tracking ignores the packet at
