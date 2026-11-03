@@ -298,8 +298,9 @@ Possible completions:
 As any other firewall group, dynamic firewall groups can be used in firewall
 rules as matching options. For example:
 
-```none set firewall ipv4 input filter rule 10 source group dynamic-address-group FOO set firewall ipv4 input filter rule 10 destination group dynamic-address-group BAR
-
+```none
+set firewall ipv4 input filter rule 10 source group dynamic-address-group FOO 
+set firewall ipv4 input filter rule 10 destination group dynamic-address-group BAR
 ```
 
 ## Examples
