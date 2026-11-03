@@ -2,7 +2,7 @@
 myst:
   html_meta:
     description: |
-      Bridge layer rule sets: the packet flow through the Bridge layer,
+      Bridge layer rule sets: the packet flow through the bridge layer,
       base and custom rule sets, rules, matching criteria, actions,
       default actions, logging, descriptions, packet modifications,
       and operational commands.
@@ -26,7 +26,7 @@ processes it at the `prerouting` processing point, before the bridge makes a
 forwarding decision. If the bridge forwards the packet between its member
 interfaces, the firewall then processes it at the `forward` processing point.
 
-You configure the rules for these processing points under
+You can configure the rules for these processing points under
 `set firewall bridge prerouting filter ...` and
 `set firewall bridge forward filter ...`.
 
@@ -35,14 +35,14 @@ You configure the rules for these processing points under
 
 ### Packets delivered to the router
 
-When the bridge delivers a packet that the router receives on a bridge member
-interface to the router, the firewall first processes the packet at the
+When a packet received on a bridge member interface is for the router itself,
+the firewall first processes the packet at the
 `prerouting` processing point and then at the `input` processing point. The
-Bridge layer passes an IPv4 or IPv6 packet that it does not drop to the IP
+bridge layer passes an IPv4 or IPv6 packet that it does not drop to the IP
 layer, which then processes the packet starting at the `prerouting` processing
 point.
 
-You configure the rules for the `input` processing point under
+You can configure the rules for the `input` processing point under
 `set firewall bridge input filter ...`.
 
 :::{figure} /_static/images/firewall-bridge-input.webp
@@ -94,10 +94,10 @@ packet, for example, after `accept`, `drop`, or `queue`.
 
 ### Matching criteria
 
-This section describes the matching criteria that are available only in Bridge
+This section describes the matching criteria that are available only in bridge
 layer rules. The {doc}`IPv4 </configuration/firewall/ipv4>` and
 {doc}`IPv6 </configuration/firewall/ipv6>` pages describe the criteria that
-Bridge layer rules share with IPv4 and IPv6 rules:
+bridge layer rules share with IPv4 and IPv6 rules:
 
 - Addresses: `[source | destination] address`,
   `[source | destination] address-mask`, `[source | destination] mac-address`,
@@ -380,7 +380,7 @@ When a packet reaches a rule, the action applies if the packet meets all of its
 criteria, if the rule has any. An action takes effect at the processing point at
 which the firewall applies the rule set. The `notrack` action is the exception:
 it marks the packet as untracked, and connection tracking ignores the packet at
-the following processing points as well.
+all subsequent processing points as well.
 
 ```{cfgcmd} set firewall bridge [forward | input | output] filter rule \<1-999999\> action [accept | continue | drop | jump | queue | return]
 ```
@@ -698,8 +698,9 @@ the description of a rule appears in the output of
 
 **Configure a description for the rule set.**
 
-The description can contain up to 255 characters. Enclose a description that
-contains spaces in single quotes.
+The description can contain up to 255 characters.
+Descriptions that contain spaces can be entered in single
+or double quotes.
 ```
 
 Example:
@@ -715,8 +716,8 @@ set firewall bridge forward filter description 'Forwarded bridge traffic'
 
 **Configure a description for the rule.**
 
-The description can contain up to 255 characters. Enclose a description that
-contains spaces in single quotes.
+The description can contain up to 255 characters.
+Descriptions that contain spaces can be entered in single or double quotes.
 ```
 
 Example:
@@ -752,8 +753,8 @@ set firewall bridge forward filter rule 10 disable
 
 ### Packet modifications
 
-Beginning with VyOS-1.5-rolling-202410060007, a rule can modify the packets that
-meet its criteria. The firewall applies the modifications before it applies the
+Rules can modify packets that match their criteria.
+The firewall applies the modifications before it applies the
 action of the rule, so the following rules and the following processing points
 work with the modified packet.
 
@@ -867,7 +868,7 @@ counters.**
 
 ```{opcmd} show firewall statistics detail
 
-**Show the rules of all IPv4, IPv6, and Bridge rule sets with the description,
+**Show the rules of all IPv4, IPv6, and bridge rule sets with the description,
 action, source, destination, interfaces, and packet and byte counters of each
 rule, and the states of the global state policy at the IP layer with their
 packet and byte counters, in a vertical list.**
@@ -875,7 +876,7 @@ packet and byte counters, in a vertical list.**
 
 ```{opcmd} show firewall bridge
 
-**Show the rules of all Bridge rule sets with the action, protocol, conditions,
+**Show the rules of all bridge rule sets with the action, protocol, conditions,
 and packet and byte counters of each rule.**
 ```
 
@@ -933,7 +934,7 @@ protocol, conditions, and packet and byte counters, in a vertical list.**
 
 ```{opcmd} show log firewall
 
-**Show the log messages of all IPv4, IPv6, and Bridge rule sets and of the
+**Show the log messages of all IPv4, IPv6, and bridge rule sets and of the
 global state policy.**
 
 The command does not show the messages of the `prerouting` base rule sets.
