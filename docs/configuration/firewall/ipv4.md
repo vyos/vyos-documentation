@@ -1569,7 +1569,10 @@ connection at any processing point of the IP layer.
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter rule \<1-999999\> action [accept | continue | drop | jump | offload | queue | reject | return | synproxy]
 ```
 
-```{cfgcmd} set firewall ipv4 [output | prerouting] raw rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
+```{cfgcmd} set firewall ipv4 prerouting raw rule \<1-999999\> action [accept | continue | drop | jump | notrack | queue | reject | return]
+```
+
+```{cfgcmd} set firewall ipv4 output raw rule \<1-999999\> action [accept | continue | drop | notrack | queue | reject | return]
 ```
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> action [accept | continue | drop | jump | offload | queue | reject | return | synproxy]
@@ -1587,6 +1590,7 @@ connection at any processing point of the IP layer.
 - `continue`: The firewall continues with the next rule.
 - `jump`: The firewall sends the packet to the custom rule set that
   `jump-target` specifies and applies the rules of that rule set to the packet.
+  Among the `raw` rule sets, only `prerouting raw` accepts this action.
 - `return`: In a custom rule set, the firewall returns to the rule set that sent
   the packet to the custom rule set and continues there. In a base rule set, the
   firewall accepts the packet without applying the default action.
