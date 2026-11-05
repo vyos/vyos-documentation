@@ -397,6 +397,10 @@ A configuration for this plugin is committable only when
 `authentication organization`, `authentication token`, and `url` are
 configured.
 
+For an `https` URL, the server certificate is verified against the
+system CA store by default. For a self-signed or private-CA server, set
+`ca-certificate`.
+
 ```{cfgcmd} set service monitoring telegraf influxdb authentication organization \<organization\>
 
 **Configure the name of the organization that owns the bucket on the
@@ -434,6 +438,37 @@ Example:
 
 ```none
 set service monitoring telegraf influxdb bucket bucket_vyos
+```
+
+```{cfgcmd} set service monitoring telegraf influxdb ca-certificate \<name\>
+
+**Verify the InfluxDB v2 server certificate against a CA from the PKI
+configuration instead of the system CA store.**
+
+Use this for a self-signed or private-CA server. Cannot be combined
+with `insecure`.
+```
+
+Example:
+
+```none
+set pki ca influx-ca certificate 'MIIDnTCCAoWgAwIBAgIU...'
+set service monitoring telegraf influxdb ca-certificate influx-ca
+```
+
+```{cfgcmd} set service monitoring telegraf influxdb insecure
+
+**Disable TLS certificate chain and host name verification for
+connections to the InfluxDB v2 server.**
+
+Not recommended, as it allows an attacker to intercept the API token.
+Use `ca-certificate` for a self-signed or private-CA server instead.
+```
+
+Example:
+
+```none
+set service monitoring telegraf influxdb insecure
 ```
 
 ```{cfgcmd} set service monitoring telegraf influxdb port \<1-65535\>
