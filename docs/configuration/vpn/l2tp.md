@@ -259,6 +259,37 @@ Value to send to RADIUS server in NAS-IP-Address attribute and to be matched
 in DM/CoA requests. Also DM/CoA server will bind to that address.
 ```
 
+```{cfgcmd} set vpn l2tp remote-access authentication radius message-authenticator include-access-request
+
+Include the RADIUS Message-Authenticator attribute in Access-Request packets.
+The RADIUS server must support the attribute in requests.
+By default, Access-Request packets do not include the attribute.
+```
+
+```{cfgcmd} set vpn l2tp remote-access authentication radius message-authenticator require-access-response
+
+Require a valid Message-Authenticator attribute in Access-Accept,
+Access-Reject, and Access-Challenge packets. Configure the RADIUS server to
+include the attribute in its responses.
+
+By default, responses without Message-Authenticator are accepted after normal
+Response Authenticator validation. If Message-Authenticator is present, it is
+validated whether or not `message-authenticator require-access-response` is
+enabled. When enabled, responses without a valid Message-Authenticator are
+rejected.
+
+If `message-authenticator require-access-response` is enabled without
+`message-authenticator include-access-request`, a warning is emitted because
+some RADIUS servers may omit the attribute from responses.
+
+For [Blast-RADIUS](https://github.com/advisories/GHSA-3g8x-wqfp-q876)
+mitigation, enable both `message-authenticator include-access-request` and
+`message-authenticator require-access-response`. Also configure the RADIUS
+server to require and validate Message-Authenticator in Access-Request packets,
+and to include a valid Message-Authenticator in Access-Accept, Access-Reject,
+and Access-Challenge responses.
+```
+
 ```{cfgcmd} set vpn l2tp remote-access authentication radius source-address \<address\>
 
 Source IPv4 address used in all RADIUS server queries.
