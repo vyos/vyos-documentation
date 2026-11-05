@@ -85,7 +85,8 @@ set service monitoring telegraf vrf mgmt
 
 ### Agent Configuration
 
-This section covers configuration commands which affect the overall agent behaviour.
+This section covers configuration commands which affect the overall
+agent behaviour.
 
 ```{cfgcmd} set service monitoring telegraf agent collection-jitter \<interval\>
 
@@ -1052,6 +1053,8 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-p
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 timeout 3
 ```
 
+% stop_vyoslinter
+
 [azure-data-explorer]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
 [blackbox_exporter]: <https://github.com/prometheus/blackbox_exporter>
 [frr_exporter]: <https://github.com/tynany/frr_exporter>
@@ -1062,3 +1065,5 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 time
 [splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
 [telegraf]: <https://github.com/influxdata/telegraf>
 [vpp_exporter]: <https://github.com/FDio/vpp/blob/master/src/vpp/app/vpp_prometheus_export.c>
+
+% start_vyoslinter
