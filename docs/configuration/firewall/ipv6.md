@@ -561,7 +561,7 @@ address does not belong to any network of the group.
 Example:
 
 ```none
-set firewall ipv6 forward filter rule 10 source group network-group LAN4
+set firewall ipv6 forward filter rule 10 source group network-group LAN6
 ```
 
 ```{cfgcmd} set firewall ipv6 [forward | input | output] filter rule \<1-999999\> [source | destination] group domain-group \<name | !name\>
