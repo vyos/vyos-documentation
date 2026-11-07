@@ -75,6 +75,21 @@ This setting is mandatory when deploying VXLAN via L2VPN/EVPN.
 :::
 ```
 
+```{cfgcmd} set interfaces vxlan \<interface\> gbp
+
+**Enable the** {abbr}`GBP (Group Based Policy)` **extension for the VXLAN
+interface.**
+
+The extension transports a group policy context across VXLAN peers. It
+carries a 16-bit policy ID and two policy flags (*Don't Learn* and *Already
+Applied*) in the VXLAN header. The Linux kernel maps them to the packet mark,
+with the flags in the upper and the policy ID in the lower 16 bits.
+
+`gbp` cannot be used together with `gpe`. In `external` mode the policy
+is passed as tunnel metadata instead of the packet mark, so firewall mark
+matching does not see the received group policy ID.
+```
+
 ```{cfgcmd} set interfaces vxlan \<interface\> gpe
 
 **Enable the** {abbr}`GPE (Generic Protocol Extension)` **for the VXLAN
