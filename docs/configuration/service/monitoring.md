@@ -28,6 +28,10 @@ counters, systemd unit state, conntrack, per-interface link statistics,
 and time synchronization. It also receives the VyOS system log through
 its syslog input plugin.
 
+The following plugins are also available as metric inputs:
+
+- [Prometheus][prometheus]: Reads metrics from a Prometheus endpoint.
+
 The collected data is written to output plugins. Each plugin delivers it
 to a different backend in that backend's format and protocol:
 
@@ -235,6 +239,20 @@ Example:
 
 ```none
 set service monitoring telegraf azure-data-explorer url https://vyos-cluster.westeurope.kusto.windows.net
+```
+
+### Prometheus
+
+The Prometheus plugin is the Telegraf input plugin that gathers Prometheus metric data from an endpoint.
+
+```{cfgcmd} set service monitoring telegraf prometheus input \<name\> url \<url\>
+
+**Create a new prometheus input with a name identifier and a url.**
+```
+
+```{cfgcmd} set service monitoring telegraf prometheus input \<name\> insecure-skip-verify
+
+**Allows the Prometheus metric endpoint to be insecure.**
 ```
 
 ### Prometheus client
@@ -962,6 +980,7 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 time
 [influxdb]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/influxdb_v2>
 [loki]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/loki>
 [node_exporter]: <https://github.com/prometheus/node_exporter>
+[prometheus]: <https://github.com/influxdata/telegraf/tree/master/plugins/inputs/prometheus>
 [prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
 [splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
 [telegraf]: <https://github.com/influxdata/telegraf>
