@@ -172,12 +172,10 @@ response (shortened)
                "eth0": {
                   "address": "dhcp",
                   "duplex": "auto",
-                  "hw-id": "50:00:00:01:00:00",
                   "speed": "auto"
                },
                "eth1": {
                   "duplex": "auto",
-                  "hw-id": "50:00:00:01:00:01",
                   "speed": "auto"
    ...
    },
@@ -416,7 +414,6 @@ response (shortened):
 {
    "success": true,
    "data": "set interfaces ethernet eth0 address 'dhcp'\n
-            set interfaces ethernet eth0 hw-id '50:00:00:01:00:00'\n
             set system host-name 'vyos'\n
             ...",
    "error": null
