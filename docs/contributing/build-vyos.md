@@ -1,18 +1,19 @@
 ---
-lastproofread: '2025-12-05'
+lastproofread: '2026-11-07'
 ---
 
 (build)=
 
 # Build VyOS
 
-## Prerequisites
-
 There are different ways you can build VyOS. Building using a
 {ref}`build_docker`
 container is the easiest way because all dependencies are managed for you.
 Alternatively, you can set up your own build machine and run a
 {ref}`build_native` build.
+
+This will guide you through the process of building a VyOS ISO using [Docker].
+This process has been tested on clean installs of Debian Bookworm.
 
 :::{note}
 Starting with VyOS 1.4, only source code and Debian package
@@ -26,26 +27,16 @@ members with contributors subscriptions).
 The following includes the build process for VyOS rolling release.
 :::
 
-This will guide you through the process of building a VyOS ISO using [Docker].
-This process has been tested on clean installs of Debian Bookworm.
+## Prerequisites
 
-(build_native)=
+### Get the Source Code
 
-### Native Build
-
-To build VyOS natively, you need a properly configured build host with
-Debian Bookworm installed.
-
-To get started, clone the repository to your local machine:
+Both the Docker and the native build use the `vyos-build` [repository].
+Fetch the latest source code from GitHub:
 
 ```none
-$ sudo make clean
-$ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
+$ git clone -b rolling --single-branch https://github.com/vyos/vyos-build
 ```
-
-For required packages, refer to the `docker/Dockerfile` file in the
-[repository]. The `./build-vyos-image` script will also warn you if any
-dependencies are missing.
 
 (build_docker)=
 
@@ -97,7 +88,7 @@ The container can be built by hand or by fetching the pre-built one from
 DockerHub. It is recommended to use the pre-built containers from the
 [VyOS DockerHub organisation](https://hub.docker.com/u/vyos). The container
 is built from Docker packages automatically after every commit to the
-``vyos-build`` repository (this process may take 2-3 hours).
+`vyos-build` repository (this process may take 2-3 hours).
 
 :::{note}
 If you use the pre-built container, it will be automatically
@@ -113,15 +104,12 @@ To manually download the container from DockerHub, run:
 $ docker pull vyos/vyos-build:rolling  # For VyOS rolling release
 ```
 
-
 ##### Build from source
 
-The container can also be built directly from source:
+The container can also be built directly from source. Run the following
+inside your `vyos-build` checkout:
 
 ```none
-$ git clone -b rolling --single-branch https://github.com/vyos/vyos-build
-
-$ cd vyos-build
 $ docker build -t vyos/vyos-build:rolling docker
 ```
 
@@ -160,19 +148,27 @@ need to start your Docker container using the following argument:
 fail.
 :::
 
+(build_native)=
+
+### Native Build
+
+To build VyOS natively, you need a properly configured build host with
+Debian Bookworm installed.
+
+For required packages, refer to the `docker/Dockerfile` file in the
+[repository]. The `./build-vyos-image` script will also warn you if any
+dependencies are missing.
+
+Once the build host is prepared, run the build commands from {ref}`build-iso`
+directly on the host instead of inside the container.
+
 (build-iso)=
 
 ## Build ISO
 
 Now that you understand the prerequisites, you can build a VyOS ISO from source.
-First, fetch the latest source code from GitHub:
-
-```none
-$ git clone -b rolling --single-branch https://github.com/vyos/vyos-build
-```
-
-Now you can begin a fresh VyOS ISO build. Change to the `vyos-build`
-directory and run:
+Change to the `vyos-build` directory you cloned earlier and launch the build
+container:
 
 ```none
 $ cd vyos-build
@@ -185,6 +181,9 @@ Start the build:
 vyos_bld@8153428c7e1f:/vyos$ sudo make clean
 vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --architecture amd64 --build-by "j.randomhacker@vyos.io" generic
 ```
+
+For a {ref}`build_native` build, run the same two commands directly on your
+build host.
 
 When the build is successful, find the resulting ISO in the `build` directory
 as `live-image-[architecture].hybrid.iso`.
@@ -242,54 +241,20 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
                           Custom package to install from repositories
 ```
 
-(iso_build_issues)=
-
-#### ISO Build Issues
-
-There are (rare) situations where building an ISO image is not possible at all
-due to a broken package feed in the background. APT is not very good at
-reporting the root cause of the issue. Your ISO build will likely fail with a
-more or less similar looking error message:
-
-```none
-The following packages have unmet dependencies:
- vyos-1x : Depends: accel-ppp but it is not installable
-E: Unable to correct problems, you have held broken packages.
-...
-make: *** [Makefile:30: iso] Error 1
-```
-
-To debug the build process and gain additional information of what could be the
-root cause, you need to use `chroot` to change into the build directory. This is
-explained in the following step by step procedure:
-
-```none
-vyos_bld ece068908a5b:/vyos [rolling] # sudo chroot build/chroot /bin/bash
-```
-
-We now need to mount some required, volatile filesystems
-
-```none
-(live)root@ece068908a5b:/# mount -t proc none /proc
-(live)root@ece068908a5b:/# mount -t sysfs none /sys
-(live)root@ece068908a5b:/# mount -t devtmpfs none /dev
-```
-
-We now are free to run any command we would like to use for debugging, e.g.
-re-installing the failed package after updating the repository.
-
-```none
-(live)root@ece068908a5b:/# apt-get update; apt-get install vyos-1x
-...
-The following packages have unmet dependencies:
- vyos-1x : Depends: accel-ppp but it is not installable
-E: Unable to correct problems, you have held broken packages.
-```
-
-Now it's time to fix the package mirror and rerun the last step until the
-package installation succeeds again!
-
 (build_custom_packages)=
+
+### Custom Packages
+
+If you are brave enough to build your own ISO image with any modified package
+from VyOS's GitHub organisation, this is the place for you.
+
+Any modified package may be an altered version (e.g., `vyos-1x`) that you
+want to test before filing a pull request on GitHub.
+
+Building an ISO with a customized package is the same as building a regular
+ISO image. Place your modified `*.deb` package inside the `packages` folder
+within `vyos-build`. The build process will automatically use your custom
+package during the ISO build.
 
 ### Linux Kernel
 
@@ -303,6 +268,8 @@ system:
 vyos@vyos:~$ uname -r
 6.1.52-amd64-vyos
 ```
+
+VyOS ships the following out-of-tree kernel modules:
 
 - Accel-PPP
 - Intel NIC drivers
@@ -343,7 +310,7 @@ Check out the required kernel version - see `vyos-build/data/defaults.json`
 file (example uses kernel 4.19.146):
 
 ```none
-$ cd vyos-build/packages/linux-kernel/linux
+$ cd linux
 $ git checkout v4.19.146
 ```
 
@@ -446,20 +413,56 @@ After compiling the packages you will find yourself the newly generated `*.deb`
 binaries in `vyos-build/packages/linux-kernel` from which you can copy them
 to the `vyos-build/packages` folder for inclusion during the ISO build.
 
-### Packages
-
-If you are brave enough to build your own ISO image with any modified package
-from VyOS's GitHub organisation, this is the place for you.
-
-Any modified package may be an altered version (e.g., `vyos-1x`) that you
-want to test before filing a pull request on GitHub.
-
-Building an ISO with a customized package is the same as building a regular
-ISO image. Place your modified `*.deb` package inside the `packages` folder
-within `vyos-build`. The build process will automatically use your custom
-package during the ISO build.
-
 ### Troubleshooting
+
+(iso_build_issues)=
+
+#### ISO Build Issues
+
+There are (rare) situations where building an ISO image is not possible at all
+due to a broken package feed in the background. APT is not very good at
+reporting the root cause of the issue. Your ISO build will likely fail with a
+more or less similar looking error message:
+
+```none
+The following packages have unmet dependencies:
+ vyos-1x : Depends: accel-ppp but it is not installable
+E: Unable to correct problems, you have held broken packages.
+...
+make: *** [Makefile:30: iso] Error 1
+```
+
+To debug the build process and gain additional information of what could be the
+root cause, you need to use `chroot` to change into the build directory. This is
+explained in the following step by step procedure:
+
+```none
+vyos_bld ece068908a5b:/vyos [rolling] # sudo chroot build/chroot /bin/bash
+```
+
+We now need to mount some required, volatile filesystems
+
+```none
+(live)root@ece068908a5b:/# mount -t proc none /proc
+(live)root@ece068908a5b:/# mount -t sysfs none /sys
+(live)root@ece068908a5b:/# mount -t devtmpfs none /dev
+```
+
+We now are free to run any command we would like to use for debugging, e.g.
+re-installing the failed package after updating the repository.
+
+```none
+(live)root@ece068908a5b:/# apt-get update; apt-get install vyos-1x
+...
+The following packages have unmet dependencies:
+ vyos-1x : Depends: accel-ppp but it is not installable
+E: Unable to correct problems, you have held broken packages.
+```
+
+Now it's time to fix the package mirror and rerun the last step until the
+package installation succeeds again!
+
+#### APT Verbosity
 
 Debian APT does not provide verbose error messages. If your ISO build fails and
 you suspect an APT dependencies or installation issue, you can apply this patch
@@ -508,7 +511,7 @@ $ git clone --recurse-submodules https://github.com/vyos/vyos-1x
 Launch the Docker container and build the package:
 
 ```none
-# For VyOS 1.3 (equuleus, rolling)
+# For VyOS rolling
 $ docker run --rm -it --privileged -v $(pwd):/vyos -w /vyos vyos/vyos-build:rolling bash
 
 # Change to source directory
