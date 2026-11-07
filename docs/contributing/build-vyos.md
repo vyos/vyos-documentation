@@ -263,21 +263,25 @@ package during the ISO build.
 ### Linux Kernel
 
 The Linux kernel used by VyOS is heavily tied to the ISO build process. The
-file `data/defaults.json` hosts a JSON definition of the kernel version used
-`kernel_version` and the `kernel_flavor` of the kernel which represents the
-kernel's LOCAL_VERSION. Both together form the kernel version variable in the
-system:
+file `data/defaults.toml` defines the kernel version (`kernel_version`) and
+the `kernel_flavor`, which represents the kernel's LOCALVERSION. Together they
+form the kernel release string of the system:
 
 ```none
 vyos@vyos:~$ uname -r
 6.18.60-vyos
 ```
 
-VyOS ships the following out-of-tree kernel modules:
+In addition to the kernel itself, VyOS ships firmware and out-of-tree kernel
+modules that must be built against the exact same kernel:
 
+- Linux firmware (`vyos-linux-firmware`)
 - Accel-PPP
-- Intel NIC drivers
+- Intel NIC drivers (igb, ixgbe, ixgbevf, i40e, ice, iavf)
 - Intel QAT
+- Mellanox OFED
+- Realtek NIC drivers (r8126, r8152)
+- Jool, ipt-netflow and the RTSP NAT helper
 
 Each of those modules holds a dependency on the kernel version and if you are
 lucky enough to receive an ISO build error which sounds like:
@@ -294,35 +298,33 @@ The most obvious reasons could be:
 - `vyos-build` repo is outdated, please `git pull` to update to the latest
   release kernel version from us.
 - You have your own custom kernel `*.deb` packages in the `packages` folder but
-  neglected to create all required out-of tree modules like Accel-PPP, Intel
-  QAT or Intel NIC drivers
+  neglected to build all required out-of-tree modules listed above.
 
 #### Building The Kernel
 
-The kernel build is quite easy, most of the required steps can be found in the
-`vyos-build/packages/linux-kernel/Jenkinsfile` but we will walk you through
-it.
+All kernel related build scripts live in
+`vyos-build/scripts/package-build/linux-kernel`. The package list, the
+pinned versions of all out-of-tree modules and the required build
+dependencies are defined in `package.toml` in the same directory.
 
-Clone the kernel source to `vyos-build/packages/linux-kernel/`:
+Use the `build.py` wrapper to build the kernel. It performs all required
+steps in one go:
+
+1. Installs the Debian build dependencies listed in `package.toml`.
+2. Downloads the kernel source for `kernel_version` from kernel.org and
+   verifies its signature, unless a `linux` source directory already exists.
+3. Calls `build-kernel.sh`, which applies the patches from the `patches`
+   folder, generates the kernel configuration and builds the Debian
+   packages.
+4. Builds the firmware package and all out-of-tree modules from
+   `package.toml` against the freshly built kernel.
+
+Run it from within the build container:
 
 ```none
-$ cd vyos-build/packages/linux-kernel/
-$ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+$ cd /vyos/scripts/package-build/linux-kernel
+$ ./build.py
 ```
-
-Check out the required kernel version - see `vyos-build/data/defaults.json`
-file (example uses kernel 6.18.60):
-
-```none
-$ cd linux
-$ git checkout v6.18.60
-```
-
-Now you can use the helper script `build-kernel.sh`, which completes all
-the necessary steps: applying required patches from the
-`vyos-build/packages/linux-kernel/patches` folder, copying the kernel
-configuration `x86_64_vyos_defconfig` to the correct location, and building
-the Debian packages.
 
 :::{note}
 Building the kernel will take some time depending on the speed and
@@ -330,92 +332,59 @@ quantity of your CPU/cores and disk speed. Expect 20 minutes
 (or even longer) on lower end hardware.
 :::
 
+To build only selected packages, pass their names as listed in
+`package.toml`. The kernel must be built first, as all other packages
+depend on it:
+
 ```none
-(18:59) vyos_bld 412374ca36b8:/vyos/vyos-build/packages/linux-kernel [rolling] # ./build-kernel.sh
+$ ./build.py --packages linux-kernel linux-firmware igb ixgbe
 ```
 
-When complete, you will have kernel binary packages to use in your custom ISO
-build. Place all `*.deb` files in the `vyos-build/packages` folder, where
-the build process will use them automatically.
+To only install the build dependencies, run `./build.py --install-dependencies`.
+
+:::{note}
+`build-kernel.sh` only builds the kernel itself. It does not install
+dependencies or build firmware and out-of-tree modules, and it expects the
+`KERNEL_FLAVOR` environment variable which `build.py` passes from
+`data/defaults.toml`. Always prefer `build.py`.
+
+`build-kernel.sh` runs `git reset --hard` and `git clean -fdx` in the
+`linux` directory. Copy any local modifications out of that directory
+before you start a build.
+:::
+
+When complete, you will find all generated `*.deb` files in the
+`linux-kernel` directory.
+
+:::{warning}
+`build.py` does not abort if a single package fails to build. It prints
+`Failed to build package <name>` and continues with the next one. Check the
+output for such messages before you copy the packages.
+
+`*.deb` files from earlier runs are not removed. When you rebuild the kernel,
+delete the old packages first, so you do not mix modules built against
+different kernel versions.
+:::
+
+Copy the packages to the `vyos-build/packages` folder, where the ISO build
+will use them automatically:
+
+```none
+$ cp *.deb ../../../packages/
+```
 
 ##### Firmware
 
 If you upgrade your kernel or include new drivers you may need new firmware.
-This builds a new `vyos-linux-firmware` package using the included helper
-scripts.
+`build.py` builds the `vyos-linux-firmware` package from the
+`linux-firmware` repository at the version pinned in `package.toml`:
 
 ```none
-$ cd vyos-build/packages/linux-kernel
-$ git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
-$ ./build-linux-firmware.sh
-$ cp vyos-linux-firmware_*.deb ../
+$ ./build.py --packages linux-firmware
 ```
 
-The script automatically detects which firmware blobs are needed based on the
-built drivers. If detection fails, you can manually add files to
-`vyos-build/packages/linux-kernel/build-linux-firmware.sh`:
-
-```bash
-ADD_FW_FILES="iwlwifi* ath11k/QCA6390/*/*.bin"
-```
-
-
-#### Building Out-Of-Tree Modules
-
-Building the kernel is one step. You must also build required out-of-tree
-modules so the ABIs match.
-Refer to `vyos-build/packages/linux-kernel/Jenkinsfile`
-for all required modules and their versions. We show you how to build the
-currently required modules.
-
-##### Accel-PPP
-
-First, clone the source code and check out the appropriate version:
-
-```none
-$ cd vyos-build/packages/linux-kernel
-$ git clone https://github.com/accel-ppp/accel-ppp.git
-```
-
-Use the helper script and patches to build the package. Run the following
-command:
-
-```none
-$ ./build-accel-ppp.sh
-```
-
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in `vyos-build/packages/linux-kernel` from which you can copy them
-to the `vyos-build/packages` folder for inclusion during the ISO build.
-
-##### Intel NIC
-
-The Intel NIC drivers do not come from a Git repository. VyOS fetches the
-tarballs from a mirror and compiles them. Use the following wrapper script
-to build all driver modules:
-
-```none
-./build-intel-drivers.sh
-```
-
-After compilation, find the generated `*.deb` binaries in
-`vyos-build/packages/linux-kernel`. Copy them to the `vyos-build/packages`
-folder for inclusion in the ISO build.
-
-##### Intel QAT
-
-The Intel QAT (Quick Assist Technology) drivers do not come from a Git
-repository. VyOS fetches the tarballs from `01.org`, Intel's open-source
-website.
-Use the following wrapper script to build all driver modules:
-
-```none
-$ ./build-intel-qat.sh
-```
-
-After compiling the packages you will find yourself the newly generated `*.deb`
-binaries in `vyos-build/packages/linux-kernel` from which you can copy them
-to the `vyos-build/packages` folder for inclusion during the ISO build.
+The firmware blobs are selected automatically from the network drivers of
+the kernel built in the previous step, so build the kernel first.
 
 ### Troubleshooting
 
