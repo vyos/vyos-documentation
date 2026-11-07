@@ -38,6 +38,9 @@ Fetch the latest source code from GitHub:
 $ git clone -b circinus --single-branch https://github.com/vyos/vyos-build
 ```
 
+On macOS, clone the sources inside the build container instead, see the
+note in {ref}`build_docker`.
+
 (build_docker)=
 
 ### Docker
@@ -59,6 +62,28 @@ group after building the VyOS ISO. See also [Docker as non-root].
 The build process must run on a local file system. Building on SMB or
 NFS shares will cause the container to fail. VirtualBox shared folders are
 also not supported because block device operations are not implemented.
+
+On macOS, do not bind mount a directory from your home folder into the
+container. Use a Docker volume instead and clone the sources inside the
+container directly into the volume:
+
+```none
+$ docker volume create vyos-build
+$ docker run --rm -it --privileged -v vyos-build:/vyos -w /vyos vyos/vyos-build:circinus bash
+vyos_bld@8153428c7e1f:/vyos$ git clone -b circinus --single-branch https://github.com/vyos/vyos-build .
+```
+
+This gives the same `/vyos` layout as a bind mount. Skip the host-side
+`cd vyos-build` and `docker run` steps in {ref}`build-iso` and run the
+build commands in this container.
+
+macOS file systems (APFS, HFS+) are case-insensitive by default. The Linux
+kernel source tree contains files whose names differ only in case (e.g.
+`xt_CONNMARK.h` and `xt_connmark.h`). On such a file system one file
+overwrites the other and the kernel build fails or produces broken
+binaries. A Docker volume lives on the Linux file system of the Docker VM
+and is case-sensitive. If you must use a host directory, put it on a
+case-sensitive APFS volume.
 :::
 
 #### Build Container
