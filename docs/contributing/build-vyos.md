@@ -245,6 +245,117 @@ $ vyos_bld@8153428c7e1f:/vyos$ sudo ./build-vyos-image --help
                           Custom package to install from repositories
 ```
 
+(build_smoketests)=
+
+### Smoketests
+
+The `vyos-build` repository ships a set of test targets that verify a freshly
+built ISO image. Each test installs the ISO into a new QEMU virtual machine,
+boots the installed system and runs the testcases on it. The testcases
+themselves come from the `vyos-1x-smoketest` package, which is only included
+in `development` builds (the default build type).
+
+The tests are run from the root of your `vyos-build` checkout inside the
+build container, after a successful ISO build. They require root privileges
+and use the ISO from the `build` directory:
+
+```none
+vyos_bld@8153428c7e1f:/vyos$ sudo make test-suite
+```
+
+:::{note}
+The tests need KVM. The container started with `--privileged` has access to
+`/dev/kvm` of the host. Without KVM, the tests fall back to software
+emulation, which is much slower.
+
+Each VM gets up to 4 vCPUs, and 8 GB of memory if the host has at least 10 GB
+of RAM (4 GB otherwise). The full suite takes several hours.
+:::
+
+`sudo make test-suite` runs the following targets one after another and
+stops at the first failure:
+
+`test-interfaces`
+: Runs only the interface CLI smoketests (`test_interfaces_*`).
+
+`test-no-interfaces-no-vpp`
+: Runs all CLI smoketests except the interface and VPP tests.
+
+`testc`
+: Runs the configuration load tests (`vyos-configtest`) for all reference
+  configurations except the VPP ones. Each configuration is loaded and
+  committed, which also verifies the configuration migration scripts.
+
+`testcvpp`
+: Runs the configuration load tests for the VPP reference configurations.
+
+`test-vpp`
+: Runs the VPP CLI smoketests. The VM reserves 1800 huge pages of 2 MB and
+  isolates vCPUs 2-3 for VPP.
+
+`testraid`
+: Installs VyOS onto two disks as a RAID-1 array. It then replaces one disk
+  with an empty one, boots from the remaining disk and re-adds the new disk
+  until the array is fully re-synced.
+
+`test-interface-naming`
+: Boots the VM with eight network adapters (virtio, e1000e and vmxnet3) and
+  verifies that interface names persist through the interface mapping store
+  (`/config/interface-mapping.json`). Deleting an interface configuration
+  must not free its name, editing the store must rename interfaces, and a
+  lost store must reproduce the same names from the hardware.
+
+`test-interface-naming-vmware`
+: Same as `test-interface-naming`, but the VM presents itself as VMware
+  hardware, so the adapter order comes from the firmware port labels instead
+  of the PCI addresses.
+
+`testtpm`
+: Uses an emulated TPM (`swtpm`) to encrypt the configuration with
+  `encryption enable`. It verifies the encrypted config volume and its
+  contents after a reboot, then clears the TPM and loads the configuration
+  with the recovery key.
+
+The following targets are not part of `test-suite` and can be run on their
+own:
+
+`test`
+: Runs all CLI smoketests. Limit the run to selected tests with `MATCH`,
+  e.g. `sudo make test MATCH="protocols_bgp|vrf"`. Multiple names are
+  separated by `|`.
+
+`test-no-interfaces`
+: Runs all CLI smoketests including VPP, but without the interface tests.
+
+`test-secure-boot`
+: Boots the VM with UEFI Secure Boot enabled and verifies that the kernel
+  is signed by the VyOS Secure Boot CA, or by your own signing certificate
+  if one is present in `data/certificates`.
+
+`test-image-update`
+: Adds a new system image with `add system image` over HTTP, both in the
+  default VRF and in a custom VRF.
+
+`test-ci-qcow2`
+: Runs the cloud-init tests against the newest QCOW2 image in the `build`
+  directory.
+
+`test-oci`
+: Tests the OCI container image created by `make oci`.
+
+`qemu-live`
+: Does not run a test. It only prints the QEMU command used to boot the ISO.
+
+Additional options are passed to the test script after `--`. For example,
+`--keep` keeps the VM disk image after the test and `--logfile` writes the
+output to a file:
+
+```none
+vyos_bld@8153428c7e1f:/vyos$ sudo make testraid -- --keep --logfile testraid.log
+```
+
+Leftover disk images and test data are removed with `sudo make purge`.
+
 (build_custom_packages)=
 
 ### Custom Packages
