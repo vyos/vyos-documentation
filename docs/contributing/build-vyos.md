@@ -270,7 +270,7 @@ system:
 
 ```none
 vyos@vyos:~$ uname -r
-6.1.52-amd64-vyos
+6.6.160-vyos
 ```
 
 VyOS ships the following out-of-tree kernel modules:
@@ -284,7 +284,7 @@ lucky enough to receive an ISO build error which sounds like:
 
 ```none
 I: Create initramfs if it does not exist.
-Extra argument '6.1.52-amd64-vyos'
+Extra argument '6.6.160-vyos'
 ...
 E: config/hooks/live/17-gen_initramfs.chroot failed (exit non-zero). You should check for errors.
 ```
@@ -311,11 +311,11 @@ $ git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 ```
 
 Check out the required kernel version - see `vyos-build/data/defaults.json`
-file (example uses kernel 4.19.146):
+file (example uses kernel 6.6.160):
 
 ```none
 $ cd linux
-$ git checkout v4.19.146
+$ git checkout v6.6.160
 ```
 
 Now you can use the helper script `build-kernel.sh`, which completes all
