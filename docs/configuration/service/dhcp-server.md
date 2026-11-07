@@ -428,7 +428,7 @@ DNS suffix used in client name generation.
 ```
 
 
-```{cfgcmd} set service dhcp-server dynamic-dns-update ttl-percent \<0-100\>
+```{cfgcmd} set service dhcp-server dynamic-dns-update ttl-percent \<1-100\>
 
 TTL of the DNS record as a percentage of the DHCP lease time.
 ```
@@ -777,6 +777,132 @@ service {
     }
 }
 ```
+
+#### Matching on hostname or vendor class ID (Option 12 / Option 60)
+
+In addition to relay agent information, a client class can match on the
+contents of the hostname (Option 12) or vendor class identifier (Option 60)
+sent by the client itself. This is commonly used to tell different device
+models apart within the same subnet, e.g. to hand out a model-specific
+boot file.
+
+```{cfgcmd} set service dhcp-server client-class \<name\> hostname value \<value\>
+
+Match the exact hostname sent by the client. As with Option 82 above, a value
+starting with 0x is interpreted as raw hex, any other value as ASCII text.
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> hostname substring value \<value\>
+
+Match if `value` appears anywhere in the hostname, case-insensitively. Unlike
+the exact `value` match above, `value` here must be plain ASCII text (not
+raw hex) and must not contain a single quote (`'`).
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> vendor-class-id value \<value\>
+
+Same as `hostname` above, but matches on the vendor class identifier
+(Option 60) instead.
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> vendor-class-id substring value \<value\>
+
+Match if `value` appears anywhere in the vendor class identifier, the same way
+as for `hostname substring value`.
+```
+
+`value` and `substring` are mutually exclusive for a given match type.
+
+#### Client class options
+
+A client class can hand out its own DHCP options to every client it matches,
+independent of which subnet or pool the client's lease is drawn from, using
+the same option syntax as the {ref}`dhcp-server-v4-options` described below.
+This does not hold for a subnet or a range that is restricted to a class with
+`client-class` (see above), it serves only the clients of that class.
+
+A DHCP option such as `domain-name` or `tftp-server-name` that is also set on
+the static mapping, the range, the subnet or the shared network takes
+precedence over the same option of a client class.
+
+`bootfile-name` and `bootfile-server` are special. Besides Option 67,
+`bootfile-name` sets the `file` field of the BOOTP header, and `bootfile-server`
+sets its `siaddr` field (the next server). For these header fields a matching
+client class takes precedence over the subnet and the shared network, and a
+static mapping takes precedence over the class. So with `bootfile-name` set on
+both the subnet and the client class, a client that reads Option 67 gets the
+value of the subnet and a client that reads the `file` field gets the value of
+the class.
+
+Set `bootfile-name` and `bootfile-server` on the shared network, the subnet, the
+client class or the static mapping, not on a range. With the option on a range
+the DHCP server rejects its configuration and the commit fails (tested with
+Kea 3.0.3).
+
+```{cfgcmd} set service dhcp-server client-class \<name\> option \<option\> \<value\>
+
+Deliver `<option>` with `<value>` to every client matching this client class.
+```
+
+```{cfgcmd} set service dhcp-server client-class \<name\> disable
+
+Disable the client class without removing it. A disabled client class is not
+written to the Kea configuration, its options are not handed out. A subnet that
+is restricted to the class with `client-class` serves no clients while the class
+is disabled.
+```
+
+**Example:**
+
+The following configuration hands out a model-specific boot file (Option 67)
+to two device models sharing the same subnet, identified by a substring of
+their DHCP hostname, without splitting the subnet into per-model pools:
+
+```none
+service {
+    dhcp-server {
+        client-class MODEL-A {
+            hostname {
+                substring {
+                    value model-a
+                }
+            }
+            option {
+                bootfile-name model-a.cfg
+            }
+        }
+        client-class MODEL-B {
+            hostname {
+                substring {
+                    value model-b
+                }
+            }
+            option {
+                bootfile-name model-b.cfg
+            }
+        }
+        shared-network-name phones {
+            subnet 192.0.2.0/24 {
+                range 0 {
+                    start 192.0.2.10
+                    stop 192.0.2.200
+                }
+                subnet-id 1
+            }
+        }
+    }
+}
+```
+
+Neither client class needs to be applied to the subnet or a range - Kea
+evaluates every defined client class against each request and merges in the
+options of every class that matches, regardless of which pool the lease
+comes from.
+
+Client classes are written to the DHCP server in the order of their names,
+numbers by value (`9` before `10`), otherwise alphabetical. If a client matches
+more than one class and those classes hand out the same option with different
+values, the value from the first matching class wins.
 
 (dhcp-server-v4-options)=
 
