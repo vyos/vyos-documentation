@@ -85,7 +85,8 @@ set service monitoring telegraf vrf mgmt
 
 ### Agent Configuration
 
-This section covers configuration commands which affect the overall agent behaviour.
+This section covers configuration commands which affect the overall
+agent behavior.
 
 ```{cfgcmd} set service monitoring telegraf agent collection-jitter \<interval\>
 
@@ -561,6 +562,7 @@ run the following standalone Prometheus exporters:
 
 - Node Exporter
 - FRR Exporter
+- VPP Exporter
 - Blackbox Exporter
 
 ### Node Exporter
@@ -804,6 +806,101 @@ Example:
 set service monitoring prometheus frr-exporter collector detailed-routes
 ```
 
+### VPP Exporter
+
+Prometheus [vpp_exporter] is the `vpp_prometheus_export` utility shipped with
+upstream {abbr}`VPP (Vector Packet Processing)`. Unlike the other exporters
+in this section it is not a standalone project — it is built from the FD.io
+VPP source tree. It connects to VPP's shared-memory stats segment via the
+socket at `/run/vpp/stats.sock` and re-exposes the selected counters as a
+Prometheus `/metrics` HTTP endpoint, using the v2 metric format.
+
+The exporter runs as a systemd service that is bound to the `vpp.service`
+unit (`BindsTo` / `PartOf`): it cannot start until VPP is running, restarts
+automatically when VPP restarts, and stops when VPP is stopped. It coexists
+with `node-exporter`, which scrapes kernel/host metrics independently.
+
+VyOS does not provide a `listen-address` option for the VPP exporter. The
+listen address is determined by the upstream VPP exporter. VyOS configures
+only the port and optional VRF.
+
+VPP must already be configured under `set vpp ...` before the exporter can
+be configured. Otherwise, the commit fails.
+
+Likewise, VPP cannot be removed while the exporter remains configured.
+Remove `vpp-exporter` first. Otherwise, the commit fails.
+
+The set of exported counters is controlled by {cfgcmd}`stat-group`, which
+selects one or more predefined top-level groups from the VPP stats
+segment. If no group is selected, VyOS exports a default set covering
+`interfaces`, `err`, `buffer-pools`, `system`, `workers` and `memory` (the
+`nodes` group is excluded from the default — see the per-node-counters
+note below). Explicitly selecting any group replaces this default set.
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter port \<port\>
+
+Configure the TCP port that the VPP exporter listens on for Prometheus
+scrape requests. The default is `9482`.
+
+The selected port must be available in the configured VRF. A service
+using the port in the target VRF prevents the configuration from being
+committed.
+```
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter stat-group \<interfaces | err | buffer-pools | system | workers | nodes | memory | nat44 | acl\>
+
+Export one or more predefined VPP stat groups:
+
+| Group          | Stats segment coverage                 |
+| -------------- | --------------------------------------- |
+| `interfaces`   | All interface counters (`^/interfaces`) |
+| `err`          | All error counters (`^/err`)            |
+| `buffer-pools` | All buffer pool counters (`^/buffer-pools`) |
+| `system`       | A fixed set of system counters (see below) |
+| `workers`      | All worker counters (`^/workers`)       |
+| `nodes`        | All node counters (`^/nodes`)           |
+| `memory`       | Memory counters (`^/mem`)                |
+| `nat44`        | A fixed set of NAT44 counters (see below) |
+| `acl`          | Per-ACL match counters (`^/acl/.*/matches`) |
+
+`system` exports: heartbeat, last-stats-clear, boottime, vector-rate
+(overall and per-worker), loops-per-worker, num-worker-threads,
+last-update, and input-rate.
+
+`nat44` exports: total-sessions (per NAT44 instance), max-cfg-sessions,
+in2out/out2in fastpath, in2out/out2in slowpath, and hairpinning.
+
+This command can be repeated to export several groups. An unrecognized
+group value is rejected at set time.
+```
+
+```{cfgcmd} set service monitoring prometheus vpp-exporter vrf \<name\>
+
+Run the exporter inside the named {abbr}`VRF (Virtual Routing and Forwarding)`
+instance, so that scrape traffic is routed via the VRF's routing table.
+The service is started under `ip vrf exec <name>`.
+```
+
+If `nodes` stats are selected via `stat-group nodes`, enable per-node
+counters in VPP — without this, VPP does not maintain node-level
+counters and the scrape returns empty values for that namespace.
+Committing `stat-group nodes` without per-node counters enabled does not
+fail the commit, but VyOS prints a one-time warning recommending that
+the setting be enabled.
+
+```{cfgcmd} set vpp settings resource-allocation memory stats per-node-counters
+```
+
+Removing the VPP exporter does not change the `per-node-counters`
+setting — it is left as configured.
+
+Example — export buffer-pool and system counters:
+
+```none
+set service monitoring prometheus vpp-exporter stat-group buffer-pools
+set service monitoring prometheus vpp-exporter stat-group system
+```
+
 ### Blackbox Exporter
 
 Prometheus [blackbox_exporter] probes network endpoints and exposes the
@@ -956,6 +1053,8 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 ip-p
 set service monitoring prometheus blackbox-exporter modules icmp name ping6 timeout 3
 ```
 
+% stop_vyoslinter
+
 [azure-data-explorer]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/azure_data_explorer>
 [blackbox_exporter]: <https://github.com/prometheus/blackbox_exporter>
 [frr_exporter]: <https://github.com/tynany/frr_exporter>
@@ -965,3 +1064,6 @@ set service monitoring prometheus blackbox-exporter modules icmp name ping6 time
 [prometheus-client]: <https://github.com/influxdata/telegraf/tree/master/plugins/outputs/prometheus_client>
 [splunk]: <https://www.splunk.com/en_us/blog/it/splunk-metrics-via-telegraf.html>
 [telegraf]: <https://github.com/influxdata/telegraf>
+[vpp_exporter]: <https://github.com/FDio/vpp/blob/master/src/vpp/app/vpp_prometheus_export.c>
+
+% start_vyoslinter
