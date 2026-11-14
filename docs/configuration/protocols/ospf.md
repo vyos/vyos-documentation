@@ -64,6 +64,31 @@ with the same router-ID!
 
 #### Optional
 
+```{cfgcmd} set protocols ospf compatible rfc1583
+
+{rfc}`2328`, the successor to {rfc}`1583`, suggests according to section
+G.2 (changes) in section 16.4.1 a change to the path preference algorithm
+that prevents possible routing loops that were possible in the old version
+of OSPFv2. More specifically it demands that inter-area paths and
+intra-area backbone path are now of equal preference but still both
+preferred to external paths.
+
+This command should NOT be set normally.
+```
+
+
+```{cfgcmd} set protocols ospf compatible rfc7474
+
+Enable strict {rfc}`7474` sequence number validation for OSPFv2
+cryptographic authentication (MD5 and HMAC-SHA). Received packets must
+then have a strictly increasing sequence number.
+
+When this option is not set, packets with equal sequence numbers are also
+accepted. This is required for interoperability with implementations that
+may reuse sequence numbers, such as Cisco NX-OS.
+```
+
+
 ```{cfgcmd} set protocols ospf default-information originate [always] [metric \<number\>] [metric-type \<1|2\>] [route-map \<name\>]
 
 Originate an AS-External (type-5) LSA describing a default route into all
@@ -139,19 +164,6 @@ between areas based on the topology of the areas connected to this router
 but not using a backbone area in case if non-backbone route will be
 cheaper. For more information about "shortcut" model,
 see ospf-shortcut-abr-02.txt
-```
-
-
-```{cfgcmd} set protocols ospf parameters rfc1583-compatibility
-
-{rfc}`2328`, the successor to {rfc}`1583`, suggests according to section
-G.2 (changes) in section 16.4.1 a change to the path preference algorithm
-that prevents possible routing loops that were possible in the old version
-of OSPFv2. More specifically it demands that inter-area paths and
-intra-area backbone path are now of equal preference but still both
-preferred to external paths.
-
-This command should NOT be set normally.
 ```
 
 
