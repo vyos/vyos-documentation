@@ -49,8 +49,12 @@ traffic in both directions.
 
 The zone-based firewall processes a packet after the global state policy and
 after the rules of the input, forward, or output processing point of the IP
-layer. The firewall processes the packet according to the first criterion that
-the packet meets:
+layer. A packet that the rules of the processing point accept is still processed
+by the zone-based firewall, and a packet that the global state policy accepts
+skips the zone-based firewall.
+
+The firewall processes the packet according to the first criterion that the
+packet meets:
 
 1. If the router receives or sends the packet on the loopback interface, the
    firewall accepts the packet.
