@@ -23,7 +23,9 @@ segments into **zones**. The firewall applies a **rule set**, a
 and the **intra-zone filtering** to packets within a zone. A direction goes
 from the **source zone** to the **destination zone** of a packet.
 
-The firewall treats the router itself as a zone, called the **local zone**. The
+If you define a zone as the **local zone** with `local-zone`, the firewall
+treats the router itself as that zone. Without a local zone, the zone-based
+firewall does not process the packets that the router receives or generates. The
 local zone covers the packets that the router receives and generates on any of
 its interfaces. The local zone contains no interfaces or VRF instances, and each
 router's interface or VRF instance belongs to one zone or does not belong to any
@@ -45,7 +47,9 @@ traffic in both directions.
 
 ## Packet processing
 
-The zone-based firewall processes a packet according to the first criterion that
+The zone-based firewall processes a packet after the global state policy and
+after the rules of the input, forward, or output processing point of the IP
+layer. The firewall processes the packet according to the first criterion that
 the packet meets:
 
 1. If the router receives or sends the packet on the loopback interface, the
@@ -139,7 +143,7 @@ set firewall zone LOCAL local-zone
 
 **Configure the default action of the specified zone.**
 
-The firewall applies the default rule set to a packet that no earlier criterion
+The firewall applies the default action to a packet that no earlier criterion
 covers.
 
 - `drop`: The firewall drops the packet.
@@ -272,10 +276,13 @@ set firewall zone WAN intra-zone-filtering action drop
 
 **Apply a rule set to the packets within the specified zone.**
 
-The firewall accepts a packet that the rule set does not drop or reject.
+The rule set drops the packets that match none of its rules, unless you change
+its default action. The firewall accepts the packets that the rule set does not
+drop or reject, and the packets within the zone of an IP version that has no
+rule set.
 
-The commit fails if a rule set does not exist or if the zone also has
-`intra-zone-filtering action` configured.
+The commit fails if a rule set does not exist or if the zone has both
+`intra-zone-filtering action` and `intra-zone-filtering firewall` configured.
 ```
 
 Example:
@@ -288,14 +295,14 @@ set firewall zone LAN intra-zone-filtering firewall name LAN-LAN-v4
 
 ```{opcmd} show firewall zone-policy
 
-**Show the zones with their interfaces and VRF instances, the source zones
-that have a rule set, and the names of these rule sets.**
+Show the zones with their interfaces and VRF instances, the source zones
+that have a rule set, and the names of these rule sets.
 ```
 
 ```{opcmd} show firewall zone-policy zone \<zone\>
 
-**Show the specified zone with its interfaces and VRF instances, the source
-zones that have a rule set, and the names of these rule sets.**
+Show the specified zone with its interfaces and VRF instances, the source
+zones that have a rule set, and the names of these rule sets.
 ```
 
 ## Example
