@@ -182,6 +182,12 @@ flowtable.**
 
 A rule with the `offload` action requires `offload-target`, and the flowtable
 must exist. Otherwise, the commit fails.
+
+The `offload` action does not accept the packet. The firewall continues with the
+next rule, so a later rule can still drop the packet that triggers the offload.
+The connection stays offloaded, and the router forwards its subsequent packets
+without applying the later rules. Follow the `offload` rule with a rule that
+accepts the packets of the connection.
 ```
 
 Example:
@@ -296,9 +302,9 @@ The firewall processes the packets of such a connection in the following order:
 The following example offloads the connections between VLAN 10 on `bond1` and
 VLAN 20 on `bond2`. The flowtable `FT01` uses the parent interface `bond1`,
 which covers all its VLAN sub-interfaces, and the sub-interface `bond2.20`,
-which covers only VLAN 20. Rule 200 accepts the packets that arrive on any bond
-interface, including VLAN sub-interfaces, and do not meet the criteria of rules
-10 and 20.
+which covers only VLAN 20. Rule 200 accepts the packets that arrive on
+`bond1.10`, leave through `bond2.20`, and do not meet the criteria of rules 10
+and 20.
 
 ```none
 set firewall flowtable FT01 interface bond1
@@ -311,7 +317,8 @@ set firewall ipv4 forward filter rule 20 action accept
 set firewall ipv4 forward filter rule 20 state established
 set firewall ipv4 forward filter rule 20 state related
 set firewall ipv4 forward filter rule 200 action accept
-set firewall ipv4 forward filter rule 200 inbound-interface name 'bond*'
+set firewall ipv4 forward filter rule 200 inbound-interface name bond1.10
+set firewall ipv4 forward filter rule 200 outbound-interface name bond2.20
 ```
 
 The firewall processes the packets of such a connection in the following order:
