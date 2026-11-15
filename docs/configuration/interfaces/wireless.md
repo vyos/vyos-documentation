@@ -435,7 +435,7 @@ set system wireless country-code de
 set interfaces wireless wlan0 type station
 set interfaces wireless wlan0 address dhcp
 set interfaces wireless wlan0 ssid 'TEST'
-set interfaces wireless wlan0 security wpa passphrase '12345678'
+set interfaces wireless wlan0 security wpa password '12345678'
 ```
 
 Resulting configuration:
@@ -451,7 +451,7 @@ interfaces {
     address dhcp
     security {
       wpa {
-        passphrase "12345678"
+        password "12345678"
       }
     }
     ssid TEST
@@ -475,7 +475,7 @@ is responsible for authenticating the users.
 The WAP in this example has the following characteristics:
 - IP address `192.168.2.1/24`
 - Network ID (SSID) `Enterprise-TEST`
-- WPA passphrase `12345678`
+- WPA password `12345678`
 - Use 802.11n protocol
 - Wireless channel `1`
 - RADIUS server at `192.168.3.10` with shared-secret `VyOSPassword`
@@ -675,7 +675,7 @@ to as {abbr}`SSID (Service Set Identifier)`, and MAC addresses.
 The WAP in this example has the following characteristics:
 - IP address `192.168.2.1/24`
 - Network ID (SSID) `TEST`
-- WPA passphrase `12345678`
+- WPA password `12345678`
 - Use 802.11n protocol
 - Wireless channel `1`
 
@@ -688,7 +688,7 @@ set interfaces wireless wlan0 mode n
 set interfaces wireless wlan0 ssid 'TEST'
 set interfaces wireless wlan0 security wpa mode wpa2
 set interfaces wireless wlan0 security wpa cipher CCMP
-set interfaces wireless wlan0 security wpa passphrase '12345678'
+set interfaces wireless wlan0 security wpa password '12345678'
 ```
 
 Resulting configuration:
@@ -709,7 +709,7 @@ interfaces {
             wpa {
                 cipher CCMP
                 mode wpa2
-                passphrase "12345678"
+                password "12345678"
             }
         }
         ssid "TEST"
@@ -727,7 +727,7 @@ interface's network, or add the interface to an existing local bridge
 The following examples configure Wi-Fi 6 (2.4 GHz) and Wi-Fi 6E (6 GHz)
 {abbr}`APs (Access Points)` with the following parameters:
 - Network ID (SSID): `test.ax`
-- WPA passphrase: `super-dooper-secure-passphrase`
+- WPA password: `super-dooper-secure-password`
 - Protocol: 802.11ax
 - Wireless channel for 2.4 GHz: `11`
 - Wireless channel for 6 GHz: `5`
@@ -760,7 +760,7 @@ set interfaces wireless wlan0 security wpa cipher CCMP-256
 set interfaces wireless wlan0 security wpa cipher GCMP-256
 set interfaces wireless wlan0 security wpa cipher GCMP
 set interfaces wireless wlan0 security wpa mode wpa2
-set interfaces wireless wlan0 security wpa passphrase super-dooper-secure-passphrase
+set interfaces wireless wlan0 security wpa password super-dooper-secure-password
 set interfaces wireless wlan0 ssid test.ax
 set interfaces wireless wlan0 type access-point
 commit
@@ -812,7 +812,7 @@ interfaces {
                 cipher GCMP-256
                 cipher GCMP
                 mode wpa2
-                passphrase super-dooper-secure-passphrase
+                password super-dooper-secure-password
             }
         }
         ssid test.ax
@@ -845,7 +845,7 @@ set interfaces wireless wlan0 security wpa cipher CCMP-256
 set interfaces wireless wlan0 security wpa cipher GCMP-256
 set interfaces wireless wlan0 security wpa cipher GCMP
 set interfaces wireless wlan0 security wpa mode wpa3
-set interfaces wireless wlan0 security wpa passphrase super-dooper-secure-passphrase
+set interfaces wireless wlan0 security wpa password super-dooper-secure-password
 set interfaces wireless wlan0 mgmt-frame-protection required
 set interfaces wireless wlan0 enable-bf-protection
 set interfaces wireless wlan0 ssid test.ax
@@ -893,7 +893,7 @@ interfaces {
                 cipher GCMP-256
                 cipher GCMP
                 mode wpa3
-                passphrase super-dooper-secure-passphrase
+                password super-dooper-secure-password
             }
         }
         ssid test.ax
