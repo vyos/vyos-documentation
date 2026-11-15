@@ -246,7 +246,7 @@ The rule set must meet the following requirements:
 Otherwise, the commit fails.
 
 The global state policy offloads connections in the zone-based firewall in the
-same way as without zones. The
+same way as without zones, before the firewall applies the zone rules. The
 {doc}`Global options </configuration/firewall/global-options>` page describes
 the global state policy.
 
@@ -299,12 +299,12 @@ The firewall processes the packets of such a connection in the following order:
 
 ### Offload VLAN-to-VLAN connections
 
-The following example offloads the connections between VLAN 10 on `bond1` and
-VLAN 20 on `bond2`. The flowtable `FT01` uses the parent interface `bond1`,
-which covers all its VLAN sub-interfaces, and the sub-interface `bond2.20`,
-which covers only VLAN 20. Rule 200 accepts the packets that arrive on
-`bond1.10`, leave through `bond2.20`, and do not meet the criteria of rules 10
-and 20.
+The following example offloads the connections that clients in VLAN 10 on
+`bond1` open to servers in VLAN 20 on `bond2`. The flowtable `FT01` uses the
+parent interface `bond1`, which covers all its VLAN sub-interfaces, and the
+sub-interface `bond2.20`, which covers only VLAN 20. Rule 200 accepts the
+packets that arrive on `bond1.10`, leave through `bond2.20`, and do not meet the
+criteria of rules 10 and 20. The firewall drops all other forwarded traffic.
 
 ```none
 set firewall flowtable FT01 interface bond1
