@@ -375,7 +375,50 @@ They reach the outside through {abbr}`NAT (Network Address
 Translation)`, so they are not directly reachable from the parent
 network without port mapping.
 
-This is the default when no network type is configured.
+This is the default when no network type is configured. With `type bridge`,
+the container engine creates its bridge unless an `interface` is specified.
+```
+
+```{cfgcmd} set container network \<name\> type bridge interface \<brN\>
+
+Attach containers to an existing bridge configured under `interfaces bridge`.
+Specifying the interface selects Netavark unmanaged mode. VyOS manages the bridge, addresses, routing and
+firewall policy. The container engine attaches container interfaces without
+adding NAT or port-forwarding rules. Routed traffic keeps its original source
+address unless a VyOS NAT rule translates it.
+
+The bridge must be enabled and have the network gateway addresses with matching
+subnet masks. If no gateway is specified, the first address in each prefix is
+used. The network MTU defaults to 1500 and must match the bridge MTU.
+
+This mode requires `no-name-server`. Engine DNS, published container ports,
+MACVLAN and VRFs are unsupported. Each native bridge can be used by only one
+container network, whose prefixes must not overlap other container networks.
+
+:::{code-block} none
+set interfaces bridge br10 address '10.200.0.1/24'
+set interfaces bridge br10 address '2001:db8:10::1/64'
+set container network services prefix '10.200.0.0/24'
+set container network services prefix '2001:db8:10::/64'
+set container network services no-name-server
+set container network services type bridge interface br10
+:::
+
+Assign `br10` to the appropriate firewall zone, for example with
+`set firewall zone SERVICES interface br10` for an existing SERVICES zone.
+Configure zone-pair policies, container DNS and any required WAN source NAT
+explicitly. Globally routed IPv6 addresses can use native routing. For Internet
+egress from ULA addresses, configure NAT66 explicitly.
+
+Editing a container network recreates it and restarts its containers. Removing
+the container network preserves the native bridge and its addresses. Remove or
+move its container-network references before deleting or disabling the bridge.
+When moving a network to another bridge or back to managed mode in one commit,
+remove overlapping addresses from the previous native bridge in that commit
+and update its firewall-zone membership. Alternatively, choose a new container
+prefix that does not overlap the previous bridge. After removing a container
+network, the retained bridge remains independently configured; review its
+addresses, routes and firewall-zone membership before reusing the subnet.
 ```
 
 ```{cfgcmd} set container network \<name\> type macvlan parent \<interface\>
@@ -466,14 +509,17 @@ untrusted certificates.
 ```
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
-If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
+If you have mirror http://192.168.1.1:8080 for docker.io, you can use
+`docker.io/some/repo` or run `podman pull docker.io/some/repo`.
 
 :::{code-block} none
 set container registry docker.io mirror address 192.168.1.1
 set container registry docker.io mirror port 8080
 set container registry docker.io insecure
 :::
-If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/some/repo`` or run ``podman pull 192.168.1.1:8080/some/repo``
+If http://192.168.1.1:8080 is your own registry, you can use
+`192.168.1.1:8080/some/repo` or run
+`podman pull 192.168.1.1:8080/some/repo`.
 
 :::{code-block} none
 set container registry 192.168.1.1:8080 insecure
