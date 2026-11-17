@@ -286,6 +286,7 @@ Private key passphrase, if needed.
 ```{cfgcmd} set vpn ipsec site-to-site peer \<name\> connection-type \<type\>
 
 Operational mode defines how to handle this connection process.
+The default is ``initiate``.
 
 * **initiate** - does initial connection to remote peer immediately
   after configuring and after boot. In this mode the connection will
@@ -490,6 +491,50 @@ Local prefix for interesting traffic.
 
 Remote prefix for interesting traffic.
 ```
+
+```{cfgcmd} set vpn ipsec site-to-site peer \<name\> vti traffic-selector split-by-family
+
+Negotiate IPv4 and IPv6 traffic selectors in separate child SAs.
+```
+
+By default all prefixes of both address families go into a single
+CHILD_SA named `<name>-vti`. A responder may narrow the traffic
+selectors of a CHILD_SA to one address family. Some firewalls do this
+in dual-stack mode. The tunnel then carries IPv4 only and IPv6 traffic
+fails, although both families are configured.
+
+With `split-by-family` the peer gets one child SA per address family:
+`<name>-vti` for IPv4 and `<name>-vti6` for IPv6. Both use the same VTI
+interface and ESP group. If both the local and the remote side have
+prefixes, an address family needs a prefix on both of them, otherwise
+the commit is rejected. A side without prefixes uses the default with
+both families, and a family without any prefix gets no child SA. The
+option can not be used on a peer that has a `tunnel`, the commit is
+rejected.
+
+Set the option on both ends. If only one end has it and the other end
+starts the tunnel, that end proposes one child SA with both address
+families and the end with the option narrows it to IPv4 only. The tunnel
+is up and IPv4 passes, IPv6 does not. RFC 7296 allows the narrowing. The
+other end starts the tunnel if its `connection-type` is `initiate`, the
+default, and it does so again after `reset` on it. With the option on one
+end only, set `connection-type` to `none` on the other end and start the
+tunnel from the end with the option.
+
+```none
+set vpn ipsec site-to-site peer PEER1 vti bind 'vti0'
+set vpn ipsec site-to-site peer PEER1 vti traffic-selector local prefix '0.0.0.0/0'
+set vpn ipsec site-to-site peer PEER1 vti traffic-selector local prefix '::/0'
+set vpn ipsec site-to-site peer PEER1 vti traffic-selector remote prefix '0.0.0.0/0'
+set vpn ipsec site-to-site peer PEER1 vti traffic-selector remote prefix '::/0'
+set vpn ipsec site-to-site peer PEER1 vti traffic-selector split-by-family
+```
+
+`show vpn ipsec sa` then lists both child SAs.
+`reset vpn ipsec site-to-site peer <name> vti` ends both of them, and
+starts both again if `connection-type` of the peer is `initiate`.
+`reset vpn ipsec site-to-site peer <name> tunnel vti6` does this for the
+IPv6 child SA alone.
 
 ### IPsec Op-mode Commands
 
