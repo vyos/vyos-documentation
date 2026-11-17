@@ -99,3 +99,10 @@ TASK [Configure remote r11] ****************************************************
 PLAY RECAP **************************************************************************************************
 r11                         : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 ```
+
+## See also
+
+- {ref}`examples-ansible`, with backups and upgrades of many routers
+  using the vyos.blueprints collection.
+- {ref}`contributing-ansible-collections`, for contributing to the Ansible
+  collections.

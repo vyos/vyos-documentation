@@ -10,4 +10,5 @@ issues-features
 upstream-packages
 debugging
 testing
+ansible-collections/index
 ```
