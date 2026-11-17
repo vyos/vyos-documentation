@@ -382,8 +382,9 @@ the container engine creates its bridge unless an `interface` is specified.
 ```{cfgcmd} set container network \<name\> type bridge interface \<brN\>
 
 Attach containers to an existing bridge configured under `interfaces bridge`.
-Specifying the interface selects Netavark unmanaged mode. VyOS manages the bridge, addresses, routing and
-firewall policy. The container engine attaches container interfaces without
+Specifying the interface selects Netavark unmanaged mode. VyOS manages the
+bridge, addresses, routing and firewall policy. The container engine attaches
+container interfaces without
 adding NAT or port-forwarding rules. Routed traffic keeps its original source
 address unless a VyOS NAT rule translates it.
 
