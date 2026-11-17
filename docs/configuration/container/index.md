@@ -384,9 +384,9 @@ the container engine creates its bridge unless an `interface` is specified.
 Attach containers to an existing bridge configured under `interfaces bridge`.
 Specifying the interface selects Netavark unmanaged mode. VyOS manages the
 bridge, addresses, routing and firewall policy. The container engine attaches
-container interfaces without
-adding NAT or port-forwarding rules. Routed traffic keeps its original source
-address unless a VyOS NAT rule translates it.
+container interfaces without adding NAT or port-forwarding rules. Routed
+traffic keeps its original source address unless a VyOS NAT rule translates
+it.
 
 The bridge must be enabled and have the network gateway addresses with matching
 subnet masks. If no gateway is specified, the first address in each prefix is
