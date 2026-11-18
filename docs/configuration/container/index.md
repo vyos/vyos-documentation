@@ -87,7 +87,8 @@ Only one network must be specified and must already exist.
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
-This address must be within the named network prefix.
+This address must be within the named network prefix. On a native bridge, it
+must not equal the network gateway address.
 
 :::{note}
 The first IP in the container network is reserved by the
@@ -444,9 +445,12 @@ egress from ULA addresses, configure NAT66 explicitly.
 Changing a container network setting used by Podman recreates the network and
 restarts its containers. Description changes and setting or removing an explicit
 default without changing its effective value leave the network and containers
-running. Removing the container network preserves the native bridge and its
-addresses. Remove or move its container-network references before deleting or
-disabling the bridge.
+running. If network removal fails, the previous network settings are restored
+and previously running consumers are restarted; the commit still fails.
+Removing the container network preserves the native bridge and its addresses. Remove or move its container-network references before deleting or
+disabling the bridge. Device recreation interrupts attached containers; enabled
+containers restart automatically when the native bridge returns.
+
 When moving a network to another bridge or back to managed mode in one commit,
 remove overlapping addresses from the previous native bridge in that commit
 and update its firewall-zone membership. Alternatively, choose a new container
