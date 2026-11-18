@@ -365,7 +365,33 @@ A brief description what this network is all about.
 ```{cfgcmd} set container network \<name\> prefix \<ipv4|ipv6\>
 
 Define IPv4 and/or IPv6 prefix for a given network name.
-Both IPv4 and IPv6 can be used in parallel.
+Both IPv4 and IPv6 can be used in parallel with local address allocation.
+Do not configure prefixes when using DHCP address allocation.
+```
+
+```{cfgcmd} set container network \<name\> ipam \<host-local|dhcp\>
+
+Select how container addresses are allocated. The default, `host-local`, uses
+the configured network prefixes and optional per-container addresses.
+
+Use `dhcp` to obtain IPv4 addresses, routes and DNS from a DHCP server reachable
+through an existing bridge or MACVLAN parent. Do not configure network prefixes,
+gateways or per-container addresses with DHCP. A DHCP server may omit the router
+option for a network that does not need a default route.
+
+VyOS starts the DHCP proxy automatically. DHCP containers start asynchronously
+so configuration can finish while they wait for a lease, including when VyOS
+provides the DHCP server. Check container status to confirm startup succeeded.
+Container recreation may obtain a different lease; use DHCP reservations when
+an address must remain predictable. This mode does not provide DHCPv6.
+
+For an existing bridge connected to a DHCP server:
+
+:::{code-block} none
+set container network lan type bridge interface br10
+set container network lan ipam dhcp
+set container network lan no-name-server
+:::
 ```
 
 ```{cfgcmd} set container network \<name\> type bridge
@@ -388,13 +414,17 @@ container interfaces without adding NAT or port-forwarding rules. Routed
 traffic keeps its original source address unless a VyOS NAT rule translates
 it.
 
-The bridge must be enabled and have the network gateway addresses with matching
-subnet masks. If no gateway is specified, the first address in each prefix is
-used. The network MTU defaults to 1500 and must match the bridge MTU.
+The bridge must be enabled. With local address allocation, it must have the
+network gateway addresses with matching subnet masks. If no gateway is
+specified, the first address in each prefix is used. With DHCP allocation, the
+bridge does not need an IP address; the DHCP server supplies container addresses
+and any gateway. The network MTU defaults to 1500 and must match the bridge MTU.
 
 This mode requires `no-name-server`. Engine DNS, published container ports,
 MACVLAN and VRFs are unsupported. Each native bridge can be used by only one
-container network, whose prefixes must not overlap other container networks.
+container network. Locally allocated prefixes must not overlap other container
+networks. `no-name-server` disables the engine DNS plugin; containers using
+DHCP can still receive DNS server addresses from their leases.
 
 :::{code-block} none
 set interfaces bridge br10 address '10.200.0.1/24'
