@@ -441,9 +441,12 @@ Configure zone-pair policies, container DNS and any required WAN source NAT
 explicitly. Globally routed IPv6 addresses can use native routing. For Internet
 egress from ULA addresses, configure NAT66 explicitly.
 
-Editing a container network recreates it and restarts its containers. Removing
-the container network preserves the native bridge and its addresses. Remove or
-move its container-network references before deleting or disabling the bridge.
+Changing a container network setting used by Podman recreates the network and
+restarts its containers. Description changes and setting or removing an explicit
+default without changing its effective value leave the network and containers
+running. Removing the container network preserves the native bridge and its
+addresses. Remove or move its container-network references before deleting or
+disabling the bridge.
 When moving a network to another bridge or back to managed mode in one commit,
 remove overlapping addresses from the previous native bridge in that commit
 and update its firewall-zone membership. Alternatively, choose a new container
