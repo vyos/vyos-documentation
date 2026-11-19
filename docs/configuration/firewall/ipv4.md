@@ -86,7 +86,7 @@ The firewall uses **rule sets** to process packets. A rule set includes
   `forward filter`, `input filter`, `output raw`, or `output filter`. A `raw`
   rule set applies before connection tracking and a `filter` rule set after it.
 - A **custom rule set** is configured with a name that you choose. The firewall
-  applies the custom rule set to the packets that a base rule set sends to it
+  applies the custom rule set to packets that a base rule set sends to it
   with the `jump` action, directly or through other custom rule sets, and to the
   packets that the zone-based firewall sends to it. The firewall applies it at
   the processing point of that base rule set or of that zone policy. If neither
@@ -138,8 +138,8 @@ You can disable connection tracking only in the `forward filter`,
 
 ```{cfgcmd} set firewall ipv4 [forward | input | output] filter disable-conntrack
 
-**Disable connection tracking for the forwarded packets, the packets addressed
-to the router, or the generated packets, depending on the rule set.**
+**Disable connection tracking for forwarded packets, packets addressed
+to the router, or generated packets, depending on the rule set.**
 
 The firewall exempts these packets from connection tracking before it applies
 the `prerouting raw` and `output raw` rules. A rule in a rule set with disabled
@@ -161,7 +161,7 @@ set firewall ipv4 forward filter disable-conntrack
 
 #### Addresses
 
-To select the packets by their source address, a rule can use only one of
+To select packets by their source address, a rule can use only one of
 `source address`, `source fqdn`, `source geoip`, `source group address-group`,
 `source group network-group`, `source group domain-group`, and
 `source group remote-group`. The same applies to the destination address and the
@@ -175,13 +175,13 @@ To select the packets by their source address, a rule can use only one of
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] address \<ipv4-address | ipv4-prefix | ipv4-range\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 the specified IPv4 address, belongs to the specified network, or is in the
 specified address range.**
 
 Enter an address, a network in {abbr}`CIDR (Classless Inter-Domain Routing)`
-notation, or a range such as `192.0.2.10-192.0.2.20`. Prepend `!` to apply the
-rule's action to all other addresses.
+notation, or a range such as `192.0.2.10-192.0.2.20`. Prepend `!` to match
+all other addresses.
 ```
 
 Example:
@@ -208,7 +208,7 @@ The firewall compares only the bits that the mask selects. The
 `source group address-group`, and the `destination address-mask` applies only to
 `destination address` and `destination group address-group`.
 
-For example, to apply the rule's action to the packets whose destination address
+For example, to match packets whose destination address
 has `11` as the second octet and `13` as the fourth octet, configure the address
 `0.11.0.13` and the mask `0.255.0.255`.
 ```
@@ -228,7 +228,7 @@ set firewall ipv4 forward filter rule 10 destination address-mask 0.255.0.255
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] fqdn \<fqdn\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 an IPv4 address of the specified domain name.**
 
 A domain name must start with a letter or a digit and can contain letters,
@@ -250,7 +250,7 @@ To use GeoIP criteria, the router needs the GeoIP databases. You can configure
 the download under `set firewall global-options geoip ...` and update the
 databases with `update geoip`.
 
-To select the packets by the country or {abbr}`ASN (Autonomous System Number)`
+To select packets by the country or {abbr}`ASN (Autonomous System Number)`
 of their source address, a rule can use only one of `source geoip country-code`
 and `source geoip asn`. The same applies to the destination address and the
 `destination` forms of these commands. Otherwise, the commit fails.
@@ -263,7 +263,7 @@ and `source geoip asn`. The same applies to the destination address and the
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] geoip country-code \<country-code\>
 
-**Apply the rule's action to the packets whose source or destination address
+**Match packets whose source or destination address
 belongs to the specified country.**
 
 Enter a two-letter country code in lowercase, for example `de`. Repeat the
@@ -284,7 +284,7 @@ set firewall ipv4 forward filter rule 10 source geoip country-code de
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] geoip asn \<1-4294967294\>
 
-**Apply the rule's action to the packets whose source or destination address the
+**Match packets whose source or destination address the
 GeoIP databases map to the specified ASN.**
 
 Repeat the command to add more ASNs.
@@ -304,7 +304,7 @@ set firewall ipv4 forward filter rule 10 destination geoip asn 64496
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] geoip inverse-match
 
-**Apply the rule's action to the packets whose source or destination address the
+**Match packets whose source or destination address the
 GeoIP databases do not map to any of the rule's countries or ASNs.**
 
 The `source geoip inverse-match` applies to `source geoip country-code` and
@@ -329,13 +329,13 @@ set firewall ipv4 forward filter rule 10 source geoip inverse-match
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] port \<port | port-range | service-name\>
 
-**Apply the rule's action to the packets whose source or destination port is the
+**Match packets whose source or destination port is the
 specified port.**
 
 Enter a port number from 1 to 65535, a range such as `1001-1005`, or a service
 name that `/etc/services` defines, such as `http`. Enter several ports and
-ranges as a comma-separated list. Prepend `!` to a port or a range to apply the
-rule's action to all other ports.
+ranges as a comma-separated list. Prepend `!` to a port or a range to match
+all other ports.
 
 The rule must set `protocol` to `tcp`, `udp`, or `tcp_udp`. A rule cannot use
 `source port` together with `source group port-group`, or `destination port`
@@ -358,10 +358,10 @@ set firewall ipv4 forward filter rule 10 destination port 'http,443,1001-1005'
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] mac-address \<mac-address\>
 
-**Apply the rule's action to the packets whose source or destination
+**Match packets whose source or destination
 {abbr}`MAC (Media Access Control)` address is the specified MAC address.**
 
-Prepend `!` to apply the rule's action to all other MAC addresses.
+Prepend `!` to match all other MAC addresses.
 ```
 
 Example:
@@ -405,12 +405,12 @@ set firewall ipv4 input filter rule 10 source mac-address-mask ff:ff:ff:ff:ff:00
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> inbound-interface name \<interface-name\>
 
-**Apply the rule's action to the packets that the router receives on the
+**Match packets that the router receives on the
 specified interface.**
 
-End the name with `*` to apply the rule's action to all interfaces whose names
-begin with the specified text, for example `eth2*`. Prepend `!` to apply the
-rule's action to all other interfaces.
+End the name with `*` to match all interfaces whose names
+begin with the specified text, for example `eth2*`. Prepend `!` to match
+all other interfaces.
 
 For a packet that the router receives on a bridge member interface and the
 bridge passes to the IP layer, the receiving interface is the bridge interface.
@@ -437,11 +437,11 @@ set firewall ipv4 forward filter rule 11 inbound-interface name MGMT
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> inbound-interface group \<name | !name\>
 
-**Apply the rule's action to the packets that the router receives on an
+**Match packets that the router receives on an
 interface that is a member of the specified interface group.**
 
 Define the group with `set firewall group interface-group`. Prepend `!` to the
-group name to apply the rule's action to the packets that the router receives on
+group name to match packets that the router receives on
 an interface that is not a member of the group.
 
 You cannot use `inbound-interface name` and `inbound-interface group` in the
@@ -462,12 +462,12 @@ set firewall ipv4 forward filter rule 10 inbound-interface group LAN
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> outbound-interface name \<interface-name\>
 
-**Apply the rule's action to the packets that the router sends out through the
+**Match packets that the router sends out through the
 specified interface.**
 
-End the name with `*` to apply the rule's action to all interfaces whose names
-begin with the specified text, for example `eth2*`. Prepend `!` to apply the
-rule's action to all other interfaces.
+End the name with `*` to match all interfaces whose names
+begin with the specified text, for example `eth2*`. Prepend `!` to match
+all other interfaces.
 
 For a packet that the router sends out through a bridge and the IP layer passes
 to the bridge, the outgoing interface is the bridge interface.
@@ -490,11 +490,11 @@ set firewall ipv4 forward filter rule 10 outbound-interface name eth0
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> outbound-interface group \<name | !name\>
 
-**Apply the rule's action to the packets that the router sends out through an
+**Match packets that the router sends out through an
 interface that is a member of the specified interface group.**
 
 Define the group with `set firewall group interface-group`. Prepend `!` to the
-group name to apply the rule's action to the packets that the router sends out
+group name to match packets that the router sends out
 through an interface that is not a member of the group.
 
 You cannot use `outbound-interface name` and `outbound-interface group` in the
@@ -515,7 +515,7 @@ addresses, ports, domain names, and interfaces. The
 define groups. A rule that refers to an address, network, domain, remote, port,
 or interface group requires that group to exist. Otherwise, the commit fails.
 
-To select the packets by the membership of their source address in a group, a
+To select packets by the membership of their source address in a group, a
 rule can use only one of `source group address-group`,
 `source group network-group`, `source group domain-group`, and
 `source group remote-group`. A rule cannot use any of them together with
@@ -532,10 +532,10 @@ commands. Otherwise, the commit fails.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group address-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 a member of the specified address group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 address is not a member of the group.
 ```
 
@@ -553,10 +553,10 @@ set firewall ipv4 forward filter rule 10 source group address-group SERVERS
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group network-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination address
+**Match packets whose source or destination address
 belongs to a network of the specified network group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 address does not belong to any network of the group.
 ```
 
@@ -574,10 +574,10 @@ set firewall ipv4 forward filter rule 10 source group network-group LAN4
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group domain-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 an IPv4 address of a domain name in the specified domain group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 address is not an IPv4 address of a domain name in the group.
 ```
 
@@ -592,10 +592,10 @@ set firewall ipv4 forward filter rule 10 destination group domain-group UPDATES
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group remote-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 in the address list of the specified remote group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 address is not in the address list of the group.
 ```
 
@@ -610,10 +610,10 @@ set firewall ipv4 forward filter rule 10 source group remote-group BLOCKLIST
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group dynamic-address-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination address is
+**Match packets whose source or destination address is
 a member of the specified dynamic address group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 address is not a member of the group.
 ```
 
@@ -631,10 +631,10 @@ set firewall ipv4 input filter rule 10 source group dynamic-address-group ALLOWE
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group port-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination port is a
+**Match packets whose source or destination port is a
 member of the specified port group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 port is not a member of the group.
 
 The rule must set `protocol` to `tcp`, `udp`, or `tcp_udp`. A rule cannot use
@@ -657,10 +657,10 @@ set firewall ipv4 forward filter rule 10 destination group port-group WEB
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> [source | destination] group mac-group \<name | !name\>
 
-**Apply the rule's action to the packets whose source or destination MAC address
+**Match packets whose source or destination MAC address
 is a member of the specified MAC group.**
 
-Prepend `!` to the group name to apply the rule's action to the packets whose
+Prepend `!` to the group name to match packets whose
 MAC address is not a member of the group.
 ```
 
@@ -680,7 +680,7 @@ set firewall ipv4 input filter rule 10 source group mac-group OFFICE
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> protocol \<protocol-name | protocol-number | all | tcp_udp\>
 
-**Apply the rule's action to the packets with the specified protocol.**
+**Match packets with the specified protocol.**
 
 - `all`: Packets of all protocols.
 - `tcp_udp`: TCP and UDP packets.
@@ -688,7 +688,7 @@ set firewall ipv4 input filter rule 10 source group mac-group OFFICE
 - `protocol-number`: The number of a protocol, from 0 to 255, such as `6` for
   TCP.
 
-Prepend `!` to the protocol name to apply the rule's action to the packets of
+Prepend `!` to the protocol name to match packets of
 all other protocols.
 ```
 
@@ -707,7 +707,7 @@ set firewall ipv4 forward filter rule 11 protocol '!tcp_udp'
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> icmp type-name \<type-name\>
 
-**Apply the rule's action to the
+**Match
 {abbr}`ICMP (Internet Control Message Protocol)` packets with the specified type
 name.**
 
@@ -734,7 +734,7 @@ set firewall ipv4 input filter rule 10 icmp type-name echo-request
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> icmp type \<0-255\>
 
-**Apply the rule's action to the ICMP packets with the specified type number.**
+**Match ICMP packets with the specified type number.**
 
 If the rule has `icmp type-name`, the firewall ignores `icmp type`.
 ```
@@ -753,7 +753,7 @@ set firewall ipv4 input filter rule 10 icmp type 8
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> icmp code \<0-255\>
 
-**Apply the rule's action to the ICMP packets with the specified code number.**
+**Match ICMP packets with the specified code number.**
 
 If the rule has `icmp type-name`, the firewall ignores `icmp code`.
 ```
@@ -772,7 +772,7 @@ set firewall ipv4 input filter rule 10 icmp code 1
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp flags [syn | ack | fin | rst | urg | psh | ecn | cwr]
 
-**Apply the rule's action to the TCP packets in which the specified flags are
+**Match TCP packets in which the specified flags are
 set.**
 
 Repeat the command to require more flags.
@@ -795,7 +795,7 @@ set firewall ipv4 input filter rule 10 tcp flags syn
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp flags not [syn | ack | fin | rst | urg | psh | ecn | cwr]
 
-**Apply the rule's action to the TCP packets in which the specified flags are
+**Match TCP packets in which the specified flags are
 not set.**
 
 Repeat the command to require more flags to be unset.
@@ -819,7 +819,7 @@ set firewall ipv4 input filter rule 10 tcp flags not ack
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> tcp mss \<1-16384 | min-max\>
 
-**Apply the rule's action to the TCP packets whose
+**Match TCP packets whose
 {abbr}`MSS (Maximum Segment Size)` option has the specified value.**
 
 Enter a value or a range such as `500-1460`.
@@ -841,7 +841,7 @@ The GRE criteria apply to GRE packets. A rule with a GRE criterion must set
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> gre flags [checksum | key | sequence]
 
-**Apply the rule's action to the GRE packets whose header includes the specified
+**Match GRE packets whose header includes the specified
 optional field.**
 
 - `checksum`: The header includes the checksum field.
@@ -862,7 +862,7 @@ set firewall ipv4 forward filter rule 10 gre flags sequence
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> gre flags [checksum | key | sequence] unset
 
-**Apply the rule's action to the GRE packets whose header does not include the
+**Match GRE packets whose header does not include the
 specified optional field.**
 
 - `checksum`: The header does not include the checksum field.
@@ -883,9 +883,9 @@ set firewall ipv4 forward filter rule 10 gre flags checksum unset
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> gre key \<0-4294967295\>
 
-**Apply the rule's action to the GRE packets with the specified tunnel key.**
+**Match GRE packets with the specified tunnel key.**
 
-The rule applies only to the packets whose header includes the key field.
+The rule applies only to packets whose header includes the key field.
 
 The rule must set `protocol` to `gre` and must have `gre flags checksum` or
 `gre flags checksum unset`, because the position of the key in the header
@@ -904,7 +904,7 @@ set firewall ipv4 forward filter rule 10 gre key 100
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> gre inner-proto \<ethertype\>
 
-**Apply the rule's action to the GRE packets that encapsulate a packet of the
+**Match GRE packets that encapsulate a packet of the
 specified Ethernet type.**
 
 - `ip`: IPv4 packets.
@@ -931,7 +931,7 @@ set firewall ipv4 forward filter rule 10 gre inner-proto ip
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> gre version [gre | pptp]
 
-**Apply the rule's action to the standard GRE packets (`gre`) or to the
+**Match standard GRE packets (`gre`) or
 {abbr}`PPTP (Point-to-Point Tunneling Protocol)` packets (`pptp`).**
 
 The rule must set `protocol` to `gre`, and a rule with `gre key` cannot use
@@ -954,7 +954,7 @@ set firewall ipv4 forward filter rule 10 gre version pptp
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> dscp \<0-63 | start-end\>
 
-**Apply the rule's action to the packets with the specified
+**Match packets with the specified
 {abbr}`DSCP (Differentiated Services Code Point)` value.**
 
 Enter a value or a range such as `10-20`.
@@ -976,7 +976,7 @@ set firewall ipv4 forward filter rule 10 dscp 46
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> dscp-exclude \<0-63 | start-end\>
 
-**Apply the rule's action to the packets whose DSCP value is not the specified
+**Match packets whose DSCP value is not the specified
 value.**
 
 Enter a value or a range such as `10-20`.
@@ -998,7 +998,7 @@ set firewall ipv4 forward filter rule 10 dscp-exclude 0
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> ttl [eq | gt | lt] \<0-255\>
 
-**Apply the rule's action to the packets whose {abbr}`TTL (Time to Live)` meets
+**Match packets whose {abbr}`TTL (Time to Live)` meets
 the specified comparison.**
 
 - `eq`: The TTL is equal to the value.
@@ -1017,7 +1017,7 @@ set firewall ipv4 forward filter rule 10 ttl lt 5
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> packet-length \<1-65535 | start-end\>
 
-**Apply the rule's action to the packets with the specified length in bytes,
+**Match packets with the specified length in bytes,
 including the IP header and the data.**
 
 Enter a length or a range such as `100-200`.
@@ -1036,7 +1036,7 @@ set firewall ipv4 forward filter rule 10 packet-length 1500
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> packet-length-exclude \<1-65535 | start-end\>
 
-**Apply the rule's action to the packets whose length in bytes is not the
+**Match packets whose length in bytes is not the
 specified length.**
 
 Enter a length or a range such as `100-200`.
@@ -1055,13 +1055,13 @@ set firewall ipv4 forward filter rule 10 packet-length-exclude 100-200
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> packet-type [broadcast | host | multicast | other]
 
-**Apply the rule's action to the packets of the specified type.**
+**Match packets of the specified type.**
 
 The router determines the type of a received packet from the destination MAC
 address of the packet:
 
 - `host`: Packets whose destination MAC address is the address of the receiving
-  interface. This includes the packets that the router forwards.
+  interface. This includes packets that the router forwards.
 - `broadcast`: Packets whose destination MAC address is the broadcast address.
 - `multicast`: Packets whose destination MAC address is a multicast address
   other than the broadcast address.
@@ -1085,7 +1085,7 @@ set firewall ipv4 input filter rule 10 packet-type multicast
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> fragment [match-frag | match-non-frag]
 
-**Apply the rule's action to the packets according to whether they arrived
+**Match packets according to whether they arrived
 fragmented.**
 
 - `match-frag`: Packets that arrived in fragments and that the router
@@ -1109,7 +1109,7 @@ set firewall ipv4 forward filter rule 10 fragment match-frag
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> ipsec [match-ipsec-in | match-none-in]
 
-**Apply the rule's action to packets according to whether the router
+**Match packets according to whether the router
 decapsulates them from IPsec.**
 
 - `match-ipsec-in`: Packets that the router has decapsulated from IPsec. The
@@ -1137,7 +1137,7 @@ set firewall ipv4 input filter rule 10 ipsec match-ipsec-in
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> ipsec [match-ipsec-out | match-none-out]
 
-**Apply the rule's action to packets according to whether the router
+**Match packets according to whether the router
 encapsulates them with IPsec.**
 
 - `match-ipsec-out`: Packets that the router encapsulates with IPsec.
@@ -1159,7 +1159,7 @@ set firewall ipv4 forward filter rule 10 ipsec match-none-out
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> state [established | invalid | new | related]
 
-**Apply the rule's action to the packets whose connection has the specified
+**Match packets whose connection has the specified
 connection tracking state.**
 
 - `established`: Packets of an established connection, in either direction.
@@ -1169,7 +1169,7 @@ connection tracking state.**
   connection.
 - `new`: Packets that start a new connection.
 
-Repeat the command to apply the rule's action to the packets in more states.
+Repeat the command to match packets in more states.
 
 A rule cannot have `state` in the `forward filter` rule set when connection
 tracking is disabled there, or in the `input filter` or `output filter` rule set
@@ -1188,7 +1188,7 @@ set firewall ipv4 forward filter rule 10 state established
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-status nat [destination | source]
 
-**Apply the rule's action to the packets of the connections with the specified
+**Match packets of the connections with the specified
 NAT translation.**
 
 - `destination`: The connection has a destination NAT translation.
@@ -1206,7 +1206,7 @@ set firewall ipv4 forward filter rule 10 connection-status nat destination
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> connection-mark \<0-2147483647\>
 
-**Apply the rule's action to the packets whose connection has the specified
+**Match packets whose connection has the specified
 connection mark.**
 
 Repeat the command to add more marks.
@@ -1227,10 +1227,10 @@ set firewall ipv4 forward filter rule 10 connection-mark 123
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> mark \<0-2147483647 | start-end\>
 
-**Apply the rule's action to the packets with the specified packet mark.**
+**Match packets with the specified packet mark.**
 
-Enter a mark or a range such as `100-200`. Prepend `!` to apply the rule's
-action to all other marks.
+Enter a mark or a range such as `100-200`. Prepend `!` to match
+all other marks.
 
 You can set the packet mark with `set mark` in the `forward filter`,
 `output filter`, `output raw`, and `prerouting raw` rule sets and in custom rule
@@ -1249,7 +1249,7 @@ set firewall ipv4 forward filter rule 11 mark '!100-200'
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> conntrack-helper [ftp | h323 | nfs | pptp | rtsp | sip | sqlnet | tftp]
 
-**Apply the rule's action to related traffic identified by the specified
+**Match related traffic identified by the specified
 connection tracking helper.**
 
 Repeat the command to add more helpers.
@@ -1271,11 +1271,11 @@ set firewall ipv4 forward filter rule 10 conntrack-helper ftp
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> limit rate \<integer/unit\>
 
-**Apply the rule's action to packets arriving at or below the specified rate.**
+**Match packets arriving at or below the specified rate.**
 
 Enter an integer and the unit `second`, `minute`, `hour`, or `day`. For example,
-with `5/minute`, the rule's action applies to five packets per minute on average
-and not to the packets above that rate.
+with `5/minute`, the rule matches five packets per minute on average
+and does not match packets above that rate.
 
 The integer cannot be less than 1. Otherwise, the commit fails.
 ```
@@ -1294,11 +1294,9 @@ set firewall ipv4 input filter rule 10 limit rate 5/minute
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> limit burst \<1-4294967295\>
 
-**Configure the number of packets above the rate to which the rule's action
-still applies.**
+**Configure the number of packets above the rate that the rule still matches.**
 
-When no value is configured, the firewall applies the rule's action to 5
-packets above the rate.
+When no value is configured, the rule matches 5 packets above the rate.
 
 Use `limit burst` together with `limit rate` in the same rule.
 ```
@@ -1326,7 +1324,7 @@ set firewall ipv4 input filter rule 10 limit burst 10
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> recent time [second | minute | hour]
 
-**Apply the rule's action to the packets whose source address sent more than the
+**Match packets whose source address sent more than the
 specified number of packets in the specified period.**
 
 - `recent count`: The number of packets.
@@ -1345,7 +1343,7 @@ set firewall ipv4 input filter rule 10 recent time minute
 
 #### Rule schedule
 
-You can limit the period in which the rule's action applies by date with
+You can limit the period in which a rule matches packets by date with
 `startdate` and `stopdate`, by time of day with `starttime` and `stoptime`, and
 by day of the week with `weekdays`. The firewall combines `startdate` with
 `starttime`, and `stopdate` with `stoptime`, into specific moments. A
@@ -1361,7 +1359,7 @@ no start, it starts at `00:00`. When it has no end, it ends at `23:59:59`.
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time startdate \<yyyy-mm-dd\>
 
-**Apply the rule's action to the packets from the specified date onward.**
+**Match packets from the specified date onward.**
 ```
 
 Example:
@@ -1378,7 +1376,7 @@ set firewall ipv4 input filter rule 10 time startdate 2026-01-01
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time stopdate \<yyyy-mm-dd\>
 
-**Apply the rule's action to the packets before the specified date.**
+**Match packets before the specified date.**
 ```
 
 Example:
@@ -1395,7 +1393,7 @@ set firewall ipv4 input filter rule 10 time stopdate 2026-12-31
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time starttime \<hh:mm[:ss]\>
 
-**Apply the rule's action to the packets from the specified time onward.**
+**Match packets from the specified time onward.**
 ```
 
 Example:
@@ -1412,7 +1410,7 @@ set firewall ipv4 input filter rule 10 time starttime 08:00
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time stoptime \<hh:mm[:ss]\>
 
-**Apply the rule's action to the packets until the specified time.**
+**Match packets until the specified time.**
 ```
 
 Example:
@@ -1429,7 +1427,7 @@ set firewall ipv4 input filter rule 10 time stoptime 18:00
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> time weekdays \<weekday\>
 
-**Apply the rule's action to the packets on the specified days of the week.**
+**Match packets on the specified days of the week.**
 
 Enter the names of the days, such as `Monday` or `mon`, or the numbers of the
 days from `0` (Sunday) to `6` (Saturday), separated by commas.
@@ -1451,7 +1449,7 @@ set firewall ipv4 input filter rule 10 time weekdays Mon,Tue,Wed,Thu,Fri
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> fib lookup [source-address | destination-address]
 
-**Apply the rule's action to the packets according to the result of a
+**Match packets according to the result of a
 {abbr}`FIB (Forwarding Information Base)` lookup.**
 
 - `source-address`: The firewall looks up the route using the source address of
@@ -1479,7 +1477,7 @@ set firewall ipv4 prerouting raw rule 1 fib lookup destination-address
 
 ```{cfgcmd} set firewall ipv4 name \<name\> rule \<1-999999\> fib match route-type \<route-type | !route-type\>
 
-**Apply the rule's action to the packets whose address, selected by
+**Match packets whose address, selected by
 `fib lookup`, has the specified route type.**
 
 - `local`: The address has a route to the router itself.
@@ -1493,7 +1491,7 @@ set firewall ipv4 prerouting raw rule 1 fib lookup destination-address
 - `prohibit`: The address has a route that prohibits the packets
   administratively.
 
-Prepend `!` to apply the rule's action to all other route types. Configure
+Prepend `!` to match all other route types. Configure
 `fib lookup` in the same rule. Otherwise, the commit fails.
 ```
 
@@ -1751,7 +1749,7 @@ When a client's TCP connection request meets the criteria of a rule with the
 `synproxy` action, the firewall answers the request on the service's behalf and
 opens the connection to the service only after the client completes the
 handshake. This protects a TCP service from clients that start a connection but
-do not complete it. The firewall applies the `synproxy` action only to the
+do not complete it. The firewall applies the `synproxy` action only to
 packets in the `invalid` and `untracked` states.
 
 The commands in this section configure the TCP options that the firewall
