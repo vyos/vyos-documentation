@@ -174,8 +174,8 @@ remote group.**
 
 The URL must use the `http` or `https` scheme.
 
-To safely type or past a URL without worrying about having to escape
-`?` and `&` characters in a query strings, enter an opening quote (`'`)
+To safely type or paste a URL without worrying about having to escape
+`?` and `&` characters in query strings, enter an opening quote (`'`)
 before typing or pasting, then close the quote.
 
 You must configure `url` for every remote group. Otherwise, the commit fails.
