@@ -87,11 +87,13 @@ Only one network must be specified and must already exist.
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
-This address must be within the named network prefix.
+This address must be within the named network prefix. On a native bridge, it
+must not equal the network gateway address.
 
 :::{note}
-The first IP in the container network is reserved by the
-engine and cannot be used
+For managed bridges and MACVLAN, the first address in the prefix is reserved
+for the container engine. On a native bridge, the selected gateway is reserved;
+the first address is available when a different gateway is configured.
 :::
 ```
 
@@ -365,7 +367,33 @@ A brief description what this network is all about.
 ```{cfgcmd} set container network \<name\> prefix \<ipv4|ipv6\>
 
 Define IPv4 and/or IPv6 prefix for a given network name.
-Both IPv4 and IPv6 can be used in parallel.
+Both IPv4 and IPv6 can be used in parallel with local address allocation.
+Do not configure prefixes when using DHCP address allocation.
+```
+
+```{cfgcmd} set container network \<name\> ipam \<host-local|dhcp\>
+
+Select how container addresses are allocated. The default, `host-local`, uses
+the configured network prefixes and optional per-container addresses.
+
+Use `dhcp` to obtain IPv4 addresses, routes and DNS from a DHCP server reachable
+through an existing bridge or MACVLAN parent. Do not configure network prefixes,
+gateways or per-container addresses with DHCP. A DHCP server may omit the router
+option for a network that does not need a default route.
+
+VyOS starts the DHCP proxy automatically. DHCP containers start asynchronously
+so configuration can finish while they wait for a lease, including when VyOS
+provides the DHCP server. Check container status to confirm startup succeeded.
+Container recreation may obtain a different lease; use DHCP reservations when
+an address must remain predictable. This mode does not provide DHCPv6.
+
+For an existing bridge connected to a DHCP server:
+
+:::{code-block} none
+set container network lan type bridge interface br10
+set container network lan ipam dhcp
+set container network lan no-name-server
+:::
 ```
 
 ```{cfgcmd} set container network \<name\> type bridge
@@ -375,7 +403,63 @@ They reach the outside through {abbr}`NAT (Network Address
 Translation)`, so they are not directly reachable from the parent
 network without port mapping.
 
-This is the default when no network type is configured.
+This is the default when no network type is configured. With `type bridge`,
+the container engine creates its bridge unless an `interface` is specified.
+```
+
+```{cfgcmd} set container network \<name\> type bridge interface \<brN\>
+
+Attach containers to an existing bridge configured under `interfaces bridge`.
+Specifying the interface selects Netavark unmanaged mode. VyOS manages the
+bridge, addresses, routing and firewall policy. The container engine attaches
+container interfaces without adding NAT or port-forwarding rules. Routed
+traffic keeps its original source address unless a VyOS NAT rule translates
+it.
+
+The bridge must be enabled. With local address allocation, it must have the
+network gateway addresses with matching subnet masks. If no gateway is
+specified, the first address in each prefix is used. With DHCP allocation, the
+bridge does not need an IP address; the DHCP server supplies container addresses
+and any gateway. The network MTU defaults to 1500 and must match the bridge MTU.
+
+This mode requires `no-name-server`. Engine DNS, published container ports,
+MACVLAN and VRFs are unsupported. Each native bridge can be used by only one
+container network. Locally allocated prefixes must not overlap other container
+networks. `no-name-server` disables the engine DNS plugin; containers using
+DHCP can still receive DNS server addresses from their leases.
+
+:::{code-block} none
+set interfaces bridge br10 address '10.200.0.1/24'
+set interfaces bridge br10 address '2001:db8:10::1/64'
+set container network services prefix '10.200.0.0/24'
+set container network services prefix '2001:db8:10::/64'
+set container network services no-name-server
+set container network services type bridge interface br10
+:::
+
+Assign `br10` to the appropriate firewall zone, for example with
+`set firewall zone SERVICES interface br10` for an existing SERVICES zone.
+Configure zone-pair policies, container DNS and any required WAN source NAT
+explicitly. Globally routed IPv6 addresses can use native routing. For Internet
+egress from ULA addresses, configure NAT66 explicitly.
+
+Changing a container network setting used by Podman recreates the network and
+restarts its containers. Description changes and setting or removing an explicit
+default without changing its effective value leave the network and containers
+running. If network removal fails, the previous network settings are restored
+and previously running or starting consumers are restarted; the commit still
+fails.
+Removing the container network preserves the native bridge and its addresses.
+Remove or move its container-network references before deleting or disabling
+the bridge. Device recreation interrupts attached containers; enabled
+containers restart automatically when the native bridge returns.
+
+When moving a network to another bridge or back to managed mode in one commit,
+remove overlapping addresses from the previous native bridge in that commit
+and update its firewall-zone membership. Alternatively, choose a new container
+prefix that does not overlap the previous bridge. After removing a container
+network, the retained bridge remains independently configured; review its
+addresses, routes and firewall-zone membership before reusing the subnet.
 ```
 
 ```{cfgcmd} set container network \<name\> type macvlan parent \<interface\>
@@ -466,14 +550,17 @@ untrusted certificates.
 ```
 Registry mirror, use ``(host-name|address)[:port][/path]``.
 
-If you have mirror http://192.168.1.1:8080 for docker.io, you can use ``docker.io/some/repo`` or run ``podman pull docker.io/some/repo``
+If you have mirror http://192.168.1.1:8080 for docker.io, you can use
+`docker.io/some/repo` or run `podman pull docker.io/some/repo`.
 
 :::{code-block} none
 set container registry docker.io mirror address 192.168.1.1
 set container registry docker.io mirror port 8080
 set container registry docker.io insecure
 :::
-If http://192.168.1.1:8080 is your own registry, you can use ``192.168.1.1:8080/some/repo`` or run ``podman pull 192.168.1.1:8080/some/repo``
+If http://192.168.1.1:8080 is your own registry, you can use
+`192.168.1.1:8080/some/repo` or run
+`podman pull 192.168.1.1:8080/some/repo`.
 
 :::{code-block} none
 set container registry 192.168.1.1:8080 insecure
