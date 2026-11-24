@@ -464,7 +464,94 @@ Example:
 set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
 ```
 
-#### Example
+#### InfluxDB and TLS
+
+The following options secure the connection to an InfluxDB server
+reached over HTTPS. They have no effect if `url` uses `http://`, and VyOS
+shows an error at commit in that case.
+
+The server certificate of an `https://` URL is always verified, even if
+no `tls` option is configured, unless `tls insecure` is set. If no
+`tls ca-certificate` is configured, the server certificate is verified
+against the system's trusted certificate store.
+
+```{cfgcmd} set service monitoring telegraf influxdb tls ca-certificate \<name\>
+
+**Configure the {doc}`PKI </configuration/pki/index>` certificate authority
+used to verify the certificate of the remote InfluxDB server.**
+
+The CA must be defined under `pki ca`. This option cannot be combined
+with `tls insecure`.
+```
+
+Example:
+
+```none
+set service monitoring telegraf influxdb tls ca-certificate 'influx-ca'
+```
+
+```{cfgcmd} set service monitoring telegraf influxdb tls certificate \<name\>
+
+**Configure the {doc}`PKI </configuration/pki/index>` client certificate
+presented to the remote InfluxDB server for mutual TLS authentication.**
+
+The certificate must be defined under `pki certificate` and include a
+private key that is not password protected. Intermediate CA certificates
+of the issuing chain that are defined under `pki ca` are sent together
+with the client certificate automatically, so the server only needs to
+trust the root CA.
+
+{abbr}`ACME (Automated Certificate Management Environment)`
+certificates are supported and are updated automatically when they
+are renewed.
+```
+
+Example:
+
+```none
+set service monitoring telegraf influxdb tls certificate 'telegraf-client'
+```
+
+```{note}
+The client certificate must allow TLS client authentication, which means
+its Extended Key Usage must include `clientAuth`. Most servers reject
+certificates without it with an `unsuitable certificate purpose` error.
+Many public CAs, including common ACME CAs, no longer issue certificates
+with `clientAuth`, so use a certificate issued by a private CA.
+```
+
+```{cfgcmd} set service monitoring telegraf influxdb tls insecure
+
+**Disable verification of the certificate of the remote InfluxDB server.**
+
+The connection is still encrypted, but the server is not authenticated.
+Use this option only for testing. It cannot be combined with
+`tls ca-certificate`.
+```
+
+Example:
+
+```none
+set service monitoring telegraf influxdb tls insecure
+```
+
+```{cfgcmd} set service monitoring telegraf influxdb tls server-name \<fqdn\>
+
+**Configure the server name used for {abbr}`SNI (Server Name Indication)` and
+for verifying the certificate of the remote InfluxDB server.**
+
+Use this option if the hostname in `url` does not match the name in the
+server certificate, for example when the server is reached by its IP
+address.
+```
+
+Example:
+
+```none
+set service monitoring telegraf influxdb tls server-name 'r1.influxdb2.local'
+```
+
+#### Examples
 
 The following example configures Telegraf to write metrics to an
 InfluxDB v2 server at `r1.influxdb2.local` on port 8087, storing them
@@ -477,6 +564,28 @@ set service monitoring telegraf influxdb authentication token 'ZAml9Uy5wrhA...==
 set service monitoring telegraf influxdb bucket 'bucket_vyos'
 set service monitoring telegraf influxdb port '8087'
 set service monitoring telegraf influxdb url 'http://r1.influxdb2.local'
+```
+
+##### TLS with server verification and client certificate
+
+The following example connects to an InfluxDB v2 server over HTTPS. It
+verifies the server certificate against the CA `influx-ca` and
+authenticates to the server with the client certificate
+`telegraf-client`.
+Both are defined in the {doc}`VyOS PKI </configuration/pki/index>`.
+
+```none
+set pki ca influx-ca certificate 'MIIDnTCCAoWgAwIBAgIU...'
+set pki certificate telegraf-client certificate 'MIIDqDCCApCgAwIBAgIU...'
+set pki certificate telegraf-client private key 'MIIEvQIBADANBgkqhkiG...'
+
+set service monitoring telegraf influxdb authentication organization 'vyos'
+set service monitoring telegraf influxdb authentication token 'ZAml9Uy5wrhA...=='
+set service monitoring telegraf influxdb bucket 'bucket_vyos'
+set service monitoring telegraf influxdb port '8443'
+set service monitoring telegraf influxdb url 'https://r1.influxdb2.local'
+set service monitoring telegraf influxdb tls ca-certificate 'influx-ca'
+set service monitoring telegraf influxdb tls certificate 'telegraf-client'
 ```
 
 ### Loki
