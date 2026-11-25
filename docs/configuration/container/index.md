@@ -87,13 +87,13 @@ Only one network must be specified and must already exist.
 ```{cfgcmd} set container name \<name\> network \<networkname\> address \<address\>
 
 Optionally set a specific static IPv4 or IPv6 address for the container.
-This address must be within the named network prefix. On a native bridge, it
-must not equal the network gateway address.
+This address must be within the named network prefix.
 
 :::{note}
 For managed bridges and MACVLAN, the first address in the prefix is reserved
-for the container engine. On a native bridge, the selected gateway is reserved;
-the first address is available when a different gateway is configured.
+for the container engine. On a native bridge, the selected gateway and all
+addresses configured on the bridge are reserved. The first address is available
+when a different gateway is configured and the bridge does not own that address.
 :::
 ```
 
