@@ -453,6 +453,8 @@ Removing the container network preserves the native bridge and its addresses.
 Remove or move its container-network references before deleting or disabling
 the bridge. Device recreation interrupts attached containers; enabled
 containers restart automatically when the native bridge returns.
+An operational stop does not disable this recovery. Configure the container's
+`disable` option to keep it stopped across bridge recreation.
 
 When moving a network to another bridge or back to managed mode in one commit,
 remove overlapping addresses from the previous native bridge in that commit
