@@ -138,7 +138,11 @@ Configure the hashing algorithm for the OpenVPN interface.
 
 **Configure the number of tolerated keepalive packet failures.**
 
-Default: 60 consecutive failures.
+The tunnel restarts after `interval` × `failure-count` seconds without
+traffic from the peer.
+
+Default: 60 consecutive failures. In `site-to-site` mode, the default is
+as many intervals as make 60 seconds (6 with the default interval).
 ```
 
 
